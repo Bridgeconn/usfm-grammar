@@ -1,18 +1,5 @@
-## To Test
-Copy the [grammar](https://github.com/Bridgeconn/usfm-spew/new/master#grammar) and paste in [PEG.js online editor](https://pegjs.org/online).
-
-Here is a sample input to play around
-
-```
-\ddf* sdlkfna sdfa lskdfj
-\c 1 sldk
-```
-
-
-## Grammar
-```
 content = line+
-line = t:(tag) c:(text)* [\n]? { return { 
+line = t:(tag) c:(text)* [\n]* { return { 
 										tag: t,
 										text: c.join(" ")
 									}
@@ -44,5 +31,4 @@ noarg_tag = 'ide' / 'id' / 'sts' /
             'fl' / 'fp' / 'fv' / 
             'ft' / 'xo' / 'xk' / 
             'xq' / 'xt' / 'qa' / 
-            'lit'
-```
+            'lit' / 's5'
