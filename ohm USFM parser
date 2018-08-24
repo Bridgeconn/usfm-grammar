@@ -47,19 +47,19 @@ function parse( str){
 			e.jsonCompose()
 		},
 
-		Simple_element : function(_,m,){
+		simple_element : function(_,m,){
 			res.push({"tag": m.sourceString });
 		},
 
-		Text_element : function(_,m,_,t){
+		text_element : function(_,m,_,t){
 			res.push({"tag": m.sourceString, "content" : t.sourceString});
 		},
 
-		Opt_text_element : function(_,m,_,t){
+		opt_text_element : function(_,m,_,t){
 			res.push({"tag": m.sourceString, "content" : t.sourceString});
 		},
 
-		Double_arg_element : function(_,m,_,v,_,t){
+		double_arg_element : function(_,m,_,v,_,t){
 			res.push({"tag": m.sourceString, "value" : v.sourceString,
  										"text" : t.sourceString})
 		}
@@ -111,13 +111,13 @@ USFM_bible{
 			word = (~(" ") any)+
 
 
-			Valid_content = Simple_element | Text_element | Opt_text_element
-							| Double_arg_element 
+			Valid_content = simple_element | text_element | opt_text_element
+							| double_arg_element 
 	
 			
 			// 1 Markers with no text
 			simple_marker = "ie" | "b" | "ib"
-			Simple_element = "\\" simple_marker 
+			simple_element = "\\" simple_marker 
 
 			// 2 Markers with text
 			text_marker = "ide" | "sts" | "rem"
@@ -136,17 +136,17 @@ USFM_bible{
 			                | "mt" number | "mte" number | "ms" number
 			                | "li" number | "th" number
 			                | "thr" number | "tc" number | "tcr" number
-			Text_element = "\\" (text_marker | text_marker_numbered) space* text
+			text_element = "\\" (text_marker | text_marker_numbered) (" ")+ text
 
 			// 3 Markers with optional text
 			opt_text_marker = "p" | "m" 
 							| "qr" | "qc"
 			opt_text_marker_numbered =  "q" number
-			Opt_text_element = "\\" (opt_text_marker | opt_text_marker_numbered) (space* text)?
+			opt_text_element = "\\" (opt_text_marker | opt_text_marker_numbered) (" ")+ text?
 			                
 			// 4 Markers with a value and text
 			double_arg_marker = "id" | "v"
-			Double_arg_element = "\\" double_arg_marker space* word space* text
+			double_arg_element = "\\" double_arg_marker (" ")+ word (" ")+ text
 
 			// 5 Character style markers (e.g. \ior...\ior*)
 			char_marker = "ior" | "iqt" | "rq"
@@ -158,7 +158,7 @@ USFM_bible{
 			              | "wj" | "em" | "bd"
 			              | "it" | "bdit" | "no"
 			              | "sc" | "ndx"
-			Char_element = "\\" char_marker text "\\" char_marker "*"
+			Char_element = "\\" char_marker  text "\\" char_marker "*"
 
 			// 7 Notes makers
 			notes_marker = "f...f*" | "fe...fe*"
