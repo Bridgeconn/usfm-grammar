@@ -72,9 +72,19 @@ function parse( str){
  		var mh = bib.match(str)
 		var adapter = sem(mh);
 		var output = adapter.jsonCompose();
+
  	}catch (err){
- 		// output =  "Match failed !!!";
- 		output = err.message;
+ 		
+ 		message = mh["_rightmostFailures"]
+ 		pos = mh["_rightmostFailurePosition"]
+ 		line_len = mh["input"].indexOf("\n",pos)
+ 		if(line_len == -1)
+ 			line_len = mh["input"].length
+
+ 		input_snippet = mh["input"].substring(pos,line_len)
+ 		
+ 		output = "At " + pos +", "+ message +": " + input_snippet
+ 		
  	}
 	
 return output;
