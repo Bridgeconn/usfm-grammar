@@ -1,0 +1,37 @@
+<html>
+
+
+<body>
+
+
+<center>
+<h1>The USFM Validator</h1>
+</center>
+
+
+<div style="float: left; width: 60%; height: 70%">
+<textarea name="inputText" id="inputText" form="inputTextForm" cols="75" rows="20"></textarea>
+<form id="inputTextForm" action="passtext" method="post" enctype="multipart/form-data">
+<input type="submit" value="Check Text">
+</form>
+</div>
+
+
+<div style="clear:both; float:left;">
+<form action="fileupload" method="post" enctype="multipart/form-data">
+<input type="file" name="inputFile"><br>
+<input type="submit" value="Check File">
+</form>
+</div>
+
+<div style="float: right;width: 40%">
+	<p id="output"> </p>
+</div>
+
+
+
+
+
+
+</body>
+</html>
