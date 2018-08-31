@@ -1,0 +1,76 @@
+USFM_bible{
+
+			File = Valid_content+
+
+			char = ~("\\") ~("\n") any
+			text = char+
+			number = digit+
+			word = (~(" ") any)+
+
+
+			Valid_content = simple_element | text_element | opt_text_element
+							| double_arg_element 
+	
+			
+			// 1 Markers with no text
+			simple_marker = "ie" | "b" | "ib"
+			simple_element = "\\" simple_marker 
+
+			// 2 Markers with text
+			text_marker = "ide" | "sts" | "rem"
+							| "h" | "toc1" | "toc2"
+							| "toc3" 
+							| "ip" | "ipi" | "im"
+							| "imi" | "ipq" | "imq"
+			                | "ipr"  | "ib"
+			                | "ili" | "iot" 
+			                | "mr"| "sr"
+			                | "r" | "c" | "cl"
+			                | "cp"  | "pc"
+			                | "pr" | "tr" 
+			text_marker_numbered = "imt" number | "is" number | "iq" number
+							| "io" number | "s" number 
+			                | "mt" number | "mte" number | "ms" number
+			                | "li" number | "th" number
+			                | "thr" number | "tc" number | "tcr" number
+			text_element = "\\" (text_marker | text_marker_numbered) (" ")+ text
+
+			// 3 Markers with optional text
+			opt_text_marker = "p" | "m" 
+							| "qr" | "qc"
+			opt_text_marker_numbered =  "q" number
+			opt_text_element = "\\" (opt_text_marker | opt_text_marker_numbered) (" ")* text?
+			                
+			// 4 Markers with a value and text
+			double_arg_marker = "id" | "v"
+			double_arg_element = "\\" double_arg_marker (" ")+ word (" ")+ text
+
+			// 5 Character style markers (e.g. \ior...\ior*)
+			char_marker = "ior" | "iqt" | "rq"
+			              | "va" | "vp" | "qs"
+			              | "add" | "bk" | "dc"
+			              | "qac" | "k" | "nd"
+			              | "ord" | "pn" | "qt"
+			              | "sig" | "sls" | "tl"
+			              | "wj" | "em" | "bd"
+			              | "it" | "bdit" | "no"
+			              | "sc" | "ndx"
+			Char_element = "\\" char_marker  text "\\" char_marker "*"
+
+			// 7 Notes makers
+			notes_marker = "f...f*" | "fe...fe*"
+			              | "fr" | "fk" | "fq"
+			              | "fqa" | "fl" | "fp"
+			              | "fv" | "ft" | "fdc...fdc*"
+			              | "fm...fm* " | "x...x*" | "xo"
+			              | "xk" | "xq" | "xt"
+			              | "xot...xot*" | "xnt...xnt*" | "xdc...xdc*"
+			              | "fl"
+
+			// 9 Markers with attributes
+			attrib_marker = "fig...fig*"
+
+
+
+
+			}
