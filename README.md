@@ -1,12 +1,12 @@
-# usfm-spew
+# USFM Parser
 
 A library that validates USFM files.
-Uses ohm-js for grammar implementation and validation.
-Implemented in Node JS
+Uses [ohm-js](https://github.com/harc/ohm) for grammar implementation and validation.
+Implemented in Node.js
 
 # Current implementation
 1. Parse
-2. Validates.
+2. Validate
 (Only validates the internal structure of a set of markers and extracts their components as JSON.)
 
 # Dependancies
