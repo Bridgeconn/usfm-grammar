@@ -1,139 +1,56 @@
-
-
-var fs = require('fs');
-var ohm = require('ohm-js');
-var join = require('path').join;
+var match = require('./grammarOperations.js').match;
  
 
 exports.parse = function ( str){
-	var contents = fs.readFileSync(join(__dirname, 'usfm.ohm'));
 
-	var bib  = ohm.grammars(contents).USFM_bible;
-	
-	var sem = bib.createSemantics();
+		var matchObj = match(str);
 
-	console.log("Parsing");
-
-	
-	var res =[]		
-
-
-	//Actions enabling the matched string to be converted to JSON(to be changed according to new grammar)
-
-	sem.addOperation('jsonCompose', {
-		File : function(e){
-				e.jsonCompose();
-					 
-				return res;
-		},
-
-		Valid_content : function(e){
-			e.jsonCompose()
-			// if (e.failed()){
-			// 	console.log("came in error")
-			// 	throw new error("Not a vaild content")
-			// }
-		},
-
-		simple_element : function(_,m){
-			res.push({"tag": m.sourceString });
-		},
-
-		text_element : function(_,m,_,t){
-			res.push({"tag": m.sourceString, "content" : t.sourceString});
-		},
-
-		opt_text_element : function(_,m,_,t){
-			res.push({"tag": m.sourceString, "content" : t.sourceString});
-		},
-
-		double_arg_element : function(_,m,_,v,_,t){
-			res.push({"tag": m.sourceString, "value" : v.sourceString,
- 										"text" : t.sourceString})
+		if (!matchObj.hasOwnProperty("_rightmostFailures")){
+			return matchObj;
 		}
-	
-	});
+		else{
+			message = matchObj["_rightmostFailures"];
+	 		pos = matchObj["_rightmostFailurePosition"];
 
-	var output = "";
- 	//Matching the input with grammar and obtaining the JSON output string
- 	try{
- 		var mh = bib.match(str)
-		var adapter = sem(mh);
-		var output = adapter.jsonCompose();
+	 		//to find the line where the error occured
+	 		prevLineStart = 0;     
+	 		nextLineStart = 0;
+	 		lineCount = 0;
+	 		console.log("Entering loop");
+	 		while(nextLineStart<pos){
+	 			console.log("nextLineStart:"+nextLineStart);
+	 			console.log("pos:"+pos);
+	 			lineCount +=1;
+	 			prevLineStart = nextLineStart;
+	 			nextLineStart = matchObj["input"].indexOf("\n",nextLineStart+1);
+	 			if (nextLineStart==-1){
+	 				nextLineStart = matchObj["input"].length
+	 			}
+	 		}
+	 		console.log("out of toop");
+	 		
 
- 	}catch (err){
- 		
- 		message = mh["_rightmostFailures"]
- 		pos = mh["_rightmostFailurePosition"]
- 		line_len = mh["input"].indexOf("\n",pos+1)
- 		if(line_len == -1)
- 			line_len = mh["input"].length
+	 		inputSnippet = matchObj["input"].substring(prevLineStart,nextLineStart);
 
- 		input_snippet = mh["input"].substring(pos,line_len)
- 		
- 		output = "At " + pos +", "+ message +": " + input_snippet
- 		
- 	}
-	
-return output;
+	 		//to highlight the position from where match failed
+	 		inLinePos = pos - prevLineStart;
+	 		outputSnippet = inputSnippet.substring(0,inLinePos-1) + "<b>"+  inputSnippet.substring(inLinePos,inputSnippet.length)+"</b>";
+	 		
+	 		output = "Error at character" + inLinePos +", in line "+lineCount+" \'"+ outputSnippet +"\': " +  message
+
+	 		return matchObj["input"]+"\n"+output;
+			
+		}
+
 }
 
-
-
-exports.validator = function ( str){
-	var contents = fs.readFileSync(join(__dirname, 'usfm.ohm'));
-
-	var bib  = ohm.grammars(contents).USFM_bible;
+exports.validate = function ( str){
 	
-	var sem = bib.createSemantics();
-
-	console.log("Parsing");
-
-	
-	var res =[]		
-
-
-	//Actions enabling the matched string to be converted to JSON(to be changed according to new grammar)
-
-	sem.addOperation('jsonCompose', {
-		File : function(e){
-				e.jsonCompose();
-					 
-				return res;
-		},
-
-		Valid_content : function(e){
-			e.jsonCompose()
-			// if (e.failed()){
-			// 	console.log("came in error")
-			// 	throw new error("Not a vaild content")
-			// }
-		},
-
-		simple_element : function(_,m){
-			res.push({"tag": m.sourceString });
-		},
-
-		text_element : function(_,m,_,t){
-			res.push({"tag": m.sourceString, "content" : t.sourceString});
-		},
-
-		opt_text_element : function(_,m,_,t){
-			res.push({"tag": m.sourceString, "content" : t.sourceString});
-		},
-
-		double_arg_element : function(_,m,_,v,_,t){
-			res.push({"tag": m.sourceString, "value" : v.sourceString,
- 										"text" : t.sourceString})
-		}
-	
-	});
-
 	var output = "";
- 	//Matching the input with grammar and obtaining the JSON output string
  	try{
- 		var mh = bib.match(str)
-		var adapter = sem(mh);
+ 		//Matching the input with grammar and obtaining the JSON output string
+ 		var matchObj = match(str)
+		var adapter = sem(matchObj);
 		output = true;
 
  	}catch (err){
