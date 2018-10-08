@@ -3,13 +3,13 @@ usfmBible{
 			File = scripture
 
 			backSlash = "\\"
-			newLine = ("\n" | "\r")+
-			char = ~(backSlash) ~(newLine) ~space any
-			char = letter | digit | puctuations
-			punctuations = [!\"#$%&\\\'\(\)\*\+-./:;<=>?@\[\\\]^_`{\|}\~’‘“”।]
-			text = word*
+			newLine = ("\r" | "\n")+
+			char = ~(backSlash) ~(newLine) ~" " any
+			// char = letter | digit | puctuations
+			punctuations = "!" | "\"" | "#" | "$" | "%" | "&" | "(" | ")"  | "+" | "-" | "." | "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "[" | "]" | "^" | "_" | "`" | "{"  | "}"  | "’" | "‘" | "“" | "”" | "।" | "]"
+			text = word+
 			number = digit+
-			word = char+ space
+			word = char+ " "?
 
 			bookCode = "GEN" | "EXO" | "LEV" | "NUM" | "DEU" | "JOS" | "JDG" | "RUT" | "1SA" | "2SA" | "1KI" | "2KI" | 
 							"1CH" | "2CH" | "EZR" | "NEH" | "EST" | "JOB" | "PSA" | "PRO" | 
@@ -27,7 +27,7 @@ usfmBible{
 							"BAK" | "OTH" | "INT" | "CNC" | "GLO" | "TDX" | "NDX"
 
 
-			scipture = metaData content
+			scripture = metaData content
 
 
 			metaData = bookIdentification bookHeaders* bookTitles* bookIntroductionTitles* bookIntroductionEndTitles* 
@@ -39,17 +39,13 @@ usfmBible{
 
 			bookTitles =  imtElement | remElement
 
-			bookTitlesTextContent = (text | notesElement | charElement | optBreakElement)+
 
 			bookIntroductionTitles =  ibElement | ieElement | iexElement | iliElement |  
 							imElement | imiElement | imqElement | imtElement | imtElement | 
-							imteElement | imteElement | ioElement | iotElement | ipElement | ipiElement | ipqElement | iprElement | iqElement | ioeElement |
-							isElement | remElement
-			bookIntroductionTitlesTextContent = (text | notesElement | refElement | charElement | msElement | figure)+
+							imteElement | imteElement | ioElement | iotElement | ipElement | ipiElement | ipqElement | iprElement | iqElement | isElement | remElement
 			
 
 			bookIntroductionEndTitles =   imtElement | mtElement 
-			bookIntroductionEndTitlesTextContent = (text | notesElement | refElement | charElement | msElement | optbreakElement )+
 
 			bookChapterLabel = clElement
 
@@ -57,90 +53,157 @@ usfmBible{
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
-			chapterContent =  section+
-			chapterContentTextContent = (text | notesElement | refElement | charElement | msElement | figureElement | verseElement |
-							optbreak)+
-
-            section = sectionHeader sectionContent+
- 			
- 			sectionContent = (emptyContentParaElement | verseElement)
-
- 			sectionHeader  = (msElement mrElement?)? sElement (srElement | rElement | dElement )* paraMarker
+			chapterContent =   section+
 			
-			verseElement = verseMarker verseNumber (vaElement | vpElement)*  verseText
+			section = sectionHeader verseElement+
+ 			
+ 			
+ 			sectionHeader  = ((msElement mrElement?)? sElement (srElement | rElement | dElement )*)? paraElement
+			
+			verseElement = newLine verseMarker verseNumber (vaElement | vpElement)*  verseText
+			
+			verseMarker = backSlash "v" " "
 
-			verseMarker = backSlash "v" space
+			verseNumber = number " "
 
-			verseNumber = number
-
-			sectionElement = sectionMarker chapterContentTextContent | sdMarker newline
-			sectionMarker = blackSlash ("s" | "s1" | "s2" | "s3" | "s4" )
+			sectionElement = sectionMarker chapterContentTextContent | sdMarker newLine
+			sectionMarker = backSlash ("s" | "s1" | "s2" | "s3" | "s4" )
 			sdMarker = backSlash "sd" number
 
-			emptyContentParaElement = paraMarker newLine
+			paraElement = newLine backSlash paraMarker " "*
 
-			altVerseNumberElement = altVerseNumberMarker number altVerseNumberMarker "\*"
+			altVerseNumberElement = altVerseNumberMarker number altVerseNumberMarker "*"
 			altVerseNumberMarker = backSlash "va" 
 
-			publishedCharElement = publishedCharMarker text publishedCharMarker "\*"  
+			publishedCharElement = publishedCharMarker text publishedCharMarker "*"  
 			chapter = cElement (caElement | clElement | cpElement | cdElement)* chapterContent
 			publishedCharMarker = backSlash "vp"
-			verseText = (chapterContentTextContent | newline paraMarker) +
-
+			verseText = (chapterContentTextContent | paraElement ) +
+            
 
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
-			paraUnNumberedMarker = backSlash  ("p" | "m" | "po" | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b")
-			paraNumberedMarker = backSlash ("pi" | "ph") number
+			paraUnNumberedMarker =   ("p" | "m" | "po" | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qa" | "qd" | "lh" | "lf" )
+			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "li" | "lim") number
 
 
 
 
-			cElement = newLine backSlash "c" space number 
-			caElement = newLine backSlash "ca" space number backSlash "ca*"
-			cdElement = newLine backSlash "cd" space chapterContentTextContent
-			clElement = newLine backSlash "cl"  space text
-			cpElement = newLine backSlash "cp"  space text
-			dElement = newLine backSlash "d"  space chapterContentTextContent
+			cElement = newLine backSlash "c" " " number 
+			caElement = newLine backSlash "ca" " " number backSlash "ca*"
+			cdElement = newLine backSlash "cd" " " chapterContentTextContent
+			clElement = newLine backSlash "cl"  " " text
+			cpElement = newLine backSlash "cp"  " " text
+			dElement = newLine backSlash "d"  " " chapterContentTextContent
 			
-			figureElement = 
-			hElement = 
+			hElement = newLine backSlash "h" text
 			
-			ibElement = newLine backSlash "ib" space 
-			idElement = newLine backSlash "id"  space bookCode  space text
-			ideElement = newLine backSlash "ide"  space text
+			ibElement = newLine backSlash "ib" " " 
+			idElement = backSlash "id"  " " bookCode  " " text
+			ideElement = newLine backSlash "ide"  " " text
 			ieElement = newLine backSlash "ie"
-			iexElement = newLine backSlash "iex"  space text
+			iexElement = newLine backSlash "iex"  " " text
 			
-			imElement = newLine backSlash "im" space bookIntroductionTitlesTextContent
-			imiElement = newLine backSlash "imi" space bookIntroductionTitlesTextContent
-			imqElement = newLine backSlash "imq" space bookIntroductionTitlesTextContent
-			iliElement = (newLine backSlash "ili" number? space bookIntroductionTitlesTextContent)+
-			imtElement = (newLine backSlash "imt" number? space bookIntroductionTitlesTextContent)+
-			imteElement = (newLine backSlash "imte" number? space bookIntroductionTitlesTextContent)+
-			ioElement = (newLine backSlash "io" number? space bookIntroductionTitlesTextContent)+
-			iotElement = newLine backSlash "iot" space bookIntroductionTitlesTextContent
-			iorElement = newLine backSlash "ior" space bookIntroductionTitlesTextContent
-			ipElement = newLine backSlash "ip" space bookIntroductionTitlesTextContent
-			ipiElement = newLine backSlash "ipi" space bookIntroductionTitlesTextContent
-			ipqElement = newLine backSlash "ipq" space bookIntroductionTitlesTextContent
-			iprElement = newLine backSlash "ipr" space bookIntroductionTitlesTextContent
-			iqElement = (newLine backSlash "iq" number? space bookIntroductionTitlesTextContent)+
-			isElement = newLine backSlash "is" number? space bookIntroductionTitlesTextContent
+			imElement = newLine backSlash "im" " " bookIntroductionTitlesTextContent
+			imiElement = newLine backSlash "imi" " " bookIntroductionTitlesTextContent
+			imqElement = newLine backSlash "imq" " " bookIntroductionTitlesTextContent
+			iliElement = (newLine backSlash "ili" number? " " bookIntroductionTitlesTextContent)+
+			imtElement = (newLine backSlash "imt" number? " " bookIntroductionTitlesTextContent)+
+			imteElement = (newLine backSlash "imte" number? " " bookIntroductionTitlesTextContent)+
+			ioElement = (newLine backSlash "io" number? " " bookIntroductionTitlesTextContent)+
+			iotElement = newLine backSlash "iot" " " bookIntroductionTitlesTextContent
+			iorElement = newLine backSlash "ior" " " bookIntroductionTitlesTextContent
+			ipElement = newLine backSlash "ip" " " bookIntroductionTitlesTextContent
+			ipiElement = newLine backSlash "ipi" " " bookIntroductionTitlesTextContent
+			ipqElement = newLine backSlash "ipq" " " bookIntroductionTitlesTextContent
+			iprElement = newLine backSlash "ipr" " " bookIntroductionTitlesTextContent
+			iqElement = (newLine backSlash "iq" number? " " bookIntroductionTitlesTextContent)+
+			isElement = newLine backSlash "is" number? " " bookIntroductionTitlesTextContent
 			
-			remElement = newLine backSlash "rem" space chapterContentTextContent
+			remElement = newLine backSlash "rem" " " chapterContentTextContent
 			
-			mrElement = newLine backSlash "mr" space chapterContentTextContent
-			msElement = newLine backSlash "ms" number? space chapterContentTextContent
-			mtElement = (newLine backSlash "mt" number? space chapterContentTextContent)+
-			rElement = newLine backSlash "r" space chapterContentTextContent
+			mrElement = newLine backSlash "mr" " " chapterContentTextContent
+			msElement = newLine backSlash "ms" number? " " chapterContentTextContent
+			mtElement = (newLine backSlash "mt" number? " " chapterContentTextContent)+
+			rElement = newLine backSlash "r" " " chapterContentTextContent
 			refElement = 
-			sElement = newLine backSlash "s" number space chapterContentTextContent
-			srElement = newLine backSlash "sr" space chapterContentTextContent
-			tocElement = newLine backSlash ("toc1" | "toc2" | "toc3") space text
-			tocaElement = newLine backSlash ("toc1" | "toc2" | "toc3") space text
-			usfmElement = newLine backSlash "usfm" space number ("." number)? 
-			vaElement = backSlash "va" space number backSlash "va*"
-			verseElement = backSlash "v" space (vaElement | vpElement)* chapterContentTextContent
-			vpElement = backSlash "va" space text backSlash "va*"
+			sElement = newLine backSlash "s" number " " chapterContentTextContent
+			srElement = newLine backSlash "sr" " " chapterContentTextContent
+			tocElement = newLine backSlash ("toc1" | "toc2" | "toc3") " " text
+			tocaElement = newLine backSlash ("toc1" | "toc2" | "toc3") " " text
+			usfmElement = newLine backSlash "usfm" " " number ("." number)? 
+			vaElement = backSlash "va" " " number backSlash "va*"
+			vpElement = backSlash "va" " " text backSlash "va*"
 
-			}
+
+			notesElement = footnoteElement | crossrefElement
+			footnoteElement = (backSlash  "f"  any* backSlash "f*")  | (backSlash  "fe"  any* backSlash "fe*" )
+			crossrefElement = backSlash  "x"  any* backSlash "x*"
+
+			charElement = inLineCharElement | spaceNBreakElement | inLineCharAttributeElement | inLineCharNumberedElement
+            spaceNBreakElement = "~" | "\\"
+            inLineCharElement = backSlash "add" chapterContentTextContent backSlash "add" "*"
+            			| backSlash "bk" chapterContentTextContent backSlash "bk" "*"
+						| backSlash "dc" chapterContentTextContent backSlash "dc" "*"
+                        | backSlash "+dc" chapterContentTextContent backSlash "+dc" "*"
+						| backSlash "k" chapterContentTextContent backSlash "k" "*"
+                        | backSlash "nd" chapterContentTextContent backSlash "nd" "*"
+						| backSlash "ord" chapterContentTextContent backSlash "ord" "*"
+               			| backSlash "pn" chapterContentTextContent backSlash "pn"  "*"
+                        | backSlash "png" chapterContentTextContent backSlash "png"  "*"
+                        | backSlash "addpn" chapterContentTextContent backSlash "addpn"  "*"
+                        | backSlash "qt" chapterContentTextContent backSlash "qt"  "*"
+                        | backSlash "sig" chapterContentTextContent backSlash "sig"  "*"
+						| backSlash "sls" chapterContentTextContent backSlash "sls"  "*"
+                        | backSlash "tl" chapterContentTextContent backSlash "tl"  "*"
+                        | backSlash "wj" chapterContentTextContent backSlash "wj"  "*"
+                        | backSlash "em" chapterContentTextContent backSlash "em"  "*"
+                        | backSlash "bd" chapterContentTextContent backSlash "bd"  "*"
+                        | backSlash "it" chapterContentTextContent backSlash "it"  "*"
+                        | backSlash "bdit" chapterContentTextContent backSlash "bdit"  "*"
+                        | backSlash "no" chapterContentTextContent backSlash "no"  "*"
+                        | backSlash "sc" chapterContentTextContent backSlash "sc"  "*"
+                        | backSlash "sup" chapterContentTextContent backSlash "sup"  "*"
+                        | backSlash "ndx" chapterContentTextContent backSlash "ndx"  "*"
+                        | backSlash "wg" chapterContentTextContent backSlash "wg"  "*"
+                        | backSlash "wh" chapterContentTextContent backSlash "wh"  "*"
+                        | backSlash "wa" chapterContentTextContent backSlash "wa"  "*"
+                        | backSlash "qs" chapterContentTextContent backSlash "qs"  "*"
+                        | backSlash "qac" chapterContentTextContent backSlash "qac"  "*"
+                        | backSlash "litl" chapterContentTextContent backSlash "litl"  "*"
+                        | backSlash "lik" chapterContentTextContent backSlash "lik"  "*"
+                        
+                        
+            inLineCharAttributeElement = backSlash "rb" chapterContentTextContent attributes backSlash "sup"  "*"
+                        | backSlash "w" chapterContentTextContent attributes backSlash "w"  "*"
+                        | backSlash "jmp" chapterContentTextContent attributes backSlash "jmp"  "*"
+
+            inLineCharNumberedElement = backSlash "liv" number? chapterContentTextContent backSlash "liv"  "*"
+                        
+
+
+
+            attributes = namedAttributeList   |  defaultAttribute 
+            defaultAttribute = "|" "\"" attributeName "\""
+            namedAttributeList = "|"  (text "=\"" attributeName "\"" " "?)+
+            attributeName = (char|"-")+
+            
+            figureElement = backSlash "fig" " " caption  chapterContentTextContent attributes? backSlash "fig*"
+			caption = text
+
+			
+			litElement = newLine backSlash "lit" " " chapterContentTextContent
+
+
+			bookIntroductionTitlesTextContent = (text | notesElement |  charElement | milestoneElement | figureElement | zNameSpace)+
+			bookTitlesTextContent = (text | notesElement | charElement | zNameSpace)+
+			chapterContentTextContent = (text | notesElement |  charElement | milestoneElement| figureElement | zNameSpace)+
+			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace)+
+
+			milestoneElement = (backSlash "qt" number? "-s" " "* attributes? backSlash "*" ) 
+								| (backSlash "qt" number? "-e" " "* attributes? backSlash "*" )
+			                	| (backSlash "ts" number? "-s" " "* attributes? backSlash "*" ) 
+			                	| (backSlash "ts" number? "-e" " "* attributes? backSlash "*" )
+
+			zNameSpace = newLine? backSlash "z" char* " "? text? (backSlash "z" char* "*" )?
+}
+ 

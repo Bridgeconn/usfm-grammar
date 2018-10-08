@@ -1,5 +1,5 @@
 ## Questions/ Dev Notes
-## ---------
+## --------------------
 
 * Is an empty line wihin a USFM file valid? Ideally not an error, but worth raising a warning(possibility of warnings, to be checked). The doc says, _"All paragraph markers should be preceded by *a single* newline."_ That makes an empty line an error, though we are not treating it so.
 * Inline markers like _\\x_ , _\\f_ etc can start without a space seperating it from text content
@@ -9,7 +9,7 @@
 * For the same marker(eg: _\\imt_) being in  _bookTitles_, _bookIntroductionTiles_, and _bookIntroductionEndTitles_ requires 3 different rules as allowed child elements(in-line markers) for these sections are different. We have only one rule defining it with the larger child elements set(_bookIntroductionTilesTextContent_).
 * added _toca#_ elements also to _book headers_, though they were not listed in the USX document structure's valid style types for the section
 * The peripheral in USX seems separate from the scripture part. Hence avoiding it in Grammar, for now.
-* Assuming that the para markers are there only for formatting(indentation) purpose and doesn't play a significant role in *content's structure*. Hence not including para element in JSON parse output. It will only be Chapter as parent, sections as children and verses as grand-children
+* There are two overlapping structures for bible content, in USFM.1) the paragraph structures used to express the discourse / narrative of the text and 2) the division of the text into books, chapters and verses. We are following only the following structure in the parsed JSON output: Chapter as parent, sections as children and verses as grand-children. Hence ingoring the paragraph wise structuring and treating para markers as only meant for indentation change.
 * In chapter element it lists _\\imt1_ as a valid style type as the first element. All other _imt_ markers(_\\imt, \\imt2, \\imt3_) are missing. The list of vaild style type says its alphabetical list explicitly... So assuming that _\\imt1_ got there by mistake and hence avoiding that from Grammar
 * Assuming that the markers _\\ca_, _\\cl_, _\\cp_ and _\\cd_ occurs immediately below the _\\c_ marker, before the verse blocks start
 * Assuming that, having a para marker after every section header, is mandatory
@@ -19,3 +19,11 @@
 * As per USFM doc examples, _\\iex_ and _\\imte_ occurs within/at the end of chapter content...But included in _bookIntroductionTitles_ in the Grammar(as per the list of valid style types in USX doc).
 * The _\\iot, \\io# & \\ior_ elements could be clubbed into an outline division and their relative ordering ensured...But not done(now all those can come anywhere in the _bookIntroductionTitles_) 
 * _\\ms#_ defines a major section outside of section(_\\s#_) division. But we have not captured it structural relevance. Instead, treating it as an independant element, ans attaching it to section header of the section immeditately following it
+* Use of the markers _\\wg, \\wh, \\wa_ is not clear from documentation. Assuming that it encloses verse's content words and not add additional contents to the verse text.
+* Removed _verseElement_ from chapterContentTextContent(though the USX doc defines it so), inorder to avoid un-necessary nesting of verse elements  
+* Internal structure of crossref markers and footnote markers are not validated/parsed, as of now. Considers everything from open marker to close marker as a single unit(ignoring the nested markers like _\\xt_, _\\fr_, _\\rq_)
+* The valid attribute names for word-level markers are not checked. Any attribute name with valid syntax would be accepted
+* The _optbreak_ break in USX doc seems to have not been implemented as such in USFM. So not including that in Grammar(do _\\pb, \\b, ~ and \\\\ etc_ serves its purpose in USFM?) 
+* There seems to be not marker in place of USX _<ref>_ element in USFM. So removing that also from the Grammar. The reference text would be treated as normal text content itself.
+* Exculded from punctuations: ~, \*, \\, |
+* ms mentioned as valid child elements in USX spec, refers to milestones(_\\qt and \\ts_) in USFM rather than the _\\ms#_ element
