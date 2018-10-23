@@ -7,6 +7,85 @@ Check for the presence of the mandatory markers without which a USFM file will n
 * c
 * p
 * v
+
+###should pass:
+\id PHM Longer Heading
+\c 1
+\p
+\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+
+###should fail:
+\c 1
+\p
+\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+###should fail:
+\id PHM Longer Heading
+\p
+\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+###should fail:
+\id PHM Longer Heading
+\c 1
+\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+
+###should fail:
+\id PHM Longer Heading
+\c 1
+\p
+
+###should pass:
+\id PHM Longer Heading
+\c 1
+\p
+\v 1 ക്രിസ്തുയേശുവിന്റെ 
+\q1 ബദ്ധനായ ...
+\p
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+
+###should fail:
+\id PHM Longer Heading
+\c 1
+\p
+\v ക്രിസ്തുയേശുവിന്റെ 
+\q1 ബദ്ധനായ ...
+\p
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+
+
+###should pass:
+\id PHM Longer Heading
+\cl Philemon
+\c 1
+\p
+\v ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+
+###should pass:
+\id PHM Longer Heading
+\c 1
+\cl Philemon
+\p
+\v ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
 	
 ## Marker Wise Syntax
 Check the behaviour of the parser/validator are proper under these situations where internal structure of a marker needs to be validated
