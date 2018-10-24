@@ -28,7 +28,7 @@ usfmBible{
 							"BAK" | "OTH" | "INT" | "CNC" | "GLO" | "TDX" | "NDX"
 
 
-			scripture = metaData content
+			scripture = metaData content+
 
 
 			metaData = bookIdentification bookHeaders* bookTitles* bookIntroductionTitles* bookIntroductionEndTitles* 
