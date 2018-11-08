@@ -1,65 +1,54 @@
-var match = require('./grammarOperations.js').match;
- 
+const match = require('./grammarOperations.js').match
+const stringifyObject = require('stringify-object')
 
-exports.parse = function ( str){
+exports.parse = function (str) {
+  let matchObj = match(str)
 
-		var matchObj = match(str);
+  if (!matchObj.hasOwnProperty('_rightmostFailures')) {
+    return matchObj
+  } else {
+    var message = matchObj['_rightmostFailures']
+    var pos = matchObj['_rightmostFailurePosition']
 
-		if (!matchObj.hasOwnProperty("_rightmostFailures")){
-			return matchObj;
-		}
-		else{
-			message = matchObj["_rightmostFailures"];
-	 		pos = matchObj["_rightmostFailurePosition"];
+    // to find the line where the error occured
+    var prevLineStart = 0
+    var nextLineStart = 0
+    var lineCount = 0
+    console.log('Entering loop')
+    while (nextLineStart < pos) {
+      console.log('nextLineStart:' + nextLineStart)
+      console.log('pos:' + pos)
+      lineCount += 1
+      prevLineStart = nextLineStart
+      nextLineStart = matchObj['input'].indexOf('\n', nextLineStart + 1)
+      if (nextLineStart === -1) {
+        nextLineStart = matchObj['input'].length
+      }
+    }
+  }
+  console.log('out of toop')
 
-	 		//to find the line where the error occured
-	 		prevLineStart = 0;     
-	 		nextLineStart = 0;
-	 		lineCount = 0;
-	 		console.log("Entering loop");
-	 		while(nextLineStart<pos){
-	 			console.log("nextLineStart:"+nextLineStart);
-	 			console.log("pos:"+pos);
-	 			lineCount +=1;
-	 			prevLineStart = nextLineStart;
-	 			nextLineStart = matchObj["input"].indexOf("\n",nextLineStart+1);
-	 			if (nextLineStart==-1){
-	 				nextLineStart = matchObj["input"].length
-	 			}
-	 		}
-	 		console.log("out of toop");
-	 		
+  let inputSnippet = matchObj['input'].substring(prevLineStart, nextLineStart)
 
-	 		inputSnippet = matchObj["input"].substring(prevLineStart,nextLineStart);
+  // to highlight the position from where match failed
+  let inLinePos = pos - prevLineStart
+  let outputSnippet = inputSnippet.substring(0, inLinePos - 1) + '<b>' + inputSnippet.substring(inLinePos, inputSnippet.length) + '</b>'
 
-	 		//to highlight the position from where match failed
-	 		inLinePos = pos - prevLineStart;
-	 		outputSnippet = inputSnippet.substring(0,inLinePos-1) + "<b>"+  inputSnippet.substring(inLinePos,inputSnippet.length)+"</b>";
-	 		
-	 		output = "Error at character" + inLinePos +", in line "+lineCount+" \'"+ outputSnippet +"\': " +  message
+  let output = 'Error at character' + inLinePos + ', in line ' + lineCount + " '" + outputSnippet + "': " + message
 
-	 		return matchObj["input"]+"\n"+output;
-			
-		}
-
+  return matchObj['input'] + '\n' + output
 }
 
-exports.validate = function ( str){
-	
-	var output = "";
- 	try{
- 		//Matching the input with grammar and obtaining the JSON output string
- 		var matchObj = match(str)
-		var adapter = sem(matchObj);
-		output = true;
+exports.validate = function (str) {
+  let output = ''
+  try {
+    // Matching the input with grammar and obtaining the JSON output string
+    let matchObj = match(str)
+    console.log(stringifyObject(matchObj))
+    output = true
+  } catch (err) {
+    output = false
+  }
 
- 	}catch (err){
- 		
- 		output = false;
- 		
- 	}
-	
-return output;
+  return output
 }
-
-
