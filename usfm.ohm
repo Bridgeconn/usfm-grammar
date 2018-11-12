@@ -52,22 +52,18 @@ usfmBible{
 
 			bookChapterLabel = clElement
 
-			chapter = chapterHeader chapterContent+
+			chapter = chapterHeader section+
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
-			chapterContent =   section+
-			
 			section = sectionHeader verseElement+
  			
  			
  			sectionHeader  = (sectionPreHeader? sectionElement sectionPostHeader*)? paraElement
 			sectionPreHeader = msElement mrElement?
 			sectionPostHeader = srElement | rElement | dElement 
-			verseElement = newLine verseMarker verseNumber (vaElement | vpElement)*  verseText
+			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  verseText
 			
-			verseMarker = backSlash "v" spaceChar
-
 			verseNumber = number spaceChar
 
 			sectionElement = sectionElementWithTitle | sectionElementWithoutTitle
@@ -150,9 +146,43 @@ usfmBible{
 
 			notesElement = footnoteElement | crossrefElement
 			footnoteElement = fElement | feElement
-			fElement = backSlash  "f"  any* backSlash "f*"
-			feElement = backSlash  "fe"  any* backSlash "fe*"
-			crossrefElement = backSlash  "x"  any* backSlash "x*"
+			fElement = backSlash  "f"  footnoteContent* backSlash "f*"
+			feElement = backSlash  "fe"  footnoteContent* backSlash "fe*"
+			crossrefElement = backSlash  "x"  crossrefContent* backSlash "x*"
+
+			footnoteContent = text | footnoteContentElement
+			footnoteContentElement = backSlash "fr" spaceChar
+							| backSlash "fq" spaceChar
+							| backSlash "fqa" spaceChar
+							| backSlash "fk" spaceChar
+							| backSlash "fl" spaceChar
+							| backSlash "fw" spaceChar
+							| backSlash "fp" spaceChar
+							| backSlash "ft" spaceChar
+							| backSlash "fv" spaceChar
+							| backSlash "fv*" spaceChar
+							| backSlash "fdc" spaceChar
+							| backSlash "fdc*" spaceChar
+							| backSlash "fm" spaceChar
+
+			crossrefContent  = text | crossrefContentElement
+			crossrefContentElement = backSlash "xo" spaceChar
+							| backSlash "xk" spaceChar
+							| backSlash "xq" spaceChar
+							| backSlash "xt" spaceChar
+							| backSlash "xta" spaceChar
+							| backSlash "xop" spaceChar
+							| backSlash "xop*" spaceChar
+							| backSlash "xot" spaceChar
+							| backSlash "xot*" spaceChar
+							| backSlash "xnt" spaceChar
+							| backSlash "xnt*" spaceChar
+							| backSlash "xdc" spaceChar
+							| backSlash "xdc*" spaceChar
+							| backSlash "rq" spaceChar
+							| backSlash "rq*" spaceChar
+
+
 
 			charElement = inLineCharElement | inLineCharAttributeElement | inLineCharNumberedElement
             inLineCharElement = backSlash "add" chapterContentTextContent backSlash "add" "*"
@@ -199,10 +229,25 @@ usfmBible{
             attributes = namedAttributeList   |  defaultAttribute 
             defaultAttribute = "|" "\"" attributeName "\""
             namedAttributeList = "|"  (text "=\"" attributeName "\"" spaceChar?)+
-            attributeName = (char|"-")+
+            attributeName = char+
             
             figureElement = backSlash "fig" spaceChar caption  chapterContentTextContent attributes? backSlash "fig*"
 			caption = text
+
+			table = headerRow? row+
+			headerRow = trElement headerCell+
+			headerCell = thElement | thrElement
+			row = trElement cell+
+			cell = tcElement | tcrElement
+
+			trElement = newLine backSlash "tr" spaceChar
+			thElement = backSlash "th" number spaceChar text
+			thrElement = backSlash "thr" number spaceChar text
+			tcElement = backSlash "tc" number spaceChar text
+			tcrElement = backSlash "tcr" number spaceChar text
+
+
+
 
 			
 			litElement = newLine backSlash "lit" spaceChar chapterContentTextContent
@@ -210,7 +255,7 @@ usfmBible{
 
 			bookIntroductionTitlesTextContent = (text | notesElement |  charElement | milestoneElement | figureElement | zNameSpace)+
 			bookTitlesTextContent = (text | notesElement | charElement | zNameSpace)+
-			chapterContentTextContent = (text | notesElement |  charElement | milestoneElement| figureElement | zNameSpace)+
+			chapterContentTextContent = (text | notesElement |  charElement | milestoneElement| figureElement | table |zNameSpace)+
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace)+
 
 			milestoneElement = (backSlash "qt" number? "-s" spaceChar* attributes? backSlash "*" ) 
