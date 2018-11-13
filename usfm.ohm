@@ -40,15 +40,15 @@ usfmBible{
 
 			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement | stsElement
 
-			bookTitles =  imtElement | remElement
+			bookTitles =  imt| mt | remElement
 
 
-			bookIntroductionTitles =  ibElement | ieElement | iexElement | iliElement |  
-							imElement | imiElement | imqElement | imtElement | imtElement | 
-							imteElement | imteElement | ioElement | iotElement | ipElement | ipiElement | ipqElement | iprElement | iqElement | isElement | remElement
+			bookIntroductionTitles =  ibElement | ieElement | iexElement | ili 
+							| imElement | imiElement | imqElement | imt | imte | io 
+							| iotElement | ipElement | ipiElement | ipqElement | iprElement | iqElement | isElement | remElement
 			
 
-			bookIntroductionEndTitles =   imtElement | mtElement 
+			bookIntroductionEndTitles =   imt | mt 
 
 			bookChapterLabel = clElement
 
@@ -133,6 +133,8 @@ usfmBible{
 			msElement = newLine backSlash "ms" number? spaceChar chapterContentTextContent
 			mt = mtElement+
 			mtElement = newLine backSlash "mt" number? spaceChar chapterContentTextContent
+			mte = mteElement+
+			mteElement = newLine backSlash "mte" number? spaceChar chapterContentTextContent
 			rElement = newLine backSlash "r" spaceChar chapterContentTextContent
 			
 			srElement = newLine backSlash "sr" spaceChar chapterContentTextContent
@@ -255,7 +257,7 @@ usfmBible{
 
 			bookIntroductionTitlesTextContent = (text | notesElement |  charElement | milestoneElement | figureElement | zNameSpace)+
 			bookTitlesTextContent = (text | notesElement | charElement | zNameSpace)+
-			chapterContentTextContent = (text | notesElement |  charElement | milestoneElement| figureElement | table |zNameSpace)+
+			chapterContentTextContent = (text | notesElement |  charElement | milestoneElement| figureElement | table |zNameSpace | mte)+
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace)+
 
 			milestoneElement = (backSlash "qt" number? "-s" spaceChar* attributes? backSlash "*" ) 

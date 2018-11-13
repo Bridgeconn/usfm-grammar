@@ -27,3 +27,5 @@
 * There seems to be not marker in place of USX _<ref>_ element in USFM. So removing that also from the Grammar. The reference text would be treated as normal text content itself.
 * Exculded from punctuations: ~, \*, \\, |
 * ms mentioned as valid child elements in USX spec, refers to milestones(_\\qt and \\ts_) in USFM rather than the _\\ms#_ element
+
+* where does _\\mte_ occur in USFM files? Doc has a mention of _at the end of the introduction_ ... USX doc indicates its within chapter content... so going with that.
