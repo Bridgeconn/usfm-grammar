@@ -138,8 +138,10 @@ sem.addOperation('composeJson', {
     return verse
   },
 
-  verseNumber: function (num, _) {
-    return num.sourceString
+  verseNumber: function (num, _,num2, _) {
+    let number = num.sourceString
+    if (num2.sourceString!='') { number = number + '-' + num2.sourceString}
+    return number
   },
   
   sectionElement: function (sElement ) {
