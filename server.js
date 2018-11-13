@@ -19,7 +19,7 @@ http.createServer(function (req, res) {
       })
       break
     case '/fileupload':
-      form = new formidable.IncomingForm()
+      let form = new formidable.IncomingForm()
       form.parse(req, function (err, fields, files) {
         if (err) { throw err }
         fs.readFile(files.inputFile.path, function (err, data) {
@@ -33,8 +33,8 @@ http.createServer(function (req, res) {
       })
       break
     case '/passtext':
-      form = new formidable.IncomingForm()
-      form.parse(req, function (err, fields, files) {
+      let form2 = new formidable.IncomingForm()
+      form2.parse(req, function (err, fields, files) {
         if (err) { throw err }
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
         res.write('<a href="./index.html">Back Home</a><br><br><br>')

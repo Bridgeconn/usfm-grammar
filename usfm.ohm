@@ -38,7 +38,7 @@ usfmBible{
 
 			bookIdentification = idElement usfmElement?
 
-			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement
+			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement | stsElement
 
 			bookTitles =  imtElement | remElement
 
@@ -98,7 +98,9 @@ usfmBible{
 			cpElement = newLine backSlash "cp"  spaceChar text
 			dElement = newLine backSlash "d"  spaceChar chapterContentTextContent
 			
-			hElement = newLine backSlash "h" text
+			hElement = newLine backSlash "h" number? spaceChar text
+			remElement = newLine backSlash "rem" spaceChar chapterContentTextContent
+			stsElement = newLine backSlash "sts" spaceChar text
 			
 			ibElement = newLine backSlash "ib" spaceChar 
 			idElement = backSlash "id"  spaceChar bookCode  spaceChar text
@@ -126,8 +128,6 @@ usfmBible{
 			iq = iqElement+
 			iqElement = newLine backSlash "iq" number? spaceChar bookIntroductionTitlesTextContent
 			isElement = newLine backSlash "is" number? spaceChar bookIntroductionTitlesTextContent
-			
-			remElement = newLine backSlash "rem" spaceChar chapterContentTextContent
 			
 			mrElement = newLine backSlash "mr" spaceChar chapterContentTextContent
 			msElement = newLine backSlash "ms" number? spaceChar chapterContentTextContent

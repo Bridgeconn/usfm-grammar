@@ -190,8 +190,14 @@ sem.addOperation('composeJson', {
     return {"Chapter Label": text.composeJson()}
   },
 
-  hElement: function (_, _, _, text){
-    return {"h": text.sourceString}
+  hElement: function (_, _, _, num, _, text){
+    let obj = {"h": text.sourceString}
+    if (num.sourceString != '') {obj['number'] = num.sourceString }
+    return obj
+  },
+
+  stsElement: function (_, _, _, _, text) {
+    return {'sts': text.sourceString}
   },
 
   ibElement: function (_, _, _, _){
