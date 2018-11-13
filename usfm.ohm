@@ -1,6 +1,6 @@
 usfmBible{
 
-			File = scripture end
+			File = scripture 
 
 			backSlash = "\\"
 			newLine = ("\r" | "\n")+
@@ -52,17 +52,16 @@ usfmBible{
 
 			bookChapterLabel = clElement
 
-			chapter = chapterHeader section+
+			chapter = chapterHeader metaScripture* verseElement+
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
-			section = sectionHeader verseElement+
- 			
- 			
- 			sectionHeader  = (sectionPreHeader? sectionElement sectionPostHeader*)? paraElement
+			metaScripture = sectionHeader | mte | paraElement | remElement | iexElement | ipElement | spElement | litElement
+            
+ 			sectionHeader  = sectionPreHeader? sectionElement sectionPostHeader*
 			sectionPreHeader = msElement mrElement?
 			sectionPostHeader = srElement | rElement | dElement 
-			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  verseText
+			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  verseText (metaScripture verseText?)*
 			
 			verseNumber = number ("-" number)? spaceChar
 
@@ -70,8 +69,8 @@ usfmBible{
 
 			sectionElementWithTitle = sectionMarker chapterContentTextContent 
 			sectionElementWithoutTitle = sdMarker 
-			sectionMarker = backSlash ("s" | "s1" | "s2" | "s3" | "s4" )
-			sdMarker = backSlash "sd" number
+			sectionMarker = newLine backSlash ( "s1" | "s2" | "s3" | "s4" | "s" ) spaceChar
+			sdMarker = newLine backSlash "sd" number spaceChar*
 
 			paraElement = newLine backSlash paraMarker spaceChar*
 
@@ -81,7 +80,7 @@ usfmBible{
 			publishedCharElement = publishedCharMarker text publishedCharMarker "*"  
 			
 			publishedCharMarker = backSlash "vp"
-			verseText = (chapterContentTextContent | paraElement ) +
+			verseText = chapterContentTextContent+
             
 
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
@@ -101,7 +100,9 @@ usfmBible{
 			hElement = newLine backSlash "h" number? spaceChar text
 			remElement = newLine backSlash "rem" spaceChar chapterContentTextContent
 			stsElement = newLine backSlash "sts" spaceChar text
-			
+
+            spElement = newLine backSlash "sp" spaceChar chapterContentTextContent+
+
 			ibElement = newLine backSlash "ib" spaceChar 
 			idElement = backSlash "id"  spaceChar bookCode  spaceChar text
 			ideElement = newLine backSlash "ide"  spaceChar text
@@ -187,43 +188,44 @@ usfmBible{
 
 
 			charElement = inLineCharElement | inLineCharAttributeElement | inLineCharNumberedElement
-            inLineCharElement = backSlash "add" chapterContentTextContent backSlash "add" "*"
-            			| backSlash "bk" chapterContentTextContent backSlash "bk" "*"
-						| backSlash "dc" chapterContentTextContent backSlash "dc" "*"
-                        | backSlash "+dc" chapterContentTextContent backSlash "+dc" "*"
-						| backSlash "k" chapterContentTextContent backSlash "k" "*"
-                        | backSlash "nd" chapterContentTextContent backSlash "nd" "*"
-						| backSlash "ord" chapterContentTextContent backSlash "ord" "*"
-               			| backSlash "pn" chapterContentTextContent backSlash "pn"  "*"
-                        | backSlash "png" chapterContentTextContent backSlash "png"  "*"
-                        | backSlash "addpn" chapterContentTextContent backSlash "addpn"  "*"
-                        | backSlash "qt" chapterContentTextContent backSlash "qt"  "*"
-                        | backSlash "sig" chapterContentTextContent backSlash "sig"  "*"
-						| backSlash "sls" chapterContentTextContent backSlash "sls"  "*"
-                        | backSlash "tl" chapterContentTextContent backSlash "tl"  "*"
-                        | backSlash "wj" chapterContentTextContent backSlash "wj"  "*"
-                        | backSlash "em" chapterContentTextContent backSlash "em"  "*"
-                        | backSlash "bd" chapterContentTextContent backSlash "bd"  "*"
-                        | backSlash "it" chapterContentTextContent backSlash "it"  "*"
-                        | backSlash "bdit" chapterContentTextContent backSlash "bdit"  "*"
-                        | backSlash "no" chapterContentTextContent backSlash "no"  "*"
-                        | backSlash "sc" chapterContentTextContent backSlash "sc"  "*"
-                        | backSlash "sup" chapterContentTextContent backSlash "sup"  "*"
-                        | backSlash "ndx" chapterContentTextContent backSlash "ndx"  "*"
-                        | backSlash "wg" chapterContentTextContent backSlash "wg"  "*"
-                        | backSlash "wh" chapterContentTextContent backSlash "wh"  "*"
-                        | backSlash "wa" chapterContentTextContent backSlash "wa"  "*"
-                        | backSlash "qs" chapterContentTextContent backSlash "qs"  "*"
-                        | backSlash "qac" chapterContentTextContent backSlash "qac"  "*"
-                        | backSlash "litl" chapterContentTextContent backSlash "litl"  "*"
-                        | backSlash "lik" chapterContentTextContent backSlash "lik"  "*"
+            inLineCharElement = newLine? backSlash "add" spaceChar chapterContentTextContent backSlash "add" "*"
+            			| newLine? backSlash "bk" spaceChar chapterContentTextContent backSlash "bk" "*"
+						| newLine? backSlash "dc" spaceChar chapterContentTextContent backSlash "dc" "*"
+                        | newLine? backSlash "+dc" spaceChar chapterContentTextContent backSlash "+dc" "*"
+						| newLine? backSlash "k" spaceChar chapterContentTextContent backSlash "k" "*"
+                        | newLine? backSlash "nd" spaceChar chapterContentTextContent backSlash "nd" "*"
+						| newLine? backSlash "ord" spaceChar chapterContentTextContent backSlash "ord" "*"
+               			| newLine? backSlash "pn" spaceChar chapterContentTextContent backSlash "pn"  "*"
+                        | newLine? backSlash "png" spaceChar chapterContentTextContent backSlash "png"  "*"
+                        | newLine? backSlash "addpn" spaceChar chapterContentTextContent backSlash "addpn"  "*"
+                        | newLine? backSlash "qt" spaceChar chapterContentTextContent backSlash "qt"  "*"
+                        | newLine? backSlash "sig" spaceChar chapterContentTextContent backSlash "sig"  "*"
+						| newLine? backSlash "sls" spaceChar chapterContentTextContent backSlash "sls"  "*"
+                        | newLine? backSlash "tl" spaceChar chapterContentTextContent backSlash "tl"  "*"
+                        | newLine? backSlash "wj" spaceChar chapterContentTextContent backSlash "wj"  "*"
+                        | newLine? backSlash "em" spaceChar chapterContentTextContent backSlash "em"  "*"
+                        | newLine? backSlash "bd" spaceChar chapterContentTextContent backSlash "bd"  "*"
+                        | newLine? backSlash "it" spaceChar chapterContentTextContent backSlash "it"  "*"
+                        | newLine? backSlash "bdit" spaceChar chapterContentTextContent backSlash "bdit"  "*"
+                        | newLine? backSlash "no" spaceChar chapterContentTextContent backSlash "no"  "*"
+                        | newLine? backSlash "sc" spaceChar chapterContentTextContent backSlash "sc"  "*"
+                        | newLine? backSlash "sup" spaceChar chapterContentTextContent backSlash "sup"  "*"
+                        | newLine? backSlash "ndx" spaceChar chapterContentTextContent backSlash "ndx"  "*"
+                        | newLine? backSlash "wg" spaceChar chapterContentTextContent backSlash "wg"  "*"
+                        | newLine? backSlash "wh" spaceChar chapterContentTextContent backSlash "wh"  "*"
+                        | newLine? backSlash "wa" spaceChar chapterContentTextContent backSlash "wa"  "*"
+                        | newLine? backSlash "qs" spaceChar chapterContentTextContent backSlash "qs"  "*"
+                        | newLine? backSlash "qac" spaceChar chapterContentTextContent backSlash "qac"  "*"
+                        | newLine? backSlash "litl" spaceChar chapterContentTextContent backSlash "litl"  "*"
+                        | newLine? backSlash "lik" spaceChar chapterContentTextContent backSlash "lik"  "*"
+						| newLine? backSlash "rq" spaceChar chapterContentTextContent backSlash "rq"  "*"
                         
-                        
-            inLineCharAttributeElement = backSlash "rb" chapterContentTextContent attributes backSlash "rb"  "*"
-                        | backSlash "w" chapterContentTextContent attributes backSlash "w"  "*"
-                        | backSlash "jmp" chapterContentTextContent attributes backSlash "jmp"  "*"
+      
+            inLineCharAttributeElement = newLine? backSlash "rb" spaceChar chapterContentTextContent attributes backSlash "rb"  "*"
+                        | newLine? backSlash "w" spaceChar chapterContentTextContent attributes backSlash "w"  "*"
+                        | newLine? backSlash "jmp" spaceChar chapterContentTextContent attributes backSlash "jmp"  "*"
 
-            inLineCharNumberedElement = backSlash "liv" number? chapterContentTextContent backSlash "liv"  "*"
+            inLineCharNumberedElement = newLine? backSlash "liv" number? spaceChar chapterContentTextContent backSlash "liv"  "*"
                         
 
 

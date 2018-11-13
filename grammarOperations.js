@@ -10,22 +10,8 @@ var sem = bib.createSemantics()
 
 console.log('Initializing grammar')
 
-// Actions enabling the matched string to be converted to JSON(to be changed according to new grammar)
-
-// var res = {
-//   'metaData': {},
-//   'content': {}
-// }
-
-// consider avoiding these global declarations
-// var chapterHeaderVar = {}
-// var chapterContentVar = {}
-
-// var sectionHeaderVar = {}
-// var verseBlockVar = {}
-
 sem.addOperation('composeJson', {
-  File: function (e, _) {
+  File: function (e) {
     let res = e.composeJson()
 
     return res
@@ -88,10 +74,11 @@ sem.addOperation('composeJson', {
     return contentVar
   },
 
-  chapter: function (cHeader, section) {
+  chapter: function (cHeader, metaScripture, verse) {
     let cElmt = {}
     cElmt['chapter header'] = cHeader.composeJson()
-    cElmt['chapter content'] = section.composeJson()
+    if (metaScripture.sourceString != '') { cElmt['meta scripture content'] = metaScripture.composeJson() }
+    cElmt['verses'] = verse.composeJson()
     return cElmt
   },
 
@@ -101,21 +88,15 @@ sem.addOperation('composeJson', {
     return chapterHeaderVar
   },
 
-  
-
-  section: function (sHeader, vElements) {
-    let sectionHeaderVar = sHeader.composeJson()
-    let verseBlockVar = vElements.composeJson()
-    
-    return { 'Section': { 'Header': sectionHeaderVar, 'Verses': verseBlockVar } }
+  metaScripture: function (elmt){
+    return elmt.composeJson()
   },
 
-  sectionHeader: function (preHead, s, postHead, p) {
+  sectionHeader: function (preHead, s, postHead) {
     let sectionHeaderVar = {}
     if (preHead.sourceString!='') { sectionHeaderVar['section preheader'] = preHead.composeJson() }
     sectionHeaderVar['Section Title'] = s.composeJson()
     if (postHead.sourceString!='') { sectionHeaderVar['section postheader'] = postHead.composeJson() }
-    sectionHeaderVar['paragraph'] = p.composeJson()
     return sectionHeaderVar
   },
 
@@ -130,11 +111,19 @@ sem.addOperation('composeJson', {
     return obj
   },
 
-  verseElement: function (_, _, _, _, verseNumber, verseMeta,  verseText) {
+  verseElement: function (_, _, _, _, verseNumber, verseMeta,  verseText, metaScripture, verseTextMore) {
     let verse ={}
     verse["Number"] = verseNumber.composeJson() 
-    if ( verseMeta.sourceString!='' ) { verse['verse meta'] = verseMeta.composeJson()}
-    verse["Text"] = verseText.composeJson()
+    if ( verseMeta.sourceString!='' ) { 
+      if (!verse['meta scripture content']) { verse['meta scripture content'] = []}
+      verse['meta scripture content'].push(verseMeta.composeJson())
+    }
+    if ( metaScripture.sourceString!='' ) { 
+      if (!verse['meta scripture content']) { verse['meta scripture content'] = []}
+      verse['meta scripture content'].push(metaScripture.composeJson()) 
+    }
+    verse["Text"] = '' + verseText.composeJson()
+    if (verseTextMore.sourceString!='') { verse['Text'] += verseTextMore.sourceString}
     return verse
   },
 
@@ -200,6 +189,10 @@ sem.addOperation('composeJson', {
 
   stsElement: function (_, _, _, _, text) {
     return {'sts': text.sourceString}
+  },
+
+  spElement: function (_, _, _, _, text) {
+    return {'sp': text.sourceString()}
   },
 
   ibElement: function (_, _, _, _){
@@ -349,8 +342,7 @@ sem.addOperation('composeJson', {
   },
 
   mt: function (itemElement) {
-    mt = []
-    mt.add(itemElement.composeJson())
+    let mt = itemElement.composeJson()
     return mt
   },
 
@@ -359,6 +351,20 @@ sem.addOperation('composeJson', {
     obj["mt"] = text.composeJson()
     if (num){
       obj["mt"]["num"] = num.sourceString
+    }
+    return obj
+  },
+
+  mte: function (itemElement) {
+    let mte = itemElement.composeJson()
+    return mte
+  },
+
+  mteElement: function (_, _, _, num, _, text) {
+    let obj = {}
+    obj["mte"] = text.composeJson()
+    if (num){
+      obj["mte"]["num"] = num.sourceString
     }
     return obj
   },
@@ -419,19 +425,19 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  inLineCharElement: function(_, tag, text, _, _, _) {
+  inLineCharElement: function(_, _, tag, _, text, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     return obj
   },
 
-  inLineCharAttributeElement: function(_, tag, text, attribs, _, _, _) {
+  inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= {"content": text.composeJson(), "Attributes":attribs.sourceString}
     return obj
   },
     
-  inLineCharNumberedElement: function(_, tag, number, text, _, _, _) {
+  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= {"content": text.composeJson(), "Attributes":attribs.sourceString}
     return obj
