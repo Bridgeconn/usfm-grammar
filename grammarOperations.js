@@ -13,33 +13,34 @@ console.log('Initializing grammar')
 sem.addOperation('composeJson', {
   File: function (e) {
     let res = e.composeJson()
-
-    return res
+    let resString = JSON.stringify(res)
+    resString = resString.replace('{','<br/>{')
+    return resString
   },
 
   scripture: function (metaData, content) {
     let result = {}
     result['metadata'] = metaData.composeJson()
     console.log("result:"+result)
-    result['content'] = content.composeJson()
+    result['chapters'] = content.composeJson()
     return result
   },
 
   metaData: function (bookIdentification, bh, bt, bit, biet, bcl) {
     let metadata = {}
-    metadata['identification'] = bookIdentification.composeJson()
-    if (bh.sourceString!="") {metadata['book header'] = bh.composeJson()}
-    if (bt.sourceString!="") {metadata['book title'] = bt.composeJson()}
-    if (bit.sourceString!="") {metadata['book introduction title'] = bit.composeJson()}
-    if (biet.sourceString!="") {metadata['book introduction end title'] = biet.composeJson()}
-    if (bcl.sourceString!="") {metadata['book chapter label'] = bcl.composeJson()}
+    metadata['id'] = bookIdentification.composeJson()
+    if (bh.sourceString!="") {metadata['headers'] = bh.composeJson()}
+    if (bt.sourceString!="") {metadata['titles'] = bt.composeJson()}
+    if (bit.sourceString!="") {metadata['introduction titles'] = bit.composeJson()}
+    if (biet.sourceString!="") {metadata['introduction end titles'] = biet.composeJson()}
+    if (bcl.sourceString!="") {metadata['chapter label'] = bcl.composeJson()}
     console.log(metadata)
     return metadata
   },
 
   bookIdentification: function (idElm, usfmElm) {
     let elmt = idElm.composeJson()
-    if (usfmElm.sourceString!="") { elmt['usfm']= usfmElm.composeJson() }
+    if (usfmElm.sourceString!="") { elmt['version']= ''+usfmElm.composeJson() }
     return elmt 
   },
 
@@ -65,8 +66,7 @@ sem.addOperation('composeJson', {
   },
 
   bookChapterLabel: function (bcl) {
-    let elmt = { 'bookChapterLabel': bcl.composeJson() }
-    return elmt
+    return bcl.composeJson()
   },
 
   content: function (chapter) {
@@ -76,15 +76,15 @@ sem.addOperation('composeJson', {
 
   chapter: function (cHeader, metaScripture, verse) {
     let cElmt = {}
-    cElmt['chapter header'] = cHeader.composeJson()
-    if (metaScripture.sourceString != '') { cElmt['meta scripture content'] = metaScripture.composeJson() }
+    cElmt['header'] = cHeader.composeJson()
+    if (metaScripture.sourceString != '') { cElmt['metadata'] = metaScripture.composeJson() }
     cElmt['verses'] = verse.composeJson()
     return cElmt
   },
 
   chapterHeader: function (c, cMeta) {
-    let chapterHeaderVar = { 'Title': c.composeJson()}
-    if (cMeta.sourceString!='') { chapterHeaderVar['chapter meta'] = cMeta.composeJson() }
+    let chapterHeaderVar = { 'title': c.composeJson()}
+    if (cMeta.sourceString!='') { chapterHeaderVar['metadata'] = cMeta.composeJson() }
     return chapterHeaderVar
   },
 
@@ -95,7 +95,7 @@ sem.addOperation('composeJson', {
   sectionHeader: function (preHead, s, postHead) {
     let sectionHeaderVar = {}
     if (preHead.sourceString!='') { sectionHeaderVar['section preheader'] = preHead.composeJson() }
-    sectionHeaderVar['Section Title'] = s.composeJson()
+    sectionHeaderVar['title'] = s.composeJson()
     if (postHead.sourceString!='') { sectionHeaderVar['section postheader'] = postHead.composeJson() }
     return sectionHeaderVar
   },
@@ -113,17 +113,13 @@ sem.addOperation('composeJson', {
 
   verseElement: function (_, _, _, _, verseNumber, verseMeta,  verseText, metaScripture, verseTextMore) {
     let verse ={}
-    verse["Number"] = verseNumber.composeJson() 
-    if ( verseMeta.sourceString!='' ) { 
-      if (!verse['meta scripture content']) { verse['meta scripture content'] = []}
-      verse['meta scripture content'].push(verseMeta.composeJson())
-    }
-    if ( metaScripture.sourceString!='' ) { 
-      if (!verse['meta scripture content']) { verse['meta scripture content'] = []}
-      verse['meta scripture content'].push(metaScripture.composeJson()) 
-    }
-    verse["Text"] = '' + verseText.composeJson()
-    if (verseTextMore.sourceString!='') { verse['Text'] += verseTextMore.sourceString}
+    verse["number"] = verseNumber.composeJson() 
+    if ( verseMeta.sourceString!='' ) { verse['metadata'] = verseMeta.composeJson()} 
+
+    if ( metaScripture.sourceString!='' ) { verse['metadata_2'] = metaScripture.composeJson()}
+      
+    verse["text"] = '' + verseText.composeJson()
+    if (verseTextMore.sourceString!='') { verse['text'] += verseTextMore.composeJson()}
     return verse
   },
 
@@ -146,15 +142,15 @@ sem.addOperation('composeJson', {
   },
 
   paraElement: function (_, _, marker, _) {
-    return {"Paragrah/indentation marker": marker.sourceString}
+    return {"styling": marker.sourceString}
   },
 
   altVerseNumberElement: function (_, num, _, _) {
-    return {"Alternate verse number": num.sourceString}
+    return {"alternate verse number": num.sourceString}
   },
 
   publishedCharElement: function (_, text, _, _) {
-    return {"Published Character": text.sourceString}
+    return {"published character": text.sourceString}
   },
 
   cElement: function (_, _, _, _, num) {
@@ -162,23 +158,23 @@ sem.addOperation('composeJson', {
   },
 
   caElement: function (_, _, _, _, num, _, _ ) {
-    return {"Alternate chapter number": num.sourceString}
+    return {"alternate chapter number": num.sourceString}
   },
 
   cdElement: function (_, _, _, _, text){
-    return {"Chapter Description": text.composeJson()}
+    return {"description": text.composeJson()}
   },
 
   clElement: function (_, _, _, _, text) {
-    return {"Chapter Label": text.sourceString}
+    return {'chapter label': text.sourceString}
   },
 
   cpElement: function (_, _, _, _, text) {
-    return {"Published Character": text.sourceString}
+    return {"published character": text.sourceString}
   },
 
   dElement: function (_, _, _, _, text) {
-    return {"Chapter Label": text.composeJson()}
+    return {"chapter label": text.composeJson()}
   },
 
   hElement: function (_, _, _, num, _, text){
@@ -200,7 +196,7 @@ sem.addOperation('composeJson', {
   },
 
   idElement: function (_, _, _, bookCode, _, text) {
-    return {"book":bookCode.sourceString, "Details":text.sourceString}
+    return {"book":bookCode.sourceString, "details":text.sourceString}
   },
 
   ideElement: function (_, _, _, _, text) {
@@ -390,7 +386,7 @@ sem.addOperation('composeJson', {
   },
 
   usfmElement: function (_, _, _, _, version) {
-    return {"usfm": version.sourceString}
+    return  version.sourceString
   },
 
   vaElement: function (_, _, _, num, _, _) {
@@ -493,7 +489,7 @@ sem.addOperation('composeJson', {
     return text
   },
 
-  chapterContentTextContent: function(element) {
+  chapterContentTextContent: function(_,element) {
     let text = element.composeJson()
     return text
   },
@@ -506,13 +502,13 @@ sem.addOperation('composeJson', {
   milestoneElement: function(_, ms, num, s_e, _, attribs, _, _) {
     milestoneElement = {}
     milestoneElement["milestone"] = ms.sourceString
-    milestoneElement["Start_end"] = s_e.sourceString
-    milestoneElement["Attributes"] = attribs.sourceString
+    milestoneElement["start/end"] = s_e.sourceString
+    milestoneElement["attributes"] = attribs.sourceString
     return milestoneElement
   },
 
   zNameSpace: function(_, _, _, namespace, _, text, _, _, _, _) {
-    return {"NameSpace": namespace.sourceString, "Content":text.sourceString}
+    return {"namespace": namespace.sourceString, "Content":text.sourceString}
   },
 
   text: function(words) {

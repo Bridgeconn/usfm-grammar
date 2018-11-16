@@ -259,7 +259,7 @@ usfmBible{
 
 			bookIntroductionTitlesTextContent = (text | notesElement |  charElement | milestoneElement | figureElement | zNameSpace)+
 			bookTitlesTextContent = (text | notesElement | charElement | zNameSpace)+
-			chapterContentTextContent = (text | notesElement |  charElement | milestoneElement| figureElement | table |zNameSpace | mte)+
+			chapterContentTextContent = newLine? (text | notesElement |  charElement | milestoneElement| figureElement | table |zNameSpace | mte)+
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace)+
 
 			milestoneElement = (backSlash "qt" number? "-s" spaceChar* attributes? backSlash "*" ) 
