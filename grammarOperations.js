@@ -51,13 +51,10 @@ sem.addOperation('composeJson', {
     return result
   },
 
-  metaData: function (bookIdentification, bh, bt, bit, biet, bcl) {
+  metaData: function (bookIdentification, introduction , bcl) {
     let metadata = {}
     metadata['id'] = bookIdentification.composeJson()
-    if (bh.sourceString!="") {metadata['headers'] = bh.composeJson()}
-    if (bt.sourceString!="") {metadata['titles'] = bt.composeJson()}
-    if (bit.sourceString!="") {metadata['introduction titles'] = bit.composeJson()}
-    if (biet.sourceString!="") {metadata['introduction end titles'] = biet.composeJson()}
+    if (introduction.sourceString!="") {metadata['introduction'] = introduction.composeJson()}
     if (bcl.sourceString!="") {metadata['chapter label'] = bcl.composeJson()}
     console.log(metadata)
     return metadata
@@ -213,7 +210,7 @@ sem.addOperation('composeJson', {
   },
 
   spElement: function (_, _, _, _, text) {
-    return {'sp': text.sourceString()}
+    return {'sp': text.sourceString}
   },
 
   ibElement: function (_, _, _, _){
@@ -446,19 +443,19 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  inLineCharElement: function(_, _, tag, _, text, _, _, _) {
+  inLineCharElement: function(_, _, tag, _, text, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     return obj
   },
 
-  inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _) {
+  inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= {"content": text.composeJson(), "Attributes":attribs.sourceString}
     return obj
   },
     
-  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _) {
+  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= {"content": text.composeJson(), "Attributes":attribs.sourceString}
     return obj
