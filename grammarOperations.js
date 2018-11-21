@@ -32,6 +32,16 @@ sem.addOperation('composeJson', {
         beautifiedResString += '<br>'
         for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
         beautifiedResString += resString[i]
+      } else if (resString[i] === '[' ){
+        beautifiedResString += resString[i]
+        beautifiedResString += '<br>'
+        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
+        indent_count++
+      } else if (resString[i] === ']') {
+        beautifiedResString += '<br>'
+        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
+        beautifiedResString += ']'
+        indent_count--
       }
       else {
         beautifiedResString += resString[i]
@@ -46,23 +56,22 @@ sem.addOperation('composeJson', {
   scripture: function (metaData, content) {
     let result = {}
     result['metadata'] = metaData.composeJson()
-    console.log("result:"+result)
     result['chapters'] = content.composeJson()
     return result
   },
 
-  metaData: function (bookIdentification, introduction , bcl) {
+  metaData: function (bookIdentification, bookHeaders, introduction , bcl) {
     let metadata = {}
     metadata['id'] = bookIdentification.composeJson()
-    if (introduction.sourceString!="") {metadata['introduction'] = introduction.composeJson()}
-    if (bcl.sourceString!="") {metadata['chapter label'] = bcl.composeJson()}
-    console.log(metadata)
+    if (bookHeaders.sourceString!='') {metadata['headers'] = bookHeaders.composeJson()}
+    if (introduction.sourceString!='') {metadata['introduction'] = introduction.composeJson()}
+    if (bcl.sourceString!='') {metadata['chapter label'] = bcl.composeJson()}
     return metadata
   },
 
   bookIdentification: function (idElm, usfmElm) {
     let elmt = idElm.composeJson()
-    if (usfmElm.sourceString!="") { elmt['version']= ''+usfmElm.composeJson() }
+    if (usfmElm.sourceString!='') { elmt['version']= ''+usfmElm.composeJson() }
     return elmt 
   },
 
@@ -72,19 +81,9 @@ sem.addOperation('composeJson', {
     return elmt
   },
 
-  bookTitles: function (bt) {
-    let elmt = bt.composeJson()
-    return bt
-  },
-
-  bookIntroductionTitles: function (bit) {
-    let elmt = bit.composeJson()
-    return bit
-  },
-
-  bookIntroductionEndTitles: function (biet) {
-    let elmt = biet.composeJson()
-    return elmt
+  introduction: function (elmt) {
+    let obj = elmt.composeJson()
+    return obj
   },
 
   bookChapterLabel: function (bcl) {
@@ -135,12 +134,12 @@ sem.addOperation('composeJson', {
 
   verseElement: function (_, _, _, _, verseNumber, verseMeta,  verseText, metaScripture, verseTextMore) {
     let verse ={}
-    verse["number"] = verseNumber.composeJson() 
+    verse['number'] = verseNumber.composeJson() 
     if ( verseMeta.sourceString!='' ) { verse['metadata'] = verseMeta.composeJson()} 
 
-    if ( metaScripture.sourceString!='' ) { verse['metadata_2'] = metaScripture.composeJson()}
+    if ( metaScripture.sourceString!='' ) { verse['metadata_inline'] = metaScripture.composeJson()}
       
-    verse["text"] = '' + verseText.composeJson()
+    verse['text'] = '' + verseText.composeJson()
     if (verseTextMore.sourceString!='') { verse['text'] += verseTextMore.composeJson()}
     return verse
   },
@@ -160,19 +159,19 @@ sem.addOperation('composeJson', {
   },
 
   sectionElementWithoutTitle: function (_) {
-    return ""
+    return ''
   },
 
   paraElement: function (_, _, marker, _) {
-    return {"styling": marker.sourceString}
+    return {'styling': marker.sourceString}
   },
 
   altVerseNumberElement: function (_, num, _, _) {
-    return {"alternate verse number": num.sourceString}
+    return {'alternate verse number': num.sourceString}
   },
 
   publishedCharElement: function (_, text, _, _) {
-    return {"published character": text.sourceString}
+    return {'published character': text.sourceString}
   },
 
   cElement: function (_, _, _, _, num) {
@@ -180,11 +179,11 @@ sem.addOperation('composeJson', {
   },
 
   caElement: function (_, _, _, _, num, _, _ ) {
-    return {"alternate chapter number": num.sourceString}
+    return {'alternate chapter number': num.sourceString}
   },
 
   cdElement: function (_, _, _, _, text){
-    return {"description": text.composeJson()}
+    return {'description': text.composeJson()}
   },
 
   clElement: function (_, _, _, _, text) {
@@ -192,15 +191,15 @@ sem.addOperation('composeJson', {
   },
 
   cpElement: function (_, _, _, _, text) {
-    return {"published character": text.sourceString}
+    return {'published character': text.sourceString}
   },
 
   dElement: function (_, _, _, _, text) {
-    return {"chapter label": text.composeJson()}
+    return {'chapter label': text.composeJson()}
   },
 
   hElement: function (_, _, _, num, _, text){
-    let obj = {"h": text.sourceString}
+    let obj = {'h': text.sourceString}
     if (num.sourceString != '') {obj['number'] = num.sourceString }
     return obj
   },
@@ -214,147 +213,142 @@ sem.addOperation('composeJson', {
   },
 
   ibElement: function (_, _, _, _){
-    return {"ib":null}
+    return {'ib':null}
   },
 
   idElement: function (_, _, _, bookCode, _, text) {
-    return {"book":bookCode.sourceString, "details":text.sourceString}
+    return {'book':bookCode.sourceString, 'details':text.sourceString}
   },
 
   ideElement: function (_, _, _, _, text) {
-    return {"ide":text.sourceString}
+    return {'ide':text.sourceString}
   },
   
   ieElement: function (_, _, _){
-    return {"ie":null}
+    return {'ie':null}
   },
 
   iexElement: function (_, _, _, _, text){
-    return {"iex":text.sourceString}
+    return {'iex':text.sourceString}
   },
 
   imElement: function (_, _, _, _, text){
-    return {"im": text.composeJson()}
+    return {'im': text.composeJson()}
   },
 
   imiElement: function (_, _, _, _, text){
-    return {"imi": text.composeJson()}
+    return {'imi': text.composeJson()}
   },
   
   imqElement: function (_, _, _, _, text){
-    return {"imq": text.composeJson()}
+    return {'imq': text.composeJson()}
   },
 
   ili: function (itemElement) {
     let ili = itemElement.composeJson()
-    return ili
+    return {'ili':ili}
   },
 
   iliElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["ili"] = text.composeJson()
-    if (num.sourceString!=''){ obj["ili"]["num"] = num.sourceString}
+    obj['item'] = text.composeJson()
+    if (num.sourceString != ''){ obj['item'].push({'num':num.sourceString}) }
     return obj
   },
 
   imt: function (itemElement) {
     let imt = itemElement.composeJson()
-    return imt
+    return {'imt':imt}
   },
 
   imtElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["imt"] = text.composeJson()
-    if (num.sourceString!=''){ obj["imt"]["num"] = num.sourceString}
+    obj['item'] = text.composeJson()
+    if (num.sourceString != ''){ obj['item'].push({'num':num.sourceString})}
     return obj
   },
 
   imte: function (itemElement) {
     let imte = itemElement.composeJson()
-    return imte
+    return {'imte':imte}
   },
 
   imteElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["imte"] = text.composeJson()
-    if (num.sourceString!=''){ obj["imte"]["num"] = num.sourceString}
+    obj['item'] = text.composeJson()
+    if (num.sourceString != ''){ obj['item'].push({'num':num.sourceString}) }
     return obj
   },
 
   io: function (itemElement) {
-    io = []
-    io.add(itemElement.composeJson())
-    return io
+    let io = itemElement.composeJson()
+    return {'io':io}
   },
 
   ioElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["io"] = text.composeJson()
-    if (num.sourceString!=''){ obj["io"]["num"] = num.sourceString}
+    obj['item'] = text.composeJson()
+    if (num.sourceString != ''){ obj['item'].push({'num':num.sourceString}) }
     return obj
   },
 
   iotElement: function (_, _, _, _, text){
-    return {"iot": text.composeJson()}
-  },
-
-  iorElement: function (_, _, _, _, text){
-    return {"ior": text.composeJson()}
+    return {'iot': text.composeJson()}
   },
 
   ipElement: function (_, _, _, _, text){
-    return {"ip": text.composeJson()}
+    return {'ip': text.composeJson()}
   },
 
   ipiElement: function (_, _, _, _, text){
-    return {"ipi": text.composeJson()}
+    return {'ipi': text.composeJson()}
   },
 
   ipqElement: function (_, _, _, _, text){
-    return {"ipq": text.composeJson()}
+    return {'ipq': text.composeJson()}
   },
 
   iprElement: function (_, _, _, _, text){
-    return {"ipr": text.composeJson()}
+    return {'ipr': text.composeJson()}
   },
 
   iq: function (itemElement) {
-    iq = []
-    iq.add(itemElement.composeJson())
-    return iq
+    let iq = itemElement.composeJson()
+    console.log(iq)
+    return {'iq':iq}
   },
 
   iqElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["iq"] = text.composeJson()
-    if (num){
-      obj["iq"]["num"] = num.sourceString
+    obj['item'] = text.composeJson()
+    if (num.sourceString != ''){
+      obj['item'].push({'num':num.sourceString})
     }
     return obj
   },
 
   isElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["is"] = text.composeJson()
-    if (num){
-      obj["is"]["num"] = num.sourceString
+    obj['is'] = text.composeJson()
+    if (num.sourceString != ''){
+      obj['is']['num'] = num.sourceString
     }
     return obj
   },
 
   remElement: function (_, _, _, _, text){
-    return {"rem": text.composeJson()}
+    return {'rem': text.composeJson()}
   },
 
   mrElement: function (_, _, _, _, text){
-    return {"mr": text.composeJson()}
+    return {'mr': text.composeJson()}
   },
 
   msElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["ms"] = text.composeJson()
-    if (num){
-      obj["ms"]["num"] = num.sourceString
+    obj['ms'] = text.composeJson()
+    if (num.sourceString != ''){
+      obj['ms']['num'] = num.sourceString
     }
     return obj
   },
@@ -366,9 +360,9 @@ sem.addOperation('composeJson', {
 
   mtElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["mt"] = text.composeJson()
-    if (num){
-      obj["mt"]["num"] = num.sourceString
+    obj['mt'] = text.composeJson()
+    if (num.sourceString != ''){
+      obj['mt']['num'] = num.sourceString
     }
     return obj
   },
@@ -380,19 +374,19 @@ sem.addOperation('composeJson', {
 
   mteElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj["mte"] = text.composeJson()
-    if (num){
-      obj["mte"]["num"] = num.sourceString
+    obj['mte'] = text.composeJson()
+    if (num.sourceString != ''){
+      obj['mte']['num'] = num.sourceString
     }
     return obj
   },
 
   rElement: function (_, _, _, _, text){
-    return {"r": text.composeJson()}
+    return {'r': text.composeJson()}
   },
 
   srElement: function (_, _, _, _, text){
-    return {"sr": text.composeJson()}
+    return {'sr': text.composeJson()}
   },
 
   tocElement: function (_, _, toc, _, text){
@@ -412,11 +406,11 @@ sem.addOperation('composeJson', {
   },
 
   vaElement: function (_, _, _, num, _, _) {
-    return {"va": num.sourceString}
+    return {'va': num.sourceString}
   },
 
   vpElement: function (_, _, _, text, _, _) {
-    return {"vp": text.sourceString}
+    return {'vp': text.sourceString}
   },
 
   notesElement: function (element) {
@@ -428,15 +422,15 @@ sem.addOperation('composeJson', {
   },
 
   fElement: function (_, _, content, _, _){
-    return {"footnote": content.sourceString}
+    return {'footnote': content.sourceString}
   },
 
   feElement: function (_, _, content, _, _){
-    return {"footnote": content.sourceString}
+    return {'footnote': content.sourceString}
   },
 
   crossrefElement: function (_, _, content, _, _){
-    return {"cross-ref": content.sourceString}
+    return {'cross-ref': content.sourceString}
   },
 
   charElement: function(element) {
@@ -451,18 +445,18 @@ sem.addOperation('composeJson', {
 
   inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {"content": text.composeJson(), "Attributes":attribs.sourceString}
+    obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
     return obj
   },
     
   inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {"content": text.composeJson(), "Attributes":attribs.sourceString}
+    obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
     return obj
   },
 
   figureElement: function(_, _, _, caption, text, attribs, _, _) {
-    return {"figure": {"caption": caption.sourceString, "text": text.composeJson(), "Attributes":attribs.composeJson()}}
+    return {'figure': {'caption': caption.sourceString, 'text': text.composeJson(), 'Attributes':attribs.composeJson()}}
   },
 
   table: function(header, row) {
@@ -498,7 +492,7 @@ sem.addOperation('composeJson', {
   },
 
   litElement: function (_, _, _, _, text) {
-    return {"lit" : text.composeJson()}
+    return {'lit' : text.composeJson()}
   },
 
   bookIntroductionTitlesTextContent: function(element) {
@@ -523,14 +517,14 @@ sem.addOperation('composeJson', {
 
   milestoneElement: function(_, ms, num, s_e, _, attribs, _, _) {
     milestoneElement = {}
-    milestoneElement["milestone"] = ms.sourceString
-    milestoneElement["start/end"] = s_e.sourceString
-    milestoneElement["attributes"] = attribs.sourceString
+    milestoneElement['milestone'] = ms.sourceString
+    milestoneElement['start/end'] = s_e.sourceString
+    milestoneElement['attributes'] = attribs.sourceString
     return milestoneElement
   },
 
   zNameSpace: function(_, _, _, namespace, _, text, _, _, _, _) {
-    return {"namespace": namespace.sourceString, "Content":text.sourceString}
+    return {'namespace': namespace.sourceString, 'Content':text.sourceString}
   },
 
   text: function(words) {

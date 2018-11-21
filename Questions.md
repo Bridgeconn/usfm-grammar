@@ -8,6 +8,7 @@
  eg: _\\usfm_ should ideally occur only once, if present, and similarly _\\sts_ can come multtple times. Now the optional markers can occur any number of times
 * why are there common markers(that can occur in any three) for these sections and why are they divided as 3 in USX, as _bookTitles_, _bookIntroductionTiles_, and _bookIntroductionEndTitles_ ?
 * For the same marker(eg: _\\imt_) being in  _bookTitles_, _bookIntroductionTiles_, and _bookIntroductionEndTitles_ requires 3 different rules as allowed child elements(in-line markers) for these sections are different. We have only one rule defining it with the larger child elements set(_bookIntroductionTilesTextContent_).
+* added _\\mt_ along with bookHeaders. (it actually includes all markers under the identification section in USFM doc, except _\\id_ and _\\usfm_)
 * added _toca#_ elements also to _book headers_, though they were not listed in the USX document structure's valid style types for the section
 * The peripheral in USX seems separate from the scripture part. Hence avoiding it in Grammar, for now.
 * There are two overlapping structures for bible content, in USFM.1) the paragraph structures used to express the discourse / narrative of the text and 2) the division of the text into books, chapters and verses. We are following only the following structure in the parsed JSON output: Chapter as parent, and verses as children. Hence ingoring the paragraph wise structuring and treating para markers as only meant for indentation change.

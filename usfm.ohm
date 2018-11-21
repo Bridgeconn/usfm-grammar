@@ -33,24 +33,16 @@ usfmBible{
 			content = chapter+
 
 
-			metaData = bookIdentification  introduction* 
-							bookChapterLabel?
-
-			introduction = bookHeaders | bookTitles | bookIntroductionTitles | bookIntroductionEndTitles			
+			metaData = bookIdentification bookHeaders* introduction* 							bookChapterLabel?
 
 			bookIdentification = idElement usfmElement?
 
-			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement | stsElement
+			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement | stsElement | mt
 
-			bookTitles =  imt| mt | remElement
-
-
-			bookIntroductionTitles =  ibElement | ieElement | iexElement | ili 
+			introduction = ibElement | ieElement | iexElement | ili 
 							| imElement | imiElement | imqElement | imt | imte | io 
-							| iotElement | ipElement | ipiElement | ipqElement | iprElement | iqElement | isElement | remElement
+							| iotElement | ipiElement | ipqElement | iprElement | ipElement | iqElement | isElement | remElement
 			
-
-			bookIntroductionEndTitles =   imt | mt 
 
 			bookChapterLabel = clElement
 
@@ -105,7 +97,7 @@ usfmBible{
 
             spElement = newLine backSlash "sp" spaceChar chapterContentTextContent+
 
-			ibElement = newLine backSlash "ib" spaceChar 
+			ibElement = newLine backSlash "ib" spaceChar? 
 			idElement = backSlash "id"  spaceChar bookCode  spaceChar text
 			ideElement = newLine backSlash "ide"  spaceChar text
 			ieElement = newLine backSlash "ie"
@@ -123,7 +115,6 @@ usfmBible{
 			io = ioElement+
 			ioElement = newLine backSlash "io" number? spaceChar bookIntroductionTitlesTextContent
 			iotElement = newLine backSlash "iot" spaceChar bookIntroductionTitlesTextContent
-			iorElement = newLine backSlash "ior" spaceChar bookIntroductionTitlesTextContent
 			ipElement = newLine backSlash "ip" spaceChar bookIntroductionTitlesTextContent
 			ipiElement = newLine backSlash "ipi" spaceChar bookIntroductionTitlesTextContent
 			ipqElement = newLine backSlash "ipq" spaceChar bookIntroductionTitlesTextContent
@@ -221,11 +212,13 @@ usfmBible{
                         | newLine? backSlash "litl" spaceChar chapterContentTextContent backSlash "litl"  "*" spaceChar?
                         | newLine? backSlash "lik" spaceChar chapterContentTextContent backSlash "lik"  "*" spaceChar?
 						| newLine? backSlash "rq" spaceChar chapterContentTextContent backSlash "rq"  "*" spaceChar?
+                        | newLine? backSlash "ior" spaceChar bookIntroductionTitlesTextContent backSlash "ior" "*" spaceChar?
+			
                         
       
-            inLineCharAttributeElement = newLine? backSlash "rb" spaceChar chapterContentTextContent attributes backSlash "rb"  "*" spaceChar?
-                        | newLine? backSlash "w" spaceChar chapterContentTextContent attributes backSlash "w"  "*" spaceChar?
-                        | newLine? backSlash "jmp" spaceChar chapterContentTextContent attributes backSlash "jmp"  "*" spaceChar?
+            inLineCharAttributeElement = newLine? backSlash "rb" spaceChar chapterContentTextContent attributes* backSlash "rb"  "*" spaceChar?
+                        | newLine? backSlash "w" spaceChar chapterContentTextContent attributes* backSlash "w"  "*" spaceChar?
+                        | newLine? backSlash "jmp" spaceChar chapterContentTextContent attributes* backSlash "jmp"  "*" spaceChar?
 
             inLineCharNumberedElement = newLine? backSlash "liv" number? spaceChar chapterContentTextContent backSlash "liv"  "*" spaceChar?
                         

@@ -59,7 +59,7 @@ Ensure true cases are being validated successfully, for maximum number of marker
 \ide Custom (TGUARANI.TTF)
 \sts 2
 \h1 Matthew
-\rem Assigned to <translator\'s name>.
+\rem Assigned to <translator's name>.
 \rem First draft complete, waiting for checks.
 \toc1 The Gospel According to Matthew
 \toc2 Matthew
@@ -84,8 +84,7 @@ Ensure true cases are being validated successfully, for maximum number of marker
 \mt1 SAN MARCOS
 \imt1 INTRODUCCIÓN
 \is1 Importancia del evangelio de Marcos
-\ip Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca
-igualmente en \bk Mateo\bk* y \bk Lucas.\bk*
+\ip Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca igualmente en \bk Mateo\bk* y \bk Lucas.\bk*
 \ipi Many Protestants consider the following books to be Apocrypha as defined above: Tobit, Judith, additions to Esther (as found in Greek Esther in the CEV) ...
 \imi \em Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water.\em* (“The Translators to the Reader,” King James Version, 1611).
 \im The most important document in the history of the English language is the \bk King James Version\bk* of the Bible...
@@ -96,6 +95,52 @@ igualmente en \bk Mateo\bk* y \bk Lucas.\bk*
 \p
 \v 3 കർത്താവായ യേശുവിനോടും ...
 ```
+
+### Test Introduction markers- part II: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\ip One of these brothers, Joseph, had become the governor of Egypt. But Joseph knew that God would someday keep his promise to his people:
+\ib
+\ipq Before Joseph died, he told his brothers, “I won't live much longer. 
+\imq But God will take care of you and lead you out of Egypt to the land he promised Abraham, Isaac, and Jacob.”
+\ipr (50.24)
+\iq1 God our Savior showed us
+\iq2 how good and kind he is.
+\iq1 He saved us because
+\iq2 of his mercy,
+\iot Outline of Contents
+\io1 The beginning of the gospel \ior (1.1-13)\ior*
+\io1 Jesus' public ministry in Galilee \ior (1.14–9.50)\ior*
+\io1 From Galilee to Jerusalem \ior (10.1-52)\ior*
+\io1 The last week in and near Jerusalem
+\c 1
+\p
+\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\v 2 നമ്മുടെ പിതാവായ ...
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+```
+
+### Test Introduction markers- part III: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\ip However, he is more than a teacher, healer, or \w miracle\w*-worker. He is also ...
+\ili 1 \k The Messiah\k* is the one promised by God, the one who would come and free God's people. By the time \bk The Gospel of Mark\bk* appeared, the title "Messiah" (in Greek, "\w christ\w*") had become ...
+\ili 2 \k The Son of God\k* is the title by which the heavenly voice addresses Jesus at his baptism (1.11) and his transfiguration ...
+\ili 3 \k The Son of Man\k* is the title most...
+\imte End of the Introduction to the Gospel of Mark
+\ie
+\c 1
+\p
+\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\v 2 നമ്മുടെ പിതാവായ ...
+\iex Written to the Romans from Corinthus, and sent by Phebe servant of the church at Cenchrea.
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+
+```
+
+
 
 ### Test titles, headings and Labels: should pass
 ```
