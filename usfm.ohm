@@ -50,7 +50,7 @@ usfmBible{
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
-			metaScripture = sectionHeader | mte | paraElement | remElement | iexElement | ipElement | spElement | litElement
+			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | paraElement 
             
  			sectionHeader  = sectionPreHeader? sectionElement sectionPostHeader*
 			sectionPreHeader = msElement mrElement?
@@ -78,11 +78,11 @@ usfmBible{
             
 
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
-			paraUnNumberedMarker =   ("p" | "m" | "po" | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qa" | "qd" | "lh" | "lf" )
-			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "li" | "lim") number
+			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" )
+			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "li" | "lim") number?
 
 
-
+			qaElement = newLine backSlash "qa" spaceChar text
 
 			cElement = newLine backSlash "c" spaceChar number 
 			caElement = newLine backSlash "ca" spaceChar number backSlash "ca*"

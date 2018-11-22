@@ -174,6 +174,10 @@ sem.addOperation('composeJson', {
     return {'published character': text.sourceString}
   },
 
+  qaElement: function(_, _, _, _, text){
+    return {'qa': text.sourceString}
+  },
+
   cElement: function (_, _, _, _, num) {
     return num.sourceString
   },

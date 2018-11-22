@@ -34,3 +34,4 @@
 * the USX doc says within a chapter we can have _\\ip_ element. Hence added that to _metaScripture_
 * took away the rule that says, there should be a paraElement at the start of chapter
 * took away sections headings from the main JSON structure. Including them only as a metaScripture content. JSON follows Book-Chapter-verse structure now.
+* the paragraph markers(showing indentation) that appear within verses  should ideally be attached to the text that follows it. But we are attaching it to the verse marker immediatedly above it.
