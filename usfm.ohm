@@ -136,8 +136,8 @@ usfmBible{
 			tocaElement = newLine backSlash ("toca1" | "toca2" | "toca3") spaceChar text
 			usfmElement = newLine backSlash "usfm" spaceChar version
 			version = number ("." number)?
-			vaElement = backSlash "va" spaceChar number backSlash "va*"
-			vpElement = backSlash "va" spaceChar text backSlash "va*"
+			vaElement = backSlash "va" spaceChar number backSlash "va*" spaceChar?
+			vpElement = backSlash "vp" spaceChar text backSlash "vp*" spaceChar?
 
 
 			notesElement = footnoteElement | crossrefElement

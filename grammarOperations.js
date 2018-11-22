@@ -116,7 +116,7 @@ sem.addOperation('composeJson', {
   sectionHeader: function (preHead, s, postHead) {
     let sectionHeaderVar = {}
     if (preHead.sourceString!='') { sectionHeaderVar['section preheader'] = preHead.composeJson() }
-    sectionHeaderVar['title'] = s.composeJson()
+    sectionHeaderVar['section'] = s.composeJson()
     if (postHead.sourceString!='') { sectionHeaderVar['section postheader'] = postHead.composeJson() }
     return sectionHeaderVar
   },
@@ -405,11 +405,11 @@ sem.addOperation('composeJson', {
     return  version.sourceString
   },
 
-  vaElement: function (_, _, _, num, _, _) {
+  vaElement: function (_, _, _, num, _, _, _) {
     return {'va': num.sourceString}
   },
 
-  vpElement: function (_, _, _, text, _, _) {
+  vpElement: function (_, _, _, text, _, _, _) {
     return {'vp': text.sourceString}
   },
 
