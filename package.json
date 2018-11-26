@@ -1,5 +1,11 @@
-{"scripts": {
-    "test" : "mocha",
-    "start" : "./server.js"
-  }
+{
+    "scripts": {
+        "test": "mocha",
+        "start": "./server.js"
+    },
+    "dependencies": {
+        "formidable": "^1.2.1",
+        "ohm-js": "^0.14.0",
+        "stringify-object": "^3.3.0"
+    }
 }
