@@ -303,6 +303,25 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
 
 ```
 
+### Test Table Markers: Should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\usfm 3.0
+\toc1 The Acts of the Apostles
+\toc2 Acts
+\ip One of these brothers, Joseph, had become...
+\ipr (50.24)
+\c 136
+\p
+\v 12-83 They presented their offerings in the following order:
+\tr \th1 Day \th2 Tribe \thr3 Leader
+\tr \tcr1 1st \tc2 Judah \tcr3 Nahshon son of Amminadab
+\tr \tcr1 2nd \tc2 Issachar \tcr3 Nethanel son of Zuar
+\tr \tcr1 3rd \tc2 Zebulun \tcr3 Eliab son of Helon
+\tr \tcr1 4th \tc2 Reuben \tcr3 Elizur son of Shedeur
+\tr \tcr1 5th \tc2 Simeon \tcr3 Shelumiel son of Zurishaddai
+```
+
 ## Marker Wise Syntax
 Check the behaviour of the parser/validator are proper under these situations where internal structure of a marker needs to be validated
 

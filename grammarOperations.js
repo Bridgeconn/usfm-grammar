@@ -478,6 +478,16 @@ sem.addOperation('composeJson', {
   headerCell: function(cell) {
     return cell.composeJson()
   },
+
+  row: function (_, cell) {
+    let rowObj = cell.composeJson()
+    return rowObj
+  },
+
+  cell: function (elmnt) {
+    return elmnt.composeJson
+  },
+  
   
   thElement: function(_, _, _, num, text) {
     return {'th': text.sourceString, 'column':num.sourceString}
