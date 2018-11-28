@@ -275,6 +275,33 @@ of “The Thirty,” and he called out,
 \m David welcomed them and made them officers in his army.
 ```
 
+### Test List Markers: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\usfm 3.0
+\toc1 The Acts of the Apostles
+\toc2 Acts
+\ip One of these brothers, Joseph, had become...
+\ipr (50.24)
+\c 136
+\s1 God's Love Never Fails
+\lh
+\v 16-22 This is the list of the administrators of the tribes of Israel:
+\li1 Reuben - Eliezer son of Zichri
+\li1 Simeon - Shephatiah son of Maacah
+\li1 Levi - Hashabiah son of Kemuel
+\lf This was the list of the administrators of the tribes of Israel.
+\v 7 in company with Zerubbabel, Jeshua, Nehemiah, Azariah, Raamiah, Nahamani, Mordecai,
+Bilshan, Mispereth, Bigvai, Nehum and Baanah):
+\b
+\pm The list of the men of Israel:
+\b
+\lim1
+\v 8 the descendants of Parosh - \litl 2,172\litl*
+\lim1
+\v 9 of Shephatiah - \litl 372\litl*
+
+```
 
 ## Marker Wise Syntax
 Check the behaviour of the parser/validator are proper under these situations where internal structure of a marker needs to be validated
