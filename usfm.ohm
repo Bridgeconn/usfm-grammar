@@ -74,12 +74,12 @@ usfmBible{
 			publishedCharElement = publishedCharMarker text publishedCharMarker "*"  
 			
 			publishedCharMarker = backSlash "vp"
-			verseText = chapterContentTextContent+
+			verseText = chapterContentTextContent
             
 
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
 			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" )
-			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "li" | "lim") number?
+			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim") number?
 
 
 			qaElement = newLine backSlash "qa" spaceChar text
@@ -245,7 +245,8 @@ usfmBible{
 			tcElement = backSlash "tc" number spaceChar text
 			tcrElement = backSlash "tcr" number spaceChar text
 
-
+			li = (liElement)+
+			liElement = newLine backSlash "li" number? spaceChar text
 
 
 			
@@ -254,7 +255,7 @@ usfmBible{
 
 			bookIntroductionTitlesTextContent = (text | notesElement |  charElement | milestoneElement | figureElement | zNameSpace)+
 			bookTitlesTextContent = (text | notesElement | charElement | zNameSpace)+
-			chapterContentTextContent = newLine? (text | notesElement |  charElement | milestoneElement| figureElement | table |zNameSpace | mte)+
+			chapterContentTextContent = newLine? (text | notesElement |  charElement | milestoneElement| figureElement | table | li | zNameSpace | mte)+
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace)+
 
 			milestoneElement = (backSlash "qt" number? "-s" spaceChar* attributes? backSlash "*" ) 

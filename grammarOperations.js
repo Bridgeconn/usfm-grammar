@@ -139,8 +139,8 @@ sem.addOperation('composeJson', {
 
     if ( metaScripture.sourceString!='' ) { verse['metadata_inline'] = metaScripture.composeJson()}
       
-    verse['text'] = '' + verseText.composeJson()
-    if (verseTextMore.sourceString!='') { verse['text'] += verseTextMore.composeJson()}
+    verse['text'] =  verseText.composeJson()
+    if (verseTextMore.sourceString!='') { verse['text'].concat(verseTextMore.composeJson())}
     return verse
   },
 
@@ -148,6 +148,10 @@ sem.addOperation('composeJson', {
     let number = num.sourceString
     if (num2.sourceString!='') { number = number + '-' + num2.sourceString}
     return number
+  },
+
+  verseText: function (content) {
+    return content.composeJson()
   },
   
   sectionElement: function (sElement ) {
@@ -318,7 +322,6 @@ sem.addOperation('composeJson', {
 
   iq: function (itemElement) {
     let iq = itemElement.composeJson()
-    console.log(iq)
     return {'iq':iq}
   },
 
@@ -485,24 +488,38 @@ sem.addOperation('composeJson', {
   },
 
   cell: function (elmnt) {
-    return elmnt.composeJson
+    return elmnt.composeJson()
   },
+
   
-  
-  thElement: function(_, _, _, num, text) {
+  thElement: function(_, _, num, _, text) {
+    console.log(num)
     return {'th': text.sourceString, 'column':num.sourceString}
   },
 
-  thrElement: function(_, _, _, num, text) {
+  thrElement: function(_, _, num, _, text) {
     return {'thr': text.sourceString, 'column':num.sourceString}
   },
 
-  tcElement: function(_, _, _, num, text) {
+  tcElement: function(_, _, num, _, text) {
     return {'tc': text.sourceString, 'column':num.sourceString}
   },
 
-  tcrElement: function(_, _, _, num, text) {
+  tcrElement: function(_, _, num, _, text) {
     return {'tcr': text.sourceString, 'column':num.sourceString}
+  },
+
+  li: function (itemElement) {
+    let li = {'list': itemElement.composeJson()}
+    // li = JSON.stringify(li)
+    return li
+  },
+
+  liElement: function (_, _, _, num, _, text) {
+    let obj = {}
+    obj['item'] = text.composeJson()
+    if (num.sourceString != ''){ obj['item']['num'] = num.sourceString }
+    return obj
   },
 
   litElement: function (_, _, _, _, text) {
@@ -521,6 +538,7 @@ sem.addOperation('composeJson', {
 
   chapterContentTextContent: function(_,element) {
     let text = element.composeJson()
+    console.log(text)
     return text
   },
 
@@ -548,11 +566,11 @@ sem.addOperation('composeJson', {
 })
 
 exports.match = function (str) {
-  // try {
+  try {
     let matchObj = bib.match(str)
     let adaptor = sem(matchObj)
     return adaptor.composeJson()
-  // } catch (err) {
-  //   return matchObj
-  // }
+  } catch (err) {
+    return matchObj
+  }
 }
