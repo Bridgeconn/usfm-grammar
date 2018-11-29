@@ -348,12 +348,19 @@ Ensure true cases are being validated successfully, for maximum number of marker
 \s1 The Preaching of John the Baptist\x - \xo 3.0 \xta Compare with \xt Mk 1.1-8; Lk 3.1-18; \xta and \xt Jn 1.19-28 \xta parallel passages.\x*
 \p
 \v 1 At that time John the Baptist came to...
-\v 2 \x - \xo 1:1 \xop Гл 1. (1)\xop* \xt 4 Царств. 14:25.\x*И биде слово Господне
-към Иона, син Аматиев:
+\v 2 \x - \xo 1:1 \xop Гл 1. (1)\xop* \xt 4 Царств. 14:25.\x*И биде слово Господне към Иона, син Аматиев:
 \v 3 Our God is in heaven;
 \q2 he does whatever he wishes.
 \q1
 \v 4 \x - \xo 115.4-8: \xt Ps 135.15-18; \xdc Ltj Jr 4-73; \xt Rev 9.20.\x* Their gods are made of silver and gold,
+```
+
+### Test Word and Character Markers: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\c 6
+\v 14 That is why \bk The Book of the \+nd Lord\+nd*'s Battles\bk* speaks of “...the town of Waheb in the area of ...
+\v 15 and the slope of the valleys ...
 ```
 
 ## Marker Wise Syntax
