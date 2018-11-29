@@ -37,7 +37,7 @@ usfmBible{
 
 			bookIdentification = idElement usfmElement?
 
-			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement | stsElement | mt
+			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement | stsElement | mt | mte
 
 			introduction = ibElement | ieElement | iexElement | ili 
 							| imElement | imiElement | imqElement | imt | imte | io 
@@ -50,12 +50,12 @@ usfmBible{
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
-			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | paraElement 
+			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | paraElement | notesElement | figureElement  | zNameSpace
             
  			sectionHeader  = sectionPreHeader? sectionElement sectionPostHeader*
 			sectionPreHeader = msElement mrElement?
 			sectionPostHeader = srElement | rElement | dElement 
-			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  verseText (metaScripture verseText?)*
+			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (metaScripture? verseText)+
 			
 			verseNumber = number ("-" number)? spaceChar
 
@@ -123,8 +123,8 @@ usfmBible{
 			iqElement = newLine backSlash "iq" number? spaceChar bookIntroductionTitlesTextContent
 			isElement = newLine backSlash "is" number? spaceChar bookIntroductionTitlesTextContent
 			
-			mrElement = newLine backSlash "mr" spaceChar chapterContentTextContent
-			msElement = newLine backSlash "ms" number? spaceChar chapterContentTextContent
+			mrElement = newLine backSlash "mr" spaceChar text
+			msElement = newLine backSlash "ms" number? spaceChar text
 			mt = mtElement+
 			mtElement = newLine backSlash "mt" number? spaceChar chapterContentTextContent
 			mte = mteElement+
@@ -146,7 +146,7 @@ usfmBible{
 			feElement = backSlash  "fe"  spaceChar? footnoteContent* backSlash "fe*"spaceChar?
 			crossrefElement = backSlash  ("xt"|"x") spaceChar?  crossrefContent* backSlash ("xt*"|"x*") spaceChar?
 
-			footnoteContent = text | footnoteContentElement
+			footnoteContent = text | footnoteContentElement | charElement
 			footnoteContentElement = backSlash "fr" spaceChar
 							| backSlash "fq" spaceChar
 							| backSlash "fqa" spaceChar
@@ -161,7 +161,7 @@ usfmBible{
 							| backSlash "fdc*" spaceChar
 							| backSlash "fm" spaceChar
 
-			crossrefContent  = text | crossrefContentElement
+			crossrefContent  = text | crossrefContentElement | charElement
 			crossrefContentElement = backSlash "xo" spaceChar
 							| backSlash "xk" spaceChar
 							| backSlash "xq" spaceChar
@@ -285,7 +285,7 @@ usfmBible{
 
 			bookIntroductionTitlesTextContent = (text | notesElement |  charElement | milestoneElement | figureElement | zNameSpace)+
 			bookTitlesTextContent = (text | notesElement | charElement | zNameSpace)+
-			chapterContentTextContent = newLine? (text | notesElement |  charElement | milestoneElement| figureElement | table | li | zNameSpace | mte)+
+			chapterContentTextContent = newLine? (text | charElement | milestoneElement| table | li | metaScripture)+
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace)+
 
 			milestoneElement = (backSlash "qt" number? "-s" spaceChar* attributes? backSlash "*" ) 
@@ -295,4 +295,3 @@ usfmBible{
 
 			zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "z" char* "*" )?
 }
- 

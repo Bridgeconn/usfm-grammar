@@ -132,7 +132,7 @@ sem.addOperation('composeJson', {
     return obj
   },
 
-  verseElement: function (_, _, _, _, verseNumber, verseMeta,  verseText, metaScripture, verseTextMore) {
+  verseElement: function (_, _, _, _, verseNumber, verseMeta, metaScripture, verseText) {
     let verse ={}
     verse['number'] = verseNumber.composeJson() 
     if ( verseMeta.sourceString!='' ) { verse['metadata'] = verseMeta.composeJson()} 
@@ -140,7 +140,7 @@ sem.addOperation('composeJson', {
     if ( metaScripture.sourceString!='' ) { verse['metadata_inline'] = metaScripture.composeJson()}
       
     verse['text'] =  verseText.composeJson()
-    if (verseTextMore.sourceString!='') { verse['text'].concat(verseTextMore.composeJson())}
+    // if (verseTextMore.sourceString!='') { verse['text'].concat(verseTextMore.composeJson())}
     return verse
   },
 
