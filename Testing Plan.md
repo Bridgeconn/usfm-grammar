@@ -262,12 +262,12 @@ Ensure true cases are being validated successfully, for maximum number of marker
 \qr God's love never fails \qs Selah\qs*
 \q1
 \v 2 Praise the God of all gods.
-\q1 May his glory fill the whole world.\b
+\q1 May his glory fill the whole world.
+\b
 \qc Amen! Amen!
 \qd For the director of music. On my stringed instruments.
 \b
-\v 18 God's spirit took control of one of them, Amasai, who later became the commander
-of “The Thirty,” and he called out,
+\v 18 God's spirit took control of one of them, Amasai, who later became the commander of “The Thirty,” and he called out,
 \qm1 “David son of Jesse, we are yours!
 \qm1 Success to you and those who help you!
 \qm1 God is on your side.”
@@ -291,8 +291,7 @@ of “The Thirty,” and he called out,
 \li1 Simeon - Shephatiah son of Maacah
 \li1 Levi - Hashabiah son of Kemuel
 \lf This was the list of the administrators of the tribes of Israel.
-\v 7 in company with Zerubbabel, Jeshua, Nehemiah, Azariah, Raamiah, Nahamani, Mordecai,
-Bilshan, Mispereth, Bigvai, Nehum and Baanah):
+\v 7 in company with Zerubbabel, Jeshua, Nehemiah, Azariah, Raamiah, Nahamani, Mordecai,Bilshan, Mispereth, Bigvai, Nehum and Baanah):
 \b
 \pm The list of the men of Israel:
 \b
@@ -321,6 +320,20 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
 \tr \tcr1 4th \tc2 Reuben \tcr3 Elizur son of Shedeur
 \tr \tcr1 5th \tc2 Simeon \tcr3 Shelumiel son of Zurishaddai
 ```
+
+### Test Footnotes: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\c 136
+\s1 The Preaching of John the Baptist
+\r (Matthew 3.1-12; Luke 3.1-18; John 1.19-28)
+\p
+\v 1 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \ft Some manuscripts do not have \fq the Son of God.\f*
+\v 20 Adam \f + \fr 3.20: \fk Adam: \ft This name in Hebrew means “all human beings.”\f* named his wife Eve, \f + \fr 3.20: \fk Eve: \ft This name sounds similar to the Hebrew word for “living,” which is rendered in this context as “human beings.”\f* because she was the mother of all human beings.
+\v 38 whoever believes in me should drink. As the scripture says, ‘Streams of life-giving water will pour out from his side.’” \f + \fr 7.38: \ft Jesus' words in verses 37-38 may be translated: \fqa “Whoever is thirsty should come to me and drink. \fv 38\fv* As the scripture says, ‘Streams of life-giving water will pour out ...’”\f*
+\v 3 Él es el resplandor glorioso de Dios,\f c \fr 1.3: \fk Resplandor: \ft Cf. Jn 1.4-9,14\fdc ; también Sab 7.25-26, donde algo parecido se dice de la sabiduría.\f* la imagen misma ...
+```
+
 
 ## Marker Wise Syntax
 Check the behaviour of the parser/validator are proper under these situations where internal structure of a marker needs to be validated

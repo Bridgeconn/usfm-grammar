@@ -142,9 +142,9 @@ usfmBible{
 
 			notesElement = footnoteElement | crossrefElement
 			footnoteElement = fElement | feElement
-			fElement = backSlash  "f"  footnoteContent* backSlash "f*"
-			feElement = backSlash  "fe"  footnoteContent* backSlash "fe*"
-			crossrefElement = backSlash  "x"  crossrefContent* backSlash "x*"
+			fElement = backSlash  "f" spaceChar? footnoteContent* backSlash "f*" spaceChar?
+			feElement = backSlash  "fe"  spaceChar? footnoteContent* backSlash "fe*"spaceChar?
+			crossrefElement = backSlash  "x" spaceChar?  crossrefContent* backSlash "x*" spaceChar?
 
 			footnoteContent = text | footnoteContentElement
 			footnoteContentElement = backSlash "fr" spaceChar

@@ -428,15 +428,15 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  fElement: function (_, _, content, _, _){
+  fElement: function (_, _, _, content, _, _, _){
     return {'footnote': content.sourceString}
   },
 
-  feElement: function (_, _, content, _, _){
+  feElement: function (_, _, _, content, _, _, _){
     return {'footnote': content.sourceString}
   },
 
-  crossrefElement: function (_, _, content, _, _){
+  crossrefElement: function (_, _, _, content, _, _, _){
     return {'cross-ref': content.sourceString}
   },
 
@@ -566,11 +566,11 @@ sem.addOperation('composeJson', {
 })
 
 exports.match = function (str) {
-  try {
+  // try {
     let matchObj = bib.match(str)
     let adaptor = sem(matchObj)
     return adaptor.composeJson()
-  } catch (err) {
-    return matchObj
-  }
+  // } catch (err) {
+  //   return err
+  // }
 }
