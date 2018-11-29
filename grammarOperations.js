@@ -561,6 +561,10 @@ sem.addOperation('composeJson', {
 
   text: function(words) {
     return words.sourceString
+  },
+
+  esbElement: function (_, _, _, _, content, _, _, _, _) {
+    return {'esb' : content.composeJson()}
   }
 
 })

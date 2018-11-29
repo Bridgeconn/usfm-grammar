@@ -384,6 +384,23 @@ Ensure true cases are being validated successfully, for maximum number of marker
 \v 18 At once they left their nets and went with him.\fig At once they left their nets.|src="avnt016.jpg" size="span" ref="1.18"\fig*
 ```
 
+### Test Markers with Attribtes : Should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\c 1
+\v 1 
+\q1 “Someone is shouting in the desert,
+\q2 ‘Prepare a road for the Lord;
+\q2 make a straight path for him to travel!’ ”
+\esb \cat People\cat*
+\ms \jmp |link-id="article-john_the_baptist"\jmp*John the Baptist
+\p John is sometimes called the last “Old Testament prophet” because of the warnings he brought about God's judgment and because he announced the coming of God's “Chosen One” (Messiah).
+\esbe
+\p 
+\v 2-6 From Abraham to King David, the following ancestors are listed: Abraham,...mother was \jmp Ruth|link-href="#article-Ruth"\jmp*), Jesse, and King David.
+\w gracious|link-href="http://bibles.org/search/grace/eng-GNTD/all"\w*
+```
+
 ## Marker Wise Syntax
 Check the behaviour of the parser/validator are proper under these situations where internal structure of a marker needs to be validated
 

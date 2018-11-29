@@ -244,6 +244,8 @@ usfmBible{
 						| newLine? backSlash "+rq" spaceChar chapterContentTextContent backSlash "+rq"  "*" spaceChar?
                         | newLine? backSlash "ior" spaceChar bookIntroductionTitlesTextContent backSlash "ior" "*" spaceChar?
                         | newLine? backSlash "+ior" spaceChar bookIntroductionTitlesTextContent backSlash "+ior" "*" spaceChar?
+                        | newLine? backSlash "cat" spaceChar bookIntroductionTitlesTextContent backSlash "cat" "*" spaceChar?
+                        | newLine? backSlash "+cat" spaceChar bookIntroductionTitlesTextContent backSlash "+cat" "*" spaceChar?
 			
                         
       
@@ -297,4 +299,5 @@ usfmBible{
 			zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "z" char* "*" )?
 
 			esbElement = newLine backSlash "esb" spaceChar? chapterContentTextContent+ newLine? backSlash "esbe" spaceChar?
+			
 }
