@@ -462,8 +462,8 @@ sem.addOperation('composeJson', {
     return obj
   },
 
-  figureElement: function(_, _, _, caption, text, attribs, _, _) {
-    return {'figure': {'caption': caption.sourceString, 'text': text.composeJson(), 'Attributes':attribs.composeJson()}}
+  figureElement: function(_, _, _, caption, attribs, _, _) {
+    return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
   },
 
   table: function(header, row) {

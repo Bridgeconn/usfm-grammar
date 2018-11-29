@@ -260,7 +260,7 @@ usfmBible{
             namedAttributeList = "|"  (text "=\"" attributeName "\"" spaceChar?)+
             attributeName = char+
             
-            figureElement = backSlash "fig" spaceChar caption  chapterContentTextContent attributes? backSlash "fig*"
+            figureElement = backSlash "fig" spaceChar caption  attributes? backSlash "fig*"
 			caption = text
 
 			table = headerRow? row+
