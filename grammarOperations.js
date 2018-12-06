@@ -570,11 +570,11 @@ sem.addOperation('composeJson', {
 })
 
 exports.match = function (str) {
-  // try {
-    let matchObj = bib.match(str)
+  try {
+    var matchObj = bib.match(str)
     let adaptor = sem(matchObj)
     return adaptor.composeJson()
-  // } catch (err) {
-  //   return err
-  // }
+  } catch (err) {
+    return matchObj
+  }
 }
