@@ -547,7 +547,7 @@ sem.addOperation('composeJson', {
     return text
   },
 
-  milestoneElement: function(_, ms, num, s_e, _, attribs, _, _) {
+  milestoneElement: function(_,_, ms, num, s_e, _, attribs, _, _, _) {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['start/end'] = s_e.sourceString
@@ -555,8 +555,8 @@ sem.addOperation('composeJson', {
     return milestoneElement
   },
 
-  zNameSpace: function(_, _, _, namespace, _, text, _, _, _, _) {
-    return {'namespace': namespace.sourceString, 'Content':text.sourceString}
+  zNameSpace: function(_, _, _, namespace, _, text, _, _) {
+    return {'namespace': "z"+namespace.sourceString, 'Content':text.sourceString}
   },
 
   text: function(words) {

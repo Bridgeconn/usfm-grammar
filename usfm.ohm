@@ -258,10 +258,7 @@ usfmBible{
 
 
 
-            attributes = namedAttributeList   |  defaultAttribute 
-            defaultAttribute = "|" "\"" attributeName "\""
-            namedAttributeList = "|"  (text "=\"" attributeName "\"" spaceChar?)+
-            attributeName = char+
+            attributes = "|" ( ~backSlash any)+
             
             figureElement = backSlash "fig" spaceChar caption  attributes? backSlash "fig*"
 			caption = text
@@ -291,12 +288,12 @@ usfmBible{
 			chapterContentTextContent = newLine? (text | charElement | milestoneElement| table | li | metaScripture | esbElement)+
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace | esbElement)+
 
-			milestoneElement = (backSlash "qt" number? "-s" spaceChar* attributes? backSlash "*" ) 
-								| (backSlash "qt" number? "-e" spaceChar* attributes? backSlash "*" )
-			                	| (backSlash "ts" number? "-s" spaceChar* attributes? backSlash "*" ) 
-			                	| (backSlash "ts" number? "-e" spaceChar* attributes? backSlash "*" )
+			milestoneElement = (newLine? backSlash "qt" number? "-s"? spaceChar* attributes? backSlash "*" spaceChar?) 
+								| (newLine? backSlash "qt" number? "-e"? spaceChar* attributes? backSlash "*" spaceChar?)
+			                	| (newLine? backSlash "ts" number? "-s"? spaceChar* attributes? backSlash "*" spaceChar?) 
+			                	| (newLine? backSlash "ts" number? "-e"? spaceChar* attributes? backSlash "*" spaceChar?)
 
-			zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "z" char* "*" )?
+			zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "*" )?
 
 			esbElement = newLine backSlash "esb" spaceChar? chapterContentTextContent+ newLine? backSlash "esbe" spaceChar?
 			
