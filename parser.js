@@ -40,14 +40,11 @@ exports.parse = function (str) {
 }
 
 exports.validate = function (str) {
-  let output = ''
-  try {
-    // Matching the input with grammar and obtaining the JSON output string
-    let matchObj = match(str)
-    output = true
-  } catch (err) {
-    output = false
+  // Matching the input with grammar and obtaining the JSON output string
+  let matchObj = match(str)
+  if (matchObj.hasOwnProperty('_rightmostFailures')) {
+    return false
+  } else {
+    return true
   }
-
-  return output
 }
