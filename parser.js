@@ -44,7 +44,6 @@ exports.validate = function (str) {
   try {
     // Matching the input with grammar and obtaining the JSON output string
     let matchObj = match(str)
-    console.log(stringifyObject(matchObj))
     output = true
   } catch (err) {
     output = false
