@@ -33,7 +33,7 @@ usfmBible{
 			content = chapter+
 
 
-			metaData = bookIdentification bookHeaders* introduction* 							bookChapterLabel?
+			metaData = bookIdentification bookHeaders* introduction* 	bookChapterLabel?
 
 			bookIdentification = idElement usfmElement?
 

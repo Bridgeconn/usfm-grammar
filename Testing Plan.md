@@ -1,5 +1,8 @@
 # Testing Plan
 
+to run these tests included in the test.js file, 
+run the command `npm test` from the *usfm-grammar* directory
+
 ## Mandatory Markers
 Check for the presence of the mandatory markers without which a USFM file will not be valid.
 
@@ -429,7 +432,7 @@ great day.
 \ts-e|eid="ts_JUD_5-6"\*
 ```
 
-## Marker Wise Syntax
+## Marker Wise Syntax(to be tested)
 Check the behaviour of the parser/validator are proper under these situations where internal structure of a marker needs to be validated
 
 * The markers with/without certain arguments where its optional
@@ -484,73 +487,6 @@ Check the behaviour of the parser/validator are proper under these situations wh
 \v 3 കർത്താവായ യേശുവിനോടും ...
 	
 
-
-
-
-## Document Structure
-There is a somewhat loose structure defined for a valid USFM file. Check for these criteria
-
-* starts with an id
-* ide comes just beneath id, if present
-* All the following markers come before *chapter* start(*c*) and after *identification* 
-> * mt#
-> * mte#
-> * h
-> * imt#
-> * is#
-> * ip
-> * ipi
-> * im
-> * imi
-> * ipq
-> * imq
-> * ipr
-> * iq#
-> * ib
-> * ili
-> * iot
-> * io#
-> * imte#
-> * iex
-> * cl
-
-* ca..ca\* comes just beneath *c*, if present
-* The following markers occur after *chapter* start and before *parapgraph* start
-> * ms#
-> * mr
-> * s#
-> * sr
-> * r
-> * d
-> * cl
-> * cd
-
-
-* There will be one or more *p* after a *c*
-* There will be one or more *v* after a *p*
-* Markers possible after(within) *v* and considered inline
-> * rq...\*rq
-> * q#
-> * va...\*va
-> * vp...\*vp
-
-* Markers that occurs within *p* along with *v*
-> * sp
-> * sd#
-> * iex
-
-* There are markers that occur within text content of parent markers(**In-line**) 
-> * ior...ior\* within the *io#* text
-> * va...va\* within *v*
-> * vp...vp\* within *v*
-> * bk
-
-## Parse Structure
-Ensure that the struture is paresed correctly to the required JSON structure
-
-* The id, ide tags come within *identification* section
-* The  markers go to their repective *introduction, title, heading and label* sections
-* *Chapter* becomes a parent object enclosing *sections,paragraphs*
 
 
 

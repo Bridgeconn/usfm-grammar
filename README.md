@@ -6,7 +6,7 @@ Implemented in Node.js
 # Current implementation
 1. Parse
 2. Validate
-(Only validates the internal structure of a set of markers and extracts their components as JSON.)
+(Only validates the overall document structure and the internal structure of, a set of main markers relevant for scripture content.)
 
 # Dependancies
 Node server
