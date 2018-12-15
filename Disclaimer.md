@@ -58,8 +58,8 @@ The USFM document structure is validated by the grammar. These are the basic doc
 
 ## Some Design Limitations
 
-* We have not considered USFM files with peripherals
-* We are not validating/parsing the internal contents of footnotes, crossreferences, milestones. But the markers are being identified and contents extracted, without checking for their correctness
+* We have not considered USFM files with peripherals (<https://ubsicap.github.io/usfm/peripherals/index.html>)
+* We are not validating/parsing the internal contents of footnotes, cross-references and milestones. But the markers are being identified and contents extracted, without checking for their correctness
 * The markers are treated as either mandatory or optional. The valid number of occurances is not considered
  eg: _\\usfm_ should ideally occur only once, if present, and similarly _\\sts_ can come multtple times. As per the current implemetation, the optional markers can occur any number of times.
 * We have assumed certain structural constraints in USFM, which were not explicitly mentioned in the USFM spec. For example, the markers _\\ca_, _\\cl_, _\\cp_ and _\\cd_ occurs immediately below the _\\c_ marker, before the verse blocks start.
