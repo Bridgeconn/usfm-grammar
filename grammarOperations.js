@@ -493,7 +493,6 @@ sem.addOperation('composeJson', {
 
   
   thElement: function(_, _, num, _, text) {
-    console.log(num)
     return {'th': text.sourceString, 'column':num.sourceString}
   },
 
@@ -538,7 +537,6 @@ sem.addOperation('composeJson', {
 
   chapterContentTextContent: function(_,element) {
     let text = element.composeJson()
-    console.log(text)
     return text
   },
 

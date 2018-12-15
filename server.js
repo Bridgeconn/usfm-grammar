@@ -3,7 +3,6 @@ const fs = require('fs')
 const formidable = require('formidable')
 const stringifyObject = require('stringify-object')
 const parser = require('./parser.js')
-const form = null
 console.log('server up...listening to 8080 at http://localhost')
 
 http.createServer(function (req, res) {
@@ -39,7 +38,7 @@ http.createServer(function (req, res) {
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
         res.write('<a href="./index.html">Back Home</a><br><br><br>')
         let data = fields.inputText
-        console.log(data)
+        // console.log(data)
         if (data.substr(-1) === '\'') {
           data = data.substr(0, data.length - 1)
         }

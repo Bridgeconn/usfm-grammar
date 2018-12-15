@@ -1,5 +1,4 @@
 const match = require('./grammarOperations.js').match
-const stringifyObject = require('stringify-object')
 
 exports.parse = function (str) {
   let matchObj = match(str)
@@ -14,10 +13,7 @@ exports.parse = function (str) {
     var prevLineStart = 0
     var nextLineStart = 0
     var lineCount = 0
-    console.log('Entering loop')
     while (nextLineStart < pos) {
-      console.log('nextLineStart:' + nextLineStart)
-      console.log('pos:' + pos)
       lineCount += 1
       prevLineStart = nextLineStart
       nextLineStart = matchObj['input'].indexOf('\n', nextLineStart + 1)
@@ -26,7 +22,6 @@ exports.parse = function (str) {
       }
     }
   }
-  console.log('out of toop')
 
   let inputSnippet = matchObj['input'].substring(prevLineStart, nextLineStart)
 
@@ -36,7 +31,7 @@ exports.parse = function (str) {
 
   let output = 'Error at character' + inLinePos + ', in line ' + lineCount + " '" + outputSnippet + "': " + message
 
-  return matchObj['input'] + '\n' + output
+  return matchObj['input'] + '<br><br>' + output
 }
 
 exports.validate = function (str) {
