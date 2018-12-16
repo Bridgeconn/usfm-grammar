@@ -67,10 +67,3 @@ The USFM document structure is validated by the grammar. These are the basic doc
 * As per USFM spec, there is no limit for possible numbers(not limited to 1,2,and 3) in numbered markers...though the USX _valid style types_ lists them as specifically numbered(1 & 2 or 1,2 & 3). We are following _no limit_ rules.(except for _\\toc & \\toca_)
 * The valid attribute names for word-level markers are not checked. Any attribute name with valid syntax would be accepted
 * The paragraph markers(showing indentation) that appear within verses,  should ideally be attached to the text that follows it. But we are attaching it to the verse marker immediatedly above it.
-
-## To Do
-
-* As a pre-processing
-> * Whitespace and line normalization
-> * Captitalize book codes, if they are in small-case
-  and display a warning message

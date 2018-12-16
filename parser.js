@@ -1,7 +1,23 @@
 const match = require('./grammarOperations.js').match
 
+const multiLinePattern = new RegExp('[\\n\\r]+', 'g')
+const multiSpacePattern = new RegExp(' +', 'g')
+const bookCodePattern = new RegExp('\\id ([a-z][a-z][a-z]) ', 'g')
+function normalize (str) {
+  let newStr = ''
+  newStr = str.replace(multiLinePattern, '\n')
+  newStr = newStr.replace(multiSpacePattern, ' ')
+  let match = bookCodePattern.exec(newStr)
+  if (match) {
+    let bookCode = match[1]
+    newStr = newStr.replace(bookCode, bookCode.toUpperCase())
+  }
+  return newStr
+}
+
 exports.parse = function (str) {
-  let matchObj = match(str)
+  let inStr = normalize(str)
+  let matchObj = match(inStr)
 
   if (!matchObj.hasOwnProperty('_rightmostFailures')) {
     return matchObj
@@ -35,8 +51,9 @@ exports.parse = function (str) {
 }
 
 exports.validate = function (str) {
+  let inStr = normalize(str)
   // Matching the input with grammar and obtaining the JSON output string
-  let matchObj = match(str)
+  let matchObj = match(inStr)
   if (matchObj.hasOwnProperty('_rightmostFailures')) {
     return false
   } else {
