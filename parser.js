@@ -15,12 +15,29 @@ function normalize (str) {
   return newStr
 }
 
-exports.parse = function (str) {
+exports.parse = function (str, resultType = 'all') {
   let inStr = normalize(str)
   let matchObj = match(inStr)
 
   if (!matchObj.hasOwnProperty('_rightmostFailures')) {
-    return matchObj
+    let jsonOutput = matchObj
+    if (resultType === 'clean') {
+      let newJsonOutput = { 'book': jsonOutput['metadata']['id']['book'], 'chapters': [] }
+      let chapter = {}
+      for (let i = 0; i < jsonOutput['chapters'].length; i++) {
+        chapter = jsonOutput['chapters'][i]
+        let nextChapter = { 'chapterTitle': chapter['header']['title'], 'verses': [] }
+        let verse = {}
+        for (let j = 0; j < chapter['verses'].length; j++) {
+          verse = chapter['verses'][j]
+          let nextVerse = { 'verseNumber': verse['number'], verseText: verse['text'].join(' ') }
+          nextChapter['verses'].push(nextVerse)
+        }
+        newJsonOutput['chapters'].push(nextChapter)
+      }
+      jsonOutput = newJsonOutput
+    }
+    return jsonOutput
   } else {
     var message = matchObj['_rightmostFailures']
     var pos = matchObj['_rightmostFailurePosition']

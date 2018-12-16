@@ -13,44 +13,7 @@ console.log('Initializing grammar')
 sem.addOperation('composeJson', {
   File: function (e) {
     let res = e.composeJson()
-    let resString = JSON.stringify(res)
-    let indent_count = 0
-    let i=0
-    let beautifiedResString = ''
-    for( i=0; i<resString.length; i++){
-      if(resString[i]=== '{') {
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        beautifiedResString += '{'
-        indent_count++
-      } else if (resString[i] === '}') {
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        beautifiedResString += '}'
-        indent_count--
-      } else if (resString[i] === '"' && resString[i-1]===','){
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        beautifiedResString += resString[i]
-      } else if (resString[i] === '[' ){
-        beautifiedResString += resString[i]
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        indent_count++
-      } else if (resString[i] === ']') {
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        beautifiedResString += ']'
-        indent_count--
-      }
-      else {
-        beautifiedResString += resString[i]
-      }
-
-      
-    }
-    
-    return beautifiedResString
+    return res
   },
 
   scripture: function (metaData, content) {

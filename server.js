@@ -1,9 +1,47 @@
 const http = require('http')
 const fs = require('fs')
 const formidable = require('formidable')
-const stringifyObject = require('stringify-object')
 const parser = require('./parser.js')
 console.log('server up...listening to 8080 at http://localhost')
+
+function beautifyResultForHtml (jsonOutput) {
+  //  beautifying the result string for printing
+  let resString = JSON.stringify(jsonOutput)
+  let indentCount = 0
+  let i = 0
+  let beautifiedResString = ''
+  for (i = 0; i < resString.length; i++) {
+    if (resString[i] === '{') {
+      beautifiedResString += '<br>'
+      for (let j = 0; j < indentCount; j++) { beautifiedResString += ' &nbsp ' }
+      beautifiedResString += '{'
+      indentCount++
+    } else if (resString[i] === '}') {
+      beautifiedResString += '<br>'
+      for (let j = 0; j < indentCount; j++) { beautifiedResString += ' &nbsp ' }
+      beautifiedResString += '}'
+      indentCount--
+    } else if (resString[i] === '"' && resString[i - 1] === ',') {
+      beautifiedResString += '<br>'
+      for (let j = 0; j < indentCount; j++) { beautifiedResString += ' &nbsp ' }
+      beautifiedResString += resString[i]
+    } else if (resString[i] === '[') {
+      beautifiedResString += resString[i]
+      beautifiedResString += '<br>'
+      for (let j = 0; j < indentCount; j++) { beautifiedResString += ' &nbsp ' }
+      indentCount++
+    } else if (resString[i] === ']') {
+      beautifiedResString += '<br>'
+      for (let j = 0; j < indentCount; j++) { beautifiedResString += ' &nbsp ' }
+      beautifiedResString += ']'
+      indentCount--
+    } else {
+      beautifiedResString += resString[i]
+    }
+  }
+
+  return beautifiedResString
+}
 
 http.createServer(function (req, res) {
   switch (req.url) {
@@ -25,8 +63,12 @@ http.createServer(function (req, res) {
           if (err) { throw err }
           res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
           res.write('<a href="./index.html">Back Home</a><br><br><br>')
-          if (data === '') { data = '<center><h3>File Empty!!!</h3></center>' } else { data = parser.parse(data) }
-          res.write(stringifyObject(data))
+          if (data === '') {
+            data = '<center><h3>File Empty!!!</h3></center>'
+          } else {
+            data = beautifyResultForHtml(parser.parse(data))
+          }
+          res.write(data)
           res.end()
         })
       })
@@ -42,8 +84,12 @@ http.createServer(function (req, res) {
         if (data.substr(-1) === '\'') {
           data = data.substr(0, data.length - 1)
         }
-        if (data === '') { data = '<center><h3>Text Empty!!!</h3></center>' } else { data = parser.parse(data) }
-        res.write(stringifyObject(data))
+        if (data === '') {
+          data = '<center><h3>Text Empty!!!</h3></center>'
+        } else {
+          data = beautifyResultForHtml(parser.parse(data, 'clean'))
+        }
+        res.write(data)
         res.end()
       })
       break
