@@ -80,14 +80,14 @@ http.createServer(function (req, res) {
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
         res.write('<a href="./index.html">Back Home</a><br><br><br>')
         let data = fields.inputText
-        // console.log(data)
-        if (data.substr(-1) === '\'') {
-          data = data.substr(0, data.length - 1)
-        }
+        console.log(data)
+        // if (data.substr(-1) === '\'') {
+        //   data = data.substr(0, data.length - 1)
+        // }
         if (data === '') {
           data = '<center><h3>Text Empty!!!</h3></center>'
         } else {
-          data = beautifyResultForHtml(parser.parse(data, 'clean'))
+          data = beautifyResultForHtml(parser.parse(data))
         }
         res.write(data)
         res.end()

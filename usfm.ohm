@@ -8,7 +8,7 @@ usfmBible{
 			char = ~(backSlash) ~(newLine) ~spaceChar any
 			//char = letter | digit | punctuations 
 			//punctuations = "!" | "\"" | "#" | "$" | "%" | "&" | "(" | ")"  | "+" | "-" | "." | "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "[" | "]" | "^" | "_" | "`" | "{"  | "}"  | "’" | "‘" | "“" | "”" | "।" | "]" | "~"
-			text =  word+
+			text =  newLine? word+
 			number = digit+
 			word = char+ spaceChar?
 
@@ -50,12 +50,12 @@ usfmBible{
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
-			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | paraElement | notesElement | figureElement  | zNameSpace
+			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | paraElement | notesElement | figureElement  | zNameSpace | milestoneElement
             
  			sectionHeader  = sectionPreHeader? sectionElement sectionPostHeader*
 			sectionPreHeader = msElement mrElement?
 			sectionPostHeader = srElement | rElement | dElement 
-			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (metaScripture? verseText)+
+			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)+
 			
 			verseNumber = number ("-" number)? spaceChar
 
@@ -285,7 +285,7 @@ usfmBible{
 
 			bookIntroductionTitlesTextContent = (text | notesElement |  charElement | milestoneElement | figureElement | zNameSpace)+
 			bookTitlesTextContent = (text | notesElement | charElement | zNameSpace)+
-			chapterContentTextContent = newLine? (text | charElement | milestoneElement| table | li | metaScripture | esbElement)+
+			chapterContentTextContent = text | charElement | table | li | esbElement
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace | esbElement)+
 
 			milestoneElement = (newLine? backSlash "qt" number? "-s"? spaceChar* attributes? backSlash "*" spaceChar?) 
