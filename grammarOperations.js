@@ -98,7 +98,8 @@ sem.addOperation('composeJson', {
     verse['text'] = ''
     for (let i=0; i<contents.length; i++) {
       if (contents[i]['text']) {
-        verse['text'] += contents[i]['text']
+        verse['text'] += contents[i]['text'] + ' '
+        delete contents[i].text
       } 
       let only_text = true
       for (var key in contents[i]) {
@@ -107,7 +108,9 @@ sem.addOperation('composeJson', {
           break
         }
       }
-      if (!only_text) {
+      if (contents[i] === {} ) { 
+        only_text = true }
+      if (!only_text ) {
         verse['metadata'].push( contents[i])
       }
     }
@@ -418,13 +421,17 @@ sem.addOperation('composeJson', {
   inLineCharElement: function(_, _, tag, _, text, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
-    obj['text'] = obj[tag.sourceString]['content']
+    obj['text'] = ''
+    for (let item of obj[tag.sourceString]) {
+      if ( item.text) { obj['text'] += item.text}
+    }
+    
     return obj
   },
 
   inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
+    obj[tag.sourceString]= {'contents': text.composeJson(), 'Attributes':attribs.sourceString}
     obj['text'] = obj[tag.sourceString]['content']
     return obj
   },
@@ -432,6 +439,7 @@ sem.addOperation('composeJson', {
   inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
+    obj['text'] = obj[tag.sourceString]['content']
     return obj
   },
 
@@ -444,23 +452,21 @@ sem.addOperation('composeJson', {
     if (header.sourceString!='') { table['table']['header'] = header.composeJson()[0]}
     table['table']['rows'] = row.composeJson()
     table['text'] = ''
-    for (let item of table.header ) {
-      if (item.th) { table.text += item.th +'   '}
-      if (item.thr) { table.text += item.thr +'   '}
+    for (let item of table.table.header ) {
+      if (item.th) { table.text += item.th +' | '}
+      if (item.thr) { table.text += item.thr +' |  '}
     }
     table.text += '\n'
-    
-    for (let row of table.rows) {
+
+    for (let row of table.table.rows) {
       for (let item of row) {
-        if (item.tc) { table.text += item.tc +'   '}
-        if (item.tcr) { table.text += item.tcr +'   '}
+        if (item.tc) { table.text += item.tc +' |  '}
+        if (item.tcr) { table.text += item.tcr +' |  '}
       }
       table.text += '\n'
 
     }
-      
-    
-    return table
+  return table
   },
 
   headerRow: function(tr,hCell) {

@@ -18,11 +18,6 @@ describe('Mandatory Markers', function () {
     assert.strictEqual(output, false)
   })
 
-  // it('Chapter should start with one of paragraph markers', function () {
-  //   let output = parser.validate('\\id PHM Longer Heading\n\\c 1\n\\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...\n\\v 2 നമ്മുടെ പിതാവായ ...\n\\p\n\\v 3 കർത്താവായ യേശുവിനോടും ...')
-  //   assert.strictEqual(output, false)
-  // })
-
   it('v is a mandatory marker', function () {
     let output = parser.validate('\\id PHM Longer Heading\n\\c 1\n\\p\n')
     assert.strictEqual(output, false)

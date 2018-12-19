@@ -30,7 +30,7 @@ exports.parse = function (str, resultType = 'all') {
         let verse = {}
         for (let j = 0; j < chapter['verses'].length; j++) {
           verse = chapter['verses'][j]
-          let nextVerse = { 'verseNumber': verse['number'], verseText: verse['text'].join(' ') }
+          let nextVerse = { 'verseNumber': verse['number'], verseText: verse['text'] }
           nextChapter['verses'].push(nextVerse)
         }
         newJsonOutput['chapters'].push(nextChapter)

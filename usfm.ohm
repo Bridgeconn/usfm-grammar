@@ -73,7 +73,7 @@ usfmBible{
 			publishedCharElement = publishedCharMarker text publishedCharMarker "*"  
 			
 			publishedCharMarker = backSlash "vp"
-			verseText = chapterContentTextContent+
+			verseText = chapterContentTextContent
             
 
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker

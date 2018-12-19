@@ -81,9 +81,6 @@ http.createServer(function (req, res) {
         res.write('<a href="./index.html">Back Home</a><br><br><br>')
         let data = fields.inputText
         console.log(data)
-        // if (data.substr(-1) === '\'') {
-        //   data = data.substr(0, data.length - 1)
-        // }
         if (data === '') {
           data = '<center><h3>Text Empty!!!</h3></center>'
         } else {
