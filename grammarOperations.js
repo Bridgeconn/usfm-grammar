@@ -76,18 +76,12 @@ sem.addOperation('composeJson', {
     return elmt.composeJson()
   },
 
-  sectionHeader: function (preHead, s, postHead) {
+  sectionHeader: function (s, postHead, ipElement) {
     let sectionHeaderVar = {}
-    if (preHead.sourceString!='') { sectionHeaderVar['section preheader'] = preHead.composeJson() }
     sectionHeaderVar['section'] = s.composeJson()
-    if (postHead.sourceString!='') { sectionHeaderVar['section postheader'] = postHead.composeJson() }
+    if (postHead.sourceString!='') { sectionHeaderVar['sectionPostheader'] = postHead.composeJson() }
+    if (ipElement.sourceString!='') { sectionHeaderVar['introductionParagraph'] = ipElement.composeJson() }
     return sectionHeaderVar
-  },
-
-  sectionPreHeader: function (ms, mr) {
-    let obj = ms.composeJson()
-    if ( mr.sourceString!='' ) { obj['mr'] = mr.composeJson()}
-    return obj
   },
 
   sectionPostHeader: function (meta) {
@@ -118,8 +112,6 @@ sem.addOperation('composeJson', {
       }
     }
     if (verse['metadata'].length == 0) { delete verse.metadata}
-    console.log('verse:'+JSON.stringify(verse))
-    console.log(verse['metadata'])
     return verse
   },
 
@@ -433,7 +425,6 @@ sem.addOperation('composeJson', {
   inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
-    // console.log(text.composeJson())
     obj['text'] = obj[tag.sourceString]['content']
     return obj
   },
