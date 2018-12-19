@@ -15,6 +15,8 @@ function normalize (str) {
   return newStr
 }
 
+exports.SCRIPTURE = 'clean'
+
 exports.parse = function (str, resultType = 'all') {
   let inStr = normalize(str)
   let matchObj = match(inStr)

@@ -16,10 +16,12 @@ To use it from your node application:
 ```
 var grammar = require('usfm-grammar)
 var jsonOutput = garmmar.parse(/**The USFM Text to be converted to JSON**/)
+var jsonOutput = grammar.parse(/**The USFM Text to be converted to JSON**/,grammar.SCRIPTURE)
 var usfmValidity = grammar.validate(/**USFM Text to be checked**/)
 ```
 
 The `grammar.parse()` method returns a json structure for the USFM text contents, if it is a valid usfm file.
+The `grammar.parse()` method can take an optional second argument, `grammar.SCRIPTURE`. If this is used, the returned json will contain only the most relevant scripture content, excluding all additional USFM contents
 The `grammar.validate()` method returns a true/false, depending on whether the input usfm text's syntax is valid or not.
 
 ## To Use as a Local Node server
