@@ -506,7 +506,10 @@ sem.addOperation('composeJson', {
 
   li: function (itemElement) {
     let li = {'list': itemElement.composeJson()}
-    // li = JSON.stringify(li)
+    li['text'] = ''
+    for ( let item of li['list']) {
+      li.text += item.item.text + ' | '
+    }
     return li
   },
 
