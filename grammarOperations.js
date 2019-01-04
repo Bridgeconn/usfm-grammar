@@ -13,44 +13,7 @@ console.log('Initializing grammar')
 sem.addOperation('composeJson', {
   File: function (e) {
     let res = e.composeJson()
-    let resString = JSON.stringify(res)
-    let indent_count = 0
-    let i=0
-    let beautifiedResString = ''
-    for( i=0; i<resString.length; i++){
-      if(resString[i]=== '{') {
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        beautifiedResString += '{'
-        indent_count++
-      } else if (resString[i] === '}') {
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        beautifiedResString += '}'
-        indent_count--
-      } else if (resString[i] === '"' && resString[i-1]===','){
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        beautifiedResString += resString[i]
-      } else if (resString[i] === '[' ){
-        beautifiedResString += resString[i]
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        indent_count++
-      } else if (resString[i] === ']') {
-        beautifiedResString += '<br>'
-        for(let j=0;j<indent_count;j++) { beautifiedResString += ' &nbsp ' }
-        beautifiedResString += ']'
-        indent_count--
-      }
-      else {
-        beautifiedResString += resString[i]
-      }
-
-      
-    }
-    
-    return beautifiedResString
+    return res
   },
 
   scripture: function (metaData, content) {
@@ -113,18 +76,12 @@ sem.addOperation('composeJson', {
     return elmt.composeJson()
   },
 
-  sectionHeader: function (preHead, s, postHead) {
+  sectionHeader: function (s, postHead, ipElement) {
     let sectionHeaderVar = {}
-    if (preHead.sourceString!='') { sectionHeaderVar['section preheader'] = preHead.composeJson() }
     sectionHeaderVar['section'] = s.composeJson()
-    if (postHead.sourceString!='') { sectionHeaderVar['section postheader'] = postHead.composeJson() }
+    if (postHead.sourceString!='') { sectionHeaderVar['sectionPostheader'] = postHead.composeJson() }
+    if (ipElement.sourceString!='') { sectionHeaderVar['introductionParagraph'] = ipElement.composeJson() }
     return sectionHeaderVar
-  },
-
-  sectionPreHeader: function (ms, mr) {
-    let obj = ms.composeJson()
-    if ( mr.sourceString!='' ) { obj['mr'] = mr.composeJson()}
-    return obj
   },
 
   sectionPostHeader: function (meta) {
@@ -132,15 +89,32 @@ sem.addOperation('composeJson', {
     return obj
   },
 
-  verseElement: function (_, _, _, _, verseNumber, verseMeta,  verseText, metaScripture, verseTextMore) {
+  verseElement: function (_, _, _, _, verseNumber, verseMeta, verseContent) {
     let verse ={}
     verse['number'] = verseNumber.composeJson() 
-    if ( verseMeta.sourceString!='' ) { verse['metadata'] = verseMeta.composeJson()} 
-
-    if ( metaScripture.sourceString!='' ) { verse['metadata_inline'] = metaScripture.composeJson()}
-      
-    verse['text'] = '' + verseText.composeJson()
-    if (verseTextMore.sourceString!='') { verse['text'] += verseTextMore.composeJson()}
+    verse['metadata'] = []
+    if ( verseMeta.sourceString!='' ) { verse['metadata'].push(verseMeta.composeJson()) } 
+    contents = verseContent.composeJson()
+    verse['text'] = ''
+    for (let i=0; i<contents.length; i++) {
+      if (contents[i]['text']) {
+        verse['text'] += contents[i]['text'] + ' '
+        delete contents[i].text
+      } 
+      let only_text = true
+      for (var key in contents[i]) {
+        if (key != 'text') {
+          only_text = false
+          break
+        }
+      }
+      if (contents[i] === {} ) { 
+        only_text = true }
+      if (!only_text ) {
+        verse['metadata'].push( contents[i])
+      }
+    }
+    if (verse['metadata'].length == 0) { delete verse.metadata}
     return verse
   },
 
@@ -148,6 +122,10 @@ sem.addOperation('composeJson', {
     let number = num.sourceString
     if (num2.sourceString!='') { number = number + '-' + num2.sourceString}
     return number
+  },
+
+  verseText: function (content) {
+    return content.composeJson()
   },
   
   sectionElement: function (sElement ) {
@@ -318,7 +296,6 @@ sem.addOperation('composeJson', {
 
   iq: function (itemElement) {
     let iq = itemElement.composeJson()
-    console.log(iq)
     return {'iq':iq}
   },
 
@@ -425,15 +402,15 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  fElement: function (_, _, content, _, _){
+  fElement: function (_, _, _, content, _, _, _){
     return {'footnote': content.sourceString}
   },
 
-  feElement: function (_, _, content, _, _){
+  feElement: function (_, _, _, content, _, _, _){
     return {'footnote': content.sourceString}
   },
 
-  crossrefElement: function (_, _, content, _, _){
+  crossrefElement: function (_, _, _, content, _, _, _){
     return {'cross-ref': content.sourceString}
   },
 
@@ -444,30 +421,52 @@ sem.addOperation('composeJson', {
   inLineCharElement: function(_, _, tag, _, text, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
+    obj['text'] = ''
+    for (let item of obj[tag.sourceString]) {
+      if ( item.text) { obj['text'] += item.text}
+    }
+    
     return obj
   },
 
   inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
+    obj[tag.sourceString]= {'contents': text.composeJson(), 'Attributes':attribs.sourceString}
+    obj['text'] = obj[tag.sourceString]['content']
     return obj
   },
     
   inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
+    obj['text'] = obj[tag.sourceString]['content']
     return obj
   },
 
-  figureElement: function(_, _, _, caption, text, attribs, _, _) {
-    return {'figure': {'caption': caption.sourceString, 'text': text.composeJson(), 'Attributes':attribs.composeJson()}}
+  figureElement: function(_, _, _, caption, attribs, _, _) {
+    return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
   },
 
   table: function(header, row) {
     let table = {'table':{}}
-    if (header.sourceString!='') { table['table']['header'] = header.composeJson()}
+    if (header.sourceString!='') { table['table']['header'] = header.composeJson()[0]}
     table['table']['rows'] = row.composeJson()
-    return table
+    table['text'] = ''
+    for (let item of table.table.header ) {
+      if (item.th) { table.text += item.th +' | '}
+      if (item.thr) { table.text += item.thr +' |  '}
+    }
+    table.text += '\n'
+
+    for (let row of table.table.rows) {
+      for (let item of row) {
+        if (item.tc) { table.text += item.tc +' |  '}
+        if (item.tcr) { table.text += item.tcr +' |  '}
+      }
+      table.text += '\n'
+
+    }
+  return table
   },
 
   headerRow: function(tr,hCell) {
@@ -478,21 +477,47 @@ sem.addOperation('composeJson', {
   headerCell: function(cell) {
     return cell.composeJson()
   },
+
+  row: function (_, cell) {
+    let rowObj = cell.composeJson()
+    return rowObj
+  },
+
+  cell: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
   
-  thElement: function(_, _, _, num, text) {
+  thElement: function(_, _, num, _, text) {
     return {'th': text.sourceString, 'column':num.sourceString}
   },
 
-  thrElement: function(_, _, _, num, text) {
+  thrElement: function(_, _, num, _, text) {
     return {'thr': text.sourceString, 'column':num.sourceString}
   },
 
-  tcElement: function(_, _, _, num, text) {
+  tcElement: function(_, _, num, _, text) {
     return {'tc': text.sourceString, 'column':num.sourceString}
   },
 
-  tcrElement: function(_, _, _, num, text) {
+  tcrElement: function(_, _, num, _, text) {
     return {'tcr': text.sourceString, 'column':num.sourceString}
+  },
+
+  li: function (itemElement) {
+    let li = {'list': itemElement.composeJson()}
+    li['text'] = ''
+    for ( let item of li['list']) {
+      li.text += item.item.text + ' | '
+    }
+    return li
+  },
+
+  liElement: function (_, _, _, num, _, text) {
+    let obj = {}
+    obj['item'] = text.composeJson()
+    if (num.sourceString != ''){ obj['item']['num'] = num.sourceString }
+    return obj
   },
 
   litElement: function (_, _, _, _, text) {
@@ -509,7 +534,7 @@ sem.addOperation('composeJson', {
     return text
   },
 
-  chapterContentTextContent: function(_,element) {
+  chapterContentTextContent: function(element) {
     let text = element.composeJson()
     return text
   },
@@ -519,7 +544,7 @@ sem.addOperation('composeJson', {
     return text
   },
 
-  milestoneElement: function(_, ms, num, s_e, _, attribs, _, _) {
+  milestoneElement: function(_, _, ms, num, s_e, _, attribs, _, _, _) {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['start/end'] = s_e.sourceString
@@ -527,22 +552,26 @@ sem.addOperation('composeJson', {
     return milestoneElement
   },
 
-  zNameSpace: function(_, _, _, namespace, _, text, _, _, _, _) {
-    return {'namespace': namespace.sourceString, 'Content':text.sourceString}
+  zNameSpace: function(_, _, _, namespace, _, text, _, _) {
+    return {'namespace': "z"+namespace.sourceString, 'Content':text.sourceString}
   },
 
-  text: function(words) {
-    return words.sourceString
+  text: function(_, words) {
+    return {'text':words.sourceString}
+  },
+
+  esbElement: function (_, _, _, _, content, _, _, _, _) {
+    return {'esb' : content.composeJson()}
   }
 
 })
 
 exports.match = function (str) {
-  // try {
-    let matchObj = bib.match(str)
+  try {
+    var matchObj = bib.match(str)
     let adaptor = sem(matchObj)
     return adaptor.composeJson()
-  // } catch (err) {
-  //   return matchObj
-  // }
+  } catch (err) {
+    return matchObj
+  }
 }

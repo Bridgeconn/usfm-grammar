@@ -1,11 +1,45 @@
 const match = require('./grammarOperations.js').match
-const stringifyObject = require('stringify-object')
 
-exports.parse = function (str) {
-  let matchObj = match(str)
+const multiLinePattern = new RegExp('[\\n\\r]+', 'g')
+const multiSpacePattern = new RegExp(' +', 'g')
+const bookCodePattern = new RegExp('\\id ([a-z][a-z][a-z]) ', 'g')
+function normalize (str) {
+  let newStr = ''
+  newStr = str.replace(multiLinePattern, '\n')
+  newStr = newStr.replace(multiSpacePattern, ' ')
+  let match = bookCodePattern.exec(newStr)
+  if (match) {
+    let bookCode = match[1]
+    newStr = newStr.replace(bookCode, bookCode.toUpperCase())
+  }
+  return newStr
+}
+
+exports.SCRIPTURE = 'clean'
+
+exports.parse = function (str, resultType = 'all') {
+  let inStr = normalize(str)
+  let matchObj = match(inStr)
 
   if (!matchObj.hasOwnProperty('_rightmostFailures')) {
-    return matchObj
+    let jsonOutput = matchObj
+    if (resultType === 'clean') {
+      let newJsonOutput = { 'book': jsonOutput['metadata']['id']['book'], 'chapters': [] }
+      let chapter = {}
+      for (let i = 0; i < jsonOutput['chapters'].length; i++) {
+        chapter = jsonOutput['chapters'][i]
+        let nextChapter = { 'chapterTitle': chapter['header']['title'], 'verses': [] }
+        let verse = {}
+        for (let j = 0; j < chapter['verses'].length; j++) {
+          verse = chapter['verses'][j]
+          let nextVerse = { 'verseNumber': verse['number'], verseText: verse['text'] }
+          nextChapter['verses'].push(nextVerse)
+        }
+        newJsonOutput['chapters'].push(nextChapter)
+      }
+      jsonOutput = newJsonOutput
+    }
+    return jsonOutput
   } else {
     var message = matchObj['_rightmostFailures']
     var pos = matchObj['_rightmostFailurePosition']
@@ -14,10 +48,7 @@ exports.parse = function (str) {
     var prevLineStart = 0
     var nextLineStart = 0
     var lineCount = 0
-    console.log('Entering loop')
     while (nextLineStart < pos) {
-      console.log('nextLineStart:' + nextLineStart)
-      console.log('pos:' + pos)
       lineCount += 1
       prevLineStart = nextLineStart
       nextLineStart = matchObj['input'].indexOf('\n', nextLineStart + 1)
@@ -26,7 +57,6 @@ exports.parse = function (str) {
       }
     }
   }
-  console.log('out of toop')
 
   let inputSnippet = matchObj['input'].substring(prevLineStart, nextLineStart)
 
@@ -36,19 +66,16 @@ exports.parse = function (str) {
 
   let output = 'Error at character' + inLinePos + ', in line ' + lineCount + " '" + outputSnippet + "': " + message
 
-  return matchObj['input'] + '\n' + output
+  return matchObj['input'] + '<br><br>' + output
 }
 
 exports.validate = function (str) {
-  let output = ''
-  try {
-    // Matching the input with grammar and obtaining the JSON output string
-    let matchObj = match(str)
-    console.log(stringifyObject(matchObj))
-    output = true
-  } catch (err) {
-    output = false
+  let inStr = normalize(str)
+  // Matching the input with grammar and obtaining the JSON output string
+  let matchObj = match(inStr)
+  if (matchObj.hasOwnProperty('_rightmostFailures')) {
+    return false
+  } else {
+    return true
   }
-
-  return output
 }

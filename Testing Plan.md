@@ -1,5 +1,8 @@
 # Testing Plan
 
+to run these tests included in the test.js file, 
+run the command `npm test` from the *usfm-grammar* directory
+
 ## Mandatory Markers
 Check for the presence of the mandatory markers without which a USFM file will not be valid.
 
@@ -262,12 +265,12 @@ Ensure true cases are being validated successfully, for maximum number of marker
 \qr God's love never fails \qs Selah\qs*
 \q1
 \v 2 Praise the God of all gods.
-\q1 May his glory fill the whole world.\b
+\q1 May his glory fill the whole world.
+\b
 \qc Amen! Amen!
 \qd For the director of music. On my stringed instruments.
 \b
-\v 18 God's spirit took control of one of them, Amasai, who later became the commander
-of “The Thirty,” and he called out,
+\v 18 God's spirit took control of one of them, Amasai, who later became the commander of “The Thirty,” and he called out,
 \qm1 “David son of Jesse, we are yours!
 \qm1 Success to you and those who help you!
 \qm1 God is on your side.”
@@ -275,8 +278,161 @@ of “The Thirty,” and he called out,
 \m David welcomed them and made them officers in his army.
 ```
 
+### Test List Markers: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\usfm 3.0
+\toc1 The Acts of the Apostles
+\toc2 Acts
+\ip One of these brothers, Joseph, had become...
+\ipr (50.24)
+\c 136
+\s1 God's Love Never Fails
+\lh
+\v 16-22 This is the list of the administrators of the tribes of Israel:
+\li1 Reuben - Eliezer son of Zichri
+\li1 Simeon - Shephatiah son of Maacah
+\li1 Levi - Hashabiah son of Kemuel
+\lf This was the list of the administrators of the tribes of Israel.
+\v 7 in company with Zerubbabel, Jeshua, Nehemiah, Azariah, Raamiah, Nahamani, Mordecai,Bilshan, Mispereth, Bigvai, Nehum and Baanah):
+\b
+\pm The list of the men of Israel:
+\b
+\lim1
+\v 8 the descendants of Parosh - \litl 2,172\litl*
+\lim1
+\v 9 of Shephatiah - \litl 372\litl*
 
-## Marker Wise Syntax
+```
+
+### Test Table Markers: Should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\usfm 3.0
+\toc1 The Acts of the Apostles
+\toc2 Acts
+\ip One of these brothers, Joseph, had become...
+\ipr (50.24)
+\c 136
+\p
+\v 12-83 They presented their offerings in the following order:
+\tr \th1 Day \th2 Tribe \thr3 Leader
+\tr \tcr1 1st \tc2 Judah \tcr3 Nahshon son of Amminadab
+\tr \tcr1 2nd \tc2 Issachar \tcr3 Nethanel son of Zuar
+\tr \tcr1 3rd \tc2 Zebulun \tcr3 Eliab son of Helon
+\tr \tcr1 4th \tc2 Reuben \tcr3 Elizur son of Shedeur
+\tr \tcr1 5th \tc2 Simeon \tcr3 Shelumiel son of Zurishaddai
+```
+
+### Test Footnotes: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\c 136
+\s1 The Preaching of John the Baptist
+\r (Matthew 3.1-12; Luke 3.1-18; John 1.19-28)
+\p
+\v 1 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \ft Some manuscripts do not have \fq the Son of God.\f*
+\v 20 Adam \f + \fr 3.20: \fk Adam: \ft This name in Hebrew means “all human beings.”\f* named his wife Eve, \f + \fr 3.20: \fk Eve: \ft This name sounds similar to the Hebrew word for “living,” which is rendered in this context as “human beings.”\f* because she was the mother of all human beings.
+\v 38 whoever believes in me should drink. As the scripture says, ‘Streams of life-giving water will pour out from his side.’” \f + \fr 7.38: \ft Jesus' words in verses 37-38 may be translated: \fqa “Whoever is thirsty should come to me and drink. \fv 38\fv* As the scripture says, ‘Streams of life-giving water will pour out ...’”\f*
+\v 3 Él es el resplandor glorioso de Dios,\f c \fr 1.3: \fk Resplandor: \ft Cf. Jn 1.4-9,14\fdc ; también Sab 7.25-26, donde algo parecido se dice de la sabiduría.\f* la imagen misma ...
+```
+
+### Test Cross-refernces : Should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\c 6
+\v 18 “Why do you call me good?” Jesus asked him. “No one is good except God alone.
+\v 19 \x - \xo 10.19: a \xt Exo 20.13; Deu 5.17; \xo b \xt Exo 20.14; Deu 5.18; \xo c \xt Exo 20.15; Deu 5.19; \xo d \xt Exo 20.16; Deu 5.20; \xo e \xt Exo 20.12; Deu 5.16.\x* You know the commandments: ‘Do not commit murder...
+\c 2
+\cd \xt 1|GEN 2:1\xt* Бог благословляет седьмой день; \xt 8|GEN 2:8\x* человек в раю Едемском; четыре реки; дерево познания добра и зла. \xt 18|GEN 2:18\x* Человек дает названия животным. \xt 21|GEN 2:21\xt* Создание женщины.
+\p
+\v 1 Так совершены небо и земля и все воинство их.
+\c 3
+\s1 The Preaching of John the Baptist\x - \xo 3.0 \xta Compare with \xt Mk 1.1-8; Lk 3.1-18; \xta and \xt Jn 1.19-28 \xta parallel passages.\x*
+\p
+\v 1 At that time John the Baptist came to...
+\v 2 \x - \xo 1:1 \xop Гл 1. (1)\xop* \xt 4 Царств. 14:25.\x*И биде слово Господне към Иона, син Аматиев:
+\v 3 Our God is in heaven;
+\q2 he does whatever he wishes.
+\q1
+\v 4 \x - \xo 115.4-8: \xt Ps 135.15-18; \xdc Ltj Jr 4-73; \xt Rev 9.20.\x* Their gods are made of silver and gold,
+```
+
+### Test Word and Character Markers: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\is Introduction
+\ip \bk The Acts of the Apostles\bk* is a continuation of \bk The Gospel according to Luke\bk* Its chief purpose is...
+\c 6
+\v 14 That is why \bk The Book of the \+nd Lord\+nd*'s Battles\bk* speaks of “...the town of Waheb in the area of ...
+\v 15 and the slope of the valleys ...
+\s1 The Garden of Eden
+\p When the \nd Lord\nd* \f + \fr 2.4: \fk the \+nd Lord\+nd*: \ft Where the Hebrew text has Yahweh, traditionally transliterated as Jehovah, this translation employs \+nd Lord\+nd* with capital letters, following a usage which is widespread in English versions.\f* God made the universe,
+\v 5 there were no plants on the earth and no seeds had sprouted, because he had not sent any rain, and there was no one to cultivate the land;
+\p
+\v 29 И нарек ему имя: Ной, сказав: он утешит нас в работе нашей и в трудах рук наших при \add возделывании\add* земли, которую проклял Господь.
+\v 3 Él es el resplandor glorioso de Dios,\f c \fr 1.3: \fk Resplandor: \ft Cf. Jn 1.4-9,14\+dc ; también Sab 7.25-26, donde algo parecido se dice de la sabiduría\+dc*.\f* la imagen misma de
+\v 9 От Господа спасение. Над народом Твоим благословение Твое.
+\lit Слава:
+\v 15 Tell the Israelites that I, the \nd Lord\nd*, the God...
+\v 2 It began as the prophet Isaiah had written:
+\q1 \qt “God said, ‘I will send my messenger ahead of you\qt*
+\q2 \qt to open the way for you.’\qt*
+\v 18 With my own hand I write this: \sig Greetings from Paul\sig*. Do not...
+\v 8 \sls Rehoum, chancelier, et Shimshaï, secrétaire, écrivirent au roi Artaxerxès la lettre suivante concernant Jérusalem, savoir:\sls*
+\c 9
+\s1 Jesus Heals a Man // Who Could Not Walk
+\r (Mark 2.1-12; Luke 5.17-26)
+\v 46 At about three o'clock Jesus cried out with a loud shout, \tl “Eli, Eli, lema sabachthani?”\tl* which means, “My God, my God, why did you 
+\v 18 At once they left their nets and went with him.\fig At once they left their nets.|src="avnt016.jpg" size="span" ref="1.18"\fig*
+```
+
+### Test Markers with Attribtes : Should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\c 1
+\v 1 
+\q1 “Someone is shouting in the desert,
+\q2 ‘Prepare a road for the Lord;
+\q2 make a straight path for him to travel!’ ”
+\esb \cat People\cat*
+\ms \jmp |link-id="article-john_the_baptist"\jmp*John the Baptist
+\p John is sometimes called the last “Old Testament prophet” because of the warnings he brought about God's judgment and because he announced the coming of God's “Chosen One” (Messiah).
+\esbe
+\p 
+\v 2-6 From Abraham to King David, the following ancestors are listed: Abraham,...mother was \jmp Ruth|link-href="#article-Ruth"\jmp*), Jesse, and King David.
+\w gracious|link-href="http://bibles.org/search/grace/eng-GNTD/all"\w*
+```
+
+### Test Milestones: should pass
+```
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\c 1
+\v 1 
+\q1 “Someone is shouting in the desert,
+\qt-s |sid="qt_123" who="Pilate"\*“Are you the king of the Jews?”\qt-e |eid="qt_123"\*
+\zms\*
+\v 11 Jesus stood before the Roman governor, who questioned him. \qt-s |who="Pilate"\*“Are you the king of the Jews?”\qt-e\* he asked.
+\p \qt-s |who="Jesus"\*“So you say,”\qt-e\* answered Jesus.
+\v 12 But he said nothing in response to the accusations of the chief priests and elders.
+\p
+\v 13 So Pilate said to him, \qt-s |who="Pilate"\*“Don't you hear all these things they accuse you of?”\qt-e\*
+\p
+\v 14 But Jesus refused to answer ...
+\ts\*
+\p
+\v 5 Now I wish to remind you, although...
+\ts-s|sid="ts_JUD_5-6"\*
+\p
+\v 5 Now I wish to remind you, although you know everything, that the Lord once saved a
+people out of the land of Egypt, but that afterward he destroyed those who did not believe.
+\v 6 And angels who did not keep to their own principality, but left their proper dwelling
+place—God has kept them in everlasting chains in darkness for the judgment of the
+great day.
+\ts-e|eid="ts_JUD_5-6"\*
+```
+
+## Marker Wise Syntax(to be tested)
 Check the behaviour of the parser/validator are proper under these situations where internal structure of a marker needs to be validated
 
 * The markers with/without certain arguments where its optional
@@ -331,73 +487,6 @@ Check the behaviour of the parser/validator are proper under these situations wh
 \v 3 കർത്താവായ യേശുവിനോടും ...
 	
 
-
-
-
-## Document Structure
-There is a somewhat loose structure defined for a valid USFM file. Check for these criteria
-
-* starts with an id
-* ide comes just beneath id, if present
-* All the following markers come before *chapter* start(*c*) and after *identification* 
-> * mt#
-> * mte#
-> * h
-> * imt#
-> * is#
-> * ip
-> * ipi
-> * im
-> * imi
-> * ipq
-> * imq
-> * ipr
-> * iq#
-> * ib
-> * ili
-> * iot
-> * io#
-> * imte#
-> * iex
-> * cl
-
-* ca..ca\* comes just beneath *c*, if present
-* The following markers occur after *chapter* start and before *parapgraph* start
-> * ms#
-> * mr
-> * s#
-> * sr
-> * r
-> * d
-> * cl
-> * cd
-
-
-* There will be one or more *p* after a *c*
-* There will be one or more *v* after a *p*
-* Markers possible after(within) *v* and considered inline
-> * rq...\*rq
-> * q#
-> * va...\*va
-> * vp...\*vp
-
-* Markers that occurs within *p* along with *v*
-> * sp
-> * sd#
-> * iex
-
-* There are markers that occur within text content of parent markers(**In-line**) 
-> * ior...ior\* within the *io#* text
-> * va...va\* within *v*
-> * vp...vp\* within *v*
-> * bk
-
-## Parse Structure
-Ensure that the struture is paresed correctly to the required JSON structure
-
-* The id, ide tags come within *identification* section
-* The  markers go to their repective *introduction, title, heading and label* sections
-* *Chapter* becomes a parent object enclosing *sections,paragraphs*
 
 
 
