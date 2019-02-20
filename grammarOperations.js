@@ -199,7 +199,11 @@ sem.addOperation('composeJson', {
   },
 
   idElement: function (_, _, _, bookCode, _, text) {
-    return {'book':bookCode.sourceString, 'details':text.sourceString}
+    var obj = {'book':bookCode.sourceString}
+    if ( text.sourceString != '') {
+      obj['details'] = text.sourceString
+    }
+    return obj
   },
 
   ideElement: function (_, _, _, _, text) {

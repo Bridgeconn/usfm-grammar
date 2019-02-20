@@ -97,7 +97,7 @@ usfmBible{
             spElement = newLine backSlash "sp" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 
 			ibElement = newLine backSlash "ib" spaceChar? 
-			idElement = backSlash "id"  spaceChar bookCode  spaceChar text
+			idElement = backSlash "id"  spaceChar bookCode  (spaceChar text)?
 			ideElement = newLine backSlash "ide"  spaceChar text
 			ieElement = newLine backSlash "ie"
 			iexElement = newLine backSlash "iex"  spaceChar text
