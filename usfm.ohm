@@ -287,10 +287,9 @@ usfmBible{
 			chapterContentTextContent = text | charElement | table | li 
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace | esbElement)+
 
-			milestoneElement = (newLine? backSlash "qt" number? "-s"? spaceChar* attributes? backSlash "*" spaceChar?) 
-								| (newLine? backSlash "qt" number? "-e"? spaceChar* attributes? backSlash "*" spaceChar?)
-			                	| (newLine? backSlash "ts" number? "-s"? spaceChar* attributes? backSlash "*" spaceChar?) 
-			                	| (newLine? backSlash "ts" number? "-e"? spaceChar* attributes? backSlash "*" spaceChar?)
+			milestoneElement = (newLine? backSlash milestoneName number? "-s"? spaceChar* attributes? backSlash "*" spaceChar?) 
+								| (newLine? backSlash milestoneName number? "-e"? spaceChar* attributes? backSlash "*" spaceChar?)
+			milestoneName = (letter | digit | "_")+
 
 			zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "*" )?
 
