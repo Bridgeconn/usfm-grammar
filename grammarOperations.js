@@ -448,7 +448,7 @@ sem.addOperation('composeJson', {
   },
 
   figureElement: function(_, _, _, caption, attribs, _, _) {
-    return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
+    return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.sourceString}}
   },
 
   table: function(header, row) {
@@ -548,7 +548,17 @@ sem.addOperation('composeJson', {
     return text
   },
 
-  milestoneElement: function(_, _, ms, num, s_e, _, attribs, _, _, _) {
+  milestoneElement: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  milestoneStandaloneElement: function (_, _, ms, closing) {
+    milestoneElement = {}
+    milestoneElement['milestone'] = ms.sourceString
+    return milestoneElement
+  },
+
+  milestonePairElement: function(_, _, ms, s_e, _, attribs, closing) {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['start/end'] = s_e.sourceString

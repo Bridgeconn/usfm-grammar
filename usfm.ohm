@@ -5,12 +5,12 @@ usfmBible{
 			backSlash = "\\"
 			newLine = ("\r" | "\n")+
 			spaceChar = " "
-			char = ~(backSlash) ~(newLine) ~spaceChar any
+			char = ~(backSlash) ~(newLine) ~spaceChar ~("|") any
 			//char = letter | digit | punctuations 
 			//punctuations = "!" | "\"" | "#" | "$" | "%" | "&" | "(" | ")"  | "+" | "-" | "." | "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "[" | "]" | "^" | "_" | "`" | "{"  | "}"  | "’" | "‘" | "“" | "”" | "।" | "]" | "~"
 			text =  newLine? word+
 			number = digit+
-			word = char+ spaceChar?
+			word = spaceChar? char+ spaceChar?
 
 			bookCode = "GEN" | "EXO" | "LEV" | "NUM" | "DEU" | "JOS" | "JDG" | "RUT" | "1SA" | "2SA" | "1KI" | "2KI" | 
 							"1CH" | "2CH" | "EZR" | "NEH" | "EST" | "JOB" | "PSA" | "PRO" | 
@@ -50,7 +50,7 @@ usfmBible{
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
-			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | zNameSpace | milestoneElement | esbElement | paraElement
+			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement | paraElement
             
  			sectionHeader  = sectionElement sectionPostHeader* ipElement*
 			sectionPostHeader = srElement | rElement | dElement | mrElement
@@ -161,7 +161,7 @@ usfmBible{
 							| backSlash "fdc*" spaceChar
 							| backSlash "fm" spaceChar
 
-			crossrefContent  = text | crossrefContentElement | charElement
+			crossrefContent  = text | crossrefContentElement | charElement | attributes
 			crossrefContentElement = backSlash "xo" spaceChar
 							| backSlash "xk" spaceChar
 							| backSlash "xq" spaceChar
@@ -257,7 +257,7 @@ usfmBible{
 
 
 
-            attributes = "|" ( ~backSlash any)+
+            attributes = "|" ( char | " ")+
             
             figureElement = backSlash "fig" spaceChar caption  attributes? backSlash "fig*"
 			caption = text
@@ -287,9 +287,12 @@ usfmBible{
 			chapterContentTextContent = text | charElement | table | li 
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace | esbElement)+
 
-			milestoneElement = (newLine? backSlash milestoneName number? "-s"? spaceChar* attributes? backSlash "*" spaceChar?) 
-								| (newLine? backSlash milestoneName number? "-e"? spaceChar* attributes? backSlash "*" spaceChar?)
+			milestoneElement = milestonePairElement | milestoneStandaloneElement
+			milestoneStandaloneElement = newLine? backSlash milestoneName milestoneClosing
+			milestonePairElement = (newLine? backSlash milestoneName "-s" spaceChar* attributes? milestoneClosing?) 
+								| (newLine? backSlash milestoneName "-e" spaceChar* attributes? milestoneClosing?)
 			milestoneName = (letter | digit | "_")+
+			milestoneClosing = (backSlash "*") 
 
 			zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "*" )?
 
