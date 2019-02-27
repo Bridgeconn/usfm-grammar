@@ -1,6 +1,6 @@
 var assert = require('assert')
 var parser = require('../parser.js')
-// var fs = require('fs')
+var fs = require('fs')
 
 describe('Mandatory Markers', function () {
   it('id,p,c and v are the minimum required markers', function () {
@@ -98,5 +98,63 @@ describe('Ensure all true positives', function () {
   it('Milestone markers', function () {
     let output = parser.validate('\\id MAT 41MATGNT92.SFM, Good News Translation, June 2003\n\\c 1\n\\v 1 \n\\q1 “Someone is shouting in the desert,\n\\qt-s |sid="qt_123" who="Pilate"\\*“Are you the king of the Jews?”\\qt-e |eid="qt_123"\\*\n\\zms\\*\n\\v 11 Jesus stood before the Roman governor, who questioned him. \\qt-s |who="Pilate"\\*“Are you the king of the Jews?”\\qt-e\\* he asked.\n\\p \\qt-s |who="Jesus"\\*“So you say,”\\qt-e\\* answered Jesus.\n\\v 12 But he said nothing in response to the accusations of the chief priests and elders.\n\\p\n\\v 13 So Pilate said to him, \\qt-s |who="Pilate"\\*“Don\'t you hear all these things they accuse you of?”\\qt-e\\*\n\\p\n\\v 14 But Jesus refused to answer ...\n\\ts\\*\n\\p\n\\v 5 Now I wish to remind you, although...\n\\ts-s|sid="ts_JUD_5-6"\\*\n\\p\n\\v 5 Now I wish to remind you, although you know everything, that the Lord once saved a\npeople out of the land of Egypt, but that afterward he destroyed those who did not believe.\n\\v 6 And angels who did not keep to their own principality, but left their proper dwelling\nplace—God has kept them in everlasting chains in darkness for the judgment of the\ngreat day.\n\\ts-e|eid="ts_JUD_5-6"\\*')
     assert.strictEqual(output, true)
+  })
+})
+
+describe('Test with usfm files from the wild', function () {
+  it('Hindi IRV file1', function () {
+    fs.readFile('test/test_files/HindiIRV5_41-MAT.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Hindi IRV file2', function () {
+    fs.readFile('test/test_files/HindiIRV5_67-REV.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Tamil IRV file1', function () {
+    fs.readFile('test/test_files/Tam_IRV5_57-TIT.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Tamil IRV file2', function () {
+    fs.readFile('test/test_files/Tam_IRV5_46-ROM.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  // it('Greek UGNT file1', function () {
+  //   fs.readFile('test/test_files/Greek_UGNT4_47-1CO.usfm', 'utf-8', function (err, data) {
+  //     if (err) { throw err }
+  //     let output = parser.validate(data)
+  //     assert.strictEqual(output, true)
+  //   })
+  // })
+
+  // it('Greek UGNT file2', function () {
+  //   fs.readFile('test/test_files/Greek_UGNT4_63-1JN.usfm', 'utf-8', function (err, data) {
+  //     if (err) { throw err }
+  //     let output = parser.validate(data)
+  //     assert.strictEqual(output, true)
+  //   })
+  // })
+
+  it('AMT alignment export file', function () {
+    fs.readFile('test/test_files/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
   })
 })
