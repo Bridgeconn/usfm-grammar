@@ -5,6 +5,7 @@ usfmBible{
 			backSlash = "\\"
 			newLine = ("\r" | "\n")+
 			spaceChar = " "
+			spaceOrNewLine = " " | newLine
 			char = ~(backSlash) ~(newLine) ~spaceChar ~("|") any
 			//char = letter | digit | punctuations 
 			//punctuations = "!" | "\"" | "#" | "$" | "%" | "&" | "(" | ")"  | "+" | "-" | "." | "/" | ":" | ";" | "<" | "=" | ">" | "?" | "@" | "[" | "]" | "^" | "_" | "`" | "{"  | "}"  | "’" | "‘" | "“" | "”" | "।" | "]" | "~"
@@ -56,7 +57,7 @@ usfmBible{
 			sectionPostHeader = srElement | rElement | dElement | mrElement
 			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)+
 			
-			verseNumber = number ("-" number)? spaceChar
+			verseNumber = number ("-" number)? spaceOrNewLine
 
 			sectionElement = sectionElementWithTitle | sectionElementWithoutTitle | msElement
 
@@ -65,7 +66,7 @@ usfmBible{
 			sectionMarker = newLine backSlash ( "s1" | "s2" | "s3" | "s4" | "s" ) spaceChar
 			sdMarker = newLine backSlash "sd" number spaceChar*
 
-			paraElement = newLine backSlash paraMarker spaceChar*
+			paraElement = newLine? backSlash paraMarker spaceChar*
 
 			altVerseNumberElement = altVerseNumberMarker number altVerseNumberMarker "*"
 			altVerseNumberMarker = backSlash "va" 
@@ -131,8 +132,8 @@ usfmBible{
 			rElement = newLine backSlash "r" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 			
 			srElement = newLine backSlash "sr" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
-			tocElement = newLine backSlash ("toc1" | "toc2" | "toc3") spaceChar text
-			tocaElement = newLine backSlash ("toca1" | "toca2" | "toca3") spaceChar text
+			tocElement = newLine backSlash ("toc1" | "toc2" | "toc3") (spaceChar text)?
+			tocaElement = newLine backSlash ("toca1" | "toca2" | "toca3") (spaceChar text)?
 			usfmElement = newLine backSlash "usfm" spaceChar version
 			version = number ("." number)?
 			vaElement = backSlash "va" spaceChar number backSlash "va*" spaceChar?

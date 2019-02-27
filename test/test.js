@@ -134,21 +134,21 @@ describe('Test with usfm files from the wild', function () {
     })
   })
 
-  // it('Greek UGNT file1', function () {
-  //   fs.readFile('test/test_files/Greek_UGNT4_47-1CO.usfm', 'utf-8', function (err, data) {
-  //     if (err) { throw err }
-  //     let output = parser.validate(data)
-  //     assert.strictEqual(output, true)
-  //   })
-  // })
+  it('Greek UGNT file1', function () {
+    fs.readFile('test/test_files/Greek_UGNT4_47-1CO.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
 
-  // it('Greek UGNT file2', function () {
-  //   fs.readFile('test/test_files/Greek_UGNT4_63-1JN.usfm', 'utf-8', function (err, data) {
-  //     if (err) { throw err }
-  //     let output = parser.validate(data)
-  //     assert.strictEqual(output, true)
-  //   })
-  // })
+  it('Greek UGNT file2', function () {
+    fs.readFile('test/test_files/Greek_UGNT4_63-1JN.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
 
   it('AMT alignment export file', function () {
     fs.readFile('test/test_files/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8', function (err, data) {

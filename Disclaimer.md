@@ -67,3 +67,9 @@ The USFM document structure is validated by the grammar. These are the basic doc
 * As per USFM spec, there is no limit for possible numbers(not limited to 1,2,and 3) in numbered markers...though the USX _valid style types_ lists them as specifically numbered(1 & 2 or 1,2 & 3). We are following _no limit_ rules.(except for _\\toc & \\toca_)
 * The valid attribute names for word-level markers are not checked. Any attribute name with valid syntax would be accepted
 * The paragraph markers(showing indentation) that appear within verses,  should ideally be attached to the text that follows it. But we are attaching it to the verse marker immediatedly above it.
+
+## Rules made liberal, to accomodate real world sample files
+
+* In _\\id_, the longer heading following the bookcode is made optional as the IRV files were found to not have them
+* In _\\v_, after the verse number a space or line is accepted now, though the spec specifies a space. The UGNT files were having a newline there.
+* The _\\toc1_  marker in UGNT files were found to have no content. Hence, text content has been made optional for toc1, toc2, toc3, toca1, toca2,and toca3
