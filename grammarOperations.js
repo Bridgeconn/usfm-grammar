@@ -435,8 +435,12 @@ sem.addOperation('composeJson', {
 
   inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'contents': text.composeJson(), 'Attributes':attribs.sourceString}
-    obj['text'] = obj[tag.sourceString]['content']
+    let textobj = text.composeJson()
+    obj[tag.sourceString]= {'contents': textobj, 'Attributes':attribs.sourceString}
+    obj['text'] = ''
+    for (let item of textobj){
+      if ( item.text) { obj['text'] += item.text}
+    }
     return obj
   },
     
