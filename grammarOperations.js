@@ -422,7 +422,22 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
+  nestedCharElement: function(element) {
+    return element.composeJson()
+  },
+
   inLineCharElement: function(_, _, tag, _, text, _, _, _, _) {
+    let obj = {}
+    obj[tag.sourceString] = text.composeJson()
+    obj['text'] = ''
+    for (let item of obj[tag.sourceString]) {
+      if ( item.text) { obj['text'] += item.text}
+    }
+    
+    return obj
+  },
+
+  nestedInLineCharElement: function(_, _, tag, _, text, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     obj['text'] = ''
@@ -443,8 +458,26 @@ sem.addOperation('composeJson', {
     }
     return obj
   },
+
+  nestedInLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
+    let obj = {}
+    let textobj = text.composeJson()
+    obj[tag.sourceString]= {'contents': textobj, 'Attributes':attribs.sourceString}
+    obj['text'] = ''
+    for (let item of textobj){
+      if ( item.text) { obj['text'] += item.text}
+    }
+    return obj
+  },
     
   inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
+    let obj = {}
+    obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
+    obj['text'] = obj[tag.sourceString]['content']
+    return obj
+  },
+
+  nestedInLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
     obj['text'] = obj[tag.sourceString]['content']

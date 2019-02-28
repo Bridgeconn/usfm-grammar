@@ -55,7 +55,7 @@ usfmBible{
             
  			sectionHeader  = sectionElement sectionPostHeader* ipElement*
 			sectionPostHeader = srElement | rElement | dElement | mrElement
-			verseElement = newLine backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)+
+			verseElement = newLine? backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)+
 			
 			verseNumber = number ("-" number)? spaceOrNewLine
 
@@ -147,7 +147,7 @@ usfmBible{
 			efElement = backSlash  "ef"  spaceChar? footnoteContent* backSlash "ef*"spaceChar?
 			crossrefElement = backSlash  ("xt"|"x" | "ex") spaceChar?  crossrefContent* backSlash ("xt*"|"x*" | "ex") spaceChar?
 
-			footnoteContent = text | footnoteContentElement | charElement
+			footnoteContent = text | footnoteContentElement | nestedCharElement
 			footnoteContentElement = backSlash "fr" spaceChar
 							| backSlash "fq" spaceChar
 							| backSlash "fqa" spaceChar
@@ -162,7 +162,7 @@ usfmBible{
 							| backSlash "fdc*" spaceChar
 							| backSlash "fm" spaceChar
 
-			crossrefContent  = text | crossrefContentElement | charElement | attributes
+			crossrefContent  = text | crossrefContentElement | nestedCharElement | attributes
 			crossrefContentElement = backSlash "xo" spaceChar
 							| backSlash "xk" spaceChar
 							| backSlash "xq" spaceChar
@@ -179,81 +179,86 @@ usfmBible{
 							| backSlash "rq" spaceChar
 							| backSlash "rq*" spaceChar
 
-
+			nestedCharElement = nestedInLineCharElement | nestedInLineCharAttributeElement | nestedInLineCharNumberedElement
+			nestedInLineCharElement = newLine? backSlash "+add" spaceChar (text | nestedCharElement)+ backSlash "+add" "*" spaceChar?
+            			| newLine? backSlash "+bk" spaceChar (text | nestedCharElement)+ backSlash "+bk" "*" spaceChar?
+                        | newLine? backSlash "+dc" spaceChar (text | nestedCharElement)+ backSlash "+dc" "*" spaceChar?
+						| newLine? backSlash "+k" spaceChar (text | nestedCharElement)+ backSlash "+k" "*" spaceChar?
+                        | newLine? backSlash "+nd" spaceChar (text | nestedCharElement)+ backSlash "+nd" "*" spaceChar?
+						| newLine? backSlash "+ord" spaceChar (text | nestedCharElement)+ backSlash "+ord" "*" spaceChar?
+               			| newLine? backSlash "+pn" spaceChar (text | nestedCharElement)+ backSlash "+pn"  "*" spaceChar?
+                        | newLine? backSlash "+png" spaceChar (text | nestedCharElement)+ backSlash "+png"  "*" spaceChar?
+                        | newLine? backSlash "+addpn" spaceChar (text | nestedCharElement)+ backSlash "+addpn"  "*" spaceChar?
+                        | newLine? backSlash "+qt" spaceChar (text | nestedCharElement)+ backSlash "+qt"  "*" spaceChar?
+                        | newLine? backSlash "+sig" spaceChar (text | nestedCharElement)+ backSlash "+sig"  "*" spaceChar?
+						| newLine? backSlash "+sls" spaceChar (text | nestedCharElement)+ backSlash "+sls"  "*" spaceChar?
+                        | newLine? backSlash "+tl" spaceChar (text | nestedCharElement)+ backSlash "+tl"  "*" spaceChar?
+                        | newLine? backSlash "+wj" spaceChar (text | nestedCharElement)+ backSlash "+wj"  "*" spaceChar?
+                        | newLine? backSlash "+em" spaceChar (text | nestedCharElement)+ backSlash "+em"  "*" spaceChar?
+                        | newLine? backSlash "+bd" spaceChar (text | nestedCharElement)+ backSlash "+bd"  "*" spaceChar?
+                        | newLine? backSlash "+it" spaceChar (text | nestedCharElement)+ backSlash "+it"  "*" spaceChar?
+                        | newLine? backSlash "+bdit" spaceChar (text | nestedCharElement)+ backSlash "+bdit"  "*" spaceChar?
+                        | newLine? backSlash "+no" spaceChar (text | nestedCharElement)+ backSlash "+no"  "*" spaceChar?
+                        | newLine? backSlash "+sc" spaceChar (text | nestedCharElement)+ backSlash "+sc"  "*" spaceChar?
+                        | newLine? backSlash "+sup" spaceChar (text | nestedCharElement)+ backSlash "+sup"  "*" spaceChar?
+                        | newLine? backSlash "+ndx" spaceChar (text | nestedCharElement)+ backSlash "+ndx"  "*" spaceChar?
+                        | newLine? backSlash "+wg" spaceChar (text | nestedCharElement)+ backSlash "+wg"  "*" spaceChar?
+                        | newLine? backSlash "+wh" spaceChar (text | nestedCharElement)+ backSlash "+wh"  "*" spaceChar?
+                        | newLine? backSlash "+wa" spaceChar (text | nestedCharElement)+ backSlash "+wa"  "*" spaceChar?
+                        | newLine? backSlash "+qs" spaceChar (text | nestedCharElement)+ backSlash "+qs"  "*" spaceChar?
+                        | newLine? backSlash "+qac" spaceChar (text | nestedCharElement)+ backSlash "+qac"  "*" spaceChar?
+                        | newLine? backSlash "+litl" spaceChar (text | nestedCharElement)+ backSlash "+litl"  "*" spaceChar?
+                        | newLine? backSlash "+lik" spaceChar (text | nestedCharElement)+ backSlash "+lik"  "*" spaceChar?
+						| newLine? backSlash "+rq" spaceChar (text | nestedCharElement)+ backSlash "+rq"  "*" spaceChar?
+                        | newLine? backSlash "+ior" spaceChar bookIntroductionTitlesTextContent backSlash "+ior" "*" spaceChar?
+                        | newLine? backSlash "+cat" spaceChar bookIntroductionTitlesTextContent backSlash "+cat" "*" spaceChar?
 
 			charElement = inLineCharElement | inLineCharAttributeElement | inLineCharNumberedElement
-            inLineCharElement = newLine? backSlash "add" spaceChar chapterContentTextContent+ backSlash "add" "*" spaceChar?
-            			| newLine? backSlash "+add" spaceChar chapterContentTextContent+ backSlash "+add" "*" spaceChar?
-            			| newLine? backSlash "bk" spaceChar chapterContentTextContent+ backSlash "bk" "*" spaceChar?
-            			| newLine? backSlash "+bk" spaceChar chapterContentTextContent+ backSlash "+bk" "*" spaceChar?
-						| newLine? backSlash "dc" spaceChar chapterContentTextContent+ backSlash "dc" "*" spaceChar?
-                        | newLine? backSlash "+dc" spaceChar chapterContentTextContent+ backSlash "+dc" "*" spaceChar?
-						| newLine? backSlash "k" spaceChar chapterContentTextContent+ backSlash "k" "*" spaceChar?
-						| newLine? backSlash "+k" spaceChar chapterContentTextContent+ backSlash "+k" "*" spaceChar?
-                        | newLine? backSlash "nd" spaceChar chapterContentTextContent+ backSlash "nd" "*" spaceChar?
-                        | newLine? backSlash "+nd" spaceChar chapterContentTextContent+ backSlash "+nd" "*" spaceChar?
-						| newLine? backSlash "ord" spaceChar chapterContentTextContent+ backSlash "ord" "*" spaceChar?
-						| newLine? backSlash "+ord" spaceChar chapterContentTextContent+ backSlash "+ord" "*" spaceChar?
-               			| newLine? backSlash "pn" spaceChar chapterContentTextContent+ backSlash "pn"  "*" spaceChar?
-               			| newLine? backSlash "+pn" spaceChar chapterContentTextContent+ backSlash "+pn"  "*" spaceChar?
-                        | newLine? backSlash "png" spaceChar chapterContentTextContent+ backSlash "png"  "*" spaceChar?
-                        | newLine? backSlash "+png" spaceChar chapterContentTextContent+ backSlash "+png"  "*" spaceChar?
-                        | newLine? backSlash "addpn" spaceChar chapterContentTextContent+ backSlash "addpn"  "*" spaceChar?
-                        | newLine? backSlash "+addpn" spaceChar chapterContentTextContent+ backSlash "+addpn"  "*" spaceChar?
-                        | newLine? backSlash "qt" spaceChar chapterContentTextContent+ backSlash "qt"  "*" spaceChar?
-                        | newLine? backSlash "+qt" spaceChar chapterContentTextContent+ backSlash "+qt"  "*" spaceChar?
-                        | newLine? backSlash "sig" spaceChar chapterContentTextContent+ backSlash "sig"  "*" spaceChar?
-                        | newLine? backSlash "+sig" spaceChar chapterContentTextContent+ backSlash "+sig"  "*" spaceChar?
-						| newLine? backSlash "sls" spaceChar chapterContentTextContent+ backSlash "sls"  "*" spaceChar?
-						| newLine? backSlash "+sls" spaceChar chapterContentTextContent+ backSlash "+sls"  "*" spaceChar?
-                        | newLine? backSlash "tl" spaceChar chapterContentTextContent+ backSlash "tl"  "*" spaceChar?
-                        | newLine? backSlash "+tl" spaceChar chapterContentTextContent+ backSlash "+tl"  "*" spaceChar?
-                        | newLine? backSlash "wj" spaceChar chapterContentTextContent+ backSlash "wj"  "*" spaceChar?
-                        | newLine? backSlash "+wj" spaceChar chapterContentTextContent+ backSlash "+wj"  "*" spaceChar?
-                        | newLine? backSlash "em" spaceChar chapterContentTextContent+ backSlash "em"  "*" spaceChar?
-                        | newLine? backSlash "+em" spaceChar chapterContentTextContent+ backSlash "+em"  "*" spaceChar?
-                        | newLine? backSlash "bd" spaceChar chapterContentTextContent+ backSlash "bd"  "*" spaceChar?
-                        | newLine? backSlash "+bd" spaceChar chapterContentTextContent+ backSlash "+bd"  "*" spaceChar?
-                        | newLine? backSlash "it" spaceChar chapterContentTextContent+ backSlash "it"  "*" spaceChar?
-                        | newLine? backSlash "+it" spaceChar chapterContentTextContent+ backSlash "+it"  "*" spaceChar?
-                        | newLine? backSlash "bdit" spaceChar chapterContentTextContent+ backSlash "bdit"  "*" spaceChar?
-                        | newLine? backSlash "+bdit" spaceChar chapterContentTextContent+ backSlash "+bdit"  "*" spaceChar?
-                        | newLine? backSlash "no" spaceChar chapterContentTextContent+ backSlash "no"  "*" spaceChar?
-                        | newLine? backSlash "+no" spaceChar chapterContentTextContent+ backSlash "+no"  "*" spaceChar?
-                        | newLine? backSlash "sc" spaceChar chapterContentTextContent+ backSlash "sc"  "*" spaceChar?
-                        | newLine? backSlash "+sc" spaceChar chapterContentTextContent+ backSlash "+sc"  "*" spaceChar?
-                        | newLine? backSlash "sup" spaceChar chapterContentTextContent+ backSlash "sup"  "*" spaceChar?
-                        | newLine? backSlash "+sup" spaceChar chapterContentTextContent+ backSlash "+sup"  "*" spaceChar?
-                        | newLine? backSlash "ndx" spaceChar chapterContentTextContent+ backSlash "ndx"  "*" spaceChar?
-                        | newLine? backSlash "+ndx" spaceChar chapterContentTextContent+ backSlash "+ndx"  "*" spaceChar?
-                        | newLine? backSlash "wg" spaceChar chapterContentTextContent+ backSlash "wg"  "*" spaceChar?
-                        | newLine? backSlash "+wg" spaceChar chapterContentTextContent+ backSlash "+wg"  "*" spaceChar?
-                        | newLine? backSlash "wh" spaceChar chapterContentTextContent+ backSlash "wh"  "*" spaceChar?
-                        | newLine? backSlash "+wh" spaceChar chapterContentTextContent+ backSlash "+wh"  "*" spaceChar?
-                        | newLine? backSlash "wa" spaceChar chapterContentTextContent+ backSlash "wa"  "*" spaceChar?
-                        | newLine? backSlash "+wa" spaceChar chapterContentTextContent+ backSlash "+wa"  "*" spaceChar?
-                        | newLine? backSlash "qs" spaceChar chapterContentTextContent+ backSlash "qs"  "*" spaceChar?
-                        | newLine? backSlash "+qs" spaceChar chapterContentTextContent+ backSlash "+qs"  "*" spaceChar?
-                        | newLine? backSlash "qac" spaceChar chapterContentTextContent+ backSlash "qac"  "*" spaceChar?
-                        | newLine? backSlash "+qac" spaceChar chapterContentTextContent+ backSlash "+qac"  "*" spaceChar?
-                        | newLine? backSlash "litl" spaceChar chapterContentTextContent+ backSlash "litl"  "*" spaceChar?
-                        | newLine? backSlash "+litl" spaceChar chapterContentTextContent+ backSlash "+litl"  "*" spaceChar?
-                        | newLine? backSlash "lik" spaceChar chapterContentTextContent+ backSlash "lik"  "*" spaceChar?
-                        | newLine? backSlash "+lik" spaceChar chapterContentTextContent+ backSlash "+lik"  "*" spaceChar?
-						| newLine? backSlash "rq" spaceChar chapterContentTextContent+ backSlash "rq"  "*" spaceChar?
-						| newLine? backSlash "+rq" spaceChar chapterContentTextContent+ backSlash "+rq"  "*" spaceChar?
-                        | newLine? backSlash "ior" spaceChar bookIntroductionTitlesTextContent backSlash "ior" "*" spaceChar?
-                        | newLine? backSlash "+ior" spaceChar bookIntroductionTitlesTextContent backSlash "+ior" "*" spaceChar?
-                        | newLine? backSlash "cat" spaceChar bookIntroductionTitlesTextContent backSlash "cat" "*" spaceChar?
-                        | newLine? backSlash "+cat" spaceChar bookIntroductionTitlesTextContent backSlash "+cat" "*" spaceChar?
+            inLineCharElement = newLine? backSlash "add" spaceChar (text | nestedCharElement)+ backSlash "add" "*" spaceChar?
+            			| newLine? backSlash "bk" spaceChar (text | nestedCharElement)+ backSlash "bk" "*" spaceChar?
+						| newLine? backSlash "dc" spaceChar (text | nestedCharElement)+ backSlash "dc" "*" spaceChar?
+						| newLine? backSlash "k" spaceChar (text | nestedCharElement)+ backSlash "k" "*" spaceChar?
+                        | newLine? backSlash "nd" spaceChar (text | nestedCharElement)+ backSlash "nd" "*" spaceChar?
+						| newLine? backSlash "ord" spaceChar (text | nestedCharElement)+ backSlash "ord" "*" spaceChar?
+               			| newLine? backSlash "pn" spaceChar (text | nestedCharElement)+ backSlash "pn"  "*" spaceChar?
+                        | newLine? backSlash "png" spaceChar (text | nestedCharElement)+ backSlash "png"  "*" spaceChar?
+                        | newLine? backSlash "addpn" spaceChar (text | nestedCharElement)+ backSlash "addpn"  "*" spaceChar?
+                        | newLine? backSlash "qt" spaceChar (text | nestedCharElement)+ backSlash "qt"  "*" spaceChar?
+                        | newLine? backSlash "sig" spaceChar (text | nestedCharElement)+ backSlash "sig"  "*" spaceChar?
+						| newLine? backSlash "sls" spaceChar (text | nestedCharElement)+ backSlash "sls"  "*" spaceChar?
+                        | newLine? backSlash "tl" spaceChar (text | nestedCharElement)+ backSlash "tl"  "*" spaceChar?
+                        | newLine? backSlash "wj" spaceChar (text | nestedCharElement)+ backSlash "wj"  "*" spaceChar?
+                        | newLine? backSlash "em" spaceChar (text | nestedCharElement)+ backSlash "em"  "*" spaceChar?
+                        | newLine? backSlash "bd" spaceChar (text | nestedCharElement)+ backSlash "bd"  "*" spaceChar?
+                        | newLine? backSlash "it" spaceChar (text | nestedCharElement)+ backSlash "it"  "*" spaceChar?
+                        | newLine? backSlash "bdit" spaceChar (text | nestedCharElement)+ backSlash "bdit"  "*" spaceChar?
+                        | newLine? backSlash "no" spaceChar (text | nestedCharElement)+ backSlash "no"  "*" spaceChar?
+                        | newLine? backSlash "sc" spaceChar (text | nestedCharElement)+ backSlash "sc"  "*" spaceChar?
+                        | newLine? backSlash "sup" spaceChar (text | nestedCharElement)+ backSlash "sup"  "*" spaceChar?
+                        | newLine? backSlash "ndx" spaceChar (text | nestedCharElement)+ backSlash "ndx"  "*" spaceChar?
+                        | newLine? backSlash "wg" spaceChar (text | nestedCharElement)+ backSlash "wg"  "*" spaceChar?
+                        | newLine? backSlash "wh" spaceChar (text | nestedCharElement)+ backSlash "wh"  "*" spaceChar?
+                        | newLine? backSlash "wa" spaceChar (text | nestedCharElement)+ backSlash "wa"  "*" spaceChar?
+                        | newLine? backSlash "qs" spaceChar (text | nestedCharElement)+ backSlash "qs"  "*" spaceChar?
+                        | newLine? backSlash "qac" spaceChar (text | nestedCharElement)+ backSlash "qac"  "*" spaceChar?
+                        | newLine? backSlash "litl" spaceChar (text | nestedCharElement)+ backSlash "litl"  "*" spaceChar?
+                        | newLine? backSlash "lik" spaceChar (text | nestedCharElement)+ backSlash "lik"  "*" spaceChar?
+						| newLine? backSlash "rq" spaceChar (text | nestedCharElement)+ backSlash "rq"  "*" spaceChar?
+                        | newLine? backSlash "ior" spaceChar (text)+ backSlash "ior" "*" spaceChar?
+                        | newLine? backSlash "cat" spaceChar (text | notesElement |  nestedCharElement | milestoneElement | figureElement | zNameSpace)+ backSlash "cat" "*" spaceChar?
 			
                         
       
-            inLineCharAttributeElement = newLine? backSlash "rb" spaceChar chapterContentTextContent+ attributes* backSlash "rb"  "*" spaceChar?
-                        | newLine? backSlash "w" spaceChar chapterContentTextContent+ attributes* backSlash "w"  "*" spaceChar?
-                        | newLine? backSlash "jmp" spaceChar chapterContentTextContent* attributes* backSlash "jmp"  "*" spaceChar?
+            inLineCharAttributeElement = newLine? backSlash "rb" spaceChar (text | nestedCharElement)+ attributes* backSlash "rb"  "*" spaceChar?
+                        | newLine? backSlash "w" spaceChar (text | nestedCharElement)+ attributes* backSlash "w"  "*" spaceChar?
+                        | newLine? backSlash "jmp" spaceChar (text | nestedCharElement)* attributes* backSlash "jmp"  "*" spaceChar?
+			nestedInLineCharAttributeElement = newLine? backSlash "+rb" spaceChar (text | nestedCharElement)+ attributes* backSlash "+rb"  "*" spaceChar?
+                        | newLine? backSlash "+w" spaceChar (text | nestedCharElement)+ attributes* backSlash "+w"  "*" spaceChar?
+                        | newLine? backSlash "+jmp" spaceChar (text | nestedCharElement)* attributes* backSlash "+jmp"  "*" spaceChar?
 
-            inLineCharNumberedElement = newLine? backSlash "liv" number? spaceChar chapterContentTextContent+ backSlash "liv"  "*" spaceChar?
+
+            inLineCharNumberedElement = newLine? backSlash "liv" number? spaceChar (text | nestedCharElement)+ backSlash "liv"  "*" spaceChar?
+            nestedInLineCharNumberedElement = newLine? backSlash "+liv" number? spaceChar (text | nestedCharElement)+ backSlash "+liv"  "*" spaceChar?
                         
 
 
