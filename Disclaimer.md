@@ -73,3 +73,40 @@ The USFM document structure is validated by the grammar. These are the basic doc
 * In _\\id_, the longer heading following the bookcode is made optional as the IRV files were found to not have them
 * In _\\v_, after the verse number a space or line is accepted now, though the spec specifies a space. The UGNT files were having a newline there.
 * The _\\toc1_  marker in UGNT files were found to have no content. Hence, text content has been made optional for toc1, toc2, toc3, toca1, toca2,and toca3
+
+## Corrections made while using the test cases from Paratext
+
+* _\\v_ need not be on a new line
+
+* make sure the nested char elements in cross-refs, footnotes and other char elements have + sign indicating nesting
+
+## Rules not changed, even though the paratext test cases support it
+
+* markers like _\\rem_, _\\v_ etc can be empty
+
+* usfm text sample without _\\v_ marker
+
+* text content within _\\p_ which will not be under another marker like _\\v_, _\\s1_, _\\ip_ etc
+example:
+\id
+\c 1
+\p some content here
+\v 1 the verse here
+
+* empty figure. The sample test usfm text also had multiple | in it's fig element, which is also not supported
+
+* _\\nb_ should not come after a section heading. But it is now treated like any other indendation/paragraph marker. USFM doc says, it occurs in places like chapter boundaries, but not clear where else
+
+* Inline beg/end markers without space around them, is currently accepted by our grammar
+
+* verseInWrongPlace, cannot understand the error in given usfm text
+
+* column number verification in table
+
+* internal structure of _\\rb_, like number of gloss
+
+* check for correct attribute names in _\\fig_, and other markers
+
+* custom attributes, for markers like _\\em_ which doesn't have attributes as per spec
+
+* 

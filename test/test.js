@@ -101,60 +101,542 @@ describe('Ensure all true positives', function () {
   })
 })
 
-describe('Test with usfm files from the wild', function () {
-  it('Hindi IRV file1', function () {
-    fs.readFile('test/test_files/HindiIRV5_41-MAT.usfm', 'utf-8', function (err, data) {
-      if (err) { throw err }
-      let output = parser.validate(data)
-      assert.strictEqual(output, true)
-    })
+// describe('Test with usfm files from the wild', function () {
+//   it('Hindi IRV file1', function () {
+//     fs.readFile('test/test_files/HindiIRV5_41-MAT.usfm', 'utf-8', function (err, data) {
+//       if (err) { throw err }
+//       let output = parser.validate(data)
+//       assert.strictEqual(output, true)
+//     })
+//   })
+
+//   it('Hindi IRV file2', function () {
+//     fs.readFile('test/test_files/HindiIRV5_67-REV.usfm', 'utf-8', function (err, data) {
+//       if (err) { throw err }
+//       let output = parser.validate(data)
+//       assert.strictEqual(output, true)
+//     })
+//   })
+
+//   it('Tamil IRV file1', function () {
+//     fs.readFile('test/test_files/Tam_IRV5_57-TIT.usfm', 'utf-8', function (err, data) {
+//       if (err) { throw err }
+//       let output = parser.validate(data)
+//       assert.strictEqual(output, true)
+//     })
+//   })
+
+//   it('Tamil IRV file2', function () {
+//     fs.readFile('test/test_files/Tam_IRV5_46-ROM.usfm', 'utf-8', function (err, data) {
+//       if (err) { throw err }
+//       let output = parser.validate(data)
+//       assert.strictEqual(output, true)
+//     })
+//   })
+
+//   it('Greek UGNT file1', function () {
+//     fs.readFile('test/test_files/Greek_UGNT4_47-1CO.usfm', 'utf-8', function (err, data) {
+//       if (err) { throw err }
+//       let output = parser.validate(data)
+//       assert.strictEqual(output, true)
+//     })
+//   })
+
+//   it('Greek UGNT file2', function () {
+//     fs.readFile('test/test_files/Greek_UGNT4_63-1JN.usfm', 'utf-8', function (err, data) {
+//       if (err) { throw err }
+//       let output = parser.validate(data)
+//       assert.strictEqual(output, true)
+//     })
+//   })
+
+//   it('AMT alignment export file', function () {
+//     fs.readFile('test/test_files/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8', function (err, data) {
+//       if (err) { throw err }
+//       let output = parser.validate(data)
+//       assert.strictEqual(output, true)
+//     })
+//   })
+// })
+
+describe('Test with paratext test cases', function () {
+  it('NoErrosLong', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\nd Bob\\nd*.\r\n' +
+    '\\p And\\f + \\fr 1.1 \\ft stuff\\f*\r\n' +
+    '\\b\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
   })
 
-  it('Hindi IRV file2', function () {
-    fs.readFile('test/test_files/HindiIRV5_67-REV.usfm', 'utf-8', function (err, data) {
-      if (err) { throw err }
-      let output = parser.validate(data)
-      assert.strictEqual(output, true)
-    })
+  it('NoErrorsNesting', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\em Mr. \\+nd Bob\\+nd*\\em*.\r\n' +
+    '\\p And\\f + \\fr 1.1 \\ft stuff\\f*\r\n' +
+    '\\b\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
   })
 
-  it('Tamil IRV file1', function () {
-    fs.readFile('test/test_files/Tam_IRV5_57-TIT.usfm', 'utf-8', function (err, data) {
-      if (err) { throw err }
-      let output = parser.validate(data)
-      assert.strictEqual(output, true)
-    })
+  // it('NoErrorsEmptyBook', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\ide' +
+  //   '\\rem' +
+  //   '\\h' +
+  //   '\\mt1' +
+  //   '\\c 1' +
+  //   '\\s1' +
+  //   '\\m \\v 1 \\v 2 \\v 3' +
+  //   '\\p \\v 4' +
+  //   '\\p' +
+  //   '\\s1' +
+  //   '\\m \\v 5 \\v 6 \\v 7' +
+  //   '\\p \\v 8 \\v 9' +
+  //   '\\p \\v 10 \\v 11 \\v 12 \\v 13 \\v 14' +
+  //   '\\p \\v 15 \\v 16' +
+  //   '\\c 2' +
+  //   '\\s1' +
+  //   '\\m \\v 1 \\v 2' +
+  //   '\\p \\v 3 \\v 4 \\v 5' +
+  //   '\\p \\v 6 \\v 7 \\v 8' +
+  //   '\\p \\v 9 \\v 10' +
+  //   '\\p \\v 11 \\v 12 \\v 13 \\v 14' +
+  //   '\\p \\v 15' +
+  //   '\\c 3' +
+  //   '\\s1' +
+  //   '\\m \\v 1 \\v 2' +
+  //   '\\p \\v 3' +
+  //   '\\p \\v 4 \\v 5 \\v 6 \\v 7 \\v 8' +
+  //   '\\p \\v 9 \\v 10 \\v 11' +
+  //   '\\s1' +
+  //   '\\m \\v 12 \\v 13 \\v 14' +
+  //   '\\p \\v 15' +
+  //   '\\p'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+
+  // it('NoErrorsPartiallyEmptyBook', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\ide' +
+  //   '\\rem' +
+  //   '\\h' +
+  //   '\\mt1' +
+  //   '\\c 1' +
+  //   '\\s1' +
+  //   '\\m \\v 1 \\v 2 \\v 3' +
+  //   '\\p \\v 4' +
+  //   '\\p' +
+  //   '\\s1' +
+  //   '\\m \\v 5 \\v 6 \\v 7' +
+  //   '\\p \\v 8 \\v 9' +
+  //   '\\p \\v 10 \\v 11 \\v 12 \\v 13 \\v 14' +
+  //   '\\p \\v 15 \\v 16' +
+  //   '\\c 2' +
+  //   '\\s1' +
+  //   '\\m \\v 1 \\v 2' +
+  //   '\\p \\v 3 \\v 4 \\v 5' +
+  //   '\\p \\v 6 \\v 7 \\v 8' +
+  //   '\\p \\v 9 \\v 10' +
+  //   '\\p \\v 11 \\v 12 \\v 13 \\v 14' +
+  //   '\\p \\v 15' +
+  //   '\\c 3' +
+  //   '\\s1 heading 1' +
+  //   '\\m \\v 1 verser one \\v 2 verse two' +
+  //   '\\p \\v 3 verse three' +
+  //   '\\p \\v 4 verse four \\v 5 \\v 6 \\v 7 \\v 8' +
+  //   '\\p \\v 9 verse nine \\v 10 \\v 11' +
+  //   '\\s1 heading 2' +
+  //   '\\m \\v 12 verse twelve \\v 13 \\v 14' +
+  //   '\\p \\v 15 verse fifteen a' +
+  //   '\\p' +
+  //   'verse fifteen b'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+
+  it('NestingUnclosed', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\em Mr. \\+nd Bob\\em*.\r\n' +
+    '\\p And\\f + \\fr 1.1 \\ft stuff\\f*\r\n' +
+    '\\b\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
   })
 
-  it('Tamil IRV file2', function () {
-    fs.readFile('test/test_files/Tam_IRV5_46-ROM.usfm', 'utf-8', function (err, data) {
-      if (err) { throw err }
-      let output = parser.validate(data)
-      assert.strictEqual(output, true)
-    })
+  it('NestingInFootnote', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\f + \\fr 1.1 \\ft \\+em \\+pn name\\+pn* stuff \\+em*\\f*\r\n'+
+    '\\v 1 something'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
   })
 
-  it('Greek UGNT file1', function () {
-    fs.readFile('test/test_files/Greek_UGNT4_47-1CO.usfm', 'utf-8', function (err, data) {
-      if (err) { throw err }
-      let output = parser.validate(data)
-      assert.strictEqual(output, true)
-    })
+  it('NestingInCrossReferences', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\x + \\xo 1.1 \\xq \\+em \\+pn name\\+pn* stuff \\+em*\\x*\r\n' +
+    '\\v 1 something'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
   })
 
-  it('Greek UGNT file2', function () {
-    fs.readFile('test/test_files/Greek_UGNT4_63-1JN.usfm', 'utf-8', function (err, data) {
-      if (err) { throw err }
-      let output = parser.validate(data)
-      assert.strictEqual(output, true)
-    })
+  it('NestingInCrossReferencesInvalid', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\x + \\xo 1.1 \\em \\+pn name\\+pn* stuff \\em*\\x*\r\n' +
+    '\\v 1 something'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
   })
 
-  it('AMT alignment export file', function () {
-    fs.readFile('test/test_files/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8', function (err, data) {
-      if (err) { throw err }
-      let output = parser.validate(data)
-      assert.strictEqual(output, true)
-    })
+  it('CrossReferencesQuoteOutsideNote', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\xq quote \\xq* \\x + \\xo 1.1 \\em stuff\\em*\\x*\r\n' +
+    '\\v 1 something'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
   })
+
+  it('CrossReferencesInsideCharacterMarker', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p ' +
+    '\\v 1 something \\wj testing \\x + \\xo 1.1 \\xq stuff\\xq*\\x*\\wj*\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
+
+  // it('EmptyFigure', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\ib\r\n' +
+  //   '\\ip Hi mom.\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\p \\v 1 Hi there.\r\n' +
+  //   '\\p And\\fig |||||| \\fig* and some more text\r\n' +
+  //   '\\b\r\n'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+
+  it('MissingIdMarker', function () {
+    let usfmString = '\\c 1\r\n' +
+    '\\p \\v 1 stuff'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+    it('MissingIdAndChapterMarkers', function () {
+    let usfmString = '\\p \\v 1 stuff'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('EmptyMarkers', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi.\r\n' +
+    '\\p\r\n' +
+    '\\p george \\v 2\r\n' +
+    '\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('ParaOutOfOrder', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\p Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\nd Bob\\nd*.\r\n' +
+    '\\ip And\\f + \\fr 1.1 \\ft stuff\\f*\r\n' +
+    '\\b\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('FootnoteNotClosed', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\nd Bob\\nd*.\r\n' +
+    '\\p And\\f + \\fr 1.1 \\ft stuff\r\n' +
+    '\\b\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('FootnoteWithWrongSpacingAroundCaller', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\nd Bob\\nd*.\r\n' +
+    '\\p And\\f +\\fr 1.1 \\ft stuff\\f*\r\n' +
+    '\\b\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
+
+  it('FootnoteConsistencyCheck', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1 \\p \\v 1 some text ' +
+    '\\f + \\fr 1.1\\ft some note text \\f* ' +
+    '\\f + \\fr 1.1\\ft some note text \\f* ' +
+    '\\f - \\ft some note text \\f* '
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('FigureNotClosed', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi there.\r\n' +
+    '\\p And\\fig something | and some more text\r\n' +
+    '\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('CharStyleNotClosed', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\nd Bob.\r\n' +
+    '\\p And\\f + \\fr 1.1 \\ft stuff\\f*\r\n' +
+    '\\b\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('NbMarkerInCorrectPlace', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi Bob.\r\n' +
+    '\\c 2\r\n' +
+    '\\nb \\v 1 Soup is good!'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
+
+  // it('NbMarkerInWrongPlace', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\ib\r\n' +
+  //   '\\ip Hi mom.\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\p \\v 1 Hi Bob.\r\n' +
+  //   '\\c 2\r\n' +
+  //   '\\s Monkey' +
+  //   '\\nb \\v 1 Soup is good!'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, false)
+  // })
+
+  it('IdMarkerInMiddleOfBook', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\nd Bob\\nd*.\r\n' +
+    '\\id MAT' +
+    '\\p \\v 2'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('InvalidMarker', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\ib\r\n' +
+    '\\ip Hi mom.\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 Hi \\nd Bob\\nd*.\r\n' +
+    '\\ix text\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('UnmatchedSidebarStart', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 this is some text' +
+    '\\esb\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('UnmatchedSidebarEnd', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 this is some text' +
+    '\\esbe\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  // it('MarkersMissingSpace', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\p\r\n' +
+  //   '\\v 1 should have error\\p\\nd testing \\nd*\r\n' +
+  //   '\\c 2\r\n' +
+  //   '\\p\r\n' +
+  //   '\\v 2 \\em end/beg markers \\em*\\nd with no space are OK\\nd*\r\n'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, false)
+  // })
+
+  it('OnlyChapterAndVerseMarkers', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\v 1 something\r\n' +
+    '\\v 2 something\r\n' +
+    '\\c 2\r\n' +
+    '\\v 1 something\r\n' +
+    '\\v 2 something\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
+
+  // it('VerseInWrongPlace', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\s some text\r\n' +
+  //   '\\v 1 something\r\n'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, false)
+  // })
+
+  // it('MissingColumnInTable', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\s some text\r\n' +
+  //   '\\p\r\n' +
+  //   '\\v 1 verse text\r\n' +
+  //   '\\tr \\th1 header1 \\th3 header3\r\n' +
+  //   '\\tr \\tcr2 cell2 \\tcr3 cell3\r\n'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, false)
+  // })
+
+  it('ValidRubyMarkup', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \r\n\\rb B|g\\rb* \r\n' +
+    '\\v 1 verse text\r\n\\rb 僕使御|g\\rb* \r\n' +
+    '\\v 1 verse text \r\n\\rb BB|g:g\\rb* \r\n' +
+    '\\v 1 verse text \r\n\\rb BB|gg\\rb* \r\n' +
+    '\\v 1 verse text \r\n\\rb B僕使御|g:g\\rb* \r\n' +
+    '\\v 1 verse text \r\n\\rb BB|gloss=""g:g""\\rb* \r\n'
+    
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
+
+  // it('InvalidRubyMarkup', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\s some text\r\n' +
+  //   '\\p\r\n' +
+  //   '\\v 1 verse text\r\n\\rb BBB|g:g\\rb* \r\n' +
+  //   '\\v 1 verse text\r\n\\rb BB|g:g:g\\rb* \r\n' +
+  //   '\\v 1 verse text\r\n\\rb 僕使御|g:g:g:g\\rb* \r\n' +
+  //   '\\v 1 verse text\r\n\\rb BB\\rb* \r\n' +
+  //   '\\v 1 verse text\r\n\\rb BB|\\rb* \r\n' +
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+
+  it('InvalidAttributes', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \\em text|weight=\"heavy\"\\em*\"\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
+
+  it('FigureAttributesAreValid', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \\fig caption|alt=\"Description\" src=\"image.jpg\" size=\"large\" loc=\"col\" copy=\"copyright\" ref=\"1.1\"\\fig*\"\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
+
+  // it('InvalidFigureAttributesReported', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\s some text\r\n' +
+  //   '\\p\r\n' +
+  //   '\\v 1 verse text \\fig caption|src=\"file\" size=\"small\" ref=\"1.1\" rotate=\"90\"\\fig*\"\r\n'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, false)
+  // })
+
+  // it('CustomAttributesAreValid', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\s some text\r\n' +
+  //   '\\p\r\n' +
+  //   '\\v 1 verse text \\em text|x-weight=\"heavy\"\\em*\"\r\n'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+
+
+
+  it('LinkAttributesAreValid', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \\em text|link-href=\"http://somehere.com\" link-title=\"My Title\" link-name=\"My Name\"\\em*\"\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
+
+  // it('', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+
+  // it('', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+
+  // it('', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+
 })
