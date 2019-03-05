@@ -80,6 +80,14 @@ The USFM document structure is validated by the grammar. These are the basic doc
 
 * make sure the nested char elements in cross-refs, footnotes and other char elements have + sign indicating nesting
 
+* check for correct attribute names in _\\fig_, and other markers
+
+* custom attributes, for markers like _\\em_ which doesn't have attributes as per spec
+
+* link attributes and custom attributes are accepted within all character/word level markers
+
+* any attribute name starting with a _"link-"_  is accepted as a valid link attribute
+
 ## Rules not changed, even though the paratext test cases support it
 
 * markers like _\\rem_, _\\v_ etc can be empty
@@ -105,8 +113,5 @@ example:
 
 * internal structure of _\\rb_, like number of gloss
 
-* check for correct attribute names in _\\fig_, and other markers
-
-* custom attributes, for markers like _\\em_ which doesn't have attributes as per spec
 
 * 

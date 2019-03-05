@@ -536,21 +536,21 @@ describe('Test with paratext test cases', function () {
   //   assert.strictEqual(output, false)
   // })
 
-  it('ValidRubyMarkup', function () {
-    let usfmString = '\\id GEN\r\n' +
-    '\\c 1\r\n' +
-    '\\s some text\r\n' +
-    '\\p\r\n' +
-    '\\v 1 verse text \r\n\\rb B|g\\rb* \r\n' +
-    '\\v 1 verse text\r\n\\rb 僕使御|g\\rb* \r\n' +
-    '\\v 1 verse text \r\n\\rb BB|g:g\\rb* \r\n' +
-    '\\v 1 verse text \r\n\\rb BB|gg\\rb* \r\n' +
-    '\\v 1 verse text \r\n\\rb B僕使御|g:g\\rb* \r\n' +
-    '\\v 1 verse text \r\n\\rb BB|gloss=""g:g""\\rb* \r\n'
+  // it('ValidRubyMarkup', function () {
+  //   let usfmString = '\\id GEN\r\n' +
+  //   '\\c 1\r\n' +
+  //   '\\s some text\r\n' +
+  //   '\\p\r\n' +
+  //   '\\v 1 verse text \r\n\\rb B|g\\rb* \r\n' +
+  //   '\\v 1 verse text\r\n\\rb 僕使御|g\\rb* \r\n' +
+  //   '\\v 1 verse text \r\n\\rb BB|g:g\\rb* \r\n' +
+  //   '\\v 1 verse text \r\n\\rb BB|gg\\rb* \r\n' +
+  //   '\\v 1 verse text \r\n\\rb B僕使御|g:g\\rb* \r\n' +
+  //   '\\v 1 verse text \r\n\\rb BB|gloss=""g:g""\\rb* \r\n'
     
-    let output = parser.validate(usfmString)
-    assert.strictEqual(output, true)
-  })
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
 
   // it('InvalidRubyMarkup', function () {
   //   let usfmString = '\\id GEN\r\n' +
@@ -586,25 +586,25 @@ describe('Test with paratext test cases', function () {
     assert.strictEqual(output, true)
   })
 
-  // it('InvalidFigureAttributesReported', function () {
-  //   let usfmString = '\\id GEN\r\n' +
-  //   '\\c 1\r\n' +
-  //   '\\s some text\r\n' +
-  //   '\\p\r\n' +
-  //   '\\v 1 verse text \\fig caption|src=\"file\" size=\"small\" ref=\"1.1\" rotate=\"90\"\\fig*\"\r\n'
-  //   let output = parser.validate(usfmString)
-  //   assert.strictEqual(output, false)
-  // })
+  it('InvalidFigureAttributesReported', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \\fig caption|src=\"file\" size=\"small\" ref=\"1.1\" rotate=\"90\"\\fig*\"\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
 
-  // it('CustomAttributesAreValid', function () {
-  //   let usfmString = '\\id GEN\r\n' +
-  //   '\\c 1\r\n' +
-  //   '\\s some text\r\n' +
-  //   '\\p\r\n' +
-  //   '\\v 1 verse text \\em text|x-weight=\"heavy\"\\em*\"\r\n'
-  //   let output = parser.validate(usfmString)
-  //   assert.strictEqual(output, true)
-  // })
+  it('CustomAttributesAreValid', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \\em text|x-weight=\"heavy\"\\em*\"\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
 
 
 

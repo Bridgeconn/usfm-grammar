@@ -426,66 +426,195 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  inLineCharElement: function(_, _, tag, _, text, _, _, _, _) {
+  inLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     obj['text'] = ''
     for (let item of obj[tag.sourceString]) {
       if ( item.text) { obj['text'] += item.text}
     }
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
     
     return obj
   },
 
-  nestedInLineCharElement: function(_, _, tag, _, text, _, _, _, _) {
+  nestedInLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     obj['text'] = ''
     for (let item of obj[tag.sourceString]) {
       if ( item.text) { obj['text'] += item.text}
     }
-    
-    return obj
-  },
-
-  inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
-    let obj = {}
-    let textobj = text.composeJson()
-    obj[tag.sourceString]= {'contents': textobj, 'Attributes':attribs.sourceString}
-    obj['text'] = ''
-    for (let item of textobj){
-      if ( item.text) { obj['text'] += item.text}
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
     }
     return obj
   },
 
-  nestedInLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
+  inLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     let textobj = text.composeJson()
-    obj[tag.sourceString]= {'contents': textobj, 'Attributes':attribs.sourceString}
+    obj[tag.sourceString]= {'contents': textobj}
     obj['text'] = ''
     for (let item of textobj){
       if ( item.text) { obj['text'] += item.text}
     }
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
+    return obj
+  },
+
+  nestedInLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+    let obj = {}
+    let textobj = text.composeJson()
+    obj[tag.sourceString]= {'contents': textobj}
+    obj['text'] = ''
+    for (let item of textobj){
+      if ( item.text) { obj['text'] += item.text}
+    }
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
     return obj
   },
     
-  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
+  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
+    obj[tag.sourceString]= {'content': text.composeJson()}
     obj['text'] = obj[tag.sourceString]['content']
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
     return obj
   },
 
-  nestedInLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
+  nestedInLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
+    obj[tag.sourceString]= {'content': text.composeJson()}
     obj['text'] = obj[tag.sourceString]['content']
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
     return obj
   },
 
-  figureElement: function(_, _, _, caption, attribs, _, _) {
-    return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.sourceString}}
+  customAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  wAttribute: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  rbAttribute: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  figAttribute: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  attributesInCrossref: function (_, _, elmnt) {
+    return elmnt.composeJson()
+  },
+
+  milestoneAttribute: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  msAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  lemmaAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  strongAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  scrlocAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  glossAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  linkAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  altAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  srcAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  sizeAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  locAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  copyAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  refAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+
+  figureElement: function(_, _, _, caption, _, _, attribs, _, _) {
+    return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
   },
 
   table: function(header, row) {
@@ -595,11 +724,14 @@ sem.addOperation('composeJson', {
     return milestoneElement
   },
 
-  milestonePairElement: function(_, _, ms, s_e, _, attribs, closing) {
+  milestonePairElement: function(_, _, ms, s_e, _, _, _, attribs, closing) {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['start/end'] = s_e.sourceString
-    milestoneElement['attributes'] = attribs.sourceString
+    if (attribs.sourceString!='') {
+      milestoneElement['attributes'] = attribs.composeJson()
+    }
+    
     return milestoneElement
   },
 
