@@ -317,8 +317,8 @@ usfmBible{
 
 			milestoneElement = milestonePairElement | milestoneStandaloneElement
 			milestoneStandaloneElement = newLine? backSlash milestoneName milestoneClosing
-			milestonePairElement = (newLine? backSlash milestoneName "-s" spaceChar* ("|" spaceChar? milestoneAttribute+)? milestoneClosing?) 
-								| (newLine? backSlash milestoneName "-e" spaceChar* ("|" spaceChar? milestoneAttribute+)? milestoneClosing?)
+			milestonePairElement = (newLine? backSlash milestoneName "-s" spaceChar* ("|" spaceChar? (milestoneAttribute+ | defaultAttribute))? milestoneClosing?) 
+								| (newLine? backSlash milestoneName "-e" spaceChar* ("|" spaceChar? (milestoneAttribute+ | defaultAttribute))? milestoneClosing?)
 			milestoneName = (letter | digit | "_")+
 			milestoneClosing = (backSlash "*") 
 
