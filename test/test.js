@@ -536,21 +536,21 @@ describe('Test with paratext test cases', function () {
   //   assert.strictEqual(output, false)
   // })
 
-  // it('ValidRubyMarkup', function () {
-  //   let usfmString = '\\id GEN\r\n' +
-  //   '\\c 1\r\n' +
-  //   '\\s some text\r\n' +
-  //   '\\p\r\n' +
-  //   '\\v 1 verse text \r\n\\rb B|g\\rb* \r\n' +
-  //   '\\v 1 verse text\r\n\\rb 僕使御|g\\rb* \r\n' +
-  //   '\\v 1 verse text \r\n\\rb BB|g:g\\rb* \r\n' +
-  //   '\\v 1 verse text \r\n\\rb BB|gg\\rb* \r\n' +
-  //   '\\v 1 verse text \r\n\\rb B僕使御|g:g\\rb* \r\n' +
-  //   '\\v 1 verse text \r\n\\rb BB|gloss=""g:g""\\rb* \r\n'
-    
-  //   let output = parser.validate(usfmString)
-  //   assert.strictEqual(output, true)
-  // })
+  it('ValidRubyMarkup', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \r\n\\rb B|g\\rb* \r\n' +
+    '\\v 1 verse text\r\n\\rb 僕使御|g\\rb* \r\n' +
+    '\\v 1 verse text \r\n\\rb BB|g:g\\rb* \r\n' +
+    '\\v 1 verse text \r\n\\rb BB|gg\\rb* \r\n' +
+    '\\v 1 verse text \r\n\\rb B僕使御|g:g\\rb* \r\n' +
+    '\\v 1 verse text \r\n\\rb BB|gloss=\"g:g\"\\rb* \r\n'
+
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, true)
+  })
 
   // it('InvalidRubyMarkup', function () {
   //   let usfmString = '\\id GEN\r\n' +

@@ -612,6 +612,12 @@ sem.addOperation('composeJson', {
     return attribObj
   },
 
+  defaultAttribute: function (value) {
+    let attribObj = {}
+    attribObj['name'] = 'default attribute'
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
 
   figureElement: function(_, _, _, caption, _, _, attribs, _, _) {
     return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
