@@ -59,14 +59,13 @@ The USFM document structure is validated by the grammar. These are the basic doc
 ## Some Design Limitations
 
 * We have not considered USFM files with peripherals (<https://ubsicap.github.io/usfm/peripherals/index.html>)
-* We are not validating/parsing the internal contents of footnotes, cross-references and milestones. But the markers are being identified and contents extracted, without checking for their correctness
+* We are not validating/parsing the internal contents of markers or values provided for attributes. For example, verse numbers need not be continuous, column numbers in a table row need not be in accordance with other rows, the number of values in a gloss attribute might not be in agreement with the number of words _\\rb_ encloses, or the format of reference need not be correct in an _\\ior_ marker to pass our validation. But the markers are being identified, their syntax verified and contents extracted.
 * The markers are treated as either mandatory or optional. The valid number of occurances is not considered
  eg: _\\usfm_ should ideally occur only once, if present, and similarly _\\sts_ can come multtple times. As per the current implemetation, the optional markers can occur any number of times.
 * We have assumed certain structural constraints in USFM, which were not explicitly mentioned in the USFM spec. For example, the markers _\\ca_, _\\cl_, _\\cp_ and _\\cd_ occurs immediately below the _\\c_ marker, before the verse blocks start.
 * Documentation says, _\\imt1, \\imt2, \\imt3_(similarly _imte, ili, ie, iq, mt_)  are all parts of a major title. So we are combining them ignoring the numerical weightage factor/difference. 
 * As per USFM spec, there is no limit for possible numbers(not limited to 1,2,and 3) in numbered markers...though the USX _valid style types_ lists them as specifically numbered(1 & 2 or 1,2 & 3). We are following _no limit_ rules.(except for _\\toc & \\toca_)
-* The valid attribute names for word-level markers are not checked. Any attribute name with valid syntax would be accepted
-* The paragraph markers(showing indentation) that appear within verses,  should ideally be attached to the text that follows it. But we are attaching it to the verse marker immediatedly above it.
+* We are checking for only the BCV structue in a document. Hence all markers like _\\p_, _\\q_, _\\nb_ etc that specifies an indentation, is considered to serve only the purpose of showing indentation and are treated like empty markers. We are not parsing the text contents according to these markers. The text is assumed to belong only to the _\\v_ marker of _\\ip_ marker above it.
 
 ## Rules made liberal, to accomodate real world sample files
 
@@ -87,31 +86,3 @@ The USFM document structure is validated by the grammar. These are the basic doc
 * link attributes and custom attributes are accepted within all character/word level markers
 
 * any attribute name starting with a _"link-"_  is accepted as a valid link attribute
-
-## Rules not changed, even though the paratext test cases support it
-
-* markers like _\\rem_, _\\v_ etc can be empty
-
-* usfm text sample without _\\v_ marker
-
-* text content within _\\p_ which will not be under another marker like _\\v_, _\\s1_, _\\ip_ etc
-example:
-\id
-\c 1
-\p some content here
-\v 1 the verse here
-
-* empty figure. The sample test usfm text also had multiple | in it's fig element, which is also not supported
-
-* _\\nb_ should not come after a section heading. But it is now treated like any other indendation/paragraph marker. USFM doc says, it occurs in places like chapter boundaries, but not clear where else
-
-* Inline beg/end markers without space around them, is currently accepted by our grammar
-
-* verseInWrongPlace, cannot understand the error in given usfm text
-
-* column number verification in table
-
-* internal structure of _\\rb_, like number of gloss
-
-
-* 
