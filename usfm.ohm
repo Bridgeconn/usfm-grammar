@@ -265,7 +265,7 @@ usfmBible{
             customAttribute = customAttributeName "=" attributeValue spaceChar?
 			customAttributeName = "x-" (letter |digit |"_")+
 			attributeValue = "\"" (~"\"" any)+ "\""
-			defaultAttribute = word
+			defaultAttribute = text
 
 			wAttribute = lemmaAttribute | strongAttribute | scrlocAttribute | linkAttribute | customAttribute
 			rbAttribute = glossAttribute | customAttribute | linkAttribute
