@@ -586,13 +586,15 @@ let usfmString = '\\id GEN\r\n' +
 12. (12-14)Glossary related constraints that looks like additionally added rules. Also it looks like they are cross checking the keyterm(_\\k_) with a Bible book's glossary outside of the file    
 
 > * GlossaryCitationFormEndsInSpace error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
     '\\c 1\\v 1 something \\p  \\k ostrich \\k*bird that doesnt fly'
 ```
 
 
 > * GlossaryCitationFormEndsInPunctuation error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
     '\\c 1\\v 1 something \\p  \\k keyword.\\k* definition\r\n' +
     '\\c 1\\v 1 something \\p  \\k keyword,\\k* definition\r\n' +
     '\\c 1\\v 1 something \\p  \\k keyword;\\k* definition\r\n' +
@@ -602,7 +604,8 @@ let usfmString = '\\id GEN\r\n' +
 
 
 > * GlossaryCitationFormContainsNonWordformingPunctuation error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
     '\\c 1\\v 1 something \\p  \\k keyword. keyw\\k* definition\r\n' +
     '\\c 1\\v 1 something \\p  \\k keyword, keyw\\k* definition'
 ```
@@ -611,7 +614,8 @@ let usfmString = '\\id GEN\r\n' +
 15. (15-23)Wordlist marker related error because of spaces, punctuations and connection with glossary
 
 > * WordlistMarkerMissingFromGlossaryCitationForms error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
     '\\c 1\\v 1 something \\p  \\k blah\\k* definition\r\n' +
     '\\v 2 something \\p  \\w grace\\w* definition' +
     '\\v 2 something \\p  \\w grace|grace \\w* definition' +
@@ -619,28 +623,32 @@ let usfmString = '\\id GEN\r\n' +
 ```
 
 > * WordlistMarkerTextEndsInSpaceWithGlossary error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
      '\\c 1\\v 1 something \\p  \\k keyword-keyw\\k* definition\r\n' +
      '\\c 1\\v 1 something \\p  \\w word |keyword\\w* definition'
 ```
 
 
 > * WordlistMarkerTextEndsInSpaceWithoutGlossary error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
     '\\c 1\\v 1 something \\p  \\w word |keyword\\w* definition\r\n' +
     '\\v 2 something \\p  \\w word |lemma=\"keyword\"\\w* definition'
 ```
 
 
 > * WordlistMarkerTextEndsInSpaceAndMissingFromGlossary error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
      '\\c 1\\v 1 something \\p  \\k blah\\k* definition\r\n' +
      '\\v 2 something \\p  \\w word \\w* definition'
 ```
 
 
 > * WordlistMarkerTextEndsInPunctuation error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
     '\\c 1\\v 1 something \\p  \\k keyword\\k* definition\r\n' +
     '\\v 2 something \\p  \\w word.|keyword \\w* definition\r\n' +
     '\\v 2 something \\p  \\w word,|keyword \\w* definition\r\n' +
@@ -650,14 +658,16 @@ let usfmString = '\\id GEN\r\n' +
 
 
 > * WordlistMarkerKeywordEndsInSpace error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
      '\\c 1\\v 1 something \\p  \\k blah\\k* definition\r\n' +
      '\\v 2 something \\p  \\w word|keyword \\w* definition'
 ```
 
 
 > * WordlistMarkerKeywordEndsInPunctuation error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
     '\\c 1\\v 1 something \\p  \\k blah\\k* definition\r\n' +
     '\\v 2 something \\p  \\w word|keyword. \\w* definition\r\n' +
     '\\v 2 something \\p  \\w word|keyword,\\w* definition\r\n' +
@@ -668,7 +678,8 @@ let usfmString = '\\id GEN\r\n' +
 
 
 > * WordlistMarkerTextContainsNonWordformingPunctuation error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
      '\\c 1\\v 1 something \\p  \\k blah\\k* definition\r\n' +
      '\\v 2 something \\p  \\w word. wordtwo \\w* definition\r\n' +
      '\\v 2 something \\p  \\w word, wordtwo\\w* definition\r\n' +
@@ -677,7 +688,8 @@ let usfmString = '\\id GEN\r\n' +
 ```
 
 > * WordlistMarkerKeywordContainsNonWordformingPunctuation error
-```let usfmString = '\\id GLO\r\n' +
+```
+let usfmString = '\\id GLO\r\n' +
     '\\c 1\\v 1 something \\p  \\k blah\\k* definition\r\n' +
     '\\v 2 something \\p  \\w word|kw. keyword \\w* definition\r\n' +
     '\\v 2 something \\p  \\w word|kw; keyword \\w* definition'
@@ -687,7 +699,8 @@ let usfmString = '\\id GEN\r\n' +
 There are a couple of constraints we have, which the paratext doesn't seem to force
 
 * we do not accept empty files
-```let usfmString = '\\id GEN\r\n'
+```
+let usfmString = '\\id GEN\r\n'
 ```
 
 ```    let usfmString = '\\id GEN\r\n' +
