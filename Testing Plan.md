@@ -703,7 +703,8 @@ There are a couple of constraints we have, which the paratext doesn't seem to fo
 let usfmString = '\\id GEN\r\n'
 ```
 
-```    let usfmString = '\\id GEN\r\n' +
+```
+let usfmString = '\\id GEN\r\n' +
     '\ide' +
     '\\rem' +
     '\\h' +
@@ -738,7 +739,8 @@ let usfmString = '\\id GEN\r\n'
     '\\p'
 ```
 
-```let usfmString = '\\id GEN\r\n' +
+```
+let usfmString = '\\id GEN\r\n' +
     '\\ide' +
     '\\rem' +
     '\\h' +
@@ -778,7 +780,8 @@ let usfmString = '\\id GEN\r\n'
 
 * _\\fig_ marker cannot be empty and it(or any other character marker) cannot have multiple | symbols in it, which marks the start of attribute list
 
-```let usfmString = '\\id GEN\r\n' +
+```
+let usfmString = '\\id GEN\r\n' +
     '\\ib\r\n' +
     '\\ip Hi mom.\r\n' +
     '\\c 1\r\n' +
