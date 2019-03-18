@@ -2,6 +2,9 @@ const fs = require('fs')
 const ohm = require('ohm-js')
 const join = require('path').join
 
+const Events = require('events');
+const emitter = new Events.EventEmitter();
+
 var contents = fs.readFileSync(join(__dirname, 'usfm.ohm'))
 
 var bib = ohm.grammars(contents).usfmBible
@@ -10,9 +13,20 @@ var sem = bib.createSemantics()
 
 console.log('Initializing grammar')
 
+warningMessages = ''
+
+emitter.on('warning', function (err) {
+  warningMessages += 'Warning: ' + err.message + '\n';
+});
+
 sem.addOperation('composeJson', {
   File: function (e) {
-    let res = e.composeJson()
+    let res = {'parseStructure': e.composeJson()}
+
+    if ( warningMessages != '' ) {
+      res['warnings'] = warningMessages
+    }
+
     return res
   },
 
@@ -95,6 +109,9 @@ sem.addOperation('composeJson', {
     verse['metadata'] = []
     if ( verseMeta.sourceString!='' ) { verse['metadata'].push(verseMeta.composeJson()) } 
     contents = verseContent.composeJson()
+    if ( verseContent.sourceString == '' ) {
+      emitter.emit('warning', new Error('Verse text is empty, at \\v '+verseNumber.sourceString));
+    }
     verse['text'] = ''
     for (let i=0; i<contents.length; i++) {
       if (contents[i]['text']) {
@@ -620,12 +637,19 @@ sem.addOperation('composeJson', {
   },
 
   figureElement: function(_, _, _, caption, _, _, attribs, _, _) {
+    if(caption.sourceString == '' & attribs.sourceString == ''){
+      emitter.emit('warning', new Error('Figure marker is empty'))
+    }
     return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
   },
 
   table: function(header, row) {
     let table = {'table':{}}
-    if (header.sourceString!='') { table['table']['header'] = header.composeJson()[0]}
+    let columnCount = 0
+    if (header.sourceString!='') { 
+      table['table']['header'] = header.composeJson()[0]
+      columnCount = table.table.header.length
+    }
     table['table']['rows'] = row.composeJson()
     table['text'] = ''
     for (let item of table.table.header ) {
@@ -635,6 +659,14 @@ sem.addOperation('composeJson', {
     table.text += '\n'
 
     for (let row of table.table.rows) {
+      if (columnCount == 0) {
+        columnCount = row.length
+      }
+      else {
+        if (row.length != columnCount) {
+          emitter.emit('warning',new Error('In-consistent column number in table rows'))
+        }
+      }
       for (let item of row) {
         if (item.tc) { table.text += item.tc +' |  '}
         if (item.tcr) { table.text += item.tcr +' |  '}
