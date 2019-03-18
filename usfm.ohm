@@ -55,7 +55,7 @@ usfmBible{
             
  			sectionHeader  = sectionElement sectionPostHeader* ipElement*
 			sectionPostHeader = srElement | rElement | dElement | mrElement
-			verseElement = newLine? backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)+
+			verseElement = newLine? backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)*
 			
 			verseNumber = number ("-" number)? spaceOrNewLine
 
@@ -287,7 +287,7 @@ usfmBible{
 			msAttribute = milestoneAttributeNames "=" attributeValue spaceChar?
 			milestoneAttributeNames = "sid" | "eid" | "who"
 
-            figureElement = backSlash "fig" spaceChar caption  ("|" spaceChar? figAttribute+)? backSlash "fig*"
+            figureElement = backSlash "fig" spaceChar caption?  ("|" spaceChar? figAttribute+)? backSlash "fig*"
 			caption = text
 
 			table = headerRow? row+
