@@ -788,11 +788,12 @@ sem.addOperation('composeJson', {
 })
 
 exports.match = function (str) {
-  try {
     var matchObj = bib.match(str)
-    let adaptor = sem(matchObj)
-    return adaptor.composeJson()
-  } catch (err) {
-    return matchObj
-  }
+    if (matchObj.succeeded()) {
+      let adaptor = sem(matchObj)
+      return adaptor.composeJson()
+    }
+    else {
+      return {'ERROR':  matchObj.message }
+    }
 }

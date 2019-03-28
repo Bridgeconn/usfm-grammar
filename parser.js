@@ -1,16 +1,25 @@
 const match = require('./grammarOperations.js').match
 
-const multiLinePattern = new RegExp('[\\n\\r]+', 'g')
-const multiSpacePattern = new RegExp(' +', 'g')
+var warnings = ''
+
+const multiLinePattern = new RegExp('(\\n\\r | \\n | \\r)[\\n\\r]+', 'g')
+const multiSpacePattern = new RegExp('  +', 'g')
 const bookCodePattern = new RegExp('\\id ([a-z][a-z][a-z]) ', 'g')
 function normalize (str) {
   let newStr = ''
+  if (multiLinePattern.exec(str)) {
+    warnings += 'Empty lines present\n'
+  }
+  if (multiSpacePattern.exec(str)) {
+    warnings += 'Multiple spaces present\n'
+  }
   newStr = str.replace(multiLinePattern, '\n')
   newStr = newStr.replace(multiSpacePattern, ' ')
   let match = bookCodePattern.exec(newStr)
   if (match) {
     let bookCode = match[1]
     newStr = newStr.replace(bookCode, bookCode.toUpperCase())
+    warnings += 'Book code is in lowercase\n'
   }
   return newStr
 }
@@ -18,11 +27,16 @@ function normalize (str) {
 exports.SCRIPTURE = 'clean'
 
 exports.parse = function (str, resultType = 'all') {
+  warnings = ''
   let inStr = normalize(str)
   let matchObj = match(inStr)
 
-  if (!matchObj.hasOwnProperty('_rightmostFailures')) {
-    let jsonOutput = matchObj
+  if (!matchObj.hasOwnProperty('ERROR')) {
+    let jsonOutput = matchObj['parseStructure']
+    if (matchObj.warnings) {
+      warnings += matchObj['warnings']
+      console.log(warnings)
+    }
     if (resultType === 'clean') {
       let newJsonOutput = { 'book': jsonOutput['metadata']['id']['book'], 'chapters': [] }
       let chapter = {}
@@ -41,39 +55,15 @@ exports.parse = function (str, resultType = 'all') {
     }
     return jsonOutput
   } else {
-    var message = matchObj['_rightmostFailures']
-    var pos = matchObj['_rightmostFailurePosition']
-
-    // to find the line where the error occured
-    var prevLineStart = 0
-    var nextLineStart = 0
-    var lineCount = 0
-    while (nextLineStart < pos) {
-      lineCount += 1
-      prevLineStart = nextLineStart
-      nextLineStart = matchObj['input'].indexOf('\n', nextLineStart + 1)
-      if (nextLineStart === -1) {
-        nextLineStart = matchObj['input'].length
-      }
-    }
+    return matchObj
   }
-
-  let inputSnippet = matchObj['input'].substring(prevLineStart, nextLineStart)
-
-  // to highlight the position from where match failed
-  let inLinePos = pos - prevLineStart
-  let outputSnippet = inputSnippet.substring(0, inLinePos - 1) + '<b>' + inputSnippet.substring(inLinePos, inputSnippet.length) + '</b>'
-
-  let output = 'Error at character' + inLinePos + ', in line ' + lineCount + " '" + outputSnippet + "': " + message
-
-  return matchObj['input'] + '<br><br>' + output
 }
 
 exports.validate = function (str) {
   let inStr = normalize(str)
   // Matching the input with grammar and obtaining the JSON output string
   let matchObj = match(inStr)
-  if (matchObj.hasOwnProperty('_rightmostFailures')) {
+  if (matchObj.hasOwnProperty('ERROR')) {
     return false
   } else {
     return true

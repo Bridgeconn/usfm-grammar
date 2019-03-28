@@ -6,6 +6,11 @@ console.log('server up...listening to 8080 at http://localhost')
 
 function beautifyResultForHtml (jsonOutput) {
   //  beautifying the result string for printing
+  if (jsonOutput.hasOwnProperty('ERROR')) {
+    let resString = jsonOutput['ERROR'].replace('\n', '<br>')
+    resString = '<pre>' + resString + '</pre>'
+    return resString
+  }
   let resString = JSON.stringify(jsonOutput)
   let indentCount = 0
   let i = 0
@@ -67,6 +72,7 @@ http.createServer(function (req, res) {
             data = '<center><h3>File Empty!!!</h3></center>'
           } else {
             data = beautifyResultForHtml(parser.parse(data, parser.SCRIPTURE))
+            // data = beautifyResultForHtml(parser.parse(data))
           }
           res.write(data)
           res.end()
@@ -80,7 +86,7 @@ http.createServer(function (req, res) {
         res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
         res.write('<a href="./index.html">Back Home</a><br><br><br>')
         let data = fields.inputText
-        console.log(data)
+        // console.log(data)
         if (data === '') {
           data = '<center><h3>Text Empty!!!</h3></center>'
         } else {
