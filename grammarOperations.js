@@ -16,11 +16,12 @@ console.log('Initializing grammar')
 warningMessages = ''
 
 emitter.on('warning', function (err) {
-  warningMessages += 'Warning: ' + err.message + '\n';
+  warningMessages += err.message ;
 });
 
 sem.addOperation('composeJson', {
   File: function (e) {
+    warningMessages = ''
     let res = {'parseStructure': e.composeJson()}
 
     if ( warningMessages != '' ) {
@@ -110,7 +111,7 @@ sem.addOperation('composeJson', {
     if ( verseMeta.sourceString!='' ) { verse['metadata'].push(verseMeta.composeJson()) } 
     contents = verseContent.composeJson()
     if ( verseContent.sourceString == '' ) {
-      emitter.emit('warning', new Error('Verse text is empty, at \\v '+verseNumber.sourceString));
+      emitter.emit('warning', new Error('Verse text is empty, at \\v '+verseNumber.sourceString+'. '));
     }
     verse['text'] = ''
     for (let i=0; i<contents.length; i++) {
@@ -638,7 +639,7 @@ sem.addOperation('composeJson', {
 
   figureElement: function(_, _, _, caption, _, _, attribs, _, _) {
     if(caption.sourceString == '' & attribs.sourceString == ''){
-      emitter.emit('warning', new Error('Figure marker is empty'))
+      emitter.emit('warning', new Error('Figure marker is empty. '))
     }
     return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
   },
@@ -664,7 +665,7 @@ sem.addOperation('composeJson', {
       }
       else {
         if (row.length != columnCount) {
-          emitter.emit('warning',new Error('In-consistent column number in table rows'))
+          emitter.emit('warning',new Error('In-consistent column number in table rows. '))
         }
       }
       for (let item of row) {

@@ -4,14 +4,14 @@ var warnings = ''
 
 const multiLinePattern = new RegExp('(\\n\\r | \\n | \\r)[\\n\\r]+', 'g')
 const multiSpacePattern = new RegExp('  +', 'g')
-const bookCodePattern = new RegExp('\\id ([a-z][a-z][a-z]) ', 'g')
+const bookCodePattern = new RegExp('\\id [a-z][a-z][a-z][ \\n\\r]', 'g')
 function normalize (str) {
   let newStr = ''
   if (multiLinePattern.exec(str)) {
-    warnings += 'Empty lines present\n'
+    warnings += 'Empty lines present. '
   }
   if (multiSpacePattern.exec(str)) {
-    warnings += 'Multiple spaces present\n'
+    warnings += 'Multiple spaces present. '
   }
   newStr = str.replace(multiLinePattern, '\n')
   newStr = newStr.replace(multiSpacePattern, ' ')
@@ -19,7 +19,7 @@ function normalize (str) {
   if (match) {
     let bookCode = match[1]
     newStr = newStr.replace(bookCode, bookCode.toUpperCase())
-    warnings += 'Book code is in lowercase\n'
+    warnings += 'Book code is in lowercase. '
   }
   return newStr
 }
@@ -35,7 +35,7 @@ exports.parse = function (str, resultType = 'all') {
     let jsonOutput = matchObj['parseStructure']
     if (matchObj.warnings) {
       warnings += matchObj['warnings']
-      console.log(warnings)
+      // console.log(warnings)
     }
     if (resultType === 'clean') {
       let newJsonOutput = { 'book': jsonOutput['metadata']['id']['book'], 'chapters': [] }
@@ -52,6 +52,9 @@ exports.parse = function (str, resultType = 'all') {
         newJsonOutput['chapters'].push(nextChapter)
       }
       jsonOutput = newJsonOutput
+    }
+    if (warnings !== '') {
+      jsonOutput['##WARNING##'] = warnings
     }
     return jsonOutput
   } else {
