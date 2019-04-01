@@ -456,9 +456,11 @@ sem.addOperation('composeJson', {
   inLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
-    obj['text'] = ''
-    for (let item of obj[tag.sourceString]) {
-      if ( item.text) { obj['text'] += item.text}
+    if(tag.sourceString !== 'add'){
+      obj['text'] = ''
+      for (let item of obj[tag.sourceString]) {
+        if ( item.text) { obj['text'] += item.text}
+      }
     }
     if (attribs.sourceString != '') {
       obj['attributes'] = attribs.composeJson()
@@ -470,9 +472,11 @@ sem.addOperation('composeJson', {
   nestedInLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
-    obj['text'] = ''
-    for (let item of obj[tag.sourceString]) {
-      if ( item.text) { obj['text'] += item.text}
+    if(tag.sourceString !== 'add'){
+      obj['text'] = ''
+      for (let item of obj[tag.sourceString]) {
+        if ( item.text) { obj['text'] += item.text}
+      }
     }
     if (attribs.sourceString != '') {
       obj['attributes'] = attribs.composeJson()
