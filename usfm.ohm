@@ -47,12 +47,13 @@ usfmBible{
 
 			bookChapterLabel = clElement
 
-			chapter = chapterHeader metaScripture* verseElement+
+			chapter = chapterHeader mandatoryParaMetaScripture*  verseElement+
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
 			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement | paraElement
-            
+            nonParaMetaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement 
+            mandatoryParaMetaScripture = nonParaMetaScripture* paraElement metaScripture*
  			sectionHeader  = sectionElement sectionPostHeader* ipElement*
 			sectionPostHeader = srElement | rElement | dElement | mrElement
 			verseElement = newLine? backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)*

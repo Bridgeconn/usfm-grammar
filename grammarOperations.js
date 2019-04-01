@@ -91,6 +91,15 @@ sem.addOperation('composeJson', {
     return elmt.composeJson()
   },
 
+  nonParaMetaScripture: function (elmt){
+    return elmt.composeJson()
+  },
+
+  mandatoryParaMetaScripture: function(meta1, para, meta2){
+    let obj = meta1.composeJson() + para.composeJson() + meta2.composeJson()
+    return obj
+  },
+
   sectionHeader: function (s, postHead, ipElement) {
     let sectionHeaderVar = {}
     sectionHeaderVar['section'] = s.composeJson()
