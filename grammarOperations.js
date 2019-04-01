@@ -495,6 +495,18 @@ sem.addOperation('composeJson', {
     if (attribs.sourceString != '') {
       obj['attributes'] = attribs.composeJson()
     }
+    if (tag.sourceString === 'rb'){
+      let numberOfHanChars = text.sourceString.split(';').length - 1
+      for (let att of obj['attributes']){
+        if (att['name'] === 'gloss' || att['name'] === 'default attribute'){
+          let glossValue = att['value']
+          let glossValueCount = glossValue.split(':').length
+          if (glossValueCount> numberOfHanChars){
+            emitter.emit('warning', new Error('Count of gloss items is more than the enclosed characters in \\rb. '))
+          }
+        }
+      }
+    }
     return obj
   },
 
