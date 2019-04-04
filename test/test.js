@@ -556,14 +556,14 @@ describe('Test with paratext test cases', function () {
     assert.strictEqual(output, true)
   })
 
-  // it('VerseInWrongPlace', function () {
-  //   let usfmString = '\\id GEN\r\n' +
-  //   '\\c 1\r\n' +
-  //   '\\s some text\r\n' +
-  //   '\\v 1 something\r\n'
-  //   let output = parser.validate(usfmString)
-  //   assert.strictEqual(output, false)
-  // })
+  it('VerseInWrongPlace', function () {
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\v 1 something\r\n'
+    let output = parser.validate(usfmString)
+    assert.strictEqual(output, false)
+  })
 
   // it('MissingColumnInTable', function () {
   //   let usfmString = '\\id GEN\r\n' +

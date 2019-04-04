@@ -13,7 +13,8 @@ var sem = bib.createSemantics()
 
 console.log('Initializing grammar')
 
-warningMessages = ''
+var warningMessages = ''
+var milestoneFlag = []
 
 emitter.on('warning', function (err) {
   warningMessages += err.message ;
@@ -23,6 +24,10 @@ sem.addOperation('composeJson', {
   File: function (e) {
     warningMessages = ''
     let res = {'parseStructure': e.composeJson()}
+
+    if (milestoneFlag.length > 0){
+      emitter.emit('warning', new Error('Milestones not closed '+milestoneFlag+'. '));
+    }
 
     if ( warningMessages != '' ) {
       res['warnings'] = warningMessages
@@ -795,7 +800,28 @@ sem.addOperation('composeJson', {
     if (attribs.sourceString!='') {
       milestoneElement['attributes'] = attribs.composeJson()
     }
-    
+
+    if ( milestoneElement.hasOwnProperty('attributes') ) {
+      for (var array of milestoneElement['attributes']){
+        if ( !array.hasOwnProperty('name')) {
+          for (var item of array) {
+            if (item['name'] === 'sid') {
+              milestoneFlag.push(item['value'])
+            } else if ( item['name'] === 'eid' ) {
+              if (milestoneFlag.length === 0 ){
+                emitter.emit('warning', new Error('Opening not found for milestone '+item['value']+' before its closed. '));
+              } else {
+                let lastEntry = milestoneFlag.pop()
+                if (lastEntry !== item['value'] ) {
+                  emitter.emit('warning', new Error('Milestone '+ lastEntry+' not closed. '+item['value']+' found instead. '));
+                }
+              }
+            }
+          }
+            
+        } 
+      }
+    }
     return milestoneElement
   },
 
