@@ -54,7 +54,7 @@ exports.parse = function (str, resultType = 'all') {
       jsonOutput = newJsonOutput
     }
     if (warnings !== '') {
-      jsonOutput['##WARNING##'] = warnings
+      jsonOutput['messages'] = { 'warnings': warnings }
     }
     return jsonOutput
   } else {
