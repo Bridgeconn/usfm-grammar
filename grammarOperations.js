@@ -13,16 +13,16 @@ var sem = bib.createSemantics()
 
 console.log('Initializing grammar')
 
-var warningMessages = ''
+var warningMessages = []
 var milestoneFlag = []
 
 emitter.on('warning', function (err) {
-  warningMessages += err.message ;
+  warningMessages.push(err.message) ;
 });
 
 sem.addOperation('composeJson', {
   File: function (e) {
-    warningMessages = ''
+    warningMessages = []
     let res = {'parseStructure': e.composeJson()}
 
     if (milestoneFlag.length > 0){

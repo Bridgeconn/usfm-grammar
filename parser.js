@@ -1,6 +1,6 @@
 const match = require('./grammarOperations.js').match
 
-var warnings = ''
+var warnings = []
 
 const multiLinePattern = new RegExp('(\\n\\r | \\n | \\r)[\\n\\r]+', 'g')
 const multiSpacePattern = new RegExp('  +', 'g')
@@ -8,10 +8,10 @@ const bookCodePattern = new RegExp('\\id ([a-z][a-z][a-z])[ \\n\\r]', 'g')
 function normalize (str) {
   let newStr = ''
   if (multiLinePattern.exec(str)) {
-    warnings += 'Empty lines present. '
+    warnings.push('Empty lines present. ')
   }
   if (multiSpacePattern.exec(str)) {
-    warnings += 'Multiple spaces present. '
+    warnings.push('Multiple spaces present. ')
   }
   newStr = str.replace(multiLinePattern, '\n')
   newStr = newStr.replace(multiSpacePattern, ' ')
@@ -19,7 +19,7 @@ function normalize (str) {
   if (match) {
     let bookCode = match[1]
     newStr = newStr.replace(bookCode, bookCode.toUpperCase())
-    warnings += 'Book code is in lowercase. '
+    warnings.push('Book code is in lowercase. ')
   }
   return newStr
 }
@@ -27,14 +27,14 @@ function normalize (str) {
 exports.SCRIPTURE = 'clean'
 
 exports.parse = function (str, resultType = 'all') {
-  warnings = ''
+  warnings = []
   let inStr = normalize(str)
   let matchObj = match(inStr)
 
   if (!matchObj.hasOwnProperty('ERROR')) {
     let jsonOutput = matchObj['parseStructure']
     if (matchObj.warnings) {
-      warnings += matchObj['warnings']
+      warnings = warnings.concat(matchObj['warnings'])
       // console.log(warnings)
     }
     if (resultType === 'clean') {
