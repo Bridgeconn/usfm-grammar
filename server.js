@@ -90,8 +90,8 @@ http.createServer(function (req, res) {
         if (data === '') {
           data = '<center><h3>Text Empty!!!</h3></center>'
         } else {
-          // data = beautifyResultForHtml(parser.parse(data, parser.SCRIPTURE))
-          data = beautifyResultForHtml(parser.parse(data))
+          data = beautifyResultForHtml(parser.parse(data, parser.SCRIPTURE))
+          // data = beautifyResultForHtml(parser.parse(data))
         }
         res.write(data)
         res.end()

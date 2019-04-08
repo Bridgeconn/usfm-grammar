@@ -213,6 +213,70 @@ describe('Test with usfm files from the wild', function () {
     })
   })
 
+  it('Brenton file1', function () {
+    fs.readFile('test/test_files/09-RUTeng-Brenton.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Brenton file2', function () {
+    fs.readFile('test/test_files/23-SNGeng-Brenton.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Chinese file1', function () {
+    fs.readFile('test/test_files/18-ESTcmn-cu89s.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Chinese file2', function () {
+    fs.readFile('test/test_files/32-OBAcmn-cu89s.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Chinese file3', function () {
+    fs.readFile('test/test_files/94-3JNcmn-cu89s.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Revised Version file1', function () {
+    fs.readFile('test/test_files/19-JOBeng-rv.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Revised Version file2', function () {
+    fs.readFile('test/test_files/26-LAMeng-rv.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
+  it('Revised Version file3', function () {
+    fs.readFile('test/test_files/90-1PEeng-rv.usfm', 'utf-8', function (err, data) {
+      if (err) { throw err }
+      let output = parser.validate(data)
+      assert.strictEqual(output, true)
+    })
+  })
+
 })
 
 // describe('Test with paratext test cases', function () {
