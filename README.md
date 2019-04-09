@@ -15,7 +15,7 @@ To use it from your node application:
 
 ```
 var grammar = require('usfm-grammar)
-var jsonOutput = garmmar.parse(/**The USFM Text to be converted to JSON**/)
+var jsonOutput = grammar.parse(/**The USFM Text to be converted to JSON**/)
 var jsonCleanOutput = grammar.parse(/**The USFM Text to be converted to JSON**/,grammar.SCRIPTURE)
 var usfmValidity = grammar.validate(/**USFM Text to be checked**/)
 ```
