@@ -2,6 +2,9 @@ const fs = require('fs')
 const ohm = require('ohm-js')
 const join = require('path').join
 
+const Events = require('events');
+const emitter = new Events.EventEmitter();
+
 var contents = fs.readFileSync(join(__dirname, 'usfm.ohm'))
 
 var bib = ohm.grammars(contents).usfmBible
@@ -10,9 +13,26 @@ var sem = bib.createSemantics()
 
 console.log('Initializing grammar')
 
+var warningMessages = []
+var milestoneFlag = []
+
+emitter.on('warning', function (err) {
+  warningMessages.push(err.message) ;
+});
+
 sem.addOperation('composeJson', {
   File: function (e) {
-    let res = e.composeJson()
+    warningMessages = []
+    let res = {'parseStructure': e.composeJson()}
+
+    if (milestoneFlag.length > 0){
+      emitter.emit('warning', new Error('Milestones not closed '+milestoneFlag+'. '));
+    }
+
+    if ( warningMessages != '' ) {
+      res['warnings'] = warningMessages
+    }
+
     return res
   },
 
@@ -76,6 +96,15 @@ sem.addOperation('composeJson', {
     return elmt.composeJson()
   },
 
+  nonParaMetaScripture: function (elmt){
+    return elmt.composeJson()
+  },
+
+  mandatoryParaMetaScripture: function(meta1, para, meta2){
+    let obj = meta1.composeJson() + para.composeJson() + meta2.composeJson()
+    return obj
+  },
+
   sectionHeader: function (s, postHead, ipElement) {
     let sectionHeaderVar = {}
     sectionHeaderVar['section'] = s.composeJson()
@@ -95,6 +124,9 @@ sem.addOperation('composeJson', {
     verse['metadata'] = []
     if ( verseMeta.sourceString!='' ) { verse['metadata'].push(verseMeta.composeJson()) } 
     contents = verseContent.composeJson()
+    if ( verseContent.sourceString == '' ) {
+      emitter.emit('warning', new Error('Verse text is empty, at \\v '+verseNumber.sourceString+'. '));
+    }
     verse['text'] = ''
     for (let i=0; i<contents.length; i++) {
       if (contents[i]['text']) {
@@ -199,7 +231,11 @@ sem.addOperation('composeJson', {
   },
 
   idElement: function (_, _, _, bookCode, _, text) {
-    return {'book':bookCode.sourceString, 'details':text.sourceString}
+    var obj = {'book':bookCode.sourceString}
+    if ( text.sourceString != '') {
+      obj['details'] = text.sourceString
+    }
+    return obj
   },
 
   ideElement: function (_, _, _, _, text) {
@@ -418,38 +454,233 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  inLineCharElement: function(_, _, tag, _, text, _, _, _, _) {
+  nestedCharElement: function(element) {
+    return element.composeJson()
+  },
+
+  inLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
-    obj['text'] = ''
-    for (let item of obj[tag.sourceString]) {
-      if ( item.text) { obj['text'] += item.text}
+    if(tag.sourceString !== 'add'){
+      obj['text'] = ''
+      for (let item of obj[tag.sourceString]) {
+        if ( item.text) { obj['text'] += item.text}
+      }
+    }
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
     }
     
     return obj
   },
 
-  inLineCharAttributeElement: function(_, _, tag, _, text, attribs, _, _, _, _) {
+  nestedInLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'contents': text.composeJson(), 'Attributes':attribs.sourceString}
-    obj['text'] = obj[tag.sourceString]['content']
-    return obj
-  },
-    
-  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, _, _) {
-    let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson(), 'Attributes':attribs.sourceString}
-    obj['text'] = obj[tag.sourceString]['content']
+    obj[tag.sourceString] = text.composeJson()
+    if(tag.sourceString !== 'add'){
+      obj['text'] = ''
+      for (let item of obj[tag.sourceString]) {
+        if ( item.text) { obj['text'] += item.text}
+      }
+    }
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
     return obj
   },
 
-  figureElement: function(_, _, _, caption, attribs, _, _) {
+  inLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+    let obj = {}
+    let textobj = text.composeJson()
+    obj[tag.sourceString]= {'contents': textobj}
+    obj['text'] = ''
+    for (let item of textobj){
+      if ( item.text) { obj['text'] += item.text}
+    }
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
+    if (tag.sourceString === 'rb'){
+      let numberOfHanChars = text.sourceString.split(';').length - 1
+      for (let att of obj['attributes']){
+        if (att['name'] === 'gloss' || att['name'] === 'default attribute'){
+          let glossValue = att['value']
+          let glossValueCount = glossValue.split(':').length
+          if (glossValueCount> numberOfHanChars){
+            emitter.emit('warning', new Error('Count of gloss items is more than the enclosed characters in \\rb. '))
+          }
+        }
+      }
+    }
+    return obj
+  },
+
+  nestedInLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+    let obj = {}
+    let textobj = text.composeJson()
+    obj[tag.sourceString]= {'contents': textobj}
+    obj['text'] = ''
+    for (let item of textobj){
+      if ( item.text) { obj['text'] += item.text}
+    }
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
+    return obj
+  },
+    
+  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
+    let obj = {}
+    obj[tag.sourceString]= {'content': text.composeJson()}
+    obj['text'] = obj[tag.sourceString]['content']
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
+    return obj
+  },
+
+  nestedInLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
+    let obj = {}
+    obj[tag.sourceString]= {'content': text.composeJson()}
+    obj['text'] = obj[tag.sourceString]['content']
+    if (attribs.sourceString != '') {
+      obj['attributes'] = attribs.composeJson()
+    }
+    return obj
+  },
+
+  customAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  wAttribute: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  rbAttribute: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  figAttribute: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  attributesInCrossref: function (_, _, elmnt) {
+    return elmnt.composeJson()
+  },
+
+  milestoneAttribute: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  msAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  lemmaAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  strongAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  scrlocAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  glossAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  linkAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  altAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  srcAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  sizeAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  locAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  copyAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  refAttribute: function (name,_,value,_) {
+    let attribObj = {}
+    attribObj['name'] = name.sourceString
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  defaultAttribute: function (value) {
+    let attribObj = {}
+    attribObj['name'] = 'default attribute'
+    attribObj['value'] = value.sourceString
+    return attribObj
+  },
+
+  figureElement: function(_, _, _, caption, _, _, attribs, _, _) {
+    if(caption.sourceString == '' & attribs.sourceString == ''){
+      emitter.emit('warning', new Error('Figure marker is empty. '))
+    }
     return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
   },
 
   table: function(header, row) {
     let table = {'table':{}}
-    if (header.sourceString!='') { table['table']['header'] = header.composeJson()[0]}
+    let columnCount = 0
+    if (header.sourceString!='') { 
+      table['table']['header'] = header.composeJson()[0]
+      columnCount = table.table.header.length
+    }
     table['table']['rows'] = row.composeJson()
     table['text'] = ''
     for (let item of table.table.header ) {
@@ -459,6 +690,14 @@ sem.addOperation('composeJson', {
     table.text += '\n'
 
     for (let row of table.table.rows) {
+      if (columnCount == 0) {
+        columnCount = row.length
+      }
+      else {
+        if (row.length != columnCount) {
+          emitter.emit('warning',new Error('In-consistent column number in table rows. '))
+        }
+      }
       for (let item of row) {
         if (item.tc) { table.text += item.tc +' |  '}
         if (item.tcr) { table.text += item.tcr +' |  '}
@@ -544,11 +783,45 @@ sem.addOperation('composeJson', {
     return text
   },
 
-  milestoneElement: function(_, _, ms, num, s_e, _, attribs, _, _, _) {
+  milestoneElement: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  milestoneStandaloneElement: function (_, _, ms, closing) {
+    milestoneElement = {}
+    milestoneElement['milestone'] = ms.sourceString
+    return milestoneElement
+  },
+
+  milestonePairElement: function(_, _, ms, s_e, _, _, _, attribs, closing) {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['start/end'] = s_e.sourceString
-    milestoneElement['attributes'] = attribs.sourceString
+    if (attribs.sourceString!='') {
+      milestoneElement['attributes'] = attribs.composeJson()
+    }
+
+    if ( milestoneElement.hasOwnProperty('attributes') ) {
+      for (var array of milestoneElement['attributes']){
+        if ( !array.hasOwnProperty('name')) {
+          for (var item of array) {
+            if (item['name'] === 'sid') {
+              milestoneFlag.push(item['value'])
+            } else if ( item['name'] === 'eid' ) {
+              if (milestoneFlag.length === 0 ){
+                emitter.emit('warning', new Error('Opening not found for milestone '+item['value']+' before its closed. '));
+              } else {
+                let lastEntry = milestoneFlag.pop()
+                if (lastEntry !== item['value'] ) {
+                  emitter.emit('warning', new Error('Milestone '+ lastEntry+' not closed. '+item['value']+' found instead. '));
+                }
+              }
+            }
+          }
+            
+        } 
+      }
+    }
     return milestoneElement
   },
 
@@ -567,11 +840,12 @@ sem.addOperation('composeJson', {
 })
 
 exports.match = function (str) {
-  try {
     var matchObj = bib.match(str)
-    let adaptor = sem(matchObj)
-    return adaptor.composeJson()
-  } catch (err) {
-    return matchObj
-  }
+    if (matchObj.succeeded()) {
+      let adaptor = sem(matchObj)
+      return adaptor.composeJson()
+    }
+    else {
+      return {'ERROR':  matchObj.message }
+    }
 }

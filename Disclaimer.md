@@ -59,11 +59,40 @@ The USFM document structure is validated by the grammar. These are the basic doc
 ## Some Design Limitations
 
 * We have not considered USFM files with peripherals (<https://ubsicap.github.io/usfm/peripherals/index.html>)
-* We are not validating/parsing the internal contents of footnotes, cross-references and milestones. But the markers are being identified and contents extracted, without checking for their correctness
+* We are not validating/parsing the internal contents of markers or values provided for attributes. For example, verse numbers need not be continuous, column numbers in a table row need not be in accordance with other rows, or the format of reference need not be correct in an _\\ior_ marker to pass our validation. But the markers are being identified, their syntax verified and contents extracted.
 * The markers are treated as either mandatory or optional. The valid number of occurances is not considered
- eg: _\\usfm_ should ideally occur only once, if present, and similarly _\\sts_ can come multtple times. As per the current implemetation, the optional markers can occur any number of times.
+ eg: _\\usfm_ should ideally occur only once, if present, and similarly _\\sts_ can come multiple times. As per the current implemetation, the optional markers can occur any number of times.
 * We have assumed certain structural constraints in USFM, which were not explicitly mentioned in the USFM spec. For example, the markers _\\ca_, _\\cl_, _\\cp_ and _\\cd_ occurs immediately below the _\\c_ marker, before the verse blocks start.
-* Documentation says, _\\imt1, \\imt2, \\imt3_(similarly _imte, ili, ie, iq, mt_)  are all parts of a major title. So we are combining them ignoring the numerical weightage factor/difference. 
+* Documentation says, _\\imt1, \\imt2, \\imt3_(similarly _imte, ili, ie, iq, mt_)  are all parts of a major title. So we are combining them ignoring the numerical weightage factor/difference, in the output JSON. 
 * As per USFM spec, there is no limit for possible numbers(not limited to 1,2,and 3) in numbered markers...though the USX _valid style types_ lists them as specifically numbered(1 & 2 or 1,2 & 3). We are following _no limit_ rules.(except for _\\toc & \\toca_)
-* The valid attribute names for word-level markers are not checked. Any attribute name with valid syntax would be accepted
-* The paragraph markers(showing indentation) that appear within verses,  should ideally be attached to the text that follows it. But we are attaching it to the verse marker immediatedly above it.
+* We are checking for only the BCV structue in a document. Hence all markers like _\\p_, _\\q_, _\\nb_ etc that specifies an indentation, is considered to serve only the purpose of showing indentation and are treated like empty markers. We are not parsing the text contents according to these markers. The text is assumed to belong only to the _\\v_ marker of _\\ip_ marker above it.
+
+## Rules made liberal, to accomodate real world sample files
+
+* In _\\id_, the longer heading following the bookcode is made optional as the IRV files were found to not have them
+* In _\\v_, after the verse number a space or line is accepted now, though the spec specifies a space. The UGNT files were having a newline there.
+* The _\\toc1_  marker in UGNT files were found to have no content. Hence, text content has been made optional for toc1, toc2, toc3, toca1, toca2,and toca3
+* _\\d_ is given same status as _\\s_, so it can occur above, below or without _\\s_. As files from eBible.org were found to have such cases.
+* Multiple spaces, multiple line breaks, book code in lower case, trailing space at the end of line, are all normalized before passing the usfm text to the grammar. Warnings would be shown for the same.
+
+## Corrections made while using the test cases from Paratext
+
+* _\\v_ need not be on a new line
+
+* make sure the nested char elements in cross-refs, footnotes and other char elements have + sign indicating nesting
+
+* check for correct attribute names in _\\fig_, and other markers
+
+* accept custom attributes, for markers like _\\em_ which doesn't have attributes as per spec
+
+* link attributes and custom attributes are accepted within all character/word level markers
+
+* any attribute name starting with a _"link-"_  is accepted as a valid link attribute
+
+* _\\p_ or a similar paragraph marker is mandatory at the start of chapter
+
+* _\\v_ and _\\fig_ markers can be empty. It will be succesfully parsed, but with warnings.
+
+* check the value in _\\rb_ marker is in accordance with the value in its gloss attribute. Generate warning, if not.
+
+* check if all the rows in a table has equal number of columns. Generate a warning, if not.
