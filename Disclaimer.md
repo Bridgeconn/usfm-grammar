@@ -96,3 +96,162 @@ The USFM document structure is validated by the grammar. These are the basic doc
 * check the value in _\\rb_ marker is in accordance with the value in its gloss attribute. Generate warning, if not.
 
 * check if all the rows in a table has equal number of columns. Generate a warning, if not.
+
+## ParaTExt test cases which doesnot pass, in our grammar
+
+* NoErrorsShort
+
+```
+let usfmString = '\\id GEN\r\n'
+```
+
+We make _\\c_,_\\v_ and _\\p_ mandatory
+
+* CharStyleClosedAndReopened
+
+```
+let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 \\em word\\em* \\em wordtwo\\em* word3 \\em word4 \\em* \\v 2 \\em word5 \\em* \\v 3 \\w glossaryone\\w* \\w glossarytwo\\w*r\n'
+```
+closing _\\em_ and re-opening it immediately is accepted by our grammar
+
+* CharStyleCrossesFootnote
+
+```
+let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p \\v 1 \\em word \\f + \\fr 1.1 \\ft stuff \\f* more text\\em*r\n'
+```
+We allow a footnote to come inside a character marker. Paratext test cases allow cross-refs but not footnotes
+
+* MarkersMissingSpace
+
+```
+let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\p\r\n' +
+    '\\v 1 should have error\\p\\nd testing \\nd*\r\n' +
+    '\\c 2\r\n' +
+    '\\p\r\n' +
+    '\\v 2 \\em end/beg markers \\em*\\nd with no space are OK\\nd*\r\n'
+```
+The space after the character marker clsoing is not mandatory as per our grammar
+
+* MissingColumnInTable
+
+```
+let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text\r\n' +
+    '\\tr \\th1 header1 \\th3 header3\r\n' +
+    '\\tr \\tcr2 cell2 \\tcr3 cell3\r\n'
+```
+The number of columns in each row is checked and if missmtach is found, a warning will be genearted. But it would be successfully parsed by our system.
+
+* InvalidRubyMarkup
+
+```
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text\r\n\\rb BBB|g:g\\rb* \r\n' +
+    '\\v 1 verse text\r\n\\rb BB|g:g:g\\rb* \r\n' +
+    '\\v 1 verse text\r\n\\rb 僕使御|g:g:g:g\\rb* \r\n' +
+    '\\v 1 verse text\r\n\\rb BB\\rb* \r\n' +
+    '\\v 1 verse text\r\n\\rb BB|\\rb* \r\n' 
+```
+The number of han characters enclosed by _\\rb_ and the number of gloss values is corss-checked, and a warning would be generated if not matched. But the file would be successfully parsed.
+
+* InvalidUsfm20Usage
+
+```
+let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \\rb BB|g:g\\rb* \r\n' +
+    '\\v 1 verse text \\qt-s |speaker\\* quoted text \\qt-e\\* \r\n' +
+    '\\v 1 verse text \\w word|lemma=\"lemma\" strong=\"G100\"\\w* \r\n' +
+    '\\v 1 verse text \\fig caption|alt=\"Description\" src=\"image.jpg\" size =\"large\" loc =\"co\" copy =\"copyright\" ref=\"1.1\"\\fig* \r\n' +
+    '\\v 1 verse text \\fig caption|alt=\"Description\" src=\"image.jpg\" size =\"large\" loc =\"co\" copy =\"copyright\" ref=\"1.1\" link-href=\"value\"\\fig* \r\n' +
+    ''
+```
+ We do not support usfm 2.
+
+ * MissingRequiredAttributesReported
+ ```
+     let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \\xyz text\\xyz*\r\n'    
+```
+Additional contraint added to  a dummy stylesheet in paratext
+
+* InvalidMilestone_MissingEnd
+
+```
+let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 \\qt-s |Speaker\\*verse text \r\n' +
+    '\\v 2 verse \r\n' +
+    '\\v 1 \\qt-s |Speaker\\*verse text \r\n' +
+    '\\v 2 verse \\qt-s |Speaker2\\*text\\qt-e\\*\r\n'
+```
+Parses successfully. But generates a warning.
+
+* InvalidMilestone_IdsDontMatch
+
+```
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 \\qt-s |sid=\"qt1\" who=\"Speaker\"\\*verse text \r\n' +
+    '\\v 2 verse text\\qt-e |eid=\"qt2\"\\*\r\n'
+```
+Parses successfully. But generates a warning.
+
+* InvalidMilestone_EndWithoutStart
+
+```
+    let usfmString = '\\id GEN\r\n' +
+    '\\c 1\r\n' +
+    '\\s some text\r\n' +
+    '\\p\r\n' +
+    '\\v 1 verse text \r\n' +
+    '\\v 2 verse text\\qt-e |eid=\"qt2\"\\*\r\n'
+```
+Parses successfully. But generates a warning.
+
+* GlossaryCitationFormEndsInSpace
+
+* GlossaryCitationFormEndsInPunctuation
+
+* GlossaryCitationFormContainsNonWordformingPunctuation
+
+* WordlistMarkerMissingFromGlossaryCitationForms
+
+* WordlistMarkerTextEndsInSpaceWithGlossary
+
+* WordlistMarkerTextEndsInSpaceWithoutGlossary
+
+* WordlistMarkerTextEndsInSpaceAndMissingFromGlossary
+
+* WordlistMarkerTextEndsInPunctuation
+
+* WordlistMarkerKeywordEndsInSpace
+
+* WordlistMarkerKeywordEndsInPunctuation
+
+* WordlistMarkerTextContainsNonWordformingPunctuation
+
+* WordlistMarkerKeywordContainsNonWordformingPunctuation
+
+The publisher restrictions enforced on _\\k_ and _\\w_ are not implemented in our grammar. All these cases listed as error in Paratext test cases are accepted in our system.

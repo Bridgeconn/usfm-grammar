@@ -465,10 +465,9 @@ great day.
 ## Test with Paratext test cases
 
 Out of the *77 test cases* which were copied from the test set of usfm validator in paratext,
-*50 are found to be passing*, for our system
+*53 are found to be passing*, for our system
 
 *23 error* cases listed by paratext, are being *accepted* by our system. 
-Majority of these(~15) look like additional constraints added by paratext relating to spaces, punctuations etc. Some are because we do not validate the contents of markers or values of attributes.
+Majority of these(~15) look like additional constraints added by paratext relating to spaces, punctuations etc. Some are because we do not validate the contents of markers or values of attributes. Warnings will be generated for those.
 
-*4* test cases which *paratext accepts are being rejected* by our system. All these are having empty contents(in v, fig etc).
-There are a couple of constraints we have, which the paratext doesn't seem to force
+*1* test case which *paratext accepts are being rejected* by our system. This is a file with nothing but an _\\id_ marker. Our grammar makes _\\v_, _\\c_ and _\\p_ mandatory
