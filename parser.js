@@ -14,12 +14,12 @@ function normalize (str) {
   if (multiSpacePattern.exec(str)) {
     warnings.push('Multiple spaces present. ')
   }
-  if (trailingSpacePattern.exec(str)) {
-    warnings.push('Trailing spaces present at line end. ')
-  }
+  // if (trailingSpacePattern.exec(str)) {
+  //   warnings.push('Trailing spaces present at line end. ')
+  // }
   newStr = str.replace(multiLinePattern, '\n')
   newStr = newStr.replace(multiSpacePattern, ' ')
-  newStr = newStr.replace(trailingSpacePattern, '\n')
+  // newStr = newStr.replace(trailingSpacePattern, '\n')
   let match = bookCodePattern.exec(newStr)
   if (match) {
     let bookCode = match[1]
