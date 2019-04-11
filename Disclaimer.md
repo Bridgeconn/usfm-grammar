@@ -97,7 +97,7 @@ The USFM document structure is validated by the grammar. These are the basic doc
 
 * check if all the rows in a table has equal number of columns. Generate a warning, if not.
 
-## ParaTExt test cases which doesnot pass, in our grammar
+## ParaTExt test cases which donot pass, in our grammar
 
 * NoErrorsShort
 
