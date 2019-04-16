@@ -188,7 +188,7 @@ sem.addOperation('composeJson', {
     return {'qa': text.sourceString}
   },
 
-  cElement: function (_, _, _, _, num) {
+  cElement: function (_, _, _, _, num, _) {
     return num.sourceString
   },
 

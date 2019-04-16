@@ -87,7 +87,7 @@ usfmBible{
 
 			qaElement = newLine backSlash "qa" spaceChar text
 
-			cElement = newLine backSlash "c" spaceChar number 
+			cElement = newLine backSlash "c" spaceChar number spaceChar*
 			caElement = newLine backSlash "ca" spaceChar number backSlash "ca*"
 			cdElement = newLine backSlash "cd" spaceChar ((chapterContentTextContent | notesElement | milestoneElement)+ | notesElement)+
 			clElement = newLine backSlash "cl"  spaceChar text
