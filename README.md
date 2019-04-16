@@ -27,7 +27,8 @@ The `grammar.validate()` method returns a Boolean depending on whether the input
 Clone this repo
 `git clone https://github.com/Bridgeconn/usfm-grammar.git`
 
-From the project directory, start the server, as
+`npm install`
+
 `node server.js` or `npm start`
 
 and from browser, access
