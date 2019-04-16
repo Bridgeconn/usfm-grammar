@@ -1,6 +1,6 @@
 # USFM Grammar
 
-An elegant [USFM](https://github.com/ubsicap/usfm) parser (or validator) that uses a [parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) to model USFM. The grammar is written using [ohm](https://ohmlang.github.io/). **Currently USFM 3.0 is supported**. 
+An elegant [USFM](https://github.com/ubsicap/usfm) parser (or validator) that uses a [parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) to model USFM. The grammar is written using [ohm](https://ohmlang.github.io/). **USFM 3.0 is supported**. 
 
 The parsed USFM is an intuitive and easy to manipulate JSON structure that allows for painless extraction of scripture and other content from the markup.
 
@@ -19,9 +19,9 @@ var jsonCleanOutput = grammar.parse(/**The USFM Text to be converted to JSON**/,
 var usfmValidity = grammar.validate(/**USFM Text to be checked**/)
 ```
 
-The `grammar.parse()` method returns a json structure for the USFM text contents, if it is a valid usfm file.
-The `grammar.parse()` method can take an optional second argument, `grammar.SCRIPTURE`. If this is used, the returned json will contain only the most relevant scripture content, excluding all additional USFM contents
-The `grammar.validate()` method returns a true/false, depending on whether the input usfm text's syntax is valid or not.
+The `grammar.parse()` method returns a JSON structure for the passed-in USFM string, if it is a valid usfm file.
+The `grammar.parse()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
+The `grammar.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not.
 
 ## Development
 Clone this repo
