@@ -101,7 +101,7 @@ sem.addOperation('composeJson', {
   },
 
   mandatoryParaMetaScripture: function(meta1, para, meta2){
-    let obj = meta1.composeJson() + para.composeJson() + meta2.composeJson()
+    let obj = meta1.composeJson().concat(para.composeJson()).concat(meta2.composeJson())
     return obj
   },
 
