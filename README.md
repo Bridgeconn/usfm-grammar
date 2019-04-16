@@ -45,7 +45,7 @@ The `grammar.validate()` method returns a Boolean depending on whether the input
 ### jsonCleanOutput, when using the `SCRIPTURE` argument
 
 ```
-{"book":"HAB",
+{"book":"hab",
  "chapters":[
      {"chapterTitle":"3",
       "verses":[     
