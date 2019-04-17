@@ -81,7 +81,24 @@ sem.addOperation('composeJson', {
   chapter: function (cHeader, metaScripture, verse) {
     let cElmt = {}
     cElmt['header'] = cHeader.composeJson()
-    if (metaScripture.sourceString != '') { cElmt['metadata'] = metaScripture.composeJson() }
+    if (metaScripture.sourceString != '') { 
+      let metaObj = metaScripture.composeJson()
+      let newMetaObj = []
+      let styleObj = {'styling' : []}
+      for (let item of metaObj) {
+        if (item.hasOwnProperty('styling')) {
+          styleObj.styling.push(item.styling)
+        }
+        else {
+          newMetaObj.push(item)
+        }
+      }
+      if (styleObj.styling.length > 0 ){
+        newMetaObj.push(styleObj)
+      }
+    
+      cElmt['metadata'] =  newMetaObj
+    }
     cElmt['verses'] = verse.composeJson()
     return cElmt
   },
@@ -93,7 +110,8 @@ sem.addOperation('composeJson', {
   },
 
   metaScripture: function (elmt){
-    return elmt.composeJson()
+    let obj = elmt.composeJson()
+    return obj
   },
 
   nonParaMetaScripture: function (elmt){
@@ -101,7 +119,7 @@ sem.addOperation('composeJson', {
   },
 
   mandatoryParaMetaScripture: function(meta1, para, meta2){
-    let obj = meta1.composeJson() + para.composeJson() + meta2.composeJson()
+    let obj = meta1.composeJson().concat(para.composeJson()).concat(meta2.composeJson())
     return obj
   },
 
@@ -128,6 +146,7 @@ sem.addOperation('composeJson', {
       emitter.emit('warning', new Error('Verse text is empty, at \\v '+verseNumber.sourceString+'. '));
     }
     verse['text'] = ''
+    let styleObj = {'styling' : []}
     for (let i=0; i<contents.length; i++) {
       if (contents[i]['text']) {
         verse['text'] += contents[i]['text'] + ' '
@@ -143,8 +162,15 @@ sem.addOperation('composeJson', {
       if (contents[i] === {} ) { 
         only_text = true }
       if (!only_text ) {
-        verse['metadata'].push( contents[i])
+        if (contents[i].hasOwnProperty('styling')){
+          styleObj.styling.push(contents[i].styling)
+        } else {
+          verse['metadata'].push( contents[i])
+        }
       }
+    }
+    if (styleObj.styling.length > 0){
+      verse.metadata.push(styleObj)
     }
     if (verse['metadata'].length == 0) { delete verse.metadata}
     return verse
