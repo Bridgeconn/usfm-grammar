@@ -211,7 +211,8 @@
     \mt2 The Gospel according to
     \mt1 MARK
     \is Introduction
-    \ip \bk The Gospel according to Mark\bk* begins with the statement...
+    \ip \bk The Gospel according to Mark\bk* 
+    begins with the statement...
     \c 1
     \p
     \v 1 the first verse
@@ -222,7 +223,12 @@
       > 3 | \usfm 3.0
             ^
         4 | \h Mark
-      Expected "c", "cl", "esb", "rem", "is", "iq", "ip", "ipr", "ipq", "ipi", "iot", "io", "imte", "imt", "imq", "imi", "im", "ili", "iex", "ie", "ib", "mte", "mt", "sts", "toca3", "toca2", "toca1", "toc3", "toc2", "toc1", "ide", or "h"
+      Expected "c", "cl", "esb", "rem", "is", 
+      "iq", "ip", "ipr", "ipq", "ipi", "iot", 
+      "io", "imte", "imt", "imq", "imi", "im", 
+      "ili", "iex", "ie", "ib", "mte", "mt", 
+      "sts", "toca3", "toca2", "toca1", "toc3", 
+      "toc2", "toc1", "ide", or "h"
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -240,7 +246,8 @@
           {"tag":"is",
             "content":"Introduction"},
           {"tag":"ip",
-            "content":"\\bk The Gospel according to Mark\\bk* begins with the statement..."}
+            "content":"\\bk The Gospel according 
+            to Mark\\bk* begins with the statement..."}
           ],
         "chapters":{"1":{"1":{"verseObjects":[
               {"type":"text",
@@ -265,7 +272,10 @@
     \p
     \v 1 the first verse
     \v 2 the second verse
-    \v 3 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \ft Some manuscripts do not have \fq the Son of God.\f*
+    \v 3 This is the Good News about Jesus 
+    Christ, the Son of God. \f + \fr 1.1: 
+    \ft Some manuscripts do not have \fq 
+    the Son of God.\f*
     </pre></td><td><pre>
     {"metadata":{"id":{"book":"MAT"}},
       "chapters":[
@@ -282,9 +292,12 @@
               "text":"the second verse "},
             {"number":"3",
               "metadata":[
-              {"footnote":"+ \\fr 1.1: \\ft Some manuscripts do not have \\fq the Son of God."}
+              {"footnote":"+ \\fr 1.1: \\ft 
+              Some manuscripts do not have 
+              \\fq the Son of God."}
                 ],
-              "text":"This is the Good News about Jesus Christ,
+              "text":"This is the Good 
+              News about Jesus Christ,
               the Son of God. "}
             ]}
         ],
@@ -306,11 +319,14 @@
                 ]},
             "3":{"verseObjects":[
               {"type":"text",
-                  "text":"This is the Good News about Jesus Christ,
+                  "text":"This is the Good News 
+                  about Jesus Christ,
                   the Son of God. "},
                 {"tag":"f",
                   "type":"footnote",
-                  "content":"+ \\fr 1.1: \\ft Some manuscripts do not have \\fq the Son of God.",
+                  "content":"+ \\fr 1.1: \\ft 
+                  Some manuscripts do not have 
+                  \\fq the Son of God.",
                   "endTag":"f*",
                   "nextChar":"\n"}
                 ]},
@@ -329,7 +345,9 @@
     \p
     \v 1 the first verse
     \v 2 the second verse
-    \v 3 \x - \xo 2.23: \xt Mrk 1.24; Luk 2.39; Jhn 1.45.\x* and made his home in a town named Nazareth.
+    \v 3 \x - \xo 2.23: \xt Mrk 1.24; 
+    Luk 2.39; Jhn 1.45.\x* and made his 
+    home in a town named Nazareth.
     </pre></td><td><pre>
       {"metadata":{"id":{"book":"MAT"}},
         "chapters":[
@@ -346,9 +364,12 @@
                 "text":"the second verse "},
               {"number":"3",
                 "metadata":[
-                {"cross-ref":"- \\xo 2.23: \\xt Mrk 1.24; Luk 2.39; Jhn 1.45."}
+                {"cross-ref":"- \\xo 2.23: 
+                \\xt Mrk 1.24; Luk 2.39; 
+                Jhn 1.45."}
                   ],
-                "text":"and made his home in a town named Nazareth. "}
+                "text":"and made his home 
+                in a town named Nazareth. "}
               ]}
           ],
         "messages":{"warnings":[
@@ -369,11 +390,13 @@
                 ]},
             "3":{"verseObjects":[
               {"tag":"x",
-                  "content":"- \\xo 2.23: \\xt Mrk 1.24; Luk 2.39; Jhn 1.45.",
+                  "content":"- \\xo 2.23: \\xt 
+                  Mrk 1.24; Luk 2.39; Jhn 1.45.",
                   "endTag":"x*",
                   "nextChar":" "},
                 {"type":"text",
-                  "text":"and made his home in a town named Nazareth."}
+                  "text":"and made his home in 
+                  a town named Nazareth."}
                 ]},
             "front":{"verseObjects":[
               {"tag":"p",
@@ -387,29 +410,44 @@
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id JHN
     \c 1
-    \s1 The Preaching of John the Baptist
-    \r (Matthew 3.1-12; Luke 3.1-18; John 1.19-28)
+    \s1 The Preaching of John the 
+    Baptist
+    \r (Matthew 3.1-12; Luke 3.1-18; 
+    John 1.19-28)
     \p
-    \v 1 This is the Good News about Jesus Christ, the Son of God.
-    \v 2 It began as the prophet Isaiah had written:
-    \q1 “God said, ‘I will send my messenger ahead of you
+    \v 1 This is the Good News about 
+    Jesus Christ, the Son of God.
+    \v 2 It began as the prophet 
+    Isaiah had written:
+    \q1 “God said, ‘I will send my 
+    messenger ahead of you
     \q2 to open the way for you.’
     \q1
-    \v 3 Someone is shouting in the desert,
-    \q2 ‘Get the road ready for the Lord;
-    \q2 make a straight path for him to travel!’”
+    \v 3 Someone is shouting in 
+    the desert,
+    \q2 ‘Get the road ready for 
+    the Lord;
+    \q2 make a straight path for 
+    him to travel!’”
     \p
-    \v 4 So John appeared in the desert, baptizing and preaching. “Turn away from your sins and be baptized,” he told the people, “and God will forgive your sins.”
+    \v 4 So John appeared in the 
+    desert, baptizing and preaching. 
+    “Turn away from your sins and 
+    be baptized,” he told the people, 
+    “and God will forgive your sins.”
     </pre></td><td><pre>
     {"metadata":{"id":{"book":"JHN"}},
       "chapters":[
       {"header":{"title":"1"},
           "metadata":[
           [
-            {"section":"The Preaching of John the Baptist",
+            {"section":"The Preaching 
+            of John the Baptist",
                 "sectionPostheader":[
                 {"r":[
-                    {"text":"(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)"}
+                    {"text":"(Matthew 
+                    3.1-12; Luke 3.1-18; 
+                    John 1.19-28)"}
                       ]}
                   ]},
               {"styling":"p"}
@@ -417,7 +455,8 @@
             ],
           "verses":[
           {"number":"1",
-              "text":"This is the Good News about Jesus Christ,
+              "text":"This is the Good 
+              News about Jesus Christ,
               the Son of God. "},
             {"number":"2",
               "metadata":[
@@ -427,8 +466,12 @@
                     "q1"
                     ]}
                 ],
-              "text":"It began as the prophet Isaiah had written: �God said,
-              �I will send my messenger ahead of you to open the way for you.� "},
+              "text":"It began as the 
+              prophet Isaiah had written: 
+              �God said,
+              �I will send my messenger 
+              ahead of you to open the 
+              way for you.� "},
             {"number":"3",
               "metadata":[
               {"styling":[
@@ -437,13 +480,20 @@
                     "p"
                     ]}
                 ],
-              "text":"Someone is shouting in the desert,
-              �Get the road ready for the Lord; make a straight path for him to travel!�� "},
+              "text":"Someone is shouting 
+              in the desert,
+              �Get the road ready for 
+              the Lord; make a straight 
+              path for him to travel!�� "},
             {"number":"4",
-              "text":"So John appeared in the desert,
-              baptizing and preaching. �Turn away from your sins and be baptized,
+              "text":"So John appeared 
+              in the desert,
+              baptizing and preaching. 
+              �Turn away from your sins 
+              and be baptized,
               � he told the people,
-              �and God will forgive your sins.� "}
+              �and God will forgive 
+              your sins.� "}
             ]}
         ],
       "messages":{"warnings":[
@@ -456,50 +506,63 @@
           ],
         "chapters":{"1":{"1":{"verseObjects":[
               {"type":"text",
-                  "text":"This is the Good News about Jesus Christ,
+                  "text":"This is the Good 
+                  News about Jesus Christ,
                   the Son of God.\n"}
                 ]},
             "2":{"verseObjects":[
               {"type":"text",
-                  "text":"It began as the prophet Isaiah had written:\n"},
+                  "text":"It began as the 
+                  prophet Isaiah had written:\n"},
                 {"tag":"q1",
                   "type":"quote",
                   "text":"�God said,
-                  �I will send my messenger ahead of you\n"},
+                  �I will send my messenger 
+                  ahead of you\n"},
                 {"tag":"q2",
                   "type":"quote",
-                  "text":"to open the way for you.�\n"},
+                  "text":"to open the way for 
+                  you.�\n"},
                 {"tag":"q1",
                   "nextChar":"\n",
                   "type":"quote"}
                 ]},
             "3":{"verseObjects":[
               {"type":"text",
-                  "text":"Someone is shouting in the desert,
+                  "text":"Someone is shouting 
+                  in the desert,
                   \n"},
                 {"tag":"q2",
                   "type":"quote",
-                  "text":"�Get the road ready for the Lord;\n"},
+                  "text":"�Get the road ready 
+                  for the Lord;\n"},
                 {"tag":"q2",
                   "type":"quote",
-                  "text":"make a straight path for him to travel!��\n"},
+                  "text":"make a straight path 
+                  for him to travel!��\n"},
                 {"tag":"p",
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]},
             "4":{"verseObjects":[
               {"type":"text",
-                  "text":"So John appeared in the desert,
-                  baptizing and preaching. �Turn away from your sins and be baptized,
+                  "text":"So John appeared in 
+                  the desert,
+                  baptizing and preaching. 
+                  �Turn away from your sins 
+                  and be baptized,
                   � he told the people,
-                  �and God will forgive your sins.�"}
+                  �and God will forgive your 
+                  sins.�"}
                 ]},
             "front":{"verseObjects":[
               {"tag":"s1",
                   "type":"section",
-                  "content":"The Preaching of John the Baptist\n"},
+                  "content":"The Preaching of 
+                  John the Baptist\n"},
                 {"tag":"r",
-                  "content":"(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)\n"},
+                  "content":"(Matthew 3.1-12; 
+                  Luke 3.1-18; John 1.19-28)\n"},
                 {"tag":"p",
                   "nextChar":"\n",
                   "type":"paragraph"}
@@ -514,7 +577,10 @@
     \p
     \v 1 the first verse
     \v 2 the second verse
-    \v 15 Tell the Israelites that I, the \nd Lord\nd*, the God of their ancestors, the God of Abraham, Isaac, and Jacob,
+    \v 15 Tell the Israelites that I, 
+    the \nd Lord\nd*, the God of their 
+    ancestors, the God of Abraham, Isaac, 
+    and Jacob,
     </pre></td><td><pre>
     {"metadata":{"id":{"book":"GEN"}},
       "chapters":[
@@ -660,7 +726,13 @@
       > 2 | \p
             ^
         3 | \v 1 the first verse
-      Expected "c", "cl", "esb", "rem", "is", "iq", "ip", "ipr", "ipq", "ipi", "iot", "io", "imte", "imt", "imq", "imi", "im", "ili", "iex", "ie", "ib", "mte", "mt", "sts", "toca3", "toca2", "toca1", "toc3", "toc2", "toc1", "ide", "h", or "usfm"
+      Expected "c", "cl", "esb", "rem", 
+      "is", "iq", "ip", "ipr", "ipq", "ipi", 
+      "iot", "io", "imte", "imt", "imq", 
+      "imi", "im", "ili", "iex", "ie", "ib", 
+      "mte", "mt", "sts", "toca3", "toca2", 
+      "toca1", "toc3", "toc2", "toc1", "ide", 
+      "h", or "usfm"
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -684,7 +756,29 @@
       > 1 | \id XXX
                 ^
         2 | \c 1
-      Expected "NDX", "TDX", "GLO", "CNC", "INT", "OTH", "BAK", "FRT", "LAO", "4BA", "REP", "3MQ", "2MQ", "1MQ", "ENO", "JUB", "LBA", "2BA", "PS3", "DAG", "6EZ", "5EZ", "EZA", "PSS", "ODA", "PS2", "MAN", "2ES", "1ES", "4MA", "3MA", "2MA", "1MA", "BEL", "SUS", "S3Y", "LJE", "BAR", "SIR", "WIS", "ESG", "JDT", "TOB", "REV", "JUD", "3JN", "2JN", "1JN", "2PE", "1PE", "JAS", "HEB", "PHM", "TIT", "2TI", "1TI", "2TH", "1TH", "COL", "PHP", "EPH", "GAL", "2CO", "1CO", "ROM", "ACT", "JHN", "LUK", "MRK", "MAT", "MAL", "ZEC", "HAG", "ZEP", "HAB", "NAM", "MIC", "JON", "OBA", "AMO", "JOL", "HOS", "DAN", "EZK", "LAM", "JER", "ISA", "SNG", "ECC", "PRO", "PSA", "JOB", "EST", "NEH", "EZR", "2CH", "1CH", "2KI", "1KI", "2SA", "1SA", "RUT", "JDG", "JOS", "DEU", "NUM", "LEV", "EXO", or "GEN"
+      Expected "NDX", "TDX", "GLO", 
+      "CNC", "INT", "OTH", "BAK", "FRT",
+      "LAO", "4BA", "REP", "3MQ", "2MQ", 
+      "1MQ", "ENO", "JUB", "LBA", "2BA", 
+      "PS3", "DAG", "6EZ", "5EZ", "EZA", 
+      "PSS", "ODA", "PS2", "MAN", "2ES", 
+      "1ES", "4MA", "3MA", "2MA", "1MA", 
+      "BEL", "SUS", "S3Y", "LJE", "BAR", 
+      "SIR", "WIS", "ESG", "JDT", "TOB", 
+      "REV", "JUD", "3JN", "2JN", "1JN", 
+      "2PE", "1PE", "JAS", "HEB", "PHM", 
+      "TIT", "2TI", "1TI", "2TH", "1TH", 
+      "COL", "PHP", "EPH", "GAL", "2CO", 
+      "1CO", "ROM", "ACT", "JHN", "LUK", 
+      "MRK", "MAT", "MAL", "ZEC", "HAG", 
+      "ZEP", "HAB", "NAM", "MIC", "JON", 
+      "OBA", "AMO", "JOL", "HOS", "DAN", 
+      "EZK", "LAM", "JER", "ISA", "SNG", 
+      "ECC", "PRO", "PSA", "JOB", "EST", 
+      "NEH", "EZR", "2CH", "1CH", "2KI", 
+      "1KI", "2SA", "1SA", "RUT", "JDG", 
+      "JOS", "DEU", "NUM", "LEV", "EXO", 
+      or "GEN"
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -811,7 +905,14 @@
         4 | \v 1 the first \nd verse
       > 5 | \v 2 the second verse
             ^
-      Expected "+liv", "+jmp", "+w", "+rb", "+cat", "+ior", "+rq", "+lik", "+litl", "+qac", "+qs", "+wa", "+wh", "+wg", "+ndx", "+sup", "+sc", "+no", "+bdit", "+it", "+bd", "+em", "+wj", "+tl", "+sls", "+sig", "+qt", "+addpn", "+png", "+pn", "+ord", "+nd", "+k", "+dc", "+bk", or "+add"
+      Expected "+liv", "+jmp", "+w", "+rb", 
+      "+cat", "+ior", "+rq", "+lik", "+litl", 
+      "+qac", "+qs", "+wa", "+wh", "+wg", 
+      "+ndx", "+sup", "+sc", "+no", "+bdit", 
+      "+it", "+bd", "+em", "+wj", "+tl", 
+      "+sls", "+sig", "+qt", "+addpn", "+png", 
+      "+pn", "+ord", "+nd", "+k", "+dc", 
+      "+bk", or "+add"
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -846,13 +947,26 @@
     \p
     \v 1 the first verse
     \v 2 the second verse
-    \v 3 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \xt Some manuscripts do not have \fq the Son of God.\f*
+    \v 3 This is the Good News about 
+    Jesus Christ, the Son of God. 
+    \f + \fr 1.1: \xt Some manuscripts 
+    do not have \fq the Son of God.\f*
     </pre></td><td><pre>
       Line 6, col 79:
         5 | \v 2 the second verse
-      > 6 | \v 3 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \xt Some manuscripts do not have \fq the Son of God.\f*
+      > 6 | \v 3 This is the Good News 
+      about Jesus Christ, the Son of God. 
+      \f + \fr 1.1: \xt Some manuscripts 
+      do not have \fq the Son of God.\f*
                                                                                           ^
-      Expected "f*", "+liv", "+jmp", "+w", "+rb", "+cat", "+ior", "+rq", "+lik", "+litl", "+qac", "+qs", "+wa", "+wh", "+wg", "+ndx", "+sup", "+sc", "+no", "+bdit", "+it", "+bd", "+em", "+wj", "+tl", "+sls", "+sig", "+qt", "+addpn", "+png", "+pn", "+ord", "+nd", "+k", "+dc", "+bk", "+add", "fm", "fdc*", "fdc", "fv*", "fv", "ft", "fp", "fw", "fl", "fk", "fqa", "fq", or "fr"
+      Expected "f*", "+liv", "+jmp", "+w", "+rb", 
+      "+cat", "+ior", "+rq", "+lik", "+litl", "+qac", "
+      +qs", "+wa", "+wh", "+wg", "+ndx", "+sup", "+sc", 
+      "+no", "+bdit", "+it", "+bd", "+em", "+wj",
+       "+tl", "+sls", "+sig", "+qt", "+addpn", "+png", 
+       "+pn", "+ord", "+nd", "+k", "+dc", "+bk", "
+      +add", "fm", "fdc*", "fdc", "fv*", "fv", "ft", "
+      fp", "fw", "fl", "fk", "fqa", "fq", or "fr"
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -868,11 +982,14 @@
                 ]},
             "3":{"verseObjects":[
               {"type":"text",
-                  "text":"This is the Good News about Jesus Christ,
+                  "text":"This is the Good News 
+                  about Jesus Christ,
                   the Son of God. "},
                 {"tag":"f",
                   "type":"footnote",
-                  "content":"+ \\fr 1.1: \\xt Some manuscripts do not have \\fq the Son of God.",
+                  "content":"+ \\fr 1.1: \\xt Some 
+                  manuscripts do not have \\fq the 
+                  Son of God.",
                   "endTag":"f*"}
                 ]},
             "front":{"verseObjects":[
@@ -935,11 +1052,13 @@
     \v 2 the fourth verse
     \s1 Administration of the Tribes of Israel
     \lh
-    \v 16-22 This is the list of the administrators of the tribes of Israel:
+    \v 16-22 This is the list of the 
+    administrators of the tribes of Israel:
     \li1 Reuben - Eliezer son of Zichri
     \li1 Simeon - Shephatiah son of Maacah
     \li1 Levi - Hashabiah son of Kemuel
-    \lf This was the list of the administrators of the tribes of Israel.
+    \lf This was the list of the 
+    administrators of the tribes of Israel.
     </pre></td><td><pre>
       {"metadata":{"id":{"book":"GEN"}},
         "chapters":[
@@ -966,7 +1085,8 @@
                 "text":"the third verse "},
               {"number":"2",
                 "metadata":[
-                {"section":"Administration of the Tribes of Israel"},
+                {"section":"Administration of 
+                the Tribes of Israel"},
                   {"styling":[
                     "lh"
                       ]}
@@ -975,18 +1095,26 @@
               {"number":"16--22",
                 "metadata":[
                 {"list":[
-                    {"item":{"text":"Reuben - Eliezer son of Zichri",
+                    {"item":{"text":"Reuben - 
+                    Eliezer son of Zichri",
                           "num":"1"}},
-                      {"item":{"text":"Simeon - Shephatiah son of Maacah",
+                      {"item":{"text":"Simeon - 
+                      Shephatiah son of Maacah",
                           "num":"1"}},
-                      {"item":{"text":"Levi - Hashabiah son of Kemuel",
+                      {"item":{"text":"Levi - 
+                      Hashabiah son of Kemuel",
                           "num":"1"}}
                       ]},
                   {"styling":[
                     "lf"
                       ]}
                   ],
-                "text":"This is the list of the administrators of the tribes of Israel: Reuben - Eliezer son of Zichri | Simeon - Shephatiah son of Maacah | Levi - Hashabiah son of Kemuel | This was the list of the administrators of the tribes of Israel. "}
+                "text":"This is the list of the 
+                administrators of the tribes of Israel: Reuben - 
+                Eliezer son of Zichri | Simeon - 
+                Shephatiah son of Maacah | Levi - Hashabiah son 
+                of Kemuel | This was the list of the 
+                administrators of the tribes of Israel. "}
               ]}
           ],
         "messages":{"warnings":[
@@ -1019,7 +1147,8 @@
                   "text":"the fourth verse\n"},
                 {"tag":"s1",
                   "type":"section",
-                  "content":"Administration of the Tribes of Israel\n"},
+                  "content":"Administration 
+                  of the Tribes of Israel\n"},
                 {"tag":"lh",
                   "nextChar":"\n"}
                 ]},
@@ -1030,15 +1159,21 @@
                 ]},
             "16-22":{"verseObjects":[
               {"type":"text",
-                  "text":"This is the list of the administrators of the tribes of Israel:\n"},
+                  "text":"This is the list 
+                  of the administrators of 
+                  the tribes of Israel:\n"},
                 {"tag":"li1",
-                  "content":"Reuben - Eliezer son of Zichri\n"},
+                  "content":"Reuben - 
+                  Eliezer son of Zichri\n"},
                 {"tag":"li1",
-                  "content":"Simeon - Shephatiah son of Maacah\n"},
+                  "content":"Simeon - 
+                  Shephatiah son of Maacah\n"},
                 {"tag":"li1",
-                  "content":"Levi - Hashabiah son of Kemuel\n"},
+                  "content":"Levi - 
+                  Hashabiah son of Kemuel\n"},
                 {"tag":"lf",
-                  "text":"This was the list of the administrators of the tribes of Israel."}
+                  "text":"This was the list of 
+                  the administrators of the tribes of Israel."}
                 ]}}}}
      </pre></tr></table>
 
@@ -1052,11 +1187,18 @@
     \mt2 The Gospel
     \mt3 according to
     \mt1 JOHN
-    \ip The two endings to the Gospel, which are enclosed in brackets, are generally regarded as written by someone other than the author of \bk Mark\bk*
+    \ip The two endings to the Gospel, 
+    which are enclosed in brackets, 
+    are generally regarded as written 
+    by someone other than the author 
+    of \bk Mark\bk*
     \iot Outline of Contents
-    \io1 The beginning of the gospel \ior (1.1-13)\ior*
-    \io1 Jesus' public ministry in Galilee \ior (1.14–9.50)\ior*
-    \io1 From Galilee to Jerusalem \ior (10.1-52)\ior*
+    \io1 The beginning of the 
+    gospel \ior (1.1-13)\ior*
+    \io1 Jesus' public ministry in 
+    Galilee \ior (1.14–9.50)\ior*
+    \io1 From Galilee to 
+    Jerusalem \ior (10.1-52)\ior*
     \c 1
     \ms BOOK ONE
     \mr (Psalms 1–41)
@@ -1092,7 +1234,8 @@
           {"ip":[
               {"text":"The two endings to the Gospel,
                   which are enclosed in brackets,
-                  are generally regarded as written by someone other than the author of "},
+                  are generally regarded as written 
+                  by someone other than the author of "},
                 {"bk":[
                   {"text":"Mark"}
                     ],
@@ -1170,15 +1313,19 @@
           {"tag":"ip",
             "content":"The two endings to the Gospel,
             which are enclosed in brackets,
-            are generally regarded as written by someone other than the author of \\bk Mark\\bk*"},
+            are generally regarded as written by 
+            someone other than the author of \\bk Mark\\bk*"},
           {"tag":"iot",
             "content":"Outline of Contents"},
           {"tag":"io1",
-            "content":"The beginning of the gospel \\ior (1.1-13)\\ior*"},
+            "content":"The beginning of the 
+            gospel \\ior (1.1-13)\\ior*"},
           {"tag":"io1",
-            "content":"Jesus' public ministry in Galilee \\ior (1.14�9.50)\\ior*"},
+            "content":"Jesus' public ministry in 
+            Galilee \\ior (1.14�9.50)\\ior*"},
           {"tag":"io1",
-            "content":"From Galilee to Jerusalem \\ior (10.1-52)\\ior*"}
+            "content":"From Galilee to 
+            Jerusalem \\ior (10.1-52)\\ior*"}
           ],
         "chapters":{"1":{"1":{"verseObjects":[
               {"type":"text",
@@ -1207,7 +1354,10 @@
     \p
     \v 1 the first verse
     \v 2 the second verse
-    \v 14 That is why \bk The Book of the \+nd Lord\+nd*'s Battles\bk* speaks of “...the town of Waheb in the area of Suphah
+    \v 14 That is why \bk The Book of 
+    the \+nd Lord\+nd*'s Battles\bk* 
+    speaks of “...the town of Waheb in 
+    the area of Suphah
     </pre></td><td><pre>
       {"metadata":{"id":{"book":"GEN"}},
         "chapters":[
@@ -1233,7 +1383,10 @@
                       {"text":"'s Battles"}
                       ]}
                   ],
-                "text":"That is why The Book of the Lord's Battles speaks of �...the town of Waheb in the area of Suphah "}
+                "text":"That is why The 
+                Book of the Lord's Battles 
+                speaks of �...the town of Waheb 
+                in the area of Suphah "}
               ]}
           ],
         "messages":{"warnings":[
@@ -1266,7 +1419,8 @@
                     ],
                   "endTag":"bk*"},
                 {"type":"text",
-                  "text":" speaks of �...the town of Waheb in the area of Suphah"}
+                  "text":" speaks of �...the 
+                  town of Waheb in the area of Suphah"}
                 ]},
             "front":{"verseObjects":[
               {"tag":"p",
@@ -1342,11 +1496,13 @@
     \c 1
     \p
     \v 1 the first verse
-    \v 2 the second verse \w gracious|x-myattr="metadata"\w*
+    \v 2 the second 
+    verse \w gracious|x-myattr="metadata"\w*
     \q1 “Someone is shouting in the desert,
     \q2 ‘Prepare a road for the Lord;
     \q2 make a straight path for him to travel!’ ”
-    \ms \jmp |link-id="article-john_the_baptist"\jmp*John the Baptist
+    \ms \jmp |link-id="article-john_the_baptist"\jmp*
+    John the Baptist
     \p John is sometimes called...
     </pre></td><td><pre>
       {"metadata":{"id":{"book":"GEN"}},
@@ -1389,8 +1545,12 @@
                       "p"
                       ]}
                   ],
-                "text":"the second verse gracious �Someone is shouting in the desert,
-                �Prepare a road for the Lord; make a straight path for him to travel!� � s John the Baptist John is sometimes called... "}
+                "text":"the second verse gracious 
+                �Someone is shouting in the desert,
+                �Prepare a road for the Lord; make 
+                a straight path for him to travel!� � 
+                s John the Baptist John is 
+                sometimes called... "}
               ]}
           ],
         "messages":{"warnings":[
@@ -1416,14 +1576,17 @@
                   "text":"\n"},
                 {"tag":"q1",
                   "type":"quote",
-                  "text":"�Someone is shouting in the desert,
+                  "text":"�Someone is shouting 
+                  in the desert,
                   \n"},
                 {"tag":"q2",
                   "type":"quote",
-                  "text":"�Prepare a road for the Lord;\n"},
+                  "text":"�Prepare a road for 
+                  the Lord;\n"},
                 {"tag":"q2",
                   "type":"quote",
-                  "text":"make a straight path for him to travel!� �\n"},
+                  "text":"make a straight path 
+                  for him to travel!� �\n"},
                 {"tag":"ms",
                   "nextChar":" "},
                 {"tag":"jmp",
@@ -1451,11 +1614,15 @@
     \v 1 the first verse
     \v 2 the second verse
     \p
-    \v 12-83 They presented their offerings in the following order:
+    \v 12-83 They presented their 
+    offerings in the following order:
     \tr \th1 Day \th2 Tribe \th3 Leader
-    \tr \tcr1 1st \tc2 Judah \tc3 Nahshon son of Amminadab
-    \tr \tcr1 2nd \tc2 Issachar \tc3 Nethanel son of Zuar
-    \tr \tcr1 3rd \tc2 Zebulun \tc3 Eliab son of Helon
+    \tr \tcr1 1st \tc2 Judah \tc3 Nahshon 
+    son of Amminadab
+    \tr \tcr1 2nd \tc2 Issachar \tc3 Nethanel
+     son of Zuar
+    \tr \tcr1 3rd \tc2 Zebulun \tc3 Eliab 
+    son of Helon
     </pre></td><td><pre>
       {"metadata":{"id":{"book":"GEN"}},
         "chapters":[
@@ -1512,7 +1679,12 @@
                           ]
                         ]}}
                   ],
-                "text":"They presented their offerings in the following order: Day | Tribe | Leader | \n1st | Judah | Nahshon son of Amminadab | \n2nd | Issachar | Nethanel son of Zuar | \n3rd | Zebulun | Eliab son of Helon | \n "}
+                "text":"They presented their 
+                offerings in the following order: 
+                Day | Tribe | Leader | \n1st | Judah | 
+                Nahshon son of Amminadab | \n2nd | 
+                Issachar | Nethanel son of Zuar | 
+                \n3rd | Zebulun | Eliab son of Helon | \n "}
               ]}
           ],
         "messages":{"warnings":[
@@ -1541,7 +1713,8 @@
                 ]},
             "12-83":{"verseObjects":[
               {"type":"text",
-                  "text":"They presented their offerings in the following order:\n"},
+                  "text":"They presented their 
+                  offerings in the following order:\n"},
                 {"tag":"tr",
                   "nextChar":" "},
                 {"tag":"th1",
