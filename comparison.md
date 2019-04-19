@@ -715,7 +715,6 @@
 1. No Chapter
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \p
     \v 1 the first verse
