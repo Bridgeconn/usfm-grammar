@@ -3,14 +3,14 @@
 ## The Basic USFM Components
 
 1. The minimal set of markers
-    <div style="float:left;" width="50px" >
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>
     <pre>
     \id GEN
     \c 1
     \p
     \v 1 verse one
     \v 2 verse two
-    </pre></div><div style="float:left;" width=".33%" ><pre>      
+    </pre></td><td><pre>      
        {"metadata":{"id":{"book":"GEN"}},
         "chapters":[  
         {"header":{"title":"1"},
@@ -29,7 +29,7 @@
         "messages":{"warnings":[
         
             ]}}
-    </pre></div><div style="float:left;" width="50px" ><pre>      
+    </pre></td><td><pre>      
        {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -47,12 +47,12 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-    </pre></div><div style="clear: both;"></div>
+    </pre></tr></table>
 
 
 2. Multiple chapters
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -62,7 +62,7 @@
     \p
     \v 1 the third verse
     \v 2 the fourth verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"GEN"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -93,7 +93,7 @@
       "messages":{"warnings":[
       
           ]}}
-  </pre></div><div style="float:left;" width="50px" ><pre>
+  </pre></td><td><pre>
   {"headers":[
     {"tag":"id",
         "content":"GEN"}
@@ -124,11 +124,11 @@
               "nextChar":"\n",
               "type":"paragraph"}
             ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 3. Section headings
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -138,7 +138,7 @@
     \p
     \v 3 the third verse
     \v 4 the fourth verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"GEN"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -167,7 +167,7 @@
       "messages":{"warnings":[
       
           ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -199,11 +199,11 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 4. Header section markers
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id MRK The Gospel of Mark
     \ide UTF-8
     \usfm 3.0
@@ -216,14 +216,14 @@
     \p
     \v 1 the first verse
     \v 2 the second verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       Line 3, col 2:
         2 | \ide UTF-8
       > 3 | \usfm 3.0
             ^
         4 | \h Mark
       Expected "c", "cl", "esb", "rem", "is", "iq", "ip", "ipr", "ipq", "ipi", "iot", "io", "imte", "imt", "imq", "imi", "im", "ili", "iex", "ie", "ib", "mte", "mt", "sts", "toca3", "toca2", "toca1", "toc3", "toc2", "toc1", "ide", or "h"
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"MRK The Gospel of Mark"},
@@ -255,18 +255,18 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 5. Footnotes
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id MAT
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse
     \v 3 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \ft Some manuscripts do not have \fq the Son of God.\f*
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"MAT"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -291,7 +291,7 @@
       "messages":{"warnings":[
       
           ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"MAT"}
@@ -319,18 +319,18 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 6. Cross-refs
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id MAT
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse
     \v 3 \x - \xo 2.23: \xt Mrk 1.24; Luk 2.39; Jhn 1.45.\x* and made his home in a town named Nazareth.
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       {"metadata":{"id":{"book":"MAT"}},
         "chapters":[
         {"header":{"title":"1"},
@@ -354,7 +354,7 @@
         "messages":{"warnings":[
         
             ]}}
-    </pre></div><div style="float:left;" width="50px" ><pre>
+    </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"MAT"}
@@ -380,11 +380,11 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 7. Multiple para markers
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id JHN
     \c 1
     \s1 The Preaching of John the Baptist
@@ -400,7 +400,7 @@
     \q2 make a straight path for him to travel!’”
     \p
     \v 4 So John appeared in the desert, baptizing and preaching. “Turn away from your sins and be baptized,” he told the people, “and God will forgive your sins.”
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"JHN"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -449,7 +449,7 @@
       "messages":{"warnings":[
       
           ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"JHN"}
@@ -504,18 +504,18 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 8. Character markers
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse
     \v 15 Tell the Israelites that I, the \nd Lord\nd*, the God of their ancestors, the God of Abraham, Isaac, and Jacob,
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"GEN"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -547,7 +547,7 @@
       "messages":{"warnings":[
       
           ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -580,17 +580,17 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 9. Markers with attributes
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse \w gracious|lemma="grace"\w*
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"GEN"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -620,7 +620,7 @@
       "messages":{"warnings":[
       
           ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -642,25 +642,26 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 ## Error Cases
 
 1. No Chapter
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \p
     \v 1 the first verse
     \v 2 the second verse
-    </pre></div><div style="float:left;" width="50px" ><pre>
+    </pre></td><td><pre>
       Line 2, col 2:
         1 | \id GEN
       > 2 | \p
             ^
         3 | \v 1 the first verse
       Expected "c", "cl", "esb", "rem", "is", "iq", "ip", "ipr", "ipq", "ipi", "iot", "io", "imte", "imt", "imq", "imi", "im", "ili", "iex", "ie", "ib", "mte", "mt", "sts", "toca3", "toca2", "toca1", "toc3", "toc2", "toc1", "ide", "h", or "usfm"
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"},
@@ -668,23 +669,23 @@
             "type":"paragraph"}
           ],
         "chapters":{}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 2. In-correct book name
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id XXX
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       Line 1, col 5:
       > 1 | \id XXX
                 ^
         2 | \c 1
       Expected "NDX", "TDX", "GLO", "CNC", "INT", "OTH", "BAK", "FRT", "LAO", "4BA", "REP", "3MQ", "2MQ", "1MQ", "ENO", "JUB", "LBA", "2BA", "PS3", "DAG", "6EZ", "5EZ", "EZA", "PSS", "ODA", "PS2", "MAN", "2ES", "1ES", "4MA", "3MA", "2MA", "1MA", "BEL", "SUS", "S3Y", "LJE", "BAR", "SIR", "WIS", "ESG", "JDT", "TOB", "REV", "JUD", "3JN", "2JN", "1JN", "2PE", "1PE", "JAS", "HEB", "PHM", "TIT", "2TI", "1TI", "2TH", "1TH", "COL", "PHP", "EPH", "GAL", "2CO", "1CO", "ROM", "ACT", "JHN", "LUK", "MRK", "MAT", "MAL", "ZEC", "HAG", "ZEP", "HAB", "NAM", "MIC", "JON", "OBA", "AMO", "JOL", "HOS", "DAN", "EZK", "LAM", "JER", "ISA", "SNG", "ECC", "PRO", "PSA", "JOB", "EST", "NEH", "EZR", "2CH", "1CH", "2KI", "1KI", "2SA", "1SA", "RUT", "JDG", "JOS", "DEU", "NUM", "LEV", "EXO", or "GEN"
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"XXX"}
@@ -702,21 +703,21 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 3. No verse marker
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       Line 4, col 1:
         3 | \p
       > 4 | 
             ^
       Expected "\\"
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
     {"headers":[
       {"tag":"id",
           "content":"GEN"}
@@ -726,24 +727,24 @@
                 "nextChar":"\n",
                 "type":"paragraph"}
               ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 4. No verse number in verse marker
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v the first verse
     \v 2 the second verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       Line 4, col 4:
         3 | \p
       > 4 | \v the first verse
               ^
         5 | \v 2 the second verse
       Expected a digit
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -759,16 +760,16 @@
                 {"type":"text",
                   "text":"\\v the first verse\n"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 5. No para marker at start of chapter
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \v 1 the first verse
     \v 2 the second verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"GEN"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -782,7 +783,7 @@
       "messages":{"warnings":[
       
           ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -795,23 +796,23 @@
               {"type":"text",
                   "text":"the second verse"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 6. Character marker not closed
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first \nd verse
     \v 2 the second verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       Line 5, col 2:
         4 | \v 1 the first \nd verse
       > 5 | \v 2 the second verse
             ^
       Expected "+liv", "+jmp", "+w", "+rb", "+cat", "+ior", "+rq", "+lik", "+litl", "+qac", "+qs", "+wa", "+wh", "+wg", "+ndx", "+sup", "+sc", "+no", "+bdit", "+it", "+bd", "+em", "+wj", "+tl", "+sls", "+sig", "+qt", "+addpn", "+png", "+pn", "+ord", "+nd", "+k", "+dc", "+bk", or "+add"
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -835,24 +836,24 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 7. In-correct syntax in foot-notes
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse
     \v 3 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \xt Some manuscripts do not have \fq the Son of God.\f*
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       Line 6, col 79:
         5 | \v 2 the second verse
       > 6 | \v 3 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \xt Some manuscripts do not have \fq the Son of God.\f*
                                                                                           ^
       Expected "f*", "+liv", "+jmp", "+w", "+rb", "+cat", "+ior", "+rq", "+lik", "+litl", "+qac", "+qs", "+wa", "+wh", "+wg", "+ndx", "+sup", "+sc", "+no", "+bdit", "+it", "+bd", "+em", "+wj", "+tl", "+sls", "+sig", "+qt", "+addpn", "+png", "+pn", "+ord", "+nd", "+k", "+dc", "+bk", "+add", "fm", "fdc*", "fdc", "fv*", "fv", "ft", "fp", "fw", "fl", "fk", "fqa", "fq", or "fr"
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -879,24 +880,24 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 8. Invalid marker
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first \dd verse
     \v 2 the second verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     Line 4, col 19:
       3 | \p
     > 4 | \v 1 the first \dd verse
                             ^
       5 | \v 2 the second verse
     Expected "\\", "-e", or "-s"
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
     {"headers":[
       {"tag":"id",
           "content":"GEN"}
@@ -916,13 +917,13 @@
                 "nextChar":"\n",
                 "type":"paragraph"}
               ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 ## More Complex Components
 
 1. Lists
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -939,7 +940,7 @@
     \li1 Simeon - Shephatiah son of Maacah
     \li1 Levi - Hashabiah son of Kemuel
     \lf This was the list of the administrators of the tribes of Israel.
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       {"metadata":{"id":{"book":"GEN"}},
         "chapters":[
         {"header":{"title":"1"},
@@ -991,7 +992,7 @@
         "messages":{"warnings":[
         
             ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1039,11 +1040,11 @@
                 {"tag":"lf",
                   "text":"This was the list of the administrators of the tribes of Israel."}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 2. Header section with more markers
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id MRK 41MRKGNT92.SFM, Good News Translation, June 2003
     \h John
     \toc1 The Gospel according to John
@@ -1062,7 +1063,7 @@
     \p
     \v 1 the first verse
     \v 2 the second verse
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       {"metadata":{"id":{"book":"MRK",
             "details":" 41MRKGNT92.SFM,
             Good News Translation,
@@ -1148,7 +1149,7 @@
         "messages":{"warnings":[
         
             ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"MRK 41MRKGNT92.SFM,
@@ -1196,18 +1197,18 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 3. Character marker nesting
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse
     \v 14 That is why \bk The Book of the \+nd Lord\+nd*'s Battles\bk* speaks of “...the town of Waheb in the area of Suphah
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       {"metadata":{"id":{"book":"GEN"}},
         "chapters":[
         {"header":{"title":"1"},
@@ -1238,7 +1239,7 @@
         "messages":{"warnings":[
         
             ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1272,17 +1273,17 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 4. Markers with default attributes
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse \w gracious|grace\w*
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"GEN"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -1310,7 +1311,7 @@
       "messages":{"warnings":[
       
           ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1332,11 +1333,11 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 5. Link-attributes and custom attributes
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1347,7 +1348,7 @@
     \q2 make a straight path for him to travel!’ ”
     \ms \jmp |link-id="article-john_the_baptist"\jmp*John the Baptist
     \p John is sometimes called...
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       {"metadata":{"id":{"book":"GEN"}},
         "chapters":[
         {"header":{"title":"1"},
@@ -1395,7 +1396,7 @@
         "messages":{"warnings":[
         
             ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1439,11 +1440,11 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 6. Table 
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1455,7 +1456,7 @@
     \tr \tcr1 1st \tc2 Judah \tc3 Nahshon son of Amminadab
     \tr \tcr1 2nd \tc2 Issachar \tc3 Nethanel son of Zuar
     \tr \tcr1 3rd \tc2 Zebulun \tc3 Eliab son of Helon
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       {"metadata":{"id":{"book":"GEN"}},
         "chapters":[
         {"header":{"title":"1"},
@@ -1517,7 +1518,7 @@
         "messages":{"warnings":[
         
             ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1574,18 +1575,18 @@
                 {"tag":"tc3",
                   "content":"Eliab son of Helon"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 7. Milestones
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse
     \v 3 \qt-s |sid="qt_123" who="Pilate"\*“Are you the king of the Jews?”\qt-e |eid="qt_123"\*
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
     {"metadata":{"id":{"book":"GEN"}},
       "chapters":[
       {"header":{"title":"1"},
@@ -1626,7 +1627,7 @@
       "messages":{"warnings":[
       
           ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1654,11 +1655,11 @@
                   "nextChar":"\n",
                   "type":"paragraph"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
 
 8. Alignment files
 
-    <div style="float:left;" width="50px" >     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
     \id ACT
     \h प्रेरितों के काम
     \toc1 प्रेरितों के काम
@@ -1683,7 +1684,7 @@
     \w गया|x-occurrence="1" x-occurrences="1"\w* 
     \v 30 और पौलुस पूरे दो वर्ष अपने किराये के घर में रहा,
     \v 31 और जो उसके पास आते थे, उन सबसे मिलता रहा और बिना रोक-टोक बहुत निडर होकर परमेश्‍वर के राज्य का     प्रचार करता और प्रभु यीशु मसीह की बातें सिखाता रहा।
-    </pre></div><div style="float:left;" width=".33%" ><pre>
+    </pre></td><td><pre>
       {"metadata":{"id":{"book":"ACT"},
           "headers":[
           {"h":"प्रेरितों के काम"},
@@ -1930,7 +1931,7 @@
           "Empty lines present. ",
             "Multiple spaces present. "
             ]}}
-     </pre></div><div style="float:left;" width="50px" ><pre>
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"ACT"},
@@ -2072,4 +2073,4 @@
                   "text":"और जो उसके पास आते थे,
                   उन सबसे मिलता रहा और बिना रोक-टोक बहुत निडर होकर परमेश्‍वर के राज्य का प्रचार करता और प्रभु यीशु मसीह की बातें सिखाता रहा।"}
                 ]}}}}
-     </pre></div><div style="clear: both;"></div>
+     </pre></tr></table>
