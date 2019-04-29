@@ -49,6 +49,7 @@
                 ]}}}}
     </pre></tr></table>
 
+  Two JSON structures. Both looks similar in complexity and readability. _\\p_ at chapter start gets added as _metadata_ at chapter start in usfm-grammar while it gets added as _front_ object at the chapter end in usfm-js
 
 2. Multiple chapters
 
@@ -126,6 +127,8 @@
             ]}}}}
      </pre></tr></table>
 
+Two JSON structures. Both looks similar in complexity and readability. _\\p_ at chapter start gets added as _metadata_ at chapter start in usfm-grammar while it gets added as _front_ object at the chapter end in usfm-js
+
 3. Section headings
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -201,6 +204,8 @@
                 ]}}}}
      </pre></tr></table>
 
+  Two JSON structures. Both looks similar in complexity and readability. _\\s_ and _\\p_ after verse 2, gets added as _metadata_ to verse 2 object in usfm-grammar while it gets added as additional _verseObjects_ to the verse 2 in usfm-js
+
 4. Header section markers
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -263,6 +268,8 @@
                   "type":"paragraph"}
                 ]}}}}
      </pre></tr></table>
+
+  usfm-grammar reuires the _\\usfm_ to occur immediately after the _\\id_ marker. Hence it throws an error. usfm-js adds all the markers before the _\\c_ to the _headers_.
 
 5. Footnotes
 
@@ -337,6 +344,8 @@
                 ]}}}}
      </pre></tr></table>
 
+  The footnote gets attched to the corresponding verse, as _metadata_ in usfm-grammar and as another _verseObject_ in usfm-js. Both the libraries identify the contents from start tag to end tag as one element without breaking it up into an internal structure as per the internal tags. The usfm-grammar also verifies if the internal markers are valid ones.
+
 6. Cross-refs
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -404,6 +413,8 @@
                   "type":"paragraph"}
                 ]}}}}
      </pre></tr></table>
+
+  The cross-ref gets attched to the corresponding verse, as _metadata_ in usfm-grammar and as another _verseObject_ in usfm-js. Both the libraries identify the contents from start tag to end tag as one element without breaking it up into an internal structure as per the internal tags. The usfm-grammar also verifies if the internal markers are valid ones.
 
 7. Multiple para markers
 
@@ -568,6 +579,8 @@
                   "type":"paragraph"}
                 ]}}}}
      </pre></tr></table>
+  
+  The para-markers are attched to the verse object as styling object in its _metadata_ separate from its text, in usfm-grammar, which would make it impossible to reconstruct the usfm text from JSON. The usfm-js add the para-marker and text in the same verse object.
 
 8. Character markers
 
@@ -648,6 +661,8 @@
                 ]}}}}
      </pre></tr></table>
 
+The verse text is complete and together in one place and the details of character marker is added to _metadata_ of verse in usfm-grammar. Where as usfm-js add verseObjects for each chunk of the verse text, outside and within the charater marker making the verse text broken.
+  
 9. Markers with attributes
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -710,6 +725,8 @@
                 ]}}}}
      </pre></tr></table>
 
+The attribute name and value is captured by both. But usfm-js has a simpler structure to represent it.
+ 
 ## Error Cases
 
 1. No Chapter
