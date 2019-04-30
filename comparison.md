@@ -759,6 +759,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
         "chapters":{}}
      </pre></tr></table>
 
+  usfm-js gives a JSON with empty chapters array, while usfm-grammar throws an error
+
 2. In-correct book name
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -815,6 +817,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 ]}}}}
      </pre></tr></table>
 
+  usfm-grammar throws an error while usfm-js accepts the in-correct book name
+
 3. No verse marker
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -838,6 +842,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 "type":"paragraph"}
               ]}}}}
      </pre></tr></table>
+
+  usfm-grmmar makes _\\v_ mandatory along with _\\id_, _\\c_ and _\\p_. usfm-js gives an output JSON without a verse
 
 4. No verse number in verse marker
 
@@ -871,6 +877,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                   "text":"\\v the first verse\n"}
                 ]}}}}
      </pre></tr></table>
+
+  usfm-grammar shows an error at the start of verse. usfm-js omits the first verse and add the text to the front element of the chapter.
 
 5. No para marker at start of chapter
 
@@ -907,6 +915,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                   "text":"the second verse"}
                 ]}}}}
      </pre></tr></table>
+
+  The usfm-grammar parsed it successfully, which should not have happened. In usfm-js, the _front_ element is missing from end of chapter.  
 
 6. Character marker not closed
 
@@ -954,6 +964,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                   "type":"paragraph"}
                 ]}}}}
      </pre></tr></table>
+
+  usfm-grammar throws an error when a new verse is started without closing the character marker. usfm-js accepts it, terminating at the line end, with an empty endTag.
 
 7. In-correct syntax in foot-notes
 
@@ -1015,6 +1027,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 ]}}}}
      </pre></tr></table>
 
+  usfm-grammar identifies the cross-ref marker that came within footnote and shows error there. usfm-js accepts.
+
 8. Invalid marker
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -1051,6 +1065,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 "type":"paragraph"}
               ]}}}}
      </pre></tr></table>
+
+  the usfm-grammar points out the invalid marker, where as  usfm-js parses it successfully, by treating the text in that line following it, as its content.
 
 ## More Complex Components
 
