@@ -1209,6 +1209,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 ]}}}}
      </pre></tr></table>
 
+  The list items and details are added to the metadata of the verse, and the verse text is repeated as part of the full verse text, in usfm-grammar. In usfm-js each list item become one verseObject in the corresponding verse array. The verse text is given by "text" in other verseObjects while its given by "content" in list'd verseObject.
+
 2. Header section with more markers
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -1378,6 +1380,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 ]}}}}
      </pre></tr></table>
 
+  There is division of markers before chapter into _id_, _header_ and _introduction_ section in usfm-grammar. Also some markers like _mt_ and _io_ get combined into one separate array. In usfm-js there is no such subdivision, and all such markers get added to the _headers_ array at the begining of JSON structure. This JSON structure does look more simple.
+
 3. Character marker nesting
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -1461,6 +1465,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 ]}}}}
      </pre></tr></table>
 
+  Nesting is implemented in a somewhat similar structure in both JSONs. In usfm-js, there are multiple verseObjects and the verse text is split across them. But the structure allows re-constrution of usfm from it. In usfm-grammar, the verse text is accessible at one place. But as the charater marker details included in metadata lacks ability to be fixed back if we are to conert it back to usfm.
+
 4. Markers with default attributes
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -1520,6 +1526,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                   "type":"paragraph"}
                 ]}}}}
      </pre></tr></table>
+
+  The default attribute's value is treated as if its the attribute name, and value space is left blank in usfm-js's JSON
 
 5. Link-attributes and custom attributes
 
@@ -1636,6 +1644,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                   "type":"paragraph"}
                 ]}}}}
      </pre></tr></table>
+
+  The link attribute in _\\jmp_ is represented in a different way, from the attributes in _\\w_ are represented, in usfm-js.
 
 6. Table 
 
@@ -1782,6 +1792,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 ]}}}}
      </pre></tr></table>
 
+  The table structure, with rows and columns is depicted clearly in usfm-grammar, and verse text is also made available separately. The usfm-js extracts the tables elements as a plain list of verseObjects, along with the remaining verse text. The text enclosed within table markers are added as "content" where as in normal verseObjects it is added as "text".
+
 7. Milestones
 
     <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
@@ -1861,6 +1873,8 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                   "type":"paragraph"}
                 ]}}}}
      </pre></tr></table>
+
+  The attribute values are not parsed, but given as a single string in usfm-js where as the usfm-grammar structures them as attribute name and value.
 
 8. Alignment files
 
@@ -2279,3 +2293,5 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                   उन सबसे मिलता रहा और बिना रोक-टोक बहुत निडर होकर परमेश्‍वर के राज्य का प्रचार करता और प्रभु यीशु मसीह की बातें सिखाता रहा।"}
                 ]}}}}
      </pre></tr></table>
+
+  Both the libraries parse all attributes properly.
