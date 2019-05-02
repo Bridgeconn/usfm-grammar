@@ -52,9 +52,8 @@ sem.addOperation('composeJson', {
     return metadata
   },
 
-  bookIdentification: function (idElm, usfmElm) {
+  bookIdentification: function (idElm) {
     let elmt = idElm.composeJson()
-    if (usfmElm.sourceString!='') { elmt['version']= ''+usfmElm.composeJson() }
     return elmt 
   },
 
@@ -445,7 +444,7 @@ sem.addOperation('composeJson', {
   },
 
   usfmElement: function (_, _, _, _, version) {
-    return  version.sourceString
+    return  {"usfm-version": version.sourceString}
   },
 
   vaElement: function (_, _, _, num, _, _, _) {
