@@ -36,9 +36,9 @@ usfmBible{
 
 			metaData = bookIdentification bookHeaders* introduction* 	bookChapterLabel?
 
-			bookIdentification = idElement usfmElement?
+			bookIdentification = idElement 
 
-			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement | stsElement | mt | mte | esbElement
+			bookHeaders = hElement | ideElement | remElement | tocElement | tocaElement | stsElement | mt | mte | esbElement | usfmElement
 
 			introduction = ibElement | ieElement | iexElement | ili 
 							| imElement | imiElement | imqElement | imt | imte | io 
@@ -47,7 +47,7 @@ usfmBible{
 
 			bookChapterLabel = clElement
 
-			chapter = chapterHeader mandatoryParaMetaScripture*  verseElement+
+			chapter = chapterHeader mandatoryParaMetaScripture  verseElement+
 
 			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
 
