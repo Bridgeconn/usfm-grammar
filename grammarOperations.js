@@ -190,11 +190,7 @@ sem.addOperation('composeJson', {
   },
 
   sectionElementWithTitle: function (_, titleText) {
-    let textObj = titleText.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    return textObj
+    return titleText.sourceString
   },
 
   sectionElementWithoutTitle: function (_) {
@@ -226,11 +222,7 @@ sem.addOperation('composeJson', {
   },
 
   cdElement: function (_, _, _, _, text){
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    return {'description': textObj}
+    return {'description': text.composeJson()}
   },
 
   clElement: function (_, _, _, _, text) {
@@ -242,11 +234,7 @@ sem.addOperation('composeJson', {
   },
 
   dElement: function (_, _, _, _, text) {
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    return {'descriptive title': textObj}
+    return {'chapter label': text.composeJson()}
   },
 
   hElement: function (_, _, _, num, _, text){
@@ -260,11 +248,7 @@ sem.addOperation('composeJson', {
   },
 
   spElement: function (_, _, _, _, text) {
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    return {'sp': textObj}
+    return {'sp': text.sourceString}
   },
 
   ibElement: function (_, _, _, _){
@@ -311,7 +295,7 @@ sem.addOperation('composeJson', {
   iliElement: function (_, _, _, num, _, text) {
     let obj = {}
     obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString }
+    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
     return obj
   },
 
@@ -323,7 +307,7 @@ sem.addOperation('composeJson', {
   imtElement: function (_, _, _, num, _, text) {
     let obj = {}
     obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString }
+    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString})}
     return obj
   },
 
@@ -335,7 +319,7 @@ sem.addOperation('composeJson', {
   imteElement: function (_, _, _, num, _, text) {
     let obj = {}
     obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString }
+    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
     return obj
   },
 
@@ -347,7 +331,7 @@ sem.addOperation('composeJson', {
   ioElement: function (_, _, _, num, _, text) {
     let obj = {}
     obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString }
+    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
     return obj
   },
 
@@ -380,7 +364,7 @@ sem.addOperation('composeJson', {
     let obj = {}
     obj['item'] = text.composeJson()
     if (num.sourceString != ''){
-      obj['number'] = num.sourceString
+      obj['item'].push({'number':num.sourceString})
     }
     return obj
   },
@@ -395,11 +379,7 @@ sem.addOperation('composeJson', {
   },
 
   remElement: function (_, _, _, _, text){
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    return {'rem': textObj}
+    return {'rem': text.composeJson()}
   },
 
   mrElement: function (_, _, _, _, text){
@@ -422,11 +402,7 @@ sem.addOperation('composeJson', {
 
   mtElement: function (_, _, _, num, _, text) {
     let obj = {}
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    obj['mt'] = textObj
+    obj['mt'] = text.composeJson()
     if (num.sourceString != ''){
       obj['mt']['number'] = num.sourceString
     }
@@ -440,11 +416,7 @@ sem.addOperation('composeJson', {
 
   mteElement: function (_, _, _, num, _, text) {
     let obj = {}
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    obj['mte'] = textObj
+    obj['mte'] = text.composeJson()
     if (num.sourceString != ''){
       obj['mte']['number'] = num.sourceString
     }
@@ -452,20 +424,11 @@ sem.addOperation('composeJson', {
   },
 
   rElement: function (_, _, _, _, text){
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    
-    return {'r': textObj}
+    return {'r': text.composeJson()}
   },
 
   srElement: function (_, _, _, _, text){
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    return {'sr': textObj}
+    return {'sr': text.composeJson()}
   },
 
   tocElement: function (_, _, toc, _, text){
@@ -822,26 +785,16 @@ sem.addOperation('composeJson', {
   },
 
   litElement: function (_, _, _, _, text) {
-    let textObj = text.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    return {'lit' : textObj}
+    return {'lit' : text.composeJson()}
   },
 
   bookIntroductionTitlesTextContent: function(element) {
     let text = element.composeJson()
-    if (text.length === 1){
-      text = text[0]
-    }
     return text
   },
 
   bookTitlesTextContent: function(element) {
     let text = element.composeJson()
-    if (text.length === 1){
-      text = text[0]
-    }
     return text
   },
 
@@ -852,9 +805,6 @@ sem.addOperation('composeJson', {
 
   bookIntroductionEndTitlesTextContent: function(element) {
     let text = element.composeJson()
-    if (text.length === 1){
-      text = text[0]
-    }
     return text
   },
 
@@ -909,12 +859,7 @@ sem.addOperation('composeJson', {
   },
 
   esbElement: function (_, _, _, _, content, _, _, _, _) {
-    let textObj = content.composeJson()
-    if (textObj.length === 1){
-      textObj = textObj[0]
-    }
-    
-    return {'esb' : textObj}
+    return {'esb' : content.composeJson()}
   }
 
 })
