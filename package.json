@@ -1,7 +1,7 @@
 {
     "name": "usfm-grammar",
     "description": "A simple usfm parser/validator that uses a grammar to model the usfm syntax. The grammar is written in ohm-js(https://ohmlang.github.io/). The USFM3.0 syntax is supported. The parser outputs the USFM content in a json structure which gives importance to the easy extraction of scripture content from the mark-ups and additional usfm contents.",
-    "version": "0.1.2",
+    "version": "0.1.0",
     "main": "parser.js",
     "scripts": {
         "test": "mocha",
@@ -16,11 +16,18 @@
         "type": "git",
         "url": "https://github.com/Bridgeconn/usfm-grammar"
     },
-    "keywords": ["usfm", "mark-up", "parser", "ohm", "syntax validator", "json"],
+    "keywords": [
+        "usfm",
+        "mark-up",
+        "parser",
+        "ohm",
+        "syntax validator",
+        "json"
+    ],
     "author": "Bridge Connectivity Solutions <kavitha.raju@bridgeconn.com> (https://github.com/Bridgeconn)",
     "license": "GNU General Public License v3.0",
     "bugs": {
-      "url": "https://github.com/Bridgeconn/usfm-grammar/issues"
+        "url": "https://github.com/Bridgeconn/usfm-grammar/issues"
     },
     "homepage": "https://github.com/Bridgeconn/usfm-grammar"
 }
