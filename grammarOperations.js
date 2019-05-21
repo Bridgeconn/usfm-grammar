@@ -5,7 +5,8 @@ const join = require('path').join
 const Events = require('events');
 const emitter = new Events.EventEmitter();
 
-var contents = fs.readFileSync(join(__dirname, 'usfm.ohm'))
+// var contents = fs.readFileSync(join(__dirname, 'usfm.ohm'))
+var contents = require('./usfm.ohm.js').contents
 
 var bib = ohm.grammars(contents).usfmBible
 
