@@ -223,17 +223,40 @@ Two JSON structures. Both looks similar in complexity and readability. _\\p_ at 
     \v 1 the first verse
     \v 2 the second verse
     </pre></td><td><pre>
-      Line 3, col 2:
-        2 | \ide UTF-8
-      > 3 | \usfm 3.0
-            ^
-        4 | \h Mark
-      Expected "c", "cl", "esb", "rem", "is", 
-      "iq", "ip", "ipr", "ipq", "ipi", "iot", 
-      "io", "imte", "imt", "imq", "imi", "im", 
-      "ili", "iex", "ie", "ib", "mte", "mt", 
-      "sts", "toca3", "toca2", "toca1", "toc3", 
-      "toc2", "toc1", "ide", or "h"
+    {"metadata":  {"id":
+        {"book":"MRK",
+          "details":" The Gospel of Mark"
+          },
+        "headers":[  {"ide":"UTF-8"},
+          {"usfm-version":"3.0"},
+          {"h":"Mark"},
+          [{"mt":[{"text":"The Gospel according to"}]},
+            {"mt":[{"text":"MARK"}]}
+          ]
+        ],
+        "introduction":[
+          {"is":[{"text":"Introduction"}]},
+          {"ip":[{"bk":[{"text":"The Gospel according to Mark"}],
+                    "text":"The Gospel according to Mark"
+                 },
+                {"text":"begins with the statement..."}
+                ]
+          }
+        ]
+    },
+    "chapters":[
+        {"header":{"title":"1"},
+         "metadata":[{"styling":["p"]}],
+         "verses":[     
+              {"number":"1",
+                  "text":"the first verse "},
+                {"number":"2",
+                  "text":"the second verse "},
+            ]
+        }
+        ],
+      "messages": {"warnings":[ "Empty lines present. " ]}
+    }
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -269,7 +292,7 @@ Two JSON structures. Both looks similar in complexity and readability. _\\p_ at 
                 ]}}}}
      </pre></tr></table>
 
-  usfm-grammar reuires the _\\usfm_ to occur immediately after the _\\id_ marker. Hence it throws an error. usfm-js adds all the markers before the _\\c_ to the _headers_.
+The usfm-js adds all the markers before chapter to a section called "headers". The usfm-grammar has three sections there, id, headers and introduction, all within a main "meta data" section. Also it combines the _mt_ markers as the spec says.
 
 5. Footnotes
 
@@ -888,19 +911,12 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
     \v 1 the first verse
     \v 2 the second verse
     </pre></td><td><pre>
-    {"metadata":{"id":{"book":"GEN"}},
-      "chapters":[
-      {"header":{"title":"1"},
-          "verses":[
-          {"number":"1",
-              "text":"the first verse "},
-            {"number":"2",
-              "text":"the second verse "}
-            ]}
-        ],
-      "messages":{"warnings":[
-      
-          ]}}
+    Line 3, col 3:
+      2 | \c 1
+    > 3 | \v 1 the first verse
+            ^
+      4 | \v 2 the second verse
+    Expected "\\", "-e", or "-s"
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -916,7 +932,7 @@ The attribute name and value is captured by both. But usfm-js has a simpler stru
                 ]}}}}
      </pre></tr></table>
 
-  The usfm-grammar parsed it successfully, which should not have happened. In usfm-js, the _front_ element is missing from end of chapter.  
+  The usfm-grammar thows error. In usfm-js, the _front_ element is missing from end of chapter.  
 
 6. Character marker not closed
 
