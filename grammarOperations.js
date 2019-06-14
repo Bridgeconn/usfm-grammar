@@ -484,6 +484,7 @@ sem.addOperation('composeJson', {
     if (attribs.sourceString != '') {
       obj['attributes'] = attribs.composeJson()
     }
+    obj['closed'] = "True"
     
     return obj
   },
@@ -500,6 +501,7 @@ sem.addOperation('composeJson', {
     if (attribs.sourceString != '') {
       obj['attributes'] = attribs.composeJson()
     }
+    obj['closed'] = "True"
     return obj
   },
 
@@ -526,6 +528,7 @@ sem.addOperation('composeJson', {
         }
       }
     }
+    obj['closed'] = "True"
     return obj
   },
 
@@ -540,6 +543,7 @@ sem.addOperation('composeJson', {
     if (attribs.sourceString != '') {
       obj['attributes'] = attribs.composeJson()
     }
+    obj['closed'] = "True"
     return obj
   },
     
@@ -550,6 +554,7 @@ sem.addOperation('composeJson', {
     if (attribs.sourceString != '') {
       obj['attributes'] = attribs.composeJson()
     }
+    obj['closed'] = "True"
     return obj
   },
 
@@ -560,6 +565,7 @@ sem.addOperation('composeJson', {
     if (attribs.sourceString != '') {
       obj['attributes'] = attribs.composeJson()
     }
+    obj['closed'] = "True"
     return obj
   },
 
