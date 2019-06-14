@@ -278,49 +278,49 @@ sem.addOperation('composeJson', {
 
   ili: function (itemElement) {
     let ili = itemElement.composeJson()
-    return {'ili':ili}
+    return ili
   },
 
   iliElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
+    obj['ili'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString }
     return obj
   },
 
   imt: function (itemElement) {
     let imt = itemElement.composeJson()
-    return {'imt':imt}
+    return imt
   },
 
   imtElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString})}
+    obj['imt'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString}
     return obj
   },
 
   imte: function (itemElement) {
     let imte = itemElement.composeJson()
-    return {'imte':imte}
+    return imte
   },
 
   imteElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
+    obj['imte'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString}
     return obj
   },
 
   io: function (itemElement) {
     let io = itemElement.composeJson()
-    return {'io':io}
+    return io
   },
 
   ioElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
+    obj['io'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString }
     return obj
   },
 
@@ -393,7 +393,7 @@ sem.addOperation('composeJson', {
     let obj = {}
     obj['mt'] = text.composeJson()
     if (num.sourceString != ''){
-      obj['mt']['number'] = num.sourceString
+      obj['number'] = num.sourceString
     }
     return obj
   },
@@ -407,7 +407,7 @@ sem.addOperation('composeJson', {
     let obj = {}
     obj['mte'] = text.composeJson()
     if (num.sourceString != ''){
-      obj['mte']['number'] = num.sourceString
+      obj['number'] = num.sourceString
     }
     return obj
   },
@@ -761,15 +761,15 @@ sem.addOperation('composeJson', {
     let li = {'list': itemElement.composeJson()}
     li['text'] = ''
     for ( let item of li['list']) {
-      li.text += item.item.text + ' | '
+      li.text += item.li.text + ' | '
     }
     return li
   },
 
   liElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item']['number'] = num.sourceString }
+    obj['li'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString }
     return obj
   },
 
