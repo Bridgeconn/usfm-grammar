@@ -152,7 +152,7 @@ sem.addOperation('composeJson', {
         verse['text'] += contents[i]['text'] + ' '
         verse['text objects'].push(contents[i])
       } else if (contents[i].hasOwnProperty('styling')){
-          styleObj.styling.push(contents[i].styling)
+          styleObj.styling.push({'marker':contents[i].styling,'index':i})
       } else {
           verse['metadata'].push( contents[i])
       }
