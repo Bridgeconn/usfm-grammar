@@ -138,6 +138,7 @@ sem.addOperation('composeJson', {
     let verse ={}
     verse['number'] = verseNumber.composeJson() 
     verse['metadata'] = []
+    verse['text objects'] = []
     if ( verseMeta.sourceString!='' ) { verse['metadata'].push(verseMeta.composeJson()) } 
     contents = verseContent.composeJson()
     if ( verseContent.sourceString == '' ) {
@@ -146,25 +147,14 @@ sem.addOperation('composeJson', {
     verse['text'] = ''
     let styleObj = {'styling' : []}
     for (let i=0; i<contents.length; i++) {
-      if (contents[i]['text']) {
+      contents[i]['index'] = i
+      if (contents[i].hasOwnProperty('text')) {
         verse['text'] += contents[i]['text'] + ' '
-        delete contents[i].text
-      } 
-      let only_text = true
-      for (var key in contents[i]) {
-        if (key != 'text') {
-          only_text = false
-          break
-        }
-      }
-      if (contents[i] === {} ) { 
-        only_text = true }
-      if (!only_text ) {
-        if (contents[i].hasOwnProperty('styling')){
+        verse['text objects'].push(contents[i])
+      } else if (contents[i].hasOwnProperty('styling')){
           styleObj.styling.push(contents[i].styling)
-        } else {
+      } else {
           verse['metadata'].push( contents[i])
-        }
       }
     }
     if (styleObj.styling.length > 0){
