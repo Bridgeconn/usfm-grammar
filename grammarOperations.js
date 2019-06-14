@@ -433,7 +433,7 @@ sem.addOperation('composeJson', {
   },
 
   usfmElement: function (_, _, _, _, version) {
-    return  {"usfm-version": version.sourceString}
+    return  {"usfm": version.sourceString}
   },
 
   vaElement: function (_, _, _, num, _, _, _) {
