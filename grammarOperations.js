@@ -191,11 +191,11 @@ sem.addOperation('composeJson', {
   },
 
   altVerseNumberElement: function (_, num, _, _) {
-    return {'alternate verse number': num.sourceString}
+    return {'va': num.sourceString}
   },
 
   publishedCharElement: function (_, text, _, _) {
-    return {'published character': text.sourceString}
+    return {'vp': text.sourceString}
   },
 
   qaElement: function(_, _, _, _, text){
@@ -207,23 +207,23 @@ sem.addOperation('composeJson', {
   },
 
   caElement: function (_, _, _, _, num, _, _ ) {
-    return {'alternate chapter number': num.sourceString}
+    return {'ca': num.sourceString}
   },
 
   cdElement: function (_, _, _, _, text){
-    return {'description': text.composeJson()}
+    return {'cd': text.composeJson()}
   },
 
   clElement: function (_, _, _, _, text) {
-    return {'chapter label': text.sourceString}
+    return {'cl': text.sourceString}
   },
 
   cpElement: function (_, _, _, _, text) {
-    return {'published character': text.sourceString}
+    return {'cp': text.sourceString}
   },
 
   dElement: function (_, _, _, _, text) {
-    return {'chapter label': text.composeJson()}
+    return {'d': text.composeJson()}
   },
 
   hElement: function (_, _, _, num, _, text){
