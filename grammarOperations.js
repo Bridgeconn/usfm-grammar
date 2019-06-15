@@ -85,7 +85,7 @@ sem.addOperation('composeJson', {
       let styleObj = {'styling' : []}
       for (let item of metaObj) {
         if (item.hasOwnProperty('styling')) {
-          styleObj.styling.push(item.styling)
+          styleObj.styling.push({'marker':item.styling})
         }
         else {
           newMetaObj.push(item)
@@ -179,11 +179,21 @@ sem.addOperation('composeJson', {
   },
 
   sectionElementWithTitle: function (tag, titleText) {
-    return {'title':titleText.sourceString,'marker':tag.sourceString}
+    let marker = tag.composeJson()
+    return { 'text' : titleText.sourceString, 'marker': marker }
   },
 
   sectionElementWithoutTitle: function (tag) {
-    return {'marker': tag.sourceString}
+    let marker = tag.composeJson()
+    return { 'text' :'', 'marker':marker}
+  },
+
+  sectionMarker: function (_, _, tag, _) {
+    return tag.sourceString
+  },
+
+  sdMarker: function (_,_, tag, num, _) {
+    return tag.sourceString + num.sourceString
   },
 
   paraElement: function (_, _, marker, _) {
