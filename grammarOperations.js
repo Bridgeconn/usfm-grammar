@@ -452,16 +452,16 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  fElement: function (_, _, _, content, _, _, _){
-    return {'footnote': content.sourceString}
+  fElement: function (_, tag, _, content, _, _, _){
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True'}
   },
 
-  feElement: function (_, _, _, content, _, _, _){
-    return {'footnote': content.sourceString}
+  feElement: function (_, tag, _, content, _, _, _){
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True'}
   },
 
-  crossrefElement: function (_, _, _, content, _, _, _){
-    return {'cross-ref': content.sourceString}
+  crossrefElement: function (_, tag, _, content, _, _, _){
+    return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':'True'}
   },
 
   charElement: function(element) {
