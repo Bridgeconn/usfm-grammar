@@ -178,12 +178,12 @@ sem.addOperation('composeJson', {
     return sElement.composeJson()
   },
 
-  sectionElementWithTitle: function (_, titleText) {
-    return titleText.sourceString
+  sectionElementWithTitle: function (tag, titleText) {
+    return {'title':titleText.sourceString,'marker':tag.sourceString}
   },
 
-  sectionElementWithoutTitle: function (_) {
-    return ''
+  sectionElementWithoutTitle: function (tag) {
+    return {'marker': tag.sourceString}
   },
 
   paraElement: function (_, _, marker, _) {
