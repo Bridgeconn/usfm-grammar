@@ -166,7 +166,7 @@ sem.addOperation('composeJson', {
 
   verseNumber: function (num, _,num2, _) {
     let number = num.sourceString
-    if (num2.sourceString!='') { number = number + '-' + num2.sourceString}
+    if (num2.sourceString!='') { number = number + num2.sourceString}
     return number
   },
 
