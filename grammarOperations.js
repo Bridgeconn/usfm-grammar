@@ -463,15 +463,15 @@ sem.addOperation('composeJson', {
   },
 
   fElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True'}
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True','inLine':'True'}
   },
 
   feElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True'}
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True','inLine':'True'}
   },
 
   crossrefElement: function (_, tag, _, content, _, _, _){
-    return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':'True'}
+    return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':'True','inLine':'True'}
   },
 
   charElement: function(element) {
@@ -501,6 +501,7 @@ sem.addOperation('composeJson', {
       obj['attributes']  = attribObj
     }
     obj['closed'] = "True"
+    obj['inLine'] = "True"
     
     return obj
   },
@@ -523,6 +524,7 @@ sem.addOperation('composeJson', {
       }
       obj['attributes']  = attribObj    }
     obj['closed'] = "True"
+    obj['inLine'] = "True"
     return obj
   },
 
@@ -556,6 +558,7 @@ sem.addOperation('composeJson', {
       }
     }
     obj['closed'] = "True"
+    obj['inLine'] = "True"
     return obj
   },
 
@@ -577,6 +580,7 @@ sem.addOperation('composeJson', {
       obj['attributes']  = attribObj    
     }
     obj['closed'] = "True"
+    obj['inLine'] = "True"
     return obj
   },
     
@@ -594,6 +598,7 @@ sem.addOperation('composeJson', {
       obj['attributes']  = attribObj    
     }
     obj['closed'] = "True"
+    obj['inLine'] = "True"
     return obj
   },
 
@@ -611,6 +616,7 @@ sem.addOperation('composeJson', {
       obj['attributes']  = attribObj    
     }
     obj['closed'] = "True"
+    obj['inLine'] = "True"
     return obj
   },
 
@@ -793,19 +799,19 @@ sem.addOperation('composeJson', {
 
   
   thElement: function(_, _, num, _, text) {
-    return {'th': text.sourceString, 'column':num.sourceString}
+    return {'th': text.sourceString, 'number':num.sourceString,'inLine':'True'}
   },
 
   thrElement: function(_, _, num, _, text) {
-    return {'thr': text.sourceString, 'column':num.sourceString}
+    return {'thr': text.sourceString, 'number':num.sourceString,'inLine':'True'}
   },
 
   tcElement: function(_, _, num, _, text) {
-    return {'tc': text.sourceString, 'column':num.sourceString}
+    return {'tc': text.sourceString, 'number':num.sourceString,'inLine':'True'}
   },
 
   tcrElement: function(_, _, num, _, text) {
-    return {'tcr': text.sourceString, 'column':num.sourceString}
+    return {'tcr': text.sourceString, 'number':num.sourceString,'inLine':'True'}
   },
 
   li: function (itemElement) {
