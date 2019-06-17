@@ -861,6 +861,8 @@ sem.addOperation('composeJson', {
   milestoneStandaloneElement: function (_, _, ms, closing) {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
+    milestoneElement['marker'] = ms.sourceString
+    milestoneElement['closed'] = 'True'
     return milestoneElement
   },
 
@@ -868,31 +870,35 @@ sem.addOperation('composeJson', {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['start/end'] = s_e.sourceString
+    milestoneElement['marker'] = ms.sourceString + s_e.sourceString
+    milestoneElement['closed'] = 'True'
     if (attribs.sourceString!='') {
       milestoneElement['attributes'] = attribs.composeJson()
     }
 
     if ( milestoneElement.hasOwnProperty('attributes') ) {
-      for (var array of milestoneElement['attributes']){
-        if ( !array.hasOwnProperty('name')) {
-          for (var item of array) {
-            if (item['name'] === 'sid') {
-              milestoneFlag.push(item['value'])
-            } else if ( item['name'] === 'eid' ) {
-              if (milestoneFlag.length === 0 ){
-                emitter.emit('warning', new Error('Opening not found for milestone '+item['value']+' before its closed. '));
-              } else {
-                let lastEntry = milestoneFlag.pop()
-                if (lastEntry !== item['value'] ) {
-                  emitter.emit('warning', new Error('Milestone '+ lastEntry+' not closed. '+item['value']+' found instead. '));
-                }
-              }
+      if (Array.isArray(milestoneElement.attributes[0])) {
+        let tempArr = []
+        for (var i=0; i< milestoneElement.attributes.length; i++) {
+          tempArr = tempArr.concat(milestoneElement.attributes[i])
+        }
+        milestoneElement.attributes = tempArr
+      }
+      for (var item of milestoneElement['attributes']) {
+        if (item['name'] === 'sid') {
+          milestoneFlag.push(item['value'])
+        } else if ( item['name'] === 'eid' ) {
+          if (milestoneFlag.length === 0 ){
+            emitter.emit('warning', new Error('Opening not found for milestone '+item['value']+' before its closed. '));
+          } else {
+            let lastEntry = milestoneFlag.pop()
+            if (lastEntry !== item['value'] ) {
+              emitter.emit('warning', new Error('Milestone '+ lastEntry+' not closed. '+item['value']+' found instead. '));
             }
           }
-            
-        } 
+        }
       }
-    }
+    } 
     return milestoneElement
   },
 
