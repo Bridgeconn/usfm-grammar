@@ -492,7 +492,13 @@ sem.addOperation('composeJson', {
       }
     }
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj
     }
     obj['closed'] = "True"
     
@@ -509,8 +515,13 @@ sem.addOperation('composeJson', {
       }
     }
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
-    }
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    }
     obj['closed'] = "True"
     return obj
   },
@@ -518,13 +529,19 @@ sem.addOperation('composeJson', {
   inLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     let textobj = text.composeJson()
-    obj[tag.sourceString]= {'contents': textobj}
+    obj[tag.sourceString]= textobj
     obj['text'] = ''
     for (let item of textobj){
       if ( item.text) { obj['text'] += item.text}
     }
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    
     }
     if (tag.sourceString === 'rb'){
       let numberOfHanChars = text.sourceString.split(';').length - 1
@@ -545,13 +562,19 @@ sem.addOperation('composeJson', {
   nestedInLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     let textobj = text.composeJson()
-    obj[tag.sourceString]= {'contents': textobj}
+    obj[tag.sourceString]= textobj
     obj['text'] = ''
     for (let item of textobj){
       if ( item.text) { obj['text'] += item.text}
     }
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    
     }
     obj['closed'] = "True"
     return obj
@@ -559,10 +582,16 @@ sem.addOperation('composeJson', {
     
   inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson()}
+    obj[tag.sourceString]= text.composeJson()
     obj['text'] = obj[tag.sourceString]['content']
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    
     }
     obj['closed'] = "True"
     return obj
@@ -570,10 +599,16 @@ sem.addOperation('composeJson', {
 
   nestedInLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson()}
+    obj[tag.sourceString]= text.composeJson()
     obj['text'] = obj[tag.sourceString]['content']
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    
     }
     obj['closed'] = "True"
     return obj
