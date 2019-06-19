@@ -64,9 +64,9 @@ usfmBible{
 			// sectionElement = sectionElementWithTitle | sectionElementWithoutTitle | msElement
 			sectionElement = sectionElementWithTitle | sectionElementWithoutTitle | msElement | dElement
 
-			sectionElementWithTitle = sectionMarker (chapterContentTextContent | notesElement | milestoneElement)+ 
-			sectionElementWithoutTitle = sdMarker 
-			sectionMarker = newLine backSlash ( "s1" | "s2" | "s3" | "s4" | "s" ) spaceChar
+			sectionElementWithTitle = sectionMarker spaceChar (chapterContentTextContent | notesElement | milestoneElement)+ 
+			sectionElementWithoutTitle = sdMarker | sectionMarker 
+			sectionMarker = newLine backSlash "s" number? 
 			sdMarker = newLine backSlash "sd" number spaceChar*
 
 			paraElement = newLine? backSlash paraMarker spaceChar*
@@ -152,27 +152,40 @@ usfmBible{
 
 			footnoteContent = text | footnoteContentElement | nestedCharElement
 			footnoteContentElement = backSlash "fr" spaceChar
+							| backSlash "fr*" spaceChar?
 							| backSlash "fq" spaceChar
+							| backSlash "fq*" spaceChar?
 							| backSlash "fqa" spaceChar
+							| backSlash "fqa*" spaceChar?
 							| backSlash "fk" spaceChar
+							| backSlash "fk*" spaceChar?
 							| backSlash "fl" spaceChar
+							| backSlash "fl*" spaceChar?
 							| backSlash "fw" spaceChar
+							| backSlash "fw*" spaceChar?
 							| backSlash "fp" spaceChar
+							| backSlash "fp*" spaceChar?
 							| backSlash "ft" spaceChar
+							| backSlash "ft*" spaceChar?
 							| backSlash "fv" spaceChar
-							| backSlash "fv*" spaceChar
+							| backSlash "fv*" spaceChar?
 							| backSlash "fdc" spaceChar
 							| backSlash "fdc*" spaceChar?
 							| backSlash "fm" spaceChar
+							| backSlash "fm*" spaceChar?
+							
 
 			crossrefContent  = text | crossrefContentElement | nestedCharElement | attributesInCrossref
 			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| text)+
 			crossrefContentElement = backSlash "xo" spaceChar
+							| backSlash "xo*" spaceChar?
 							| backSlash "xk" spaceChar
+							| backSlash "xk*" spaceChar?
 							| backSlash "xq" spaceChar
 							| backSlash "xq*" spaceChar?
 							| backSlash "xt" spaceChar
 							| backSlash "xta" spaceChar
+							| backSlash "xta*" spaceChar?
 							| backSlash "xop" spaceChar
 							| backSlash "xop*" spaceChar?
 							| backSlash "xot" spaceChar
