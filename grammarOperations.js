@@ -178,7 +178,7 @@ sem.addOperation('composeJson', {
     return sElement.composeJson()
   },
 
-  sectionElementWithTitle: function (tag, titleText) {
+  sectionElementWithTitle: function (tag, _, titleText) {
     let marker = tag.composeJson()
     return { 'text' : titleText.sourceString, 'marker': marker }
   },
@@ -188,8 +188,8 @@ sem.addOperation('composeJson', {
     return { 'text' :'', 'marker':marker}
   },
 
-  sectionMarker: function (_, _, tag, _) {
-    return tag.sourceString
+  sectionMarker: function (_, _, tag, num) {
+    return tag.sourceString + num.sourceString
   },
 
   sdMarker: function (_,_, tag, num, _) {
