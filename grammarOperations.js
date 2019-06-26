@@ -463,15 +463,15 @@ sem.addOperation('composeJson', {
   },
 
   fElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True','inLine':'True'}
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True','inline':'True'}
   },
 
   feElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True','inLine':'True'}
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True','inline':'True'}
   },
 
   crossrefElement: function (_, tag, _, content, _, _, _){
-    return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':'True','inLine':'True'}
+    return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':'True','inline':'True'}
   },
 
   charElement: function(element) {
@@ -500,8 +500,8 @@ sem.addOperation('composeJson', {
       }
       obj['attributes']  = attribObj
     }
-    obj['closed'] = "True"
-    obj['inLine'] = "True"
+    obj['closed'] = true
+    obj['inline'] = true
     
     return obj
   },
@@ -523,8 +523,8 @@ sem.addOperation('composeJson', {
         attribObj = attribTemp
       }
       obj['attributes']  = attribObj    }
-    obj['closed'] = "True"
-    obj['inLine'] = "True"
+    obj['closed'] = true
+    obj['inline'] = true
     return obj
   },
 
@@ -557,8 +557,8 @@ sem.addOperation('composeJson', {
         }
       }
     }
-    obj['closed'] = "True"
-    obj['inLine'] = "True"
+    obj['closed'] = true
+    obj['inline'] = true
     return obj
   },
 
@@ -579,8 +579,8 @@ sem.addOperation('composeJson', {
       }
       obj['attributes']  = attribObj    
     }
-    obj['closed'] = "True"
-    obj['inLine'] = "True"
+    obj['closed'] = true
+    obj['inline'] = true
     return obj
   },
     
@@ -597,8 +597,8 @@ sem.addOperation('composeJson', {
       }
       obj['attributes']  = attribObj    
     }
-    obj['closed'] = "True"
-    obj['inLine'] = "True"
+    obj['closed'] = true
+    obj['inline'] = true
     return obj
   },
 
@@ -615,8 +615,8 @@ sem.addOperation('composeJson', {
       }
       obj['attributes']  = attribObj    
     }
-    obj['closed'] = "True"
-    obj['inLine'] = "True"
+    obj['closed'] = true
+    obj['inline'] = true
     return obj
   },
 
@@ -799,19 +799,19 @@ sem.addOperation('composeJson', {
 
   
   thElement: function(_, _, num, _, text) {
-    return {'th': text.sourceString, 'number':num.sourceString,'inLine':'True'}
+    return {'th': text.sourceString, 'number':num.sourceString,'inline':'True'}
   },
 
   thrElement: function(_, _, num, _, text) {
-    return {'thr': text.sourceString, 'number':num.sourceString,'inLine':'True'}
+    return {'thr': text.sourceString, 'number':num.sourceString,'inline':'True'}
   },
 
   tcElement: function(_, _, num, _, text) {
-    return {'tc': text.sourceString, 'number':num.sourceString,'inLine':'True'}
+    return {'tc': text.sourceString, 'number':num.sourceString,'inline':'True'}
   },
 
   tcrElement: function(_, _, num, _, text) {
-    return {'tcr': text.sourceString, 'number':num.sourceString,'inLine':'True'}
+    return {'tcr': text.sourceString, 'number':num.sourceString,'inline':'True'}
   },
 
   li: function (itemElement) {

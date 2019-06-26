@@ -52,7 +52,7 @@ function processInnerElements (jsonObject, usfmText) {
         } else if (key === 'styling') {
           usfmText = processInnerElements(elmnt.styling, usfmText)
         } else {
-          if (elmnt.hasOwnProperty('inLine')) {
+          if (elmnt.hasOwnProperty('inline')) {
             usfmText += ' \\' + marker + ' '
           } else {
             usfmText += '\n\\' + marker + ' '
