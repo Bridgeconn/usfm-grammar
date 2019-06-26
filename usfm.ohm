@@ -59,7 +59,7 @@ usfmBible{
 			sectionPostHeader = srElement | rElement | mrElement
 			verseElement = newLine? backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)*
 			
-			verseNumber = number ("-" number)? spaceOrNewLine
+			verseNumber = number letter? ("-" number letter?)? spaceOrNewLine
 
 			// sectionElement = sectionElementWithTitle | sectionElementWithoutTitle | msElement
 			sectionElement = sectionElementWithTitle | sectionElementWithoutTitle | msElement | dElement
