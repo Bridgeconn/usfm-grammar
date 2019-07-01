@@ -136,7 +136,7 @@ sem.addOperation('composeJson', {
 
   verseElement: function (_, _, _, _, verseNumber, verseMeta, verseContent) {
     let verse ={}
-    verse['number'] = verseNumber.composeJson() 
+    verse['number'] = verseNumber.sourceString
     verse['metadata'] = []
     verse['text objects'] = []
     if ( verseMeta.sourceString!='' ) { verse['metadata'].push(verseMeta.composeJson()) } 
@@ -162,12 +162,6 @@ sem.addOperation('composeJson', {
     }
     if (verse['metadata'].length == 0) { delete verse.metadata}
     return verse
-  },
-
-  verseNumber: function (num, _,num2, _) {
-    let number = num.sourceString
-    if (num2.sourceString!='') { number = number + num2.sourceString}
-    return number
   },
 
   verseText: function (content) {
@@ -463,15 +457,15 @@ sem.addOperation('composeJson', {
   },
 
   fElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True','inline':'True'}
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
   },
 
   feElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':'True','inline':'True'}
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
   },
 
   crossrefElement: function (_, tag, _, content, _, _, _){
-    return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':'True','inline':'True'}
+    return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
   },
 
   charElement: function(element) {
@@ -799,19 +793,19 @@ sem.addOperation('composeJson', {
 
   
   thElement: function(_, _, num, _, text) {
-    return {'th': text.sourceString, 'number':num.sourceString,'inline':'True'}
+    return {'th': text.sourceString, 'number':num.sourceString,'inline':true}
   },
 
   thrElement: function(_, _, num, _, text) {
-    return {'thr': text.sourceString, 'number':num.sourceString,'inline':'True'}
+    return {'thr': text.sourceString, 'number':num.sourceString,'inline':true}
   },
 
   tcElement: function(_, _, num, _, text) {
-    return {'tc': text.sourceString, 'number':num.sourceString,'inline':'True'}
+    return {'tc': text.sourceString, 'number':num.sourceString,'inline':true}
   },
 
   tcrElement: function(_, _, num, _, text) {
-    return {'tcr': text.sourceString, 'number':num.sourceString,'inline':'True'}
+    return {'tcr': text.sourceString, 'number':num.sourceString,'inline':true}
   },
 
   li: function (itemElement) {
@@ -862,7 +856,7 @@ sem.addOperation('composeJson', {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['marker'] = ms.sourceString
-    milestoneElement['closed'] = 'True'
+    milestoneElement['closed'] = true
     return milestoneElement
   },
 
@@ -871,7 +865,7 @@ sem.addOperation('composeJson', {
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['start/end'] = s_e.sourceString
     milestoneElement['marker'] = ms.sourceString + s_e.sourceString
-    milestoneElement['closed'] = 'True'
+    milestoneElement['closed'] = true
     if (attribs.sourceString!='') {
       milestoneElement['attributes'] = attribs.composeJson()
     }
