@@ -456,20 +456,28 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  fElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
+  fElement: function (nl, _, tag, _, content, _, _, _){
+    let obj = {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
+    return obj
   },
 
-  feElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
+  feElement: function (nl, _, tag, _, content, _, _, _){
+    let obj = {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
+    return obj
   },
 
-  efElement: function (_, tag, _, content, _, _, _){
-    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
+  efElement: function (nl, _, tag, _, content, _, _, _){
+    let obj = {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
+    return obj
   },
-  
-  crossrefElement: function (_, tag, _, content, _, _, _){
-    return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
+
+  crossrefElement: function (nl, _, tag, _, content, _, _, _){
+    let obj = {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
+    return obj
   },
 
   charElement: function(element) {
@@ -480,7 +488,7 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  inLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+  inLineCharElement: function(nl, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     if(tag.sourceString !== 'add'){
@@ -499,12 +507,12 @@ sem.addOperation('composeJson', {
       obj['attributes']  = attribObj
     }
     obj['closed'] = true
-    obj['inline'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     
     return obj
   },
 
-  nestedInLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+  nestedInLineCharElement: function(nl, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     if(tag.sourceString !== 'add'){
@@ -522,11 +530,11 @@ sem.addOperation('composeJson', {
       }
       obj['attributes']  = attribObj    }
     obj['closed'] = true
-    obj['inline'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
-  inLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+  inLineCharAttributeElement: function(nl, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     let textobj = text.composeJson()
     obj[tag.sourceString]= textobj
@@ -556,11 +564,11 @@ sem.addOperation('composeJson', {
       }
     }
     obj['closed'] = true
-    obj['inline'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
-  nestedInLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+  nestedInLineCharAttributeElement: function(nl, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     let textobj = text.composeJson()
     obj[tag.sourceString]= textobj
@@ -578,11 +586,11 @@ sem.addOperation('composeJson', {
       obj['attributes']  = attribObj    
     }
     obj['closed'] = true
-    obj['inline'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
     
-  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
+  inLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= text.composeJson()
     obj['text'] = obj[tag.sourceString]['content']
@@ -596,11 +604,11 @@ sem.addOperation('composeJson', {
       obj['attributes']  = attribObj    
     }
     obj['closed'] = true
-    obj['inline'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
-  nestedInLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
+  nestedInLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= text.composeJson()
     obj['text'] = obj[tag.sourceString]['content']
@@ -614,7 +622,7 @@ sem.addOperation('composeJson', {
       obj['attributes']  = attribObj    
     }
     obj['closed'] = true
-    obj['inline'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 

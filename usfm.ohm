@@ -145,57 +145,57 @@ usfmBible{
 
 			notesElement = footnoteElement | crossrefElement
 			footnoteElement = fElement | feElement | efElement
-			fElement = backSlash  "f" spaceChar? footnoteContent* backSlash "f*" spaceChar?
-			feElement = backSlash  "fe"  spaceChar? footnoteContent* backSlash "fe*"spaceChar?
-			efElement = backSlash  "ef"  spaceChar? footnoteContent* backSlash "ef*"spaceChar?
-			crossrefElement = backSlash  ("xt"|"x" | "ex") spaceChar?  crossrefContent* backSlash ("xt*"|"x*" | "ex") spaceChar?
+			fElement = newLine? backSlash  "f" spaceChar? footnoteContent* backSlash "f*" spaceChar?
+			feElement = newLine? backSlash  "fe"  spaceChar? footnoteContent* backSlash "fe*"spaceChar?
+			efElement = newLine? backSlash  "ef"  spaceChar? footnoteContent* backSlash "ef*"spaceChar?
+			crossrefElement = newLine? backSlash  ("xt"|"x" | "ex") spaceChar?  crossrefContent* backSlash ("xt*"|"x*" | "ex*") spaceChar?
 
 			footnoteContent = text | footnoteContentElement | nestedCharElement
-			footnoteContentElement = backSlash "fr" spaceChar
-							| backSlash "fr*" spaceChar?
-							| backSlash "fq" spaceChar
-							| backSlash "fq*" spaceChar?
-							| backSlash "fqa" spaceChar
-							| backSlash "fqa*" spaceChar?
-							| backSlash "fk" spaceChar
-							| backSlash "fk*" spaceChar?
-							| backSlash "fl" spaceChar
-							| backSlash "fl*" spaceChar?
-							| backSlash "fw" spaceChar
-							| backSlash "fw*" spaceChar?
-							| backSlash "fp" spaceChar
-							| backSlash "fp*" spaceChar?
-							| backSlash "ft" spaceChar
-							| backSlash "ft*" spaceChar?
-							| backSlash "fv" spaceChar
-							| backSlash "fv*" spaceChar?
-							| backSlash "fdc" spaceChar
-							| backSlash "fdc*" spaceChar?
-							| backSlash "fm" spaceChar
-							| backSlash "fm*" spaceChar?
+			footnoteContentElement = newLine? backSlash "fr" spaceChar
+							| newLine? backSlash "fr*" spaceChar?
+							| newLine? backSlash "fq" spaceChar
+							| newLine? backSlash "fq*" spaceChar?
+							| newLine? backSlash "fqa" spaceChar
+							| newLine? backSlash "fqa*" spaceChar?
+							| newLine? backSlash "fk" spaceChar
+							| newLine? backSlash "fk*" spaceChar?
+							| newLine? backSlash "fl" spaceChar
+							| newLine? backSlash "fl*" spaceChar?
+							| newLine? backSlash "fw" spaceChar
+							| newLine? backSlash "fw*" spaceChar?
+							| newLine? backSlash "fp" spaceChar
+							| newLine? backSlash "fp*" spaceChar?
+							| newLine? backSlash "ft" spaceChar
+							| newLine? backSlash "ft*" spaceChar?
+							| newLine? backSlash "fv" spaceChar
+							| newLine? backSlash "fv*" spaceChar?
+							| newLine? backSlash "fdc" spaceChar
+							| newLine? backSlash "fdc*" spaceChar?
+							| newLine? backSlash "fm" spaceChar
+							| newLine? backSlash "fm*" spaceChar?
 							
 
 			crossrefContent  = text | crossrefContentElement | nestedCharElement | attributesInCrossref
 			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| text)+
-			crossrefContentElement = backSlash "xo" spaceChar
-							| backSlash "xo*" spaceChar?
-							| backSlash "xk" spaceChar
-							| backSlash "xk*" spaceChar?
-							| backSlash "xq" spaceChar
-							| backSlash "xq*" spaceChar?
-							| backSlash "xt" spaceChar
-							| backSlash "xta" spaceChar
-							| backSlash "xta*" spaceChar?
-							| backSlash "xop" spaceChar
-							| backSlash "xop*" spaceChar?
-							| backSlash "xot" spaceChar
-							| backSlash "xot*" spaceChar?
-							| backSlash "xnt" spaceChar
-							| backSlash "xnt*" spaceChar?
-							| backSlash "xdc" spaceChar
-							| backSlash "xdc*" spaceChar?
-							| backSlash "rq" spaceChar
-							| backSlash "rq*" spaceChar?
+			crossrefContentElement = newLine? backSlash "xo" spaceChar
+							| newLine? backSlash "xo*" spaceChar?
+							| newLine? backSlash "xk" spaceChar
+							| newLine? backSlash "xk*" spaceChar?
+							| newLine? backSlash "xq" spaceChar
+							| newLine? backSlash "xq*" spaceChar?
+							| newLine? backSlash "xt" spaceChar
+							| newLine? backSlash "xta" spaceChar
+							| newLine? backSlash "xta*" spaceChar?
+							| newLine? backSlash "xop" spaceChar
+							| newLine? backSlash "xop*" spaceChar?
+							| newLine? backSlash "xot" spaceChar
+							| newLine? backSlash "xot*" spaceChar?
+							| newLine? backSlash "xnt" spaceChar
+							| newLine? backSlash "xnt*" spaceChar?
+							| newLine? backSlash "xdc" spaceChar
+							| newLine? backSlash "xdc*" spaceChar?
+							| newLine? backSlash "rq" spaceChar
+							| newLine? backSlash "rq*" spaceChar?
 
 			nestedCharElement = nestedInLineCharElement | nestedInLineCharAttributeElement | nestedInLineCharNumberedElement
 			nestedInLineCharElement = newLine? backSlash "+add" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "+add" "*" spaceChar?
