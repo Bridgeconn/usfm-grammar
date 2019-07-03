@@ -340,6 +340,6 @@ usfmBible{
 
 			zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "*" )?
 
-			esbElement = newLine backSlash "esb" spaceChar? (chapterContentTextContent | metaScripture )+ newLine? backSlash "esbe" spaceChar?
+			esbElement = newLine? backSlash "esb" spaceChar? (chapterContentTextContent | sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | paraElement )+ newLine? backSlash "esbe" spaceChar?
 			
 }
