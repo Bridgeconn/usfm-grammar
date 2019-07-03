@@ -590,7 +590,7 @@ sem.addOperation('composeJson', {
     return obj
   },
     
-  inLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
+  inLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= text.composeJson()
     obj['text'] = obj[tag.sourceString]['content']
@@ -608,7 +608,7 @@ sem.addOperation('composeJson', {
     return obj
   },
 
-  nestedInLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
+  nestedInLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString]= text.composeJson()
     obj['text'] = obj[tag.sourceString]['content']
