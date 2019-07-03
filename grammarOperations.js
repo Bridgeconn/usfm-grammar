@@ -464,6 +464,10 @@ sem.addOperation('composeJson', {
     return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
   },
 
+  efElement: function (_, tag, _, content, _, _, _){
+    return {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
+  },
+  
   crossrefElement: function (_, tag, _, content, _, _, _){
     return {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':true,'inline':true}
   },
