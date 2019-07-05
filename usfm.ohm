@@ -65,9 +65,9 @@ usfmBible{
 			sectionElement = sectionElementWithTitle | sectionElementWithoutTitle | msElement | dElement
 
 			sectionElementWithTitle = sectionMarker spaceChar (chapterContentTextContent | notesElement | milestoneElement)+ 
-			sectionElementWithoutTitle = sdMarker | sectionMarker 
-			sectionMarker = newLine backSlash "s" number? 
-			sdMarker = newLine backSlash "sd" number spaceChar*
+			sectionElementWithoutTitle = (sdMarker | sectionMarker ) spaceChar*
+			sectionMarker = newLine backSlash "s" number?
+			sdMarker = newLine backSlash "sd" number
 
 			paraElement = newLine? backSlash paraMarker spaceChar*
 
