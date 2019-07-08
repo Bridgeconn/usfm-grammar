@@ -179,6 +179,9 @@ sem.addOperation('composeJson', {
 
   sectionElementWithoutTitle: function (tag, _) {
     let marker = tag.composeJson()
+    if (!marker.includes('sd')) {
+      emitter.emit('warning', new Error('Section marker used without title.'));      
+    }
     return { 'text' :'', 'marker':marker}
   },
 
