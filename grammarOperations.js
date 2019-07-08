@@ -460,27 +460,83 @@ sem.addOperation('composeJson', {
   },
 
   fElement: function (nl, _, tag, _, content, _, _, _){
-    let obj = {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true}
+    let contElmnts = content.composeJson()
+    itemCount = 1
+    for (item of contElmnts) {
+      item['index'] = itemCount
+      itemCount +=1
+    }
+    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
     if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
   feElement: function (nl, _, tag, _, content, _, _, _){
-    let obj = {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true}
+    let contElmnts = content.composeJson()
+    itemCount = 1
+    for (item of contElmnts) {
+      item['index'] = itemCount
+      itemCount +=1
+    }
+    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
     if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
   efElement: function (nl, _, tag, _, content, _, _, _){
-    let obj = {'footnote': content.sourceString,'marker':tag.sourceString,'closed':true}
+    let contElmnts = content.composeJson()
+    itemCount = 1
+    for (item of contElmnts) {
+      item['index'] = itemCount
+      itemCount +=1
+    }
+    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
     if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
   crossrefElement: function (nl, _, tag, _, content, _, _, _){
-    let obj = {'cross-ref': content.sourceString,'marker':tag.sourceString,'closed':true}
+    let contElmnts = content.composeJson()
+    itemCount = 1
+    for (item of contElmnts) {
+      item['index'] = itemCount
+      itemCount +=1
+    }
+    let obj = {'cross-ref': contElmnts,'marker':tag.sourceString,'closed':true}
     if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
+  },
+
+  footnoteContent: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  crossrefContent: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  footnoteContentElement: function(nl, _, tag, _) {
+    let obj = {}
+    obj['marker'] = tag.sourceString
+    if (nl != '') { obj['inline'] = true }
+    return obj
+  },
+
+  crossrefContentElement: function(nl, _, tag, _) {
+    let obj = {}
+    obj['marker'] = tag.sourceString
+    if (nl != '') { obj['inline'] = true }
+    return obj
+  },
+
+  attributesInCrossref: function (_, _, attribs) {
+    let attribObj = attribs.composeJson()
+    if (Array.isArray(attribObj[0])) {
+      let attribTemp = []
+      for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+      attribObj = attribTemp
+    }
+    return {'attributes': attribObj}
   },
 
   charElement: function(element) {

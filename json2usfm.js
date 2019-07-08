@@ -135,8 +135,8 @@ function convert (jsonObj) {
 
 exports.reverseParse = convert
 
-let inputUsfm = '\\id ACT\n\\h प्रेरितों के काम\n\\toc1 प्रेरितों के काम\n\\toc2 प्रेरितों के काम\n\\mt प्रेरितों के काम\n\\c 1\n\\p\n\\v 1 \\w हे|x-occurrence="1" x-occurrences="1"\\w*\\zaln-s | x-verified="true" x-occurrence="1"    x-occurrences="1" x-content="Θεόφιλε"\n\\w थियुफिलुस|x-occurrence="1" x-occurrences="1"\\w*\n\\zaln-e\\*\n\\w मैंने|x-occurrence="1" x-occurrences="1"\\w*\\zaln-s | x-verified="true" x-occurrence="1"  x-occurrences="1" x-content="πρῶτον"\n\\w पहली|x-occurrence="1" x-occurrences="1"\\w*\n\\zaln-e\\*\n\\w पुस्तिका|x-occurrence="1" x-occurrences="1"\\w*\\w उन|x-occurrence="1" x-occurrences="1"\\w*\\w सब|  x-occurrence="1" x-occurrences="1"\\w*\\zaln-s | x-verified="true" x-occurrence="1" x-occurrences="1"   x-content="λόγον"\n\\w बातों|x-occurrence="1" x-occurrences="1"\\w*\n\\zaln-e\\*\n\\zaln-s | x-verified="true" x-occurrence="1" x-occurrences="1" x-content="ἀνελήμφθη"\n\\w ऊपर|x-occurrence="1" x-occurrences="1"\\w*\\w उठाया|x-occurrence="1" x-occurrences="1"\\w*\n\\zaln-e\\*\n\\zaln-s | x-verified="true" x-occurrence="1" x-occurrences="1" x-content="ἄχρι"\n\\w न|x-occurrence="1" x-occurrences="1"\\w*\n\\zaln-e\\*\n\\w गया|x-occurrence="1" x-occurrences="1"\\w* \n\\v 30 और पौलुस पूरे दो वर्ष अपने किराये के घर में रहा,\n\\v 31 और जो उसके पास आते थे, उन सबसे मिलता रहा और बिना रोक-टोक बहुत निडर होकर परमेश्‍वर के राज्य का प्रचार करता और प्रभु यीशु मसीह की बातें सिखाता रहा।\n '
-let jsonOutput = parser.parse(inputUsfm)
-console.log(JSON.stringify(jsonOutput))
-let outputUsfm = convert(jsonOutput)
-console.log(outputUsfm)
+// let inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 some text \n\\f + \\ft Some modern versions have \\fqa and in the ruins of the rich, lambs will graze \\fqa* . \\f*'
+// let jsonOutput = parser.parse(inputUsfm)
+// console.log(JSON.stringify(jsonOutput))
+// let outputUsfm = convert(jsonOutput)
+// console.log(outputUsfm)

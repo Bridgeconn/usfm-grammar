@@ -176,7 +176,7 @@ usfmBible{
 							
 
 			crossrefContent  = text | crossrefContentElement | nestedCharElement | attributesInCrossref
-			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| text)+
+			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| defaultAttribute)+
 			crossrefContentElement = newLine? backSlash "xo" spaceChar
 							| newLine? backSlash "xo*" spaceChar?
 							| newLine? backSlash "xk" spaceChar

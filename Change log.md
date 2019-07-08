@@ -2,7 +2,7 @@
 
 ## Version 1.0.0 to 1.0.1
 
-There is a new reverseParse method, that can take a JSON object in the usfm-grammar format and generate a USFM file out of it.
+The main new feature is that, there is a new reverseParse method, that can take a JSON object in the usfm-grammar format and generate a USFM file out of it.
 
 
 The output JSON structure has been revised to enable the backward conversion possible. The following are the changes brought in
@@ -297,55 +297,64 @@ The output JSON structure has been revised to enable the backward conversion pos
     <table><tr><th>Input</th><th>New Structure</th></tr><tr><td>
     <pre>
 
+    \id GEN
+    \c 1
+    \p
     \s1 The Preaching of John the Baptist
     \r (Matthew 3.1-12; Luke 3.1-18; 
     John 1.19-28)
-    \p
     \v 1 This is the Good News about Jesus 
     Christ, the Son of God. \f + \fr 1.1: \ft Some
     manuscripts do not have \fq the Son of God.\f*
 
     </pre></td><td><pre>
 
-    {"metadata":{"id":{"book":"GEN"}},
-    "chapters":[
-        {"header":{"title":"1"},
-        "metadata":[
-            {"section":{"text":"The Preaching 
-            of John the Baptist",
+    {"metadata":
+      {"id":{"book":"GEN"}},
+     "chapters":[
+         {"header":{"title":"1"},
+          "metadata":[     
+            {"section":{"text":"The Preaching of John the Baptist",
                         "marker":"s1"},
-            "sectionPostheader":[
-                {"r":[{"text":"(Matthew 3.1-12; 
-                Luke 3.1-18; John 1.19-28)"}]}
+             "sectionPostheader":[         
+                {"r":[{"text":"(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)"}]}
                 ]
             },
-            {"styling":[{"marker":"p"}]}
-        ],
-        "verses":[
-            {"number":"1",
-            "metadata":[
-                {"footnote":"+ \\fr 1.1: \\ft Some 
-                          manuscripts do not 
-                          have \\fq the Son of God.",
-                "marker":"f",
-                "closed":"True",
-                "inLine":"True",
-                "index":1}
+            {"styling":[{"marker":"p"}]
+              }
+            ],
+          "verses":[
+            {"number":"1 ",
+             "metadata":[
+                {"footnote":[             
+                    {"text":"+ ","index":1},
+                    {"marker":"fr","inline":true,"index":2},
+                    {"text":"1.1: ","index":3},
+                    {"marker":"ft","inline":true,"index":4},
+                    {"text":"Some manuscripts do not have ","index":5},
+                    {"marker":"fq","inline":true,"index":6},
+                    {"text":"the Son of God.","index":7}
+                    ],
+                  "marker":"f",
+                  "closed":true,
+                  "inline":true,
+                  "index":1
+                  }
+              ],
+              "text objects":[  
+                {"text":"This is the Good News about Jesus Christ, the Son of God. ",
+                  "index":0}
                 ],
-            "text objects":[
-                {"text":"This is the Good News about 
-                      Jesus Christ, the Son of God. ",
-                "index":0}
-                ],
-            "text":"This is the Good News about Jesus 
-                    Christ, the Son of God. "
+              "text":"This is the Good News about Jesus Christ, the Son of God. "
             }
-        ]
-        }
-    ],
-    "messages":{"warnings":[]}
-    }
+            ]
+          }
+        ],
+      "messages":{"warnings":[] }
+      }
     </pre></td></tr></table>
+
+Another big enhancement is that, the footnote's and cross-reference's content is now parsed and the JSON output has an array of its contents. Refer the item 7 of above table, for the structure 
 
 
 ### Bug fixes
