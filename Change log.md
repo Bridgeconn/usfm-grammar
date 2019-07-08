@@ -352,10 +352,14 @@ The output JSON structure has been revised to enable the backward conversion pos
 
 * `\\ef` marker
 * notes coming in new line
-* verse numbers with alphabet at end (example: `\\v 1a`)
+* split verses or verse numbers with alphabet at end (example: `\\v 1a`)
 * closing marker for note's content markers(example: `\\ft*`)
-* section markers with number greater than 4 and no text(example: `\\s5`) 
+* section markers with number greater than 4 and no text(example: `\\s5`)
+> gives warning for `\\s#` when used without title text
+* trailing spaces, and no number in `\\s#` and `\\sd#` markers
 * `\\esb` at start of verse, on next line after verse number
 * `\\li` with inline character markers, and not just plain text
 * `\\liv#` marker closing when used as numbered marker
-* using outer marker's closing to close the nested marker(example: `\\add an addition containing the word \\+nd Lord\\add*)
+* using outer marker's closing to close the nested marker
+> example: `\\add an addition containing the word \\+nd Lord\\add*`
+* default attribute value coming in quotes(`\rb BB|"gg:gg"\rb*`)
