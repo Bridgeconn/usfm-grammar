@@ -16,13 +16,12 @@ The output JSON structure has been revised to enable the backward conversion pos
 > * description --> cd
 
 2. Adds index value for objects within a verse
-    <table><tr><th>Input</th><th>New Structure</th></tr><td>
+    <table><tr><th>Input</th><th>New Structure</th></tr><tr><td>
     <pre>
     \v 2 O \nd Lord\nd*, I have heard of what you have done,
     \q2 and I am filled with awe.
     \q1 Now do again in our times
     \q2 the great deeds you used to do.
-
     </pre></td><td><pre>
     "verses":[
         {"number":"2",
@@ -59,11 +58,9 @@ The output JSON structure has been revised to enable the backward conversion pos
               the great deeds you used to do. "
         }
     ]
-
-    </pre></td></table>
-
+    </pre></td></table></tr></table>
 3. Brings all list type headers to same format
-    <table><tr><th>Input</th><th>New Structure</th><th>Old Structure</th></tr><td>
+    <table><tr><th>Input</th><th>New Structure</th><th>Old Structure</th></tr><tr><td>
     <pre>
     \id GEN
     \mt1 THE ACTS
@@ -220,7 +217,7 @@ The output JSON structure has been revised to enable the backward conversion pos
     </pre></td></tr></table>
 
 4. Adds 'closed' and 'inLine' properties to character, table and milestone markers
-    <table><tr><th>Input</th><th>New Structure</th></tr><td>
+    <table><tr><th>Input</th><th>New Structure</th></tr><tr><td>
     <pre>
     \v 14 That is why \bk The Book of 
     the \+nd Lord\+nd*'s Battles\bk* 
@@ -259,7 +256,7 @@ The output JSON structure has been revised to enable the backward conversion pos
 5. Change the 'column' property of table cells to say 'number'
     
 6. Convert the 2D array of attributes to a 1D array and remove the property 'contents' for character markers
-    <table><tr><th>Input</th><th>New Structure</th><th>Old Structure</th></tr><td>
+    <table><tr><th>Input</th><th>New Structure</th><th>Old Structure</th></tr><tr><td>
     <pre>
 
     \v 2 the second verse \w gracious|lemma="grace" 
@@ -298,7 +295,7 @@ The output JSON structure has been revised to enable the backward conversion pos
     </pre></td></tr></table>
 
 7. Include the marker name for section headers, footnotes and crossrefs
-    <table><tr><th>Input</th><th>New Structure</th></tr><td>
+    <table><tr><th>Input</th><th>New Structure</th></tr><tr><td>
     <pre>
 
     \s1 The Preaching of John the Baptist
@@ -351,3 +348,15 @@ The output JSON structure has been revised to enable the backward conversion pos
     }
     </pre></td></tr></table>
 
+
+### Bug fixes
+
+* `\\ef` marker
+* notes coming in new line
+* verse numbers with alphabet at end (example: `\\v 1a`)
+* closing marker for note's content markers(example: `\\ft*`)
+* section markers with number greater than 4 and no text(example: `\\s5`) 
+* `\\esb` at start of verse, on next line after verse number
+* `\\li` with inline character markers, and not just plain text
+* `\\liv#` marker closing when used as numbered marker
+* using outer marker's closing to close the nested marker(example: `\\add an addition containing the word \\+nd Lord\\add*)
