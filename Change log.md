@@ -109,48 +109,47 @@ The output JSON structure has been revised to enable the backward conversion pos
         ]
       ]
     },
-  "chapters":[
-     {"header":{"title":"20"},
-      "metadata":[
-        {"styling":[{"marker":"p"}]}
-        ],
-      "verses":[
-        {"number":"16-22",
-         "text objects":[
-            {"text":"This is the list of 
-              the administrators of the 
-              tribes of Israel:",
-              "index":0},
-            {"list":[
-                {"li":{"text":"Reuben - 
-                Eliezer son of Zichri"},
-                  "number":"1"},
-                {"li":{"text":"Simeon - 
-                Shephatiah son of Maacah"},
-                  "number":"1"},
-                {"li":{"text":"Levi - 
-                Hashabiah son of Kemuel"},
-                  "number":"1"},
-                {"li":{"text":"Aaron - Zadok"},
-                  "number":"1"}
-               ],
-              "text":"Reuben - Eliezer son 
-              of Zichri | Simeon - Shephatiah 
-              son of Maacah | Levi - Hashabiah 
-              son of Kemuel | Aaron - Zadok | ",
-              "index":1
-            }
+    "chapters":[
+       {"header":{"title":"20"},
+        "metadata":[
+          {"styling":[{"marker":"p"}]}
           ],
-          "text":"This is the list of the 
-          administrators of the tribes of 
-          Israel: Reuben - Eliezer son of Zichri 
-          | Simeon - Shephatiah son of Maacah | 
-          Levi - Hashabiah son of Kemuel | 
-          Aaron - Zadok | "
-          }
-        ]
-      },
-
+        "verses":[
+          {"number":"16-22",
+           "text objects":[
+              {"text":"This is the list of 
+                the administrators of the 
+                tribes of Israel:",
+                "index":0},
+              {"list":[
+                  {"li":{"text":"Reuben - 
+                  Eliezer son of Zichri"},
+                    "number":"1"},
+                  {"li":{"text":"Simeon - 
+                  Shephatiah son of Maacah"},
+                    "number":"1"},
+                  {"li":{"text":"Levi - 
+                  Hashabiah son of Kemuel"},
+                    "number":"1"},
+                  {"li":{"text":"Aaron - Zadok"},
+                    "number":"1"}
+                 ],
+                "text":"Reuben - Eliezer son 
+                of Zichri | Simeon - Shephatiah 
+                son of Maacah | Levi - Hashabiah 
+                son of Kemuel | Aaron - Zadok | ",
+                "index":1
+              }
+            ],
+            "text":"This is the list of the 
+            administrators of the tribes of 
+            Israel: Reuben - Eliezer son of Zichri 
+            | Simeon - Shephatiah son of Maacah | 
+            Levi - Hashabiah son of Kemuel | 
+            Aaron - Zadok | "
+            }
+          ]
+        },
     </pre></td><td><pre>
     {
     "metadata":{
