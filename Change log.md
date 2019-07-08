@@ -1,6 +1,6 @@
 # Change log for usfm-grammar
 
-## Version 1.0.0 to 1.0.1
+## Version 1.0.0 to 1.1.0
 
 The main new feature is that, there is a new reverseParse method, that can take a JSON object in the usfm-grammar format and generate a USFM file out of it.
 
@@ -354,10 +354,10 @@ The output JSON structure has been revised to enable the backward conversion pos
       }
     </pre></td></tr></table>
 
-Another big enhancement is that, the footnote's and cross-reference's content is now parsed and the JSON output has an array of its contents. Refer the item 7 of above table, for the structure 
+Another big enhancement is that, the footnote's and cross-reference's content is now parsed and the JSON output has an array of its contents. Refer the item 7 of above list, for the JSON structure. 
 
 
-### Bug fixes
+#### Bug fixes
 
 * `\\ef` marker
 * notes coming in new line

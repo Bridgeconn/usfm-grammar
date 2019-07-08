@@ -90,3 +90,9 @@ var usfmValidity = grammar.validate(/**USFM Text to be checked**/)
 The `grammar.parse()` method returns a JSON structure for the passed-in USFM string, if it is a valid usfm file.
 The `grammar.parse()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
 The `grammar.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not.
+
+```
+var usfmString = grammar.reverseParse(jsonOutput)
+```
+The `grammar.reverseParse()` takes a JOSN object and converts it to corresponding USFM text.
+
