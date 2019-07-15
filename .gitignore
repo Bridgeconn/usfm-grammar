@@ -59,4 +59,5 @@ typings/
 
 
 USX-USFM grammr comparison.md
-server.js
+js/server.js
+index.html

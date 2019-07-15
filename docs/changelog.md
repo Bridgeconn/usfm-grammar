@@ -3,7 +3,8 @@
 ## Version 1.0.0 to 1.1.0
 
 The main new feature is that, there is a new reverseParse method, that can take a JSON object in the usfm-grammar format and generate a USFM file out of it.
-
+ 
+If you convert a usfm file into json using usfm-grammar and then convert it back to a usfm, the parser would retain all the markers and contents as given in the input usfm file. But there might be differences in spacing from the original file because, one, we normalize all muliple spaces in input file before processing, two, we add space around closing markers whether or not they are present in input file.
 
 The output JSON structure has been revised to enable the backward conversion possible. The following are the changes brought in
 
@@ -41,8 +42,8 @@ The output JSON structure has been revised to enable the backward conversion pos
               "index":0},
             {"nd":[{"text":"Lord"}],
               "text":"Lord",
-              "closed":"True",
-              "inLine":"True",
+              "closed":true,
+              "inline":true,
               "index":1},
             {"text":", I have heard of what you have done,",
               "index":2},
@@ -215,7 +216,7 @@ The output JSON structure has been revised to enable the backward conversion pos
     
     </pre></td></tr></table>
 
-4. Adds 'closed' and 'inLine' properties to character, table and milestone markers
+4. Adds 'closed' and 'inline' properties to character, table and milestone markers
     <table><tr><th>Input</th><th>New Structure</th></tr><tr><td>
     <pre>
     \v 14 That is why \bk The Book of 
@@ -232,14 +233,14 @@ The output JSON structure has been revised to enable the backward conversion pos
                     {"text":"The Book of the "},
                     {"+nd":[{"text":"Lord"}],
                     "text":"Lord",
-                    "closed":"True",
-                    "inLine":"True"
+                    "closed":true,
+                    "inline":true
                     },
                     {"text":"'s Battles"}
                 ],
                 "text":"The Book of the Lord's Battles",
-                "closed":"True",
-                "inLine":"True",
+                "closed":true,
+                "inline":true,
                 "index":1},
                 {"text":"speaks of �...the town of Waheb 
                 in the area of Suphah",
@@ -273,8 +274,8 @@ The output JSON structure has been revised to enable the backward conversion pos
                 {"name":"strong",
                 "value":"\"H1234,G5485\""}
                 ],
-            "closed":"True",
-            "inLine":"True",
+            "closed":true,
+            "inline":true,
             "index":1}
         ],
         "text":"the second verse gracious "

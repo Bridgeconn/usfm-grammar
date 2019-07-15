@@ -1,4 +1,4 @@
-var parser = require('./parser.js')
+var parser = require('./USFMparser.js')
 
 function processInnerElements (jsonObject, usfmText) {
   for (let elmnt of jsonObject) {
@@ -133,10 +133,10 @@ function convert (jsonObj) {
   return usfmText
 }
 
-exports.reverseParse = convert
+exports.parseJSON = convert
 
 // let inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 some text \n\\f + \\ft Some modern versions have \\fqa and in the ruins of the rich, lambs will graze \\fqa* . \\f*'
-// let jsonOutput = parser.parse(inputUsfm)
+// let jsonOutput = parser.parseUSFM(inputUsfm)
 // console.log(JSON.stringify(jsonOutput))
 // let outputUsfm = convert(jsonOutput)
 // console.log(outputUsfm)

@@ -27,28 +27,51 @@ The parsed USFM is an intuitive and easy to manipulate JSON structure that allow
 
 ```
 {"metadata":
-    {"id": {"book":"HAB",
-            "details":" 35HABGNT92.usfm, Good News Translation, June 2003",
-            "version":"3.0"}
+  {"id":
+    {"book":"HAB",
+      "details":" 45HABGNT92.usfm, Good News Translation, June 2003"
+      }
     },
- "chapters":[
-    {"header":{"title":"3"},
-        "metadata":[[{"section":"A Prayer of Habakkuk"},
-                    {"styling":"p"}]],
-     "verses":[
-        {"number":"1",
-         "metadata":[{"styling":["b","q1"]}],
-         "text":"This is a prayer of the prophet Habakkuk: "
-        },
-        {"number":"2",
-         "metadata":[{"nd":[{"text":"Lord"}]},
-                    {"styling":["q2","q1","q2","q1"]}],
-         "text":"O Lord , I have heard of what you have done, and I am filled with awe. Now do again in our times the great deeds you used to do. Be merciful, even when you are angry. "
+  "chapters":[
+ 
+    { "header":{"title":"3"},
+      "metadata":[
+        {"section":{"text":"A Prayer of Habakkuk",
+                      "marker":"s1"}},
+        {"styling":[{"marker":"p"}]}
+        ],
+      "verses":[
+        { "number":"1 ",
+          "metadata":[{"styling":[
+                {"marker":"b","index":1},
+                {"marker":"q1","index":2}]}],
+          "text objects":[
+                {"text":"This is a prayer of the prophet Habakkuk:","index":0}],
+          "text":"This is a prayer of the prophet Habakkuk: "},
+        { "number":"2 ",
+          "metadata":[{"styling":[
+                {"marker":"q2","index":3},
+                {"marker":"q1","index":5},
+                {"marker":"q2","index":7},
+                {"marker":"q1","index":9}]}],
+          "text objects":[
+                {"text":"O ","index":0},
+                {"nd":[{"text":"Lord"}],
+                  "text":"Lord",
+                  "closed":true,
+                  "inline":true,
+                  "index":1},
+                {"text":", I have heard of what you have done,","index":2},
+                {"text":"and I am filled with awe.","index":4},
+                {"text":"Now do again in our times","index":6},
+                {"text":"the great deeds you used to do.","index":8},
+                {"text":"Be merciful, even when you are angry.","index":10}],
+          "text":"O Lord , I have heard of what you have done, and I am filled with awe. Now do again in our times the great deeds you used to do. Be merciful, even when you are angry. "
           }
         ]
       }
     ],
- "messages": {"warnings":["Book code is in lowercase. "]}
+  "messages":{"warnings":["Book code is in lowercase. "]}
 }
 ```
 
@@ -82,17 +105,21 @@ The parser is [available on NPM](https://www.npmjs.com/package/usfm-grammar) and
 
 ```
 var grammar = require('usfm-grammar)
-var jsonOutput = grammar.parse(/**The USFM Text to be converted to JSON**/)
-var jsonCleanOutput = grammar.parse(/**The USFM Text to be converted to JSON**/, grammar.SCRIPTURE)
+var jsonOutput = grammar.parseUSFM(/**The USFM Text to be converted to JSON**/)
+var jsonCleanOutput = grammar.parseUSFM(/**The USFM Text to be converted to JSON**/, grammar.SCRIPTURE)
+```
+The `grammar.parseUSFM()` method returns a JSON structure for the passed-in USFM string, if it is a valid usfm file.
+The `grammar.parseUSFM()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
+If you intent to create a usfm from the data after processing it, we recommend using this method without the `SCRIPTURE` flag as this would loose information of other markers. 
+
+
+```
 var usfmValidity = grammar.validate(/**USFM Text to be checked**/)
 ```
-
-The `grammar.parse()` method returns a JSON structure for the passed-in USFM string, if it is a valid usfm file.
-The `grammar.parse()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
 The `grammar.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not.
 
 ```
-var usfmString = grammar.reverseParse(jsonOutput)
+var usfmString = grammar.parseJSON(jsonOutput)
 ```
-The `grammar.reverseParse()` takes a JOSN object and converts it to corresponding USFM text.
+The `grammar.parseJSON()` takes a JOSN object in the usfm-grammar JSON format and converts it to corresponding USFM text.
 

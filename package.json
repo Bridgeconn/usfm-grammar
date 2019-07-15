@@ -5,7 +5,7 @@
     "main": "parser.js",
     "scripts": {
         "test": "mocha",
-        "start": "node server.js"
+        "start": "node js/server.js"
     },
     "dependencies": {
         "formidable": "^1.2.1",

@@ -1,5 +1,5 @@
 var assert = require('assert')
-var parser = require('../parser.js')
+var parser = require('../js/USFMparser.js')
 var fs = require('fs')
 
 describe('Mandatory Markers', function () {
@@ -109,7 +109,7 @@ describe('Ensure all true positives', function () {
 
 // describe('Test with usfm files from the wild', function () {
 //   it('Hindi IRV file1', function () {
-//     fs.readFile('test/test_files/HindiIRV5_41-MAT.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/HindiIRV5_41-MAT.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -117,7 +117,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Hindi IRV file2', function () {
-//     fs.readFile('test/test_files/HindiIRV5_67-REV.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/HindiIRV5_67-REV.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -125,7 +125,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Tamil IRV file1', function () {
-//     fs.readFile('test/test_files/Tam_IRV5_57-TIT.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/Tam_IRV5_57-TIT.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -133,7 +133,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Tamil IRV file2', function () {
-//     fs.readFile('test/test_files/Tam_IRV5_46-ROM.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/Tam_IRV5_46-ROM.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -141,7 +141,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Greek UGNT file1', function () {
-//     fs.readFile('test/test_files/Greek_UGNT4_47-1CO.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/Greek_UGNT4_47-1CO.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -149,7 +149,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Greek UGNT file2', function () {
-//     fs.readFile('test/test_files/Greek_UGNT4_63-1JN.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/Greek_UGNT4_63-1JN.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -157,7 +157,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('AMT alignment export file', function () {
-//     fs.readFile('test/test_files/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -165,7 +165,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('WEB file1', function () {
-//     fs.readFile('test/test_files/03-EXOeng-web.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/03-EXOeng-web.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -173,7 +173,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('WEB file2', function () {
-//     fs.readFile('test/test_files/21-PROeng-web.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/21-PROeng-web.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -181,7 +181,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('WEB file3', function () {
-//     fs.readFile('test/test_files/75-ROMeng-web.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/75-ROMeng-web.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -189,7 +189,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('t4t file1', function () {
-//     fs.readFile('test/test_files/13-2KIeng-t4t.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/13-2KIeng-t4t.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -197,7 +197,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('t4t file2', function () {
-//     fs.readFile('test/test_files/20-PSAeng-t4t.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/20-PSAeng-t4t.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -205,7 +205,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('t4t file3', function () {
-//     fs.readFile('test/test_files/74-ACTeng-t4t.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/74-ACTeng-t4t.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -213,7 +213,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Brenton file1', function () {
-//     fs.readFile('test/test_files/09-RUTeng-Brenton.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/09-RUTeng-Brenton.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -221,7 +221,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Brenton file2', function () {
-//     fs.readFile('test/test_files/23-SNGeng-Brenton.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/23-SNGeng-Brenton.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -229,7 +229,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Chinese file1', function () {
-//     fs.readFile('test/test_files/18-ESTcmn-cu89s.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/18-ESTcmn-cu89s.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -237,7 +237,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Chinese file2', function () {
-//     fs.readFile('test/test_files/32-OBAcmn-cu89s.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/32-OBAcmn-cu89s.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -245,7 +245,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Chinese file3', function () {
-//     fs.readFile('test/test_files/94-3JNcmn-cu89s.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/94-3JNcmn-cu89s.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -253,7 +253,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Revised Version file1', function () {
-//     fs.readFile('test/test_files/19-JOBeng-rv.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/19-JOBeng-rv.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -261,7 +261,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Revised Version file2', function () {
-//     fs.readFile('test/test_files/26-LAMeng-rv.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/26-LAMeng-rv.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
@@ -269,7 +269,7 @@ describe('Ensure all true positives', function () {
 //   })
 
 //   it('Revised Version file3', function () {
-//     fs.readFile('test/test_files/90-1PEeng-rv.usfm', 'utf-8', function (err, data) {
+//     fs.readFile('test/resources/90-1PEeng-rv.usfm', 'utf-8', function (err, data) {
 //       if (err) { throw err }
 //       let output = parser.validate(data)
 //       assert.strictEqual(output, true)
