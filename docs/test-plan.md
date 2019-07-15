@@ -471,3 +471,248 @@ Out of the *77 test cases* which were copied from the test set of usfm validator
 Majority of these(~15) look like additional constraints added by paratext relating to spaces, punctuations etc. Some are because we do not validate the contents of markers or values of attributes. Warnings will be generated for those.
 
 *1* test case which *paratext accepts are being rejected* by our system. This is a file with nothing but an _\\id_ marker. Our grammar makes _\\v_, _\\c_ and _\\p_ mandatory
+
+
+## Test Round-tripability
+
+Convert a USFM to JSON first, then the JSON back to USFM and ensure that the generated USFM is same as the input USFM
+
+1. The Basic USFM Components
+
+	1.1 The minimal set of markers
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 verse one
+		\v 2 verse two
+		```
+
+	1.2 Multiple chapters
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\c 2
+		\p
+		\v 1 the third verse
+		\v 2 the fourth verse
+		```
+
+	1.3 Section headings
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\s A new section
+		\p
+		\v 3 the third verse
+		\v 4 the fourth verse
+		```
+
+	1.4 Header section markers
+
+		```
+		\id MRK The Gospel of Mark
+		\ide UTF-8
+		\usfm 3.0
+		\h Mark
+		\mt2 The Gospel according to
+		\mt1 MARK
+		\is Introduction
+		\ip \bk The Gospel according to Mark\bk* begins with the statement...
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		```
+
+	1.5 Footnotes
+
+		```
+		\id MAT
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\v 3 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \ft Some manuscripts do not have \fq the Son of God.\f*
+		\v 4 yet another verse.
+		```
+
+	1.6 Cross-refs
+
+		```
+		\id MAT
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\v 3 \x - \xo 2.23: \xt Mrk 1.24; Luk 2.39; Jhn 1.45.\x*and made his home in a town named Nazareth.
+		```
+
+	1.7 Multiple para markers
+
+		```
+		\id JHN
+		\c 1
+		\s1 The Preaching of John the Baptist
+		\r (Matthew 3.1-12; Luke 3.1-18; John 1.19-28)
+		\p
+		\v 1 This is the Good News about Jesus Christ, the Son of God.
+		\v 2 It began as the prophet Isaiah had written:
+		\q1 “God said, ‘I will send my messenger ahead of you
+		\q2 to open the way for you.’
+		\q1
+		\v 3 Someone is shouting in the desert,
+		\q2 ‘Get the road ready for the Lord;
+		\q2 make a straight path for him to travel!’”
+		\p
+		\v 4 So John appeared in the desert, baptizing and preaching. “Turn away from your sins and be baptized,” he told the people, “and God will forgive your sins.”
+		```
+
+	1.8 Character markers
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\v 15 Tell the Israelites that I, the \nd Lord\nd*, the God of their ancestors, the God of Abraham, Isaac, and Jacob,
+		```
+
+	1.9 Markers with attributes
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse \w gracious|lemma="grace" \w*
+		```
+
+2. More Complex Components
+
+	2.1 Lists
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\c 2
+		\p
+		\v 1 the third verse
+		\v 2 the fourth verse
+		\s1 Administration of the Tribes of Israel
+		\lh
+		\v 16-22 This is the list of the administrators of the tribes of Israel:
+		\li1 Reuben - Eliezer son of Zichri
+		\li1 Simeon - Shephatiah son of Maacah
+		\li1 Levi - Hashabiah son of Kemuel
+		\lf This was the list of the administrators of the tribes of Israel.
+		```
+
+	2.2 Header section with more markers
+
+		```
+		\id MRK 41MRKGNT92.SFM, Good News Translation, June 2003
+		\h John
+		\toc1 The Gospel according to John
+		\toc2 John
+		\mt2 The Gospel
+		\mt3 according to
+		\mt1 JOHN
+		\ip The two endings to the Gospel, which are enclosed in brackets, are regarded as written by someone other than the author of \bk Mark\bk*
+		\iot Outline of Contents
+		\io1 The beginning of the gospel \ior (1.1-13)\ior*
+		\io1 Jesus' public ministry in Galilee \ior (1.14–9.50)\ior*
+		\io1 From Galilee to Jerusalem \ior (10.1-52)\ior*
+		\c 1
+		\ms BOOK ONE
+		\mr (Psalms 1–41)
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		```
+
+	2.3 Character marker nesting
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\v 14 That is why \bk The Book of the \+nd Lord\+nd*'s Battles\bk*speaks of “...the town of Waheb in the area of Suphah
+		```
+
+	2.4 Markers with default attributes
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse \w gracious|grace\w*
+		```
+
+	2.5 Link-attributes and custom attributes
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse \w gracious|x-myattr="metadata" \w*
+		\q1 “Someone is shouting in the desert,
+		\q2 ‘Prepare a road for the Lord;
+		\q2 make a straight path for him to travel!’ ”
+		\s \jmp |link-id="article-john_the_baptist" \jmp*John the Baptist
+		\p John is sometimes called...
+		```
+
+	2.6 Table
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\p
+		\v 12-83 They presented their offerings in the following order:
+		\tr \th1 Day \th2 Tribe \th3 Leader
+		\tr \tcr1 1st \tc2 Judah \tc3 Nahshon son of Amminadab
+		\tr \tcr1 2nd \tc2 Issachar \tc3 Nethanel son of Zuar
+		\tr \tcr1 3rd \tc2 Zebulun \tc3 Eliab son of Helon
+		```
+
+	2.7 Milestones
+
+		```
+		\id GEN
+		\c 1
+		\p
+		\v 1 the first verse
+		\v 2 the second verse
+		\v 3
+		\qt-s |sid="qt_123" who="Pilate" \*“Are you the king of the Jews?”
+		\qt-e |eid="qt_123" \*
+		```
+
+## Test with usfm-js Testcases
+
+All the test cases used in usfm-js for testing their tool has been copied and used for testing usfm-grammar aswell to ensure that all corner cases are being covered.
+
+Other than two cases that is seen on multiple test files, usfm-grammar tests all those test cases successfully. The two cases npt handled are
+* `\s` marker coming before chapter(`\c`) 
+* `\w` marker coming within a footnote
