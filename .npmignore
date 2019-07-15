@@ -57,8 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
-
-js/server.js
-index.html
 test/*
 test/**
