@@ -57,7 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
-
-USX-USFM grammr comparison.md
 js/server.js
 index.html
