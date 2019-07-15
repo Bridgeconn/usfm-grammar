@@ -2,7 +2,9 @@
 
 ## Version 1.0.0 to 1.1.0
 
-The main new feature is that, there is a new reverseParse method, that can take a JSON object in the usfm-grammar format and generate a USFM file out of it.
+The main new feature is that, there is a new reverse conversion, that can take a JSON object in the usfm-grammar format and generate a USFM file out of it.
+
+The `parse()` method of previous version, that converts a USFM file to JSON, is now called `parseUSFM()` and the new method to convert JSON to USFM is called `parseJSON()`
  
 If you convert a usfm file into json using usfm-grammar and then convert it back to a usfm, the parser would retain all the markers and contents as given in the input usfm file. But there might be differences in spacing from the original file because, one, we normalize all muliple spaces in input file before processing, two, we add space around closing markers whether or not they are present in input file.
 
