@@ -5,7 +5,7 @@
     "main": "parser.js",
     "scripts": {
         "test": "mocha",
-        "start": "node js/server.js"
+        "start": "node ../server.js"
     },
     "dependencies": {
         "formidable": "^1.2.1",
@@ -25,7 +25,7 @@
         "json"
     ],
     "author": "Bridge Connectivity Solutions <kavitha.raju@bridgeconn.com> (https://github.com/Bridgeconn)",
-    "license": "GNU General Public License v3.0",
+    "license": "GPL-3.0",
     "bugs": {
         "url": "https://github.com/Bridgeconn/usfm-grammar/issues"
     },
