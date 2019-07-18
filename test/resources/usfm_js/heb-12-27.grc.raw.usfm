@@ -1,0 +1,20 @@
+\id GEN
+\c 1
+\p
+\v 1
+\w τὸ|lemma="ὁ" strong="G35880" x-morph="Gr,RD,,,,NNS,"\w*
+\w δὲ|lemma="δέ" strong="G11610" x-morph="Gr,CC,,,,,,,,"\w*,
+\w ἔτι|lemma="ἔτι" strong="G20890" x-morph="Gr,D,,,,,,,,,"\w*
+\w ἅπαξ|lemma="ἅπαξ" strong="G05300" x-morph="Gr,D,,,,,,,,,"\w*”,
+\w δηλοῖ|lemma="δηλόω" strong="G12130" x-morph="Gr,V,IPA3,,S,"\w*
+\w τῶν|lemma="ὁ" strong="G35880" x-morph="Gr,RD,,,,GNP,"\w*
+\w σαλευομένων|lemma="σαλεύω" strong="G45310" x-morph="Gr,V,PPP,GNP,"\w*
+\w μετάθεσιν|lemma="μετάθεσις" strong="G33310" x-morph="Gr,N,,,,,AFS,"\w*,
+\w ὡς|lemma="ὡς" strong="G56130" x-morph="Gr,CS,,,,,,,," x-tw="rc://*/tw/dict/bible/other/like"\w*
+\w πεποιημένων|lemma="ποιέω" strong="G41600" x-morph="Gr,V,PEP,GNP,"\w*,
+\w ἵνα|lemma="ἵνα" strong="G24430" x-morph="Gr,CS,,,,,,,,"\w*
+\w μείνῃ|lemma="μένω" strong="G33060" x-morph="Gr,V,SAA3,,S,"\w*
+\w τὰ|lemma="ὁ" strong="G35880" x-morph="Gr,RD,,,,NNP,"\w*
+\w μὴ|lemma="μή" strong="G33610" x-morph="Gr,D,,,,,,,,,"\w*
+\w σαλευόμενα|lemma="σαλεύω" strong="G45310" x-morph="Gr,V,PPP,NNP,"\w*.
+

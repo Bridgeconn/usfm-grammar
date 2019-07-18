@@ -31,7 +31,7 @@ function normalize (str) {
 
 exports.SCRIPTURE = 'clean'
 
-exports.parse = function (str, resultType = 'all') {
+exports.parseUSFM = function (str, resultType = 'all') {
   warnings = []
   let inStr = normalize(str)
   let matchObj = match(inStr)

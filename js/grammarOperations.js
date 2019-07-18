@@ -85,7 +85,7 @@ sem.addOperation('composeJson', {
       let styleObj = {'styling' : []}
       for (let item of metaObj) {
         if (item.hasOwnProperty('styling')) {
-          styleObj.styling.push(item.styling)
+          styleObj.styling.push({'marker':item.styling})
         }
         else {
           newMetaObj.push(item)
@@ -136,8 +136,9 @@ sem.addOperation('composeJson', {
 
   verseElement: function (_, _, _, _, verseNumber, verseMeta, verseContent) {
     let verse ={}
-    verse['number'] = verseNumber.composeJson() 
+    verse['number'] = verseNumber.sourceString
     verse['metadata'] = []
+    verse['text objects'] = []
     if ( verseMeta.sourceString!='' ) { verse['metadata'].push(verseMeta.composeJson()) } 
     contents = verseContent.composeJson()
     if ( verseContent.sourceString == '' ) {
@@ -146,25 +147,14 @@ sem.addOperation('composeJson', {
     verse['text'] = ''
     let styleObj = {'styling' : []}
     for (let i=0; i<contents.length; i++) {
-      if (contents[i]['text']) {
+      contents[i]['index'] = i
+      if (contents[i].hasOwnProperty('text')) {
         verse['text'] += contents[i]['text'] + ' '
-        delete contents[i].text
-      } 
-      let only_text = true
-      for (var key in contents[i]) {
-        if (key != 'text') {
-          only_text = false
-          break
-        }
-      }
-      if (contents[i] === {} ) { 
-        only_text = true }
-      if (!only_text ) {
-        if (contents[i].hasOwnProperty('styling')){
-          styleObj.styling.push(contents[i].styling)
-        } else {
+        verse['text objects'].push(contents[i])
+      } else if (contents[i].hasOwnProperty('styling')){
+          styleObj.styling.push({'marker':contents[i].styling,'index':i})
+      } else {
           verse['metadata'].push( contents[i])
-        }
       }
     }
     if (styleObj.styling.length > 0){
@@ -172,12 +162,6 @@ sem.addOperation('composeJson', {
     }
     if (verse['metadata'].length == 0) { delete verse.metadata}
     return verse
-  },
-
-  verseNumber: function (num, _,num2, _) {
-    let number = num.sourceString
-    if (num2.sourceString!='') { number = number + '-' + num2.sourceString}
-    return number
   },
 
   verseText: function (content) {
@@ -188,12 +172,25 @@ sem.addOperation('composeJson', {
     return sElement.composeJson()
   },
 
-  sectionElementWithTitle: function (_, titleText) {
-    return titleText.sourceString
+  sectionElementWithTitle: function (tag, _, titleText) {
+    let marker = tag.composeJson()
+    return { 'text' : titleText.sourceString, 'marker': marker }
   },
 
-  sectionElementWithoutTitle: function (_) {
-    return ''
+  sectionElementWithoutTitle: function (tag, _) {
+    let marker = tag.composeJson()
+    if (!marker.includes('sd')) {
+      emitter.emit('warning', new Error('Section marker used without title.'));      
+    }
+    return { 'text' :'', 'marker':marker}
+  },
+
+  sectionMarker: function (_, _, tag, num) {
+    return tag.sourceString + num.sourceString
+  },
+
+  sdMarker: function (_,_, tag, num) {
+    return tag.sourceString + num.sourceString
   },
 
   paraElement: function (_, _, marker, _) {
@@ -201,11 +198,11 @@ sem.addOperation('composeJson', {
   },
 
   altVerseNumberElement: function (_, num, _, _) {
-    return {'alternate verse number': num.sourceString}
+    return {'va': num.sourceString}
   },
 
   publishedCharElement: function (_, text, _, _) {
-    return {'published character': text.sourceString}
+    return {'vp': text.sourceString}
   },
 
   qaElement: function(_, _, _, _, text){
@@ -217,23 +214,23 @@ sem.addOperation('composeJson', {
   },
 
   caElement: function (_, _, _, _, num, _, _ ) {
-    return {'alternate chapter number': num.sourceString}
+    return {'ca': num.sourceString}
   },
 
   cdElement: function (_, _, _, _, text){
-    return {'description': text.composeJson()}
+    return {'cd': text.composeJson()}
   },
 
   clElement: function (_, _, _, _, text) {
-    return {'chapter label': text.sourceString}
+    return {'cl': text.sourceString}
   },
 
   cpElement: function (_, _, _, _, text) {
-    return {'published character': text.sourceString}
+    return {'cp': text.sourceString}
   },
 
   dElement: function (_, _, _, _, text) {
-    return {'chapter label': text.composeJson()}
+    return {'d': text.composeJson()}
   },
 
   hElement: function (_, _, _, num, _, text){
@@ -288,49 +285,49 @@ sem.addOperation('composeJson', {
 
   ili: function (itemElement) {
     let ili = itemElement.composeJson()
-    return {'ili':ili}
+    return ili
   },
 
   iliElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
+    obj['ili'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString }
     return obj
   },
 
   imt: function (itemElement) {
     let imt = itemElement.composeJson()
-    return {'imt':imt}
+    return imt
   },
 
   imtElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString})}
+    obj['imt'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString}
     return obj
   },
 
   imte: function (itemElement) {
     let imte = itemElement.composeJson()
-    return {'imte':imte}
+    return imte
   },
 
   imteElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
+    obj['imte'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString}
     return obj
   },
 
   io: function (itemElement) {
     let io = itemElement.composeJson()
-    return {'io':io}
+    return io
   },
 
   ioElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item'].push({'number':num.sourceString}) }
+    obj['io'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString }
     return obj
   },
 
@@ -403,7 +400,7 @@ sem.addOperation('composeJson', {
     let obj = {}
     obj['mt'] = text.composeJson()
     if (num.sourceString != ''){
-      obj['mt']['number'] = num.sourceString
+      obj['number'] = num.sourceString
     }
     return obj
   },
@@ -417,7 +414,7 @@ sem.addOperation('composeJson', {
     let obj = {}
     obj['mte'] = text.composeJson()
     if (num.sourceString != ''){
-      obj['mte']['number'] = num.sourceString
+      obj['number'] = num.sourceString
     }
     return obj
   },
@@ -443,7 +440,7 @@ sem.addOperation('composeJson', {
   },
 
   usfmElement: function (_, _, _, _, version) {
-    return  {"usfm-version": version.sourceString}
+    return  {"usfm": version.sourceString}
   },
 
   vaElement: function (_, _, _, num, _, _, _) {
@@ -462,16 +459,84 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  fElement: function (_, _, _, content, _, _, _){
-    return {'footnote': content.sourceString}
+  fElement: function (nl, _, tag, _, content, _, _, _){
+    let contElmnts = content.composeJson()
+    itemCount = 1
+    for (item of contElmnts) {
+      item['index'] = itemCount
+      itemCount +=1
+    }
+    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
+    return obj
   },
 
-  feElement: function (_, _, _, content, _, _, _){
-    return {'footnote': content.sourceString}
+  feElement: function (nl, _, tag, _, content, _, _, _){
+    let contElmnts = content.composeJson()
+    itemCount = 1
+    for (item of contElmnts) {
+      item['index'] = itemCount
+      itemCount +=1
+    }
+    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
+    return obj
   },
 
-  crossrefElement: function (_, _, _, content, _, _, _){
-    return {'cross-ref': content.sourceString}
+  efElement: function (nl, _, tag, _, content, _, _, _){
+    let contElmnts = content.composeJson()
+    itemCount = 1
+    for (item of contElmnts) {
+      item['index'] = itemCount
+      itemCount +=1
+    }
+    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
+    return obj
+  },
+
+  crossrefElement: function (nl, _, tag, _, content, _, _, _){
+    let contElmnts = content.composeJson()
+    itemCount = 1
+    for (item of contElmnts) {
+      item['index'] = itemCount
+      itemCount +=1
+    }
+    let obj = {'cross-ref': contElmnts,'marker':tag.sourceString,'closed':true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
+    return obj
+  },
+
+  footnoteContent: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  crossrefContent: function (elmnt) {
+    return elmnt.composeJson()
+  },
+
+  footnoteContentElement: function(nl, _, tag, _) {
+    let obj = {}
+    obj['marker'] = tag.sourceString
+    if (nl != '') { obj['inline'] = true }
+    return obj
+  },
+
+  crossrefContentElement: function(nl, _, tag, _) {
+    let obj = {}
+    obj['marker'] = tag.sourceString
+    if (nl != '') { obj['inline'] = true }
+    return obj
+  },
+
+  attributesInCrossref: function (_, _, attribs) {
+    let attribObj = attribs.composeJson()
+    if (Array.isArray(attribObj[0])) {
+      let attribTemp = []
+      for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+      attribObj = attribTemp
+    }
+    return {'attributes': attribObj}
   },
 
   charElement: function(element) {
@@ -482,7 +547,7 @@ sem.addOperation('composeJson', {
     return element.composeJson()
   },
 
-  inLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+  inLineCharElement: function(nl, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     if(tag.sourceString !== 'add'){
@@ -492,13 +557,21 @@ sem.addOperation('composeJson', {
       }
     }
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj
     }
+    obj['closed'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     
     return obj
   },
 
-  nestedInLineCharElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+  nestedInLineCharElement: function(nl, _, tag, _, text, _, _, attribs, _, closing, _, _) {
     let obj = {}
     obj[tag.sourceString] = text.composeJson()
     if(tag.sourceString !== 'add'){
@@ -508,21 +581,34 @@ sem.addOperation('composeJson', {
       }
     }
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
-    }
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    }
+    if (closing.sourceString != "") { obj['closed'] = true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
-  inLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+  inLineCharAttributeElement: function(nl, _, tag, _, text, _, _, attribs, _, _, _, _) {
     let obj = {}
     let textobj = text.composeJson()
-    obj[tag.sourceString]= {'contents': textobj}
+    obj[tag.sourceString]= textobj
     obj['text'] = ''
     for (let item of textobj){
       if ( item.text) { obj['text'] += item.text}
     }
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    
     }
     if (tag.sourceString === 'rb'){
       let numberOfHanChars = text.sourceString.split(';').length - 1
@@ -536,40 +622,66 @@ sem.addOperation('composeJson', {
         }
       }
     }
+    obj['closed'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
-  nestedInLineCharAttributeElement: function(_, _, tag, _, text, _, _, attribs, _, _, _, _) {
+  nestedInLineCharAttributeElement: function(nl, _, tag, _, text, _, _, attribs, _, closing, _, _) {
     let obj = {}
     let textobj = text.composeJson()
-    obj[tag.sourceString]= {'contents': textobj}
+    obj[tag.sourceString]= textobj
     obj['text'] = ''
     for (let item of textobj){
       if ( item.text) { obj['text'] += item.text}
     }
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    
     }
+    if (closing.sourceString != "") { obj['closed'] = true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
     
-  inLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
+  inLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, _, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson()}
+    obj[tag.sourceString]= text.composeJson()
     obj['text'] = obj[tag.sourceString]['content']
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    
     }
+    obj['closed'] = true
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
-  nestedInLineCharNumberedElement: function(_, _, tag, number, _, text, _, _, attribs, _, _, _, _) {
+  nestedInLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, closing, _, _) {
     let obj = {}
-    obj[tag.sourceString]= {'content': text.composeJson()}
+    obj[tag.sourceString]= text.composeJson()
     obj['text'] = obj[tag.sourceString]['content']
     if (attribs.sourceString != '') {
-      obj['attributes'] = attribs.composeJson()
+      let attribObj = attribs.composeJson()
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = []
+        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
+        attribObj = attribTemp
+      }
+      obj['attributes']  = attribObj    
     }
+    if (closing.sourceString != "") { obj['closed'] = true}
+    if (nl.sourceString == "" ) { obj["inline"] = true }
     return obj
   },
 
@@ -752,34 +864,34 @@ sem.addOperation('composeJson', {
 
   
   thElement: function(_, _, num, _, text) {
-    return {'th': text.sourceString, 'column':num.sourceString}
+    return {'th': text.sourceString, 'number':num.sourceString,'inline':true}
   },
 
   thrElement: function(_, _, num, _, text) {
-    return {'thr': text.sourceString, 'column':num.sourceString}
+    return {'thr': text.sourceString, 'number':num.sourceString,'inline':true}
   },
 
   tcElement: function(_, _, num, _, text) {
-    return {'tc': text.sourceString, 'column':num.sourceString}
+    return {'tc': text.sourceString, 'number':num.sourceString,'inline':true}
   },
 
   tcrElement: function(_, _, num, _, text) {
-    return {'tcr': text.sourceString, 'column':num.sourceString}
+    return {'tcr': text.sourceString, 'number':num.sourceString,'inline':true}
   },
 
   li: function (itemElement) {
     let li = {'list': itemElement.composeJson()}
     li['text'] = ''
     for ( let item of li['list']) {
-      li.text += item.item.text + ' | '
+      li.text += item.li.text + ' | '
     }
     return li
   },
 
   liElement: function (_, _, _, num, _, text) {
     let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){ obj['item']['number'] = num.sourceString }
+    obj['li'] = text.composeJson()
+    if (num.sourceString != ''){ obj['number'] = num.sourceString }
     return obj
   },
 
@@ -814,6 +926,8 @@ sem.addOperation('composeJson', {
   milestoneStandaloneElement: function (_, _, ms, closing) {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
+    milestoneElement['marker'] = ms.sourceString
+    milestoneElement['closed'] = true
     return milestoneElement
   },
 
@@ -821,31 +935,35 @@ sem.addOperation('composeJson', {
     milestoneElement = {}
     milestoneElement['milestone'] = ms.sourceString
     milestoneElement['start/end'] = s_e.sourceString
+    milestoneElement['marker'] = ms.sourceString + s_e.sourceString
+    milestoneElement['closed'] = true
     if (attribs.sourceString!='') {
       milestoneElement['attributes'] = attribs.composeJson()
     }
 
     if ( milestoneElement.hasOwnProperty('attributes') ) {
-      for (var array of milestoneElement['attributes']){
-        if ( !array.hasOwnProperty('name')) {
-          for (var item of array) {
-            if (item['name'] === 'sid') {
-              milestoneFlag.push(item['value'])
-            } else if ( item['name'] === 'eid' ) {
-              if (milestoneFlag.length === 0 ){
-                emitter.emit('warning', new Error('Opening not found for milestone '+item['value']+' before its closed. '));
-              } else {
-                let lastEntry = milestoneFlag.pop()
-                if (lastEntry !== item['value'] ) {
-                  emitter.emit('warning', new Error('Milestone '+ lastEntry+' not closed. '+item['value']+' found instead. '));
-                }
-              }
+      if (Array.isArray(milestoneElement.attributes[0])) {
+        let tempArr = []
+        for (var i=0; i< milestoneElement.attributes.length; i++) {
+          tempArr = tempArr.concat(milestoneElement.attributes[i])
+        }
+        milestoneElement.attributes = tempArr
+      }
+      for (var item of milestoneElement['attributes']) {
+        if (item['name'] === 'sid') {
+          milestoneFlag.push(item['value'])
+        } else if ( item['name'] === 'eid' ) {
+          if (milestoneFlag.length === 0 ){
+            emitter.emit('warning', new Error('Opening not found for milestone '+item['value']+' before its closed. '));
+          } else {
+            let lastEntry = milestoneFlag.pop()
+            if (lastEntry !== item['value'] ) {
+              emitter.emit('warning', new Error('Milestone '+ lastEntry+' not closed. '+item['value']+' found instead. '));
             }
           }
-            
-        } 
+        }
       }
-    }
+    } 
     return milestoneElement
   },
 

@@ -56,7 +56,3 @@ typings/
 
 # dotenv environment variables file
 .env
-
-
-USX-USFM grammr comparison.md
-server.js
