@@ -1,6 +1,6 @@
 # Change log for usfm-grammar
 
-## Version 1.0.0 to 1.1.0
+## Version 1.0.0 to 1.1.0-beta.1
 
 The main new feature is that, there is a new reverse conversion, that can take a JSON object in the usfm-grammar format and generate a USFM file out of it.
 
