@@ -1,8 +1,8 @@
 {
     "name": "usfm-grammar",
     "description": "A simple usfm parser/validator that uses a grammar to model the usfm syntax. The grammar is written in ohm-js(https://ohmlang.github.io/). The USFM3.0 syntax is supported. The parser outputs the USFM content in a json structure which gives importance to the easy extraction of scripture content from the mark-ups and additional usfm contents.",
-    "version": "1.1.0-beta.1",
-    "main": "parser.js",
+    "version": "1.1.0-beta.2",
+    "main": "./js/parser.js",
     "scripts": {
         "test": "mocha",
         "start": "node ../server.js"
