@@ -16,7 +16,9 @@ var warningMessages = []
 var milestoneFlag = []
 
 emitter.on('warning', function (err) {
-  warningMessages.push(err.message) ;
+  if (!warningMessages.includes(err.message)){
+    warningMessages.push(err.message) ;
+  }
 });
 
 sem.addOperation('composeJson', {
