@@ -276,6 +276,21 @@ describe('Ensure all true positives', function () {
 //     })
 //   })
 
+//   it('Door 43 file', function () {
+//     fs.readFile('test/resources/46-ROM.usfm', 'utf-8', function (err, data) {
+//       if (err) { throw err }
+//       let output = parser.validate(data)
+//       assert.strictEqual(output, true)
+//     })
+//   })
+
+
+  // it('Door43 file with multiple fqa', function () {
+  //   let usfmString = '\\id 1SA Unlocked Literal Bible\n\\ide UTF-8\n\\h 1 Samuel\n\\toc1 The First Book of Samuel\n\\toc2 First Samuel\n\\toc3 1Sa\n\\mt First Samuel \n\\c 1\n\\p\n\\v 1 There was a certain man of Ramathaim of the Zuphites, of the hill country of Ephraim; his name was Elkanah son of Jeroham son of Elihu son of Tohu son of Zuph, an Ephraimite.\n\\f + \\ft Some modern versions have \\fqa Ramathaim Zophim, \\fqa* but it is understood that \\fqa Zophim \\fqa* really refers to the region in which the clan descended from Zuph resided. \\f*\n\\v 2 He had two wives; the name of the first was Hannah, and the name of the second was Peninnah. Peninnah had children, but Hannah had none.\n\\s5\n\\v 8 David and his men attacked various places, making raids on the Geshurites, the Girzites, and the Amalekites; for those nations were the inhabitants of the land, as you go to Shur, as far as the land of Egypt. They had been living there in the land from ancient times. \\f + \\ft Instead of \\fqa the Girzites \\fqa* which is found in some ancient Hebrew copies, some modern versions have \\fqa the Gizrites \\fqa* which is found in the margin of some  Hebrew manuscripts. \\f*\n\\v 9 David attacked the land and saved neither man nor woman alive; he took away the sheep, the oxen, the donkeys, the camels, and the clothing; he would return and come again to Achish.\n'
+  //   let output = parser.validate(usfmString)
+  //   assert.strictEqual(output, true)
+  // })
+    
 // })
 
 describe('Test with paratext test cases', function () {

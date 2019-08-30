@@ -4,6 +4,10 @@ An elegant [USFM](https://github.com/ubsicap/usfm) parser (or validator) that us
 
 The parsed USFM is an intuitive and easy to manipulate JSON structure that allows for painless extraction of scripture and other content from the markup. USFM Grammar is also capable of reconverting the generated JSON back to USFM.
 
+## Demo
+
+Try out the usfm-grammar online, [here](http://usfm.bridgeconn.com/node/index.html)
+
 ## Example
 
 ### Input USFM String
