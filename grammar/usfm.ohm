@@ -15,16 +15,23 @@ usfmBible{
 			char = ~(backSlash) ~(newLine) ~spaceChar ~("|") any
 			number = digit+
 
-			/* Allowing text element to take an optional newLine makes it valid to have line breaks within verse texts, introduction paragraphs etc. In the JSON the text in each line becomes a separate text object. But in the "text" field of the verse, it will all be combined together without line beaks in between.*/ 
+			/* Allowing text element to take an optional newLine makes it valid to 
+			have line breaks within verse texts, introduction paragraphs etc. In 
+			the JSON the text in each line becomes a separate text object. But in 
+			the "text" field of the verse, it will all be combined together without 
+			line beaks in between.*/ 
 
 			text =  newLine? word+
 
-			/* For word, the optional spaceChar at the rear handles trailing spaces at line ends*/ 
+			/* For word, the optional spaceChar at the rear handles trailing spaces 
+			at line ends*/ 
 
 			word = spaceChar? char+ spaceChar?
 
 
-			/* The book codes are defined only in UPPER case in the grammar. the Javascript code is expected to change the case, if it is provided in lower and generate a warning if so*/
+			/* The book codes are defined only in UPPER case in the grammar. 
+			the Javascript code is expected to change the case, if it is provided 
+			in lower and generate a warning if so*/
 
 			bookCode = "GEN" | "EXO" | "LEV" | "NUM" | "DEU" | "JOS" | "JDG" | "RUT" | "1SA" | "2SA" | "1KI" | "2KI" | 
 							"1CH" | "2CH" | "EZR" | "NEH" | "EST" | "JOB" | "PSA" | "PRO" | 
@@ -44,9 +51,15 @@ usfmBible{
 
 			/* The metadata which forms the part before chapter start is futher divided into 3: 
 			bookIdentification,	bookHeaders & 	introduction
-			with different set of elements valid in each section, bringing in a concept of valid order of markers, in the head section. The rules of which marker comes in which section was formulated refering the USX documentation. rem and esb are included in two sections. They are also included in the metascripture element which captures these kind of markers coming within the chapters */
+			with different set of elements valid in each section, bringing in a concept of valid 
+			order of markers, in the head section. The rules of which marker comes in which 
+			section was formulated refering the USX documentation. rem and esb are included 
+			in two sections. They are also included in the metascripture element which captures 
+			these kind of markers coming within the chapters */
 
-			/* The basic structure of the content is this; The content is a list of chapters and each chapter is a list of verseElements. Other elements are all fit into this structure as headers, meta data etc.*/
+			/* The basic structure of the content is this; The content is a list of chapters 
+			and each chapter is a list of verseElements. Other elements are all fit into this 
+			structure as headers, meta data etc.*/
 
 			scripture = metaData content
 			content = chapter+
@@ -61,8 +74,9 @@ usfmBible{
 							| iotElement | ipiElement | ipqElement | iprElement | ipElement | iqElement | isElement | remElement | esbElement
 			
 
-			/* the cl marker is valid below the c marker as well as just above it. So it is included 
-			in chapterHeaders as well as in metaData which has all the headers coming before the chapter begining*/
+			/* the cl marker is valid below the c marker as well as just above it. 
+			So it is included in chapterHeaders as well as in metaData which has 
+			all the headers coming before the chapter begining*/
 
 			bookChapterLabel = clElement
 
@@ -70,7 +84,12 @@ usfmBible{
 			chapter = chapterHeader mandatoryParaMetaScripture  verseElement+
 
 			
-			/The metaScripture element is used to accomodate all the extra stuff coming into the basic book-chapter-verse structure of the scripture. The mandatoryParaMetaScripture in chapter, is added to ensure that at least one p, or similar paragraph element, comes at the chapter start. The rules nonParaMetaScripture and mandatoryParaMetaScripture are brought in to enable this validation*/ 
+			/The metaScripture element is used to accomodate all the extra stuff 
+			coming into the basic book-chapter-verse structure of the scripture. 
+			The mandatoryParaMetaScripture in chapter, is added to ensure that 
+			at least one p, or similar paragraph element, comes at the chapter start. 
+			The rules nonParaMetaScripture and mandatoryParaMetaScripture are 
+			brought in to enable this validation*/ 
 
 
 			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement | paraElement
@@ -79,7 +98,11 @@ usfmBible{
 
             mandatoryParaMetaScripture = nonParaMetaScripture* paraElement metaScripture*
 
-            /* normally section header would contain s marker or ms marker. It might also have sr, r or mr after it. All that together forms the section header. It is seen in some usfm files that s is used without text title, like sd. So to accomodate that and the sd marker a sectionElementWithoutTitle rule is added */
+            /* normally section header would contain s marker or ms marker. 
+            It might also have sr, r or mr after it. All that together forms 
+            the section header. It is seen in some usfm files that s is used 
+            without text title, like sd. So to accomodate that and the sd marker 
+            a sectionElementWithoutTitle rule is added */
 
  			sectionHeader  = sectionElement sectionPostHeader* ipElement*
 			sectionPostHeader = srElement | rElement | mrElement
@@ -91,22 +114,37 @@ usfmBible{
 			sectionMarker = newLine backSlash "s" number?
 			sdMarker = newLine backSlash "sd" number?
 
-			/* Not only the p marker is considered as a paragraph marker here. A set of markers mainly used for styling and showing intentation are catogorized as paragraph markers. They are considered as standing independent without attaching them with the text following it, from a grammar perspective. It is done like that, because as per the book-chapter-verse structure the text coming within a paragraph or quote will actually be part of a verse, introduction etc. So for the sake of implementing the grammar, it is considered separately from the text. The JSON structure created using the semantic operation on this grammar ensures that, the paragraph markers are represented such a way that no information lose or structural difference would be caused while re-creating the usfm from the JSON structure. But the paragraph-wise division will not be there in the JSON. */
+			/* Not only the p marker is considered as a paragraph marker here. 
+			A set of markers mainly used for styling and showing intentation 
+			are catogorized as paragraph markers. They are considered as standing 
+			independent without attaching them with the text following it, from a 
+			grammar perspective. It is done like that, because as per the 
+			book-chapter-verse structure the text coming within a paragraph or quote 
+			will actually be part of a verse, introduction etc. So for the sake of 
+			implementing the grammar, it is considered separately from the text. 
+			The JSON structure created using the semantic operation on this grammar 
+			ensures that, the paragraph markers are represented such a way that no information 
+			lose or structural difference would be caused while re-creating the usfm from the 
+			JSON structure. But the paragraph-wise division will not be there in the JSON. */
 
 			paraElement = newLine? backSlash paraMarker spaceChar*
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
 			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" )
 			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim") number?
 
-			/* A verse is considered as a collection of objects which could be verse text objects or other meta-scripture objects */
+			/* A verse is considered as a collection of objects which could be verse 
+			text objects or other meta-scripture objects */
 
 			verseElement = newLine? backSlash "v" spaceChar verseNumber (vaElement | vpElement)*  (verseText | metaScripture)*
 			
-			/* verse number can be numbers, numbers followed by a letter(a, b, c etc) to show split verses, and also two such values separated by a hypen, showing a merged verse. It is valid to start the verse text on the next line after the verse number. */
+			/* verse number can be numbers, numbers followed by a letter(a, b, c etc) to show split verses, 
+			and also two such values separated by a hypen, showing a merged verse. 
+			It is valid to start the verse text on the next line after the verse number. */
 
 			verseNumber = number letter? ("-" number letter?)? spaceOrNewLine
 
-			/* the verseText include all the text snippets aswell as the in-line contents coming within verse text like character markers, tables and lists*/
+			/* the verseText include all the text snippets aswell as the in-line contents 
+			coming within verse text like character markers, tables and lists*/
 			verseText = chapterContentTextContent
             
 
@@ -170,10 +208,16 @@ usfmBible{
 			vpElement = backSlash "vp" spaceChar text backSlash "vp*" spaceChar?
 
 
-			/* the footnotes and cross-refs are implemented as having a plain structure. That is, though the nesting of markers and content markers are all supported their heirarchical structure is not implemented in the grammar. The Grammar see each marker coming within the notes as a sperate item along with the text snippets coming there. But it does validates if a marker is valid there. */
+			/* the footnotes and cross-refs are implemented as having a plain structure. 
+			That is, though the nesting of markers and content markers are all supported 
+			their heirarchical structure is not implemented in the grammar. The Grammar see 
+			each marker coming within the notes as a sperate item along with the text 
+			snippets coming there. But it does validates if a marker is valid there. */
 
-			/* the optional spaceChar after the closing markers makes it valid to have those markers valid with or without
-			a space after it. If there is a space, it would be considered as part of the closing marker and will not be considered along with the text following it. */
+			/* the optional spaceChar after the closing markers makes it valid to 
+			have those markers valid with or without a space after it. If there is a space, 
+			it would be considered as part of the closing marker and will not be 
+			considered along with the text following it. */
 
 			notesElement = footnoteElement | crossrefElement
 			footnoteElement = fElement | feElement | efElement
@@ -316,10 +360,13 @@ usfmBible{
 			customAttributeName = "x-" (letter |digit |"_")+
 			attributeValue = "\"" (~"\"" any)+ "\""
 
-			/* The default attribute is valid for any marker which normally provide attributes. It would be extracted as default attribute without mentioning the coreesponding attribute name */
+			/* The default attribute is valid for any marker which normally provide attributes. 
+			It would be extracted as default attribute without mentioning the corresponding attribute name */
+
 			defaultAttribute = (~(backSlash) ~(newLine) ~("|") any)+
 
-			/* the special set of attributes valid for each of the normally attributed elements are defined here*/
+			/* the special set of attributes valid for each of the normally 
+			attributed elements are defined here*/
 
 			wAttribute = lemmaAttribute | strongAttribute | scrlocAttribute | linkAttribute | customAttribute
 			rbAttribute = glossAttribute | customAttribute | linkAttribute
@@ -346,7 +393,8 @@ usfmBible{
             figureElement = backSlash "fig" spaceChar caption?  ("|" spaceChar? figAttribute+)? backSlash "fig*"
 			caption = text
 
-			/* the table structure with list of rows and each row with list of values is implemented as such in the JSON using javascript semantic opearations*/
+			/* the table structure with list of rows and each row with list of values is 
+			implemented as such in the JSON using javascript semantic opearations*/
 
 			table = headerRow? row+
 			headerRow = trElement headerCell+
@@ -370,15 +418,17 @@ usfmBible{
 			litElement = newLine backSlash "lit" spaceChar ((chapterContentTextContent | notesElement | milestoneElement) | notesElement | milestoneElement)+
 
 
-			/* The text content vaild in different sections is determined by all the valid inline markers allowed there. This is determined by refering the USX documentation*/
+			/* The text content vaild in different sections is determined by all the valid 
+			inline markers allowed there. This is determined by refering the USX documentation*/
 
 			bookIntroductionTitlesTextContent = (text | notesElement |  charElement | milestoneElement | figureElement | zNameSpace)+
 			bookTitlesTextContent = (text | notesElement | charElement | zNameSpace)+
 			chapterContentTextContent = text | charElement | table | li 
 			bookIntroductionEndTitlesTextContent = (text | notesElement | charElement | milestoneElement | zNameSpace | esbElement)+
 
-			/* since milestones can be used defined, their name is defined as any set of letters of digits. So when ever the 
-			parser encounters an unknown marker, its last fall back is to see if it is a milestone.*/
+			/* since milestones can be used defined, their name is defined as any set of 
+			letters of digits. So when ever the parser encounters an unknown marker, 
+			its last fall back is to see if it is a milestone.*/
 
 			milestoneElement = milestonePairElement | milestoneStandaloneElement
 			milestoneStandaloneElement = newLine? backSlash milestoneName milestoneClosing
