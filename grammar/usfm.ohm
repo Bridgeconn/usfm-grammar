@@ -94,17 +94,17 @@ usfmBible{
 
 			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement | paraElement
 
-            nonParaMetaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement 
+			nonParaMetaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement 
 
-            mandatoryParaMetaScripture = nonParaMetaScripture* paraElement metaScripture*
+			mandatoryParaMetaScripture = nonParaMetaScripture* paraElement metaScripture*
 
-            /* normally section header would contain s marker or ms marker. 
-            It might also have sr, r or mr after it. All that together forms 
-            the section header. It is seen in some usfm files that s is used 
-            without text title, like sd. So to accomodate that and the sd marker 
-            a sectionElementWithoutTitle rule is added */
+			/* normally section header would contain s marker or ms marker. 
+			It might also have sr, r or mr after it. All that together forms 
+			the section header. It is seen in some usfm files that s is used 
+			without text title, like sd. So to accomodate that and the sd marker 
+			a sectionElementWithoutTitle rule is added */
 
- 			sectionHeader  = sectionElement sectionPostHeader* ipElement*
+			sectionHeader  = sectionElement sectionPostHeader* ipElement*
 			sectionPostHeader = srElement | rElement | mrElement
 
 			sectionElement = sectionElementWithTitle | sectionElementWithoutTitle | msElement | dElement
@@ -146,7 +146,7 @@ usfmBible{
 			/* the verseText include all the text snippets aswell as the in-line contents 
 			coming within verse text like character markers, tables and lists*/
 			verseText = chapterContentTextContent
-            
+			
 
 
 
@@ -163,7 +163,7 @@ usfmBible{
 			remElement = newLine backSlash "rem" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 			stsElement = newLine backSlash "sts" spaceChar text
 
-            spElement = newLine backSlash "sp" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
+			spElement = newLine backSlash "sp" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 
 			ibElement = newLine backSlash "ib" spaceChar? 
 			idElement = backSlash "id"  spaceChar bookCode  (spaceChar text)?
@@ -275,88 +275,88 @@ usfmBible{
 
 			nestedCharElement = nestedInLineCharElement | nestedInLineCharAttributeElement | nestedInLineCharNumberedElement
 			nestedInLineCharElement = newLine? backSlash "+add" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+add" "*")? spaceChar?
-            			| newLine? backSlash "+bk" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+bk" "*")? spaceChar?
-                        | newLine? backSlash "+dc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+dc" "*")? spaceChar?
+						| newLine? backSlash "+bk" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+bk" "*")? spaceChar?
+						| newLine? backSlash "+dc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+dc" "*")? spaceChar?
 						| newLine? backSlash "+k" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+k" "*")? spaceChar?
-                        | newLine? backSlash "+nd" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+nd" "*")? spaceChar?
+						| newLine? backSlash "+nd" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+nd" "*")? spaceChar?
 						| newLine? backSlash "+ord" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+ord" "*")? spaceChar?
-               			| newLine? backSlash "+pn" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+pn"  "*")? spaceChar?
-                        | newLine? backSlash "+png" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+png"  "*")? spaceChar?
-                        | newLine? backSlash "+addpn" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+addpn"  "*")? spaceChar?
-                        | newLine? backSlash "+qt" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+qt"  "*")? spaceChar?
-                        | newLine? backSlash "+sig" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+sig"  "*")? spaceChar?
+						| newLine? backSlash "+pn" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+pn"  "*")? spaceChar?
+						| newLine? backSlash "+png" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+png"  "*")? spaceChar?
+						| newLine? backSlash "+addpn" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+addpn"  "*")? spaceChar?
+						| newLine? backSlash "+qt" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+qt"  "*")? spaceChar?
+						| newLine? backSlash "+sig" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+sig"  "*")? spaceChar?
 						| newLine? backSlash "+sls" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+sls"  "*")? spaceChar?
-                        | newLine? backSlash "+tl" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+tl"  "*")? spaceChar?
-                        | newLine? backSlash "+wj" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+wj"  "*")? spaceChar?
-                        | newLine? backSlash "+em" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+em"  "*")? spaceChar?
-                        | newLine? backSlash "+bd" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+bd"  "*")? spaceChar?
-                        | newLine? backSlash "+it" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+it"  "*")? spaceChar?
-                        | newLine? backSlash "+bdit" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+bdit"  "*")? spaceChar?
-                        | newLine? backSlash "+no" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+no"  "*")? spaceChar?
-                        | newLine? backSlash "+sc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+sc"  "*")? spaceChar?
-                        | newLine? backSlash "+sup" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+sup"  "*")? spaceChar?
-                        | newLine? backSlash "+ndx" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+ndx"  "*")? spaceChar?
-                        | newLine? backSlash "+wg" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+wg"  "*")? spaceChar?
-                        | newLine? backSlash "+wh" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+wh"  "*")? spaceChar?
-                        | newLine? backSlash "+wa" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+wa"  "*")? spaceChar?
-                        | newLine? backSlash "+qs" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+qs"  "*")? spaceChar?
-                        | newLine? backSlash "+qac" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+qac"  "*")? spaceChar?
-                        | newLine? backSlash "+litl" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+litl"  "*")? spaceChar?
-                        | newLine? backSlash "+lik" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+lik"  "*")? spaceChar?
+						| newLine? backSlash "+tl" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+tl"  "*")? spaceChar?
+						| newLine? backSlash "+wj" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+wj"  "*")? spaceChar?
+						| newLine? backSlash "+em" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+em"  "*")? spaceChar?
+						| newLine? backSlash "+bd" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+bd"  "*")? spaceChar?
+						| newLine? backSlash "+it" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+it"  "*")? spaceChar?
+						| newLine? backSlash "+bdit" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+bdit"  "*")? spaceChar?
+						| newLine? backSlash "+no" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+no"  "*")? spaceChar?
+						| newLine? backSlash "+sc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+sc"  "*")? spaceChar?
+						| newLine? backSlash "+sup" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+sup"  "*")? spaceChar?
+						| newLine? backSlash "+ndx" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+ndx"  "*")? spaceChar?
+						| newLine? backSlash "+wg" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+wg"  "*")? spaceChar?
+						| newLine? backSlash "+wh" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+wh"  "*")? spaceChar?
+						| newLine? backSlash "+wa" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+wa"  "*")? spaceChar?
+						| newLine? backSlash "+qs" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+qs"  "*")? spaceChar?
+						| newLine? backSlash "+qac" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+qac"  "*")? spaceChar?
+						| newLine? backSlash "+litl" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+litl"  "*")? spaceChar?
+						| newLine? backSlash "+lik" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+lik"  "*")? spaceChar?
 						| newLine? backSlash "+rq" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+rq"  "*")? spaceChar?
-                        | newLine? backSlash "+ior" spaceChar bookIntroductionTitlesTextContent ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+ior" "*")? spaceChar?
-                        | newLine? backSlash "+cat" spaceChar bookIntroductionTitlesTextContent ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+cat" "*")? spaceChar?
+						| newLine? backSlash "+ior" spaceChar bookIntroductionTitlesTextContent ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+ior" "*")? spaceChar?
+						| newLine? backSlash "+cat" spaceChar bookIntroductionTitlesTextContent ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+cat" "*")? spaceChar?
 
 			charElement = inLineCharElement | inLineCharAttributeElement | inLineCharNumberedElement
-            inLineCharElement = newLine? backSlash "add" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "add" "*" spaceChar?
-            			| newLine? backSlash "bk" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "bk" "*" spaceChar?
+			inLineCharElement = newLine? backSlash "add" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "add" "*" spaceChar?
+						| newLine? backSlash "bk" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "bk" "*" spaceChar?
 						| newLine? backSlash "dc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "dc" "*" spaceChar?
 						| newLine? backSlash "k" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "k" "*" spaceChar?
-                        | newLine? backSlash "nd" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "nd" "*" spaceChar?
+						| newLine? backSlash "nd" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "nd" "*" spaceChar?
 						| newLine? backSlash "ord" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "ord" "*" spaceChar?
-               			| newLine? backSlash "pn" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "pn"  "*" spaceChar?
-                        | newLine? backSlash "png" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "png"  "*" spaceChar?
-                        | newLine? backSlash "addpn" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "addpn"  "*" spaceChar?
-                        | newLine? backSlash "qt" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "qt"  "*" spaceChar?
-                        | newLine? backSlash "sig" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "sig"  "*" spaceChar?
+						| newLine? backSlash "pn" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "pn"  "*" spaceChar?
+						| newLine? backSlash "png" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "png"  "*" spaceChar?
+						| newLine? backSlash "addpn" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "addpn"  "*" spaceChar?
+						| newLine? backSlash "qt" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "qt"  "*" spaceChar?
+						| newLine? backSlash "sig" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "sig"  "*" spaceChar?
 						| newLine? backSlash "sls" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "sls"  "*" spaceChar?
-                        | newLine? backSlash "tl" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "tl"  "*" spaceChar?
-                        | newLine? backSlash "wj" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "wj"  "*" spaceChar?
-                        | newLine? backSlash "em" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "em"  "*" spaceChar?
-                        | newLine? backSlash "bd" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "bd"  "*" spaceChar?
-                        | newLine? backSlash "it" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "it"  "*" spaceChar?
-                        | newLine? backSlash "bdit" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "bdit"  "*" spaceChar?
-                        | newLine? backSlash "no" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "no"  "*" spaceChar?
-                        | newLine? backSlash "sc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "sc"  "*" spaceChar?
-                        | newLine? backSlash "sup" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "sup"  "*" spaceChar?
-                        | newLine? backSlash "ndx" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "ndx"  "*" spaceChar?
-                        | newLine? backSlash "wg" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "wg"  "*" spaceChar?
-                        | newLine? backSlash "wh" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "wh"  "*" spaceChar?
-                        | newLine? backSlash "wa" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "wa"  "*" spaceChar?
-                        | newLine? backSlash "qs" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "qs"  "*" spaceChar?
-                        | newLine? backSlash "qac" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "qac"  "*" spaceChar?
-                        | newLine? backSlash "litl" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "litl"  "*" spaceChar?
-                        | newLine? backSlash "lik" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "lik"  "*" spaceChar?
+						| newLine? backSlash "tl" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "tl"  "*" spaceChar?
+						| newLine? backSlash "wj" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "wj"  "*" spaceChar?
+						| newLine? backSlash "em" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "em"  "*" spaceChar?
+						| newLine? backSlash "bd" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "bd"  "*" spaceChar?
+						| newLine? backSlash "it" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "it"  "*" spaceChar?
+						| newLine? backSlash "bdit" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "bdit"  "*" spaceChar?
+						| newLine? backSlash "no" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "no"  "*" spaceChar?
+						| newLine? backSlash "sc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "sc"  "*" spaceChar?
+						| newLine? backSlash "sup" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "sup"  "*" spaceChar?
+						| newLine? backSlash "ndx" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "ndx"  "*" spaceChar?
+						| newLine? backSlash "wg" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "wg"  "*" spaceChar?
+						| newLine? backSlash "wh" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "wh"  "*" spaceChar?
+						| newLine? backSlash "wa" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "wa"  "*" spaceChar?
+						| newLine? backSlash "qs" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "qs"  "*" spaceChar?
+						| newLine? backSlash "qac" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "qac"  "*" spaceChar?
+						| newLine? backSlash "litl" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "litl"  "*" spaceChar?
+						| newLine? backSlash "lik" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "lik"  "*" spaceChar?
 						| newLine? backSlash "rq" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "rq"  "*" spaceChar?
-                        | newLine? backSlash "ior" spaceChar (text)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "ior" "*" spaceChar?
-                        | newLine? backSlash "cat" spaceChar (text | notesElement |  nestedCharElement | milestoneElement | figureElement | zNameSpace)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "cat" "*" spaceChar?
+						| newLine? backSlash "ior" spaceChar (text)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "ior" "*" spaceChar?
+						| newLine? backSlash "cat" spaceChar (text | notesElement |  nestedCharElement | milestoneElement | figureElement | zNameSpace)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "cat" "*" spaceChar?
 			
-                        
-      
-            inLineCharAttributeElement = newLine? backSlash "rb" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (rbAttribute+ | defaultAttribute))? backSlash "rb"  "*" spaceChar?
-                        | newLine? backSlash "w" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (wAttribute+ | defaultAttribute))? backSlash "w"  "*" spaceChar?
-                        | newLine? backSlash "jmp" spaceChar (text | nestedCharElement | notesElement)* ("|" spaceChar? (linkAttribute+ | defaultAttribute))? backSlash "jmp"  "*" spaceChar?
+						
+	  
+			inLineCharAttributeElement = newLine? backSlash "rb" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (rbAttribute+ | defaultAttribute))? backSlash "rb"  "*" spaceChar?
+						| newLine? backSlash "w" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (wAttribute+ | defaultAttribute))? backSlash "w"  "*" spaceChar?
+						| newLine? backSlash "jmp" spaceChar (text | nestedCharElement | notesElement)* ("|" spaceChar? (linkAttribute+ | defaultAttribute))? backSlash "jmp"  "*" spaceChar?
 			nestedInLineCharAttributeElement = newLine? backSlash "+rb" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (rbAttribute+ | defaultAttribute))? (backSlash "+rb"  "*")? spaceChar?
-                        | newLine? backSlash "+w" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (wAttribute+ | defaultAttribute))? (backSlash "+w"  "*")? spaceChar?
-                        | newLine? backSlash "+jmp" spaceChar (text | nestedCharElement | notesElement)* ("|" spaceChar? ((linkAttribute | customAttribute)+ | defaultAttribute))? (backSlash "+jmp"  "*")? spaceChar?
+						| newLine? backSlash "+w" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (wAttribute+ | defaultAttribute))? (backSlash "+w"  "*")? spaceChar?
+						| newLine? backSlash "+jmp" spaceChar (text | nestedCharElement | notesElement)* ("|" spaceChar? ((linkAttribute | customAttribute)+ | defaultAttribute))? (backSlash "+jmp"  "*")? spaceChar?
 
 
-            inLineCharNumberedElement = newLine? backSlash "liv" number? spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "liv" number?  "*" spaceChar?
-            nestedInLineCharNumberedElement = newLine? backSlash "+liv" number? spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "+liv" number? "*" spaceChar?
+			inLineCharNumberedElement = newLine? backSlash "liv" number? spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "liv" number?  "*" spaceChar?
+			nestedInLineCharNumberedElement = newLine? backSlash "+liv" number? spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "+liv" number? "*" spaceChar?
 
-            /* For user defined attributes starting with x */
+			/* For user defined attributes starting with x */
 
-            customAttribute = customAttributeName "=" attributeValue spaceChar?
+			customAttribute = customAttributeName "=" attributeValue spaceChar?
 			customAttributeName = "x-" (letter |digit |"_")+
 			attributeValue = "\"" (~"\"" any)+ "\""
 
@@ -390,7 +390,7 @@ usfmBible{
 
 			/* as the caption and attributes are all optional, it allows the fig marker to be empty also*/
 
-            figureElement = backSlash "fig" spaceChar caption?  ("|" spaceChar? figAttribute+)? backSlash "fig*"
+			figureElement = backSlash "fig" spaceChar caption?  ("|" spaceChar? figAttribute+)? backSlash "fig*"
 			caption = text
 
 			/* the table structure with list of rows and each row with list of values is 
