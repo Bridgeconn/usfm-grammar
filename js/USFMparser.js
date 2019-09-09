@@ -2,11 +2,11 @@ const match = require('./grammarOperations.js').match
 
 var warnings = []
 
-const multiLinePattern = new RegExp('(\\n\\r | \\n | \\r)[\\n\\r]+', 'g')
-const multiSpacePattern = new RegExp('  +', 'g')
-const trailingSpacePattern = new RegExp(' [\n\r]+', 'g')
 function normalize (str) {
   let newStr = ''
+  const multiLinePattern = new RegExp('(\\n\\r | \\n | \\r)[\\n\\r]+', 'g')
+  const multiSpacePattern = new RegExp('  +', 'g')
+  const trailingSpacePattern = new RegExp(' [\n\r]+', 'g')
   const bookCodePattern = new RegExp('\\id ([a-z][a-z][a-z])[ \\n\\r]', 'g')
   if (multiLinePattern.exec(str)) {
     warnings.push('Empty lines present. ')
