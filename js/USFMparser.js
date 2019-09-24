@@ -1,4 +1,5 @@
 const match = require('./grammarOperations.js').match
+const convert = require('./convert.js')
 
 var warnings = []
 
@@ -30,6 +31,8 @@ function normalize (str) {
 }
 
 exports.SCRIPTURE = 'clean'
+exports.toCSV = 'csv'
+exports.toTSV = 'tsv'
 
 exports.parseUSFM = function (str, resultType = 'all') {
   warnings = []
@@ -57,6 +60,14 @@ exports.parseUSFM = function (str, resultType = 'all') {
         newJsonOutput['chapters'].push(nextChapter)
       }
       jsonOutput = newJsonOutput
+    }
+    else if (resultType === 'csv'){
+      var csvOutput = convert.getCSV(jsonOutput)
+      return csvOutput
+    }
+    else if (resultType === 'tsv'){
+      var tsvOutput = convert.getTSV(jsonOutput)
+      return tsvOutput
     }
     if (warnings !== '') {
       jsonOutput['messages'] = { 'warnings': warnings }
