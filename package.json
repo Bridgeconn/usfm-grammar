@@ -31,6 +31,6 @@
     },
     "homepage": "https://github.com/Bridgeconn/usfm-grammar",
     "devDependencies": {
-        "mocha": "^6.1.4"
+        "mocha": "^6.2.0"
     }
 }
