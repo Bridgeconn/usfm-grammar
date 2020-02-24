@@ -6,7 +6,7 @@ The parsed USFM is an intuitive and easy to manipulate JSON structure that allow
 
 ## Online Demo!
 
-Try out the usfm-grammar based convertor online: http://usfm.bridgeconn.com/
+Try out the usfm-grammar based convertor online: http://usfm.vachanengine.org
 
 ## Example
 
