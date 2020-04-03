@@ -5,9 +5,9 @@ var warnings = []
 
 function normalize (str) {
   let newStr = ''
-  const multiLinePattern = new RegExp('(\\n\\r | \\n | \\r)[\\n\\r]+', 'g')
+  const multiLinePattern = new RegExp('[\\n\\r][\\n\\r]+', 'g')
   const multiSpacePattern = new RegExp('  +', 'g')
-  const trailingSpacePattern = new RegExp(' [\n\r]+', 'g')
+  const trailingSpacePattern = new RegExp(' +[\n\r]', 'g')
   const bookCodePattern = new RegExp('\\id ([a-z][a-z][a-z])[ \\n\\r]', 'g')
   if (multiLinePattern.exec(str)) {
     warnings.push('Empty lines present. ')
@@ -15,12 +15,12 @@ function normalize (str) {
   if (multiSpacePattern.exec(str)) {
     warnings.push('Multiple spaces present. ')
   }
-  // if (trailingSpacePattern.exec(str)) {
-  //   warnings.push('Trailing spaces present at line end. ')
-  // }
-  newStr = str.replace(multiLinePattern, '\n')
+  if (trailingSpacePattern.exec(str)) {
+    warnings.push('Trailing spaces present at line end. ')
+  }
+  newStr = str.replace(trailingSpacePattern, '\n')
+  newStr = newStr.replace(multiLinePattern, '\n')
   newStr = newStr.replace(multiSpacePattern, ' ')
-  // newStr = newStr.replace(trailingSpacePattern, '\n')
   let match = bookCodePattern.exec(newStr)
   if (match) {
     let bookCode = match[1]
