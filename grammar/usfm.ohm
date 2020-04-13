@@ -84,7 +84,7 @@ usfmBible{
 			chapter = chapterHeader mandatoryParaMetaScripture  verseElement+
 
 			
-			/The metaScripture element is used to accomodate all the extra stuff 
+			/*The metaScripture element is used to accomodate all the extra stuff 
 			coming into the basic book-chapter-verse structure of the scripture. 
 			The mandatoryParaMetaScripture in chapter, is added to ensure that 
 			at least one p, or similar paragraph element, comes at the chapter start. 
@@ -111,8 +111,8 @@ usfmBible{
 
 			sectionElementWithTitle = sectionMarker spaceChar (chapterContentTextContent | notesElement | milestoneElement)+ 
 			sectionElementWithoutTitle = (sdMarker | sectionMarker ) spaceChar*
-			sectionMarker = newLine backSlash "s" number?
-			sdMarker = newLine backSlash "sd" number?
+			sectionMarker = newLine? backSlash "s" number?
+			sdMarker = newLine? backSlash "sd" number?
 
 			/* Not only the p marker is considered as a paragraph marker here. 
 			A set of markers mainly used for styling and showing intentation 
@@ -127,7 +127,7 @@ usfmBible{
 			lose or structural difference would be caused while re-creating the usfm from the 
 			JSON structure. But the paragraph-wise division will not be there in the JSON. */
 
-			paraElement = newLine? backSlash paraMarker spaceChar*
+			paraElement = newLine backSlash paraMarker spaceChar*
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
 			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" )
 			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim") number?
@@ -150,59 +150,59 @@ usfmBible{
 
 
 
-			qaElement = newLine backSlash "qa" spaceChar text
+			qaElement = newLine? backSlash "qa" spaceChar text
 
-			cElement = newLine backSlash "c" spaceChar number spaceChar*
-			caElement = newLine backSlash "ca" spaceChar number backSlash "ca*"
-			cdElement = newLine backSlash "cd" spaceChar ((chapterContentTextContent | notesElement | milestoneElement)+ | notesElement)+
-			clElement = newLine backSlash "cl"  spaceChar text
-			cpElement = newLine backSlash "cp"  spaceChar text
-			dElement = newLine backSlash "d"  spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
+			cElement = newLine? backSlash "c" spaceChar number spaceChar*
+			caElement = newLine? backSlash "ca" spaceChar number backSlash "ca*"
+			cdElement = newLine? backSlash "cd" spaceChar ((chapterContentTextContent | notesElement | milestoneElement)+ | notesElement)+
+			clElement = newLine? backSlash "cl"  spaceChar text
+			cpElement = newLine? backSlash "cp"  spaceChar text
+			dElement = newLine? backSlash "d"  spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 			
-			hElement = newLine backSlash "h" number? spaceChar text
-			remElement = newLine backSlash "rem" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
-			stsElement = newLine backSlash "sts" spaceChar text
+			hElement = newLine? backSlash "h" number? spaceChar text
+			remElement = newLine? backSlash "rem" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
+			stsElement = newLine? backSlash "sts" spaceChar text
 
-			spElement = newLine backSlash "sp" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
+			spElement = newLine? backSlash "sp" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 
-			ibElement = newLine backSlash "ib" spaceChar? 
+			ibElement = newLine? backSlash "ib" spaceChar? 
 			idElement = backSlash "id"  spaceChar bookCode  (spaceChar text)?
-			ideElement = newLine backSlash "ide"  spaceChar text
-			ieElement = newLine backSlash "ie"
-			iexElement = newLine backSlash "iex"  spaceChar text
+			ideElement = newLine? backSlash "ide"  spaceChar text
+			ieElement = newLine? backSlash "ie"
+			iexElement = newLine? backSlash "iex"  spaceChar text
 			
-			imElement = newLine backSlash "im" spaceChar bookIntroductionTitlesTextContent
-			imiElement = newLine backSlash "imi" spaceChar bookIntroductionTitlesTextContent
-			imqElement = newLine backSlash "imq" spaceChar bookIntroductionTitlesTextContent
+			imElement = newLine? backSlash "im" spaceChar bookIntroductionTitlesTextContent
+			imiElement = newLine? backSlash "imi" spaceChar bookIntroductionTitlesTextContent
+			imqElement = newLine? backSlash "imq" spaceChar bookIntroductionTitlesTextContent
 			ili = iliElement+
-			iliElement = newLine backSlash "ili" number? spaceChar bookIntroductionTitlesTextContent
+			iliElement = newLine? backSlash "ili" number? spaceChar bookIntroductionTitlesTextContent
 			imt = imtElement+
-			imtElement = newLine backSlash "imt" number? spaceChar bookIntroductionTitlesTextContent
+			imtElement = newLine? backSlash "imt" number? spaceChar bookIntroductionTitlesTextContent
 			imte = imteElement+
-			imteElement = newLine backSlash "imte" number? spaceChar bookIntroductionTitlesTextContent
+			imteElement = newLine? backSlash "imte" number? spaceChar bookIntroductionTitlesTextContent
 			io = ioElement+
-			ioElement = newLine backSlash "io" number? spaceChar bookIntroductionTitlesTextContent
-			iotElement = newLine backSlash "iot" spaceChar bookIntroductionTitlesTextContent
-			ipElement = newLine backSlash "ip" spaceChar bookIntroductionTitlesTextContent
-			ipiElement = newLine backSlash "ipi" spaceChar bookIntroductionTitlesTextContent
-			ipqElement = newLine backSlash "ipq" spaceChar bookIntroductionTitlesTextContent
-			iprElement = newLine backSlash "ipr" spaceChar bookIntroductionTitlesTextContent
+			ioElement = newLine? backSlash "io" number? spaceChar bookIntroductionTitlesTextContent
+			iotElement = newLine? backSlash "iot" spaceChar bookIntroductionTitlesTextContent
+			ipElement = newLine? backSlash "ip" spaceChar bookIntroductionTitlesTextContent
+			ipiElement = newLine? backSlash "ipi" spaceChar bookIntroductionTitlesTextContent
+			ipqElement = newLine? backSlash "ipq" spaceChar bookIntroductionTitlesTextContent
+			iprElement = newLine? backSlash "ipr" spaceChar bookIntroductionTitlesTextContent
 			iq = iqElement+
-			iqElement = newLine backSlash "iq" number? spaceChar bookIntroductionTitlesTextContent
-			isElement = newLine backSlash "is" number? spaceChar bookIntroductionTitlesTextContent
+			iqElement = newLine? backSlash "iq" number? spaceChar bookIntroductionTitlesTextContent
+			isElement = newLine? backSlash "is" number? spaceChar bookIntroductionTitlesTextContent
 			
-			mrElement = newLine backSlash "mr" spaceChar text
-			msElement = newLine backSlash "ms" number? spaceChar text
+			mrElement = newLine? backSlash "mr" spaceChar text
+			msElement = newLine? backSlash "ms" number? spaceChar text
 			mt = mtElement+
-			mtElement = newLine backSlash "mt" number? spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
+			mtElement = newLine? backSlash "mt" number? spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 			mte = mteElement+
-			mteElement = newLine backSlash "mte" number? spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
-			rElement = newLine backSlash "r" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
+			mteElement = newLine? backSlash "mte" number? spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
+			rElement = newLine? backSlash "r" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 			
-			srElement = newLine backSlash "sr" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
-			tocElement = newLine backSlash ("toc1" | "toc2" | "toc3") (spaceChar text)?
-			tocaElement = newLine backSlash ("toca1" | "toca2" | "toca3") (spaceChar text)?
-			usfmElement = newLine backSlash "usfm" spaceChar version
+			srElement = newLine? backSlash "sr" spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
+			tocElement = newLine? backSlash ("toc1" | "toc2" | "toc3") (spaceChar text)?
+			tocaElement = newLine? backSlash ("toca1" | "toca2" | "toca3") (spaceChar text)?
+			usfmElement = newLine? backSlash "usfm" spaceChar version
 			version = number ("." number)?
 			vaElement = backSlash "va" spaceChar number backSlash "va*" spaceChar?
 			vpElement = backSlash "vp" spaceChar text backSlash "vp*" spaceChar?
@@ -402,7 +402,7 @@ usfmBible{
 			row = trElement cell+
 			cell = tcElement | tcrElement
 
-			trElement = newLine backSlash "tr" spaceChar
+			trElement = newLine? backSlash "tr" spaceChar
 			thElement = backSlash "th" number spaceChar text
 			thrElement = backSlash "thr" number spaceChar text
 			tcElement = backSlash "tc" number spaceChar text
@@ -411,11 +411,11 @@ usfmBible{
 			/* like the table, the heirarchical structure of the list is also implemented in the JSON */
 
 			li = (liElement)+
-			liElement = newLine backSlash "li" number? spaceChar (text | charElement)*
+			liElement = newLine? backSlash "li" number? spaceChar (text | charElement)*
 
 
 			
-			litElement = newLine backSlash "lit" spaceChar ((chapterContentTextContent | notesElement | milestoneElement) | notesElement | milestoneElement)+
+			litElement = newLine? backSlash "lit" spaceChar ((chapterContentTextContent | notesElement | milestoneElement) | notesElement | milestoneElement)+
 
 
 			/* The text content vaild in different sections is determined by all the valid 

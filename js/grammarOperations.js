@@ -199,14 +199,6 @@ sem.addOperation('composeJson', {
     return {'styling': marker.sourceString}
   },
 
-  altVerseNumberElement: function (_, num, _, _) {
-    return {'va': num.sourceString}
-  },
-
-  publishedCharElement: function (_, text, _, _) {
-    return {'vp': text.sourceString}
-  },
-
   qaElement: function(_, _, _, _, text){
     return {'qa': text.sourceString}
   },
