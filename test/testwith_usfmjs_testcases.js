@@ -1,5 +1,4 @@
-var chai = require('chai')
-var assert = chai.assert
+var assert = require('assert')
 // var assert = require('assert')
 var parser = require('../js/USFMparser.js')
 var fs = require('fs')
@@ -334,6 +333,6 @@ function generateTest(name, expected = true) {
     let output = parser.validate(data)
     // console.log(output)
     // console.log(expected)
-    assert.equal(output, expected)
+    assert.strictEqual(output, expected)
   })
 }
