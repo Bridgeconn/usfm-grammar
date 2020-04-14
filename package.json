@@ -8,7 +8,7 @@
         "start": "node ../server.js"
     },
     "dependencies": {
-        "formidable": "^1.2.1",
+        "formidable": "^1.2.2",
         "ohm-js": "^0.14.0",
         "stringify-object": "^3.3.0"
     },
@@ -31,6 +31,6 @@
     },
     "homepage": "https://github.com/Bridgeconn/usfm-grammar",
     "devDependencies": {
-        "mocha": "^6.1.4"
+        "mocha": "^6.2.3"
     }
 }
