@@ -1,4 +1,5 @@
 const match = require('./grammarOperations.js').match
+const relaxParse = require('./grammarOperations-relaxed.js').relaxParse
 const convert = require('./convert.js')
 
 var warnings = []
@@ -34,48 +35,55 @@ exports.SCRIPTURE = 'clean'
 exports.toCSV = 'csv'
 exports.toTSV = 'tsv'
 
-exports.parseUSFM = function (str, resultType = 'all') {
-  warnings = []
-  let inStr = normalize(str)
-  let matchObj = match(inStr)
+exports.parseUSFM = function (str, resultType = 'all', mode="normal") {
+  if (mode == "normal") {
+      warnings = []
+      let inStr = normalize(str)
+      let matchObj = match(inStr)
 
-  if (!matchObj.hasOwnProperty('ERROR')) {
-    let jsonOutput = matchObj['parseStructure']
-    if (matchObj.warnings) {
-      warnings = warnings.concat(matchObj['warnings'])
-      // console.log(warnings)
-    }
-    if (resultType === 'clean') {
-      let newJsonOutput = { 'book': jsonOutput['metadata']['id']['book'], 'chapters': [] }
-      let chapter = {}
-      for (let i = 0; i < jsonOutput['chapters'].length; i++) {
-        chapter = jsonOutput['chapters'][i]
-        let nextChapter = { 'chapterTitle': chapter['header']['title'], 'verses': [] }
-        let verse = {}
-        for (let j = 0; j < chapter['verses'].length; j++) {
-          verse = chapter['verses'][j]
-          let nextVerse = { 'verseNumber': verse['number'], verseText: verse['text'] }
-          nextChapter['verses'].push(nextVerse)
+      if (!matchObj.hasOwnProperty('ERROR')) {
+        let jsonOutput = matchObj['parseStructure']
+        if (matchObj.warnings) {
+          warnings = warnings.concat(matchObj['warnings'])
+          // console.log(warnings)
         }
-        newJsonOutput['chapters'].push(nextChapter)
+        if (resultType === 'clean') {
+          let newJsonOutput = { 'book': jsonOutput['metadata']['id']['book'], 'chapters': [] }
+          let chapter = {}
+          for (let i = 0; i < jsonOutput['chapters'].length; i++) {
+            chapter = jsonOutput['chapters'][i]
+            let nextChapter = { 'chapterTitle': chapter['header']['title'], 'verses': [] }
+            let verse = {}
+            for (let j = 0; j < chapter['verses'].length; j++) {
+              verse = chapter['verses'][j]
+              let nextVerse = { 'verseNumber': verse['number'], verseText: verse['text'] }
+              nextChapter['verses'].push(nextVerse)
+            }
+            newJsonOutput['chapters'].push(nextChapter)
+          }
+          jsonOutput = newJsonOutput
+        }
+        else if (resultType === 'csv'){
+          var csvOutput = convert.getCSV(jsonOutput)
+          return csvOutput
+        }
+        else if (resultType === 'tsv'){
+          var tsvOutput = convert.getTSV(jsonOutput)
+          return tsvOutput
+        }
+        if (warnings !== '') {
+          jsonOutput['messages'] = { 'warnings': warnings }
+        }
+        return jsonOutput
+      } else {
+        return matchObj
       }
-      jsonOutput = newJsonOutput
-    }
-    else if (resultType === 'csv'){
-      var csvOutput = convert.getCSV(jsonOutput)
-      return csvOutput
-    }
-    else if (resultType === 'tsv'){
-      var tsvOutput = convert.getTSV(jsonOutput)
-      return tsvOutput
-    }
-    if (warnings !== '') {
-      jsonOutput['messages'] = { 'warnings': warnings }
-    }
-    return jsonOutput
-  } else {
-    return matchObj
   }
+  else if(mode == "relaxed"){
+      console.log("coming into relaxed parsing")
+      let parseObj = relaxParse(str)
+      return parseObj
+    }
 }
 
 exports.validate = function (str) {
