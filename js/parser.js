@@ -1,13 +1,24 @@
-const parseUSFM = require('./USFMparser.js').parseUSFM
-const parseJSON = require('./JSONparser.js').parseJSON
-const validate  = require('./USFMparser.js').validate
-var SCRIPTURE = require('./USFMparser.js').SCRIPTURE
-var toCSV = require('./USFMparser.js').toCSV
-var toTSV = require('./USFMparser.js').toTSV
 
-exports.parseUSFM =parseUSFM
-exports.parseJSON =parseJSON
-exports.validate = validate
-exports.SCRIPTURE = SCRIPTURE
-exports.toCSV = toCSV
-exports.toTSV = toTSV
+// ABSTARCT class
+
+class Parser {
+	constructor() {
+		if (this.constructor == Parser) {
+	      throw new Error("Abstract classes can't be instantiated.");
+	    }
+	}
+
+	validate(){
+		throw new Error("Method 'validate()' must be implemented.");
+	}
+
+	noramlize(){
+		throw new Error("Method 'noramlize()' must be implemented.");
+	}
+
+	convert(){
+		throw new Error("Method 'convert()' must be implemented.");
+	}
+} 
+
+exports.Parser = Parser

@@ -1,5 +1,5 @@
 const ohm = require('ohm-js')
-var grammar = require('./usfm-relaxed.ohm.js').contents
+var grammar = require('../grammar/usfm-relaxed.ohm.js').contents
 
 var bib = ohm.grammars(grammar).usfmRelaxed
 var sem = bib.createSemantics()
