@@ -17,8 +17,8 @@ fs.readFile('grammar/usfm-relaxed.ohm','utf-8', function (err, data) {
   grammarString = grammarString.replace(newline,'\\n')
   
   var fileContent = "exports.contents = '" + grammarString + "'"
-  // fs.writeFile('js/usfm.ohm.js', fileContent, (err) => {
-  fs.writeFile('js/usfm-relaxed.ohm.js', fileContent, (err) => {
+  // fs.writeFile('grammar/usfm.ohm.js', fileContent, (err) => {
+  fs.writeFile('grammar/usfm-relaxed.ohm.js', fileContent, (err) => {
 	    if (err) console.log(err.message);
 
 	    // success case, the file was saved
