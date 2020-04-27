@@ -1,33 +1,29 @@
 
-function getCSV ( jsonOutput) {
-  let book_name = jsonOutput.metadata.id.book
-
-  let chapters = jsonOutput.chapters;
-  let csvWriter = 'Book' + ',' + 'Chapter' + ',' + 'Verse' + ',' + 'Text' +'\n'
-
-  for (let cno in chapters){
-
-    for (let vno in jsonOutput.chapters[cno].verses) {
-      csvWriter += book_name + ',' + cno + ',' + vno + ',' + jsonOutput.chapters[cno].verses[vno].text + '\n'
+function getCSV(jsonOutput) {
+  const bookName = jsonOutput.metadata.id.book;
+  const { chapters } = jsonOutput;
+  let csvWriter = 'Book, Chapter, Verse, Text\n';
+  for (const cno in chapters) {
+    for (const vno in jsonOutput.chapters[cno].verses) {
+      csvWriter += `${bookName},${cno},${vno},${jsonOutput.chapters[cno].verses[vno].text}\n`;
     }
   }
-  return csvWriter
+  return csvWriter;
 }
 
-function getTSV ( jsonOutput) {
-  let book_name = jsonOutput.metadata.id.book
+function getTSV(jsonOutput) {
+  const bookName = jsonOutput.metadata.id.book;
 
-  let chapters = jsonOutput.chapters ;
-  let csvWriter = 'Book' + '\t' + 'Chapter' + '\t' + 'Verse' + '\t' + 'Text' + '\n'
+  const { chapters } = jsonOutput;
+  let csvWriter = 'Book\tChapter\tVerse\tText\n';
 
-  for (let cno in chapters) {
-
-    for (let vno in jsonOutput.chapters[cno].verses) {
-      csvWriter += book_name + '\t' + cno + '\t' + vno + '\t' + jsonOutput.chapters[cno].verses[vno].text + '\n'
+  for (const cno in chapters) {
+    for (const vno in jsonOutput.chapters[cno].verses) {
+      csvWriter += `${bookName}\t${cno}\t${vno}\t${jsonOutput.chapters[cno].verses[vno].text}\n`;
     }
   }
-  return csvWriter
+  return csvWriter;
 }
 
-exports.getCSV = getCSV
-exports.getTSV = getTSV
+exports.getCSV = getCSV;
+exports.getTSV = getTSV;

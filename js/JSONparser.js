@@ -1,165 +1,153 @@
 // var parser = require('./USFMparser.js')
-const Parser = require('./parser.js').Parser
+const { Parser } = require('./parser.js');
 
 class JSONparser extends Parser {
-  constructor() {
-    super()
-  }
-
-  validate(JSONObject){
+  static validate(JSONObject) {
     try {
-      usfm = this.convert(JSONObject)
-      return true
+      this.convert(JSONObject);
+      return true;
     } catch (err) {
-      return false
+      return false;
     }
-
   }
 
-  normalize(JSONObject) {
-    let norm_json = JSONObject
-    return JSONObject
+  static normalize(JSONObject) {
+    const normJson = JSONObject;
+    return normJson;
   }
 
-  convert(jsonObj){
-      let usfmText = ''
-
-      usfmText += '\\id '
-      usfmText += jsonObj.metadata.id.book
-      if (jsonObj.metadata.id.hasOwnProperty('details')) {
-        usfmText += jsonObj.metadata.id.details
-      }
-
-      if (jsonObj.metadata.hasOwnProperty('headers')) {
-        usfmText = processInnerElements(jsonObj.metadata.headers, usfmText)
-      }
-
-      if (jsonObj.metadata.hasOwnProperty('introduction')) {
-        usfmText = processInnerElements(jsonObj.metadata.introduction, usfmText)
-      }
-
-      for (var chapter of jsonObj.chapters) {
-        usfmText += '\n\\c ' + chapter.header.title
-        usfmText = processInnerElements(chapter.metadata, usfmText)
-        for (let verse of chapter.verses) {
-          usfmText += '\n\\v ' + verse.number + ' '
-          let verseComponents = []
-          if (verse.hasOwnProperty('metadata')) {
-            for (let comp of verse.metadata) {
-              if (comp.hasOwnProperty('styling')) {
-                for (let styleItem of comp.styling) {
-                  verseComponents.push(styleItem)
-                }
-              } else {
-                verseComponents.push(comp)
-              }
-            }
-          }
-          for (let comp of verse['text objects']) {
-            verseComponents.push(comp)
-          }
-          verseComponents.sort((x, y) => { return x.index - y.index })
-          usfmText = processInnerElements(verseComponents, usfmText)
-        }
-      }
-      usfmText = usfmText.replace(/\s+\n/g, '\n')
-      usfmText = usfmText.replace(/\s\s+/g, ' ')
-      return usfmText
+  static convert(jsonObj) {
+    let usfmText = '';
+    usfmText += '\\id ';
+    usfmText += jsonObj.metadata.id.book;
+    if (Object.prototype.hasOwnProperty.call(jsonObj.metadata.id, 'details')) {
+      usfmText += jsonObj.metadata.id.details;
     }
 
-  processInnerElements (jsonObject, usfmText) {
-      for (let elmnt of jsonObject) {
-        if (Array.isArray(elmnt)) {
-          usfmText = processInnerElements(elmnt, usfmText)
-        } else {
-          let key = Object.keys(elmnt)[0]
-          if (key === 'section') {
-            let sectionElmnts = []
-            sectionElmnts.push(elmnt['section'])
-            if (elmnt.hasOwnProperty('sectionPostheader')) {
-              for (let header of elmnt.sectionPostheader) {
-                sectionElmnts.push(header)
+    if (Object.prototype.hasOwnProperty.call(jsonObj.metadata, 'headers')) {
+      usfmText = this.processInnerElements(jsonObj.metadata.headers, usfmText);
+    }
+
+    if (Object.prototype.hasOwnProperty.call(jsonObj.metadata, 'introduction')) {
+      usfmText = this.processInnerElements(jsonObj.metadata.introduction, usfmText);
+    }
+
+    for (const chapter of jsonObj.chapters) {
+      usfmText += `\n\\c ${chapter.header.title}`;
+      usfmText = this.processInnerElements(chapter.metadata, usfmText);
+      for (const verse of chapter.verses) {
+        usfmText += `\n\\v ${verse.number} `;
+        const verseComponents = [];
+        if (Object.prototype.hasOwnProperty.call(verse, 'metadata')) {
+          for (const comp of verse.metadata) {
+            if (Object.prototype.hasOwnProperty.call(comp, 'styling')) {
+              for (const styleItem of comp.styling) {
+                verseComponents.push(styleItem);
               }
-            }
-            if (elmnt.hasOwnProperty('introductionParagraph')) {
-              sectionElmnts.push(elmnt.introductionParagraph)
-            }
-            usfmText = processInnerElements(sectionElmnts, usfmText)
-          } else if (key === 'list') {
-            let listElmnts = []
-            for (let itm of elmnt['list']) {
-              if (!(itm.hasOwnProperty('text'))) {
-                listElmnts.push(itm)
-              }
-            }
-            usfmText = processInnerElements(listElmnts, usfmText)
-          } else if (key === 'table') {
-            let tableElmnts = []
-            if (elmnt.table.hasOwnProperty('header')) {
-              tableElmnts.push({ 'marker': 'tr' })
-              for (let itm of elmnt.table.header) { tableElmnts.push(itm) }
-            }
-            for (let row of elmnt.table.rows) {
-              tableElmnts.push({ 'marker': 'tr' })
-              for (let itm of row) { tableElmnts.push(itm) }
-            }
-            usfmText = processInnerElements(tableElmnts, usfmText)
-          } else {
-            let marker = key
-            if (elmnt.hasOwnProperty('marker')) {
-              marker = elmnt.marker
-            }
-            if (elmnt.hasOwnProperty('number')) {
-              marker += elmnt['number']
-            }
-            if (key === 'text' && marker === 'text') {
-              usfmText += elmnt['text']
-            } else if (key === 'text') {
-              usfmText += '\n\\' + marker + ' ' + elmnt['text']
-            } else if (key === 'styling') {
-              usfmText = processInnerElements(elmnt.styling, usfmText)
             } else {
-              if (elmnt.hasOwnProperty('inline')) {
-                usfmText += ' \\' + marker + ' '
-              } else {
-                usfmText += '\n\\' + marker + ' '
-              }
-              if (key === 'marker') {
-              } else if (Array.isArray(elmnt[key])) {
-                usfmText = processInnerElements(elmnt[key], usfmText)
-              } else if (typeof (elmnt[key]) === 'object' && elmnt[key].hasOwnProperty('text')) {
-                usfmText += elmnt[key]['text']
-              } else if (key === 'milestone') {
-                usfmText += ''
-              } else {
-                usfmText += elmnt[key]
-              }
-              if (elmnt.hasOwnProperty('closed')) {
-                if (elmnt.hasOwnProperty('attributes')) {
-                  usfmText += '|'
-                  for (let attrib of elmnt.attributes) {
-                    if (attrib.name === 'default attribute') { usfmText += attrib.value } else {
-                      usfmText += attrib.name + '=' + attrib.value + ' '
-                    }
+              verseComponents.push(comp);
+            }
+          }
+        }
+        for (const comp of verse['text objects']) {
+          verseComponents.push(comp);
+        }
+        verseComponents.sort((x, y) => (x.index - y.index));
+        usfmText = this.processInnerElements(verseComponents, usfmText);
+      }
+    }
+    usfmText = usfmText.replace(/\s+\n/g, '\n');
+    usfmText = usfmText.replace(/\s\s+/g, ' ');
+    return usfmText;
+  }
+
+  static processInnerElements(jsonObject, usfm) {
+    let usfmText = usfm;
+    for (const elmnt of jsonObject) {
+      if (Array.isArray(elmnt)) {
+        usfmText = this.processInnerElements(elmnt, usfmText);
+      } else {
+        const key = Object.keys(elmnt)[0];
+        if (key === 'section') {
+          const sectionElmnts = [];
+          sectionElmnts.push(elmnt.section);
+          if (Object.prototype.hasOwnProperty.call(elmnt, 'sectionPostheader')) {
+            for (const header of elmnt.sectionPostheader) {
+              sectionElmnts.push(header);
+            }
+          }
+          if (Object.prototype.hasOwnProperty.call(elmnt, 'introductionParagraph')) {
+            sectionElmnts.push(elmnt.introductionParagraph);
+          }
+          usfmText = this.processInnerElements(sectionElmnts, usfmText);
+        } else if (key === 'list') {
+          const listElmnts = [];
+          for (const itm of elmnt.list) {
+            if (!Object.prototype.hasOwnProperty.call(itm, 'text')) {
+              listElmnts.push(itm);
+            }
+          }
+          usfmText = this.processInnerElements(listElmnts, usfmText);
+        } else if (key === 'table') {
+          const tableElmnts = [];
+          if (Object.prototype.hasOwnProperty.call(elmnt.table, 'header')) {
+            tableElmnts.push({ marker: 'tr' });
+            for (const itm of elmnt.table.header) { tableElmnts.push(itm); }
+          }
+          for (const row of elmnt.table.rows) {
+            tableElmnts.push({ marker: 'tr' });
+            for (const itm of row) { tableElmnts.push(itm); }
+          }
+          usfmText = this.processInnerElements(tableElmnts, usfmText);
+        } else {
+          let marker = key;
+          if (Object.prototype.hasOwnProperty.call(elmnt, 'marker')) {
+            marker = elmnt.marker;
+          }
+          if (Object.prototype.hasOwnProperty.call(elmnt, 'number')) {
+            marker += elmnt.number;
+          }
+          if (key === 'text' && marker === 'text') {
+            usfmText += elmnt.text;
+          } else if (key === 'text') {
+            usfmText += `\n\\${marker} ${elmnt.text}`;
+          } else if (key === 'styling') {
+            usfmText = this.processInnerElements(elmnt.styling, usfmText);
+          } else {
+            if (Object.prototype.hasOwnProperty.call(elmnt, 'inline')) {
+              usfmText += ` \\${marker} `;
+            } else {
+              usfmText += `\n\\${marker} `;
+            }
+            if (Array.isArray(elmnt[key])) {
+              usfmText = this.processInnerElements(elmnt[key], usfmText);
+            } else if (typeof (elmnt[key]) === 'object' && Object.prototype.hasOwnProperty.call(elmnt[key], 'text')) {
+              usfmText += elmnt[key].text;
+            } else if (key === 'milestone') {
+              usfmText += '';
+            } else if (key !== 'marker') {
+              usfmText += elmnt[key];
+            }
+            if (Object.prototype.hasOwnProperty.call(elmnt, 'closed')) {
+              if (Object.prototype.hasOwnProperty.call(elmnt, 'attributes')) {
+                usfmText += '|';
+                for (const attrib of elmnt.attributes) {
+                  if (attrib.name === 'default attribute') { usfmText += attrib.value; } else {
+                    usfmText += '{attrib.name}={attrib.value} ';
                   }
                 }
-                if (key === 'milestone') {
-                  usfmText += '\\*'
-                } else { usfmText += '\\' + marker + '*' }
               }
+              if (key === 'milestone') {
+                usfmText += '\\*';
+              } else { usfmText += `\\${marker}*`; }
             }
           }
         }
       }
-      return usfmText
     }
+    return usfmText;
+  }
 }
 
 
-exports.JSONparser = JSONparser
-
-// let inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 some text \n\\f + \\ft Some modern versions have \\fqa and in the ruins of the rich, lambs will graze \\fqa* . \\f*'
-// let jsonOutput = parser.parseUSFM(inputUsfm)
-// console.log(JSON.stringify(jsonOutput))
-// let outputUsfm = convert(jsonOutput)
-// console.log(outputUsfm)
+exports.JSONparser = JSONparser;

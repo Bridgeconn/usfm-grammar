@@ -1,97 +1,105 @@
-const ohm = require('ohm-js')
-var grammar = require('../grammar/usfm-relaxed.ohm.js').contents
+const ohm = require('ohm-js');
+const { contents: grammar } = require('../grammar/usfm-relaxed.ohm.js');
 
-var bib = ohm.grammars(grammar).usfmRelaxed
-var sem = bib.createSemantics()
+const { usfmRelaxed: bib } = ohm.grammars(grammar);
+const sem = bib.createSemantics();
 
-console.log('Initializing grammar(relax mode)')
+/* eslint no-unused-vars: ["error", { "args": "none" }] */
 
 sem.addOperation('buildJson', {
-  File: function (bookhead, chapters) {
-    let res = {'book': bookhead.buildJson(),
-    		"chapters" : chapters.buildJson()}
-
-
-    return res
+  File(bookhead, chapters) {
+    const res = {
+      book: bookhead.buildJson(),
+      chapters: chapters.buildJson(),
+    };
+    return res;
   },
 
-  BookHead: function(id, markers) {
-  	let res = []
-  	res.push(id.buildJson())
-  	for (let mrk of markers.buildJson()) {
-  		res.push(mrk)
-  	}
-  	return res
+  BookHead(id, markers) {
+    const res = [];
+    res.push(id.buildJson());
+    for (const mrk of markers.buildJson()) {
+      res.push(mrk);
+    }
+    return res;
   },
 
-  Chapter: function( c, contents) {
-  	let res = {'number':c.buildJson(),
-  				'contents':contents.buildJson()}
-  	return res
+  Chapter(c, contents) {
+    const res = {
+      number: c.buildJson(),
+      contents: contents.buildJson(),
+    };
+    return res;
   },
 
-  text: function(_,txt) {
-  	return txt.sourceString
+  text(_1, txt) {
+    return txt.sourceString;
   },
 
-  idMarker: function(_,_,_,_,cod, desc ){
-  	let res = {"id":{"book code":cod.sourceString}}
-  	if (desc.sourceString !== "") {
-  		res["id"]["description"] = desc.sourceString
-  	}
-  	return res
+  idMarker(_1, _2, _3, _4, cod, desc) {
+    const res = {
+      id: {
+        bookCode: cod.sourceString,
+      },
+    };
+    if (desc.sourceString !== '') {
+      res.id.description = desc.sourceString;
+    }
+    return res;
   },
 
-  ChapterMarker: function( _,_,_,num){
-  	return num.sourceString
+  ChapterMarker(_1, _2, _3, num) {
+    return num.sourceString;
   },
 
-  VerseMarker: function(_,_,_,num,contents){
-  	let res = {'v':{'number':num.sourceString,
-  					"contents":contents.buildJson()}}
-  	return res
+  VerseMarker(_1, _2, _3, num, contents) {
+    const res = {
+      v: {
+        number: num.sourceString,
+        contents: contents.buildJson(),
+      },
+    };
+    return res;
   },
 
-  ClosedMarker: function(_,mrkr, contents, attribs,_,mrkr2,_ ){
-   let res = {}
-   let contentslist = contents.buildJson()
-   if (contentslist.length == 1 && typeof contentslist[0] == 'string'){
-   	contentslist = contentslist[0]
-   } else if (contentslist.length == 0){
-   	contentslist = ""
-   }
-
-   res[mrkr.sourceString] = contentslist
-   if (attribs.sourceString !== "") {
-   		res['attributes'] = attribs.sourceString
-   }
-   res['closing'] = "\\"+mrkr2.sourceString+"*"
-
-   return res
+  ClosedMarker(_1, mrkr, contents, attribs, _4, mrkr2, _6) {
+    const res = {};
+    let contentslist = contents.buildJson();
+    if (contentslist.length === 1 && typeof contentslist[0] === 'string') {
+      [contentslist] = contentslist;
+    } else if (contentslist.length === 0) {
+      contentslist = '';
+    }
+    res[mrkr.sourceString] = contentslist;
+    if (attribs.sourceString !== '') {
+      res.attributes = attribs.sourceString;
+    }
+    res.closing = `\\${mrkr2.sourceString}*`;
+    return res;
   },
 
-  NormalMarker: function(_,mrkr,contents){
-   let res = {}
-   let contentslist = contents.buildJson()
-   if (contentslist.length == 1 && typeof contentslist[0] == 'string'){
-   	contentslist = contentslist[0]
-   } else if (contentslist.length == 0){
-   	contentslist = ""
-   }
-   res[mrkr.sourceString] = contentslist
-   return res  	
+  NormalMarker(_1, mrkr, contents) {
+    const res = {};
+    let contentslist = contents.buildJson();
+    if (contentslist.length === 1 && typeof contentslist[0] === 'string') {
+      [contentslist] = contentslist;
+    } else if (contentslist.length === 0) {
+      contentslist = '';
+    }
+    res[mrkr.sourceString] = contentslist;
+    return res;
+  },
+
+});
+
+function relaxParse(str) {
+  const matchObj = bib.match(str);
+  if (matchObj.succeeded()) {
+    const adaptor = sem(matchObj);
+    return adaptor.buildJson();
   }
-
-})
-
-exports.relaxParse = function (str) {
-    var matchObj = bib.match(str)
-    if (matchObj.succeeded()) {
-      let adaptor = sem(matchObj)
-      return adaptor.buildJson()
-    }
-    else {
-      console.log(matchObj)
-      return {'ERROR':  matchObj.message }
-    }
+  // console.log(matchObj)
+  return { ERROR: matchObj.message };
 }
+
+exports.relaxParse = relaxParse;
