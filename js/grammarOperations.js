@@ -79,11 +79,11 @@ sem.addOperation('composeJson', {
       const metaObj = metaScripture.composeJson();
       const newMetaObj = [];
       const styleObj = { styling: [] };
-      for (const item of metaObj) {
-        if (Object.prototype.hasOwnProperty.call(item, 'styling')) {
-          styleObj.styling.push({ marker: item.styling });
+      for (let i = 0; i < metaObj.length; i += 1) {
+        if (Object.prototype.hasOwnProperty.call(metaObj[i], 'styling')) {
+          styleObj.styling.push({ marker: metaObj[i].styling });
         } else {
-          newMetaObj.push(item);
+          newMetaObj.push(metaObj[i]);
         }
       }
       if (styleObj.styling.length > 0) {
@@ -457,8 +457,8 @@ sem.addOperation('composeJson', {
   fElement(nl, _2, tag, _4, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
     let itemCount = 1;
-    for (const item of contElmnts) {
-      item.index = itemCount;
+    for (let i = 0; i < contElmnts.length; i += 1) {
+      contElmnts[i].index = itemCount;
       itemCount += 1;
     }
     const obj = {
@@ -473,8 +473,8 @@ sem.addOperation('composeJson', {
   feElement(nl, _2, tag, _4, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
     let itemCount = 1;
-    for (const item of contElmnts) {
-      item.index = itemCount;
+    for (let i = 0; i < contElmnts.length; i += 1) {
+      contElmnts.index = itemCount;
       itemCount += 1;
     }
     const obj = {
@@ -489,8 +489,8 @@ sem.addOperation('composeJson', {
   efElement(nl, _1, tag, _3, content, _5, _6, _7) {
     const contElmnts = content.composeJson();
     let itemCount = 1;
-    for (const item of contElmnts) {
-      item.index = itemCount;
+    for (let i = 0; i < contElmnts.length; i += 1) {
+      contElmnts[i].index = itemCount;
       itemCount += 1;
     }
     const obj = { footnote: contElmnts, marker: tag.sourceString, closed: true };
@@ -501,8 +501,8 @@ sem.addOperation('composeJson', {
   crossrefElement(nl, _2, tag, _4, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
     let itemCount = 1;
-    for (const item of contElmnts) {
-      item.index = itemCount;
+    for (let i = 0; i < contElmnts.length; i += 1) {
+      contElmnts[i].index = itemCount;
       itemCount += 1;
     }
     const obj = {
@@ -561,8 +561,8 @@ sem.addOperation('composeJson', {
     obj[tag.sourceString] = text.composeJson();
     if (tag.sourceString !== 'add') {
       obj.text = '';
-      for (const item of obj[tag.sourceString]) {
-        if (item.text) { obj.text += item.text; }
+      for (let i = 0; i < obj[tag.sourceString].length; i += 1) {
+        if (obj[tag.sourceString][i].text) { obj.text += obj[tag.sourceString][i].text; }
       }
     }
     if (attribs.sourceString !== '') {
@@ -586,8 +586,8 @@ sem.addOperation('composeJson', {
     obj[tag.sourceString] = text.composeJson();
     if (tag.sourceString !== 'add') {
       obj.text = '';
-      for (const item of obj[tag.sourceString]) {
-        if (item.text) { obj.text += item.text; }
+      for (let i = 0; i < obj[tag.sourceString].length; i += 1) {
+        if (obj[tag.sourceString][i].text) { obj.text += obj[tag.sourceString][i].text; }
       }
     }
     if (attribs.sourceString !== '') {
@@ -611,8 +611,8 @@ sem.addOperation('composeJson', {
     const textobj = text.composeJson();
     obj[tag.sourceString] = textobj;
     obj.text = '';
-    for (const item of textobj) {
-      if (item.text) { obj.text += item.text; }
+    for (let i = 0; i < textobj.length; i += 1) {
+      if (textobj[i].text) { obj.text += textobj[i].text; }
     }
     if (attribs.sourceString !== '') {
       let attribObj = attribs.composeJson();
@@ -627,9 +627,9 @@ sem.addOperation('composeJson', {
     }
     if (tag.sourceString === 'rb') {
       const numberOfHanChars = text.sourceString.split(';').length - 1;
-      for (const att of obj.attributes) {
-        if (att.name === 'gloss' || att.name === 'default attribute') {
-          const glossValue = att.value;
+      for (let i = 0; i < obj.attributes.length; i += 1) {
+        if (obj.attributes[i].name === 'gloss' || obj.attributes[i].name === 'default attribute') {
+          const glossValue = obj.attributes[i].value;
           const glossValueCount = glossValue.split(':').length;
           if (glossValueCount > numberOfHanChars) {
             emitter.emit('warning', new Error('Count of gloss items is more than the enclosed characters in \\rb. '));
@@ -647,8 +647,8 @@ sem.addOperation('composeJson', {
     const textobj = text.composeJson();
     obj[tag.sourceString] = textobj;
     obj.text = '';
-    for (const item of textobj) {
-      if (item.text) { obj.text += item.text; }
+    for (let i = 0; i < textobj.length; i += 1) {
+      if (textobj[i].text) { obj.text += textobj[i].text; }
     }
     if (attribs.sourceString !== '') {
       let attribObj = attribs.composeJson();
@@ -842,21 +842,21 @@ sem.addOperation('composeJson', {
     }
     table.table.rows = row.composeJson();
     table.text = '';
-    for (const item of table.table.header) {
-      if (item.th) { table.text += `${item.th} | `; }
-      if (item.thr) { table.text += `${item.thr} |  `; }
+    for (let i = 0; i < table.table.header.length; i += 1) {
+      if (table.table.header[i].th) { table.text += `${table.table.header[i].th} | `; }
+      if (table.table.header[i].thr) { table.text += `${table.table.header[i].thr} |  `; }
     }
     table.text += '\n';
 
-    for (const rw of table.table.rows) {
+    for (let i = 0; i < table.table.rows.length; i += 1) {
       if (columnCount === 0) {
-        columnCount = rw.length;
-      } else if (rw.length !== columnCount) {
+        columnCount = table.table.rows[i].length;
+      } else if (table.table.rows[i].length !== columnCount) {
         emitter.emit('warning', new Error('In-consistent column number in table rows. '));
       }
-      for (const item of rw) {
-        if (item.tc) { table.text += `${item.tc} |  `; }
-        if (item.tcr) { table.text += `${item.tcr} |  `; }
+      for (let j = 0; j < table.table.rows[i].length; j += 1) {
+        if (table.table.rows[i][j].tc) { table.text += `${table.table.rows[i][j].tc} |  `; }
+        if (table.table.rows[i][j].tcr) { table.text += `${table.table.rows[i][j].tcr} |  `; }
       }
       table.text += '\n';
     }
@@ -901,9 +901,9 @@ sem.addOperation('composeJson', {
   li(itemElement) {
     const li = { list: itemElement.composeJson() };
     li.text = '';
-    for (const item of li.list) {
-      for (const obj of item.li) {
-        li.text += `${obj.text} | `;
+    for (let i = 0; i < li.list.length; i += 1) {
+      for (let j = 0; i < li.list[i].li.length; j += 1) {
+        li.text += `${li.list[i].li[i].text} | `;
       }
     }
     return li;
@@ -970,16 +970,16 @@ sem.addOperation('composeJson', {
         }
         milestoneElement.attributes = tempArr;
       }
-      for (const item of milestoneElement.attributes) {
-        if (item.name === 'sid') {
-          milestoneFlag.push(item.value);
-        } else if (item.name === 'eid') {
+      for (let i = 0; i < milestoneElement.attributes.length; i += 1) {
+        if (milestoneElement.attributes[i].name === 'sid') {
+          milestoneFlag.push(milestoneElement.attributes[i].value);
+        } else if (milestoneElement.attributes[i].name === 'eid') {
           if (milestoneFlag.length === 0) {
-            emitter.emit('warning', new Error(`Opening not found for milestone ${item.value} before its closed. `));
+            emitter.emit('warning', new Error(`Opening not found for milestone ${milestoneElement.attributes[i].value} before its closed. `));
           } else {
             const lastEntry = milestoneFlag.pop();
-            if (lastEntry !== item.value) {
-              emitter.emit('warning', new Error(`Milestone ${lastEntry} not closed. ${item.value} found instead. `));
+            if (lastEntry !== milestoneElement.attributes[i].value) {
+              emitter.emit('warning', new Error(`Milestone ${lastEntry} not closed. ${milestoneElement.attributes[i].value} found instead. `));
             }
           }
         }

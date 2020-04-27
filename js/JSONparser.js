@@ -32,25 +32,26 @@ class JSONparser extends Parser {
       usfmText = this.processInnerElements(jsonObj.metadata.introduction, usfmText);
     }
 
-    for (const chapter of jsonObj.chapters) {
-      usfmText += `\n\\c ${chapter.header.title}`;
-      usfmText = this.processInnerElements(chapter.metadata, usfmText);
-      for (const verse of chapter.verses) {
-        usfmText += `\n\\v ${verse.number} `;
+    for (let i = 0; i < jsonObj.chapters.length; i += 1) {
+      usfmText += `\n\\c ${jsonObj.chapters[i].header.title}`;
+      usfmText = this.processInnerElements(jsonObj.chapters[i].metadata, usfmText);
+      for (let j = 0; j < jsonObj.chapters[i].verses.length; j += 1) {
+        usfmText += `\n\\v ${jsonObj.chapters[i].verses[j].number} `;
         const verseComponents = [];
-        if (Object.prototype.hasOwnProperty.call(verse, 'metadata')) {
-          for (const comp of verse.metadata) {
-            if (Object.prototype.hasOwnProperty.call(comp, 'styling')) {
-              for (const styleItem of comp.styling) {
-                verseComponents.push(styleItem);
+        if (Object.prototype.hasOwnProperty.call(jsonObj.chapters[i].verses[j], 'metadata')) {
+          for (let k = 0; k < jsonObj.chapters[i].verses[j].metadata.length; k += 1) {
+            if (Object.prototype.hasOwnProperty.call(jsonObj.chapters[i].verses[j].metadata[k], 'styling')) {
+              for (let l = 0; l < jsonObj.chapters[i].verses[j].metadata[k].styling.length;
+                l += 1) {
+                verseComponents.push(jsonObj.chapters[i].verses[j].metadata[k].styling[l]);
               }
             } else {
-              verseComponents.push(comp);
+              verseComponents.push(jsonObj.chapters[i].verses[j].metadata[k]);
             }
           }
         }
-        for (const comp of verse['text objects']) {
-          verseComponents.push(comp);
+        for (let k = 0; k < jsonObj.chapters[i].verses[j]['text objects'].length; k += 1) {
+          verseComponents.push(jsonObj.chapters[i].verses[j]['text objects'][k]);
         }
         verseComponents.sort((x, y) => (x.index - y.index));
         usfmText = this.processInnerElements(verseComponents, usfmText);
@@ -63,77 +64,82 @@ class JSONparser extends Parser {
 
   static processInnerElements(jsonObject, usfm) {
     let usfmText = usfm;
-    for (const elmnt of jsonObject) {
-      if (Array.isArray(elmnt)) {
-        usfmText = this.processInnerElements(elmnt, usfmText);
+    for (let i = 0; i < jsonObject.length; i += 1) {
+      if (Array.isArray(jsonObject[i])) {
+        usfmText = this.processInnerElements(jsonObject[i], usfmText);
       } else {
-        const key = Object.keys(elmnt)[0];
+        const key = Object.keys(jsonObject[i])[0];
         if (key === 'section') {
           const sectionElmnts = [];
-          sectionElmnts.push(elmnt.section);
-          if (Object.prototype.hasOwnProperty.call(elmnt, 'sectionPostheader')) {
-            for (const header of elmnt.sectionPostheader) {
-              sectionElmnts.push(header);
+          sectionElmnts.push(jsonObject[i].section);
+          if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'sectionPostheader')) {
+            for (let j = 0; j < jsonObject[i].sectionPostheader.length; j += 1) {
+              sectionElmnts.push(jsonObject[i].sectionPostheader[j]);
             }
           }
-          if (Object.prototype.hasOwnProperty.call(elmnt, 'introductionParagraph')) {
-            sectionElmnts.push(elmnt.introductionParagraph);
+          if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'introductionParagraph')) {
+            sectionElmnts.push(jsonObject[i].introductionParagraph);
           }
           usfmText = this.processInnerElements(sectionElmnts, usfmText);
         } else if (key === 'list') {
           const listElmnts = [];
-          for (const itm of elmnt.list) {
-            if (!Object.prototype.hasOwnProperty.call(itm, 'text')) {
-              listElmnts.push(itm);
+          for (let j = 0; j < jsonObject[i].list.length; j += 1) {
+            if (!Object.prototype.hasOwnProperty.call(jsonObject[i].list[j], 'text')) {
+              listElmnts.push(jsonObject[i].list[j]);
             }
           }
           usfmText = this.processInnerElements(listElmnts, usfmText);
         } else if (key === 'table') {
           const tableElmnts = [];
-          if (Object.prototype.hasOwnProperty.call(elmnt.table, 'header')) {
+          if (Object.prototype.hasOwnProperty.call(jsonObject[i].table, 'header')) {
             tableElmnts.push({ marker: 'tr' });
-            for (const itm of elmnt.table.header) { tableElmnts.push(itm); }
+            for (let j = 0; j < jsonObject[i].table.header.length; j += 1) {
+              tableElmnts.push(jsonObject[i].table.header[j]);
+            }
           }
-          for (const row of elmnt.table.rows) {
+          for (let j = 0; j < jsonObject[i].table.rows.length; j += 1) {
             tableElmnts.push({ marker: 'tr' });
-            for (const itm of row) { tableElmnts.push(itm); }
+            for (let k = 0; k < jsonObject[i].table.rows[j].length; k += 1) {
+              tableElmnts.push(jsonObject[i].table.rows[j][k]);
+            }
           }
           usfmText = this.processInnerElements(tableElmnts, usfmText);
         } else {
           let marker = key;
-          if (Object.prototype.hasOwnProperty.call(elmnt, 'marker')) {
-            marker = elmnt.marker;
+          if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'marker')) {
+            marker = jsonObject[i].marker;
           }
-          if (Object.prototype.hasOwnProperty.call(elmnt, 'number')) {
-            marker += elmnt.number;
+          if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'number')) {
+            marker += jsonObject[i].number;
           }
           if (key === 'text' && marker === 'text') {
-            usfmText += elmnt.text;
+            usfmText += jsonObject[i].text;
           } else if (key === 'text') {
-            usfmText += `\n\\${marker} ${elmnt.text}`;
+            usfmText += `\n\\${marker} ${jsonObject[i].text}`;
           } else if (key === 'styling') {
-            usfmText = this.processInnerElements(elmnt.styling, usfmText);
+            usfmText = this.processInnerElements(jsonObject[i].styling, usfmText);
           } else {
-            if (Object.prototype.hasOwnProperty.call(elmnt, 'inline')) {
+            if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'inline')) {
               usfmText += ` \\${marker} `;
             } else {
               usfmText += `\n\\${marker} `;
             }
-            if (Array.isArray(elmnt[key])) {
-              usfmText = this.processInnerElements(elmnt[key], usfmText);
-            } else if (typeof (elmnt[key]) === 'object' && Object.prototype.hasOwnProperty.call(elmnt[key], 'text')) {
-              usfmText += elmnt[key].text;
+            if (Array.isArray(jsonObject[i][key])) {
+              usfmText = this.processInnerElements(jsonObject[i][key], usfmText);
+            } else if (typeof (jsonObject[i][key]) === 'object'
+              && Object.prototype.hasOwnProperty.call(jsonObject[i][key], 'text')) {
+              usfmText += jsonObject[i][key].text;
             } else if (key === 'milestone') {
               usfmText += '';
             } else if (key !== 'marker') {
-              usfmText += elmnt[key];
+              usfmText += jsonObject[i][key];
             }
-            if (Object.prototype.hasOwnProperty.call(elmnt, 'closed')) {
-              if (Object.prototype.hasOwnProperty.call(elmnt, 'attributes')) {
+            if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'closed')) {
+              if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'attributes')) {
                 usfmText += '|';
-                for (const attrib of elmnt.attributes) {
-                  if (attrib.name === 'default attribute') { usfmText += attrib.value; } else {
-                    usfmText += '{attrib.name}={attrib.value} ';
+                for (let j = 0; j < jsonObject[i].attributes; j += 1) {
+                  if (jsonObject[i].attributes[j].name === 'default attribute') { usfmText += jsonObject[i].attributes[j].value; } else {
+                    usfmText += `${jsonObject[i].attributes[j].name}=${jsonObject[i].attributes[j].value} `;
                   }
                 }
               }

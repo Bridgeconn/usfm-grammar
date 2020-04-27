@@ -17,9 +17,10 @@ sem.addOperation('buildJson', {
 
   BookHead(id, markers) {
     const res = [];
+    const headMarkers = markers.buildJson();
     res.push(id.buildJson());
-    for (const mrk of markers.buildJson()) {
-      res.push(mrk);
+    for (let i = 0; i < headMarkers.length; i += 1) {
+      res.push(headMarkers[i]);
     }
     return res;
   },
