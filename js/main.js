@@ -1,5 +1,5 @@
 const { USFMparser } = require('./USFMparser.js');
-const { JSONparser } = require('./JSONparser.js').JSONparser;
+const { JSONparser } = require('./JSONparser.js');
 
 exports.SCRIPTURE = 'clean';
 exports.toCSV = 'csv';

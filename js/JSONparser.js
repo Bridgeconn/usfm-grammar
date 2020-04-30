@@ -2,9 +2,14 @@
 const { Parser } = require('./parser.js');
 
 class JSONparser extends Parser {
+  constructor() {
+    super();
+    this.warnings = [];
+  }
+
   static validate(JSONObject) {
     try {
-      this.convert(JSONObject);
+      this.parseJSON(JSONObject);
       return true;
     } catch (err) {
       return false;
@@ -16,7 +21,7 @@ class JSONparser extends Parser {
     return normJson;
   }
 
-  static convert(jsonObj) {
+  static parseJSON(jsonObj) {
     let usfmText = '';
     usfmText += '\\id ';
     usfmText += jsonObj.metadata.id.book;

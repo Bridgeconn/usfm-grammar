@@ -10,6 +10,7 @@ class USFMparser extends Parser {
   }
 
   static normalize(str) {
+    this.warnings = []
     let newStr = '';
     const multiLinePattern = new RegExp('[\\n\\r][\\n\\r]+', 'g');
     const multiSpacePattern = new RegExp('  +', 'g');
@@ -46,10 +47,9 @@ class USFMparser extends Parser {
     return true;
   }
 
-  static convert(str, resultType = 'normal', mode = 'normal') {
+  static parseUSFM(str, resultType = 'normal', mode = 'normal') {
     let matchObj = null;
     if (mode === 'normal') {
-      this.warnings = [];
       const inStr = this.normalize(str);
       matchObj = match(inStr);
     } else if (mode === 'relaxed') {
