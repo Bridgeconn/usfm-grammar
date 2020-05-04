@@ -158,6 +158,35 @@ class JSONparser extends Parser {
     }
     return usfmText;
   }
+
+  static toCSV(jsonOutput) {
+    const bookName = jsonOutput.metadata.id.book;
+    const { chapters } = jsonOutput;
+    let csvWriter = 'Book, Chapter, Verse, Text\n';
+    for (let i = 0; i < chapters.length; i += 1) {
+      const cno = chapters[i].header.title;
+      for (let j = 0; j < chapters[i].verses.length; j += 1) {
+        const vno = chapters[i].verses[j].number;
+        csvWriter += `"${bookName}","${cno}","${vno}","${chapters[i].verses[j].text}"\n`;
+      }
+    }
+    return csvWriter;
+  }
+
+  static toTSV(jsonOutput) {
+    const bookName = jsonOutput.metadata.id.book;
+    const { chapters } = jsonOutput;
+    let csvWriter = 'Book\tChapter\tVerse\tText\n';
+    for (let i = 0; i < chapters.length; i += 1) {
+      const cno = chapters[i].header.title;
+      for (let j = 0; j < chapters[i].verses.length; j += 1) {
+        const vno = chapters[i].verses[j].number;
+        csvWriter += `"${bookName}"\t"${cno}"\t"${vno}"\t"${chapters[i].verses[j].text}"\n`;    }
+    }
+    return csvWriter;
+  }
+
+
 }
 
 
