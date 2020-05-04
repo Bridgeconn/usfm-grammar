@@ -6,7 +6,7 @@ The parsed USFM is an intuitive and easy to manipulate JSON structure that allow
 
 ## Online Demo!
 
-Try out the usfm-grammar based convertor online: http://usfm.bridgeconn.com/
+Try out the usfm-grammar based convertor online: https://usfm.vachanengine.org/
 
 ## Example
 
@@ -110,24 +110,25 @@ The parser is [available on NPM](https://www.npmjs.com/package/usfm-grammar) and
 #### USFM to JSON
 ```
 const grammar = require('usfm-grammar')
-const usfm = new grammar.USFMparser()
-var jsonOutput = usfm.convert(/**The USFM Text to be converted to JSON**/)
-var jsonCleanOutput = usfm.convert(/**The USFM Text to be converted to JSON**/, grammar.SCRIPTURE)
+
+var jsonOutput = grammar.USFMparser.parseUSFM(/**The USFM Text to be converted to JSON**/)
+var jsonCleanOutput = grammar.USFMparser.parseUSFM(/**The USFM Text to be converted to JSON**/, grammar.SCRIPTURE)
 ```
-The `USFMparser.convert()` method returns a JSON structure for the passed-in USFM string, if it is a valid usfm file.
-The `USFMparser.convert()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
+The `USFMparser.parseUSFM()` method returns a JSON structure for the passed-in USFM string, if it is a valid usfm file.
+The `USFMparser.parseUSFM()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
 If you intent to create a usfm from the data after processing it, we recommend using this method without the `SCRIPTURE` flag as this would loose information of other markers. 
 
 
 ```
-var usfmValidity = usfm.validate(/**USFM Text to be checked**/)
+var usfmValidity = grammar.USFMparser.validate(/**USFM Text to be checked**/)
 ```
-The `grammar.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not.
+The `grammar.USFMparser.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not.
 
 #### JSON to USFM
 ```
-const json = new grammar.JSONparser()
-var usfmString = json.convert(jsonOutput)
+var usfmString = grammar.JSONparser.parseJSON(jsonOutput)
 ```
-The `JSONparser.convert()` takes a the JSON object generated using USFM Grammar and converts it to it's corresponding USFM text. The only side effect being that multiple consecutive lines and spaces in the file are normalized to single-line and single-space.
+The `JSONparser.parseJSON()` takes a the JSON object generated using USFM Grammar and converts it to it's corresponding USFM text. The only side effect being that multiple consecutive lines and spaces in the file are normalized to single-line and single-space.
+
+#### Working with CSV/TSV
 
