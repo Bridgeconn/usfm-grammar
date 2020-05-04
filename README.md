@@ -118,6 +118,10 @@ The `USFMparser.parseUSFM()` method returns a JSON structure for the passed-in U
 The `USFMparser.parseUSFM()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
 If you intent to create a usfm from the data after processing it, we recommend using this method without the `SCRIPTURE` flag as this would loose information of other markers. 
 
+```
+var jsonOutput = grammar.USFMparser.parseUSFM(/**The USFM Text to be converted to JSON**/, mode="relaxed");
+```
+This relaxed mode provides relaxation of serval rules in the USFM spec and give you a JSON output for a file that can be considered a workable USFM file.
 
 ```
 var usfmValidity = grammar.USFMparser.validate(/**USFM Text to be checked**/);
@@ -130,4 +134,14 @@ var usfmString = grammar.JSONparser.parseJSON(jsonOutput);
 ```
 The `JSONparser.parseJSON()` takes a the JSON object generated using USFM Grammar and converts it to it's corresponding USFM text. The only side effect being that multiple consecutive lines and spaces in the file are normalized to single-line and single-space.
 
+```
 var tabularBible = grammar.JSONparser.toCSV(jsonOutput);
+```
+
+or
+
+```
+var tabularBible = grammar.JSONparser.toTSV(jsonOutput);
+```
+
+The `toCSV()` and `toTSV()` methods give a tabular representation of bible verses in the <BOOK, CHAPTER, VERSE-NUMBER, VERSE-TEXT> format. The input to these methods should be the JSON in the format given by the USFMgrammar not in SCRIPTURE mode or in relaxed mode
