@@ -4,7 +4,7 @@
     "version": "1.1.0",
     "main": "./js/main.js",
     "scripts": {
-        "test": "mocha --expose-gc",
+        "test": "mocha --expose-gc --timeout 20000",
         "start": "node ../server.js"
     },
     "dependencies": {

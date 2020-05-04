@@ -115,197 +115,155 @@ describe('Ensure all true positives', () => {
 
 });
 
-// describe('Test with usfm files from the wild', () => {
-//   it('Hindi IRV file1', () => {
-//     fs.readFile('test/resources/HindiIRV5_41-MAT.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+describe('Test with usfm files from the wild', () => {
+  beforeEach(function() {
+    if (global.gc) { global.gc(); }
+  });
 
-//   it('Hindi IRV file2', () => {
-//     fs.readFile('test/resources/HindiIRV5_67-REV.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Hindi IRV file1', () => {
+    let data = fs.readFileSync('test/resources/HindiIRV5_41-MAT.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Tamil IRV file1', () => {
-//     fs.readFile('test/resources/Tam_IRV5_57-TIT.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Hindi IRV file2', () => {
+    let data = fs.readFileSync('test/resources/HindiIRV5_67-REV.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Tamil IRV file2', () => {
-//     fs.readFile('test/resources/Tam_IRV5_46-ROM.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Tamil IRV file1', () => {
+    let data = fs.readFileSync('test/resources/Tam_IRV5_57-TIT.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Greek UGNT file1', () => {
-//     fs.readFile('test/resources/Greek_UGNT4_47-1CO.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Tamil IRV file2', () => {
+    let data = fs.readFileSync('test/resources/Tam_IRV5_46-ROM.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Greek UGNT file2', () => {
-//     fs.readFile('test/resources/Greek_UGNT4_63-1JN.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Greek UGNT file1', () => {
+    let data = fs.readFileSync('test/resources/Greek_UGNT4_47-1CO.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('AMT alignment export file', function () {
-//     fs.readFile('test/resources/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8', function (err, data) {
-//       if (err) { throw err }
-//       let output = grammar.USFMparser.validate(data)
-//       assert.strictEqual(output, true)
-//     })
-//   })
+  it('Greek UGNT file2', () => {
+    let data = fs.readFileSync('test/resources/Greek_UGNT4_63-1JN.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('WEB file1', () => {
-//     fs.readFile('test/resources/03-EXOeng-web.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('AMT alignment export file', function () {
+    let data = fs.readFileSync('test/resources/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8');
+      let output = grammar.USFMparser.validate(data)
+      assert.strictEqual(output, true)
+  });
 
-//   it('WEB file2', () => {
-//     fs.readFile('test/resources/21-PROeng-web.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('WEB file1', () => {
+    let data = fs.readFileSync('test/resources/03-EXOeng-web.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('WEB file3', () => {
-//     fs.readFile('test/resources/75-ROMeng-web.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('WEB file2', () => {
+    let data = fs.readFileSync('test/resources/21-PROeng-web.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('t4t file1', () => {
-//     fs.readFile('test/resources/13-2KIeng-t4t.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('WEB file3', () => {
+    let data = fs.readFileSync('test/resources/75-ROMeng-web.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('t4t file2', () => {
-//     fs.readFile('test/resources/20-PSAeng-t4t.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('t4t file1', () => {
+    let data = fs.readFileSync('test/resources/13-2KIeng-t4t.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('t4t file3', () => {
-//     fs.readFile('test/resources/74-ACTeng-t4t.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('t4t file2', () => {
+    let data = fs.readFileSync('test/resources/20-PSAeng-t4t.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Brenton file1', () => {
-//     fs.readFile('test/resources/09-RUTeng-Brenton.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('t4t file3', () => {
+    let data = fs.readFileSync('test/resources/74-ACTeng-t4t.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Brenton file2', () => {
-//     fs.readFile('test/resources/23-SNGeng-Brenton.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Brenton file1', () => {
+    let data = fs.readFileSync('test/resources/09-RUTeng-Brenton.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Chinese file1', () => {
-//     fs.readFile('test/resources/18-ESTcmn-cu89s.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Brenton file2', () => {
+    let data = fs.readFileSync('test/resources/23-SNGeng-Brenton.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Chinese file2', () => {
-//     fs.readFile('test/resources/32-OBAcmn-cu89s.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Chinese file1', () => {
+    let data = fs.readFileSync('test/resources/18-ESTcmn-cu89s.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Chinese file3', () => {
-//     fs.readFile('test/resources/94-3JNcmn-cu89s.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Chinese file2', () => {
+    let data = fs.readFileSync('test/resources/32-OBAcmn-cu89s.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Revised Version file1', () => {
-//     fs.readFile('test/resources/19-JOBeng-rv.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Chinese file3', () => {
+    let data = fs.readFileSync('test/resources/94-3JNcmn-cu89s.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Revised Version file2', () => {
-//     fs.readFile('test/resources/26-LAMeng-rv.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Revised Version file1', () => {
+    let data = fs.readFileSync('test/resources/19-JOBeng-rv.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Revised Version file3', () => {
-//     fs.readFile('test/resources/90-1PEeng-rv.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Revised Version file2', () => {
+    let data = fs.readFileSync('test/resources/26-LAMeng-rv.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Door 43 file', () => {
-//     fs.readFile('test/resources/46-ROM.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
+  it('Revised Version file3', () => {
+    let data = fs.readFileSync('test/resources/90-1PEeng-rv.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Door43 file with multiple fqa', () => {
-//     const usfmString = '\\id 1SA Unlocked Literal Bible\n\\ide UTF-8\n\\h 1 Samuel\n\\toc1 The First Book of Samuel\n\\toc2 First Samuel\n\\toc3 1Sa\n\\mt First Samuel \n\\c 1\n\\p\n\\v 1 There was a certain man of Ramathaim of the Zuphites, of the hill country of Ephraim; his name was Elkanah son of Jeroham son of Elihu son of Tohu son of Zuph, an Ephraimite.\n\\f + \\ft Some modern versions have \\fqa Ramathaim Zophim, \\fqa* but it is understood that \\fqa Zophim \\fqa* really refers to the region in which the clan descended from Zuph resided. \\f*\n\\v 2 He had two wives; the name of the first was Hannah, and the name of the second was Peninnah. Peninnah had children, but Hannah had none.\n\\s5\n\\v 8 David and his men attacked various places, making raids on the Geshurites, the Girzites, and the Amalekites; for those nations were the inhabitants of the land, as you go to Shur, as far as the land of Egypt. They had been living there in the land from ancient times. \\f + \\ft Instead of \\fqa the Girzites \\fqa* which is found in some ancient Hebrew copies, some modern versions have \\fqa the Gizrites \\fqa* which is found in the margin of some  Hebrew manuscripts. \\f*\n\\v 9 David attacked the land and saved neither man nor woman alive; he took away the sheep, the oxen, the donkeys, the camels, and the clothing; he would return and come again to Achish.\n';
-//     const output = grammar.USFMparser.validate(usfmString);
-//     assert.strictEqual(output, true);
-//   });
+  it('Door 43 file', () => {
+    let data = fs.readFileSync('test/resources/46-ROM.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
 
-//   it('Door 43 file with trailing space and id in second line', () => {
-//     fs.readFile('test/resources/01-GEN_malDoor43.usfm', 'utf-8', (err, data) => {
-//       if (err) { throw err; }
-//       const output = grammar.USFMparser.validate(data);
-//       assert.strictEqual(output, true);
-//     });
-//   });
-// });
+  it('Door43 file with multiple fqa', () => {
+    const usfmString = '\\id 1SA Unlocked Literal Bible\n\\ide UTF-8\n\\h 1 Samuel\n\\toc1 The First Book of Samuel\n\\toc2 First Samuel\n\\toc3 1Sa\n\\mt First Samuel \n\\c 1\n\\p\n\\v 1 There was a certain man of Ramathaim of the Zuphites, of the hill country of Ephraim; his name was Elkanah son of Jeroham son of Elihu son of Tohu son of Zuph, an Ephraimite.\n\\f + \\ft Some modern versions have \\fqa Ramathaim Zophim, \\fqa* but it is understood that \\fqa Zophim \\fqa* really refers to the region in which the clan descended from Zuph resided. \\f*\n\\v 2 He had two wives; the name of the first was Hannah, and the name of the second was Peninnah. Peninnah had children, but Hannah had none.\n\\s5\n\\v 8 David and his men attacked various places, making raids on the Geshurites, the Girzites, and the Amalekites; for those nations were the inhabitants of the land, as you go to Shur, as far as the land of Egypt. They had been living there in the land from ancient times. \\f + \\ft Instead of \\fqa the Girzites \\fqa* which is found in some ancient Hebrew copies, some modern versions have \\fqa the Gizrites \\fqa* which is found in the margin of some  Hebrew manuscripts. \\f*\n\\v 9 David attacked the land and saved neither man nor woman alive; he took away the sheep, the oxen, the donkeys, the camels, and the clothing; he would return and come again to Achish.\n';
+    const output = grammar.USFMparser.validate(usfmString);
+    assert.strictEqual(output, true);
+  });
+
+  it('Door 43 file with trailing space and id in second line', () => {
+    let data = fs.readFileSync('test/resources/01-GEN_malDoor43.usfm', 'utf-8');
+      const output = grammar.USFMparser.validate(data);
+      assert.strictEqual(output, true);
+  });
+});
 
 describe('Test with paratext test cases', () => {
   beforeEach(function() {
