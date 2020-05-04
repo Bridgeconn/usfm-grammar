@@ -143,9 +143,9 @@ sem.addOperation('composeJson', {
     for (let i = 0; i < content.length; i += 1) {
       content[i].index = i;
       if (Object.prototype.hasOwnProperty.call(content[i], 'text')) {
-        verse.text += `${contents[i].text} `;
+        verse.text += `${content[i].text} `;
         verse['text objects'].push(content[i]);
-      } else if (Object.prototype.hasOwnProperty.call(contents[i], 'styling')) {
+      } else if (Object.prototype.hasOwnProperty.call(content[i], 'styling')) {
         styleObj.styling.push({
           marker: content[i].styling,
           index: i,
@@ -902,8 +902,8 @@ sem.addOperation('composeJson', {
     const li = { list: itemElement.composeJson() };
     li.text = '';
     for (let i = 0; i < li.list.length; i += 1) {
-      for (let j = 0; i < li.list[i].li.length; j += 1) {
-        li.text += `${li.list[i].li[i].text} | `;
+      for (let j = 0; j < li.list[i].li.length; j += 1) {
+        li.text += `${li.list[i].li[j].text} | `;
       }
     }
     return li;

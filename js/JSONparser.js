@@ -1,6 +1,6 @@
 // var parser = require('./USFMparser.js')
 const { Parser } = require('./parser.js');
-
+// const json = require('json')
 class JSONparser extends Parser {
   constructor() {
     super();
@@ -58,7 +58,7 @@ class JSONparser extends Parser {
         for (let k = 0; k < jsonObj.chapters[i].verses[j]['text objects'].length; k += 1) {
           verseComponents.push(jsonObj.chapters[i].verses[j]['text objects'][k]);
         }
-        verseComponents.sort((x, y) => (x.index - y.index));
+        verseComponents.sort((x, y) => x.index - y.index);
         usfmText = this.processInnerElements(verseComponents, usfmText);
       }
     }
@@ -142,7 +142,7 @@ class JSONparser extends Parser {
             if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'closed')) {
               if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'attributes')) {
                 usfmText += '|';
-                for (let j = 0; j < jsonObject[i].attributes; j += 1) {
+                for (let j = 0; j < jsonObject[i].attributes.length; j += 1) {
                   if (jsonObject[i].attributes[j].name === 'default attribute') { usfmText += jsonObject[i].attributes[j].value; } else {
                     usfmText += `${jsonObject[i].attributes[j].name}=${jsonObject[i].attributes[j].value} `;
                   }
