@@ -1,7 +1,7 @@
 const { match } = require('./grammarOperations.js');
 const { relaxParse } = require('./grammarOperations-relaxed.js');
-const tableConvert = require('./convert.js');
 const { Parser } = require('./parser.js');
+const { JSONparser } = require('./JSONparser.js');
 
 class USFMparser extends Parser {
   constructor() {
@@ -80,10 +80,10 @@ class USFMparser extends Parser {
         }
         jsonOutput = newJsonOutput;
       } else if (resultType === 'csv') {
-        const csvOutput = tableConvert.getCSV(jsonOutput);
+        const csvOutput = JSONparser.toCSV(jsonOutput);
         return csvOutput;
       } else if (resultType === 'tsv') {
-        const tsvOutput = tableConvert.getTSV(jsonOutput);
+        const tsvOutput = JSONparser.toTSV(jsonOutput);
         return tsvOutput;
       }
       if (this.warnings !== []) {
