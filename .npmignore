@@ -59,3 +59,5 @@ typings/
 
 test/*
 test/**
+js/convert_ohm_to_jsString.js
+.eslintrc.js

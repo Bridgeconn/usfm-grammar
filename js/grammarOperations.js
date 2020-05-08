@@ -1,998 +1,1016 @@
-const ohm = require('ohm-js')
-const join = require('path').join
-
+const ohm = require('ohm-js');
 const Events = require('events');
+
 const emitter = new Events.EventEmitter();
 
-var contents = require('./usfm.ohm.js').contents
+const { contents } = require('../grammar/usfm.ohm.js');
 
-var bib = ohm.grammars(contents).usfmBible
+const { usfmBible: bib } = ohm.grammars(contents);
+const sem = bib.createSemantics();
 
-var sem = bib.createSemantics()
+/* eslint no-unused-vars: ["error", { "args": "none" }] */
 
-console.log('Initializing grammar')
+let warningMessages = [];
+const milestoneFlag = [];
 
-var warningMessages = []
-var milestoneFlag = []
-
-emitter.on('warning', function (err) {
-  if (!warningMessages.includes(err.message)){
-    warningMessages.push(err.message) ;
+emitter.on('warning', (err) => {
+  if (!warningMessages.includes(err.message)) {
+    warningMessages.push(err.message);
   }
 });
 
 sem.addOperation('composeJson', {
-  File: function (e) {
-    warningMessages = []
-    let res = {'parseStructure': e.composeJson()}
-
-    if (milestoneFlag.length > 0){
-      emitter.emit('warning', new Error('Milestones not closed '+milestoneFlag+'. '));
+  File(e) {
+    warningMessages = [];
+    const res = { parseStructure: e.composeJson() };
+    if (milestoneFlag.length > 0) {
+      emitter.emit('warning', new Error(`Milestones not closed ${milestoneFlag}. `));
     }
-
-    if ( warningMessages != '' ) {
-      res['warnings'] = warningMessages
+    if (warningMessages !== '') {
+      res.warnings = warningMessages;
     }
-
-    return res
+    return res;
   },
 
-  scripture: function (metaData, content) {
-    let result = {}
-    result['metadata'] = metaData.composeJson()
-    result['chapters'] = content.composeJson()
-    return result
+  scripture(metaData, content) {
+    const result = {};
+    result.metadata = metaData.composeJson();
+    result.chapters = content.composeJson();
+    return result;
   },
 
-  metaData: function (bookIdentification, bookHeaders, introduction , bcl) {
-    let metadata = {}
-    metadata['id'] = bookIdentification.composeJson()
-    if (bookHeaders.sourceString!='') {metadata['headers'] = bookHeaders.composeJson()}
-    if (introduction.sourceString!='') {metadata['introduction'] = introduction.composeJson()}
-    if (bcl.sourceString!='') {metadata['chapter label'] = bcl.composeJson()}
-    return metadata
+  metaData(bookIdentification, bookHeaders, introduction, bcl) {
+    const metadata = {};
+    metadata.id = bookIdentification.composeJson();
+    if (bookHeaders.sourceString !== '') { metadata.headers = bookHeaders.composeJson(); }
+    if (introduction.sourceString !== '') { metadata.introduction = introduction.composeJson(); }
+    if (bcl.sourceString !== '') { metadata['chapter label'] = bcl.composeJson(); }
+    return metadata;
   },
 
-  bookIdentification: function (idElm) {
-    let elmt = idElm.composeJson()
-    return elmt 
+  bookIdentification(idElm) {
+    const elmt = idElm.composeJson();
+    return elmt;
   },
 
-  bookHeaders: function (bh) {
-    
-    let elmt = bh.composeJson()
-    return elmt
+  bookHeaders(bh) {
+    const elmt = bh.composeJson();
+    return elmt;
   },
 
-  introduction: function (elmt) {
-    let obj = elmt.composeJson()
-    return obj
+  introduction(elmt) {
+    const obj = elmt.composeJson();
+    return obj;
   },
 
-  bookChapterLabel: function (bcl) {
-    return bcl.composeJson()
+  bookChapterLabel(bcl) {
+    return bcl.composeJson();
   },
 
-  content: function (chapter) {
-    let contentVar = chapter.composeJson()
-    return contentVar
+  content(chapter) {
+    const contentVar = chapter.composeJson();
+    return contentVar;
   },
 
-  chapter: function (cHeader, metaScripture, verse) {
-    let cElmt = {}
-    cElmt['header'] = cHeader.composeJson()
-    if (metaScripture.sourceString != '') { 
-      let metaObj = metaScripture.composeJson()
-      let newMetaObj = []
-      let styleObj = {'styling' : []}
-      for (let item of metaObj) {
-        if (item.hasOwnProperty('styling')) {
-          styleObj.styling.push({'marker':item.styling})
-        }
-        else {
-          newMetaObj.push(item)
+  chapter(cHeader, metaScripture, verse) {
+    const cElmt = {};
+    cElmt.header = cHeader.composeJson();
+    if (metaScripture.sourceString !== '') {
+      const metaObj = metaScripture.composeJson();
+      const newMetaObj = [];
+      const styleObj = { styling: [] };
+      for (let i = 0; i < metaObj.length; i += 1) {
+        if (Object.prototype.hasOwnProperty.call(metaObj[i], 'styling')) {
+          styleObj.styling.push({ marker: metaObj[i].styling });
+        } else {
+          newMetaObj.push(metaObj[i]);
         }
       }
-      if (styleObj.styling.length > 0 ){
-        newMetaObj.push(styleObj)
+      if (styleObj.styling.length > 0) {
+        newMetaObj.push(styleObj);
       }
-    
-      cElmt['metadata'] =  newMetaObj
+      cElmt.metadata = newMetaObj;
     }
-    cElmt['verses'] = verse.composeJson()
-    return cElmt
+    cElmt.verses = verse.composeJson();
+    return cElmt;
   },
 
-  chapterHeader: function (c, cMeta) {
-    let chapterHeaderVar = { 'title': c.composeJson()}
-    if (cMeta.sourceString!='') { chapterHeaderVar['metadata'] = cMeta.composeJson() }
-    return chapterHeaderVar
+  chapterHeader(c, cMeta) {
+    const chapterHeaderVar = { title: c.composeJson() };
+    if (cMeta.sourceString !== '') { chapterHeaderVar.metadata = cMeta.composeJson(); }
+    return chapterHeaderVar;
   },
 
-  metaScripture: function (elmt){
-    let obj = elmt.composeJson()
-    return obj
+  metaScripture(elmt) {
+    const obj = elmt.composeJson();
+    return obj;
   },
 
-  nonParaMetaScripture: function (elmt){
-    return elmt.composeJson()
+  nonParaMetaScripture(elmt) {
+    return elmt.composeJson();
   },
 
-  mandatoryParaMetaScripture: function(meta1, para, meta2){
-    let obj = meta1.composeJson().concat(para.composeJson()).concat(meta2.composeJson())
-    return obj
+  mandatoryParaMetaScripture(meta1, para, meta2) {
+    const obj = meta1.composeJson().concat(para.composeJson()).concat(meta2.composeJson());
+    return obj;
   },
 
-  sectionHeader: function (s, postHead, ipElement) {
-    let sectionHeaderVar = {}
-    sectionHeaderVar['section'] = s.composeJson()
-    if (postHead.sourceString!='') { sectionHeaderVar['sectionPostheader'] = postHead.composeJson() }
-    if (ipElement.sourceString!='') { sectionHeaderVar['introductionParagraph'] = ipElement.composeJson() }
-    return sectionHeaderVar
+  sectionHeader(s, postHead, ipElement) {
+    const sectionHeaderVar = {};
+    sectionHeaderVar.section = s.composeJson();
+    if (postHead.sourceString !== '') { sectionHeaderVar.sectionPostheader = postHead.composeJson(); }
+    if (ipElement.sourceString !== '') { sectionHeaderVar.introductionParagraph = ipElement.composeJson(); }
+    return sectionHeaderVar;
   },
 
-  sectionPostHeader: function (meta) {
-    let obj = meta.composeJson()
-    return obj
+  sectionPostHeader(meta) {
+    const obj = meta.composeJson();
+    return obj;
   },
 
-  verseElement: function (_, _, _, _, verseNumber, verseMeta, verseContent) {
-    let verse ={}
-    verse['number'] = verseNumber.sourceString
-    verse['metadata'] = []
-    verse['text objects'] = []
-    if ( verseMeta.sourceString!='' ) { verse['metadata'].push(verseMeta.composeJson()) } 
-    contents = verseContent.composeJson()
-    if ( verseContent.sourceString == '' ) {
-      emitter.emit('warning', new Error('Verse text is empty, at \\v '+verseNumber.sourceString+'. '));
+  verseElement(_1, _2, _3, _4, verseNumber, verseMeta, verseContent) {
+    const verse = {};
+    verse.number = verseNumber.sourceString;
+    verse.metadata = [];
+    verse['text objects'] = [];
+    if (verseMeta.sourceString !== '') { verse.metadata.push(verseMeta.composeJson()); }
+    const content = verseContent.composeJson();
+    if (verseContent.sourceString === '') {
+      emitter.emit('warning', new Error(`Verse text is empty, at \\v ${verseNumber.sourceString}. `));
     }
-    verse['text'] = ''
-    let styleObj = {'styling' : []}
-    for (let i=0; i<contents.length; i++) {
-      contents[i]['index'] = i
-      if (contents[i].hasOwnProperty('text')) {
-        verse['text'] += contents[i]['text'] + ' '
-        verse['text objects'].push(contents[i])
-      } else if (contents[i].hasOwnProperty('styling')){
-          styleObj.styling.push({'marker':contents[i].styling,'index':i})
+    verse.text = '';
+    const styleObj = { styling: [] };
+    for (let i = 0; i < content.length; i += 1) {
+      content[i].index = i;
+      if (Object.prototype.hasOwnProperty.call(content[i], 'text')) {
+        verse.text += `${content[i].text} `;
+        verse['text objects'].push(content[i]);
+      } else if (Object.prototype.hasOwnProperty.call(content[i], 'styling')) {
+        styleObj.styling.push({
+          marker: content[i].styling,
+          index: i,
+        });
       } else {
-          verse['metadata'].push( contents[i])
+        verse.metadata.push(content[i]);
       }
     }
-    if (styleObj.styling.length > 0){
-      verse.metadata.push(styleObj)
+    if (styleObj.styling.length > 0) {
+      verse.metadata.push(styleObj);
     }
-    if (verse['metadata'].length == 0) { delete verse.metadata}
-    return verse
+    if (verse.metadata.length === 0) { delete verse.metadata; }
+    return verse;
   },
 
-  verseText: function (content) {
-    return content.composeJson()
-  },
-  
-  sectionElement: function (sElement ) {
-    return sElement.composeJson()
+  verseText(content) {
+    return content.composeJson();
   },
 
-  sectionElementWithTitle: function (tag, _, titleText) {
-    let marker = tag.composeJson()
-    return { 'text' : titleText.sourceString, 'marker': marker }
+  sectionElement(sElement) {
+    return sElement.composeJson();
   },
 
-  sectionElementWithoutTitle: function (tag, _) {
-    let marker = tag.composeJson()
+  sectionElementWithTitle(tag, _, titleText) {
+    const marker = tag.composeJson();
+    return {
+      text: titleText.sourceString,
+      marker,
+    };
+  },
+
+  sectionElementWithoutTitle(tag, _2) {
+    const marker = tag.composeJson();
     if (!marker.includes('sd')) {
-      emitter.emit('warning', new Error('Section marker used without title.'));      
+      emitter.emit('warning', new Error('Section marker used without title.'));
     }
-    return { 'text' :'', 'marker':marker}
+    return {
+      text: '',
+      marker,
+    };
   },
 
-  sectionMarker: function (_, _, tag, num) {
-    return tag.sourceString + num.sourceString
+  sectionMarker(_1, _2, tag, num) {
+    return tag.sourceString + num.sourceString;
   },
 
-  sdMarker: function (_,_, tag, num) {
-    return tag.sourceString + num.sourceString
+  sdMarker(_1, _2, tag, num) {
+    return tag.sourceString + num.sourceString;
   },
 
-  paraElement: function (_, _, marker, _) {
-    return {'styling': marker.sourceString}
+  paraElement(_1, _2, marker, _4) {
+    return { styling: marker.sourceString };
   },
 
-  altVerseNumberElement: function (_, num, _, _) {
-    return {'va': num.sourceString}
+  qaElement(_1, _2, _3, _4, text) {
+    return { qa: text.sourceString };
   },
 
-  publishedCharElement: function (_, text, _, _) {
-    return {'vp': text.sourceString}
+  cElement(_1, _2, _3, _4, num, _6) {
+    return num.sourceString;
   },
 
-  qaElement: function(_, _, _, _, text){
-    return {'qa': text.sourceString}
+  caElement(_1, _2, _3, _4, num, _6, _7) {
+    return { ca: num.sourceString };
   },
 
-  cElement: function (_, _, _, _, num, _) {
-    return num.sourceString
+  cdElement(_1, _2, _3, _4, text) {
+    return { cd: text.composeJson() };
   },
 
-  caElement: function (_, _, _, _, num, _, _ ) {
-    return {'ca': num.sourceString}
+  clElement(_1, _2, _3, _4, text) {
+    return { cl: text.sourceString };
   },
 
-  cdElement: function (_, _, _, _, text){
-    return {'cd': text.composeJson()}
+  cpElement(_1, _2, _3, _4, text) {
+    return { cp: text.sourceString };
   },
 
-  clElement: function (_, _, _, _, text) {
-    return {'cl': text.sourceString}
+  dElement(_1, _2, _3, _4, text) {
+    return { d: text.composeJson() };
   },
 
-  cpElement: function (_, _, _, _, text) {
-    return {'cp': text.sourceString}
+  hElement(_1, _2, _3, num, _5, text) {
+    const obj = { h: text.sourceString };
+    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    return obj;
   },
 
-  dElement: function (_, _, _, _, text) {
-    return {'d': text.composeJson()}
+  stsElement(_1, _2, _3, _4, text) {
+    return { sts: text.sourceString };
   },
 
-  hElement: function (_, _, _, num, _, text){
-    let obj = {'h': text.sourceString}
-    if (num.sourceString != '') {obj['number'] = num.sourceString }
-    return obj
+  spElement(_1, _2, _3, _4, text) {
+    return { sp: text.sourceString };
   },
 
-  stsElement: function (_, _, _, _, text) {
-    return {'sts': text.sourceString}
+  ibElement(_1, _2, _3, _4) {
+    return { ib: null };
   },
 
-  spElement: function (_, _, _, _, text) {
-    return {'sp': text.sourceString}
-  },
-
-  ibElement: function (_, _, _, _){
-    return {'ib':null}
-  },
-
-  idElement: function (_, _, _, bookCode, _, text) {
-    var obj = {'book':bookCode.sourceString}
-    if ( text.sourceString != '') {
-      obj['details'] = text.sourceString
+  idElement(_1, _2, _3, bookCode, _5, text) {
+    const obj = { book: bookCode.sourceString };
+    if (text.sourceString !== '') {
+      obj.details = text.sourceString;
     }
-    return obj
+    return obj;
   },
 
-  ideElement: function (_, _, _, _, text) {
-    return {'ide':text.sourceString}
-  },
-  
-  ieElement: function (_, _, _){
-    return {'ie':null}
+  ideElement(_1, _2, _3, _4, text) {
+    return { ide: text.sourceString };
   },
 
-  iexElement: function (_, _, _, _, text){
-    return {'iex':text.sourceString}
+  ieElement(_1, _2, _3) {
+    return { ie: null };
   },
 
-  imElement: function (_, _, _, _, text){
-    return {'im': text.composeJson()}
+  iexElement(_1, _2, _3, _4, text) {
+    return { iex: text.sourceString };
   },
 
-  imiElement: function (_, _, _, _, text){
-    return {'imi': text.composeJson()}
-  },
-  
-  imqElement: function (_, _, _, _, text){
-    return {'imq': text.composeJson()}
+  imElement(_1, _2, _3, _4, text) {
+    return { im: text.composeJson() };
   },
 
-  ili: function (itemElement) {
-    let ili = itemElement.composeJson()
-    return ili
+  imiElement(_1, _2, _3, _4, text) {
+    return { imi: text.composeJson() };
   },
 
-  iliElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['ili'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString }
-    return obj
+  imqElement(_1, _2, _3, _4, text) {
+    return { imq: text.composeJson() };
   },
 
-  imt: function (itemElement) {
-    let imt = itemElement.composeJson()
-    return imt
+  ili(itemElement) {
+    const ili = itemElement.composeJson();
+    return ili;
   },
 
-  imtElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['imt'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString}
-    return obj
+  iliElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.ili = text.composeJson();
+    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    return obj;
   },
 
-  imte: function (itemElement) {
-    let imte = itemElement.composeJson()
-    return imte
+  imt(itemElement) {
+    const imt = itemElement.composeJson();
+    return imt;
   },
 
-  imteElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['imte'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString}
-    return obj
+  imtElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.imt = text.composeJson();
+    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    return obj;
   },
 
-  io: function (itemElement) {
-    let io = itemElement.composeJson()
-    return io
+  imte(itemElement) {
+    const imte = itemElement.composeJson();
+    return imte;
   },
 
-  ioElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['io'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString }
-    return obj
+  imteElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.imte = text.composeJson();
+    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    return obj;
   },
 
-  iotElement: function (_, _, _, _, text){
-    return {'iot': text.composeJson()}
+  io(itemElement) {
+    const io = itemElement.composeJson();
+    return io;
   },
 
-  ipElement: function (_, _, _, _, text){
-    return {'ip': text.composeJson()}
+  ioElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.io = text.composeJson();
+    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    return obj;
   },
 
-  ipiElement: function (_, _, _, _, text){
-    return {'ipi': text.composeJson()}
+  iotElement(_1, _2, _3, _4, text) {
+    return { iot: text.composeJson() };
   },
 
-  ipqElement: function (_, _, _, _, text){
-    return {'ipq': text.composeJson()}
+  ipElement(_1, _2, _3, _4, text) {
+    return { ip: text.composeJson() };
   },
 
-  iprElement: function (_, _, _, _, text){
-    return {'ipr': text.composeJson()}
+  ipiElement(_1, _2, _3, _4, text) {
+    return { ipi: text.composeJson() };
   },
 
-  iq: function (itemElement) {
-    let iq = itemElement.composeJson()
-    return {'iq':iq}
+  ipqElement(_1, _2, _3, _4, text) {
+    return { ipq: text.composeJson() };
   },
 
-  iqElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['item'] = text.composeJson()
-    if (num.sourceString != ''){
-      obj['item'].push({'number':num.sourceString})
+  iprElement(_1, _2, _3, _4, text) {
+    return { ipr: text.composeJson() };
+  },
+
+  iq(itemElement) {
+    const iq = itemElement.composeJson();
+    return { iq };
+  },
+
+  iqElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.item = text.composeJson();
+    if (num.sourceString !== '') {
+      obj.item.push({ number: num.sourceString });
     }
-    return obj
+    return obj;
   },
 
-  isElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['is'] = text.composeJson()
-    if (num.sourceString != ''){
-      obj['is']['number'] = num.sourceString
+  isElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.is = text.composeJson();
+    if (num.sourceString !== '') {
+      obj.is.number = num.sourceString;
     }
-    return obj
+    return obj;
   },
 
-  remElement: function (_, _, _, _, text){
-    return {'rem': text.composeJson()}
+  remElement(_1, _2, _3, _4, text) {
+    return { rem: text.composeJson() };
   },
 
-  mrElement: function (_, _, _, _, text){
-    return {'mr': text.composeJson()}
+  mrElement(_1, _2, _3, _4, text) {
+    return { mr: text.composeJson() };
   },
 
-  msElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['ms'] = text.composeJson()
-    if (num.sourceString != ''){
-      obj['ms']['number'] = num.sourceString
+  msElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.ms = text.composeJson();
+    if (num.sourceString !== '') {
+      obj.ms.number = num.sourceString;
     }
-    return obj
+    return obj;
   },
 
-  mt: function (itemElement) {
-    let mt = itemElement.composeJson()
-    return mt
+  mt(itemElement) {
+    const mt = itemElement.composeJson();
+    return mt;
   },
 
-  mtElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['mt'] = text.composeJson()
-    if (num.sourceString != ''){
-      obj['number'] = num.sourceString
+  mtElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.mt = text.composeJson();
+    if (num.sourceString !== '') {
+      obj.number = num.sourceString;
     }
-    return obj
+    return obj;
   },
 
-  mte: function (itemElement) {
-    let mte = itemElement.composeJson()
-    return mte
+  mte(itemElement) {
+    const mte = itemElement.composeJson();
+    return mte;
   },
 
-  mteElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['mte'] = text.composeJson()
-    if (num.sourceString != ''){
-      obj['number'] = num.sourceString
+  mteElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.mte = text.composeJson();
+    if (num.sourceString !== '') {
+      obj.number = num.sourceString;
     }
-    return obj
+    return obj;
   },
 
-  rElement: function (_, _, _, _, text){
-    return {'r': text.composeJson()}
+  rElement(_1, _2, _3, _4, text) {
+    return { r: text.composeJson() };
   },
 
-  srElement: function (_, _, _, _, text){
-    return {'sr': text.composeJson()}
+  srElement(_1, _2, _3, _4, text) {
+    return { sr: text.composeJson() };
   },
 
-  tocElement: function (_, _, toc, _, text){
-    let obj = {}
-    obj[toc.sourceString] = text.composeJson()
-    return obj
+  tocElement(_1, _2, toc, _4, text) {
+    const obj = {};
+    obj[toc.sourceString] = text.composeJson();
+    return obj;
   },
 
-  tocaElement: function (_, _, toca, _, text){
-    let obj = {}
-    obj[toca.sourceString] = text.composeJson()
-    return obj
+  tocaElement(_1, _2, toca, _4, text) {
+    const obj = {};
+    obj[toca.sourceString] = text.composeJson();
+    return obj;
   },
 
-  usfmElement: function (_, _, _, _, version) {
-    return  {"usfm": version.sourceString}
+  usfmElement(_1, _2, _3, _4, version) {
+    return { usfm: version.sourceString };
   },
 
-  vaElement: function (_, _, _, num, _, _, _) {
-    return {'va': num.sourceString}
+  vaElement(_1, _2, _3, num, _5, _6, _7) {
+    return { va: num.sourceString };
   },
 
-  vpElement: function (_, _, _, text, _, _, _) {
-    return {'vp': text.sourceString}
+  vpElement(_1, _2, _3, text, _5, _6, _7) {
+    return { vp: text.sourceString };
   },
 
-  notesElement: function (element) {
-    return element.composeJson()
+  notesElement(element) {
+    return element.composeJson();
   },
 
-  footnoteElement: function (element){
-    return element.composeJson()
+  footnoteElement(element) {
+    return element.composeJson();
   },
 
-  fElement: function (nl, _, tag, _, content, _, _, _){
-    let contElmnts = content.composeJson()
-    itemCount = 1
-    for (item of contElmnts) {
-      item['index'] = itemCount
-      itemCount +=1
+  fElement(nl, _2, tag, _4, content, _6, _7, _8) {
+    const contElmnts = content.composeJson();
+    let itemCount = 1;
+    for (let i = 0; i < contElmnts.length; i += 1) {
+      contElmnts[i].index = itemCount;
+      itemCount += 1;
     }
-    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
+    const obj = {
+      footnote: contElmnts,
+      marker: tag.sourceString,
+      closed: true,
+    };
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  feElement: function (nl, _, tag, _, content, _, _, _){
-    let contElmnts = content.composeJson()
-    itemCount = 1
-    for (item of contElmnts) {
-      item['index'] = itemCount
-      itemCount +=1
+  feElement(nl, _2, tag, _4, content, _6, _7, _8) {
+    const contElmnts = content.composeJson();
+    let itemCount = 1;
+    for (let i = 0; i < contElmnts.length; i += 1) {
+      contElmnts.index = itemCount;
+      itemCount += 1;
     }
-    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
+    const obj = {
+      footnote: contElmnts,
+      marker: tag.sourceString,
+      closed: true,
+    };
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  efElement: function (nl, _, tag, _, content, _, _, _){
-    let contElmnts = content.composeJson()
-    itemCount = 1
-    for (item of contElmnts) {
-      item['index'] = itemCount
-      itemCount +=1
+  efElement(nl, _1, tag, _3, content, _5, _6, _7) {
+    const contElmnts = content.composeJson();
+    let itemCount = 1;
+    for (let i = 0; i < contElmnts.length; i += 1) {
+      contElmnts[i].index = itemCount;
+      itemCount += 1;
     }
-    let obj = {'footnote': contElmnts,'marker':tag.sourceString,'closed':true}
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
+    const obj = { footnote: contElmnts, marker: tag.sourceString, closed: true };
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  crossrefElement: function (nl, _, tag, _, content, _, _, _){
-    let contElmnts = content.composeJson()
-    itemCount = 1
-    for (item of contElmnts) {
-      item['index'] = itemCount
-      itemCount +=1
+  crossrefElement(nl, _2, tag, _4, content, _6, _7, _8) {
+    const contElmnts = content.composeJson();
+    let itemCount = 1;
+    for (let i = 0; i < contElmnts.length; i += 1) {
+      contElmnts[i].index = itemCount;
+      itemCount += 1;
     }
-    let obj = {'cross-ref': contElmnts,'marker':tag.sourceString,'closed':true}
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
+    const obj = {
+      'cross-ref': contElmnts,
+      marker: tag.sourceString,
+      closed: true,
+    };
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  footnoteContent: function (elmnt) {
-    return elmnt.composeJson()
+  footnoteContent(elmnt) {
+    return elmnt.composeJson();
   },
 
-  crossrefContent: function (elmnt) {
-    return elmnt.composeJson()
+  crossrefContent(elmnt) {
+    return elmnt.composeJson();
   },
 
-  footnoteContentElement: function(nl, _, tag, _) {
-    let obj = {}
-    obj['marker'] = tag.sourceString
-    if (nl != '') { obj['inline'] = true }
-    return obj
+  footnoteContentElement(nl, _2, tag, _4) {
+    const obj = {};
+    obj.marker = tag.sourceString;
+    if (nl !== '') { obj.inline = true; }
+    return obj;
   },
 
-  crossrefContentElement: function(nl, _, tag, _) {
-    let obj = {}
-    obj['marker'] = tag.sourceString
-    if (nl != '') { obj['inline'] = true }
-    return obj
+  crossrefContentElement(nl, _2, tag, _4) {
+    const obj = {};
+    obj.marker = tag.sourceString;
+    if (nl !== '') { obj.inline = true; }
+    return obj;
   },
 
-  attributesInCrossref: function (_, _, attribs) {
-    let attribObj = attribs.composeJson()
+  attributesInCrossref(_1, _2, attribs) {
+    let attribObj = attribs.composeJson();
     if (Array.isArray(attribObj[0])) {
-      let attribTemp = []
-      for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
-      attribObj = attribTemp
+      let attribTemp = [];
+      for (let i = 0; i < attribObj.length; i += 1) {
+        attribTemp = attribTemp.concat(attribObj[i]);
+      }
+      attribObj = attribTemp;
     }
-    return {'attributes': attribObj}
+    return { attributes: attribObj };
   },
 
-  charElement: function(element) {
-    return element.composeJson()
+  charElement(element) {
+    return element.composeJson();
   },
 
-  nestedCharElement: function(element) {
-    return element.composeJson()
+  nestedCharElement(element) {
+    return element.composeJson();
   },
 
-  inLineCharElement: function(nl, _, tag, _, text, _, _, attribs, _, _, _, _) {
-    let obj = {}
-    obj[tag.sourceString] = text.composeJson()
-    if(tag.sourceString !== 'add'){
-      obj['text'] = ''
-      for (let item of obj[tag.sourceString]) {
-        if ( item.text) { obj['text'] += item.text}
+  inLineCharElement(nl, _1, tag, _3, text, _5, _6, attribs, _8, _9, _10, _11) {
+    const obj = {};
+    obj[tag.sourceString] = text.composeJson();
+    if (tag.sourceString !== 'add') {
+      obj.text = '';
+      for (let i = 0; i < obj[tag.sourceString].length; i += 1) {
+        if (obj[tag.sourceString][i].text) { obj.text += obj[tag.sourceString][i].text; }
       }
     }
-    if (attribs.sourceString != '') {
-      let attribObj = attribs.composeJson()
+    if (attribs.sourceString !== '') {
+      let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
-        let attribTemp = []
-        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
-        attribObj = attribTemp
+        let attribTemp = [];
+        for (let i = 0; i < attribObj.length; i += 1) {
+          attribTemp = attribTemp.concat(attribObj[i]);
+        }
+        attribObj = attribTemp;
       }
-      obj['attributes']  = attribObj
+      obj.attributes = attribObj;
     }
-    obj['closed'] = true
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    
-    return obj
+    obj.closed = true;
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  nestedInLineCharElement: function(nl, _, tag, _, text, _, _, attribs, _, closing, _, _) {
-    let obj = {}
-    obj[tag.sourceString] = text.composeJson()
-    if(tag.sourceString !== 'add'){
-      obj['text'] = ''
-      for (let item of obj[tag.sourceString]) {
-        if ( item.text) { obj['text'] += item.text}
+  nestedInLineCharElement(nl, _2, tag, _4, text, _6, _7, attribs, _9, closing, _11, _12) {
+    const obj = {};
+    obj[tag.sourceString] = text.composeJson();
+    if (tag.sourceString !== 'add') {
+      obj.text = '';
+      for (let i = 0; i < obj[tag.sourceString].length; i += 1) {
+        if (obj[tag.sourceString][i].text) { obj.text += obj[tag.sourceString][i].text; }
       }
     }
-    if (attribs.sourceString != '') {
-      let attribObj = attribs.composeJson()
+    if (attribs.sourceString !== '') {
+      let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
-        let attribTemp = []
-        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
-        attribObj = attribTemp
+        let attribTemp = [];
+        for (let i = 0; i < attribObj.length; i += 1) {
+          attribTemp = attribTemp.concat(attribObj[i]);
+        }
+        attribObj = attribTemp;
       }
-      obj['attributes']  = attribObj    }
-    if (closing.sourceString != "") { obj['closed'] = true}
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
+      obj.attributes = attribObj;
+    }
+    if (closing.sourceString !== '') { obj.closed = true; }
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  inLineCharAttributeElement: function(nl, _, tag, _, text, _, _, attribs, _, _, _, _) {
-    let obj = {}
-    let textobj = text.composeJson()
-    obj[tag.sourceString]= textobj
-    obj['text'] = ''
-    for (let item of textobj){
-      if ( item.text) { obj['text'] += item.text}
+  inLineCharAttributeElement(nl, _2, tag, _4, text, _6, _7, attribs, _9, _10, _11, _12) {
+    const obj = {};
+    const textobj = text.composeJson();
+    obj[tag.sourceString] = textobj;
+    obj.text = '';
+    for (let i = 0; i < textobj.length; i += 1) {
+      if (textobj[i].text) { obj.text += textobj[i].text; }
     }
-    if (attribs.sourceString != '') {
-      let attribObj = attribs.composeJson()
+    if (attribs.sourceString !== '') {
+      let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
-        let attribTemp = []
-        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
-        attribObj = attribTemp
+        let attribTemp = [];
+        for (let i = 0; i < attribObj.length; i += 1) {
+          attribTemp = attribTemp.concat(attribObj[i]);
+        }
+        attribObj = attribTemp;
       }
-      obj['attributes']  = attribObj    
+      obj.attributes = attribObj;
     }
-    if (tag.sourceString === 'rb'){
-      let numberOfHanChars = text.sourceString.split(';').length - 1
-      for (let att of obj['attributes']){
-        if (att['name'] === 'gloss' || att['name'] === 'default attribute'){
-          let glossValue = att['value']
-          let glossValueCount = glossValue.split(':').length
-          if (glossValueCount> numberOfHanChars){
-            emitter.emit('warning', new Error('Count of gloss items is more than the enclosed characters in \\rb. '))
+    if (tag.sourceString === 'rb') {
+      const numberOfHanChars = text.sourceString.split(';').length - 1;
+      for (let i = 0; i < obj.attributes.length; i += 1) {
+        if (obj.attributes[i].name === 'gloss' || obj.attributes[i].name === 'default attribute') {
+          const glossValue = obj.attributes[i].value;
+          const glossValueCount = glossValue.split(':').length;
+          if (glossValueCount > numberOfHanChars) {
+            emitter.emit('warning', new Error('Count of gloss items is more than the enclosed characters in \\rb. '));
           }
         }
       }
     }
-    obj['closed'] = true
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
+    obj.closed = true;
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  nestedInLineCharAttributeElement: function(nl, _, tag, _, text, _, _, attribs, _, closing, _, _) {
-    let obj = {}
-    let textobj = text.composeJson()
-    obj[tag.sourceString]= textobj
-    obj['text'] = ''
-    for (let item of textobj){
-      if ( item.text) { obj['text'] += item.text}
+  nestedInLineCharAttributeElement(nl, _2, tag, _4, text, _6, _7, attribs, _9, closing, _11, _12) {
+    const obj = {};
+    const textobj = text.composeJson();
+    obj[tag.sourceString] = textobj;
+    obj.text = '';
+    for (let i = 0; i < textobj.length; i += 1) {
+      if (textobj[i].text) { obj.text += textobj[i].text; }
     }
-    if (attribs.sourceString != '') {
-      let attribObj = attribs.composeJson()
+    if (attribs.sourceString !== '') {
+      let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
-        let attribTemp = []
-        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
-        attribObj = attribTemp
-      }
-      obj['attributes']  = attribObj    
-    }
-    if (closing.sourceString != "") { obj['closed'] = true}
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
-  },
-    
-  inLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, _, _, _) {
-    let obj = {}
-    obj[tag.sourceString]= text.composeJson()
-    obj['text'] = obj[tag.sourceString]['content']
-    if (attribs.sourceString != '') {
-      let attribObj = attribs.composeJson()
-      if (Array.isArray(attribObj[0])) {
-        let attribTemp = []
-        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
-        attribObj = attribTemp
-      }
-      obj['attributes']  = attribObj    
-    }
-    obj['closed'] = true
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
-  },
-
-  nestedInLineCharNumberedElement: function(nl, _, tag, number, _, text, _, _, attribs, _, _, closing, _, _) {
-    let obj = {}
-    obj[tag.sourceString]= text.composeJson()
-    obj['text'] = obj[tag.sourceString]['content']
-    if (attribs.sourceString != '') {
-      let attribObj = attribs.composeJson()
-      if (Array.isArray(attribObj[0])) {
-        let attribTemp = []
-        for(var i = 0; i < attribObj.length; i++) { attribTemp = attribTemp.concat(attribObj[i]) }
-        attribObj = attribTemp
-      }
-      obj['attributes']  = attribObj    
-    }
-    if (closing.sourceString != "") { obj['closed'] = true}
-    if (nl.sourceString == "" ) { obj["inline"] = true }
-    return obj
-  },
-
-  customAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  wAttribute: function (elmnt) {
-    return elmnt.composeJson()
-  },
-
-  rbAttribute: function (elmnt) {
-    return elmnt.composeJson()
-  },
-
-  figAttribute: function (elmnt) {
-    return elmnt.composeJson()
-  },
-
-  attributesInCrossref: function (_, _, elmnt) {
-    return elmnt.composeJson()
-  },
-
-  milestoneAttribute: function (elmnt) {
-    return elmnt.composeJson()
-  },
-
-  msAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  lemmaAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  strongAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  scrlocAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  glossAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  linkAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  altAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  srcAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  sizeAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  locAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  copyAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  refAttribute: function (name,_,value,_) {
-    let attribObj = {}
-    attribObj['name'] = name.sourceString
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  defaultAttribute: function (value) {
-    let attribObj = {}
-    attribObj['name'] = 'default attribute'
-    attribObj['value'] = value.sourceString
-    return attribObj
-  },
-
-  figureElement: function(_, _, _, caption, _, _, attribs, _, _) {
-    if(caption.sourceString == '' & attribs.sourceString == ''){
-      emitter.emit('warning', new Error('Figure marker is empty. '))
-    }
-    return {'figure': {'caption': caption.sourceString,  'Attributes':attribs.composeJson()}}
-  },
-
-  table: function(header, row) {
-    let table = {'table':{}}
-    let columnCount = 0
-    if (header.sourceString!='') { 
-      table['table']['header'] = header.composeJson()[0]
-      columnCount = table.table.header.length
-    }
-    table['table']['rows'] = row.composeJson()
-    table['text'] = ''
-    for (let item of table.table.header ) {
-      if (item.th) { table.text += item.th +' | '}
-      if (item.thr) { table.text += item.thr +' |  '}
-    }
-    table.text += '\n'
-
-    for (let row of table.table.rows) {
-      if (columnCount == 0) {
-        columnCount = row.length
-      }
-      else {
-        if (row.length != columnCount) {
-          emitter.emit('warning',new Error('In-consistent column number in table rows. '))
+        let attribTemp = [];
+        for (let i = 0; i < attribObj.length; i += 1) {
+          attribTemp = attribTemp.concat(attribObj[i]);
         }
+        attribObj = attribTemp;
       }
-      for (let item of row) {
-        if (item.tc) { table.text += item.tc +' |  '}
-        if (item.tcr) { table.text += item.tcr +' |  '}
+      obj.attributes = attribObj;
+    }
+    if (closing.sourceString !== '') { obj.closed = true; }
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
+  },
+
+  inLineCharNumberedElement(nl, _2, tag, number, _5,
+    text, _7, _8, attribs, _10, _11, _12, _13, _14) {
+    const obj = {};
+    obj[tag.sourceString] = text.composeJson();
+    obj.text = obj[tag.sourceString].content;
+    if (attribs.sourceString !== '') {
+      let attribObj = attribs.composeJson();
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = [];
+        for (let i = 0; i < attribObj.length; i += 1) {
+          attribTemp = attribTemp.concat(attribObj[i]);
+        }
+        attribObj = attribTemp;
       }
-      table.text += '\n'
-
+      obj.attributes = attribObj;
     }
-  return table
+    obj.closed = true;
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  headerRow: function(tr,hCell) {
-    let header = hCell.composeJson()
-    return header
+  nestedInLineCharNumberedElement(nl, _2, tag, number,
+    _5, text, _7, _8, attribs, _10, _11, closing, _13, _14) {
+    const obj = {};
+    obj[tag.sourceString] = text.composeJson();
+    obj.text = obj[tag.sourceString].content;
+    if (attribs.sourceString !== '') {
+      let attribObj = attribs.composeJson();
+      if (Array.isArray(attribObj[0])) {
+        let attribTemp = [];
+        for (let i = 0; i < attribObj.length; i += 1) {
+          attribTemp = attribTemp.concat(attribObj[i]);
+        }
+        attribObj = attribTemp;
+      }
+      obj.attributes = attribObj;
+    }
+    if (closing.sourceString !== '') { obj.closed = true; }
+    if (nl.sourceString === '') { obj.inline = true; }
+    return obj;
   },
 
-  headerCell: function(cell) {
-    return cell.composeJson()
+  customAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
   },
 
-  row: function (_, cell) {
-    let rowObj = cell.composeJson()
-    return rowObj
+  wAttribute(elmnt) {
+    return elmnt.composeJson();
   },
 
-  cell: function (elmnt) {
-    return elmnt.composeJson()
+  rbAttribute(elmnt) {
+    return elmnt.composeJson();
   },
 
-  
-  thElement: function(_, _, num, _, text) {
-    return {'th': text.sourceString, 'number':num.sourceString,'inline':true}
+  figAttribute(elmnt) {
+    return elmnt.composeJson();
   },
 
-  thrElement: function(_, _, num, _, text) {
-    return {'thr': text.sourceString, 'number':num.sourceString,'inline':true}
+  // attributesInCrossref(_1, _2, elmnt) {
+  //   return elmnt.composeJson();
+  // },
+
+  milestoneAttribute(elmnt) {
+    return elmnt.composeJson();
   },
 
-  tcElement: function(_, _, num, _, text) {
-    return {'tc': text.sourceString, 'number':num.sourceString,'inline':true}
+  msAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
   },
 
-  tcrElement: function(_, _, num, _, text) {
-    return {'tcr': text.sourceString, 'number':num.sourceString,'inline':true}
+  lemmaAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
   },
 
-  li: function (itemElement) {
-    let li = {'list': itemElement.composeJson()}
-    li['text'] = ''
-    for ( let item of li['list']) {
-      for (let obj of item.li) {
-        li.text += obj.text + ' | '
+  strongAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
 
+  scrlocAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  glossAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  linkAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  altAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  srcAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  sizeAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  locAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  copyAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  refAttribute(name, _2, value, _4) {
+    const attribObj = {};
+    attribObj.name = name.sourceString;
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  defaultAttribute(value) {
+    const attribObj = {};
+    attribObj.name = 'default attribute';
+    attribObj.value = value.sourceString;
+    return attribObj;
+  },
+
+  figureElement(_1, _2, _3, caption, _5, _6, attribs, _8, _9) {
+    if (caption.sourceString === '' && attribs.sourceString === '') {
+      emitter.emit('warning', new Error('Figure marker is empty. '));
+    }
+    return { figure: { caption: caption.sourceString, Attributes: attribs.composeJson() } };
+  },
+
+  table(header, row) {
+    const table = { table: {} };
+    let columnCount = 0;
+    if (header.sourceString !== '') {
+      [table.table.header] = header.composeJson();
+      columnCount = table.table.header.length;
+    }
+    table.table.rows = row.composeJson();
+    table.text = '';
+    for (let i = 0; i < table.table.header.length; i += 1) {
+      if (table.table.header[i].th) { table.text += `${table.table.header[i].th} | `; }
+      if (table.table.header[i].thr) { table.text += `${table.table.header[i].thr} |  `; }
+    }
+    table.text += '\n';
+
+    for (let i = 0; i < table.table.rows.length; i += 1) {
+      if (columnCount === 0) {
+        columnCount = table.table.rows[i].length;
+      } else if (table.table.rows[i].length !== columnCount) {
+        emitter.emit('warning', new Error('In-consistent column number in table rows. '));
+      }
+      for (let j = 0; j < table.table.rows[i].length; j += 1) {
+        if (table.table.rows[i][j].tc) { table.text += `${table.table.rows[i][j].tc} |  `; }
+        if (table.table.rows[i][j].tcr) { table.text += `${table.table.rows[i][j].tcr} |  `; }
+      }
+      table.text += '\n';
+    }
+    return table;
+  },
+
+  headerRow(tr, hCell) {
+    const header = hCell.composeJson();
+    return header;
+  },
+
+  headerCell(cell) {
+    return cell.composeJson();
+  },
+
+  row(_, cell) {
+    const rowObj = cell.composeJson();
+    return rowObj;
+  },
+
+  cell(elmnt) {
+    return elmnt.composeJson();
+  },
+
+
+  thElement(_1, _2, num, _4, text) {
+    return { th: text.sourceString, number: num.sourceString, inline: true };
+  },
+
+  thrElement(_1, _2, num, _4, text) {
+    return { thr: text.sourceString, number: num.sourceString, inline: true };
+  },
+
+  tcElement(_1, _2, num, _4, text) {
+    return { tc: text.sourceString, number: num.sourceString, inline: true };
+  },
+
+  tcrElement(_1, _2, num, _4, text) {
+    return { tcr: text.sourceString, number: num.sourceString, inline: true };
+  },
+
+  li(itemElement) {
+    const li = { list: itemElement.composeJson() };
+    li.text = '';
+    for (let i = 0; i < li.list.length; i += 1) {
+      for (let j = 0; j < li.list[i].li.length; j += 1) {
+        li.text += `${li.list[i].li[j].text} | `;
       }
     }
-    return li
+    return li;
   },
 
-  liElement: function (_, _, _, num, _, text) {
-    let obj = {}
-    obj['li'] = text.composeJson()
-    if (num.sourceString != ''){ obj['number'] = num.sourceString }
-    return obj
+  liElement(_1, _2, _3, num, _5, text) {
+    const obj = {};
+    obj.li = text.composeJson();
+    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    return obj;
   },
 
-  litElement: function (_, _, _, _, text) {
-    return {'lit' : text.composeJson()}
+  litElement(_1, _2, _3, _4, text) {
+    return { lit: text.composeJson() };
   },
 
-  bookIntroductionTitlesTextContent: function(element) {
-    let text = element.composeJson()
-    return text
+  bookIntroductionTitlesTextContent(element) {
+    const text = element.composeJson();
+    return text;
   },
 
-  bookTitlesTextContent: function(element) {
-    let text = element.composeJson()
-    return text
+  bookTitlesTextContent(element) {
+    const text = element.composeJson();
+    return text;
   },
 
-  chapterContentTextContent: function(element) {
-    let text = element.composeJson()
-    return text
+  chapterContentTextContent(element) {
+    const text = element.composeJson();
+    return text;
   },
 
-  bookIntroductionEndTitlesTextContent: function(element) {
-    let text = element.composeJson()
-    return text
+  bookIntroductionEndTitlesTextContent(element) {
+    const text = element.composeJson();
+    return text;
   },
 
-  milestoneElement: function (elmnt) {
-    return elmnt.composeJson()
+  milestoneElement(elmnt) {
+    return elmnt.composeJson();
   },
 
-  milestoneStandaloneElement: function (_, _, ms, closing) {
-    milestoneElement = {}
-    milestoneElement['milestone'] = ms.sourceString
-    milestoneElement['marker'] = ms.sourceString
-    milestoneElement['closed'] = true
-    return milestoneElement
+  milestoneStandaloneElement(_1, _2, ms, _4) {
+    const milestoneElement = {};
+    milestoneElement.milestone = ms.sourceString;
+    milestoneElement.marker = ms.sourceString;
+    milestoneElement.closed = true;
+    return milestoneElement;
   },
 
-  milestonePairElement: function(_, _, ms, s_e, _, _, _, attribs, closing) {
-    milestoneElement = {}
-    milestoneElement['milestone'] = ms.sourceString
-    milestoneElement['start/end'] = s_e.sourceString
-    milestoneElement['marker'] = ms.sourceString + s_e.sourceString
-    milestoneElement['closed'] = true
-    if (attribs.sourceString!='') {
-      milestoneElement['attributes'] = attribs.composeJson()
+  milestonePairElement(_1, _2, ms, sE, _5, _6, _7, attribs, _8) {
+    const milestoneElement = {};
+    milestoneElement.milestone = ms.sourceString;
+    milestoneElement['start/end'] = sE.sourceString;
+    milestoneElement.marker = ms.sourceString + sE.sourceString;
+    milestoneElement.closed = true;
+    if (attribs.sourceString !== '') {
+      milestoneElement.attributes = attribs.composeJson();
     }
 
-    if ( milestoneElement.hasOwnProperty('attributes') ) {
+    if (Object.prototype.hasOwnProperty.call(milestoneElement, 'attributes')) {
       if (Array.isArray(milestoneElement.attributes[0])) {
-        let tempArr = []
-        for (var i=0; i< milestoneElement.attributes.length; i++) {
-          tempArr = tempArr.concat(milestoneElement.attributes[i])
+        let tempArr = [];
+        for (let i = 0; i < milestoneElement.attributes.length; i += 1) {
+          tempArr = tempArr.concat(milestoneElement.attributes[i]);
         }
-        milestoneElement.attributes = tempArr
+        milestoneElement.attributes = tempArr;
       }
-      for (var item of milestoneElement['attributes']) {
-        if (item['name'] === 'sid') {
-          milestoneFlag.push(item['value'])
-        } else if ( item['name'] === 'eid' ) {
-          if (milestoneFlag.length === 0 ){
-            emitter.emit('warning', new Error('Opening not found for milestone '+item['value']+' before its closed. '));
+      for (let i = 0; i < milestoneElement.attributes.length; i += 1) {
+        if (milestoneElement.attributes[i].name === 'sid') {
+          milestoneFlag.push(milestoneElement.attributes[i].value);
+        } else if (milestoneElement.attributes[i].name === 'eid') {
+          if (milestoneFlag.length === 0) {
+            emitter.emit('warning', new Error(`Opening not found for milestone ${milestoneElement.attributes[i].value} before its closed. `));
           } else {
-            let lastEntry = milestoneFlag.pop()
-            if (lastEntry !== item['value'] ) {
-              emitter.emit('warning', new Error('Milestone '+ lastEntry+' not closed. '+item['value']+' found instead. '));
+            const lastEntry = milestoneFlag.pop();
+            if (lastEntry !== milestoneElement.attributes[i].value) {
+              emitter.emit('warning', new Error(`Milestone ${lastEntry} not closed. ${milestoneElement.attributes[i].value} found instead. `));
             }
           }
         }
       }
-    } 
-    return milestoneElement
+    }
+    return milestoneElement;
   },
 
-  zNameSpace: function(_, _, _, namespace, _, text, _, _) {
-    return {'namespace': "z"+namespace.sourceString, 'Content':text.sourceString}
+  zNameSpace(_1, _2, _3, namespace, _5, text, _7, _8) {
+    return { namespace: `z${namespace.sourceString}`, Content: text.sourceString };
   },
 
-  text: function(_, words) {
-    return {'text':words.sourceString}
+  text(_1, words) {
+    return { text: words.sourceString };
   },
 
-  esbElement: function (_, _, _, _, content, _, _, _, _) {
-    return {'esb' : content.composeJson()}
+  esbElement(_1, _2, _3, _4, content, _6, _7, _8, _9) {
+    return { esb: content.composeJson() };
+  },
+
+});
+
+
+function match(str) {
+  const matchObj = bib.match(str);
+  if (matchObj.succeeded()) {
+    const adaptor = sem(matchObj);
+    return adaptor.composeJson();
   }
 
-})
-
-exports.match = function (str) {
-    var matchObj = bib.match(str)
-    if (matchObj.succeeded()) {
-      let adaptor = sem(matchObj)
-      return adaptor.composeJson()
-    }
-    else {
-      return {'ERROR':  matchObj.message }
-    }
+  return { ERROR: matchObj.message };
 }
+
+exports.match = match;

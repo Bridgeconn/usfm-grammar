@@ -1,10 +1,13 @@
-// var chai = require('chai')
-// var assert = chai.assert
-var assert = require('assert')
-var parser = require('../js/USFMparser.js')
-var fs = require('fs')
+const assert = require('assert')
+const fs = require('fs')
+const grammar = require('../js/main.js');
 
 describe('usfm-js test cases', function () {
+  beforeEach(function() {
+    if (global.gc) { global.gc(); }
+    else { throw "garbage collection not done"}
+  });
+
   it('converts usfm to json', () => {
     generateTest('test/resources/usfm_js/valid')
   })
@@ -192,6 +195,13 @@ describe('usfm-js test cases', function () {
   it('handles acts_1_4', () => {
     generateTest('test/resources/usfm_js/acts_1_4')
   })
+});
+
+describe('usfm-js test cases- set II', function () {
+  beforeEach(function() {
+    if (global.gc) { global.gc(); }
+    else { throw "garbage collection not done"}
+  });
 
   it('handles acts_1_4.aligned', () => {
     generateTest('test/resources/usfm_js/acts_1_4.aligned')
@@ -323,17 +333,9 @@ describe('usfm-js test cases', function () {
 })
 
 function generateTest(name, expected = true) {
-  fs.readFile(name + '.usfm', 'utf-8', function (err, data) {
-    if (err) { throw err }
-
-    // let json = parser.parse(data)
-    // console.log(JSON.stringify(json) )
-
-    // console.log(data)
-
-    let output = parser.validate(data)
-    // console.log(output)
-    // console.log(expected)
+    let data = fs.readFileSync(name + '.usfm','utf-8')
+    let output = grammar.USFMparser.validate(data);
     assert.strictEqual(output, expected)
-  })
+    delete data;
+    delete output;
 }

@@ -6,7 +6,7 @@ The parsed USFM is an intuitive and easy to manipulate JSON structure that allow
 
 ## Online Demo!
 
-Try out the usfm-grammar based convertor online: http://usfm.vachanengine.org
+Try out the usfm-grammar based convertor online: https://usfm.vachanengine.org
 
 ## Example
 
@@ -109,23 +109,39 @@ The parser is [available on NPM](https://www.npmjs.com/package/usfm-grammar) and
 
 #### USFM to JSON
 ```
-var grammar = require('usfm-grammar')
-var jsonOutput = grammar.parseUSFM(/**The USFM Text to be converted to JSON**/)
-var jsonCleanOutput = grammar.parseUSFM(/**The USFM Text to be converted to JSON**/, grammar.SCRIPTURE)
+const grammar = require('usfm-grammar')
+
+var jsonOutput = grammar.USFMparser.parseUSFM(/**The USFM Text to be converted to JSON**/);
+var jsonCleanOutput = grammar.USFMparser.parseUSFM(/**The USFM Text to be converted to JSON**/, grammar.SCRIPTURE);
 ```
-The `grammar.parseUSFM()` method returns a JSON structure for the passed-in USFM string, if it is a valid usfm file.
-The `grammar.parseUSFM()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
+The `USFMparser.parseUSFM()` method returns a JSON structure for the passed-in USFM string, if it is a valid usfm file.
+The `USFMparser.parseUSFM()` method can take an optional second argument, `grammar.SCRIPTURE`. In which case, the output JSON will contain only the most relevant scripture content, excluding all other USFM content.
 If you intent to create a usfm from the data after processing it, we recommend using this method without the `SCRIPTURE` flag as this would loose information of other markers. 
 
+```
+var jsonOutput = grammar.USFMparser.parseUSFM(/**The USFM Text to be converted to JSON**/, mode="relaxed");
+```
+This relaxed mode provides relaxation of serval rules in the USFM spec and give you a JSON output for a file that can be considered a workable USFM file.
 
 ```
-var usfmValidity = grammar.validate(/**USFM Text to be checked**/)
+var usfmValidity = grammar.USFMparser.validate(/**USFM Text to be checked**/);
 ```
-The `grammar.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not.
+The `grammar.USFMparser.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not.
 
-#### JSON to USFM
+#### JSON to USFM and CSV/TSV
 ```
-var usfmString = grammar.parseJSON(jsonOutput)
+var usfmString = grammar.JSONparser.parseJSON(jsonOutput);
 ```
-The `grammar.parseJSON()` takes a the JSON object generated using USFM Grammar and converts it to it's corresponding USFM text. The only side effect being that multiple spaces in the file are normalized to single-space.
+The `JSONparser.parseJSON()` takes a the JSON object generated using USFM Grammar and converts it to it's corresponding USFM text. The only side effect being that multiple consecutive lines and spaces in the file are normalized to single-line and single-space.
 
+```
+var tabularBible = grammar.JSONparser.toCSV(jsonOutput);
+```
+
+or
+
+```
+var tabularBible = grammar.JSONparser.toTSV(jsonOutput);
+```
+
+The `toCSV()` and `toTSV()` methods give a tabular representation of bible verses in the <BOOK, CHAPTER, VERSE-NUMBER, VERSE-TEXT> format. The input to these methods should be the JSON in the format given by the USFMgrammar not in SCRIPTURE mode or in relaxed mode
