@@ -49,14 +49,13 @@ class USFMparser extends Parser {
 
   static parseUSFM(str, resultType = 'normal', mode = 'normal') {
     let matchObj = null;
-    if (mode === 'normal') {
-      const inStr = this.normalize(str);
-      matchObj = match(inStr);
-    } else if (mode === 'relaxed') {
+    if (mode === 'relaxed') {
       // console.log('coming into relaxed parsing');
       matchObj = relaxParse(str);
       return matchObj;
     }
+    const inStr = this.normalize(str);
+    matchObj = match(inStr);
 
     if (!Object.prototype.hasOwnProperty.call(matchObj, 'ERROR')) {
       let jsonOutput = matchObj.parseStructure;
@@ -65,18 +64,25 @@ class USFMparser extends Parser {
         // console.log(this.warnings)
       }
       if (resultType === 'clean') {
-        const newJsonOutput = { book: jsonOutput.metadata.id.book, chapters: [] };
-        let chapter = {};
+        const newJsonOutput = { book: {}, chapters: [] };
+        newJsonOutput.book.bookCode = jsonOutput.book.bookCode;
+        newJsonOutput.book.description = jsonOutput.book.description;
         for (let i = 0; i < jsonOutput.chapters.length; i += 1) {
-          chapter = jsonOutput.chapters[i];
-          const nextChapter = { chapterTitle: chapter.header.title, verses: [] };
-          let verse = {};
-          for (let j = 0; j < chapter.verses.length; j += 1) {
-            verse = chapter.verses[j];
-            const nextVerse = { verseNumber: verse.number, verseText: verse.text };
-            nextChapter.verses.push(nextVerse);
+          let chapter = {};
+          chapter.chapterNumber = jsonOutput.chapters[i].chapterNumber;
+          chapter.contents = [];
+          // console.log(jsonOutput.chapters[i].contents);
+          for (let j = 0; j < jsonOutput.chapters[i].contents.length; j += 1) {
+            let key = Object.keys(jsonOutput.chapters[i].contents[j])[0];
+            // console.log(jsonOutput.chapters[i].contents[j]);
+            if(key === 'verseNumber') {
+              let verse = {};
+              verse.verseNumber = jsonOutput.chapters[i].contents[j].verseNumber;
+              verse.verseText = jsonOutput.chapters[i].contents[j].verseText;
+              chapter.contents.push(verse);
+            }
           }
-          newJsonOutput.chapters.push(nextChapter);
+          newJsonOutput.chapters.push(chapter);
         }
         jsonOutput = newJsonOutput;
       } else if (resultType === 'csv') {
@@ -87,7 +93,7 @@ class USFMparser extends Parser {
         return tsvOutput;
       }
       if (this.warnings !== []) {
-        jsonOutput.messages = { warnings: this.warnings };
+        jsonOutput._messages = { warnings: this.warnings };
       }
       return jsonOutput;
     }
