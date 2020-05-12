@@ -23,5 +23,5 @@ usfmRelaxed{
 	ChapterMarker = newLine? backSlash cTag number
 	VerseMarker = newLine? backSlash vTag verseNumber  (text | ClosedMarker | NormalMarker)*
 	ClosedMarker = backSlash markerName (text | ClosedMarker)* attributes? backSlash markerName "*"
-	NormalMarker = backSlash markerName (text | ClosedMarker)* 
+	NormalMarker = backSlash markerName text* 
 }
