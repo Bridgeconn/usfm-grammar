@@ -6,6 +6,17 @@ const sem = bib.createSemantics();
 
 /* eslint no-unused-vars: ["error", { "args": "none" }] */
 
+const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
+  'lik', 'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3',
+  'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
+  'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
+  'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl', 'wj', 'em', 'bd',
+  'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro'];
+const paraMarkers = ['p', 'm','po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
+  'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
+  'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
+  'qm1', 'qm2', 'qm3'];
+
 sem.addOperation('buildJson', {
   File(bookhead, chapters) {
     const res = {
@@ -16,20 +27,39 @@ sem.addOperation('buildJson', {
   },
 
   BookHead(id, markers) {
-    const res = [];
+    const res = {};
     const headMarkers = markers.buildJson();
-    res.push(id.buildJson());
+    const idMarker = id.buildJson();
+    // console.log(idMarker);
+    res.bookCode = idMarker.id.bookCode;
+    if (Object.prototype.hasOwnProperty.call(idMarker.id, 'description')) {
+      res.description = idMarker.id.description;
+    }
+    if (headMarkers.length > 0) {
+      res.meta = [];
+    }
     for (let i = 0; i < headMarkers.length; i += 1) {
-      res.push(headMarkers[i]);
+      res.meta.push(headMarkers[i]);
     }
     return res;
   },
 
   Chapter(c, contents) {
     const res = {
-      number: c.buildJson(),
+      chapterNumber: c.buildJson(),
       contents: contents.buildJson(),
     };
+    for (let i = 0; i < res.contents.length; i += 1) {
+      const key = Object.keys(res.contents[i])[0]
+      if (paraMarkers.includes(key)) {
+          const text = res.contents[i][key];
+          res.contents[i][key] = null;
+          if (text !== '') {
+            res.contents.splice(i+1, 0, text)
+            i += 1;
+          }
+        }
+    }
     return res;
   },
 
@@ -54,12 +84,30 @@ sem.addOperation('buildJson', {
   },
 
   VerseMarker(_1, _2, _3, num, contents) {
-    const res = {
-      v: {
-        number: num.sourceString,
-        contents: contents.buildJson(),
-      },
+    let res = {
+      verseNumber: num.sourceString,
+      contents: contents.buildJson(),
     };
+    res.verseText = '';
+    for (let i = 0; i < res.contents.length; i += 1) {
+      if (typeof res.contents[i] === 'string') {
+        res.verseText += ` ${res.contents[i]}`;
+      } else {
+        // console.log(res.contents[i].keys());
+        const key = Object.keys(res.contents[i])[0];
+        if (verseCarryingMarkers.includes(key)) {
+          res.verseText += ` ${res.contents[i][key]}`;
+        } else if (paraMarkers.includes(key)) {
+          const text = res.contents[i][key];
+          res.verseText +=  ` ${text}`;
+          res.contents[i][key] = null;
+          if (text !== '') {
+            res.contents.splice(i+1, 0, text)
+            i += 1;
+          }
+        }
+      }
+    }
     return res;
   },
 
