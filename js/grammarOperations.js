@@ -10,6 +10,17 @@ const sem = bib.createSemantics();
 
 /* eslint no-unused-vars: ["error", { "args": "none" }] */
 
+const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
+  'lik', 'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3',
+  'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
+  'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
+  'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl', 'wj', 'em', 'bd',
+  'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro'];
+const paraMarkers = ['p', 'm','po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
+  'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
+  'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
+  'qm1', 'qm2', 'qm3'];
+
 let warningMessages = [];
 const milestoneFlag = [];
 
@@ -33,8 +44,15 @@ sem.addOperation('composeJson', {
   },
 
   scripture(metaData, content) {
-    const result = {};
-    result.metadata = metaData.composeJson();
+    let result = { book:{}, chapters: []};
+    const metadata = metaData.composeJson();
+    result.book.bookCode = metadata.id.book;
+    if (Object.prototype.hasOwnProperty.call(metadata.id,'details')) {
+      result.book.description = metadata.id.details;
+    }
+    if (Object.prototype.hasOwnProperty.call(metadata,'headers')) {
+      result.book.meta = metadata.headers
+    }
     result.chapters = content.composeJson();
     return result;
   },
@@ -72,26 +90,27 @@ sem.addOperation('composeJson', {
     return contentVar;
   },
 
-  chapter(cHeader, metaScripture, verse) {
-    const cElmt = {};
-    cElmt.header = cHeader.composeJson();
+  chapter(cHeader, metaScripture, verseBlock) {
+    let cElmt = {};
+    const header = cHeader.composeJson();
+    cElmt.chapterNumber = header.title;
+    cElmt.contents = [];
+    if (Object.keys(header).length > 1){
+      for (let i = 1; i < Object.keys(header).length; i += 1) {
+        let key = Object.keys(header)[i];
+        cElmt.contents.push({ [key] : header[key] } )
+      }
+    }
     if (metaScripture.sourceString !== '') {
       const metaObj = metaScripture.composeJson();
-      const newMetaObj = [];
-      const styleObj = { styling: [] };
       for (let i = 0; i < metaObj.length; i += 1) {
-        if (Object.prototype.hasOwnProperty.call(metaObj[i], 'styling')) {
-          styleObj.styling.push({ marker: metaObj[i].styling });
-        } else {
-          newMetaObj.push(metaObj[i]);
-        }
+        cElmt.contents.push(metaObj[i]);
       }
-      if (styleObj.styling.length > 0) {
-        newMetaObj.push(styleObj);
-      }
-      cElmt.metadata = newMetaObj;
     }
-    cElmt.verses = verse.composeJson();
+    const verseBlockItems = verseBlock.composeJson();
+    for (let i = 0; i < verseBlockItems.length; i += 1) {
+      cElmt.contents.push(verseBlockItems[i]);
+    }
     return cElmt;
   },
 
@@ -116,10 +135,10 @@ sem.addOperation('composeJson', {
   },
 
   sectionHeader(s, postHead, ipElement) {
-    const sectionHeaderVar = {};
-    sectionHeaderVar.section = s.composeJson();
-    if (postHead.sourceString !== '') { sectionHeaderVar.sectionPostheader = postHead.composeJson(); }
-    if (ipElement.sourceString !== '') { sectionHeaderVar.introductionParagraph = ipElement.composeJson(); }
+    const sectionHeaderVar = [];
+    sectionHeaderVar.push(s.composeJson());
+    if (postHead.sourceString !== '') { sectionHeaderVar.push(postHead.composeJson()); }
+    if (ipElement.sourceString !== '') { sectionHeaderVar.push(ipElement.composeJson()); }
     return sectionHeaderVar;
   },
 
@@ -129,35 +148,36 @@ sem.addOperation('composeJson', {
   },
 
   verseElement(_1, _2, _3, _4, verseNumber, verseMeta, verseContent) {
-    const verse = {};
-    verse.number = verseNumber.sourceString;
-    verse.metadata = [];
-    verse['text objects'] = [];
-    if (verseMeta.sourceString !== '') { verse.metadata.push(verseMeta.composeJson()); }
-    const content = verseContent.composeJson();
+    let verse = {};
+    verse.verseNumber = verseNumber.sourceString;
+    verse.verseText = '';
+    verse.contents = [];
+    if (verseMeta.sourceString !== '') { 
+      let metadata = verseMeta.composeJson();
+      verse.contents.concat(metadata[i]);
+    }
+    const elmts = verseContent.composeJson();
     if (verseContent.sourceString === '') {
       emitter.emit('warning', new Error(`Verse text is empty, at \\v ${verseNumber.sourceString}. `));
     }
-    verse.text = '';
-    const styleObj = { styling: [] };
-    for (let i = 0; i < content.length; i += 1) {
-      content[i].index = i;
-      if (Object.prototype.hasOwnProperty.call(content[i], 'text')) {
-        verse.text += `${content[i].text} `;
-        verse['text objects'].push(content[i]);
-      } else if (Object.prototype.hasOwnProperty.call(content[i], 'styling')) {
-        styleObj.styling.push({
-          marker: content[i].styling,
-          index: i,
-        });
+    for (let i = 0; i < elmts.length; i += 1) {
+      if (typeof elmts[i] === 'string') {
+        verse.verseText += ` ${elmts[i]}`;
       } else {
-        verse.metadata.push(content[i]);
+        let key = Object.keys(elmts[i])[0];
+        if (verseCarryingMarkers.includes(key)) {
+          verse.verseText += ` ${elmts[i][[key]]}`;
+        } else if (key === 'list') {
+          for(let j=0; j < elmts[i][key].length; j += 1) {
+            let innerKey = Object.keys(elmts[i][key][j])[0]
+            verse.verseText += ` ${elmts[i][key][j][innerKey]}`
+          }
+        } else if (key === 'table') {
+          verse.verseText += 'implement code to include the table contents here';
+        }
       }
+      verse.contents.push(elmts[i]);
     }
-    if (styleObj.styling.length > 0) {
-      verse.metadata.push(styleObj);
-    }
-    if (verse.metadata.length === 0) { delete verse.metadata; }
     return verse;
   },
 
@@ -172,8 +192,7 @@ sem.addOperation('composeJson', {
   sectionElementWithTitle(tag, _, titleText) {
     const marker = tag.composeJson();
     return {
-      text: titleText.sourceString,
-      marker,
+      [marker]: titleText.sourceString,
     };
   },
 
@@ -183,8 +202,7 @@ sem.addOperation('composeJson', {
       emitter.emit('warning', new Error('Section marker used without title.'));
     }
     return {
-      text: '',
-      marker,
+      [marker]: '',
     };
   },
 
@@ -197,7 +215,8 @@ sem.addOperation('composeJson', {
   },
 
   paraElement(_1, _2, marker, _4) {
-    return { styling: marker.sourceString };
+    const mrkr = marker.sourceString;
+    return { [mrkr] : null };
   },
 
   qaElement(_1, _2, _3, _4, text) {
@@ -229,8 +248,8 @@ sem.addOperation('composeJson', {
   },
 
   hElement(_1, _2, _3, num, _5, text) {
-    const obj = { h: text.sourceString };
-    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    const marker = 'h' + num.sourceString;
+    const obj = { [marker]: text.sourceString };
     return obj;
   },
 
@@ -285,8 +304,8 @@ sem.addOperation('composeJson', {
 
   iliElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.ili = text.composeJson();
-    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    let marker = 'ili' + num.sourceString;
+    obj[marker] = text.composeJson();
     return obj;
   },
 
@@ -297,8 +316,8 @@ sem.addOperation('composeJson', {
 
   imtElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.imt = text.composeJson();
-    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    const marker = 'imt' + num.sourceString;
+    obj[imt] = text.composeJson();
     return obj;
   },
 
@@ -309,8 +328,8 @@ sem.addOperation('composeJson', {
 
   imteElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.imte = text.composeJson();
-    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    const marker = 'imte' + num.sourceString;
+    obj[marker] = text.composeJson();
     return obj;
   },
 
@@ -321,8 +340,8 @@ sem.addOperation('composeJson', {
 
   ioElement(_1, _2, _3, num, _5, text) {
     const obj = {};
+    const marker = 'io' + num.sourceString;
     obj.io = text.composeJson();
-    if (num.sourceString !== '') { obj.number = num.sourceString; }
     return obj;
   },
 
@@ -353,19 +372,15 @@ sem.addOperation('composeJson', {
 
   iqElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.item = text.composeJson();
-    if (num.sourceString !== '') {
-      obj.item.push({ number: num.sourceString });
-    }
+    const marker = 'iq' + num.sourceString;
+    obj[marker] = text.composeJson();
     return obj;
   },
 
   isElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.is = text.composeJson();
-    if (num.sourceString !== '') {
-      obj.is.number = num.sourceString;
-    }
+    const marker = 'is' + num.sourceString;
+    obj[marker] = text.composeJson();
     return obj;
   },
 
@@ -379,10 +394,8 @@ sem.addOperation('composeJson', {
 
   msElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.ms = text.composeJson();
-    if (num.sourceString !== '') {
-      obj.ms.number = num.sourceString;
-    }
+    const marker = 'ms' + num.sourceString;
+    obj[marker] = text.composeJson();
     return obj;
   },
 
@@ -393,10 +406,8 @@ sem.addOperation('composeJson', {
 
   mtElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.mt = text.composeJson();
-    if (num.sourceString !== '') {
-      obj.number = num.sourceString;
-    }
+    const marker = 'mt' + num.sourceString;
+    obj[marker] = text.composeJson();
     return obj;
   },
 
@@ -407,10 +418,8 @@ sem.addOperation('composeJson', {
 
   mteElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.mte = text.composeJson();
-    if (num.sourceString !== '') {
-      obj.number = num.sourceString;
-    }
+    const marker = 'mte' + num.sourceString;
+    obj[marker] = text.composeJson();
     return obj;
   },
 
@@ -457,60 +466,37 @@ sem.addOperation('composeJson', {
   fElement(nl, _2, tag, _4, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
     let itemCount = 1;
-    for (let i = 0; i < contElmnts.length; i += 1) {
-      contElmnts[i].index = itemCount;
-      itemCount += 1;
-    }
     const obj = {
       footnote: contElmnts,
-      marker: tag.sourceString,
-      closed: true,
+      closing: _6.sourceString + _7.sourceString + _8.sourceString,
     };
-    if (nl.sourceString === '') { obj.inline = true; }
     return obj;
   },
 
   feElement(nl, _2, tag, _4, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
     let itemCount = 1;
-    for (let i = 0; i < contElmnts.length; i += 1) {
-      contElmnts.index = itemCount;
-      itemCount += 1;
-    }
     const obj = {
       footnote: contElmnts,
-      marker: tag.sourceString,
-      closed: true,
+      closing: _6.sourceString + _7.sourceString + _8.sourceString,
     };
-    if (nl.sourceString === '') { obj.inline = true; }
     return obj;
   },
 
   efElement(nl, _1, tag, _3, content, _5, _6, _7) {
     const contElmnts = content.composeJson();
     let itemCount = 1;
-    for (let i = 0; i < contElmnts.length; i += 1) {
-      contElmnts[i].index = itemCount;
-      itemCount += 1;
-    }
-    const obj = { footnote: contElmnts, marker: tag.sourceString, closed: true };
-    if (nl.sourceString === '') { obj.inline = true; }
+    const obj = { footnote: contElmnts, closing: _5.sourceString + _6.sourceString + _7.sourceString, };
     return obj;
   },
 
   crossrefElement(nl, _2, tag, _4, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
     let itemCount = 1;
-    for (let i = 0; i < contElmnts.length; i += 1) {
-      contElmnts[i].index = itemCount;
-      itemCount += 1;
-    }
     const obj = {
       'cross-ref': contElmnts,
-      marker: tag.sourceString,
-      closed: true,
+      closing: _6.sourceString + _7.sourceString + _8.sourceString,
     };
-    if (nl.sourceString === '') { obj.inline = true; }
     return obj;
   },
 
@@ -525,14 +511,12 @@ sem.addOperation('composeJson', {
   footnoteContentElement(nl, _2, tag, _4) {
     const obj = {};
     obj.marker = tag.sourceString;
-    if (nl !== '') { obj.inline = true; }
     return obj;
   },
 
   crossrefContentElement(nl, _2, tag, _4) {
     const obj = {};
     obj.marker = tag.sourceString;
-    if (nl !== '') { obj.inline = true; }
     return obj;
   },
 
@@ -559,12 +543,6 @@ sem.addOperation('composeJson', {
   inLineCharElement(nl, _1, tag, _3, text, _5, _6, attribs, _8, _9, _10, _11) {
     const obj = {};
     obj[tag.sourceString] = text.composeJson();
-    if (tag.sourceString !== 'add') {
-      obj.text = '';
-      for (let i = 0; i < obj[tag.sourceString].length; i += 1) {
-        if (obj[tag.sourceString][i].text) { obj.text += obj[tag.sourceString][i].text; }
-      }
-    }
     if (attribs.sourceString !== '') {
       let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
@@ -576,20 +554,13 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    obj.closed = true;
-    if (nl.sourceString === '') { obj.inline = true; }
+    obj.closing = _8.sourceString + _9.sourceString + _10.sourceString + _11.sourceString;
     return obj;
   },
 
   nestedInLineCharElement(nl, _2, tag, _4, text, _6, _7, attribs, _9, closing, _11, _12) {
     const obj = {};
     obj[tag.sourceString] = text.composeJson();
-    if (tag.sourceString !== 'add') {
-      obj.text = '';
-      for (let i = 0; i < obj[tag.sourceString].length; i += 1) {
-        if (obj[tag.sourceString][i].text) { obj.text += obj[tag.sourceString][i].text; }
-      }
-    }
     if (attribs.sourceString !== '') {
       let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
@@ -601,8 +572,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    if (closing.sourceString !== '') { obj.closed = true; }
-    if (nl.sourceString === '') { obj.inline = true; }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _11.sourceString + _12.sourceString; }
     return obj;
   },
 
@@ -610,10 +580,6 @@ sem.addOperation('composeJson', {
     const obj = {};
     const textobj = text.composeJson();
     obj[tag.sourceString] = textobj;
-    obj.text = '';
-    for (let i = 0; i < textobj.length; i += 1) {
-      if (textobj[i].text) { obj.text += textobj[i].text; }
-    }
     if (attribs.sourceString !== '') {
       let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
@@ -637,8 +603,7 @@ sem.addOperation('composeJson', {
         }
       }
     }
-    obj.closed = true;
-    if (nl.sourceString === '') { obj.inline = true; }
+    obj.closing = _9.sourceString + _10.sourceString + _11.sourceString + _12.sourceString;
     return obj;
   },
 
@@ -661,8 +626,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    if (closing.sourceString !== '') { obj.closed = true; }
-    if (nl.sourceString === '') { obj.inline = true; }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _11.sourceString + _12.sourceString; }
     return obj;
   },
 
@@ -682,8 +646,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    obj.closed = true;
-    if (nl.sourceString === '') { obj.inline = true; }
+    obj.closing = _10.sourceString + _11.sourceString + _12.sourceString + _13.sourceString + _14.sourceString;
     return obj;
   },
 
@@ -703,15 +666,13 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    if (closing.sourceString !== '') { obj.closed = true; }
-    if (nl.sourceString === '') { obj.inline = true; }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _13.sourceString + _14.sourceString; }
     return obj;
   },
 
   customAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
@@ -737,92 +698,79 @@ sem.addOperation('composeJson', {
 
   msAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   lemmaAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   strongAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   scrlocAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   glossAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   linkAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   altAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   srcAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   sizeAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   locAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   copyAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   refAttribute(name, _2, value, _4) {
     const attribObj = {};
-    attribObj.name = name.sourceString;
-    attribObj.value = value.sourceString;
+    attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
   defaultAttribute(value) {
     const attribObj = {};
-    attribObj.name = 'default attribute';
-    attribObj.value = value.sourceString;
+    attribObj.defaultAttribute = value.sourceString;
     return attribObj;
   },
 
@@ -900,19 +848,13 @@ sem.addOperation('composeJson', {
 
   li(itemElement) {
     const li = { list: itemElement.composeJson() };
-    li.text = '';
-    for (let i = 0; i < li.list.length; i += 1) {
-      for (let j = 0; j < li.list[i].li.length; j += 1) {
-        li.text += `${li.list[i].li[j].text} | `;
-      }
-    }
     return li;
   },
 
   liElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    obj.li = text.composeJson();
-    if (num.sourceString !== '') { obj.number = num.sourceString; }
+    let marker = 'li' + num.sourceString;
+    obj[marker] = text.composeJson();
     return obj;
   },
 
@@ -948,16 +890,16 @@ sem.addOperation('composeJson', {
     const milestoneElement = {};
     milestoneElement.milestone = ms.sourceString;
     milestoneElement.marker = ms.sourceString;
-    milestoneElement.closed = true;
+    milestoneElement.closing = _4.sourceString;
     return milestoneElement;
   },
 
   milestonePairElement(_1, _2, ms, sE, _5, _6, _7, attribs, _8) {
     const milestoneElement = {};
     milestoneElement.milestone = ms.sourceString;
-    milestoneElement['start/end'] = sE.sourceString;
+    milestoneElement['delimter'] = sE.sourceString;
     milestoneElement.marker = ms.sourceString + sE.sourceString;
-    milestoneElement.closed = true;
+    milestoneElement.closing = _8.sourceString;
     if (attribs.sourceString !== '') {
       milestoneElement.attributes = attribs.composeJson();
     }
@@ -993,7 +935,7 @@ sem.addOperation('composeJson', {
   },
 
   text(_1, words) {
-    return { text: words.sourceString };
+    return words.sourceString;
   },
 
   esbElement(_1, _2, _3, _4, content, _6, _7, _8, _9) {
