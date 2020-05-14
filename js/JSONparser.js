@@ -101,6 +101,15 @@ class JSONparser extends Parser {
           }
         }
       } else if(key === 'footnote') {
+        let notes = jsonObject.footnote;
+        let marker = jsonObject.closing;
+        usfmText += marker.replace('*','');
+        for(let i = 0; i < notes.length; i += 1) {
+          let innerKey = Object.keys(notes[i])[0];
+          if (innerKey === 'caller') { usfmText += notes[i][innerKey]; }
+          else { usfmText += ` \\${innerKey} ${notes[i][innerKey]}`; }
+        }
+        usfmText += marker;
 
       } else if(key === 'cross-ref') {
 
