@@ -28,7 +28,7 @@ class JSONparser extends Parser {
     usfmText += '\\id ';
     usfmText += jsonObj.book.bookCode;
     if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'description')) {
-      usfmText += jsonObj.book.description;
+      usfmText += ` ${jsonObj.book.description}`;
     }
 
     if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'meta')) {
@@ -41,12 +41,16 @@ class JSONparser extends Parser {
         let key = Object.keys(jsonObj.chapters[i].contents[j])[0];
         if(key === 'verseNumber') {
           usfmText += `\n\\v ${jsonObj.chapters[i].contents[j]['verseNumber']} `;
-          for(let k=0; k < jsonObj.chapters[i].contents[j].contents.length; k += 1) {
-            if(typeof jsonObj.chapters[i].contents[j].contents[k] === 'string') {
-              usfmText += ` ${jsonObj.chapters[i].contents[j].contents[k]}`;
-            } else {
-              usfmText = this.processInnerElements(jsonObj.chapters[i].contents[j].contents[k], usfmText);
+          if(Object.prototype.hasOwnProperty.call(jsonObj.chapters[i].contents[j], 'contents')) {
+            for(let k=0; k < jsonObj.chapters[i].contents[j].contents.length; k += 1) {
+              if(typeof jsonObj.chapters[i].contents[j].contents[k] === 'string') {
+                usfmText += ` ${jsonObj.chapters[i].contents[j].contents[k]}`;
+              } else {
+                usfmText = this.processInnerElements(jsonObj.chapters[i].contents[j].contents[k], usfmText);
+              }
             }
+          } else {
+            usfmText += jsonObj.chapters[i].contents[j].verseText
           }
         } else {
           usfmText = this.processInnerElements(jsonObj.chapters[i].contents[j],usfmText);
@@ -74,7 +78,20 @@ class JSONparser extends Parser {
           usfmText = this.processInnerElements(jsonObject.list[i], usfmText);
         }
       } else if(key === 'table') {
-
+        if(Object.prototype.hasOwnProperty.call(jsonObject.table, 'header')){
+          usfmText += '\n\\tr';
+          for(let i = 0; i < jsonObject.table.header.length; i += 1) {
+            const innerKey = Object.keys(jsonObject.table.header[i])[0];
+            usfmText += ` \\${innerKey} ${jsonObject.table.header[i][innerKey]}`;
+          }
+        }
+        for(let i = 0; i < jsonObject.table.rows.length; i += 1) {
+          usfmText += '\n\\tr';
+          for(let j = 0; j < jsonObject.table.rows[i].length; j += 1) {
+            const innerKey = Object.keys(jsonObject.table.rows[i][j])[0];
+            usfmText += ` \\${innerKey} ${jsonObject.table.rows[i][j][innerKey]}`;
+          }
+        }
       } else if(key === 'footnote') {
 
       } else if(key === 'cross-ref') {

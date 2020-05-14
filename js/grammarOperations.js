@@ -173,7 +173,8 @@ sem.addOperation('composeJson', {
             verse.verseText += ` ${elmts[i][key][j][innerKey]}`
           }
         } else if (key === 'table') {
-          verse.verseText += 'implement code to include the table contents here';
+          verse.verseText += elmts[i].text;
+          delete elmts[i].text;
         }
       }
       verse.contents.push(elmts[i]);
@@ -791,10 +792,10 @@ sem.addOperation('composeJson', {
     table.table.rows = row.composeJson();
     table.text = '';
     for (let i = 0; i < table.table.header.length; i += 1) {
-      if (table.table.header[i].th) { table.text += `${table.table.header[i].th} | `; }
-      if (table.table.header[i].thr) { table.text += `${table.table.header[i].thr} |  `; }
+      const key = Object.keys(table.table.header[i])[0];
+      table.text += `${table.table.header[i][key]} ~ `; 
     }
-    table.text += '\n';
+    table.text += '//';
 
     for (let i = 0; i < table.table.rows.length; i += 1) {
       if (columnCount === 0) {
@@ -803,10 +804,10 @@ sem.addOperation('composeJson', {
         emitter.emit('warning', new Error('In-consistent column number in table rows. '));
       }
       for (let j = 0; j < table.table.rows[i].length; j += 1) {
-        if (table.table.rows[i][j].tc) { table.text += `${table.table.rows[i][j].tc} |  `; }
-        if (table.table.rows[i][j].tcr) { table.text += `${table.table.rows[i][j].tcr} |  `; }
+      const key = Object.keys(table.table.rows[i][j])[0];
+      table.text += `${table.table.rows[i][j][key]} ~ `; 
       }
-      table.text += '\n';
+      table.text += '//';
     }
     return table;
   },
@@ -831,19 +832,23 @@ sem.addOperation('composeJson', {
 
 
   thElement(_1, _2, num, _4, text) {
-    return { th: text.sourceString, number: num.sourceString, inline: true };
+    const marker = `th${num.sourceString}`;
+    return { [marker]: text.sourceString};
   },
 
   thrElement(_1, _2, num, _4, text) {
-    return { thr: text.sourceString, number: num.sourceString, inline: true };
+    const marker = `thr${num.sourceString}`;
+    return { [marker]: text.sourceString};
   },
 
   tcElement(_1, _2, num, _4, text) {
-    return { tc: text.sourceString, number: num.sourceString, inline: true };
+    const marker = `tc${num.sourceString}`;
+    return { [marker]: text.sourceString};
   },
 
   tcrElement(_1, _2, num, _4, text) {
-    return { tcr: text.sourceString, number: num.sourceString, inline: true };
+    const marker = `tcr${num.sourceString}`;
+    return { [marker]: text.sourceString};
   },
 
   li(itemElement) {
