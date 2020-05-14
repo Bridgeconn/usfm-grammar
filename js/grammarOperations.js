@@ -464,9 +464,9 @@ sem.addOperation('composeJson', {
     return element.composeJson();
   },
 
-  fElement(nl, _2, tag, _4, content, _6, _7, _8) {
+  fElement(nl, _2, tag, _4, caller, _5, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
-    let itemCount = 1;
+    if (caller.sourceString !== '') { contElmnts.unshift({ caller: caller.sourceString }); }
     const obj = {
       footnote: contElmnts,
       closing: _6.sourceString + _7.sourceString + _8.sourceString,
@@ -474,9 +474,11 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-  feElement(nl, _2, tag, _4, content, _6, _7, _8) {
-    const contElmnts = content.composeJson();
-    let itemCount = 1;
+  feElement(nl, _2, tag, _4, caller, _5, fr, text, _6, _7, _8) {
+    const contElmnts = [];
+    if (fr.sourceString !== '') { contElmnts.push(fr.composeJson()); }
+    contElmnts.push(text.composeJson());
+    if (caller.sourceString !== '') { contElmnts.unshift({ caller: caller.sourceString }); }
     const obj = {
       footnote: contElmnts,
       closing: _6.sourceString + _7.sourceString + _8.sourceString,
@@ -484,16 +486,9 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-  efElement(nl, _1, tag, _3, content, _5, _6, _7) {
-    const contElmnts = content.composeJson();
-    let itemCount = 1;
-    const obj = { footnote: contElmnts, closing: _5.sourceString + _6.sourceString + _7.sourceString, };
-    return obj;
-  },
 
   crossrefElement(nl, _2, tag, _4, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
-    let itemCount = 1;
     const obj = {
       'cross-ref': contElmnts,
       closing: _6.sourceString + _7.sourceString + _8.sourceString,
@@ -505,14 +500,53 @@ sem.addOperation('composeJson', {
     return elmnt.composeJson();
   },
 
-  crossrefContent(elmnt) {
-    return elmnt.composeJson();
+  frElement(_1, tag, text) {
+    return { [tag.sourceString]: text.sourceString };
   },
 
-  footnoteContentElement(nl, _2, tag, _4) {
-    const obj = {};
-    obj.marker = tag.sourceString;
-    return obj;
+  fqElement(_1, tag, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  fqaElement(_1, tag, text){
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  fkElement(_1, tag, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  flElement(_1, tag, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  fwElement(_1, tag, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  fpElement(_1, tag, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  fvElement(_1, tag, text, _2, _3, _4) {
+    return { [tag.sourceString]: text.sourceString, closing: _2.sourceString + _3.sourceString + _4._2, _3, _4 };
+  },
+
+  ftElement(_1, tag, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  fdcElement(_1, tag, text, _2, _3, _4) {
+    return { [tag.sourceString]: text.sourceString, closing: _2.sourceString + _3.sourceString + _4._2, _3, _4 };
+  },
+
+
+  fmElement(_1, tag, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  crossrefContent(elmnt) {
+    return elmnt.composeJson();
   },
 
   crossrefContentElement(nl, _2, tag, _4) {
@@ -902,7 +936,7 @@ sem.addOperation('composeJson', {
   milestonePairElement(_1, _2, ms, sE, _5, _6, _7, attribs, _8) {
     const milestoneElement = {};
     milestoneElement.milestone = ms.sourceString;
-    milestoneElement['delimter'] = sE.sourceString;
+    milestoneElement.delimter = sE.sourceString;
     milestoneElement.marker = ms.sourceString + sE.sourceString;
     milestoneElement.closing = _8.sourceString;
     if (attribs.sourceString !== '') {

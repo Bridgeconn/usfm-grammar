@@ -220,35 +220,28 @@ usfmBible{
 			considered along with the text following it. */
 
 			notesElement = footnoteElement | crossrefElement
-			footnoteElement = fElement | feElement | efElement
-			fElement = newLine? backSlash  "f" spaceChar? footnoteContent* backSlash "f*" spaceChar?
-			feElement = newLine? backSlash  "fe"  spaceChar? footnoteContent* backSlash "fe*"spaceChar?
-			efElement = newLine? backSlash  "ef"  spaceChar? footnoteContent* backSlash "ef*"spaceChar?
+			footnoteElement = fElement | feElement 
+			fElement = newLine? backSlash  "f" spaceChar? caller? spaceChar* footnoteContent* backSlash "f*" spaceChar?
+			feElement = newLine? backSlash  "fe"  spaceChar? caller? spaceChar* frElement? text*  backSlash "fe*" spaceChar?
+
 			crossrefElement = newLine? backSlash  ("xt"|"x" | "ex") spaceChar?  crossrefContent* backSlash ("xt*"|"x*" | "ex*") spaceChar?
 
-			footnoteContent = text | footnoteContentElement | nestedCharElement
-			footnoteContentElement = newLine? backSlash "fr" spaceChar
-							| newLine? backSlash "fr*" spaceChar?
-							| newLine? backSlash "fq" spaceChar
-							| newLine? backSlash "fq*" spaceChar?
-							| newLine? backSlash "fqa" spaceChar
-							| newLine? backSlash "fqa*" spaceChar?
-							| newLine? backSlash "fk" spaceChar
-							| newLine? backSlash "fk*" spaceChar?
-							| newLine? backSlash "fl" spaceChar
-							| newLine? backSlash "fl*" spaceChar?
-							| newLine? backSlash "fw" spaceChar
-							| newLine? backSlash "fw*" spaceChar?
-							| newLine? backSlash "fp" spaceChar
-							| newLine? backSlash "fp*" spaceChar?
-							| newLine? backSlash "ft" spaceChar
-							| newLine? backSlash "ft*" spaceChar?
-							| newLine? backSlash "fv" spaceChar
-							| newLine? backSlash "fv*" spaceChar?
-							| newLine? backSlash "fdc" spaceChar
-							| newLine? backSlash "fdc*" spaceChar?
-							| newLine? backSlash "fm" spaceChar
-							| newLine? backSlash "fm*" spaceChar?
+			caller = "+" | "-" | "?"
+
+			footnoteContent = text | frElement | fqElement | fqaElement | fkElement | flElement | fwElement
+									| fpElement | fvElement | ftElement | fdcElement | fmElement 
+			frElement = backSlash "fr" text*
+			fqElement = backSlash "fq" text*
+			fqaElement = backSlash "fqa" text*
+			fkElement = backSlash "fk" text*
+			flElement = backSlash "fl" text*
+			fwElement = backSlash "fw" text*
+			fpElement = backSlash "fp" text*
+			fvElement = backSlash "fv" text* backSlash "fv" "*"
+			ftElement = backSlash "ft" text*
+			fdcElement = backSlash "fdc" text* backSlash "fdc" "*"
+			fmElement = backSlash "fm" text*
+
 							
 
 			crossrefContent  = text | crossrefContentElement | nestedCharElement | attributesInCrossref

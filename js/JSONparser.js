@@ -5,7 +5,11 @@ class JSONparser extends Parser {
   constructor() {
     super();
     this.warnings = [];
-    this.noNewLineMarkers = ['w', 'em', 'nd'];
+    this.noNewLineMarkers = ['w', 'em', 'nd', 'th', 'th1', 'th2', 'th3',
+                            'th4', 'th5', 'thr', 'thr1', 'thr2', 'thr3',
+                            'thr4', 'thr5', 'tc', 'tc1', 'tc2', 'tc3',
+                            'tc4', 'tc5', 'tcr', 'tcr1', 'tcr2', 'tcr3',
+                            'tcr4', 'tcr5'];
   }
 
   static validate(JSONObject) {
@@ -23,7 +27,11 @@ class JSONparser extends Parser {
   }
 
   static parseJSON(jsonObj) {
-    this.noNewLineMarkers = ['w', 'em', 'nd'];
+    this.noNewLineMarkers = ['w', 'em', 'nd', 'th', 'th1', 'th2', 'th3',
+                            'th4', 'th5', 'thr', 'thr1', 'thr2', 'thr3',
+                            'thr4', 'thr5', 'tc', 'tc1', 'tc2', 'tc3',
+                            'tc4', 'tc5', 'tcr', 'tcr1', 'tcr2', 'tcr3',
+                            'tcr4', 'tcr5'];
     let usfmText = '';
     usfmText += '\\id ';
     usfmText += jsonObj.book.bookCode;
