@@ -95,11 +95,8 @@ sem.addOperation('composeJson', {
     const header = cHeader.composeJson();
     cElmt.chapterNumber = header.title;
     cElmt.contents = [];
-    if (Object.keys(header).length > 1){
-      for (let i = 1; i < Object.keys(header).length; i += 1) {
-        let key = Object.keys(header)[i];
-        cElmt.contents.push({ [key] : header[key] } )
-      }
+    if (Object.prototype.hasOwnProperty.call(header, 'contents')) {
+      cElmt.contents = header.contents;
     }
     if (metaScripture.sourceString !== '') {
       const metaObj = metaScripture.composeJson();
@@ -116,7 +113,7 @@ sem.addOperation('composeJson', {
 
   chapterHeader(c, cMeta) {
     const chapterHeaderVar = { title: c.composeJson() };
-    if (cMeta.sourceString !== '') { chapterHeaderVar.metadata = cMeta.composeJson(); }
+    if (cMeta.sourceString !== '') { chapterHeaderVar.contents = cMeta.composeJson(); }
     return chapterHeaderVar;
   },
 
@@ -487,8 +484,9 @@ sem.addOperation('composeJson', {
   },
 
 
-  crossrefElement(nl, _2, tag, _4, content, _6, _7, _8) {
+  crossrefElement(nl, _2, tag, _4, caller, _5, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
+    if (caller.sourceString !== '') { contElmnts.unshift( { caller: caller.sourceString } ); }
     const obj = {
       'cross-ref': contElmnts,
       closing: _6.sourceString + _7.sourceString + _8.sourceString,
@@ -500,71 +498,108 @@ sem.addOperation('composeJson', {
     return elmnt.composeJson();
   },
 
-  frElement(_1, tag, text) {
+  frElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fqElement(_1, tag, text) {
+  fqElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fqaElement(_1, tag, text){
+  fqaElement(nl, _1, tag, _3, text){
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fkElement(_1, tag, text) {
+  fkElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  flElement(_1, tag, text) {
+  flElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fwElement(_1, tag, text) {
+  fwElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fpElement(_1, tag, text) {
+  fpElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fvElement(_1, tag, text, _2, _3, _4) {
-    return { [tag.sourceString]: text.sourceString, closing: _2.sourceString + _3.sourceString + _4._2, _3, _4 };
+  fvElement(nl, _1, tag, _3, text, _5, _6, _7) {
+    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + _6.sourceString + _7.sourceString };
   },
 
-  ftElement(_1, tag, text) {
+  ftElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fdcElement(_1, tag, text, _2, _3, _4) {
-    return { [tag.sourceString]: text.sourceString, closing: _2.sourceString + _3.sourceString + _4._2, _3, _4 };
+  fdcElement(nl, _1, tag, _3, text, _5, _6, _7) {
+    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + _6.sourceString + _7.sourceString };
   },
 
 
-  fmElement(_1, tag, text) {
+  fmElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
+  },
+
+  separateXtElement(xt, _2, closing) {
+    return { 'cross-ref' : [xt.composeJson()],
+      closing: _2.sourceString + closing.sourceString };
   },
 
   crossrefContent(elmnt) {
     return elmnt.composeJson();
   },
 
-  crossrefContentElement(nl, _2, tag, _4) {
-    const obj = {};
-    obj.marker = tag.sourceString;
+  xoElement(nl, _1, tag, _3, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  xkElement(nl, _1, tag, _3, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  xqElement(nl, _1, tag, _3, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  xtElement(nl, _1, tag, _3, text, attrib) {
+    let obj = { [tag.sourceString]: text.sourceString };
+    if (attrib.sourceString !== '') { obj.attributes = attrib.composeJson()[0]; }
+    console.log('xtElement');
+    console.log(obj.attributes);
+
     return obj;
+  },
+
+  xtaElement(nl, _1, tag, _3, text) {
+    return { [tag.sourceString]: text.sourceString };
+  },
+
+  xopElement(nl, _1, tag, _3, text, _5, closing) {
+    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  },
+
+  xotElement(nl, _1, tag, _3, text, _5, closing) {
+    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  },
+
+  xntElement(nl, _1, tag, _3, text, _5, closing) {
+    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  },
+
+  xdcElement(nl, _1, tag, _3, text, _5, closing) {
+    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  },
+
+  rqElement(nl, _1, tag, _3, text, _5, closing) {
+    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
   },
 
   attributesInCrossref(_1, _2, attribs) {
     let attribObj = attribs.composeJson();
-    if (Array.isArray(attribObj[0])) {
-      let attribTemp = [];
-      for (let i = 0; i < attribObj.length; i += 1) {
-        attribTemp = attribTemp.concat(attribObj[i]);
-      }
-      attribObj = attribTemp;
-    }
-    return { attributes: attribObj };
+    return attribObj;
   },
 
   charElement(element) {
@@ -705,7 +740,7 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-  customAttribute(name, _2, value, _4) {
+  customAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
@@ -731,73 +766,73 @@ sem.addOperation('composeJson', {
     return elmnt.composeJson();
   },
 
-  msAttribute(name, _2, value, _4) {
+  msAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  lemmaAttribute(name, _2, value, _4) {
+  lemmaAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  strongAttribute(name, _2, value, _4) {
+  strongAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  scrlocAttribute(name, _2, value, _4) {
+  scrlocAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  glossAttribute(name, _2, value, _4) {
+  glossAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  linkAttribute(name, _2, value, _4) {
+  linkAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  altAttribute(name, _2, value, _4) {
+  altAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  srcAttribute(name, _2, value, _4) {
+  srcAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  sizeAttribute(name, _2, value, _4) {
+  sizeAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  locAttribute(name, _2, value, _4) {
+  locAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  copyAttribute(name, _2, value, _4) {
+  copyAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;
   },
 
-  refAttribute(name, _2, value, _4) {
+  refAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString;
     return attribObj;

@@ -107,18 +107,45 @@ class JSONparser extends Parser {
         for(let i = 0; i < notes.length; i += 1) {
           let innerKey = Object.keys(notes[i])[0];
           if (innerKey === 'caller') { usfmText += notes[i][innerKey]; }
-          else { usfmText += ` \\${innerKey} ${notes[i][innerKey]}`; }
+          else { usfmText += this.processInnerElements(notes[i], usfmText); }
         }
         usfmText += marker;
 
       } else if(key === 'cross-ref') {
+        let notes = jsonObject['cross-ref'];
+        let marker = jsonObject.closing;
+        if (marker !== '\\xt*') { usfmText += marker.replace('*',''); }
+        for(let i = 0; i < notes.length; i += 1) {
+          if (typeof notes[i] === 'string') {
+            usfmText += ` ${notes[i]}`;
+          } else {
+            let innerKey = Object.keys(notes[i])[0];
+            if (innerKey === 'caller') { usfmText += notes[i][innerKey]; }
+            else { usfmText = this.processInnerElements(notes[i], usfmText); }
+          }
+        }
+        usfmText += marker;
 
       } else if(key === 'milestone') {
 
       } else {
         if(! this.noNewLineMarkers.includes(key)) { usfmText += '\n'; }
         usfmText += `\\${key} `;
-        if(jsonObject[key] !== null) { usfmText += jsonObject[key]; }
+        if (Array.isArray(jsonObject[key])) { usfmText = this.processInnerElements(jsonObject[key], usfmText) }
+        else if(jsonObject[key] !== null) { usfmText += jsonObject[key]; }
+        if (Object.prototype.hasOwnProperty.call(jsonObject, 'attributes')) {
+          usfmText += ' |'
+          for (let i = 0; i < jsonObject.attributes.length; i += 1) {
+            let attribName = Object.keys(jsonObject.attributes[i])[0];
+            if (attribName === 'defaultAttribute') { usfmText += jsonObject.attributes[i].defaultAttribute }
+            else { usfmText += ` ${attribName}=\"${jsonObject.attributes[i][attribName]}\"`;
+            if ( i + 1 < jsonObject.attributes.length ) {
+              usfmText += ',';
+            }
+
+            }
+          }
+        }
         if(Object.prototype.hasOwnProperty.call(jsonObject, 'closing')) {
           usfmText += ` ${jsonObject.closing}`
         }
