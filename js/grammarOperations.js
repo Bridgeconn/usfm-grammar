@@ -963,7 +963,6 @@ sem.addOperation('composeJson', {
   milestoneStandaloneElement(_1, _2, ms, _4) {
     const milestoneElement = {};
     milestoneElement.milestone = ms.sourceString;
-    milestoneElement.marker = ms.sourceString;
     milestoneElement.closing = _4.sourceString;
     return milestoneElement;
   },
@@ -972,7 +971,6 @@ sem.addOperation('composeJson', {
     const milestoneElement = {};
     milestoneElement.milestone = ms.sourceString;
     milestoneElement.delimter = sE.sourceString;
-    milestoneElement.marker = ms.sourceString + sE.sourceString;
     milestoneElement.closing = _8.sourceString;
     if (attribs.sourceString !== '') {
       milestoneElement.attributes = attribs.composeJson();

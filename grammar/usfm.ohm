@@ -344,12 +344,12 @@ usfmBible{
 
 			customAttribute = customAttributeName "=" "\""? attributeValue "\""? spaceChar?
 			customAttributeName = "x-" (letter |digit |"_")+
-			attributeValue = "\"" (~"\"" any)+ "\""
+			attributeValue =  (~"\"" any)+ 
 
 			/* The default attribute is valid for any marker which normally provide attributes. 
 			It would be extracted as default attribute without mentioning the corresponding attribute name */
 
-			defaultAttribute = (~(backSlash) ~(newLine) ~("|") any)+
+			defaultAttribute = (~(backSlash) ~(newLine) ~("|") ~("=") any)+
 
 			/* the special set of attributes valid for each of the normally 
 			attributed elements are defined here*/

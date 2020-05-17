@@ -127,7 +127,21 @@ class JSONparser extends Parser {
         usfmText += marker;
 
       } else if(key === 'milestone') {
+        usfmText += `\\${jsonObject.milestone}${jsonObject.delimter}`;
+        if (Object.prototype.hasOwnProperty.call(jsonObject, 'attributes')) {
+          usfmText += ' |'
+          for (let i = 0; i < jsonObject.attributes.length; i += 1) {
+            let attribName = Object.keys(jsonObject.attributes[i])[0];
+            if (attribName === 'defaultAttribute') { usfmText += jsonObject.attributes[i].defaultAttribute }
+            else { usfmText += ` ${attribName}=\"${jsonObject.attributes[i][attribName]}\"`;
+            if ( i + 1 < jsonObject.attributes.length ) {
+              usfmText += ',';
+            }
 
+            }
+          }
+        }
+        usfmText += jsonObject.closing;
       } else {
         if(! this.noNewLineMarkers.includes(key)) { usfmText += '\n'; }
         usfmText += `\\${key} `;
