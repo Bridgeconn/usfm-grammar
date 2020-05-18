@@ -226,7 +226,7 @@ usfmBible{
 			efElement = newLine? backSlash  "ef"  spaceChar? footnoteContent* backSlash "ef*"spaceChar?
 			crossrefElement = newLine? backSlash  ("xt"|"x" | "ex") spaceChar?  crossrefContent* backSlash ("xt*"|"x*" | "ex*") spaceChar?
 
-			footnoteContent = text | footnoteContentElement | nestedCharElement 
+			footnoteContent = text | footnoteContentElement | nestedCharElement
 			footnoteContentElement = newLine? backSlash "fr" spaceChar
 							| newLine? backSlash "fr*" spaceChar?
 							| newLine? backSlash "fq" spaceChar
@@ -414,10 +414,10 @@ usfmBible{
 
 			li = (liElement)+
 			liElement = newLine? backSlash "li" number? spaceChar (text | charElement)*
+
+
 			
-			
-			
-						litElement = newLine? backSlash "lit" spaceChar ((chapterContentTextContent | notesElement | milestoneElement) | notesElement | milestoneElement)+
+			litElement = newLine? backSlash "lit" spaceChar ((chapterContentTextContent | notesElement | milestoneElement) | notesElement | milestoneElement)+
 
 
 			/* The text content vaild in different sections is determined by all the valid 
