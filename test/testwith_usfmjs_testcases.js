@@ -5,7 +5,6 @@ const grammar = require('../js/main.js');
 describe('usfm-js test cases', function () {
   beforeEach(function() {
     if (global.gc) { global.gc(); }
-    else { throw "garbage collection not done"}
   });
 
   it('converts usfm to json', () => {
@@ -200,7 +199,6 @@ describe('usfm-js test cases', function () {
 describe('usfm-js test cases- set II', function () {
   beforeEach(function() {
     if (global.gc) { global.gc(); }
-    else { throw "garbage collection not done"}
   });
 
   it('handles acts_1_4.aligned', () => {

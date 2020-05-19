@@ -151,7 +151,7 @@ sem.addOperation('composeJson', {
     verse.contents = [];
     if (verseMeta.sourceString !== '') { 
       let metadata = verseMeta.composeJson();
-      verse.contents.concat(metadata[i]);
+      verse.contents.concat(metadata);
     }
     const elmts = verseContent.composeJson();
     if (verseContent.sourceString === '') {
@@ -315,7 +315,7 @@ sem.addOperation('composeJson', {
   imtElement(_1, _2, _3, num, _5, text) {
     const obj = {};
     const marker = 'imt' + num.sourceString;
-    obj[imt] = text.composeJson();
+    obj[marker] = text.composeJson();
     return obj;
   },
 
@@ -506,8 +506,10 @@ sem.addOperation('composeJson', {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fqaElement(nl, _1, tag, _3, text){
-    return { [tag.sourceString]: text.sourceString };
+  fqaElement(nl, _1, tag, _3, text, _5, closing, _6, _7){
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
   fkElement(nl, _1, tag, _3, text) {
@@ -526,16 +528,16 @@ sem.addOperation('composeJson', {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fvElement(nl, _1, tag, _3, text, _5, _6, _7) {
-    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + _6.sourceString + _7.sourceString };
+  fvElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
   },
 
   ftElement(nl, _1, tag, _3, text) {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fdcElement(nl, _1, tag, _3, text, _5, _6, _7) {
-    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + _6.sourceString + _7.sourceString };
+  fdcElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
   },
 
 
@@ -560,16 +562,15 @@ sem.addOperation('composeJson', {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  xqElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  xqElement(nl, _1, tag, _3, text, _5, closing, _6) {
+    const obj ={ [tag.sourceString]: text.sourceString }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
   xtElement(nl, _1, tag, _3, text, attrib) {
     let obj = { [tag.sourceString]: text.sourceString };
     if (attrib.sourceString !== '') { obj.attributes = attrib.composeJson()[0]; }
-    console.log('xtElement');
-    console.log(obj.attributes);
-
     return obj;
   },
 
@@ -577,24 +578,24 @@ sem.addOperation('composeJson', {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  xopElement(nl, _1, tag, _3, text, _5, closing) {
-    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  xopElement(nl, _1, tag, _3, text, _5, closing, _7) {
+    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
   },
 
-  xotElement(nl, _1, tag, _3, text, _5, closing) {
-    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  xotElement(nl, _1, tag, _3, text, _5, closing, _7) {
+    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
   },
 
-  xntElement(nl, _1, tag, _3, text, _5, closing) {
-    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  xntElement(nl, _1, tag, _3, text, _5, closing, _7) {
+    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
   },
 
-  xdcElement(nl, _1, tag, _3, text, _5, closing) {
-    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  xdcElement(nl, _1, tag, _3, text, _5, closing, _7) {
+    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
   },
 
-  rqElement(nl, _1, tag, _3, text, _5, closing) {
-    return { [tag.sourceString]: text.sourceString, closing: _5.sourceString + closing.sourceString };
+  rqElement(nl, _1, tag, _3, text, _5, closing, _7) {
+    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
   },
 
   attributesInCrossref(_1, _2, attribs) {
@@ -624,7 +625,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    obj.closing = _8.sourceString + _9.sourceString + _10.sourceString + _11.sourceString;
+    obj.closing = _8.sourceString + _9.sourceString + _10.sourceString;
     return obj;
   },
 
@@ -642,7 +643,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _11.sourceString + _12.sourceString; }
+    obj.closing = closing.sourceString; 
     return obj;
   },
 
@@ -673,7 +674,7 @@ sem.addOperation('composeJson', {
         }
       }
     }
-    obj.closing = _9.sourceString + _10.sourceString + _11.sourceString + _12.sourceString;
+    obj.closing = _9.sourceString + _10.sourceString + _11.sourceString;
     return obj;
   },
 
@@ -696,7 +697,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _11.sourceString + _12.sourceString; }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _11.sourceString; }
     return obj;
   },
 
@@ -716,7 +717,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    obj.closing = _10.sourceString + _11.sourceString + _12.sourceString + _13.sourceString + _14.sourceString;
+    obj.closing = _10.sourceString + _11.sourceString + _12.sourceString + _13.sourceString;
     return obj;
   },
 
@@ -736,7 +737,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _13.sourceString + _14.sourceString; }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _13.sourceString; }
     return obj;
   },
 

@@ -127,7 +127,7 @@ usfmBible{
 			lose or structural difference would be caused while re-creating the usfm from the 
 			JSON structure. But the paragraph-wise division will not be there in the JSON. */
 
-			paraElement = newLine backSlash paraMarker spaceChar*
+			paraElement = newLine? backSlash paraMarker spaceChar*
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
 			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" )
 			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim") number?
@@ -228,36 +228,35 @@ usfmBible{
 			caller = "+" | "-" | "?"
 
 			footnoteContent = text | frElement | fqElement | fqaElement | fkElement | flElement | fwElement
-									| fpElement | fvElement | ftElement | fdcElement | fmElement 
+									| fpElement | fvElement | ftElement | fdcElement | fmElement | nestedCharElement
 			frElement = newLine? backSlash "fr" spaceChar text*
 			fqElement = newLine? backSlash "fq" spaceChar text*
-			fqaElement = newLine? backSlash "fqa" spaceChar text*
+			fqaElement = newLine? backSlash "fqa" spaceChar text* (backSlash "fqa" "*" spaceChar?)?
 			fkElement = newLine? backSlash "fk" spaceChar text*
 			flElement = newLine? backSlash "fl" spaceChar text*
 			fwElement = newLine? backSlash "fw" spaceChar text*
 			fpElement = newLine? backSlash "fp" spaceChar text*
-			fvElement = newLine? backSlash "fv" spaceChar text* backSlash "fv" "*"
+			fvElement = newLine? backSlash "fv" spaceChar text* (backSlash "fv" "*" spaceChar?)?
 			ftElement = newLine? backSlash "ft" spaceChar text*
-			fdcElement = newLine? backSlash "fdc" spaceChar text* backSlash "fdc" "*"
+			fdcElement = newLine? backSlash "fdc" spaceChar text* (backSlash "fdc" "*" spaceChar?)?
 			fmElement = newLine? backSlash "fm" spaceChar text*
 
 			crossrefElement = newLine? backSlash  "x" spaceChar? caller? spaceChar? crossrefContent* backSlash "x*" spaceChar?
 							
 
-			crossrefContent  = text | xoElement | xkElement | xqElement | xtElement | xtaElement | xopElement | xotElement | xntElement | xdcElement | rqElement
+			crossrefContent  = text | xoElement | xkElement | xqElement | xtElement | xtaElement | xopElement | xotElement | xntElement | xdcElement | rqElement | nestedCharElement
             separateXtElement = xtElement backSlash ("xt*" | "x*")
 
 			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| defaultAttribute)+
 			xoElement = newLine? backSlash "xo" spaceChar text*
 			xkElement = newLine? backSlash "xk" spaceChar text*
-			xqElement = newLine? backSlash "xq" spaceChar text*
+			xqElement = newLine? backSlash "xq" spaceChar text* (backSlash "xq*" spaceChar?)?
 			xtElement = newLine? backSlash "xt" spaceChar text* attributesInCrossref?
 			xtaElement = newLine? backSlash "xta" spaceChar text*
-			xopElement = newLine? backSlash "xop" spaceChar text* backSlash "xop*"
-			xotElement = newLine? backSlash "xot" spaceChar text* backSlash "xot*"
-			xntElement = newLine? backSlash "xnt" spaceChar text* backSlash "xnt*"
-			xdcElement = newLine? backSlash "xdc" spaceChar text* backSlash "xdc*"
-			rqElement = newLine? backSlash "rq" spaceChar text* backSlash "rq*"
+			xopElement = newLine? backSlash "xop" spaceChar text* (backSlash "xop*" spaceChar?)?			xotElement = newLine? backSlash "xot" spaceChar text* (backSlash "xot*" spaceChar?)?
+			xntElement = newLine? backSlash "xnt" spaceChar text* (backSlash "xnt*" spaceChar?)?
+			xdcElement = newLine? backSlash "xdc" spaceChar text* (backSlash "xdc*" spaceChar?)?
+			rqElement = newLine? backSlash "rq" spaceChar text* (backSlash "rq*" spaceChar?)?
 
 			nestedCharElement = nestedInLineCharElement | nestedInLineCharAttributeElement | nestedInLineCharNumberedElement
 			nestedInLineCharElement = newLine? backSlash "+add" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+add" "*")? spaceChar?
