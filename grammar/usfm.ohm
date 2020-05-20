@@ -80,8 +80,8 @@ usfmBible{
 
 			bookChapterLabel = clElement
 
-			chapterHeader = cElement (caElement | cpElement | clElement | cdElement)*
-			chapter = chapterHeader mandatoryParaMetaScripture  verseElement+
+			chapterHeader = cElement (caElement | cpElement | clElement | cdElement | clElement | msElement | rElement | q1ElementWithText)*
+			chapter = chapterHeader mandatoryParaMetaScripture verseElement+
 
 			
 			/*The metaScripture element is used to accomodate all the extra stuff 
@@ -129,7 +129,7 @@ usfmBible{
 
 			paraElement = newLine? backSlash paraMarker spaceChar*
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
-			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" )
+			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" | "d" )
 			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim") number?
 
 			/* A verse is considered as a collection of objects which could be verse 
@@ -155,7 +155,7 @@ usfmBible{
 			cElement = newLine? backSlash "c" spaceChar number spaceChar*
 			caElement = newLine? backSlash "ca" spaceChar number backSlash "ca*"
 			cdElement = newLine? backSlash "cd" spaceChar ((chapterContentTextContent | notesElement | milestoneElement)+ | notesElement)+
-			clElement = newLine? backSlash "cl"  spaceChar text
+			clElement = newLine? backSlash "cl"  spaceChar text notesElement?
 			cpElement = newLine? backSlash "cp"  spaceChar text
 			dElement = newLine? backSlash "d"  spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 			
@@ -193,6 +193,9 @@ usfmBible{
 			
 			mrElement = newLine? backSlash "mr" spaceChar text
 			msElement = newLine? backSlash "ms" number? spaceChar text
+
+			q1ElementWithText = newLine? backSlash "q1" spaceChar text
+
 			mt = mtElement+
 			mtElement = newLine? backSlash "mt" number? spaceChar (chapterContentTextContent | notesElement | milestoneElement)+
 			mte = mteElement+
@@ -227,8 +230,7 @@ usfmBible{
 
 			caller = "+" | "-" | "?"
 
-			footnoteContent = text | frElement | fqElement | fqaElement | fkElement | flElement | fwElement
-									| fpElement | fvElement | ftElement | fdcElement | fmElement | nestedCharElement
+			footnoteContent = text | frElement | fqElement | fqaElement | fkElement | flElement | fwElement | fpElement | fvElement | ftElement | fdcElement | fmElement | nestedCharElement | plusXtElement
 			frElement = newLine? backSlash "fr" spaceChar text*
 			fqElement = newLine? backSlash "fq" spaceChar text*
 			fqaElement = newLine? backSlash "fqa" spaceChar text* (backSlash "fqa" "*" spaceChar?)?
@@ -245,7 +247,10 @@ usfmBible{
 							
 
 			crossrefContent  = text | xoElement | xkElement | xqElement | xtElement | xtaElement | xopElement | xotElement | xntElement | xdcElement | rqElement | nestedCharElement
-            separateXtElement = xtElement backSlash ("xt*" | "x*")
+      separateXtElement = xtElement backSlash ("xt*" | "x*")
+
+      plusXtElement = newLine? backSlash "+xt" spaceChar text* (backSlash "+xt" "*" spaceChar?)?
+
 
 			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| defaultAttribute)+
 			xoElement = newLine? backSlash "xo" spaceChar text*

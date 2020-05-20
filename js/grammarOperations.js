@@ -1,13 +1,14 @@
 const ohm = require('ohm-js');
 const Events = require('events');
 const fs = require('fs');
+const path = require('path');
 
 const emitter = new Events.EventEmitter();
 
 // const { contents } = require('../grammar/usfm.ohm.js');
 
 const contents = fs.readFileSync(
-  '../grammar/usfm.ohm',
+  path.resolve(__dirname, '../grammar/usfm.ohm'),
 );
 
 const { usfmBible: bib } = ohm.grammars(contents);
@@ -238,8 +239,14 @@ sem.addOperation('composeJson', {
     return { cd: text.composeJson() };
   },
 
-  clElement(_1, _2, _3, _4, text) {
-    return { cl: text.sourceString };
+  clElement(_1, _2, _3, _4, text, footnote) {
+    const obj = { cl: text.sourceString };
+
+    if (footnote) {
+      obj.footnote = footnote.composeJson();
+    }
+
+    return obj;
   },
 
   cpElement(_1, _2, _3, _4, text) {
@@ -402,6 +409,10 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
+  q1ElementWithText(_1, _2, _3, _4, text) {
+    return { q1: text.sourceString };
+  },
+
   mt(itemElement) {
     const mt = itemElement.composeJson();
     return mt;
@@ -555,6 +566,12 @@ sem.addOperation('composeJson', {
       'cross-ref': [xt.composeJson()],
       closing: _2.sourceString + closing.sourceString,
     };
+  },
+
+  plusXtElement(nl, _1, tag, _3, text, _5, closing, _6, _7) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
   crossrefContent(elmnt) {
