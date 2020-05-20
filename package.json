@@ -5,6 +5,7 @@
     "main": "./js/main.js",
     "scripts": {
         "test": "mocha --expose-gc --timeout 20000",
+        "test:4096MB": "mocha --expose-gc --timeout 30000 --max-old-space-size=4096",
         "start": "node ../server.js"
     },
     "dependencies": {

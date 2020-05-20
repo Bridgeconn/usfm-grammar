@@ -80,7 +80,7 @@ usfmBible{
 
 			bookChapterLabel = clElement
 
-			chapterHeader = cElement (caElement | cpElement | clElement | cdElement | clElement | msElement | rElement | q1ElementWithText)*
+			chapterHeader = cElement (caElement | cpElement | clElement | cdElement | clElement | msElement | rElement | q1ElementWithText | mrElement)*
 			chapter = chapterHeader mandatoryParaMetaScripture verseElement+
 
 			

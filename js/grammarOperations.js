@@ -5,8 +5,6 @@ const path = require('path');
 
 const emitter = new Events.EventEmitter();
 
-// const { contents } = require('../grammar/usfm.ohm.js');
-
 const contents = fs.readFileSync(
   path.resolve(__dirname, '../grammar/usfm.ohm'),
 );
