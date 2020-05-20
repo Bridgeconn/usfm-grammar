@@ -130,7 +130,7 @@ usfmBible{
 			paraElement = newLine? backSlash paraMarker spaceChar*
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
 			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" | "d" )
-			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim") number?
+			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim" | "li") number?
 
 			/* A verse is considered as a collection of objects which could be verse 
 			text objects or other meta-scripture objects */
