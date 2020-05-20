@@ -1,9 +1,14 @@
 const ohm = require('ohm-js');
 const Events = require('events');
+const fs = require('fs');
 
 const emitter = new Events.EventEmitter();
 
-const { contents } = require('../grammar/usfm.ohm.js');
+// const { contents } = require('../grammar/usfm.ohm.js');
+
+const contents = fs.readFileSync(
+  '../grammar/usfm.ohm',
+);
 
 const { usfmBible: bib } = ohm.grammars(contents);
 const sem = bib.createSemantics();
@@ -16,10 +21,10 @@ const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
   'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
   'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl', 'wj', 'em', 'bd',
   'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro'];
-const paraMarkers = ['p', 'm','po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
-  'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
-  'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
-  'qm1', 'qm2', 'qm3'];
+// const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
+//   'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
+//   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
+//   'qm1', 'qm2', 'qm3'];
 
 let warningMessages = [];
 const milestoneFlag = [];
@@ -44,14 +49,14 @@ sem.addOperation('composeJson', {
   },
 
   scripture(metaData, content) {
-    let result = { book:{}, chapters: []};
+    const result = { book: {}, chapters: [] };
     const metadata = metaData.composeJson();
     result.book.bookCode = metadata.id.book;
-    if (Object.prototype.hasOwnProperty.call(metadata.id,'details')) {
+    if (Object.prototype.hasOwnProperty.call(metadata.id, 'details')) {
       result.book.description = metadata.id.details;
     }
-    if (Object.prototype.hasOwnProperty.call(metadata,'headers')) {
-      result.book.meta = metadata.headers
+    if (Object.prototype.hasOwnProperty.call(metadata, 'headers')) {
+      result.book.meta = metadata.headers;
     }
     result.chapters = content.composeJson();
     return result;
@@ -91,7 +96,7 @@ sem.addOperation('composeJson', {
   },
 
   chapter(cHeader, metaScripture, verseBlock) {
-    let cElmt = {};
+    const cElmt = {};
     const header = cHeader.composeJson();
     cElmt.chapterNumber = header.title;
     cElmt.contents = [];
@@ -145,12 +150,12 @@ sem.addOperation('composeJson', {
   },
 
   verseElement(_1, _2, _3, _4, verseNumber, verseMeta, verseContent) {
-    let verse = {};
+    const verse = {};
     verse.verseNumber = verseNumber.sourceString;
     verse.verseText = '';
     verse.contents = [];
-    if (verseMeta.sourceString !== '') { 
-      let metadata = verseMeta.composeJson();
+    if (verseMeta.sourceString !== '') {
+      const metadata = verseMeta.composeJson();
       verse.contents.concat(metadata);
     }
     const elmts = verseContent.composeJson();
@@ -161,13 +166,13 @@ sem.addOperation('composeJson', {
       if (typeof elmts[i] === 'string') {
         verse.verseText += ` ${elmts[i]}`;
       } else {
-        let key = Object.keys(elmts[i])[0];
+        const key = Object.keys(elmts[i])[0];
         if (verseCarryingMarkers.includes(key)) {
           verse.verseText += ` ${elmts[i][[key]]}`;
         } else if (key === 'list') {
-          for(let j=0; j < elmts[i][key].length; j += 1) {
-            let innerKey = Object.keys(elmts[i][key][j])[0]
-            verse.verseText += ` ${elmts[i][key][j][innerKey]}`
+          for (let j = 0; j < elmts[i][key].length; j += 1) {
+            const innerKey = Object.keys(elmts[i][key][j])[0];
+            verse.verseText += ` ${elmts[i][key][j][innerKey]}`;
           }
         } else if (key === 'table') {
           verse.verseText += elmts[i].text;
@@ -214,7 +219,7 @@ sem.addOperation('composeJson', {
 
   paraElement(_1, _2, marker, _4) {
     const mrkr = marker.sourceString;
-    return { [mrkr] : null };
+    return { [mrkr]: null };
   },
 
   qaElement(_1, _2, _3, _4, text) {
@@ -246,7 +251,7 @@ sem.addOperation('composeJson', {
   },
 
   hElement(_1, _2, _3, num, _5, text) {
-    const marker = 'h' + num.sourceString;
+    const marker = `h${num.sourceString}`;
     const obj = { [marker]: text.sourceString };
     return obj;
   },
@@ -302,7 +307,7 @@ sem.addOperation('composeJson', {
 
   iliElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    let marker = 'ili' + num.sourceString;
+    const marker = `ili${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
@@ -314,7 +319,7 @@ sem.addOperation('composeJson', {
 
   imtElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    const marker = 'imt' + num.sourceString;
+    const marker = `imt${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
@@ -326,7 +331,7 @@ sem.addOperation('composeJson', {
 
   imteElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    const marker = 'imte' + num.sourceString;
+    const marker = `imte${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
@@ -338,7 +343,7 @@ sem.addOperation('composeJson', {
 
   ioElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    const marker = 'io' + num.sourceString;
+    // const marker = `io${num.sourceString}`;
     obj.io = text.composeJson();
     return obj;
   },
@@ -370,14 +375,14 @@ sem.addOperation('composeJson', {
 
   iqElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    const marker = 'iq' + num.sourceString;
+    const marker = `iq${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
 
   isElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    const marker = 'is' + num.sourceString;
+    const marker = `is${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
@@ -392,7 +397,7 @@ sem.addOperation('composeJson', {
 
   msElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    const marker = 'ms' + num.sourceString;
+    const marker = `ms${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
@@ -404,7 +409,7 @@ sem.addOperation('composeJson', {
 
   mtElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    const marker = 'mt' + num.sourceString;
+    const marker = `mt${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
@@ -416,7 +421,7 @@ sem.addOperation('composeJson', {
 
   mteElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    const marker = 'mte' + num.sourceString;
+    const marker = `mte${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
@@ -486,7 +491,7 @@ sem.addOperation('composeJson', {
 
   crossrefElement(nl, _2, tag, _4, caller, _5, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
-    if (caller.sourceString !== '') { contElmnts.unshift( { caller: caller.sourceString } ); }
+    if (caller.sourceString !== '') { contElmnts.unshift({ caller: caller.sourceString }); }
     const obj = {
       'cross-ref': contElmnts,
       closing: _6.sourceString + _7.sourceString + _8.sourceString,
@@ -506,9 +511,9 @@ sem.addOperation('composeJson', {
     return { [tag.sourceString]: text.sourceString };
   },
 
-  fqaElement(nl, _1, tag, _3, text, _5, closing, _6, _7){
+  fqaElement(nl, _1, tag, _3, text, _5, closing, _6, _7) {
     const obj = { [tag.sourceString]: text.sourceString };
-    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
     return obj;
   },
 
@@ -546,8 +551,10 @@ sem.addOperation('composeJson', {
   },
 
   separateXtElement(xt, _2, closing) {
-    return { 'cross-ref' : [xt.composeJson()],
-      closing: _2.sourceString + closing.sourceString };
+    return {
+      'cross-ref': [xt.composeJson()],
+      closing: _2.sourceString + closing.sourceString,
+    };
   },
 
   crossrefContent(elmnt) {
@@ -563,13 +570,13 @@ sem.addOperation('composeJson', {
   },
 
   xqElement(nl, _1, tag, _3, text, _5, closing, _6) {
-    const obj ={ [tag.sourceString]: text.sourceString }
+    const obj = { [tag.sourceString]: text.sourceString };
     if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
     return obj;
   },
 
   xtElement(nl, _1, tag, _3, text, attrib) {
-    let obj = { [tag.sourceString]: text.sourceString };
+    const obj = { [tag.sourceString]: text.sourceString };
     if (attrib.sourceString !== '') { obj.attributes = attrib.composeJson()[0]; }
     return obj;
   },
@@ -599,7 +606,7 @@ sem.addOperation('composeJson', {
   },
 
   attributesInCrossref(_1, _2, attribs) {
-    let attribObj = attribs.composeJson();
+    const attribObj = attribs.composeJson();
     return attribObj;
   },
 
@@ -643,7 +650,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    obj.closing = closing.sourceString; 
+    obj.closing = closing.sourceString;
     return obj;
   },
 
@@ -863,7 +870,7 @@ sem.addOperation('composeJson', {
     table.text = '';
     for (let i = 0; i < table.table.header.length; i += 1) {
       const key = Object.keys(table.table.header[i])[0];
-      table.text += `${table.table.header[i][key]} ~ `; 
+      table.text += `${table.table.header[i][key]} ~ `;
     }
     table.text += '//';
 
@@ -874,8 +881,8 @@ sem.addOperation('composeJson', {
         emitter.emit('warning', new Error('In-consistent column number in table rows. '));
       }
       for (let j = 0; j < table.table.rows[i].length; j += 1) {
-      const key = Object.keys(table.table.rows[i][j])[0];
-      table.text += `${table.table.rows[i][j][key]} ~ `; 
+        const key = Object.keys(table.table.rows[i][j])[0];
+        table.text += `${table.table.rows[i][j][key]} ~ `;
       }
       table.text += '//';
     }
@@ -903,22 +910,22 @@ sem.addOperation('composeJson', {
 
   thElement(_1, _2, num, _4, text) {
     const marker = `th${num.sourceString}`;
-    return { [marker]: text.sourceString};
+    return { [marker]: text.sourceString };
   },
 
   thrElement(_1, _2, num, _4, text) {
     const marker = `thr${num.sourceString}`;
-    return { [marker]: text.sourceString};
+    return { [marker]: text.sourceString };
   },
 
   tcElement(_1, _2, num, _4, text) {
     const marker = `tc${num.sourceString}`;
-    return { [marker]: text.sourceString};
+    return { [marker]: text.sourceString };
   },
 
   tcrElement(_1, _2, num, _4, text) {
     const marker = `tcr${num.sourceString}`;
-    return { [marker]: text.sourceString};
+    return { [marker]: text.sourceString };
   },
 
   li(itemElement) {
@@ -928,7 +935,7 @@ sem.addOperation('composeJson', {
 
   liElement(_1, _2, _3, num, _5, text) {
     const obj = {};
-    let marker = 'li' + num.sourceString;
+    const marker = `li${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
   },
