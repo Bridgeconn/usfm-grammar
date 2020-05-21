@@ -46,13 +46,18 @@ sem.addOperation('composeJson', {
   scripture(metaData, content) {
     let result = { book:{}, chapters: []};
     const metadata = metaData.composeJson();
+    let meta = [];
     result.book.bookCode = metadata.id.book;
     if (Object.prototype.hasOwnProperty.call(metadata.id,'details')) {
       result.book.description = metadata.id.details;
     }
     if (Object.prototype.hasOwnProperty.call(metadata,'headers')) {
-      result.book.meta = metadata.headers
+      meta = metadata.headers;
     }
+    if (Object.prototype.hasOwnProperty.call(metadata,'introduction')) {
+      meta =  meta.concat(metadata.introduction);
+    }
+    if (meta.length > 0) { result.book.meta = meta; }
     result.chapters = content.composeJson();
     return result;
   },
@@ -339,7 +344,7 @@ sem.addOperation('composeJson', {
   ioElement(_1, _2, _3, num, _5, text) {
     const obj = {};
     const marker = 'io' + num.sourceString;
-    obj.io = text.composeJson();
+    obj[marker] = text.composeJson();
     return obj;
   },
 

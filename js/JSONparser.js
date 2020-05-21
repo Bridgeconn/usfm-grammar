@@ -107,7 +107,7 @@ class JSONparser extends Parser {
         for(let i = 0; i < notes.length; i += 1) {
           let innerKey = Object.keys(notes[i])[0];
           if (innerKey === 'caller') { usfmText += notes[i][innerKey]; }
-          else { usfmText += this.processInnerElements(notes[i], usfmText); }
+          else { usfmText = this.processInnerElements(notes[i], usfmText); }
         }
         usfmText += marker;
 
@@ -134,10 +134,6 @@ class JSONparser extends Parser {
             let attribName = Object.keys(jsonObject.attributes[i])[0];
             if (attribName === 'defaultAttribute') { usfmText += jsonObject.attributes[i].defaultAttribute }
             else { usfmText += ` ${attribName}=\"${jsonObject.attributes[i][attribName]}\"`;
-            if ( i + 1 < jsonObject.attributes.length ) {
-              usfmText += ',';
-            }
-
             }
           }
         }
@@ -152,12 +148,7 @@ class JSONparser extends Parser {
           for (let i = 0; i < jsonObject.attributes.length; i += 1) {
             let attribName = Object.keys(jsonObject.attributes[i])[0];
             if (attribName === 'defaultAttribute') { usfmText += jsonObject.attributes[i].defaultAttribute }
-            else { usfmText += ` ${attribName}=\"${jsonObject.attributes[i][attribName]}\"`;
-            if ( i + 1 < jsonObject.attributes.length ) {
-              usfmText += ',';
-            }
-
-            }
+            else { usfmText += ` ${attribName}=\"${jsonObject.attributes[i][attribName]}\"`; }
           }
         }
         if(Object.prototype.hasOwnProperty.call(jsonObject, 'closing')) {
