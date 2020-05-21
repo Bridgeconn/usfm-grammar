@@ -137,10 +137,10 @@ sem.addOperation('composeJson', {
   },
 
   sectionHeader(s, postHead, ipElement) {
-    const sectionHeaderVar = [];
+    let sectionHeaderVar = [];
     sectionHeaderVar.push(s.composeJson());
-    if (postHead.sourceString !== '') { sectionHeaderVar.push(postHead.composeJson()); }
-    if (ipElement.sourceString !== '') { sectionHeaderVar.push(ipElement.composeJson()); }
+    if (postHead.sourceString !== '') { sectionHeaderVar = sectionHeaderVar.concat(postHead.composeJson()); }
+    if (ipElement.sourceString !== '') { sectionHeaderVar = sectionHeaderVar.concat(ipElement.composeJson()); }
     return sectionHeaderVar;
   },
 
