@@ -222,7 +222,7 @@ usfmBible{
 			notesElement = footnoteElement | crossrefElement | separateXtElement
 			footnoteElement = fElement | feElement 
 			fElement = newLine? backSlash  "f" spaceChar? caller? spaceChar* footnoteContent* backSlash "f*" spaceChar?
-			feElement = newLine? backSlash  "fe"  spaceChar? caller? spaceChar* frElement? text*  backSlash "fe*" spaceChar?
+			feElement = newLine? backSlash  "fe"  spaceChar? caller? spaceChar* footnoteContent*  backSlash "fe*" spaceChar?
 
 
 			caller = "+" | "-" | "?"

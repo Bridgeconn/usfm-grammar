@@ -476,10 +476,8 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-  feElement(nl, _2, tag, _4, caller, _5, fr, text, _6, _7, _8) {
-    const contElmnts = [];
-    if (fr.sourceString !== '') { contElmnts.push(fr.composeJson()); }
-    contElmnts.push(text.composeJson());
+  feElement(nl, _2, tag, _4, caller, _5, content, _6, _7, _8) {
+    const contElmnts = content.composeJson();
     if (caller.sourceString !== '') { contElmnts.unshift({ caller: caller.sourceString }); }
     const obj = {
       footnote: contElmnts,
