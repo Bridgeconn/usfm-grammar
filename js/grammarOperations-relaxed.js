@@ -139,6 +139,14 @@ sem.addOperation('buildJson', {
     return res;
   },
 
+  MilesstoneMarker(_1, mrkr, attribs, _4, _5) {
+    const res = {};
+    res[mrkr.sourceString] = '';
+    res.attributes = attribs.sourceString;
+    res.closing = _4.sourceString + _5.sourceString;
+    return res;
+  }
+
 });
 
 function relaxParse(str) {

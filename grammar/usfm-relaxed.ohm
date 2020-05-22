@@ -1,8 +1,8 @@
 usfmRelaxed{
 	File = BookHead Chapter+
 
-	BookHead = idMarker NormalMarker*
-	Chapter = ChapterMarker (NormalMarker | VerseMarker)+
+	BookHead = idMarker (MilesstoneMarker | ClosedMarker | NormalMarker)*
+	Chapter = ChapterMarker (VerseMarker | MilesstoneMarker | ClosedMarker | NormalMarker )+
 
 	verseNumber = number letter? ("-" number letter?)? 
 	markerName = ~(cTag) ~(vTag) "+"? char+ number?
@@ -13,7 +13,7 @@ usfmRelaxed{
 	spaceChar = " "
 	char = ~(backSlash) ~(newLine) ~spaceChar ~("|")  ~("*")any
 	number = digit+
-	word = spaceChar? char+ spaceChar?
+	word = spaceChar* char+ spaceChar*
 	text =  newLine? word+
 
 	cTag = "c" spaceChar
@@ -21,7 +21,8 @@ usfmRelaxed{
 
 	idMarker = newLine? backSlash "id" spaceChar word text?
 	ChapterMarker = newLine? backSlash cTag number
-	VerseMarker = newLine? backSlash vTag verseNumber  (text | ClosedMarker | NormalMarker)*
+	VerseMarker = newLine? backSlash vTag verseNumber  (text | MilesstoneMarker | ClosedMarker | NormalMarker)*
 	ClosedMarker = backSlash markerName (text | ClosedMarker)* attributes? backSlash markerName "*"
-	NormalMarker = backSlash markerName text* 
+	NormalMarker = backSlash markerName ( text  | ClosedMarker )* 
+	MilesstoneMarker = backSlash markerName attributes? backSlash "*"
 }

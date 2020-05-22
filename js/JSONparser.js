@@ -144,12 +144,14 @@ class JSONparser extends Parser {
         if (Array.isArray(jsonObject[key])) { usfmText = this.processInnerElements(jsonObject[key], usfmText) }
         else if(jsonObject[key] !== null) { usfmText += jsonObject[key]; }
         if (Object.prototype.hasOwnProperty.call(jsonObject, 'attributes')) {
-          usfmText += ' |'
-          for (let i = 0; i < jsonObject.attributes.length; i += 1) {
-            let attribName = Object.keys(jsonObject.attributes[i])[0];
-            if (attribName === 'defaultAttribute') { usfmText += jsonObject.attributes[i].defaultAttribute }
-            else { usfmText += ` ${attribName}=\"${jsonObject.attributes[i][attribName]}\"`; }
-          }
+          if (Array.isArray(jsonObject.attributes)) {
+            usfmText += ' |';
+            for (let i = 0; i < jsonObject.attributes.length; i += 1) {
+              let attribName = Object.keys(jsonObject.attributes[i])[0];
+              if (attribName === 'defaultAttribute') { usfmText += jsonObject.attributes[i].defaultAttribute }
+              else { usfmText += ` ${attribName}=\"${jsonObject.attributes[i][attribName]}\"`; }
+            }
+          } else { usfmText += jsonObject.attributes; }
         }
         if(Object.prototype.hasOwnProperty.call(jsonObject, 'closing')) {
           usfmText += ` ${jsonObject.closing}`
