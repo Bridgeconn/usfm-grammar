@@ -37,10 +37,15 @@ class USFMparser extends Parser {
     return newStr;
   }
 
-  static validate(str) {
-    const inStr = this.normalize(str);
-    // Matching the input with grammar and obtaining the JSON output string
-    const matchObj = match(inStr);
+  static validate(str, mode='normal') {
+    let matchObj = null;
+    if (mode === 'relaxed') {
+      matchObj = relaxParse(str);
+    } else {
+      const inStr = this.normalize(str);
+      // Matching the input with grammar and obtaining the JSON output string
+      matchObj = match(inStr);
+    }
     if (Object.prototype.hasOwnProperty.call(matchObj, 'ERROR')) {
       return false;
     }
