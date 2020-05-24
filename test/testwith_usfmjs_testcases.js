@@ -16,7 +16,7 @@ describe('usfm-js test cases', function () {
   })
 
   it('handles missing chapter markers', () => {
-    generateTest('test/resources/usfm_js/missing_chapters', false)
+    generateTest('test/resources/usfm_js/missing_chapters', false, false)
   })
 
   it('handles out of sequence verse markers', () => {
@@ -120,7 +120,7 @@ describe('usfm-js test cases', function () {
   })
 
   it('converts invalid usfm to json', () => {
-    generateTest('test/resources/usfm_js/invalid', false)
+    generateTest('test/resources/usfm_js/invalid', false, false)
   })
 
   it('handles tw word attributes and spans', () => {
@@ -160,7 +160,7 @@ describe('usfm-js test cases', function () {
   })
 
   it('handles Gen 12:2 empty word', () => {
-    generateTest('test/resources/usfm_js/f10_gen12-2_empty_word', false)
+    generateTest('test/resources/usfm_js/f10_gen12-2_empty_word', false, true)
   })
 
   it('handles jmp tag', () => {
@@ -330,10 +330,10 @@ describe('usfm-js test cases- set II', function () {
   // })
 })
 
-function generateTest(name, expected = true) {
+function generateTest(name, expected = true, expected2 = true) {
     let data = fs.readFileSync(name + '.usfm','utf-8')
     let output = grammar.USFMparser.validate(data);
-    assert.strictEqual(output, expected)
-    delete data;
-    delete output;
+    assert.strictEqual(output, expected);
+    output = grammar.USFMparser.validate(data, mode='relaxed');
+    assert.strictEqual(output, expected2);
 }

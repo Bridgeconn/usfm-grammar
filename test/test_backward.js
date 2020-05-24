@@ -12,7 +12,10 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse one\n\\v 2 verse two'
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
-    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Multiple chapters', function () {
@@ -20,6 +23,9 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Section headings', function () {
@@ -27,6 +33,9 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Header section markers', function () {
@@ -34,6 +43,9 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Footnotes', function () {
@@ -41,6 +53,9 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Cross-refs', function () {
@@ -48,6 +63,9 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Multiple para markers', function () {
@@ -55,6 +73,9 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Character markers', function () {
@@ -62,6 +83,9 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Markers with attributes', function () {
@@ -69,6 +93,9 @@ describe('Reverse Parse: The Basic USFM Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
 })
@@ -79,6 +106,9 @@ describe('Reverse Parse: More Complex Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Header section with more markers', function () {
@@ -86,6 +116,9 @@ describe('Reverse Parse: More Complex Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Character marker nesting', function () {
@@ -93,6 +126,9 @@ describe('Reverse Parse: More Complex Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Markers with default attributes', function () {
@@ -100,6 +136,9 @@ describe('Reverse Parse: More Complex Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Link-attributes and custom attributes', function () {
@@ -107,6 +146,9 @@ describe('Reverse Parse: More Complex Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Table', function () {
@@ -114,6 +156,9 @@ describe('Reverse Parse: More Complex Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 
   it('Milestones', function () {
@@ -121,5 +166,8 @@ describe('Reverse Parse: More Complex Components', function () {
     let jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm)
     let outputUsfm = grammar.JSONparser.parseJSON(jsonOutput)
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''))
+    jsonOutput = grammar.USFMparser.parseUSFM(inputUsfm, mode='relaxed');
+    outputUsfm = grammar.JSONparser.parseJSON(jsonOutput);
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
   })
 })
