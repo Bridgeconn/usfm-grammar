@@ -139,11 +139,22 @@ sem.addOperation('buildJson', {
     return res;
   },
 
-  MilesstoneMarker(_1, mrkr, attribs, _4, _5) {
+  MilesstoneMarkerPair(_1, mrkr, _3, _4, attribs, closing, _5) {
+    const res = {};
+    res[mrkr.sourceString + _3.sourceString + _4.sourceString] = '';
+    res.attributes = attribs.sourceString;
+    if (closing.sourceString != '') { res.closing = closing.sourceString; }
+    return res;
+  },
+
+  MilesstoneMarker(_) {
+    return _.buildJson();
+  },
+
+  MilesstoneMarkerSingle(_1, mrkr, closing, _4) {
     const res = {};
     res[mrkr.sourceString] = '';
-    res.attributes = attribs.sourceString;
-    res.closing = _4.sourceString + _5.sourceString;
+    res.closing = closing.sourceString + _4.sourceString;
     return res;
   }
 

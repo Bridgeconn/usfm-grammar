@@ -5,7 +5,7 @@ usfmRelaxed{
 	Chapter = ChapterMarker (VerseMarker | MilesstoneMarker | ClosedMarker | NormalMarker )+
 
 	verseNumber = number letter? ("-" number letter?)? 
-	markerName = ~(cTag) ~(vTag) "+"? (~("*") ~("|") ~backSlash  ~newLine ~spaceChar any)+ number?
+	markerName = ~(cTag) ~(vTag) "+"? (letter | digit | "_")+ number?
     attributes = "|" (~(backSlash) any)*
 
 	backSlash = "\\"
@@ -24,5 +24,7 @@ usfmRelaxed{
 	VerseMarker = newLine? backSlash vTag verseNumber  (text | MilesstoneMarker | ClosedMarker | NormalMarker)*
 	ClosedMarker = backSlash markerName (text | ClosedMarker)* attributes? backSlash markerName "*"
 	NormalMarker = backSlash markerName ( text  | ClosedMarker )* 
-	MilesstoneMarker = backSlash markerName attributes? backSlash "*"
+	MilesstoneMarker = MilesstoneMarkerSingle | MilesstoneMarkerPair
+	MilesstoneMarkerSingle = backSlash markerName backSlash "*"
+	MilesstoneMarkerPair = backSlash markerName "-" ("s"|"e") attributes? (backSlash "*")?
 }
