@@ -5,13 +5,13 @@ usfmRelaxed{
 	Chapter = ChapterMarker (VerseMarker | MilesstoneMarker | ClosedMarker | NormalMarker )+
 
 	verseNumber = number letter? ("-" number letter?)? 
-	markerName = ~(cTag) ~(vTag) "+"? char+ number?
+	markerName = ~(cTag) ~(vTag) "+"? (~("*") ~("|") ~backSlash  ~newLine ~spaceChar any)+ number?
     attributes = "|" (~(backSlash) any)*
 
 	backSlash = "\\"
 	newLine = ("\r" | "\n")+
 	spaceChar = " "
-	char = ~(backSlash) ~(newLine) ~spaceChar ~("|")  ~("*")any
+	char = ~(backSlash) ~(newLine) ~spaceChar ~("|") any
 	number = digit+
 	word = spaceChar* char+ spaceChar*
 	text =  newLine? word+
