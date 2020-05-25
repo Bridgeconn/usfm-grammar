@@ -1,9 +1,9 @@
 const { match } = require('./grammarOperations.js');
 const { relaxParse } = require('./grammarOperations-relaxed.js');
 const { Parser } = require('./parser.js');
-const { JSONparser } = require('./JSONparser.js');
+const { JSONParser } = require('./JSONparser.js');
 
-class USFMparser extends Parser {
+class USFMParser extends Parser {
   constructor(str, level = 'normal') {
     super();
     this.warnings = [];
@@ -106,17 +106,17 @@ class USFMparser extends Parser {
 
   toCSV() {
     const jsonOutput = this.toJSON();
-    const myJsonParser = new JSONparser(jsonOutput);
+    const myJsonParser = new JSONParser(jsonOutput);
     const csvOutput = myJsonParser.toCSV();
     return csvOutput;
   }
 
   toTSV() {
     const jsonOutput = this.toJSON();
-    const myJsonParser = new JSONparser(jsonOutput);
+    const myJsonParser = new JSONParser(jsonOutput);
     const csvOutput = myJsonParser.toTSV();
     return csvOutput;
   }
 }
 
-exports.USFMparser = USFMparser;
+exports.USFMParser = USFMParser;

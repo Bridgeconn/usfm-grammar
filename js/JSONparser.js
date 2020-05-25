@@ -1,7 +1,7 @@
 // var parser = require('./USFMparser.js')
 const { Parser } = require('./parser.js');
 // const json = require('json')
-class JSONparser extends Parser {
+class JSONParser extends Parser {
   constructor(JSONObject, mode = 'normal') {
     super();
     this.JSONObject = JSONObject;
@@ -200,4 +200,4 @@ class JSONparser extends Parser {
 }
 
 
-exports.JSONparser = JSONparser;
+exports.JSONParser = JSONParser;
