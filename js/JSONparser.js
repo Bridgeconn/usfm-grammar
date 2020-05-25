@@ -2,8 +2,9 @@
 const { Parser } = require('./parser.js');
 // const json = require('json')
 class JSONparser extends Parser {
-  constructor() {
+  constructor(JSONObject, mode = 'normal') {
     super();
+    this.JSONObject = JSONObject;
     this.warnings = [];
     this.noNewLineMarkers = ['w', 'em', 'nd', 'th', 'th1', 'th2', 'th3',
                             'th4', 'th5', 'thr', 'thr1', 'thr2', 'thr3',
@@ -12,27 +13,24 @@ class JSONparser extends Parser {
                             'tcr4', 'tcr5'];
   }
 
-  static validate(JSONObject) {
+  validate() {
     try {
-      this.parseJSON(JSONObject);
+      this.toUSFM(this.JSONObject);
       return true;
     } catch (err) {
       return false;
     }
   }
 
-  static normalize(JSONObject) {
-    const normJson = JSONObject;
+  normalize() {
+    this.warnings = []
+    const normJson = this.JSONObject;
     return normJson;
   }
 
-  static parseJSON(jsonObj) {
-    this.noNewLineMarkers = ['w', 'em', 'nd', 'th', 'th1', 'th2', 'th3',
-                            'th4', 'th5', 'thr', 'thr1', 'thr2', 'thr3',
-                            'thr4', 'thr5', 'tc', 'tc1', 'tc2', 'tc3',
-                            'tc4', 'tc5', 'tcr', 'tcr1', 'tcr2', 'tcr3',
-                            'tcr4', 'tcr5'];
+  toUSFM() {
     let usfmText = '';
+    const jsonObj = this.JSONObject;
     usfmText += '\\id ';
     usfmText += jsonObj.book.bookCode;
     if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'description')) {
@@ -71,7 +69,7 @@ class JSONparser extends Parser {
   }
 
 
-  static processInnerElements(jsonObject, usfm) {
+  processInnerElements(jsonObject, usfm) {
     let usfmText = usfm;
     if(typeof jsonObject === 'string') {
       usfmText += ` ${jsonObject}`;
@@ -161,7 +159,8 @@ class JSONparser extends Parser {
     return usfmText;
   }
 
-  static toCSV(jsonOutput) {
+  toCSV() {
+    const jsonOutput = this.JSONObject;
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book, Chapter, Verse, Text\n';
@@ -179,7 +178,8 @@ class JSONparser extends Parser {
     return csvWriter;
   }
 
-  static toTSV(jsonOutput) {
+  toTSV() {
+    const jsonOutput = this.JSONObject;
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book\tChapter\tVerse\tText\n';

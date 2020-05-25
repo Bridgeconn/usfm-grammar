@@ -4,13 +4,16 @@ const { Parser } = require('./parser.js');
 const { JSONparser } = require('./JSONparser.js');
 
 class USFMparser extends Parser {
-  constructor() {
+  constructor(str, level = 'normal') {
     super();
     this.warnings = [];
+    this.usfmString = str;
+    this.level = level;
   }
 
-  static normalize(str) {
+  normalize() {
     this.warnings = []
+    const str = this.usfmString;
     let newStr = '';
     const multiLinePattern = new RegExp('[\\n\\r][\\n\\r]+', 'g');
     const multiSpacePattern = new RegExp('  +', 'g');
@@ -34,16 +37,17 @@ class USFMparser extends Parser {
       newStr = newStr.replace(bookCode, bookCode.toUpperCase());
       this.warnings.push('Book code is in lowercase. ');
     }
+    this.usfmString = newStr;
     return newStr;
   }
 
-  static validate(str, mode='normal') {
+  validate() {
+    const str = this.usfmString;
     let matchObj = null;
-    if (mode === 'relaxed') {
-      matchObj = relaxParse(str);
+    const inStr = this.normalize(str);
+    if (this.level === 'relaxed') {
+      matchObj = relaxParse(inStr);
     } else {
-      const inStr = this.normalize(str);
-      // Matching the input with grammar and obtaining the JSON output string
       matchObj = match(inStr);
     }
     if (Object.prototype.hasOwnProperty.call(matchObj, 'ERROR')) {
@@ -52,11 +56,12 @@ class USFMparser extends Parser {
     return true;
   }
 
-  static parseUSFM(str, resultType = 'normal', mode = 'normal') {
+  toJSON(filter = 'normal') {
+    const str = this.usfmString;
     let matchObj = null;
-    if (mode === 'relaxed') {
-      // console.log('coming into relaxed parsing');
-      matchObj = relaxParse(str);
+    if (this.level === 'relaxed') {
+      const inStr = this.normalize(str);
+      matchObj = relaxParse(inStr);
       return matchObj;
     }
     const inStr = this.normalize(str);
@@ -68,7 +73,7 @@ class USFMparser extends Parser {
         this.warnings = this.warnings.concat(matchObj.warnings);
         // console.log(this.warnings)
       }
-      if (resultType === 'clean') {
+      if (filter === 'clean') {
         const newJsonOutput = { book: {}, chapters: [] };
         newJsonOutput.book.bookCode = jsonOutput.book.bookCode;
         newJsonOutput.book.description = jsonOutput.book.description;
@@ -90,19 +95,27 @@ class USFMparser extends Parser {
           newJsonOutput.chapters.push(chapter);
         }
         jsonOutput = newJsonOutput;
-      } else if (resultType === 'csv') {
-        const csvOutput = JSONparser.toCSV(jsonOutput);
-        return csvOutput;
-      } else if (resultType === 'tsv') {
-        const tsvOutput = JSONparser.toTSV(jsonOutput);
-        return tsvOutput;
-      }
+      } 
       if (this.warnings !== []) {
         jsonOutput._messages = { warnings: this.warnings };
       }
       return jsonOutput;
     }
     return matchObj;
+  }
+
+  toCSV() {
+    const jsonOutput = this.toJSON();
+    const myJsonParser = new JSONparser(jsonOutput);
+    const csvOutput = myJsonParser.toCSV();
+    return csvOutput;
+  }
+
+  toTSV() {
+    const jsonOutput = this.toJSON();
+    const myJsonParser = new JSONparser(jsonOutput);
+    const csvOutput = myJsonParser.toTSV();
+    return csvOutput;
   }
 }
 
