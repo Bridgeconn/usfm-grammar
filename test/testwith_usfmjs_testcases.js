@@ -332,8 +332,10 @@ describe('usfm-js test cases- set II', function () {
 
 function generateTest(name, expected = true, expected2 = true) {
     let data = fs.readFileSync(name + '.usfm','utf-8')
-    let output = grammar.USFMparser.validate(data);
+    const myUsfmParser = new grammar.USFMParser(data);
+    let output = myUsfmParser.validate();
     assert.strictEqual(output, expected);
-    output = grammar.USFMparser.validate(data, mode='relaxed');
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    output = relaxedUsfmParser.validate();
     assert.strictEqual(output, expected2);
 }
