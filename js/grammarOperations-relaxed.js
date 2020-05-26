@@ -64,7 +64,7 @@ sem.addOperation('buildJson', {
   },
 
   text(_1, txt) {
-    return txt.sourceString;
+    return txt.sourceString.trim();
   },
 
   idMarker(_1, _2, _3, _4, cod, desc) {
@@ -74,18 +74,18 @@ sem.addOperation('buildJson', {
       },
     };
     if (desc.sourceString !== '') {
-      res.id.description = desc.sourceString;
+      res.id.description = desc.sourceString.trim();
     }
     return res;
   },
 
   ChapterMarker(_1, _2, _3, num) {
-    return num.sourceString;
+    return num.sourceString.trim();
   },
 
   VerseMarker(_1, _2, _3, num, contents) {
     let res = {
-      verseNumber: num.sourceString,
+      verseNumber: num.sourceString.trim(),
       contents: contents.buildJson(),
     };
     res.verseText = '';
@@ -108,6 +108,7 @@ sem.addOperation('buildJson', {
         }
       }
     }
+    res.verseText = res.verseText.replace(/ +/g, ' ').trim();
     return res;
   },
 
@@ -121,7 +122,7 @@ sem.addOperation('buildJson', {
     }
     res[mrkr.sourceString] = contentslist;
     if (attribs.sourceString !== '') {
-      res.attributes = attribs.sourceString;
+      res.attributes = attribs.sourceString.trim();
     }
     res.closing = `\\${mrkr2.sourceString}*`;
     return res;
@@ -142,7 +143,7 @@ sem.addOperation('buildJson', {
   MilesstoneMarkerPair(_1, mrkr, _3, _4, attribs, closing, _5) {
     const res = {};
     res[mrkr.sourceString + _3.sourceString + _4.sourceString] = '';
-    res.attributes = attribs.sourceString;
+    res.attributes = attribs.sourceString.trim();
     if (closing.sourceString != '') { res.closing = closing.sourceString; }
     return res;
   },
