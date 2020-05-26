@@ -220,9 +220,10 @@ usfmBible{
 			considered along with the text following it. */
 
 			notesElement = footnoteElement | crossrefElement | separateXtElement
-			footnoteElement = fElement | feElement 
+			footnoteElement = fElement | feElement | efElement
 			fElement = newLine? backSlash  "f" spaceChar? caller? spaceChar* footnoteContent* backSlash "f*" spaceChar?
 			feElement = newLine? backSlash  "fe"  spaceChar? caller? spaceChar* footnoteContent*  backSlash "fe*" spaceChar?
+			efElement = newLine? backSlash "ef" spaceChar? caller? spaceChar* (footnoteContent | separateXtElement | charElement)* backSlash "ef*" spaceChar?
 
 
 			caller = "+" | "-" | "?"
@@ -241,7 +242,7 @@ usfmBible{
 			fdcElement = newLine? backSlash "fdc" spaceChar text* (backSlash "fdc" "*" spaceChar?)?
 			fmElement = newLine? backSlash "fm" spaceChar text* (backSlash "fm" "*" spaceChar?)?
 
-			crossrefElement = newLine? backSlash  "x" spaceChar? caller? spaceChar? crossrefContent* backSlash "x*" spaceChar?
+			crossrefElement = newLine? backSlash  ("x"|"ex") spaceChar? caller? spaceChar? crossrefContent* backSlash ("x*"|"ex*") spaceChar?
 							
 
 			crossrefContent  = text | xoElement | xkElement | xqElement | xtElement | xtaElement | xopElement | xotElement | xntElement | xdcElement | rqElement | nestedCharElement
