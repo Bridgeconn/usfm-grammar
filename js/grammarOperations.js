@@ -577,12 +577,16 @@ sem.addOperation('composeJson', {
     return elmnt.composeJson();
   },
 
-  xoElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  xoElement(nl, _1, tag, _3, text, _5, closing, _6) {
+    const obj ={ [tag.sourceString]: text.sourceString }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
-  xkElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  xkElement(nl, _1, tag, _3, text, _5, closing, _6) {
+    const obj ={ [tag.sourceString]: text.sourceString }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
   xqElement(nl, _1, tag, _3, text, _5, closing, _6) {
@@ -597,8 +601,10 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-  xtaElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  xtaElement(nl, _1, tag, _3, text, _5, closing, _6) {
+    const obj ={ [tag.sourceString]: text.sourceString }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
   xopElement(nl, _1, tag, _3, text, _5, closing, _7) {

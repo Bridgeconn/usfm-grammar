@@ -248,11 +248,11 @@ usfmBible{
             separateXtElement = xtElement backSlash ("xt*" | "x*") spaceChar?
 
 			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| defaultAttribute)+
-			xoElement = newLine? backSlash "xo" spaceChar text*
-			xkElement = newLine? backSlash "xk" spaceChar text*
+			xoElement = newLine? backSlash "xo" spaceChar text* (backSlash "xo*" spaceChar?)?
+			xkElement = newLine? backSlash "xk" spaceChar text* (backSlash "xk*" spaceChar?)?
 			xqElement = newLine? backSlash "xq" spaceChar text* (backSlash "xq*" spaceChar?)?
 			xtElement = newLine? backSlash "xt" spaceChar text* attributesInCrossref?
-			xtaElement = newLine? backSlash "xta" spaceChar text*
+			xtaElement = newLine? backSlash "xta" spaceChar text* (backSlash "xta*" spaceChar?)?
 			xopElement = newLine? backSlash "xop" spaceChar text* (backSlash "xop*" spaceChar?)?			xotElement = newLine? backSlash "xot" spaceChar text* (backSlash "xot*" spaceChar?)?
 			xntElement = newLine? backSlash "xnt" spaceChar text* (backSlash "xnt*" spaceChar?)?
 			xdcElement = newLine? backSlash "xdc" spaceChar text* (backSlash "xdc*" spaceChar?)?
