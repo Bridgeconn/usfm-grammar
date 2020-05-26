@@ -215,6 +215,101 @@ describe('Ensure all true positives', () => {
 
 });
 
+describe('Ensure support for extended study contents', () => {
+  beforeEach(function() {
+  if (global.gc) { global.gc(); }
+  });
+
+  it('Extended book Introductions 1', () => {
+    const inputUsfm = '\\id MRK - Good News Study Bible - Notes Material\n\\iot Outline of Contents\n\\io1 The beginning of the gospel 1.1-13\n\\io1 Jesus\' public ministry in Galilee 1.14-9.50\n\\io1 From Galilee to Jerusalem 10.1-52\n\\io1 The last week in and near Jerusalem 11.1-15.47\n\\io1 The resurrection of Jesus 16.1-8\n\\io1 [An Old Ending to the Gospel 16.9-20]\n\\io1 [Another Old Ending 16.9-10]\n\\ip The opening words of \\bk The Gospel according to Mark\\bk* tell its readers that the\nsubject of this book is the Good News about Jesus Christ. With the coming of Jesus Christ,\nit announces, the time set by God to bring salvation to humankind has arrived (1.15).\nThough the book concentrates on his deeds and words, it is not a biography of Jesus of\nNazareth. Only one year, or a little more, of Jesus\' life appears to be recorded (chapters\n1--10), and over one-third of the book (chapters 11--16) is taken up with the last week of\nJesus in and near \\w Jerusalem\\w*. Nothing is said about his birth, childhood, home, or\nparents. When he first appears, unknown and unannounced, Jesus is a full-grown adult who\ncomes to John the Baptist to be \\w baptized\\w* by him.\n\\ip The author\'s primary interest in writing is religious. The Gospel is written "from\n\\w faith\\w* to faith". ...\n\\c 1\n\\p\n\\v 1 sample verse';
+    const myUsfmParser = new grammar.USFMParser(inputUsfm);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
+
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
+  });
+
+  it('Extended book Introductions 2', () => {
+    const inputUsfm = '\\id MRK - Good News Study Bible - Notes Material\n\\is1 The Story\n\\ip \\bk Mark\'s\\bk* story of Jesus is told quickly and with an abundance of details that\nenhance its dramatic impact. Jesus appears suddenly in Judea, where he joins those who\nare being baptized in the Jordan by John the Baptist. Just as suddenly, he returns to\nGalilee, where he proclaims the message that the \\w kingdom of god\\w* is about to\narrive...\n\\c 1\n\\p\n\\v 1 sample verse';
+    const myUsfmParser = new grammar.USFMParser(inputUsfm);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
+
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
+  });
+
+  it('Extended book Introductions 3', () => {
+    const inputUsfm = '\\id MRK - Good News Study Bible - Notes Material\n\\ip However, he is more than a teacher, healer, or \\w miracle\\w*-worker. He is also the\nMessiah, the Son of God, the Son of Man. These three titles express the first Christians\'\nunderstanding of who Jesus is.\n\\ili 1 \\k The Messiah\\k* is the one promised by God, the one who would come and free God\'s\npeople. By the time \\bk The Gospel of Mark\\bk* appeared, the title "Messiah" (in Greek,\n"\\w christ\\w*") had become a proper name, so that the Gospel opens with "the Good News\nabout Jesus Christ" (and not "Jesus the Christ"). Peter\'s confession (8.29) marks a\nturning-point in the ministry of Jesus. The title "\\w son of  david\\w* " (10.46-48) also\nidentifies Jesus as the Messiah, who would restore to Israel the power and glory it\nenjoyed under David\'s reign (also 12.35-37).\n\\ili 2 \\k The Son of God\\k* is the title by which the heavenly voice addresses Jesus at\nhis baptism (1.11) and his transfiguration (9.7). And at Jesus\' death the Roman officer\nconfesses that Jesus is the Son of God (15.39).\n\\ili 3 \\k The Son of Man\\k* is the title most often used of Jesus, and it appears only on\nthe lips of Jesus. This enigmatic title appears in \\bk The Book of Daniel\\bk* (Dan 7.13n),\nwhere it is applied to the exalted figure to whom God gives universal dominion. In\n\\bk Mark\\bk* the title is used of Jesus in three ways: the Son of Man acts with divine\npower (2.10, 28); he will be rejected, will suffer and die (8.31; 9.9, 12, 31; 10.33-34,\n45; 14.21, 41); he will return in power and glory (8.38; 13.26; 14.62).\\c 1\n\\p\n\\v 1 sample verse';
+    const myUsfmParser = new grammar.USFMParser(inputUsfm);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
+
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
+  });
+
+  // it('Division and section Introductions', () => {
+  //   const inputUsfm = '\\id MRK - Good News Study Bible - Notes Material\n\\c 1\n\\p\n\\v 12 At once the Spirit made him go into the desert, \\v 13 where he stayed 40 days, being\ntempted by Satan. Wild animals were there also, but angels came and helped him.\n\\ms Jesus\' Public Ministry in Galilee\n\\mr 1.14--9.50\n\\ip Jesus returns to Galilee and does not go back to Judea until the close of his public\nministry. There is no indication of how long his Galilean ministry lasted: only when he is\nback in Judea is a \\w festival \\ft (\\w passover\\ft ) mentioned (14.1). He spends much of his\ntime in Capernaum (1.21; 2.1; 3.1, 20; 9.33) and other places around Lake Galilee (1.9; 2.13;\n3.7; 4.1). Twice Jesus ventures out of Galilee: into the region of the Ten Towns (5.1-20) and\nPhoenicia (7.24-31). His actions and teachings soon arouse opposition from the religious\nleaders (2.6-7, 24; 3.6, 22; 7.1-13; 8.11-12), and before long he predicts his coming arrest,\ncondemnation, and crucifixion (8.31; 9.30-31).\n\\s1 Jesus Calls Four Fishermen\n\\r (Mt 4.12-22; Lk 4.14-15; 5.1-11)\n\\ip Jesus\' message is about the arrival of the \\w kingdom of god\\w*, which will happen soon.\nTo prepare for it, the people need to repent (1.15). He immediately summons two pairs of\nfishermen brothers to be his followers and helpers.\n\\p\n\\v 14 After John had been put in prison, Jesus went to Galilee and preached the Good News\nfrom God.';
+  //   const myUsfmParser = new grammar.USFMParser(inputUsfm);
+  //   const output = myUsfmParser.validate();
+  //   const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+  //   const relaxedOutput = relaxedUsfmParser.validate();
+
+  //   assert.strictEqual(relaxedOutput, true);
+  //   assert.strictEqual(output, true);
+  // });
+
+  it('Extended Footnotes', () => {
+    const inputUsfm = '\\id MRK - Good News Study Bible - Notes Material\n\\c 1\n\\p\n\\v 1 This is the Good News about Jesus Christ, the Son of God\\ef - \\fr 1.1: \\fq the Son\nof God: \\ft Not included in some manuscripts.\\ef*.\\f + \\fr 1.1 \\ft Some manuscripts do\nnot have \\fq the Son of God.\\f*\n\\v 2 \\ef - \\fr 1.2: \\fk Prophet\\ef*It began as the prophet Isaiah had written\\ef - \\fr 1.2:\n\\fq Isaiah had written: \\ft The quotation in 1.2 is from Mal 3.1; “ahead of you” may be\nfrom Ex 23.20, “Someone is shouting in the desert, ‘Get the road ready for the Lord; make\na straight path for our God to travel!’ ”.\\ef*:\\x - \\xo 1.2: \\xt Mal 3.1\\x*\n\\q1 “God said, ‘I will send my messenger ahead of you\n\\q2 to clear the way for you.’\n\\q1\n\\v 3 Someone is shouting in the desert,\\x - \\xo 1.3: \\xt Is 40.3 (LXX)\\x*\n\\q2 ‘Get the road ready for the Lord;\n\\q2 make a straight path for him to travel\\ef - \\fr 1.3: \\fq someone is…travel: \\ft is from\nIs 40.3, following Septuagint; the Hebrew means, “Get the road ready in the desert”.\\ef*!’”\n\\p\n\\v 4 \\ef - \\fr 1.4: \\fk Baptizing\\ef*So John appeared\\ef - \\fr 1.4: \\fq John appeared:\n\\ft John probably began his ministry in AD 27 (Lk 3.1-3).\\ef* in the desert\\ef - \\fr 1.4:\n\\fq the desert: \\ft The desolate region on the west side of the River Jordan, not far from\nwhere it empties into the Dead Sea.\\ef*, baptizing and preaching.\\f + \\fr 1.4 \\fq John\nappeared in the desert, baptizing and preaching; \\ft some manuscripts have \\fq John the\nBaptist appeared in the desert, preaching.\\f*\\ef - \\fr 1.4: \\fq John…baptizing and      preaching:\n\\ft Some manuscripts have “John the Baptist appeared in the desert, preaching”.\\ef* “Turn\naway from your sins and be baptized,” he told the people, “and God will forgive your sins.”\n\\v 5 Many people from the province of Judea\\ef - \\fr 1.5: \\fq Judea: \\ft One of the\nprovinces, in the south, into which the land of Israel was then divided.\\ef* and the city\nof Jerusalem went out to hear John. They confessed their sins, and he baptized them in\nthe River Jordan.\n...';
+    const myUsfmParser = new grammar.USFMParser(inputUsfm);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
+
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
+  });
+
+  it('Side bars', () => {
+    const inputUsfm = '\\id MRK - Good News Study Bible - Notes Material\n\\c 1\n\\p\n\\v 18 At once they left their nets and went with him.\n\\esb \\cat History\\cat*\n\\ms Fish and Fishing\n\\p In Jesus\' time, fishing took place mostly on lake Galilee, because Jewish people\ncould not use many of the harbors along the coast of the Mediterranean Sea, since these\nharbors were often controlled by unfriendly neighbors. The most common fish in the Lake\nof Galilee were carp and catfish. The Law of Moses allowed people to eat any fish with\nfins and scales, but since catfish lack scales (as do eels and sharks) they were not to\nbe eaten (\\xt Lev 11.9-12\\xt*). Fish were also probably brought from Tyre and Sidon,\nwhere they were dried and salted.\n...\n\\p Among early Christians, the fish was a favorite image for Jesus, because the Greek\nword for fish (\\tl ichthus\\tl*) consists of the first letters of the Greek words that\ntell who Jesus is: \\fig Christian Fish Image\\fig*\n\\esbe\n\\p\\v 19 He went a little farther on and saw two other brothers, James and John,\nthe sons of Zebedee.';
+    const myUsfmParser = new grammar.USFMParser(inputUsfm);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
+
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
+  });
+
+  it('Content Catogories 1', () => {
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 This is the list of the ancestors of Jesus Christ, a descendant of David, who\nwas a descendant of Abraham.\n\\p\n\\v 2-6a From Abraham to King David, the following ancestors are listed: Abraham,\nIsaac, Jacob, Judah and his brothers; then Perez and Zerah (their mother was Tamar\n\\ef - \\cat People\\cat*\\fr 1.2-6a: \\fq Tamar: \\ft Bore her twin sons out of wedlock\n(Gen 38.6-30).\\ef*), Hezron, Ram, Amminadab, Nahshon, Salmon, Boaz (his mother was Rahab\n\\ef - \\cat People\\cat*\\fr 1.2-6a: \\fq Rahab: \\ft A prostitute in Jericho (Josh 2.1-21;\n6.17-25; Jas 2.25).\\ef*), Obed (his mother was Ruth\\ef - \\cat People\\cat*\\fr 1.2-6a:\n\\fq Ruth: \\ft A Moabite (Ruth 1.4). Only outstanding women were normally included in\nJewish genealogical lists.\\ef*), Jesse, and King David.\n\\p\n\\v 6b-11 From David to the time when the people of Israel were taken into exile in\nBabylon\\ef - \\fr 1.6b-11: \\fq exile in Babylon: \\ft In 597 \\sc BC\\sc* King Nebuchadnezzar\nof Babylonia conquered Jerusalem and took many of its inhabitants as prisoners to his\ncountry (2 Kgs 24.10-16; 2 Chr 36.9-10).\\ef*, the following ancestors are listed: ...\n';
+    const myUsfmParser = new grammar.USFMParser(inputUsfm);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
+
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
+  });
+
+  it('Content Catogories 2', () => {
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 4 \\ef - \\fr 2.4: \\fk Chief Priests\\ef*\\ef - \\fr 2.4: \\fk Teachers of the Law\\ef*He\ncalled together all the chief priests and the teachers of the Law and asked them, “Where\nwill the Messiah be born?”\n\\esb \\cat Ideas\\cat*\n\\ms Dates in B.C. and A.D.\n\\p The initials \\sc b.c.\\sc* have traditionally been an abbreviation for “Before Christ.”\nIf \\bk Luke\\bk*\'s dating is correct, then Jesus was born at least four years before the\nyears known as \\sc a.d.\\sc* began. (\\sc a.d.\\sc* stands for the Latin phrase “in the year\nof our Lord”). Christian dating was actually not introduced until \\sc a.d.\\sc* 526 by a\nmonk named Dionysius Exiguus. He was given the job of creating a calendar for the feasts\nof the church. He fixed the birth of Jesus in the Roman year 754, which was selected as\nthe first year of the Christian era beginning on January 1. Dionysius apparently\nmisjudged Herod\'s reign by about five years.\n\\p The initials \\sc b.c.\\sc*e. (Before the Common Era) and c.e. (in the Common Era) are\nsometimes used for the traditional \\sc b.c.\\sc* and \\sc a.d.\\sc*\n\\esbe\n\\p\n\\v 5 \\ef - \\fr 2.5: \\fk Prophet\\ef*“In the town of Bethlehem in Judea,” they answered.\n“For this is what the prophet wrote:';
+    const myUsfmParser = new grammar.USFMParser(inputUsfm);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
+
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
+  });
+
+});
+
 describe('Test with usfm files from the wild', () => {
   beforeEach(function() {
     if (global.gc) { global.gc(); }
