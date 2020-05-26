@@ -6,11 +6,17 @@ class JSONParser extends Parser {
     super();
     this.JSONObject = JSONObject;
     this.warnings = [];
-    this.noNewLineMarkers = ['w', 'em', 'nd', 'th', 'th1', 'th2', 'th3',
-                            'th4', 'th5', 'thr', 'thr1', 'thr2', 'thr3',
-                            'thr4', 'thr5', 'tc', 'tc1', 'tc2', 'tc3',
-                            'tc4', 'tc5', 'tcr', 'tcr1', 'tcr2', 'tcr3',
-                            'tcr4', 'tcr5'];
+    this.noNewLineMarkers = ['va', 'vp', 'qs', 'qac', 'litl', 'lik', 'lik1', 'lik2', 'lik3',
+                              'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3', 'th4', 'th5', 
+                              'thr', 'thr1', 'thr2', 'thr3', 'thr4', 'thr5', 'tc', 'tc1', 'tc2', 'tc3',
+                              'tc4', 'tc5', 'tcr', 'tcr1', 'tcr2', 'tcr3', 'tcr4', 'tcr5', 'f', 'fe',
+                              'fr', 'fq', 'fqa', 'fk', 'fl', 'fw', 'fp', 'fv', 'ft', 'fdc', 'fm', 'x',
+                              'xo', 'xk', 'xq', 'xt', 'xta', 'xop', 'xot', 'xnt', 'xdc', 'rq', 'add', 'bk',
+                              'dc', 'k', 'lit', 'nd', 'ord', 'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl',
+                              'wj', 'em', 'bd', 'it', 'bdit', 'no', 'sc', 'sup', 'fig', '+add', '+bk',
+                              '+dc', '+k', '+lit', '+nd', '+ord', '+pn', '+png', '+addpn', '+qt', '+sig',
+                              '+sls', '+tl', '+wj', '+em', '+bd', '+it', '+bdit', '+no', '+sc', '+sup', 'jmp',
+                              ];
   }
 
   validate() {
