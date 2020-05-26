@@ -501,12 +501,16 @@ sem.addOperation('composeJson', {
     return elmnt.composeJson();
   },
 
-  frElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  frElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
-  fqElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  fqElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
   fqaElement(nl, _1, tag, _3, text, _5, closing, _6, _7){
@@ -515,32 +519,46 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-  fkElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  fkElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
-  flElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  flElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
-  fwElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  fwElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
-  fpElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  fpElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
   fvElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
-    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
-  ftElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  ftElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
   fdcElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
-    return { [tag.sourceString]: text.sourceString, closing: closing.sourceString };
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
 

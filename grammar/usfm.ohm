@@ -229,15 +229,15 @@ usfmBible{
 
 			footnoteContent = text | frElement | fqElement | fqaElement | fkElement | flElement | fwElement
 									| fpElement | fvElement | ftElement | fdcElement | fmElement | nestedCharElement
-			frElement = newLine? backSlash "fr" spaceChar text*
-			fqElement = newLine? backSlash "fq" spaceChar text*
+			frElement = newLine? backSlash "fr" spaceChar text* (backSlash "fr" "*" spaceChar?)?
+			fqElement = newLine? backSlash "fq" spaceChar text* (backSlash "fq" "*" spaceChar?)?
 			fqaElement = newLine? backSlash "fqa" spaceChar text* (backSlash "fqa" "*" spaceChar?)?
-			fkElement = newLine? backSlash "fk" spaceChar text*
-			flElement = newLine? backSlash "fl" spaceChar text*
-			fwElement = newLine? backSlash "fw" spaceChar text*
-			fpElement = newLine? backSlash "fp" spaceChar text*
+			fkElement = newLine? backSlash "fk" spaceChar text* (backSlash "fk" "*" spaceChar?)?
+			flElement = newLine? backSlash "fl" spaceChar text* (backSlash "fl" "*" spaceChar?)?
+			fwElement = newLine? backSlash "fw" spaceChar text* (backSlash "fw" "*" spaceChar?)?
+			fpElement = newLine? backSlash "fp" spaceChar text* (backSlash "fp" "*" spaceChar?)?
 			fvElement = newLine? backSlash "fv" spaceChar text* (backSlash "fv" "*" spaceChar?)?
-			ftElement = newLine? backSlash "ft" spaceChar text*
+			ftElement = newLine? backSlash "ft" spaceChar text* (backSlash "ft" "*" spaceChar?)?
 			fdcElement = newLine? backSlash "fdc" spaceChar text* (backSlash "fdc" "*" spaceChar?)?
 			fmElement = newLine? backSlash "fm" spaceChar text* (backSlash "fm" "*" spaceChar?)?
 
