@@ -239,13 +239,13 @@ usfmBible{
 			fvElement = newLine? backSlash "fv" spaceChar text* (backSlash "fv" "*" spaceChar?)?
 			ftElement = newLine? backSlash "ft" spaceChar text*
 			fdcElement = newLine? backSlash "fdc" spaceChar text* (backSlash "fdc" "*" spaceChar?)?
-			fmElement = newLine? backSlash "fm" spaceChar text*
+			fmElement = newLine? backSlash "fm" spaceChar text* (backSlash "fm" "*" spaceChar?)?
 
 			crossrefElement = newLine? backSlash  "x" spaceChar? caller? spaceChar? crossrefContent* backSlash "x*" spaceChar?
 							
 
 			crossrefContent  = text | xoElement | xkElement | xqElement | xtElement | xtaElement | xopElement | xotElement | xntElement | xdcElement | rqElement | nestedCharElement
-            separateXtElement = xtElement backSlash ("xt*" | "x*")
+            separateXtElement = xtElement backSlash ("xt*" | "x*") spaceChar?
 
 			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| defaultAttribute)+
 			xoElement = newLine? backSlash "xo" spaceChar text*

@@ -544,11 +544,13 @@ sem.addOperation('composeJson', {
   },
 
 
-  fmElement(nl, _1, tag, _3, text) {
-    return { [tag.sourceString]: text.sourceString };
+  fmElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
+    const obj = { [tag.sourceString]: text.sourceString };
+    if (closing.sourceString != '') { obj.closing = closing.sourceString; }
+    return obj;
   },
 
-  separateXtElement(xt, _2, closing) {
+  separateXtElement(xt, _2, closing, _4) {
     return { 'cross-ref' : [xt.composeJson()],
       closing: _2.sourceString + closing.sourceString };
   },
