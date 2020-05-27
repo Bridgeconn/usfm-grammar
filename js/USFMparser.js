@@ -59,9 +59,9 @@ class USFMParser extends Parser {
     let matchObj = null;
     if (this.level === 'relaxed') {
       matchObj = relaxParse(inStr);
-      return matchObj;
+    } else {
+      matchObj = match(inStr);
     }
-    matchObj = match(inStr);
 
     if (!Object.prototype.hasOwnProperty.call(matchObj, 'ERROR')) {
       let jsonOutput = matchObj.parseStructure;

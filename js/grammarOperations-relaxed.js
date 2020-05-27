@@ -1,4 +1,4 @@
-const ohm = require('ohm-js');
+const ohm = require('../ohm-0.15.0');
 const { contents: grammar } = require('../grammar/usfm-relaxed.ohm.js');
 
 const { usfmRelaxed: bib } = ohm.grammars(grammar);
@@ -19,10 +19,12 @@ const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
 
 sem.addOperation('buildJson', {
   File(bookhead, chapters) {
-    const res = {
+    const parse = {
       book: bookhead.buildJson(),
       chapters: chapters.buildJson(),
     };
+    const res = { parseStructure: parse, warnings: [] };
+
     return res;
   },
 
