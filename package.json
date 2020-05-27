@@ -7,11 +7,7 @@
         "test": "mocha --expose-gc --timeout 40000",
         "start": "node ../server.js"
     },
-    "dependencies": {
-        "formidable": "^1.2.2",
-        "ohm-js": "^0.13.1",
-        "stringify-object": "^3.3.0"
-    },
+    "dependencies": {},
     "repository": {
         "type": "git",
         "url": "ssh://git@github.com/Bridgeconn/usfm-grammar.git"
@@ -35,5 +31,6 @@
         "eslint-config-airbnb-base": "^14.1.0",
         "eslint-plugin-import": "^2.20.2",
         "mocha": "^6.2.3"
-    }
+    },
+    "bin": { "usfm-grammar": "./cli.js" }
 }
