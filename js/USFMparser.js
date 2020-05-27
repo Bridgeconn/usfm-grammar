@@ -7,13 +7,12 @@ class USFMParser extends Parser {
   constructor(str, level = 'normal') {
     super();
     this.warnings = [];
-    this.usfmString = str;
+    this.usfmString = this.normalize(str);
     this.level = level;
   }
 
-  normalize() {
+  normalize(str) {
     this.warnings = [];
-    const str = this.usfmString;
     let newStr = '';
     const multiLinePattern = new RegExp('[\\n\\r][\\n\\r]+', 'g');
     const multiSpacePattern = new RegExp('  +', 'g');
@@ -42,9 +41,8 @@ class USFMParser extends Parser {
   }
 
   validate() {
-    const str = this.usfmString;
     let matchObj = null;
-    const inStr = this.normalize(str);
+    const inStr = this.usfmString;
     if (this.level === 'relaxed') {
       matchObj = relaxParse(inStr);
     } else {
@@ -57,14 +55,12 @@ class USFMParser extends Parser {
   }
 
   toJSON(filter = 'normal') {
-    const str = this.usfmString;
+    const inStr = this.usfmString;
     let matchObj = null;
     if (this.level === 'relaxed') {
-      const inStr = this.normalize(str);
       matchObj = relaxParse(inStr);
       return matchObj;
     }
-    const inStr = this.normalize(str);
     matchObj = match(inStr);
 
     if (!Object.prototype.hasOwnProperty.call(matchObj, 'ERROR')) {
