@@ -1,4 +1,4 @@
-const ohm = require('ohm-js');
+const ohm = require('../ohm-0.15.0');
 const Events = require('events');
 
 const emitter = new Events.EventEmitter();
