@@ -12,7 +12,7 @@ class USFMParser extends Parser {
   }
 
   normalize() {
-    this.warnings = []
+    this.warnings = [];
     const str = this.usfmString;
     let newStr = '';
     const multiLinePattern = new RegExp('[\\n\\r][\\n\\r]+', 'g');
@@ -78,15 +78,15 @@ class USFMParser extends Parser {
         newJsonOutput.book.bookCode = jsonOutput.book.bookCode;
         newJsonOutput.book.description = jsonOutput.book.description;
         for (let i = 0; i < jsonOutput.chapters.length; i += 1) {
-          let chapter = {};
+          const chapter = {};
           chapter.chapterNumber = jsonOutput.chapters[i].chapterNumber;
           chapter.contents = [];
           // console.log(jsonOutput.chapters[i].contents);
           for (let j = 0; j < jsonOutput.chapters[i].contents.length; j += 1) {
-            let key = Object.keys(jsonOutput.chapters[i].contents[j])[0];
+            const key = Object.keys(jsonOutput.chapters[i].contents[j])[0];
             // console.log(jsonOutput.chapters[i].contents[j]);
-            if(key === 'verseNumber') {
-              let verse = {};
+            if (key === 'verseNumber') {
+              const verse = {};
               verse.verseNumber = jsonOutput.chapters[i].contents[j].verseNumber;
               verse.verseText = jsonOutput.chapters[i].contents[j].verseText;
               chapter.contents.push(verse);
@@ -95,9 +95,9 @@ class USFMParser extends Parser {
           newJsonOutput.chapters.push(chapter);
         }
         jsonOutput = newJsonOutput;
-      } 
+      }
       if (this.warnings !== []) {
-        jsonOutput._messages = { warnings: this.warnings };
+        jsonOutput._messages = { _warnings: this.warnings };
       }
       return jsonOutput;
     }

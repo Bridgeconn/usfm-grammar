@@ -63,7 +63,7 @@ Try out the usfm-grammar based convertor online: https://usfm.vachanengine.org
     }
   ],
   "_messages": {
-    "warnings": [ "Book code is in lowercase." ] }
+    "_warnings": [ "Book code is in lowercase." ] }
 }
 
 ```

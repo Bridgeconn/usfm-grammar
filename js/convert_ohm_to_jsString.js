@@ -9,7 +9,7 @@ const newline = new RegExp('\\n', 'g');
 
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
-fs.readFile('grammar/usfm.ohm','utf-8', function (err, data) {
+fs.readFile('grammar/usfm.ohm', 'utf-8', (err, data) => {
   if (err) { throw err; }
   grammarString = data.replace(commentsOneLine, '');
   grammarString = grammarString.replace(commentsMultiLine, '');
