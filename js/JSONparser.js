@@ -1,6 +1,5 @@
-// var parser = require('./USFMparser.js')
 const { Parser } = require('./parser.js');
-// const json = require('json')
+
 class JSONParser extends Parser {
   constructor(JSONObject) {
     super();

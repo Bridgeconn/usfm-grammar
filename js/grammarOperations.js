@@ -1,4 +1,5 @@
-const ohm = require('../ohm-0.15.0');
+// const ohm = require('../ohm-0.15.0');
+const ohm = require('ohm-fork');
 const Events = require('events');
 
 const emitter = new Events.EventEmitter();
