@@ -2,7 +2,7 @@ usfmRelaxed{
 	File = BookHead Chapter+
 
 	BookHead = idMarker (MilesstoneMarker | ClosedMarker | NormalMarker)*
-	Chapter = ChapterMarker (VerseMarker | MilesstoneMarker | ClosedMarker | NormalMarker )+
+	Chapter = ChapterMarker (VerseMarker | ExtendedStudyContents | MilesstoneMarker | ClosedMarker | NormalMarker )+
 
 	verseNumber = number letter? ("-" number letter?)? 
 	markerName = ~(cTag) ~(vTag) "+"? (letter | digit | "_")+ number?
@@ -27,4 +27,5 @@ usfmRelaxed{
 	MilesstoneMarker = MilesstoneMarkerSingle | MilesstoneMarkerPair
 	MilesstoneMarkerSingle = backSlash markerName backSlash "*"
 	MilesstoneMarkerPair = backSlash markerName "-" ("s"|"e") attributes? (backSlash "*")?
+	ExtendedStudyContents = backSlash "esbe" (text | MilesstoneMarker | ClosedMarker | NormalMarker)* backSlash "esbe"
 }
