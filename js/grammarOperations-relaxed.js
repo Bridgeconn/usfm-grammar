@@ -162,6 +162,12 @@ sem.addOperation('buildJson', {
     return res;
   },
 
+  ExtendedStudyContents(_1, mrkr, contents, _4, closing) {
+    const res = {};
+    res[mrkr.sourceString] = contents.buildJson();
+    res.closing = _4.sourceString + closing.sourceString;
+  }
+
 });
 
 function relaxParse(str) {
