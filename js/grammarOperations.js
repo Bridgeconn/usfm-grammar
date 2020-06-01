@@ -891,7 +891,7 @@ sem.addOperation('composeJson', {
     if (caption.sourceString === '' && attribs.sourceString === '') {
       emitter.emit('warning', new Error('Figure marker is empty. '));
     }
-    return { figure: { caption: caption.sourceString.trim(), Attributes: attribs.composeJson() } };
+    return { fig: caption.sourceString.trim(), Attributes: attribs.composeJson(), closing: _8.sourceString + _9.sourceString };
   },
 
   table(header, row) {
@@ -1054,7 +1054,7 @@ sem.addOperation('composeJson', {
   },
 
   esbElement(_1, _2, _3, _4, content, _6, _7, _8, _9) {
-    return { esb: content.composeJson() };
+    return { esb: content.composeJson(), closing: _7.sourceString + _8.sourceString };
   },
 
 });
