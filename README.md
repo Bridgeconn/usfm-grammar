@@ -136,3 +136,28 @@ const myJsonParser = new grammar.JSONParser(jsonOutput);
 let reCreatedUsfm = myJsonParser.toUSFM();
 ```
 The `JSONParser` class can be initiated with a JSON object in the same format as the output of `USFMParser.toJSON()` method with or without the `FILTER.SCRIPTURE` option. If a USFM file is converted to JSON and then back to USFM, the re-created USFM will have same contents but spacing and new-lines will be normalized.
+
+#### CLI
+
+To use usfm-grammar as a command-line-interface, it should be installed globally
+
+`npm install -g usfm-grammar`
+
+Then it can be invoked by typing 
+
+`usfm-grammar <file-path>`
+
+from the terminal(command-line). This command lets you convert the input USFM file into JSON object, if the file is a valid USFM.
+
+The optional flags that can be used are
+```
+  --version     Show version number                                    [boolean]
+  -l, --level   specify the level of strictness in parsing  [choices: "relaxed"]
+  --filter      filters out only the specific contents from input USFM
+                                                          [choices: "scripture"]
+  --format      specifies the output file format
+                                         [choices: "csv", "tsv", "usfm", "json"]
+  -o, --output  specify the fully qualified file path for output.
+  -h, --help    Show help 
+```
+The options -l (--level) and --filter doesnot have any effect if used with JSON to USFM convertion. 
