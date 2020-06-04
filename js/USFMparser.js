@@ -1,16 +1,18 @@
 const { match } = require('./grammarOperations.js');
 const { relaxParse } = require('./grammarOperations-relaxed.js');
-const tableConvert = require('./convert.js');
 const { Parser } = require('./parser.js');
+const { JSONParser } = require('./JSONparser.js');
 
-class USFMparser extends Parser {
-  constructor() {
+class USFMParser extends Parser {
+  constructor(str, level = 'normal') {
     super();
     this.warnings = [];
+    this.usfmString = this.normalize(str);
+    this.level = level;
   }
 
-  static normalize(str) {
-    this.warnings = []
+  normalize(str) {
+    this.warnings = [];
     let newStr = '';
     const multiLinePattern = new RegExp('[\\n\\r][\\n\\r]+', 'g');
     const multiSpacePattern = new RegExp('  +', 'g');
@@ -34,28 +36,31 @@ class USFMparser extends Parser {
       newStr = newStr.replace(bookCode, bookCode.toUpperCase());
       this.warnings.push('Book code is in lowercase. ');
     }
+    this.usfmString = newStr;
     return newStr;
   }
 
-  static validate(str) {
-    const inStr = this.normalize(str);
-    // Matching the input with grammar and obtaining the JSON output string
-    const matchObj = match(inStr);
+  validate() {
+    let matchObj = null;
+    const inStr = this.usfmString;
+    if (this.level === 'relaxed') {
+      matchObj = relaxParse(inStr);
+    } else {
+      matchObj = match(inStr);
+    }
     if (Object.prototype.hasOwnProperty.call(matchObj, 'ERROR')) {
       return false;
     }
     return true;
   }
 
-  static parseUSFM(str, resultType = 'normal', mode = 'normal') {
+  toJSON(filter = 'normal') {
+    const inStr = this.usfmString;
     let matchObj = null;
-    if (mode === 'normal') {
-      const inStr = this.normalize(str);
+    if (this.level === 'relaxed') {
+      matchObj = relaxParse(inStr);
+    } else {
       matchObj = match(inStr);
-    } else if (mode === 'relaxed') {
-      // console.log('coming into relaxed parsing');
-      matchObj = relaxParse(str);
-      return matchObj;
     }
 
     if (!Object.prototype.hasOwnProperty.call(matchObj, 'ERROR')) {
@@ -64,35 +69,50 @@ class USFMparser extends Parser {
         this.warnings = this.warnings.concat(matchObj.warnings);
         // console.log(this.warnings)
       }
-      if (resultType === 'clean') {
-        const newJsonOutput = { book: jsonOutput.metadata.id.book, chapters: [] };
-        let chapter = {};
+      if (filter === 'clean') {
+        const newJsonOutput = { book: {}, chapters: [] };
+        newJsonOutput.book.bookCode = jsonOutput.book.bookCode;
+        newJsonOutput.book.description = jsonOutput.book.description;
         for (let i = 0; i < jsonOutput.chapters.length; i += 1) {
-          chapter = jsonOutput.chapters[i];
-          const nextChapter = { chapterTitle: chapter.header.title, verses: [] };
-          let verse = {};
-          for (let j = 0; j < chapter.verses.length; j += 1) {
-            verse = chapter.verses[j];
-            const nextVerse = { verseNumber: verse.number, verseText: verse.text };
-            nextChapter.verses.push(nextVerse);
+          const chapter = {};
+          chapter.chapterNumber = jsonOutput.chapters[i].chapterNumber;
+          chapter.contents = [];
+          // console.log(jsonOutput.chapters[i].contents);
+          for (let j = 0; j < jsonOutput.chapters[i].contents.length; j += 1) {
+            const key = Object.keys(jsonOutput.chapters[i].contents[j])[0];
+            // console.log(jsonOutput.chapters[i].contents[j]);
+            if (key === 'verseNumber') {
+              const verse = {};
+              verse.verseNumber = jsonOutput.chapters[i].contents[j].verseNumber;
+              verse.verseText = jsonOutput.chapters[i].contents[j].verseText;
+              chapter.contents.push(verse);
+            }
           }
-          newJsonOutput.chapters.push(nextChapter);
+          newJsonOutput.chapters.push(chapter);
         }
         jsonOutput = newJsonOutput;
-      } else if (resultType === 'csv') {
-        const csvOutput = tableConvert.getCSV(jsonOutput);
-        return csvOutput;
-      } else if (resultType === 'tsv') {
-        const tsvOutput = tableConvert.getTSV(jsonOutput);
-        return tsvOutput;
       }
       if (this.warnings !== []) {
-        jsonOutput.messages = { warnings: this.warnings };
+        jsonOutput._messages = { _warnings: this.warnings };
       }
       return jsonOutput;
     }
     return matchObj;
   }
+
+  toCSV() {
+    const jsonOutput = this.toJSON();
+    const myJsonParser = new JSONParser(jsonOutput);
+    const csvOutput = myJsonParser.toCSV();
+    return csvOutput;
+  }
+
+  toTSV() {
+    const jsonOutput = this.toJSON();
+    const myJsonParser = new JSONParser(jsonOutput);
+    const csvOutput = myJsonParser.toTSV();
+    return csvOutput;
+  }
 }
 
-exports.USFMparser = USFMparser;
+exports.USFMParser = USFMParser;

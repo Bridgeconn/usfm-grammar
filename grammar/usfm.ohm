@@ -127,7 +127,7 @@ usfmBible{
 			lose or structural difference would be caused while re-creating the usfm from the 
 			JSON structure. But the paragraph-wise division will not be there in the JSON. */
 
-			paraElement = newLine backSlash paraMarker spaceChar*
+			paraElement = newLine? backSlash paraMarker spaceChar*
 			paraMarker = paraUnNumberedMarker | paraNumberedMarker
 			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" )
 			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim") number?
@@ -219,59 +219,45 @@ usfmBible{
 			it would be considered as part of the closing marker and will not be 
 			considered along with the text following it. */
 
-			notesElement = footnoteElement | crossrefElement
+			notesElement = footnoteElement | crossrefElement | separateXtElement
 			footnoteElement = fElement | feElement | efElement
-			fElement = newLine? backSlash  "f" spaceChar? footnoteContent* backSlash "f*" spaceChar?
-			feElement = newLine? backSlash  "fe"  spaceChar? footnoteContent* backSlash "fe*"spaceChar?
-			efElement = newLine? backSlash  "ef"  spaceChar? footnoteContent* backSlash "ef*"spaceChar?
-			crossrefElement = newLine? backSlash  ("xt"|"x" | "ex") spaceChar?  crossrefContent* backSlash ("xt*"|"x*" | "ex*") spaceChar?
+			fElement = newLine? backSlash  "f" spaceChar? caller? spaceChar* footnoteContent* backSlash "f*" spaceChar?
+			feElement = newLine? backSlash  "fe"  spaceChar? caller? spaceChar* footnoteContent*  backSlash "fe*" spaceChar?
+			efElement = newLine? backSlash "ef" spaceChar? caller? spaceChar* (footnoteContent | separateXtElement | charElement)* backSlash "ef*" spaceChar?
 
-			footnoteContent = text | footnoteContentElement | nestedCharElement
-			footnoteContentElement = newLine? backSlash "fr" spaceChar
-							| newLine? backSlash "fr*" spaceChar?
-							| newLine? backSlash "fq" spaceChar
-							| newLine? backSlash "fq*" spaceChar?
-							| newLine? backSlash "fqa" spaceChar
-							| newLine? backSlash "fqa*" spaceChar?
-							| newLine? backSlash "fk" spaceChar
-							| newLine? backSlash "fk*" spaceChar?
-							| newLine? backSlash "fl" spaceChar
-							| newLine? backSlash "fl*" spaceChar?
-							| newLine? backSlash "fw" spaceChar
-							| newLine? backSlash "fw*" spaceChar?
-							| newLine? backSlash "fp" spaceChar
-							| newLine? backSlash "fp*" spaceChar?
-							| newLine? backSlash "ft" spaceChar
-							| newLine? backSlash "ft*" spaceChar?
-							| newLine? backSlash "fv" spaceChar
-							| newLine? backSlash "fv*" spaceChar?
-							| newLine? backSlash "fdc" spaceChar
-							| newLine? backSlash "fdc*" spaceChar?
-							| newLine? backSlash "fm" spaceChar
-							| newLine? backSlash "fm*" spaceChar?
+
+			caller = "+" | "-" | "?"
+
+			footnoteContent = text | frElement | fqElement | fqaElement | fkElement | flElement | fwElement
+									| fpElement | fvElement | ftElement | fdcElement | fmElement | nestedCharElement
+			frElement = newLine? backSlash "fr" spaceChar text* (backSlash "fr" "*" spaceChar?)?
+			fqElement = newLine? backSlash "fq" spaceChar text* (backSlash "fq" "*" spaceChar?)?
+			fqaElement = newLine? backSlash "fqa" spaceChar text* (backSlash "fqa" "*" spaceChar?)?
+			fkElement = newLine? backSlash "fk" spaceChar text* (backSlash "fk" "*" spaceChar?)?
+			flElement = newLine? backSlash "fl" spaceChar text* (backSlash "fl" "*" spaceChar?)?
+			fwElement = newLine? backSlash "fw" spaceChar text* (backSlash "fw" "*" spaceChar?)?
+			fpElement = newLine? backSlash "fp" spaceChar text* (backSlash "fp" "*" spaceChar?)?
+			fvElement = newLine? backSlash "fv" spaceChar text* (backSlash "fv" "*" spaceChar?)?
+			ftElement = newLine? backSlash "ft" spaceChar text* (backSlash "ft" "*" spaceChar?)?
+			fdcElement = newLine? backSlash "fdc" spaceChar text* (backSlash "fdc" "*" spaceChar?)?
+			fmElement = newLine? backSlash "fm" spaceChar text* (backSlash "fm" "*" spaceChar?)?
+
+			crossrefElement = newLine? backSlash  ("x"|"ex") spaceChar? caller? spaceChar? crossrefContent* backSlash ("x*"|"ex*") spaceChar?
 							
 
-			crossrefContent  = text | crossrefContentElement | nestedCharElement | attributesInCrossref
+			crossrefContent  = text | xoElement | xkElement | xqElement | xtElement | xtaElement | xopElement | xotElement | xntElement | xdcElement | rqElement | nestedCharElement
+            separateXtElement = xtElement backSlash ("xt*" | "x*") spaceChar?
+
 			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| defaultAttribute)+
-			crossrefContentElement = newLine? backSlash "xo" spaceChar
-							| newLine? backSlash "xo*" spaceChar?
-							| newLine? backSlash "xk" spaceChar
-							| newLine? backSlash "xk*" spaceChar?
-							| newLine? backSlash "xq" spaceChar
-							| newLine? backSlash "xq*" spaceChar?
-							| newLine? backSlash "xt" spaceChar
-							| newLine? backSlash "xta" spaceChar
-							| newLine? backSlash "xta*" spaceChar?
-							| newLine? backSlash "xop" spaceChar
-							| newLine? backSlash "xop*" spaceChar?
-							| newLine? backSlash "xot" spaceChar
-							| newLine? backSlash "xot*" spaceChar?
-							| newLine? backSlash "xnt" spaceChar
-							| newLine? backSlash "xnt*" spaceChar?
-							| newLine? backSlash "xdc" spaceChar
-							| newLine? backSlash "xdc*" spaceChar?
-							| newLine? backSlash "rq" spaceChar
-							| newLine? backSlash "rq*" spaceChar?
+			xoElement = newLine? backSlash "xo" spaceChar text* (backSlash "xo*" spaceChar?)?
+			xkElement = newLine? backSlash "xk" spaceChar text* (backSlash "xk*" spaceChar?)?
+			xqElement = newLine? backSlash "xq" spaceChar text* (backSlash "xq*" spaceChar?)?
+			xtElement = newLine? backSlash "xt" spaceChar text* attributesInCrossref?
+			xtaElement = newLine? backSlash "xta" spaceChar text* (backSlash "xta*" spaceChar?)?
+			xopElement = newLine? backSlash "xop" spaceChar text* (backSlash "xop*" spaceChar?)?			xotElement = newLine? backSlash "xot" spaceChar text* (backSlash "xot*" spaceChar?)?
+			xntElement = newLine? backSlash "xnt" spaceChar text* (backSlash "xnt*" spaceChar?)?
+			xdcElement = newLine? backSlash "xdc" spaceChar text* (backSlash "xdc*" spaceChar?)?
+			rqElement = newLine? backSlash "rq" spaceChar text* (backSlash "rq*" spaceChar?)?
 
 			nestedCharElement = nestedInLineCharElement | nestedInLineCharAttributeElement | nestedInLineCharNumberedElement
 			nestedInLineCharElement = newLine? backSlash "+add" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+add" "*")? spaceChar?
@@ -356,14 +342,14 @@ usfmBible{
 
 			/* For user defined attributes starting with x */
 
-			customAttribute = customAttributeName "=" attributeValue spaceChar?
+			customAttribute = customAttributeName "=" "\""? attributeValue "\""? spaceChar?
 			customAttributeName = "x-" (letter |digit |"_")+
-			attributeValue = "\"" (~"\"" any)+ "\""
+			attributeValue =  (~"\"" any)+ 
 
 			/* The default attribute is valid for any marker which normally provide attributes. 
 			It would be extracted as default attribute without mentioning the corresponding attribute name */
 
-			defaultAttribute = (~(backSlash) ~(newLine) ~("|") any)+
+			defaultAttribute = (~(backSlash) ~(newLine) ~("|") ~("=") any)+
 
 			/* the special set of attributes valid for each of the normally 
 			attributed elements are defined here*/
@@ -371,21 +357,21 @@ usfmBible{
 			wAttribute = lemmaAttribute | strongAttribute | scrlocAttribute | linkAttribute | customAttribute
 			rbAttribute = glossAttribute | customAttribute | linkAttribute
 			figAttribute = altAttribute | srcAttribute | sizeAttribute | locAttribute | copyAttribute | refAttribute | customAttribute | linkAttribute
-			lemmaAttribute = "lemma" "=" attributeValue spaceChar?
-			strongAttribute = "strong" "=" attributeValue spaceChar? 
-			scrlocAttribute = "srcloc" "=" attributeValue spaceChar?
-			glossAttribute = "gloss" "=" attributeValue spaceChar?
-			linkAttribute = linkAttributeName "=" attributeValue spaceChar?
+			lemmaAttribute = "lemma" "=" "\""? attributeValue "\""? spaceChar?
+			strongAttribute = "strong" "=" "\""? attributeValue "\""? spaceChar? 
+			scrlocAttribute = "srcloc" "=" "\""? attributeValue "\""? spaceChar?
+			glossAttribute = "gloss" "=" "\""? attributeValue "\""? spaceChar?
+			linkAttribute = linkAttributeName "=" "\""? attributeValue "\""? spaceChar?
 			linkAttributeName = "link-href" | "link-title" | "link-id" | linkAttributeUserDefinedName
 			linkAttributeUserDefinedName = "link-" (letter | digit | "_")+
-			altAttribute = "alt" "=" attributeValue spaceChar?
-			srcAttribute = "src" "=" attributeValue spaceChar?
-			sizeAttribute = "size" "=" attributeValue spaceChar?
-			locAttribute = "loc" "=" attributeValue spaceChar?
-			copyAttribute = "copy" "=" attributeValue spaceChar?
-			refAttribute = "ref" "=" attributeValue spaceChar?
+			altAttribute = "alt" "=" "\""? attributeValue "\""? spaceChar?
+			srcAttribute = "src" "=" "\""? attributeValue "\""? spaceChar?
+			sizeAttribute = "size" "=" "\""? attributeValue "\""? spaceChar?
+			locAttribute = "loc" "=" "\""? attributeValue "\""? spaceChar?
+			copyAttribute = "copy" "=" "\""? attributeValue "\""? spaceChar?
+			refAttribute = "ref" "=" "\""? attributeValue "\""? spaceChar?
 			milestoneAttribute = msAttribute | customAttribute | linkAttribute
-			msAttribute = milestoneAttributeNames "=" attributeValue spaceChar?
+			msAttribute = milestoneAttributeNames "=" "\""? attributeValue "\""? spaceChar?
 			milestoneAttributeNames = "sid" | "eid" | "who"
 
 			/* as the caption and attributes are all optional, it allows the fig marker to be empty also*/

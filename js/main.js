@@ -1,7 +1,11 @@
-const { USFMparser } = require('./USFMparser.js');
-const { JSONparser } = require('./JSONparser.js');
+const { USFMParser } = require('./USFMparser.js');
+const { JSONParser } = require('./JSONparser.js');
 
-exports.SCRIPTURE = 'clean';
+const FILTER = { SCRIPTURE: 'clean', ALL: 'normal' };
+const LEVEL = { RELAXED: 'relaxed', STRICT: 'normal' };
 
-exports.USFMparser = USFMparser;
-exports.JSONparser = JSONparser;
+exports.FILTER = FILTER;
+exports.LEVEL = LEVEL;
+
+exports.USFMParser = USFMParser;
+exports.JSONParser = JSONParser;

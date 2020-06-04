@@ -9,7 +9,22 @@ const newline = new RegExp('\\n', 'g');
 
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
-// fs.readFile('grammar/usfm.ohm','utf-8', function (err, data) {
+fs.readFile('grammar/usfm.ohm', 'utf-8', (err, data) => {
+  if (err) { throw err; }
+  grammarString = data.replace(commentsOneLine, '');
+  grammarString = grammarString.replace(commentsMultiLine, '');
+  grammarString = grammarString.replace(multiLines, '\n');
+  grammarString = grammarString.replace(backslash, '\\\\');
+  grammarString = grammarString.replace(newline, '\\n');
+
+  const fileContent = `exports.contents = '${grammarString}'`;
+  fs.writeFile('grammar/usfm.ohm.js', fileContent, (writeErr) => {
+    if (writeErr) console.error(writeErr.message);
+    // success case, the file was saved
+    console.error('grammarstring written!');
+  });
+});
+
 fs.readFile('grammar/usfm-relaxed.ohm', 'utf-8', (err, data) => {
   if (err) { throw err; }
   grammarString = data.replace(commentsOneLine, '');
@@ -19,7 +34,6 @@ fs.readFile('grammar/usfm-relaxed.ohm', 'utf-8', (err, data) => {
   grammarString = grammarString.replace(newline, '\\n');
 
   const fileContent = `exports.contents = '${grammarString}'`;
-  // fs.writeFile('grammar/usfm.ohm.js', fileContent, (err) => {
   fs.writeFile('grammar/usfm-relaxed.ohm.js', fileContent, (writeErr) => {
     if (writeErr) console.error(writeErr.message);
     // success case, the file was saved

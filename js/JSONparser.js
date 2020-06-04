@@ -1,65 +1,72 @@
-// var parser = require('./USFMparser.js')
 const { Parser } = require('./parser.js');
-// const json = require('json')
-class JSONparser extends Parser {
-  constructor() {
+
+class JSONParser extends Parser {
+  constructor(JSONObject) {
     super();
+    this.JSONObject = JSONObject;
     this.warnings = [];
+    this.noNewLineMarkers = ['va', 'vp', 'qs', 'qac', 'litl', 'lik', 'lik1', 'lik2', 'lik3',
+      'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3', 'th4', 'th5',
+      'thr', 'thr1', 'thr2', 'thr3', 'thr4', 'thr5', 'tc', 'tc1', 'tc2', 'tc3',
+      'tc4', 'tc5', 'tcr', 'tcr1', 'tcr2', 'tcr3', 'tcr4', 'tcr5', 'f', 'fe',
+      'fr', 'fq', 'fqa', 'fk', 'fl', 'fw', 'fp', 'fv', 'ft', 'fdc', 'fm', 'x',
+      'xo', 'xk', 'xq', 'xt', 'xta', 'xop', 'xot', 'xnt', 'xdc', 'rq', 'add', 'bk',
+      'dc', 'k', 'lit', 'nd', 'ord', 'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl',
+      'wj', 'em', 'bd', 'it', 'bdit', 'no', 'sc', 'sup', 'fig', '+add', '+bk',
+      '+dc', '+k', '+lit', '+nd', '+ord', '+pn', '+png', '+addpn', '+qt', '+sig',
+      '+sls', '+tl', '+wj', '+em', '+bd', '+it', '+bdit', '+no', '+sc', '+sup', 'jmp',
+    ];
   }
 
-  static validate(JSONObject) {
+  validate() {
     try {
-      this.parseJSON(JSONObject);
+      this.toUSFM(this.JSONObject);
       return true;
     } catch (err) {
       return false;
     }
   }
 
-  static normalize(JSONObject) {
-    const normJson = JSONObject;
+  normalize() {
+    this.warnings = [];
+    const normJson = this.JSONObject;
     return normJson;
   }
 
-  static parseJSON(jsonObj) {
+  toUSFM() {
     let usfmText = '';
+    const jsonObj = this.JSONObject;
     usfmText += '\\id ';
-    usfmText += jsonObj.metadata.id.book;
-    if (Object.prototype.hasOwnProperty.call(jsonObj.metadata.id, 'details')) {
-      usfmText += jsonObj.metadata.id.details;
+    usfmText += jsonObj.book.bookCode;
+    if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'description')) {
+      usfmText += ` ${jsonObj.book.description}`;
     }
 
-    if (Object.prototype.hasOwnProperty.call(jsonObj.metadata, 'headers')) {
-      usfmText = this.processInnerElements(jsonObj.metadata.headers, usfmText);
-    }
-
-    if (Object.prototype.hasOwnProperty.call(jsonObj.metadata, 'introduction')) {
-      usfmText = this.processInnerElements(jsonObj.metadata.introduction, usfmText);
+    if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'meta')) {
+      usfmText = this.processInnerElements(jsonObj.book.meta, usfmText);
     }
 
     for (let i = 0; i < jsonObj.chapters.length; i += 1) {
-      usfmText += `\n\\c ${jsonObj.chapters[i].header.title}`;
-      usfmText = this.processInnerElements(jsonObj.chapters[i].metadata, usfmText);
-      for (let j = 0; j < jsonObj.chapters[i].verses.length; j += 1) {
-        usfmText += `\n\\v ${jsonObj.chapters[i].verses[j].number} `;
-        const verseComponents = [];
-        if (Object.prototype.hasOwnProperty.call(jsonObj.chapters[i].verses[j], 'metadata')) {
-          for (let k = 0; k < jsonObj.chapters[i].verses[j].metadata.length; k += 1) {
-            if (Object.prototype.hasOwnProperty.call(jsonObj.chapters[i].verses[j].metadata[k], 'styling')) {
-              for (let l = 0; l < jsonObj.chapters[i].verses[j].metadata[k].styling.length;
-                l += 1) {
-                verseComponents.push(jsonObj.chapters[i].verses[j].metadata[k].styling[l]);
+      usfmText += `\n\\c ${jsonObj.chapters[i].chapterNumber}`;
+      for (let j = 0; j < jsonObj.chapters[i].contents.length; j += 1) {
+        const key = Object.keys(jsonObj.chapters[i].contents[j])[0];
+        if (key === 'verseNumber') {
+          usfmText += `\n\\v ${jsonObj.chapters[i].contents[j].verseNumber} `;
+          if (Object.prototype.hasOwnProperty.call(jsonObj.chapters[i].contents[j], 'contents')) {
+            for (let k = 0; k < jsonObj.chapters[i].contents[j].contents.length; k += 1) {
+              if (typeof jsonObj.chapters[i].contents[j].contents[k] === 'string') {
+                usfmText += ` ${jsonObj.chapters[i].contents[j].contents[k]}`;
+              } else {
+                usfmText = this.processInnerElements(jsonObj.chapters[i].contents[j].contents[k],
+                  usfmText);
               }
-            } else {
-              verseComponents.push(jsonObj.chapters[i].verses[j].metadata[k]);
             }
+          } else {
+            usfmText += jsonObj.chapters[i].contents[j].verseText;
           }
+        } else {
+          usfmText = this.processInnerElements(jsonObj.chapters[i].contents[j], usfmText);
         }
-        for (let k = 0; k < jsonObj.chapters[i].verses[j]['text objects'].length; k += 1) {
-          verseComponents.push(jsonObj.chapters[i].verses[j]['text objects'][k]);
-        }
-        verseComponents.sort((x, y) => x.index - y.index);
-        usfmText = this.processInnerElements(verseComponents, usfmText);
       }
     }
     usfmText = usfmText.replace(/\s+\n/g, '\n');
@@ -67,127 +74,129 @@ class JSONparser extends Parser {
     return usfmText;
   }
 
-  static processInnerElements(jsonObject, usfm) {
+
+  processInnerElements(jsonObject, usfm) {
     let usfmText = usfm;
-    for (let i = 0; i < jsonObject.length; i += 1) {
-      if (Array.isArray(jsonObject[i])) {
+    if (typeof jsonObject === 'string') {
+      usfmText += ` ${jsonObject}`;
+    } else if (Array.isArray(jsonObject)) {
+      for (let i = 0; i < jsonObject.length; i += 1) {
         usfmText = this.processInnerElements(jsonObject[i], usfmText);
-      } else {
-        const key = Object.keys(jsonObject[i])[0];
-        if (key === 'section') {
-          const sectionElmnts = [];
-          sectionElmnts.push(jsonObject[i].section);
-          if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'sectionPostheader')) {
-            for (let j = 0; j < jsonObject[i].sectionPostheader.length; j += 1) {
-              sectionElmnts.push(jsonObject[i].sectionPostheader[j]);
-            }
+      }
+    } else {
+      const key = Object.keys(jsonObject)[0];
+      if (key === 'list') {
+        for (let i = 0; i < jsonObject.list.length; i += 1) {
+          usfmText = this.processInnerElements(jsonObject.list[i], usfmText);
+        }
+      } else if (key === 'table') {
+        if (Object.prototype.hasOwnProperty.call(jsonObject.table, 'header')) {
+          usfmText += '\n\\tr';
+          for (let i = 0; i < jsonObject.table.header.length; i += 1) {
+            const innerKey = Object.keys(jsonObject.table.header[i])[0];
+            usfmText += ` \\${innerKey} ${jsonObject.table.header[i][innerKey]}`;
           }
-          if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'introductionParagraph')) {
-            sectionElmnts.push(jsonObject[i].introductionParagraph);
+        }
+        for (let i = 0; i < jsonObject.table.rows.length; i += 1) {
+          usfmText += '\n\\tr';
+          for (let j = 0; j < jsonObject.table.rows[i].length; j += 1) {
+            const innerKey = Object.keys(jsonObject.table.rows[i][j])[0];
+            usfmText += ` \\${innerKey} ${jsonObject.table.rows[i][j][innerKey]}`;
           }
-          usfmText = this.processInnerElements(sectionElmnts, usfmText);
-        } else if (key === 'list') {
-          const listElmnts = [];
-          for (let j = 0; j < jsonObject[i].list.length; j += 1) {
-            if (!Object.prototype.hasOwnProperty.call(jsonObject[i].list[j], 'text')) {
-              listElmnts.push(jsonObject[i].list[j]);
-            }
-          }
-          usfmText = this.processInnerElements(listElmnts, usfmText);
-        } else if (key === 'table') {
-          const tableElmnts = [];
-          if (Object.prototype.hasOwnProperty.call(jsonObject[i].table, 'header')) {
-            tableElmnts.push({ marker: 'tr' });
-            for (let j = 0; j < jsonObject[i].table.header.length; j += 1) {
-              tableElmnts.push(jsonObject[i].table.header[j]);
-            }
-          }
-          for (let j = 0; j < jsonObject[i].table.rows.length; j += 1) {
-            tableElmnts.push({ marker: 'tr' });
-            for (let k = 0; k < jsonObject[i].table.rows[j].length; k += 1) {
-              tableElmnts.push(jsonObject[i].table.rows[j][k]);
-            }
-          }
-          usfmText = this.processInnerElements(tableElmnts, usfmText);
-        } else {
-          let marker = key;
-          if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'marker')) {
-            marker = jsonObject[i].marker;
-          }
-          if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'number')) {
-            marker += jsonObject[i].number;
-          }
-          if (key === 'text' && marker === 'text') {
-            usfmText += jsonObject[i].text;
-          } else if (key === 'text') {
-            usfmText += `\n\\${marker} ${jsonObject[i].text}`;
-          } else if (key === 'styling') {
-            usfmText = this.processInnerElements(jsonObject[i].styling, usfmText);
+        }
+      } else if (key === 'footnote') {
+        const notes = jsonObject.footnote;
+        const marker = jsonObject.closing;
+        usfmText += marker.replace('*', '');
+        for (let i = 0; i < notes.length; i += 1) {
+          const innerKey = Object.keys(notes[i])[0];
+          if (innerKey === 'caller') { usfmText += notes[i][innerKey]; } else { usfmText = this.processInnerElements(notes[i], usfmText); }
+        }
+        usfmText += marker;
+      } else if (key === 'cross-ref') {
+        const notes = jsonObject['cross-ref'];
+        const marker = jsonObject.closing;
+        if (marker !== '\\xt*') { usfmText += marker.replace('*', ''); }
+        for (let i = 0; i < notes.length; i += 1) {
+          if (typeof notes[i] === 'string') {
+            usfmText += ` ${notes[i]}`;
           } else {
-            if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'inline')) {
-              usfmText += ` \\${marker} `;
-            } else {
-              usfmText += `\n\\${marker} `;
-            }
-            if (Array.isArray(jsonObject[i][key])) {
-              usfmText = this.processInnerElements(jsonObject[i][key], usfmText);
-            } else if (typeof (jsonObject[i][key]) === 'object'
-              && Object.prototype.hasOwnProperty.call(jsonObject[i][key], 'text')) {
-              usfmText += jsonObject[i][key].text;
-            } else if (key === 'milestone') {
-              usfmText += '';
-            } else if (key !== 'marker') {
-              usfmText += jsonObject[i][key];
-            }
-            if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'closed')) {
-              if (Object.prototype.hasOwnProperty.call(jsonObject[i], 'attributes')) {
-                usfmText += '|';
-                for (let j = 0; j < jsonObject[i].attributes.length; j += 1) {
-                  if (jsonObject[i].attributes[j].name === 'default attribute') { usfmText += jsonObject[i].attributes[j].value; } else {
-                    usfmText += `${jsonObject[i].attributes[j].name}=${jsonObject[i].attributes[j].value} `;
-                  }
-                }
-              }
-              if (key === 'milestone') {
-                usfmText += '\\*';
-              } else { usfmText += `\\${marker}*`; }
+            const innerKey = Object.keys(notes[i])[0];
+            if (innerKey === 'caller') { usfmText += notes[i][innerKey]; } else { usfmText = this.processInnerElements(notes[i], usfmText); }
+          }
+        }
+        usfmText += marker;
+      } else if (key === 'milestone') {
+        usfmText += `\\${jsonObject.milestone}${jsonObject.delimter}`;
+        if (Object.prototype.hasOwnProperty.call(jsonObject, 'attributes')) {
+          usfmText += ' |';
+          for (let i = 0; i < jsonObject.attributes.length; i += 1) {
+            const attribName = Object.keys(jsonObject.attributes[i])[0];
+            if (attribName === 'defaultAttribute') { usfmText += jsonObject.attributes[i].defaultAttribute; } else {
+              usfmText += ` ${attribName}="${jsonObject.attributes[i][attribName]}"`;
             }
           }
+        }
+        usfmText += jsonObject.closing;
+      } else {
+        if (!this.noNewLineMarkers.includes(key)) { usfmText += '\n'; }
+        usfmText += `\\${key} `;
+        if (Array.isArray(jsonObject[key])) {
+          usfmText = this.processInnerElements(jsonObject[key], usfmText);
+        } else if (jsonObject[key] !== null) { usfmText += jsonObject[key]; }
+        if (Object.prototype.hasOwnProperty.call(jsonObject, 'attributes')) {
+          if (Array.isArray(jsonObject.attributes)) {
+            usfmText += ' |';
+            for (let i = 0; i < jsonObject.attributes.length; i += 1) {
+              const attribName = Object.keys(jsonObject.attributes[i])[0];
+              if (attribName === 'defaultAttribute') { usfmText += jsonObject.attributes[i].defaultAttribute; } else { usfmText += ` ${attribName}="${jsonObject.attributes[i][attribName]}"`; }
+            }
+          } else { usfmText += jsonObject.attributes; }
+        }
+        if (Object.prototype.hasOwnProperty.call(jsonObject, 'closing')) {
+          usfmText += ` ${jsonObject.closing}`;
         }
       }
     }
     return usfmText;
   }
 
-  static toCSV(jsonOutput) {
-    const bookName = jsonOutput.metadata.id.book;
+  toCSV() {
+    const jsonOutput = this.JSONObject;
+    const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book, Chapter, Verse, Text\n';
     for (let i = 0; i < chapters.length; i += 1) {
-      const cno = chapters[i].header.title;
-      for (let j = 0; j < chapters[i].verses.length; j += 1) {
-        const vno = chapters[i].verses[j].number;
-        csvWriter += `"${bookName}","${cno}","${vno}","${chapters[i].verses[j].text}"\n`;
+      const cno = chapters[i].chapterNumber;
+      for (let j = 0; j < chapters[i].contents.length; j += 1) {
+        if (Object.prototype.hasOwnProperty.call(chapters[i].contents[j], 'verseNumber')) {
+          const vno = chapters[i].contents[j].verseNumber;
+          const text = chapters[i].contents[j].verseText;
+          csvWriter += `"${bookName}","${cno}","${vno}","${text}"\n`;
+        }
       }
     }
     return csvWriter;
   }
 
-  static toTSV(jsonOutput) {
-    const bookName = jsonOutput.metadata.id.book;
+  toTSV() {
+    const jsonOutput = this.JSONObject;
+    const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book\tChapter\tVerse\tText\n';
     for (let i = 0; i < chapters.length; i += 1) {
-      const cno = chapters[i].header.title;
-      for (let j = 0; j < chapters[i].verses.length; j += 1) {
-        const vno = chapters[i].verses[j].number;
-        csvWriter += `"${bookName}"\t"${cno}"\t"${vno}"\t"${chapters[i].verses[j].text}"\n`;    }
+      const cno = chapters[i].chapterNumber;
+      for (let j = 0; j < chapters[i].contents.length; j += 1) {
+        if (Object.prototype.hasOwnProperty.call(chapters[i].contents[j], 'verseNumber')) {
+          const vno = chapters[i].contents[j].verseNumber;
+          const text = chapters[i].contents[j].verseText;
+          csvWriter += `"${bookName}"\t"${cno}"\t"${vno}"\t"${text}"\n`;
+        }
+      }
     }
     return csvWriter;
   }
-
-
 }
 
 
-exports.JSONparser = JSONparser;
+exports.JSONParser = JSONParser;
