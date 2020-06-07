@@ -117,11 +117,13 @@ const myUsfmParser = new grammar.USFMParser(input, grammar.LEVEL.RELAXED);
 var jsonOutput = myUsfmParser.toJSON();
 ```
 This relaxed mode provides relaxation of sereval rules in the USFM spec and give you a JSON output for a file that can be considered a workable USFM file.
+Only the most important markers are checked for, like the `\id` at the start, presence of `\c` and `\v` markers. Though all the given markers are parsered and provided in JSON output, their syntax or the position in the file is not verified. Even a miss-spelled makers would be accepted. 
+So as a word of caution, mistakes may go unnoticed that might even lead to loss of information. For example if the file has mistakenly not given a space between verse marker and verse number, and has `\v3`  the parser may accept it as a different marker v3 and fail to recognise that it is a verse.
 
 ```
 var usfmValidity = myUsfmParser.validate();
 ```
-The `USFMParser.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not.
+The `USFMParser.validate()` method returns a Boolean depending on whether the input USFM text syntax satisfies the grammar or not. This can be done in normal and RELAXED modes.
 
 #### USFM to CSV/TSV
 ```
