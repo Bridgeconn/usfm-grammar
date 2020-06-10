@@ -243,23 +243,25 @@ usfmBible{
 			fmElement = newLine? backSlash "fm" spaceChar text* (backSlash "fm" "*" spaceChar?)?
 
 			crossrefElement = newLine? backSlash  ("x"|"ex") spaceChar? caller? spaceChar? crossrefContent* backSlash ("x*"|"ex*") spaceChar?
-							
+
 
 			crossrefContent  = text | xoElement | xkElement | xqElement | xtElement | xtaElement | xopElement | xotElement | xntElement | xdcElement | rqElement | nestedCharElement
-            separateXtElement = xtElement backSlash ("xt*" | "x*") spaceChar?
+            separateXtElement = newLine? backSlash "xt" spaceChar text* attributesInCrossref? backSlash ("xt*" | "x*") spaceChar?
+
+            nestedSeparateXtElement = newLine? backSlash "+" "xt" spaceChar text* attributesInCrossref? backSlash "+" ("xt*" | "x*") spaceChar?
 
 			attributesInCrossref = "|" spaceChar? (linkAttribute | customAttribute| defaultAttribute)+
 			xoElement = newLine? backSlash "xo" spaceChar text* (backSlash "xo*" spaceChar?)?
 			xkElement = newLine? backSlash "xk" spaceChar text* (backSlash "xk*" spaceChar?)?
 			xqElement = newLine? backSlash "xq" spaceChar text* (backSlash "xq*" spaceChar?)?
-			xtElement = newLine? backSlash "xt" spaceChar text* attributesInCrossref?
+			xtElement = newLine? backSlash "xt" spaceChar text* attributesInCrossref? (backSlash "xt*" spaceChar?)?
 			xtaElement = newLine? backSlash "xta" spaceChar text* (backSlash "xta*" spaceChar?)?
 			xopElement = newLine? backSlash "xop" spaceChar text* (backSlash "xop*" spaceChar?)?			xotElement = newLine? backSlash "xot" spaceChar text* (backSlash "xot*" spaceChar?)?
 			xntElement = newLine? backSlash "xnt" spaceChar text* (backSlash "xnt*" spaceChar?)?
 			xdcElement = newLine? backSlash "xdc" spaceChar text* (backSlash "xdc*" spaceChar?)?
 			rqElement = newLine? backSlash "rq" spaceChar text* (backSlash "rq*" spaceChar?)?
 
-			nestedCharElement = nestedInLineCharElement | nestedInLineCharAttributeElement | nestedInLineCharNumberedElement
+			nestedCharElement = nestedInLineCharElement | nestedInLineCharAttributeElement | nestedInLineCharNumberedElement | nestedSeparateXtElement
 			nestedInLineCharElement = newLine? backSlash "+add" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+add" "*")? spaceChar?
 						| newLine? backSlash "+bk" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+bk" "*")? spaceChar?
 						| newLine? backSlash "+dc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+dc" "*")? spaceChar?
@@ -293,7 +295,7 @@ usfmBible{
 						| newLine? backSlash "+ior" spaceChar bookIntroductionTitlesTextContent ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+ior" "*")? spaceChar?
 						| newLine? backSlash "+cat" spaceChar bookIntroductionTitlesTextContent ("|" spaceChar? (customAttribute | linkAttribute)+)? (backSlash "+cat" "*")? spaceChar?
 
-			charElement = inLineCharElement | inLineCharAttributeElement | inLineCharNumberedElement
+			charElement = inLineCharElement | inLineCharAttributeElement | inLineCharNumberedElement | separateXtElement
 			inLineCharElement = newLine? backSlash "add" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "add" "*" spaceChar?
 						| newLine? backSlash "bk" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "bk" "*" spaceChar?
 						| newLine? backSlash "dc" spaceChar (text | nestedCharElement | notesElement)+ ("|" spaceChar? (customAttribute | linkAttribute)+)? backSlash "dc" "*" spaceChar?

@@ -585,10 +585,21 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-  separateXtElement(xt, _2, closing, _4) {
+  separateXtElement(nl, _1, tag, _3, text, attrib, _2, closing, _4) {
+    const obj = { [tag.sourceString]: text.sourceString.trim() };
+    if (attrib.sourceString !== '') { obj.attributes = attrib.composeJson(); }
     return {
-      'cross-ref': [xt.composeJson()],
+      'cross-ref': [obj],
       closing: _2.sourceString + closing.sourceString,
+    };
+  },
+
+  nestedSeparateXtElement(nl, _1, plus, tag, _3, text, attrib, _2, plus2, closing, _4) {
+    const obj = { [plus.sourceString + tag.sourceString]: text.sourceString.trim() };
+    if (attrib.sourceString !== '') { obj.attributes = attrib.composeJson(); }
+    return {
+      'cross-ref': [obj],
+      closing: _2.sourceString + plus2.sourceString + closing.sourceString,
     };
   },
 
@@ -614,9 +625,10 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-  xtElement(nl, _1, tag, _3, text, attrib) {
+  xtElement(nl, _1, tag, _3, text, attrib, _5, closing, _6) {
     const obj = { [tag.sourceString]: text.sourceString.trim() };
-    if (attrib.sourceString !== '') { [obj.attributes] = attrib.composeJson(); }
+    if (attrib.sourceString !== '') { obj.attributes = attrib.composeJson(); }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
     return obj;
   },
 
