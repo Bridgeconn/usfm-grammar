@@ -90,7 +90,7 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
     }
   ],
   "_messages": {
-    "warnings": [ "Book code is in lowercase. " ]
+    "_warnings": [ "Book code is in lowercase. " ]
   }
 }
 ```
@@ -134,7 +134,7 @@ The options `-l` (`--level`) and `--filter` do not have any effect if used with 
 ```
 const grammar = require('usfm-grammar');
 
-let input = '/*****input USFM string*****/';
+var input = '\\id PSA\n\\c 1\n\\p\n\\v 1 Blessed is the one who does not walk in step with the wicked or stand in the way that sinners take or sit in the company of mockers,';
 
 const myUsfmParser = new grammar.USFMParser(input);
 
@@ -153,7 +153,7 @@ const myRelaxedUsfmParser = new grammar.USFMParser(input, grammar.LEVEL.RELAXED)
 var jsonOutput = myRelaxedUsfmParser.toJSON();
 ```
 
-This mode provides relaxation from checking sereval rules in the USFM specifcation. It tries hard to accomodate non-standard USFM markup and attempts to generate a JSON output for it. Only the most important markers are checked for, like the `\id` at the start, presence of `\c` and `\v` markers. Though all the markers in the input USFM file are preserved in the generated JSON output, their syntax or their positions in the file is not verified for correctness. Even misspelled makers would be accepted.
+This mode provides relaxation from checking several rules in the USFM specifcation. It tries hard to accomodate non-standard USFM markup and attempts to generate a JSON output for it. Only the most important markers are checked for, like the `\id` at the start, presence of `\c` and `\v` markers. Though all the markers in the input USFM file are preserved in the generated JSON output, their syntax or their positions in the file is not verified for correctness. Even misspelled markers would be accepted.
 
 > _Caution:_
 > Errors may go unnoticed that might lead to loss of information. For example, if the file has mistakenly not given a space between verse marker and verse number, and has `\v3`  the parser in `relaxed` mode would accept it as a separate marker (`v3`) and fail to recognise it is a verse. The right (or the hard) thing to do is fix the markup according to the specification. We generally recommend using the grammar in the normal (strict) mode.
