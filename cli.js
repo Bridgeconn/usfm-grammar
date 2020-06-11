@@ -12,7 +12,7 @@ const { argv } = require('yargs')
   .describe('filter', 'filters out only the specific contents from input USFM')
   .choices('filter', ['scripture'])
   .describe('format', 'specifies the output file format')
-  .choices('format', ['csv', 'tsv', 'usfm', 'json', 'CSV', 'TSV', 'USFM', 'JSON'])
+  .choices('format', ['csv', 'tsv', 'usfm', 'json'])
   .alias('o', 'output')
   .describe('o', 'specify the fully qualified file path for output.')
   .alias('h', 'help')
@@ -40,7 +40,7 @@ try {
 } catch (e) {
   isJson = false;
 }
-if (argv.format === 'usfm' || argv.format === 'USFM' ||  isJson) {
+if (argv.format === 'usfm' ||  isJson) {
   const myJsonParser = new grammar.JSONParser(jsonInput);
   try {
     output = myJsonParser.toUSFM(inputFile);
@@ -57,9 +57,9 @@ if (argv.format === 'usfm' || argv.format === 'USFM' ||  isJson) {
     myUsfmParser = new grammar.USFMParser(inputFile);
   }
   try {
-    if (argv.format === 'csv' || argv.format === 'CSV') {
+    if (argv.format === 'csv') {
       output = myUsfmParser.toCSV();
-    } else if (argv.format === 'tsv' || argv.format === 'TSV') {
+    } else if (argv.format === 'tsv') {
       output = myUsfmParser.toTSV();
     } else if (argv.filter === 'scripture') {
       output = JSON.stringify(myUsfmParser.toJSON(grammar.FILTER.SCRIPTURE), null, 2);
