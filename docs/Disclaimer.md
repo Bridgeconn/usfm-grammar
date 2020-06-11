@@ -1,4 +1,64 @@
-# Disclaimer for usfm-grammar Beta-Release 0.1.0
+# Disclaimer for usfm-grammar 2.0.0
+
+- Only USFM 3.x is supported by the normal mode parsing. Most of the older versions may still work with the --LEVEL.RELAXED flag, but we haven't tested if all possible syntaxes from the old spec is supported or not
+
+- No support for peripheral
+
+- Paragraph markers
+
+     In scripture texts encoded using USFM (and similarly also in USX), the paragraph level
+     markup forms the main structure of the document, while chapter and verse markers are an
+     overlapping structure. But the USFM grammar views book-chapter-verse as the primary
+     structure and considers the paragraph markers as additional overlapping elements and does
+     not consider them as enclosing scripture contents. A null value will be provided in the
+     JSON output for paragraph markers and their text content if any would be considered part
+     of the enclosing element(eg: \v or \ip)
+
+- Numbered markers
+
+     For all numbered markers we expect numbers upto 3(upto 5 for th, thr, tc and tcr which
+     indicate cells/columns of a table). If a number more than that is given, all features
+     might not be present in the result.(eg. contents being combined in verseText)
+
+- Footnotes and cross-refs
+
+     All kinds of footnotes \f, \fe and \ef are mentioned as 'footnote' in JSON. but the
+     closing marker gives idea on which is which. Same is applicable for cross-references
+     (\x, \xt, \xe) also. This is true for the toJSON() output from normal mode parsing. If
+     the --LEVEL.RELAXED flag is set, the key footnote or cross-ref will not be present in
+     output, instead they will be given with corresponding marker itself as key.
+
+- Marker closing in LEVEL.RELAXED parsing
+
+     With several rules relaxed in this grammar, we are not validating if a marker is closed
+     properly with its own closing marker. So which ever closing is encountered after it,
+     would be treated as a valid closing for any marker. This would be evident in the
+     formation of JSON object for footnotes and cross-refs
+
+- Attributes in LEVEL.RELAXED parsing
+
+     Any text following a pipe(|) symbol is treated as attributes in this grammar. So the
+     key-value structure(as done in normal mode) will not be parsed and the JSON will not be a
+     structured one if this --LEVEL.RELAXED flag is set. This is done especially to accomodate
+     older USFM attribute syntaxes
+
+- Combining multiple markers in JSON output
+
+     Other than creating a nested structure for chapters, its contents, verses and their
+     contents(which is done in both normal and RELAXED modes), we combine some markers
+     together as an array or a named object preserving their order, in the normal
+     mode( without the --LEVEL.RELAXED flag) JSON output.
+     Section header(\s, \ms) and their associated markers(\r, \mr, \ip) forms an array.
+     Also markers \mt, \mt1, \mt2 etc, \io, \io1, \io2 etc are combined into an array,
+     when coming consecutively in USFM file. Footnotes, cross-refs, lists, tables etc which
+     when formed with mulitple markers are combined together in an object structure named
+     correspondingly.
+
+- Array values
+
+     Some markers will have an array(with its text content) as its value in JSON,
+     instead of plain text(string value). This is designed so, in order to accommodate nesting
+     of other markers within one markers contents
 
 ## Document Structure
 
@@ -56,16 +116,6 @@ The USFM document structure is validated by the grammar. These are the basic doc
 > * namespaces: z*
 > * milestones: qt-s, qt-e, ts-s, ts-e
 
-## Some Design Limitations
-
-* We have not considered USFM files with peripherals (<https://ubsicap.github.io/usfm/peripherals/index.html>)
-* We are not validating/parsing the internal contents of markers or values provided for attributes. For example, verse numbers need not be continuous, column numbers in a table row need not be in accordance with other rows, or the format of reference need not be correct in an _\\ior_ marker to pass our validation. But the markers are being identified, their syntax verified and contents extracted.
-* The markers are treated as either mandatory or optional. The valid number of occurances is not considered
- eg: _\\usfm_ should ideally occur only once, if present, and similarly _\\sts_ can come multiple times. As per the current implemetation, the optional markers can occur any number of times.
-* We have assumed certain structural constraints in USFM, which were not explicitly mentioned in the USFM spec. For example, the markers _\\ca_, _\\cl_, _\\cp_ and _\\cd_ occurs immediately below the _\\c_ marker, before the verse blocks start.
-* Documentation says, _\\imt1, \\imt2, \\imt3_(similarly _imte, ili, ie, iq, mt_)  are all parts of a major title. So we are combining them ignoring the numerical weightage factor/difference, in the output JSON. 
-* As per USFM spec, there is no limit for possible numbers(not limited to 1,2,and 3) in numbered markers...though the USX _valid style types_ lists them as specifically numbered(1 & 2 or 1,2 & 3). We are following _no limit_ rules.(except for _\\toc & \\toca_)
-* We are checking for only the BCV structue in a document. Hence all markers like _\\p_, _\\q_, _\\nb_ etc that specifies an indentation, is considered to serve only the purpose of showing indentation and are treated like empty markers. We are not parsing the text contents according to these markers. The text is assumed to belong only to the _\\v_ marker of _\\ip_ marker above it.
 
 ## Rules made liberal, to accomodate real world sample files
 

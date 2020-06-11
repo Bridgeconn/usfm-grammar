@@ -1,4 +1,4 @@
-# Comparison of usfm-grammar and usfm-js Libraries
+# Comparison of usfm-grammar(version 1.0.0) and usfm-js Libraries
 
 ## The Basic USFM Components
 

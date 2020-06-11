@@ -8,7 +8,9 @@ The parsed USFM is an intuitive and easy to manipulate JSON structure that allow
 - USFM validation
 - USFM to JSON convertor with 2 different levels of strictness
 - JSON to USFM convertor
+- CSV/TSV converter for both USFM and JSON
 - Command Line Interface (CLI)
+
 
 ### Try it out
 
@@ -194,3 +196,4 @@ var tsvString = myUsfmParser.toTSV();
 The `toCSV()` and `toTSV()` methods give a tabular representation of bible verses in the 
 `<BOOK, CHAPTER, VERSE-NUMBER, VERSE-TEXT>` format. 
 
+> *NOTE:* For [disclaimer](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs/Disclaimer.md), [release notes](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs/changelog.md) etc refer the [docs](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs) section.
