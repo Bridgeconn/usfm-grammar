@@ -155,8 +155,8 @@ var jsonOutput = myRelaxedUsfmParser.toJSON();
 
 This mode provides relaxation from checking sereval rules in the USFM specifcation. It tries hard to accomodate non-standard USFM markup and attempts to generate a JSON output for it. Only the most important markers are checked for, like the `\id` at the start, presence of `\c` and `\v` markers. Though all the markers in the input USFM file are preserved in the generated JSON output, their syntax or their positions in the file is not verified for correctness. Even misspelled makers would be accepted.
 
-_Caution_
-Errors may go unnoticed that might lead to loss of information. For example, if the file has mistakenly not given a space between verse marker and verse number, and has `\v3`  the parser in `relaxed` mode would accept it as a separate marker (`v3`) and fail to recognise it is a verse. The right (or the hard) thing to do is fix the markup according to the specification. We generally recommend using the grammar in the normal (strict) mode.
+> _Caution:_
+> Errors may go unnoticed that might lead to loss of information. For example, if the file has mistakenly not given a space between verse marker and verse number, and has `\v3`  the parser in `relaxed` mode would accept it as a separate marker (`v3`) and fail to recognise it is a verse. The right (or the hard) thing to do is fix the markup according to the specification. We generally recommend using the grammar in the normal (strict) mode.
 
 #### Validate
 3) `USFMParser.validate()`
