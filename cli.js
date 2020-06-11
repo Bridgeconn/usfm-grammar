@@ -16,6 +16,7 @@ const { argv } = require('yargs')
   .alias('o', 'output')
   .describe('o', 'specify the fully qualified file path for output.')
   .alias('h', 'help')
+  .alias('v', 'version')
   .help('help');
 const grammar = require('./js/main.js');
 
@@ -39,7 +40,7 @@ try {
 } catch (e) {
   isJson = false;
 }
-if (argv.format === 'usfm' || isJson) {
+if (argv.format === 'usfm' ||  isJson) {
   const myJsonParser = new grammar.JSONParser(jsonInput);
   try {
     output = myJsonParser.toUSFM(inputFile);

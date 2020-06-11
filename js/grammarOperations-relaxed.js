@@ -7,12 +7,22 @@ const sem = bib.createSemantics();
 
 /* eslint no-unused-vars: ["error", { "args": "none" }] */
 
+// when verse have internal or nested markers sometimes those markers will
+// be part of verse text and sometimes not.
+// We need to know which all marker's contents should be considered as verseText
+// while composing the .verseText property of each verse element.
+// This list is consulted for that
 const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
   'lik', 'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3',
   'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
   'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
   'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl', 'wj', 'em', 'bd',
   'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro'];
+
+// In normal grammar these markers are implemented as not containing text or other contents.
+// The relaxed grammar doesnot implement makers separately but have general rules for all.
+// So paragraph markers are identified separately here, and their contents are added as separate 
+// text and ts place is updated with null
 const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
   'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
