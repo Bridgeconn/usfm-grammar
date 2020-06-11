@@ -1,5 +1,34 @@
 # Change log for usfm-grammar
 
+## Version 1.1.0-beta.1 to 2.0.0
+
+### New Features 
+
+- [Relax mode parser](https://github.com/Bridgeconn/usfm-grammar/issues/52) which can accomodate a USFM file that might not be fully valid according to specification but [parse-able](https://github.com/Bridgeconn/usfm-grammar/issues/53#issuecomment-614170275)
+- Enable [TSV/CSV export](https://github.com/Bridgeconn/usfm-grammar/issues/29) of the USFM scripture content
+- [Reverse conversion](https://github.com/Bridgeconn/usfm-grammar/issues/25) from JSON to USFM
+- [CLI](https://github.com/Bridgeconn/usfm-grammar/issues/62): Enable the use of usfm-grammar library from command line also.
+
+### Major changes
+
+- Updation of JSON output
+  1. components that differ in JSON when using normal and relaxed parsing:
+     footnote, lists, table, cross-ref, \mt#, \io#, section headings, 
+      milestone, attributes)
+  2. property names/keys introduced to the JSON structure, other than usfm maker names
+    - book, book.bookcode, book.details, book.meta, chapters, contents, 
+      verseNumber, verseText, footnote, cross-ref, table, list, milestone, attributes,
+      closing
+- API changes
+  usfm-grammar implementation is now class based. 
+  new names for methods in previous version are as follows
+    - `parserUSFM()` becomes `USFMParser.toJSON()`
+    - `validate()` becomes `USFMParser.validate()`
+  
+
+  added a new class(`JSONParser`), new methods and parameters as per new features. Refer [README](https://github.com/Bridgeconn/usfm-grammar#usage) for the usage.
+
+
 ## Version 1.0.0 to 1.1.0-beta.1
 
 The main new feature is that, there is a new reverse conversion, that can take a JSON object in the usfm-grammar format and generate a USFM file out of it.
