@@ -18,9 +18,8 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
 
 ## Example
 
-### Input USFM String
-
-```
+<table><tr><th>Input USFM String</th><th>JSON Output</th><th>JSON Output, With Only Scripture Content</th></tr><td>
+<pre>
 \id hab 45HABGNT92.usfm, Good News Translation, June 2003
 \c 3
 \s1 A Prayer of Habakkuk
@@ -33,11 +32,7 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
 \q1 Now do again in our times
 \q2 the great deeds you used to do.
 \q1 Be merciful, even when you are angry.
-```
-
-### JSON Output
-
-```
+</pre></td><td><pre>
 {
   "book": {    "bookCode": "HAB",
           "description": "45HABGNT92.usfm, Good News Translation, June 2003"  },
@@ -53,7 +48,9 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
             { "b": null },
             { "q1": null }  ] },
         { "verseNumber": "2",
-          "verseText": "O Lord , I have heard of what you have done, and I am filled with awe. Now do again in our times the great deeds you used to do. Be merciful, even when you are angry.",
+          "verseText": "O Lord , I have heard of what you have done, and I am 
+          filled with awe. Now do again in our times the great deeds you used 
+          to do. Be merciful, even when you are angry.",
           "contents": [
             "O",
             { "nd": [ "Lord" ],
@@ -74,11 +71,9 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
     "_warnings": [ "Book code is in lowercase." ] }
 }
 
-```
+    
+</pre></td><td><pre>
 
-### JSON Output, With Only Scripture Content
-
-```
 { "book": { "bookCode": "HAB",
         "description": "45HABGNT92.usfm, Good News Translation, June 2003" },
   "chapters": [
@@ -87,7 +82,9 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
         { "verseNumber": "1",
           "verseText": "This is a prayer of the prophet Habakkuk:" },
         { "verseNumber": "2",
-          "verseText": "O Lord , I have heard of what you have done, and I am filled with awe. Now do again in our times the great deeds you used to do. Be merciful, even when you are angry." }
+          "verseText": "O Lord , I have heard of what you have done, and I am 
+          filled with awe. Now do again in our times the great deeds you used 
+          to do. Be merciful, even when you are angry." }
       ]
     }
   ],
@@ -95,7 +92,8 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
     "_warnings": [ "Book code is in lowercase. " ]
   }
 }
-```
+</pre></td>
+</tr></table>
 
 ## Installation
 
@@ -117,7 +115,7 @@ Then from the command line (terminal) to convert a valid USFM file into JSON (on
 
 ```
 > usfm-grammar -h
-  --version     Show version number                                    [boolean]
+  -v, --version     Show version number                                    [boolean]
   -l, --level   specify the level of strictness in parsing  [choices: "relaxed"]
   --filter      filters out only the specific contents from input USFM
                                                           [choices: "scripture"]
