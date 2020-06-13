@@ -203,7 +203,7 @@ sem.addOperation('composeJson', {
   sectionElementWithTitle(tag, _, titleText) {
     const marker = tag.composeJson();
     return {
-      [marker]: titleText.sourceString.trim(),
+      [marker]: titleText.composeJson(),
     };
   },
 
