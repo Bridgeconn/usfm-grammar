@@ -4,6 +4,10 @@ An elegant [USFM](https://github.com/ubsicap/usfm) parser (or validator) that us
 
 The parsed USFM is an intuitive and easy to manipulate JSON structure that allows for painless extraction of scripture and other content from the markup. USFM Grammar is also capable of reconverting the generated JSON back to USFM.
 
+Currently, the parser is implemented in JavaScript. But it is possible to re-use the grammar and port this library into other programming languages too. Contributions are welcome!
+
+> *Note:* refer the [docs](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs) section for [disclaimer](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs/Disclaimer.md), [release notes](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs/changelog.md), etc. 
+
 ## Features
 - USFM validation
 - USFM to JSON convertor with 2 different levels of strictness
@@ -12,14 +16,15 @@ The parsed USFM is an intuitive and easy to manipulate JSON structure that allow
 - Command Line Interface (CLI)
 
 
-### Try it out
+### Try it out!
 
 Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
 
 ## Example
 
-<table><tr><th>Input USFM String</th><th>JSON Output</th><th>JSON Output, With Only Scripture Content</th></tr><td>
-<pre>
+<table><tr><th>Input USFM</th><th>Parsed JSON Output</th><th>Parsed JSON with only filtered Scripture Content</th></tr><td>
+
+```
 \id hab 45HABGNT92.usfm, Good News Translation, June 2003
 \c 3
 \s1 A Prayer of Habakkuk
@@ -32,7 +37,11 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
 \q1 Now do again in our times
 \q2 the great deeds you used to do.
 \q1 Be merciful, even when you are angry.
-</pre></td><td><pre>
+```
+  
+</td><td>
+
+```
 {
   "book": {    "bookCode": "HAB",
           "description": "45HABGNT92.usfm, Good News Translation, June 2003"  },
@@ -71,9 +80,11 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
     "_warnings": [ "Book code is in lowercase." ] }
 }
 
-    
-</pre></td><td><pre>
+```
 
+</td><td>
+  
+```
 { "book": { "bookCode": "HAB",
         "description": "45HABGNT92.usfm, Good News Translation, June 2003" },
   "chapters": [
@@ -92,7 +103,9 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
     "_warnings": [ "Book code is in lowercase. " ]
   }
 }
-</pre></td>
+```
+
+</td>
 </tr></table>
 
 ## Installation
@@ -105,13 +118,13 @@ The parser is [available on NPM](https://www.npmjs.com/package/usfm-grammar) and
 
 ### Command Line Interface (CLI)
 
-To use usfm-grammar from the command line install it globally like:
+To use this tool from the command line install it globally like:
 
 `npm install -g usfm-grammar`
 
 Then from the command line (terminal) to convert a valid USFM file into JSON (on `stdout`) run: 
 
-`> usfm-grammar <file-path>`
+`> usfm-grammar /path/to/file.usfm`
 
 ```
 > usfm-grammar -h
@@ -124,7 +137,7 @@ Then from the command line (terminal) to convert a valid USFM file into JSON (on
   -o, --output  specify the fully qualified file path for output.
   -h, --help    Show help 
 ```
-The options `-l` (`--level`) and `--filter` do not have any effect if used with JSON to USFM conversion. 
+The options `-l` (`--level`) and `--filter` do not have any effect if used for JSON to USFM conversion. 
 
 ### JavaScript APIs
 #### USFM to JSON
@@ -144,26 +157,26 @@ var jsonOutput = myUsfmParser.toJSON();
 // Returns a simplified (scripture-only) JSON representation while excluding other USFM content
 var scriptureJsonOutput = myUsfmParser.toJSON(grammar.FILTER.SCRIPTURE);
 ```
-> *NOTE:* If you intend to re-convert a USFM from the generated JSON, we recommend using `.toJSON()` without the `grammar.FILTER.SCRIPTURE` option in order to retain all information of the original USFM file. 
+> *Note:* If you intend to re-convert a USFM from the generated JSON, we recommend using `.toJSON()` without the `grammar.FILTER.SCRIPTURE` option in order to retain all information of the original USFM file. 
 
-**Relaxed Mode**
-There is high chance that a USFM file you encounter in the wild is _not_ fully valid according to the specifications. In order to accomodate such cases and provide a [parse-able](https://github.com/Bridgeconn/usfm-grammar/issues/53#issuecomment-614170275) output to work with we created a **Relaxed** mode. This maybe used as shown:
+**`relaxed` Mode**
+There is high chance that a USFM file you encounter in the wild is _not_ fully valid according to the specifications. In order to accomodate such cases and provide a [parse-able](https://github.com/Bridgeconn/usfm-grammar/issues/53#issuecomment-614170275) output to work with we created a **relaxed** mode. This maybe used as shown:
 ```
 const myRelaxedUsfmParser = new grammar.USFMParser(input, grammar.LEVEL.RELAXED);
 var jsonOutput = myRelaxedUsfmParser.toJSON();
 ```
 
-This mode provides relaxation from checking several rules in the USFM specifcation. It tries hard to accomodate non-standard USFM markup and attempts to generate a JSON output for it. Only the most important markers are checked for, like the `\id` at the start, presence of `\c` and `\v` markers. Though all the markers in the input USFM file are preserved in the generated JSON output, their syntax or their positions in the file is not verified for correctness. Even misspelled markers would be accepted.
+The `relaxed` mode provides relaxation from checking several rules in the USFM specifcation. It tries hard to accomodate non-standard USFM markup and attempts to generate a JSON output for it. Only the most important markers are checked for, like the `\id` at the start, presence of `\c` and `\v` markers. Though all the markers in the input USFM file are preserved in the generated JSON output, their syntax or their positions in the file is not verified for correctness. Even misspelled markers would be accepted!
 
 > _Caution:_
-> Errors may go unnoticed that might lead to loss of information. For example, if the file has mistakenly not given a space between verse marker and verse number, and has `\v3`  the parser in `relaxed` mode would accept it as a separate marker (`v3`) and fail to recognise it is a verse. The right (or the hard) thing to do is fix the markup according to the specification. We generally recommend using the grammar in the normal (strict) mode.
+> Errors may go unnoticed that might lead to loss of information when using the `relaxed` mode. For example, if the input USFM has erroneously does not have a space between the verse marker and the verse number (e.g. `\v3`)  the parser in `relaxed` mode would treat it as a separate marker (`v3` as opposed to `v`) and fail to recognise it is a verse. The right (or the hard) thing to do is fix the markup according to the specification. We generally recommend using the grammar in the default mode.
 
 #### Validate
 3) `USFMParser.validate()`
 
 ```
 // Returns a Boolean indicating whether the input USFM text satisfies the grammar or not. 
-// This method is available in both normal (strict) and Relaxed modes.
+// This method is available in both default and relaxed modes.
 var isUsfmValid = myUsfmParser.validate();
 ```
 
@@ -179,7 +192,7 @@ const myJsonParser = new grammar.JSONParser(jsonOutput);
 // Returns the original USFM that was previously converted to JSON
 let reCreatedUsfm = myJsonParser.toUSFM();
 ```
-This method works JSON output created with or without the `grammar.FILTER.SCRIPTURE` option. 
+This method works with JSON output created with or without the `grammar.FILTER.SCRIPTURE` option. 
 
 #### USFM/JSON to CSV/TSV
 5) `USFMParser.toCSV()`
@@ -188,10 +201,12 @@ This method works JSON output created with or without the `grammar.FILTER.SCRIPT
 7) `USFMParser.toTSV()`
 8) `JSONParser.toTSV()`
 ```
+// Example usage:
+// Returns CSV and TSV from a USFM, respectively
 var csvString = myUsfmParser.toCSV();
 var tsvString = myUsfmParser.toTSV();
 ```
-The `toCSV()` and `toTSV()` methods give a tabular representation of bible verses in the 
-`<BOOK, CHAPTER, VERSE-NUMBER, VERSE-TEXT>` format. 
-
-> *NOTE:* For [disclaimer](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs/Disclaimer.md), [release notes](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs/changelog.md) etc refer the [docs](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs) section.
+The `toCSV()` and `toTSV()` methods return a tabular representation of the verses in the format:
+```
+<BOOK, CHAPTER, VERSE-NUMBER, VERSE-TEXT>
+```
