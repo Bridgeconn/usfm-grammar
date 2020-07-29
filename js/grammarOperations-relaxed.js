@@ -21,12 +21,14 @@ const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
 
 // In normal grammar these markers are implemented as not containing text or other contents.
 // The relaxed grammar doesnot implement makers separately but have general rules for all.
-// So paragraph markers are identified separately here, and their contents are added as separate 
+// So paragraph markers are identified separately here, and their contents are added as separate
 // text and ts place is updated with null
 const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
   'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
   'qm1', 'qm2', 'qm3'];
+
+const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
 
 sem.addOperation('buildJson', {
   File(bookhead, chapters) {
@@ -104,15 +106,27 @@ sem.addOperation('buildJson', {
     res.verseText = '';
     for (let i = 0; i < res.contents.length; i += 1) {
       if (typeof res.contents[i] === 'string') {
-        res.verseText += ` ${res.contents[i]}`;
+        if (punctPattern.test(res.contents[i])) {
+          res.verseText += res.contents[i];
+        } else {
+          res.verseText += ` ${res.contents[i]}`;
+        }
       } else {
         // console.log(res.contents[i].keys());
         const key = Object.keys(res.contents[i])[0];
         if (verseCarryingMarkers.includes(key)) {
-          res.verseText += ` ${res.contents[i][key]}`;
+          if (punctPattern.test(res.contents[i][key])) {
+            res.verseText += res.contents[i][key];
+          } else {
+            res.verseText += ` ${res.contents[i][key]}`;
+          }
         } else if (paraMarkers.includes(key)) {
           const text = res.contents[i][key];
-          res.verseText += ` ${text}`;
+          if (punctPattern.test(text)) {
+            res.verseText += text;
+          } else {
+            res.verseText += ` ${text}`;
+          }
           res.contents[i][key] = null;
           if (text !== '') {
             res.contents.splice(i + 1, 0, text);
@@ -176,7 +190,7 @@ sem.addOperation('buildJson', {
     const res = {};
     res[mrkr.sourceString] = contents.buildJson();
     res.closing = _4.sourceString + closing.sourceString;
-  }
+  },
 
 });
 

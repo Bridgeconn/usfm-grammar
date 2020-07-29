@@ -28,6 +28,9 @@ const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
 //   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
 //   'qm1', 'qm2', 'qm3'];
 
+const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
+
+
 let warningMessages = [];
 const milestoneFlag = [];
 
@@ -171,14 +174,28 @@ sem.addOperation('composeJson', {
     }
     for (let i = 0; i < elmts.length; i += 1) {
       if (typeof elmts[i] === 'string') {
-        verse.verseText += ` ${elmts[i]}`;
+        if (punctPattern.test(elmts[i])) {
+          verse.verseText += elmts[i];
+        } else {
+          verse.verseText += ` ${elmts[i]}`;
+        }
       } else {
         const key = Object.keys(elmts[i])[0];
         if (verseCarryingMarkers.includes(key)) {
-          verse.verseText += ` ${elmts[i][[key]]}`;
+          if (punctPattern.test(elmts[i][key])) {
+            verse.verseText += elmts[i][key];
+          } else {
+            verse.verseText += ` ${elmts[i][key]}`;
+          }
         } else if (key === 'list') {
           for (let j = 0; j < elmts[i][key].length; j += 1) {
             const innerKey = Object.keys(elmts[i][key][j])[0];
+            if (punctPattern.test(elmts[i][key][j][innerKey])) {
+              verse.verseText += elmts[i][key][j][innerKey];
+            } else {
+              verse.verseText += ` ${elmts[i][key][j][innerKey]}`;
+            }
+
             verse.verseText += ` ${elmts[i][key][j][innerKey]}`;
           }
         } else if (key === 'table') {
@@ -909,7 +926,11 @@ sem.addOperation('composeJson', {
     if (caption.sourceString === '' && attribs.sourceString === '') {
       emitter.emit('warning', new Error('Figure marker is empty. '));
     }
-    return { fig: caption.sourceString.trim(), Attributes: attribs.composeJson(), closing: _8.sourceString + _9.sourceString };
+    return {
+      fig: caption.sourceString.trim(),
+      Attributes: attribs.composeJson(),
+      closing: _8.sourceString + _9.sourceString,
+    };
   },
 
   table(header, row) {
