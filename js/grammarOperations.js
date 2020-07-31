@@ -909,7 +909,11 @@ sem.addOperation('composeJson', {
     if (caption.sourceString === '' && attribs.sourceString === '') {
       emitter.emit('warning', new Error('Figure marker is empty. '));
     }
-    return { fig: caption.sourceString.trim(), Attributes: attribs.composeJson(), closing: _8.sourceString + _9.sourceString };
+    return {
+      fig: caption.sourceString.trim(),
+      Attributes: attribs.composeJson(),
+      closing: _8.sourceString + _9.sourceString,
+    };
   },
 
   table(header, row) {

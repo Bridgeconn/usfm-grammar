@@ -49,7 +49,7 @@ class JSONParser extends Parser {
     }
 
     // handles the book-chapter-verse heirarchy which is common for all files, here.
-    // handles varable components and variable structures in processInnerElements() 
+    // handles varable components and variable structures in processInnerElements()
     for (let i = 0; i < jsonObj.chapters.length; i += 1) {
       usfmText += `\n\\c ${jsonObj.chapters[i].chapterNumber}`;
       for (let j = 0; j < jsonObj.chapters[i].contents.length; j += 1) {
@@ -73,7 +73,7 @@ class JSONParser extends Parser {
         }
       }
     }
-    // removes multiple spaces and lines, if any, 
+    // removes multiple spaces and lines, if any,
     // that might have been introduced my string concatinations
     usfmText = usfmText.replace(/\s+\n/g, '\n');
     usfmText = usfmText.replace(/\s\s+/g, ' ');
