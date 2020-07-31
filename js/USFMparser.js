@@ -17,7 +17,7 @@ class USFMParser extends Parser {
     const multiLinePattern = new RegExp('[\\n\\r][\\n\\r]+', 'g');
     const multiSpacePattern = new RegExp('  +', 'g');
     const trailingSpacePattern = new RegExp(' +[\\n\\r]', 'g');
-    const bookCodePattern = new RegExp('\\id ([a-z][a-z][a-z])[ \\n\\r]', 'g');
+    const bookCodePattern = new RegExp('\\\\id ([a-z][a-z][a-z])[ \\n\\r]', 'g');
     if (multiLinePattern.exec(str)) {
       this.warnings.push('Empty lines present. ');
     }
