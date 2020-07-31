@@ -97,7 +97,7 @@ class USFMParser extends Parser {
       }
       return jsonOutput;
     }
-    return matchObj;
+    return { _messages: { _error: matchObj.ERROR } };
   }
 
   toCSV() {
