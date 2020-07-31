@@ -21,7 +21,7 @@ const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
 
 // In normal grammar these markers are implemented as not containing text or other contents.
 // The relaxed grammar doesnot implement makers separately but have general rules for all.
-// So paragraph markers are identified separately here, and their contents are added as separate 
+// So paragraph markers are identified separately here, and their contents are added as separate
 // text and ts place is updated with null
 const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
   'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
@@ -176,7 +176,7 @@ sem.addOperation('buildJson', {
     const res = {};
     res[mrkr.sourceString] = contents.buildJson();
     res.closing = _4.sourceString + closing.sourceString;
-  }
+  },
 
 });
 
