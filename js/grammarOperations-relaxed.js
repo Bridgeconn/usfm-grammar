@@ -28,6 +28,8 @@ const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
   'qm1', 'qm2', 'qm3'];
 
+const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
+
 sem.addOperation('buildJson', {
   File(bookhead, chapters) {
     const parse = {
@@ -104,15 +106,30 @@ sem.addOperation('buildJson', {
     res.verseText = '';
     for (let i = 0; i < res.contents.length; i += 1) {
       if (typeof res.contents[i] === 'string') {
-        res.verseText += ` ${res.contents[i]}`;
+        if (punctPattern.test(res.contents[i])) {
+          res.verseText = res.verseText.trim();
+          res.verseText += res.contents[i];
+        } else {
+          res.verseText += ` ${res.contents[i]}`;
+        }
       } else {
         // console.log(res.contents[i].keys());
         const key = Object.keys(res.contents[i])[0];
         if (verseCarryingMarkers.includes(key)) {
-          res.verseText += ` ${res.contents[i][key]}`;
+          if (punctPattern.test(res.contents[i][key])) {
+            res.verseText = res.verseText.trim();
+            res.verseText += res.contents[i][key];
+          } else {
+            res.verseText += ` ${res.contents[i][key]}`;
+          }
         } else if (paraMarkers.includes(key)) {
           const text = res.contents[i][key];
-          res.verseText += ` ${text}`;
+          if (punctPattern.test(text)) {
+            res.verseText = res.verseText.trim();
+            res.verseText += text;
+          } else {
+            res.verseText += ` ${text}`;
+          }
           res.contents[i][key] = null;
           if (text !== '') {
             res.contents.splice(i + 1, 0, text);

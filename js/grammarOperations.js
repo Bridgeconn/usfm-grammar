@@ -21,12 +21,56 @@ const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
   'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
   'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
   'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl', 'wj', 'em', 'bd',
-  'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro'];
+  'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro',
+  '+add', '+bk', '+dc', '+k', '+lit', '+nd', '+ord', '+pn', '+png',
+  '+addpn', '+qt', '+sig', '+sls', '+tl', '+wj', '+em', '+bd', '+it',
+  '+bdit', '+no', '+sc', '+sup', '+w', '+rb', '+wa', '+wg', '+wh', '+pro'];
 
 // const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
 //   'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
 //   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
 //   'qm1', 'qm2', 'qm3'];
+
+const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
+
+function buildVerseText(elmts) {
+  let verseTextPartial = '';
+  if (typeof elmts === 'string') {
+    verseTextPartial = elmts;
+  } else {
+    const key = Object.keys(elmts)[0];
+    if (verseCarryingMarkers.includes(key) && typeof elmts[key] === 'string') {
+      verseTextPartial = elmts[key];
+    } else if (verseCarryingMarkers.includes(key) && Array.isArray(elmts[key])) {
+      let innerVerseText = '';
+      for (let i = 0; i < elmts[key].length; i += 1) {
+        const text = buildVerseText(elmts[key][i]);
+        if (punctPattern.test(text)) {
+          innerVerseText = innerVerseText.trim()
+          innerVerseText += text;
+        } else {
+          innerVerseText += ` ${text}`;
+        }
+      }
+      verseTextPartial = innerVerseText;
+    } else if (key === 'list') {
+      for (let j = 0; j < elmts[key].length; j += 1) {
+        const innerKey = Object.keys(elmts[key][j])[0];
+        if (punctPattern.test(elmts[key][j][innerKey])) {
+          verseTextPartial = verseTextPartial.trim()
+          verseTextPartial += elmts[key][j][innerKey];
+        } else {
+          verseTextPartial += ` ${elmts[key][j][innerKey]}`;
+        }
+
+        verseTextPartial += ` ${elmts[key][j][innerKey]}`;
+      }
+    } else if (key === 'table') {
+      verseTextPartial = elmts.text;
+    }
+  }
+  return verseTextPartial;
+}
 
 let warningMessages = [];
 const milestoneFlag = [];
@@ -170,25 +214,19 @@ sem.addOperation('composeJson', {
       emitter.emit('warning', new Error(`Verse text is empty, at \\v ${verseNumber.sourceString}. `));
     }
     for (let i = 0; i < elmts.length; i += 1) {
-      if (typeof elmts[i] === 'string') {
-        verse.verseText += ` ${elmts[i]}`;
+      const text = buildVerseText(elmts[i]);
+      if (punctPattern.test(text)) {
+        verse.verseText = verse.verseText.trim()
+        verse.verseText += text;
       } else {
-        const key = Object.keys(elmts[i])[0];
-        if (verseCarryingMarkers.includes(key)) {
-          verse.verseText += ` ${elmts[i][[key]]}`;
-        } else if (key === 'list') {
-          for (let j = 0; j < elmts[i][key].length; j += 1) {
-            const innerKey = Object.keys(elmts[i][key][j])[0];
-            verse.verseText += ` ${elmts[i][key][j][innerKey]}`;
-          }
-        } else if (key === 'table') {
-          verse.verseText += elmts[i].text;
-          delete elmts[i].text;
-        }
+        verse.verseText += ` ${text}`;
       }
-      verse.verseText = verse.verseText.trim().replace(/ +/g, ' ');
+      if (Object.prototype.hasOwnProperty.call(elmts[i], 'table')) {
+        delete elmts[i].text;
+      }
       verse.contents.push(elmts[i]);
     }
+    verse.verseText = verse.verseText.trim().replace(/ +/g, ' ');
     return verse;
   },
 
@@ -742,10 +780,6 @@ sem.addOperation('composeJson', {
     const obj = {};
     const textobj = text.composeJson();
     obj[tag.sourceString] = textobj;
-    obj.text = '';
-    for (let i = 0; i < textobj.length; i += 1) {
-      if (textobj[i].text) { obj.text += `${textobj[i].text} `; }
-    }
     if (attribs.sourceString !== '') {
       let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
@@ -757,7 +791,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _11.sourceString; }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
     return obj;
   },
 
@@ -765,7 +799,6 @@ sem.addOperation('composeJson', {
     text, _7, _8, attribs, _10, _11, _12, _13, _14) {
     const obj = {};
     obj[tag.sourceString] = text.composeJson();
-    obj.text = obj[tag.sourceString].content;
     if (attribs.sourceString !== '') {
       let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
@@ -785,7 +818,6 @@ sem.addOperation('composeJson', {
     _5, text, _7, _8, attribs, _10, _11, closing, _13, _14) {
     const obj = {};
     obj[tag.sourceString] = text.composeJson();
-    obj.text = obj[tag.sourceString].content;
     if (attribs.sourceString !== '') {
       let attribObj = attribs.composeJson();
       if (Array.isArray(attribObj[0])) {
@@ -797,7 +829,7 @@ sem.addOperation('composeJson', {
       }
       obj.attributes = attribObj;
     }
-    if (closing.sourceString !== '') { obj.closing = closing.sourceString + _13.sourceString; }
+    if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
     return obj;
   },
 

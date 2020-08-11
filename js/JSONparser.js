@@ -12,7 +12,7 @@ class JSONParser extends Parser {
       'fr', 'fq', 'fqa', 'fk', 'fl', 'fw', 'fp', 'fv', 'ft', 'fdc', 'fm', 'x',
       'xo', 'xk', 'xq', 'xt', 'xta', 'xop', 'xot', 'xnt', 'xdc', 'rq', 'add', 'bk',
       'dc', 'k', 'lit', 'nd', 'ord', 'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl',
-      'wj', 'em', 'bd', 'it', 'bdit', 'no', 'sc', 'sup', 'fig', '+add', '+bk',
+      'wj', 'em', 'bd', 'it', 'bdit', 'no', 'sc', 'sup', 'fig', 'w', '+w','+add', '+bk',
       '+dc', '+k', '+lit', '+nd', '+ord', '+pn', '+png', '+addpn', '+qt', '+sig',
       '+sls', '+tl', '+wj', '+em', '+bd', '+it', '+bdit', '+no', '+sc', '+sup', 'jmp',
     ];
