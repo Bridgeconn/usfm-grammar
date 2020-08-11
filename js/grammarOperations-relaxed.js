@@ -107,6 +107,7 @@ sem.addOperation('buildJson', {
     for (let i = 0; i < res.contents.length; i += 1) {
       if (typeof res.contents[i] === 'string') {
         if (punctPattern.test(res.contents[i])) {
+          res.verseText = res.verseText.trim();
           res.verseText += res.contents[i];
         } else {
           res.verseText += ` ${res.contents[i]}`;
@@ -116,6 +117,7 @@ sem.addOperation('buildJson', {
         const key = Object.keys(res.contents[i])[0];
         if (verseCarryingMarkers.includes(key)) {
           if (punctPattern.test(res.contents[i][key])) {
+            res.verseText = res.verseText.trim();
             res.verseText += res.contents[i][key];
           } else {
             res.verseText += ` ${res.contents[i][key]}`;
@@ -123,6 +125,7 @@ sem.addOperation('buildJson', {
         } else if (paraMarkers.includes(key)) {
           const text = res.contents[i][key];
           if (punctPattern.test(text)) {
+            res.verseText = res.verseText.trim();
             res.verseText += text;
           } else {
             res.verseText += ` ${text}`;

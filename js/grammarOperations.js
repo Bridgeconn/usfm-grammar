@@ -46,6 +46,7 @@ function buildVerseText(elmts) {
       for (let i = 0; i < elmts[key].length; i += 1) {
         const text = buildVerseText(elmts[key][i]);
         if (punctPattern.test(text)) {
+          innerVerseText = innerVerseText.trim()
           innerVerseText += text;
         } else {
           innerVerseText += ` ${text}`;
@@ -56,6 +57,7 @@ function buildVerseText(elmts) {
       for (let j = 0; j < elmts[key].length; j += 1) {
         const innerKey = Object.keys(elmts[key][j])[0];
         if (punctPattern.test(elmts[key][j][innerKey])) {
+          verseTextPartial = verseTextPartial.trim()
           verseTextPartial += elmts[key][j][innerKey];
         } else {
           verseTextPartial += ` ${elmts[key][j][innerKey]}`;
@@ -214,6 +216,7 @@ sem.addOperation('composeJson', {
     for (let i = 0; i < elmts.length; i += 1) {
       const text = buildVerseText(elmts[i]);
       if (punctPattern.test(text)) {
+        verse.verseText = verse.verseText.trim()
         verse.verseText += text;
       } else {
         verse.verseText += ` ${text}`;
