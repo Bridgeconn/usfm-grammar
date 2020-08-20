@@ -47,4 +47,36 @@ describe('Test bug fixes', () => {
 	assert.strictEqual(jsonOutput.chapters[0].contents[2].verseText, 'verse two, which has a comma at the text break point.');
   });
 
+  it('Files with empty lines', () => {
+    // ISSUE: Empty lines were being removed at normalization step. But that made lne number miss-match in error messages. So empty lines are not removed now
+    // https://github.com/Bridgeconn/usfm-grammar/issues/81
+    let inputUsfm = '\\id GEN\n\\c 1\n\\p\n\n\n\\v 1 verse one\n\n    \n\\v 2 verse two did have an id in it.'
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    let jsonOutput = usfmParser.toJSON();
+    let  jsonParser = new grammar.JSONParser(jsonOutput);
+    let outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    jsonOutput = relaxedUsfmParser.toJSON();
+    jsonParser = new grammar.JSONParser(jsonOutput);
+    outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));  
+  });
+
+  it('Adding extra \\p when converting SCRIPTURE-filtered-JSON back to USFM', () => {
+    // ISSUE: When the JSON is obtained with SCRIPTURE filter, all paragraph markers and other non-scripture contents are removed.
+    // This JSON if converted back to USFM would give a USFM without any \p, even at chapter start, which is mandatory for a valid USFM.
+    // A USFM thus re-created was not parsable with usfm-grammar. 
+    // So we are now adding a \p at chapter start
+    let inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse one\n\\v 2 verse two did have an id in it.'
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    let jsonOutput = usfmParser.toJSON(grammar.FILTER.SCRIPTURE);
+    let  jsonParser = new grammar.JSONParser(jsonOutput);
+    let outputUsfm = jsonParser.toUSFM();
+    const usfmParser2 = new grammar.USFMParser(outputUsfm);
+    let validity = usfmParser2.validate();
+    assert.strictEqual(validity, true);
+
+  });
+
 });
