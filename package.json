@@ -8,7 +8,7 @@
         "start": "node ../server.js"
     },
     "dependencies": {
-        "ohm-fork": "^0.15.1",
+        "ohm-js": "^15.0.1",
         "yargs": "^15.4.1"
     },
     "repository": {

@@ -1,5 +1,4 @@
-// const ohm = require('../ohm-0.15.0');
-const ohm = require('ohm-fork');
+const ohm = require('ohm-js');
 const { contents: grammar } = require('../grammar/usfm-relaxed.ohm.js');
 
 const { usfmRelaxed: bib } = ohm.grammars(grammar);
