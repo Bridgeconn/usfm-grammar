@@ -8,8 +8,8 @@
         "start": "node ../server.js"
     },
     "dependencies": {
-        "ohm-js": "^15.0.1",
-        "yargs": "^15.4.1"
+        "ohm-js": "^15.2.1",
+        "yargs": "^16.0.3"
     },
     "repository": {
         "type": "git",
