@@ -128,9 +128,11 @@ usfmBible{
 			JSON structure. But the paragraph-wise division will not be there in the JSON. */
 
 			paraElement = newLine? backSlash paraMarker spaceChar*
-			paraMarker = paraUnNumberedMarker | paraNumberedMarker
-			paraUnNumberedMarker =   ("po" | "m"  | "pr" | "cls" | "pmo" | "pm" | "pmc" | "pmr" | "pmi" | "nb" | "pc" | "b" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "p" )
-			paraNumberedMarker =  ("pi" | "ph" | "q" | "qm" | "lim") number?
+			paraMarker = paraMarkerSet1 | paraMarkerSet2 |paraMarkerSet3 | paraMarkerSet4
+			paraMarkerSet1 =( "cls" | "pmo" | "pmc" | "pmr" | "pmi" ) 
+			paraMarkerSet2 =( ("lim" number?) | ("pi" number?) | ("ph" number?) | ("qm" number?) )
+			paraMarkerSet3 = ( "pm" | "pr" | "nb" | "pc" | "po" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "m"  | "b" | "p" )
+			paraMarkerSet4 = ("q" number?) 
 
 			/* A verse is considered as a collection of objects which could be verse 
 			text objects or other meta-scripture objects */

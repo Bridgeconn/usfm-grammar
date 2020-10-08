@@ -79,4 +79,20 @@ describe('Test bug fixes', () => {
 
   });
 
+  it('\\pi not recognized due to the not proper left to right order of rules', () => {
+    // The \pi paragraph marker not recognized due to the not proper left to right order of rules
+    // https://github.com/Bridgeconn/usfm-grammar/issues/84
+    let inputUsfm = '\n\\id GEN\n\\mt1 ഉല്പത്തിപുസ്തകം\n\\c 1\n\\pi\n\\v 1 ആദിയിൽ ദൈവം ആകാശവും ഭൂമിയും സൃഷ്ടിച്ചു.'
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    let jsonOutput = usfmParser.toJSON();
+    let  jsonParser = new grammar.JSONParser(jsonOutput);
+    let outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    jsonOutput = relaxedUsfmParser.toJSON();
+    jsonParser = new grammar.JSONParser(jsonOutput);
+    outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));  
+  });
+
 });
