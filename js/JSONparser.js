@@ -55,6 +55,9 @@ class JSONParser extends Parser {
       for (let j = 0; j < jsonObj.chapters[i].contents.length; j += 1) {
         const key = Object.keys(jsonObj.chapters[i].contents[j])[0];
         if (key === 'verseNumber') {
+          if (j===0) {
+              usfmText += '\n\\p'
+          }
           usfmText += `\n\\v ${jsonObj.chapters[i].contents[j].verseNumber} `;
           if (Object.prototype.hasOwnProperty.call(jsonObj.chapters[i].contents[j], 'contents')) {
             for (let k = 0; k < jsonObj.chapters[i].contents[j].contents.length; k += 1) {
