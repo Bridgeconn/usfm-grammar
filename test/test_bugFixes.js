@@ -95,4 +95,49 @@ describe('Test bug fixes', () => {
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));  
   });
 
+
+    it('Expand grammar to accommodate empty attribute values', () => {
+    // Sometimes attribute name would be specified and empty string("") would be given as value
+    // Allow such cases as valid, in grammar rules and generate a warning for it
+    // https://github.com/Bridgeconn/usfm-grammar/issues/87
+    let inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തിപുസ്തകം\n\\c 1\n\\p\n\\v 1 ആദിയിൽ ദൈവം \\w ആകാശവും |lemma="ആകാശം" strong="l" x-morph="He,R:Sp1cs"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.\n\\v 2 ആദിയിൽ ദൈവം \\w ആകാശവും |lemma="" strong="l" x-morph="He,R:Sp1cs"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.\n\\v 3 ആദിയിൽ ദൈവം \\w ആകാശവും|"ആകാശം"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.\n\\v 4 ആദിയിൽ ദൈവം \\w ആകാശവും|ആകാശം\\w* ഭൂമിയും സൃഷ്ടിച്ചു.'
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    let jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput._messages._warnings.includes("Attribute value empty for lemma. "), true)
+    let  jsonParser = new grammar.JSONParser(jsonOutput);
+    let outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    jsonOutput = relaxedUsfmParser.toJSON();
+    jsonParser = new grammar.JSONParser(jsonOutput);
+    outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g,''), inputUsfm.replace(/[\s\n\r]/g,''));  
+  });
+
+  it('Expand grammar to accommodate empty attribute values: Nagative tests', () => {
+    // Sometimes attribute name would be specified and empty string("") would be given as value
+    // Do not accept cases with attributes 
+    // - without quotes, 
+    // - no quote or test after =, 
+    // - no equals or values after attribute name, 
+    // - no default attribute after pipe symbol
+    // https://github.com/Bridgeconn/usfm-grammar/issues/87
+    let inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തി പുസ്തകം\n\\c 1\n\\p\n\\v 1 ആദിയിൽ ദൈവം \\w ആകാശവും |lemma=ആകാശം strong="l" x-morph="He,R:Sp1cs"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.'
+    let usfmParser = new grammar.USFMParser(inputUsfm);
+    let jsonOutput = usfmParser.toJSON();
+    assert.strictEqual("_error" in jsonOutput._messages, true);  
+    inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തി പുസ്തകം\n\\c 1\n\\p\n\\v 1 ആദിയിൽ ദൈവം \\w ആകാശവും |lemma= strong="l" x-morph="He,R:Sp1cs"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.'
+    usfmParser = new grammar.USFMParser(inputUsfm);
+    jsonOutput = usfmParser.toJSON();
+    assert.strictEqual("_error" in jsonOutput._messages, true);  
+    inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തിപുസ്തകം\n\\c 1\n\\pi\n\\v 1 ആദിയിൽ ദൈവം \\w ആകാശവും |lemma strong="l" x-morph="He,R:Sp1cs"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.'
+    usfmParser = new grammar.USFMParser(inputUsfm);
+    jsonOutput = usfmParser.toJSON();
+    assert.strictEqual("_error" in jsonOutput._messages, true);  
+    inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തിപുസ്തകം\n\\c 1\n\\pi\n\\v 6 ആദിയിൽ ദൈവം \\w ആകാശവും| \\w* ഭൂമിയും സൃഷ്ടിച്ചു.'
+    usfmParser = new grammar.USFMParser(inputUsfm);
+    jsonOutput = usfmParser.toJSON();
+    assert.strictEqual("_error" in jsonOutput._messages, true);  
+  });
+
 });

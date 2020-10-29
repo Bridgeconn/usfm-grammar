@@ -835,6 +835,9 @@ sem.addOperation('composeJson', {
   customAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString.trim()] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
@@ -861,72 +864,108 @@ sem.addOperation('composeJson', {
   msAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   lemmaAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   strongAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   scrlocAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   glossAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   linkAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   altAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   srcAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   sizeAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   locAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   copyAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
   refAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
+    if (value.sourceString.trim() === ""){
+      emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
+    }
     return attribObj;
   },
 
