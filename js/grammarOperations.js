@@ -15,7 +15,7 @@ const sem = bib.createSemantics();
 // We need to know which all marker's contents should be considered as verseText
 // while composing the .verseText property of each verse element.
 // This list is consulted for that
-const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'lh', 'lf', 'litl',
+const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'lh', 'lf', 'lim', 'litl',
   'lik', 'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3',
   'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
   'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
@@ -44,28 +44,32 @@ function buildVerseText(elmts) {
       let innerVerseText = '';
       for (let i = 0; i < elmts[key].length; i += 1) {
         const text = buildVerseText(elmts[key][i]);
-        if (punctPattern.test(text)) {
-          innerVerseText = innerVerseText.trim()
-          innerVerseText += text;
-        } else {
-          innerVerseText += ` ${text}`;
+        if (text !== null) {
+          if (punctPattern.test(text)) {
+            innerVerseText = innerVerseText.trim();
+            innerVerseText += text;
+          } else {
+            innerVerseText += ` ${text}`;
+          }
         }
       }
       verseTextPartial = innerVerseText;
     } else if (key === 'list') {
       for (let j = 0; j < elmts[key].length; j += 1) {
         const innerKey = Object.keys(elmts[key][j])[0];
-        if (punctPattern.test(elmts[key][j][innerKey])) {
-          verseTextPartial = verseTextPartial.trim()
-          verseTextPartial += elmts[key][j][innerKey];
-        } else {
-          verseTextPartial += ` ${elmts[key][j][innerKey]}`;
+        if (elmts[key][j][innerKey] !== null) {
+          if (punctPattern.test(elmts[key][j][innerKey])) {
+            verseTextPartial = verseTextPartial.trim();
+            verseTextPartial += elmts[key][j][innerKey];
+          } else {
+            verseTextPartial += ` ${elmts[key][j][innerKey]}`;
+          }
         }
-
-        // verseTextPartial += ` ${elmts[key][j][innerKey]}`;
       }
     } else if (key === 'table') {
-      verseTextPartial = elmts.text;
+      if (elmts.text !== null) {
+        verseTextPartial = elmts.text;
+      }
     }
   }
   return verseTextPartial;
@@ -215,7 +219,7 @@ sem.addOperation('composeJson', {
     for (let i = 0; i < elmts.length; i += 1) {
       const text = buildVerseText(elmts[i]);
       if (punctPattern.test(text)) {
-        verse.verseText = verse.verseText.trim()
+        verse.verseText = verse.verseText.trim();
         verse.verseText += text;
       } else {
         verse.verseText += ` ${text}`;
@@ -615,7 +619,6 @@ sem.addOperation('composeJson', {
     return obj;
   },
 
-
   fmElement(nl, _1, tag, _3, text, _5, closing, _7, _8) {
     const obj = { [tag.sourceString]: text.sourceString.trim() };
     if (closing.sourceString !== '') { obj.closing = closing.sourceString; }
@@ -835,7 +838,7 @@ sem.addOperation('composeJson', {
   customAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString.trim()] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -864,7 +867,7 @@ sem.addOperation('composeJson', {
   msAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -873,7 +876,7 @@ sem.addOperation('composeJson', {
   lemmaAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -882,7 +885,7 @@ sem.addOperation('composeJson', {
   strongAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -891,7 +894,7 @@ sem.addOperation('composeJson', {
   scrlocAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -900,7 +903,7 @@ sem.addOperation('composeJson', {
   glossAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -909,7 +912,7 @@ sem.addOperation('composeJson', {
   linkAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -918,7 +921,7 @@ sem.addOperation('composeJson', {
   altAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -927,7 +930,7 @@ sem.addOperation('composeJson', {
   srcAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -936,7 +939,7 @@ sem.addOperation('composeJson', {
   sizeAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -945,7 +948,7 @@ sem.addOperation('composeJson', {
   locAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -954,7 +957,7 @@ sem.addOperation('composeJson', {
   copyAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -963,7 +966,7 @@ sem.addOperation('composeJson', {
   refAttribute(name, _2, _3, value, _4, _5) {
     const attribObj = {};
     attribObj[name.sourceString] = value.sourceString.trim();
-    if (value.sourceString.trim() === ""){
+    if (value.sourceString.trim() === '') {
       emitter.emit('warning', new Error('Attribute value empty for '.concat(name.sourceString).concat('. ')));
     }
     return attribObj;
@@ -1034,7 +1037,6 @@ sem.addOperation('composeJson', {
     return elmnt.composeJson();
   },
 
-
   thElement(_1, _2, num, _4, text) {
     const marker = `th${num.sourceString}`;
     return { [marker]: text.sourceString.trim() };
@@ -1072,7 +1074,7 @@ sem.addOperation('composeJson', {
   },
 
   liElementWithoutText(_1, _2, marker, _4) {
-    return {"li": null}
+    return { li: null };
   },
 
   lhElement(lh) {
@@ -1080,13 +1082,13 @@ sem.addOperation('composeJson', {
   },
 
   lhElementWithText(_1, _2, marker, _4, text) {
-    const obj = {}
-    obj['lh'] = text.composeJson();
+    const obj = {};
+    obj.lh = text.composeJson();
     return obj;
   },
 
   lhElementWithoutText(_1, _2, marker, _4) {
-    return {"lh": null}
+    return { lh: null };
   },
 
   lfElement(lf) {
@@ -1094,13 +1096,28 @@ sem.addOperation('composeJson', {
   },
 
   lfElementWithText(_1, _2, marker, _4, text) {
-    const obj = {}
-    obj['lf'] = text.composeJson();
+    const obj = {};
+    obj.lf = text.composeJson();
     return obj;
   },
 
   lfElementWithoutText(_1, _2, marker, _4) {
-    return {"lh": null}
+    return { lf: null };
+  },
+
+  limElement(lim) {
+    return lim.composeJson();
+  },
+
+  limElementWithText(_1, _2, marker, number, _4, text) {
+    const obj = {};
+    const mrkr = 'lim'.concat(number.sourceString);
+    obj[mrkr] = text.composeJson();
+    return obj;
+  },
+
+  limElementWithoutText(_1, _2, marker, number, _4) {
+    return { lim: null };
   },
 
   litElement(_1, _2, _3, _4, text) {
@@ -1186,7 +1203,6 @@ sem.addOperation('composeJson', {
   },
 
 });
-
 
 function match(str) {
   const matchObj = bib.match(str);

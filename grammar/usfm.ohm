@@ -130,7 +130,7 @@ usfmBible{
 			paraElement = newLine? backSlash paraMarker spaceChar*
 			paraMarker = paraMarkerSet1 | paraMarkerSet2 |paraMarkerSet3 | paraMarkerSet4
 			paraMarkerSet1 =( "cls" | "pmo" | "pmc" | "pmr" | "pmi" ) 
-			paraMarkerSet2 =( ("lim" number?) | ("pi" number?) | ("ph" number?) | ("qm" number?) )
+			paraMarkerSet2 =( ("pi" number?) | ("ph" number?) | ("qm" number?) )
 			paraMarkerSet3 = ( "pm" | "pr" | "nb" | "pc" | "po" | "pb" | "qr" | "qc" | "qd" | "m"  | "b" | "p" )
 			paraMarkerSet4 = ("q" number?) 
 
@@ -400,7 +400,7 @@ usfmBible{
 
 			/* like the table, the heirarchical structure of the list is also implemented in the JSON */
 
-			li =  (lhElement | liElement | lfElement)+ 
+			li =  (limElement | lhElement | liElement | lfElement)+ 
 			liElement = liElementWithText | liElementWithoutText
 			liElementWithText = newLine? backSlash "li" number? spaceChar (text | charElement)+
 			liElementWithoutText = newLine? backSlash "li" spaceChar*
@@ -410,6 +410,9 @@ usfmBible{
 			lfElement = lfElementWithText | lfElementWithoutText
 			lfElementWithText = newLine? backSlash "lf" spaceChar (text | charElement)*
 			lfElementWithoutText = newLine? backSlash "lf" spaceChar*
+			limElement = limElementWithText | limElementWithoutText
+			limElementWithText = newLine? backSlash "lim" number? spaceChar (text | charElement)*
+			limElementWithoutText = newLine? backSlash "lim" number? spaceChar*
 			
 
 			
