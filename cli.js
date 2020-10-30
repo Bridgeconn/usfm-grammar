@@ -40,7 +40,7 @@ try {
 } catch (e) {
   isJson = false;
 }
-if (argv.format === 'usfm' ||  isJson) {
+if (argv.format === 'usfm' || isJson) {
   const myJsonParser = new grammar.JSONParser(jsonInput);
   try {
     output = myJsonParser.toUSFM(inputFile);

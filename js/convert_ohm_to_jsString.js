@@ -16,7 +16,6 @@ const newline = new RegExp('\\n', 'g');
 // which would in turn prevent its usage in front-end apps(on brower).
 // This script is run manually every time the grammar is updated.
 
-
 fs.readFile('grammar/usfm.ohm', 'utf-8', (err, data) => {
   if (err) { throw err; }
   grammarString = data.replace(commentsOneLine, '');

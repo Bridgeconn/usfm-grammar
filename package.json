@@ -5,7 +5,9 @@
     "main": "./js/main.js",
     "scripts": {
         "test": "mocha --expose-gc --timeout 40000",
-        "start": "node ../server.js"
+        "start": "node ../server.js",
+        "lint": "eslint .",
+        "test-on-github": "mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild",
     },
     "dependencies": {
         "ohm-js": "^15.2.1",
