@@ -28,7 +28,7 @@ class USFMParser extends Parser {
       this.warnings.push('Trailing spaces present at line end. ');
     }
     newStr = str.replace(trailingSpacePattern, '\n');
-    newStr = newStr.replace(multiLinePattern, '\n');
+    // newStr = newStr.replace(multiLinePattern, '\n');
     newStr = newStr.replace(multiSpacePattern, ' ');
     const matchObj = bookCodePattern.exec(newStr);
     if (matchObj) {

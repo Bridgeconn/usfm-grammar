@@ -6,6 +6,7 @@ const commentsMultiLine = new RegExp('/[*][^*]*[*]/', 'g');
 const multiLines = new RegExp('[\\n\\r][\\n\\r]+', 'g');
 const backslash = new RegExp('\\\\', 'g');
 const newline = new RegExp('\\n', 'g');
+const tabSpace = new RegExp('\\t', 'g');
 
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
@@ -16,7 +17,6 @@ const newline = new RegExp('\\n', 'g');
 // which would in turn prevent its usage in front-end apps(on brower).
 // This script is run manually every time the grammar is updated.
 
-
 fs.readFile('grammar/usfm.ohm', 'utf-8', (err, data) => {
   if (err) { throw err; }
   grammarString = data.replace(commentsOneLine, '');
@@ -24,8 +24,9 @@ fs.readFile('grammar/usfm.ohm', 'utf-8', (err, data) => {
   grammarString = grammarString.replace(multiLines, '\n');
   grammarString = grammarString.replace(backslash, '\\\\');
   grammarString = grammarString.replace(newline, '\\n');
+  grammarString = grammarString.replace(tabSpace, '  ');
 
-  const fileContent = `exports.contents = '${grammarString}'`;
+  const fileContent = `exports.contents = '${grammarString}';\n`;
   fs.writeFile('grammar/usfm.ohm.js', fileContent, (writeErr) => {
     if (writeErr) console.error(writeErr.message);
     // success case, the file was saved
@@ -40,8 +41,9 @@ fs.readFile('grammar/usfm-relaxed.ohm', 'utf-8', (err, data) => {
   grammarString = grammarString.replace(multiLines, '\n');
   grammarString = grammarString.replace(backslash, '\\\\');
   grammarString = grammarString.replace(newline, '\\n');
+  grammarString = grammarString.replace(tabSpace, '  ');
 
-  const fileContent = `exports.contents = '${grammarString}'`;
+  const fileContent = `exports.contents = '${grammarString}';\n`;
   fs.writeFile('grammar/usfm-relaxed.ohm.js', fileContent, (writeErr) => {
     if (writeErr) console.error(writeErr.message);
     // success case, the file was saved

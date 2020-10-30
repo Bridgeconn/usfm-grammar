@@ -12,7 +12,7 @@ class JSONParser extends Parser {
       'fr', 'fq', 'fqa', 'fk', 'fl', 'fw', 'fp', 'fv', 'ft', 'fdc', 'fm', 'x',
       'xo', 'xk', 'xq', 'xt', 'xta', 'xop', 'xot', 'xnt', 'xdc', 'rq', 'add', 'bk',
       'dc', 'k', 'lit', 'nd', 'ord', 'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl',
-      'wj', 'em', 'bd', 'it', 'bdit', 'no', 'sc', 'sup', 'fig', 'w', '+w','+add', '+bk',
+      'wj', 'em', 'bd', 'it', 'bdit', 'no', 'sc', 'sup', 'fig', 'w', '+w', '+add', '+bk',
       '+dc', '+k', '+lit', '+nd', '+ord', '+pn', '+png', '+addpn', '+qt', '+sig',
       '+sls', '+tl', '+wj', '+em', '+bd', '+it', '+bdit', '+no', '+sc', '+sup', 'jmp',
     ];
@@ -55,6 +55,9 @@ class JSONParser extends Parser {
       for (let j = 0; j < jsonObj.chapters[i].contents.length; j += 1) {
         const key = Object.keys(jsonObj.chapters[i].contents[j])[0];
         if (key === 'verseNumber') {
+          if (j === 0) {
+            usfmText += '\n\\p';
+          }
           usfmText += `\n\\v ${jsonObj.chapters[i].contents[j].verseNumber} `;
           if (Object.prototype.hasOwnProperty.call(jsonObj.chapters[i].contents[j], 'contents')) {
             for (let k = 0; k < jsonObj.chapters[i].contents[j].contents.length; k += 1) {
@@ -79,7 +82,6 @@ class JSONParser extends Parser {
     usfmText = usfmText.replace(/\s\s+/g, ' ');
     return usfmText;
   }
-
 
   processInnerElements(jsonObject, usfm) {
     let usfmText = usfm;
@@ -203,6 +205,5 @@ class JSONParser extends Parser {
     return csvWriter;
   }
 }
-
 
 exports.JSONParser = JSONParser;

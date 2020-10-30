@@ -5,7 +5,9 @@
     "main": "./js/main.js",
     "scripts": {
         "test": "mocha --expose-gc --timeout 40000",
-        "start": "node ../server.js"
+        "start": "node ../server.js",
+        "lint": "eslint .",
+        "test-on-github": "mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild.js"
     },
     "dependencies": {
         "ohm-js": "^15.2.1",
@@ -31,7 +33,7 @@
     },
     "homepage": "https://github.com/Bridgeconn/usfm-grammar",
     "devDependencies": {
-        "eslint": "^7.5.0",
+        "eslint": "^7.7.0",
         "eslint-config-airbnb-base": "^14.2.0",
         "eslint-plugin-import": "^2.22.0",
         "mocha": "^8.1.1"
