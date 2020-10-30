@@ -1,4 +1,3 @@
-
 // ABSTARCT class
 
 class Parser {

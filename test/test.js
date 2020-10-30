@@ -3,16 +3,18 @@ const fs = require('fs');
 const grammar = require('../js/main.js');
 
 describe('Mandatory Markers', () => {
-  beforeEach(function() {
+  beforeEach(() => {
     if (global.gc) { global.gc(); }
   });
 
   it('id,p,c and v are the minimum required markers', () => {
-    const myUsfmParser = new grammar.USFMParser('\\id PHM Longer Heading\n\\c 1\n\\p\n\\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...\n\\v 2 നമ്മുടെ പിതാവായ ...\n\\p\n\\v 3 കർത്താവായ യേശുവിനോടും ...');
+    const myUsfmParser = new grammar.USFMParser('\\id PHM Longer Heading\n\\c 1\n\\p\n\\v 1 '
+      + 'ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...\n\\v 2 നമ്മുടെ പിതാവായ ...\n\\p\n\\v 3 കർത്താവായ യേശുവിനോടും ...');
     const output = myUsfmParser.validate();
-    const relaxedUsfmParser = new grammar.USFMParser('\\id PHM Longer Heading\n\\c 1\n\\p\n\\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...\n\\v 2 നമ്മുടെ പിതാവായ ...\n\\p\n\\v 3 കർത്താവായ യേശുവിനോടും ...', grammar.LEVEL.RELAXED);
+    const relaxedUsfmParser = new grammar.USFMParser('\\id PHM Longer Heading\n\\c 1\n\\p\n\\v 1 '
+      + 'ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...\n\\v 2 നമ്മുടെ പിതാവായ ...\n\\p\n\\v 3 കർത്താവായ യേശുവിനോടും ...',
+    grammar.LEVEL.RELAXED);
     const relaxedOutput = relaxedUsfmParser.validate();
-
     assert.strictEqual(relaxedOutput, true);
     assert.strictEqual(output, true);
   });
@@ -59,7 +61,7 @@ describe('Mandatory Markers', () => {
 });
 
 describe('Ensure all true positives', () => {
-  beforeEach(function() {
+  beforeEach(() => {
     if (global.gc) { global.gc(); }
   });
 
@@ -212,12 +214,11 @@ describe('Ensure all true positives', () => {
     assert.strictEqual(relaxedOutput, true);
     assert.strictEqual(output, true);
   });
-
 });
 
 describe('Ensure support for extended study contents', () => {
-  beforeEach(function() {
-  if (global.gc) { global.gc(); }
+  beforeEach(() => {
+    if (global.gc) { global.gc(); }
   });
 
   it('Extended book Introductions 1', () => {
@@ -254,7 +255,26 @@ describe('Ensure support for extended study contents', () => {
   });
 
   // it('Division and section Introductions', () => {
-  //   const inputUsfm = '\\id MRK - Good News Study Bible - Notes Material\n\\c 1\n\\p\n\\v 12 At once the Spirit made him go into the desert, \\v 13 where he stayed 40 days, being\ntempted by Satan. Wild animals were there also, but angels came and helped him.\n\\ms Jesus\' Public Ministry in Galilee\n\\mr 1.14--9.50\n\\ip Jesus returns to Galilee and does not go back to Judea until the close of his public\nministry. There is no indication of how long his Galilean ministry lasted: only when he is\nback in Judea is a \\w festival \\ft (\\w passover\\ft ) mentioned (14.1). He spends much of his\ntime in Capernaum (1.21; 2.1; 3.1, 20; 9.33) and other places around Lake Galilee (1.9; 2.13;\n3.7; 4.1). Twice Jesus ventures out of Galilee: into the region of the Ten Towns (5.1-20) and\nPhoenicia (7.24-31). His actions and teachings soon arouse opposition from the religious\nleaders (2.6-7, 24; 3.6, 22; 7.1-13; 8.11-12), and before long he predicts his coming arrest,\ncondemnation, and crucifixion (8.31; 9.30-31).\n\\s1 Jesus Calls Four Fishermen\n\\r (Mt 4.12-22; Lk 4.14-15; 5.1-11)\n\\ip Jesus\' message is about the arrival of the \\w kingdom of god\\w*, which will happen soon.\nTo prepare for it, the people need to repent (1.15). He immediately summons two pairs of\nfishermen brothers to be his followers and helpers.\n\\p\n\\v 14 After John had been put in prison, Jesus went to Galilee and preached the Good News\nfrom God.';
+  //   const inputUsfm = '\\id MRK - Good News Study Bible - Notes Material\n\\c 1\n\\p\n'+
+  //   '\\v 12 At once the Spirit made him go into the desert, \\v 13 where he stayed 40'+
+  //   ' days, being\ntempted by Satan. Wild animals were there also, but angels came and '+
+  //   'helped him.\n\\ms Jesus\' Public Ministry in Galilee\n\\mr 1.14--9.50\n\\ip Jesus '+
+  //   'returns to Galilee and does not go back to Judea until the close of his '+
+  //   'public\nministry. There is no indication of how long his Galilean ministry '+
+  //   'lasted: only when he is\nback in Judea is a \\w festival \\ft '+
+  //   '(\\w passover\\ft ) mentioned (14.1). He spends much of his\ntime in '+
+  //   'Capernaum (1.21; 2.1; 3.1, 20; 9.33) and other places around Lake Galilee '+
+  //   '(1.9; 2.13;\n3.7; 4.1). Twice Jesus ventures out of Galilee: into the '+
+  //   'region of the Ten Towns (5.1-20) and\nPhoenicia (7.24-31). His actions and '+
+  //   'teachings soon arouse opposition from the religious\nleaders (2.6-7, 24; '+
+  //   '3.6, 22; 7.1-13; 8.11-12), and before long he predicts his coming arrest,'+
+  //   '\ncondemnation, and crucifixion (8.31; 9.30-31).\n\\s1 Jesus Calls Four '+
+  //   'Fishermen\n\\r (Mt 4.12-22; Lk 4.14-15; 5.1-11)\n\\ip Jesus\' message is '+
+  //   'about the arrival of the \\w kingdom of god\\w*, which will happen soon.\n'+
+  //   'To prepare for it, the people need to repent (1.15). He immediately summons '+
+  //   'two pairs of\nfishermen brothers to be his followers and helpers.\n\\p\n\\v '+
+  //   '14 After John had been put in prison, Jesus went to Galilee and preached the '+
+  //   'Good News\nfrom God.';
   //   const myUsfmParser = new grammar.USFMParser(inputUsfm);
   //   const output = myUsfmParser.validate();
   //   const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
@@ -307,254 +327,253 @@ describe('Ensure support for extended study contents', () => {
     assert.strictEqual(relaxedOutput, true);
     assert.strictEqual(output, true);
   });
-
 });
 
 describe('Test with usfm files from the wild', () => {
-  beforeEach(function() {
+  beforeEach(() => {
     if (global.gc) { global.gc(); }
   });
 
   it('Hindi IRV file1', () => {
-    let data = fs.readFileSync('test/resources/HindiIRV5_41-MAT.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/HindiIRV5_41-MAT.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Hindi IRV file2', () => {
-    let data = fs.readFileSync('test/resources/HindiIRV5_67-REV.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/HindiIRV5_67-REV.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Tamil IRV file1', () => {
-    let data = fs.readFileSync('test/resources/Tam_IRV5_57-TIT.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/Tam_IRV5_57-TIT.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Tamil IRV file2', () => {
-    let data = fs.readFileSync('test/resources/Tam_IRV5_46-ROM.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/Tam_IRV5_46-ROM.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Greek UGNT file1', () => {
-    let data = fs.readFileSync('test/resources/Greek_UGNT4_47-1CO.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/Greek_UGNT4_47-1CO.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Greek UGNT file2', () => {
-    let data = fs.readFileSync('test/resources/Greek_UGNT4_63-1JN.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/Greek_UGNT4_63-1JN.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
-  it('AMT alignment export file', function () {
-    let data = fs.readFileSync('test/resources/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+  it('AMT alignment export file', () => {
+    const data = fs.readFileSync('test/resources/AutographaMT_Alignment_HIN_GRK_UGNT4_ACT.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true)
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('WEB file1', () => {
-    let data = fs.readFileSync('test/resources/03-EXOeng-web.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/03-EXOeng-web.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('WEB file2', () => {
-    let data = fs.readFileSync('test/resources/21-PROeng-web.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/21-PROeng-web.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('WEB file3', () => {
-    let data = fs.readFileSync('test/resources/75-ROMeng-web.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/75-ROMeng-web.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('t4t file1', () => {
-    let data = fs.readFileSync('test/resources/13-2KIeng-t4t.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/13-2KIeng-t4t.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('t4t file2', () => {
-    let data = fs.readFileSync('test/resources/20-PSAeng-t4t.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/20-PSAeng-t4t.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('t4t file3', () => {
-    let data = fs.readFileSync('test/resources/74-ACTeng-t4t.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/74-ACTeng-t4t.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Brenton file1', () => {
-    let data = fs.readFileSync('test/resources/09-RUTeng-Brenton.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/09-RUTeng-Brenton.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Brenton file2', () => {
-    let data = fs.readFileSync('test/resources/23-SNGeng-Brenton.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/23-SNGeng-Brenton.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Chinese file1', () => {
-    let data = fs.readFileSync('test/resources/18-ESTcmn-cu89s.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/18-ESTcmn-cu89s.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Chinese file2', () => {
-    let data = fs.readFileSync('test/resources/32-OBAcmn-cu89s.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/32-OBAcmn-cu89s.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Chinese file3', () => {
-    let data = fs.readFileSync('test/resources/94-3JNcmn-cu89s.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/94-3JNcmn-cu89s.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Revised Version file1', () => {
-    let data = fs.readFileSync('test/resources/19-JOBeng-rv.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/19-JOBeng-rv.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Revised Version file2', () => {
-    let data = fs.readFileSync('test/resources/26-LAMeng-rv.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/26-LAMeng-rv.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Revised Version file3', () => {
-    let data = fs.readFileSync('test/resources/90-1PEeng-rv.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/90-1PEeng-rv.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Door 43 file', () => {
-    let data = fs.readFileSync('test/resources/46-ROM.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/46-ROM.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('Door43 file with multiple fqa', () => {
@@ -569,14 +588,14 @@ describe('Test with usfm files from the wild', () => {
   });
 
   it('Door 43 file with trailing space and id in second line', () => {
-    let data = fs.readFileSync('test/resources/01-GEN_malDoor43.usfm', 'utf-8');
-      const myUsfmParser = new grammar.USFMParser(data);
-      const output = myUsfmParser.validate();
-      const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
-      const relaxedOutput = relaxedUsfmParser.validate();
+    const data = fs.readFileSync('test/resources/01-GEN_malDoor43.usfm', 'utf-8');
+    const myUsfmParser = new grammar.USFMParser(data);
+    const output = myUsfmParser.validate();
+    const relaxedUsfmParser = new grammar.USFMParser(data, grammar.LEVEL.RELAXED);
+    const relaxedOutput = relaxedUsfmParser.validate();
 
-      assert.strictEqual(relaxedOutput, true);
-      assert.strictEqual(output, true);
+    assert.strictEqual(relaxedOutput, true);
+    assert.strictEqual(output, true);
   });
 
   it('file with \\+xt within footnote', () => {
@@ -589,20 +608,19 @@ describe('Test with usfm files from the wild', () => {
     assert.strictEqual(relaxedOutput, true);
     assert.strictEqual(output, true);
   });
-
 });
 
 describe('Test with paratext test cases', () => {
-  beforeEach(function() {
+  beforeEach(() => {
     if (global.gc) { global.gc(); }
   });
   // it('NoErrorsShort', function () {
   //   let usfmString = '\\id GEN\r\n'
   //   const myUsfmParser = new grammar.USFMParser(usfmString);
-   // const output = myUsfmParser.validate();
-     // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
- // const relaxedOutput = relaxedUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  // const output = myUsfmParser.validate();
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, true)
   // })
 
@@ -654,7 +672,7 @@ describe('Test with paratext test cases', () => {
     // '\\s1' +
     // '\\m \\v 5 \\v 6 \\v 7' +
     + '\\p \\v 8 \\v 9 \n'
-    '\\p \\v 10 \\v 11 \\v 12 \\v 13 \\v 14 \n'
+    + '\\p \\v 10 \\v 11 \\v 12 \\v 13 \\v 14 \n'
     + '\\p \\v 15 \\v 16 \n'
     + '\\c 2\n'
     // // '\\s1' +
@@ -735,10 +753,11 @@ describe('Test with paratext test cases', () => {
   //   '\\p \\v 1 Hi \\em Mr. \\+nd Bob\\em*.\r\n' +
   //   '\\p And\\f + \\fr 1.1 \\ft stuff\\f*\r\n' +
   //   '\\b\r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -927,10 +946,11 @@ describe('Test with paratext test cases', () => {
   //   '\\f + \\fr 1.1\\ft some note text \\f* ' +
   //   '\\f + \\fr 1.1\\ft some note text \\f* ' +
   //   '\\f - \\ft some note text \\f* '
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -987,11 +1007,13 @@ describe('Test with paratext test cases', () => {
   // it('CharStyleClosedAndReopened', function () {
   // let usfmString = '\\id GEN\r\n' +
   // '\\c 1\r\n' +
-  // '\\p \\v 1 \\em word\\em* \\em wordtwo\\em* word3 \\em word4 \\em* \\v 2 \\em word5 \\em* \\v 3 \\w glossaryone\\w* \\w glossarytwo\\w*r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  // '\\p \\v 1 \\em word\\em* \\em wordtwo\\em* word3 \\em word4 \\em* \\v 2 \\em word5 '+
+  // '\\em* \\v 3 \\w glossaryone\\w* \\w glossarytwo\\w*r\n'
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -999,10 +1021,11 @@ describe('Test with paratext test cases', () => {
   // let usfmString = '\\id GEN\r\n' +
   // '\\c 1\r\n' +
   // '\\p \\v 1 \\em word \\f + \\fr 1.1 \\ft stuff \\f* more text\\em*r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1111,10 +1134,11 @@ describe('Test with paratext test cases', () => {
   // '\\c 2\r\n' +
   // '\\p\r\n' +
   // '\\v 2 \\em end/beg markers \\em*\\nd with no space are OK\\nd*\r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1157,10 +1181,11 @@ describe('Test with paratext test cases', () => {
   //   + '\\v 1 verse text\r\n'
   //   + '\\tr \\th1 header1 \\th3 header3\r\n'
   //   + '\\tr \\tcr2 cell2 \\tcr3 cell3\r\n';
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1174,14 +1199,13 @@ describe('Test with paratext test cases', () => {
     + '\\v 1 verse text \r\n\\rb BB|g:g\\rb* \r\n'
     + '\\v 1 verse text \r\n\\rb BB|gg\\rb* \r\n'
     + '\\v 1 verse text \r\n\\rb B僕使御|g:g\\rb* \r\n'
-    + '\\v 1 verse text \r\n\\rb BB|gloss=\"g:g\"\\rb* \r\n';
+    + '\\v 1 verse text \r\n\\rb BB|gloss="g:g"\\rb* \r\n';
     const myUsfmParser = new grammar.USFMParser(usfmString);
 
     const output = myUsfmParser.validate();
     const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
 
     const relaxedOutput = relaxedUsfmParser.validate();
-
 
     assert.strictEqual(relaxedOutput, true);
     assert.strictEqual(output, true);
@@ -1197,10 +1221,11 @@ describe('Test with paratext test cases', () => {
   // '\\v 1 verse text\r\n\\rb 僕使御|g:g:g:g\\rb* \r\n' +
   // '\\v 1 verse text\r\n\\rb BB\\rb* \r\n' +
   // '\\v 1 verse text\r\n\\rb BB|\\rb* \r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1209,7 +1234,7 @@ describe('Test with paratext test cases', () => {
     + '\\c 1\r\n'
     + '\\s some text\r\n'
     + '\\p\r\n'
-    + '\\v 1 verse text \\em text|weight=\"heavy\"\\em*\"\r\n';
+    + '\\v 1 verse text \\em text|weight="heavy"\\em*"\r\n';
     const myUsfmParser = new grammar.USFMParser(usfmString);
     const output = myUsfmParser.validate();
     const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
@@ -1224,7 +1249,7 @@ describe('Test with paratext test cases', () => {
     + '\\c 1\r\n'
     + '\\s some text\r\n'
     + '\\p\r\n'
-    + '\\v 1 verse text \\fig caption|alt=\"Description\" src=\"image.jpg\" size=\"large\" loc=\"col\" copy=\"copyright\" ref=\"1.1\"\\fig*\"\r\n';
+    + '\\v 1 verse text \\fig caption|alt="Description" src="image.jpg" size="large" loc="col" copy="copyright" ref="1.1"\\fig*"\r\n';
     const myUsfmParser = new grammar.USFMParser(usfmString);
     const output = myUsfmParser.validate();
     const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
@@ -1239,7 +1264,7 @@ describe('Test with paratext test cases', () => {
     + '\\c 1\r\n'
     + '\\s some text\r\n'
     + '\\p\r\n'
-    + '\\v 1 verse text \\fig caption|src=\"file\" size=\"small\" ref=\"1.1\" rotate=\"90\"\\fig*\"\r\n';
+    + '\\v 1 verse text \\fig caption|src="file" size="small" ref="1.1" rotate="90"\\fig*"\r\n';
     const myUsfmParser = new grammar.USFMParser(usfmString);
     const output = myUsfmParser.validate();
     const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
@@ -1254,7 +1279,7 @@ describe('Test with paratext test cases', () => {
     + '\\c 1\r\n'
     + '\\s some text\r\n'
     + '\\p\r\n'
-    + '\\v 1 verse text \\em text|x-weight=\"heavy\"\\em*\"\r\n';
+    + '\\v 1 verse text \\em text|x-weight="heavy"\\em*"\r\n';
     const myUsfmParser = new grammar.USFMParser(usfmString);
     const output = myUsfmParser.validate();
     const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
@@ -1271,14 +1296,17 @@ describe('Test with paratext test cases', () => {
   // '\\p\r\n' +
   // '\\v 1 verse text \\rb BB|g:g\\rb* \r\n' +
   // '\\v 1 verse text \\qt-s |speaker\\* quoted text \\qt-e\\* \r\n' +
-  // '\\v 1 verse text \\w word|lemma=\"lemma\" strong=\"G100\"\\w* \r\n' +
-  // '\\v 1 verse text \\fig caption|alt=\"Description\" src=\"image.jpg\" size =\"large\" loc =\"co\" copy =\"copyright\" ref=\"1.1\"\\fig* \r\n' +
-  // '\\v 1 verse text \\fig caption|alt=\"Description\" src=\"image.jpg\" size =\"large\" loc =\"co\" copy =\"copyright\" ref=\"1.1\" link-href=\"value\"\\fig* \r\n' +
+  // '\\v 1 verse text \\w word|lemma="lemma" strong="G100"\\w* \r\n' +
+  // '\\v 1 verse text \\fig caption|alt="Description" src="image.jpg" '+
+  // 'size ="large" loc ="co" copy ="copyright" ref="1.1"\\fig* \r\n' +
+  // '\\v 1 verse text \\fig caption|alt="Description" src="image.jpg" '+
+  // 'size ="large" loc ="co" copy ="copyright" ref="1.1" link-href="value"\\fig* \r\n' +
   // ''
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1287,7 +1315,7 @@ describe('Test with paratext test cases', () => {
     + '\\c 1\r\n'
     + '\\s some text\r\n'
     + '\\p\r\n'
-    + '\\v 1 verse text \\em text|link-href=\"http://somehere.com\" link-title=\"My Title\" link-name=\"My Name\"\\em*\"\r\n';
+    + '\\v 1 verse text \\em text|link-href="http://somehere.com" link-title="My Title" link-name="My Name"\\em*"\r\n';
     const myUsfmParser = new grammar.USFMParser(usfmString);
     const output = myUsfmParser.validate();
     const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
@@ -1303,10 +1331,11 @@ describe('Test with paratext test cases', () => {
   // '\\s some text\r\n' +
   // '\\p\r\n' +
   // '\\v 1 verse text \\xyz text\\xyz*\r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1351,10 +1380,11 @@ describe('Test with paratext test cases', () => {
   // '\\v 2 verse \r\n' +
   // '\\v 1 \\qt-s |Speaker\\*verse text \r\n' +
   // '\\v 2 verse \\qt-s |Speaker2\\*text\\qt-e\\*\r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1363,12 +1393,13 @@ describe('Test with paratext test cases', () => {
   // '\\c 1\r\n' +
   // '\\s some text\r\n' +
   // '\\p\r\n' +
-  // '\\v 1 \\qt-s |sid=\"qt1\" who=\"Speaker\"\\*verse text \r\n' +
-  // '\\v 2 verse text\\qt-e |eid=\"qt2\"\\*\r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  // '\\v 1 \\qt-s |sid="qt1" who="Speaker"\\*verse text \r\n' +
+  // '\\v 2 verse text\\qt-e |eid="qt2"\\*\r\n'
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1378,11 +1409,12 @@ describe('Test with paratext test cases', () => {
   // '\\s some text\r\n' +
   // '\\p\r\n' +
   // '\\v 1 verse text \r\n' +
-  // '\\v 2 verse text\\qt-e |eid=\"qt2\"\\*\r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  // '\\v 2 verse text\\qt-e |eid="qt2"\\*\r\n'
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1416,10 +1448,11 @@ describe('Test with paratext test cases', () => {
   //   it('GlossaryCitationFormEndsInSpace', function () {
   //   let usfmString = '\\id GLO\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\k ostrich \\k*bird that doesnt fly'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1477,13 +1510,13 @@ describe('Test with paratext test cases', () => {
   //   '\\c 1\n\\p \\v 1 something \\p  \\k keyword,\\k* definition\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\k keyword;\\k* definition\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\k keyword:\\k* definition\r\n'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
-
 
   it('GlossaryCitationFormContainsComma_Pass', () => {
     const usfmString = '\\id GLO\r\n'
@@ -1501,10 +1534,11 @@ describe('Test with paratext test cases', () => {
   //   let usfmString = '\\id GLO\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\k keyword. keyw\\k* definition\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\k keyword, keyw\\k* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1576,7 +1610,7 @@ describe('Test with paratext test cases', () => {
     const usfmString = '\\id GLO\r\n'
     + '\\c 1\n\\p \\v 1 something \\p  \\k keyword-keyw\\k* definition\r\n'
     + '\\c 1\n\\p \\v 1 something \\p  \\w word|keyword\\w* definition\r\n'
-    + '\\v 1 something \\p  \\w word|lemma=\"keyword\"\\w* definition';
+    + '\\v 1 something \\p  \\w word|lemma="keyword"\\w* definition';
     const myUsfmParser = new grammar.USFMParser(usfmString);
     const output = myUsfmParser.validate();
     const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
@@ -1605,10 +1639,11 @@ describe('Test with paratext test cases', () => {
   //   '\\v 2 something \\p  \\w grace\\w* definition' +
   //   '\\v 2 something \\p  \\w grace|grace \\w* definition' +
   //   '\\v 2 something \\p  \\w gracious|grace \\w* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1616,21 +1651,23 @@ describe('Test with paratext test cases', () => {
   //   let usfmString = '\\id GLO\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\k keyword-keyw\\k* definition\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\w word |keyword\\w* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
   // it('WordlistMarkerTextEndsInSpaceWithoutGlossary', function () {
   //   let usfmString = '\\id GLO\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\w word |keyword\\w* definition\r\n' +
-  //   '\\v 2 something \\p  \\w word |lemma=\"keyword\"\\w* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   '\\v 2 something \\p  \\w word |lemma="keyword"\\w* definition'
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  // const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  // const relaxedOutput = relaxedUsfmParser.validate();
+  // const output = myUsfmParser.validate();
+  // assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1638,10 +1675,11 @@ describe('Test with paratext test cases', () => {
   //   let usfmString = '\\id GLO\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\k blah\\k* definition\r\n' +
   //   '\\v 2 something \\p  \\w word \\w* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  //   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  //   const relaxedOutput = relaxedUsfmParser.validate();
+  //   const output = myUsfmParser.validate();
+  //   assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, fasle)
   // })
 
@@ -1652,10 +1690,11 @@ describe('Test with paratext test cases', () => {
   //   '\\v 2 something \\p  \\w word,|keyword \\w* definition\r\n' +
   //   '\\v 2 something \\p  \\w word;|keyword \\w* definition\r\n' +
   //   '\\v 2 something \\p  \\w word:|keyword \\w* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  //   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  //   const relaxedOutput = relaxedUsfmParser.validate();
+  //   const output = myUsfmParser.validate();
+  //   assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1676,10 +1715,11 @@ describe('Test with paratext test cases', () => {
   //   let usfmString = '\\id GLO\r\n' +
   //   '\\c 1\n\\p \\v 1 something \\p  \\k blah\\k* definition\r\n' +
   //   '\\v 2 something \\p  \\w word|keyword \\w* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  //   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  //   const relaxedOutput = relaxedUsfmParser.validate();
+  //   const output = myUsfmParser.validate();
+  //   assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1690,10 +1730,11 @@ describe('Test with paratext test cases', () => {
   //   '\\v 2 something \\p  \\w word|keyword,\\w* definition\r\n' +
   //   '\\v 2 something \\p  \\w word|keyword: \\w* definition\r\n' +
   //   '\\v 2 something \\p  \\w word|keyword; \\w* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  //   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  //   const relaxedOutput = relaxedUsfmParser.validate();
+  //   const output = myUsfmParser.validate();
+  //   assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1707,7 +1748,8 @@ describe('Test with paratext test cases', () => {
     const relaxedOutput = relaxedUsfmParser.validate();
 
     assert.strictEqual(relaxedOutput, true);
-    // this actually fails because the marker _pn_ doesnot have a deafult attribute and only _w_ has it
+    // this actually fails because the marker _pn_ doesnot have a deafult attribute
+    // and only _w_ has it
     assert.strictEqual(output, false);
   });
 
@@ -1718,10 +1760,11 @@ describe('Test with paratext test cases', () => {
   //   '\\v 2 something \\p  \\w word, wordtwo\\w* definition\r\n' +
   //   '\\v 2 something \\p  \\w word (wordtwo) \\w* definition\r\n' +
   //   '\\v 2 something \\p  \\w word; wordtwo \\w* definition'
-  // const myUsfmParser = new grammar.USFMParser(usfmString); const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
- // const relaxedOutput = relaxedUsfmParser.validate();
- // const output = myUsfmParser.validate();
- // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  //   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  //   const relaxedOutput = relaxedUsfmParser.validate();
+  //   const output = myUsfmParser.validate();
+  //   assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
 
@@ -1743,11 +1786,11 @@ describe('Test with paratext test cases', () => {
   //   '\\c 1\n\\p \\v 1 something \\p  \\k blah\\k* definition\r\n' +
   //   '\\v 2 something \\p  \\w word|kw. keyword \\w* definition\r\n' +
   //   '\\v 2 something \\p  \\w word|kw; keyword \\w* definition'
-  //   const myUsfmParser = new grammar.USFMParser(usfmString);   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
-   // const relaxedOutput = relaxedUsfmParser.validate();
-   // const output = myUsfmParser.validate();
-   // assert.strictEqual(relaxedOutput, true);
+  //   const myUsfmParser = new grammar.USFMParser(usfmString);
+  //   const relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+  //   const relaxedOutput = relaxedUsfmParser.validate();
+  //   const output = myUsfmParser.validate();
+  //   assert.strictEqual(relaxedOutput, true);
   //   assert.strictEqual(output, false)
   // })
-
 });
