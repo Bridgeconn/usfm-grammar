@@ -1,7 +1,15 @@
 name: Check-on-push
 
 # Run this workflow every time a new commit pushed to your repository
-on: push
+on: 
+  push:
+    branches: 
+      - master
+      - dev
+  pull_request:
+    branches: 
+      - master
+      - dev
 
 jobs:
   # Set the job key. The key is displayed as the job name
