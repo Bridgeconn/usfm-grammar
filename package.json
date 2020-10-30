@@ -7,7 +7,7 @@
         "test": "mocha --expose-gc --timeout 40000",
         "start": "node ../server.js",
         "lint": "eslint .",
-        "test-on-github": "mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild",
+        "test-on-github": "mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild.js"
     },
     "dependencies": {
         "ohm-js": "^15.2.1",
