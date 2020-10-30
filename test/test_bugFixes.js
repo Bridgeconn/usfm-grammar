@@ -139,4 +139,21 @@ describe('Test bug fixes', () => {
     jsonOutput = usfmParser.toJSON();
     assert.strictEqual('_error' in jsonOutput._messages, true);
   });
+
+  it('Line break between attributes', () => {
+    // only spaces were allowed between attributes before. Now accomodates newline
+    // https://github.com/Bridgeconn/usfm-grammar/issues/63
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 22 Paul stood up in front of the city council and said, \\qt1-s |sid="qt1_ACT_17:22"\nwho="Paul"\\*“I see that in every way you Athenians are very religious.\n\\v 23 For as I walked through your city and looked at the places where you worship,';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    let jsonOutput = usfmParser.toJSON();
+    let jsonParser = new grammar.JSONParser(jsonOutput);
+    let outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g, ''), inputUsfm.replace(/[\s\n\r]/g, ''));
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    jsonOutput = relaxedUsfmParser.toJSON();
+    jsonParser = new grammar.JSONParser(jsonOutput);
+    outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g, ''), inputUsfm.replace(/[\s\n\r]/g, ''));
+  });
+
 });
