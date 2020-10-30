@@ -21,10 +21,11 @@ jobs:
       - name: install packages
         run: npm install .
       # Runs the Linter action
-#       - name: Run Linter
-#         run: eslint .
+      - name: Run Linter
+        run: npm run lint
       # Run testcases
       - name: allot more RAM
         run: export NODE_OPTIONS="--max-old-space-size=12288"
       - name: Run tests
-        run: mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild.js
+        run: npm run test-on-github
+        
