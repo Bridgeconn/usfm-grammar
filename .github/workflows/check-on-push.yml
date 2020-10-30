@@ -27,4 +27,4 @@ jobs:
       - name: allot more RAM
         run: export NODE_OPTIONS="--max-old-space-size=12288"
       - name: Run tests
-        run: npm test
+        run: mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild.js
