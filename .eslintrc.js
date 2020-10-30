@@ -16,6 +16,6 @@ module.exports = {
     ecmaVersion: 2018,
   },
   rules: {
-    "no-underscore-dangle": [2, { "allow": ["_messages", "_error", "_warnings"] }]
+    'no-underscore-dangle': [2, { allow: ['_messages', '_error', '_warnings'] }],
   },
 };

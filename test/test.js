@@ -1,5 +1,4 @@
 const assert = require('assert');
-const fs = require('fs');
 const grammar = require('../js/main.js');
 
 describe('Mandatory Markers', () => {

@@ -282,4 +282,3 @@ describe('Test with usfm files from the wild', () => {
     assert.strictEqual(output, true);
   });
 });
-
