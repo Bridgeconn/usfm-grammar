@@ -92,9 +92,9 @@ usfmBible{
 			brought in to enable this validation*/ 
 
 
-			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement | paraElement
+			metaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement | li | paraElement
 
-			nonParaMetaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement 
+			nonParaMetaScripture = sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | esbElement | li
 
 			mandatoryParaMetaScripture = nonParaMetaScripture* paraElement metaScripture*
 
@@ -131,7 +131,7 @@ usfmBible{
 			paraMarker = paraMarkerSet1 | paraMarkerSet2 |paraMarkerSet3 | paraMarkerSet4
 			paraMarkerSet1 =( "cls" | "pmo" | "pmc" | "pmr" | "pmi" ) 
 			paraMarkerSet2 =( ("lim" number?) | ("pi" number?) | ("ph" number?) | ("qm" number?) )
-			paraMarkerSet3 = ( "pm" | "pr" | "nb" | "pc" | "po" | "pb" | "qr" | "qc" | "qd" | "lh" | "lf"  | "m"  | "b" | "p" )
+			paraMarkerSet3 = ( "pm" | "pr" | "nb" | "pc" | "po" | "pb" | "qr" | "qc" | "qd" | "m"  | "b" | "p" )
 			paraMarkerSet4 = ("q" number?) 
 
 			/* A verse is considered as a collection of objects which could be verse 
@@ -400,9 +400,17 @@ usfmBible{
 
 			/* like the table, the heirarchical structure of the list is also implemented in the JSON */
 
-			li = (liElement)+
-			liElement = newLine? backSlash "li" number? spaceChar (text | charElement)*
-
+			li =  (lhElement | liElement | lfElement)+ 
+			liElement = liElementWithText | liElementWithoutText
+			liElementWithText = newLine? backSlash "li" number? spaceChar (text | charElement)+
+			liElementWithoutText = newLine? backSlash "li" spaceChar*
+			lhElement = lhElementWithText | lhElementWithoutText
+			lhElementWithText = newLine? backSlash "lh" spaceChar (text | charElement)*
+			lhElementWithoutText = newLine? backSlash "lh" spaceChar*
+			lfElement = lfElementWithText | lfElementWithoutText
+			lfElementWithText = newLine? backSlash "lf" spaceChar (text | charElement)*
+			lfElementWithoutText = newLine? backSlash "lf" spaceChar*
+			
 
 			
 			litElement = newLine? backSlash "lit" spaceChar ((chapterContentTextContent | notesElement | milestoneElement) | notesElement | milestoneElement)+

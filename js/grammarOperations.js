@@ -15,7 +15,7 @@ const sem = bib.createSemantics();
 // We need to know which all marker's contents should be considered as verseText
 // while composing the .verseText property of each verse element.
 // This list is consulted for that
-const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
+const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'lh', 'lf', 'litl',
   'lik', 'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3',
   'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
   'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
@@ -62,7 +62,7 @@ function buildVerseText(elmts) {
           verseTextPartial += ` ${elmts[key][j][innerKey]}`;
         }
 
-        verseTextPartial += ` ${elmts[key][j][innerKey]}`;
+        // verseTextPartial += ` ${elmts[key][j][innerKey]}`;
       }
     } else if (key === 'table') {
       verseTextPartial = elmts.text;
@@ -1060,11 +1060,47 @@ sem.addOperation('composeJson', {
     return li;
   },
 
-  liElement(_1, _2, _3, num, _5, text) {
+  liElement(li) {
+    return li.composeJson();
+  },
+
+  liElementWithText(_1, _2, _3, num, _5, text) {
     const obj = {};
     const marker = `li${num.sourceString}`;
     obj[marker] = text.composeJson();
     return obj;
+  },
+
+  liElementWithoutText(_1, _2, marker, _4) {
+    return {"li": null}
+  },
+
+  lhElement(lh) {
+    return lh.composeJson();
+  },
+
+  lhElementWithText(_1, _2, marker, _4, text) {
+    const obj = {}
+    obj['lh'] = text.composeJson();
+    return obj;
+  },
+
+  lhElementWithoutText(_1, _2, marker, _4) {
+    return {"lh": null}
+  },
+
+  lfElement(lf) {
+    return lf.composeJson();
+  },
+
+  lfElementWithText(_1, _2, marker, _4, text) {
+    const obj = {}
+    obj['lf'] = text.composeJson();
+    return obj;
+  },
+
+  lfElementWithoutText(_1, _2, marker, _4) {
+    return {"lh": null}
   },
 
   litElement(_1, _2, _3, _4, text) {
