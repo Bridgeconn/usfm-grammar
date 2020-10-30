@@ -24,5 +24,7 @@ jobs:
 #       - name: Run Linter
 #         run: eslint .
       # Run testcases
+      - name: allot more RAM
+        run: export NODE_OPTIONS="--max-old-space-size=12288"
       - name: Run tests
         run: npm test
