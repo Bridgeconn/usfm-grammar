@@ -1,7 +1,7 @@
 const assert = require('assert');
 const grammar = require('../js/main.js');
 
-describe('Mandatory Markers', () => {
+describe("Mandatory Markers", () => {
   beforeEach(() => {
     if (global.gc) { global.gc(); }
   });
