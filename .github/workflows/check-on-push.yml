@@ -1,4 +1,4 @@
-name: Super-Linter
+name: Check-on-push
 
 # Run this workflow every time a new commit pushed to your repository
 on: push
@@ -6,9 +6,9 @@ on: push
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
-  super-lint:
+  Run-linter-and-tests:
     # Name the Job
-    name: Lint code base
+    name: Lint n test
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
@@ -16,8 +16,13 @@ jobs:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
         uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-
+      - name: Setup node and npm
+        uses: actions/setup-node@v1
+      - name: install packages
+        run: npm install .
       # Runs the Linter action
       - name: Run Linter
         run: eslint .
+      # Run testcases
+      - name: Run tests
+        run: npm test
