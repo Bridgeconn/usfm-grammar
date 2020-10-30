@@ -6,6 +6,7 @@ const commentsMultiLine = new RegExp('/[*][^*]*[*]/', 'g');
 const multiLines = new RegExp('[\\n\\r][\\n\\r]+', 'g');
 const backslash = new RegExp('\\\\', 'g');
 const newline = new RegExp('\\n', 'g');
+const tabSpace = new RegExp('\\t', 'g');
 
 /* eslint no-console: ["error", { allow: ["warn", "error"] }] */
 
@@ -23,8 +24,9 @@ fs.readFile('grammar/usfm.ohm', 'utf-8', (err, data) => {
   grammarString = grammarString.replace(multiLines, '\n');
   grammarString = grammarString.replace(backslash, '\\\\');
   grammarString = grammarString.replace(newline, '\\n');
+  grammarString = grammarString.replace(tabSpace, '  ');
 
-  const fileContent = `exports.contents = '${grammarString}'`;
+  const fileContent = `exports.contents = '${grammarString}';\n`;
   fs.writeFile('grammar/usfm.ohm.js', fileContent, (writeErr) => {
     if (writeErr) console.error(writeErr.message);
     // success case, the file was saved
@@ -39,8 +41,9 @@ fs.readFile('grammar/usfm-relaxed.ohm', 'utf-8', (err, data) => {
   grammarString = grammarString.replace(multiLines, '\n');
   grammarString = grammarString.replace(backslash, '\\\\');
   grammarString = grammarString.replace(newline, '\\n');
+  grammarString = grammarString.replace(tabSpace, '  ');
 
-  const fileContent = `exports.contents = '${grammarString}'`;
+  const fileContent = `exports.contents = '${grammarString}';\n`;
   fs.writeFile('grammar/usfm-relaxed.ohm.js', fileContent, (writeErr) => {
     if (writeErr) console.error(writeErr.message);
     // success case, the file was saved

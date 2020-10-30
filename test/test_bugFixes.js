@@ -155,5 +155,4 @@ describe('Test bug fixes', () => {
     outputUsfm = jsonParser.toUSFM();
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g, ''), inputUsfm.replace(/[\s\n\r]/g, ''));
   });
-
 });
