@@ -155,4 +155,20 @@ describe('Test bug fixes', () => {
     outputUsfm = jsonParser.toUSFM();
     assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g, ''), inputUsfm.replace(/[\s\n\r]/g, ''));
   });
+
+  it('\\li without text', () => {
+    // li, lf and lh markers were defined so that it takes text.
+    // Now upadted it to allow empty list makers too
+    // https://github.com/Bridgeconn/usfm-grammar/issues/84
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 The list of verses follows this\n\\li\n\\v 2 The item one of list \n\\li\n\\v 3 The item two of list \n\\li\n\\v 4 The item three \n\\v 5 and four of the list\n\\lh The end of verse list\n\\v 6 A verse out side of the list\n\\v 7 The verse with a list within it\n\\li item one\n\\li item two\n\\v 8 The last verse';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    const jsonParser = new grammar.JSONParser(jsonOutput);
+    const outputUsfm = jsonParser.toUSFM();
+    assert.strictEqual(outputUsfm.replace(/[\s\n\r]/g, ''), inputUsfm.replace(/[\s\n\r]/g, ''));
+    assert.strictEqual(jsonOutput.chapters[0].contents[7].verseText, 'The verse with a list within it item one item two');
+    assert.strictEqual(jsonOutput.chapters[0].contents[1].verseText, 'The list of verses follows this');
+    assert.deepStrictEqual(jsonOutput.chapters[0].contents[1].contents[1],
+      { list: [{ li: null }] });
+  });
 });
