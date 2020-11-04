@@ -1,7 +1,6 @@
-const { Parser } = require('./parser.js');
 const { validate } = require('jsonschema');
-const { JSONSchemaDefinition } = require('../schemas/file.js')
-
+const { Parser } = require('./parser.js');
+const { JSONSchemaDefinition } = require('../schemas/file.js');
 
 const validateJSON = validate;
 
@@ -24,7 +23,7 @@ class JSONParser extends Parser {
   }
 
   validate() {
-    return validateJSON(this.JSONObject, JSONSchemaDefinition).valid
+    return validateJSON(this.JSONObject, JSONSchemaDefinition).valid;
   }
 
   normalize() {
@@ -38,12 +37,12 @@ class JSONParser extends Parser {
     let usfmText = '';
     const jsonObj = this.JSONObject;
     const validateObj = validateJSON(jsonObj, JSONSchemaDefinition);
-    if(validateObj.valid === false) {
-      let errors = [];
-      for (let i=0; i<validateObj.errors.length; i=i+1) {
-        errors.push(validateObj.errors[i].stack)
+    if (validateObj.valid === false) {
+      const errors = [];
+      for (let i = 0; i < validateObj.errors.length; i += 1) {
+        errors.push(validateObj.errors[i].stack);
       }
-      let returnObj = { "_messages" : { "_error": errors } };
+      const returnObj = { _messages: { _error: errors } };
       return returnObj;
     }
     usfmText += '\\id ';
