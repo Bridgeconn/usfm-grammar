@@ -1,4 +1,4 @@
-{
+exports.JSONSchemaDefinition = {
 	"$id": "https://usfm.vachanengine.org/schemas/file.json",
 	"definitions": {
 		"verse": {
@@ -40,7 +40,8 @@
 					"chapterNumber": { "type": "string" },
 					"contents": {
 						"type": "array",
-						"contains": { "$ref": "#verse" }
+						"contains": { "$ref": "#verse" },
+
 					}
 				},
 				"required": ["chapterNumber", "contents"]
@@ -56,4 +57,4 @@
 		}
 	},
 	"required": ["book", "chapters"]
-}
+};

@@ -1,4 +1,9 @@
 const { Parser } = require('./parser.js');
+const { validate } = require('jsonschema');
+const { JSONSchemaDefinition } = require('../schemas/file.js')
+
+
+const validateJSON = validate;
 
 class JSONParser extends Parser {
   constructor(JSONObject) {
@@ -19,13 +24,7 @@ class JSONParser extends Parser {
   }
 
   validate() {
-    try {
-      // try parsing and converting to USFM to make sure the format is correct
-      this.toUSFM(this.JSONObject);
-      return true;
-    } catch (err) {
-      return false;
-    }
+    return validateJSON(this.JSONObject, JSONSchemaDefinition).valid
   }
 
   normalize() {
@@ -38,6 +37,15 @@ class JSONParser extends Parser {
   toUSFM() {
     let usfmText = '';
     const jsonObj = this.JSONObject;
+    const validateObj = validateJSON(jsonObj, JSONSchemaDefinition);
+    if(validateObj.valid === false) {
+      let errors = [];
+      for (let i=0; i<validateObj.errors.length; i=i+1) {
+        errors.push(validateObj.errors[i].stack)
+      }
+      let returnObj = { "_messages" : { "_error": errors } };
+      return returnObj;
+    }
     usfmText += '\\id ';
     usfmText += jsonObj.book.bookCode;
     if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'description')) {
