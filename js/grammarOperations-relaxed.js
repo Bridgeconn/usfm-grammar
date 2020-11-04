@@ -11,12 +11,15 @@ const sem = bib.createSemantics();
 // We need to know which all marker's contents should be considered as verseText
 // while composing the .verseText property of each verse element.
 // This list is consulted for that
-const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'litl',
+const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'lh', 'lf', 'lim', 'litl',
   'lik', 'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3',
   'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
   'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
   'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl', 'wj', 'em', 'bd',
-  'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro'];
+  'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro',
+  '+add', '+bk', '+dc', '+k', '+lit', '+nd', '+ord', '+pn', '+png',
+  '+addpn', '+qt', '+sig', '+sls', '+tl', '+wj', '+em', '+bd', '+it',
+  '+bdit', '+no', '+sc', '+sup', '+w', '+rb', '+wa', '+wg', '+wh', '+pro'];
 
 // In normal grammar these markers are implemented as not containing text or other contents.
 // The relaxed grammar doesnot implement makers separately but have general rules for all.
@@ -84,7 +87,7 @@ sem.addOperation('buildJson', {
   idMarker(_1, _2, _3, _4, cod, desc) {
     const res = {
       id: {
-        bookCode: cod.sourceString,
+        bookCode: cod.sourceString.trim(),
       },
     };
     if (desc.sourceString !== '') {
