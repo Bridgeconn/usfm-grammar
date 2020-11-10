@@ -5,9 +5,13 @@ const { JSONSchemaDefinition } = require('../schemas/file.js');
 const validateJSON = validate;
 
 class JSONParser extends Parser {
-  constructor(JSONObject) {
+  constructor(JSONString) {
     super();
-    this.JSONObject = JSONObject;
+    if (typeof JSONString === 'object') {
+      this.JSONObject = JSON.stringify(JSONString);
+    } else {
+      this.JSONObject = JSONString;
+    }
     this.warnings = [];
     this.noNewLineMarkers = ['va', 'vp', 'qs', 'qac', 'litl', 'lik', 'lik1', 'lik2', 'lik3',
       'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3', 'th4', 'th5',
@@ -23,7 +27,13 @@ class JSONParser extends Parser {
   }
 
   validate() {
-    return validateJSON(this.JSONObject, JSONSchemaDefinition).valid;
+    let validJson = {};
+    try {
+      validJson = JSON.parse(this.JSONObject);
+    } catch (err) {
+      return false;
+    }
+    return validateJSON(validJson, JSONSchemaDefinition).valid;
   }
 
   normalize() {
@@ -35,9 +45,17 @@ class JSONParser extends Parser {
 
   toUSFM() {
     let usfmText = '';
-    const jsonObj = this.JSONObject;
+    let jsonObj = {};
+    try {
+      jsonObj = JSON.parse(this.JSONObject);
+    } catch (err) {
+      // console.log("<<<<JSON parsing error>>>")
+      const returnObj = { _messages: { _error: err.message } };
+      return returnObj;
+    }
     const validateObj = validateJSON(jsonObj, JSONSchemaDefinition);
     if (validateObj.valid === false) {
+      // console.log("<<<<JSON not valid for USFM grammar>>>")
       const errors = [];
       for (let i = 0; i < validateObj.errors.length; i += 1) {
         errors.push(validateObj.errors[i].stack);
@@ -177,7 +195,22 @@ class JSONParser extends Parser {
   }
 
   toCSV() {
-    const jsonOutput = this.JSONObject;
+    let jsonOutput = {};
+    try {
+      jsonOutput = JSON.parse(this.JSONObject);
+    } catch (err) {
+      const returnObj = { _messages: { _error: err.message } };
+      return returnObj;
+    }
+    const validateObj = validateJSON(jsonOutput, JSONSchemaDefinition);
+    if (validateObj.valid === false) {
+      const errors = [];
+      for (let i = 0; i < validateObj.errors.length; i += 1) {
+        errors.push(validateObj.errors[i].stack);
+      }
+      const returnObj = { _messages: { _error: errors } };
+      return returnObj;
+    }
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book, Chapter, Verse, Text\n';
@@ -195,7 +228,22 @@ class JSONParser extends Parser {
   }
 
   toTSV() {
-    const jsonOutput = this.JSONObject;
+    let jsonOutput = {};
+    try {
+      jsonOutput = JSON.parse(this.JSONObject);
+    } catch (err) {
+      const returnObj = { _messages: { _error: err.message } };
+      return returnObj;
+    }
+    const validateObj = validateJSON(jsonOutput, JSONSchemaDefinition);
+    if (validateObj.valid === false) {
+      const errors = [];
+      for (let i = 0; i < validateObj.errors.length; i += 1) {
+        errors.push(validateObj.errors[i].stack);
+      }
+      const returnObj = { _messages: { _error: errors } };
+      return returnObj;
+    }
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book\tChapter\tVerse\tText\n';

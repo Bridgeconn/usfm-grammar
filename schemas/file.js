@@ -1,6 +1,28 @@
 exports.JSONSchemaDefinition = {
   $id: 'https://usfm.vachanengine.org/schemas/file.json',
   definitions: {
+    chapterContent: {
+      $id: '#chapterContent',
+      if: {
+        type: 'object',
+        required: ['verseNumber'],
+      },
+      then: {
+        $ref: '#verse',
+      },
+      else: {
+        if: {
+          type: 'object',
+          required: ['verseText'],
+        },
+        then: {
+          $ref: '#verse',
+        },
+        else: {
+          $ref: '#otherElement',
+        },
+      },
+    },
     verse: {
       $id: '#verse',
       type: 'object',
@@ -9,9 +31,29 @@ exports.JSONSchemaDefinition = {
         verseText: { type: 'string' },
         contents: {
           type: 'array',
+          items: {
+            $ref: '#otherElement',
+          },
         },
       },
       required: ['verseNumber', 'verseText'],
+    },
+    otherElement: {
+      $id: '#otherElement',
+      oneOf: [
+        { type: 'string' },
+        { type: 'null' },
+        {
+          type: 'array',
+          items: { $ref: '#otherElement' },
+        },
+        {
+          type: 'object',
+          patternProperties: {
+            '(^[^ ]+$)': '#otherElement',
+          },
+        },
+      ],
     },
   },
 
@@ -29,22 +71,25 @@ exports.JSONSchemaDefinition = {
         },
         meta: {
           type: 'array',
+          items: {
+            $ref: '#otherElement',
+          },
         },
       },
       required: ['bookCode'],
     },
     chapters: {
       type: 'array',
-      contains: {
+      items: {
         properties: {
           chapterNumber: { type: 'string' },
           contents: {
             type: 'array',
-            contains: { $ref: '#verse' },
-
+            items: { $ref: '#chapterContent' },
           },
         },
         required: ['chapterNumber', 'contents'],
+        additionalProperties: false,
       },
     },
     _messages: {
