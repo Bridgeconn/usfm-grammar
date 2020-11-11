@@ -12,6 +12,7 @@ class JSONParser extends Parser {
     } else {
       this.JSONObject = JSONString;
     }
+    this.JSONObject = this.normalize();
     this.warnings = [];
     this.noNewLineMarkers = ['va', 'vp', 'qs', 'qac', 'litl', 'lik', 'lik1', 'lik2', 'lik3',
       'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3', 'th4', 'th5',
@@ -38,8 +39,9 @@ class JSONParser extends Parser {
 
   normalize() {
     this.warnings = [];
-    // doesnot do any alterations. Method added because it is present in super class
-    const normJson = this.JSONObject;
+    const noBreakSpace = new RegExp('\u00A0', 'g');
+    let normJson = this.JSONObject;
+    normJson = normJson.replace(noBreakSpace, '~');
     return normJson;
   }
 

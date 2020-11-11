@@ -211,4 +211,24 @@ describe('Test bug fixes', () => {
     const jsonOutput = usfmParser.toJSON();
     assert.strictEqual(jsonOutput._messages._warnings.includes('Consecutive use of empty paragraph markers. '), false);
   });
+
+  it('replace ~ with \\u00A0', () => {
+    // ~ is included in USFM text to indicate No-break space. Replace it with actual
+    // no-break-space when encountered in input USFM text and do the reverse in JSON.
+    // https://github.com/Bridgeconn/usfm-grammar/issues/61
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse text~with space';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput.chapters[0].contents[1].verseText, 'verse text\u00A0with space');
+    const jsonParser = new grammar.JSONParser(jsonOutput);
+    const reCreatedUsfm1 = jsonParser.toUSFM();
+    assert.strictEqual(reCreatedUsfm1, inputUsfm);
+
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm);
+    const relaxedJsonOutput = relaxedUsfmParser.toJSON();
+    assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, 'verse text\u00A0with space');
+    const jsonParser2 = new grammar.JSONParser(relaxedJsonOutput);
+    const reCreatedUsfm2 = jsonParser2.toUSFM();
+    assert.strictEqual(reCreatedUsfm2, inputUsfm);
+  });
 });

@@ -18,6 +18,7 @@ class USFMParser extends Parser {
     const multiSpacePattern = new RegExp('  +', 'g');
     const trailingSpacePattern = new RegExp(' +[\\n\\r]', 'g');
     const bookCodePattern = new RegExp('\\\\id ([a-z][a-z][a-z])[ \\n\\r]', 'g');
+    const nonBreakingSpacePattern = new RegExp('~', 'g');
     if (multiLinePattern.exec(str)) {
       this.warnings.push('Empty lines present. ');
     }
@@ -36,6 +37,7 @@ class USFMParser extends Parser {
       newStr = newStr.replace(bookCode, bookCode.toUpperCase());
       this.warnings.push('Book code is in lowercase. ');
     }
+    newStr = newStr.replace(nonBreakingSpacePattern, '\u00A0');
     this.usfmString = newStr;
     return newStr;
   }
