@@ -172,6 +172,16 @@ describe('Test bug fixes', () => {
       { list: [{ li: null }] });
   });
 
+  it('warning for empty \\li marker', () => {
+    // li, lf and lh markers were defined so that it takes text.
+    // Now upadted it to allow empty list makers too. But gives a warning for empty usage.
+    // https://github.com/Bridgeconn/usfm-grammar/issues/84
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\li\n\\v 1 verse text';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput._messages._warnings.includes('\\li used without content'), true);
+  });
+
   it('warning for consecutive empty paragraph markers at chapter start', () => {
     // As paragraph markers are used for setting a style to the text content that follows it
     // using it consecutively does not create any impact in rendering USFM. So warn such usage
