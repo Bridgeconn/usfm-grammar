@@ -69,6 +69,39 @@ class USFMParser extends Parser {
         this.warnings = this.warnings.concat(matchObj.warnings);
         // console.log(this.warnings)
       }
+
+      // POST processing to check and warn for consecutive paragraph markers
+      let lastObject = '';
+      for (let i = 0; i < jsonOutput.chapters.length; i += 1) {
+        for (let j = 0; j < jsonOutput.chapters[i].contents.length; j += 1) {
+          if (typeof jsonOutput.chapters[i].contents[j] === 'object') {
+            if (Object.keys(jsonOutput.chapters[i].contents[j])[0] === 'verseNumber') {
+              for (let k = 0; k < jsonOutput.chapters[i].contents[j].contents.length; k += 1) {
+                if (Object.keys(jsonOutput.chapters[i].contents[j].contents[k]).length === 1
+                    && Object.values(jsonOutput.chapters[i].contents[j].contents[k])[0] === null) {
+                  if (lastObject === 'para marker') {
+                    this.warnings.push('Consecutive use of empty paragraph markers. ');
+                  } else {
+                    lastObject = 'para marker';
+                  }
+                } else {
+                  lastObject = 'not para marker';
+                }
+              }
+            } else if (Object.keys(jsonOutput.chapters[i].contents[j]).length === 1
+                && Object.values(jsonOutput.chapters[i].contents[j])[0] === null) {
+              if (lastObject === 'para marker') {
+                this.warnings.push('Consecutive use of empty paragraph markers. ');
+              } else {
+                lastObject = 'para marker';
+              }
+            } else {
+              lastObject = 'not para marker';
+            }
+          }
+        }
+      }
+
       if (filter === 'clean') {
         const newJsonOutput = { book: {}, chapters: [] };
         newJsonOutput.book.bookCode = jsonOutput.book.bookCode;
