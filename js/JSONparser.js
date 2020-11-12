@@ -1,9 +1,18 @@
+const { validate } = require('jsonschema');
 const { Parser } = require('./parser.js');
+const { JSONSchemaDefinition } = require('../schemas/file.js');
+
+const validateJSON = validate;
 
 class JSONParser extends Parser {
-  constructor(JSONObject) {
+  constructor(JSONString) {
     super();
-    this.JSONObject = JSONObject;
+    if (typeof JSONString === 'object') {
+      this.JSONObject = JSON.stringify(JSONString);
+    } else {
+      this.JSONObject = JSONString;
+    }
+    this.JSONObject = this.normalize();
     this.warnings = [];
     this.noNewLineMarkers = ['va', 'vp', 'qs', 'qac', 'litl', 'lik', 'lik1', 'lik2', 'lik3',
       'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3', 'th4', 'th5',
@@ -19,25 +28,43 @@ class JSONParser extends Parser {
   }
 
   validate() {
+    let validJson = {};
     try {
-      // try parsing and converting to USFM to make sure the format is correct
-      this.toUSFM(this.JSONObject);
-      return true;
+      validJson = JSON.parse(this.JSONObject);
     } catch (err) {
       return false;
     }
+    return validateJSON(validJson, JSONSchemaDefinition).valid;
   }
 
   normalize() {
     this.warnings = [];
-    // doesnot do any alterations. Method added because it is present in super class
-    const normJson = this.JSONObject;
+    const noBreakSpace = new RegExp('\u00A0', 'g');
+    let normJson = this.JSONObject;
+    normJson = normJson.replace(noBreakSpace, '~');
     return normJson;
   }
 
   toUSFM() {
     let usfmText = '';
-    const jsonObj = this.JSONObject;
+    let jsonObj = {};
+    try {
+      jsonObj = JSON.parse(this.JSONObject);
+    } catch (err) {
+      // console.log("<<<<JSON parsing error>>>")
+      const returnObj = { _messages: { _error: err.message } };
+      return returnObj;
+    }
+    const validateObj = validateJSON(jsonObj, JSONSchemaDefinition);
+    if (validateObj.valid === false) {
+      // console.log("<<<<JSON not valid for USFM grammar>>>")
+      const errors = [];
+      for (let i = 0; i < validateObj.errors.length; i += 1) {
+        errors.push(validateObj.errors[i].stack);
+      }
+      const returnObj = { _messages: { _error: errors } };
+      return returnObj;
+    }
     usfmText += '\\id ';
     usfmText += jsonObj.book.bookCode;
     if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'description')) {
@@ -170,7 +197,22 @@ class JSONParser extends Parser {
   }
 
   toCSV() {
-    const jsonOutput = this.JSONObject;
+    let jsonOutput = {};
+    try {
+      jsonOutput = JSON.parse(this.JSONObject);
+    } catch (err) {
+      const returnObj = { _messages: { _error: err.message } };
+      return returnObj;
+    }
+    const validateObj = validateJSON(jsonOutput, JSONSchemaDefinition);
+    if (validateObj.valid === false) {
+      const errors = [];
+      for (let i = 0; i < validateObj.errors.length; i += 1) {
+        errors.push(validateObj.errors[i].stack);
+      }
+      const returnObj = { _messages: { _error: errors } };
+      return returnObj;
+    }
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book, Chapter, Verse, Text\n';
@@ -188,7 +230,22 @@ class JSONParser extends Parser {
   }
 
   toTSV() {
-    const jsonOutput = this.JSONObject;
+    let jsonOutput = {};
+    try {
+      jsonOutput = JSON.parse(this.JSONObject);
+    } catch (err) {
+      const returnObj = { _messages: { _error: err.message } };
+      return returnObj;
+    }
+    const validateObj = validateJSON(jsonOutput, JSONSchemaDefinition);
+    if (validateObj.valid === false) {
+      const errors = [];
+      for (let i = 0; i < validateObj.errors.length; i += 1) {
+        errors.push(validateObj.errors[i].stack);
+      }
+      const returnObj = { _messages: { _error: errors } };
+      return returnObj;
+    }
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book\tChapter\tVerse\tText\n';

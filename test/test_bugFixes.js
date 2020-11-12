@@ -171,4 +171,64 @@ describe('Test bug fixes', () => {
     assert.deepStrictEqual(jsonOutput.chapters[0].contents[1].contents[1],
       { list: [{ li: null }] });
   });
+
+  it('warning for empty \\li marker', () => {
+    // li, lf and lh markers were defined so that it takes text.
+    // Now upadted it to allow empty list makers too. But gives a warning for empty usage.
+    // https://github.com/Bridgeconn/usfm-grammar/issues/84
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\li\n\\v 1 verse text';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput._messages._warnings.includes('\\li used without content'), true);
+  });
+
+  it('warning for consecutive empty paragraph markers at chapter start', () => {
+    // As paragraph markers are used for setting a style to the text content that follows it
+    // using it consecutively does not create any impact in rendering USFM. So warn such usage
+    // https://github.com/Bridgeconn/usfm-grammar/issues/45
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\b\n\\m\\v 1 verse text';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput._messages._warnings.includes('Consecutive use of empty paragraph markers. '), true);
+  });
+
+  it('warning for consecutive empty paragraph markers within a verse', () => {
+    // As paragraph markers are used for setting a style to the text content that follows it
+    // using it consecutively does not create any impact in rendering USFM. So warn such usage
+    // https://github.com/Bridgeconn/usfm-grammar/issues/45
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse text\\p\n\\q some poetic text';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput._messages._warnings.includes('Consecutive use of empty paragraph markers. '), true);
+  });
+
+  it('no warning in the absence of consecutive empty paragraph markers', () => {
+    // As paragraph markers are used for setting a style to the text content that follows it
+    // using it consecutively does not create any impact in rendering USFM. So warn such usage
+    // https://github.com/Bridgeconn/usfm-grammar/issues/45
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse text';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput._messages._warnings.includes('Consecutive use of empty paragraph markers. '), false);
+  });
+
+  it('replace ~ with \\u00A0', () => {
+    // ~ is included in USFM text to indicate No-break space. Replace it with actual
+    // no-break-space when encountered in input USFM text and do the reverse in JSON.
+    // https://github.com/Bridgeconn/usfm-grammar/issues/61
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse text~with space';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput.chapters[0].contents[1].verseText, 'verse text\u00A0with space');
+    const jsonParser = new grammar.JSONParser(jsonOutput);
+    const reCreatedUsfm1 = jsonParser.toUSFM();
+    assert.strictEqual(reCreatedUsfm1, inputUsfm);
+
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm);
+    const relaxedJsonOutput = relaxedUsfmParser.toJSON();
+    assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, 'verse text\u00A0with space');
+    const jsonParser2 = new grammar.JSONParser(relaxedJsonOutput);
+    const reCreatedUsfm2 = jsonParser2.toUSFM();
+    assert.strictEqual(reCreatedUsfm2, inputUsfm);
+  });
 });

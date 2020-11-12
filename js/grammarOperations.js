@@ -1074,6 +1074,7 @@ sem.addOperation('composeJson', {
   },
 
   liElementWithoutText(_1, _2, marker, _4) {
+    emitter.emit('warning', new Error('\\li used without content'));
     return { li: null };
   },
 
@@ -1088,6 +1089,7 @@ sem.addOperation('composeJson', {
   },
 
   lhElementWithoutText(_1, _2, marker, _4) {
+    emitter.emit('warning', new Error('\\lh used without content'));
     return { lh: null };
   },
 
@@ -1102,6 +1104,7 @@ sem.addOperation('composeJson', {
   },
 
   lfElementWithoutText(_1, _2, marker, _4) {
+    emitter.emit('warning', new Error('\\lf used without content'));
     return { lf: null };
   },
 
@@ -1117,6 +1120,7 @@ sem.addOperation('composeJson', {
   },
 
   limElementWithoutText(_1, _2, marker, number, _4) {
+    emitter.emit('warning', new Error('\\lim used without content'));
     return { lim: null };
   },
 
