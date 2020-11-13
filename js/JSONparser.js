@@ -4,6 +4,28 @@ const { JSONSchemaDefinition } = require('../schemas/file.js');
 
 const validateJSON = validate;
 
+function checkJSON(jsonString) {
+  let jsonObj = {};
+  try {
+    jsonObj = JSON.parse(jsonString);
+  } catch (err) {
+    // console.log("<<<<JSON parsing error>>>")
+    const returnObj = { _messages: { _error: err.message } };
+    return returnObj;
+  }
+  const validateObj = validateJSON(jsonObj, JSONSchemaDefinition);
+  if (validateObj.valid === false) {
+    // console.log("<<<<JSON not valid for USFM grammar>>>")
+    const errors = [];
+    for (let i = 0; i < validateObj.errors.length; i += 1) {
+      errors.push(validateObj.errors[i].stack);
+    }
+    const returnObj = { _messages: { _error: errors } };
+    return returnObj;
+  }
+  return jsonObj;
+}
+
 class JSONParser extends Parser {
   constructor(JSONString) {
     super();
@@ -28,13 +50,11 @@ class JSONParser extends Parser {
   }
 
   validate() {
-    let validJson = {};
-    try {
-      validJson = JSON.parse(this.JSONObject);
-    } catch (err) {
+    const validJson = checkJSON(this.JSONObject);
+    if (Object.keys(validJson).includes('_messages') && Object.keys(validJson._messages).includes('_error')) {
       return false;
     }
-    return validateJSON(validJson, JSONSchemaDefinition).valid;
+    return true;
   }
 
   normalize() {
@@ -47,24 +67,11 @@ class JSONParser extends Parser {
 
   toUSFM() {
     let usfmText = '';
-    let jsonObj = {};
-    try {
-      jsonObj = JSON.parse(this.JSONObject);
-    } catch (err) {
-      // console.log("<<<<JSON parsing error>>>")
-      const returnObj = { _messages: { _error: err.message } };
-      return returnObj;
+    const jsonObj = checkJSON(this.JSONObject);
+    if (Object.keys(jsonObj).includes('_messages') && Object.keys(jsonObj._messages).includes('_error')) {
+      return jsonObj;
     }
-    const validateObj = validateJSON(jsonObj, JSONSchemaDefinition);
-    if (validateObj.valid === false) {
-      // console.log("<<<<JSON not valid for USFM grammar>>>")
-      const errors = [];
-      for (let i = 0; i < validateObj.errors.length; i += 1) {
-        errors.push(validateObj.errors[i].stack);
-      }
-      const returnObj = { _messages: { _error: errors } };
-      return returnObj;
-    }
+
     usfmText += '\\id ';
     usfmText += jsonObj.book.bookCode;
     if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'description')) {
@@ -197,21 +204,9 @@ class JSONParser extends Parser {
   }
 
   toCSV() {
-    let jsonOutput = {};
-    try {
-      jsonOutput = JSON.parse(this.JSONObject);
-    } catch (err) {
-      const returnObj = { _messages: { _error: err.message } };
-      return returnObj;
-    }
-    const validateObj = validateJSON(jsonOutput, JSONSchemaDefinition);
-    if (validateObj.valid === false) {
-      const errors = [];
-      for (let i = 0; i < validateObj.errors.length; i += 1) {
-        errors.push(validateObj.errors[i].stack);
-      }
-      const returnObj = { _messages: { _error: errors } };
-      return returnObj;
+    const jsonOutput = checkJSON(this.JSONObject);
+    if (Object.keys(jsonOutput).includes('_messages') && Object.keys(jsonOutput._messages).includes('_error')) {
+      return jsonOutput;
     }
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
@@ -230,21 +225,9 @@ class JSONParser extends Parser {
   }
 
   toTSV() {
-    let jsonOutput = {};
-    try {
-      jsonOutput = JSON.parse(this.JSONObject);
-    } catch (err) {
-      const returnObj = { _messages: { _error: err.message } };
-      return returnObj;
-    }
-    const validateObj = validateJSON(jsonOutput, JSONSchemaDefinition);
-    if (validateObj.valid === false) {
-      const errors = [];
-      for (let i = 0; i < validateObj.errors.length; i += 1) {
-        errors.push(validateObj.errors[i].stack);
-      }
-      const returnObj = { _messages: { _error: errors } };
-      return returnObj;
+    const jsonOutput = checkJSON(this.JSONObject);
+    if (Object.keys(jsonOutput).includes('_messages') && Object.keys(jsonOutput._messages).includes('_error')) {
+      return jsonOutput;
     }
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
