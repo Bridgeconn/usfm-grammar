@@ -31,7 +31,7 @@ function execute(processPath, args = [], opts = {}) {
   return promise;
 }
 
-describe('version and help', () => {
+describe('Test CLI: version and help', () => {
   it('version with --version', async () => {
     const response = await execute(
       'usfm-grammar',
@@ -99,7 +99,7 @@ describe('version and help', () => {
   });
 });
 
-describe('USFM parsing', () => {
+describe('Test CLI: USFM parsing', () => {
   it('one file argument', async () => {
     const response = await execute(
       'usfm-grammar',
@@ -226,7 +226,7 @@ describe('USFM parsing', () => {
   });
 });
 
-describe('JSON parsing', () => {
+describe('Test CLI: JSON parsing', () => {
   it('with one json file-path', async () => {
     const response = await execute(
       'usfm-grammar',
