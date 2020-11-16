@@ -25,10 +25,10 @@ const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'lh', 'lf', 'lim', 'lit
   '+addpn', '+qt', '+sig', '+sls', '+tl', '+wj', '+em', '+bd', '+it',
   '+bdit', '+no', '+sc', '+sup', '+w', '+rb', '+wa', '+wg', '+wh', '+pro'];
 
-// const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
-//   'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
-//   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
-//   'qm1', 'qm2', 'qm3'];
+const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
+  'pmr', 'pi', 'pi1', 'pi2', 'pi3', 'mi', 'nb', 'pc', 'ph', 'ph1', 'ph2',
+  'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
+  'qm1', 'qm2', 'qm3'];
 
 const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
 
@@ -36,6 +36,16 @@ function buildVerseText(elmts) {
   let verseTextPartial = '';
   if (typeof elmts === 'string') {
     verseTextPartial = elmts;
+  } else if (Array.isArray(elmts)) {
+    for (let i = 0; i < elmts.length; i += 1) {
+      const text = buildVerseText(elmts[i]);
+      if (punctPattern.test(text)) {
+        verseTextPartial = verseTextPartial.trim();
+        verseTextPartial += text;
+      } else {
+        verseTextPartial += ` ${text}`;
+      }
+    }
   } else {
     const key = Object.keys(elmts)[0];
     if (verseCarryingMarkers.includes(key) && typeof elmts[key] === 'string') {
@@ -70,6 +80,8 @@ function buildVerseText(elmts) {
       if (elmts.text !== null) {
         verseTextPartial = elmts.text;
       }
+    } else if (paraMarkers.includes(key) && elmts[key] !== null) {
+      verseTextPartial = buildVerseText(elmts[key]);
     }
   }
   return verseTextPartial;
@@ -210,26 +222,15 @@ sem.addOperation('composeJson', {
     verse.contents = [];
     if (verseMeta.sourceString !== '') {
       const metadata = verseMeta.composeJson();
-      verse.contents.concat(metadata);
+      verse.contents = verse.contents.concat(metadata);
     }
     const elmts = verseContent.composeJson();
     if (verseContent.sourceString === '') {
       emitter.emit('warning', new Error(`Verse text is empty, at \\v ${verseNumber.sourceString}. `));
+    } else {
+      verse.contents = verse.contents.concat(elmts);
     }
-    for (let i = 0; i < elmts.length; i += 1) {
-      const text = buildVerseText(elmts[i]);
-      if (punctPattern.test(text)) {
-        verse.verseText = verse.verseText.trim();
-        verse.verseText += text;
-      } else {
-        verse.verseText += ` ${text}`;
-      }
-      if (Object.prototype.hasOwnProperty.call(elmts[i], 'table')) {
-        delete elmts[i].text;
-      }
-      verse.contents.push(elmts[i]);
-    }
-    verse.verseText = verse.verseText.trim().replace(/ +/g, ' ');
+    verse.verseText = buildVerseText(elmts).trim().replace(/ +/g, ' ');
     return verse;
   },
 
@@ -1219,3 +1220,4 @@ function match(str) {
 }
 
 exports.match = match;
+exports.buildVerseText = buildVerseText;
