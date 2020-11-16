@@ -137,6 +137,10 @@ class USFMParser extends Parser {
 
   toCSV() {
     const jsonOutput = this.toJSON();
+    if (Object.keys(jsonOutput).includes('_messages')
+      && Object.keys(jsonOutput._messages).includes('_error')) {
+      return jsonOutput;
+    }
     const myJsonParser = new JSONParser(jsonOutput);
     const csvOutput = myJsonParser.toCSV();
     return csvOutput;
@@ -144,6 +148,10 @@ class USFMParser extends Parser {
 
   toTSV() {
     const jsonOutput = this.toJSON();
+    if (Object.keys(jsonOutput).includes('_messages')
+      && Object.keys(jsonOutput._messages).includes('_error')) {
+      return jsonOutput;
+    }
     const myJsonParser = new JSONParser(jsonOutput);
     const csvOutput = myJsonParser.toTSV();
     return csvOutput;
