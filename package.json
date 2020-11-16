@@ -10,7 +10,6 @@
         "test-on-github": "mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild.js --ignore test/test_cli.js"
     },
     "dependencies": {
-        "concat-stream": "^2.0.0",
         "jsonschema": "^1.4.0",
         "ohm-js": "^15.2.1",
         "yargs": "^16.0.3"
@@ -35,6 +34,7 @@
     },
     "homepage": "https://github.com/Bridgeconn/usfm-grammar",
     "devDependencies": {
+        "concat-stream": "^2.0.0",
         "eslint": "^7.7.0",
         "eslint-config-airbnb-base": "^14.2.0",
         "eslint-plugin-import": "^2.22.0",
