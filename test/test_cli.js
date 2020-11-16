@@ -200,22 +200,6 @@ describe('Test CLI: USFM parsing', () => {
     assert.strictEqual(Object.keys(jsonObj).includes('chapters'), true);
   });
 
-  it('output file specified, with -o', async () => {
-    const response = await execute(
-      'usfm-grammar',
-      ['./test/resources/small.usfm', '-o', './test/resources/small1.json'],
-    );
-    assert.strictEqual(response, '');
-  });
-
-  it('output file specified, with --output file-name', async () => {
-    const response = await execute(
-      'usfm-grammar',
-      ['./test/resources/small.usfm', '--output', './test/resources/small2.json'],
-    );
-    assert.strictEqual(response, '');
-  });
-
   it('output format specified, with --format==csv', async () => {
     const response = await execute(
       'usfm-grammar',

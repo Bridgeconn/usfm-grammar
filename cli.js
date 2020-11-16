@@ -13,8 +13,6 @@ const { argv } = require('yargs')
   .choices('filter', ['scripture'])
   .describe('format', 'specifies the output file format')
   .choices('format', ['csv', 'tsv', 'usfm', 'json'])
-  .alias('o', 'output')
-  .describe('o', 'specify the fully qualified file path for output.')
   .alias('h', 'help')
   .alias('v', 'version')
   .help('help');
@@ -73,18 +71,4 @@ if (argv.format === 'usfm' || isJson) {
   }
 }
 
-if (Object.prototype.hasOwnProperty.call(argv, 'o') || Object.prototype.hasOwnProperty.call(argv, 'output')) {
-  let filePath = argv.o;
-  if (!filePath) {
-    filePath = argv.output;
-  }
-  try {
-    fs.writeFileSync(filePath, output);
-  } catch (e) {
-    console.error('Error writting output file');
-    console.error(e.message);
-    process.exit(1);
-  }
-} else {
-  console.log(output);
-}
+console.log(output);
