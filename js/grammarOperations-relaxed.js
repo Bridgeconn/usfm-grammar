@@ -1,5 +1,6 @@
 const ohm = require('ohm-js');
 const { contents: grammar } = require('../grammar/usfm-relaxed.ohm.js');
+const { buildVerseText } = require('./grammarOperations.js');
 
 const { usfmRelaxed: bib } = ohm.grammars(grammar);
 const sem = bib.createSemantics();
@@ -11,15 +12,15 @@ const sem = bib.createSemantics();
 // We need to know which all marker's contents should be considered as verseText
 // while composing the .verseText property of each verse element.
 // This list is consulted for that
-const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'lh', 'lf', 'lim', 'litl',
-  'lik', 'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3',
-  'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
-  'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
-  'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl', 'wj', 'em', 'bd',
-  'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro',
-  '+add', '+bk', '+dc', '+k', '+lit', '+nd', '+ord', '+pn', '+png',
-  '+addpn', '+qt', '+sig', '+sls', '+tl', '+wj', '+em', '+bd', '+it',
-  '+bdit', '+no', '+sc', '+sup', '+w', '+rb', '+wa', '+wg', '+wh', '+pro'];
+// const verseCarryingMarkers = ['li', 'li1', 'li2', 'li3', 'lh', 'lf', 'lim', 'litl',
+//   'lik', 'liv', 'liv1', 'liv2', 'liv3', 'th', 'th1', 'th2', 'th3',
+//   'thr', 'thr1', 'thr2', 'thr3', 'tc', 'tc1', 'tc2', 'tc3', 'tcr',
+//   'tcr1', 'tcr2', 'tcr3', 'add', 'bk', 'dc', 'k', 'lit', 'nd', 'ord',
+//   'pn', 'png', 'addpn', 'qt', 'sig', 'sls', 'tl', 'wj', 'em', 'bd',
+//   'it', 'bdit', 'no', 'sc', 'sup', 'w', 'rb', 'wa', 'wg', 'wh', 'pro',
+//   '+add', '+bk', '+dc', '+k', '+lit', '+nd', '+ord', '+pn', '+png',
+//   '+addpn', '+qt', '+sig', '+sls', '+tl', '+wj', '+em', '+bd', '+it',
+//   '+bdit', '+no', '+sc', '+sup', '+w', '+rb', '+wa', '+wg', '+wh', '+pro'];
 
 // In normal grammar these markers are implemented as not containing text or other contents.
 // The relaxed grammar doesnot implement makers separately but have general rules for all.
@@ -30,7 +31,7 @@ const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
   'qm1', 'qm2', 'qm3'];
 
-const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
+// const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
 
 sem.addOperation('buildJson', {
   File(bookhead, chapters) {
@@ -105,42 +106,7 @@ sem.addOperation('buildJson', {
       verseNumber: num.sourceString.trim(),
       contents: contents.buildJson(),
     };
-    res.verseText = '';
-    for (let i = 0; i < res.contents.length; i += 1) {
-      if (typeof res.contents[i] === 'string') {
-        if (punctPattern.test(res.contents[i])) {
-          res.verseText = res.verseText.trim();
-          res.verseText += res.contents[i];
-        } else {
-          res.verseText += ` ${res.contents[i]}`;
-        }
-      } else {
-        // console.log(res.contents[i].keys());
-        const key = Object.keys(res.contents[i])[0];
-        if (verseCarryingMarkers.includes(key)) {
-          if (punctPattern.test(res.contents[i][key])) {
-            res.verseText = res.verseText.trim();
-            res.verseText += res.contents[i][key];
-          } else {
-            res.verseText += ` ${res.contents[i][key]}`;
-          }
-        } else if (paraMarkers.includes(key)) {
-          const text = res.contents[i][key];
-          if (punctPattern.test(text)) {
-            res.verseText = res.verseText.trim();
-            res.verseText += text;
-          } else {
-            res.verseText += ` ${text}`;
-          }
-          res.contents[i][key] = null;
-          if (text !== '') {
-            res.contents.splice(i + 1, 0, text);
-            i += 1;
-          }
-        }
-      }
-    }
-    res.verseText = res.verseText.replace(/ +/g, ' ').trim();
+    res.verseText = buildVerseText(res.contents).replace(/ +/g, ' ').trim();
     return res;
   },
 

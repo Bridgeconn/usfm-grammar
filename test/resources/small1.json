@@ -1,0 +1,40 @@
+{
+  "book": {
+    "bookCode": "GEN",
+    "description": "A small sample usfm file"
+  },
+  "chapters": [
+    {
+      "chapterNumber": "1",
+      "contents": [
+        {
+          "p": null
+        },
+        {
+          "verseNumber": "1",
+          "verseText": "one verse",
+          "contents": [
+            "one verse"
+          ]
+        },
+        {
+          "verseNumber": "2",
+          "verseText": "second verse",
+          "contents": [
+            "second verse"
+          ]
+        },
+        {
+          "verseNumber": "3",
+          "verseText": "final verse",
+          "contents": [
+            "final verse"
+          ]
+        }
+      ]
+    }
+  ],
+  "_messages": {
+    "_warnings": []
+  }
+}
