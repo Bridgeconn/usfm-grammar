@@ -125,37 +125,37 @@ describe('Test bug fixes', () => {
     let inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തി പുസ്തകം\n\\c 1\n\\p\n\\v 1 ആദിയിൽ ദൈവം \\w ആകാശവും |lemma=ആകാശം strong="l" x-morph="He,R:Sp1cs"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.';
     let usfmParser = new grammar.USFMParser(inputUsfm);
     let thrownError = false;
-    try{
-        let jsonOutput = usfmParser.toJSON();
+    try {
+      usfmParser.toJSON();
     } catch (err) {
-        thrownError = true
+      thrownError = true;
     }
     assert.strictEqual(thrownError, true);
     inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തി പുസ്തകം\n\\c 1\n\\p\n\\v 1 ആദിയിൽ ദൈവം \\w ആകാശവും |lemma= strong="l" x-morph="He,R:Sp1cs"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.';
     usfmParser = new grammar.USFMParser(inputUsfm);
     thrownError = false;
-    try{
-        let jsonOutput = usfmParser.toJSON();
+    try {
+      usfmParser.toJSON();
     } catch (err) {
-        thrownError = true
+      thrownError = true;
     }
     assert.strictEqual(thrownError, true);
     inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തിപുസ്തകം\n\\c 1\n\\pi\n\\v 1 ആദിയിൽ ദൈവം \\w ആകാശവും |lemma strong="l" x-morph="He,R:Sp1cs"\\w* ഭൂമിയും സൃഷ്ടിച്ചു.';
     usfmParser = new grammar.USFMParser(inputUsfm);
     thrownError = false;
-    try{
-        let jsonOutput = usfmParser.toJSON();
+    try {
+      usfmParser.toJSON();
     } catch (err) {
-        thrownError = true
+      thrownError = true;
     }
     assert.strictEqual(thrownError, true);
     inputUsfm = '\\id GEN\n\\mt1 ഉല്പത്തിപുസ്തകം\n\\c 1\n\\pi\n\\v 6 ആദിയിൽ ദൈവം \\w ആകാശവും| \\w* ഭൂമിയും സൃഷ്ടിച്ചു.';
     usfmParser = new grammar.USFMParser(inputUsfm);
     thrownError = false;
-    try{
-        let jsonOutput = usfmParser.toJSON();
+    try {
+      usfmParser.toJSON();
     } catch (err) {
-        thrownError = true
+      thrownError = true;
     }
     assert.strictEqual(thrownError, true);
   });

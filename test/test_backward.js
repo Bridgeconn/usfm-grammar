@@ -9,18 +9,12 @@ function usfmConvertedJsonValidatorTest(inputUsfm) {
   let jsonOutput = usfmParser.toJSON();
   let jsonParser = new grammar.JSONParser(jsonOutput);
   let validity = jsonParser.validate();
-  // if (validity === false) {
-  //   console.log(jsonParser.toUSFM())
-  // }
   assert(validity, true);
 
   usfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
   jsonOutput = usfmParser.toJSON();
   jsonParser = new grammar.JSONParser(jsonOutput);
   validity = jsonParser.validate();
-  // if (validity === false) {
-  //   console.log(jsonParser.toUSFM())
-  // }
   assert(validity, true);
 }
 
@@ -29,9 +23,9 @@ function jsonValidatorNegativeTest(inputJson) {
   const validity = jsonParser.validate();
   assert.strictEqual(validity, false);
   let thrownError = false;
-  try{
-    const usfmOutput = jsonParser.toUSFM();
-  } catch(err){
+  try {
+    jsonParser.toUSFM();
+  } catch (err) {
     thrownError = true;
   }
   assert.strictEqual(thrownError, true);
