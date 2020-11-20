@@ -5,14 +5,7 @@ const { JSONSchemaDefinition } = require('../schemas/file.js');
 const validateJSON = validate;
 
 function checkJSON(jsonString) {
-  let jsonObj = {};
-  try {
-    jsonObj = JSON.parse(jsonString);
-  } catch (err) {
-    // console.log("<<<<JSON parsing error>>>")
-    const returnObj = { _messages: { _error: err.message } };
-    return returnObj;
-  }
+  const jsonObj = JSON.parse(jsonString);
   const validateObj = validateJSON(jsonObj, JSONSchemaDefinition);
   if (validateObj.valid === false) {
     // console.log("<<<<JSON not valid for USFM grammar>>>")
@@ -20,8 +13,7 @@ function checkJSON(jsonString) {
     for (let i = 0; i < validateObj.errors.length; i += 1) {
       errors.push(validateObj.errors[i].stack);
     }
-    const returnObj = { _messages: { _error: errors } };
-    return returnObj;
+    throw errors;
   }
   return jsonObj;
 }
@@ -50,8 +42,9 @@ class JSONParser extends Parser {
   }
 
   validate() {
-    const validJson = checkJSON(this.JSONObject);
-    if (Object.keys(validJson).includes('_messages') && Object.keys(validJson._messages).includes('_error')) {
+    try {
+      checkJSON(this.JSONObject);
+    } catch (err) {
       return false;
     }
     return true;
@@ -68,10 +61,6 @@ class JSONParser extends Parser {
   toUSFM() {
     let usfmText = '';
     const jsonObj = checkJSON(this.JSONObject);
-    if (Object.keys(jsonObj).includes('_messages') && Object.keys(jsonObj._messages).includes('_error')) {
-      return jsonObj;
-    }
-
     usfmText += '\\id ';
     usfmText += jsonObj.book.bookCode;
     if (Object.prototype.hasOwnProperty.call(jsonObj.book, 'description')) {
@@ -205,9 +194,6 @@ class JSONParser extends Parser {
 
   toCSV() {
     const jsonOutput = checkJSON(this.JSONObject);
-    if (Object.keys(jsonOutput).includes('_messages') && Object.keys(jsonOutput._messages).includes('_error')) {
-      return jsonOutput;
-    }
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book, Chapter, Verse, Text\n';
@@ -226,9 +212,6 @@ class JSONParser extends Parser {
 
   toTSV() {
     const jsonOutput = checkJSON(this.JSONObject);
-    if (Object.keys(jsonOutput).includes('_messages') && Object.keys(jsonOutput._messages).includes('_error')) {
-      return jsonOutput;
-    }
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
     let csvWriter = 'Book\tChapter\tVerse\tText\n';

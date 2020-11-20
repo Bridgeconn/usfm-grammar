@@ -9,29 +9,26 @@ function usfmConvertedJsonValidatorTest(inputUsfm) {
   let jsonOutput = usfmParser.toJSON();
   let jsonParser = new grammar.JSONParser(jsonOutput);
   let validity = jsonParser.validate();
-  // if (validity === false) {
-  //   console.log(jsonParser.toUSFM())
-  // }
   assert(validity, true);
 
   usfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
   jsonOutput = usfmParser.toJSON();
   jsonParser = new grammar.JSONParser(jsonOutput);
   validity = jsonParser.validate();
-  // if (validity === false) {
-  //   console.log(jsonParser.toUSFM())
-  // }
   assert(validity, true);
 }
 
 function jsonValidatorNegativeTest(inputJson) {
   const jsonParser = new grammar.JSONParser(inputJson);
   const validity = jsonParser.validate();
-  const usfmOutput = jsonParser.toUSFM();
   assert.strictEqual(validity, false);
-  assert.strictEqual('_messages' in usfmOutput, true);
-  assert.strictEqual('_error' in usfmOutput._messages, true);
-  // console.log(usfmOutput._messages._error);
+  let thrownError = false;
+  try {
+    jsonParser.toUSFM();
+  } catch (err) {
+    thrownError = true;
+  }
+  assert.strictEqual(thrownError, true);
 }
 
 beforeEach(() => {

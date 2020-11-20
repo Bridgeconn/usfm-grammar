@@ -44,7 +44,7 @@ if (argv.format === 'usfm' || isJson) {
     output = myJsonParser.toUSFM(inputFile);
   } catch (e) {
     console.error('Error parsing the input JSON.');
-    console.error(e.message);
+    console.error(e);
     process.exit(1);
   }
 } else {
@@ -66,7 +66,7 @@ if (argv.format === 'usfm' || isJson) {
     }
   } catch (e) {
     console.error('Error parsing the input USFM.');
-    console.error(e.message);
+    console.error(e);
     process.exit(1);
   }
 }
