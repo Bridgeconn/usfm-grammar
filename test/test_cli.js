@@ -111,13 +111,18 @@ describe('Test CLI: USFM parsing', () => {
   });
 
   it('with invalid file', async () => {
-    const response = await execute(
-      'usfm-grammar',
-      ['./test/test.js'],
-    );
-    const jsonObj = JSON.parse(response);
-    assert.strictEqual(Object.keys(jsonObj).includes('_messages'), true);
-    assert.strictEqual(Object.keys(jsonObj._messages).includes('_error'), true);
+    let thrownError = false;
+    try {
+      await execute(
+        'usfm-grammar',
+        ['./test/test.js'],
+      );
+    } catch (err) {
+      thrownError = true;
+      const errPattern = new RegExp('^Error parsing the input USFM.*', 'g');
+      assert.match(err, errPattern);
+    }
+    assert.strictEqual(thrownError, true);
   });
 
   it('level relaxed, with --level=relaxed', async () => {
