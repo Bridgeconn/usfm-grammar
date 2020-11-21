@@ -56,3 +56,11 @@ typings/
 
 # dotenv environment variables file
 .env
+
+# Emacs files
+*~
+\#*\#
+.\#*
+
+# Mac files
+.DS_Store
