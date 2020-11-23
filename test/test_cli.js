@@ -59,7 +59,7 @@ describe('Test CLI: version and help', () => {
       );
     } catch (err) {
       thrownError = true;
-      const helpPattern = new RegExp('^usfm-grammar <file-path>\\n.*', 'g');
+      const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
       assert.match(err, helpPattern);
     }
     assert.strictEqual(thrownError, true);
@@ -74,7 +74,7 @@ describe('Test CLI: version and help', () => {
       );
     } catch (err) {
       thrownError = true;
-      const helpPattern = new RegExp('^usfm-grammar <file-path>\\n.*', 'g');
+      const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
       assert.match(err, helpPattern);
     }
     assert.strictEqual(thrownError, true);
@@ -85,7 +85,7 @@ describe('Test CLI: version and help', () => {
       'usfm-grammar',
       ['-h'],
     );
-    const helpPattern = new RegExp('^usfm-grammar <file-path>\\n.*', 'g');
+    const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
     assert.match(response, helpPattern);
   });
 
@@ -94,7 +94,7 @@ describe('Test CLI: version and help', () => {
       'usfm-grammar',
       ['--help'],
     );
-    const helpPattern = new RegExp('^usfm-grammar <file-path>\\n.*', 'g');
+    const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
     assert.match(response, helpPattern);
   });
 });
@@ -164,7 +164,7 @@ describe('Test CLI: USFM parsing', () => {
       );
     } catch (err) {
       thrownError = true;
-      const helpPattern = new RegExp('^usfm-grammar <file-path>\\n.*', 'g');
+      const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
       assert.match(err, helpPattern);
     }
     assert.strictEqual(thrownError, true);
@@ -189,7 +189,7 @@ describe('Test CLI: USFM parsing', () => {
       );
     } catch (err) {
       thrownError = true;
-      const helpPattern = new RegExp('^usfm-grammar <file-path>\\n.*', 'g');
+      const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
       assert.match(err, helpPattern);
     }
     assert.strictEqual(thrownError, true);
@@ -205,10 +205,19 @@ describe('Test CLI: USFM parsing', () => {
     assert.strictEqual(Object.keys(jsonObj).includes('chapters'), true);
   });
 
-  it('output format specified, with --format==csv', async () => {
+  it('output format specified, with --output==csv', async () => {
     const response = await execute(
       'usfm-grammar',
-      ['./test/resources/small.usfm', '--format=csv'],
+      ['./test/resources/small.usfm', '--output=csv'],
+    );
+    const csvPattern = new RegExp('Book, Chapter, Verse, Text\\n.*', 'g');
+    assert.match(response, csvPattern);
+  });
+
+  it('output format specified, with -o csv', async () => {
+    const response = await execute(
+      'usfm-grammar',
+      ['./test/resources/small.usfm', '-o', 'csv'],
     );
     const csvPattern = new RegExp('Book, Chapter, Verse, Text\\n.*', 'g');
     assert.match(response, csvPattern);
