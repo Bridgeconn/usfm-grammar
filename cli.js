@@ -1,26 +1,34 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const { argv } = require('yargs')
-  .command('* <file-path>', 'parse and convert the input file', (yargs) => {
-    yargs.positional('file-path', {
-      describe: 'the input USFM or JSON file to be parsed and converted',
+  .command('* <file>', 'Parse/validate USFM 3.x to/from JSON.', (yargs) => {
+    yargs.positional('file', {
+      describe: 'The path of the USFM or JSON file to be parsed and/or converted. By default, auto-detects input USFM and converts it into JSON and vice-versa.',
     });
   })
   .alias('l', 'level')
-  .describe('l', 'specify the level of strictness in parsing')
+  .describe('l', 'Level of strictness in parsing. This defaults to `strict`.')
   .choices('l', ['relaxed'])
-  .describe('filter', 'filters out only the specific contents from input USFM')
+  .describe('filter', 'Filter out content from input USFM. Not applicable for input JSON or for CSV/TSV output.')
   .choices('filter', ['scripture'])
-  .describe('format', 'specifies the output file format')
-  .choices('format', ['csv', 'tsv', 'usfm', 'json'])
+  .alias('o', 'output')
+  .describe('output', 'The output format to convert input into.')
+  .choices('o', ['csv', 'tsv', 'usfm', 'json'])
   .alias('h', 'help')
   .alias('v', 'version')
-  .help('help');
+  .help()
+  .coerce(['level', 'filter', 'output'], (arg) => {
+    if (typeof arg === 'string') return arg.toLowerCase();
+    if (Array.isArray(arg)) return arg.map((v) => v.toLowerCase());
+
+    return arg;
+  });
+
 const grammar = require('./js/main.js');
 
 /* eslint no-console: ["error", { allow: ["log", "error"] }] */
 
-const file = argv['file-path'];
+const { file } = argv;
 let inputFile = null;
 try {
   inputFile = fs.readFileSync(file, 'utf-8');
@@ -38,7 +46,7 @@ try {
 } catch (e) {
   isJson = false;
 }
-if (argv.format === 'usfm' || isJson) {
+if (argv.output === 'usfm' || isJson) {
   const myJsonParser = new grammar.JSONParser(jsonInput);
   try {
     output = myJsonParser.toUSFM(inputFile);
@@ -55,9 +63,9 @@ if (argv.format === 'usfm' || isJson) {
     myUsfmParser = new grammar.USFMParser(inputFile);
   }
   try {
-    if (argv.format === 'csv') {
+    if (argv.output === 'csv') {
       output = myUsfmParser.toCSV();
-    } else if (argv.format === 'tsv') {
+    } else if (argv.output === 'tsv') {
       output = myUsfmParser.toTSV();
     } else if (argv.filter === 'scripture') {
       output = JSON.stringify(myUsfmParser.toJSON(grammar.FILTER.SCRIPTURE), null, 2);
