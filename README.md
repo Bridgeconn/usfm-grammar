@@ -108,6 +108,10 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
 </td>
 </tr></table>
 
+The JSON structure confines to the schema defined [here](https://github.com/Bridgeconn/usfm-grammar/blob/master/schemas/file.js).
+
+The JSON uses the usfm marker names as property names along with some additional names as follows: book, bookCode, description, meta, chapters, contents, verseNumber, verseText, attributes, defaultAttribute, closing, footnote, endnote, extended-footnote, cross-ref, extended-cross-ref, caller(within notes), list, table, header(within table), milestone and namespace.
+
 ## Installation
 
 The parser is [available on NPM](https://www.npmjs.com/package/usfm-grammar) and can be installed by:
@@ -128,14 +132,25 @@ Then from the command line (terminal) to convert a valid USFM file into JSON (on
 
 ```
 > usfm-grammar -h
-  -v, --version     Show version number                                    [boolean]
-  -l, --level   specify the level of strictness in parsing  [choices: "relaxed"]
-  --filter      filters out only the specific contents from input USFM
-                                                          [choices: "scripture"]
-  --format      specifies the output file format
+usfm-grammar <file>
+
+Parse/validate USFM 3.x to/from JSON.
+
+Positionals:
+  file  The path of the USFM or JSON file to be parsed and/or converted. By
+        default, auto-detects input USFM and converts it into JSON and
+        vice-versa.
+
+Options:
+  -l, --level    Level of strictness in parsing. This defaults to `strict`.
+                                                            [choices: "relaxed"]
+      --filter   Filter out content from input USFM. Not applicable for input
+                 JSON or for CSV/TSV output.              [choices: "scripture"]
+  -o, --output   The output format to convert input into.
                                          [choices: "csv", "tsv", "usfm", "json"]
-  -o, --output  specify the fully qualified file path for output.
-  -h, --help    Show help 
+  -h, --help     Show help                                             [boolean]
+  -v, --version  Show version number                                   [boolean]
+
 ```
 The options `-l` (`--level`) and `--filter` do not have any effect if used for JSON to USFM conversion. 
 
@@ -172,7 +187,7 @@ The `relaxed` mode provides relaxation from checking several rules in the USFM s
 > _Caution:_
 > Errors may go unnoticed that might lead to loss of information when using the `relaxed` mode. For example, if the input USFM has erroneously does not have a space between the verse marker and the verse number (e.g. `\v3`)  the parser in `relaxed` mode would treat it as a separate marker (`v3` as opposed to `v`) and fail to recognise it is a verse. The right (or the hard) thing to do is fix the markup according to the specification. We generally recommend using the grammar in the default mode.
 
-#### Validate
+#### Validate USFM
 3) `USFMParser.validate()`
 
 ```
@@ -195,12 +210,20 @@ let reCreatedUsfm = myJsonParser.toUSFM();
 ```
 This method works with JSON output created with or without the `grammar.FILTER.SCRIPTURE` option. 
 
-#### USFM/JSON to CSV/TSV
-5) `USFMParser.toCSV()`
-6) `JSONParser.toCSV()`
+### Validate JSON
+5) `JSONParser.validate()`
 
-7) `USFMParser.toTSV()`
-8) `JSONParser.toTSV()`
+```
+// Returns a Boolean indicating whether the input JSON confines to grammar.JSONSchemaDefinition. 
+var isJsonValid = myJsonParser.validate();
+```
+
+#### USFM/JSON to CSV/TSV
+6) `USFMParser.toCSV()`
+7) `JSONParser.toCSV()`
+
+8) `USFMParser.toTSV()`
+9) `JSONParser.toTSV()`
 ```
 // Example usage:
 // Returns CSV and TSV from a USFM, respectively

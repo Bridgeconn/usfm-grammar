@@ -135,8 +135,8 @@ class JSONParser extends Parser {
             usfmText += ` \\${innerKey} ${jsonObject.table.rows[i][j][innerKey]}`;
           }
         }
-      } else if (key === 'footnote') {
-        const notes = jsonObject.footnote;
+      } else if (['footnote', 'endnote', 'extended-footnote'].includes(key)) {
+        const notes = jsonObject[key];
         const marker = jsonObject.closing;
         usfmText += marker.replace('*', '');
         for (let i = 0; i < notes.length; i += 1) {
@@ -144,8 +144,8 @@ class JSONParser extends Parser {
           if (innerKey === 'caller') { usfmText += notes[i][innerKey]; } else { usfmText = this.processInnerElements(notes[i], usfmText); }
         }
         usfmText += marker;
-      } else if (key === 'cross-ref') {
-        const notes = jsonObject['cross-ref'];
+      } else if (['cross-ref', 'extended-cross-ref'].includes(key)) {
+        const notes = jsonObject[key];
         const marker = jsonObject.closing;
         if (marker !== '\\xt*') { usfmText += marker.replace('*', ''); }
         for (let i = 0; i < notes.length; i += 1) {
