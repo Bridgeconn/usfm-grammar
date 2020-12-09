@@ -530,7 +530,7 @@ sem.addOperation('composeJson', {
     const contElmnts = content.composeJson();
     if (caller.sourceString !== '') { contElmnts.unshift({ caller: caller.sourceString }); }
     const obj = {
-      footnote: contElmnts,
+      endnote: contElmnts,
       closing: _6.sourceString + _7.sourceString + _8.sourceString,
     };
     return obj;
@@ -540,7 +540,7 @@ sem.addOperation('composeJson', {
     const contElmnts = content.composeJson();
     if (caller.sourceString !== '') { contElmnts.unshift({ caller: caller.sourceString }); }
     const obj = {
-      footnote: contElmnts,
+      'extended-footnote': contElmnts,
       closing: _6.sourceString + _7.sourceString + _8.sourceString,
     };
     return obj;
@@ -548,9 +548,11 @@ sem.addOperation('composeJson', {
 
   crossrefElement(nl, _2, tag, _4, caller, _5, content, _6, _7, _8) {
     const contElmnts = content.composeJson();
+    let marker = 'cross-ref';
     if (caller.sourceString !== '') { contElmnts.unshift({ caller: caller.sourceString }); }
+    if (tag.sourceString === 'ex') { marker = 'extended-cross-ref'; }
     const obj = {
-      'cross-ref': contElmnts,
+      [marker]: contElmnts,
       closing: _6.sourceString + _7.sourceString + _8.sourceString,
     };
     return obj;
