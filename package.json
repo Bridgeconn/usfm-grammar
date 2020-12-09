@@ -11,8 +11,8 @@
     },
     "dependencies": {
         "jsonschema": "^1.4.0",
-        "ohm-js": "^15.2.1",
-        "yargs": "^16.0.3"
+        "ohm-js": "^15.3.0",
+        "yargs": "^16.2.0"
     },
     "repository": {
         "type": "git",
@@ -22,6 +22,7 @@
         "usfm",
         "markup",
         "usfm parser",
+        "validator",
         "ohm",
         "usfm syntax validator",
         "json",
@@ -35,10 +36,10 @@
     "homepage": "https://github.com/Bridgeconn/usfm-grammar",
     "devDependencies": {
         "concat-stream": "^2.0.0",
-        "eslint": "^7.7.0",
-        "eslint-config-airbnb-base": "^14.2.0",
-        "eslint-plugin-import": "^2.22.0",
-        "mocha": "^8.1.1"
+        "eslint": "^7.15.0",
+        "eslint-config-airbnb-base": "^14.2.1",
+        "eslint-plugin-import": "^2.22.1",
+        "mocha": "^8.2.1"
     },
     "bin": {
         "usfm-grammar": "./cli.js"

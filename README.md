@@ -1,6 +1,6 @@
 # USFM Grammar
 
-An elegant [USFM](https://github.com/ubsicap/usfm) parser (or validator) that uses a [parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) to model USFM. The grammar is written using [ohm](https://ohmlang.github.io/). **USFM 3.x is supported**. 
+An elegant [USFM](https://github.com/ubsicap/usfm) parser (or validator) that uses a [parsing expression grammar](https://en.wikipedia.org/wiki/Parsing_expression_grammar) to model USFM. The grammar is written using [ohm](https://ohmlang.github.io/). **Supports USFM 3.x**. 
 
 The parsed USFM is an intuitive and easy to manipulate JSON structure that allows for painless extraction of scripture and other content from the markup. USFM Grammar is also capable of reconverting the generated JSON back to USFM.
 
@@ -108,9 +108,10 @@ Try out the `usfm-grammar` based online convertor: https://usfm.vachanengine.org
 </td>
 </tr></table>
 
-The JSON structure confines to the schema defined [here](https://github.com/Bridgeconn/usfm-grammar/blob/master/schemas/file.js).
+The converted JSON structure adheres to the JSON Schema defined [here](https://github.com/Bridgeconn/usfm-grammar/blob/master/schemas/file.js).
 
-The JSON uses the usfm marker names as property names along with some additional names as follows: book, bookCode, description, meta, chapters, contents, verseNumber, verseText, attributes, defaultAttribute, closing, footnote, endnote, extended-footnote, cross-ref, extended-cross-ref, caller(within notes), list, table, header(within table), milestone and namespace.
+The converted JSON uses USFM marker names as its property names along with the following additional names:  
+`book`, `bookCode`, `description`, `meta`, `chapters`, `contents`, `verseNumber`, `verseText`, `attributes`, `defaultAttribute`, `closing`, `footnote`, `endnote`, `extended-footnote`, `cross-ref`, `extended-cross-ref`, `caller` (used within notes), `list`, `table`, `header` (used within `table`), `milestone` and `namespace`.
 
 ## Installation
 
@@ -128,10 +129,10 @@ To use this tool from the command line install it globally like:
 
 Then from the command line (terminal) to convert a valid USFM file into JSON (on `stdout`) run: 
 
-`> usfm-grammar /path/to/file.usfm`
+`usfm-grammar /path/to/file.usfm`
 
 ```
-> usfm-grammar -h
+$ usfm-grammar -h
 usfm-grammar <file>
 
 Parse/validate USFM 3.x to/from JSON.
@@ -210,7 +211,7 @@ let reCreatedUsfm = myJsonParser.toUSFM();
 ```
 This method works with JSON output created with or without the `grammar.FILTER.SCRIPTURE` option. 
 
-### Validate JSON
+#### Validate JSON
 5) `JSONParser.validate()`
 
 ```
