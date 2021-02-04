@@ -2,30 +2,34 @@ usfmRelaxed{
 	File = BookHead Chapter+
 
 	BookHead = idMarker (MilesstoneMarker | ClosedMarker | NormalMarker)*
-	Chapter = ChapterMarker (VerseMarker | ExtendedStudyContents | MilesstoneMarker | ClosedMarker | NormalMarker )+
+	Chapter = ChapterMarker (VerseMarker | Note | ExtendedStudyContents | MilesstoneMarker | ClosedMarker | NormalMarker )+
 
 	verseNumber = number letter? ("-" number letter?)? 
-	markerName = ~(cTag) ~(vTag) "+"? (letter | digit | "_")+ number?
+	markerName = ~(cTag) ~(vTag) ~(noteTag) "+"? (letter | digit | "_")+ number?
     attributes = "|" (~(backSlash) any)*
 
 	backSlash = "\\"
 	newLine = ("\r" | "\n")+
 	spaceChar = " "
-	char = ~(backSlash) ~(newLine) ~spaceChar ~("|") any
+	char = ~(backSlash) ~(newLine) ~spaceChar ~("|") ~("*") any
 	number = digit+
 	word = spaceChar* char+ spaceChar*
 	text =  newLine? word+
 
 	cTag = "c" spaceChar
 	vTag = "v" spaceChar
+	noteTag = "f" &" " | "fe" &" " | "ef" &" " | "x" &" " | "ex" &" " | "f" "*" | "fe" "*" | "ef" "*" | "x" "*" | "ex" "*"
 
 	idMarker = newLine? backSlash "id" spaceChar word text?
 	ChapterMarker = newLine? backSlash cTag number
-	VerseMarker = newLine? backSlash vTag verseNumber  (text | MilesstoneMarker | ClosedMarker | NormalMarker)*
-	ClosedMarker = backSlash markerName (text | ClosedMarker)* attributes? backSlash markerName "*"
+	VerseMarker = newLine? backSlash vTag verseNumber  (text | Note | MilesstoneMarker | ClosedMarker | NormalMarker)*
+	ClosedMarker = backSlash markerName (text | Note | ClosedMarker)* attributes? backSlash markerName "*"
 	NormalMarker = backSlash markerName ( text  | ClosedMarker )* 
 	MilesstoneMarker = MilesstoneMarkerSingle | MilesstoneMarkerPair
 	MilesstoneMarkerSingle = backSlash markerName backSlash "*"
 	MilesstoneMarkerPair = backSlash markerName "-" ("s"|"e") attributes? (backSlash "*")?
-	ExtendedStudyContents = backSlash "esbe" (text | MilesstoneMarker | ClosedMarker | NormalMarker)* backSlash "esbe"
+	ExtendedStudyContents = backSlash "esbe" (text | Note | MilesstoneMarker | ClosedMarker | NormalMarker)* backSlash "esbe"
+
+	NoteMarker<tag> = backSlash tag (text | ClosedMarker | NormalMarker )+ backSlash tag "*"
+	Note = NoteMarker<"f"> | NoteMarker<"fe"> | NoteMarker<"ef"> | NoteMarker<"x"> | NoteMarker<"ex">
 }
