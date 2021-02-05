@@ -164,19 +164,15 @@ sem.addOperation('buildJson', {
     return res;
   },
 
-  // NoteInternal(_1, marker, text, attribs, _5, closing, _7){
-  //   const res = {};
-  //   res[marker.sourceString] = text.buildJson();
-  //   if (closing.sourceString !== "") {
-  //     res.closing = closing.sourceString 
-  //   }
-  //   return res;
-  // },
 
   NoteMarker(_1, marker, contents, _4, _5, _6){
     const res = {};
     res[marker.sourceString] = contents.buildJson();
-    res.closing = _4.sourceString+_5.sourceString+_6.sourceString;
+    if (_5.sourceString === "c" || _5.sourceString === "v") {
+      res.closing = "";
+    } else {
+      res.closing = _4.sourceString+_5.sourceString+_6.sourceString;
+    }
     return res;
   },
 

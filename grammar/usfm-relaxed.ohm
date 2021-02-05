@@ -11,7 +11,7 @@ usfmRelaxed{
 	backSlash = "\\"
 	newLine = ("\r" | "\n")+
 	spaceChar = " "
-	char = ~(backSlash) ~(newLine) ~spaceChar ~("|") ~("*") any
+	char = ~(backSlash) ~(newLine) ~spaceChar ~("|") any
 	number = digit+
 	word = spaceChar* char+ spaceChar*
 	text =  newLine? word+
@@ -30,6 +30,8 @@ usfmRelaxed{
 	MilesstoneMarkerPair = backSlash markerName "-" ("s"|"e") attributes? (backSlash "*")?
 	ExtendedStudyContents = backSlash "esbe" (text | Note | MilesstoneMarker | ClosedMarker | NormalMarker)* backSlash "esbe"
 
-	NoteMarker<tag> = backSlash tag (text | ClosedMarker | NormalMarker )+ backSlash tag "*"
+	// The look ahead at the end of NoteMarker is given to handle cases where the note marker is not explicitly closed but terminated by a verse or chapter boundary
+	NoteMarker<tag> = backSlash tag (text | ClosedMarker | NormalMarker )+ ((backSlash tag "*") | &(backSlash ("v"|"c") spaceChar))
+
 	Note = NoteMarker<"f"> | NoteMarker<"fe"> | NoteMarker<"ef"> | NoteMarker<"x"> | NoteMarker<"ex">
 }
