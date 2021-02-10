@@ -244,11 +244,23 @@ describe('Test bug fixes', () => {
     const reCreatedUsfm1 = jsonParser.toUSFM();
     assert.strictEqual(reCreatedUsfm1, inputUsfm);
 
-    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm);
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
     const relaxedJsonOutput = relaxedUsfmParser.toJSON();
     assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, 'verse text\u00A0with space');
     const jsonParser2 = new grammar.JSONParser(relaxedJsonOutput);
     const reCreatedUsfm2 = jsonParser2.toUSFM();
     assert.strictEqual(reCreatedUsfm2, inputUsfm);
+  });
+
+  it('notes closing in relaxed mode', () => {
+    // as notes markers(footnotes and cross-refs) can have several markers opened within them
+    // and all closed with a single closing marker, relaxed mode was not parsing them as expected
+    // which lead to verse text being considered as part of cross-ref in the following case.
+    // \v 26 \x - \xo 3.26 \xt ယစံး\x* ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,
+    // https://github.com/Bridgeconn/usfm-grammar/issues/106
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 26 \\x - \\xo 3.26 \\xt ယစံး\\x* ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,';
+    const relaxedUsfmParser = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedJsonOutput = relaxedUsfmParser.toJSON();
+    assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, 'ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,');
   });
 });

@@ -164,21 +164,34 @@ sem.addOperation('buildJson', {
     return res;
   },
 
+  NoteMarker(content) {
+    return content.buildJson();
+  },
 
-  NoteMarker(_1, marker, contents, _4, _5, _6){
+  NoteMarker_closed(_1, marker, contents, _4, _5, _6) {
     const res = {};
     res[marker.sourceString] = contents.buildJson();
-    if (_5.sourceString === "c" || _5.sourceString === "v") {
-      res.closing = "";
-    } else {
-      res.closing = _4.sourceString+_5.sourceString+_6.sourceString;
-    }
+    res.closing = _4.sourceString + _5.sourceString + _6.sourceString;
     return res;
   },
 
-  Note(note){
+  NoteMarker_atEOF(_1, marker, contents, _4) {
+    const res = {};
+    res[marker.sourceString] = contents.buildJson();
+    res.closing = '';
+    return res;
+  },
+
+  NoteMarker_atVerseEnd(_1, marker, contents, _4, _5) {
+    const res = {};
+    res[marker.sourceString] = contents.buildJson();
+    res.closing = '';
+    return res;
+  },
+
+  Note(note) {
     return note.buildJson();
-  }
+  },
 
 });
 
