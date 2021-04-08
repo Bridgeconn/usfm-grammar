@@ -259,11 +259,11 @@ sem.addOperation('composeJson', {
     };
   },
 
-  sectionMarker(_1, _2, tag, num) {
+  sectionMarker(_1, _2, tag, num, _6) {
     return tag.sourceString + num.sourceString.trim();
   },
 
-  sdMarker(_1, _2, tag, num) {
+  sdMarker(_1, _2, tag, num, _6) {
     return tag.sourceString + num.sourceString.trim();
   },
 

@@ -111,8 +111,8 @@ usfmBible{
 
 			sectionElementWithTitle = sectionMarker spaceChar (chapterContentTextContent | notesElement | milestoneElement)+ 
 			sectionElementWithoutTitle = (sdMarker | sectionMarker ) spaceChar*
-			sectionMarker = newLine? backSlash "s" number?
-			sdMarker = newLine? backSlash "sd" number?
+			sectionMarker = newLine? backSlash "s" number? &(spaceChar|newLine)
+			sdMarker = newLine? backSlash "sd" number? &(spaceChar|newLine)
 
 			/* Not only the p marker is considered as a paragraph marker here. 
 			A set of markers mainly used for styling and showing intentation 
