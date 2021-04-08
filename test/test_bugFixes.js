@@ -263,4 +263,19 @@ describe('Test bug fixes', () => {
     const relaxedJsonOutput = relaxedUsfmParser.toJSON();
     assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, 'ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,');
   });
+
+  it('\\sp treated as \\s', () => {
+    // We support section markers with or without contents. So marker may end with
+    // a space or newLine in the front. The inaccurate way this was modelled led to the issue
+    // added look ahead for space or newline after the marker to ensure it is indeed a \s marker
+    // Issue was in normal mode parsing
+    // https://github.com/Bridgeconn/usfm-grammar/issues/109
+    const inputUsfm = '\\id SNG\\c 1\\p\\v 1 The Song of Songs, which is Solomon’s.'
+    + '\\s1 The Bride Confesses Her Love\\sp She\\b';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput.chapters[0].contents[1].verseText, 'The Song of Songs, '
+        + 'which is Solomon’s.');
+    assert.strictEqual(jsonOutput.chapters[0].contents[1].contents[2].sp, 'She');
+  });
 });
