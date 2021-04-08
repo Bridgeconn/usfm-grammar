@@ -203,7 +203,8 @@ class JSONParser extends Parser {
         if (Object.prototype.hasOwnProperty.call(chapters[i].contents[j], 'verseNumber')) {
           const vno = chapters[i].contents[j].verseNumber;
           const text = chapters[i].contents[j].verseText;
-          csvWriter += `"${bookName}","${cno}","${vno}","${text}"\n`;
+          const escapedText = text.replace(/"/g, '""');
+          csvWriter += `"${bookName}","${cno}","${vno}","${escapedText}"\n`;
         }
       }
     }
