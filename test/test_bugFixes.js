@@ -286,6 +286,7 @@ describe('Test bug fixes', () => {
     // this rule is relaxed in relaxed mode.
     // https://github.com/Bridgeconn/usfm-grammar/issues/113
     const inputUsfm = '\\id SNG\\c 1\\p\\v 1 The Song of Songs, which is Solomon’s.\n\\c 2 \\c 3';
+
     const usfmParser = new grammar.USFMParser(inputUsfm);
     let thrownError = false;
     try {
@@ -319,4 +320,5 @@ describe('Test bug fixes', () => {
     assert.strictEqual(jsonOutput.chapters.length, 0);
     assert.strictEqual(jsonOutput._messages._warnings.includes('No chapters in the file.'), true);
   });
+
 });

@@ -2,6 +2,7 @@ const ohm = require('ohm-js');
 const Events = require('events');
 const { contents: grammar } = require('../grammar/usfm-relaxed.ohm.js');
 const { buildVerseText } = require('./grammarOperations.js');
+const Events = require('events');
 
 const { usfmRelaxed: bib } = ohm.grammars(grammar);
 const sem = bib.createSemantics();
