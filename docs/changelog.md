@@ -19,6 +19,7 @@
     - book, book.bookcode, book.details, book.meta, chapters, contents, 
       verseNumber, verseText, footnote, cross-ref, table, list, milestone, attributes,
       closing
+      
   [JSON structure comparison](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs/OutputComparisons.md#difference-in-json-outputs-of-1x-and-2x)
 - API changes
   usfm-grammar implementation is now class based. 
