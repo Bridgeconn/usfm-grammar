@@ -2,6 +2,7 @@ const ohm = require('ohm-js');
 const Events = require('events');
 const { contents: grammar } = require('../grammar/usfm-relaxed.ohm.js');
 const { buildVerseText } = require('./grammarOperations.js');
+const Events = require('events');
 
 const { usfmRelaxed: bib } = ohm.grammars(grammar);
 const sem = bib.createSemantics();
@@ -48,9 +49,9 @@ sem.addOperation('buildJson', {
       book: bookhead.buildJson(),
       chapters: chapters.buildJson(),
     };
-    const res = { parseStructure: parse };
-    if (parse.chapters.length === 0) {
-      emitter.emit('warning', new Error('No chapters in the file.'));
+    let res = { parseStructure: parse};
+    if(parse.chapters.length === 0){
+      emitter.emit('warning', new Error(`No chapters in the file.`));
     }
     res.warnings = warningMessages;
     return res;
