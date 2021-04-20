@@ -278,4 +278,45 @@ describe('Test bug fixes', () => {
         + 'which is Solomon’s.');
     assert.strictEqual(jsonOutput.chapters[0].contents[1].contents[2].sp, 'She');
   });
+
+  it('Allow empty chapter stubs', () =>{
+    // if there is a chapter it was mandatory to have some contents within it.
+    // As it was observed that translators who work on projects may add chapter stubs while project is in progess
+    // this rule is relaxed in relaxed mode. 
+    // https://github.com/Bridgeconn/usfm-grammar/issues/113
+    const inputUsfm = '\\id SNG\\c 1\\p\\v 1 The Song of Songs, which is Solomon’s.\n\\c 2 \\c 3'
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    let thrownError = false;
+    try {
+      usfmParser.toJSON();
+    } catch (err) {
+      thrownError = true;
+    }
+    assert.strictEqual(thrownError, true);
+    const usfmParserRelaxed = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED)
+    const jsonOutput = usfmParserRelaxed.toJSON()
+    assert.strictEqual(jsonOutput.chapters[1].contents.length, 0)
+    assert.strictEqual(jsonOutput.chapters[2].contents.length, 0)
+    assert.strictEqual(jsonOutput._messages._warnings.includes('No contents in chapter 2.'), true)
+  });
+
+  it('Allow files or books without any chapters', () =>{
+    // it was mandatory to have at least one chapter in a file.
+    // this rule is relaxed in relaxed mode. 
+    // https://github.com/Bridgeconn/usfm-grammar/issues/114
+    const inputUsfm = '\\id SNG'
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    let thrownError = false;
+    try {
+      usfmParser.toJSON();
+    } catch (err) {
+      thrownError = true;
+    }
+    assert.strictEqual(thrownError, true);
+    const usfmParserRelaxed = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED)
+    const jsonOutput = usfmParserRelaxed.toJSON()
+    assert.strictEqual(jsonOutput.chapters.length, 0)
+    assert.strictEqual(jsonOutput._messages._warnings.includes('No chapters in the file.'), true)
+  });
+
 });
