@@ -40,22 +40,10 @@ describe('Test bug fixes', () => {
   it('No new space added while concatinating verseText at punctuations', () => {
     // ISSUE: Parsing the usfm file gives the output with spaces in between
     // https://github.com/Bridgeconn/usfm-grammar/issues/76
-    let inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse one\n\\v 2 verse two\\p\n, which has a comma at the text break point.';
-    let usfmParser = new grammar.USFMParser(inputUsfm);
-    let jsonOutput = usfmParser.toJSON();
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse one\n\\v 2 verse two\\p, which has a comma at the text break point.';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
     assert.strictEqual(jsonOutput.chapters[0].contents[2].verseText, 'verse two, which has a comma at the text break point.');
-    inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse one\n\\v 2 verse two,\\p which has a comma at the text break point.';
-    usfmParser = new grammar.USFMParser(inputUsfm);
-    jsonOutput = usfmParser.toJSON();
-    assert.strictEqual(jsonOutput.chapters[0].contents[2].verseText, 'verse two, which has a comma at the text break point.');
-    inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse one\n\\v 2 verse two-\\p three which has a hyphen at the text break point.';
-    usfmParser = new grammar.USFMParser(inputUsfm);
-    jsonOutput = usfmParser.toJSON();
-    assert.strictEqual(jsonOutput.chapters[0].contents[2].verseText, 'verse two-three which has a hyphen at the text break point.');
-    inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 verse one\n\\v 2 verse two\\p -three which has a hyphen at the text break point.';
-    usfmParser = new grammar.USFMParser(inputUsfm);
-    jsonOutput = usfmParser.toJSON();
-    assert.strictEqual(jsonOutput.chapters[0].contents[2].verseText, 'verse two-three which has a hyphen at the text break point.');
   });
 
   it('Files with empty lines', () => {
