@@ -19,6 +19,8 @@
     - book, book.bookcode, book.details, book.meta, chapters, contents, 
       verseNumber, verseText, footnote, cross-ref, table, list, milestone, attributes,
       closing
+      
+  [JSON structure comparison](https://github.com/Bridgeconn/usfm-grammar/blob/master/docs/OutputComparisons.md#difference-in-json-outputs-of-1x-and-2x)
 - API changes
   usfm-grammar implementation is now class based. 
   new names for methods in previous version are as follows
@@ -47,7 +49,7 @@ The output JSON structure has been revised to enable the backward conversion pos
 > * published character --> cp
 > * description --> cd
 
-2. Have contents array within chapters and verses to list all scripture and meta-scripture sub-elements in them in the order of occurence.
+2. Adds index value for objects within a verse
     <table><tr><th>Input</th><th>New Structure</th></tr><tr><td>
     <pre>
     \v 2 O \nd Lord\nd*, I have heard of what you have done,
@@ -55,47 +57,39 @@ The output JSON structure has been revised to enable the backward conversion pos
     \q1 Now do again in our times
     \q2 the great deeds you used to do.
     </pre></td><td><pre>
-    "chapters": [
-        {
-            "chapterNumber": "3",
-            "contents": [
-                [
-                    {
-                        "s1": [
-                            "A Prayer of Habakkuk"
-                        ]
-                    }
-                ],
-                {
-                    "p": null
-                },
-                {
-                    "verseNumber": "2",
-                    "verseText": "O Lord, I have heard of what you have done, and I am filled with awe. Now do again in our times the great deeds you used to do.",
-                    "contents": [
-                        "O",
-                        {
-                            "nd": [
-                                "Lord"
-                            ],
-                            "closing": "\\nd*"
-                        },
-                        ", I have heard of what you have done,",
-                        {
-                            "q2": null
-                        },
-                        "and I am filled with awe.",
-                        {
-                            "q1": null
-                        },
-                        "Now do again in our times",
-                        {
-                            "q2": null
-                        },
-                        "the great deeds you used to do."
-                    ]
-                }
-            ]
+    "verses":[
+        {"number":"2",
+         "metadata":[
+            {"styling":[
+                {"marker":"q2",
+                  "index":3},
+                {"marker":"q1",
+                  "index":5},
+                {"marker":"q2",
+                  "index":7}
+                ]
+              }
+            ],
+          "text objects":[
+            {"text":"O ",
+              "index":0},
+            {"nd":[{"text":"Lord"}],
+              "text":"Lord",
+              "closed":true,
+              "inline":true,
+              "index":1},
+            {"text":", I have heard of what you have done,",
+              "index":2},
+            {"text":"and I am filled with awe.",
+              "index":4},
+            {"text":"Now do again in our times",
+              "index":6},
+            {"text":"the great deeds you used to do.",
+              "index":8}
+            ],
+          "text":"O Lord , I have heard of what you have done, 
+              and I am filled with awe. Now do again in our times 
+              the great deeds you used to do. "
         }
     ]
     </pre></td></table></tr></table>
@@ -127,112 +121,69 @@ The output JSON structure has been revised to enable the backward conversion pos
     \li1 Levi - Hashabiah son of Kemuel
     \li1 Aaron - Zadok
     </pre></td><td><pre>
-    {
-    "book": {
-        "bookCode": "GEN",
-        "meta": [
-            [
-                {
-                    "mt1": [
-                        "THE ACTS"
-                    ]
-                },
-                {
-                    "mt2": [
-                        "of the Apostles"
-                    ]
-                }
-            ],
-            {
-                "is": [
-                    "Introduction"
-                ]
-            },
-            {
-                "ip": [
-                    "The two endings to the Gospel,",
-                    "which are enclosed in brackets,",
-                    "are generally regarded",
-                    "as written by someone other than",
-                    "the author of",
-                    {
-                        "bk": [
-                            "Mark"
-                        ],
-                        "closing": "\\bk*"
-                    }
-                ]
-            },
-            {
-                "iot": [
-                    "Outline of Contents"
-                ]
-            },
-            [
-                {
-                    "io1": [
-                        "The beginning of the gospel",
-                        "(1.1-13)"
-                    ]
-                },
-                {
-                    "io1": [
-                        "Jesus' public ministry in",
-                        "Galilee (1.14–9.50)"
-                    ]
-                },
-                {
-                    "io1": [
-                        "From Galilee to Jerusalem",
-                        "(10.1-52)"
-                    ]
-                }
-            ]
+    "headers":[
+        [{"mt":[{"text":"THE ACTS"}],
+          "number":"1"},
+         {"mt":[{"text":"of the Apostles"}],
+          "number":"2"}
         ]
+      ],
+    "introduction":[
+        {"is":[{"text":"Introduction"}]},
+        {"iot":[{"text":"Outline of Contents"}]},
+        [{"io":[{"text":"The beginning of 
+              the gospel (1.1-13)"}],
+          "number":"1"},
+         {"io":[{"text":"Jesus' public ministry 
+            in Galilee (1.14�9.50)"}],
+          "number":"1"},
+         {"io":[{"text":"From Galilee to 
+                Jerusalem (10.1-52)"}],
+          "number":"1"}
+        ]
+      ]
     },
-    "chapters": [
-        {
-            "chapterNumber": "20",
-            "contents": [
-                {
-                    "p": null
-                },
-                {
-                    "verseNumber": "16-22",
-                    "verseText": "This is the list of the administrators of the tribes of Israel: Reuben - Eliezer son of Zichri Simeon - Shephatiah son of Maacah Levi - Hashabiah son of Kemuel Aaron - Zadok",
-                    "contents": [
-                        "This is the list of the",
-                        "administrators of the tribes of Israel:",
-                        {
-                            "list": [
-                                {
-                                    "li1": [
-                                        "Reuben - Eliezer son of Zichri"
-                                    ]
-                                },
-                                {
-                                    "li1": [
-                                        "Simeon - Shephatiah son of Maacah"
-                                    ]
-                                },
-                                {
-                                    "li1": [
-                                        "Levi - Hashabiah son of Kemuel"
-                                    ]
-                                },
-                                {
-                                    "li1": [
-                                        "Aaron - Zadok"
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-    }
+    "chapters":[
+       {"header":{"title":"20"},
+        "metadata":[
+          {"styling":[{"marker":"p"}]}
+          ],
+        "verses":[
+          {"number":"16-22",
+           "text objects":[
+              {"text":"This is the list of 
+                the administrators of the 
+                tribes of Israel:",
+                "index":0},
+              {"list":[
+                  {"li":{"text":"Reuben - 
+                  Eliezer son of Zichri"},
+                    "number":"1"},
+                  {"li":{"text":"Simeon - 
+                  Shephatiah son of Maacah"},
+                    "number":"1"},
+                  {"li":{"text":"Levi - 
+                  Hashabiah son of Kemuel"},
+                    "number":"1"},
+                  {"li":{"text":"Aaron - Zadok"},
+                    "number":"1"}
+                 ],
+                "text":"Reuben - Eliezer son 
+                of Zichri | Simeon - Shephatiah 
+                son of Maacah | Levi - Hashabiah 
+                son of Kemuel | Aaron - Zadok | ",
+                "index":1
+              }
+            ],
+            "text":"This is the list of the 
+            administrators of the tribes of 
+            Israel: Reuben - Eliezer son of Zichri 
+            | Simeon - Shephatiah son of Maacah | 
+            Levi - Hashabiah son of Kemuel | 
+            Aaron - Zadok | "
+            }
+          ]
+        },
     </pre></td><td><pre>
     {
     "metadata":{
@@ -295,8 +246,10 @@ The output JSON structure has been revised to enable the backward conversion pos
       ],
     "messages":{"warnings":[]}}
     }
+    
     </pre></td></tr></table>
-4. Adds 'closing'property to character, table and milestone markers
+
+4. Adds 'closed' and 'inline' properties to character, table and milestone markers
     <table><tr><th>Input</th><th>New Structure</th></tr><tr><td>
     <pre>
     \v 14 That is why \bk The Book of 
@@ -305,23 +258,31 @@ The output JSON structure has been revised to enable the backward conversion pos
     the area of Suphah
 
     </pre></td><td><pre>
-    "contents": [
-        "That is why",
-        {
-            "bk": [
-                "The Book of the",
-                {
-                    "+nd": [
-                        "Lord"
-                    ],
-                    "closing": "\\+nd*"
-                },
-                "'s Battles"
+    {"number":"14",
+    "text objects":[
+                {"text":"That is why ",
+                "index":0},
+                {"bk":[
+                    {"text":"The Book of the "},
+                    {"+nd":[{"text":"Lord"}],
+                    "text":"Lord",
+                    "closed":true,
+                    "inline":true
+                    },
+                    {"text":"'s Battles"}
+                ],
+                "text":"The Book of the Lord's Battles",
+                "closed":true,
+                "inline":true,
+                "index":1},
+                {"text":"speaks of �...the town of Waheb 
+                in the area of Suphah",
+                "index":2}
             ],
-            "closing": "\\bk*"
-        },
-        "speaks of “...the town of Waheb in the area of Suphah"
-    ]
+    "text":"That is why The Book of the Lord's 
+    Battles speaks of �...the town of Waheb in 
+    the area of Suphah "
+    }
 
     </pre></td></tr></table>
 
@@ -334,27 +295,25 @@ The output JSON structure has been revised to enable the backward conversion pos
     \v 2 the second verse \w gracious|lemma="grace" 
     strong="H1234,G5485" \w*
     </pre></td><td><pre>
-    {
-          "verseNumber": "2",
-          "verseText": "the second verse gracious",
-          "contents": [
-              "the second verse",
-              {
-                  "w": [
-                      "gracious"
-                  ],
-                  "attributes": [
-                      {
-                          "lemma": "grace"
-                      },
-                      {
-                          "strong": "H1234,G5485"
-                      }
-                  ],
-                  "closing": "\\w*"
-              }
-          ]
+    {"number":"2",
+        "text objects":[
+            {"text":"the second verse ",
+            "index":0},
+            {"w":[{"text":"gracious"}],
+            "text":"gracious",
+            "attributes":[
+                {"name":"lemma",
+                "value":"\"grace\""},
+                {"name":"strong",
+                "value":"\"H1234,G5485\""}
+                ],
+            "closed":true,
+            "inline":true,
+            "index":1}
+        ],
+        "text":"the second verse gracious "
     }
+
     </pre></td><td><pre>
     { "number":"2",
       "metadata":[
@@ -368,7 +327,7 @@ The output JSON structure has been revised to enable the backward conversion pos
     }
     </pre></td></tr></table>
 
-7. Change the structure for section headers, footnotes and crossrefs
+7. Include the marker name for section headers, footnotes and crossrefs
     <table><tr><th>Input</th><th>New Structure</th></tr><tr><td>
     <pre>
 
@@ -384,66 +343,53 @@ The output JSON structure has been revised to enable the backward conversion pos
 
     </pre></td><td><pre>
 
-    {
-    "book": {
-        "bookCode": "GEN"
-    },
-    "chapters": [
-        {
-            "chapterNumber": "1",
-            "contents": [
-                {
-                    "p": null
-                },
-                [
-                    {
-                        "s1": [
-                            "The Preaching of John the Baptist"
-                        ]
-                    },
-                    {
-                        "r": [
-                            "(Matthew 3.1-12; Luke 3.1-18;",
-                            "John 1.19-28)"
-                        ]
-                    }
+    {"metadata":
+      {"id":{"book":"GEN"}},
+     "chapters":[
+         {"header":{"title":"1"},
+          "metadata":[     
+            {"section":{"text":"The Preaching of John the Baptist",
+                        "marker":"s1"},
+             "sectionPostheader":[         
+                {"r":[{"text":"(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)"}]}
+                ]
+            },
+            {"styling":[{"marker":"p"}]
+              }
+            ],
+          "verses":[
+            {"number":"1 ",
+             "metadata":[
+                {"footnote":[             
+                    {"text":"+ ","index":1},
+                    {"marker":"fr","inline":true,"index":2},
+                    {"text":"1.1: ","index":3},
+                    {"marker":"ft","inline":true,"index":4},
+                    {"text":"Some manuscripts do not have ","index":5},
+                    {"marker":"fq","inline":true,"index":6},
+                    {"text":"the Son of God.","index":7}
+                    ],
+                  "marker":"f",
+                  "closed":true,
+                  "inline":true,
+                  "index":1
+                  }
+              ],
+              "text objects":[  
+                {"text":"This is the Good News about Jesus Christ, the Son of God. ",
+                  "index":0}
                 ],
-                {
-                    "verseNumber": "1",
-                    "verseText": "This is the Good News about Jesus Christ, the Son of God.",
-                    "contents": [
-                        "This is the Good News about Jesus",
-                        "Christ, the Son of God.",
-                        {
-                            "footnote": [
-                                {
-                                    "caller": "+"
-                                },
-                                {
-                                    "fr": "1.1:"
-                                },
-                                {
-                                    "ft": "Some\r\nmanuscripts do not have"
-                                },
-                                {
-                                    "fq": "the Son of God."
-                                }
-                            ],
-                            "closing": "\\f*"
-                        }
-                    ]
-                }
+              "text":"This is the Good News about Jesus Christ, the Son of God. "
+            }
             ]
-        }
-    ],
-    "_messages": {
-        "_warnings": [
-            "Empty lines present. "
-        ]
-    }
-    }
+          }
+        ],
+      "messages":{"warnings":[] }
+      }
     </pre></td></tr></table>
+
 Another big enhancement is that, the footnote's and cross-reference's content is now parsed and the JSON output has an array of its contents. Refer the item 7 of above list, for the JSON structure. 
+
 
 #### Bug fixes
 

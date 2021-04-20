@@ -1,9 +1,9 @@
-# Comparison of usfm-grammar(version 1.0.0) and usfm-js Libraries
+# Comparison of usfm-grammar(version 1.x & 2.x) output with usfm-js output
 
 ## The Basic USFM Components
 
 1. The minimal set of markers
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>
     <pre>
     \id GEN
     \c 1
@@ -37,6 +37,25 @@
         "messages": {"warnings": []}
       }
     </pre></td><td><pre>      
+    {"book":{"bookCode":"GEN"},
+      "chapters":[
+      {"chapterNumber":"1",
+          "contents":[
+          {"p":null},
+            {"verseNumber":"1",
+              "verseText":"verse one",
+              "contents":[
+              "verse one"
+                ]},
+            {"verseNumber":"2",
+              "verseText":"verse two",
+              "contents":[
+              "verse two"
+                ]}
+            ]}
+        ],
+      "_messages":{"_warnings":[]}}
+    </pre></td><td><pre>      
        {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -56,11 +75,11 @@
                 ]}}}}
     </pre></tr></table>
 
-  Two JSON structures. Both looks similar in complexity and readability. _\\p_ at chapter start gets added as _metadata_ at chapter start in usfm-grammar while it gets added as _front_ object at the chapter end in usfm-js
+  Two JSON structures. Both looks similar in complexity and readability. _\\p_ at chapter start in the begining just as it occurs in usfm-grammar while it gets added as _front_ object at the chapter end in usfm-js
 
 2. Multiple chapters
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -121,6 +140,39 @@
          ],
         "messages": {"warnings": []}
       }
+  </pre></td><td><pre>      
+    {"book":{"bookCode":"GEN"},
+      "chapters":[
+      {"chapterNumber":"1",
+          "contents":[
+          {"p":null},
+            {"verseNumber":"1",
+              "verseText":"the first verse",
+              "contents":[
+              "the first verse"
+                ]},
+            {"verseNumber":"2",
+              "verseText":"the second verse",
+              "contents":[
+              "the second verse"
+                ]}
+            ]},
+        {"chapterNumber":"2",
+          "contents":[
+          {"p":null},
+            {"verseNumber":"1",
+              "verseText":"the third verse",
+              "contents":[
+              "the third verse"
+                ]},
+            {"verseNumber":"2",
+              "verseText":"the fourth verse",
+              "contents":[
+              "the fourth verse"
+                ]}
+            ]}
+        ],
+      "_messages":{"_warnings":[]}}
   </pre></td><td><pre>
   {"headers":[
     {"tag":"id",
@@ -158,7 +210,7 @@ Two JSON structures. Both looks similar in complexity and readability. Chapters 
 
 3. Section headings
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -217,6 +269,41 @@ Two JSON structures. Both looks similar in complexity and readability. Chapters 
           ],
         "messages": {"warnings": []}
       }
+     </pre></td><td><pre>      
+      {"book":{"bookCode":"GEN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse",
+                  [
+                  {"s":[
+                      "A new section"
+                        ]}
+                    ],
+                  {"p":null}
+                  ]},
+              {"verseNumber":"3",
+                "verseText":"the third verse",
+                "contents":[
+                "the third verse"
+                  ]},
+              {"verseNumber":"4",
+                "verseText":"the fourth verse",
+                "contents":[
+                "the fourth verse"
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -251,11 +338,11 @@ Two JSON structures. Both looks similar in complexity and readability. Chapters 
                 ]}}}}
      </pre></tr></table>
 
-  Two JSON structures. Both looks similar in complexity and readability. _\\s_ and _\\p_ after verse 2, gets added as _metadata_ to verse 2 object in usfm-grammar while it gets added as additional _verseObjects_ to the verse 2 in usfm-js
+  Two JSON structures. Both looks similar in complexity and readability. _\\s_ and _\\p_ after verse 2, gets added as _metadata_ to verse 2 object in usfm-grammar 1.x and to the _contents_ in 2.x, while it gets added as additional _verseObjects_ to the verse 2 in usfm-js
 
 4. Header section markers
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id MRK The Gospel of Mark
     \ide UTF-8
     \usfm 3.0
@@ -316,6 +403,49 @@ Two JSON structures. Both looks similar in complexity and readability. Chapters 
           ],
         "messages": {"warnings": ["Empty lines present. "]}
       }
+     </pre></td><td><pre>      
+      {"book":{"bookCode":"MRK",
+          "description":"The Gospel of Mark",
+          "meta":[
+          {"ide":"UTF-8"},
+            {"usfm":"3.0"},
+            {"h":"Mark"},
+            [
+            {"mt2":[
+                "The Gospel according to"
+                  ]},
+              {"mt1":[
+                "MARK"
+                  ]}
+              ],
+            {"is":[
+              "Introduction"
+                ]},
+            {"ip":[
+              {"bk":[
+                  "The Gospel according to Mark"
+                    ],
+                  "closing":"\\bk*"},
+                "begins with the statement..."
+                ]}
+            ]},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse"
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -351,11 +481,11 @@ Two JSON structures. Both looks similar in complexity and readability. Chapters 
                 ]}}}}
      </pre></tr></table>
 
-The usfm-js adds all the markers before chapter to a section called "headers". The usfm-grammar has three sections there, id, headers and introduction, all within a main "meta data" section. Also it combines the _mt_ markers as the spec says.
+The usfm-js adds all the markers before chapter to a section called "headers". The usfm-grammar 1.x has three sections there, id, headers and introduction, all within a main "meta data" section. Also it combines the _mt_ markers as the spec says. In usfm-grammar 2.x all header markers are added to the _meta_ of the _book_ element and the 3 sections are not shown in the output as in 1.x, but the order of these markers as per the 3 sections are validated in parsing.
 
 5. Footnotes
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id MAT
     \c 1
     \p
@@ -419,6 +549,39 @@ The usfm-js adds all the markers before chapter to a section called "headers". T
           ],
         "messages": {"warnings": []}
       }
+     </pre></td><td><pre>      
+      {"book":{"bookCode":"MAT"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse"
+                  ]},
+              {"verseNumber":"3",
+                "verseText":"This is the Good News about Jesus Christ,
+                the Son of God.",
+                "contents":[
+                "This is the Good News about Jesus Christ,
+                  the Son of God.",
+                  {"footnote":[
+                    {"caller":"+"},
+                      {"fr":"1.1:"},
+                      {"ft":"Some manuscripts do not have"},
+                      {"fq":"the Son of God."}
+                      ],
+                    "closing":"\\f*"}
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -452,11 +615,11 @@ The usfm-js adds all the markers before chapter to a section called "headers". T
                 ]}}}}
      </pre></tr></table>
 
-  The footnote gets attched to the corresponding verse, as _metadata_ in usfm-grammar and as another _verseObject_ in usfm-js. usfm-js identifies the contents from start tag to end tag as one element without breaking it up into an internal structure as per the internal tags. Usfm-grammar on the other hand parses and validates each internal marker of the footnotes. 
+  The footnote gets attched to the corresponding verse, as _metadata_ in usfm-grammar 1.x, listed in _contents_ within the verse in 2.x and as another _verseObject_ in usfm-js. usfm-js identifies the contents from start tag to end tag as one element without breaking it up into an internal structure as per the internal tags. Usfm-grammar on the other hand parses and validates each internal marker of the footnotes. 
 
 6. Cross-refs
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id MAT
     \c 1
     \p
@@ -513,7 +676,37 @@ The usfm-js adds all the markers before chapter to a section called "headers". T
           ],
         "messages": {"warnings": []}
       }
-    </pre></td><td><pre>
+   </pre></td><td><pre>      
+    {"book":{"bookCode":"MAT"},
+      "chapters":[
+      {"chapterNumber":"1",
+          "contents":[
+          {"p":null},
+            {"verseNumber":"1",
+              "verseText":"the first verse",
+              "contents":[
+              "the first verse"
+                ]},
+            {"verseNumber":"2",
+              "verseText":"the second verse",
+              "contents":[
+              "the second verse"
+                ]},
+            {"verseNumber":"3",
+              "verseText":"and made his home in a town named Nazareth.",
+              "contents":[
+              {"cross-ref":[
+                  {"caller":"-"},
+                    {"xo":"2.23:"},
+                    {"xt":"Mrk 1.24; Luk 2.39; Jhn 1.45."}
+                    ],
+                  "closing":"\\x* "},
+                "and made his home in a town named Nazareth."
+                ]}
+            ]}
+        ],
+      "_messages":{"_warnings":[]}}
+   </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"MAT"}
@@ -543,11 +736,11 @@ The usfm-js adds all the markers before chapter to a section called "headers". T
                 ]}}}}
      </pre></tr></table>
 
-  The cross-ref gets attched to the corresponding verse, as _metadata_ in usfm-grammar and as another _verseObject_ in usfm-js. Here also internal markers are being parsed by usfm-grammar and not by usfm-js, as in the case of footnotes.
+  The cross-ref gets attched to the corresponding verse, as _metadata_ or _contents_ in usfm-grammar and as another _verseObject_ in usfm-js. Here also internal markers are being parsed by usfm-grammar and not by usfm-js, as in the case of footnotes.
 
 7. Multiple para markers
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id JHN
     \c 1
     \s1 The Preaching of John the 
@@ -645,6 +838,65 @@ The usfm-js adds all the markers before chapter to a section called "headers". T
           ],
         "messages": {"warnings": []}
       }
+     </pre></td><td><pre>      
+      {"book":{"bookCode":"JHN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            [
+              {"s1":[
+                  "The Preaching of John the Baptist"
+                    ]},
+                {"r":[
+                  "(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)"
+                    ]}
+                ],
+              {"p":null},
+              {"verseNumber":"1",
+                "verseText":"This is the Good News about Jesus Christ,
+                the Son of God.",
+                "contents":[
+                "This is the Good News about Jesus Christ,
+                  the Son of God."
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"It began as the prophet Isaiah had written: �God said,
+                �I will send my messenger ahead of you to open the way for you.�",
+                "contents":[
+                "It began as the prophet Isaiah had written:",
+                  {"q1":null},
+                  "�God said,
+                  �I will send my messenger ahead of you",
+                  {"q2":null},
+                  "to open the way for you.�",
+                  {"q1":null}
+                  ]},
+              {"verseNumber":"3",
+                "verseText":"Someone is shouting in the desert,
+                �Get the road ready for the Lord; make a straight path for him to travel!��",
+                "contents":[
+                "Someone is shouting in the desert,
+                  ",
+                  {"q2":null},
+                  "�Get the road ready for the Lord;",
+                  {"q2":null},
+                  "make a straight path for him to travel!��",
+                  {"p":null}
+                  ]},
+              {"verseNumber":"4",
+                "verseText":"So John appeared in the desert,
+                baptizing and preaching. �Turn away from your sins and be baptized,
+                � he told the people,
+                �and God will forgive your sins.�",
+                "contents":[
+                "So John appeared in the desert,
+                  baptizing and preaching. �Turn away from your sins and be baptized,
+                  � he told the people,
+                  �and God will forgive your sins.�"
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -715,11 +967,11 @@ The usfm-js adds all the markers before chapter to a section called "headers". T
                 ]}}}}
      </pre></tr></table>
   
-  The para-markers are attched to the verse object as styling object in its _metadata_ separate from its text, in usfm-grammar. The index value included enables to position them at the right position within text while re-constructing the usfm from this JSON. The usfm-js add the para-marker and text in the same verse object.
+  The para-markers are attached to the verse object as styling object in its _metadata_ separate from its text, in usfm-grammar 1.x. The index value included enables to position them at the right position within text while re-constructing the usfm from this JSON. Usfm-grammar 2.x has it the _contents_ in the order it appears and the text is separated as in 1.x. The usfm-js adds the para-marker and text in the same verse object.
 
 8. Character markers
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -766,6 +1018,47 @@ The usfm-js adds all the markers before chapter to a section called "headers". T
           ],
         "messages": {"warnings": []}
       }
+     </pre></td><td><pre>      
+      {"book":{"bookCode":"GEN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse"
+                  ]},
+              {"verseNumber":"15",
+                "verseText":"Tell the Israelites that I,
+                the Lord,
+                the God of their ancestors,
+                the God of Abraham,
+                Isaac,
+                and Jacob,
+                ",
+                "contents":[
+                "Tell the Israelites that I,
+                  the",
+                  {"nd":[
+                    "Lord"
+                      ],
+                    "closing":"\\nd*"},
+                  ",
+                  the God of their ancestors,
+                  the God of Abraham,
+                  Isaac,
+                  and Jacob,
+                  "
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -801,11 +1094,11 @@ The usfm-js adds all the markers before chapter to a section called "headers". T
                 ]}}}}
      </pre></tr></table>
 
-The verse text is complete and together in one place and the details of character marker is added to _metadata_ of verse in usfm-grammar. Where as usfm-js add verseObjects for each chunk of the verse text, outside and within the charater marker making the verse text broken.
+Usfm-grammar has verse text complete and together in one place and also have the details of character marker is added to _metadata_ or _contents_ of verse without loosing any info. Where as, usfm-js add verseObjects for each chunk of the verse text, outside and within the charater marker making the verse text broken.
   
 9. Markers with attributes
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -843,6 +1136,32 @@ The verse text is complete and together in one place and the details of characte
           ],
         "messages": {"warnings": []}
       }
+     </pre></td><td><pre>      
+      {"book":{"bookCode":"GEN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse gracious",
+                "contents":[
+                "the second verse",
+                  {"w":[
+                    "gracious"
+                      ],
+                    "attributes":[
+                    {"lemma":"grace"}
+                      ],
+                    "closing":"\\w*"}
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
@@ -873,7 +1192,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 1. No Chapter
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \p
     \v 1 the first verse
@@ -905,7 +1224,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 2. In-correct book name
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-js</th></tr><td>     <pre>
     \id XXX
     \c 1
     \p
@@ -963,7 +1282,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 3. No verse marker
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -989,7 +1308,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 4. No verse number in verse marker
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1024,7 +1343,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 5. No para marker at start of chapter
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \v 1 the first verse
@@ -1055,7 +1374,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 6. Character marker not closed
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1104,7 +1423,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 7. In-correct syntax in foot-notes
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1166,7 +1485,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 8. Invalid marker
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1207,7 +1526,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 1. Lists
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1302,6 +1621,66 @@ The attribute name and value is captured by both. But the JSON structure to repr
         "messages": {"warnings": []}
       }
      </pre></td><td><pre>
+      {"book":{"bookCode":"GEN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse"
+                  ]}
+              ]},
+          {"chapterNumber":"2",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the third verse",
+                "contents":[
+                "the third verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the fourth verse",
+                "contents":[
+                "the fourth verse",
+                  [
+                  {"s1":[
+                      "Administration of the Tribes of Israel",
+                        {"list":[
+                          {"lh":null}
+                            ]}
+                        ]}
+                    ]
+                  ]},
+              {"verseNumber":"16-22",
+                "verseText":"This is the list of the administrators of the tribes of Israel: Reuben - Eliezer son of Zichri Simeon - Shephatiah son of Maacah Levi - Hashabiah son of Kemuel This was the list of the administrators of the tribes of Israel.",
+                "contents":[
+                "This is the list of the administrators of the tribes of Israel:",
+                  {"list":[
+                    {"li1":[
+                        "Reuben - Eliezer son of Zichri"
+                          ]},
+                      {"li1":[
+                        "Simeon - Shephatiah son of Maacah"
+                          ]},
+                      {"li1":[
+                        "Levi - Hashabiah son of Kemuel"
+                          ]},
+                      {"lf":[
+                        "This was the list of the administrators of the tribes of Israel."
+                          ]}
+                      ]}
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1362,7 +1741,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 2. Header section with more markers
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id MRK 41MRKGNT92.SFM, Good News Translation, June 2003
     \h John
     \toc1 The Gospel according to John
@@ -1472,6 +1851,89 @@ The attribute name and value is captured by both. But the JSON structure to repr
         "messages": {"warnings": []}
       }
      </pre></td><td><pre>
+
+      {"book":{"bookCode":"MRK",
+          "description":"41MRKGNT92.SFM,
+          Good News Translation,
+          June 2003",
+          "meta":[
+          {"h":"John"},
+            {"toc1":[
+              "The Gospel according to John"
+                ]},
+            {"toc2":[
+              "John"
+                ]},
+            [
+            {"mt2":[
+                "The Gospel"
+                  ]},
+              {"mt3":[
+                "according to"
+                  ]},
+              {"mt1":[
+                "JOHN"
+                  ]}
+              ],
+            {"ip":[
+              "The two endings to the Gospel,
+                which are enclosed in brackets,
+                are generally regarded as written by someone other than the author of",
+                {"bk":[
+                  "Mark"
+                    ],
+                  "closing":"\\bk*"}
+                ]},
+            {"iot":[
+              "Outline of Contents"
+                ]},
+            [
+            {"io1":[
+                "The beginning of the gospel",
+                  {"ior":[
+                    "(1.1-13)"
+                      ],
+                    "closing":"\\ior*"}
+                  ]},
+              {"io1":[
+                "Jesus' public ministry in Galilee",
+                  {"ior":[
+                    "(1.14�9.50)"
+                      ],
+                    "closing":"\\ior*"}
+                  ]},
+              {"io1":[
+                "From Galilee to Jerusalem",
+                  {"ior":[
+                    "(10.1-52)"
+                      ],
+                    "closing":"\\ior*"}
+                  ]}
+              ]
+            ]},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            [
+              {"ms":"BOOK ONE"},
+                {"mr":"(Psalms 1�41)"}
+                ],
+              {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse"
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
+
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"MRK 41MRKGNT92.SFM,
@@ -1525,11 +1987,11 @@ The attribute name and value is captured by both. But the JSON structure to repr
                 ]}}}}
      </pre></tr></table>
 
-  There is division of markers before chapter into _id_, _header_ and _introduction_ section in usfm-grammar. Also some markers like _mt_ and _io_ get combined into one separate array. In usfm-js there is no such subdivision, and all such markers get added to the _headers_ array at the begining of JSON structure. 
+  There is division of markers before chapter into _id_, _header_ and _introduction_ section in usfm-grammar 1.x. Also some markers like _mt_ and _io_ get combined into one separate array in both 1.x ans 2.x. In usfm-js there is no such subdivision, and all such markers get added to the _headers_ array at the begining of JSON structure. 
 
 3. Character marker nesting
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1583,6 +2045,40 @@ The attribute name and value is captured by both. But the JSON structure to repr
         "messages": {"warnings": []}
       }
      </pre></td><td><pre>
+      {"book":{"bookCode":"GEN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse"
+                  ]},
+              {"verseNumber":"14",
+                "verseText":"That is why The Book of the Lord's Battles speaks of �...the town of Waheb in the area of Suphah",
+                "contents":[
+                "That is why",
+                  {"bk":[
+                    "The Book of the",
+                      {"+nd":[
+                        "Lord"
+                          ],
+                        "closing":"\\+nd*"},
+                      "'s Battles"
+                      ],
+                    "closing":"\\bk*"},
+                  "speaks of �...the town of Waheb in the area of Suphah"
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1619,11 +2115,11 @@ The attribute name and value is captured by both. But the JSON structure to repr
                 ]}}}}
      </pre></tr></table>
 
-  Nesting is implemented in a somewhat similar structure in both JSONs. In usfm-js, there are multiple verseObjects and the verse text is split across them. But the structure allows re-constrution of usfm from it. In usfm-grammar, the verse text is accessible at one place. Also the reconstruction of usfm is possible from the JSON representation as index value is provided with each object.
+  Nesting is implemented in a somewhat similar structure in both JSONs. In usfm-js, there are multiple verseObjects and the verse text is split across them.
 
 4. Markers with default attributes
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1662,6 +2158,34 @@ The attribute name and value is captured by both. But the JSON structure to repr
         "messages": {"warnings": []}
       }
      </pre></td><td><pre>
+{"book":{"bookCode":"GEN"},
+  "chapters":[
+  {"chapterNumber":"1",
+      "contents":[
+      {"p":null},
+        {"verseNumber":"1",
+          "verseText":"the first verse",
+          "contents":[
+          "the first verse"
+            ]},
+        {"verseNumber":"2",
+          "verseText":"the second verse gracious",
+          "contents":[
+          "the second verse",
+            {"w":[
+              "gracious"
+                ],
+              "attributes":[
+              {"defaultAttribute":"grace"}
+                ],
+              "closing":"\\w*"}
+            ]}
+        ]}
+    ],
+  "_messages":{"_warnings":[
+    "Empty lines present. "
+      ]}}
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1689,7 +2213,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 5. Link-attributes and custom attributes
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1769,6 +2293,51 @@ The attribute name and value is captured by both. But the JSON structure to repr
         "messages": {"warnings": []}
       }
      </pre></td><td><pre>
+      {"book":{"bookCode":"GEN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse gracious �Someone is shouting in the desert,
+                �Prepare a road for the Lord; make a straight path for him to travel!� � s John the Baptist John is sometimes called...",
+                "contents":[
+                "the second",
+                  "verse",
+                  {"w":[
+                    "gracious"
+                      ],
+                    "attributes":[
+                    {"x-myattr":"metadata"}
+                      ],
+                    "closing":"\\w*"},
+                  {"q1":null},
+                  "�Someone is shouting in the desert,
+                  ",
+                  {"q2":null},
+                  "�Prepare a road for the Lord;",
+                  {"q2":null},
+                  "make a straight path for him to travel!� �",
+                  {"m":null},
+                  "s",
+                  {"jmp":[],
+                    "attributes":[
+                    {"link-id":"article-john_the_baptist"}
+                      ],
+                    "closing":"\\jmp*"},
+                  "John the Baptist",
+                  {"p":null},
+                  "John is sometimes called..."
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1821,7 +2390,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 6. Table 
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1923,6 +2492,55 @@ The attribute name and value is captured by both. But the JSON structure to repr
         "messages": {"warnings": []}
       }
      </pre></td><td><pre>
+      {"book":{"bookCode":"GEN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse",
+                  {"p":null}
+                  ]},
+              {"verseNumber":"12-83",
+                "verseText":"They presented their offerings in the following order: Day ~ Tribe ~ Leader ~ //1st ~ Judah ~ Nahshon son of Amminadab ~ //2nd ~ Issachar ~ Nethanel son of Zuar ~ //3rd ~ Zebulun ~ Eliab son of Helon ~ //",
+                "contents":[
+                "They presented their offerings in the following order:",
+                  {"table":{"header":[
+                      {"th1":"Day"},
+                        {"th2":"Tribe"},
+                        {"th3":"Leader"}
+                        ],
+                      "rows":[
+                      [
+                        {"tcr1":"1st"},
+                          {"tc2":"Judah"},
+                          {"tc3":"Nahshon son of Amminadab"}
+                          ],
+                        [
+                        {"tcr1":"2nd"},
+                          {"tc2":"Issachar"},
+                          {"tc3":"Nethanel son of Zuar"}
+                          ],
+                        [
+                        {"tcr1":"3rd"},
+                          {"tc2":"Zebulun"},
+                          {"tc3":"Eliab son of Helon"}
+                          ]
+                        ]},
+                    "text":"Day ~ Tribe ~ Leader ~ //1st ~ Judah ~ Nahshon son of Amminadab ~ //2nd ~ Issachar ~ Nethanel son of Zuar ~ //3rd ~ Zebulun ~ Eliab son of Helon ~ //"}
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
+
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -1986,7 +2604,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 7. Milestones
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -2043,6 +2661,44 @@ The attribute name and value is captured by both. But the JSON structure to repr
         "messages": {"warnings": []}
       }
      </pre></td><td><pre>
+      {"book":{"bookCode":"GEN"},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"the first verse",
+                "contents":[
+                "the first verse"
+                  ]},
+              {"verseNumber":"2",
+                "verseText":"the second verse",
+                "contents":[
+                "the second verse"
+                  ]},
+              {"verseNumber":"3",
+                "verseText":"�Are you the king of the Jews?�",
+                "contents":[
+                {"milestone":"qt",
+                    "delimter":"-s",
+                    "closing":"\\*",
+                    "attributes":[
+                    {"sid":"qt_123"},
+                      {"who":"Pilate"}
+                      ]},
+                  "�Are you the king of the Jews?�",
+                  {"milestone":"qt",
+                    "delimter":"-e",
+                    "closing":"\\*",
+                    "attributes":[
+                    {"eid":"qt_123"}
+                      ]}
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[]}}
+
+     </pre></td><td><pre>
       {"headers":[
         {"tag":"id",
             "content":"GEN"}
@@ -2076,7 +2732,7 @@ The attribute name and value is captured by both. But the JSON structure to repr
 
 8. Alignment files
 
-    <table><tr><th>Input</th><th>usfm-grammar</th><th>usfm-js</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th><th>usfm-js</th></tr><td>     <pre>
     \id ACT
     \h प्रेरितों के काम
     \toc1 प्रेरितों के काम
@@ -2347,6 +3003,204 @@ The attribute name and value is captured by both. But the JSON structure to repr
           ],
         "messages": {"warnings": ["Empty lines present. "]}
       }
+     </pre></td><td><pre>
+      {"book":{"bookCode":"ACT",
+          "meta":[
+          {"h":"प्रेरितों के काम"},
+            {"toc1":[
+              "प्रेरितों के काम"
+                ]},
+            {"toc2":[
+              "प्रेरितों के काम"
+                ]},
+            [
+            {"mt":[
+                "प्रेरितों के काम"
+                  ]}
+              ]
+            ]},
+        "chapters":[
+        {"chapterNumber":"1",
+            "contents":[
+            {"p":null},
+              {"verseNumber":"1",
+                "verseText":"हेथियुफिलुसमैंनेपहलीपुस्तिकाउनसबबातोंऊपरउठायानगया",
+                "contents":[
+                {"w":[
+                    "हे"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"milestone":"zaln",
+                    "delimter":"-s",
+                    "closing":"\\*",
+                    "attributes":[
+                    {"x-verified":"true"},
+                      {"x-occurrence":"1"},
+                      {"x-occurrences":"1"},
+                      {"x-content":"Θεόφιλε"}
+                      ]},
+                  {"w":[
+                    "थियुफिलुस"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"milestone":"zaln",
+                    "delimter":"-e",
+                    "closing":"\\*"},
+                  {"w":[
+                    "मैंने"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"milestone":"zaln",
+                    "delimter":"-s",
+                    "closing":"\\*",
+                    "attributes":[
+                    {"x-verified":"true"},
+                      {"x-occurrence":"1"},
+                      {"x-occurrences":"1"},
+                      {"x-content":"πρῶτον"}
+                      ]},
+                  {"w":[
+                    "पहली"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"milestone":"zaln",
+                    "delimter":"-e",
+                    "closing":"\\*"},
+                  {"w":[
+                    "पुस्तिका"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"w":[
+                    "उन"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"w":[
+                    "सब"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"milestone":"zaln",
+                    "delimter":"-s",
+                    "closing":"\\*",
+                    "attributes":[
+                    {"x-verified":"true"},
+                      {"x-occurrence":"1"},
+                      {"x-occurrences":"1"},
+                      {"x-content":"λόγον"}
+                      ]},
+                  {"w":[
+                    "बातों"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"milestone":"zaln",
+                    "delimter":"-e",
+                    "closing":"\\*"},
+                  {"milestone":"zaln",
+                    "delimter":"-s",
+                    "closing":"\\*",
+                    "attributes":[
+                    {"x-verified":"true"},
+                      {"x-occurrence":"1"},
+                      {"x-occurrences":"1"},
+                      {"x-content":"ἀνελήμφθη"}
+                      ]},
+                  {"w":[
+                    "ऊपर"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"w":[
+                    "उठाया"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"milestone":"zaln",
+                    "delimter":"-e",
+                    "closing":"\\*"},
+                  {"milestone":"zaln",
+                    "delimter":"-s",
+                    "closing":"\\*",
+                    "attributes":[
+                    {"x-verified":"true"},
+                      {"x-occurrence":"1"},
+                      {"x-occurrences":"1"},
+                      {"x-content":"ἄχρι"}
+                      ]},
+                  {"w":[
+                    "न"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"},
+                  {"milestone":"zaln",
+                    "delimter":"-e",
+                    "closing":"\\*"},
+                  {"w":[
+                    "गया"
+                      ],
+                    "attributes":[
+                    {"x-occurrence":"1"},
+                      {"x-occurrences":"1"}
+                      ],
+                    "closing":"\\w*"}
+                  ]},
+              {"verseNumber":"30",
+                "verseText":"और पौलुस पूरे दो वर्ष अपने किराये के घर में रहा,
+                ",
+                "contents":[
+                "और पौलुस पूरे दो वर्ष अपने किराये के घर में रहा,
+                  "
+                  ]},
+              {"verseNumber":"31",
+                "verseText":"और जो उसके पास आते थे,
+                उन सबसे मिलता रहा और बिना रोक-टोक बहुत निडर होकर परमेश्‍वर के राज्य का प्रचार करता और प्रभु यीशु मसीह की बातें सिखाता रहा।",
+                "contents":[
+                "और जो उसके पास आते थे,
+                  उन सबसे मिलता रहा और बिना रोक-टोक बहुत निडर होकर परमेश्‍वर के राज्य का प्रचार करता और प्रभु यीशु मसीह की बातें सिखाता रहा।"
+                  ]}
+              ]}
+          ],
+        "_messages":{"_warnings":[      ]}}
+
      </pre></td><td><pre>
       {"headers":[
         {"tag":"id",

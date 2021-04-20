@@ -1,8 +1,8 @@
 usfmRelaxed{
-	File = BookHead Chapter+
+	File = BookHead Chapter*
 
 	BookHead = idMarker (MilesstoneMarker | ClosedMarker | NormalMarker)*
-	Chapter = ChapterMarker (VerseMarker | Note | ExtendedStudyContents | MilesstoneMarker | ClosedMarker | NormalMarker )+
+	Chapter = ChapterMarker (VerseMarker | Note | ExtendedStudyContents | MilesstoneMarker | ClosedMarker | NormalMarker )*
 
 	verseNumber = number letter? ("-" number letter?)? 
 	markerName = ~(cTag) ~(vTag) ~(noteTag) "+"? (letter | digit | "_")+ number?
