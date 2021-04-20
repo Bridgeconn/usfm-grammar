@@ -30,9 +30,7 @@ const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
   'ph3', 'b', 'q', 'q1', 'q2', 'q3', 'qr', 'qc', 'qs', 'qa', 'qac', 'qm',
   'qm1', 'qm2', 'qm3'];
 
-const punctPattern1 = new RegExp('^[,.\\-—/;:!?@$%^)}\\]>”»]'); // no space before
-const punctPattern2 = new RegExp('[\\-—/`@^&({[<“«]$'); // no space after
-// both lists exculde ', ", *, &, #, ~, |, +, _, =, \
+const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
 
 function buildVerseText(elmts) {
   let verseTextPartial = '';
@@ -41,10 +39,10 @@ function buildVerseText(elmts) {
   } else if (Array.isArray(elmts)) {
     for (let i = 0; i < elmts.length; i += 1) {
       const text = buildVerseText(elmts[i]);
-      if (punctPattern1.test(text) || punctPattern2.test(verseTextPartial)
-        || verseTextPartial.endsWith(' ') || verseTextPartial === '') {
+      if (punctPattern.test(text)) {
+        verseTextPartial = verseTextPartial.trim();
         verseTextPartial += text;
-      } else if (text !== '') {
+      } else {
         verseTextPartial += ` ${text}`;
       }
     }
@@ -57,8 +55,8 @@ function buildVerseText(elmts) {
       for (let i = 0; i < elmts[key].length; i += 1) {
         const text = buildVerseText(elmts[key][i]);
         if (text !== null) {
-          if (punctPattern1.test(text) || punctPattern2.test(innerVerseText)
-              || innerVerseText.endsWith(' ') || innerVerseText === '') {
+          if (punctPattern.test(text)) {
+            innerVerseText = innerVerseText.trim();
             innerVerseText += text;
           } else {
             innerVerseText += ` ${text}`;
@@ -70,9 +68,8 @@ function buildVerseText(elmts) {
       for (let j = 0; j < elmts[key].length; j += 1) {
         const innerKey = Object.keys(elmts[key][j])[0];
         if (elmts[key][j][innerKey] !== null) {
-          if (punctPattern1.test(elmts[key][j][innerKey])
-            || punctPattern2.test(verseTextPartial)
-            || verseTextPartial.endsWith(' ') || verseTextPartial === '') {
+          if (punctPattern.test(elmts[key][j][innerKey])) {
+            verseTextPartial = verseTextPartial.trim();
             verseTextPartial += elmts[key][j][innerKey];
           } else {
             verseTextPartial += ` ${elmts[key][j][innerKey]}`;
