@@ -1,7 +1,7 @@
 const ohm = require('ohm-js');
+const Events = require('events');
 const { contents: grammar } = require('../grammar/usfm-relaxed.ohm.js');
 const { buildVerseText } = require('./grammarOperations.js');
-const Events = require('events');
 
 const { usfmRelaxed: bib } = ohm.grammars(grammar);
 const sem = bib.createSemantics();
@@ -35,7 +35,7 @@ const paraMarkers = ['p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc',
 // const punctPattern = new RegExp('^[,./;:\'"`~!@#$%^&*(){}[}|]');
 
 const emitter = new Events.EventEmitter();
-let warningMessages = [];
+const warningMessages = [];
 emitter.on('warning', (err) => {
   if (!warningMessages.includes(err.message)) {
     warningMessages.push(err.message);
@@ -48,9 +48,9 @@ sem.addOperation('buildJson', {
       book: bookhead.buildJson(),
       chapters: chapters.buildJson(),
     };
-    let res = { parseStructure: parse};
-    if(parse.chapters.length === 0){
-      emitter.emit('warning', new Error(`No chapters in the file.`));
+    const res = { parseStructure: parse };
+    if (parse.chapters.length === 0) {
+      emitter.emit('warning', new Error('No chapters in the file.'));
     }
     res.warnings = warningMessages;
     return res;
@@ -90,7 +90,7 @@ sem.addOperation('buildJson', {
         }
       }
     }
-    if(res.contents.length === 0){
+    if (res.contents.length === 0) {
       emitter.emit('warning', new Error(`No contents in chapter ${res.chapterNumber}.`));
     }
     return res;
