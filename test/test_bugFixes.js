@@ -319,5 +319,4 @@ describe('Test bug fixes', () => {
     assert.strictEqual(jsonOutput.chapters.length, 0);
     assert.strictEqual(jsonOutput._messages._warnings.includes('No chapters in the file.'), true);
   });
-
 });
