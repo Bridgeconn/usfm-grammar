@@ -33,7 +33,7 @@
      The grammar is modelled in a way it ignores white space between certain markers. Also some 
      whitespace normalizations are performed for obtaining a neater JSON output. So white space 
      usage in the input USFM may not be present as such in the converted JSON. Also there may be 
-     space discrepency in the versetext obtained by combining texts from multiple markers.
+     space discrepency in the versetext obtained by combining texts from multiple markers, like descibed in [this issue](https://github.com/Bridgeconn/usfm-grammar/issues/76).
 
 - Marker closing in LEVEL.RELAXED parsing
 
