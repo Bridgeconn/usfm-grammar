@@ -21,11 +21,11 @@
     },
     "keywords": [
         "usfm",
-        "markup",
+        "grammar",
         "usfm parser",
         "validator",
         "ohm",
-        "usfm syntax validator",
+        "usfm json converter",
         "json",
         "cli"
     ],
