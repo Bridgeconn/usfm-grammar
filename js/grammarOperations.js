@@ -1168,7 +1168,7 @@ sem.addOperation('composeJson', {
   milestonePairElement(_1, _2, ms, sE, _5, _6, _7, attribs, _8) {
     const milestoneElement = {};
     milestoneElement.milestone = ms.sourceString;
-    milestoneElement.delimter = sE.sourceString;
+    milestoneElement.delimiter = sE.sourceString;
     milestoneElement.closing = _8.sourceString;
     if (attribs.sourceString !== '') {
       milestoneElement.attributes = attribs.composeJson();

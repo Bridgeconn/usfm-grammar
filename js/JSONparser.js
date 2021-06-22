@@ -158,7 +158,7 @@ class JSONParser extends Parser {
         }
         usfmText += marker;
       } else if (key === 'milestone') {
-        usfmText += `\\${jsonObject.milestone}${jsonObject.delimter}`;
+        usfmText += `\\${jsonObject.milestone}${jsonObject.delimiter}`;
         if (Object.prototype.hasOwnProperty.call(jsonObject, 'attributes')) {
           usfmText += ' |';
           for (let i = 0; i < jsonObject.attributes.length; i += 1) {
