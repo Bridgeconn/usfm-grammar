@@ -210,7 +210,7 @@ describe('Test CLI: USFM parsing', () => {
       'usfm-grammar',
       ['./test/resources/small.usfm', '--output=csv'],
     );
-    const csvPattern = new RegExp('Book, Chapter, Verse, Text\\n.*', 'g');
+    const csvPattern = new RegExp('Book,Chapter,Verse,Text\\n.*', 'g');
     assert.match(response, csvPattern);
   });
 
@@ -219,7 +219,7 @@ describe('Test CLI: USFM parsing', () => {
       'usfm-grammar',
       ['./test/resources/small.usfm', '-o', 'csv'],
     );
-    const csvPattern = new RegExp('Book, Chapter, Verse, Text\\n.*', 'g');
+    const csvPattern = new RegExp('Book,Chapter,Verse,Text\\n.*', 'g');
     assert.match(response, csvPattern);
   });
 });
