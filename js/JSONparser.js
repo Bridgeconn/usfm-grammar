@@ -158,7 +158,7 @@ class JSONParser extends Parser {
         }
         usfmText += marker;
       } else if (key === 'milestone') {
-        usfmText += `\\${jsonObject.milestone}${jsonObject.delimter}`;
+        usfmText += `\\${jsonObject.milestone}${jsonObject.delimiter}`;
         if (Object.prototype.hasOwnProperty.call(jsonObject, 'attributes')) {
           usfmText += ' |';
           for (let i = 0; i < jsonObject.attributes.length; i += 1) {
@@ -196,7 +196,7 @@ class JSONParser extends Parser {
     const jsonOutput = checkJSON(this.JSONObject);
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
-    let csvWriter = 'Book, Chapter, Verse, Text\n';
+    let csvWriter = '"Book","Chapter","Verse"\n';
     for (let i = 0; i < chapters.length; i += 1) {
       const cno = chapters[i].chapterNumber;
       for (let j = 0; j < chapters[i].contents.length; j += 1) {

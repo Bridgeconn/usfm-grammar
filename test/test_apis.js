@@ -50,7 +50,7 @@ describe('API tests', () => {
     const usfmParser = new grammar.USFMParser(inputUSFM);
     const csvString = usfmParser.toCSV();
     assert(typeof csvString === 'string');
-    assert(csvString.startsWith('Book, Chapter, Verse'));
+    assert(csvString.startsWith('"Book","Chapter","Verse"'));
     assert.strictEqual(csvString.split('\n').length, 12);
   });
 
@@ -58,7 +58,7 @@ describe('API tests', () => {
     const usfmParser = new grammar.USFMParser(inputUSFM, grammar.LEVEL.RELAXED);
     const csvString = usfmParser.toCSV();
     assert(typeof csvString === 'string');
-    assert(csvString.startsWith('Book, Chapter, Verse'));
+    assert(csvString.startsWith('"Book","Chapter","Verse"'));
     assert.strictEqual(csvString.split('\n').length, 12);
   });
 
@@ -108,7 +108,7 @@ describe('API tests', () => {
     const jsonParser = new grammar.JSONParser(jsonObject);
     const csvString = jsonParser.toCSV();
     assert(typeof csvString === 'string');
-    assert(csvString.startsWith('Book, Chapter, Verse'));
+    assert(csvString.startsWith('"Book","Chapter","Verse"'));
     assert.strictEqual(csvString.split('\n').length, 12);
   });
 
@@ -118,7 +118,7 @@ describe('API tests', () => {
     const jsonParser = new grammar.JSONParser(jsonObject);
     const csvString = jsonParser.toCSV();
     assert(typeof csvString === 'string');
-    assert(csvString.startsWith('Book, Chapter, Verse'));
+    assert(csvString.startsWith('"Book","Chapter","Verse"'));
     assert.strictEqual(csvString.split('\n').length, 12);
   });
 
@@ -128,7 +128,7 @@ describe('API tests', () => {
     const jsonParser = new grammar.JSONParser(jsonObject);
     const csvString = jsonParser.toCSV();
     assert(typeof csvString === 'string');
-    assert(csvString.startsWith('Book, Chapter, Verse'));
+    assert(csvString.startsWith('"Book","Chapter","Verse"'));
     assert.strictEqual(csvString.split('\n').length, 12);
   });
 
