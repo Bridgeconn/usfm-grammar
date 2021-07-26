@@ -1,6 +1,6 @@
 const assert = require('assert');
 const fs = require('fs');
-const grammar = require('../js/main.js');
+const grammar = require('../js/main');
 
 describe('Test with usfm files from the wild', () => {
   beforeEach(() => {

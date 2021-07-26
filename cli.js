@@ -24,7 +24,7 @@ const { argv } = require('yargs')
     return arg;
   });
 
-const grammar = require('./js/main.js');
+const grammar = require('./js/main');
 
 /* eslint no-console: ["error", { allow: ["log", "error"] }] */
 

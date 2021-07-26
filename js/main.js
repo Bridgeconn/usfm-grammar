@@ -1,6 +1,6 @@
-const { USFMParser } = require('./USFMparser.js');
-const { JSONParser } = require('./JSONparser.js');
-const { JSONSchemaDefinition } = require('../schemas/file.js');
+const { USFMParser } = require('./USFMparser');
+const { JSONParser } = require('./JSONparser');
+const { JSONSchemaDefinition } = require('../schemas/file');
 
 const FILTER = { SCRIPTURE: 'clean', ALL: 'normal' };
 const LEVEL = { RELAXED: 'relaxed', STRICT: 'normal' };

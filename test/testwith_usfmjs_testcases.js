@@ -1,6 +1,6 @@
 const assert = require('assert');
 const fs = require('fs');
-const grammar = require('../js/main.js');
+const grammar = require('../js/main');
 
 function generateTest(name, expected = true, expected2 = true) {
   const data = fs.readFileSync(`${name}.usfm`, 'utf-8');
