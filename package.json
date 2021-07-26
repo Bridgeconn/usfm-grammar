@@ -7,7 +7,7 @@
         "test": "mocha --expose-gc --timeout 40000",
         "start": "node ../server.js",
         "lint": "eslint .",
-        "test-on-github": "mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild.js --ignore test/test_cli.js"
+        "test-on-github": "mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild.js"
     },
     "dependencies": {
         "jsonschema": "^1.4.0",
