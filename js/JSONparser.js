@@ -1,6 +1,6 @@
 const { validate } = require('jsonschema');
-const { Parser } = require('./parser.js');
-const { JSONSchemaDefinition } = require('../schemas/file.js');
+const { Parser } = require('./parser');
+const { JSONSchemaDefinition } = require('../schemas/file');
 
 const validateJSON = validate;
 

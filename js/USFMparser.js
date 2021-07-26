@@ -1,7 +1,7 @@
-const { match } = require('./grammarOperations.js');
-const { relaxParse } = require('./grammarOperations-relaxed.js');
-const { Parser } = require('./parser.js');
-const { JSONParser } = require('./JSONparser.js');
+const { match } = require('./grammarOperations');
+const { relaxParse } = require('./grammarOperations-relaxed');
+const { Parser } = require('./parser');
+const { JSONParser } = require('./JSONparser');
 
 class USFMParser extends Parser {
   constructor(str, level = 'normal') {

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const grammar = require('../js/main.js');
+const grammar = require('../js/main');
 
 describe('Test bug fixes', () => {
   beforeEach(() => {

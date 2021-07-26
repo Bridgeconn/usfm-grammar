@@ -2,21 +2,25 @@ const { spawn } = require('child_process');
 const concat = require('concat-stream');
 const assert = require('assert');
 
-function createProcess(args = [], env = null) {
+// Full path to the cli.js file
+const cliPath = `${process.cwd()}/cli.js`;
+
+function createProcess(args = []) {
   // args = [processPath].concat(args);
 
-  return spawn('usfm-grammar', args, {
+  return spawn('node', args, {
     env: {
       NODE_ENV: 'test',
-      ...env,
+      ...process.env,
     },
   });
 }
 
-function execute(processPath, args = [], opts = {}) {
-  const { env = null } = opts;
-  const childProcess = createProcess(args, env);
+function execute(processPath, args = []) {
+  // Add script name as the first argument
+  const childProcess = createProcess([processPath, ...args]);
   childProcess.stdin.setEncoding('utf-8');
+
   const promise = new Promise((resolve, reject) => {
     childProcess.stderr.once('data', (err) => {
       reject(err.toString());
@@ -34,7 +38,7 @@ function execute(processPath, args = [], opts = {}) {
 describe('Test CLI: version and help', () => {
   it('version with --version', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['--version'],
     );
     const versionPattern = new RegExp('^\\d\\.\\d\\.\\d.*', 'g');
@@ -43,7 +47,7 @@ describe('Test CLI: version and help', () => {
 
   it('version with -v', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['-v'],
     );
     const versionPattern = new RegExp('^\\d\\.\\d\\.\\d.*', 'g');
@@ -54,12 +58,12 @@ describe('Test CLI: version and help', () => {
     let thrownError = false;
     try {
       await execute(
-        'usfm-grammar',
+        cliPath,
         [],
       );
     } catch (err) {
       thrownError = true;
-      const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
+      const helpPattern = new RegExp('^cli.js <file>\\n.*', 'g');
       assert.match(err, helpPattern);
     }
     assert.strictEqual(thrownError, true);
@@ -69,12 +73,12 @@ describe('Test CLI: version and help', () => {
     let thrownError = false;
     try {
       await execute(
-        'usfm-grammar',
+        cliPath,
         ['-f'],
       );
     } catch (err) {
       thrownError = true;
-      const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
+      const helpPattern = new RegExp('^cli.js <file>\\n.*', 'g');
       assert.match(err, helpPattern);
     }
     assert.strictEqual(thrownError, true);
@@ -82,19 +86,19 @@ describe('Test CLI: version and help', () => {
 
   it('help with -h', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['-h'],
     );
-    const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
+    const helpPattern = new RegExp('^cli.js <file>\\n.*', 'g');
     assert.match(response, helpPattern);
   });
 
   it('help with --help', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['--help'],
     );
-    const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
+    const helpPattern = new RegExp('^cli.js <file>\\n.*', 'g');
     assert.match(response, helpPattern);
   });
 });
@@ -102,7 +106,7 @@ describe('Test CLI: version and help', () => {
 describe('Test CLI: USFM parsing', () => {
   it('one file argument', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.usfm'],
     );
     const jsonObj = JSON.parse(response);
@@ -114,7 +118,7 @@ describe('Test CLI: USFM parsing', () => {
     let thrownError = false;
     try {
       await execute(
-        'usfm-grammar',
+        cliPath,
         ['./test/test.js'],
       );
     } catch (err) {
@@ -127,7 +131,7 @@ describe('Test CLI: USFM parsing', () => {
 
   it('level relaxed, with --level=relaxed', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.usfm', '--level=relaxed'],
     );
     const jsonObj = JSON.parse(response);
@@ -137,7 +141,7 @@ describe('Test CLI: USFM parsing', () => {
 
   it('level relaxed,  with -l relaxed', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.usfm', '-l', 'relaxed'],
     );
     const jsonObj = JSON.parse(response);
@@ -147,7 +151,7 @@ describe('Test CLI: USFM parsing', () => {
 
   it('level relaxed, with --level relaxed', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.usfm', '--level', 'relaxed'],
     );
     const jsonObj = JSON.parse(response);
@@ -159,12 +163,12 @@ describe('Test CLI: USFM parsing', () => {
     let thrownError = false;
     try {
       await execute(
-        'usfm-grammar',
+        cliPath,
         ['--level'],
       );
     } catch (err) {
       thrownError = true;
-      const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
+      const helpPattern = new RegExp('^cli.js <file>\\n.*', 'g');
       assert.match(err, helpPattern);
     }
     assert.strictEqual(thrownError, true);
@@ -172,7 +176,7 @@ describe('Test CLI: USFM parsing', () => {
 
   it('scripture filtered, with --filter scripture', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.usfm', '--filter', 'scripture'],
     );
     const jsonObj = JSON.parse(response);
@@ -184,12 +188,12 @@ describe('Test CLI: USFM parsing', () => {
     let thrownError = false;
     try {
       await execute(
-        'usfm-grammar',
+        cliPath,
         ['./test/resources/small.usfm', '--level', 'bible'],
       );
     } catch (err) {
       thrownError = true;
-      const helpPattern = new RegExp('^usfm-grammar <file>\\n.*', 'g');
+      const helpPattern = new RegExp('^cli.js <file>\\n.*', 'g');
       assert.match(err, helpPattern);
     }
     assert.strictEqual(thrownError, true);
@@ -197,7 +201,7 @@ describe('Test CLI: USFM parsing', () => {
 
   it('both filter and level arguments', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.usfm', '--filter', 'scripture', '--level', 'relaxed'],
     );
     const jsonObj = JSON.parse(response);
@@ -207,7 +211,7 @@ describe('Test CLI: USFM parsing', () => {
 
   it('output format specified, with --output==csv', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.usfm', '--output=csv'],
     );
     const csvPattern = new RegExp('"Book","Chapter","Verse"\\n.*', 'g');
@@ -216,18 +220,28 @@ describe('Test CLI: USFM parsing', () => {
 
   it('output format specified, with -o csv', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.usfm', '-o', 'csv'],
     );
     const csvPattern = new RegExp('"Book","Chapter","Verse"\\n.*', 'g');
     assert.match(response, csvPattern);
+  });
+
+  it('output format specified, with -o tsv', async () => {
+    const response = await execute(
+      cliPath,
+      ['./test/resources/small.usfm', '-o', 'tsv'],
+    );
+    /* eslint no-control-regex: "off", no-tabs: "off" -- Needed to match exact tabbed output */
+    const tsvPattern = new RegExp('Book	Chapter	Verse	Text\\nGEN	1	1	one verse\\n.*', 'g');
+    assert.match(response, tsvPattern);
   });
 });
 
 describe('Test CLI: JSON parsing', () => {
   it('with one json file-path', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.json'],
     );
     const usfmPattern = new RegExp('^\\\\id GEN A small sample usfm file\\n.*', 'g');
@@ -236,7 +250,7 @@ describe('Test CLI: JSON parsing', () => {
 
   it('with additional arguments', async () => {
     const response = await execute(
-      'usfm-grammar',
+      cliPath,
       ['./test/resources/small.json', '--filter', 'scripture'],
     );
     const usfmPattern = new RegExp('^\\\\id GEN A small sample usfm file\\n.*', 'g');
