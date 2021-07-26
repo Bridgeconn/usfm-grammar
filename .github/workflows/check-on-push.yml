@@ -25,9 +25,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Setup node and npm
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
-          node-version: 13.12.0
+          node-version: 14
       - name: install packages
         run: npm install .
       # Runs the Linter action
