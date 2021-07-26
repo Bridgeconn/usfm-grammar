@@ -123,7 +123,7 @@ describe('Test CLI: USFM parsing', () => {
     try {
       await execute(
         cliPath,
-        ['./test/test.js'],
+        ['./test/test.js']
       );
     } catch (err) {
       thrownError = true;
@@ -136,7 +136,7 @@ describe('Test CLI: USFM parsing', () => {
   it('level relaxed, with --level=relaxed', async () => {
     const response = await execute(
       cliPath,
-      ['./test/resources/small.usfm', '--level=relaxed'],
+      ['./test/resources/small.usfm', '--level=relaxed']
     );
     const jsonObj = JSON.parse(response);
     assert.strictEqual(Object.keys(jsonObj).includes('book'), true);
@@ -146,7 +146,7 @@ describe('Test CLI: USFM parsing', () => {
   it('level relaxed,  with -l relaxed', async () => {
     const response = await execute(
       cliPath,
-      ['./test/resources/small.usfm', '-l', 'relaxed'],
+      ['./test/resources/small.usfm', '-l', 'relaxed']
     );
     const jsonObj = JSON.parse(response);
     assert.strictEqual(Object.keys(jsonObj).includes('book'), true);
@@ -156,7 +156,7 @@ describe('Test CLI: USFM parsing', () => {
   it('level relaxed, with --level relaxed', async () => {
     const response = await execute(
       cliPath,
-      ['./test/resources/small.usfm', '--level', 'relaxed'],
+      ['./test/resources/small.usfm', '--level', 'relaxed']
     );
     const jsonObj = JSON.parse(response);
     assert.strictEqual(Object.keys(jsonObj).includes('book'), true);
@@ -168,7 +168,7 @@ describe('Test CLI: USFM parsing', () => {
     try {
       await execute(
         cliPath,
-        ['--level'],
+        ['--level']
       );
     } catch (err) {
       thrownError = true;
