@@ -230,6 +230,15 @@ describe('Test CLI: USFM parsing', () => {
     const csvPattern = new RegExp('"Book","Chapter","Verse"\\n.*', 'g');
     assert.match(response, csvPattern);
   });
+
+  it('output format specified, with -o tsv', async () => {
+    const response = await execute(
+      cliPath,
+      ['./test/resources/small.usfm', '-o', 'tsv']
+    );
+    const tsvPattern = new RegExp('Book	Chapter	Verse	Text\\nGEN	1	1	one verse\\n.*', 'g');
+    assert.match(response, tsvPattern);
+  });
 });
 
 describe('Test CLI: JSON parsing', () => {
