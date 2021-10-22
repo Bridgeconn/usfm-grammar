@@ -1,0 +1,32 @@
+{
+  "name": "tree-sitter-usfm",
+  "version": "0.0.1",
+  "description": "reimlemetation of usfm-grammar using tree-sitter",
+  "main": "bindings/node",
+  "scripts": {
+    "test": "tree-sitter test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bridgeconn/usfm-grammar.git"
+  },
+  "keywords": [
+    "usfm",
+    "parser",
+    "grammar",
+    "cfg",
+    "json"
+  ],
+  "author": "https://github.com/kavitharaju",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bridgeconn/usfm-grammar/issues"
+  },
+  "homepage": "https://github.com/Bridgeconn/usfm-grammar#readme",
+  "dependencies": {
+    "nan": "^2.15.0"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.20.0"
+  }
+}
