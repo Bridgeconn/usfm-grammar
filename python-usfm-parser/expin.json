@@ -1,0 +1,32 @@
+{
+    "id": {
+        "bookcode": "MAT",
+        "description": "\n"
+    },
+    "content": [
+        {
+            "tag": "mrk",
+            "text": " values and values\n"
+        },
+        {
+            "tag": "mrk2",
+            "text": " some more values\n"
+        },
+        {
+            "tag": "mrk3",
+            "text": "\n"
+        },
+        {
+            "tag": "mrk",
+            "text": " with "
+        },
+        {
+            "tag": "inlinemrk",
+            "text": " and value in it\n"
+        },
+        {
+            "tag": "mrk4",
+            "text": " check\n"
+        }
+    ]
+}
