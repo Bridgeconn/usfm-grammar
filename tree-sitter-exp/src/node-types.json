@@ -1,0 +1,517 @@
+[
+  {
+    "type": "bookcode",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "idline",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "bookcode",
+          "named": true
+        },
+        {
+          "type": "textcontent",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "marker",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "markername",
+          "named": true
+        },
+        {
+          "type": "textcontent",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "markername",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "idline",
+          "named": true
+        },
+        {
+          "type": "marker",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "1CH",
+    "named": false
+  },
+  {
+    "type": "1CO",
+    "named": false
+  },
+  {
+    "type": "1ES",
+    "named": false
+  },
+  {
+    "type": "1JN",
+    "named": false
+  },
+  {
+    "type": "1KI",
+    "named": false
+  },
+  {
+    "type": "1MA",
+    "named": false
+  },
+  {
+    "type": "1MQ",
+    "named": false
+  },
+  {
+    "type": "1PE",
+    "named": false
+  },
+  {
+    "type": "1SA",
+    "named": false
+  },
+  {
+    "type": "1TH",
+    "named": false
+  },
+  {
+    "type": "1TI",
+    "named": false
+  },
+  {
+    "type": "2BA",
+    "named": false
+  },
+  {
+    "type": "2CH",
+    "named": false
+  },
+  {
+    "type": "2CO",
+    "named": false
+  },
+  {
+    "type": "2ES",
+    "named": false
+  },
+  {
+    "type": "2JN",
+    "named": false
+  },
+  {
+    "type": "2KI",
+    "named": false
+  },
+  {
+    "type": "2MA",
+    "named": false
+  },
+  {
+    "type": "2MQ",
+    "named": false
+  },
+  {
+    "type": "2PE",
+    "named": false
+  },
+  {
+    "type": "2SA",
+    "named": false
+  },
+  {
+    "type": "2TH",
+    "named": false
+  },
+  {
+    "type": "2TI",
+    "named": false
+  },
+  {
+    "type": "3JN",
+    "named": false
+  },
+  {
+    "type": "3MA",
+    "named": false
+  },
+  {
+    "type": "3MQ",
+    "named": false
+  },
+  {
+    "type": "4BA",
+    "named": false
+  },
+  {
+    "type": "4MA",
+    "named": false
+  },
+  {
+    "type": "5EZ",
+    "named": false
+  },
+  {
+    "type": "6EZ",
+    "named": false
+  },
+  {
+    "type": "ACT",
+    "named": false
+  },
+  {
+    "type": "AMO",
+    "named": false
+  },
+  {
+    "type": "BAK",
+    "named": false
+  },
+  {
+    "type": "BAR",
+    "named": false
+  },
+  {
+    "type": "BEL",
+    "named": false
+  },
+  {
+    "type": "CNC",
+    "named": false
+  },
+  {
+    "type": "COL",
+    "named": false
+  },
+  {
+    "type": "DAG",
+    "named": false
+  },
+  {
+    "type": "DAN",
+    "named": false
+  },
+  {
+    "type": "DEU",
+    "named": false
+  },
+  {
+    "type": "ECC",
+    "named": false
+  },
+  {
+    "type": "ENO",
+    "named": false
+  },
+  {
+    "type": "EPH",
+    "named": false
+  },
+  {
+    "type": "ESG",
+    "named": false
+  },
+  {
+    "type": "EST",
+    "named": false
+  },
+  {
+    "type": "EXO",
+    "named": false
+  },
+  {
+    "type": "EZA",
+    "named": false
+  },
+  {
+    "type": "EZK",
+    "named": false
+  },
+  {
+    "type": "EZR",
+    "named": false
+  },
+  {
+    "type": "FRT",
+    "named": false
+  },
+  {
+    "type": "GAL",
+    "named": false
+  },
+  {
+    "type": "GEN",
+    "named": false
+  },
+  {
+    "type": "GLO",
+    "named": false
+  },
+  {
+    "type": "HAB",
+    "named": false
+  },
+  {
+    "type": "HAG",
+    "named": false
+  },
+  {
+    "type": "HEB",
+    "named": false
+  },
+  {
+    "type": "HOS",
+    "named": false
+  },
+  {
+    "type": "INT",
+    "named": false
+  },
+  {
+    "type": "ISA",
+    "named": false
+  },
+  {
+    "type": "JAS",
+    "named": false
+  },
+  {
+    "type": "JDG",
+    "named": false
+  },
+  {
+    "type": "JDT",
+    "named": false
+  },
+  {
+    "type": "JER",
+    "named": false
+  },
+  {
+    "type": "JHN",
+    "named": false
+  },
+  {
+    "type": "JOB",
+    "named": false
+  },
+  {
+    "type": "JOL",
+    "named": false
+  },
+  {
+    "type": "JON",
+    "named": false
+  },
+  {
+    "type": "JOS",
+    "named": false
+  },
+  {
+    "type": "JUB",
+    "named": false
+  },
+  {
+    "type": "JUD",
+    "named": false
+  },
+  {
+    "type": "LAM",
+    "named": false
+  },
+  {
+    "type": "LAO",
+    "named": false
+  },
+  {
+    "type": "LBA",
+    "named": false
+  },
+  {
+    "type": "LEV",
+    "named": false
+  },
+  {
+    "type": "LJE",
+    "named": false
+  },
+  {
+    "type": "LUK",
+    "named": false
+  },
+  {
+    "type": "MAL",
+    "named": false
+  },
+  {
+    "type": "MAN",
+    "named": false
+  },
+  {
+    "type": "MAT",
+    "named": false
+  },
+  {
+    "type": "MIC",
+    "named": false
+  },
+  {
+    "type": "MRK",
+    "named": false
+  },
+  {
+    "type": "NAM",
+    "named": false
+  },
+  {
+    "type": "NDX",
+    "named": false
+  },
+  {
+    "type": "NEH",
+    "named": false
+  },
+  {
+    "type": "NUM",
+    "named": false
+  },
+  {
+    "type": "OBA",
+    "named": false
+  },
+  {
+    "type": "ODA",
+    "named": false
+  },
+  {
+    "type": "OTH",
+    "named": false
+  },
+  {
+    "type": "PHM",
+    "named": false
+  },
+  {
+    "type": "PHP",
+    "named": false
+  },
+  {
+    "type": "PRO",
+    "named": false
+  },
+  {
+    "type": "PS2",
+    "named": false
+  },
+  {
+    "type": "PS3",
+    "named": false
+  },
+  {
+    "type": "PSA",
+    "named": false
+  },
+  {
+    "type": "PSS",
+    "named": false
+  },
+  {
+    "type": "REP",
+    "named": false
+  },
+  {
+    "type": "REV",
+    "named": false
+  },
+  {
+    "type": "ROM",
+    "named": false
+  },
+  {
+    "type": "RUT",
+    "named": false
+  },
+  {
+    "type": "S3Y",
+    "named": false
+  },
+  {
+    "type": "SIR",
+    "named": false
+  },
+  {
+    "type": "SNG",
+    "named": false
+  },
+  {
+    "type": "SUS",
+    "named": false
+  },
+  {
+    "type": "TDX",
+    "named": false
+  },
+  {
+    "type": "TIT",
+    "named": false
+  },
+  {
+    "type": "TOB",
+    "named": false
+  },
+  {
+    "type": "WIS",
+    "named": false
+  },
+  {
+    "type": "ZEC",
+    "named": false
+  },
+  {
+    "type": "ZEP",
+    "named": false
+  },
+  {
+    "type": "\\",
+    "named": false
+  },
+  {
+    "type": "\\id",
+    "named": false
+  },
+  {
+    "type": "textcontent",
+    "named": true
+  }
+]
