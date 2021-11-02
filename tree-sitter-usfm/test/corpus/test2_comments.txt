@@ -68,3 +68,99 @@ rem between toc markers and h
     (tocMarker
       (text)))
 )
+===========
+sts under one id
+===========
+\id GEN
+\sts status code
+-----------
+(File 
+ (bookIdentification 
+  (idMarker 
+    (bookcode)
+    (text)))
+  (stsMarker
+    (text))
+)
+===========
+sts under one h marker
+===========
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\sts status
+-----------
+(File 
+ (bookIdentification 
+  (idMarker 
+    (bookcode)
+    (text)))
+  (ideMarker 
+   (text))
+  (usfmMarker)
+  (hBlock
+    (hMarker
+      (text)))
+  (stsMarker
+    (text))
+)
+==============
+sts between toc markers and h
+==============
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\sts 2
+\toc1 genesis
+\toc2 gen
+\toc3 the book of genesis
+-----------
+(File 
+ (bookIdentification 
+  (idMarker 
+    (bookcode)
+    (text)))
+  (ideMarker 
+   (text))
+  (usfmMarker)
+  (hBlock
+    (hMarker
+      (text)))
+  (stsMarker
+    (text))
+  (tocBlock
+    (tocMarker
+      (text))
+    (tocMarker
+      (text))
+    (tocMarker
+      (text)))
+)
+==============
+sts and rem maker together in header section
+==============
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\sts status
+\rem and a remark
+-----------
+(File 
+ (bookIdentification 
+  (idMarker 
+    (bookcode)
+    (text)))
+  (ideMarker 
+   (text))
+  (usfmMarker)
+  (hBlock
+    (hMarker
+      (text)))
+  (stsMarker
+    (text))
+  (remMarker
+    (text))
+)
