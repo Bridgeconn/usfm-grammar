@@ -23,7 +23,7 @@ module.exports = grammar({
     text: $ => /[^\\\|]+/,
 
     bookIdentification: $ => $.idMarker, //only at start of file
-    _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock),
+    _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock, $.remMarker),
     hBlock: $ => prec.right(0,seq(repeat1($.hMarker), optional($.tocBlock), optional($.tocaBlock))),
     tocBlock: $ => prec.right(0,repeat1($.tocMarker)),
     tocaBlock: $ =>prec.right(0, repeat1($.tocaMarker)),//only under some hmarkers

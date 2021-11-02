@@ -1,0 +1,70 @@
+===========
+rem under one id
+===========
+\id GEN
+\rem Only a remark
+-----------
+(File 
+ (bookIdentification 
+  (idMarker 
+    (bookcode)
+    (text)))
+  (remMarker
+    (text))
+)
+===========
+rem under one h marker
+===========
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\rem a remark
+-----------
+(File 
+ (bookIdentification 
+  (idMarker 
+    (bookcode)
+    (text)))
+  (ideMarker 
+   (text))
+  (usfmMarker)
+  (hBlock
+    (hMarker
+      (text)))
+  (remMarker
+    (text))
+)
+==============
+rem between toc markers and h
+==============
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\rem another remark
+\toc1 genesis
+\toc2 gen
+\toc3 the book of genesis
+-----------
+(File 
+ (bookIdentification 
+  (idMarker 
+    (bookcode)
+    (text)))
+  (ideMarker 
+   (text))
+  (usfmMarker)
+  (hBlock
+    (hMarker
+      (text)))
+  (remMarker
+    (text))
+  (tocBlock
+    (tocMarker
+      (text))
+    (tocMarker
+      (text))
+    (tocMarker
+      (text)))
+)
