@@ -2,7 +2,9 @@ module.exports = grammar({
   name: 'usfm',
 
   rules: {
-    File: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader)
+    File: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader),
+      optional($.mtBlock),
+      repeat($._introduction)
       // repeat($.NormalMarker), repeat($.Chapter)
       )),
     bookcode: $ => choice("GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG",
@@ -41,6 +43,53 @@ module.exports = grammar({
     remMarker: $ => seq("\\rem ", $.text), // can be present at any position in file.
     restoreMarker: $ => seq("\\restore ", $.text), //can't find this marker in docs
     _comments: $ => choice($.remMarker, $.stsMarker, $.restoreMarker),
+
+    _introduction: $ => prec.right(0,seq(
+      optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock))
+      ),
+    _introText: $ => repeat1(choice($.text, $.iqtMarker,
+      // $.characterMarker
+      )),
+    iqtMarker: $ => seq("\\iqt ", $.text, "\\iqt*"),
+    imtBlock: $ => prec.right(0,repeat1($.imtMarker)),
+    imtMarker: $ => seq($._imtTag, $._introText),
+    _imtTag: $ => seq("\\imt",optional(token.immediate(/[1234]/)), " "),
+    imteBlock: $ => prec.right(0,repeat1($.imteMarker)),
+    imteMarker: $ => seq($._imteTag, $._introText),
+    _imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
+    _midIntroMarker: $ => choice($.isBlock, $.ioMarker, $.iotMarker, $.ipMarker, $.imMarker,
+      $.ipiMarker, $.imiMarker, $.iliBlock, $.ipqMarker, $.imqMarker, $.iprMarker, $.ibMarker,
+      $.iqBlock, $.ieMarker, $.iexMarker),
+    isBlock: $ => prec.right(0,repeat1($.isMarker)),
+    isMarker: $ => seq($._isTag, $._introText),
+    _isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
+    ioBlock: $ => prec.right(0,repeat1($.ioMarker)),
+    ioMarker: $ => seq($._ioTag, $._introText, optional($.iorMarker)),
+    _ioTag: $ => seq("\\io",optional(token.immediate(/[1234]/)), " "),
+    iorMarker: $ => seq("\\ior ", $.text, "\\ior*"),
+    iotMarker: $ => seq("\\iot ", $._introText),
+    ipMarker: $ => seq("\\ip ", $._introText),
+    imMarker: $ => seq("\\im ", $._introText),
+    ipiMarker: $ => seq("\\ipi ", $._introText),
+    imiMarker: $ => seq("\\imi ", $._introText),
+    iliBlock: $ => prec.right(0,repeat1($.iliMarker)),
+    iliMarker: $ => seq($._iliTag, $._introText),
+    _iliTag: $ => seq("\\ili",optional(token.immediate(/[12]/)), " "),
+    ipqMarker: $ => seq("\\ipq ", $._introText),
+    imqMarker: $ => seq("\\imq ", $._introText),
+    iprMarker: $ => seq("\\ipr ", $._introText),
+    ibMarker: $ => seq("\\ib"),
+    iqBlock: $ => prec.right(0,repeat1($.iqMarker)),
+    iqMarker: $ => seq($._iqTag, $._introText),
+    _iqTag: $ => seq("\\iq",optional(token.immediate(/[123]/)), " "),
+    ieMarker: $ => seq("\\ie"),
+    iexMarker: $ => seq("\\iex ", $._introText), // can occur in introduction or inside chapter
+
+    mtBlock: $ => prec.right(0,repeat1($.mtMarker)),
+    mtMarker: $ => seq($._mtTag, repeat1(choice($.text,
+      // $.footnote, $.crossref      
+      ))),
+    _mtTag: $ => seq("\\mt",optional(token.immediate(/[1234]/)), " "),
 
   }
 

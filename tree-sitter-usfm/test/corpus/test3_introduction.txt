@@ -1,0 +1,66 @@
+===========
+intro markers set 1
+===========
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\usfm 3.0
+\h SAN MARCOS
+\mt2 Evangelio según
+\mt1 SAN MARCOS
+\imt1 INTRODUCCIÓN
+\is1 Importancia del evangelio de Marcos
+\ip Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca igualmente en 
+\ipi Many Protestants consider the following books to be Apocrypha as defined above: Tobit, Judith, additions to Esther (as found in Greek Esther in the CEV) ...
+\imi  Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water. (“The Translators to the Reader,” King James Version, 1611).
+\im The most important document in the history of the English language is the King James Version of the Bible...
+-----------------
+(File 
+	(bookIdentification 
+		(idMarker 
+			(bookcode) (text)))
+	(usfmMarker)
+	(hBlock 
+		(hMarker (text)))
+	(mtBlock 
+		(mtMarker (text)) 
+		(mtMarker (text))) 
+	(imtBlock 
+		(imtMarker (text))) 
+	(isBlock 
+		(isMarker (text)))
+	(ipMarker (text))
+	(ipiMarker (text)) 
+	(imiMarker (text))
+	(imMarker (text))
+)
+===========
+intro markers set 2
+===========
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\ip One of these brothers, Joseph, had become the governor of Egypt. But Joseph knew that God would someday keep his promise to his people:
+\ib
+\ipq Before Joseph died, he told his brothers, “I won't live much longer. 
+\imq But God will take care of you and lead you out of Egypt to the land he promised Abraham, Isaac, and Jacob.”
+\ipr (50.24)
+\iq1 God our Savior showed us
+\iq2 how good and kind he is.
+\iq1 He saved us because
+\iq2 of his mercy,
+\iot Outline of Contents
+\io1 The beginning of the gospel \ior (1.1-13)\ior*
+\io1 Jesus' public ministry in Galilee \ior (1.14–9.50)\ior*
+\io1 From Galilee to Jerusalem \ior (10.1-52)\ior*
+\io1 The last week in and near Jerusalem
+-------------
+(File (bookIdentification (idMarker (bookcode) (text))) (ipMarker (text)) (ibMarker) (ipqMarker (text)) (imqMarker (text)) (iprMarker (text)) (iqBlock (iqMarker (text)) (iqMarker (text)) (iqMarker (text)) (iqMarker (text))) (iotMarker (text)) (ioMarker (text) (iorMarker (text))) (ioMarker (text) (iorMarker (text))) (ioMarker (text) (iorMarker (text))) (ioMarker (text)))
+===========
+intro markers set 3
+===========
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\ip However, he is more than a teacher, healer, or  miracle-worker. He is also ...
+\ili 1  The Messiah is the one promised by God, the one who would come and free God's people. By the time  The Gospel of Mark appeared, the title "Messiah" (in Greek,  christ") had become ...
+\ili 2  The Son of God is the title by which the heavenly voice addresses Jesus at his baptism (1.11) and his transfiguration ...
+\ili 3  The Son of Man is the title most...
+\imte End of the Introduction to the Gospel of Mark
+\ie
+------------------
+(File (bookIdentification (idMarker (bookcode) (text))) (ipMarker (text)) (iliBlock (iliMarker (text)) (iliMarker (text)) (iliMarker (text))) (imteBlock (imteMarker (text))) (ieMarker))
