@@ -2,7 +2,9 @@ module.exports = grammar({
   name: 'usfm',
 
   rules: {
-    File: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader)
+    File: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader),
+      optional($.mtBlock),
+      repeat($._introduction)
       // repeat($.NormalMarker), repeat($.Chapter)
       )),
     bookcode: $ => choice("GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG",
@@ -21,26 +23,9 @@ module.exports = grammar({
               "1MQ", "2MQ", "3MQ", "REP", "4BA", "LAO", "FRT", 
               "BAK", "OTH", "INT", "CNC", "GLO", "TDX", "NDX"),
     text: $ => /[^\\\|]+/,
-    // tag: $ => /\\([a-z])+\d?/,
-    // // Closingtag: $ => prec(1,/\\[a-z]+\d?\*/),
-    // // Nestedtag: $ => /\\\+[a-z]+\d?/,
-    // // NestedClosingtag: $ => prec(1, /\\\+[a-z]+\d?\*/),
-    // ChapterNum: $ => /\d+/,
-    // VerseNum: $ => /\d+(\w(-\w)?)?/,
-    // NormalMarker: $ => prec.right(0,seq( field("tag",$.tag), repeat(choice($.text, $.InlineMarker)))),
-    // InlineMarker: $ => prec(2, seq( "\\rem", repeat(choice($.text)), field("closingtag", seq("\\", "rem", "*")))),
-    // // NestedMarker: $ => prec(2, seq(field("openingtag",$.Nestedtag), repeat(choice($.text, $.NestedMarker)), field("closingtag", $.NestedClosingtag))),
-    // ChapterMarker: $ => prec.right(3, seq("\\c",/\s+/, field("ChapterNumber",$.ChapterNum))),
-    // Verse: $ => prec.right(3, seq("\\v",/\s+/, field("VerseNumber", $.VerseNum), repeat(choice($.text, $.InlineMarker)))),
-    // Chapter: $ => prec.right(0, seq($._ChapterHead, repeat($._ChapterContent))),
-    // _ChapterHead: $ => seq($.ChapterMarker),
-    // _ChapterContent: $ => choice($.NormalMarker, $.Verse),
-
-    // inlinetags: $ => choice("rem", "bld")
-
 
     bookIdentification: $ => $.idMarker, //only at start of file
-    _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock),
+    _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock, $._comments),
     hBlock: $ => prec.right(0,seq(repeat1($.hMarker), optional($.tocBlock), optional($.tocaBlock))),
     tocBlock: $ => prec.right(0,repeat1($.tocMarker)),
     tocaBlock: $ =>prec.right(0, repeat1($.tocaMarker)),//only under some hmarkers
@@ -56,73 +41,56 @@ module.exports = grammar({
 
     stsMarker: $ => seq("\\sts ", $.text), // can be present at any position in file, and divides the file into sections from one sts to another.
     remMarker: $ => seq("\\rem ", $.text), // can be present at any position in file.
+    restoreMarker: $ => seq("\\restore ", $.text), //can't find this marker in docs
+    _comments: $ => choice($.remMarker, $.stsMarker, $.restoreMarker),
 
+    _introduction: $ => prec.right(0,seq(
+      optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock))
+      ),
+    _introText: $ => repeat1(choice($.text, $.iqtMarker,
+      // $.characterMarker
+      )),
+    iqtMarker: $ => seq("\\iqt ", $.text, "\\iqt*"),
+    imtBlock: $ => prec.right(0,repeat1($.imtMarker)),
+    imtMarker: $ => seq($._imtTag, $._introText),
+    _imtTag: $ => seq("\\imt",optional(token.immediate(/[1234]/)), " "),
+    imteBlock: $ => prec.right(0,repeat1($.imteMarker)),
+    imteMarker: $ => seq($._imteTag, $._introText),
+    _imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
+    _midIntroMarker: $ => choice($.isBlock, $.ioMarker, $.iotMarker, $.ipMarker, $.imMarker,
+      $.ipiMarker, $.imiMarker, $.iliBlock, $.ipqMarker, $.imqMarker, $.iprMarker, $.ibMarker,
+      $.iqBlock, $.ieMarker, $.iexMarker),
+    isBlock: $ => prec.right(0,repeat1($.isMarker)),
+    isMarker: $ => seq($._isTag, $._introText),
+    _isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
+    ioBlock: $ => prec.right(0,repeat1($.ioMarker)),
+    ioMarker: $ => seq($._ioTag, $._introText, optional($.iorMarker)),
+    _ioTag: $ => seq("\\io",optional(token.immediate(/[1234]/)), " "),
+    iorMarker: $ => seq("\\ior ", $.text, "\\ior*"),
+    iotMarker: $ => seq("\\iot ", $._introText),
+    ipMarker: $ => seq("\\ip ", $._introText),
+    imMarker: $ => seq("\\im ", $._introText),
+    ipiMarker: $ => seq("\\ipi ", $._introText),
+    imiMarker: $ => seq("\\imi ", $._introText),
+    iliBlock: $ => prec.right(0,repeat1($.iliMarker)),
+    iliMarker: $ => seq($._iliTag, $._introText),
+    _iliTag: $ => seq("\\ili",optional(token.immediate(/[12]/)), " "),
+    ipqMarker: $ => seq("\\ipq ", $._introText),
+    imqMarker: $ => seq("\\imq ", $._introText),
+    iprMarker: $ => seq("\\ipr ", $._introText),
+    ibMarker: $ => seq("\\ib"),
+    iqBlock: $ => prec.right(0,repeat1($.iqMarker)),
+    iqMarker: $ => seq($._iqTag, $._introText),
+    _iqTag: $ => seq("\\iq",optional(token.immediate(/[123]/)), " "),
+    ieMarker: $ => seq("\\ie"),
+    iexMarker: $ => seq("\\iex ", $._introText), // can occur in introduction or inside chapter
+
+    mtBlock: $ => prec.right(0,repeat1($.mtMarker)),
+    mtMarker: $ => seq($._mtTag, repeat1(choice($.text,
+      // $.footnote, $.crossref      
+      ))),
+    _mtTag: $ => seq("\\mt",optional(token.immediate(/[1234]/)), " "),
 
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // rules: {
-  //   File: $ => prec.right(0,seq($.BookHead,
-  //     // field("chapters",repeat($.Chapter))
-  //     )),
-  //   BookHead: $ => prec.right(1, seq($.idMarker, repeat($.NormalMarker))),
-  //   // Chapter: $ => prec.right(0, seq($.ChapterMarker, repeat(choice(
-  //   //   $.VerseMarker, $.Note, $.ExtendedStudyContents, $.MilesstoneMarker, $.NormalMarker)))),
-    
-  //   verse_number: $ => prec.right(0, seq($._number, optional($._letter), 
-  //     optional(seq("-", $._number, optional($._letter))))),
-  //   markerName: $ => prec.right(0,seq(optional("+"), repeat1(choice(
-  //     $._letter, $._digit, "_")), optional($._number))),
-  //   attributes: $ => prec.right(0,seq($._pipe_char, repeat(/[^\\]/))),
-
-  //   _backSlash: $ => prec(1, "\\"),
-  //   _newLine: $ => prec.right(1, repeat1(choice("\n", "\r"))),
-  //   _space_char: $ => prec(1," "),
-  //   _pipe_char: $ => prec(1,"|"),
-  //   _letter: $ => prec(1, /[a-zA-Z]/),
-  //   _digit: $ => prec(1, /[0-9]/),
-  //   _char: $ => /[^\\\|\s\n\r]/,
-  //   _number: $ => prec.right(0, /[0-9]+/),
-  //   _word: $ => prec.right(0, seq(repeat($._space_char), repeat1($._char), repeat($._space_char))),
-  //   text: $ => prec.right(0, seq(optional($._newLine), repeat1($._word))),
-
-  //   cTag: $ => prec(1,seq("c", $._space_char)),
-  //   vTag: $ => prec(1,seq("v", $._space_char)),
-
-  //   idMarker: $ => prec.right(2, seq(optional($._newLine), token.immediate(seq($._backSlash, "id")), $._space_char, $._word, optional($.text))),
-  //   ChapterMarker: $ => prec(2, seq(optional($._newLine), token.immediate($._backSlash, $.cTag), $._number)),
-  //   VerseMarker: $ => prec.right(2, seq(optional($._newLine), token.immediate($._backSlash, $.vTag), $.verse_number,
-  //     repeat(choice($.text, $.Note, $.MilesstoneMarker, $.NormalMarker)))),
-
-  //   ClosedMarker: $ => prec.left(1, seq(token.immediate(field("tag",seq($._backSlash, $.markerName))),
-  //     repeat(choice($.text, $.Note, $.ClosedMarker)), optional($.attributes),
-  //     $._backSlash, $.markerName, "*")),
-  //   NormalMarker: $ => prec.right(0, seq(token.immediate(field("tag", seq($._backSlash, $.markerName))), repeat(choice($.text, $.ClosedMarker)), $._newLine)),
-  //   MilesstoneMarker: $ => choice($.MilesstoneMarkerSingle, $.MilesstoneMarkerPair),
-  //   MilesstoneMarkerSingle: $ => seq($._backSlash, $.markerName, $._backSlash, "*"),
-  //   MilesstoneMarkerPair: $ => prec.right(1, seq($._backSlash, $.markerName, choice("s", "e"), optional($.attributes), optional(seq($._backSlash, "*")))),
-  //   ExtendedStudyContents: $ => prec(1,seq($._backSlash, "esbe", 
-  //     repeat(choice($.text, $.Note, $.MilesstoneMarker, $.NormalMarker)), 
-  //     $._backSlash, "esbe" )),
-
-  //   Note: $ => prec(1, choice($._NoteMarkerf, $._NoteMarkerfe, $._NoteMarkeref, $._NoteMarkerx, $._NoteMarkerex)),
-  //   _NoteMarkerf: $ => seq($._backSlash, "f", repeat1(choice($.text, $.NormalMarker)), $._backSlash, "f*"),
-  //   _NoteMarkerfe: $ => seq($._backSlash, "fe", repeat1(choice($.text, $.NormalMarker)), $._backSlash, "fe*"),
-  //   _NoteMarkeref: $ => seq($._backSlash, "ef", repeat1(choice($.text, $.NormalMarker)), $._backSlash, "ef*"),
-  //   _NoteMarkerx: $ => seq($._backSlash, "x", repeat1(choice($.text, $.NormalMarker)), $._backSlash, "x*"),
-  //   _NoteMarkerex: $ => seq($._backSlash, "ex", repeat1(choice($.text, $.NormalMarker)), $._backSlash, "ex*"),
-
-  // }
 });
