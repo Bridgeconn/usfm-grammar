@@ -1,6 +1,6 @@
 # Notes and Questions
 
-1. Supporting deprecated maker usages like, \h#
+1. Supporting deprecated maker usages like, \h#, \ph#
 2. Is multiple `\usfm` , `\ide`, `\toc#` etc allowed? Does Paratext accept it? Is there a way to specify they are all optional, can be present at max once and can occur in any order?!!
 3. readme for `usfm.sty` says it includes a \NotRepeatable property for markers that cannot be repeated under their parent. But not a single use is seen in the `.sty` file!
 4. sty file has a restore marker. Can't find it in usfm docs or our old grammar implementation!
@@ -10,5 +10,5 @@
 8. All markers in introduction are optional. Not being able to define a rule like that. So made at least one midIntroMarker mandatory.
 9. \s5 and \s# with empty text is supported even though it is not as per usfm docs
 10. like iex, cd also doesn't have a Rank in sty.
-11. Dont we need to ensure at leat one v marker occurs before any verseText comes in the chapter? how can me ensure that? Does paratext throw error for this?
+11. Dont we need to ensure at leat one v marker occurs before any verseText comes in the chapter? how can we ensure that? Does paratext throw error for this?
 12. phi marker not shown in docs, but present in sty. Adding it in grammar.
