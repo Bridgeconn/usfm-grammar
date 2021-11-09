@@ -23,6 +23,7 @@ module.exports = grammar({
               "1MQ", "2MQ", "3MQ", "REP", "4BA", "LAO", "FRT", 
               "BAK", "OTH", "INT", "CNC", "GLO", "TDX", "NDX"),
     text: $ => /[^\\\|]+/,
+    _spaceOrLine: $ => /\s\n\r/,
 
     // File Identification
     bookIdentification: $ => $.idMarker, //only at start of file
@@ -94,6 +95,22 @@ module.exports = grammar({
     iexMarker: $ => seq("\\iex ", $._introText), // can occur in introduction or inside chapter
 
 
+    // verse
+    verseText: $ => prec.right(0, seq(
+      $.vMarker, 
+      repeat($._verseMeta),
+      repeat(choice($.text,
+        // $.characterMarker
+    )))),
+    vMarker: $ => seq("\\v ", $.verseNumber),
+    verseNumber: $ => prec.right(0, seq(/\d\w?(-\d\w?)?/, $._spaceOrLine)),
+
+    _verseMeta: $ => choice(
+      $.vaMarker,
+      $.vpMarker,
+    ),
+    vaMarker: $ => seq("\\va ", $.verseNumber, "\\va*"),
+    vpMarker: $ => seq("\\vp ", $.text, "\\vp*"),
 
     // chapter and contents
     Chapter: $ => prec.right(0,seq(
@@ -105,7 +122,7 @@ module.exports = grammar({
 
     _chapterContent: $ => choice(
       $._chapterMeta,
-      $._titles,
+      $._title,
       // $.paragraph,
       // $.table,
       // $.list,
@@ -126,7 +143,7 @@ module.exports = grammar({
       )))),
 
     // Titles & Headings
-    _titles: $ => choice(
+    _title: $ => choice(
       $.msBlock,
       $.sBlock,
       $.spMarker,
