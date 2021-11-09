@@ -10,3 +10,5 @@
 8. All markers in introduction are optional. Not being able to define a rule like that. So made at least one midIntroMarker mandatory.
 9. \s5 and \s# with empty text is supported even though it is not as per usfm docs
 10. like iex, cd also doesn't have a Rank in sty.
+11. Dont we need to ensure at leat one v marker occurs before any verseText comes in the chapter? how can me ensure that? Does paratext throw error for this?
+12. phi marker not shown in docs, but present in sty. Adding it in grammar.

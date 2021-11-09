@@ -96,13 +96,10 @@ module.exports = grammar({
 
 
     // verse
-    verseText: $ => prec.right(0, seq(
-      $.vMarker, 
-      repeat($._verseMeta),
-      repeat(choice($.text,
-        // $.characterMarker
-    )))),
-    vMarker: $ => seq("\\v ", $.verseNumber),
+    verseText: $ => prec.right(0, repeat1(choice($.text,
+      // $.characterMarker,
+      ))),
+    vMarker: $ => seq("\\v ", $.verseNumber, repeat($._verseMeta)),
     verseNumber: $ => prec.right(0, seq(/\d\w?(-\d\w?)?/, $._spaceOrLine)),
 
     _verseMeta: $ => choice(
@@ -115,7 +112,8 @@ module.exports = grammar({
     // chapter and contents
     Chapter: $ => prec.right(0,seq(
         optional($.clMarker),
-        $.cMarker, repeat($._chapterContent)
+        $.cMarker,
+        repeat($._chapterContent)
       )),
     cMarker: $ => seq("\\c ", $.chapterNumber),
     chapterNumber: $ => /\d+/,
@@ -123,7 +121,7 @@ module.exports = grammar({
     _chapterContent: $ => choice(
       $._chapterMeta,
       $._title,
-      // $.paragraph,
+      $._paragraph,
       // $.table,
       // $.list,
     ),
@@ -180,6 +178,50 @@ module.exports = grammar({
     _sdTag: $ => seq("\\sd", optional(token.immediate(/[1234]/)), " "),
     // rqMarker to be implemented 
 
+    // paragraph
+    _paragraph: $ => choice(
+      $.pMarker,
+      $.mMarker,
+      $.poMarker,
+      $.prMarker,
+      $.clsMarker,
+      $.pmoMarker,
+      $.pmMarker,
+      $.pmcMarker,
+      $.pmrMarker,
+      $.piBlock,
+      $.miMarker,
+      $.nbMarker,
+      $.pcMarker,
+      $.phBlock,
+      $.bMarker // may be move this to within _paragraphContent, as no text can be contained in this
+    ),
+
+    _paragraphContent: $ => choice(
+      $.vMarker,
+      $.verseText,
+      // $.footnote, $.crossref
+    ),
+
+    pMarker: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
+    mMarker: $ => prec.right(0, seq("\\m", $._spaceOrLine, repeat($._paragraphContent))),
+    poMarker: $ => prec.right(0, seq("\\po", $._spaceOrLine, repeat($._paragraphContent))),
+    prMarker: $ => prec.right(0, seq("\\pr", $._spaceOrLine, repeat($._paragraphContent))),
+    clsMarker: $ => prec.right(0, seq("\\cls", $._spaceOrLine, repeat($._paragraphContent))),
+    pmoMarker: $ => prec.right(0, seq("\\pmo", $._spaceOrLine, repeat($._paragraphContent))),
+    pmMarker: $ => prec.right(0, seq("\\pm", $._spaceOrLine, repeat($._paragraphContent))),
+    pmcMarker: $ => prec.right(0, seq("\\pmc", $._spaceOrLine, repeat($._paragraphContent))),
+    pmrMarker: $ => prec.right(0, seq("\\pmr", $._spaceOrLine, repeat($._paragraphContent))),
+    piBlock: $ => prec.right(0, repeat1($.piMarker)),
+    piMarker: $ => seq($._piTag, $._paragraphContent),
+    _piTag: $ => seq("\\pi", token.immediate(/[123]/), $._spaceOrLine),
+    miMarker: $ => prec.right(0, seq("\\mi", $._spaceOrLine, repeat($._paragraphContent))),
+    nbMarker: $ => prec.right(0, seq("\\nb", $._spaceOrLine, repeat($._paragraphContent))),
+    pcMarker: $ => prec.right(0, seq("\\pc", $._spaceOrLine, repeat($._paragraphContent))),
+    phBlock: $ => prec.right(0, repeat1($.phMarker)),
+    phMarker: $ => seq($._phTag, $._paragraphContent),
+    _phTag: $ => seq("\\ph", token.immediate(/[123]/), $._spaceOrLine),
+    bMarker: $ => seq("\\b", $._spaceOrLine),
   }
 
 });
