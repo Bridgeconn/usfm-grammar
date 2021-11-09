@@ -4,8 +4,8 @@ module.exports = grammar({
   rules: {
     File: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader),
       optional($.mtBlock),
-      repeat($._introduction)
-      // repeat($.NormalMarker), repeat($.Chapter)
+      repeat($._introduction),
+      repeat($.Chapter)
       )),
     bookcode: $ => choice("GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG",
               "RUT", "1SA", "2SA", "1KI", "2KI", 
@@ -24,32 +24,40 @@ module.exports = grammar({
               "BAK", "OTH", "INT", "CNC", "GLO", "TDX", "NDX"),
     text: $ => /[^\\\|]+/,
 
+    // File Identification
     bookIdentification: $ => $.idMarker, //only at start of file
+    idMarker: $ => prec.right(0, seq("\\id ", $.bookcode, optional($.text))),
+
+
+    // Headers
     _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock, $._comments),
+
+    usfmMarker: $ => seq("\\usfm ", /\d+(\.\d+)?/),
+    ideMarker: $ => seq("\\ide ", $.text),
     hBlock: $ => prec.right(0,seq(repeat1($.hMarker), optional($.tocBlock), optional($.tocaBlock))),
     tocBlock: $ => prec.right(0,repeat1($.tocMarker)),
     tocaBlock: $ =>prec.right(0, repeat1($.tocaMarker)),//only under some hmarkers
 
-
-    idMarker: $ => prec.right(0, seq("\\id ", $.bookcode, optional($.text))),
-    usfmMarker: $ => seq("\\usfm ", /\d+(\.\d+)?/),
-    ideMarker: $ => seq("\\ide ", $.text),
     hMarker: $ => seq($._hTag, $.text),
     _hTag: $ => seq("\\h",optional(token.immediate(/[123]/)), " "),
     tocMarker: $ => seq("\\toc",optional(token.immediate(/[123]/)), " ", $.text),
     tocaMarker: $ => seq("\\toca",optional(token.immediate(/[123]/)), " ", $.text),
 
+    // Remarks and Comments
+    _comments: $ => choice($.remMarker, $.stsMarker, $.restoreMarker),
+
     stsMarker: $ => seq("\\sts ", $.text), // can be present at any position in file, and divides the file into sections from one sts to another.
     remMarker: $ => seq("\\rem ", $.text), // can be present at any position in file.
     restoreMarker: $ => seq("\\restore ", $.text), //can't find this marker in docs
-    _comments: $ => choice($.remMarker, $.stsMarker, $.restoreMarker),
 
+    // Introduction
     _introduction: $ => prec.right(0,seq(
       optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock))
       ),
     _introText: $ => repeat1(choice($.text, $.iqtMarker,
       // $.characterMarker
       )),
+
     iqtMarker: $ => seq("\\iqt ", $.text, "\\iqt*"),
     imtBlock: $ => prec.right(0,repeat1($.imtMarker)),
     imtMarker: $ => seq($._imtTag, $._introText),
@@ -85,11 +93,75 @@ module.exports = grammar({
     ieMarker: $ => seq("\\ie"),
     iexMarker: $ => seq("\\iex ", $._introText), // can occur in introduction or inside chapter
 
+
+
+    // chapter and contents
+    Chapter: $ => prec.right(0,seq(
+        optional($.clMarker),
+        $.cMarker, repeat($._chapterContent)
+      )),
+    cMarker: $ => seq("\\c ", $.chapterNumber),
+    chapterNumber: $ => /\d+/,
+
+    _chapterContent: $ => choice(
+      $._chapterMeta,
+      $._titles,
+      // $.paragraph,
+      // $.table,
+      // $.list,
+    ),
+
+    //chapter meta
+    _chapterMeta: $ => choice(
+      $.caMarker,
+      $.cpMarker,
+      $.cdMarker,
+      $.clMarker
+    ),
+    clMarker: $ => seq("\\cl ", $.text),
+    caMarker: $ => seq("\\ca ", $.chapterNumber, "\\ca*"),
+    cpMarker: $ => seq("\\cp ", $.text),
+    cdMarker: $ => prec.right(0,seq("\\cd ", repeat1(choice($.text,
+      // $.CharacterMarker, $.footnote, $.crossref
+      )))),
+
+    // Titles & Headings
+    _titles: $ => choice(
+      $.msBlock,
+      $.sBlock,
+      $.spMarker,
+      $.dMarker,
+      $.sdBlock,
+      $.rMarker,
+    ),
+
     mtBlock: $ => prec.right(0,repeat1($.mtMarker)),
     mtMarker: $ => seq($._mtTag, repeat1(choice($.text,
       // $.footnote, $.crossref      
       ))),
     _mtTag: $ => seq("\\mt",optional(token.immediate(/[1234]/)), " "),
+
+    msBlock: $ => prec.right(0, repeat1($.msMarker)),
+    msMarker: $ => prec.right(0, seq($._msTag, repeat1(choice($.text,
+      // $.footnote, $.crossref, $.characterMarker      
+      )), optional($.mrMarker))),
+    _msTag: $ => seq("\\ms",optional(token.immediate(/[123]/)), " "),
+    mrMarker: $ => seq("\\mr ", $.text),
+
+    sBlock: $ => prec.right(0, repeat1($.sMarker)),
+    sMarker: $ => prec.right(0, seq($._sTag, repeat(choice($.text,
+      // $.footnote, $.crossref, $.characterMarker      
+      )), optional($.srMarker), optional($.rMarker))),
+    _sTag: $ => seq("\\s",optional(token.immediate(/[12345]/)), " "),
+    srMarker: $ => seq("\\sr ", $.text),
+    rMarker: $ => seq("\\r ", $.text), // ocurs under c too
+
+    spMarker: $ => seq("\\sp ", $.text),
+    dMarker: $ => seq("\\d ", $.text),
+    sdBlock: $ => prec.right(0, repeat1($.sdMarker)),
+    sdMarker: $ => seq($._sdTag, $.text),
+    _sdTag: $ => seq("\\sd", optional(token.immediate(/[1234]/)), " "),
+    // rqMarker to be implemented 
 
   }
 

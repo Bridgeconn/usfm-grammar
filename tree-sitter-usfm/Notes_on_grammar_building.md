@@ -8,3 +8,5 @@
 6. \iqt..\iqt* has occurs under \b, which is a blank line marker without any text. So ignoring this condition
 7. Why does \ior...\or* has occurs under id? Igoring this as well
 8. All markers in introduction are optional. Not being able to define a rule like that. So made at least one midIntroMarker mandatory.
+9. \s5 and \s# with empty text is supported even though it is not as per usfm docs
+10. like iex, cd also doesn't have a Rank in sty.
