@@ -97,8 +97,22 @@ va vp markers
 \p 
 \v 1 text - text
 \v 2 \va 1a \va* text
-\v 3 \va 2 \va* \vp I-I \vp* text
+\v 3 \va 2 \va*   \vp I-I \vp* text
 \v 3 \va 2 \va* \va 2b \va* text
 \v 4 \vp I-I \vp* text
 ------------
-() 
+(File 
+  (bookIdentification 
+    (idMarker (bookcode) (text))) 
+  (chapter 
+    (cMarker (chapterNumber)) 
+    (pMarker 
+      (vMarker (verseNumber)) 
+      (verseText (text)) 
+      (vMarker (verseNumber) (vaMarker (verseNumber))) 
+      (verseText (text)) 
+      (vMarker (verseNumber) (vaMarker (verseNumber)) (vpMarker (text))) 
+      (verseText (text)) 
+      (vMarker (verseNumber) (vaMarker (verseNumber)) (vaMarker (verseNumber))) 
+      (verseText (text)) 
+      (vMarker (verseNumber) (vpMarker (text))) (verseText (text)))))
