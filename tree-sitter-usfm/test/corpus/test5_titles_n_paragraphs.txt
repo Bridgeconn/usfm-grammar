@@ -1,0 +1,65 @@
+===========
+header and titles
+===========
+\id MAT 41MATGNT92.SFM, Good News Translation, June 2003
+\usfm 3.0
+\toc1 The Acts of the Apostles
+\toc2 Acts
+\mt1 THE ACTS
+\mt2 of the Apostles
+\c 1
+\ms BOOK ONE
+\mr (Psalms 1–41)
+\s True Happiness
+\p
+\v 1 ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...
+\s1 The Thirty Wise Sayings
+\sr (22.17--24.22)
+\r (Mark 1.1-8; Luke 3.1-18; John 1.19-28)
+\p
+\v 2 നമ്മുടെ പിതാവായ ...
+\sd2
+\p
+\v 3 കർത്താവായ യേശുവിനോടും ...
+\v 4 The Son was made greater than the angels, just as the name that God gave him is greater than theirs.
+\v 5 For God never said to any of his angels,
+\mte2 The End of the Gospel according to
+\mte1 John 
+---------------------
+(File 
+	(bookIdentification 
+		(idMarker (bookcode) (text))) 
+	(usfmMarker) 
+	(tocBlock 
+		(tocMarker (text)) 
+		(tocMarker (text))) 
+	(mtBlock 
+		(mtMarker (text)) 
+		(mtMarker (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(msBlock 
+			(msMarker (text) (mrMarker (text)))) 
+		(sBlock 
+			(sMarker (text))) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text))) 
+		(sBlock 
+			(sMarker (text) 
+				(srMarker (text)) 
+				(rMarker (text)))) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text))) 
+		(sdBlock (sdMarker)) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(vMarker (verseNumber)) 
+			(verseText (text))) 
+		(mteBlock 
+			(mteMarker (text)) 
+			(mteMarker (text)))))

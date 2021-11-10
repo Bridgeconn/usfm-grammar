@@ -182,8 +182,8 @@ module.exports = grammar({
     spMarker: $ => seq("\\sp ", $.text),
     dMarker: $ => seq("\\d ", $.text),
     sdBlock: $ => prec.right(0, repeat1($.sdMarker)),
-    sdMarker: $ => seq($._sdTag, $.text),
-    _sdTag: $ => seq("\\sd", optional(token.immediate(/[1234]/)), " "),
+    sdMarker: $ => seq($._sdTag),
+    _sdTag: $ => seq("\\sd", optional(token.immediate(/[1234]/)), $._spaceOrLine),
     // rqMarker to be implemented 
 
     // paragraph

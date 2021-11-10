@@ -12,3 +12,5 @@
 10. like iex, cd also doesn't have a Rank in sty.
 11. Dont we need to ensure at leat one v marker occurs before any verseText comes in the chapter? how can we ensure that? Does paratext throw error for this?
 12. phi marker not shown in docs, but present in sty. Adding it in grammar.
+13. Inconsistancy in the values of occurs under and rank for mte mte1 and mte2. mte and mte1 have different specs in sty but doc says they are same. sty says mte2 can occur only under mte1 but example in docs shows mte2 followed by mte1. We are treating them as other numbered markers with occursunder c  and rank 4.
+14. Making some paragraph marker mandatory after titles within chapter. All example in onlice docs in title headings section.
