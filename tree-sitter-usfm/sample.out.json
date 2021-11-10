@@ -1,0 +1,679 @@
+[
+    {
+        "bookIdentification": [
+            {
+                "idMarker": [
+                    {
+                        "\\id ": {
+                            "\\id ": "\\id "
+                        }
+                    },
+                    {
+                        "bookcode": [
+                            {
+                                "EXO": {
+                                    "EXO": "EXO"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "text": {
+                            "text": " 02EXOGNT92.SFM, Good News Translation, June 2003\n"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "hBlock": [
+            {
+                "hMarker": [
+                    {
+                        "\\h": {
+                            "\\h": "\\h"
+                        }
+                    },
+                    {
+                        " ": {
+                            " ": " "
+                        }
+                    },
+                    {
+                        "text": {
+                            "text": "\u0d2a\u0d41\u0d31\u0d2a\u0d4d\u0d2a\u0d3e\u0d1f\u0d41\u0d4d \n"
+                        }
+                    }
+                ]
+            },
+            {
+                "tocBlock": [
+                    {
+                        "tocMarker": [
+                            {
+                                "\\toc": {
+                                    "\\toc": "\\toc"
+                                }
+                            },
+                            {
+                                " ": {
+                                    " ": " "
+                                }
+                            },
+                            {
+                                "text": {
+                                    "text": "\u0d2a\u0d41\u0d31\u0d2a\u0d4d\u0d2a\u0d3e\u0d1f\u0d41\u0d4d "
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "remMarker": [
+            {
+                "\\rem ": {
+                    "\\rem ": "\\rem "
+                }
+            },
+            {
+                "text": {
+                    "text": "test "
+                }
+            }
+        ]
+    },
+    {
+        "ERROR": [
+            {
+                "ERROR": {
+                    "ERROR": "\\rem* test again"
+                }
+            }
+        ]
+    },
+    {
+        "tocBlock": [
+            {
+                "tocMarker": [
+                    {
+                        "\\toc": {
+                            "\\toc": "\\toc"
+                        }
+                    },
+                    {
+                        " ": {
+                            " ": " "
+                        }
+                    },
+                    {
+                        "text": {
+                            "text": "\u0d2a\u0d41\u0d31\u0d2a\u0d4d\u0d2a\u0d3e\u0d1f\u0d41\u0d4d\n"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "mtBlock": [
+            {
+                "mtMarker": [
+                    {
+                        "\\mt": {
+                            "\\mt": "\\mt"
+                        }
+                    },
+                    {
+                        " ": {
+                            " ": " "
+                        }
+                    },
+                    {
+                        "text": {
+                            "text": "\u0d2a\u0d41\u0d31\u0d2a\u0d4d\u0d2a\u0d3e\u0d1f\u0d41\u0d4d\n"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "chapter": [
+            {
+                "cMarker": [
+                    {
+                        "\\c ": {
+                            "\\c ": "\\c "
+                        }
+                    },
+                    {
+                        "chapterNumber": {
+                            "chapterNumber": "1"
+                        }
+                    }
+                ]
+            },
+            {
+                "pMarker": [
+                    {
+                        "\\p": {
+                            "\\p": "\\p"
+                        }
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "1 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d2f\u0d3e\u0d15\u0d4d\u0d15\u0d4b\u0d2c\u0d3f\u0d28\u0d4b\u0d1f\u0d41\u0d15\u0d42\u0d1f\u0d46 \u0d15\u0d41\u0d1f\u0d41\u0d02\u0d2c\u0d38\u0d39\u0d3f\u0d24\u0d02 \u0d08\u0d1c\u0d3f\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d7d \u0d35\u0d28\u0d4d\u0d28 \n"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "1 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d2f\u0d3e\u0d15\u0d4d\u0d15\u0d4b\u0d2c\u0d3f\u0d28\u0d4b\u0d1f\u0d41\u0d15\u0d42\u0d1f\u0d46 \u0d15\u0d41\u0d1f\u0d41\u0d02\u0d2c\u0d38\u0d39\u0d3f\u0d24\u0d02 \u0d08\u0d1c\u0d3f\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d7d \u0d35\u0d28\u0d4d\u0d28 \n"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "1 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d2f\u0d3e\u0d15\u0d4d\u0d15\u0d4b\u0d2c\u0d3f\u0d28\u0d4b\u0d1f\u0d41\u0d15\u0d42\u0d1f\u0d46 \u0d15\u0d41\u0d1f\u0d41\u0d02\u0d2c\u0d38\u0d39\u0d3f\u0d24\u0d02 \u0d08\u0d1c\u0d3f\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d7d \u0d35\u0d28\u0d4d\u0d28 \n"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "1 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d2f\u0d3e\u0d15\u0d4d\u0d15\u0d4b\u0d2c\u0d3f\u0d28\u0d4b\u0d1f\u0d41\u0d15\u0d42\u0d1f\u0d46 \u0d15\u0d41\u0d1f\u0d41\u0d02\u0d2c\u0d38\u0d39\u0d3f\u0d24\u0d02 \u0d08\u0d1c\u0d3f\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d7d \u0d35\u0d28\u0d4d\u0d28 \n"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "1 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d2f\u0d3e\u0d15\u0d4d\u0d15\u0d4b\u0d2c\u0d3f\u0d28\u0d4b\u0d1f\u0d41\u0d15\u0d42\u0d1f\u0d46 \u0d15\u0d41\u0d1f\u0d41\u0d02\u0d2c\u0d38\u0d39\u0d3f\u0d24\u0d02 \u0d08\u0d1c\u0d3f\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d7d "
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "ERROR": [
+                    {
+                        "\\b": {
+                            "\\b": "\\b"
+                        }
+                    },
+                    {
+                        "ERROR": {
+                            "ERROR": "ld \u0d35\u0d28\u0d4d\u0d28"
+                        }
+                    },
+                    {
+                        "\\b": {
+                            "\\b": "\\b"
+                        }
+                    },
+                    {
+                        "ERROR": {
+                            "ERROR": "ld*"
+                        }
+                    }
+                ]
+            },
+            {
+                "pMarker": [
+                    {
+                        "\\p": {
+                            "\\p": "\\p"
+                        }
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d2f\u0d3f\u0d38\u0d4d\u0d30\u0d3e\u0d2f\u0d47\u0d7d\u0d2e\u0d15\u0d4d\u0d15\u0d33\u0d41\u0d1f\u0d46 \u0d2a\u0d47\u0d30\u0d41\u0d15\u0d7e : \n"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "2 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d30\u0d42\u0d2c\u0d47\u0d7b, \u0d36\u0d3f\u0d2e\u0d46\u0d2f\u0d4b\u0d7b, \u0d32\u0d47\u0d35\u0d3f,\n"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "3 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\n"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "4 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d26\u0d3e\u0d7b, \u0d28\u0d2b\u0d4d\u0d24\u0d3e\u0d32\u0d3f, \u0d17\u0d3e\u0d26\u0d4d, \u0d06\u0d36\u0d47\u0d7c.\n"
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "5 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "\u0d2f\u0d3e\u0d15\u0d4d\u0d15\u0d4b\u0d2c\u0d3f\u0d28\u0d4d\u0d31\u0d46 \u0d38\u0d28\u0d4d\u0d24\u0d3e\u0d28\u0d2a\u0d30\u0d2e\u0d4d\u0d2a\u0d30\u0d15\u0d7e \u0d0e\u0d32\u0d4d\u0d32\u0d3e\u0d02 \u0d15\u0d42\u0d1f\u0d3f \u0d0e\u0d34\u0d41\u0d2a\u0d24\u0d41 \u0d2a\u0d47\u0d7c \u0d06\u0d2f\u0d3f\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d41; \u0d2f\u0d4b\u0d38\u0d47\u0d2b\u0d4d \u0d2e\u0d41\u0d2e\u0d4d\u0d2a\u0d46 \u0d24\u0d28\u0d4d\u0d28\u0d46 \u0d08\u0d1c\u0d3f\u0d2a\u0d4d\u0d31\u0d4d\u0d31\u0d3f\u0d7d \u0d06\u0d2f\u0d3f\u0d30\u0d41\u0d28\u0d4d\u0d28\u0d41. "
+                                }
+                            },
+                            {
+                                "ERROR": [
+                                    {
+                                        "ERROR": {
+                                            "ERROR": "\\w gracious|grace\\w* and then a few words later \\w graciouslemma=\"grace\" x-myattr=\"metadata\"\\w*"
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "text": {
+                                    "text": "\n"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "chapter": [
+            {
+                "cMarker": [
+                    {
+                        "\\c ": {
+                            "\\c ": "\\c "
+                        }
+                    },
+                    {
+                        "chapterNumber": {
+                            "chapterNumber": "2"
+                        }
+                    }
+                ]
+            },
+            {
+                "sBlock": [
+                    {
+                        "sMarker": [
+                            {
+                                "\\s": {
+                                    "\\s": "\\s"
+                                }
+                            },
+                            {
+                                " ": {
+                                    " ": " "
+                                }
+                            },
+                            {
+                                "text": {
+                                    "text": "A Prayer of Habakkuk\n"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "pMarker": [
+                    {
+                        "\\p": {
+                            "\\p": "\\p"
+                        }
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "1 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "This is a prayer of the prophet Habakkuk:\n"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "bMarker": [
+                    {
+                        "\\b": {
+                            "\\b": "\\b"
+                        }
+                    }
+                ]
+            },
+            {
+                "qBlock": [
+                    {
+                        "qMarker": [
+                            {
+                                "\\q": {
+                                    "\\q": "\\q"
+                                }
+                            },
+                            {
+                                "vMarker": [
+                                    {
+                                        "\\v ": {
+                                            "\\v ": "\\v "
+                                        }
+                                    },
+                                    {
+                                        "verseNumber": {
+                                            "verseNumber": "2 "
+                                        }
+                                    }
+                                ]
+                            },
+                            {
+                                "verseText": [
+                                    {
+                                        "text": {
+                                            "text": "O "
+                                        }
+                                    },
+                                    {
+                                        "ERROR": [
+                                            {
+                                                "ERROR": {
+                                                    "ERROR": "\\nd Lord\\nd*, I have heard of what you have done,"
+                                                }
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "text": {
+                                            "text": "\n"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "qMarker": [
+                            {
+                                "\\q": {
+                                    "\\q": "\\q"
+                                }
+                            },
+                            {
+                                "verseText": [
+                                    {
+                                        "text": {
+                                            "text": "and I am filled with awe.\n"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "qMarker": [
+                            {
+                                "\\q": {
+                                    "\\q": "\\q"
+                                }
+                            },
+                            {
+                                "verseText": [
+                                    {
+                                        "text": {
+                                            "text": "Now do again in our times\n"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "qMarker": [
+                            {
+                                "\\q": {
+                                    "\\q": "\\q"
+                                }
+                            },
+                            {
+                                "verseText": [
+                                    {
+                                        "text": {
+                                            "text": "the great deeds you used to do.\n"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "qMarker": [
+                            {
+                                "\\q": {
+                                    "\\q": "\\q"
+                                }
+                            },
+                            {
+                                "verseText": [
+                                    {
+                                        "text": {
+                                            "text": "Be merciful, even when you are angry.\n"
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "pMarker": [
+                    {
+                        "\\p": {
+                            "\\p": "\\p"
+                        }
+                    },
+                    {
+                        "vMarker": [
+                            {
+                                "\\v ": {
+                                    "\\v ": "\\v "
+                                }
+                            },
+                            {
+                                "verseNumber": {
+                                    "verseNumber": "21 "
+                                }
+                            }
+                        ]
+                    },
+                    {
+                        "verseText": [
+                            {
+                                "text": {
+                                    "text": "And the "
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "ERROR": [
+            {
+                "ERROR": {
+                    "ERROR": "\\nd Lord\\nd* God made clothes out of animal skins for Adam and his wife,\nand he clothed them."
+                }
+            }
+        ]
+    }
+]
