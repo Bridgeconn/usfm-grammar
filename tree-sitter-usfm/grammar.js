@@ -106,8 +106,8 @@ module.exports = grammar({
       $.vaMarker,
       $.vpMarker,
     ),
-    vaMarker: $ => seq("\\va ", $.verseNumber, "\\va*"),
-    vpMarker: $ => seq("\\vp ", $.text, "\\vp*"),
+    vaMarker: $ => seq("\\va ", $.verseNumber, "\\va*", $._spaceOrLine),
+    vpMarker: $ => seq("\\vp ", $.text, "\\vp*", $._spaceOrLine),
 
     // chapter and contents
     chapter: $ => prec.right(0,seq(
@@ -149,6 +149,7 @@ module.exports = grammar({
       $.dMarker,
       $.sdBlock,
       $.rMarker,
+      $.mteBlock,
     ),
 
     mtBlock: $ => prec.right(0,repeat1($.mtMarker)),
@@ -156,6 +157,12 @@ module.exports = grammar({
       // $.footnote, $.crossref      
       ))),
     _mtTag: $ => seq("\\mt",optional(token.immediate(/[1234]/)), " "),
+
+    mteBlock: $ => prec.right(0,repeat1($.mteMarker)),
+    mteMarker: $ => seq($._mteTag, repeat1(choice($.text,
+      // $.footnote, $.crossref      
+      ))),
+    _mteTag: $ => seq("\\mte",optional(token.immediate(/[12]/)), " "),
 
     msBlock: $ => prec.right(0, repeat1($.msMarker)),
     msMarker: $ => prec.right(0, seq($._msTag, repeat1(choice($.text,
