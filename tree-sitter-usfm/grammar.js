@@ -123,7 +123,7 @@ module.exports = grammar({
       $._title,
       $._paragraph,
       $._comments,
-      $._quote,
+      $._poetry,
       // $.table,
       // $.list,
     ),
@@ -234,29 +234,35 @@ module.exports = grammar({
     bMarker: $ => seq("\\b", $._spaceOrLine),
 
     //quotes
-    _quote: $ => choice(
+    _poetry: $ => choice(
       $.qBlock,
       $.qrMarker,
       $.qcMarker,
-      $.qsMarker,
+      // $.qsMarker,
       $.qaMarker,
-      $.qacMarker,
+      // $.qacMarker,
       $.qmBlock,
       $.qdMarker,
     ),
 
+    _poetryContent: $ => choice(
+      $._paragraphContent,
+      $.qacMarker,
+      $.qsMarker
+    ),
+
     qBlock: $ => prec.right(0, repeat1($.qMarker)),
-    qMarker: $ => seq($._qTag, repeat($._paragraphContent)),
+    qMarker: $ => seq($._qTag, repeat($._poetryContent)),
     _qTag: $ => seq("\\q", optional(token.immediate(/[123]/)), $._spaceOrLine),
-    qrMarker: $ => seq("\\qr", $._spaceOrLine, repeat($._paragraphContent)),
-    qcMarker: $ => seq("\\qc",$._spaceOrLine, repeat($._paragraphContent)),
-    qsMarker: $ => seq("\\qs", $._spaceOrLine, repeat($._paragraphContent), "\\qs*"),
-    qaMarker: $ => seq("\\qa",$._spaceOrLine, repeat($._paragraphContent)),
-    qacMarker: $ => seq("\\qac", $._spaceOrLine, repeat($._paragraphContent), "\\qac*"),
+    qrMarker: $ => seq("\\qr", $._spaceOrLine, repeat($._poetryContent)),
+    qcMarker: $ => seq("\\qc",$._spaceOrLine, repeat($._poetryContent)),
+    qsMarker: $ => seq("\\qs", $._spaceOrLine, repeat($._poetryContent), "\\qs*"),
+    qaMarker: $ => seq("\\qa",$._spaceOrLine, repeat($._poetryContent)),
+    qacMarker: $ => seq("\\qac", $._spaceOrLine, repeat($._poetryContent), token("\\qac*")),
     qmBlock: $ => prec.right(0, repeat1($.qmMarker)),
-    qmMarker: $ => seq($._qmTag, repeat($._paragraphContent)),
+    qmMarker: $ => seq($._qmTag, repeat($._poetryContent)),
     _qmTag: $ => seq("\\qm", optional(token.immediate(/[123]/)), $._spaceOrLine),
-    qdMarker: $ => seq("\\qd",$._spaceOrLine, repeat($._paragraphContent)),
+    qdMarker: $ => seq("\\qd",$._spaceOrLine, repeat($._poetryContent)),
 
   }
 

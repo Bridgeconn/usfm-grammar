@@ -64,7 +64,7 @@ qs
 \v 2 many are saying to me,
 \q2 “There is no help for you \qs Selah\qs*
 ----------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text))) (dMarker (text)) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text)))) (qsMarker (verseText (text)))))
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text))) (dMarker (text)) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text)) (qsMarker (verseText (text)))))))
 ================
 qa
 ================
@@ -106,7 +106,7 @@ qac
 \q1 Los que se decían tus amigos
 \q1 hoy son tus enemigos.
 -------------------
-()
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text)) (sMarker (text))) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text)) (qacMarker (verseText (text))) (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text)))) (bMarker) (qBlock (qMarker (vMarker (verseNumber)) (qacMarker (verseText (text))) (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))))))
 ================
 qm
 ================
