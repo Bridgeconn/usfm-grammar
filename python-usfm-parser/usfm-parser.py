@@ -31,9 +31,18 @@ def convert_2_json(marker, usfm_bytes):
   if len(marker.children)>0:
     item = []
     for child in marker.children:
-      item.append({child.type: convert_2_json(child, usfm_bytes)})
+      val = convert_2_json(child, usfm_bytes)
+      if child.type == val:
+        item.append(child.type)
+      elif isinstance(val, dict) and len(val)==1 and child.type == list(val.keys())[0]:
+        item.append({child.type: val[child.type]})
+      else:
+        item.append({child.type: val})
   else:
-    item = {marker.type: usfm_bytes[marker.start_byte:marker.end_byte].decode('utf-8')}
+    if marker.type == usfm_bytes[marker.start_byte:marker.end_byte].decode('utf-8'):
+      item = marker.type
+    else:
+      item = {marker.type: usfm_bytes[marker.start_byte:marker.end_byte].decode('utf-8')}
   return item
 
 if __name__ == '__main__':
