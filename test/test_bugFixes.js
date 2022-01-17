@@ -331,4 +331,19 @@ describe('Test bug fixes', () => {
     assert.strictEqual(jsonOutput.chapters.length, 0);
     assert.strictEqual(jsonOutput._messages._warnings.includes('No chapters in the file.'), true);
   });
+
+  it('qa contents showing up in verseText', () => {
+    // qa, though part of quotes, is not a verse text carrying marker
+    // Its contents, to be viewed like headings, should not be appended to teh verText field
+    // https://github.com/Bridgeconn/usfm-grammar/issues/133
+    const inputUsfm = '\\id SNG\n\\c 1\n\\p\n\\v 1 verse\n\\qa nonverse\n\\q\nmore verse\n\\v 2 verse';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON(grammar.FILTER.SCRIPTURE);
+    assert.doesNotMatch(jsonOutput.chapters[0].contents[0].verseText, /nonverse/);
+    assert.doesNotMatch(jsonOutput.chapters[0].contents[1].verseText, /nonverse/);
+    const usfmParserRelaxed = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedJsonOutput = usfmParserRelaxed.toJSON(grammar.FILTER.SCRIPTURE);
+    assert.doesNotMatch(relaxedJsonOutput.chapters[0].contents[0].verseText, /nonverse/);
+    assert.doesNotMatch(relaxedJsonOutput.chapters[0].contents[1].verseText, /nonverse/);
+  });
 });
