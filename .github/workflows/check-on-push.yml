@@ -25,13 +25,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: install packages
-        run: cd tree-sitter-usfm | npm install .
-      # Build
-      - name: Generate
-        run: cd tree-sitter-usfm | ./node_modules/.bin/tree-sitter generate
-      # Run testcases
       - name: Run tests
-        run: cd tree-sitter-usfm | ./node_modules/.bin/tree-sitter test
+        run: |
+          cd tree-sitter-usfm
+          npm install .
+          ./node_modules/.bin/tree-sitter generate
+          ./node_modules/.bin/tree-sitter test
 
         
