@@ -125,7 +125,7 @@ module.exports = grammar({
       $._comments,
       $._poetry,
       // $.table,
-      // $.list,
+      $.list,
     ),
 
     //chapter meta
@@ -263,6 +263,37 @@ module.exports = grammar({
     qmMarker: $ => seq($._qmTag, repeat($._poetryContent)),
     _qmTag: $ => seq("\\qm", optional(token.immediate(/[123]/)), $._spaceOrLine),
     qdMarker: $ => seq("\\qd",$._spaceOrLine, repeat($._poetryContent)),
+
+    list: $ => prec.right(0, seq(optional($.lhMarker), repeat1($._listMarker), optional($.lfMarker))),
+
+    lhMarker: $ => prec.right(0, seq("\\lh", $._spaceOrLine, repeat($._paragraphContent))),
+    lfMarker: $ => prec.right(0, seq("\\lf", $._spaceOrLine, repeat($._paragraphContent))),
+    _listMarker: $ => choice( $.liBlock, $.limBlock ), 
+    liBlock: $ => prec.right(0, repeat1($.liMarker)),
+    liMarker: $ => prec.right(0, seq($._liTag, repeat(choice(
+      $._paragraphContent,
+      $._listTextContent,
+      )))),
+    _liTag: $ => seq("\\li",optional(token.immediate(/[1234]/)), $._spaceOrLine),
+    limBlock: $ => prec.right(0, repeat1($.limMarker)),
+    limMarker: $ => prec.right(0, seq($._limTag, repeat(choice(
+        $._paragraphContent,
+        $._listTextContent,)
+      ))
+    ),
+    _limTag: $ => seq("\\lim",optional(token.immediate(/[1234]/)), $._spaceOrLine),
+
+    _listTextContent: $ => choice(
+      $.likMarker,
+      $.livMarker,
+      $.litlMarker
+    ),
+
+    livMarker: $ => prec.right(0, seq($._livTag, $._spaceOrLine, repeat(choice($.verseText,
+      )), $._livTag, token.immediate("*") )),
+    _livTag: $ => prec.right(0,seq("\\liv",optional(token.immediate(/[12345]/)))),
+    likMarker: $ => seq("\\lik ", $.verseText, "\\lik*"),
+    litlMarker: $ => seq("\\litl ", $.verseText, "\\litl*"),
 
   }
 
