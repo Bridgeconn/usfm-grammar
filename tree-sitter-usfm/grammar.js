@@ -126,6 +126,7 @@ module.exports = grammar({
       $._poetry,
       $.table,
       $.list,
+      $.footnote,
     ),
 
     //chapter meta
@@ -139,7 +140,7 @@ module.exports = grammar({
     caMarker: $ => seq("\\ca ", $.chapterNumber, "\\ca*"),
     cpMarker: $ => seq("\\cp ", $.text),
     cdMarker: $ => prec.right(0,seq("\\cd ", repeat1(choice($.text,
-      // $.CharacterMarker, $.footnote, $.crossref
+      // $.CharacterMarker,
       )))),
 
     // Titles & Headings
@@ -209,7 +210,8 @@ module.exports = grammar({
     _paragraphContent: $ => choice(
       $.vMarker,
       $.verseText,
-      // $.footnote, $.crossref
+      $.footnote, 
+      // $.crossref
     ),
 
     pMarker: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -222,13 +224,13 @@ module.exports = grammar({
     pmcMarker: $ => prec.right(0, seq("\\pmc", $._spaceOrLine, repeat($._paragraphContent))),
     pmrMarker: $ => prec.right(0, seq("\\pmr", $._spaceOrLine, repeat($._paragraphContent))),
     piBlock: $ => prec.right(0, repeat1($.piMarker)),
-    piMarker: $ => seq($._piTag, repeat($._paragraphContent)),
+    piMarker: $ => prec.right(0, seq($._piTag, repeat($._paragraphContent))),
     _piTag: $ => seq("\\pi", optional(token.immediate(/[123]/)), $._spaceOrLine),
     miMarker: $ => prec.right(0, seq("\\mi", $._spaceOrLine, repeat($._paragraphContent))),
     nbMarker: $ => prec.right(0, seq("\\nb", $._spaceOrLine, repeat($._paragraphContent))),
     pcMarker: $ => prec.right(0, seq("\\pc", $._spaceOrLine, repeat($._paragraphContent))),
     phBlock: $ => prec.right(0, repeat1($.phMarker)),
-    phMarker: $ => seq($._phTag, repeat($._paragraphContent)),
+    phMarker: $ => prec.right(0, seq($._phTag, repeat($._paragraphContent))),
     _phTag: $ => seq("\\ph", optional(token.immediate(/[123]/)), $._spaceOrLine),
     phiMarker: $ => prec.right(0, seq("\\phi", $._spaceOrLine, repeat($._paragraphContent))),
     bMarker: $ => seq("\\b", $._spaceOrLine),
@@ -252,18 +254,19 @@ module.exports = grammar({
     ),
 
     qBlock: $ => prec.right(0, repeat1($.qMarker)),
-    qMarker: $ => seq($._qTag, repeat($._poetryContent)),
+    qMarker: $ => prec.right(0, seq($._qTag, repeat($._poetryContent))),
     _qTag: $ => seq("\\q", optional(token.immediate(/[123]/)), $._spaceOrLine),
-    qrMarker: $ => seq("\\qr", $._spaceOrLine, repeat($._poetryContent)),
-    qcMarker: $ => seq("\\qc",$._spaceOrLine, repeat($._poetryContent)),
+    qrMarker: $ => prec.right(0, seq("\\qr", $._spaceOrLine, repeat($._poetryContent))),
+    qcMarker: $ => prec.right(0, seq("\\qc",$._spaceOrLine, repeat($._poetryContent))),
     qsMarker: $ => seq("\\qs", $._spaceOrLine, repeat($._poetryContent), "\\qs*"),
-    qaMarker: $ => seq("\\qa",$._spaceOrLine, repeat($._poetryContent)),
+    qaMarker: $ => prec.right(0, seq("\\qa",$._spaceOrLine, repeat($._poetryContent))),
     qacMarker: $ => seq("\\qac", $._spaceOrLine, repeat($._poetryContent), token("\\qac*")),
     qmBlock: $ => prec.right(0, repeat1($.qmMarker)),
-    qmMarker: $ => seq($._qmTag, repeat($._poetryContent)),
+    qmMarker: $ => prec.right(0, seq($._qmTag, repeat($._poetryContent))),
     _qmTag: $ => seq("\\qm", optional(token.immediate(/[123]/)), $._spaceOrLine),
-    qdMarker: $ => seq("\\qd",$._spaceOrLine, repeat($._poetryContent)),
+    qdMarker: $ => prec.right(0, seq("\\qd",$._spaceOrLine, repeat($._poetryContent))),
 
+    //List
     list: $ => prec.right(0, seq(optional($.lhMarker), repeat1($._listMarker), optional($.lfMarker))),
 
     lhMarker: $ => prec.right(0, seq("\\lh", $._spaceOrLine, repeat($._paragraphContent))),
@@ -294,20 +297,60 @@ module.exports = grammar({
       $.litlMarker
     ),
 
+    //Table
     table: $ => prec.right(0, repeat1($.trMarker)),
+    _tableText: $ => choice(
+      $.verseText,
+      $.footnote
+      // $.crossref
+    ),
+
     trMarker: $ => prec.right(0, seq("\\tr", $._spaceOrLine, repeat(choice(
       $.thMarker,
       $.thrMarker,
       $.tcMarker,
       $.tcrMarker))
     )),
-    thMarker: $=> seq("\\th",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $.verseText),
-    thrMarker: $=> seq("\\thr",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $.verseText),
-    tcMarker: $=> seq("\\tc",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $.verseText),
-    tcrMarker: $=> seq("\\tcr",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $.verseText),
+    thMarker: $=> seq("\\th",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $._tableText),
+    thrMarker: $=> seq("\\thr",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $._tableText),
+    tcMarker: $=> seq("\\tc",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $._tableText),
+    tcrMarker: $=> seq("\\tcr",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $._tableText),
 
-    // _tableCellRange: $ => seq(/[12345]/,optional(seq("-", /[12345]/))),
-    
+    //Footnote
+    caller: $ => /[^\s\\]/,
+    noteText: $ => prec.right(0, repeat1(choice($.text,
+      // $.characterMarker,
+      ))),
+
+    footnote: $ => choice($.fMarker, $.feMarker, $.fmMarker),
+
+    fMarker: $ => seq("\\f ",$.caller, repeat($._footnoteContents), "\\f*"),
+    feMarker: $ => seq("\\fe ",$.caller, $._footnoteContents, "\\fe*"),
+    frMarker: $ => seq("\\fr ", $.noteText, optional("\\fr*")),
+    fqMarker: $ => seq("\\fq ", $.noteText, optional("\\fq*")),
+    fqaMarker: $ => seq("\\fqa ", $.noteText, optional("\\fqa*")),
+    fkMarker: $ => seq("\\fk ", $.noteText, optional("\\fk*")),
+    flMarker: $ => seq("\\fl ", $.noteText, optional("\\fl*")),
+    fwMarker: $ => seq("\\fw ", $.noteText, optional("\\fw*")),
+    fpMarker: $ => seq("\\fp ", $.noteText, optional("\\fp*")),
+    ftMarker: $ => seq("\\ft ", $.noteText, optional("\\ft*")),
+    fdcMarker: $ => seq("\\fdc ", $.noteText, optional("\\fdc*")),
+    fvMarker: $ => seq("\\fv ", $.noteText, optional("\\fv*")),
+    fmMarker: $ => seq("\\fm ", $.noteText, "\\fm*"),
+
+    _footnoteContents: $ => choice(
+      $.frMarker,
+      $.fqMarker,
+      $.fqaMarker,
+      $.fkMarker,
+      $.flMarker,
+      $.fwMarker,
+      $.fpMarker,
+      $.ftMarker,
+      $.fdcMarker,
+      $.fvMarker,
+      $.noteText,
+    ),
 
   }
 
