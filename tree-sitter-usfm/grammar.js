@@ -56,6 +56,7 @@ module.exports = grammar({
       optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock))
       ),
     _introText: $ => repeat1(choice($.text, $.iqtMarker,
+      $.xtMarker,
       // $.characterMarker
       )),
 
@@ -141,6 +142,7 @@ module.exports = grammar({
     cpMarker: $ => seq("\\cp ", $.text),
     cdMarker: $ => prec.right(0,seq("\\cd ", repeat1(choice($.text,
       // $.CharacterMarker,
+      $.xtMarker
       )))),
 
     // Titles & Headings
@@ -156,26 +158,28 @@ module.exports = grammar({
 
     mtBlock: $ => prec.right(0,repeat1($.mtMarker)),
     mtMarker: $ => seq($._mtTag, repeat1(choice($.text,
-      // $.footnote, $.crossref      
+      $.footnote, $.crossref      
       ))),
     _mtTag: $ => seq("\\mt",optional(token.immediate(/[1234]/)), " "),
 
     mteBlock: $ => prec.right(0,repeat1($.mteMarker)),
-    mteMarker: $ => seq($._mteTag, repeat1(choice($.text,
-      // $.footnote, $.crossref      
-      ))),
+    mteMarker: $ => prec.right(0, seq($._mteTag, repeat1(choice($.text,
+      $.footnote, $.crossref      
+      )))),
     _mteTag: $ => seq("\\mte",optional(token.immediate(/[12]/)), " "),
 
     msBlock: $ => prec.right(0, repeat1($.msMarker)),
     msMarker: $ => prec.right(0, seq($._msTag, repeat1(choice($.text,
-      // $.footnote, $.crossref, $.characterMarker      
+      $.footnote, $.crossref,
+      // $.characterMarker      
       )), optional($.mrMarker))),
     _msTag: $ => seq("\\ms",optional(token.immediate(/[123]/)), " "),
     mrMarker: $ => seq("\\mr ", $.text),
 
     sBlock: $ => prec.right(0, repeat1($.sMarker)),
     sMarker: $ => prec.right(0, seq($._sTag, repeat(choice($.text,
-      // $.footnote, $.crossref, $.characterMarker      
+      $.footnote, $.crossref, 
+      //$.characterMarker      
       )), optional($.srMarker), optional($.rMarker))),
     _sTag: $ => seq("\\s",optional(token.immediate(/[12345]/)), " "),
     srMarker: $ => seq("\\sr ", $.text),
@@ -186,7 +190,7 @@ module.exports = grammar({
     sdBlock: $ => prec.right(0, repeat1($.sdMarker)),
     sdMarker: $ => seq($._sdTag),
     _sdTag: $ => seq("\\sd", optional(token.immediate(/[1234]/)), $._spaceOrLine),
-    // rqMarker to be implemented 
+    // rqMarker implemented in cross ref section 
 
     // paragraph
     _paragraph: $ => choice(
@@ -211,7 +215,7 @@ module.exports = grammar({
       $.vMarker,
       $.verseText,
       $.footnote, 
-      // $.crossref
+      $.crossref
     ),
 
     pMarker: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -301,8 +305,8 @@ module.exports = grammar({
     table: $ => prec.right(0, repeat1($.trMarker)),
     _tableText: $ => choice(
       $.verseText,
-      $.footnote
-      // $.crossref
+      $.footnote,
+      $.crossref
     ),
 
     trMarker: $ => prec.right(0, seq("\\tr", $._spaceOrLine, repeat(choice(
@@ -350,7 +354,41 @@ module.exports = grammar({
       $.fdcMarker,
       $.fvMarker,
       $.noteText,
+      $.xtMarker
     ),
+
+    //Cross-reference
+    crossref: $ => choice($.xMarker, 
+      $.xtMarker, //using this marker in introtext or cd will not mark it as a crossreference in parse tree
+      // $.exMarker, 
+      $.rqMarker,
+      ),
+
+    xMarker: $ => seq("\\x ", $.caller, repeat($._crossrefContents), "\\x*"),
+    xoMarker: $ => seq("\\xo ", $.noteText, optional("\\xo*")),
+    xkMarker: $ => seq("\\xk ", $.noteText, optional("\\xk*")),
+    xqMarker: $ => seq("\\xq ", $.noteText, optional("\\xq*")),
+    xtMarker: $ => seq("\\xt ", $.noteText,optional($.attributes),  optional("\\xt*")),
+    xtaMarker: $ => seq("\\xta ", $.noteText, optional("\\xta*")),
+    xopMarker: $ => seq("\\xop ", $.noteText, optional("\\xop*")),
+    xotMarker: $ => seq("\\xot ", $.noteText, optional("\\xot*")),
+    xntMarker: $ => seq("\\xnt ", $.noteText, optional("\\xnt*")),
+    xdcMarker: $ => seq("\\xdc ", $.noteText, optional("\\xdc*")),
+    _crossrefContents: $ => choice(
+      $.xoMarker,
+      $.xkMarker,
+      $.xqMarker,
+      $.xtMarker,
+      $.xtaMarker,
+      $.xopMarker,
+      $.xotMarker,
+      $.xntMarker,
+      $.xdcMarker,
+    ),
+    rqMarker: $ => seq("\\rq ", $.noteText, "\\rq*"),
+
+    attributes: $ => seq("|", $.text), //to be implemented properly
+
 
   }
 
