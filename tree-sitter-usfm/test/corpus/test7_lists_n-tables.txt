@@ -184,3 +184,63 @@ lik, liv#
 		)
 	)
 )
+
+==============
+table, with header
+==============
+\id GEN
+\c 1
+\p
+\v 12-83 They presented their offerings in the following order:
+\tr \th1 Day \th2 Tribe \th3 Leader
+\tr \tcr1 1st \tc2 Judah \tc3 Nahshon son of Amminadab
+\tr \tcr1 2nd \tc2 Issachar \tc3 Nethanel son of Zuar
+\tr \tcr1 3rd \tc2 Zebulun \tc3 Eliab son of Helon
+\tr \tcr1 4th \tc2 Reuben \tc3 Elizur son of Shedeur
+\tr \tcr1 5th \tc2 Simeon \tc3 Shelumiel son of Zurishaddai
+---------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text))) 
+		(table 
+			(trMarker (thMarker (verseText (text))) (thMarker (verseText (text))) (thMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text))))
+		)
+	)
+)
+==============
+table with merged cells
+==============
+\id GEN
+\c 1
+\p
+\v 10-16 On the south, those under the banner of the division of Reuben shall camp in
+their groups, under their leaders, as follows:
+\tr \th1 Tribe \th2 Leader \thr3 Number
+\tr \tc1 Reuben \tc2 Elizur son of Shedeur \tcr3 46,500
+\tr \tc1 Simeon \tc2 Shelumiel son of Zurishaddai \tcr3 59,300
+\tr \tc1 Gad \tc2 Eliasaph son of Deuel \tcr3 45,650
+\tr \tcr1-2 Total: \tcr3 151,450
+---------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker (vMarker (verseNumber)) (verseText (text))) 
+		(table 
+			(trMarker (thMarker (verseText (text))) (thMarker (verseText (text))) (thrMarker (verseText (text)))) 
+			(trMarker (tcMarker (verseText (text))) (tcMarker (verseText (text))) (tcrMarker (verseText (text)))) 
+			(trMarker (tcMarker (verseText (text))) (tcMarker (verseText (text))) (tcrMarker (verseText (text)))) 
+			(trMarker (tcMarker (verseText (text))) (tcMarker (verseText (text))) (tcrMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcrMarker (verseText (text))))
+		)
+	)
+) 

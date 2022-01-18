@@ -124,7 +124,7 @@ module.exports = grammar({
       $._paragraph,
       $._comments,
       $._poetry,
-      // $.table,
+      $.table,
       $.list,
     ),
 
@@ -282,6 +282,11 @@ module.exports = grammar({
       ))
     ),
     _limTag: $ => seq("\\lim",optional(token.immediate(/[1234]/)), $._spaceOrLine),
+    livMarker: $ => prec.right(0, seq($._livTag, $._spaceOrLine, repeat(choice($.verseText,
+      )), $._livTag, token.immediate("*") )),
+    _livTag: $ => prec.right(0,seq("\\liv",optional(token.immediate(/[12345]/)))),
+    likMarker: $ => seq("\\lik ", $.verseText, "\\lik*"),
+    litlMarker: $ => seq("\\litl ", $.verseText, "\\litl*"),
 
     _listTextContent: $ => choice(
       $.likMarker,
@@ -289,11 +294,20 @@ module.exports = grammar({
       $.litlMarker
     ),
 
-    livMarker: $ => prec.right(0, seq($._livTag, $._spaceOrLine, repeat(choice($.verseText,
-      )), $._livTag, token.immediate("*") )),
-    _livTag: $ => prec.right(0,seq("\\liv",optional(token.immediate(/[12345]/)))),
-    likMarker: $ => seq("\\lik ", $.verseText, "\\lik*"),
-    litlMarker: $ => seq("\\litl ", $.verseText, "\\litl*"),
+    table: $ => prec.right(0, repeat1($.trMarker)),
+    trMarker: $ => prec.right(0, seq("\\tr", $._spaceOrLine, repeat(choice(
+      $.thMarker,
+      $.thrMarker,
+      $.tcMarker,
+      $.tcrMarker))
+    )),
+    thMarker: $=> seq("\\th",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $.verseText),
+    thrMarker: $=> seq("\\thr",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $.verseText),
+    tcMarker: $=> seq("\\tc",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $.verseText),
+    tcrMarker: $=> seq("\\tcr",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $.verseText),
+
+    // _tableCellRange: $ => seq(/[12345]/,optional(seq("-", /[12345]/))),
+    
 
   }
 
