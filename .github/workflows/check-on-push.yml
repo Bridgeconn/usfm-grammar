@@ -3,9 +3,6 @@ name: Check-on-push
 # Run this workflow every time a new commit pushed to your repository
 on: 
   push:
-    branches: 
-      - master
-      - dev
   pull_request:
     branches: 
       - master
@@ -28,12 +25,15 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
+      - name: Go into grammar directory
+        run: cd tree-sitter-usfm
       - name: install packages
         run: npm install .
-      # Runs the Linter action
-      - name: Run Linter
-        run: npm run lint
+      # Build
+      - name: Generate
+        run: ./node_modules/.bin/tree-sitter generate
       # Run testcases
       - name: Run tests
-        run: npm run test-on-github
+        run: ./node_modules/.bin/tree-sitter test
+
         
