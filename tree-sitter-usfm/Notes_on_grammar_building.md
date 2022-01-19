@@ -17,3 +17,4 @@
 15. \th & \thr markers(table heading cells) and \tc & \tcr(regular table cells) all have similar settings in sty. So their relative positions are not determined by rules. Also, ordering of tc1, tc2, tc3 etc is not specified via rank values. Hence in our rules also, we let them to occur in any order.
 16. Related to footnotes, though usfm doc shows \fr as occuring first inside the footnotes contents, there is no rank value indicating that in usfm.sty. So in our grammar, giving all footnote content markers, including \fr, equal privilege to occur in any order with the footnote.
 17. Can any character be used as footnote caller? In doc it says, it may be one of +, -, ?. But the examples in the doc itself shows usages of c, ⸀, ° 
+18. Maker ex not specified in usfm.sty. 

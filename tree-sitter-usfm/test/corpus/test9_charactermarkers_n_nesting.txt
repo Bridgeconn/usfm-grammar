@@ -1,0 +1,116 @@
+===========
+Simple character markups
+===========
+\id GEN
+\c 1
+\p
+\v 29 И нарек ему имя: Ной, сказав: он утешит нас в работе нашей и в трудах рук
+наших при \add возделывании\add* земли, которую проклял Господь.
+\v 15 Tell the Israelites that I, the \nd Lord\nd*, the God of their ancestors,
+\c 2
+\p
+\v 1 This is the Good News about Jesus Christ, the Son of God.
+\v 2 It began as the prophet Isaiah had written:
+\q1 \qt “God said, ‘I will send my messenger ahead of you\qt*
+\q2 \qt to open the way for you.’\qt*
+\q1
+\v 3 \qt Someone is shouting in the desert,\qt*
+\q2 \qt ‘Get the road ready for the Lord;\qt*
+\q2 \qt make a straight path for him to travel!’ ”\qt*
+\p
+\v 18 With my own hand I write this: \sig Greetings from Paul\sig*. Do not forget
+my chains!
+\cls May God's grace be with you.
+\v 7 Et aux jours d'Artaxerxès, Bishlam, Mitredath, Tabéel et le reste de leurs
+collègues écrivirent à Artaxerxès, roi de Perse. Le texte de la lettre fut écrit en
+araméen, traduit en araméen.
+\p
+\v 8 \sls Rehoum, chancelier, et Shimshaï, secrétaire, écrivirent au roi Artaxerxès
+la lettre suivante concernant Jérusalem, savoir:\sls*
+\v 9 \sls «Rehoum, chancelier, Shimshaï, secrétaire, et le reste de leurs collègues,
+ceux de Dîn, d'Apharsatak, de Tarpel, d'Apharas, d'Erek, de Babylone, de Suse, de Déha,
+d'Elam,\sls*
+\s1 The Death of Jesus
+\r (Mark 15.33-41; Luke 23.44-49; John 19.28-30)
+\p
+\v 45 At noon the whole country was covered with darkness, which lasted for three hours.
+\v 46 At about three o'clock Jesus cried out with a loud shout, \tl “Eli, Eli, lema
+sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
+
+-----------------
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text) (addMarker (text)) (text)) (vMarker (verseNumber)) (verseText (text) (ndMarker (text)) (text)))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (qBlock (qMarker (verseText (qtMarker (text)) (text))) (qMarker (verseText (qtMarker (text)) (text))) (qMarker (vMarker (verseNumber)) (verseText (qtMarker (text)) (text))) (qMarker (verseText (qtMarker (text)) (text))) (qMarker (verseText (qtMarker (text)) (text)))) (pMarker (vMarker (verseNumber)) (verseText (text) (sigMarker (text)) (text))) (clsMarker (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (pMarker (vMarker (verseNumber)) (verseText (slsMarker (text)) (text)) (vMarker (verseNumber)) (verseText (slsMarker (text)) (text))) (sBlock (sMarker (text) (rMarker (text)))) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text) (tlMarker (text)) (text)))))
+============
+In introduction section
+============
+\id GEN
+\mt1 THE ACTS
+\mt2 of the Apostles
+\is Introduction
+\ip \bk The Acts of the Apostles\bk* is a continuation of \bk The Gospel according
+to Luke\bk* Its chief purpose is to tell how Jesus' early followers, led by the Holy
+Spirit, spread the Good News about him “in Jerusalem, in all of Judea and Samaria,
+and to the ends of the earth” (1.8).
+\c 1
+\p
+\v 29 И нарек ему
+---------------
+(File (bookIdentification (idMarker (bookcode) (text))) (mtBlock (mtMarker (text)) (mtMarker (text))) (isBlock (isMarker (text))) (ipMarker (bkMarker (text)) (text) (bkMarker (text)) (text)) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)))))
+==============
+In corss-ref
+==============
+\id GEN
+\c 1
+\q1
+\v 3 Our God is in heaven;
+\q2 he does whatever he wishes.
+\q1
+\v 4 \x - \xo 115.4-8: \xt Ps 135.15-18; \+dc Ltj Jr 4-73; \+dc*\xt Rev 9.20.\x* Their
+gods are made of silver and gold,
+\q2 formed by human hands.
+\p
+\v 51-52 \x - \xo 15.51,52: \xt \+dc 2Es 6.23; \+dc*1Th 4.15-17.\x* Listen to this secret
+truth: we shall not all die, but when the last trumpet sounds, we shall all be changed
+in an instant, as quickly as the blinking of an eye. For when the trumpet sounds, the
+dead will be raised, never to die again, and we shall all be changed.
+------------------
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (crossref (xMarker (caller) (xoMarker (noteText (text))) (xtMarker (noteText (text) (dcNested (text)))) (xtMarker (noteText (text))))) (verseText (text))) (qMarker (verseText (text)))) (pMarker (vMarker (verseNumber)) (crossref (xMarker (caller) (xoMarker (noteText (text))) (xtMarker (noteText (dcNested (text)) (text))))) (verseText (text)))))
+=============
+Figure
+=============
+\id GEN
+\c 1
+\p
+\v 16 As Jesus walked along the shore of Lake Galilee, he saw two fishermen,
+Simon and his brother Andrew, catching fish with a net.
+\v 17 Jesus said to them, “Come with me, and I will teach you to catch people.”
+\v 18 At once they left their nets and went with him. \fig At once they left
+their nets.|src="avnt016.jpg" size="span" ref="1.18"\fig*
+\v 30 Simon's mother-in-law was sick in bed with a fever, and as soon as Jesus
+arrived, he was told about her.
+\v 31 He went to her, took her by the hand, and helped her up. The fever left
+her, and she began to wait on them. \fig Took her by the hand, and...the fever
+left her.|src="avnt017.tif" size="col" ref="1.31"\fig*
+\p
+\v 32 After the sun had set and evening had come 
+-------------
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text) (figMarker (text) (attributes (text))) (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text) (figMarker (text) (attributes (text))) (text))) (pMarker (vMarker (verseNumber)) (verseText (text)))))
+============
+With Attributes
+============
+\id GEN
+\c 1
+\p \v 1 まだ\rb 何|なに\rb*もなかった\rb 時|とき\rb*、\rb 神|かみ\rb*は
+\rb 天|てん\rb*と\rb 地|ち\rb*を\rb 造|つく\rb*りました。
+\v 2 \rb 地|ち\rb*は\rb 形|かたち\rb*も\rb 定|さだ\rb*まらず、\rb 闇|やみ\rb*に
+\rb 包|つつ\rb*まれた\rb 水|みず\rb*の\rb 上|うえ\rb*を、さらに\rb 神|かみ\rb*の
+\rb 霊|れい\rb*が\rb 覆|おお\rb*っていました。
+\p
+\v 3 \w gracious|lemma="grace"\w*
+\w gracious|grace\w*
+\w gracious|lemma="grace" strong="G5485"\w*
+\w gracious|strong="G5485"\w*
+\w gracious|strong="H1234,G5485"\w*
+\w gracious|lemma="grace" srcloc="gnt5:51.1.2.1"\w*
+\w most holy|strong="H6944,H6944"\w*
+----------------
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text)) (vMarker (verseNumber)) (verseText (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text) (rbMarker (text) (attributes (text))) (text))) (pMarker (vMarker (verseNumber)) (verseText (wMarker (text) (attributes (text))) (text) (wMarker (text) (attributes (text))) (text) (wMarker (text) (attributes (text))) (text) (wMarker (text) (attributes (text))) (text) (wMarker (text) (attributes (text))) (text) (wMarker (text) (attributes (text))) (text) (wMarker (text) (attributes (text)))))))

@@ -45,11 +45,12 @@ module.exports = grammar({
     tocaMarker: $ => seq("\\toca",optional(token.immediate(/[123]/)), " ", $.text),
 
     // Remarks and Comments
-    _comments: $ => choice($.remMarker, $.stsMarker, $.restoreMarker),
+    _comments: $ => choice($.remMarker, $.stsMarker, $.restoreMarker, $.litMarker),
 
     stsMarker: $ => seq("\\sts ", $.text), // can be present at any position in file, and divides the file into sections from one sts to another.
     remMarker: $ => seq("\\rem ", $.text), // can be present at any position in file.
     restoreMarker: $ => seq("\\restore ", $.text), //can't find this marker in docs
+    litMarker: $ => seq("\\lit ", $.text), 
 
     // Introduction
     _introduction: $ => prec.right(0,seq(
@@ -57,7 +58,7 @@ module.exports = grammar({
       ),
     _introText: $ => repeat1(choice($.text, $.iqtMarker,
       $.xtMarker,
-      // $.characterMarker
+      $._characterMarker
       )),
 
     iqtMarker: $ => seq("\\iqt ", $.text, "\\iqt*"),
@@ -98,7 +99,7 @@ module.exports = grammar({
 
     // verse
     verseText: $ => prec.right(0, repeat1(choice($.text,
-      // $.characterMarker,
+      $._characterMarker,
       ))),
     vMarker: $ => prec.right(0,seq("\\v ", $.verseNumber, repeat($._verseMeta))),
     verseNumber: $ => /\d+\w?(-\d+\w?)?[\s\n\r]/,
@@ -141,7 +142,7 @@ module.exports = grammar({
     caMarker: $ => seq("\\ca ", $.chapterNumber, "\\ca*"),
     cpMarker: $ => seq("\\cp ", $.text),
     cdMarker: $ => prec.right(0,seq("\\cd ", repeat1(choice($.text,
-      // $.CharacterMarker,
+      $._characterMarker,
       $.xtMarker
       )))),
 
@@ -171,7 +172,7 @@ module.exports = grammar({
     msBlock: $ => prec.right(0, repeat1($.msMarker)),
     msMarker: $ => prec.right(0, seq($._msTag, repeat1(choice($.text,
       $.footnote, $.crossref,
-      // $.characterMarker      
+      $._characterMarker      
       )), optional($.mrMarker))),
     _msTag: $ => seq("\\ms",optional(token.immediate(/[123]/)), " "),
     mrMarker: $ => seq("\\mr ", $.text),
@@ -179,7 +180,7 @@ module.exports = grammar({
     sBlock: $ => prec.right(0, repeat1($.sMarker)),
     sMarker: $ => prec.right(0, seq($._sTag, repeat(choice($.text,
       $.footnote, $.crossref, 
-      //$.characterMarker      
+      $._characterMarker      
       )), optional($.srMarker), optional($.rMarker))),
     _sTag: $ => seq("\\s",optional(token.immediate(/[12345]/)), " "),
     srMarker: $ => seq("\\sr ", $.text),
@@ -215,7 +216,7 @@ module.exports = grammar({
       $.vMarker,
       $.verseText,
       $.footnote, 
-      $.crossref
+      $.crossref,
     ),
 
     pMarker: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -323,7 +324,7 @@ module.exports = grammar({
     //Footnote
     caller: $ => /[^\s\\]/,
     noteText: $ => prec.right(0, repeat1(choice($.text,
-      // $.characterMarker,
+      $._nestedCharacterMarker,
       ))),
 
     footnote: $ => choice($.fMarker, $.feMarker, $.fmMarker),
@@ -387,9 +388,143 @@ module.exports = grammar({
     ),
     rqMarker: $ => seq("\\rq ", $.noteText, "\\rq*"),
 
+    //Character and word level markers
     attributes: $ => seq("|", $.text), //to be implemented properly
+    _innerText: $ => prec.right(0, repeat1(choice(
+      $.text,
+      $._nestedCharacterMarker,
+    ))),
 
+    addMarker: $ => seq("\\add", $._innerText, "\\add*"),
+    bkMarker: $ => seq("\\bk", $._innerText, "\\bk*"),
+    dcMarker: $ => seq("\\dc", $._innerText, "\\dc*"),
+    kMarker: $ => seq("\\k", $._innerText, "\\k*"),
+    ndMarker: $ => seq("\\nd", $._innerText, "\\nd*"),
+    ordMarker: $ => seq("\\ord", $._innerText, "\\ord*"),
+    pnMarker: $ => seq("\\pn", $._innerText, "\\pn*"),
+    pngMarker: $ => seq("\\png", $._innerText, "\\png*"),
+    addpnMarker: $ => seq("\\addpn", $._innerText, "\\addpn*"),
+    qtMarker: $ => seq("\\qt", $._innerText, "\\qt*"),
+    sigMarker: $ => seq("\\sig", $._innerText, "\\sig*"),
+    slsMarker: $ => seq("\\sls", $._innerText, "\\sls*"),
+    tlMarker: $ => seq("\\tl", $._innerText, "\\tl*"),
+    wjMarker: $ => seq("\\wj", $._innerText, "\\wj*"),
 
+    emMarker: $ => seq("\\em", $._innerText, "\\em*"),
+    bdMarker: $ => seq("\\bd", $._innerText, "\\bd*"),
+    itMarker: $ => seq("\\it", $._innerText, "\\it*"),
+    bditMarker: $ => seq("\\bdit", $._innerText, "\\bdit*"),
+    noMarker: $ => seq("\\no", $._innerText, "\\no*"),
+    scMarker: $ => seq("\\sc", $._innerText, "\\sc*"),
+    supMarker: $ => seq("\\sup", $._innerText, "\\sup*"),
+
+    ndxMarker: $ => seq("\\ndx", $._innerText, "\\ndx*"),
+    proMarker: $ => seq("\\pro", $._innerText, "\\pro*"),
+    rbMarker: $ => seq("\\rb", $._innerText, optional($.attributes), "\\rb*"),
+    wMarker: $ => seq("\\w", $._innerText, optional($.attributes), "\\w*"),
+    wgMarker: $ => seq("\\wg", $._innerText, "\\wg*"),
+    whMarker: $ => seq("\\wh", $._innerText, "\\wh*"),
+    waMarker: $ => seq("\\wa", $._innerText, "\\wa*"),
+
+    _characterMarker: $ => choice(
+      $.addMarker,
+      $.bkMarker,
+      $.dcMarker,
+      $.kMarker,
+      $.ndMarker,
+      $.ordMarker,
+      $.pnMarker,
+      $.pngMarker,
+      $.addpnMarker,
+      $.qtMarker,
+      $.sigMarker,
+      $.slsMarker,
+      $.tlMarker,
+      $.wjMarker,
+      $.emMarker,
+      $.bdMarker,
+      $.itMarker,
+      $.bditMarker,
+      $.noMarker,
+      $.scMarker,
+      $.supMarker,
+      $.ndxMarker,
+      $.proMarker,
+      $.rbMarker,
+      $.wMarker,
+      $.wgMarker,
+      $.whMarker,
+      $.waMarker,
+      $.jmpMarker,
+      $.figMarker,
+    ),
+
+    addNested: $ => seq("\\+add", $._innerText, "\\+add*"),
+    bkNested: $ => seq("\\+bk", $._innerText, "\\+bk*"),
+    dcNested: $ => seq("\\+dc", $._innerText, "\\+dc*"),
+    kNested: $ => seq("\\+k", $._innerText, "\\+k*"),
+    ndNested: $ => seq("\\+nd", $._innerText, "\\+nd*"),
+    ordNested: $ => seq("\\+ord", $._innerText, "\\+ord*"),
+    pnNested: $ => seq("\\+pn", $._innerText, "\\+pn*"),
+    pngNested: $ => seq("\\+png", $._innerText, "\\+png*"),
+    addpnNested: $ => seq("\\+addpn", $._innerText, "\\+addpn*"),
+    qtNested: $ => seq("\\+qt", $._innerText, "\\+qt*"),
+    sigNested: $ => seq("\\+sig", $._innerText, "\\+sig*"),
+    slsNested: $ => seq("\\+sls", $._innerText, "\\+sls*"),
+    tlNested: $ => seq("\\+tl", $._innerText, "\\+tl*"),
+    wjNested: $ => seq("\\+wj", $._innerText, "\\+wj*"),
+
+    emNested: $ => seq("\\+em", $._innerText, "\\+em*"),
+    bdNested: $ => seq("\\+bd", $._innerText, "\\+bd*"),
+    itNested: $ => seq("\\+it", $._innerText, "\\+it*"),
+    bditNested: $ => seq("\\+bdit", $._innerText, "\\+bdit*"),
+    noNested: $ => seq("\\+no", $._innerText, "\\+no*"),
+    scNested: $ => seq("\\+sc", $._innerText, "\\+sc*"),
+    supNested: $ => seq("\\+sup", $._innerText, "\\+sup*"),
+
+    ndxNested: $ => seq("\\+ndx", $._innerText, "\\+ndx*"),
+    proNested: $ => seq("\\+pro", $._innerText, "\\+pro*"),
+    rbNested: $ => seq("\\+rb", $._innerText, optional($.attributes), "\\+rb*"),
+    wNested: $ => seq("\\+w", $._innerText, optional($.attributes), "\\+w*"),
+    wgNested: $ => seq("\\+wg", $._innerText, "\\+wg*"),
+    whNested: $ => seq("\\+wh", $._innerText, "\\+wh*"),
+    waNested: $ => seq("\\+wa", $._innerText, "\\+wa*"),
+
+    _nestedCharacterMarker: $ => choice(
+      $.addNested,
+      $.bkNested,
+      $.dcNested,
+      $.kNested,
+      $.ndNested,
+      $.ordNested,
+      $.pnNested,
+      $.pngNested,
+      $.addpnNested,
+      $.qtNested,
+      $.sigNested,
+      $.slsNested,
+      $.tlNested,
+      $.wjNested,
+      $.emNested,
+      $.bdNested,
+      $.itNested,
+      $.bditNested,
+      $.noNested,
+      $.scNested,
+      $.supNested,
+      $.ndxNested,
+      $.proNested,
+      $.rbNested,
+      $.wNested,
+      $.wgNested,
+      $.whNested,
+      $.waNested,
+      $.jmpNested,
+    ),
+
+    figMarker: $ => seq("\\fig", optional($.text), optional($.attributes), "\\fig*"),
+    jmpMarker: $ => seq("\\jmp", field("label",optional($.text)), optional($.attributes), "\\jmp*"),
+    jmpNested: $ => seq("\\+jmp", field("label",optional($.text)), optional($.attributes), "\\+jmp*"),
   }
 
 });
