@@ -129,6 +129,7 @@ module.exports = grammar({
       $.table,
       $.list,
       $.footnote,
+      $.pbMarker,
     ),
 
     //chapter meta
@@ -525,6 +526,8 @@ module.exports = grammar({
     figMarker: $ => seq("\\fig", optional($.text), optional($.attributes), "\\fig*"),
     jmpMarker: $ => seq("\\jmp", field("label",optional($.text)), optional($.attributes), "\\jmp*"),
     jmpNested: $ => seq("\\+jmp", field("label",optional($.text)), optional($.attributes), "\\+jmp*"),
+
+    pbMarker: $ => seq("\\pb", $._spaceOrLine),
   }
 
 });
