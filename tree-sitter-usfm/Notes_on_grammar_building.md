@@ -14,3 +14,7 @@
 12. phi marker not shown in docs, but present in sty. Adding it in grammar.
 13. Inconsistancy in the values of occurs under and rank for mte mte1 and mte2. mte and mte1 have different specs in sty but doc says they are same. sty says mte2 can occur only under mte1 but example in docs shows mte2 followed by mte1. We are treating them as other numbered markers with occursunder c  and rank 4.
 14. Making some paragraph marker mandatory after titles within chapter. All example in onlice docs in title headings section.
+15. \th & \thr markers(table heading cells) and \tc & \tcr(regular table cells) all have similar settings in sty. So their relative positions are not determined by rules. Also, ordering of tc1, tc2, tc3 etc is not specified via rank values. Hence in our rules also, we let them to occur in any order.
+16. Related to footnotes, though usfm doc shows \fr as occuring first inside the footnotes contents, there is no rank value indicating that in usfm.sty. So in our grammar, giving all footnote content markers, including \fr, equal privilege to occur in any order with the footnote.
+17. Can any character be used as footnote caller? In doc it says, it may be one of +, -, ?. But the examples in the doc itself shows usages of c, ⸀, ° 
+18. Maker ex not specified in usfm.sty. 

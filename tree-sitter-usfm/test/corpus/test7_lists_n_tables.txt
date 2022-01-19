@@ -1,0 +1,246 @@
+===========
+lh, li#, lf
+===========
+\id GEN
+\c 3
+\s1 Administration of the Tribes of Israel
+\lh
+\v 16-22 This is the list of the administrators of the tribes of Israel:
+\li1 Reuben - Eliezer son of Zichri
+\li1 Simeon - Shephatiah son of Maacah
+\li1 Levi - Hashabiah son of Kemuel
+\li1 Aaron - Zadok
+\li1 Judah - Elihu, one of King David's brothers
+\li1 Issachar - Omri son of Michael
+\li1 Zebulun - Ishmaiah son of Obadiah
+\li1 Naphtali - Jeremoth son of Azriel
+\li1 Ephraim - Hoshea son of Azaziah
+\li1 West Manasseh - Joel son of Pedaiah
+\li1 East Manasseh - Iddo son of Zechariah
+\li1 Benjamin - Jaasiel son of Abner
+\li1 Dan - Azarel son of Jeroham
+\lf This was the list of the administrators of the tribes of Israel.
+------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(sBlock (sMarker (text))) 
+		(list 
+			(lhMarker 
+				(vMarker (verseNumber)) 
+				(verseText (text)))
+			(liBlock 
+				(liMarker (verseText (text)))
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text))) 
+				(liMarker (verseText (text)))) 
+			(lfMarker (verseText (text)))
+		)
+	)
+)
+
+=============
+only li#
+=============
+\id GEN
+\c 3
+\p
+\v 84-88 The totals of the offerings brought by the twelve leaders for the dedication of
+the altar were as follows:
+\li –twelve silver bowls and twelve silver basins weighing a total of 60 pounds
+\li –twelve gold dishes weighing a total of 48 ounces, filled with incense
+\li –twelve bulls, twelve rams, and twelve one-year-old lambs, plus the grain offerings that
+go with them, for the burnt offerings
+\li –twelve goats for the sin offerings
+\li –twenty-four bulls, sixty rams, sixty goats, sixty one-year-old lambs, for the fellowship
+offerings
+---------------
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text))) 
+	(list 
+	(liBlock 
+		(liMarker (verseText (text))) 
+		(liMarker (verseText (text))) 
+		(liMarker (verseText (text))) 
+		(liMarker (verseText (text))) 
+		(liMarker (verseText (text)))
+	))
+))
+
+===================
+lim, litl
+===================
+\id GEN
+\c 1
+\pm
+\v 6 These are the people of the province who came up from the captivity of the exiles
+whom Nebuchadnezzar king of Babylon had taken captive (they returned to Jerusalem and
+Judah, each to his own town,
+\v 7 in company with Zerubbabel, Jeshua, Nehemiah, Azariah, Raamiah, Nahamani, Mordecai,
+Bilshan, Mispereth, Bigvai, Nehum and Baanah):
+\b
+\pm The list of the men of Israel:
+\b
+\lim1
+\v 8 the descendants of Parosh - \litl 2,172\litl*
+\lim1
+\v 9 of Shephatiah - \litl 372\litl*
+\lim1
+\v 10 of Arah - \litl 652\litl*
+\lim1
+\v 11 of Pahath-Moab (through the line of Jeshua and Joab) - \litl 2,818\litl*
+\lim1
+\v 12 of Elam - \litl 1,254\litl*
+\lim1
+\v 13 of Zattu - \litl 845\litl*
+\lim1
+\v 14 of Zaccai - \litl 760\litl*
+----------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pmMarker 
+			(vMarker (verseNumber)) (verseText (text)) 
+			(vMarker (verseNumber)) (verseText (text))) 
+		(bMarker) 
+		(pmMarker 
+			(verseText (text))) 
+		(bMarker) 
+		(list 
+			(limBlock 
+				(limMarker 
+					(vMarker (verseNumber)) (verseText (text)) (litlMarker (verseText (text))) (verseText (text))) 
+				(limMarker 
+					(vMarker (verseNumber)) (verseText (text)) (litlMarker (verseText (text))) (verseText (text))) 
+				(limMarker 
+					(vMarker (verseNumber)) (verseText (text)) (litlMarker (verseText (text))) (verseText (text))) 
+				(limMarker 
+					(vMarker (verseNumber)) (verseText (text)) (litlMarker (verseText (text))) (verseText (text))) 
+				(limMarker 
+					(vMarker (verseNumber)) (verseText (text)) (litlMarker (verseText (text))) (verseText (text))) 
+				(limMarker 
+					(vMarker (verseNumber)) (verseText (text)) (litlMarker (verseText (text))) (verseText (text))) 
+				(limMarker 
+					(vMarker (verseNumber)) (verseText (text)) (litlMarker (verseText (text))))
+			)
+		)
+	)
+) 
+==============
+lik, liv#
+==============
+\id GEN
+\c 38
+\s1 Administration of the Tribes of Israel
+\lh
+\v 16-22 This is the list of the administrators of the tribes of Israel:
+\li1 \lik Reuben\lik* \liv1 Eliezer son of Zichri\liv1*
+\li1 \lik Simeon\lik* \liv1 Shephatiah son of Maacah\liv1*
+\li1 \lik Levi\lik* \liv1 Hashabiah son of Kemuel\liv1*
+\li1 \lik Aaron\lik* \liv1 Zadok\liv1*
+\li1 \lik Judah\lik* \liv1 Elihu, one of King David's brothers\liv1*
+\li1 \lik Issachar\lik* \liv1 Omri son of Michael\liv1*
+\li1 \lik Zebulun\lik* \liv1 Ishmaiah son of Obadiah\liv1*
+\li1 \lik Naphtali\lik* \liv1 Jeremoth son of Azriel\liv1*
+\li1 \lik Ephraim\lik* \liv1 Hoshea son of Azaziah\liv1*
+\li1 \lik West Manasseh\lik* \liv1 Joel son of Pedaiah\liv1*
+\li1 \lik East Manasseh\lik* \liv1 Iddo son of Zechariah\liv1*
+\li1 \lik Benjamin\lik* \liv1 Jaasiel son of Abner\liv1*
+\li1 \lik Dan\lik* \liv1 Azarel son of Jeroham\liv1*
+\lf This was the list of the administrators of the tribes of Israel.
+----------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(sBlock (sMarker (text))) 
+		(list 
+			(lhMarker (vMarker (verseNumber)) (verseText (text))) 
+			(liBlock 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text))) 
+				(liMarker (likMarker (verseText (text))) (verseText (text)) (livMarker (verseText (text))) (verseText (text)))) 
+			(lfMarker (verseText (text)))
+		)
+	)
+)
+
+==============
+table, with header
+==============
+\id GEN
+\c 1
+\p
+\v 12-83 They presented their offerings in the following order:
+\tr \th1 Day \th2 Tribe \th3 Leader
+\tr \tcr1 1st \tc2 Judah \tc3 Nahshon son of Amminadab
+\tr \tcr1 2nd \tc2 Issachar \tc3 Nethanel son of Zuar
+\tr \tcr1 3rd \tc2 Zebulun \tc3 Eliab son of Helon
+\tr \tcr1 4th \tc2 Reuben \tc3 Elizur son of Shedeur
+\tr \tcr1 5th \tc2 Simeon \tc3 Shelumiel son of Zurishaddai
+---------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text))) 
+		(table 
+			(trMarker (thMarker (verseText (text))) (thMarker (verseText (text))) (thMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcMarker (verseText (text))) (tcMarker (verseText (text))))
+		)
+	)
+)
+==============
+table with merged cells
+==============
+\id GEN
+\c 1
+\p
+\v 10-16 On the south, those under the banner of the division of Reuben shall camp in
+their groups, under their leaders, as follows:
+\tr \th1 Tribe \th2 Leader \thr3 Number
+\tr \tc1 Reuben \tc2 Elizur son of Shedeur \tcr3 46,500
+\tr \tc1 Simeon \tc2 Shelumiel son of Zurishaddai \tcr3 59,300
+\tr \tc1 Gad \tc2 Eliasaph son of Deuel \tcr3 45,650
+\tr \tcr1-2 Total: \tcr3 151,450
+---------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker (vMarker (verseNumber)) (verseText (text))) 
+		(table 
+			(trMarker (thMarker (verseText (text))) (thMarker (verseText (text))) (thrMarker (verseText (text)))) 
+			(trMarker (tcMarker (verseText (text))) (tcMarker (verseText (text))) (tcrMarker (verseText (text)))) 
+			(trMarker (tcMarker (verseText (text))) (tcMarker (verseText (text))) (tcrMarker (verseText (text)))) 
+			(trMarker (tcMarker (verseText (text))) (tcMarker (verseText (text))) (tcrMarker (verseText (text)))) 
+			(trMarker (tcrMarker (verseText (text))) (tcrMarker (verseText (text))))
+		)
+	)
+) 

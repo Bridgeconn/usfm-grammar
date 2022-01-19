@@ -1,0 +1,248 @@
+==========
+A basic footnote usage
+==========
+\id GEN
+\c 1
+\s1 The Preaching of John the Baptist
+\r (Matthew 3.1-12; Luke 3.1-18; John 1.19-28)
+\p
+\v 1 This is the Good News about Jesus Christ, the Son of God. \f + \fr 1.1: \ft Some
+manuscripts do not have \fq the Son of God.\f*
+-----------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(sBlock (sMarker (text) (rMarker (text)))) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(footnote 
+				(fMarker (caller) (noteText (text)) (frMarker (noteText (text))) (ftMarker (noteText (text))) (fqMarker (noteText (text)))))
+		)
+	)
+)
+============
+Another footnote
+============
+\id GEN
+\c 1
+\p
+\v 20 Adam \f + \fr 3.20: \fk Adam: \ft This name in Hebrew means “all human beings.”\f*
+named his wife Eve, \f + \fr 3.20: \fk Eve: \ft This name sounds similar to the Hebrew
+word for “living,” which is rendered in this context as “human beings.”\f* because she
+was the mother of all human beings.
+------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(footnote (fMarker (caller) (noteText (text)) (frMarker (noteText (text))) (fkMarker (noteText (text))) (ftMarker (noteText (text))))) 
+			(verseText (text)) 
+			(footnote (fMarker (caller) (noteText (text)) (frMarker (noteText (text))) (fkMarker (noteText (text))) (ftMarker (noteText (text)))))
+			(verseText (text)))))
+=============
+Footnotes with unusual callers
+=============
+\id GEN
+\c 1
+\p
+\v 3 Él es el resplandor glorioso de Dios,\f c \fr 1.3: \fk Resplandor: \ft Cf.
+Jn 1.4-9,14\fdc ; también Sab 7.25-26, donde algo parecido se dice de la sabiduría.\f*
+la imagen misma de lo que Dios es y el que sostiene todas las cosas con su palabra
+poderosa. Después de limpiarnos de nuestros pecados, se ha sentado en el cielo, a la
+derecha del trono de Dios,
+\v 4 y ha llegado a ser superior a los ángeles, pues ha recibido en herencia un título
+mucho más importante que el de ellos. \f ⸀ \fr 28,14 \ft υπο \fw B D 0148. 892\f*
+\v 3 \f ° \fr 4,1 \fw B Δ 700\f*
+-----------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(footnote (fMarker (caller) (noteText (text)) (frMarker (noteText (text))) (fkMarker (noteText (text))) (ftMarker (noteText (text))) (fdcMarker (noteText (text))))) 
+			(verseText (text)) 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(footnote (fMarker (caller) (noteText (text)) (frMarker (noteText (text))) (ftMarker (noteText (text))) (fwMarker (noteText (text))))) 
+			(verseText (text)) 
+			(vMarker (verseNumber)) 
+			(footnote (fMarker (caller) (noteText (text)) (frMarker (noteText (text))) (fwMarker (noteText (text))))))))
+================
+Footnote in new line
+================
+\id GEN
+\c 1
+\p
+\v 27 Can any of you live a bit longer
+\f + \fr 6.27: \fq live a bit longer; \ft or \fq grow a bit taller.\f* by worrying about it?
+----------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(footnote (fMarker (caller) (noteText (text)) (frMarker (noteText (text))) (fqMarker (noteText (text))) (ftMarker (noteText (text))) (fqMarker (noteText (text))))) 
+			(verseText (text)))))
+
+===============
+A basic cross-ref
+===============
+\id GEN
+\c 1
+\p
+\v 22 But when Joseph heard that Archelaus had succeeded his father Herod as king of
+Judea, he was afraid to go there. He was given more instructions in a dream, so he went
+to the province of Galilee
+\v 23 \x - \xo 2.23: \xt Mrk 1.24; Luk 2.39; Jhn 1.45.\x* and made his home in a town
+named Nazareth. And so what the prophets had said came true: “He will be called a
+Nazarene.”
+---------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(vMarker (verseNumber)) 
+			(crossref (xMarker (caller) (xoMarker (noteText (text))) (xtMarker (noteText (text))))) 
+			(verseText (text)))))
+==============
+A not-so-basic crossref
+==============
+\id GEN
+\c 1
+\p
+\v 18 “Why do you call me good?” Jesus asked him. “No one is good except God alone.
+\v 19 \x - \xo 10.19: a \xt Exo 20.13; Deu 5.17; \xo b \xt Exo 20.14; Deu 5.18; \xo c
+\xt Exo 20.15; Deu 5.19; \xo d \xt Exo 20.16; Deu 5.20; \xo e \xt Exo 20.12; Deu 5.16.\x*
+You know the commandments: ‘Do not commit murder; do not commit adultery; do not steal;
+do not accuse anyone falsely; do not cheat; respect your father and your mother.’”
+---------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker (vMarker (verseNumber)) 
+		(verseText (text)) 
+		(vMarker (verseNumber)) 
+		(crossref (xMarker (caller) (xoMarker (noteText (text))) (xtMarker (noteText (text))) (xoMarker (noteText (text))) (xtMarker (noteText (text))) (xoMarker (noteText (text))) (xtMarker (noteText (text))) (xoMarker (noteText (text))) (xtMarker (noteText (text))) (xoMarker (noteText (text))) (xtMarker (noteText (text))))) 
+		(verseText (text))))) 
+===============
+xt in cd
+===============
+\id GEN
+\c 2
+\cd \xt 1|GEN 2:1\xt* Бог благословляет седьмой день; \xt 8|GEN 2:8\xt* человек в раю Едемском;
+четыре реки; дерево познания добра и зла. \xt 18|GEN 2:18\xt* Человек дает названия животным.
+\xt 21|GEN 2:21\xt* Создание женщины.
+\p
+\v 1 Так совершены небо и земля и все воинство их.
+\p
+\v 2 И совершил Бог к седьмому дню дела Свои, которые Он делал, и почил в день седьмой
+от всех дел Своих, которые делал.
+-----------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(cdMarker 
+			(xtMarker (noteText (text)) (attributes (text))) 
+			(text) 
+			(xtMarker (noteText (text)) (attributes (text))) 
+			(text) 
+			(xtMarker (noteText (text)) (attributes (text))) 
+			(text) 
+			(xtMarker (noteText (text)) (attributes (text))) 
+			(text)) 
+		(pMarker 
+			(vMarker (verseNumber)) (verseText (text))) (pMarker (vMarker (verseNumber)) (verseText (text)))))
+==============
+Cross-ref in s#
+==============
+\id GEN
+\c 3
+\s1 The Preaching of John the Baptist\x - \xo 3.0 \xta Compare with \xt Mk 1.1-8;
+Lk 3.1-18; \xta and \xt Jn 1.19-28 \xta parallel passages.\x*
+\p
+\v 1 At that time John the Baptist came to the desert of Judea and started preaching.
+---------------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(sBlock 
+			(sMarker 
+				(text) 
+				(crossref (xMarker (caller) (xoMarker (noteText (text))) (xtaMarker (noteText (text))) (xtMarker (noteText (text))) (xtaMarker (noteText (text))) (xtMarker (noteText (text))) (xtaMarker (noteText (text))))) 
+				(text))) 
+		(pMarker 
+			(vMarker (verseNumber)) 
+			(verseText (text))))) 
+==============
+Another cross-ref
+==============
+\id GEN
+\c 1
+\p
+\v 1 \x - \xo 1:1 \xop Гл 1. (1)\xop* \xt 4 Царств. 14:25.\x*И биде слово Господне
+към Иона, син Аматиев:
+\v 2 \x - \xo 1:2 \xop (2)\xop* \xt Бит. 10:11. Иона 3:3.\x*„стани, иди в Ниневия,
+град голям, и проповядвай в него, защото злодеянията му достигнаха до Мене“.
+\v 3 И стана Иона да побегне в Тарсис от лицето Господне; дойде в Иопия и намери кораб,
+който отиваше за Тарсис, плати за превоз и влезе в него, за да отплува с тях в Тарсис
+от лицето Господне.
+\v 4 \x - \xo 1:4 \xop (4)\xop* \xt Пс. 106:25.\x*Но Господ подигна в морето силен
+вятър, и стана в морето голяма буря, и корабът насмалко оставаше да се разбие.
+\v 5 \x - \xo 1:5 \xop (5)\xop* \xt 4 Царств. 17:29.\x*Уплашиха се корабниците; те
+викаха всеки към своя бог и почнаха да хвърлят в морето товара от кораба, за да му
+олекне от него; а Иона бе слязъл в дъното на кораба, бе легнал и дълбоко заспал.
+------------------
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (crossref (xMarker (caller) (xoMarker (noteText (text))) (xopMarker (noteText (text))) (xtMarker (noteText (text))))) (verseText (text)) (vMarker (verseNumber)) (crossref (xMarker (caller) (xoMarker (noteText (text))) (xopMarker (noteText (text))) (xtMarker (noteText (text))))) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (crossref (xMarker (caller) (xoMarker (noteText (text))) (xopMarker (noteText (text))) (xtMarker (noteText (text))))) (verseText (text)) (vMarker (verseNumber)) (crossref (xMarker (caller) (xoMarker (noteText (text))) (xopMarker (noteText (text))) (xtMarker (noteText (text))))) (verseText (text))))) 
+===============
+More cross-refs
+===============
+\id GEN
+\c 1
+\q1
+\v 3 Our God is in heaven;
+\q2 he does whatever he wishes.
+\q1
+\v 4 \x - \xo 115.4-8: \xt Ps 135.15-18; \xdc Ltj Jr 4-73; \xt Rev 9.20.\x* Their
+gods are made of silver and gold,
+\q2 formed by human hands.
+\p
+\v 51-52 \x - \xo 15.51,52: \xdc 2Es 6.23; \xt 1Th 4.15-17.\x* Listen to this secret
+truth: we shall not all die, but when the last trumpet sounds, we shall all be changed
+in an instant, as quickly as the blinking of an eye. For when the trumpet sounds, the
+dead will be raised, never to die again, and we shall all be changed.
+----------------
+(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (crossref (xMarker (caller) (xoMarker (noteText (text))) (xtMarker (noteText (text))) (xdcMarker (noteText (text))) (xtMarker (noteText (text))))) (verseText (text))) (qMarker (verseText (text)))) (pMarker (vMarker (verseNumber)) (crossref (xMarker (caller) (xoMarker (noteText (text))) (xdcMarker (noteText (text))) (xtMarker (noteText (text))))) (verseText (text)))))
+=================
+rq
+================
+\id GEN
+\c 1
+\p
+\v 4 The Son was made greater than the angels, just as the name that God gave him is greater
+than theirs.
+\v 5 For God never said to any of his angels,
+\q1 "You are my Son;
+\q2 today I have become your Father."
+\rq Psa 2.7\rq*
+\b
+\m Nor did God say about any angel,
+\q1 "I will be his Father,
+\q2 and he will be my Son."
+\rq 2Sa 7.14; 1Ch 17.13\rq*
+-----------------
+ (File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (qBlock (qMarker (verseText (text))) (qMarker (verseText (text)) (crossref (rqMarker (noteText (text)))) (verseText (text)))) (bMarker) (mMarker (verseText (text))) (qBlock (qMarker (verseText (text))) (qMarker (verseText (text)) (crossref (rqMarker (noteText (text))))))))
