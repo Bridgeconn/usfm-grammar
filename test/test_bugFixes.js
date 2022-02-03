@@ -346,4 +346,19 @@ describe('Test bug fixes', () => {
     assert.doesNotMatch(relaxedJsonOutput.chapters[0].contents[0].verseText, /nonverse/);
     assert.doesNotMatch(relaxedJsonOutput.chapters[0].contents[1].verseText, /nonverse/);
   });
+
+  it('nested notes failing only in relaxed mode', () => {
+    // When footnote comes within character markers it fails in relaxed mode and passes in normal
+    // https://github.com/Bridgeconn/usfm-grammar/issues/136
+    const inputUsfm = '\\id SNG\n\\c 1\n\\p\n\\v 26 फिर परमेश्वर ने कहा, “हम \\nd मनुष्य \\f + \\fr 1.26 \\fq मनुष्य: \\ft मनुष्य नई प्रजाति है, वह विशेष रूप से इस पृथ्वी के अन्य प्रकार के जीवों से भिन्न है। \\f* \\nd* को \\it अपने स्वरूप के अनुसार\\it*\\f + \\fr 1.26 \\fq अपने स्वरूप के अनुसार: \\ft अर्थात् अपनी समानता में। मनुष्य का स्वर्ग से सम्बंध है और इस पृथ्वी का कोई भी प्राणी नहीं है\\f* अपनी समानता में बनाएँ; और वे समुद्र की मछलियों, और आकाश के पक्षियों, और घरेलू पशुओं, और सारी पृथ्वी पर, और सब रेंगनेवाले जन्तुओं पर जो पृथ्वी पर रेंगते हैं, अधिकार रखें।”\\bdit (याकू. 3:9) \\bdit*';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput.chapters[0].contents[1].verseText, "फिर परमेश्वर ने कहा, “हम मनुष्य को अपने स्वरूप के अनुसार अपनी समानता में बनाएँ; और वे समुद्र की मछलियों, और आकाश के पक्षियों, और घरेलू पशुओं, और सारी पृथ्वी पर, और सब रेंगनेवाले जन्तुओं पर जो पृथ्वी पर रेंगते हैं, अधिकार रखें।” (याकू. 3:9)");
+
+    const usfmParserRelaxed = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedJsonOutput = usfmParserRelaxed.toJSON();
+    assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, "फिर परमेश्वर ने कहा, “हम मनुष्य को अपने स्वरूप के अनुसार अपनी समानता में बनाएँ; और वे समुद्र की मछलियों, और आकाश के पक्षियों, और घरेलू पशुओं, और सारी पृथ्वी पर, और सब रेंगनेवाले जन्तुओं पर जो पृथ्वी पर रेंगते हैं, अधिकार रखें।” (याकू. 3:9)");
+  });
+
+
 });
