@@ -28,12 +28,12 @@ usfmRelaxed{
 	MilesstoneMarker = MilesstoneMarkerSingle | MilesstoneMarkerPair
 	MilesstoneMarkerSingle = backSlash markerName backSlash "*"
 	MilesstoneMarkerPair = backSlash markerName "-" ("s"|"e") attributes? (backSlash "*")?
-	ExtendedStudyContents = backSlash "esbe" (text | Note | MilesstoneMarker | ClosedMarker | NormalMarker)* backSlash "esbe"
+	ExtendedStudyContents = backSlash "esb" (text | Note | MilesstoneMarker | ClosedMarker | NormalMarker)* backSlash "esbe"
 
 	// The look ahead at the end of NoteMarker is given to handle cases where the note marker is not explicitly closed but terminated by a verse or chapter boundary
-	NoteMarker<tag> = backSlash tag (text | ClosedMarker | NormalMarker )+ (backSlash tag "*") -- closed
-					| backSlash tag (text | ClosedMarker | NormalMarker )+ &(end) -- atEOF
-					| backSlash tag (text | ClosedMarker | NormalMarker )+ &(backSlash ("c"|"v")) -- atVerseEnd
+	NoteMarker<tag> = #((newLine | spaceChar)* backSlash tag spaceChar) (text | ClosedMarker | NormalMarker )+ #((newLine | spaceChar)* backSlash tag "*") -- closed
+					| #((newLine | spaceChar)* backSlash tag spaceChar) (text | ClosedMarker | NormalMarker )+ &(end) -- atEOF
+					| #((newLine | spaceChar)* backSlash tag spaceChar) (text | ClosedMarker | NormalMarker )+ &(backSlash ("c"|"v")) -- atVerseEnd
 
 	Note = NoteMarker<"f"> | NoteMarker<"fe"> | NoteMarker<"ef"> | NoteMarker<"x"> | NoteMarker<"ex">
 }
