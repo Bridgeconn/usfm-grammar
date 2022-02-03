@@ -360,5 +360,17 @@ describe('Test bug fixes', () => {
     assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, "फिर परमेश्वर ने कहा, “हम मनुष्य को अपने स्वरूप के अनुसार अपनी समानता में बनाएँ; और वे समुद्र की मछलियों, और आकाश के पक्षियों, और घरेलू पशुओं, और सारी पृथ्वी पर, और सब रेंगनेवाले जन्तुओं पर जो पृथ्वी पर रेंगते हैं, अधिकार रखें।” (याकू. 3:9)");
   });
 
+  it('verse texts getting lost in relaxed parse', () => {
+    // Becasue of the in-correct matching of closing tags in relaxed mode
+    // snippets of verse text may not get included in the verseText field
+    // https://github.com/Bridgeconn/usfm-grammar/issues/136
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 6 जब अम्मोनियों ने देखा, कि हम दाऊद को घिनौने लगते हैं, तब हानून और अम्मोनियों ने \\it एक हजार किक्कार चाँदी\\f + \\fr 19.6 \\fq एक हजार किक्कार चाँदी: \\ft उस समय पश्चिमी आसिया में सैनिकों को किराए पर लेने का प्रचलन था। \\f*\\it*, अरम्नहरैम और अरम्माका और सोबा को भेजी, कि रथ और सवार किराये पर बुलाए।';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput.chapters[0].contents[1].verseText, 'जब अम्मोनियों ने देखा, कि हम दाऊद को घिनौने लगते हैं, तब हानून और अम्मोनियों ने एक हजार किक्कार चाँदी , अरम्नहरैम और अरम्माका और सोबा को भेजी, कि रथ और सवार किराये पर बुलाए।');
+    const usfmParserRelaxed = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedJsonOutput = usfmParserRelaxed.toJSON();
+    assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, 'जब अम्मोनियों ने देखा, कि हम दाऊद को घिनौने लगते हैं, तब हानून और अम्मोनियों ने एक हजार किक्कार चाँदी , अरम्नहरैम और अरम्माका और सोबा को भेजी, कि रथ और सवार किराये पर बुलाए।');
+  });
 
 });

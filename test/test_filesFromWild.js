@@ -281,4 +281,27 @@ describe('Test with usfm files from the wild', () => {
     assert.strictEqual(relaxedOutput, true);
     assert.strictEqual(output, true);
   });
+
+  it('IRV files that had parsing issues in relaxed mode', () => {
+    var usfmString = "";
+    var myUsfmParser = null;
+    var relaxedUsfmParser = null;
+    var output = null;
+    var relaxedOutput = null;
+    var files = fs.readdirSync('test/resources/IRV/').filter(fn => fn.endsWith('.usfm'));
+    for (const index in files) {
+      usfmString = fs.readFileSync('test/resources/IRV/'+files[index], 'utf-8');
+      
+      myUsfmParser = new grammar.USFMParser(usfmString);
+      output = myUsfmParser.validate();
+      assert.strictEqual(output, true);
+      
+      relaxedUsfmParser = new grammar.USFMParser(usfmString, grammar.LEVEL.RELAXED);
+      relaxedOutput = relaxedUsfmParser.validate();
+      assert.strictEqual(relaxedOutput, true);
+    }
+
+  });
+
+
 });
