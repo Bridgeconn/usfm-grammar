@@ -196,7 +196,7 @@ class JSONParser extends Parser {
     const jsonOutput = checkJSON(this.JSONObject);
     const bookName = jsonOutput.book.bookCode;
     const { chapters } = jsonOutput;
-    let csvWriter = '"Book","Chapter","Verse"\n';
+    let csvWriter = '"Book","Chapter","Verse","Text"\n';
     for (let i = 0; i < chapters.length; i += 1) {
       const cno = chapters[i].chapterNumber;
       for (let j = 0; j < chapters[i].contents.length; j += 1) {
