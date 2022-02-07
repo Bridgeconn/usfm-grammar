@@ -183,21 +183,21 @@ sem.addOperation('buildJson', {
     return content.buildJson();
   },
 
-  NoteMarker_closed(_1, marker, contents, _4, _5, _6) {
+  NoteMarker_closed(_0, _1, marker, _2, contents, _4, _5, _6, _7) {
     const res = {};
     res[marker.sourceString] = contents.buildJson();
-    res.closing = _4.sourceString + _5.sourceString + _6.sourceString;
+    res.closing = _5.sourceString + _6.sourceString + _7.sourceString;
     return res;
   },
 
-  NoteMarker_atEOF(_1, marker, contents, _4) {
+  NoteMarker_atEOF(_0, _1, marker, _2, contents, _4) {
     const res = {};
     res[marker.sourceString] = contents.buildJson();
     res.closing = '';
     return res;
   },
 
-  NoteMarker_atVerseEnd(_1, marker, contents, _4, _5) {
+  NoteMarker_atVerseEnd(_0, _1, marker, _2, contents, _4, _5) {
     const res = {};
     res[marker.sourceString] = contents.buildJson();
     res.closing = '';
