@@ -1,5 +1,41 @@
 # Change log for usfm-grammar
 
+## Version 2.2.0 to 2.3.0
+
+Bug fixes
+* Fixed the issue of contents of `\qa` marker being added to verseText
+* Added missing "Text" header in CSV export file
+* Resolved the issues related to nested footnotes in relaxed mode parsing 
+
+## Version 2.1.0 to 2.2.0
+
+#### License Update
+
+Changed license to MIT
+
+This change is done after considering the larger open-source ecosystem of
+libraries and applications being developed for Biblical computing. It
+has become apparent that most of them are using non-copyleft
+licenses. Having USFM-Grammar under the GPL-* license, therefore
+may impose on those considering to use this library, a larger decision than is intended.
+
+In our desire to stimulate development and encourage use of
+open-source software for Biblical computing, we have decided to go
+ahead with using the more permissive MIT license for
+USFM-Grammar. Ultimately, our desire is to see His kingdom come.
+
+ 
+## Version 2.0.0 to 2.1.0
+
+Minor Release
+
+* Fixed spacing issue in CSV header.
+* Removed quotes in TSV output.
+* Fixed typo in 'delimiter'.
+* Updated dependencies.
+* Improved test suite
+
+
 ## Version 1.1.0-beta.1 to 2.0.0
 
 ### New Features 
