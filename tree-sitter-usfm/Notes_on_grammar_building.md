@@ -18,3 +18,6 @@
 16. Related to footnotes, though usfm doc shows \fr as occuring first inside the footnotes contents, there is no rank value indicating that in usfm.sty. So in our grammar, giving all footnote content markers, including \fr, equal privilege to occur in any order with the footnote.
 17. Can any character be used as footnote caller? In doc it says, it may be one of +, -, ?. But the examples in the doc itself shows usages of c, ⸀, ° 
 18. Maker ex not specified in usfm.sty. 
+19. From documentaion I feel that, any name can be given to a milestone(as long as it is self closing) and not just qt and ts. So not adding qt and ts are spec defined markers in the grammar even though I see them listed in the sty file.
+20. As per the rank value ie(6) seems to be expected before imte(7), but as per the decsription and example in the documentation I think it is expected even after imte. So implementing it like that in our grammar
+

@@ -60,7 +60,8 @@ module.exports = grammar({
 
     // Introduction
     _introduction: $ => prec.right(0,seq(
-      optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock))
+      optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock),
+      optional($.ieMarker))
       ),
     _introText: $ => repeat1(choice($.text, $.iqtMarker,
       $.xtMarker,
@@ -76,7 +77,7 @@ module.exports = grammar({
     _imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
     _midIntroMarker: $ => choice($.isBlock, $.ioMarker, $.iotMarker, $.ipMarker, $.imMarker,
       $.ipiMarker, $.imiMarker, $.iliBlock, $.ipqMarker, $.imqMarker, $.iprMarker, $.ibMarker,
-      $.iqBlock, $.ieMarker, $.iexMarker, $._comments, $.milestone),
+      $.iqBlock, $.iexMarker, $._comments, $.milestone),
     isBlock: $ => prec.right(0,repeat1($.isMarker)),
     isMarker: $ => seq($._isTag, $._introText),
     _isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
