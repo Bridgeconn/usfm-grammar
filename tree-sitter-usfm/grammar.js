@@ -541,14 +541,12 @@ module.exports = grammar({
     /* since milestones can be user defined, their name is defined as any set of 
       letters of digits.*/
 
-    _milestoneStandaloneMarker: $ => seq("\\", token.immediate(/[\w\d_]+/),
+    _milestoneStandaloneMarker: $ => seq("\\", prec.right(1,token.immediate(/[\w\d_]+/)),
       optional($.attributes), "\\*" ),
 
-    _milestoneStart: $ => seq("\\", token.immediate(/[\w\d_]+/),
-      token.immediate("-s"),
+    _milestoneStart: $ => seq(/\\[\w\d_]+-s/,
       optional($.attributes), "\\*" ),
-    _milestoneEnd: $ => seq("\\", token.immediate(/[\w\d_]+/),
-      token.immediate("-e"),
+    _milestoneEnd: $ => seq(/\\[\w\d_]+-e/,
       optional($.attributes), "\\*" ),
 
     /* dont tie up the start and end in the grammar as of now.
