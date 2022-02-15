@@ -2,11 +2,15 @@ module.exports = grammar({
   name: 'usfm',
 
   rules: {
-    File: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader),
+    File: $ => prec.right(0, seq(
+      $._preHead,
       optional($.mtBlock),
-      repeat($._introduction),
+      optional($._introduction),
       repeat($.chapter)
       )),
+    _preHead: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader))),
+    // _postHead: $ => prec.right(0, seq())
+
     bookcode: $ => choice("GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG",
               "RUT", "1SA", "2SA", "1KI", "2KI", 
               "1CH", "2CH", "EZR", "NEH", "EST", "JOB", "PSA", "PRO", 
@@ -31,7 +35,9 @@ module.exports = grammar({
 
 
     // Headers
-    _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock, $._comments),
+    _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock,
+      $._comments, $.milestone
+      ),
 
     usfmMarker: $ => seq("\\usfm ", /\d+(\.\d+)?/),
     ideMarker: $ => seq("\\ide ", $.text),
@@ -70,7 +76,7 @@ module.exports = grammar({
     _imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
     _midIntroMarker: $ => choice($.isBlock, $.ioMarker, $.iotMarker, $.ipMarker, $.imMarker,
       $.ipiMarker, $.imiMarker, $.iliBlock, $.ipqMarker, $.imqMarker, $.iprMarker, $.ibMarker,
-      $.iqBlock, $.ieMarker, $.iexMarker),
+      $.iqBlock, $.ieMarker, $.iexMarker, $._comments, $.milestone),
     isBlock: $ => prec.right(0,repeat1($.isMarker)),
     isMarker: $ => seq($._isTag, $._introText),
     _isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
@@ -130,6 +136,7 @@ module.exports = grammar({
       $.list,
       $.footnote,
       $.pbMarker,
+      $.milestone,
     ),
 
     //chapter meta
@@ -218,6 +225,7 @@ module.exports = grammar({
       $.verseText,
       $.footnote, 
       $.crossref,
+      $.milestone,
     ),
 
     pMarker: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -528,6 +536,35 @@ module.exports = grammar({
     jmpNested: $ => seq("\\+jmp", field("label",optional($.text)), optional($.attributes), "\\+jmp*"),
 
     pbMarker: $ => seq("\\pb", $._spaceOrLine),
+
+    //Milestone
+    /* since milestones can be user defined, their name is defined as any set of 
+      letters of digits.*/
+
+    _milestoneStandaloneMarker: $ => seq("\\", token.immediate(/[\w\d_]+/),
+      optional($.attributes), "\\*" ),
+
+    _milestoneStart: $ => seq("\\", token.immediate(/[\w\d_]+/),
+      token.immediate("-s"),
+      optional($.attributes), "\\*" ),
+    _milestoneEnd: $ => seq("\\", token.immediate(/[\w\d_]+/),
+      token.immediate("-e"),
+      optional($.attributes), "\\*" ),
+
+    /* dont tie up the start and end in the grammar as of now.
+    But Do it via querying on the parse tree if required.
+    Also checking if the start and end names match, can be done there in post processing
+    // _milestonePair: $ => seq($._milestoneStart, repeat($._chapterContent), 
+    //   $._milestoneEnd) */
+
+
+    milestone: $ => choice($._milestoneStart, $._milestoneEnd, $._milestoneStandaloneMarker),
+    
+
+//      zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "*" )?
+
+//      esbElement = newLine? backSlash "esb" spaceChar? (chapterContentTextContent | sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | paraElement )+ newLine? backSlash "esbe" spaceChar?
+      
   }
 
 });
