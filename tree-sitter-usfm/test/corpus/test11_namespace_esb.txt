@@ -53,6 +53,7 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 the sons of Zebedee.
 -----------------
 (File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
+
 ============
 cat
 ============
