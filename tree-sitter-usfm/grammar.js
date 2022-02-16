@@ -3,13 +3,12 @@ module.exports = grammar({
 
   rules: {
     File: $ => prec.right(0, seq(
-      $._preHead,
+      $._mandatoryHead,
       optional($.mtBlock),
       optional($._introduction),
       repeat($.chapter)
       )),
-    _preHead: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader))),
-    // _postHead: $ => prec.right(0, seq())
+    _mandatoryHead: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader))),
 
     bookcode: $ => choice("GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG",
               "RUT", "1SA", "2SA", "1KI", "2KI", 
@@ -36,7 +35,7 @@ module.exports = grammar({
 
     // Headers
     _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock,
-      $._comments, $.milestone
+      $._comments, $.milestone, $.zNameSpaceRegular,
       ),
 
     usfmMarker: $ => seq("\\usfm ", /\d+(\.\d+)?/),
@@ -70,38 +69,38 @@ module.exports = grammar({
 
     iqtMarker: $ => seq("\\iqt ", $.text, "\\iqt*"),
     imtBlock: $ => prec.right(0,repeat1($.imtMarker)),
-    imtMarker: $ => seq($._imtTag, $._introText),
+    imtMarker: $ => prec.right(0, seq($._imtTag, $._introText)),
     _imtTag: $ => seq("\\imt",optional(token.immediate(/[1234]/)), " "),
     imteBlock: $ => prec.right(0,repeat1($.imteMarker)),
-    imteMarker: $ => seq($._imteTag, $._introText),
+    imteMarker: $ => prec.right(0, seq($._imteTag, $._introText)),
     _imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
     _midIntroMarker: $ => choice($.isBlock, $.ioMarker, $.iotMarker, $.ipMarker, $.imMarker,
       $.ipiMarker, $.imiMarker, $.iliBlock, $.ipqMarker, $.imqMarker, $.iprMarker, $.ibMarker,
-      $.iqBlock, $.iexMarker, $._comments, $.milestone),
+      $.iqBlock, $.iexMarker, $._comments, $.milestone, $.zNameSpaceRegular),
     isBlock: $ => prec.right(0,repeat1($.isMarker)),
-    isMarker: $ => seq($._isTag, $._introText),
+    isMarker: $ => prec.right(0, seq($._isTag, $._introText)),
     _isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
     ioBlock: $ => prec.right(0,repeat1($.ioMarker)),
-    ioMarker: $ => seq($._ioTag, $._introText, optional($.iorMarker)),
+    ioMarker: $ => prec.right(0, seq($._ioTag, $._introText, optional($.iorMarker))),
     _ioTag: $ => seq("\\io",optional(token.immediate(/[1234]/)), " "),
     iorMarker: $ => seq("\\ior ", $.text, "\\ior*"),
-    iotMarker: $ => seq("\\iot ", $._introText),
-    ipMarker: $ => seq("\\ip ", $._introText),
-    imMarker: $ => seq("\\im ", $._introText),
-    ipiMarker: $ => seq("\\ipi ", $._introText),
-    imiMarker: $ => seq("\\imi ", $._introText),
+    iotMarker: $ => prec.right(0, seq("\\iot ", $._introText)),
+    ipMarker: $ => prec.right(0, seq("\\ip ", $._introText)),
+    imMarker: $ => prec.right(0, seq("\\im ", $._introText)),
+    ipiMarker: $ => prec.right(0, seq("\\ipi ", $._introText)),
+    imiMarker: $ => prec.right(0, seq("\\imi ", $._introText)),
     iliBlock: $ => prec.right(0,repeat1($.iliMarker)),
-    iliMarker: $ => seq($._iliTag, $._introText),
+    iliMarker: $ => prec.right(0, seq($._iliTag, $._introText)),
     _iliTag: $ => seq("\\ili",optional(token.immediate(/[12]/)), " "),
-    ipqMarker: $ => seq("\\ipq ", $._introText),
-    imqMarker: $ => seq("\\imq ", $._introText),
-    iprMarker: $ => seq("\\ipr ", $._introText),
+    ipqMarker: $ => prec.right(0, seq("\\ipq ", $._introText)),
+    imqMarker: $ => prec.right(0, seq("\\imq ", $._introText)),
+    iprMarker: $ => prec.right(0, seq("\\ipr ", $._introText)),
     ibMarker: $ => seq("\\ib"),
     iqBlock: $ => prec.right(0,repeat1($.iqMarker)),
-    iqMarker: $ => seq($._iqTag, $._introText),
+    iqMarker: $ => prec.right(0, seq($._iqTag, $._introText)),
     _iqTag: $ => seq("\\iq",optional(token.immediate(/[123]/)), " "),
     ieMarker: $ => seq("\\ie"),
-    iexMarker: $ => seq("\\iex ", $._introText), // can occur in introduction or inside chapter
+    iexMarker: $ => prec.right(0, seq("\\iex ", $._introText)), // can occur in introduction or inside chapter
 
 
     // verse
@@ -138,6 +137,7 @@ module.exports = grammar({
       $.footnote,
       $.pbMarker,
       $.milestone,
+      $.zNameSpaceRegular,
     ),
 
     //chapter meta
@@ -227,6 +227,7 @@ module.exports = grammar({
       $.footnote, 
       $.crossref,
       $.milestone,
+      $.zNameSpaceRegular,
     ),
 
     pMarker: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -467,6 +468,7 @@ module.exports = grammar({
       $.waMarker,
       $.jmpMarker,
       $.figMarker,
+      $.zNameSpaceClosed,
     ),
 
     addNested: $ => seq("\\+add", $._innerText, "\\+add*"),
@@ -558,9 +560,11 @@ module.exports = grammar({
 
 
     milestone: $ => choice($._milestoneStart, $._milestoneEnd, $._milestoneStandaloneMarker),
-    
 
-//      zNameSpace = newLine? backSlash "z" char* spaceChar? text? (backSlash "*" )?
+    zNameSpaceRegular: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text))),
+    zNameSpaceClosed: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text),
+      optional($.attributes), /\\z[\w\d_-]+\*/)),
+    
 
 //      esbElement = newLine? backSlash "esb" spaceChar? (chapterContentTextContent | sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | paraElement )+ newLine? backSlash "esbe" spaceChar?
       

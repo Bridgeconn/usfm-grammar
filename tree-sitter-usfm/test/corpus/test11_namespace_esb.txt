@@ -1,0 +1,28 @@
+=========
+znamespace
+=========
+\id GEN
+\zhead some text
+\c 1
+\p
+\z-empty
+\v 1 text \zinline inner text \zinline*
+\v 2 text
+\v 3 text \zattrib inner text |key="val" \zattrib*
+\v 4 text
+---------
+(File 
+	(bookIdentification (idMarker (bookcode) (text))) 
+	(zNameSpaceRegular (text)) 
+	(chapter 
+		(cMarker (chapterNumber)) 
+		(pMarker 
+			(zNameSpaceRegular (text)) 
+			(vMarker (verseNumber)) 
+			(verseText (text) (zNameSpaceClosed (text)) (text)) 
+			(vMarker (verseNumber)) 
+			(verseText (text)) 
+			(vMarker (verseNumber)) 
+			(verseText (text) (zNameSpaceClosed (text) (attributes (text))) (text)) 
+			(vMarker (verseNumber)) 
+			(verseText (text)))))
