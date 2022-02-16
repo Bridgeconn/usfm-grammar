@@ -35,7 +35,7 @@ module.exports = grammar({
 
     // Headers
     _bookHeader: $ => choice($.usfmMarker, $.ideMarker, $.hBlock, $.tocBlock,
-      $._comments, $.milestone, $.zNameSpaceRegular,
+      $._comments, $.milestone, $.zNameSpaceRegular, $.esb,
       ),
 
     usfmMarker: $ => seq("\\usfm ", /\d+(\.\d+)?/),
@@ -76,7 +76,7 @@ module.exports = grammar({
     _imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
     _midIntroMarker: $ => choice($.isBlock, $.ioMarker, $.iotMarker, $.ipMarker, $.imMarker,
       $.ipiMarker, $.imiMarker, $.iliBlock, $.ipqMarker, $.imqMarker, $.iprMarker, $.ibMarker,
-      $.iqBlock, $.iexMarker, $._comments, $.milestone, $.zNameSpaceRegular),
+      $.iqBlock, $.iexMarker, $._comments, $.milestone, $.zNameSpaceRegular, $.esb),
     isBlock: $ => prec.right(0,repeat1($.isMarker)),
     isMarker: $ => prec.right(0, seq($._isTag, $._introText)),
     _isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
@@ -136,8 +136,10 @@ module.exports = grammar({
       $.list,
       $.footnote,
       $.pbMarker,
+      $.ipMarker,
       $.milestone,
       $.zNameSpaceRegular,
+      $.esb
     ),
 
     //chapter meta
@@ -164,6 +166,7 @@ module.exports = grammar({
       $.sdBlock,
       $.rMarker,
       $.mteBlock,
+      $.qaMarker,
     ),
 
     mtBlock: $ => prec.right(0,repeat1($.mtMarker)),
@@ -257,7 +260,7 @@ module.exports = grammar({
       $.qrMarker,
       $.qcMarker,
       // $.qsMarker,
-      $.qaMarker,
+      // $.qaMarker, //treated as a title
       // $.qacMarker,
       $.qmBlock,
       $.qdMarker,
@@ -565,8 +568,23 @@ module.exports = grammar({
     zNameSpaceClosed: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text),
       optional($.attributes), /\\z[\w\d_-]+\*/)),
     
+    esb: $ => seq("\\esb",  repeat($._esbContents), "\\esbe"),
+    _esbContents: $ => choice( 
+      $.catMarker,
+      $._title,
+      $._paragraph, // this will allow verse markers also to come withing esb
+      $._comments,
+      $._poetry,
+      $.table,
+      $.list,
+      $.footnote,
+      $.pbMarker,
+      $.milestone,
+      $.zNameSpaceRegular,
+      $.ipMarker,
+      ),
 
-//      esbElement = newLine? backSlash "esb" spaceChar? (chapterContentTextContent | sectionHeader | mte | remElement | iexElement | ipElement | spElement | litElement | qaElement | notesElement | figureElement  | milestoneElement | zNameSpace | paraElement )+ newLine? backSlash "esbe" spaceChar?
+    catMarker: $ => seq("\\cat", /[\w\d\s]+/, "\\cat*")
       
   }
 

@@ -20,4 +20,5 @@
 18. Maker ex not specified in usfm.sty. 
 19. From documentaion I feel that, any name can be given to a milestone(as long as it is self closing) and not just qt and ts. So not adding qt and ts are spec defined markers in the grammar even though I see them listed in the sty file.
 20. As per the rank value ie(6) seems to be expected before imte(7), but as per the decsription and example in the documentation I think it is expected even after imte. So implementing it like that in our grammar
+21. We are expecting a space or newline after paragraph marker names even though usfm doc says it is optional. reason: \pr or \pc may match \p and the next letter may get treated as text. This can be re-visited later.
 
