@@ -10,15 +10,15 @@ A basic footnote usage
 manuscripts do not have \fq the Son of God.\f*
 -----------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
-		(sBlock (s (text) (r (text)))) 
+		(sBlock (s  (r ))) 
 		(p 
 			(v (verseNumber)) 
-			(verseText (text)) 
+			(verseText ) 
 			(footnote 
-				(f (caller) (noteText (text)) (fr (noteText (text))) (ft (noteText (text))) (fq (noteText (text)))))
+				(f (caller) (noteText ) (fr (noteText )) (ft (noteText )) (fq (noteText ))))
 		)
 	)
 )
@@ -34,16 +34,16 @@ word for “living,” which is rendered in this context as “human beings.”\
 was the mother of all human beings.
 ------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(p 
 			(v (verseNumber)) 
-			(verseText (text)) 
-			(footnote (f (caller) (noteText (text)) (fr (noteText (text))) (fk (noteText (text))) (ft (noteText (text))))) 
-			(verseText (text)) 
-			(footnote (f (caller) (noteText (text)) (fr (noteText (text))) (fk (noteText (text))) (ft (noteText (text)))))
-			(verseText (text)))))
+			(verseText ) 
+			(footnote (f (caller) (noteText ) (fr (noteText )) (fk (noteText )) (ft (noteText )))) 
+			(verseText ) 
+			(footnote (f (caller) (noteText ) (fr (noteText )) (fk (noteText )) (ft (noteText ))))
+			(verseText ))))
 =============
 Footnotes with unusual callers
 =============
@@ -60,20 +60,20 @@ mucho más importante que el de ellos. \f ⸀ \fr 28,14 \ft υπο \fw B D 0148.
 \v 3 \f ° \fr 4,1 \fw B Δ 700\f*
 -----------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(p 
 			(v (verseNumber)) 
-			(verseText (text)) 
-			(footnote (f (caller) (noteText (text)) (fr (noteText (text))) (fk (noteText (text))) (ft (noteText (text))) (fdc (noteText (text))))) 
-			(verseText (text)) 
+			(verseText ) 
+			(footnote (f (caller) (noteText ) (fr (noteText )) (fk (noteText )) (ft (noteText )) (fdc (noteText )))) 
+			(verseText ) 
 			(v (verseNumber)) 
-			(verseText (text)) 
-			(footnote (f (caller) (noteText (text)) (fr (noteText (text))) (ft (noteText (text))) (fw (noteText (text))))) 
-			(verseText (text)) 
+			(verseText ) 
+			(footnote (f (caller) (noteText ) (fr (noteText )) (ft (noteText )) (fw (noteText )))) 
+			(verseText ) 
 			(v (verseNumber)) 
-			(footnote (f (caller) (noteText (text)) (fr (noteText (text))) (fw (noteText (text))))))))
+			(footnote (f (caller) (noteText ) (fr (noteText )) (fw (noteText )))))))
 ================
 Footnote in new line
 ================
@@ -84,14 +84,14 @@ Footnote in new line
 \f + \fr 6.27: \fq live a bit longer; \ft or \fq grow a bit taller.\f* by worrying about it?
 ----------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(p 
 			(v (verseNumber)) 
-			(verseText (text)) 
-			(footnote (f (caller) (noteText (text)) (fr (noteText (text))) (fq (noteText (text))) (ft (noteText (text))) (fq (noteText (text))))) 
-			(verseText (text)))))
+			(verseText ) 
+			(footnote (f (caller) (noteText ) (fr (noteText )) (fq (noteText )) (ft (noteText )) (fq (noteText )))) 
+			(verseText ))))
 
 ===============
 A basic cross-ref
@@ -107,15 +107,15 @@ named Nazareth. And so what the prophets had said came true: “He will be calle
 Nazarene.”
 ---------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(p 
 			(v (verseNumber)) 
-			(verseText (text)) 
+			(verseText ) 
 			(v (verseNumber)) 
-			(crossref (x (caller) (xo (noteText (text))) (xt (noteText (text))))) 
-			(verseText (text)))))
+			(crossref (x (caller) (xo (noteText )) (xt (noteText )))) 
+			(verseText ))))
 ==============
 A not-so-basic crossref
 ==============
@@ -129,14 +129,14 @@ You know the commandments: ‘Do not commit murder; do not commit adultery; do n
 do not accuse anyone falsely; do not cheat; respect your father and your mother.’”
 ---------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(p (v (verseNumber)) 
-		(verseText (text)) 
+		(verseText ) 
 		(v (verseNumber)) 
-		(crossref (x (caller) (xo (noteText (text))) (xt (noteText (text))) (xo (noteText (text))) (xt (noteText (text))) (xo (noteText (text))) (xt (noteText (text))) (xo (noteText (text))) (xt (noteText (text))) (xo (noteText (text))) (xt (noteText (text))))) 
-		(verseText (text))))) 
+		(crossref (x (caller) (xo (noteText )) (xt (noteText )) (xo (noteText )) (xt (noteText )) (xo (noteText )) (xt (noteText )) (xo (noteText )) (xt (noteText )) (xo (noteText )) (xt (noteText )))) 
+		(verseText )))) 
 ===============
 xt in cd
 ===============
@@ -152,20 +152,20 @@ xt in cd
 от всех дел Своих, которые делал.
 -----------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(cd 
-			(xt (noteText (text)) (attributes (text))) 
-			(text) 
-			(xt (noteText (text)) (attributes (text))) 
-			(text) 
-			(xt (noteText (text)) (attributes (text))) 
-			(text) 
-			(xt (noteText (text)) (attributes (text))) 
-			(text)) 
+			(xt (noteText ) (attributes )) 
+			 
+			(xt (noteText ) (attributes )) 
+			 
+			(xt (noteText ) (attributes )) 
+			 
+			(xt (noteText ) (attributes )) 
+			) 
 		(p 
-			(v (verseNumber)) (verseText (text))) (p (v (verseNumber)) (verseText (text)))))
+			(v (verseNumber)) (verseText )) (p (v (verseNumber)) (verseText ))))
 ==============
 Cross-ref in s#
 ==============
@@ -177,17 +177,17 @@ Lk 3.1-18; \xta and \xt Jn 1.19-28 \xta parallel passages.\x*
 \v 1 At that time John the Baptist came to the desert of Judea and started preaching.
 ---------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(sBlock 
 			(s 
-				(text) 
-				(crossref (x (caller) (xo (noteText (text))) (xta (noteText (text))) (xt (noteText (text))) (xta (noteText (text))) (xt (noteText (text))) (xta (noteText (text))))) 
-				(text))) 
+				 
+				(crossref (x (caller) (xo (noteText )) (xta (noteText )) (xt (noteText )) (xta (noteText )) (xt (noteText )) (xta (noteText )))) 
+				)) 
 		(p 
 			(v (verseNumber)) 
-			(verseText (text))))) 
+			(verseText )))) 
 ==============
 Another cross-ref
 ==============
@@ -207,7 +207,7 @@ Another cross-ref
 викаха всеки към своя бог и почнаха да хвърлят в морето товара от кораба, за да му
 олекне от него; а Иона бе слязъл в дъното на кораба, бе легнал и дълбоко заспал.
 ------------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xop (noteText (text))) (xt (noteText (text))))) (verseText (text)) (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xop (noteText (text))) (xt (noteText (text))))) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xop (noteText (text))) (xt (noteText (text))))) (verseText (text)) (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xop (noteText (text))) (xt (noteText (text))))) (verseText (text))))) 
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (crossref (x (caller) (xo (noteText )) (xop (noteText )) (xt (noteText )))) (verseText ) (v (verseNumber)) (crossref (x (caller) (xo (noteText )) (xop (noteText )) (xt (noteText )))) (verseText ) (v (verseNumber)) (verseText ) (v (verseNumber)) (crossref (x (caller) (xo (noteText )) (xop (noteText )) (xt (noteText )))) (verseText ) (v (verseNumber)) (crossref (x (caller) (xo (noteText )) (xop (noteText )) (xt (noteText )))) (verseText )))) 
 ===============
 More cross-refs
 ===============
@@ -226,7 +226,7 @@ truth: we shall not all die, but when the last trumpet sounds, we shall all be c
 in an instant, as quickly as the blinking of an eye. For when the trumpet sounds, the
 dead will be raised, never to die again, and we shall all be changed.
 ----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xt (noteText (text))) (xdc (noteText (text))) (xt (noteText (text))))) (verseText (text))) (q (verseText (text)))) (p (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xdc (noteText (text))) (xt (noteText (text))))) (verseText (text)))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (v (verseNumber)) (crossref (x (caller) (xo (noteText )) (xt (noteText )) (xdc (noteText )) (xt (noteText )))) (verseText )) (q (verseText ))) (p (v (verseNumber)) (crossref (x (caller) (xo (noteText )) (xdc (noteText )) (xt (noteText )))) (verseText ))))
 =================
 rq
 ================
@@ -245,4 +245,4 @@ than theirs.
 \q2 and he will be my Son."
 \rq 2Sa 7.14; 1Ch 17.13\rq*
 -----------------
- (File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (qBlock (q (verseText (text))) (q (verseText (text)) (crossref (rq (noteText (text)))) (verseText (text)))) (b) (m (verseText (text))) (qBlock (q (verseText (text))) (q (verseText (text)) (crossref (rq (noteText (text))))))))
+ (File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText )) (qBlock (q (verseText )) (q (verseText ) (crossref (rq (noteText ))) (verseText ))) (b) (m (verseText )) (qBlock (q (verseText )) (q (verseText ) (crossref (rq (noteText )))))))

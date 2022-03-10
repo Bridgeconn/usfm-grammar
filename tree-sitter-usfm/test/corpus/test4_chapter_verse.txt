@@ -7,13 +7,13 @@ id, c, v markers
 \v 1 verse text
 ----------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) )) 
   (chapter 
     (c (chapterNumber)) 
     (p 
       (v (verseNumber)) 
-      (verseText (text)))))
+      (verseText ))))
 
 ===========
 cl markers
@@ -25,14 +25,14 @@ cl markers
 \v 1 text
 -----------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) )) 
   (chapter 
     (c (chapterNumber)) 
-    (cl (text)) 
+    (cl ) 
     (p 
       (v (verseNumber)) 
-      (verseText (text)))))
+      (verseText ))))
 ===========
 cl ca cp markers
 ===========
@@ -47,19 +47,19 @@ cl ca cp markers
 \v 2 text again
 -------------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
-  (hBlock (h (text))) 
+  (book 
+    (id (bookcode) )) 
+  (hBlock (h )) 
   (chapter 
-    (cl (text)) 
+    (cl ) 
     (c (chapterNumber)) 
     (ca (chapterNumber)) 
-    (cp (text)) 
+    (cp ) 
     (p 
       (v (verseNumber)) 
-      (verseText (text)) 
+      (verseText ) 
       (v (verseNumber)) 
-      (verseText (text)))))
+      (verseText ))))
 
 ==============
 verse number patterns
@@ -74,21 +74,21 @@ verse number patterns
 \v 4b text
 --------------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) )) 
   (chapter 
     (c (chapterNumber)) 
     (p 
       (v (verseNumber)) 
-      (verseText (text)) 
+      (verseText ) 
       (v (verseNumber)) 
-      (verseText (text)) 
+      (verseText ) 
       (v (verseNumber)) 
-      (verseText (text)) 
+      (verseText ) 
       (v (verseNumber)) 
-      (verseText (text)) 
+      (verseText ) 
       (v (verseNumber)) 
-      (verseText (text)))))
+      (verseText ))))
 ===========
 va vp markers
 ===========
@@ -102,17 +102,17 @@ va vp markers
 \v 4 \vp I-I \vp* text
 ------------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) )) 
   (chapter 
     (c (chapterNumber)) 
     (p 
       (v (verseNumber)) 
-      (verseText (text)) 
+      (verseText ) 
       (v (verseNumber) (va (verseNumber))) 
-      (verseText (text)) 
-      (v (verseNumber) (va (verseNumber)) (vp (text))) 
-      (verseText (text)) 
+      (verseText ) 
+      (v (verseNumber) (va (verseNumber)) (vp )) 
+      (verseText ) 
       (v (verseNumber) (va (verseNumber)) (va (verseNumber))) 
-      (verseText (text)) 
-      (v (verseNumber) (vp (text))) (verseText (text)))))
+      (verseText ) 
+      (v (verseNumber) (vp )) (verseText ))))

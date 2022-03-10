@@ -22,29 +22,29 @@ lh, li#, lf
 \lf This was the list of the administrators of the tribes of Israel.
 ------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
-		(sBlock (s (text))) 
+		(sBlock (s )) 
 		(list 
 			(lh 
 				(v (verseNumber)) 
-				(verseText (text)))
+				(verseText ))
 			(liBlock 
-				(li (verseText (text)))
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text))) 
-				(li (verseText (text)))) 
-			(lf (verseText (text)))
+				(li (verseText ))
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText )) 
+				(li (verseText ))) 
+			(lf (verseText ))
 		)
 	)
 )
@@ -65,14 +65,14 @@ go with them, for the burnt offerings
 \li –twenty-four bulls, sixty rams, sixty goats, sixty one-year-old lambs, for the fellowship
 offerings
 ---------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) 
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText )) 
 	(list 
 	(liBlock 
-		(li (verseText (text))) 
-		(li (verseText (text))) 
-		(li (verseText (text))) 
-		(li (verseText (text))) 
-		(li (verseText (text)))
+		(li (verseText )) 
+		(li (verseText )) 
+		(li (verseText )) 
+		(li (verseText )) 
+		(li (verseText ))
 	))
 ))
 
@@ -106,32 +106,32 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
 \v 14 of Zaccai - \litl 760\litl*
 ----------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(pm 
-			(v (verseNumber)) (verseText (text)) 
-			(v (verseNumber)) (verseText (text))) 
+			(v (verseNumber)) (verseText ) 
+			(v (verseNumber)) (verseText )) 
 		(b) 
 		(pm 
-			(verseText (text))) 
+			(verseText )) 
 		(b) 
 		(list 
 			(limBlock 
 				(lim 
-					(v (verseNumber)) (verseText (text)) (litl (verseText (text))) (verseText (text))) 
+					(v (verseNumber)) (verseText ) (litl (verseText )) (verseText )) 
 				(lim 
-					(v (verseNumber)) (verseText (text)) (litl (verseText (text))) (verseText (text))) 
+					(v (verseNumber)) (verseText ) (litl (verseText )) (verseText )) 
 				(lim 
-					(v (verseNumber)) (verseText (text)) (litl (verseText (text))) (verseText (text))) 
+					(v (verseNumber)) (verseText ) (litl (verseText )) (verseText )) 
 				(lim 
-					(v (verseNumber)) (verseText (text)) (litl (verseText (text))) (verseText (text))) 
+					(v (verseNumber)) (verseText ) (litl (verseText )) (verseText )) 
 				(lim 
-					(v (verseNumber)) (verseText (text)) (litl (verseText (text))) (verseText (text))) 
+					(v (verseNumber)) (verseText ) (litl (verseText )) (verseText )) 
 				(lim 
-					(v (verseNumber)) (verseText (text)) (litl (verseText (text))) (verseText (text))) 
+					(v (verseNumber)) (verseText ) (litl (verseText )) (verseText )) 
 				(lim 
-					(v (verseNumber)) (verseText (text)) (litl (verseText (text))))
+					(v (verseNumber)) (verseText ) (litl (verseText )))
 			)
 		)
 	)
@@ -160,27 +160,27 @@ lik, liv#
 \lf This was the list of the administrators of the tribes of Israel.
 ----------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
-		(sBlock (s (text))) 
+		(sBlock (s )) 
 		(list 
-			(lh (v (verseNumber)) (verseText (text))) 
+			(lh (v (verseNumber)) (verseText )) 
 			(liBlock 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text))) 
-				(li (lik (verseText (text))) (verseText (text)) (liv (verseText (text))) (verseText (text)))) 
-			(lf (verseText (text)))
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText )) 
+				(li (lik (verseText )) (verseText ) (liv (verseText )) (verseText ))) 
+			(lf (verseText ))
 		)
 	)
 )
@@ -200,19 +200,19 @@ table, with header
 \tr \tcr1 5th \tc2 Simeon \tc3 Shelumiel son of Zurishaddai
 ---------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
 		(p 
 			(v (verseNumber)) 
-			(verseText (text))) 
+			(verseText )) 
 		(table 
-			(tr (th (verseText (text))) (th (verseText (text))) (th (verseText (text)))) 
-			(tr (tcr (verseText (text))) (tc (verseText (text))) (tc (verseText (text)))) 
-			(tr (tcr (verseText (text))) (tc (verseText (text))) (tc (verseText (text)))) 
-			(tr (tcr (verseText (text))) (tc (verseText (text))) (tc (verseText (text)))) 
-			(tr (tcr (verseText (text))) (tc (verseText (text))) (tc (verseText (text)))) 
-			(tr (tcr (verseText (text))) (tc (verseText (text))) (tc (verseText (text))))
+			(tr (th (verseText )) (th (verseText )) (th (verseText ))) 
+			(tr (tcr (verseText )) (tc (verseText )) (tc (verseText ))) 
+			(tr (tcr (verseText )) (tc (verseText )) (tc (verseText ))) 
+			(tr (tcr (verseText )) (tc (verseText )) (tc (verseText ))) 
+			(tr (tcr (verseText )) (tc (verseText )) (tc (verseText ))) 
+			(tr (tcr (verseText )) (tc (verseText )) (tc (verseText )))
 		)
 	)
 )
@@ -231,16 +231,16 @@ their groups, under their leaders, as follows:
 \tr \tcr1-2 Total: \tcr3 151,450
 ---------------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) )) 
 	(chapter 
 		(c (chapterNumber)) 
-		(p (v (verseNumber)) (verseText (text))) 
+		(p (v (verseNumber)) (verseText )) 
 		(table 
-			(tr (th (verseText (text))) (th (verseText (text))) (thr (verseText (text)))) 
-			(tr (tc (verseText (text))) (tc (verseText (text))) (tcr (verseText (text)))) 
-			(tr (tc (verseText (text))) (tc (verseText (text))) (tcr (verseText (text)))) 
-			(tr (tc (verseText (text))) (tc (verseText (text))) (tcr (verseText (text)))) 
-			(tr (tcr (verseText (text))) (tcr (verseText (text))))
+			(tr (th (verseText )) (th (verseText )) (thr (verseText ))) 
+			(tr (tc (verseText )) (tc (verseText )) (tcr (verseText ))) 
+			(tr (tc (verseText )) (tc (verseText )) (tcr (verseText ))) 
+			(tr (tc (verseText )) (tc (verseText )) (tcr (verseText ))) 
+			(tr (tcr (verseText )) (tcr (verseText )))
 		)
 	)
 ) 

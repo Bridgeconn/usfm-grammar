@@ -8,7 +8,7 @@ module.exports = grammar({
       optional($._introduction),
       repeat($.chapter)
       )),
-    _mandatoryHead: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader))),
+    _mandatoryHead: $ => prec.right(0, seq($.book, repeat($._bookHeader))),
 
     bookcode: $ => choice("GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG",
               "RUT", "1SA", "2SA", "1KI", "2KI", 
@@ -25,12 +25,12 @@ module.exports = grammar({
               "5EZ", "6EZ", "DAG", "PS3", "2BA", "LBA", "JUB", "ENO", 
               "1MQ", "2MQ", "3MQ", "REP", "4BA", "LAO", "FRT", 
               "BAK", "OTH", "INT", "CNC", "GLO", "TDX", "NDX"),
-    text: $ => /[^\\\|]+/,
+    _text: $ => /[^\\\|]+/,
     _spaceOrLine: $ => /[\s\n\r]/,
 
     // File Identification
-    bookIdentification: $ => $.id, //only at start of file
-    id: $ => prec.right(0, seq("\\id ", $.bookcode, optional($.text))),
+    book: $ => $.id, //only at start of file
+    id: $ => prec.right(0, seq("\\id ", $.bookcode, optional($._text))),
 
 
     // Headers
@@ -39,35 +39,35 @@ module.exports = grammar({
       ),
 
     usfm: $ => seq("\\usfm ", /\d+(\.\d+)?/),
-    ide: $ => seq("\\ide ", $.text),
+    ide: $ => seq("\\ide ", $._text),
     hBlock: $ => prec.right(0,seq(repeat1($.h), optional($.tocBlock), optional($.tocaBlock))),
     tocBlock: $ => prec.right(0,repeat1($.toc)),
     tocaBlock: $ =>prec.right(0, repeat1($.toca)),//only under some hmarkers
 
-    h: $ => seq($._hTag, $.text),
+    h: $ => seq($._hTag, $._text),
     _hTag: $ => seq("\\h",optional(token.immediate(/[123]/)), " "),
-    toc: $ => seq("\\toc",optional(token.immediate(/[123]/)), " ", $.text),
-    toca: $ => seq("\\toca",optional(token.immediate(/[123]/)), " ", $.text),
+    toc: $ => seq("\\toc",optional(token.immediate(/[123]/)), " ", $._text),
+    toca: $ => seq("\\toca",optional(token.immediate(/[123]/)), " ", $._text),
 
     // Remarks and Comments
     _comments: $ => choice($.rem, $.sts, $.restore, $.lit),
 
-    sts: $ => seq("\\sts ", $.text), // can be present at any position in file, and divides the file into sections from one sts to another.
-    rem: $ => seq("\\rem ", $.text), // can be present at any position in file.
-    restore: $ => seq("\\restore ", $.text), //can't find this marker in docs
-    lit: $ => seq("\\lit ", $.text), 
+    sts: $ => seq("\\sts ", $._text), // can be present at any position in file, and divides the file into sections from one sts to another.
+    rem: $ => seq("\\rem ", $._text), // can be present at any position in file.
+    restore: $ => seq("\\restore ", $._text), //can't find this marker in docs
+    lit: $ => seq("\\lit ", $._text), 
 
     // Introduction
     _introduction: $ => prec.right(0,seq(
       optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock),
       optional($.ie))
       ),
-    _introText: $ => repeat1(choice($.text, $.iqt,
+    _introText: $ => repeat1(choice($._text, $.iqt,
       $.xt,
       $._characterMarker
       )),
 
-    iqt: $ => seq("\\iqt ", $.text, "\\iqt*"),
+    iqt: $ => seq("\\iqt ", $._text, "\\iqt*"),
     imtBlock: $ => prec.right(0,repeat1($.imt)),
     imt: $ => prec.right(0, seq($._imtTag, $._introText)),
     _imtTag: $ => seq("\\imt",optional(token.immediate(/[1234]/)), " "),
@@ -83,7 +83,7 @@ module.exports = grammar({
     ioBlock: $ => prec.right(0,repeat1($.io)),
     io: $ => prec.right(0, seq($._ioTag, $._introText, optional($.ior))),
     _ioTag: $ => seq("\\io",optional(token.immediate(/[1234]/)), " "),
-    ior: $ => seq("\\ior ", $.text, "\\ior*"),
+    ior: $ => seq("\\ior ", $._text, "\\ior*"),
     iot: $ => prec.right(0, seq("\\iot ", $._introText)),
     ip: $ => prec.right(0, seq("\\ip ", $._introText)),
     im: $ => prec.right(0, seq("\\im ", $._introText)),
@@ -104,7 +104,7 @@ module.exports = grammar({
 
 
     // verse
-    verseText: $ => prec.right(0, repeat1(choice($.text,
+    verseText: $ => prec.right(0, repeat1(choice($._text,
       $._characterMarker,
       ))),
     v: $ => prec.right(0,seq("\\v ", $.verseNumber, repeat($._verseMeta))),
@@ -115,7 +115,7 @@ module.exports = grammar({
       $.vp,
     ),
     va: $ => seq("\\va ", $.verseNumber, "\\va*", $._spaceOrLine),
-    vp: $ => seq("\\vp ", $.text, "\\vp*", $._spaceOrLine),
+    vp: $ => seq("\\vp ", $._text, "\\vp*", $._spaceOrLine),
 
     // chapter and contents
     chapter: $ => prec.right(0,seq(
@@ -149,10 +149,10 @@ module.exports = grammar({
       $.cd,
       $.cl
     ),
-    cl: $ => seq("\\cl ", $.text),
+    cl: $ => seq("\\cl ", $._text),
     ca: $ => seq("\\ca ", $.chapterNumber, "\\ca*"),
-    cp: $ => seq("\\cp ", $.text),
-    cd: $ => prec.right(0,seq("\\cd ", repeat1(choice($.text,
+    cp: $ => seq("\\cp ", $._text),
+    cd: $ => prec.right(0,seq("\\cd ", repeat1(choice($._text,
       $._characterMarker,
       $.xt
       )))),
@@ -170,36 +170,36 @@ module.exports = grammar({
     ),
 
     mtBlock: $ => prec.right(0,repeat1($.mt)),
-    mt: $ => seq($._mtTag, repeat1(choice($.text,
+    mt: $ => seq($._mtTag, repeat1(choice($._text,
       $.footnote, $.crossref      
       ))),
     _mtTag: $ => seq("\\mt",optional(token.immediate(/[1234]/)), " "),
 
     mteBlock: $ => prec.right(0,repeat1($.mte)),
-    mte: $ => prec.right(0, seq($._mteTag, repeat1(choice($.text,
+    mte: $ => prec.right(0, seq($._mteTag, repeat1(choice($._text,
       $.footnote, $.crossref      
       )))),
     _mteTag: $ => seq("\\mte",optional(token.immediate(/[12]/)), " "),
 
     msBlock: $ => prec.right(0, repeat1($.ms)),
-    ms: $ => prec.right(0, seq($._msTag, repeat1(choice($.text,
+    ms: $ => prec.right(0, seq($._msTag, repeat1(choice($._text,
       $.footnote, $.crossref,
       $._characterMarker      
       )), optional($.mr))),
     _msTag: $ => seq("\\ms",optional(token.immediate(/[123]/)), " "),
-    mr: $ => seq("\\mr ", $.text),
+    mr: $ => seq("\\mr ", $._text),
 
     sBlock: $ => prec.right(0, repeat1($.s)),
-    s: $ => prec.right(0, seq($._sTag, repeat(choice($.text,
+    s: $ => prec.right(0, seq($._sTag, repeat(choice($._text,
       $.footnote, $.crossref, 
       $._characterMarker      
       )), optional($.sr), optional($.r))),
     _sTag: $ => seq("\\s",optional(token.immediate(/[12345]/)), " "),
-    sr: $ => seq("\\sr ", $.text),
-    r: $ => seq("\\r ", $.text), // ocurs under c too
+    sr: $ => seq("\\sr ", $._text),
+    r: $ => seq("\\r ", $._text), // ocurs under c too
 
-    sp: $ => seq("\\sp ", $.text),
-    d: $ => seq("\\d ", $.text),
+    sp: $ => seq("\\sp ", $._text),
+    d: $ => seq("\\d ", $._text),
     sdBlock: $ => prec.right(0, repeat1($.sd)),
     sd: $ => seq($._sdTag),
     _sdTag: $ => seq("\\sd", optional(token.immediate(/[1234]/)), $._spaceOrLine),
@@ -337,7 +337,7 @@ module.exports = grammar({
 
     //Footnote
     caller: $ => /[^\s\\]/,
-    noteText: $ => prec.right(0, repeat1(choice($.text,
+    noteText: $ => prec.right(0, repeat1(choice($._text,
       $._nestedCharacterMarker,
       ))),
 
@@ -403,9 +403,9 @@ module.exports = grammar({
     rq: $ => seq("\\rq ", $.noteText, "\\rq*"),
 
     //Character and word level markers
-    attributes: $ => seq("|", $.text), //to be implemented properly
+    attributes: $ => seq("|", $._text), //to be implemented properly
     _innerText: $ => prec.right(0, repeat1(choice(
-      $.text,
+      $._text,
       $._nestedCharacterMarker,
     ))),
 
@@ -537,9 +537,9 @@ module.exports = grammar({
       $.jmpNested,
     ),
 
-    fig: $ => seq("\\fig", optional($.text), optional($.attributes), "\\fig*"),
-    jmp: $ => seq("\\jmp", field("label",optional($.text)), optional($.attributes), "\\jmp*"),
-    jmpNested: $ => seq("\\+jmp", field("label",optional($.text)), optional($.attributes), "\\+jmp*"),
+    fig: $ => seq("\\fig", optional($._text), optional($.attributes), "\\fig*"),
+    jmp: $ => seq("\\jmp", field("label",optional($._text)), optional($.attributes), "\\jmp*"),
+    jmpNested: $ => seq("\\+jmp", field("label",optional($._text)), optional($.attributes), "\\+jmp*"),
 
     pb: $ => seq("\\pb", $._spaceOrLine),
 
@@ -564,8 +564,8 @@ module.exports = grammar({
 
     milestone: $ => choice($._milestoneStart, $._milestoneEnd, $._milestoneStandaloneMarker),
 
-    zNameSpaceRegular: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text))),
-    zNameSpaceClosed: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text),
+    zNameSpaceRegular: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($._text))),
+    zNameSpaceClosed: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($._text),
       optional($.attributes), /\\z[\w\d_-]+\*/)),
     
     esb: $ => seq("\\esb",  repeat($._esbContents), "\\esbe"),

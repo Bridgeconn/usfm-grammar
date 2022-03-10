@@ -14,7 +14,7 @@ q#
 \q2 the great deeds you used to do.
 \q1 Be merciful, even when you are angry.
 ------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (sBlock (s (text))) (p (v (verseNumber)) (verseText (text))) (b) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (sBlock (s )) (p (v (verseNumber)) (verseText )) (b) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (verseText )) (q (verseText )) (q (verseText )))))
 ============
 qr
 ============
@@ -31,7 +31,7 @@ qr
 \v 3 Praise the Lord of lords.
 \qr God's love never fails.
 --------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (sBlock (s (text))) (qBlock (q (v (verseNumber)) (verseText (text)))) (qr (verseText (text))) (qBlock (q (v (verseNumber)) (verseText (text)))) (qr (verseText (text))) (qBlock (q (v (verseNumber)) (verseText (text)))) (qr (verseText (text)))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (sBlock (s )) (qBlock (q (v (verseNumber)) (verseText ))) (qr (verseText )) (qBlock (q (v (verseNumber)) (verseText ))) (qr (verseText )) (qBlock (q (v (verseNumber)) (verseText ))) (qr (verseText ))))
 ==============
 qc
 ==============
@@ -49,7 +49,7 @@ qc
 \q1
 \v 20 This is the end of the prayers of David son of Jesse.
 ----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (verseText (text))) (q (verseText (text)))) (b) (qc (verseText (text))) (b) (qBlock (q (v (verseNumber)) (verseText (text))))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (v (verseNumber)) (verseText )) (q (verseText ))) (b) (qc (verseText )) (b) (qBlock (q (v (verseNumber)) (verseText )))))
 ===============
 qs
 ===============
@@ -64,7 +64,7 @@ qs
 \v 2 many are saying to me,
 \q2 “There is no help for you \qs Selah\qs*
 ----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (sBlock (s (text))) (d (text)) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (verseText (text))) (q (verseText (text)) (qs (verseText (text)))))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (sBlock (s )) (d ) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (v (verseNumber)) (verseText )) (q (verseText ) (qs (verseText ))))))
 ================
 qa
 ================
@@ -80,7 +80,7 @@ qa
 \v 9 How can a young man keep his way pure?
 \q2 By living according to your word.
 -----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (qa (verseText (text))) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text)))) (qa (verseText (text))) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (qa (verseText )) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText ))) (qa (verseText )) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )))))
 ================
 qac
 ================
@@ -106,7 +106,7 @@ qac
 \q1 Los que se decían tus amigos
 \q1 hoy son tus enemigos.
 -------------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (sBlock (s (text)) (s (text))) (qBlock (q (v (verseNumber)) (verseText (text)) (qac (verseText (text))) (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text)))) (b) (qBlock (q (v (verseNumber)) (qac (verseText (text))) (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text))))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (sBlock (s ) (s )) (qBlock (q (v (verseNumber)) (verseText ) (qac (verseText )) (verseText )) (q (verseText )) (q (verseText )) (q (verseText )) (q (verseText )) (q (verseText )) (q (verseText )) (q (verseText ))) (b) (qBlock (q (v (verseNumber)) (qac (verseText )) (verseText )) (q (verseText )) (q (verseText )) (q (verseText )) (q (verseText )) (q (verseText )))))
 ================
 qm
 ================
@@ -121,7 +121,7 @@ of “The Thirty,” and he called out,
 \b
 \m David welcomed them and made them officers in his army.
 -----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (qmBlock (qm (verseText (text))) (qm (verseText (text))) (qm (verseText (text)))) (b) (m (verseText (text)))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText )) (qmBlock (qm (verseText )) (qm (verseText )) (qm (verseText ))) (b) (m (verseText ))))
 =================
 qd
 =================
@@ -136,7 +136,7 @@ qd
 \b
 \qd For the director of music. On my stringed instruments.
 ------------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text)))) (b) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (verseText (text)))) (b) (qd (verseText (text)))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText ))) (b) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (verseText ))) (b) (qd (verseText ))))
 =================
 b
 =================
@@ -165,4 +165,4 @@ b
 \v 6 I am not afraid of the thousands of enemies
 \q2 who surround me on every side.
 ----------------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (sBlock (s (text))) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (verseText (text))) (q (verseText (text)))) (b) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (verseText (text))) (q (verseText (text)))) (b) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (verseText (text))) (q (verseText (text))))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (sBlock (s )) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (v (verseNumber)) (verseText )) (q (verseText ))) (b) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (verseText )) (q (v (verseNumber)) (verseText )) (q (verseText ))) (b) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (v (verseNumber)) (verseText )) (q (verseText )))))

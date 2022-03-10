@@ -12,20 +12,20 @@ znamespace
 \v 4 text
 ---------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
-	(zNameSpaceRegular (text)) 
+	(book (id (bookcode) )) 
+	(zNameSpaceRegular ) 
 	(chapter 
 		(c (chapterNumber)) 
 		(p 
-			(zNameSpaceRegular (text)) 
+			(zNameSpaceRegular ) 
 			(v (verseNumber)) 
-			(verseText (text) (zNameSpaceClosed (text)) (text)) 
+			(verseText  (zNameSpaceClosed ) ) 
 			(v (verseNumber)) 
-			(verseText (text)) 
+			(verseText ) 
 			(v (verseNumber)) 
-			(verseText (text) (zNameSpaceClosed (text) (attributes (text))) (text)) 
+			(verseText  (zNameSpaceClosed  (attributes )) ) 
 			(v (verseNumber)) 
-			(verseText (text)))))
+			(verseText ))))
 
 ===========
 esb..esbe
@@ -52,7 +52,7 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 \v 19 He went a little farther on and saw two other brothers, James and John,
 the sons of Zebedee.
 -----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText )) (esb (msBlock (ms )) (p (verseText ) (crossref (xt (noteText ))) (verseText )) (p (verseText  (tl )  (fig  (attributes )) ))) (p (v (verseNumber)) (verseText ))))
 ============
 cat
 ============
@@ -78,4 +78,4 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 \v 19 He went a little farther on and saw two other brothers, James and John,
 the sons of Zebedee.
 ------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (cat) (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
+(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText )) (esb (cat) (msBlock (ms )) (p (verseText ) (crossref (xt (noteText ))) (verseText )) (p (verseText  (tl )  (fig  (attributes )) ))) (p (v (verseNumber)) (verseText ))))
