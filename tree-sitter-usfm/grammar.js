@@ -6,7 +6,7 @@ module.exports = grammar({
       $._mandatoryHead,
       optional($.mtBlock),
       optional($._introduction),
-      repeat($.chapter)
+      optional($.chapters)
       )),
     _mandatoryHead: $ => prec.right(0, seq($.book, repeat($._bookHeader))),
 
@@ -118,6 +118,7 @@ module.exports = grammar({
     vp: $ => seq("\\vp ", $._text, "\\vp*", $._spaceOrLine),
 
     // chapter and contents
+    chapters: $ => repeat1($.chapter),
     chapter: $ => prec.right(0,seq(
         optional($.cl),
         $.c,
