@@ -6,7 +6,7 @@ id marker
 ----------
 (File
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
 )
@@ -19,10 +19,10 @@ ide marker
 ----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-   (ideMarker
+   (ide
    	(text))
 )
 ===========
@@ -34,11 +34,11 @@ usfm marker
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (usfmMarker)
-  (ideMarker
+  (usfm)
+  (ide
    (text))
 )
 ===========
@@ -50,12 +50,12 @@ usfm marker after ide
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
 )
 ===========
 h marker
@@ -67,14 +67,14 @@ h marker
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text)))
 )
 ==============
@@ -88,16 +88,16 @@ multiple h markers
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text))
-    (hMarker
+    (h
       (text)))
 )
 ==============
@@ -113,21 +113,21 @@ toc markers under h
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text))
     (tocBlock
-      (tocMarker
+      (toc
         (text))
-      (tocMarker
+      (toc
         (text))
-      (tocMarker
+      (toc
         (text))))
 )
 ==============
@@ -142,18 +142,18 @@ toc markers without h
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (tocBlock
-    (tocMarker
+    (toc
       (text))
-    (tocMarker
+    (toc
       (text))
-    (tocMarker
+    (toc
       (text)))
 )
 ==============
@@ -169,21 +169,21 @@ toca markers
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text))
     (tocaBlock
-      (tocaMarker
+      (toca
         (text))
-      (tocaMarker
+      (toca
         (text))
-      (tocaMarker
+      (toca
         (text))))
 )
 
@@ -203,27 +203,27 @@ toca markers along with toc
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text))
     (tocBlock
-      (tocMarker
+      (toc
         (text))
-      (tocMarker
+      (toc
         (text))
-      (tocMarker
+      (toc
         (text)))
     (tocaBlock
-      (tocaMarker
+      (toca
         (text))
-      (tocaMarker
+      (toca
         (text))
-      (tocaMarker
+      (toca
         (text))))
 )

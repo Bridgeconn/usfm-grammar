@@ -15,22 +15,22 @@ intro markers set 1
 -----------------
 (File 
 	(bookIdentification 
-		(idMarker 
+		(id 
 			(bookcode) (text)))
-	(usfmMarker)
+	(usfm)
 	(hBlock 
-		(hMarker (text)))
+		(h (text)))
 	(mtBlock 
-		(mtMarker (text)) 
-		(mtMarker (text))) 
+		(mt (text)) 
+		(mt (text))) 
 	(imtBlock 
-		(imtMarker (text))) 
+		(imt (text))) 
 	(isBlock 
-		(isMarker (text)))
-	(ipMarker (text))
-	(ipiMarker (text)) 
-	(imiMarker (text))
-	(imMarker (text))
+		(is (text)))
+	(ip (text))
+	(ipi (text)) 
+	(imi (text))
+	(im (text))
 )
 ===========
 intro markers set 2
@@ -51,7 +51,7 @@ intro markers set 2
 \io1 From Galilee to Jerusalem \ior (10.1-52)\ior*
 \io1 The last week in and near Jerusalem
 -------------
-(File (bookIdentification (idMarker (bookcode) (text))) (ipMarker (text)) (ibMarker) (ipqMarker (text)) (imqMarker (text)) (iprMarker (text)) (iqBlock (iqMarker (text)) (iqMarker (text)) (iqMarker (text)) (iqMarker (text))) (iotMarker (text)) (ioMarker (text) (iorMarker (text))) (ioMarker (text) (iorMarker (text))) (ioMarker (text) (iorMarker (text))) (ioMarker (text)))
+(File (bookIdentification (id (bookcode) (text))) (ip (text)) (ib) (ipq (text)) (imq (text)) (ipr (text)) (iqBlock (iq (text)) (iq (text)) (iq (text)) (iq (text))) (iot (text)) (io (text) (ior (text))) (io (text) (ior (text))) (io (text) (ior (text))) (io (text)))
 ===========
 intro markers set 3
 ===========
@@ -63,4 +63,4 @@ intro markers set 3
 \imte End of the Introduction to the Gospel of Mark
 \ie
 ------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (ipMarker (text)) (iliBlock (iliMarker (text)) (iliMarker (text)) (iliMarker (text))) (imteBlock (imteMarker (text))) (ieMarker))
+(File (bookIdentification (id (bookcode) (text))) (ip (text)) (iliBlock (ili (text)) (ili (text)) (ili (text))) (imteBlock (imte (text))) (ie))

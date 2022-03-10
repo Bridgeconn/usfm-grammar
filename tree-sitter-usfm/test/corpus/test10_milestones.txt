@@ -16,7 +16,7 @@ accuse you of?”\qt-e\*
 \v 14 But Jesus refused to answer a single word, with the result that the Governor was greatly
 surprised.
 ----------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text))) (pMarker (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (pMarker (vMarker (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text))) (pMarker (vMarker (verseNumber)) (verseText (text)))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text))) (p (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)) (v (verseNumber)) (verseText (text))) (p (v (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text))) (p (v (verseNumber)) (verseText (text)))))
 ==========
 qt milestone numbered
 ==========
@@ -38,7 +38,7 @@ who="Paul"\*“I see that in every way you Athenians are very religious.
 a man he has chosen. He has given proof of this to everyone by raising that man from death!”
 \qt1-e |eid="qt1_ACT_17:22"\*
 ----------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (qBlock (qMarker (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)))) (bMarker) (mMarker (verseText (text))) (qBlock (qMarker (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)))) (bMarker) (mMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (milestone (attributes (text))))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (qBlock (q (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)))) (b) (m (verseText (text))) (qBlock (q (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)))) (b) (m (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (milestone (attributes (text))))))
 ==========
 ts milestone w/o attributes
 ==========
@@ -59,7 +59,7 @@ examples of those who suffer the punishment of eternal fire.
 authority, and they say evil things about the glorious ones.
 \ts\*
 -----------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (milestone) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (milestone) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (milestone))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (milestone) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (milestone) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (milestone))))
 ===========
 ts milestone w/ attributes
 ============
@@ -84,25 +84,25 @@ authority, and they say evil things about the glorious ones.
 \ts-e |eid="ts_JUD_7-8"\*
 ---------------
 (File 
-  (bookIdentification (idMarker (bookcode) (text))) 
+  (bookIdentification (id (bookcode) (text))) 
   (chapter 
-    (cMarker (chapterNumber)) 
-    (pMarker 
-      (vMarker (verseNumber)) 
+    (c (chapterNumber)) 
+    (p 
+      (v (verseNumber)) 
       (verseText (text)) 
       (milestone (attributes (text))) 
       (verseText (text))) 
-    (pMarker 
-      (vMarker (verseNumber)) 
+    (p 
+      (v (verseNumber)) 
       (verseText (text)) 
-      (vMarker (verseNumber)) 
-      (verseText (text)) 
-      (milestone (attributes (text))) 
+      (v (verseNumber)) 
       (verseText (text)) 
       (milestone (attributes (text))) 
       (verseText (text)) 
-      (vMarker (verseNumber)) 
+      (milestone (attributes (text))) 
       (verseText (text)) 
-      (vMarker (verseNumber)) 
+      (v (verseNumber)) 
+      (verseText (text)) 
+      (v (verseNumber)) 
       (verseText (text)) 
       (milestone (attributes (text))))))

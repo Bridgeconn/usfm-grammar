@@ -6,10 +6,10 @@ rem under one id
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (remMarker
+  (rem
     (text))
 )
 ===========
@@ -23,16 +23,16 @@ rem under one h marker
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text)))
-  (remMarker
+  (rem
     (text))
 )
 ==============
@@ -49,23 +49,23 @@ rem between toc markers and h
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text)))
-  (remMarker
+  (rem
     (text))
   (tocBlock
-    (tocMarker
+    (toc
       (text))
-    (tocMarker
+    (toc
       (text))
-    (tocMarker
+    (toc
       (text)))
 )
 ===========
@@ -76,10 +76,10 @@ sts under one id
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (stsMarker
+  (sts
     (text))
 )
 ===========
@@ -93,16 +93,16 @@ sts under one h marker
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text)))
-  (stsMarker
+  (sts
     (text))
 )
 ==============
@@ -119,23 +119,23 @@ sts between toc markers and h
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text)))
-  (stsMarker
+  (sts
     (text))
   (tocBlock
-    (tocMarker
+    (toc
       (text))
-    (tocMarker
+    (toc
       (text))
-    (tocMarker
+    (toc
       (text)))
 )
 ==============
@@ -150,17 +150,17 @@ sts and rem maker together in header section
 -----------
 (File 
  (bookIdentification 
-  (idMarker 
+  (id 
     (bookcode)
     (text)))
-  (ideMarker 
+  (ide 
    (text))
-  (usfmMarker)
+  (usfm)
   (hBlock
-    (hMarker
+    (h
       (text)))
-  (stsMarker
+  (sts
     (text))
-  (remMarker
+  (rem
     (text))
 )

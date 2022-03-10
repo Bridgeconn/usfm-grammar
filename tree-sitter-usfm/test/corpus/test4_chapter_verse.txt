@@ -8,11 +8,11 @@ id, c, v markers
 ----------
 (File 
   (bookIdentification 
-    (idMarker (bookcode) (text))) 
+    (id (bookcode) (text))) 
   (chapter 
-    (cMarker (chapterNumber)) 
-    (pMarker 
-      (vMarker (verseNumber)) 
+    (c (chapterNumber)) 
+    (p 
+      (v (verseNumber)) 
       (verseText (text)))))
 
 ===========
@@ -26,12 +26,12 @@ cl markers
 -----------
 (File 
   (bookIdentification 
-    (idMarker (bookcode) (text))) 
+    (id (bookcode) (text))) 
   (chapter 
-    (cMarker (chapterNumber)) 
-    (clMarker (text)) 
-    (pMarker 
-      (vMarker (verseNumber)) 
+    (c (chapterNumber)) 
+    (cl (text)) 
+    (p 
+      (v (verseNumber)) 
       (verseText (text)))))
 ===========
 cl ca cp markers
@@ -48,17 +48,17 @@ cl ca cp markers
 -------------
 (File 
   (bookIdentification 
-    (idMarker (bookcode) (text))) 
-  (hBlock (hMarker (text))) 
+    (id (bookcode) (text))) 
+  (hBlock (h (text))) 
   (chapter 
-    (clMarker (text)) 
-    (cMarker (chapterNumber)) 
-    (caMarker (chapterNumber)) 
-    (cpMarker (text)) 
-    (pMarker 
-      (vMarker (verseNumber)) 
+    (cl (text)) 
+    (c (chapterNumber)) 
+    (ca (chapterNumber)) 
+    (cp (text)) 
+    (p 
+      (v (verseNumber)) 
       (verseText (text)) 
-      (vMarker (verseNumber)) 
+      (v (verseNumber)) 
       (verseText (text)))))
 
 ==============
@@ -75,19 +75,19 @@ verse number patterns
 --------------
 (File 
   (bookIdentification 
-    (idMarker (bookcode) (text))) 
+    (id (bookcode) (text))) 
   (chapter 
-    (cMarker (chapterNumber)) 
-    (pMarker 
-      (vMarker (verseNumber)) 
+    (c (chapterNumber)) 
+    (p 
+      (v (verseNumber)) 
       (verseText (text)) 
-      (vMarker (verseNumber)) 
+      (v (verseNumber)) 
       (verseText (text)) 
-      (vMarker (verseNumber)) 
+      (v (verseNumber)) 
       (verseText (text)) 
-      (vMarker (verseNumber)) 
+      (v (verseNumber)) 
       (verseText (text)) 
-      (vMarker (verseNumber)) 
+      (v (verseNumber)) 
       (verseText (text)))))
 ===========
 va vp markers
@@ -103,16 +103,16 @@ va vp markers
 ------------
 (File 
   (bookIdentification 
-    (idMarker (bookcode) (text))) 
+    (id (bookcode) (text))) 
   (chapter 
-    (cMarker (chapterNumber)) 
-    (pMarker 
-      (vMarker (verseNumber)) 
+    (c (chapterNumber)) 
+    (p 
+      (v (verseNumber)) 
       (verseText (text)) 
-      (vMarker (verseNumber) (vaMarker (verseNumber))) 
+      (v (verseNumber) (va (verseNumber))) 
       (verseText (text)) 
-      (vMarker (verseNumber) (vaMarker (verseNumber)) (vpMarker (text))) 
+      (v (verseNumber) (va (verseNumber)) (vp (text))) 
       (verseText (text)) 
-      (vMarker (verseNumber) (vaMarker (verseNumber)) (vaMarker (verseNumber))) 
+      (v (verseNumber) (va (verseNumber)) (va (verseNumber))) 
       (verseText (text)) 
-      (vMarker (verseNumber) (vpMarker (text))) (verseText (text)))))
+      (v (verseNumber) (vp (text))) (verseText (text)))))
