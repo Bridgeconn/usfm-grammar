@@ -34,6 +34,10 @@ module.exports = grammar({
     description: $ => $._text,
     id: $ => prec.right(0, seq("\\id ", $.bookcode, optional($.description))),
 
+    //numbered marker levels
+    numberedLevelMax3: $ => token.immediate(/[123]/),
+    numberedLevelMax4: $ => token.immediate(/[1234]/),
+    numberedLevelMax5: $ => token.immediate(/[12345]/),
 
     // Headers
     _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock,
@@ -47,9 +51,9 @@ module.exports = grammar({
     tocaBlock: $ =>prec.right(0, repeat1($.toca)),//only under some hmarkers
 
     h: $ => seq($._hTag, $.text),
-    _hTag: $ => seq("\\h",optional(token.immediate(/[123]/)), " "),
-    toc: $ => seq("\\toc",optional(token.immediate(/[123]/)), " ", $.text),
-    toca: $ => seq("\\toca",optional(token.immediate(/[123]/)), " ", $.text),
+    _hTag: $ => seq("\\h",optional($.numberedLevelMax3), " "),
+    toc: $ => seq("\\toc",optional($.numberedLevelMax3), " ", $.text),
+    toca: $ => seq("\\toca",optional($.numberedLevelMax3), " ", $.text),
 
     // Remarks and Comments
     _comments: $ => choice($.rem, $.sts, $.restore, $.lit),
@@ -72,7 +76,7 @@ module.exports = grammar({
     iqt: $ => seq("\\iqt ", $.text, "\\iqt*"),
     imtBlock: $ => prec.right(0,repeat1($.imt)),
     imt: $ => prec.right(0, seq($._imtTag, $._introText)),
-    _imtTag: $ => seq("\\imt",optional(token.immediate(/[1234]/)), " "),
+    _imtTag: $ => seq("\\imt",optional($.numberedLevelMax4), " "),
     imteBlock: $ => prec.right(0,repeat1($.imte)),
     imte: $ => prec.right(0, seq($._imteTag, $._introText)),
     _imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
@@ -84,7 +88,7 @@ module.exports = grammar({
     _isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
     ioBlock: $ => prec.right(0,repeat1($.io)),
     io: $ => prec.right(0, seq($._ioTag, $._introText, optional($.ior))),
-    _ioTag: $ => seq("\\io",optional(token.immediate(/[1234]/)), " "),
+    _ioTag: $ => seq("\\io",optional($.numberedLevelMax4), " "),
     ior: $ => seq("\\ior ", $.text, "\\ior*"),
     iot: $ => prec.right(0, seq("\\iot ", $._introText)),
     ip: $ => prec.right(0, seq("\\ip ", $._introText)),
@@ -100,7 +104,7 @@ module.exports = grammar({
     ib: $ => seq("\\ib"),
     iqBlock: $ => prec.right(0,repeat1($.iq)),
     iq: $ => prec.right(0, seq($._iqTag, $._introText)),
-    _iqTag: $ => seq("\\iq",optional(token.immediate(/[123]/)), " "),
+    _iqTag: $ => seq("\\iq",optional($.numberedLevelMax3), " "),
     ie: $ => seq("\\ie"),
     iex: $ => prec.right(0, seq("\\iex ", $._introText)), // can occur in introduction or inside chapter
 
@@ -175,7 +179,7 @@ module.exports = grammar({
     mt: $ => seq($._mtTag, repeat1(choice($.text,
       $.footnote, $.crossref      
       ))),
-    _mtTag: $ => seq("\\mt",optional(token.immediate(/[1234]/)), " "),
+    _mtTag: $ => seq("\\mt",optional($.numberedLevelMax4), " "),
 
     mteBlock: $ => prec.right(0,repeat1($.mte)),
     mte: $ => prec.right(0, seq($._mteTag, repeat1(choice($.text,
@@ -188,7 +192,7 @@ module.exports = grammar({
       $.footnote, $.crossref,
       $._characterMarker      
       )), optional($.mr))),
-    _msTag: $ => seq("\\ms",optional(token.immediate(/[123]/)), " "),
+    _msTag: $ => seq("\\ms",optional($.numberedLevelMax3), " "),
     mr: $ => seq("\\mr ", $.text),
 
     sBlock: $ => prec.right(0, repeat1($.s)),
@@ -196,7 +200,7 @@ module.exports = grammar({
       $.footnote, $.crossref, 
       $._characterMarker      
       )), optional($.sr), optional($.r))),
-    _sTag: $ => seq("\\s",optional(token.immediate(/[12345]/)), " "),
+    _sTag: $ => seq("\\s",optional($.numberedLevelMax5), " "),
     sr: $ => seq("\\sr ", $.text),
     r: $ => seq("\\r ", $.text), // ocurs under c too
 
@@ -204,7 +208,7 @@ module.exports = grammar({
     d: $ => seq("\\d ", $.text),
     sdBlock: $ => prec.right(0, repeat1($.sd)),
     sd: $ => seq($._sdTag),
-    _sdTag: $ => seq("\\sd", optional(token.immediate(/[1234]/)), $._spaceOrLine),
+    _sdTag: $ => seq("\\sd", optional($.numberedLevelMax4), $._spaceOrLine),
     // rqMarker implemented in cross ref section 
 
     // paragraph
@@ -246,13 +250,13 @@ module.exports = grammar({
     pmr: $ => prec.right(0, seq("\\pmr", $._spaceOrLine, repeat($._paragraphContent))),
     piBlock: $ => prec.right(0, repeat1($.pi)),
     pi: $ => prec.right(0, seq($._piTag, repeat($._paragraphContent))),
-    _piTag: $ => seq("\\pi", optional(token.immediate(/[123]/)), $._spaceOrLine),
+    _piTag: $ => seq("\\pi", optional($.numberedLevelMax3), $._spaceOrLine),
     mi: $ => prec.right(0, seq("\\mi", $._spaceOrLine, repeat($._paragraphContent))),
     nb: $ => prec.right(0, seq("\\nb", $._spaceOrLine, repeat($._paragraphContent))),
     pc: $ => prec.right(0, seq("\\pc", $._spaceOrLine, repeat($._paragraphContent))),
     phBlock: $ => prec.right(0, repeat1($.ph)),
     ph: $ => prec.right(0, seq($._phTag, repeat($._paragraphContent))),
-    _phTag: $ => seq("\\ph", optional(token.immediate(/[123]/)), $._spaceOrLine),
+    _phTag: $ => seq("\\ph", optional($.numberedLevelMax3), $._spaceOrLine),
     phi: $ => prec.right(0, seq("\\phi", $._spaceOrLine, repeat($._paragraphContent))),
     b: $ => seq("\\b", $._spaceOrLine),
 
@@ -276,7 +280,7 @@ module.exports = grammar({
 
     qBlock: $ => prec.right(0, repeat1($.q)),
     q: $ => prec.right(0, seq($._qTag, repeat($._poetryContent))),
-    _qTag: $ => seq("\\q", optional(token.immediate(/[123]/)), $._spaceOrLine),
+    _qTag: $ => seq("\\q", optional($.numberedLevelMax3), $._spaceOrLine),
     qr: $ => prec.right(0, seq("\\qr", $._spaceOrLine, repeat($._poetryContent))),
     qc: $ => prec.right(0, seq("\\qc",$._spaceOrLine, repeat($._poetryContent))),
     qs: $ => seq("\\qs", $._spaceOrLine, repeat($._poetryContent), "\\qs*"),
@@ -284,7 +288,7 @@ module.exports = grammar({
     qac: $ => seq("\\qac", $._spaceOrLine, repeat($._poetryContent), token("\\qac*")),
     qmBlock: $ => prec.right(0, repeat1($.qm)),
     qm: $ => prec.right(0, seq($._qmTag, repeat($._poetryContent))),
-    _qmTag: $ => seq("\\qm", optional(token.immediate(/[123]/)), $._spaceOrLine),
+    _qmTag: $ => seq("\\qm", optional($.numberedLevelMax3), $._spaceOrLine),
     qd: $ => prec.right(0, seq("\\qd",$._spaceOrLine, repeat($._poetryContent))),
 
     //List
@@ -298,17 +302,17 @@ module.exports = grammar({
       $._paragraphContent,
       $._listTextContent,
       )))),
-    _liTag: $ => seq("\\li",optional(token.immediate(/[1234]/)), $._spaceOrLine),
+    _liTag: $ => seq("\\li",optional($.numberedLevelMax4), $._spaceOrLine),
     limBlock: $ => prec.right(0, repeat1($.lim)),
     lim: $ => prec.right(0, seq($._limTag, repeat(choice(
         $._paragraphContent,
         $._listTextContent,)
       ))
     ),
-    _limTag: $ => seq("\\lim",optional(token.immediate(/[1234]/)), $._spaceOrLine),
+    _limTag: $ => seq("\\lim",optional($.numberedLevelMax4), $._spaceOrLine),
     liv: $ => prec.right(0, seq($._livTag, $._spaceOrLine, repeat(choice($.verseText,
       )), $._livTag, token.immediate("*") )),
-    _livTag: $ => prec.right(0,seq("\\liv",optional(token.immediate(/[12345]/)))),
+    _livTag: $ => prec.right(0,seq("\\liv",optional($.numberedLevelMax5))),
     lik: $ => seq("\\lik ", $.verseText, "\\lik*"),
     litl: $ => seq("\\litl ", $.verseText, "\\litl*"),
 
