@@ -110,7 +110,7 @@ module.exports = grammar({
 
 
     // verse
-    verseText: $ => prec.right(0, repeat1(choice($.text,
+    verseText: $ => prec.right(0, repeat1(choice($._text,
       $._characterMarker,
       ))),
     v: $ => prec.right(0,seq("\\v ", $.verseNumber, repeat($._verseMeta))),
