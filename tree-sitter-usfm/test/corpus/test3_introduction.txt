@@ -14,23 +14,23 @@ intro markers set 1
 \im The most important document in the history of the English language is the King James Version of the Bible...
 -----------------
 (File 
-	(book 
+	(bookIdentification 
 		(id 
-			(bookcode) ))
+			(bookcode) (text)))
 	(usfm)
 	(hBlock 
-		(h ))
+		(h (text)))
 	(mtBlock 
-		(mt ) 
-		(mt )) 
+		(mt (text)) 
+		(mt (text))) 
 	(imtBlock 
-		(imt )) 
+		(imt (text))) 
 	(isBlock 
-		(is ))
-	(ip )
-	(ipi ) 
-	(imi )
-	(im )
+		(is (text)))
+	(ip (text))
+	(ipi (text)) 
+	(imi (text))
+	(im (text))
 )
 ===========
 intro markers set 2
@@ -51,7 +51,7 @@ intro markers set 2
 \io1 From Galilee to Jerusalem \ior (10.1-52)\ior*
 \io1 The last week in and near Jerusalem
 -------------
-(File (book (id (bookcode) )) (ip ) (ib) (ipq ) (imq ) (ipr ) (iqBlock (iq ) (iq ) (iq ) (iq )) (iot ) (io  (ior )) (io  (ior )) (io  (ior )) (io ))
+(File (bookIdentification (id (bookcode) (text))) (ip (text)) (ib) (ipq (text)) (imq (text)) (ipr (text)) (iqBlock (iq (text)) (iq (text)) (iq (text)) (iq (text))) (iot (text)) (io (text) (ior (text))) (io (text) (ior (text))) (io (text) (ior (text))) (io (text)))
 ===========
 intro markers set 3
 ===========
@@ -63,4 +63,4 @@ intro markers set 3
 \imte End of the Introduction to the Gospel of Mark
 \ie
 ------------------
-(File (book (id (bookcode) )) (ip ) (iliBlock (ili ) (ili ) (ili )) (imteBlock (imte )) (ie))
+(File (bookIdentification (id (bookcode) (text))) (ip (text)) (iliBlock (ili (text)) (ili (text)) (ili (text))) (imteBlock (imte (text))) (ie))

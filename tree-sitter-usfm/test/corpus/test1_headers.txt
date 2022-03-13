@@ -5,10 +5,10 @@ id marker
 
 ----------
 (File
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
 )
 
 ==========
@@ -18,12 +18,12 @@ ide marker
 \ide URF-8
 ----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
    (ide
-   	)
+   	(text))
 )
 ===========
 usfm marker
@@ -33,13 +33,13 @@ usfm marker
 \ide utf-8
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (usfm)
   (ide
-   )
+   (text))
 )
 ===========
 usfm marker after ide
@@ -49,12 +49,12 @@ usfm marker after ide
 \usfm 3.0
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
 )
 ===========
@@ -66,16 +66,16 @@ h marker
 \h Genesis
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      ))
+      (text)))
 )
 ==============
 multiple h markers
@@ -87,18 +87,18 @@ multiple h markers
 \h2 Part1
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      )
+      (text))
     (h
-      ))
+      (text)))
 )
 ==============
 toc markers under h
@@ -112,23 +112,23 @@ toc markers under h
 \toc3 the book of genesis
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      )
+      (text))
     (tocBlock
       (toc
-        )
+        (text))
       (toc
-        )
+        (text))
       (toc
-        )))
+        (text))))
 )
 ==============
 toc markers without h
@@ -141,20 +141,20 @@ toc markers without h
 \toc3 the book of genesis
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (tocBlock
     (toc
-      )
+      (text))
     (toc
-      )
+      (text))
     (toc
-      ))
+      (text)))
 )
 ==============
 toca markers
@@ -168,23 +168,23 @@ toca markers
 \toca3 gen
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      )
+      (text))
     (tocaBlock
       (toca
-        )
+        (text))
       (toca
-        )
+        (text))
       (toca
-        )))
+        (text))))
 )
 
 ==============
@@ -202,28 +202,28 @@ toca markers along with toc
 \toca3 gen
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      )
+      (text))
     (tocBlock
       (toc
-        )
+        (text))
       (toc
-        )
+        (text))
       (toc
-        ))
+        (text)))
     (tocaBlock
       (toca
-        )
+        (text))
       (toca
-        )
+        (text))
       (toca
-        )))
+        (text))))
 )

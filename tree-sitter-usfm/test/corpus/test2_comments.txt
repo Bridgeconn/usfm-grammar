@@ -5,12 +5,12 @@ rem under one id
 \rem Only a remark
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (rem
-    )
+    (text))
 )
 ===========
 rem under one h marker
@@ -22,18 +22,18 @@ rem under one h marker
 \rem a remark
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      ))
+      (text)))
   (rem
-    )
+    (text))
 )
 ==============
 rem between toc markers and h
@@ -48,25 +48,25 @@ rem between toc markers and h
 \toc3 the book of genesis
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      ))
+      (text)))
   (rem
-    )
+    (text))
   (tocBlock
     (toc
-      )
+      (text))
     (toc
-      )
+      (text))
     (toc
-      ))
+      (text)))
 )
 ===========
 sts under one id
@@ -75,12 +75,12 @@ sts under one id
 \sts status code
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (sts
-    )
+    (text))
 )
 ===========
 sts under one h marker
@@ -92,18 +92,18 @@ sts under one h marker
 \sts status
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      ))
+      (text)))
   (sts
-    )
+    (text))
 )
 ==============
 sts between toc markers and h
@@ -118,25 +118,25 @@ sts between toc markers and h
 \toc3 the book of genesis
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      ))
+      (text)))
   (sts
-    )
+    (text))
   (tocBlock
     (toc
-      )
+      (text))
     (toc
-      )
+      (text))
     (toc
-      ))
+      (text)))
 )
 ==============
 sts and rem maker together in header section
@@ -149,18 +149,18 @@ sts and rem maker together in header section
 \rem and a remark
 -----------
 (File 
- (book 
+ (bookIdentification 
   (id 
     (bookcode)
-    ))
+    (text)))
   (ide 
-   )
+   (text))
   (usfm)
   (hBlock
     (h
-      ))
+      (text)))
   (sts
-    )
+    (text))
   (rem
-    )
+    (text))
 )

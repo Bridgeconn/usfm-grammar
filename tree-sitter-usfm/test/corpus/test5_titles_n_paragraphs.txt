@@ -27,42 +27,42 @@ headers and titles
 \mte1 John 
 ---------------------
 (File 
-	(book 
-		(id (bookcode) )) 
+	(bookIdentification 
+		(id (bookcode) (text))) 
 	(usfm) 
 	(tocBlock 
-		(toc ) 
-		(toc )) 
+		(toc (text)) 
+		(toc (text))) 
 	(mtBlock 
-		(mt ) 
-		(mt )) 
+		(mt (text)) 
+		(mt (text))) 
 	(chapter 
 		(c (chapterNumber)) 
 		(msBlock 
-			(ms  (mr ))) 
+			(ms (text) (mr (text)))) 
 		(sBlock 
-			(s )) 
+			(s (text))) 
 		(p 
 			(v (verseNumber)) 
-			(verseText )) 
+			(verseText (text))) 
 		(sBlock 
-			(s  
-				(sr ) 
-				(r ))) 
+			(s (text) 
+				(sr (text)) 
+				(r (text)))) 
 		(p 
 			(v (verseNumber)) 
-			(verseText )) 
+			(verseText (text))) 
 		(sdBlock (sd)) 
 		(p 
 			(v (verseNumber)) 
-			(verseText ) 
+			(verseText (text)) 
 			(v (verseNumber)) 
-			(verseText ) 
+			(verseText (text)) 
 			(v (verseNumber)) 
-			(verseText )) 
+			(verseText (text))) 
 		(mteBlock 
-			(mte ) 
-			(mte ))))
+			(mte (text)) 
+			(mte (text)))))
 
 ==================
 Simple p
@@ -80,7 +80,7 @@ Simple p
 \v 1 This is the Good News about Jesus Christ, the Son of God.
 \v 2 It began as the prophet Isaiah had written:
 -------------
-(File (book (id (bookcode) )) (usfm) (tocBlock (toc ) (toc )) (ip ) (ipr ) (chapter (c (chapterNumber)) (sBlock (s  (r ))) (p (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText ))))
+(File (bookIdentification (id (bookcode) (text))) (usfm) (tocBlock (toc (text)) (toc (text))) (ip (text)) (ipr (text)) (chapter (c (chapterNumber)) (sBlock (s (text) (r (text)))) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)))))
 
 =====================
 m 
@@ -98,7 +98,7 @@ of the Law say that the Messiah will be the descendant of David?
 \m
 \v 37 David himself called him ‘Lord’; so how can the Messiah be David's descendant?”
 ----------------------
-(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText )) (qBlock (q (verseText )) (q (verseText )) (q (verseText ))) (b) (m (v (verseNumber)) (verseText ))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (qBlock (q (verseText (text))) (q (verseText (text))) (q (verseText (text)))) (b) (m (v (verseNumber)) (verseText (text)))))
 
 ======================
 po
@@ -123,7 +123,7 @@ in order to lead people of all nations to believe and obey.
 people:
 \po May God our Father and the Lord Jesus Christ give you grace and peace.
 -------------------------
-(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (po (v (verseNumber)) (verseText )) (p (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText )) (po (v (verseNumber)) (verseText )) (po (verseText ))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (po (v (verseNumber)) (verseText (text))) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (po (v (verseNumber)) (verseText (text))) (po (verseText (text)))))
 
 =================
 pr
@@ -142,7 +142,7 @@ worships it; the Lord hates idolatry.’
 \pr “And all the people will answer, ‘Amen!’
 
 --------------------
-(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText )) (pr (verseText )) (p (v (verseNumber)) (verseText )) (pr (verseText )) (p (v (verseNumber)) (verseText )) (pr (verseText )))) 
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (pr (verseText (text))) (p (v (verseNumber)) (verseText (text))) (pr (verseText (text))) (p (v (verseNumber)) (verseText (text))) (pr (verseText (text))))) 
 ====================
 cls
 ====================
@@ -152,7 +152,7 @@ cls
 \v 18 With my own hand I write this:. Do not forget my chains!
 \cls May God's grace be with you.
 --------------------
-(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText )) (cls (verseText ))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (cls (verseText (text)))))
 
 ====================
 pmo, pm and pmc
@@ -181,7 +181,7 @@ still has the blood in it or any meat of any animal that has been strangled. You
 not commit any terrible sexual sins. If you follow these instructions, you will do well.
 \pmc We send our best wishes.
 -----------------------
-(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText )) (pmo (verseText )) (pm (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText )) (pm (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText )) (pmc (verseText ))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (pmo (verseText (text))) (pm (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (pm (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (pmc (verseText (text)))))
 
 =====================
 pi mi
@@ -214,7 +214,7 @@ a demon in him!”
 \v 19 But the Son of Man goes around eating and drinking, and you say, “That man eats and
 drinks too much! He is even a friend of tax collectors ...
 ----------------------
-(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (sBlock (s )) (p (v (verseNumber)) (verseText )) (p (v (verseNumber)) (verseText )) (piBlock (pi (verseText ) (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText )) (pi (v (verseNumber)) (verseText ))) (b) (qBlock (q (v (verseNumber)) (verseText )) (q (verseText )) (q (verseText )) (q (verseText ))) (b) (mi (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText ))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (sBlock (s (text))) (p (v (verseNumber)) (verseText (text))) (p (v (verseNumber)) (verseText (text))) (piBlock (pi (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (pi (v (verseNumber)) (verseText (text)))) (b) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (verseText (text))) (q (verseText (text)))) (b) (mi (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)))))
 
 =======================
 nb
@@ -233,7 +233,7 @@ will find that no prophet is to come from Galilee.”
 \v 2 Then early the next morning he went to the temple. The people came to him, and he
 sat down and started teaching them.
 -----------------------
-(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText )) (sBlock (s )) (p (v (verseNumber)) (verseText ))) (chapter (c (chapterNumber)) (nb (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText ))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (sBlock (s (text))) (p (v (verseNumber)) (verseText (text)))) (chapter (c (chapterNumber)) (nb (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)))))
 
 =======================
 pc
@@ -250,4 +250,4 @@ and nasty things she had done.
 \v 6 I could tell that the woman was drunk on the blood of God's people who had given
 their lives for Jesus. This surprising sight amazed me, ...
 -----------------------
-(File (book (id (bookcode) )) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText ) (v (verseNumber)) (verseText )) (pc (verseText )) (m (v (verseNumber)) (verseText ))))
+(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (pc (verseText (text))) (m (v (verseNumber)) (verseText (text)))))
