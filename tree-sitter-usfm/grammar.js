@@ -8,7 +8,7 @@ module.exports = grammar({
       optional($._introduction),
       optional($.chapters)
       )),
-    _mandatoryHead: $ => prec.right(0, seq($.bookIdentification, repeat($._bookHeader))),
+    _mandatoryHead: $ => prec.right(0, seq($.book, repeat($._bookHeader))),
 
     bookcode: $ => choice("GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG",
               "RUT", "1SA", "2SA", "1KI", "2KI", 
@@ -26,11 +26,13 @@ module.exports = grammar({
               "1MQ", "2MQ", "3MQ", "REP", "4BA", "LAO", "FRT", 
               "BAK", "OTH", "INT", "CNC", "GLO", "TDX", "NDX"),
     text: $ => /[^\\\|]+/,
+    _text: $ => /[^\\\|]+/,
     _spaceOrLine: $ => /[\s\n\r]/,
 
     // File Identification
-    bookIdentification: $ => $.id, //only at start of file
-    id: $ => prec.right(0, seq("\\id ", $.bookcode, optional($.text))),
+    book: $ => $.id, //only at start of file
+    description: $ => $._text,
+    id: $ => prec.right(0, seq("\\id ", $.bookcode, optional($.description))),
 
 
     // Headers
@@ -104,7 +106,7 @@ module.exports = grammar({
 
 
     // verse
-    verseText: $ => prec.right(0, repeat1(choice($.text,
+    verseText: $ => prec.right(0, repeat1(choice($._text,
       $._characterMarker,
       ))),
     v: $ => prec.right(0,seq("\\v ", $.verseNumber, repeat($._verseMeta))),
