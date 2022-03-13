@@ -5,10 +5,9 @@ rem under one id
 \rem Only a remark
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (rem
     (text))
 )
@@ -22,10 +21,9 @@ rem under one h marker
 \rem a remark
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -48,10 +46,9 @@ rem between toc markers and h
 \toc3 the book of genesis
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -75,10 +72,9 @@ sts under one id
 \sts status code
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (sts
     (text))
 )
@@ -92,10 +88,9 @@ sts under one h marker
 \sts status
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -118,10 +113,9 @@ sts between toc markers and h
 \toc3 the book of genesis
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -149,10 +143,9 @@ sts and rem maker together in header section
 \rem and a remark
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)

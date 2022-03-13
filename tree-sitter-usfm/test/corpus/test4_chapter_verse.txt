@@ -7,8 +7,8 @@ id, c, v markers
 \v 1 verse text
 ----------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) (description))) 
   (chapter 
     (c (chapterNumber)) 
     (p 
@@ -25,8 +25,8 @@ cl markers
 \v 1 text
 -----------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) (description))) 
   (chapter 
     (c (chapterNumber)) 
     (cl (text)) 
@@ -47,8 +47,8 @@ cl ca cp markers
 \v 2 text again
 -------------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) (description))) 
   (hBlock (h (text))) 
   (chapter 
     (cl (text)) 
@@ -74,8 +74,8 @@ verse number patterns
 \v 4b text
 --------------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) (description))) 
   (chapter 
     (c (chapterNumber)) 
     (p 
@@ -102,8 +102,8 @@ va vp markers
 \v 4 \vp I-I \vp* text
 ------------
 (File 
-  (bookIdentification 
-    (id (bookcode) (text))) 
+  (book 
+    (id (bookcode) (description))) 
   (chapter 
     (c (chapterNumber)) 
     (p 

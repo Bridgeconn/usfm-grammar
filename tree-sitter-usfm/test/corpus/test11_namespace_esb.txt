@@ -12,7 +12,7 @@ znamespace
 \v 4 text
 ---------
 (File 
-	(bookIdentification (id (bookcode) (text))) 
+	(book (id (bookcode) (description))) 
 	(zNameSpaceRegular (text)) 
 	(chapter 
 		(c (chapterNumber)) 
@@ -52,7 +52,7 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 \v 19 He went a little farther on and saw two other brothers, James and John,
 the sons of Zebedee.
 -----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
+(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
 ============
 cat
 ============
@@ -78,4 +78,4 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 \v 19 He went a little farther on and saw two other brothers, James and John,
 the sons of Zebedee.
 ------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (cat) (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
+(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (cat) (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))

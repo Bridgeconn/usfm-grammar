@@ -5,10 +5,9 @@ id marker
 
 ----------
 (File
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
 )
 
 ==========
@@ -18,10 +17,9 @@ ide marker
 \ide URF-8
 ----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
    (ide
    	(text))
 )
@@ -33,10 +31,9 @@ usfm marker
 \ide utf-8
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (usfm)
   (ide
    (text))
@@ -49,10 +46,9 @@ usfm marker after ide
 \usfm 3.0
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -66,10 +62,9 @@ h marker
 \h Genesis
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -87,10 +82,9 @@ multiple h markers
 \h2 Part1
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -112,10 +106,9 @@ toc markers under h
 \toc3 the book of genesis
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -141,10 +134,9 @@ toc markers without h
 \toc3 the book of genesis
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -168,10 +160,9 @@ toca markers
 \toca3 gen
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)
@@ -202,10 +193,9 @@ toca markers along with toc
 \toca3 gen
 -----------
 (File 
- (bookIdentification 
+ (book 
   (id 
-    (bookcode)
-    (text)))
+    (bookcode) (description)))
   (ide 
    (text))
   (usfm)

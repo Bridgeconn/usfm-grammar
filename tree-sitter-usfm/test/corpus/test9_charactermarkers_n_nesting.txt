@@ -38,7 +38,7 @@ d'Elam,\sls*
 sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
 
 -----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text) (add (text)) (text)) (v (verseNumber)) (verseText (text) (nd (text)) (text)))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (qBlock (q (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text))) (q (v (verseNumber)) (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text)))) (p (v (verseNumber)) (verseText (text) (sig (text)) (text))) (cls (verseText (text)) (v (verseNumber)) (verseText (text))) (p (v (verseNumber)) (verseText (sls (text)) (text)) (v (verseNumber)) (verseText (sls (text)) (text))) (sBlock (s (text) (r (text)))) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (tl (text)) (text)))))
+(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text) (add (text)) (text)) (v (verseNumber)) (verseText (text) (nd (text)) (text)))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (qBlock (q (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text))) (q (v (verseNumber)) (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text)))) (p (v (verseNumber)) (verseText (text) (sig (text)) (text))) (cls (verseText (text)) (v (verseNumber)) (verseText (text))) (p (v (verseNumber)) (verseText (sls (text)) (text)) (v (verseNumber)) (verseText (sls (text)) (text))) (sBlock (s (text) (r (text)))) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (tl (text)) (text)))))
 ============
 In introduction section
 ============
@@ -54,7 +54,7 @@ and to the ends of the earth” (1.8).
 \p
 \v 29 И нарек ему
 ---------------
-(File (bookIdentification (id (bookcode) (text))) (mtBlock (mt (text)) (mt (text))) (isBlock (is (text))) (ip (bk (text)) (text) (bk (text)) (text)) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)))))
+(File (book (id (bookcode) (description))) (mtBlock (mt (text)) (mt (text))) (isBlock (is (text))) (ip (bk (text)) (text) (bk (text)) (text)) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)))))
 ==============
 In corss-ref
 ==============
@@ -73,7 +73,7 @@ truth: we shall not all die, but when the last trumpet sounds, we shall all be c
 in an instant, as quickly as the blinking of an eye. For when the trumpet sounds, the
 dead will be raised, never to die again, and we shall all be changed.
 ------------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xt (noteText (text) (dcNested (text)))) (xt (noteText (text))))) (verseText (text))) (q (verseText (text)))) (p (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xt (noteText (dcNested (text)) (text))))) (verseText (text)))))
+(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xt (noteText (text) (dcNested (text)))) (xt (noteText (text))))) (verseText (text))) (q (verseText (text)))) (p (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xt (noteText (dcNested (text)) (text))))) (verseText (text)))))
 =============
 Figure
 =============
@@ -93,7 +93,7 @@ left her.|src="avnt017.tif" size="col" ref="1.31"\fig*
 \p
 \v 32 After the sun had set and evening had come 
 -------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (fig (text) (attributes (text))) (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (fig (text) (attributes (text))) (text))) (p (v (verseNumber)) (verseText (text)))))
+(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (fig (text) (attributes (text))) (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (fig (text) (attributes (text))) (text))) (p (v (verseNumber)) (verseText (text)))))
 ============
 With Attributes
 ============
@@ -113,4 +113,4 @@ With Attributes
 \w gracious|lemma="grace" srcloc="gnt5:51.1.2.1"\w*
 \w most holy|strong="H6944,H6944"\w*
 ----------------
-(File (bookIdentification (id (bookcode) (text))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text)) (v (verseNumber)) (verseText (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text))) (p (v (verseNumber)) (verseText (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text)))))))
+(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text)) (v (verseNumber)) (verseText (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text))) (p (v (verseNumber)) (verseText (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text)))))))
