@@ -1,41 +1,45 @@
-===========
+================================================================================
 rem under one id
-===========
+================================================================================
 \id GEN
 \rem Only a remark
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
   (rem
-    (text))
-)
-===========
+    (text)))
+
+================================================================================
 rem under one h marker
-===========
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
 \h Genesis
 \rem a remark
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
       (text)))
   (rem
-    (text))
-)
-==============
+    (text)))
+
+================================================================================
 rem between toc markers and h
-==============
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
@@ -44,13 +48,15 @@ rem between toc markers and h
 \toc1 genesis
 \toc2 gen
 \toc3 the book of genesis
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
@@ -59,50 +65,57 @@ rem between toc markers and h
     (text))
   (tocBlock
     (toc
+      (numberedLevelMax3)
       (text))
     (toc
+      (numberedLevelMax3)
       (text))
     (toc
-      (text)))
-)
-===========
+      (numberedLevelMax3)
+      (text))))
+
+================================================================================
 sts under one id
-===========
+================================================================================
 \id GEN
 \sts status code
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
   (sts
-    (text))
-)
-===========
+    (text)))
+
+================================================================================
 sts under one h marker
-===========
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
 \h Genesis
 \sts status
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
       (text)))
   (sts
-    (text))
-)
-==============
+    (text)))
+
+================================================================================
 sts between toc markers and h
-==============
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
@@ -111,13 +124,15 @@ sts between toc markers and h
 \toc1 genesis
 \toc2 gen
 \toc3 the book of genesis
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
@@ -126,28 +141,33 @@ sts between toc markers and h
     (text))
   (tocBlock
     (toc
+      (numberedLevelMax3)
       (text))
     (toc
+      (numberedLevelMax3)
       (text))
     (toc
-      (text)))
-)
-==============
+      (numberedLevelMax3)
+      (text))))
+
+================================================================================
 sts and rem maker together in header section
-==============
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
 \h Genesis
 \sts status
 \rem and a remark
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
@@ -155,5 +175,4 @@ sts and rem maker together in header section
   (sts
     (text))
   (rem
-    (text))
-)
+    (text)))

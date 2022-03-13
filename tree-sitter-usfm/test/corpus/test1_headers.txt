@@ -1,102 +1,114 @@
-==========
+================================================================================
 id marker
-==========
+================================================================================
 \id MAT some other info of file
 
-----------
-(File
- (book 
-  (id 
-    (bookcode) (description)))
-)
+--------------------------------------------------------------------------------
 
-==========
+(File
+  (book
+    (id
+      (bookcode)
+      (description))))
+
+================================================================================
 ide marker
-==========
+================================================================================
 \id GEN
 \ide URF-8
-----------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-   (ide
-   	(text))
-)
-===========
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text)))
+
+================================================================================
 usfm marker
-===========
+================================================================================
 \id GEN
 \usfm 3.0
 \ide utf-8
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
   (usfm)
   (ide
-   (text))
-)
-===========
+    (text)))
+
+================================================================================
 usfm marker after ide
-===========
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
-  (usfm)
-)
-===========
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
+  (usfm))
+
+================================================================================
 h marker
-===========
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
 \h Genesis
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
-      (text)))
-)
-==============
+      (text))))
+
+================================================================================
 multiple h markers
-==============
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
 \h Genesis
 \h2 Part1
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
       (text))
     (h
-      (text)))
-)
-==============
+      (numberedLevelMax3)
+      (text))))
+
+================================================================================
 toc markers under h
-==============
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
@@ -104,53 +116,63 @@ toc markers under h
 \toc1 genesis
 \toc2 gen
 \toc3 the book of genesis
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
       (text))
     (tocBlock
       (toc
+        (numberedLevelMax3)
         (text))
       (toc
+        (numberedLevelMax3)
         (text))
       (toc
-        (text))))
-)
-==============
+        (numberedLevelMax3)
+        (text)))))
+
+================================================================================
 toc markers without h
-==============
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
 \toc1 genesis
 \toc2 gen
 \toc3 the book of genesis
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (tocBlock
     (toc
+      (numberedLevelMax3)
       (text))
     (toc
+      (numberedLevelMax3)
       (text))
     (toc
-      (text)))
-)
-==============
+      (numberedLevelMax3)
+      (text))))
+
+================================================================================
 toca markers
-==============
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
@@ -158,13 +180,15 @@ toca markers
 \toca the book of genesis
 \toca2 genesis
 \toca3 gen
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
@@ -173,14 +197,15 @@ toca markers
       (toca
         (text))
       (toca
+        (numberedLevelMax3)
         (text))
       (toca
-        (text))))
-)
+        (numberedLevelMax3)
+        (text)))))
 
-==============
+================================================================================
 toca markers along with toc
-==============
+================================================================================
 \id GEN
 \ide utf-8
 \usfm 3.0
@@ -191,13 +216,15 @@ toca markers along with toc
 \toca the book of genesis
 \toca2 genesis
 \toca3 gen
------------
-(File 
- (book 
-  (id 
-    (bookcode) (description)))
-  (ide 
-   (text))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
   (usfm)
   (hBlock
     (h
@@ -206,14 +233,17 @@ toca markers along with toc
       (toc
         (text))
       (toc
+        (numberedLevelMax3)
         (text))
       (toc
+        (numberedLevelMax3)
         (text)))
     (tocaBlock
       (toca
         (text))
       (toca
+        (numberedLevelMax3)
         (text))
       (toca
-        (text))))
-)
+        (numberedLevelMax3)
+        (text)))))

@@ -1,6 +1,6 @@
-==========
+================================================================================
 qt milestones - inline
-==========
+================================================================================
 \id MAT some other info of file
 \c 1
 \p 
@@ -15,11 +15,64 @@ accuse you of?”\qt-e\*
 \p
 \v 14 But Jesus refused to answer a single word, with the result that the Governor was greatly
 surprised.
-----------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text))) (p (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)) (v (verseNumber)) (verseText (text))) (p (v (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text))) (p (v (verseNumber)) (verseText (text)))))
-==========
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone
+        (attributes
+          (text)))
+      (verseText
+        (text))
+      (milestone)
+      (verseText
+        (text)))
+    (p
+      (milestone
+        (attributes
+          (text)))
+      (verseText
+        (text))
+      (milestone)
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone
+        (attributes
+          (text)))
+      (verseText
+        (text))
+      (milestone)
+      (verseText
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))))
+
+================================================================================
 qt milestone numbered
-==========
+================================================================================
 \id ACT
 \c 1
 \p
@@ -37,11 +90,77 @@ who="Paul"\*“I see that in every way you Athenians are very religious.
 \v 31 For he has fixed a day in which he will judge the whole world with justice by means of
 a man he has chosen. He has given proof of this to everyone by raising that man from death!”
 \qt1-e |eid="qt1_ACT_17:22"\*
-----------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (milestone (attributes (text))) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (qBlock (q (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)))) (b) (m (verseText (text))) (qBlock (q (milestone (attributes (text))) (verseText (text)) (milestone) (verseText (text)))) (b) (m (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (milestone (attributes (text))))))
-==========
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone
+        (attributes
+          (text)))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (milestone
+          (attributes
+            (text)))
+        (verseText
+          (text))
+        (milestone)
+        (verseText
+          (text))))
+    (b)
+    (m
+      (verseText
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (milestone
+          (attributes
+            (text)))
+        (verseText
+          (text))
+        (milestone)
+        (verseText
+          (text))))
+    (b)
+    (m
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone
+        (attributes
+          (text))))))
+
+================================================================================
 ts milestone w/o attributes
-==========
+================================================================================
 \id JUD
 \c 1
 \ts\*
@@ -58,11 +177,42 @@ examples of those who suffer the punishment of eternal fire.
 \v 8 Yet in the same way these also pollute their bodies in their dreams, and they reject
 authority, and they say evil things about the glorious ones.
 \ts\*
------------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (milestone) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (milestone) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (milestone))))
-===========
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (milestone)
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone)
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone))))
+
+================================================================================
 ts milestone w/ attributes
-============
+================================================================================
 \id JUD
 \c 1
 \p
@@ -82,27 +232,53 @@ examples of those who suffer the punishment of eternal fire.
 \v 8 Yet in the same way these also pollute their bodies in their dreams, and they reject
 authority, and they say evil things about the glorious ones.
 \ts-e |eid="ts_JUD_7-8"\*
----------------
-(File 
-  (book (id (bookcode) (description))) 
-  (chapter 
-    (c (chapterNumber)) 
-    (p 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (milestone (attributes (text))) 
-      (verseText (text))) 
-    (p 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (milestone (attributes (text))) 
-      (verseText (text)) 
-      (milestone (attributes (text))) 
-      (verseText (text)) 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (milestone (attributes (text))))))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone
+        (attributes
+          (text)))
+      (verseText
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone
+        (attributes
+          (text)))
+      (verseText
+        (text))
+      (milestone
+        (attributes
+          (text)))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (milestone
+        (attributes
+          (text))))))

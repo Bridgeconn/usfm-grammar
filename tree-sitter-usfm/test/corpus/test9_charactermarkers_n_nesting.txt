@@ -1,6 +1,6 @@
-===========
+================================================================================
 Simple character markups
-===========
+================================================================================
 \id GEN
 \c 1
 \p
@@ -37,11 +37,126 @@ d'Elam,\sls*
 \v 46 At about three o'clock Jesus cried out with a loud shout, \tl “Eli, Eli, lema
 sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
 
------------------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text) (add (text)) (text)) (v (verseNumber)) (verseText (text) (nd (text)) (text)))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text))) (qBlock (q (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text))) (q (v (verseNumber)) (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text))) (q (verseText (qt (text)) (text)))) (p (v (verseNumber)) (verseText (text) (sig (text)) (text))) (cls (verseText (text)) (v (verseNumber)) (verseText (text))) (p (v (verseNumber)) (verseText (sls (text)) (text)) (v (verseNumber)) (verseText (sls (text)) (text))) (sBlock (s (text) (r (text)))) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (tl (text)) (text)))))
-============
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)
+        (add
+          (text))
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)
+        (nd
+          (text))
+        (text))))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (qt
+            (text))
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (qt
+            (text))
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (qt
+            (text))
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (qt
+            (text))
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (qt
+            (text))
+          (text))))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)
+        (sig
+          (text))
+        (text)))
+    (cls
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (sls
+          (text))
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (sls
+          (text))
+        (text)))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)
+        (r
+          (text))))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)
+        (tl
+          (text))
+        (text)))))
+
+================================================================================
 In introduction section
-============
+================================================================================
 \id GEN
 \mt1 THE ACTS
 \mt2 of the Apostles
@@ -53,11 +168,42 @@ and to the ends of the earth” (1.8).
 \c 1
 \p
 \v 29 И нарек ему
----------------
-(File (book (id (bookcode) (description))) (mtBlock (mt (text)) (mt (text))) (isBlock (is (text))) (ip (bk (text)) (text) (bk (text)) (text)) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)))))
-==============
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (mtBlock
+    (mt
+      (numberedLevelMax4)
+      (text))
+    (mt
+      (numberedLevelMax4)
+      (text)))
+  (isBlock
+    (is
+      (text)))
+  (ip
+    (bk
+      (text))
+    (text)
+    (bk
+      (text))
+    (text))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))))
+
+================================================================================
 In corss-ref
-==============
+================================================================================
 \id GEN
 \c 1
 \q1
@@ -72,11 +218,71 @@ gods are made of silver and gold,
 truth: we shall not all die, but when the last trumpet sounds, we shall all be changed
 in an instant, as quickly as the blinking of an eye. For when the trumpet sounds, the
 dead will be raised, never to die again, and we shall all be changed.
-------------------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (qBlock (q (v (verseNumber)) (verseText (text))) (q (verseText (text))) (q (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xt (noteText (text) (dcNested (text)))) (xt (noteText (text))))) (verseText (text))) (q (verseText (text)))) (p (v (verseNumber)) (crossref (x (caller) (xo (noteText (text))) (xt (noteText (dcNested (text)) (text))))) (verseText (text)))))
-=============
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (crossref
+          (x
+            (caller)
+            (xo
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)
+                (dcNested
+                  (text))))
+            (xt
+              (noteText
+                (text)))))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (p
+      (v
+        (verseNumber))
+      (crossref
+        (x
+          (caller)
+          (xo
+            (noteText
+              (text)))
+          (xt
+            (noteText
+              (dcNested
+                (text))
+              (text)))))
+      (verseText
+        (text)))))
+
+================================================================================
 Figure
-=============
+================================================================================
 \id GEN
 \c 1
 \p
@@ -92,11 +298,56 @@ her, and she began to wait on them. \fig Took her by the hand, and...the fever
 left her.|src="avnt017.tif" size="col" ref="1.31"\fig*
 \p
 \v 32 After the sun had set and evening had come 
--------------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (fig (text) (attributes (text))) (text)) (v (verseNumber)) (verseText (text)) (v (verseNumber)) (verseText (text) (fig (text) (attributes (text))) (text))) (p (v (verseNumber)) (verseText (text)))))
-============
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)
+        (fig
+          (text)
+          (attributes
+            (text)))
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)
+        (fig
+          (text)
+          (attributes
+            (text)))
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))))
+
+================================================================================
 With Attributes
-============
+================================================================================
 \id GEN
 \c 1
 \p \v 1 まだ\rb 何|なに\rb*もなかった\rb 時|とき\rb*、\rb 神|かみ\rb*は
@@ -112,5 +363,139 @@ With Attributes
 \w gracious|strong="H1234,G5485"\w*
 \w gracious|lemma="grace" srcloc="gnt5:51.1.2.1"\w*
 \w most holy|strong="H6944,H6944"\w*
-----------------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text)) (v (verseNumber)) (verseText (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text) (rb (text) (attributes (text))) (text))) (p (v (verseNumber)) (verseText (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text))) (text) (w (text) (attributes (text)))))))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (rb
+          (text)
+          (attributes
+            (text)))
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (w
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (w
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (w
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (w
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (w
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (w
+          (text)
+          (attributes
+            (text)))
+        (text)
+        (w
+          (text)
+          (attributes
+            (text)))))))
