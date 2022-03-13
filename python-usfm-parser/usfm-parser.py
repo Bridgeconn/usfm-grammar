@@ -35,8 +35,8 @@ def convert_2_json(marker, usfm_bytes):
         for child in marker.children:
             val = convert_2_json(child, usfm_bytes)
             if child.type == val:
-                pass
-                # item.append(child.type)
+                # pass
+                item.append(child.type)
             elif isinstance(val, dict) and len(val)==1 and child.type == list(val.keys())[0]:
                 item.append({child.type: val[child.type]})
             else:
@@ -46,7 +46,7 @@ def convert_2_json(marker, usfm_bytes):
             item = marker.type
         else:
             item = {marker.type: 
-                    str(usfm_bytes[marker.start_byte:marker.end_byte], 'utf-8').strip()}
+                    str(usfm_bytes[marker.start_byte:marker.end_byte], 'utf-8')}
             # print(item)
     return item
 
