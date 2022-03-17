@@ -45,43 +45,23 @@ def node_2_dict(node, usfm_bytes):
     return item
 
 
-bookcode_query = USFM_LANGUAGE.query('''
-(File (book (id (bookcode) @book-code)))
-''')
+bookcode_query = USFM_LANGUAGE.query('''(File (book (id (bookcode) @book-code)))''')
 
-chapter_query = USFM_LANGUAGE.query('''
-(File (chapter) @chapter
-)
-''')
+chapter_query = USFM_LANGUAGE.query('''(File (chapter) @chapter)''')
 
-chapternum_query = USFM_LANGUAGE.query('''
-(c (chapterNumber) @chapter-number)
-''')
+chapternum_query = USFM_LANGUAGE.query('''(c (chapterNumber) @chapter-number)''')
 
-versenum_query = USFM_LANGUAGE.query("""
-(v (verseNumber) @verse)
+versenum_query = USFM_LANGUAGE.query("""(v (verseNumber) @verse)""")
 
-""")
+versetext_query = USFM_LANGUAGE.query("""(verseText) @verse-text""")
 
-versetext_query = USFM_LANGUAGE.query("""
-(verseText) @verse-text
-""")
+text_query = USFM_LANGUAGE.query("""(text) @text""")
 
-text_query = USFM_LANGUAGE.query("""
-(text) @text
-""")
+error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 
-error_query = USFM_LANGUAGE.query("""
-(ERROR) @errors
-""")
+notes_query = USFM_LANGUAGE.query('''[(footnote) (crossref)] @note''')
 
-notes_query = USFM_LANGUAGE.query('''
-[(footnote) (crossref)] @note
-''')
-
-notestext_query = USFM_LANGUAGE.query('''
-(noteText) @note-text
-''')
+notestext_query = USFM_LANGUAGE.query('''(noteText) @note-text''')
 
 class USFMParser():
 	"""Parser class with usfmstring, AST and methods for JSON convertions"""
@@ -99,7 +79,7 @@ class USFMParser():
 		# check for errors in the parse tree and raise them
 		errors = error_query.captures(self.AST)
 		if len(errors) > 0:
-			self.errors = [self.USFMbytes[err[0].start_byte:err[0].end_byte].decode('utf-8') 
+			self.errors = [(f"At {err[0].start_point}", self.USFMbytes[err[0].start_byte:err[0].end_byte].decode('utf-8')) 
 									for err in errors]
 
 
