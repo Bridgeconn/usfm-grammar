@@ -1,1 +1,2 @@
 tree-sitter==0.20.0
+jupyterlab==3.3.2
