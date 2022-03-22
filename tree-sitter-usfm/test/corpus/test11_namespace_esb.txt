@@ -12,19 +12,19 @@ znamespace
 \v 4 text
 ---------
 (File 
-	(bookIdentification (idMarker (bookcode) (text))) 
+	(book (id (bookcode) (description))) 
 	(zNameSpaceRegular (text)) 
 	(chapter 
-		(cMarker (chapterNumber)) 
-		(pMarker 
+		(c (chapterNumber)) 
+		(p 
 			(zNameSpaceRegular (text)) 
-			(vMarker (verseNumber)) 
+			(v (verseNumber)) 
 			(verseText (text) (zNameSpaceClosed (text)) (text)) 
-			(vMarker (verseNumber)) 
+			(v (verseNumber)) 
 			(verseText (text)) 
-			(vMarker (verseNumber)) 
+			(v (verseNumber)) 
 			(verseText (text) (zNameSpaceClosed (text) (attributes (text))) (text)) 
-			(vMarker (verseNumber)) 
+			(v (verseNumber)) 
 			(verseText (text)))))
 
 ===========
@@ -52,7 +52,7 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 \v 19 He went a little farther on and saw two other brothers, James and John,
 the sons of Zebedee.
 -----------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text))) (esb (msBlock (msMarker (text))) (pMarker (verseText (text)) (crossref (xtMarker (noteText (text)))) (verseText (text))) (pMarker (verseText (text) (tlMarker (text)) (text) (figMarker (text) (attributes (text))) (text)))) (pMarker (vMarker (verseNumber)) (verseText (text)))))
+(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
 ============
 cat
 ============
@@ -78,4 +78,4 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 \v 19 He went a little farther on and saw two other brothers, James and John,
 the sons of Zebedee.
 ------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text))) (esb (catMarker) (msBlock (msMarker (text))) (pMarker (verseText (text)) (crossref (xtMarker (noteText (text)))) (verseText (text))) (pMarker (verseText (text) (tlMarker (text)) (text) (figMarker (text) (attributes (text))) (text)))) (pMarker (vMarker (verseNumber)) (verseText (text)))))
+(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (cat) (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))

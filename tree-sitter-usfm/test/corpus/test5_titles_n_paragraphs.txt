@@ -1,6 +1,6 @@
-===========
+================================================================================
 headers and titles
-===========
+================================================================================
 \id MAT 41MATGNT92.SFM, Good News Translation, June 2003
 \usfm 3.0
 \toc1 The Acts of the Apostles
@@ -25,48 +25,82 @@ headers and titles
 \v 5 For God never said to any of his angels,
 \mte2 The End of the Gospel according to
 \mte1 John 
----------------------
-(File 
-	(bookIdentification 
-		(idMarker (bookcode) (text))) 
-	(usfmMarker) 
-	(tocBlock 
-		(tocMarker (text)) 
-		(tocMarker (text))) 
-	(mtBlock 
-		(mtMarker (text)) 
-		(mtMarker (text))) 
-	(chapter 
-		(cMarker (chapterNumber)) 
-		(msBlock 
-			(msMarker (text) (mrMarker (text)))) 
-		(sBlock 
-			(sMarker (text))) 
-		(pMarker 
-			(vMarker (verseNumber)) 
-			(verseText (text))) 
-		(sBlock 
-			(sMarker (text) 
-				(srMarker (text)) 
-				(rMarker (text)))) 
-		(pMarker 
-			(vMarker (verseNumber)) 
-			(verseText (text))) 
-		(sdBlock (sdMarker)) 
-		(pMarker 
-			(vMarker (verseNumber)) 
-			(verseText (text)) 
-			(vMarker (verseNumber)) 
-			(verseText (text)) 
-			(vMarker (verseNumber)) 
-			(verseText (text))) 
-		(mteBlock 
-			(mteMarker (text)) 
-			(mteMarker (text)))))
+--------------------------------------------------------------------------------
 
-==================
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (usfm)
+  (tocBlock
+    (toc
+      (numberedLevelMax3)
+      (text))
+    (toc
+      (numberedLevelMax3)
+      (text)))
+  (mtBlock
+    (mt
+      (numberedLevelMax4)
+      (text))
+    (mt
+      (numberedLevelMax4)
+      (text)))
+  (chapter
+    (c
+      (chapterNumber))
+    (msBlock
+      (ms
+        (text)
+        (mr
+          (text))))
+    (sBlock
+      (s
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)
+        (sr
+          (text))
+        (r
+          (text))))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (sdBlock
+      (sd
+        (numberedLevelMax4)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (mteBlock
+      (mte
+        (text))
+      (mte
+        (text)))))
+
+================================================================================
 Simple p
-==================
+================================================================================
 \id MAT 41MATGNT92.SFM, Good News Translation, June 2003
 \usfm 3.0
 \toc1 The Acts of the Apostles
@@ -79,12 +113,47 @@ Simple p
 \p
 \v 1 This is the Good News about Jesus Christ, the Son of God.
 \v 2 It began as the prophet Isaiah had written:
--------------
-(File (bookIdentification (idMarker (bookcode) (text))) (usfmMarker) (tocBlock (tocMarker (text)) (tocMarker (text))) (ipMarker (text)) (iprMarker (text)) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text) (rMarker (text)))) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)))))
+--------------------------------------------------------------------------------
 
-=====================
-m 
-=====================
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (usfm)
+  (tocBlock
+    (toc
+      (numberedLevelMax3)
+      (text))
+    (toc
+      (numberedLevelMax3)
+      (text)))
+  (ip
+    (text))
+  (ipr
+    (text))
+  (chapter
+    (c
+      (chapterNumber))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)
+        (r
+          (text))))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))))
+
+================================================================================
+m
+================================================================================
 \id GEN
 \c 1
 \p
@@ -97,12 +166,48 @@ of the Law say that the Messiah will be the descendant of David?
 \b
 \m
 \v 37 David himself called him ‘Lord’; so how can the Messiah be David's descendant?”
-----------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (qBlock (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text)))) (bMarker) (mMarker (vMarker (verseNumber)) (verseText (text)))))
+--------------------------------------------------------------------------------
 
-======================
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (m
+      (v
+        (verseNumber))
+      (verseText
+        (text)))))
+
+================================================================================
 po
-======================
+================================================================================
 \id GEN
 \c 1
 \po
@@ -122,12 +227,54 @@ in order to lead people of all nations to believe and obey.
 \v 7 And so I write to all of you in Rome whom God loves and has called to be his own
 people:
 \po May God our Father and the Lord Jesus Christ give you grace and peace.
--------------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (poMarker (vMarker (verseNumber)) (verseText (text))) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (poMarker (vMarker (verseNumber)) (verseText (text))) (poMarker (verseText (text)))))
+--------------------------------------------------------------------------------
 
-=================
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (po
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (po
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (po
+      (verseText
+        (text)))))
+
+================================================================================
 pr
-=================
+================================================================================
 \id GEN
 \c 1
 \p
@@ -141,22 +288,71 @@ worships it; the Lord hates idolatry.’
 \v 17 “ ‘God's curse on anyone who moves a neighbor's property line.’
 \pr “And all the people will answer, ‘Amen!’
 
---------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text))) (prMarker (verseText (text))) (pMarker (vMarker (verseNumber)) (verseText (text))) (prMarker (verseText (text))) (pMarker (vMarker (verseNumber)) (verseText (text))) (prMarker (verseText (text))))) 
-====================
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (pr
+      (verseText
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (pr
+      (verseText
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (pr
+      (verseText
+        (text)))))
+
+================================================================================
 cls
-====================
+================================================================================
 \id GEN
 \c 1
 \p
 \v 18 With my own hand I write this:. Do not forget my chains!
 \cls May God's grace be with you.
---------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text))) (clsMarker (verseText (text)))))
+--------------------------------------------------------------------------------
 
-====================
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (cls
+      (verseText
+        (text)))))
+
+================================================================================
 pmo, pm and pmc
-====================
+================================================================================
 \id GEN
 \c 1
 \p
@@ -180,12 +376,61 @@ we are writing.
 still has the blood in it or any meat of any animal that has been strangled. You must also
 not commit any terrible sexual sins. If you follow these instructions, you will do well.
 \pmc We send our best wishes.
------------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (pmoMarker (verseText (text))) (pmMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (pmMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (pmcMarker (verseText (text)))))
+--------------------------------------------------------------------------------
 
-=====================
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (pmo
+      (verseText
+        (text)))
+    (pm
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (pm
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (pmc
+      (verseText
+        (text)))))
+
+================================================================================
 pi mi
-=====================
+================================================================================
 \id GEN
 \c 1
 \s1 Jesus Explains the Story about the Weeds
@@ -213,12 +458,81 @@ angels are the ones who bring in the harvest.
 a demon in him!”
 \v 19 But the Son of Man goes around eating and drinking, and you say, “That man eats and
 drinks too much! He is even a friend of tax collectors ...
-----------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text))) (pMarker (vMarker (verseNumber)) (verseText (text))) (pMarker (vMarker (verseNumber)) (verseText (text))) (piBlock (piMarker (verseText (text)) (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (piMarker (vMarker (verseNumber)) (verseText (text)))) (bMarker) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text)))) (bMarker) (miMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)))))
+--------------------------------------------------------------------------------
 
-=======================
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (piBlock
+      (pi
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (pi
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (b)
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (mi
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))))
+
+================================================================================
 nb
-=======================
+================================================================================
 \id GEN
 \c 7
 \p
@@ -232,12 +546,46 @@ will find that no prophet is to come from Galilee.”
 \v 1 but Jesus walked out to the Mount of Olives.
 \v 2 Then early the next morning he went to the temple. The people came to him, and he
 sat down and started teaching them.
------------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text))) (sBlock (sMarker (text))) (pMarker (vMarker (verseNumber)) (verseText (text)))) (chapter (cMarker (chapterNumber)) (nbMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text)))))
+--------------------------------------------------------------------------------
 
-=======================
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))))
+  (chapter
+    (c
+      (chapterNumber))
+    (nb
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))))
+
+================================================================================
 pc
-=======================
+================================================================================
 \id GEN
 \c 1
 \p
@@ -249,5 +597,30 @@ and nasty things she had done.
 \m
 \v 6 I could tell that the woman was drunk on the blood of God's people who had given
 their lives for Jesus. This surprising sight amazed me, ...
------------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text)) (vMarker (verseNumber)) (verseText (text))) (pcMarker (verseText (text))) (mMarker (vMarker (verseNumber)) (verseText (text)))))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text))
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (pc
+      (verseText
+        (text)))
+    (m
+      (v
+        (verseNumber))
+      (verseText
+        (text)))))

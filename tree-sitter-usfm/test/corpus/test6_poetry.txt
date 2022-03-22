@@ -1,6 +1,6 @@
-===========
+================================================================================
 q#
-===========
+================================================================================
 \id GEN
 \c 3
 \s1 A Prayer of Habakkuk
@@ -13,11 +13,53 @@ q#
 \q1 Now do again in our times
 \q2 the great deeds you used to do.
 \q1 Be merciful, even when you are angry.
-------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text))) (pMarker (vMarker (verseNumber)) (verseText (text))) (bMarker) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))))))
-============
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (b)
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))))
+
+================================================================================
 qr
-============
+================================================================================
 \id GEN
 \c 136
 \s1 God's Love Never Fails
@@ -30,11 +72,54 @@ qr
 \q1
 \v 3 Praise the Lord of lords.
 \qr God's love never fails.
---------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text))) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text)))) (qrMarker (verseText (text))) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text)))) (qrMarker (verseText (text))) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text)))) (qrMarker (verseText (text)))))
-==============
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (qr
+      (verseText
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (qr
+      (verseText
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (qr
+      (verseText
+        (text)))))
+
+================================================================================
 qc
-==============
+================================================================================
 \id GEN
 \c 1
 \q1
@@ -48,11 +133,53 @@ qc
 \b
 \q1
 \v 20 This is the end of the prayers of David son of Jesse.
-----------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text)))) (bMarker) (qcMarker (verseText (text))) (bMarker) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))))))
-===============
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (qc
+      (verseText
+        (text)))
+    (b)
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
+
+================================================================================
 qs
-===============
+================================================================================
 \id GEN
 \c 3
 \s1 Trust in God under Adversity
@@ -63,11 +190,50 @@ qs
 \q1
 \v 2 many are saying to me,
 \q2 “There is no help for you \qs Selah\qs*
-----------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text))) (dMarker (text)) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text)) (qsMarker (verseText (text)))))))
-================
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)))
+    (d
+      (text))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))
+        (qs
+          (verseText
+            (text)))))))
+
+================================================================================
 qa
-================
+================================================================================
 \id GEN
 \c 119
 \qa Aleph
@@ -79,11 +245,48 @@ qa
 \q1
 \v 9 How can a young man keep his way pure?
 \q2 By living according to your word.
------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (qaMarker (verseText (text))) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text)))) (qaMarker (verseText (text))) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))))))
-================
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (qa
+      (verseText
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (qa
+      (verseText
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))))
+
+================================================================================
 qac
-================
+================================================================================
 \id GEN
 \c 1
 \s1 Primer lamento acróstico
@@ -105,11 +308,98 @@ qac
 \q1 pero hoy nadie te consuela.
 \q1 Los que se decían tus amigos
 \q1 hoy son tus enemigos.
--------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text)) (sMarker (text))) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text)) (qacMarker (verseText (text))) (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text)))) (bMarker) (qBlock (qMarker (vMarker (verseNumber)) (qacMarker (verseText (text))) (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))))))
-================
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text))
+      (s
+        (numberedLevelMax5)
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (qac
+          (verseText
+            (text)))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (qac
+          (verseText
+            (text)))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))))
+
+================================================================================
 qm
-================
+================================================================================
 \id GEN
 \c 1
 \p
@@ -120,11 +410,42 @@ of “The Thirty,” and he called out,
 \qm1 God is on your side.”
 \b
 \m David welcomed them and made them officers in his army.
------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (pMarker (vMarker (verseNumber)) (verseText (text))) (qmBlock (qmMarker (verseText (text))) (qmMarker (verseText (text))) (qmMarker (verseText (text)))) (bMarker) (mMarker (verseText (text)))))
-=================
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (p
+      (v
+        (verseNumber))
+      (verseText
+        (text)))
+    (qmBlock
+      (qm
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (qm
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (qm
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (m
+      (verseText
+        (text)))))
+
+================================================================================
 qd
-=================
+================================================================================
 \id GEN
 \c 1
 \q1 \v 18 yet I will rejoice in the Lord,
@@ -135,11 +456,51 @@ qd
 \q2 he enables me to tread on the heights.
 \b
 \qd For the director of music. On my stringed instruments.
-------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text)))) (bMarker) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text)))) (bMarker) (qdMarker (verseText (text)))))
-=================
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (qd
+      (verseText
+        (text)))))
+
+================================================================================
 b
-=================
+================================================================================
 \id GEN
 \c 3
 \s1 Morning Prayer for Help
@@ -164,5 +525,86 @@ b
 \q1
 \v 6 I am not afraid of the thousands of enemies
 \q2 who surround me on every side.
-----------------------
-(File (bookIdentification (idMarker (bookcode) (text))) (chapter (cMarker (chapterNumber)) (sBlock (sMarker (text))) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text)))) (bMarker) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text)))) (bMarker) (qBlock (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))) (qMarker (vMarker (verseNumber)) (verseText (text))) (qMarker (verseText (text))))))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (sBlock
+      (s
+        (numberedLevelMax5)
+        (text)))
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))
+    (b)
+    (qBlock
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (v
+          (verseNumber))
+        (verseText
+          (text)))
+      (q
+        (numberedLevelMax3)
+        (verseText
+          (text))))))
