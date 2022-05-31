@@ -212,6 +212,7 @@ class USFMParser():
 						typ = list(note)[0]
 						row = [book, chapter, v_num, typ, '"'+note[typ]+'"']
 					table_output.append(row)
+			return table_output
 		elif filt == Filter.SCRIPTURE_PARAGRAPHS.value:
 			notes_json = self.toDict(Filter.SCRIPTURE_PARAGRAPHS.value)
 			table_output = [["Book","Chapter","Type", "Contents"]]
