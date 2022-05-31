@@ -23,39 +23,43 @@ q#
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (b)
-    (qBlock
-      (q
-        (numberedLevelMax3)
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text))))
+    (paragraph
+      (p
         (v
           (verseNumber))
         (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))))
+          (text))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))))
 
 ================================================================================
 qr
@@ -82,40 +86,47 @@ qr
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text))))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))))
+    (poetry
+      (qr
         (verseText
           (text))))
-    (qr
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))))
+    (poetry
+      (qr
         (verseText
           (text))))
-    (qr
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))))
+    (poetry
+      (qr
         (verseText
-          (text))))
-    (qr
-      (verseText
-        (text)))))
+          (text))))))
 
 ================================================================================
 qc
@@ -143,39 +154,44 @@ qc
   (chapter
     (c
       (chapterNumber))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qc
         (verseText
           (text))))
-    (b)
-    (qc
-      (verseText
-        (text)))
-    (b)
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text))))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))))))
 
 ================================================================================
 qs
@@ -200,36 +216,39 @@ qs
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text))))
+    (title
+      (d
         (text)))
-    (d
-      (text))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))
-        (qs
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
           (verseText
-            (text)))))))
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text))
+          (qs
+            (verseText
+              (text))))))))
 
 ================================================================================
 qa
@@ -255,34 +274,38 @@ qa
   (chapter
     (c
       (chapterNumber))
-    (qa
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
+    (title
+      (qa
         (verseText
           (text))))
-    (qa
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (title
+      (qa
         (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))))
+          (text))))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))))
 
 ================================================================================
 qac
@@ -318,84 +341,88 @@ qac
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text))
-      (s
-        (numberedLevelMax5)
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
           (text))
-        (qac
-          (verseText
-            (text)))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
+        (s
+          (numberedLevelMax5)
           (text))))
-    (b)
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (qac
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text))
+          (qac
+            (verseText
+              (text)))
           (verseText
             (text)))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (qac
+            (verseText
+              (text)))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))))
 
 ================================================================================
 qm
@@ -420,28 +447,32 @@ of “The Thirty,” and he called out,
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (qmBlock
-      (qm
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (qm
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (qm
-        (numberedLevelMax3)
+    (paragraph
+      (p
+        (v
+          (verseNumber))
         (verseText
           (text))))
-    (b)
-    (m
-      (verseText
-        (text)))))
+    (poetry
+      (qmBlock
+        (qm
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (qm
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (qm
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (paragraph
+      (m
+        (verseText
+          (text))))))
 
 ================================================================================
 qd
@@ -466,37 +497,42 @@ qd
   (chapter
     (c
       (chapterNumber))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qd
         (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))
-    (b)
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))
-    (b)
-    (qd
-      (verseText
-        (text)))))
+          (text))))))
 
 ================================================================================
 b
@@ -535,76 +571,82 @@ b
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
           (text))))
-    (b)
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))
-    (b)
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))))

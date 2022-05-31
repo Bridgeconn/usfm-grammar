@@ -47,112 +47,120 @@ sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)
-        (add
-          (text))
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)
-        (nd
-          (text))
-        (text))))
-  (chapter
-    (c
-      (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (qt
-            (text))
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (qt
-            (text))
-          (text)))
-      (q
-        (numberedLevelMax3)
+    (paragraph
+      (p
         (v
           (verseNumber))
         (verseText
-          (qt
+          (text)
+          (add
             (text))
-          (text)))
-      (q
-        (numberedLevelMax3)
+          (text))
+        (v
+          (verseNumber))
         (verseText
-          (qt
+          (text)
+          (nd
             (text))
-          (text)))
-      (q
-        (numberedLevelMax3)
+          (text)))))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
         (verseText
-          (qt
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (qt
+              (text))
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (qt
+              (text))
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (qt
+              (text))
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (qt
+              (text))
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (qt
+              (text))
+            (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text)
+          (sig
             (text))
           (text))))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)
-        (sig
+    (paragraph
+      (cls
+        (verseText
           (text))
-        (text)))
-    (cls
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (sls
-          (text))
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (sls
-          (text))
-        (text)))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)
-        (r
+        (v
+          (verseNumber))
+        (verseText
           (text))))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)
-        (tl
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (sls
+            (text))
           (text))
-        (text)))))
+        (v
+          (verseNumber))
+        (verseText
+          (sls
+            (text))
+          (text))))
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text)
+          (r
+            (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text)
+          (tl
+            (text))
+          (text))))))
 
 ================================================================================
 In introduction section
@@ -195,11 +203,12 @@ and to the ends of the earth” (1.8).
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
 
 ================================================================================
 In corss-ref
@@ -228,19 +237,44 @@ dead will be raised, never to die again, and we shall all be changed.
   (chapter
     (c
       (chapterNumber))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (crossref
+            (x
+              (caller)
+              (xo
+                (noteText
+                  (text)))
+              (xt
+                (noteText
+                  (text)
+                  (dcNested
+                    (text))))
+              (xt
+                (noteText
+                  (text)))))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (p
         (v
           (verseNumber))
         (crossref
@@ -251,34 +285,11 @@ dead will be raised, never to die again, and we shall all be changed.
                 (text)))
             (xt
               (noteText
-                (text)
                 (dcNested
-                  (text))))
-            (xt
-              (noteText
+                  (text))
                 (text)))))
         (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))
-    (p
-      (v
-        (verseNumber))
-      (crossref
-        (x
-          (caller)
-          (xo
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (dcNested
-                (text))
-              (text)))))
-      (verseText
-        (text)))))
+          (text))))))
 
 ================================================================================
 Figure
@@ -308,42 +319,44 @@ left her.|src="avnt017.tif" size="col" ref="1.31"\fig*
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)
-        (fig
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
           (text)
-          (attributes
-            (text)))
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)
-        (fig
+          (fig
+            (text)
+            (attributes
+              (text)))
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
           (text)
-          (attributes
-            (text)))
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+          (fig
+            (text)
+            (attributes
+              (text)))
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
 
 ================================================================================
 With Attributes
@@ -373,129 +386,131 @@ With Attributes
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)
-        (rb
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (rb
+          (rb
+            (text)
+            (attributes
+              (text)))
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (w
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (w
+          (w
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (w
+          (w
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (w
+          (w
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (w
+          (w
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (w
+          (w
+            (text)
+            (attributes
+              (text)))
           (text)
-          (attributes
-            (text)))
-        (text)
-        (w
-          (text)
-          (attributes
-            (text)))
-        (text)
-        (w
-          (text)
-          (attributes
-            (text)))))))
+          (w
+            (text)
+            (attributes
+              (text))))))))

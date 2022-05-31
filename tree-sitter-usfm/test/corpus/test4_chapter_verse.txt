@@ -1,41 +1,57 @@
-==========
+================================================================================
 id, c, v markers
-==========
+================================================================================
 \id MAT some other info of file
 \c 1
 \p
 \v 1 verse text
-----------
-(File 
-  (book 
-    (id (bookcode) (description))) 
-  (chapter 
-    (c (chapterNumber)) 
-    (p 
-      (v (verseNumber)) 
-      (verseText (text)))))
+--------------------------------------------------------------------------------
 
-===========
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
+
+================================================================================
 cl markers
-===========
+================================================================================
 \id GEN
 \c 1
 \cl chapter
 \p 
 \v 1 text
------------
-(File 
-  (book 
-    (id (bookcode) (description))) 
-  (chapter 
-    (c (chapterNumber)) 
-    (cl (text)) 
-    (p 
-      (v (verseNumber)) 
-      (verseText (text)))))
-===========
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (cl
+      (text))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
+
+================================================================================
 cl ca cp markers
-===========
+================================================================================
 \id GEN
 \h some header
 \cl label before chapter
@@ -45,25 +61,39 @@ cl ca cp markers
 \p
 \v 1 text
 \v 2 text again
--------------
-(File 
-  (book 
-    (id (bookcode) (description))) 
-  (hBlock (h (text))) 
-  (chapter 
-    (cl (text)) 
-    (c (chapterNumber)) 
-    (ca (chapterNumber)) 
-    (cp (text)) 
-    (p 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (v (verseNumber)) 
-      (verseText (text)))))
+--------------------------------------------------------------------------------
 
-==============
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (hBlock
+    (h
+      (text)))
+  (chapter
+    (cl
+      (text))
+    (c
+      (chapterNumber))
+    (ca
+      (chapterNumber))
+    (cp
+      (text))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
+
+================================================================================
 verse number patterns
-==============
+================================================================================
 \id GEN
 \c 1
 \p
@@ -72,26 +102,42 @@ verse number patterns
 \v 2b text
 \v 3-4a text
 \v 4b text
---------------
-(File 
-  (book 
-    (id (bookcode) (description))) 
-  (chapter 
-    (c (chapterNumber)) 
-    (p 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (v (verseNumber)) 
-      (verseText (text)))))
-===========
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
+
+================================================================================
 va vp markers
-===========
+================================================================================
 \id GEN
 \c 1
 \p 
@@ -100,19 +146,47 @@ va vp markers
 \v 3 \va 2 \va*   \vp I-I \vp* text
 \v 3 \va 2 \va* \va 2b \va* text
 \v 4 \vp I-I \vp* text
-------------
-(File 
-  (book 
-    (id (bookcode) (description))) 
-  (chapter 
-    (c (chapterNumber)) 
-    (p 
-      (v (verseNumber)) 
-      (verseText (text)) 
-      (v (verseNumber) (va (verseNumber))) 
-      (verseText (text)) 
-      (v (verseNumber) (va (verseNumber)) (vp (text))) 
-      (verseText (text)) 
-      (v (verseNumber) (va (verseNumber)) (va (verseNumber))) 
-      (verseText (text)) 
-      (v (verseNumber) (vp (text))) (verseText (text)))))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber)
+          (va
+            (verseNumber)))
+        (verseText
+          (text))
+        (v
+          (verseNumber)
+          (va
+            (verseNumber))
+          (vp
+            (text)))
+        (verseText
+          (text))
+        (v
+          (verseNumber)
+          (va
+            (verseNumber))
+          (va
+            (verseNumber)))
+        (verseText
+          (text))
+        (v
+          (verseNumber)
+          (vp
+            (text)))
+        (verseText
+          (text))))))

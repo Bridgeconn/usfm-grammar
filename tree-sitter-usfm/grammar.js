@@ -134,10 +134,10 @@ module.exports = grammar({
 
     _chapterContent: $ => choice(
       $._chapterMeta,
-      $._title,
-      $._paragraph,
+      $.title,
+      $.paragraph,
       $._comments,
-      $._poetry,
+      $.poetry,
       $.table,
       $.list,
       $.footnote,
@@ -164,7 +164,7 @@ module.exports = grammar({
       )))),
 
     // Titles & Headings
-    _title: $ => choice(
+    title: $ => choice(
       $.msBlock,
       $.sBlock,
       $.sp,
@@ -212,7 +212,7 @@ module.exports = grammar({
     // rqMarker implemented in cross ref section 
 
     // paragraph
-    _paragraph: $ => choice(
+    paragraph: $ => choice(
       $.p,
       $.m,
       $.po,
@@ -261,7 +261,7 @@ module.exports = grammar({
     b: $ => seq("\\b", $._spaceOrLine),
 
     //quotes
-    _poetry: $ => choice(
+    poetry: $ => choice(
       $.qBlock,
       $.qr,
       $.qc,
@@ -577,10 +577,10 @@ module.exports = grammar({
     esb: $ => seq("\\esb",  repeat($._esbContents), "\\esbe"),
     _esbContents: $ => choice( 
       $.cat,
-      $._title,
-      $._paragraph, // this will allow verse markers also to come withing esb
+      $.title,
+      $.paragraph, // this will allow verse markers also to come withing esb
       $._comments,
-      $._poetry,
+      $.poetry,
       $.table,
       $.list,
       $.footnote,

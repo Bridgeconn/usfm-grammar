@@ -18,31 +18,33 @@ manuscripts do not have \fq the Son of God.\f*
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)
-        (r
-          (text))))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (footnote
-        (f
-          (caller)
-          (noteText
-            (text))
-          (fr
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text)
+          (r
+            (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
             (noteText
-              (text)))
-          (ft
-            (noteText
-              (text)))
-          (fq
-            (noteText
-              (text))))))))
+              (text))
+            (fr
+              (noteText
+                (text)))
+            (ft
+              (noteText
+                (text)))
+            (fq
+              (noteText
+                (text)))))))))
 
 ================================================================================
 Another footnote
@@ -64,43 +66,44 @@ was the mother of all human beings.
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (footnote
-        (f
-          (caller)
-          (noteText
-            (text))
-          (fr
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
             (noteText
-              (text)))
-          (fk
+              (text))
+            (fr
+              (noteText
+                (text)))
+            (fk
+              (noteText
+                (text)))
+            (ft
+              (noteText
+                (text)))))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
             (noteText
-              (text)))
-          (ft
-            (noteText
-              (text)))))
-      (verseText
-        (text))
-      (footnote
-        (f
-          (caller)
-          (noteText
-            (text))
-          (fr
-            (noteText
-              (text)))
-          (fk
-            (noteText
-              (text)))
-          (ft
-            (noteText
-              (text)))))
-      (verseText
-        (text)))))
+              (text))
+            (fr
+              (noteText
+                (text)))
+            (fk
+              (noteText
+                (text)))
+            (ft
+              (noteText
+                (text)))))
+        (verseText
+          (text))))))
 
 ================================================================================
 Footnotes with unusual callers
@@ -126,63 +129,64 @@ mucho más importante que el de ellos. \f ⸀ \fr 28,14 \ft υπο \fw B D 0148.
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (footnote
-        (f
-          (caller)
-          (noteText
-            (text))
-          (fr
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
             (noteText
-              (text)))
-          (fk
+              (text))
+            (fr
+              (noteText
+                (text)))
+            (fk
+              (noteText
+                (text)))
+            (ft
+              (noteText
+                (text)))
+            (fdc
+              (noteText
+                (text)))))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
             (noteText
-              (text)))
-          (ft
+              (text))
+            (fr
+              (noteText
+                (text)))
+            (ft
+              (noteText
+                (text)))
+            (fw
+              (noteText
+                (text)))))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (footnote
+          (f
+            (caller)
             (noteText
-              (text)))
-          (fdc
-            (noteText
-              (text)))))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (footnote
-        (f
-          (caller)
-          (noteText
-            (text))
-          (fr
-            (noteText
-              (text)))
-          (ft
-            (noteText
-              (text)))
-          (fw
-            (noteText
-              (text)))))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (footnote
-        (f
-          (caller)
-          (noteText
-            (text))
-          (fr
-            (noteText
-              (text)))
-          (fw
-            (noteText
-              (text))))))))
+              (text))
+            (fr
+              (noteText
+                (text)))
+            (fw
+              (noteText
+                (text)))))))))
 
 ================================================================================
 Footnote in new line
@@ -202,30 +206,31 @@ Footnote in new line
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (footnote
-        (f
-          (caller)
-          (noteText
-            (text))
-          (fr
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
             (noteText
-              (text)))
-          (fq
-            (noteText
-              (text)))
-          (ft
-            (noteText
-              (text)))
-          (fq
-            (noteText
-              (text)))))
-      (verseText
-        (text)))))
+              (text))
+            (fr
+              (noteText
+                (text)))
+            (fq
+              (noteText
+                (text)))
+            (ft
+              (noteText
+                (text)))
+            (fq
+              (noteText
+                (text)))))
+        (verseText
+          (text))))))
 
 ================================================================================
 A basic cross-ref
@@ -249,24 +254,25 @@ Nazarene.”
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (crossref
-        (x
-          (caller)
-          (xo
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))))
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (crossref
+          (x
+            (caller)
+            (xo
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))))
+        (verseText
+          (text))))))
 
 ================================================================================
 A not-so-basic crossref
@@ -289,48 +295,49 @@ do not accuse anyone falsely; do not cheat; respect your father and your mother.
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (crossref
-        (x
-          (caller)
-          (xo
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))
-          (xo
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))
-          (xo
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))
-          (xo
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))
-          (xo
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))))
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (crossref
+          (x
+            (caller)
+            (xo
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))
+            (xo
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))
+            (xo
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))
+            (xo
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))
+            (xo
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))))
+        (verseText
+          (text))))))
 
 ================================================================================
 xt in cd
@@ -380,16 +387,18 @@ xt in cd
         (attributes
           (text)))
       (text))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
 
 ================================================================================
 Cross-ref in s#
@@ -410,37 +419,39 @@ Lk 3.1-18; \xta and \xt Jn 1.19-28 \xta parallel passages.\x*
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)
-        (crossref
-          (x
-            (caller)
-            (xo
-              (noteText
-                (text)))
-            (xta
-              (noteText
-                (text)))
-            (xt
-              (noteText
-                (text)))
-            (xta
-              (noteText
-                (text)))
-            (xt
-              (noteText
-                (text)))
-            (xta
-              (noteText
-                (text)))))
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text)
+          (crossref
+            (x
+              (caller)
+              (xo
+                (noteText
+                  (text)))
+              (xta
+                (noteText
+                  (text)))
+              (xt
+                (noteText
+                  (text)))
+              (xta
+                (noteText
+                  (text)))
+              (xt
+                (noteText
+                  (text)))
+              (xta
+                (noteText
+                  (text)))))
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
 
 ================================================================================
 Another cross-ref
@@ -470,75 +481,76 @@ Another cross-ref
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (crossref
-        (x
-          (caller)
-          (xo
-            (noteText
-              (text)))
-          (xop
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (crossref
-        (x
-          (caller)
-          (xo
-            (noteText
-              (text)))
-          (xop
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (crossref
-        (x
-          (caller)
-          (xo
-            (noteText
-              (text)))
-          (xop
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (crossref
-        (x
-          (caller)
-          (xo
-            (noteText
-              (text)))
-          (xop
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))))
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (crossref
+          (x
+            (caller)
+            (xo
+              (noteText
+                (text)))
+            (xop
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (crossref
+          (x
+            (caller)
+            (xo
+              (noteText
+                (text)))
+            (xop
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (crossref
+          (x
+            (caller)
+            (xo
+              (noteText
+                (text)))
+            (xop
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (crossref
+          (x
+            (caller)
+            (xo
+              (noteText
+                (text)))
+            (xop
+              (noteText
+                (text)))
+            (xt
+              (noteText
+                (text)))))
+        (verseText
+          (text))))))
 
 ================================================================================
 More cross-refs
@@ -567,28 +579,51 @@ dead will be raised, never to die again, and we shall all be changed.
   (chapter
     (c
       (chapterNumber))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (crossref
+            (x
+              (caller)
+              (xo
+                (noteText
+                  (text)))
+              (xt
+                (noteText
+                  (text)))
+              (xdc
+                (noteText
+                  (text)))
+              (xt
+                (noteText
+                  (text)))))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (p
         (v
           (verseNumber))
         (crossref
           (x
             (caller)
             (xo
-              (noteText
-                (text)))
-            (xt
               (noteText
                 (text)))
             (xdc
@@ -598,28 +633,7 @@ dead will be raised, never to die again, and we shall all be changed.
               (noteText
                 (text)))))
         (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))
-    (p
-      (v
-        (verseNumber))
-      (crossref
-        (x
-          (caller)
-          (xo
-            (noteText
-              (text)))
-          (xdc
-            (noteText
-              (text)))
-          (xt
-            (noteText
-              (text)))))
-      (verseText
-        (text)))))
+          (text))))))
 
 ================================================================================
 rq
@@ -648,44 +662,49 @@ than theirs.
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
+    (paragraph
+      (p
+        (v
+          (verseNumber))
         (verseText
           (text))
-        (crossref
-          (rq
-            (noteText
-              (text))))
+        (v
+          (verseNumber))
         (verseText
           (text))))
-    (b)
-    (m
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text))
+          (crossref
+            (rq
+              (noteText
+                (text))))
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (paragraph
+      (m
         (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))
-        (crossref
-          (rq
-            (noteText
-              (text))))))))
+          (text))))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text))
+          (crossref
+            (rq
+              (noteText
+                (text)))))))))

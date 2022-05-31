@@ -30,10 +30,11 @@ lh, li#, lf
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)))
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text))))
     (list
       (lh
         (v
@@ -122,11 +123,12 @@ offerings
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
     (list
       (liBlock
         (li
@@ -183,20 +185,24 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
   (chapter
     (c
       (chapterNumber))
-    (pm
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (b)
-    (pm
-      (verseText
-        (text)))
-    (b)
+    (paragraph
+      (pm
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (b))
+    (paragraph
+      (pm
+        (verseText
+          (text))))
+    (paragraph
+      (b))
     (list
       (limBlock
         (lim
@@ -307,10 +313,11 @@ lik, liv#
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)))
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text))))
     (list
       (lh
         (v
@@ -527,11 +534,12 @@ table, with header
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
     (table
       (tr
         (th
@@ -617,11 +625,12 @@ their groups, under their leaders, as follows:
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
     (table
       (tr
         (th
