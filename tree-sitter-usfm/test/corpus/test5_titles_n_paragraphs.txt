@@ -50,53 +50,61 @@ headers and titles
   (chapter
     (c
       (chapterNumber))
-    (msBlock
-      (ms
-        (text)
-        (mr
+    (title
+      (msBlock
+        (ms
+          (text)
+          (mr
+            (text)))))
+    (title
+      (sBlock
+        (s
           (text))))
-    (sBlock
-      (s
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)
-        (sr
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text)
+          (sr
+            (text))
+          (r
+            (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (title
+      (sdBlock
+        (sd
+          (numberedLevelMax4))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
           (text))
-        (r
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
           (text))))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (sdBlock
-      (sd
-        (numberedLevelMax4)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (mteBlock
-      (mte
-        (text))
-      (mte
-        (text)))))
+    (title
+      (mteBlock
+        (mte
+          (text))
+        (mte
+          (text))))))
 
 ================================================================================
 Simple p
@@ -135,21 +143,23 @@ Simple p
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)
-        (r
-          (text))))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text)
+          (r
+            (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
 
 ================================================================================
 m
@@ -176,34 +186,38 @@ of the Law say that the Messiah will be the descendant of David?
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
+    (paragraph
+      (p
+        (v
+          (verseNumber))
         (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
+          (text))
+        (v
+          (verseNumber))
         (verseText
           (text))))
-    (b)
-    (m
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (paragraph
+      (m
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
 
 ================================================================================
 po
@@ -237,40 +251,44 @@ people:
   (chapter
     (c
       (chapterNumber))
-    (po
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (po
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (po
-      (verseText
-        (text)))))
+    (paragraph
+      (po
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (po
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (po
+        (verseText
+          (text))))))
 
 ================================================================================
 pr
@@ -298,30 +316,36 @@ worships it; the Lord hates idolatry.’
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (pr
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (pr
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (pr
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (pr
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (pr
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (pr
+        (verseText
+          (text))))))
 
 ================================================================================
 cls
@@ -341,14 +365,16 @@ cls
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (cls
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (cls
+        (verseText
+          (text))))))
 
 ================================================================================
 pmo, pm and pmc
@@ -386,47 +412,52 @@ not commit any terrible sexual sins. If you follow these instructions, you will 
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (pmo
-      (verseText
-        (text)))
-    (pm
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (pm
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (pmc
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (pmo
+        (verseText
+          (text))))
+    (paragraph
+      (pm
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (pm
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (pmc
+        (verseText
+          (text))))))
 
 ================================================================================
 pi mi
@@ -468,67 +499,75 @@ drinks too much! He is even a friend of tax collectors ...
   (chapter
     (c
       (chapterNumber))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (piBlock
-      (pi
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (piBlock
+        (pi
+          (verseText
+            (text))
+          (v
+            (verseNumber))
+          (verseText
+            (text))
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (pi
+          (v
+            (verseNumber))
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (v
+            (verseNumber))
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))
+        (q
+          (numberedLevelMax3)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (paragraph
+      (mi
+        (v
+          (verseNumber))
         (verseText
           (text))
         (v
           (verseNumber))
         (verseText
-          (text))
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (pi
-        (v
-          (verseNumber))
-        (verseText
-          (text))))
-    (b)
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (v
-          (verseNumber))
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text)))
-      (q
-        (numberedLevelMax3)
-        (verseText
-          (text))))
-    (b)
-    (mi
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+          (text))))))
 
 ================================================================================
 nb
@@ -556,32 +595,36 @@ sat down and started teaching them.
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (sBlock
-      (s
-        (numberedLevelMax5)
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (title
+      (sBlock
+        (s
+          (numberedLevelMax5)
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text)))))
   (chapter
     (c
       (chapterNumber))
-    (nb
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+    (paragraph
+      (nb
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
 
 ================================================================================
 pc
@@ -607,20 +650,23 @@ their lives for Jesus. This surprising sight amazed me, ...
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (pc
-      (verseText
-        (text)))
-    (m
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (pc
+        (verseText
+          (text))))
+    (paragraph
+      (m
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))

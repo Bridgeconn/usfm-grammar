@@ -25,54 +25,59 @@ surprised.
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone
-        (attributes
-          (text)))
-      (verseText
-        (text))
-      (milestone)
-      (verseText
-        (text)))
-    (p
-      (milestone
-        (attributes
-          (text)))
-      (verseText
-        (text))
-      (milestone)
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone
-        (attributes
-          (text)))
-      (verseText
-        (text))
-      (milestone)
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (attributes
+            (text)))
+        (verseText
+          (text))
+        (milestone)
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (milestone
+          (attributes
+            (text)))
+        (verseText
+          (text))
+        (milestone)
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (attributes
+            (text)))
+        (verseText
+          (text))
+        (milestone)
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
 
 ================================================================================
 qt milestone numbered
 ================================================================================
+
 \id ACT
 \c 1
 \p
@@ -100,63 +105,70 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone
-        (attributes
-          (text)))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
         (milestone
           (attributes
             (text)))
         (verseText
           (text))
-        (milestone)
-        (verseText
-          (text))))
-    (b)
-    (m
-      (verseText
-        (text)))
-    (qBlock
-      (q
-        (numberedLevelMax3)
-        (milestone
-          (attributes
-            (text)))
+        (v
+          (verseNumber))
         (verseText
           (text))
-        (milestone)
+        (v
+          (verseNumber))
         (verseText
           (text))))
-    (b)
-    (m
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone
-        (attributes
-          (text))))))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (milestone
+            (attributes
+              (text)))
+          (verseText
+            (text))
+          (milestone)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (paragraph
+      (m
+        (verseText
+          (text))))
+    (poetry
+      (qBlock
+        (q
+          (numberedLevelMax3)
+          (milestone
+            (attributes
+              (text)))
+          (verseText
+            (text))
+          (milestone)
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (paragraph
+      (m
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (attributes
+            (text)))))))
 
 ================================================================================
 ts milestone w/o attributes
@@ -188,27 +200,28 @@ authority, and they say evil things about the glorious ones.
     (c
       (chapterNumber))
     (milestone)
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone)
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone)
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone)))))
 
 ================================================================================
 ts milestone w/ attributes
@@ -242,43 +255,45 @@ authority, and they say evil things about the glorious ones.
   (chapter
     (c
       (chapterNumber))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone
-        (attributes
-          (text)))
-      (verseText
-        (text)))
-    (p
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone
-        (attributes
-          (text)))
-      (verseText
-        (text))
-      (milestone
-        (attributes
-          (text)))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (v
-        (verseNumber))
-      (verseText
-        (text))
-      (milestone
-        (attributes
-          (text))))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (attributes
+            (text)))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (attributes
+            (text)))
+        (verseText
+          (text))
+        (milestone
+          (attributes
+            (text)))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (attributes
+            (text)))))))

@@ -63,6 +63,10 @@ notes_query = USFM_LANGUAGE.query('''[(footnote) (crossref)] @note''')
 
 notestext_query = USFM_LANGUAGE.query('''(noteText) @note-text''')
 
+para_query = USFM_LANGUAGE.query("""[(paragraph) (poetry) (table) (list)] @para""")
+
+title_query = USFM_LANGUAGE.query("""(title) @title""")
+
 class USFMParser():
 	"""Parser class with usfmstring, AST and methods for JSON convertions"""
 	def __init__(self, usfm_string):
@@ -87,20 +91,22 @@ class USFMParser():
 		return self.AST.sexp()
 
 	def toDict(self, filt=Filter.SCRIPTURE_BCV.value):
-		if filt == Filter.SCRIPTURE_BCV.value or filt is None:
-				'''query for just the chapter, verse and text nodes from the AST'''
-				dict_output = {}
-				captures = bookcode_query.captures(self.AST)
-				cap = captures[0]
-				dict_output['book'] = {'bookcode': self.USFMbytes[cap[0].start_byte:cap[0].end_byte].decode('utf-8')}
-				dict_output['book']['chapters'] = []
-				captures = chapter_query.captures(self.AST)
-				for cap in captures:
-					chap_captures = chapternum_query.captures(cap[0])
-					ccap= chap_captures[0]
-					dict_output['book']['chapters'].append({"chapterNumber":
-						self.USFMbytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
-						"contents":[]})
+		if filt in [Filter.SCRIPTURE_BCV.value, Filter.NOTES.value, Filter.NOTES_TEXT.value,
+			Filter.SCRIPTURE_PARAGRAPHS.value, None]:
+			dict_output = {}
+			captures = bookcode_query.captures(self.AST)
+			cap = captures[0]
+			dict_output['book'] = {'bookcode': self.USFMbytes[cap[0].start_byte:cap[0].end_byte].decode('utf-8')}
+			dict_output['book']['chapters'] = []
+			captures = chapter_query.captures(self.AST)
+			for cap in captures:
+				chap_captures = chapternum_query.captures(cap[0])
+				ccap= chap_captures[0]
+				dict_output['book']['chapters'].append({"chapterNumber":
+					self.USFMbytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
+					"contents":[]})
+				if filt in [Filter.SCRIPTURE_BCV.value, None]:
+					'''query for just the chapter, verse and text nodes from the AST'''
 					versenum_captures = versenum_query.captures(cap[0])
 					versetext_captures = versetext_query.captures(cap[0])
 					combined = {item[0].start_byte: item for item in versenum_captures+versetext_captures}
@@ -115,21 +121,8 @@ class USFMParser():
 							text_val = "".join([self.USFMbytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
 												for tcap in text_captures])
 							dict_output['book']['chapters'][-1]['contents'][-1]['verseText'] += text_val
-				return dict_output
-		elif filt == Filter.NOTES.value or filt==Filter.NOTES_TEXT.value:
-				'''query for just the chapter, verse and text nodes from the AST'''
-				dict_output = {}
-				captures = bookcode_query.captures(self.AST)
-				cap = captures[0]
-				dict_output['book'] = {'bookcode': self.USFMbytes[cap[0].start_byte:cap[0].end_byte].decode('utf-8')}
-				dict_output['book']['chapters'] = []
-				captures = chapter_query.captures(self.AST)
-				for cap in captures:
-					chap_captures = chapternum_query.captures(cap[0])
-					ccap= chap_captures[0]
-					dict_output['book']['chapters'].append({"chapterNumber":
-						self.USFMbytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
-						"contents":[]})
+				elif filt in [Filter.NOTES.value, Filter.NOTES_TEXT.value]:
+					'''query for just the chapter, verse and text nodes from the AST'''
 					versenum_captures = versenum_query.captures(cap[0])
 					notes_captures = notes_query.captures(cap[0])
 					if len(notes_captures) == 0:
@@ -151,7 +144,44 @@ class USFMParser():
 								notetext_captures = notestext_query.captures(vcap[0])
 								note_details = "|".join([self.USFMbytes[ncap[0].start_byte:ncap[0].end_byte].decode('utf-8').strip().replace("\n","") for ncap in notetext_captures])
 							dict_output['book']['chapters'][-1]['contents'][-1]['notes'].append({note_type: note_details})
-				return dict_output
+				elif filt in [Filter.SCRIPTURE_PARAGRAPHS.value]:
+					'''titles and section information, paragraph breaks
+					and also structuring like lists and tables
+					along with verse text and versenumber details at the lowest level'''
+					title_captures = title_query.captures(cap[0])
+					para_captures = para_query.captures(cap[0])
+					combined_tit_paras = {item[0].start_byte: item for item in title_captures+para_captures}
+					sorted_tit_paras = [combined_tit_paras[i] for i in  sorted(combined_tit_paras)]
+					for comp in sorted_tit_paras:
+						if comp[1] == "title":
+							text_captures = text_query.captures(comp[0])
+							title_texts = []
+							for tcap in text_captures:
+								title_texts.append(self.USFMbytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8'))
+							dict_output['book']['chapters'][-1]['contents'].append(
+								{"title":" ".join(title_texts).strip()})
+						elif comp[1] == "para":
+							comp_type = comp[0].type
+							versenum_captures = versenum_query.captures(comp[0])
+							versetext_captures = versetext_query.captures(comp[0])
+							combined = {item[0].start_byte: item for item in versenum_captures+versetext_captures}
+							sorted_combined = [combined[i] for i in  sorted(combined)]
+							inner_contents = []
+							for vcap in sorted_combined:
+								if vcap[1] == "verse":
+									inner_contents.append(
+										{"verseNumber":self.USFMbytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
+										 "verseText":""})
+								elif vcap[1] == "verse-text":
+									text_captures = text_query.captures(vcap[0])
+									text_val = "".join([self.USFMbytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
+														for tcap in text_captures])
+									if len(inner_contents) == 0:
+										inner_contents.append({"verseText":""})
+									inner_contents[-1]['verseText'] += text_val
+
+							dict_output['book']['chapters'][-1]["contents"].append({comp_type:inner_contents})
+			return dict_output
 		elif filt == Filter.ALL.value:
 			'''directly converts the AST to JSON/dict'''
 			return node_2_dict(self.AST, self.USFMbytes)
@@ -159,7 +189,7 @@ class USFMParser():
 			raise Exception(f"This filter option, {filt}, is yet to be implemeneted")
 
 	def toTable(self, filt=Filter.SCRIPTURE_BCV.value):
-		'''uses the toJSON function and coneverts JSON to CSV'''
+		'''uses the toJSON function and converts JSON to CSV'''
 		if filt == Filter.SCRIPTURE_BCV.value or filt is None:
 			scripture_json = self.toDict(Filter.SCRIPTURE_BCV.value)
 			table_output = [["Book","Chapter","Verse","Text"]]
@@ -181,6 +211,24 @@ class USFMParser():
 					for note in verse['notes']:
 						typ = list(note)[0]
 						row = [book, chapter, v_num, typ, '"'+note[typ]+'"']
+					table_output.append(row)
+			return table_output
+		elif filt == Filter.SCRIPTURE_PARAGRAPHS.value:
+			notes_json = self.toDict(Filter.SCRIPTURE_PARAGRAPHS.value)
+			table_output = [["Book","Chapter","Type", "Contents"]]
+			book = notes_json['book']['bookcode']
+			for chap in notes_json['book']['chapters']:
+				chapter = chap['chapterNumber']
+				for comp in chap['contents']:
+					typ = list(comp)[0]
+					if typ == "title":
+						cont = comp[typ]
+					else:
+						inner_cont = []
+						for inner_comp in comp[typ]:
+							inner_cont += list(inner_comp.values())
+						cont = ' '.join(inner_cont)
+					row = [book, chapter, typ, cont]
 					table_output.append(row)
 			return table_output
 			

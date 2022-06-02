@@ -72,3 +72,7 @@ typings/
 */src/
 */binding.gyp
 */Cargo.toml
+*/*.wasm
+
+*/.ipynb_checkpoints/
+*/__pycache__/
