@@ -1,6 +1,6 @@
-=========
+================================================================================
 znamespace
-=========
+================================================================================
 \id GEN
 \zhead some text
 \c 1
@@ -10,26 +10,50 @@ znamespace
 \v 2 text
 \v 3 text \zattrib inner text |key="val" \zattrib*
 \v 4 text
----------
-(File 
-	(book (id (bookcode) (description))) 
-	(zNameSpaceRegular (text)) 
-	(chapter 
-		(c (chapterNumber)) 
-		(p 
-			(zNameSpaceRegular (text)) 
-			(v (verseNumber)) 
-			(verseText (text) (zNameSpaceClosed (text)) (text)) 
-			(v (verseNumber)) 
-			(verseText (text)) 
-			(v (verseNumber)) 
-			(verseText (text) (zNameSpaceClosed (text) (attributes (text))) (text)) 
-			(v (verseNumber)) 
-			(verseText (text)))))
+--------------------------------------------------------------------------------
 
-===========
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (zNameSpaceRegular
+    (text))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (zNameSpaceRegular
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text)
+          (zNameSpaceClosed
+            (text))
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text)
+          (zNameSpaceClosed
+            (text)
+            (attributes
+              (text)))
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
+
+================================================================================
 esb..esbe
-===========
+================================================================================
 \id GEN
 \c 1
 \p
@@ -51,12 +75,59 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 \p
 \v 19 He went a little farther on and saw two other brothers, James and John,
 the sons of Zebedee.
------------------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
+--------------------------------------------------------------------------------
 
-============
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (esb
+      (title
+        (msBlock
+          (ms
+            (text))))
+      (paragraph
+        (p
+          (verseText
+            (text))
+          (crossref
+            (xt
+              (noteText
+                (text))))
+          (verseText
+            (text))))
+      (paragraph
+        (p
+          (verseText
+            (text)
+            (tl
+              (text))
+            (text)
+            (fig
+              (text)
+              (attributes
+                (text)))
+            (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
+
+================================================================================
 cat
-============
+================================================================================
 \id GEN
 \c 1
 \p
@@ -78,5 +149,53 @@ src="christfish.jpg" size="col" ref="1.18"\fig*
 \p
 \v 19 He went a little farther on and saw two other brothers, James and John,
 the sons of Zebedee.
-------------
-(File (book (id (bookcode) (description))) (chapter (c (chapterNumber)) (p (v (verseNumber)) (verseText (text))) (esb (cat) (msBlock (ms (text))) (p (verseText (text)) (crossref (xt (noteText (text)))) (verseText (text))) (p (verseText (text) (tl (text)) (text) (fig (text) (attributes (text))) (text)))) (p (v (verseNumber)) (verseText (text)))))
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (esb
+      (cat)
+      (title
+        (msBlock
+          (ms
+            (text))))
+      (paragraph
+        (p
+          (verseText
+            (text))
+          (crossref
+            (xt
+              (noteText
+                (text))))
+          (verseText
+            (text))))
+      (paragraph
+        (p
+          (verseText
+            (text)
+            (tl
+              (text))
+            (text)
+            (fig
+              (text)
+              (attributes
+                (text)))
+            (text)))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
