@@ -237,6 +237,7 @@ module.exports = grammar({
       $.crossref,
       $.milestone,
       $.zNameSpaceRegular,
+      $._comments,
     ),
 
     p: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -389,7 +390,8 @@ module.exports = grammar({
     xo: $ => seq("\\xo ", $.noteText, optional("\\xo*")),
     xk: $ => seq("\\xk ", $.noteText, optional("\\xk*")),
     xq: $ => seq("\\xq ", $.noteText, optional("\\xq*")),
-    xt: $ => seq("\\xt ", $.noteText,optional($.attributes),  optional("\\xt*")),
+    xt: $ => seq("\\xt ", $.noteText,optional(choice($.defaultAttribute, $._attributesInCrossref)), 
+      optional("\\xt*")),
     xta: $ => seq("\\xta ", $.noteText, optional("\\xta*")),
     xop: $ => seq("\\xop ", $.noteText, optional("\\xop*")),
     xot: $ => seq("\\xot ", $.noteText, optional("\\xot*")),
@@ -409,7 +411,7 @@ module.exports = grammar({
     rq: $ => seq("\\rq ", $.noteText, "\\rq*"),
 
     //Character and word level markers
-    attributes: $ => seq("|", $.text), //to be implemented properly
+    // attributes: $ => seq("|", $.text), //to be implemented properly
     _innerText: $ => prec.right(0, repeat1(choice(
       $.text,
       $._nestedCharacterMarker,
@@ -440,8 +442,8 @@ module.exports = grammar({
 
     ndx: $ => seq("\\ndx", $._innerText, "\\ndx*"),
     pro: $ => seq("\\pro", $._innerText, "\\pro*"),
-    rb: $ => seq("\\rb", $._innerText, optional($.attributes), "\\rb*"),
-    w: $ => seq("\\w", $._innerText, optional($.attributes), "\\w*"),
+    rb: $ => seq("\\rb", $._innerText, optional(choice($.defaultAttribute, $._rbAttributes)), "\\rb*"),
+    w: $ => seq("\\w", $._innerText, optional(choice($.defaultAttribute, $._wAttributes)), "\\w*"),
     wg: $ => seq("\\wg", $._innerText, "\\wg*"),
     wh: $ => seq("\\wh", $._innerText, "\\wh*"),
     wa: $ => seq("\\wa", $._innerText, "\\wa*"),
@@ -505,8 +507,10 @@ module.exports = grammar({
 
     ndxNested: $ => seq("\\+ndx", $._innerText, "\\+ndx*"),
     proNested: $ => seq("\\+pro", $._innerText, "\\+pro*"),
-    rbNested: $ => seq("\\+rb", $._innerText, optional($.attributes), "\\+rb*"),
-    wNested: $ => seq("\\+w", $._innerText, optional($.attributes), "\\+w*"),
+    rbNested: $ => seq("\\+rb", $._innerText, optional(
+      choice($.defaultAttribute, $._rbAttributes)), "\\+rb*"),
+    wNested: $ => seq("\\+w", $._innerText, optional(
+      choice($.defaultAttribute, $._wAttributes)), "\\+w*"),
     wgNested: $ => seq("\\+wg", $._innerText, "\\+wg*"),
     whNested: $ => seq("\\+wh", $._innerText, "\\+wh*"),
     waNested: $ => seq("\\+wa", $._innerText, "\\+wa*"),
@@ -543,9 +547,10 @@ module.exports = grammar({
       $.jmpNested,
     ),
 
-    fig: $ => seq("\\fig", optional($.text), optional($.attributes), "\\fig*"),
-    jmp: $ => seq("\\jmp", field("label",optional($.text)), optional($.attributes), "\\jmp*"),
-    jmpNested: $ => seq("\\+jmp", field("label",optional($.text)), optional($.attributes), "\\+jmp*"),
+    fig: $ => seq("\\fig", optional($.text), optional(
+      choice($.defaultAttribute, $._figAttributes)), "\\fig*"),
+    jmp: $ => seq("\\jmp", field("label",optional($.text)), optional($._jmpAttribute), "\\jmp*"),
+    jmpNested: $ => seq("\\+jmp", field("label",optional($.text)), optional($._jmpAttribute), "\\+jmp*"),
 
     pb: $ => seq("\\pb", $._spaceOrLine),
 
@@ -554,12 +559,12 @@ module.exports = grammar({
       letters of digits.*/
 
     _milestoneStandaloneMarker: $ => seq("\\", prec.right(1,token.immediate(/[\w\d_]+/)),
-      optional($.attributes), "\\*" ),
+      optional($._milestoneAttributes), "\\*" ),
 
     _milestoneStart: $ => seq(/\\[\w\d_]+-s/,
-      optional($.attributes), "\\*" ),
+      optional($._milestoneAttributes), "\\*" ),
     _milestoneEnd: $ => seq(/\\[\w\d_]+-e/,
-      optional($.attributes), "\\*" ),
+      optional($._milestoneAttributes), "\\*" ),
 
     /* dont tie up the start and end in the grammar as of now.
     But Do it via querying on the parse tree if required.
@@ -572,7 +577,7 @@ module.exports = grammar({
 
     zNameSpaceRegular: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text))),
     zNameSpaceClosed: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text),
-      optional($.attributes), /\\z[\w\d_-]+\*/)),
+      optional($._milestoneAttributes), /\\z[\w\d_-]+\*/)), // This may not support one name space within another
     
     esb: $ => seq("\\esb",  repeat($._esbContents), "\\esbe"),
     _esbContents: $ => choice( 
@@ -590,8 +595,52 @@ module.exports = grammar({
       $.ip,
       ),
 
-    cat: $ => seq("\\cat", /[\w\d\s]+/, "\\cat*")
+    cat: $ => seq("\\cat", /[\w\d\s]+/, "\\cat*"),
       
+    /* *****Attributes******** */
+
+    /* For user defined attributes starting with x */
+
+    customAttribute: $ => seq($.customAttributeName, "=", "\"",optional($.attributeValue),"\""),
+    customAttributeName: $ => seq("x-", /[\w\d_]+/),
+    attributeValue: $ =>  /[^\\\|"=]+/, //same rule as $.text, with quote and '=' added extra
+
+    /* The default attribute is valid for any marker which normally provide attributes. 
+      It would be extracted as default attribute without mentioning the corresponding attribute name */
+
+    defaultAttribute: $ => seq("|", $.attributeValue), 
+
+    /* the special set of attributes valid for each of the normally 
+      attributed elements are defined here*/
+
+    // _wAttributes: $ => seq("|", $.lemmaAttribute),
+    _wAttributes: $ => prec.right(0, seq("|", repeat1(choice($.lemmaAttribute, $.strongAttribute,
+      $.scrlocAttribute, $.linkAttribute, $.customAttribute)))),
+    _rbAttributes: $ => prec.right(0, seq("|", repeat1(choice($.glossAttribute, $.customAttribute,
+      $.linkAttribute)))),
+    _figAttributes: $ => prec.right(0, seq("|", repeat1(choice($.altAttribute, $.srcAttribute, $.sizeAttribute, $.locAttribute, $.copyAttribute, 
+      $.refAttribute, $.customAttribute, $.linkAttribute, $.defaultAttribute)))),
+    lemmaAttribute: $ => seq("lemma", "=", '"', $.attributeValue, '"'),
+    strongAttribute: $ => seq("strong", "=", '"', optional($.attributeValue), '"'), 
+    scrlocAttribute: $ => seq("srcloc", "=", '"', optional($.attributeValue), '"'),
+    glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
+    _jmpAttribute: $ => seq("|", $.linkAttribute),
+    linkAttribute: $ => seq($._linkAttributeName, "=", '"', optional($.attributeValue), '"'),
+    _linkAttributeName: $ => choice("link-href", "link-title", "link-id", $._linkAttributeUserDefinedName),
+    _linkAttributeUserDefinedName: $ => seq("link-", /[\w\d_]+/),
+    altAttribute: $ => seq("alt", "=", '"', optional($.attributeValue), '"'),
+    srcAttribute: $ => seq("src", "=", '"', optional($.attributeValue), '"'),
+    sizeAttribute: $ => seq("size", "=", '"', optional($.attributeValue), '"'),
+    locAttribute: $ => seq("loc", "=", '"', optional($.attributeValue), '"'),
+    copyAttribute: $ => seq("copy", "=", '"', optional($.attributeValue), '"'),
+    refAttribute: $ => seq("ref", "=", '"', optional($.attributeValue), '"'),
+    _milestoneAttributes: $ => prec.right(0, seq("|", repeat1(
+      choice($.msAttribute, $.customAttribute, $.linkAttribute)))),
+    msAttribute: $ => seq($.milestoneAttributeName, "=", '"', optional($.attributeValue), '"'),
+    milestoneAttributeName: $ => choice("sid", "eid", "who"),
+
+    _attributesInCrossref: $ => prec.right(0,seq("|", repeat1(choice(
+      $.linkAttribute, $.customAttribute, $.defaultAttribute))))
   }
 
 });

@@ -366,26 +366,26 @@ xt in cd
       (xt
         (noteText
           (text))
-        (attributes
-          (text)))
+        (defaultAttribute
+          (attributeValue)))
       (text)
       (xt
         (noteText
           (text))
-        (attributes
-          (text)))
+        (defaultAttribute
+          (attributeValue)))
       (text)
       (xt
         (noteText
           (text))
-        (attributes
-          (text)))
+        (defaultAttribute
+          (attributeValue)))
       (text)
       (xt
         (noteText
           (text))
-        (attributes
-          (text)))
+        (defaultAttribute
+          (attributeValue)))
       (text))
     (paragraph
       (p

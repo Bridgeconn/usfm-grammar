@@ -1,6 +1,8 @@
 \id EXO 02EXOGNT92.SFM, Good News Translation, June 2003
 \h പുറപ്പാടു് 
-\toc1 പുറപ്പാടു് \rem test \rem* test again
+\toc1 പുറപ്പാടു് 
+\rem test 
+\rem test again
 \toc2 പുറപ്പാടു്
 \mt പുറപ്പാടു്
 \c 1
@@ -9,12 +11,12 @@
 \v 1 യാക്കോബിനോടുകൂടെ കുടുംബസഹിതം ഈജിപ്റ്റിൽ വന്ന 
 \v 1 യാക്കോബിനോടുകൂടെ കുടുംബസഹിതം ഈജിപ്റ്റിൽ വന്ന 
 \v 1 യാക്കോബിനോടുകൂടെ കുടുംബസഹിതം ഈജിപ്റ്റിൽ വന്ന 
-\v 1 യാക്കോബിനോടുകൂടെ കുടുംബസഹിതം ഈജിപ്റ്റിൽ \bld വന്ന \bld* 
+\v 1 യാക്കോബിനോടുകൂടെ കുടുംബസഹിതം ഈജിപ്റ്റിൽ \bd വന്ന \bd* 
 \p യിസ്രായേൽമക്കളുടെ പേരുകൾ : 
 \v 2 രൂബേൻ, ശിമെയോൻ, ലേവി,
 \v 3 
 \v 4 ദാൻ, നഫ്താലി, ഗാദ്, ആശേർ.
-\v 5 യാക്കോബിന്റെ സന്താനപരമ്പരകൾ എല്ലാം കൂടി എഴുപതു പേർ ആയിരുന്നു; യോസേഫ് മുമ്പെ തന്നെ ഈജിപ്റ്റിൽ ആയിരുന്നു. \w gracious|grace\w* and then a few words later \w graciouslemma="grace" x-myattr="metadata"\w*
+\v 5 യാക്കോബിന്റെ സന്താനപരമ്പരകൾ എല്ലാം കൂടി എഴുപതു പേർ ആയിരുന്നു; യോസേഫ് മുമ്പെ തന്നെ ഈജിപ്റ്റിൽ ആയിരുന്നു. \w gracious|grace\w* and then a few words later \w gracious|lemma="grace" x-myattr="metadata"\w*
 \c 2
 \s1 A Prayer of Habakkuk
 \p
