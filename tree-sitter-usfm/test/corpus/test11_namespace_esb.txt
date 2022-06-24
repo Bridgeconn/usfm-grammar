@@ -8,7 +8,7 @@ znamespace
 \z-empty
 \v 1 text \zinline inner text \zinline*
 \v 2 text
-\v 3 text \zattrib inner text |key="val" \zattrib*
+\v 3 text \zattrib inner text |x-key="val" \zattrib*
 \v 4 text
 --------------------------------------------------------------------------------
 
@@ -43,8 +43,9 @@ znamespace
           (text)
           (zNameSpaceClosed
             (text)
-            (attributes
-              (text)))
+            (customAttribute
+              (customAttributeName)
+              (attributeValue)))
           (text))
         (v
           (verseNumber))
@@ -115,8 +116,14 @@ the sons of Zebedee.
             (text)
             (fig
               (text)
-              (attributes
-                (text)))
+              (altAttribute
+                (attributeValue))
+              (srcAttribute
+                (attributeValue))
+              (sizeAttribute
+                (attributeValue))
+              (refAttribute
+                (attributeValue)))
             (text)))))
     (paragraph
       (p
@@ -190,8 +197,14 @@ the sons of Zebedee.
             (text)
             (fig
               (text)
-              (attributes
-                (text)))
+              (altAttribute
+                (attributeValue))
+              (srcAttribute
+                (attributeValue))
+              (sizeAttribute
+                (attributeValue))
+              (refAttribute
+                (attributeValue)))
             (text)))))
     (paragraph
       (p

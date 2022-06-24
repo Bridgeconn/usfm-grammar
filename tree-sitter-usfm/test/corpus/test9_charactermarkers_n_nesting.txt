@@ -335,8 +335,12 @@ left her.|src="avnt017.tif" size="col" ref="1.31"\fig*
           (text)
           (fig
             (text)
-            (attributes
-              (text)))
+            (srcAttribute
+              (attributeValue))
+            (sizeAttribute
+              (attributeValue))
+            (refAttribute
+              (attributeValue)))
           (text))
         (v
           (verseNumber))
@@ -348,8 +352,12 @@ left her.|src="avnt017.tif" size="col" ref="1.31"\fig*
           (text)
           (fig
             (text)
-            (attributes
-              (text)))
+            (srcAttribute
+              (attributeValue))
+            (sizeAttribute
+              (attributeValue))
+            (refAttribute
+              (attributeValue)))
           (text))))
     (paragraph
       (p
@@ -394,86 +402,86 @@ With Attributes
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text))
         (v
           (verseNumber))
         (verseText
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (rb
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text))))
     (paragraph
       (p
@@ -482,35 +490,39 @@ With Attributes
         (verseText
           (w
             (text)
-            (attributes
-              (text)))
+            (lemmaAttribute
+              (attributeValue)))
           (text)
           (w
             (text)
-            (attributes
-              (text)))
+            (defaultAttribute
+              (attributeValue)))
           (text)
           (w
             (text)
-            (attributes
-              (text)))
+            (lemmaAttribute
+              (attributeValue))
+            (strongAttribute
+              (attributeValue)))
           (text)
           (w
             (text)
-            (attributes
-              (text)))
+            (strongAttribute
+              (attributeValue)))
           (text)
           (w
             (text)
-            (attributes
-              (text)))
+            (strongAttribute
+              (attributeValue)))
           (text)
           (w
             (text)
-            (attributes
-              (text)))
+            (lemmaAttribute
+              (attributeValue))
+            (scrlocAttribute
+              (attributeValue)))
           (text)
           (w
             (text)
-            (attributes
-              (text))))))))
+            (strongAttribute
+              (attributeValue))))))))

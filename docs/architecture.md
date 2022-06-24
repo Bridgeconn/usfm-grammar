@@ -15,6 +15,8 @@ Implemented Using
 * Python
 * Javascript
 
+[Tree-sitter](https://tree-sitter.github.io/tree-sitter/) is a parser generator. We model the USFM language in the Context-Free-Grammar, as required by it, and it can build parsers that can create syntax tree for a source USFM file. 
+
 ![usfm-grammar-arch](./images/usfm-grammar-components.png)
 *Container diagram*
 
@@ -29,8 +31,11 @@ This module is published on npm indivdually as `tree-sitter-usfm`.
 
 **grammar.js**: The file where we model the USFM language. Here we define the tokens, synatx rules and the structure of the output syntax-tree(AST).
 
-**test/corpus**: This contain the test case. The test files start with `test` and should contain input USFM and expected AST. 
+**test/corpus**: This contain the test cases. The test files start with `test` and should contain input USFM and expected AST. 
 
+**queries/**: The queries on syntax tree and mapping of components to themes, for syntax highlighting.
+
+**package.json**: The details of this module, like, its dependancies, version, etc
 
 Useful commands while working in this module:
 ```
