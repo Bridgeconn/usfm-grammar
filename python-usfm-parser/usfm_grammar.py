@@ -2,7 +2,8 @@ import argparse
 import json
 from enum import Enum
 from tree_sitter import Language, Parser
-
+import xml.etree.ElementTree as ET
+from xml.dom import minidom
 
 class Filter(str, Enum):
 	ALL = "all"
@@ -21,6 +22,78 @@ class Format(str, Enum):
 USFM_LANGUAGE = Language('build/my-languages.so', 'usfm')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
+
+def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
+	'''check each node and based on the type convert to corresponding xml element'''
+	# print("working with node: ", node, "\n")
+	if node.type == "id":
+		id_captures = USFM_LANGUAGE.query('''(id (bookcode) @book-code
+													(description) @desc)''').captures(node)
+		code = None 
+		desc = None 
+		for tupl in id_captures:
+			if tupl[1] == "book-code":
+				code = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
+			elif tupl[1] == 'desc':
+				desc = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
+		book_xml_node = ET.SubElement(parent_xml_node, "book")
+		book_xml_node.set("code", code)
+		if desc is not None and desc.strip() != "":
+			book_xml_node.text = desc.strip()
+	elif node.type == "chapter":
+		chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num)''').captures(node)[0]
+		chap_num = usfm_bytes[chap_cap[0].start_byte:chap_cap[0].end_byte].decode('utf-8')
+		ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
+		chap_xml_node = ET.SubElement(parent_xml_node, "chapter")
+		chap_xml_node.set("number", chap_num)
+		chap_xml_node.set("style", "c")
+		chap_xml_node.set("sid", ref)
+		for child in node.children[1:]:
+			node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
+
+		prev_verses = xml_root_node.findall(".//verse")
+		if len(prev_verses)>0:
+			if "sid" in prev_verses[-1].attrib:
+				v_end_xml_node = ET.SubElement(parent_xml_node, "verse")
+				v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+		chap_end_xml_node = ET.SubElement(parent_xml_node, "chapter")
+		chap_end_xml_node.set("eid", ref)
+	elif node.type == "v":
+		prev_verses = xml_root_node.findall(".//verse")
+		if len(prev_verses)>0:
+			if "sid" in prev_verses[-1].attrib:
+				v_end_xml_node = ET.SubElement(parent_xml_node, "verse")
+				v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+		verse_num_cap = USFM_LANGUAGE.query("(v (verseNumber) @vnum)").captures(node)[0]
+		verse_num = usfm_bytes[verse_num_cap[0].start_byte:verse_num_cap[0].end_byte].decode('utf-8')
+		v_xml_node = ET.SubElement(parent_xml_node, "verse")
+		ref = xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
+		v_xml_node.set('number', verse_num.strip())
+		v_xml_node.set('sid', ref.strip())
+	elif node.type == "verseText":
+		verse_text_cap = USFM_LANGUAGE.query("(verseText (text) @verse-text)").captures(node)[0]
+		verse_text = usfm_bytes[verse_text_cap[0].start_byte:verse_text_cap[0].end_byte].decode('utf-8')
+		siblings = parent_xml_node.findall("./*")
+		if len(siblings) > 0:
+			siblings[-1].tail = verse_text.strip()
+		else:
+			parent_xml_node.text = verse_text.strip()
+	elif node.type == 'paragraph':
+		para_tag_cap = USFM_LANGUAGE.query("(paragraph (_) @para-marker)").captures(node)[0]
+		para_marker = para_tag_cap[0].type
+		para_xml_node = ET.SubElement(parent_xml_node, "para")
+		para_xml_node.set("style", para_marker)
+		for child in para_tag_cap[0].children[1:]:
+			node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+	elif len(node.children)>0:
+		for child in node.children:
+			node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
+	else:
+		print("saw unhandled ", node)
+
+
+
+
 
 
 def node_2_dict(node, usfm_bytes):
@@ -242,7 +315,11 @@ class USFMParser():
 
 	def toUSX(self, filt=Filter.ALL):
 		'''convert the AST to the XML format USX'''
-		return "yet to be implemeneted"
+		usx_root = ET.Element("usx")
+		usx_root.set("version", "3.0")
+
+		node_2_usx(self.AST, self.USFMbytes, usx_root, usx_root)
+		return usx_root
 
 if __name__ == '__main__':
 	arg_parser = argparse.ArgumentParser(
@@ -281,7 +358,8 @@ if __name__ == '__main__':
 		table_output = my_parser.toTable(filt = output_filter)
 		print(csv_row_sep.join([csv_col_sep.join(row) for row in table_output]))
 	elif output_format == Format.USX:
-		print(my_parser.toUSX(filt = output_filter))
+		xmlstr = ET.tostring(my_parser.toUSX(filt = output_filter),encoding="unicode")	
+		print(minidom.parseString(xmlstr).toprettyxml(indent="   "))
 	elif output_format == Format.MD:
 		print(my_parser.toMarkDown(filt = output_filter))
 	elif output_format == Format.AST:
