@@ -94,13 +94,8 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		v_xml_node.set('number', verse_num.strip())
 		v_xml_node.set('sid', ref.strip())
 	elif node.type == "verseText":
-		verse_text_cap = USFM_LANGUAGE.query("(verseText (text) @verse-text)").captures(node)[0]
-		verse_text = usfm_bytes[verse_text_cap[0].start_byte:verse_text_cap[0].end_byte].decode('utf-8')
-		siblings = parent_xml_node.findall("./*")
-		if len(siblings) > 0:
-			siblings[-1].tail = verse_text.strip()
-		else:
-			parent_xml_node.text = verse_text.strip()
+		for child in node.children:
+			node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
 	elif node.type == 'paragraph':
 		para_tag_cap = USFM_LANGUAGE.query("(paragraph (_) @para-marker)").captures(node)[0]
 		para_marker = para_tag_cap[0].type
@@ -141,7 +136,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		attrib_name = usfm_bytes[attrib_name_node.start_byte:attrib_name_node.end_byte] \
 			.decode('utf-8').strip()
 		if attrib_name == "|":
-			attrib_name = DEFAULT_ATTRIB_MAP[parent_xml_node.type]
+			attrib_name = DEFAULT_ATTRIB_MAP[node.parent.type]
 
 		attrib_val_cap = USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)[0]
 		attrib_value = usfm_bytes[attrib_val_cap[0].start_byte:attrib_val_cap[0].end_byte] \
@@ -227,7 +222,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		#  for txt_cap in caps])
 		for child in node.children[children_range_start:]:
 			node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
-	elif node.type.strip()=="":
+	elif node.type.strip() in ["","|"]:
 		pass # skip white space nodes
 	elif len(node.children)>0:
 		for child in node.children:
