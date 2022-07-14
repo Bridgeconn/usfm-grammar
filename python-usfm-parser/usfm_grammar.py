@@ -23,6 +23,26 @@ USFM_LANGUAGE = Language('build/my-languages.so', 'usfm')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
 
+PARA_STYLE_MARKERS = ["h", "toc", "toca" #identification 
+					"imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
+					"ili", "iot", "io", "iex", "imte", "ie", # intro
+					"mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd", #titles
+					"q", "qr", "qc", "qa", "qm", "qd", "b" #poetry
+					"lh", "li", "lf", "lim", "litl" #lists
+					]
+
+NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"]
+CHAR_STYLE_MARKERS = [ "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn"
+					"png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj", # Special-text
+					"em", "bd", "bdit", "it", "no", "sc", "sup", # character styling
+					 "rb", "pro", "w", "wh", "wa", "wg", #special-features
+					 "lik", "liv", #structred list entries
+					 "jmp",
+					 "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", #footnote-content
+					 "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc" #crossref-content
+					 ]
+NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
+
 def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 	'''check each node and based on the type convert to corresponding xml element'''
 	# print("working with node: ", node, "\n")
@@ -38,6 +58,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 				desc = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
 		book_xml_node = ET.SubElement(parent_xml_node, "book")
 		book_xml_node.set("code", code)
+		book_xml_node.set("style", "id")
 		if desc is not None and desc.strip() != "":
 			book_xml_node.text = desc.strip()
 	elif node.type == "chapter":
@@ -85,6 +106,75 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		para_xml_node.set("style", para_marker)
 		for child in para_tag_cap[0].children[1:]:
 			node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+	elif node.type in NOTE_MARKERS:
+		tag_node = node.children[0]
+		caller_node = node.children[1]
+		note_xml_node = ET.SubElement(parent_xml_node, "note")
+		note_xml_node.set("style",
+			usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
+			.replace("\\","").strip())
+		note_xml_node.set("caller",
+			usfm_bytes[caller_node.start_byte:caller_node.end_byte].decode('utf-8').strip())
+		for child in node.children[2:-1]:
+			node_2_usx(child, usfm_bytes, note_xml_node, xml_root_node)
+	elif node.type in CHAR_STYLE_MARKERS:
+		tag_node = node.children[0]
+		closing_node = None
+		children_range = len(node.children)
+		if node.children[-1].type.startswith('\\'):
+			closing_node = node.children[-1]
+			children_range = children_range-1
+		char_xml_node = ET.SubElement(parent_xml_node, "char")
+		char_xml_node.set("style",
+			usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
+			.replace("\\","").strip())
+		if closing_node is None:
+			char_xml_node.set("closed", "false")
+		else:
+			char_xml_node.set("closed", "true")
+		for child in node.children[1:children_range]:
+			node_2_usx(child, usfm_bytes, char_xml_node, xml_root_node)
+	elif node.type.endswith("Attribute"):
+		attrib_name_node= node.children[0]
+		attrib_name = usfm_bytes[attrib_name_node.start_byte:attrib_name_node.end_byte] \
+			.decode('utf-8').strip()
+		if attrib_name == "|":
+			attrib_name = DEFAULT_ATTRIB_MAP[parent_xml_node.type]
+
+		attrib_val_cap = USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)[0]
+		attrib_value = usfm_bytes[attrib_val_cap[0].start_byte:attrib_val_cap[0].end_byte] \
+			.decode('utf-8').strip()
+		parent_xml_node.set(attrib_name, attrib_value)
+	elif node.type == 'text':
+		text_val = usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()
+		siblings = parent_xml_node.findall("./*")
+		if len(siblings) > 0:
+			siblings[-1].tail = text_val
+		else:
+			parent_xml_node.text = text_val
+	elif (node.type in PARA_STYLE_MARKERS or 
+		  node.type.replace("\\","").strip() in PARA_STYLE_MARKERS):
+		tag_node = node.children[0]
+		style = usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
+		if style.startswith('\\'):
+			style = style.replace('\\','').strip()
+		else:
+			style = node.type
+		children_range_start = 1
+		if len(node.children)>1 and node.children[1].type.startswith("numbered"):
+			num_node = node.children[1]
+			num = usfm_bytes[num_node.start_byte:num_node.end_byte].decode('utf-8')
+			style += num
+			children_range_start = 2
+		para_xml_node = ET.SubElement(parent_xml_node, "para")
+		para_xml_node.set("style", style)
+		# caps = USFM_LANGUAGE.query('((text) @inner-text)').captures(node)
+		# para_xml_node.text = " ".join([usfm_bytes[txt_cap[0].start_byte:txt_cap[0].end_byte].decode('utf-8').strip()
+		#  for txt_cap in caps])
+		for child in node.children[children_range_start:]:
+			node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+	elif node.type.strip()=="":
+		pass # skip white space nodes
 	elif len(node.children)>0:
 		for child in node.children:
 			node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
