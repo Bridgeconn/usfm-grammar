@@ -43,6 +43,7 @@ CHAR_STYLE_MARKERS = [ "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord"
 					 ]
 NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
 DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt"}
+TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
 
 def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 	'''check each node and based on the type convert to corresponding xml element'''
@@ -153,6 +154,27 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 			siblings[-1].tail = text_val
 		else:
 			parent_xml_node.text = text_val
+	elif node.type == "table":
+		table_xml_node = ET.SubElement(parent_xml_node, "table")
+		for child in node.children:
+			node_2_usx(child, usfm_bytes, table_xml_node, xml_root_node)
+	elif node.type == "tr":
+		row_xml_node = ET.SubElement(parent_xml_node, "row")
+		row_xml_node.set("style", "tr")
+		for child in node.children[1:]:
+			node_2_usx(child, usfm_bytes, row_xml_node, xml_root_node)
+	elif node.type in TABLE_CELL_MARKERS:
+		tag_node = node.children[0]
+		style = usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')\
+		.replace("\\","").strip()
+		cell_xml_node = ET.SubElement(parent_xml_node, "cell")
+		cell_xml_node.set("style", style)
+		if "r" in style:
+			cell_xml_node.set("align", "end")
+		else:
+			cell_xml_node.set("align", "start")
+		for child in node.children[1:]:
+			node_2_usx(child, usfm_bytes, cell_xml_node, xml_root_node)
 	elif (node.type in PARA_STYLE_MARKERS or 
 		  node.type.replace("\\","").strip() in PARA_STYLE_MARKERS):
 		tag_node = node.children[0]
