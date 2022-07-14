@@ -604,7 +604,8 @@ module.exports = grammar({
       $.ip,
       ),
 
-    cat: $ => seq("\\cat", /[\w\d\s]+/, "\\cat*"),
+    category: $=> /[\w\d\s]+/,
+    cat: $ => seq("\\cat", $.category, "\\cat*"),
       
     /* *****Attributes******** */
 

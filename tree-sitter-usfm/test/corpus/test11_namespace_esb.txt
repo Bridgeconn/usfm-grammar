@@ -178,7 +178,8 @@ the sons of Zebedee.
         (verseText
           (text))))
     (esb
-      (cat)
+      (cat
+        (category))
       (title
         (msBlock
           (ms
