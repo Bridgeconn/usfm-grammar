@@ -18,6 +18,7 @@ znamespace
       (bookcode)
       (description)))
   (zNameSpaceRegular
+    (zSpaceTag)
     (text))
   (chapter
     (c
@@ -25,12 +26,14 @@ znamespace
     (paragraph
       (p
         (zNameSpaceRegular
+          (zSpaceTag)
           (text))
         (v
           (verseNumber))
         (verseText
           (text)
           (zNameSpaceClosed
+            (zSpaceTag)
             (text))
           (text))
         (v
@@ -42,6 +45,7 @@ znamespace
         (verseText
           (text)
           (zNameSpaceClosed
+            (zSpaceTag)
             (text)
             (customAttribute
               (customAttributeName)

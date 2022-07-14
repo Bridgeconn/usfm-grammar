@@ -562,12 +562,15 @@ module.exports = grammar({
     /* since milestones can be user defined, their name is defined as any set of 
       letters of digits.*/
 
-    _milestoneStandaloneMarker: $ => seq("\\", prec.right(1,token.immediate(/[\w\d_]+/)),
+    milestoneTag: $=> seq("\\", prec.right(1,token.immediate(/[\w\d_]+/))),
+    _milestoneStandaloneMarker: $ => seq($.milestoneTag,
       optional($._milestoneAttributes), "\\*" ),
 
-    _milestoneStart: $ => seq(/\\[\w\d_]+-s/,
+    milestoneStartTag: $ => /\\[\w\d_]+-s/,
+    milestoneEndTag: $=> /\\[\w\d_]+-e/,
+    _milestoneStart: $ => seq($.milestoneStartTag,
       optional($._milestoneAttributes), "\\*" ),
-    _milestoneEnd: $ => seq(/\\[\w\d_]+-e/,
+    _milestoneEnd: $ => seq($.milestoneEndTag,
       optional($._milestoneAttributes), "\\*" ),
 
     /* dont tie up the start and end in the grammar as of now.
@@ -579,9 +582,11 @@ module.exports = grammar({
 
     milestone: $ => choice($._milestoneStart, $._milestoneEnd, $._milestoneStandaloneMarker),
 
-    zNameSpaceRegular: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text))),
-    zNameSpaceClosed: $ => prec.right(0, seq(/\\z[\w\d_-]+/, optional($.text),
-      optional($._milestoneAttributes), /\\z[\w\d_-]+\*/)), // This may not support one name space within another
+    zSpaceTag: $=> /\\z[\w\d_-]+/,
+    _zSpaceClose: $=> /\\z[\w\d_-]+\*/,
+    zNameSpaceRegular: $ => prec.right(0, seq($.zSpaceTag, optional($.text))),
+    zNameSpaceClosed: $ => prec.right(0, seq($.zSpaceTag, optional($.text),
+      optional($._milestoneAttributes), $._zSpaceClose)), // This may not support one name space within another
     
     esb: $ => seq("\\esb",  repeat($._esbContents), "\\esbe"),
     _esbContents: $ => choice( 
