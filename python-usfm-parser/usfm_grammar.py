@@ -27,7 +27,7 @@ PARA_STYLE_MARKERS = ["h", "toc", "toca" #identification
 					"imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
 					"ili", "iot", "io", "iex", "imte", "ie", # intro
 					"mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd", #titles
-					"q", "qr", "qc", "qa", "qm", "qd", "b", #poetry
+					"q", "qr", "qc", "qa", "qm", "qd", #poetry
 					"lh", "li", "lf", "lim", "litl" #lists
 					]
 
@@ -120,7 +120,6 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		for child in node.children[2:-1]:
 			node_2_usx(child, usfm_bytes, note_xml_node, xml_root_node)
 	elif node.type in CHAR_STYLE_MARKERS:
-		print("###########come in char with : ",node)
 		tag_node = node.children[0]
 		closing_node = None
 		children_range = len(node.children)
@@ -201,11 +200,12 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		category = usfm_bytes[cat_cap[0].start_byte:cat_cap[0].end_byte].decode('utf-8').strip()
 		parent_xml_node.set('category', category)
 	elif node.type == 'fig':
-		print("*******************comes in figure")
 		fig_xml_node = ET.SubElement(parent_xml_node, "figure")
 		fig_xml_node.set("style", 'fig')
 		for child in node.children[1:-1]:
 			node_2_usx(child, usfm_bytes, fig_xml_node, xml_root_node)
+	elif node.type == 'b':
+		break_xml_node = ET.SubElement(parent_xml_node, "optbreak")
 	elif (node.type in PARA_STYLE_MARKERS or 
 		  node.type.replace("\\","").strip() in PARA_STYLE_MARKERS):
 		tag_node = node.children[0]
