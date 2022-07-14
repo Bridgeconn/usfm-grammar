@@ -42,6 +42,7 @@ CHAR_STYLE_MARKERS = [ "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord"
 					 "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc" #crossref-content
 					 ]
 NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
+DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt"}
 
 def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 	'''check each node and based on the type convert to corresponding xml element'''
