@@ -175,6 +175,20 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 			cell_xml_node.set("align", "start")
 		for child in node.children[1:]:
 			node_2_usx(child, usfm_bytes, cell_xml_node, xml_root_node)
+	elif  node.type == "milestone":
+		# print(node.children)
+		ms_name_cap = USFM_LANGUAGE.query('''(
+			[(milestoneTag)
+			 (milestoneStartTag)
+			 (milestoneEndTag)
+			 ] @ms-name)''').captures(node)[0]
+		style = usfm_bytes[ms_name_cap[0].start_byte:ms_name_cap[0].end_byte].decode('utf-8')\
+		.replace("\\","").strip()
+		ms_xml_node = ET.SubElement(parent_xml_node, "ms")
+		ms_xml_node.set('style', style)
+		for child in node.children:
+			if child.type.endswith("Attribute"):
+				node_2_usx(child, usfm_bytes, ms_xml_node, xml_root_node)
 	elif (node.type in PARA_STYLE_MARKERS or 
 		  node.type.replace("\\","").strip() in PARA_STYLE_MARKERS):
 		tag_node = node.children[0]
@@ -202,7 +216,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		for child in node.children:
 			node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
 	else:
-		print("saw unhandled ", node)
+		raise Exception("Encountered unknown element ", str(node))
 
 
 
