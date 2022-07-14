@@ -337,10 +337,14 @@ module.exports = grammar({
       $.tc,
       $.tcr))
     )),
-    th: $=> seq("\\th",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $._tableText),
-    thr: $=> seq("\\thr",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $._tableText),
-    tc: $=> seq("\\tc",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $._tableText),
-    tcr: $=> seq("\\tcr",optional(token.immediate(/[12345](-[12345])?/)), $._spaceOrLine, $._tableText),
+    thTag: $=> /\\th([12345](-[12345])?)?/,
+    thrTag: $=> /\\thr([12345](-[12345])?)?/,
+    tcTag: $=> /\\tc([12345](-[12345])?)?/,
+    tcrTag: $=> /\\tcr([12345](-[12345])?)?/,
+    th: $=> seq($.thTag, $._spaceOrLine, $._tableText),
+    thr: $=> seq($.thrTag, $._spaceOrLine, $._tableText),
+    tc: $=> seq($.tcTag, $._spaceOrLine, $._tableText),
+    tcr: $=> seq($.tcrTag, $._spaceOrLine, $._tableText),
 
     //Footnote
     caller: $ => /[^\s\\]/,

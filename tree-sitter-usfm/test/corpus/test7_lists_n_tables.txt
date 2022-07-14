@@ -609,62 +609,80 @@ table, with header
     (table
       (tr
         (th
+          (thTag)
           (verseText
             (text)))
         (th
+          (thTag)
           (verseText
             (text)))
         (th
+          (thTag)
           (verseText
             (text))))
       (tr
         (tcr
+          (tcrTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text))))
       (tr
         (tcr
+          (tcrTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text))))
       (tr
         (tcr
+          (tcrTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text))))
       (tr
         (tcr
+          (tcrTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text))))
       (tr
         (tcr
+          (tcrTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))))))
 
@@ -700,48 +718,62 @@ their groups, under their leaders, as follows:
     (table
       (tr
         (th
+          (thTag)
           (verseText
             (text)))
         (th
+          (thTag)
           (verseText
             (text)))
         (thr
+          (thrTag)
           (verseText
             (text))))
       (tr
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tcr
+          (tcrTag)
           (verseText
             (text))))
       (tr
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tcr
+          (tcrTag)
           (verseText
             (text))))
       (tr
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tc
+          (tcTag)
           (verseText
             (text)))
         (tcr
+          (tcrTag)
           (verseText
             (text))))
       (tr
         (tcr
+          (tcrTag)
           (verseText
             (text)))
         (tcr
+          (tcrTag)
           (verseText
             (text)))))))
