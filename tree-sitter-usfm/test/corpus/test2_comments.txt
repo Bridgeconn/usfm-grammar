@@ -33,6 +33,7 @@ rem under one h marker
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text)))
   (rem
     (text)))
@@ -60,6 +61,7 @@ rem between toc markers and h
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text)))
   (rem
     (text))
@@ -109,6 +111,7 @@ sts under one h marker
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text)))
   (sts
     (text)))
@@ -136,6 +139,7 @@ sts between toc markers and h
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text)))
   (sts
     (text))
@@ -171,6 +175,7 @@ sts and rem maker together in header section
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text)))
   (sts
     (text))

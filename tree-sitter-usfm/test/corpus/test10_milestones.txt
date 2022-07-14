@@ -32,23 +32,27 @@ surprised.
         (verseText
           (text))
         (milestone
+          (milestoneStartTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue)))
         (verseText
           (text))
-        (milestone)
+        (milestone
+          (milestoneEndTag))
         (verseText
           (text))))
     (paragraph
       (p
         (milestone
+          (milestoneStartTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue)))
         (verseText
           (text))
-        (milestone)
+        (milestone
+          (milestoneEndTag))
         (verseText
           (text))
         (v
@@ -62,12 +66,14 @@ surprised.
         (verseText
           (text))
         (milestone
+          (milestoneStartTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue)))
         (verseText
           (text))
-        (milestone)
+        (milestone
+          (milestoneEndTag))
         (verseText
           (text))))
     (paragraph
@@ -115,6 +121,7 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
         (verseText
           (text))
         (milestone
+          (milestoneStartTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue))
@@ -134,14 +141,17 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (milestone
+            (milestoneStartTag)
             (msAttribute
               (milestoneAttributeName)
               (attributeValue)))
           (verseText
             (text))
-          (milestone)
+          (milestone
+            (milestoneEndTag))
           (verseText
             (text)))))
     (paragraph
@@ -153,14 +163,17 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (milestone
+            (milestoneStartTag)
             (msAttribute
               (milestoneAttributeName)
               (attributeValue)))
           (verseText
             (text))
-          (milestone)
+          (milestone
+            (milestoneEndTag))
           (verseText
             (text)))))
     (paragraph
@@ -176,6 +189,7 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
         (verseText
           (text))
         (milestone
+          (milestoneEndTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue)))))))
@@ -209,7 +223,8 @@ authority, and they say evil things about the glorious ones.
   (chapter
     (c
       (chapterNumber))
-    (milestone)
+    (milestone
+      (milestoneTag))
     (paragraph
       (p
         (v
@@ -220,7 +235,8 @@ authority, and they say evil things about the glorious ones.
           (verseNumber))
         (verseText
           (text))
-        (milestone)
+        (milestone
+          (milestoneTag))
         (verseText
           (text))
         (v
@@ -231,7 +247,8 @@ authority, and they say evil things about the glorious ones.
           (verseNumber))
         (verseText
           (text))
-        (milestone)))))
+        (milestone
+          (milestoneTag))))))
 
 ================================================================================
 ts milestone w/ attributes
@@ -272,6 +289,7 @@ authority, and they say evil things about the glorious ones.
         (verseText
           (text))
         (milestone
+          (milestoneStartTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue)))
@@ -288,12 +306,14 @@ authority, and they say evil things about the glorious ones.
         (verseText
           (text))
         (milestone
+          (milestoneEndTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue)))
         (verseText
           (text))
         (milestone
+          (milestoneStartTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue)))
@@ -308,6 +328,7 @@ authority, and they say evil things about the glorious ones.
         (verseText
           (text))
         (milestone
+          (milestoneEndTag)
           (msAttribute
             (milestoneAttributeName)
             (attributeValue)))))))

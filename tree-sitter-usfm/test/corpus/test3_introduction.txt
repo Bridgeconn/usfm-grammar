@@ -22,20 +22,25 @@ intro markers set 1
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text)))
   (mtBlock
     (mt
-      (numberedLevelMax4)
+      (mtTag
+        (numberedLevelMax4))
       (text))
     (mt
-      (numberedLevelMax4)
+      (mtTag
+        (numberedLevelMax4))
       (text)))
   (imtBlock
     (imt
-      (numberedLevelMax4)
+      (imtTag
+        (numberedLevelMax4))
       (text)))
   (isBlock
     (is
+      (isTag)
       (text)))
   (ip
     (text))
@@ -82,36 +87,44 @@ intro markers set 2
     (text))
   (iqBlock
     (iq
-      (numberedLevelMax3)
+      (iqTag
+        (numberedLevelMax3))
       (text))
     (iq
-      (numberedLevelMax3)
+      (iqTag
+        (numberedLevelMax3))
       (text))
     (iq
-      (numberedLevelMax3)
+      (iqTag
+        (numberedLevelMax3))
       (text))
     (iq
-      (numberedLevelMax3)
+      (iqTag
+        (numberedLevelMax3))
       (text)))
   (iot
     (text))
   (io
-    (numberedLevelMax4)
+    (ioTag
+      (numberedLevelMax4))
     (text)
     (ior
       (text)))
   (io
-    (numberedLevelMax4)
+    (ioTag
+      (numberedLevelMax4))
     (text)
     (ior
       (text)))
   (io
-    (numberedLevelMax4)
+    (ioTag
+      (numberedLevelMax4))
     (text)
     (ior
       (text)))
   (io
-    (numberedLevelMax4)
+    (ioTag
+      (numberedLevelMax4))
     (text)))
 
 ================================================================================
@@ -135,12 +148,16 @@ intro markers set 3
     (text))
   (iliBlock
     (ili
+      (iliTag)
       (text))
     (ili
+      (iliTag)
       (text))
     (ili
+      (iliTag)
       (text)))
   (imteBlock
     (imte
+      (imteTag)
       (text)))
   (ie))

@@ -79,19 +79,22 @@ sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (qt
               (text))
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (qt
               (text))
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
@@ -99,13 +102,15 @@ sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
               (text))
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (qt
               (text))
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (qt
               (text))
@@ -144,7 +149,8 @@ sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text)
           (r
             (text)))))
@@ -185,13 +191,16 @@ and to the ends of the earth” (1.8).
       (description)))
   (mtBlock
     (mt
-      (numberedLevelMax4)
+      (mtTag
+        (numberedLevelMax4))
       (text))
     (mt
-      (numberedLevelMax4)
+      (mtTag
+        (numberedLevelMax4))
       (text)))
   (isBlock
     (is
+      (isTag)
       (text)))
   (ip
     (bk
@@ -240,17 +249,20 @@ dead will be raised, never to die again, and we shall all be changed.
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (crossref
@@ -270,7 +282,8 @@ dead will be raised, never to die again, and we shall all be changed.
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph

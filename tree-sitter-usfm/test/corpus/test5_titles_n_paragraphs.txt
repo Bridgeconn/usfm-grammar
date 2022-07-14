@@ -42,10 +42,12 @@ headers and titles
       (text)))
   (mtBlock
     (mt
-      (numberedLevelMax4)
+      (mtTag
+        (numberedLevelMax4))
       (text))
     (mt
-      (numberedLevelMax4)
+      (mtTag
+        (numberedLevelMax4))
       (text)))
   (chapter
     (c
@@ -53,12 +55,14 @@ headers and titles
     (title
       (msBlock
         (ms
+          (msTag)
           (text)
           (mr
             (text)))))
     (title
       (sBlock
         (s
+          (sTag)
           (text))))
     (paragraph
       (p
@@ -69,7 +73,8 @@ headers and titles
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text)
           (sr
             (text))
@@ -84,7 +89,8 @@ headers and titles
     (title
       (sdBlock
         (sd
-          (numberedLevelMax4))))
+          (sdTag
+            (numberedLevelMax4)))))
     (paragraph
       (p
         (v
@@ -102,8 +108,10 @@ headers and titles
     (title
       (mteBlock
         (mte
+          (mteTag)
           (text))
         (mte
+          (mteTag)
           (text))))))
 
 ================================================================================
@@ -146,7 +154,8 @@ Simple p
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text)
           (r
             (text)))))
@@ -199,15 +208,18 @@ of the Law say that the Messiah will be the descendant of David?
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -502,7 +514,8 @@ drinks too much! He is even a friend of tax collectors ...
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (paragraph
       (p
@@ -519,6 +532,7 @@ drinks too much! He is even a friend of tax collectors ...
     (paragraph
       (piBlock
         (pi
+          (piTag)
           (verseText
             (text))
           (v
@@ -530,6 +544,7 @@ drinks too much! He is even a friend of tax collectors ...
           (verseText
             (text)))
         (pi
+          (piTag)
           (v
             (verseNumber))
           (verseText
@@ -539,21 +554,25 @@ drinks too much! He is even a friend of tax collectors ...
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -604,7 +623,8 @@ sat down and started teaching them.
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (paragraph
       (p
