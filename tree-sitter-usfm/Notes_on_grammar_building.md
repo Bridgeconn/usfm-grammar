@@ -56,8 +56,8 @@ or
 </usx>
 ```
 Is there one correct usage, or are both acceptable?
-The rcn grammar for USX accepts both order. If both are valid, one USFM file can have different USX representations.
+The [rnc grammar](https://github.com/ubsicap/usx/blob/6c490bb5675d281b0fa01876fe67f6e3fd50a4ce/schema/usx.rnc) for USX accepts both order. If both are valid, one USFM file can have different USX representations.
 
-24. As per the [USX rnc grammar](https://github.com/ubsicap/usx/blob/6c490bb5675d281b0fa01876fe67f6e3fd50a4ce/schema/usx.rnc#L13) at least one `BookTitles` marker in mandatory. Is this rule to be enforced?
+24. As per the [USX rnc grammar](https://github.com/ubsicap/usx/blob/6c490bb5675d281b0fa01876fe67f6e3fd50a4ce/schema/usx.rnc#L13) at least one `BookTitles` marker is mandatory. Is this rule to be enforced?
 25. The [fm marker](https://ubsicap.github.io/usfm/notes_basic/fnotes.html#fm-fm) is not mentioned in USX docs.
-26. Table markers are missing in USX docs
+26. Table markers are missing in [USX docs](https://ubsicap.github.io/usx/index.html)
