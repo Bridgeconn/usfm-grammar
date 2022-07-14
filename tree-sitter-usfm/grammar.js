@@ -347,7 +347,7 @@ module.exports = grammar({
     tcr: $=> seq($.tcrTag, $._spaceOrLine, $._tableText),
 
     //Footnote
-    caller: $ => /[^\s\\]/,
+    caller: $ => /[^\s\\]+/,
     noteText: $ => prec.right(0, repeat1(choice($.text,
       $._nestedCharacterMarker,
       ))),
