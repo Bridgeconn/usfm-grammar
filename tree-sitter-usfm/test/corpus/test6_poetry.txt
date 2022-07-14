@@ -26,7 +26,8 @@ q#
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (paragraph
       (p
@@ -39,25 +40,30 @@ q#
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))))
 
@@ -89,12 +95,14 @@ qr
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
@@ -106,7 +114,8 @@ qr
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
@@ -118,7 +127,8 @@ qr
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
@@ -157,23 +167,27 @@ qc
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -187,7 +201,8 @@ qc
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
@@ -219,7 +234,8 @@ qs
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (title
       (d
@@ -227,23 +243,27 @@ qs
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text))
           (qs
@@ -281,13 +301,15 @@ qa
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (title
@@ -297,13 +319,15 @@ qa
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))))
 
@@ -344,15 +368,18 @@ qac
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
@@ -363,31 +390,38 @@ qac
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -395,7 +429,8 @@ qac
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (qac
@@ -404,23 +439,28 @@ qac
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))))
 
@@ -456,15 +496,18 @@ of “The Thirty,” and he called out,
     (poetry
       (qmBlock
         (qm
-          (numberedLevelMax3)
+          (qmTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (qm
-          (numberedLevelMax3)
+          (qmTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (qm
-          (numberedLevelMax3)
+          (qmTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -500,13 +543,15 @@ qd
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -514,17 +559,20 @@ qd
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -574,28 +622,33 @@ b
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -603,27 +656,32 @@ b
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -631,22 +689,26 @@ b
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))))

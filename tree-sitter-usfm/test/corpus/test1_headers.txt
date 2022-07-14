@@ -79,6 +79,7 @@ h marker
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text))))
 
 ================================================================================
@@ -101,9 +102,11 @@ multiple h markers
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text))
     (h
-      (numberedLevelMax3)
+      (hTag
+        (numberedLevelMax3))
       (text))))
 
 ================================================================================
@@ -128,6 +131,7 @@ toc markers under h
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text))
     (tocBlock
       (toc
@@ -192,6 +196,7 @@ toca markers
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text))
     (tocaBlock
       (toca
@@ -228,6 +233,7 @@ toca markers along with toc
   (usfm)
   (hBlock
     (h
+      (hTag)
       (text))
     (tocBlock
       (toc

@@ -70,6 +70,7 @@ cl ca cp markers
       (description)))
   (hBlock
     (h
+      (hTag)
       (text)))
   (chapter
     (cl

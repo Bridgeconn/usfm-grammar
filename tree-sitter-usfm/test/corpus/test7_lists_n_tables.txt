@@ -33,7 +33,8 @@ lh, li#, lf
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (list
       (lh
@@ -43,55 +44,68 @@ lh, li#, lf
           (text)))
       (liBlock
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (verseText
             (text))))
       (lf
@@ -132,18 +146,23 @@ offerings
     (list
       (liBlock
         (li
+          (liTag)
           (verseText
             (text)))
         (li
+          (liTag)
           (verseText
             (text)))
         (li
+          (liTag)
           (verseText
             (text)))
         (li
+          (liTag)
           (verseText
             (text)))
         (li
+          (liTag)
           (verseText
             (text)))))))
 
@@ -206,7 +225,8 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
     (list
       (limBlock
         (lim
-          (numberedLevelMax4)
+          (limTag
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
@@ -217,7 +237,8 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
           (verseText
             (text)))
         (lim
-          (numberedLevelMax4)
+          (limTag
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
@@ -228,7 +249,8 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
           (verseText
             (text)))
         (lim
-          (numberedLevelMax4)
+          (limTag
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
@@ -239,7 +261,8 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
           (verseText
             (text)))
         (lim
-          (numberedLevelMax4)
+          (limTag
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
@@ -250,7 +273,8 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
           (verseText
             (text)))
         (lim
-          (numberedLevelMax4)
+          (limTag
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
@@ -261,7 +285,8 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
           (verseText
             (text)))
         (lim
-          (numberedLevelMax4)
+          (limTag
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
@@ -272,7 +297,8 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
           (verseText
             (text)))
         (lim
-          (numberedLevelMax4)
+          (limTag
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
@@ -316,7 +342,8 @@ lik, liv#
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text))))
     (list
       (lh
@@ -326,185 +353,224 @@ lik, liv#
           (text)))
       (liBlock
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text)))
         (li
-          (numberedLevelMax4)
+          (liTag
+            (numberedLevelMax4))
           (lik
             (verseText
               (text)))
           (verseText
             (text))
           (liv
-            (numberedLevelMax5)
+            (livTag
+              (numberedLevelMax5))
             (verseText
               (text))
-            (numberedLevelMax5))
+            (livTag
+              (numberedLevelMax5)))
           (verseText
             (text))))
       (lf

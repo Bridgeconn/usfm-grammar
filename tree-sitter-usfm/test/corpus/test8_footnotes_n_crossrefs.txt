@@ -21,7 +21,8 @@ manuscripts do not have \fq the Son of God.\f*
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text)
           (r
             (text)))))
@@ -422,7 +423,8 @@ Lk 3.1-18; \xta and \xt Jn 1.19-28 \xta parallel passages.\x*
     (title
       (sBlock
         (s
-          (numberedLevelMax5)
+          (sTag
+            (numberedLevelMax5))
           (text)
           (crossref
             (x
@@ -582,17 +584,20 @@ dead will be raised, never to die again, and we shall all be changed.
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (v
             (verseNumber))
           (crossref
@@ -613,7 +618,8 @@ dead will be raised, never to die again, and we shall all be changed.
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))))
     (paragraph
@@ -675,11 +681,13 @@ than theirs.
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text))
           (crossref
@@ -697,11 +705,13 @@ than theirs.
     (poetry
       (qBlock
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text)))
         (q
-          (numberedLevelMax3)
+          (qTag
+            (numberedLevelMax3))
           (verseText
             (text))
           (crossref
