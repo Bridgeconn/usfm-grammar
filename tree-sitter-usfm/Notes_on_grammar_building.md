@@ -21,3 +21,43 @@
 19. From documentaion I feel that, any name can be given to a milestone(as long as it is self closing) and not just qt and ts. So not adding qt and ts are spec defined markers in the grammar even though I see them listed in the sty file.
 20. As per the rank value ie(6) seems to be expected before imte(7), but as per the decsription and example in the documentation I think it is expected even after imte. So implementing it like that in our grammar
 21. We are expecting a space or newline after paragraph marker names even though usfm doc says it is optional. reason: \pr or \pc may match \p and the next letter may get treated as text. This can be re-visited later.
+
+
+## USX Related
+22. Is there any rule on order of closing of paragraph marker and verse marker?
+```
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />
+    verse one <verse eid="GEN 1:1" />
+    <verse number="2" style="v" sid="GEN 1:2" />
+    verse two
+    <verse eid="GEN 1:2" />
+    </para>
+  <chapter eid="GEN 1" />
+</usx>
+```
+or
+```
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />
+    verse one 
+    <verse eid="GEN 1:1" />
+    <verse number="2" style="v" sid="GEN 1:2" />
+    verse two
+    </para>
+    <verse eid="GEN 1:2" />  
+  <chapter eid="GEN 1" />
+</usx>
+```
+Is there one correct usage, or are both acceptable?
+The rcn grammar for USX accepts both order. If both are valid, one USFM file can have different USX representations.
+
+23. As per the [USX rnc grammar](https://github.com/ubsicap/usx/blob/6c490bb5675d281b0fa01876fe67f6e3fd50a4ce/schema/usx.rnc#L13) at least one `BookTitles` marker in mandatory. Is this rule to be enforced?
+24. The [fm marker](https://ubsicap.github.io/usfm/notes_basic/fnotes.html#fm-fm) is not mentioned in USX docs.
+25. table markers are missing in USX docs
