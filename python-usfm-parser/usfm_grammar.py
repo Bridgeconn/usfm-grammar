@@ -2,8 +2,7 @@ import argparse
 import json
 from enum import Enum
 from tree_sitter import Language, Parser
-import xml.etree.ElementTree as ET
-from xml.dom import minidom
+from lxml import etree
 
 class Filter(str, Enum):
 	ALL = "all"
@@ -58,7 +57,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 				code = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
 			elif tupl[1] == 'desc':
 				desc = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
-		book_xml_node = ET.SubElement(parent_xml_node, "book")
+		book_xml_node = etree.SubElement(parent_xml_node, "book")
 		book_xml_node.set("code", code)
 		book_xml_node.set("style", "id")
 		if desc is not None and desc.strip() != "":
@@ -67,7 +66,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num)''').captures(node)[0]
 		chap_num = usfm_bytes[chap_cap[0].start_byte:chap_cap[0].end_byte].decode('utf-8')
 		ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
-		chap_xml_node = ET.SubElement(parent_xml_node, "chapter")
+		chap_xml_node = etree.SubElement(parent_xml_node, "chapter")
 		chap_xml_node.set("number", chap_num)
 		chap_xml_node.set("style", "c")
 		chap_xml_node.set("sid", ref)
@@ -77,19 +76,19 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		prev_verses = xml_root_node.findall(".//verse")
 		if len(prev_verses)>0:
 			if "sid" in prev_verses[-1].attrib:
-				v_end_xml_node = ET.SubElement(parent_xml_node, "verse")
+				v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
 				v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
-		chap_end_xml_node = ET.SubElement(parent_xml_node, "chapter")
+		chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
 		chap_end_xml_node.set("eid", ref)
 	elif node.type == "v":
 		prev_verses = xml_root_node.findall(".//verse")
 		if len(prev_verses)>0:
 			if "sid" in prev_verses[-1].attrib:
-				v_end_xml_node = ET.SubElement(parent_xml_node, "verse")
+				v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
 				v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
 		verse_num_cap = USFM_LANGUAGE.query("(v (verseNumber) @vnum)").captures(node)[0]
 		verse_num = usfm_bytes[verse_num_cap[0].start_byte:verse_num_cap[0].end_byte].decode('utf-8')
-		v_xml_node = ET.SubElement(parent_xml_node, "verse")
+		v_xml_node = etree.SubElement(parent_xml_node, "verse")
 		ref = xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
 		v_xml_node.set('number', verse_num.strip())
 		v_xml_node.set('sid', ref.strip())
@@ -99,14 +98,14 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 	elif node.type == 'paragraph':
 		para_tag_cap = USFM_LANGUAGE.query("(paragraph (_) @para-marker)").captures(node)[0]
 		para_marker = para_tag_cap[0].type
-		para_xml_node = ET.SubElement(parent_xml_node, "para")
+		para_xml_node = etree.SubElement(parent_xml_node, "para")
 		para_xml_node.set("style", para_marker)
 		for child in para_tag_cap[0].children[1:]:
 			node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
 	elif node.type in NOTE_MARKERS:
 		tag_node = node.children[0]
 		caller_node = node.children[1]
-		note_xml_node = ET.SubElement(parent_xml_node, "note")
+		note_xml_node = etree.SubElement(parent_xml_node, "note")
 		note_xml_node.set("style",
 			usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
 			.replace("\\","").strip())
@@ -121,7 +120,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		if node.children[-1].type.startswith('\\'):
 			closing_node = node.children[-1]
 			children_range = children_range-1
-		char_xml_node = ET.SubElement(parent_xml_node, "char")
+		char_xml_node = etree.SubElement(parent_xml_node, "char")
 		char_xml_node.set("style",
 			usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
 			.replace("\\","").strip())
@@ -150,11 +149,11 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		else:
 			parent_xml_node.text = text_val
 	elif node.type == "table":
-		table_xml_node = ET.SubElement(parent_xml_node, "table")
+		table_xml_node = etree.SubElement(parent_xml_node, "table")
 		for child in node.children:
 			node_2_usx(child, usfm_bytes, table_xml_node, xml_root_node)
 	elif node.type == "tr":
-		row_xml_node = ET.SubElement(parent_xml_node, "row")
+		row_xml_node = etree.SubElement(parent_xml_node, "row")
 		row_xml_node.set("style", "tr")
 		for child in node.children[1:]:
 			node_2_usx(child, usfm_bytes, row_xml_node, xml_root_node)
@@ -162,7 +161,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		tag_node = node.children[0]
 		style = usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')\
 		.replace("\\","").strip()
-		cell_xml_node = ET.SubElement(parent_xml_node, "cell")
+		cell_xml_node = etree.SubElement(parent_xml_node, "cell")
 		cell_xml_node.set("style", style)
 		if "r" in style:
 			cell_xml_node.set("align", "end")
@@ -179,14 +178,14 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 			 ] @ms-name)''').captures(node)[0]
 		style = usfm_bytes[ms_name_cap[0].start_byte:ms_name_cap[0].end_byte].decode('utf-8')\
 		.replace("\\","").strip()
-		ms_xml_node = ET.SubElement(parent_xml_node, "ms")
+		ms_xml_node = etree.SubElement(parent_xml_node, "ms")
 		ms_xml_node.set('style', style)
 		for child in node.children:
 			if child.type.endswith("Attribute"):
 				node_2_usx(child, usfm_bytes, ms_xml_node, xml_root_node)
 	elif node.type == "esb":
 		style = "esb"
-		sidebar_xml_node = ET.SubElement(parent_xml_node, "sidebar")
+		sidebar_xml_node = etree.SubElement(parent_xml_node, "sidebar")
 		sidebar_xml_node.set("style", style)
 		for child in node.children[1:-1]:
 			node_2_usx(child, usfm_bytes, sidebar_xml_node, xml_root_node)
@@ -195,12 +194,12 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 		category = usfm_bytes[cat_cap[0].start_byte:cat_cap[0].end_byte].decode('utf-8').strip()
 		parent_xml_node.set('category', category)
 	elif node.type == 'fig':
-		fig_xml_node = ET.SubElement(parent_xml_node, "figure")
+		fig_xml_node = etree.SubElement(parent_xml_node, "figure")
 		fig_xml_node.set("style", 'fig')
 		for child in node.children[1:-1]:
 			node_2_usx(child, usfm_bytes, fig_xml_node, xml_root_node)
 	elif node.type == 'b':
-		break_xml_node = ET.SubElement(parent_xml_node, "optbreak")
+		break_xml_node = etree.SubElement(parent_xml_node, "optbreak")
 	elif (node.type in PARA_STYLE_MARKERS or 
 		  node.type.replace("\\","").strip() in PARA_STYLE_MARKERS):
 		tag_node = node.children[0]
@@ -215,7 +214,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 			num = usfm_bytes[num_node.start_byte:num_node.end_byte].decode('utf-8')
 			style += num
 			children_range_start = 2
-		para_xml_node = ET.SubElement(parent_xml_node, "para")
+		para_xml_node = etree.SubElement(parent_xml_node, "para")
 		para_xml_node.set("style", style)
 		# caps = USFM_LANGUAGE.query('((text) @inner-text)').captures(node)
 		# para_xml_node.text = " ".join([usfm_bytes[txt_cap[0].start_byte:txt_cap[0].end_byte].decode('utf-8').strip()
@@ -459,7 +458,7 @@ class USFMParser():
 
 	def to_usx(self, filt=Filter.ALL):
 		'''convert the syntax_tree to the XML format USX'''
-		usx_root = ET.Element("usx")
+		usx_root = etree.Element("usx")
 		usx_root.set("version", "3.0")
 
 		node_2_usx(self.syntax_tree, self.USFM_bytes, usx_root, usx_root)
@@ -504,8 +503,9 @@ if __name__ == '__main__':
 			table_output = my_parser.to_list(filt = output_filter)
 			print(csv_row_sep.join([csv_col_sep.join(row) for row in table_output]))
 		case Format.USX:
-			xmlstr = ET.tostring(my_parser.to_usx(filt = output_filter),encoding="unicode")	
-			print(minidom.parseString(xmlstr).toprettyxml(indent="   "))
+			xmlstr = etree.tostring(my_parser.to_usx(filt=output_filter),
+				encoding='unicode', pretty_print=True)
+			print(xmlstr)
 		case Format.MD:
 			print(my_parser.to_markdown(filt = output_filter))
 		case Format.ST:
