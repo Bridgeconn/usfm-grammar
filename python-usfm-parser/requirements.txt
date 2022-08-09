@@ -1,2 +1,4 @@
 tree-sitter==0.20.0
 jupyterlab==3.4.4
+rnc2rng==2.6.6
+lxml==4.9.1
