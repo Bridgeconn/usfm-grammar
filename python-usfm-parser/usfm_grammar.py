@@ -15,7 +15,7 @@ class Filter(str, Enum):
 class Format(str, Enum):
 	JSON = "json"
 	CSV = "table"
-	AST = "syntax-tree"
+	ST = "syntax-tree"
 	USX = "usx"
 	MD = "markdown"
 
@@ -236,7 +236,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
 
 
 def node_2_dict(node, usfm_bytes):
-    '''recursive function converting an AST node and its children to dictionary'''
+    '''recursive function converting a syntax tree node and its children to dictionary'''
     if len(node.children)>0:
         item = []
         for child in node.children:
@@ -280,45 +280,45 @@ para_query = USFM_LANGUAGE.query("""[(paragraph) (poetry) (table) (list)] @para"
 title_query = USFM_LANGUAGE.query("""(title) @title""")
 
 class USFMParser():
-	"""Parser class with usfmstring, AST and methods for JSON convertions"""
+	"""Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
 	def __init__(self, usfm_string):
 		# super(USFMParser, self).__init__()
 		self.USFM = usfm_string
-		self.USFMbytes = None
-		self.AST = None
+		self.USFM_bytes = None
+		self.syntax_tree = None
 		self.errors = None
 
-		self.USFMbytes = bytes(self.USFM, "utf8")
-		tree = parser.parse(self.USFMbytes)
-		self.AST = tree.root_node
+		self.USFM_bytes = bytes(self.USFM, "utf8")
+		tree = parser.parse(self.USFM_bytes)
+		self.syntax_tree = tree.root_node
 
 		# check for errors in the parse tree and raise them
-		errors = error_query.captures(self.AST)
+		errors = error_query.captures(self.syntax_tree)
 		if len(errors) > 0:
-			self.errors = [(f"At {err[0].start_point}", self.USFMbytes[err[0].start_byte:err[0].end_byte].decode('utf-8')) 
+			self.errors = [(f"At {err[0].start_point}", self.USFM_bytes[err[0].start_byte:err[0].end_byte].decode('utf-8')) 
 									for err in errors]
 
 
-	def toAST(self):
-		return self.AST.sexp()
+	def to_syntax_tree(self):
+		return self.syntax_tree.sexp()
 
-	def toDict(self, filt=Filter.SCRIPTURE_BCV.value):
+	def to_dict(self, filt=Filter.SCRIPTURE_BCV.value):
 		if filt in [Filter.SCRIPTURE_BCV.value, Filter.NOTES.value, Filter.NOTES_TEXT.value,
 			Filter.SCRIPTURE_PARAGRAPHS.value, None]:
 			dict_output = {}
-			captures = bookcode_query.captures(self.AST)
+			captures = bookcode_query.captures(self.syntax_tree)
 			cap = captures[0]
-			dict_output['book'] = {'bookcode': self.USFMbytes[cap[0].start_byte:cap[0].end_byte].decode('utf-8')}
+			dict_output['book'] = {'bookcode': self.USFM_bytes[cap[0].start_byte:cap[0].end_byte].decode('utf-8')}
 			dict_output['book']['chapters'] = []
-			captures = chapter_query.captures(self.AST)
+			captures = chapter_query.captures(self.syntax_tree)
 			for cap in captures:
 				chap_captures = chapternum_query.captures(cap[0])
 				ccap= chap_captures[0]
 				dict_output['book']['chapters'].append({"chapterNumber":
-					self.USFMbytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
+					self.USFM_bytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
 					"contents":[]})
 				if filt in [Filter.SCRIPTURE_BCV.value, None]:
-					'''query for just the chapter, verse and text nodes from the AST'''
+					'''query for just the chapter, verse and text nodes from the syntax_tree'''
 					versenum_captures = versenum_query.captures(cap[0])
 					versetext_captures = versetext_query.captures(cap[0])
 					combined = {item[0].start_byte: item for item in versenum_captures+versetext_captures}
@@ -326,15 +326,15 @@ class USFMParser():
 					for vcap in sorted_combined:
 						if vcap[1] == "verse":
 							dict_output['book']['chapters'][-1]["contents"].append(
-								{"verseNumber":self.USFMbytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
+								{"verseNumber":self.USFM_bytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
 								 "verseText":""})
 						elif vcap[1] == "verse-text":
 							text_captures = text_query.captures(vcap[0])
-							text_val = "".join([self.USFMbytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
+							text_val = "".join([self.USFM_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
 												for tcap in text_captures])
 							dict_output['book']['chapters'][-1]['contents'][-1]['verseText'] += text_val
 				elif filt in [Filter.NOTES.value, Filter.NOTES_TEXT.value]:
-					'''query for just the chapter, verse and text nodes from the AST'''
+					'''query for just the chapter, verse and text nodes from the syntax_tree'''
 					versenum_captures = versenum_query.captures(cap[0])
 					notes_captures = notes_query.captures(cap[0])
 					if len(notes_captures) == 0:
@@ -346,15 +346,15 @@ class USFMParser():
 							index+1 !=len(sorted_combined) and sorted_combined[index+1][1] =="note":
 							'''need to add a verse only if it has notes'''
 							dict_output['book']['chapters'][-1]["contents"].append(
-								{"verseNumber":self.USFMbytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
+								{"verseNumber":self.USFM_bytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
 								 "notes":[]})
 						elif vcap[1] == "note":
 							note_type = vcap[0].type
 							if filt == Filter.NOTES.value:
-								note_details = node_2_dict(vcap[0], self.USFMbytes)
+								note_details = node_2_dict(vcap[0], self.USFM_bytes)
 							elif filt == Filter.NOTES_TEXT.value:
 								notetext_captures = notestext_query.captures(vcap[0])
-								note_details = "|".join([self.USFMbytes[ncap[0].start_byte:ncap[0].end_byte].decode('utf-8').strip().replace("\n","") for ncap in notetext_captures])
+								note_details = "|".join([self.USFM_bytes[ncap[0].start_byte:ncap[0].end_byte].decode('utf-8').strip().replace("\n","") for ncap in notetext_captures])
 							dict_output['book']['chapters'][-1]['contents'][-1]['notes'].append({note_type: note_details})
 				elif filt in [Filter.SCRIPTURE_PARAGRAPHS.value]:
 					'''titles and section information, paragraph breaks
@@ -369,7 +369,7 @@ class USFMParser():
 							text_captures = text_query.captures(comp[0])
 							title_texts = []
 							for tcap in text_captures:
-								title_texts.append(self.USFMbytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8'))
+								title_texts.append(self.USFM_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8'))
 							dict_output['book']['chapters'][-1]['contents'].append(
 								{"title":" ".join(title_texts).strip()})
 						elif comp[1] == "para":
@@ -382,11 +382,11 @@ class USFMParser():
 							for vcap in sorted_combined:
 								if vcap[1] == "verse":
 									inner_contents.append(
-										{"verseNumber":self.USFMbytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
+										{"verseNumber":self.USFM_bytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
 										 "verseText":""})
 								elif vcap[1] == "verse-text":
 									text_captures = text_query.captures(vcap[0])
-									text_val = "".join([self.USFMbytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
+									text_val = "".join([self.USFM_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
 														for tcap in text_captures])
 									if len(inner_contents) == 0:
 										inner_contents.append({"verseText":""})
@@ -395,15 +395,15 @@ class USFMParser():
 							dict_output['book']['chapters'][-1]["contents"].append({comp_type:inner_contents})
 			return dict_output
 		elif filt == Filter.ALL.value:
-			'''directly converts the AST to JSON/dict'''
-			return node_2_dict(self.AST, self.USFMbytes)
+			'''directly converts the syntax_tree to JSON/dict'''
+			return node_2_dict(self.syntax_tree, self.USFM_bytes)
 		else:
 			raise Exception(f"This filter option, {filt}, is yet to be implemeneted")
 
-	def toTable(self, filt=Filter.SCRIPTURE_BCV.value):
+	def to_list(self, filt=Filter.SCRIPTURE_BCV.value):
 		'''uses the toJSON function and converts JSON to CSV'''
 		if filt == Filter.SCRIPTURE_BCV.value or filt is None:
-			scripture_json = self.toDict(Filter.SCRIPTURE_BCV.value)
+			scripture_json = self.to_dict(Filter.SCRIPTURE_BCV.value)
 			table_output = [["Book","Chapter","Verse","Text"]]
 			book = scripture_json['book']['bookcode']
 			for chap in scripture_json['book']['chapters']:
@@ -413,7 +413,7 @@ class USFMParser():
 					table_output.append(row)
 			return table_output
 		elif filt == Filter.NOTES.value:
-			notes_json = self.toDict(Filter.NOTES_TEXT.value)
+			notes_json = self.to_dict(Filter.NOTES_TEXT.value)
 			table_output = [["Book","Chapter","Verse","Type", "Note"]]
 			book = notes_json['book']['bookcode']
 			for chap in notes_json['book']['chapters']:
@@ -426,7 +426,7 @@ class USFMParser():
 					table_output.append(row)
 			return table_output
 		elif filt == Filter.SCRIPTURE_PARAGRAPHS.value:
-			notes_json = self.toDict(Filter.SCRIPTURE_PARAGRAPHS.value)
+			notes_json = self.to_dict(Filter.SCRIPTURE_PARAGRAPHS.value)
 			table_output = [["Book","Chapter","Type", "Contents"]]
 			book = notes_json['book']['bookcode']
 			for chap in notes_json['book']['chapters']:
@@ -447,17 +447,17 @@ class USFMParser():
 		else:
 			raise Exception(f"This filter option, {filt}, is yet to be implemeneted")
 
-	def toMarkDown(self, filt=Filter.SCRIPTURE_PARAGRAPHS.value):
+	def to_markdown(self, filt=Filter.SCRIPTURE_PARAGRAPHS.value):
 		'''query for chapter, paragraph, text structure'''
 		return "yet to be implemeneted"
 
 
-	def toUSX(self, filt=Filter.ALL):
-		'''convert the AST to the XML format USX'''
+	def to_usx(self, filt=Filter.ALL):
+		'''convert the syntax_tree to the XML format USX'''
 		usx_root = ET.Element("usx")
 		usx_root.set("version", "3.0")
 
-		node_2_usx(self.AST, self.USFMbytes, usx_root, usx_root)
+		node_2_usx(self.syntax_tree, self.USFM_bytes, usx_root, usx_root)
 		return usx_root
 
 if __name__ == '__main__':
@@ -466,7 +466,7 @@ if __name__ == '__main__':
 	arg_parser.add_argument('infile', type=str, help='input usfm file')
 	arg_parser.add_argument('--format', type=str, help='output format',
 							choices=[Format.JSON.value, Format.CSV.value, Format.USX.value,
-										Format.MD.value, Format.AST.value],
+										Format.MD.value, Format.ST.value],
 							default=Format.JSON.value)
 	arg_parser.add_argument('--filter', type=str, help='the type of contents to be included',
 							choices=[Filter.SCRIPTURE_BCV.value, Filter.NOTES.value, Filter.SCRIPTURE_PARAGRAPHS.value])
@@ -491,18 +491,18 @@ if __name__ == '__main__':
 		print(f"Errors at:{err_str}")
 
 	if output_format == Format.JSON:
-		dict_output = my_parser.toDict(filt = output_filter)
+		dict_output = my_parser.to_dict(filt = output_filter)
 		print(json.dumps(dict_output, indent=4, ensure_ascii=False))
 	elif output_format == Format.CSV:
-		table_output = my_parser.toTable(filt = output_filter)
+		table_output = my_parser.to_list(filt = output_filter)
 		print(csv_row_sep.join([csv_col_sep.join(row) for row in table_output]))
 	elif output_format == Format.USX:
-		xmlstr = ET.tostring(my_parser.toUSX(filt = output_filter),encoding="unicode")	
+		xmlstr = ET.tostring(my_parser.to_usx(filt = output_filter),encoding="unicode")	
 		print(minidom.parseString(xmlstr).toprettyxml(indent="   "))
 	elif output_format == Format.MD:
-		print(my_parser.toMarkDown(filt = output_filter))
-	elif output_format == Format.AST:
-		print(my_parser.toAST())
+		print(my_parser.to_markdown(filt = output_filter))
+	elif output_format == Format.ST:
+		print(my_parser.to_syntax_tree())
 	else:
 		raise Exception(f"Un-recognized output format:{output_format}!")
 
