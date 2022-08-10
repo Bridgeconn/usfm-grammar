@@ -282,19 +282,19 @@ class USFMParser():
 	"""Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
 	def __init__(self, usfm_string):
 		# super(USFMParser, self).__init__()
-		self.USFM = usfm_string
-		self.USFM_bytes = None
+		self.usfm = usfm_string
+		self.usfm_bytes = None
 		self.syntax_tree = None
 		self.errors = None
 
-		self.USFM_bytes = bytes(self.USFM, "utf8")
-		tree = parser.parse(self.USFM_bytes)
+		self.usfm_bytes = bytes(self.usfm, "utf8")
+		tree = parser.parse(self.usfm_bytes)
 		self.syntax_tree = tree.root_node
 
 		# check for errors in the parse tree and raise them
 		errors = error_query.captures(self.syntax_tree)
 		if len(errors) > 0:
-			self.errors = [(f"At {err[0].start_point}", self.USFM_bytes[err[0].start_byte:err[0].end_byte].decode('utf-8')) 
+			self.errors = [(f"At {err[0].start_point}", self.usfm_bytes[err[0].start_byte:err[0].end_byte].decode('utf-8')) 
 									for err in errors]
 
 
@@ -307,14 +307,14 @@ class USFMParser():
 			dict_output = {}
 			captures = bookcode_query.captures(self.syntax_tree)
 			cap = captures[0]
-			dict_output['book'] = {'bookcode': self.USFM_bytes[cap[0].start_byte:cap[0].end_byte].decode('utf-8')}
+			dict_output['book'] = {'bookcode': self.usfm_bytes[cap[0].start_byte:cap[0].end_byte].decode('utf-8')}
 			dict_output['book']['chapters'] = []
 			captures = chapter_query.captures(self.syntax_tree)
 			for cap in captures:
 				chap_captures = chapternum_query.captures(cap[0])
 				ccap= chap_captures[0]
 				dict_output['book']['chapters'].append({"chapterNumber":
-					self.USFM_bytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
+					self.usfm_bytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
 					"contents":[]})
 				match filt:
 					case Filter.SCRIPTURE_BCV.value | None:
@@ -327,11 +327,11 @@ class USFMParser():
 							match vcap:
 								case (vnode, "verse"):
 									dict_output['book']['chapters'][-1]["contents"].append(
-										{"verseNumber":self.USFM_bytes[vnode.start_byte:vnode.end_byte].decode('utf-8').strip(),
+										{"verseNumber":self.usfm_bytes[vnode.start_byte:vnode.end_byte].decode('utf-8').strip(),
 										 "verseText":""})
 								case (vnode, "verse-text"):
 									text_captures = text_query.captures(vnode)
-									text_val = "".join([self.USFM_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
+									text_val = "".join([self.usfm_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
 														for tcap in text_captures])
 									dict_output['book']['chapters'][-1]['contents'][-1]['verseText'] += text_val
 					case Filter.NOTES.value | Filter.NOTES_TEXT.value:
@@ -347,15 +347,15 @@ class USFMParser():
 								index+1 !=len(sorted_combined) and sorted_combined[index+1][1] =="note":
 								'''need to add a verse only if it has notes'''
 								dict_output['book']['chapters'][-1]["contents"].append(
-									{"verseNumber":self.USFM_bytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
+									{"verseNumber":self.usfm_bytes[vcap[0].start_byte:vcap[0].end_byte].decode('utf-8').strip(),
 									 "notes":[]})
 							elif vcap[1] == "note":
 								note_type = vcap[0].type
 								if filt == Filter.NOTES.value:
-									note_details = node_2_dict(vcap[0], self.USFM_bytes)
+									note_details = node_2_dict(vcap[0], self.usfm_bytes)
 								elif filt == Filter.NOTES_TEXT.value:
 									notetext_captures = notestext_query.captures(vcap[0])
-									note_details = "|".join([self.USFM_bytes[ncap[0].start_byte:ncap[0].end_byte].decode('utf-8').strip().replace("\n","") for ncap in notetext_captures])
+									note_details = "|".join([self.usfm_bytes[ncap[0].start_byte:ncap[0].end_byte].decode('utf-8').strip().replace("\n","") for ncap in notetext_captures])
 								dict_output['book']['chapters'][-1]['contents'][-1]['notes'].append({note_type: note_details})
 					case Filter.SCRIPTURE_PARAGRAPHS.value:
 						'''titles and section information, paragraph breaks
@@ -371,7 +371,7 @@ class USFMParser():
 									text_captures = text_query.captures(comp_node)
 									title_texts = []
 									for tcap in text_captures:
-										title_texts.append(self.USFM_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8'))
+										title_texts.append(self.usfm_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8'))
 									dict_output['book']['chapters'][-1]['contents'].append(
 										{"title":" ".join(title_texts).strip()})
 								case (comp_node, "para"):
@@ -385,11 +385,11 @@ class USFMParser():
 										match vcap:
 											case (vnode, "verse"):
 												inner_contents.append(
-													{"verseNumber":self.USFM_bytes[vnode.start_byte:vnode.end_byte].decode('utf-8').strip(),
+													{"verseNumber":self.usfm_bytes[vnode.start_byte:vnode.end_byte].decode('utf-8').strip(),
 													 "verseText":""})
 											case (vnode, "verse-text"):
 												text_captures = text_query.captures(vnode)
-												text_val = "".join([self.USFM_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
+												text_val = "".join([self.usfm_bytes[tcap[0].start_byte:tcap[0].end_byte].decode('utf-8').replace("\n", " ")
 																	for tcap in text_captures])
 												if len(inner_contents) == 0:
 													inner_contents.append({"verseText":""})
@@ -399,7 +399,7 @@ class USFMParser():
 			return dict_output
 		elif filt == Filter.ALL.value:
 			'''directly converts the syntax_tree to JSON/dict'''
-			return node_2_dict(self.syntax_tree, self.USFM_bytes)
+			return node_2_dict(self.syntax_tree, self.usfm_bytes)
 		else:
 			raise Exception(f"This filter option, {filt}, is yet to be implemeneted")
 
@@ -461,7 +461,7 @@ class USFMParser():
 		usx_root = etree.Element("usx")
 		usx_root.set("version", "3.0")
 
-		node_2_usx(self.syntax_tree, self.USFM_bytes, usx_root, usx_root)
+		node_2_usx(self.syntax_tree, self.usfm_bytes, usx_root, usx_root)
 		return usx_root
 
 if __name__ == '__main__':
