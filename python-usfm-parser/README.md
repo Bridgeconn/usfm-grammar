@@ -15,6 +15,8 @@ Built on python 3.10
 
 ## Usage
 
+### By importing library in Python code
+
 ```
 from usfm-grammar import USFMParser, Filter
 
@@ -37,8 +39,7 @@ To convert to USX
 from lxml import etree
 
 usx_elem = my_parser.to_usx() # default filter=ALL
-usx_str = etree.tostring(usx_elem, encoding="unicode", pretty_print=true)
-print(usx_str)
+print(etree.tostring(usx_elem, encoding="unicode", pretty_print=True))
 ```
 
 To convert to Dict
@@ -69,4 +70,37 @@ list_output = my_parser.to_list()
 table_output = "\n".join(["\t".join(row) for row in list_output])
 print(table_output)
 
+```
+
+### From CLI
+
+```
+usage: usfm_grammar.py [-h] [--format {json,table,usx,markdown,syntax-tree}]
+                       [--filter {scripture-bcv,notes,scripture-paragraph,all}]
+                       [--csv_col_sep CSV_COL_SEP] [--csv_row_sep CSV_ROW_SEP]
+                       infile
+
+Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree,
+JSON, CSV, USX etc.
+
+positional arguments:
+  infile                input usfm file
+
+options:
+  -h, --help            show this help message and exit
+  --format {json,table,usx,markdown,syntax-tree}
+                        output format
+  --filter {scripture-bcv,notes,scripture-paragraph,all}
+                        the type of contents to be included
+  --csv_col_sep CSV_COL_SEP
+                        column separator or delimiter. Only useful with
+                        format=table.
+  --csv_row_sep CSV_ROW_SEP
+                        row separator or delimiter. Only useful with
+                        format=table.
+
+```
+Example
+```
+>>> python3 -m usfm_grammar sample.usfm --format usx
 ```

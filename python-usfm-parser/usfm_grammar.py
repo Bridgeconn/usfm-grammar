@@ -466,7 +466,7 @@ class USFMParser():
 
 if __name__ == '__main__':
 	arg_parser = argparse.ArgumentParser(
-		description='Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree, JSON, CSV or MarkDown.')
+		description='Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree, JSON, CSV, USX etc.')
 	arg_parser.add_argument('infile', type=str, help='input usfm file')
 	arg_parser.add_argument('--format', type=str, help='output format',
 							choices=[Format.JSON.value, Format.CSV.value, Format.USX.value,
