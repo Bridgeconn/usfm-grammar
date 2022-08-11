@@ -1,0 +1,29 @@
+name: 'USFM'
+scopeName: 'source.usfm'
+type: 'tree-sitter'
+parser: 'tree-sitter-usfm'
+#
+fileTypes: ['usfm', 'sfm']
+
+# comments:
+#    start: '--'
+
+folds: [
+    {
+        type: [
+            'chapter'
+            'paragraph'
+            'poetry'
+            'list'
+            'table'
+            'footnote'
+            'crossref'
+            'milestone'
+            'esb'
+        ]
+    }
+]
+
+scopes:
+    'source_file': 'source.usfm'
+

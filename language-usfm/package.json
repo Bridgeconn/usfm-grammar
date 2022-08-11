@@ -1,0 +1,33 @@
+{
+  "name": "language-usfm",
+  "version": "1.0.0-alpha.1",
+  "description": "USFM language support for the Atom editor via tree-sitter",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bridgeconn/usfm-grammar.git"
+  },
+  "license": "SEE LICENSE IN LICENSE file",
+  "engines": {
+    "atom": "*",
+    "node": "*"
+  },
+  "dependencies": {
+    "tree-sitter-usfm": "^1.0.0-alpha.1"
+  },
+  "bugs": {
+    "url": "https://github.com/Bridgeconn/usfm-grammar/issues"
+  },
+  "homepage": "https://github.com/Bridgeconn/usfm-grammar/language-usfm#readme",
+  // "main": "index.js",
+  // "scripts": {
+  //   "test": "echo \"Error: no test specified\" && exit 1"
+  // },
+  "keywords": [
+    "usfm",
+    "tree-sitter",
+    "atom"
+  ],
+  "contributors": ["Kavitha Raju <kavitha.raju@bridgeconn.com> (https://github.com/kavitharaju)",
+    "Joel Mathew <joel@bridgeconn.com> (https://github.com/joelthe1)"]
+
+}
