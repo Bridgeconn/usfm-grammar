@@ -77,3 +77,5 @@ tree-sitter-usfm/src/
 
 */.ipynb_checkpoints/
 */__pycache__/
+*/dist/*
+*/src/usfm_grammar.egg-info/*

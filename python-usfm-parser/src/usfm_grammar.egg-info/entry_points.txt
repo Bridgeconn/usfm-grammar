@@ -1,2 +1,0 @@
-[console_scripts]
-usfm-grammar = usfm_grammar.__main__:main
