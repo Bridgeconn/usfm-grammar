@@ -1,0 +1,13 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+src/usfm_grammar/__init__.py
+src/usfm_grammar/__main__.py
+src/usfm_grammar/my-languages.so
+src/usfm_grammar.egg-info/PKG-INFO
+src/usfm_grammar.egg-info/SOURCES.txt
+src/usfm_grammar.egg-info/dependency_links.txt
+src/usfm_grammar.egg-info/entry_points.txt
+src/usfm_grammar.egg-info/requires.txt
+src/usfm_grammar.egg-info/top_level.txt

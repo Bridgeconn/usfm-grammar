@@ -1,2 +1,4 @@
 
-include build/*.so
+include src/usfm_grammar/my-languages.so
+
+exclude src/grammar_rebuild.py
