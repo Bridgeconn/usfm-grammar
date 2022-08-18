@@ -1,13 +1,16 @@
 '''Entry point for the package, when invoked from command line'''
 
+import os
 import argparse
 import json
+from importlib import resources
 from tree_sitter import Language, Parser
 from lxml import etree
 
 from usfm_grammar import Filter, Format
 
-USFM_LANGUAGE = Language('my-languages.so', 'usfm')
+lang_file = resources.path('usfm_grammar','my-languages.so')
+USFM_LANGUAGE = Language(lang_file, 'usfm')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
 
