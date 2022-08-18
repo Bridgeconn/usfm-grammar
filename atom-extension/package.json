@@ -6,7 +6,7 @@
     "type": "git",
     "url": "git+https://github.com/Bridgeconn/usfm-grammar.git"
   },
-  "license": "SEE LICENSE IN LICENSE file",
+  "license": "MIT License",
   "engines": {
     "atom": "*",
     "node": "*"
@@ -17,16 +17,13 @@
   "bugs": {
     "url": "https://github.com/Bridgeconn/usfm-grammar/issues"
   },
-  "homepage": "https://github.com/Bridgeconn/usfm-grammar/language-usfm#readme",
-  // "main": "index.js",
-  // "scripts": {
-  //   "test": "echo \"Error: no test specified\" && exit 1"
-  // },
+  "homepage": "https://github.com/Bridgeconn/usfm-grammar/atom-extension#readme",
   "keywords": [
     "usfm",
     "tree-sitter",
     "atom"
   ],
+  "author": "BCS Team <joel@bridgeconn.com> (https://github.com/joelthe1)",
   "contributors": ["Kavitha Raju <kavitha.raju@bridgeconn.com> (https://github.com/kavitharaju)",
     "Joel Mathew <joel@bridgeconn.com> (https://github.com/joelthe1)"]
 
