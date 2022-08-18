@@ -18,7 +18,7 @@ Built on python 3.10
 ### By importing library in Python code
 
 ```
-from usfm-grammar import USFMParser, Filter
+from usfm_grammar import USFMParser, Filter
 
 # input_usfm_str = open("sample.usfm","r", encoding='utf8').read()
 input_usfm_str = '''
@@ -75,7 +75,7 @@ print(table_output)
 ### From CLI
 
 ```
-usage: usfm_grammar.py [-h] [--format {json,table,usx,markdown,syntax-tree}]
+usage: usfm-grammar [-h] [--format {json,table,usx,markdown,syntax-tree}]
                        [--filter {scripture-bcv,notes,scripture-paragraph,all}]
                        [--csv_col_sep CSV_COL_SEP] [--csv_row_sep CSV_ROW_SEP]
                        infile
@@ -103,4 +103,6 @@ options:
 Example
 ```
 >>> python3 -m usfm_grammar sample.usfm --format usx
+
+>>> usfm-grammar sample.usfm --format usx
 ```

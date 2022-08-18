@@ -8,13 +8,17 @@ name = "usfm-grammar"
 version = "1.0.0-alpha.1"
 description = "Python parser for USFM files, based on tree-sitter-usfm"
 readme = "README.md"
-authors = [{ name = "Kavitha Raju", email = "kavitha.raju@bridgeconn.com" }, 
+authors = [{ name = "BCS Team", email = "joel@bridgeconn.com" }]
+maintainers = [{ name = "Kavitha Raju", email = "kavitha.raju@bridgeconn.com" }, 
             { name= "Joel Mathew", email = 'joel@bridgeconn.com'}]
-license = { file = "LICENSE" }
+license = {text = "MIT License"}
 classifiers = [
     "License :: OSI Approved :: MIT License",
-    "Programming Language :: Python",
     "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Compilers",
+    "Topic :: Text Processing :: Markup",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Religion"
 ]
 keywords = ["usfm", "parser", "grammar", "tree-sitter"]
 dependencies = [
