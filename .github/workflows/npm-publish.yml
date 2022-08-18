@@ -1,34 +1,67 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
 
-name: Node.js Package
+name: USFM-Grammar Publish
 
 on:
   release:
     types: [published]
 
 jobs:
-  build:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  Test-grammar:
+    # Name the Job
+    name: Test grammar module
+    # Set the type of machine to run on
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 13.12.0
-      - run: npm ci
-      - run: npm run test-on-github
 
-  publish-npm:
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup node and npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Run tests
+        run: |
+          cd tree-sitter-usfm
+          npm install .
+          ./node_modules/.bin/tree-sitter generate
+          ./node_modules/.bin/tree-sitter test
+
+  Publish-grammar:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 13.12.0
+          node-version: 14
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: npm publish
+      - run: |
+          cd tree-sitter-usfm
+          npm install .
+          ./node_modules/.bin/tree-sitter generate
+          npm publish . --tag alpha
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+  Publish-atom-extension:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+          registry-url: https://registry.npmjs.org/
+      - run: npm ci
+      - run: |
+          cd atom-extension
+          npm publish . --tag alpha
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
