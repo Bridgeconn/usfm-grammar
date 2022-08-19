@@ -32,7 +32,7 @@ jobs:
           ./node_modules/.bin/tree-sitter test
 
   Publish-grammar:
-    needs: build
+    needs: Test grammar module
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
