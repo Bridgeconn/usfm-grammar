@@ -2,6 +2,7 @@
 
 import argparse
 import json
+from lxml import etree
 
 from usfm_grammar import USFMParser, Filter, Format
 
