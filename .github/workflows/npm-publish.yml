@@ -11,8 +11,6 @@ jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
   Test-grammar:
-    # Name the Job
-    name: Test grammar module
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
@@ -32,7 +30,7 @@ jobs:
           ./node_modules/.bin/tree-sitter test
 
   Publish-grammar:
-    needs: Test grammar module
+    needs: Test-grammar
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
