@@ -1,6 +1,6 @@
 # Release Plan
 
-## Version 1.0.0-alpha.1
+## Version 3.0.0-alpha.1
 
 1. `tree-sitter-usfm` on NPM
 	A grammar modelling the USFM language and a parser that can generate a syntax-tree using tree-sitter. Also include sample highlighting queries.
