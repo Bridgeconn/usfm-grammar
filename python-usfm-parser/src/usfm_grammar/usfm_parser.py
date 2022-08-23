@@ -22,7 +22,7 @@ class Format(str, Enum):
 	MD = "markdown"
 
 lang_file = resources.path('usfm_grammar','my-languages.so')
-USFM_LANGUAGE = Language(lang_file, 'usfm')
+USFM_LANGUAGE = Language(str(lang_file), 'usfm')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
 
