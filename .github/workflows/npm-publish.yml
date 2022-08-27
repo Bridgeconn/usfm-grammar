@@ -24,7 +24,7 @@ jobs:
           node-version: 14
       - name: Run tests
         run: |
-          cd tree-sitter-usfm
+          cd tree-sitter-usfm3
           npm install .
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
@@ -39,7 +39,7 @@ jobs:
           node-version: 14
           registry-url: https://registry.npmjs.org/
       - run: |
-          cd tree-sitter-usfm
+          cd tree-sitter-usfm3
           npm install .
           ./node_modules/.bin/tree-sitter generate
           npm publish . --tag alpha
