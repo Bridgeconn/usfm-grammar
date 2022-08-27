@@ -36,5 +36,5 @@ Homepage = "https://github.com/Bridgeconn/usfm-grammar/python-usfm-grammar#readm
 [project.scripts]
 usfm-grammar = "usfm_grammar.__main__:main"
 
-[tool.cibuildwheel]
-before-all = "cd python-usfm-parser | cd src | python3 grammar_rebuild.py"
+# [tool.cibuildwheel]
+# before-all = "cd python-usfm-parser | cd src | python3 grammar_rebuild.py"
