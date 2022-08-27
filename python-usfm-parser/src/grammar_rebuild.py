@@ -10,6 +10,6 @@ Language.build_library(
   # Include one or more languages
   [
     # '../tree-sitter-exp',
-    '../../tree-sitter-usfm'
+    '../../tree-sitter-usfm3'
   ]
 )
