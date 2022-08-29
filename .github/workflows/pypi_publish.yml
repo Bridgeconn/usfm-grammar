@@ -29,6 +29,7 @@ jobs:
         env:
           CIBW_BUILD_FRONTEND: "build"  #python -m build instead of python -m pip wheel
           CIBW_ARCHS_LINUX: "x86_64 i686"
+          CIBW_BUILD_VERBOSITY: 1
           CIBW_BEFORE_BUILD: >
               python3.10 -m pip install tree-sitter==0.20.0 &&
               python3.10 python-usfm-parser/src/grammar_rebuild.py tree-sitter-usfm3 python-usfm-parser/src/usfm_grammar/my-languages.so
