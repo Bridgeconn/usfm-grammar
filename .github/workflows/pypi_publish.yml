@@ -13,11 +13,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Setup node and npm
+        uses: actions/setup-node@v2
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.9.0
-      - name: Setup node and npm
-        uses: actions/setup-node@v2
 
         env:
           CIBW_BUILD_FRONTEND: "build"  #python -m build instead of python -m pip wheel
