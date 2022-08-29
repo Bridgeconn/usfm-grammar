@@ -81,3 +81,4 @@ tree-sitter-usfm3/src/
 */dist/*
 */src/usfm_grammar.egg-info/*
 **/my-languages.so
+**/wheelhouse/

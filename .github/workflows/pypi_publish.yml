@@ -27,7 +27,7 @@ jobs:
         uses: pypa/cibuildwheel@v2.9.0
 
         env:
-          CIBW_BUILD_FRONTEND: "build"  #python -m build instead of python -m pip wheel
+          # CIBW_BUILD_FRONTEND: "build"  #python -m build instead of python -m pip wheel
           CIBW_ARCHS_LINUX: "x86_64 i686"
           CIBW_BUILD_VERBOSITY: 1
           CIBW_BEFORE_BUILD: >
