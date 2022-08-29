@@ -80,4 +80,4 @@ tree-sitter-usfm3/src/
 **/__pycache__/
 */dist/*
 */src/usfm_grammar.egg-info/*
-*/*.so
+**/my-languages.so
