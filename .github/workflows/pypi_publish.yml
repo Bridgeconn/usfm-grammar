@@ -23,17 +23,17 @@ jobs:
           npm install .
           ./node_modules/.bin/tree-sitter generate
 
-      # - name: Build wheels
-      #   uses: pypa/cibuildwheel@v2.9.0
-      
-      # Used to host cibuildwheel
-      - uses: actions/setup-python@v3
-
-      - name: Install cibuildwheel
-        run: python -m pip install cibuildwheel==2.9.0
-
       - name: Build wheels
-        run: python -m cibuildwheel --output-dir wheelhouse
+        uses: pypa/cibuildwheel@v2.9.0
+      
+      # # Used to host cibuildwheel
+      # - uses: actions/setup-python@v3
+
+      # - name: Install cibuildwheel
+      #   run: python -m pip install cibuildwheel==2.9.0
+
+      # - name: Build wheels
+      #   run: python -m cibuildwheel --output-dir wheelhouse
         env:
           # CIBW_BUILD_FRONTEND: "build"  #python -m build instead of python -m pip wheel
           CIBW_ARCHS_LINUX: "x86_64 i686"

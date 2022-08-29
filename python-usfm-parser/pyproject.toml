@@ -36,5 +36,7 @@ Homepage = "https://github.com/Bridgeconn/usfm-grammar/python-usfm-grammar#readm
 [project.scripts]
 usfm-grammar = "usfm_grammar.__main__:main"
 
-# [tool.cibuildwheel]
+[tool.cibuildwheel]
 # before-build = "python3 src/grammar_rebuild.py ../tree-sitter-usfm3/ src/usfm-grammar/my-languages.so"
+manylinux-x86_64-image = "manylinux2010"
+manylinux-i686-image = "manylinux2010"
