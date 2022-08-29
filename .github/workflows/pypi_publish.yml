@@ -19,9 +19,9 @@ jobs:
         env:
           CIBW_BUILD_FRONTEND: "build"  #python -m build instead of python -m pip wheel
           CIBW_ARCHS_LINUX: "x86_64 i686"
-          # CIBW_BEFORE_BUILD: >
-          #     cd python-usfm-parser/src &&
-          #     python3 grammar_rebuild.py
+          CIBW_BEFORE_BUILD: >
+              cd python-usfm-parser/src &&
+              python3 grammar_rebuild.py
         with:
           package-dir: python-usfm-parser
           output-dir: python-usfm-parser/wheelhouse
