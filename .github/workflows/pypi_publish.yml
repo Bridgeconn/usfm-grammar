@@ -15,6 +15,13 @@ jobs:
       - uses: actions/checkout@v3
       - name: Setup node and npm
         uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Build the tree-sitter parser
+        run: |
+          cd tree-sitter-usfm3
+          npm install .
+          ./node_modules/.bin/tree-sitter generate
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.9.0
@@ -23,10 +30,6 @@ jobs:
           CIBW_BUILD_FRONTEND: "build"  #python -m build instead of python -m pip wheel
           CIBW_ARCHS_LINUX: "x86_64 i686"
           CIBW_BEFORE_BUILD: >
-              cd tree-sitter-usfm3 &&
-              npm install tree-sitter-cli &&
-              node_modules/.bin/tree-sitter generate &&
-              cd ..
               python3.10 -m pip install tree-sitter==0.20.0 &&
               python3.10 python-usfm-parser/src/grammar_rebuild.py tree-sitter-usfm3 python-usfm-parser/src/usfm_grammar/my-languages.so
         with:
