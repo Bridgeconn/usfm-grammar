@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "usfm-grammar"
-version = "3.0.0-alpha.25"
+version = "3.0.0-alpha.27"
 description = "Python parser for USFM files, based on tree-sitter-usfm"
 readme = "README.md"
 authors = [{ name = "BCS Team", email = "joel@bridgeconn.com" }]
@@ -35,8 +35,3 @@ Homepage = "https://github.com/Bridgeconn/usfm-grammar/python-usfm-grammar#readm
 
 [project.scripts]
 usfm-grammar = "usfm_grammar.__main__:main"
-
-[tool.cibuildwheel]
-# before-build = "python3 src/grammar_rebuild.py ../tree-sitter-usfm3/ src/usfm-grammar/my-languages.so"
-manylinux-x86_64-image = "manylinux2010"
-manylinux-i686-image = "manylinux2010"
