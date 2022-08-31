@@ -1,10 +1,10 @@
 name: PyPI Publish
 
 on:
-  [push]
-  # workflow_dispatch:
-  # release:
-  #   types: [published]
+  # [push]
+  workflow_dispatch:
+  release:
+    types: [published]
 
 jobs:
   build_wheels:
