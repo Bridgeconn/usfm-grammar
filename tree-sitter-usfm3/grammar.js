@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: 'usfm',
+  name: 'usfm3',
 
   rules: {
     File: $ => prec.right(0, seq(

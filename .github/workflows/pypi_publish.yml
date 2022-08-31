@@ -1,6 +1,8 @@
 name: PyPI Publish
 
-on: [push]
+on:
+  release:
+    types: [published]
 
 jobs:
   build_wheels:
@@ -25,19 +27,7 @@ jobs:
 
       - name: Build wheels
         uses: pypa/cibuildwheel@v2.9.0
-      
-      # # Used to host cibuildwheel
-      # - uses: actions/setup-python@v3
-
-      # - name: Install cibuildwheel
-      #   run: python -m pip install cibuildwheel==2.9.0
-
-      # - name: Build wheels
-      #   run: python -m cibuildwheel --output-dir wheelhouse
         env:
-          # CIBW_BUILD_FRONTEND: "build"  #python -m build instead of python -m pip wheel
-          CIBW_ARCHS_LINUX: "x86_64 i686"
-          CIBW_BUILD_VERBOSITY: 1
           CIBW_BEFORE_BUILD: >
               python -m pip install tree-sitter==0.20.0 &&
               python python-usfm-parser/src/grammar_rebuild.py tree-sitter-usfm3 python-usfm-parser/src/usfm_grammar/my-languages.so

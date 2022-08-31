@@ -11,9 +11,9 @@ Built on python 3.10
 
 `pip install usfm-grammar`
 
+This requires a compiler. On Windows, Microsoft Visual C++ 14.0 or above is required. 
 It is recommended that you update `pip`, `setuptools` and `wheel`.
 
-This requires C++ build tools. On Windows, Microsoft Visual C++ 14.0 or above is required. 
 
 ## Usage
 
