@@ -2,6 +2,8 @@
 
 import argparse
 import json
+from lxml import etree
+import sys
 
 from usfm_grammar import USFMParser, Filter, Format
 
@@ -34,8 +36,9 @@ def main():
 	my_parser = USFMParser(file_content)
 
 	if my_parser.errors:
-		err_str = "\n\t".join(my_parser.errors)
-		print(f"Errors at:{err_str}")
+		err_str = "\n\t".join([":".join(err) for err in my_parser.errors])
+		print(f"Errors present:\n\t{err_str}")
+		sys.exit(1)
 
 	match output_format:
 		case Format.JSON:

@@ -1,12 +1,12 @@
 
 [build-system]
-requires = ["setuptools>=61.0.0", "wheel"]
+requires = ["setuptools>=61.0.0", "wheel", "tree-sitter"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "usfm-grammar"
-version = "3.0.0-alpha.20"
-description = "Python parser for USFM files, based on tree-sitter-usfm"
+version = "3.0.0-alpha.4"
+description = "Python parser for USFM files, based on tree-sitter-usfm3"
 readme = "README.md"
 authors = [{ name = "BCS Team", email = "joel@bridgeconn.com" }]
 maintainers = [{ name = "Kavitha Raju", email = "kavitha.raju@bridgeconn.com" }, 

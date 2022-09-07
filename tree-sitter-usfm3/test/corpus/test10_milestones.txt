@@ -1,0 +1,334 @@
+================================================================================
+qt milestones - inline
+================================================================================
+\id MAT some other info of file
+\c 1
+\p 
+\v 11 Jesus stood before the Roman governor, who questioned him. 
+\qt-s |who="Pilate"\* “Are
+you the king of the Jews?”\qt-e\* he asked.
+\p \qt-s |who="Jesus"\*“So you say,”\qt-e\* answered Jesus.
+\v 12 But he said nothing in response to the accusations of the chief priests and elders.
+\p
+\v 13 So Pilate said to him, \qt-s |who="Pilate"\*“Don't you hear all these things they
+accuse you of?”\qt-e\*
+\p
+\v 14 But Jesus refused to answer a single word, with the result that the Governor was greatly
+surprised.
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneStartTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))
+        (verseText
+          (text))
+        (milestone
+          (milestoneEndTag))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (milestone
+          (milestoneStartTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))
+        (verseText
+          (text))
+        (milestone
+          (milestoneEndTag))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneStartTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))
+        (verseText
+          (text))
+        (milestone
+          (milestoneEndTag))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
+
+================================================================================
+qt milestone numbered
+================================================================================
+
+\id ACT
+\c 1
+\p
+\v 22 Paul stood up in front of the city council and said, \qt1-s |sid="qt1_ACT_17:22"
+who="Paul"\*“I see that in every way you Athenians are very religious.
+\v 23 For as I...
+\v 28 as someone has said,
+\q1 \qt2-s |who="someone"\*‘In him we live and move and exist.’\qt2-e\*
+\b
+\m It is as some of your poets have said,
+\q1 \qt2-s |who="some poets"\*‘We too are his children.’\qt2-e\*
+\b
+\m
+\v 29 Since we ...
+\v 31 For he has fixed a day in which he will judge the whole world with justice by means of
+a man he has chosen. He has given proof of this to everyone by raising that man from death!”
+\qt1-e |eid="qt1_ACT_17:22"\*
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneStartTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue))
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (poetry
+      (qBlock
+        (q
+          (qTag
+            (numberedLevelMax3))
+          (milestone
+            (milestoneStartTag)
+            (msAttribute
+              (milestoneAttributeName)
+              (attributeValue)))
+          (verseText
+            (text))
+          (milestone
+            (milestoneEndTag))
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (paragraph
+      (m
+        (verseText
+          (text))))
+    (poetry
+      (qBlock
+        (q
+          (qTag
+            (numberedLevelMax3))
+          (milestone
+            (milestoneStartTag)
+            (msAttribute
+              (milestoneAttributeName)
+              (attributeValue)))
+          (verseText
+            (text))
+          (milestone
+            (milestoneEndTag))
+          (verseText
+            (text)))))
+    (paragraph
+      (b))
+    (paragraph
+      (m
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneEndTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))))))
+
+================================================================================
+ts milestone w/o attributes
+================================================================================
+\id JUD
+\c 1
+\ts\*
+\p
+\v 5 Now I wish to remind you, although you know everything, that the Lord once saved a
+people out of the land of Egypt, but that afterward he destroyed those who did not believe.
+\v 6 And angels who did not keep to their own principality, but left their proper dwelling
+place—God has kept them in everlasting chains in darkness for the judgment of the
+great day.
+\ts\*
+\v 7 It is just like Sodom and Gomorrah and the cities around them, which in a similar way
+gave themselves over to fornication and pursued unnatural desires. They were given as
+examples of those who suffer the punishment of eternal fire.
+\v 8 Yet in the same way these also pollute their bodies in their dreams, and they reject
+authority, and they say evil things about the glorious ones.
+\ts\*
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (milestone
+      (milestoneTag))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneTag))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneTag))))))
+
+================================================================================
+ts milestone w/ attributes
+================================================================================
+\id JUD
+\c 1
+\p
+\v 1 some prior text
+\ts-s |sid="ts_JUD_5-6"\*
+\p
+\v 5 Now I wish to remind you, although you know everything, that the Lord once saved a
+people out of the land of Egypt, but that afterward he destroyed those who did not believe.
+\v 6 And angels who did not keep to their own principality, but left their proper dwelling
+place—God has kept them in everlasting chains in darkness for the judgment of the
+great day.
+\ts-e |eid="ts_JUD_5-6"\*
+\ts-s |sid="ts_JUD_7-8"\*
+\v 7 It is just like Sodom and Gomorrah and the cities around them, which in a similar way
+gave themselves over to fornication and pursued unnatural desires. They were given as
+examples of those who suffer the punishment of eternal fire.
+\v 8 Yet in the same way these also pollute their bodies in their dreams, and they reject
+authority, and they say evil things about the glorious ones.
+\ts-e |eid="ts_JUD_7-8"\*
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneStartTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneEndTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))
+        (verseText
+          (text))
+        (milestone
+          (milestoneStartTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (milestone
+          (milestoneEndTag)
+          (msAttribute
+            (milestoneAttributeName)
+            (attributeValue)))))))

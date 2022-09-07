@@ -1,0 +1,43 @@
+name: PyPI Publish
+
+on:
+  # [push]
+  workflow_dispatch:
+  release:
+    types: [published]
+
+jobs:
+  build_wheels:
+    name: Build wheels on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-20.04, windows-2019, macos-11]
+        # os: [ubuntu-20.04]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node and npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+      - name: Build the tree-sitter parser
+        run: |
+          cd tree-sitter-usfm3
+          npm install .
+          ./node_modules/.bin/tree-sitter generate
+
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.9.0
+        env:
+          CIBW_BEFORE_BUILD: >
+              python -m pip install tree-sitter==0.20.0 &&
+              python python-usfm-parser/src/grammar_rebuild.py tree-sitter-usfm3 python-usfm-parser/src/usfm_grammar/my-languages.so
+        with:
+          package-dir: python-usfm-parser
+          output-dir: python-usfm-parser/wheelhouse
+          config-file: "python-usfm-parser/pyproject.toml"
+
+      - uses: actions/upload-artifact@v3
+        with:
+          path: python-usfm-parser/wheelhouse/*.whl

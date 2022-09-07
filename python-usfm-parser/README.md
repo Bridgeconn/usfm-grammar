@@ -1,7 +1,7 @@
 # USFM-Grammar
 
 The python library that facilitates
-* Parsing and validation of USFM files using `tree-sitter-usfm`
+* Parsing and validation of USFM files using `tree-sitter-usfm3`
 * Conversion of USFM files to other formats (USX, dict, list etc)
 * Extraction of specific contents from USFM files like scripture alone(clean verses), notes (footnotes, cross-refs) etc
 
@@ -11,6 +11,8 @@ Built on python 3.10
 
 `pip install usfm-grammar`
 
+This requires a compiler. On Windows, Microsoft Visual C++ 14.0 or above is required. 
+It is recommended that you update `pip`, `setuptools` and `wheel`.
 
 
 ## Usage
