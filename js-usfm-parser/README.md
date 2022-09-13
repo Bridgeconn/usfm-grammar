@@ -45,9 +45,11 @@ For the time being use the bottom portion of the script `usfm-grammar/js-usfm-pa
 
 This JS module is supposed to copy all the fucntionalities available in the [python module](../python-usfm-parser). Refer the python script `python-usfm-parser/src/usfm_grammar/usfm_parser.py` and rewrite the functionalities in it to JS in the `usfm-grammar/js-usfm-parser/usfm_parser.js` file.s
 
+For knowing the available APIs and syntaxes of tree-sitter(`node-tree-sitter`) library, refer the [tests in their git repo](https://github.com/tree-sitter/node-tree-sitter/tree/master/test). They will have corresponding implementations for the fuctionalities we have used from their python library(`py-tree-sitter`).
+
 5. Contribute back
 
 The following development practices are recommended to be able to contribute back to the main code base
 - update from upstream `git pull --rebase upstream version3`
-- commit local changes and push to your github repo
+- commit local changes and push to your github repo(` git push origin <branch-name>`)
 - send PR from your repo to `version-3` branch of base repo

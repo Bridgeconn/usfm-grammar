@@ -1,0 +1,17 @@
+<usx version="3.0">
+  <book code="JHN" style="id" />
+  <chapter number="1" style="c" sid="JHN 1" />
+  <para style="s1">The Preaching of John the Baptist</para>
+  <para style="r">(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)</para>
+  <para style="p">
+    <verse number="1" style="v" sid="JHN 1:1" />This is the Good News about Jesus Christ, the Son of God. <verse eid="JHN 1:1" /><verse number="2" style="v" sid="JHN 1:2" />It began as the prophet Isaiah had written:</para>
+  <para style="q1" vid="JHN 1:2">“God said, ‘I will send my messenger ahead of you</para>
+  <para style="q2" vid="JHN 1:2">to open the way for you.’<verse eid="JHN 1:2" /></para>
+  <para style="q1">
+    <verse number="3" style="v" sid="JHN 1:3" />Someone is shouting in the desert,</para>
+  <para style="q2" vid="JHN 1:3">‘Get the road ready for the Lord;</para>
+  <para style="q2" vid="JHN 1:3">make a straight path for him to travel!’”<verse eid="JHN 1:3" /></para>
+  <para style="p">
+    <verse number="4" style="v" sid="JHN 1:4" />So John appeared in the desert, baptizing and preaching. “Turn away from your sins and be baptized,” he told the people, “and God will forgive your sins.”<verse eid="JHN 1:4" /></para>
+  <chapter eid="JHN 1" />
+</usx>
