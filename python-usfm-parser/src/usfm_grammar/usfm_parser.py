@@ -2,6 +2,7 @@
 
 from enum import Enum
 from importlib import resources
+import re
 
 from tree_sitter import Language, Parser
 from lxml import etree
@@ -293,6 +294,16 @@ class USFMParser():
         self.usfm_bytes = None
         self.syntax_tree = None
         self.errors = None
+        self.warnings = []
+
+        # Some basic sanity checks
+        lower_case_book_code = re.compile(r'^\\id ([a-z0-9][a-z][a-z])')
+        if re.match(lower_case_book_code, self.usfm):
+            self.warnings.append("Found Book Code in lower case")
+            found_book_code = re.match(lower_case_book_code, self.usfm).group(1)
+            upper_book_code = found_book_code.upper()
+            self.usfm = self.usfm.replace(found_book_code, upper_book_code, 1)
+
 
         self.usfm_bytes = bytes(self.usfm, "utf8")
         tree = parser.parse(self.usfm_bytes)
@@ -312,115 +323,120 @@ class USFMParser():
 
     def to_dict(self, filt=Filter.SCRIPTURE_BCV.value):
         '''Converts the syntax tree from class as a dict in python, convertable to JSON'''
-        if filt in [Filter.SCRIPTURE_BCV.value, Filter.NOTES.value, Filter.NOTES_TEXT.value,
-            Filter.SCRIPTURE_PARAGRAPHS.value, None]:
-            dict_output = {}
-            captures = bookcode_query.captures(self.syntax_tree)
-            cap = captures[0]
-            dict_output['book'] = {'bookcode': self.usfm_bytes[cap[0].start_byte:
-                                    cap[0].end_byte].decode('utf-8')}
-            dict_output['book']['chapters'] = []
-            captures = chapter_query.captures(self.syntax_tree)
-            for cap in captures:
-                chap_captures = chapternum_query.captures(cap[0])
-                ccap= chap_captures[0]
-                dict_output['book']['chapters'].append({"chapterNumber":
-                    self.usfm_bytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
-                    "contents":[]})
-                match filt:
-                    case Filter.SCRIPTURE_BCV.value | None:
-                        # query for just the chapter, verse and text nodes from the syntax_tree
-                        versenum_captures = versenum_query.captures(cap[0])
-                        versetext_captures = versetext_query.captures(cap[0])
-                        combined = {item[0].start_byte: item for item in\
-                                        versenum_captures+versetext_captures}
-                        sorted_combined = [combined[i] for i in  sorted(combined)]
-                        for vcap in sorted_combined:
-                            match vcap:
-                                case (vnode, "verse"):
+        try:
+            if filt in [Filter.SCRIPTURE_BCV.value, Filter.NOTES.value, Filter.NOTES_TEXT.value,
+                Filter.SCRIPTURE_PARAGRAPHS.value, None]:
+                dict_output = {}
+                captures = bookcode_query.captures(self.syntax_tree)
+                cap = captures[0]
+                dict_output['book'] = {'bookcode': self.usfm_bytes[cap[0].start_byte:
+                                        cap[0].end_byte].decode('utf-8')}
+                dict_output['book']['chapters'] = []
+                captures = chapter_query.captures(self.syntax_tree)
+                for cap in captures:
+                    chap_captures = chapternum_query.captures(cap[0])
+                    ccap= chap_captures[0]
+                    dict_output['book']['chapters'].append({"chapterNumber":
+                        self.usfm_bytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
+                        "contents":[]})
+                    match filt:
+                        case Filter.SCRIPTURE_BCV.value | None:
+                            # query for just the chapter, verse and text nodes from the syntax_tree
+                            versenum_captures = versenum_query.captures(cap[0])
+                            versetext_captures = versetext_query.captures(cap[0])
+                            combined = {item[0].start_byte: item for item in\
+                                            versenum_captures+versetext_captures}
+                            sorted_combined = [combined[i] for i in  sorted(combined)]
+                            for vcap in sorted_combined:
+                                match vcap:
+                                    case (vnode, "verse"):
+                                        dict_output['book']['chapters'][-1]["contents"].append(
+                                            {"verseNumber":self.usfm_bytes[vnode.start_byte:
+                                                vnode.end_byte].decode('utf-8').strip(),
+                                             "verseText":""})
+                                    case (vnode, "verse-text"):
+                                        text_captures = text_query.captures(vnode)
+                                        text_val = "".join([self.usfm_bytes[tcap[0].start_byte:
+                                                    tcap[0].end_byte].decode('utf-8').replace("\n", " ")
+                                                        for tcap in text_captures])
+                                        dict_output['book']['chapters'][-1]['contents'][-1]['verseText'] += text_val
+                        case Filter.NOTES.value | Filter.NOTES_TEXT.value:
+                            # query for just the chapter, verse and text nodes from the syntax_tree
+                            versenum_captures = versenum_query.captures(cap[0])
+                            notes_captures = notes_query.captures(cap[0])
+                            if len(notes_captures) == 0:
+                                continue
+                            combined = {item[0].start_byte: item for item in versenum_captures+notes_captures}
+                            sorted_combined = [combined[i] for i in  sorted(combined)]
+                            for index,vcap in enumerate(sorted_combined):
+                                if vcap[1] == "verse" and \
+                                    index+1 !=len(sorted_combined) and sorted_combined[index+1][1] =="note":
+                                    # need to add a verse only if it has notes
                                     dict_output['book']['chapters'][-1]["contents"].append(
-                                        {"verseNumber":self.usfm_bytes[vnode.start_byte:
-                                            vnode.end_byte].decode('utf-8').strip(),
-                                         "verseText":""})
-                                case (vnode, "verse-text"):
-                                    text_captures = text_query.captures(vnode)
-                                    text_val = "".join([self.usfm_bytes[tcap[0].start_byte:
-                                                tcap[0].end_byte].decode('utf-8').replace("\n", " ")
-                                                    for tcap in text_captures])
-                                    dict_output['book']['chapters'][-1]['contents'][-1]['verseText'] += text_val
-                    case Filter.NOTES.value | Filter.NOTES_TEXT.value:
-                        # query for just the chapter, verse and text nodes from the syntax_tree
-                        versenum_captures = versenum_query.captures(cap[0])
-                        notes_captures = notes_query.captures(cap[0])
-                        if len(notes_captures) == 0:
-                            continue
-                        combined = {item[0].start_byte: item for item in versenum_captures+notes_captures}
-                        sorted_combined = [combined[i] for i in  sorted(combined)]
-                        for index,vcap in enumerate(sorted_combined):
-                            if vcap[1] == "verse" and \
-                                index+1 !=len(sorted_combined) and sorted_combined[index+1][1] =="note":
-                                # need to add a verse only if it has notes
-                                dict_output['book']['chapters'][-1]["contents"].append(
-                                    {"verseNumber":self.usfm_bytes[vcap[0].start_byte:
-                                        vcap[0].end_byte].decode('utf-8').strip(),
-                                     "notes":[]})
-                            elif vcap[1] == "note":
-                                note_type = vcap[0].type
-                                if filt == Filter.NOTES.value:
-                                    note_details = node_2_dict(vcap[0], self.usfm_bytes)
-                                elif filt == Filter.NOTES_TEXT.value:
-                                    notetext_captures = notestext_query.captures(vcap[0])
-                                    note_details = "|".join([self.usfm_bytes[ncap[0].start_byte:
-                                                ncap[0].end_byte].decode('utf-8').strip().replace("\n","")\
-                                                for ncap in notetext_captures])
-                                dict_output['book']['chapters'][-1]['contents'][-1]['notes'].append(
-                                                            {note_type: note_details})
-                    case Filter.SCRIPTURE_PARAGRAPHS.value:
-                        # titles and section information, paragraph breaks
-                        # and also structuring like lists and tables
-                        # along with verse text and versenumber details at the lowest level
-                        title_captures = title_query.captures(cap[0])
-                        para_captures = para_query.captures(cap[0])
-                        combined_tit_paras = {item[0].start_byte: item \
-                                        for item in title_captures+para_captures}
-                        sorted_tit_paras = [combined_tit_paras[i] for i in  sorted(combined_tit_paras)]
-                        for comp in sorted_tit_paras:
-                            match comp:
-                                case (comp_node, "title"):
-                                    text_captures = text_query.captures(comp_node)
-                                    title_texts = []
-                                    for tcap in text_captures:
-                                        title_texts.append(self.usfm_bytes[tcap[0].start_byte:
-                                                                tcap[0].end_byte].decode('utf-8'))
-                                    dict_output['book']['chapters'][-1]['contents'].append(
-                                        {"title":" ".join(title_texts).strip()})
-                                case (comp_node, "para"):
-                                    comp_type = comp_node.type
-                                    versenum_captures = versenum_query.captures(comp_node)
-                                    versetext_captures = versetext_query.captures(comp_node)
-                                    combined = {item[0].start_byte: item \
-                                            for item in versenum_captures+versetext_captures}
-                                    sorted_combined = [combined[i] for i in  sorted(combined)]
-                                    inner_contents = []
-                                    for vcap in sorted_combined:
-                                        match vcap:
-                                            case (vnode, "verse"):
-                                                inner_contents.append(
-                                                    {"verseNumber":self.usfm_bytes[vnode.start_byte:
-                                                        vnode.end_byte].decode('utf-8').strip(),
-                                                     "verseText":""})
-                                            case (vnode, "verse-text"):
-                                                text_captures = text_query.captures(vnode)
-                                                text_val = "".join([self.usfm_bytes[tcap[0].start_byte:
-                                                        tcap[0].end_byte].decode('utf-8').replace("\n", " ")
-                                                                    for tcap in text_captures])
-                                                if len(inner_contents) == 0:
-                                                    inner_contents.append({"verseText":""})
-                                                inner_contents[-1]['verseText'] += text_val
+                                        {"verseNumber":self.usfm_bytes[vcap[0].start_byte:
+                                            vcap[0].end_byte].decode('utf-8').strip(),
+                                         "notes":[]})
+                                elif vcap[1] == "note":
+                                    note_type = vcap[0].type
+                                    if filt == Filter.NOTES.value:
+                                        note_details = node_2_dict(vcap[0], self.usfm_bytes)
+                                    elif filt == Filter.NOTES_TEXT.value:
+                                        notetext_captures = notestext_query.captures(vcap[0])
+                                        note_details = "|".join([self.usfm_bytes[ncap[0].start_byte:
+                                                    ncap[0].end_byte].decode('utf-8').strip().replace("\n","")\
+                                                    for ncap in notetext_captures])
+                                    dict_output['book']['chapters'][-1]['contents'][-1]['notes'].append(
+                                                                {note_type: note_details})
+                        case Filter.SCRIPTURE_PARAGRAPHS.value:
+                            # titles and section information, paragraph breaks
+                            # and also structuring like lists and tables
+                            # along with verse text and versenumber details at the lowest level
+                            title_captures = title_query.captures(cap[0])
+                            para_captures = para_query.captures(cap[0])
+                            combined_tit_paras = {item[0].start_byte: item \
+                                            for item in title_captures+para_captures}
+                            sorted_tit_paras = [combined_tit_paras[i] for i in  sorted(combined_tit_paras)]
+                            for comp in sorted_tit_paras:
+                                match comp:
+                                    case (comp_node, "title"):
+                                        text_captures = text_query.captures(comp_node)
+                                        title_texts = []
+                                        for tcap in text_captures:
+                                            title_texts.append(self.usfm_bytes[tcap[0].start_byte:
+                                                                    tcap[0].end_byte].decode('utf-8'))
+                                        dict_output['book']['chapters'][-1]['contents'].append(
+                                            {"title":" ".join(title_texts).strip()})
+                                    case (comp_node, "para"):
+                                        comp_type = comp_node.type
+                                        versenum_captures = versenum_query.captures(comp_node)
+                                        versetext_captures = versetext_query.captures(comp_node)
+                                        combined = {item[0].start_byte: item \
+                                                for item in versenum_captures+versetext_captures}
+                                        sorted_combined = [combined[i] for i in  sorted(combined)]
+                                        inner_contents = []
+                                        for vcap in sorted_combined:
+                                            match vcap:
+                                                case (vnode, "verse"):
+                                                    inner_contents.append(
+                                                        {"verseNumber":self.usfm_bytes[vnode.start_byte:
+                                                            vnode.end_byte].decode('utf-8').strip(),
+                                                         "verseText":""})
+                                                case (vnode, "verse-text"):
+                                                    text_captures = text_query.captures(vnode)
+                                                    text_val = "".join([self.usfm_bytes[tcap[0].start_byte:
+                                                            tcap[0].end_byte].decode('utf-8').replace("\n", " ")
+                                                                        for tcap in text_captures])
+                                                    if len(inner_contents) == 0:
+                                                        inner_contents.append({"verseText":""})
+                                                    inner_contents[-1]['verseText'] += text_val
 
-                                    dict_output['book']['chapters'][-1]["contents"].append(
-                                                                        {comp_type:inner_contents})
+                                        dict_output['book']['chapters'][-1]["contents"].append(
+                                                                            {comp_type:inner_contents})
             return dict_output
+        except Exception as exe:
+            raise Exception("Unable to do the conversion. Check for errors in USFMParser.errors")\
+                from exe
+
         if filt == Filter.ALL.value:
             # directly converts the syntax_tree to JSON/dict'''
             return node_2_dict(self.syntax_tree, self.usfm_bytes)
