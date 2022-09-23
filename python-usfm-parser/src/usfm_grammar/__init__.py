@@ -1,4 +1,4 @@
-# __init__.py
+'''Entry point of the package with its public values'''
 
 from usfm_grammar import usfm_parser
 
