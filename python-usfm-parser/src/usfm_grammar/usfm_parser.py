@@ -329,7 +329,7 @@ class USFMParser():
                 dict_output = {}
                 captures = bookcode_query.captures(self.syntax_tree)
                 cap = captures[0]
-                dict_output['book'] = {'bookcode': self.usfm_bytes[cap[0].start_byte:
+                dict_output['book'] = {'bookCode': self.usfm_bytes[cap[0].start_byte:
                                         cap[0].end_byte].decode('utf-8')}
                 dict_output['book']['chapters'] = []
                 captures = chapter_query.captures(self.syntax_tree)
@@ -448,7 +448,7 @@ class USFMParser():
             case Filter.SCRIPTURE_BCV.value | None:
                 scripture_json = self.to_dict(Filter.SCRIPTURE_BCV.value)
                 table_output = [["Book","Chapter","Verse","Text"]]
-                book = scripture_json['book']['bookcode']
+                book = scripture_json['book']['bookCode']
                 for chap in scripture_json['book']['chapters']:
                     chapter = chap['chapterNumber']
                     for verse in chap['contents']:
@@ -458,7 +458,7 @@ class USFMParser():
             case Filter.NOTES.value:
                 notes_json = self.to_dict(Filter.NOTES_TEXT.value)
                 table_output = [["Book","Chapter","Verse","Type", "Note"]]
-                book = notes_json['book']['bookcode']
+                book = notes_json['book']['bookCode']
                 for chap in notes_json['book']['chapters']:
                     chapter = chap['chapterNumber']
                     for verse in chap['contents']:
@@ -471,7 +471,7 @@ class USFMParser():
             case Filter.SCRIPTURE_PARAGRAPHS.value:
                 notes_json = self.to_dict(Filter.SCRIPTURE_PARAGRAPHS.value)
                 table_output = [["Book","Chapter","Type", "Contents"]]
-                book = notes_json['book']['bookcode']
+                book = notes_json['book']['bookCode']
                 for chap in notes_json['book']['chapters']:
                     chapter = chap['chapterNumber']
                     for comp in chap['contents']:
