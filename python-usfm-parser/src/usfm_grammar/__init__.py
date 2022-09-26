@@ -1,4 +1,4 @@
-# __init__.py
+'''Entry point of the package with its public values'''
 
 from usfm_grammar import usfm_parser
 
@@ -6,4 +6,4 @@ Filter = usfm_parser.Filter
 Format = usfm_parser.Format
 USFMParser = usfm_parser.USFMParser
 
-__version__ = "3.0.0-alpha.4"
+__version__ = "3.0.0-alpha.5"
