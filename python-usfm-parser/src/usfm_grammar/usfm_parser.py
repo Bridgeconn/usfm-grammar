@@ -15,6 +15,14 @@ class Filter(str, Enum):
     NOTES = "notes"
     NOTES_TEXT = "note-text"
 
+class Filter_new(str, Enum):
+    '''Defines the values of filter options'''
+    BOOK_HEADERS = "book-header-introduction-markers"
+    PARAS_N_TITLES = 'paragraphs-quotes-lists-tables-sectionheadings'
+    SCRIPTURE_TEXT = 'verse-texts'
+    NOTES = "footnotes-and-crossrefs"
+    WORD_EMBEDDINGS = "character-level-markers"
+
 class Format(str, Enum):
     '''Defines the valid values for output formats'''
     JSON = "json"
@@ -49,6 +57,9 @@ CHAR_STYLE_MARKERS = [ "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord"
 NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
 DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt"}
 TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
+
+ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
+                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS
 
 def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''check each node and based on the type convert to corresponding xml element'''
@@ -237,10 +248,90 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
     else:
         raise Exception("Encountered unknown element ", str(node))
 
+def node_2_dict_chapter(chapter_node, usfm_bytes):
+    '''extract and format chapter head items'''
+    chapter_output = {}
+    chapter_data_cap = chapter_data_query.captures(chapter_node)
+    for chap_data in chapter_data_cap:
+        match chap_data:
+            case (node, "chapter-number"):
+                chapter_output['chapterNumber'] = usfm_bytes[\
+                    node.start_byte:node.end_byte].decode('utf-8').strip()
+            case (node, "cl-text"):
+                chapter_output['cl'] = usfm_bytes[node.start_byte:
+                                    node.end_byte].decode('utf-8').strip()
+            case (node, "ca-number"):
+                chapter_output['ca'] = usfm_bytes[node.start_byte:
+                                    node.end_byte].decode('utf-8').strip()
+            case (node, "cp-text"):
+                chapter_output['cp'] = usfm_bytes[node.start_byte:
+                                    node.end_byte].decode('utf-8').strip()
+    return chapter_output
 
 
+def node_2_dict_verse(verse_node, usfm_bytes):
+    '''extract and format verse head items'''
+    result = {}
+    verse_caps = verse_data_query.captures(verse_node)
+    for v_cap in verse_caps:
+        match v_cap:
+            case (in_node, "verse-number"):
+                result['verseNumber'] = usfm_bytes[\
+                    in_node.start_byte:in_node.end_byte].decode('utf-8').strip()
+            case (in_node, "va-number"):
+                result['va'] = usfm_bytes[\
+                    in_node.start_byte:in_node.end_byte].decode('utf-8').strip()
+            case (in_node, "vp-text"):
+                result['vp'] = usfm_bytes[\
+                    in_node.start_byte:in_node.end_byte].decode('utf-8').strip()
+    return result
 
-
+def node_2_dict_new(node, usfm_bytes):
+    '''recursive function converting a syntax tree node and its children to dictionary'''
+    if node.type in ANY_VALID_MARKER:
+        marker_name = node.type
+        content = ""
+        tag_node = None
+        text_node = None
+        closing_node = None
+        for child in node.children:
+            if child.type.endswith("Tag"):
+                tag_node = child
+            if child.type == "text":
+                text_node = child
+            if child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
+                closing_node = child
+        if tag_node is not None:
+            marker_name = usfm_bytes[\
+                tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
+        if text_node is not None:
+            content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip() 
+        result = {marker_name:content}
+        if closing_node is not None:
+            result['closing'] = usfm_bytes[\
+                closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip()
+        return result
+    if node.type.endswith("Block"):
+        result = []
+        for child in node.children:
+            result.append(node_2_dict_new(child, usfm_bytes))
+        return result
+    if node.type == "paragraph":
+        result = {node.children[0].type: []}
+        for child in node.children[0].children[1:]:
+            result[node.children[0].type].append(node_2_dict_new(child, usfm_bytes))
+        return result
+    if node.type == "v":
+        return node_2_dict_verse(node, usfm_bytes)
+    if node.type == 'verseText':
+        result = []
+        for child in node.children:
+            if child.type == "text":
+                result.append({'verseText':usfm_bytes[\
+                        child.start_byte:child.end_byte].decode('utf-8').strip()})
+            else:
+                result.append(node_2_dict_new(child,usfm_bytes))
+        return result
 
 def node_2_dict(node, usfm_bytes):
     '''recursive function converting a syntax tree node and its children to dictionary'''
@@ -263,6 +354,29 @@ def node_2_dict(node, usfm_bytes):
                     str(usfm_bytes[node.start_byte:node.end_byte], 'utf-8')}
     return item
 
+
+def get_captured_node(all_captures, key):
+    '''Filter out only a specific type of node from query results'''
+    matches = []
+    for cap in all_captures:
+        if cap[1] == key:
+            matches.append(cap[0])
+    return matches
+
+######## Newly formed queries#############
+
+id_query = USFM_LANGUAGE.query('''(File (book (id (bookcode) @book-code (description) @desc)))''')
+
+chapter_data_query = USFM_LANGUAGE.query('''(c (chapterNumber) @chapter-number)
+                                            (cl (text) @cl-text)
+                                            (cp (text) @cp-text)
+                                            (ca (chapterNumber) @ca-number)''')
+
+verse_data_query = USFM_LANGUAGE.query('''(v (verseNumber) @verse-number)
+                                            (vp (text) @vp-text)
+                                            (va (verseNumber) @va-number)''')
+
+######### Old queries ############
 
 bookcode_query = USFM_LANGUAGE.query('''(File (book (id (bookcode) @book-code)))''')
 
@@ -320,6 +434,48 @@ class USFMParser():
     def to_syntax_tree(self):
         '''gives the syntax tree from class, as a string'''
         return self.syntax_tree.sexp()
+
+    def to_dict_new(self, filt=None):
+        '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
+        dict_output = {"book":{}}
+        if filt is None or filt == []:
+            filt = list(Filter_new)
+        try:
+            for child in self.syntax_tree.children:
+                match child.type:
+                    case "book":
+                        id_captures = id_query.captures(child)
+                        for id_cap in id_captures:
+                            match id_cap:
+                                case (node, "book-code"):
+                                    dict_output['book']['bookCode'] = self.usfm_bytes[\
+                                        node.start_byte:node.end_byte].decode('utf-8').strip()
+                                case (node, "desc"):
+                                    dict_output['book']['fileDescription'] = self.usfm_bytes[\
+                                        node.start_byte:node.end_byte].decode('utf-8').strip()
+                    case "chapter":
+                        if "chapters" not in dict_output['book']:
+                            dict_output['book']['chapters'] = [] 
+
+                        chapter_output = node_2_dict_chapter(child, self.usfm_bytes)
+
+                        chapter_output['contents'] = []
+                        for inner_child in child.children:
+                            if inner_child.type not in ['chapterNumber','cl','ca','cp','cd','c']:
+                                chapter_output['contents'].append(
+                                    node_2_dict_new(inner_child, self.usfm_bytes))
+                        dict_output['book']['chapters'].append(chapter_output)
+                    case _:
+                        if "headers" not in dict_output['book']:
+                            dict_output['book']['headers'] = []
+                        if Filter_new.BOOK_HEADERS in filt:
+                            dict_output['book']['headers'].append(
+                                node_2_dict_new(child, self.usfm_bytes))
+        except Exception as exe:
+            raise Exception("Unable to do the conversion. "+\
+                "Check for errors in <USFMParser obj>.errors") from exe
+        return dict_output
+
 
     def to_dict(self, filt=Filter.SCRIPTURE_BCV.value):
         '''Converts the syntax tree from class as a dict in python, convertable to JSON'''

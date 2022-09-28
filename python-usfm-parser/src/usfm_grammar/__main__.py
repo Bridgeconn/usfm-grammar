@@ -5,7 +5,7 @@ import json
 import sys
 from lxml import etree
 
-from usfm_grammar import USFMParser, Filter, Format
+from usfm_grammar import USFMParser, Filter, Format, Filter_new
 
 def main():
     '''handles the command line requests'''
@@ -45,7 +45,7 @@ def main():
 
     match output_format:
         case Format.JSON:
-            dict_output = my_parser.to_dict(filt = output_filter)
+            dict_output = my_parser.to_dict_new()
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
             table_output = my_parser.to_list(filt = output_filter)
