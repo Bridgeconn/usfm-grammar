@@ -248,6 +248,8 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
     else:
         raise Exception("Encountered unknown element ", str(node))
 
+###########VVVVVVVVV Logics for syntax-tree to dict conversions VVVVVV ##############
+
 def node_2_dict_chapter(chapter_node, usfm_bytes):
     '''extract and format chapter head items'''
     chapter_output = {}
@@ -286,31 +288,82 @@ def node_2_dict_verse(verse_node, usfm_bytes):
                     in_node.start_byte:in_node.end_byte].decode('utf-8').strip()
     return result
 
+def node_2_dict_attrib(attrib_node, usfm_bytes, parent_type):
+    '''extract and format attributes and values, also filling out default attributes'''
+    val_query = USFM_LANGUAGE.query("((attributeValue) @attrib-val)")
+    if attrib_node.type == 'defaultAttribute':
+        attrib_name = DEFAULT_ATTRIB_MAP[parent_type]
+    elif attrib_node.type == "customAttribute":
+        attrib_name_node = USFM_LANGUAGE.query(
+            "((customAttributeName) @attr-name)").captures(attrib_node)[0][0]
+        attrib_name = usfm_bytes[\
+            attrib_name_node.start_byte:attrib_name_node.end_byte].decode('utf-8').strip()
+    elif attrib_node.type == "msAttribute":
+        attrib_name_node = USFM_LANGUAGE.query(
+            "((milestoneAttributeName) @attr-name)").captures(attrib_node)[0][0]
+        attrib_name = usfm_bytes[\
+            attrib_name_node.start_byte:attrib_name_node.end_byte].decode('utf-8').strip()
+    else:
+        attrib_name = attrib_node.children[0].type
+    val_node = val_query.captures(attrib_node)[0]
+    val = usfm_bytes[val_node[0].start_byte:val_node[0].end_byte].decode('utf-8').strip()
+    return {attrib_name:val}
+
+def node_2_dict_milestone(ms_node, usfm_bytes):
+    '''extract and format milestone nodes'''
+    attribs = []
+    for child in ms_node.children:
+        if child.type.endswith("Tag"):
+            ms_name_node = child
+        elif child.type.endswith("Attribute"):
+            attribs.append(node_2_dict_attrib(child, usfm_bytes, ms_node.type))
+    ms_name = usfm_bytes[\
+            ms_name_node.start_byte:ms_name_node.end_byte].decode('utf-8').strip().replace("\\","")
+    result = {'milestone':ms_name}
+    if len(attribs) > 0:
+        result['attributes'] = attribs
+    return result
+
+def node_2_dict_generic(node, usfm_bytes):
+    '''The general rules to cover the common marker types'''
+    marker_name = node.type
+    content = ""
+    tag_node = None
+    text_node = None
+    closing_node = None
+    attribs = []
+    for child in node.children:
+        if child.type.endswith("Tag"):
+            tag_node = child
+        elif child.type == "text":
+            text_node = child
+        elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
+            closing_node = child
+        elif child.type.endswith("Attribute"):
+            attribs.append(node_2_dict_attrib(child, usfm_bytes, node.type))
+        else:
+            inner_cont = node_2_dict_new(child, usfm_bytes)
+            if inner_cont is not None:
+                content = inner_cont
+            # else:
+            #     print("igoring:",child)
+    if tag_node is not None:
+        marker_name = usfm_bytes[\
+            tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
+    if text_node is not None:
+        content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip() 
+    result = {marker_name:content}
+    if len(attribs) > 0:
+        result['attributes'] = attribs
+    if closing_node is not None:
+        result['closing'] = usfm_bytes[\
+            closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip()
+    return result
+
 def node_2_dict_new(node, usfm_bytes):
     '''recursive function converting a syntax tree node and its children to dictionary'''
     if node.type in ANY_VALID_MARKER:
-        marker_name = node.type
-        content = ""
-        tag_node = None
-        text_node = None
-        closing_node = None
-        for child in node.children:
-            if child.type.endswith("Tag"):
-                tag_node = child
-            if child.type == "text":
-                text_node = child
-            if child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
-                closing_node = child
-        if tag_node is not None:
-            marker_name = usfm_bytes[\
-                tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
-        if text_node is not None:
-            content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip() 
-        result = {marker_name:content}
-        if closing_node is not None:
-            result['closing'] = usfm_bytes[\
-                closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip()
-        return result
+        return node_2_dict_generic(node, usfm_bytes)
     if node.type.endswith("Block"):
         result = []
         for child in node.children:
@@ -332,6 +385,26 @@ def node_2_dict_new(node, usfm_bytes):
             else:
                 result.append(node_2_dict_new(child,usfm_bytes))
         return result
+    if node.type == "list":
+        result = {'list':[]}
+        for child in node.children:
+            result['list'].append(node_2_dict_new(child, usfm_bytes))
+        return result
+    if node.type == "table":
+        result = {"table":[]}
+        rows = USFM_LANGUAGE.query("((tr) @row)").captures(node)
+        for row in rows:
+            cells = []
+            for child in row[0].children[1:]:
+                cells.append(node_2_dict_new(child, usfm_bytes))
+            result['table'].append({"tr":cells})
+        return result
+    if node.type == "milestone":
+        return node_2_dict_milestone(node, usfm_bytes)
+    return None
+
+###########^^^^^^^^^^^ Logics for syntax-tree to dict conversions ^^^^^^^^^ ##############
+
 
 def node_2_dict(node, usfm_bytes):
     '''recursive function converting a syntax tree node and its children to dictionary'''
