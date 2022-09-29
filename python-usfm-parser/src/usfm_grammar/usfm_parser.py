@@ -22,6 +22,8 @@ class Filter_new(str, Enum):
     SCRIPTURE_TEXT = 'verse-texts'
     NOTES = "footnotes-and-crossrefs"
     WORD_EMBEDDINGS = "character-level-markers"
+    MILESTONES = "milestones-namespaces"
+    STUDY_BIBLE = "sidebars-extended-contents"
 
 class Format(str, Enum):
     '''Defines the valid values for output formats'''
@@ -438,7 +440,7 @@ def get_captured_node(all_captures, key):
 
 ######## Newly formed queries#############
 
-id_query = USFM_LANGUAGE.query('''(File (book (id (bookcode) @book-code (description) @desc)))''')
+id_query = USFM_LANGUAGE.query('''(book (id (bookcode) @book-code (description) @desc))''')
 
 chapter_data_query = USFM_LANGUAGE.query('''(c (chapterNumber) @chapter-number)
                                             (cl (text) @cl-text)
@@ -524,8 +526,10 @@ class USFMParser():
                                     dict_output['book']['bookCode'] = self.usfm_bytes[\
                                         node.start_byte:node.end_byte].decode('utf-8').strip()
                                 case (node, "desc"):
-                                    dict_output['book']['fileDescription'] = self.usfm_bytes[\
+                                    val = self.usfm_bytes[\
                                         node.start_byte:node.end_byte].decode('utf-8').strip()
+                                    if val != "":
+                                        dict_output['book']['fileDescription'] = val
                     case "chapter":
                         if "chapters" not in dict_output['book']:
                             dict_output['book']['chapters'] = [] 
