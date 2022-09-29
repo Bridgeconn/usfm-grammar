@@ -3,9 +3,20 @@
 import argparse
 import json
 import sys
+from enum import Enum
 from lxml import etree
 
-from usfm_grammar import USFMParser, Filter, Format, Filter_new
+from usfm_grammar import USFMParser, Filter, Format
+
+class Filter_CLI(str, Enum):
+    '''Defines the values of filter options'''
+    BOOK_HEADERS = "BOOK_HEADERS"
+    PARAS_N_TITLES = 'PARAS_N_TITLES'
+    SCRIPTURE_TEXT = 'SCRIPTURE_TEXT'
+    NOTES = "NOTES"
+    ATTRIBUTES = "ATTRIBUTES"
+    MILESTONES = "MILESTONES"
+    STUDY_BIBLE = "STUDY_BIBLE"
 
 def main():
     '''handles the command line requests'''
@@ -14,12 +25,11 @@ def main():
         "Syntax-tree, JSON, CSV, USX etc.')
     arg_parser.add_argument('infile', type=str, help='input usfm file')
     arg_parser.add_argument('--format', type=str, help='output format',
-                            choices=[Format.JSON.value, Format.CSV.value, Format.USX.value,
-                                        Format.MD.value, Format.ST.value],
+                            choices=[itm.value for itm in Format],
                             default=Format.JSON.value)
     arg_parser.add_argument('--filter', type=str, help='the type of contents to be included',
-                            choices=[Filter.SCRIPTURE_BCV.value, Filter.NOTES.value,
-                            Filter.SCRIPTURE_PARAGRAPHS.value, Filter.ALL.value])
+                            choices=[itm.value for itm in Filter_CLI],
+                            action="append")
     arg_parser.add_argument('--csv_col_sep', type=str,
                             help="column separator or delimiter. Only useful with format=table.",
                             default="\t")
@@ -43,19 +53,38 @@ def main():
         print(f"Errors present:\n\t{err_str}")
         sys.exit(1)
 
+    if output_filter is None:
+        updated_filt = None
+    else:
+        updated_filt = []
+        if Filter_CLI.BOOK_HEADERS in output_filter:
+            updated_filt.append(Filter.BOOK_HEADERS)
+        if Filter_CLI.SCRIPTURE_TEXT in output_filter:
+            updated_filt.append(Filter.SCRIPTURE_TEXT)
+        if Filter_CLI.NOTES in output_filter:
+            updated_filt.append(Filter.NOTES)
+        if Filter_CLI.ATTRIBUTES in output_filter:
+            updated_filt.append(Filter.ATTRIBUTES)
+        if Filter_CLI.PARAS_N_TITLES in output_filter:
+            updated_filt.append(Filter.PARAS_N_TITLES)
+        if Filter_CLI.MILESTONES in output_filter:
+            updated_filt.append(Filter.MILESTONES)
+        if Filter_CLI.STUDY_BIBLE in output_filter:
+            updated_filt.append(Filter.STUDY_BIBLE)
+
     match output_format:
         case Format.JSON:
-            dict_output = my_parser.to_dict_new()
+            dict_output = my_parser.to_dict(filt=updated_filt)
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
-            table_output = my_parser.to_list(filt = output_filter)
+            table_output = my_parser.to_list(filt = updated_filt)
             print(csv_row_sep.join([csv_col_sep.join(row) for row in table_output]))
         case Format.USX:
-            xmlstr = etree.tostring(my_parser.to_usx(filt=output_filter),
+            xmlstr = etree.tostring(my_parser.to_usx(filt=updated_filt),
                 encoding='unicode', pretty_print=True)
             print(xmlstr)
         case Format.MD:
-            print(my_parser.to_markdown(filt = output_filter))
+            print(my_parser.to_markdown(filt = updated_filt))
         case Format.ST:
             print(my_parser.to_syntax_tree())
         case _:

@@ -7,15 +7,8 @@ import re
 from tree_sitter import Language, Parser
 from lxml import etree
 
-class Filter(str, Enum):
-    '''Defines the values of filter option'''
-    ALL = "all"
-    SCRIPTURE_BCV = "scripture-bcv"
-    SCRIPTURE_PARAGRAPHS = "scripture-paragraph"
-    NOTES = "notes"
-    NOTES_TEXT = "note-text"
 
-class Filter_new(str, Enum):
+class Filter(str, Enum):
     '''Defines the values of filter options'''
     BOOK_HEADERS = "book-header-introduction-markers"
     PARAS_N_TITLES = 'paragraphs-quotes-lists-tables-sectionheadings'
@@ -262,6 +255,14 @@ def reduce_nesting(func):
                     result = result[0]
                 elif len(result) == 0:
                     result = None
+                else:
+                    new_list = []
+                    for item in result:
+                        if isinstance(item, list):
+                            new_list += item
+                        else:
+                            new_list.append(item)
+                    result = new_list
             else:
                 break
         return result
@@ -358,10 +359,10 @@ def node_2_dict_generic(node, usfm_bytes, filt):
         elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
             closing_node = child
         elif child.type.endswith("Attribute"):
-            if Filter_new.ATTRIBUTES in filt:
+            if Filter.ATTRIBUTES in filt:
                 attribs.append(node_2_dict_attrib(child, usfm_bytes, node.type))
         else:
-            inner_cont = node_2_dict_new(child, usfm_bytes, filt)
+            inner_cont = node_2_dict(child, usfm_bytes, filt)
             if inner_cont is not None:
                 content.append(inner_cont)
             # else:
@@ -382,47 +383,47 @@ def node_2_dict_generic(node, usfm_bytes, filt):
     return result
 
 @reduce_nesting
-def node_2_dict_new(node, usfm_bytes, filt):
+def node_2_dict(node, usfm_bytes, filt):
     '''recursive function converting a syntax tree node and its children to dictionary'''
     if node.type in ANY_VALID_MARKER:
         return node_2_dict_generic(node, usfm_bytes, filt)
     if node.type == "v":
         return node_2_dict_verse(node, usfm_bytes)
     if node.type == 'verseText':
-        if Filter_new.SCRIPTURE_TEXT in filt:
+        if Filter.SCRIPTURE_TEXT in filt:
             result = []
             for child in node.children:
                 if child.type == "text":
                     result.append({'verseText':usfm_bytes[\
                             child.start_byte:child.end_byte].decode('utf-8').strip()})
                 else:
-                    processed = node_2_dict_new(child,usfm_bytes, filt)
+                    processed = node_2_dict(child,usfm_bytes, filt)
                     if processed is not None:
                         result.append(processed)
             return result
     if node.type.endswith("Block"):
         result = []
         for child in node.children:
-            processed = node_2_dict_new(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None:
                 result.append(processed)
         return result
     if node.type == "paragraph":
         result = {node.children[0].type: []}
         for child in node.children[0].children[1:]:
-            processed = node_2_dict_new(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None:
                 result[node.children[0].type].append(processed)
-        if Filter_new.PARAS_N_TITLES not in filt:
+        if Filter.PARAS_N_TITLES not in filt:
             return list(result.values())
         return result
     if node.type == "poetry":
         result = {"poetry":[]}
         for child in node.children[0].children:
-            processed = node_2_dict_new(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None:
                 result['poetry'].append(processed)
-        if Filter_new.PARAS_N_TITLES not in filt:
+        if Filter.PARAS_N_TITLES not in filt:
             new_result = []
             for block in result['poetry']:
                 val = list(block.values())
@@ -433,10 +434,10 @@ def node_2_dict_new(node, usfm_bytes, filt):
     if node.type == "list":
         result = {'list':[]}
         for child in node.children[0].children:
-            processed = node_2_dict_new(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None:
                 result['list'].append(processed)
-        if Filter_new.PARAS_N_TITLES not in filt:
+        if Filter.PARAS_N_TITLES not in filt:
             new_result = []
             for block in result['list']:
                 val = list(block.values())
@@ -450,11 +451,11 @@ def node_2_dict_new(node, usfm_bytes, filt):
         for row in rows:
             cells = []
             for child in row[0].children[1:]:
-                processed = node_2_dict_new(child,usfm_bytes, filt)
+                processed = node_2_dict(child,usfm_bytes, filt)
                 if processed is not None:
                     cells.append(processed)
             result['table'].append({"tr":cells})
-        if Filter_new.PARAS_N_TITLES not in filt:
+        if Filter.PARAS_N_TITLES not in filt:
             new_result = []
             for row in result['table']:
                 for cell in row["tr"]:
@@ -464,25 +465,25 @@ def node_2_dict_new(node, usfm_bytes, filt):
             return new_result
         return result
     if node.type == "milestone":
-        if Filter_new.MILESTONES in filt:
+        if Filter.MILESTONES in filt:
             return node_2_dict_milestone(node, usfm_bytes)
     if node.type == "title":
-        if Filter_new.PARAS_N_TITLES in filt:
+        if Filter.PARAS_N_TITLES in filt:
             result = []
             for child in node.children:
-                processed = node_2_dict_new(child,usfm_bytes, filt)
+                processed = node_2_dict(child,usfm_bytes, filt)
                 if processed is not None:
                     result.append(processed)
             return result
     if node.type in ['footnote', 'crossref']:
-        if Filter_new.NOTES in filt:
-            return node_2_dict_new(node.children[0], usfm_bytes, filt)
+        if Filter.NOTES in filt:
+            return node_2_dict(node.children[0], usfm_bytes, filt)
     if node.type == 'caller':
         return {"caller": usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()}
     if node.type == "noteText":
         result = []
         for child in node.children:
-            processed = node_2_dict_new(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None :
                 result.append(processed)
         return result
@@ -495,35 +496,6 @@ def node_2_dict_new(node, usfm_bytes, filt):
 ###########^^^^^^^^^^^ Logics for syntax-tree to dict conversions ^^^^^^^^^ ##############
 
 
-def node_2_dict(node, usfm_bytes):
-    '''recursive function converting a syntax tree node and its children to dictionary'''
-    if len(node.children)>0:
-        item = []
-        for child in node.children:
-            val = node_2_dict(child, usfm_bytes)
-            if child.type == val:
-                # pass
-                item.append(child.type)
-            elif isinstance(val, dict) and len(val)==1 and child.type == list(val.keys())[0]:
-                item.append({child.type: val[child.type]})
-            else:
-                item.append({child.type: val})
-    else:
-        if node.type == usfm_bytes[node.start_byte:node.end_byte].decode('utf-8'):
-            item = node.type
-        else:
-            item = {node.type:
-                    str(usfm_bytes[node.start_byte:node.end_byte], 'utf-8')}
-    return item
-
-
-def get_captured_node(all_captures, key):
-    '''Filter out only a specific type of node from query results'''
-    matches = []
-    for cap in all_captures:
-        if cap[1] == key:
-            matches.append(cap[0])
-    return matches
 
 ######## Newly formed queries#############
 
@@ -597,11 +569,11 @@ class USFMParser():
         '''gives the syntax tree from class, as a string'''
         return self.syntax_tree.sexp()
 
-    def to_dict_new(self, filt=None):
+    def to_dict(self, filt=None):
         '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
         dict_output = {"book":{}}
         if filt is None or filt == []:
-            filt = list(Filter_new)
+            filt = list(Filter)
         try:
             for child in self.syntax_tree.children:
                 match child.type:
@@ -626,7 +598,7 @@ class USFMParser():
                         chapter_output['contents'] = []
                         for inner_child in child.children:
                             if inner_child.type not in ['chapterNumber','cl','ca','cp','cd','c']:
-                                processed = node_2_dict_new(inner_child, self.usfm_bytes, filt)
+                                processed = node_2_dict(inner_child, self.usfm_bytes, filt)
                                 if processed is None:
                                     pass
                                 elif isinstance(processed, list):
@@ -635,139 +607,18 @@ class USFMParser():
                                     chapter_output['contents'].append(processed)
                         dict_output['book']['chapters'].append(chapter_output)
                     case _:
-                        if Filter_new.BOOK_HEADERS in filt:
+                        if Filter.BOOK_HEADERS in filt:
                             if "headers" not in dict_output['book']:
                                 dict_output['book']['headers'] = []
                             dict_output['book']['headers'].append(
-                                node_2_dict_new(child, self.usfm_bytes, filt))
+                                node_2_dict(child, self.usfm_bytes, filt))
         except Exception as exe:
             raise Exception("Unable to do the conversion. "+\
                 "Check for errors in <USFMParser obj>.errors") from exe
         return dict_output
 
 
-    def to_dict(self, filt=Filter.SCRIPTURE_BCV.value):
-        '''Converts the syntax tree from class as a dict in python, convertable to JSON'''
-        try:
-            if filt in [Filter.SCRIPTURE_BCV.value, Filter.NOTES.value, Filter.NOTES_TEXT.value,
-                Filter.SCRIPTURE_PARAGRAPHS.value, None]:
-                dict_output = {}
-                captures = bookcode_query.captures(self.syntax_tree)
-                cap = captures[0]
-                dict_output['book'] = {'bookCode': self.usfm_bytes[cap[0].start_byte:
-                                        cap[0].end_byte].decode('utf-8')}
-                dict_output['book']['chapters'] = []
-                captures = chapter_query.captures(self.syntax_tree)
-                for cap in captures:
-                    chap_captures = chapternum_query.captures(cap[0])
-                    ccap= chap_captures[0]
-                    dict_output['book']['chapters'].append({"chapterNumber":
-                        self.usfm_bytes[ccap[0].start_byte:ccap[0].end_byte].decode('utf-8'),
-                        "contents":[]})
-                    match filt:
-                        case Filter.SCRIPTURE_BCV.value | None:
-                            # query for just the chapter, verse and text nodes from the syntax_tree
-                            versenum_captures = versenum_query.captures(cap[0])
-                            versetext_captures = versetext_query.captures(cap[0])
-                            combined = {item[0].start_byte: item for item in\
-                                            versenum_captures+versetext_captures}
-                            sorted_combined = [combined[i] for i in  sorted(combined)]
-                            for vcap in sorted_combined:
-                                match vcap:
-                                    case (vnode, "verse"):
-                                        dict_output['book']['chapters'][-1]["contents"].append(
-                                            {"verseNumber":self.usfm_bytes[vnode.start_byte:
-                                                vnode.end_byte].decode('utf-8').strip(),
-                                             "verseText":""})
-                                    case (vnode, "verse-text"):
-                                        text_captures = text_query.captures(vnode)
-                                        text_val = "".join([self.usfm_bytes[tcap[0].start_byte:
-                                                    tcap[0].end_byte].decode('utf-8').replace("\n", " ")
-                                                        for tcap in text_captures])
-                                        dict_output['book']['chapters'][-1]['contents'][-1]['verseText'] += text_val
-                        case Filter.NOTES.value | Filter.NOTES_TEXT.value:
-                            # query for just the chapter, verse and text nodes from the syntax_tree
-                            versenum_captures = versenum_query.captures(cap[0])
-                            notes_captures = notes_query.captures(cap[0])
-                            if len(notes_captures) == 0:
-                                continue
-                            combined = {item[0].start_byte: item for item in versenum_captures+notes_captures}
-                            sorted_combined = [combined[i] for i in  sorted(combined)]
-                            for index,vcap in enumerate(sorted_combined):
-                                if vcap[1] == "verse" and \
-                                    index+1 !=len(sorted_combined) and sorted_combined[index+1][1] =="note":
-                                    # need to add a verse only if it has notes
-                                    dict_output['book']['chapters'][-1]["contents"].append(
-                                        {"verseNumber":self.usfm_bytes[vcap[0].start_byte:
-                                            vcap[0].end_byte].decode('utf-8').strip(),
-                                         "notes":[]})
-                                elif vcap[1] == "note":
-                                    note_type = vcap[0].type
-                                    if filt == Filter.NOTES.value:
-                                        note_details = node_2_dict(vcap[0], self.usfm_bytes)
-                                    elif filt == Filter.NOTES_TEXT.value:
-                                        notetext_captures = notestext_query.captures(vcap[0])
-                                        note_details = "|".join([self.usfm_bytes[ncap[0].start_byte:
-                                                    ncap[0].end_byte].decode('utf-8').strip().replace("\n","")\
-                                                    for ncap in notetext_captures])
-                                    dict_output['book']['chapters'][-1]['contents'][-1]['notes'].append(
-                                                                {note_type: note_details})
-                        case Filter.SCRIPTURE_PARAGRAPHS.value:
-                            # titles and section information, paragraph breaks
-                            # and also structuring like lists and tables
-                            # along with verse text and versenumber details at the lowest level
-                            title_captures = title_query.captures(cap[0])
-                            para_captures = para_query.captures(cap[0])
-                            combined_tit_paras = {item[0].start_byte: item \
-                                            for item in title_captures+para_captures}
-                            sorted_tit_paras = [combined_tit_paras[i] for i in  sorted(combined_tit_paras)]
-                            for comp in sorted_tit_paras:
-                                match comp:
-                                    case (comp_node, "title"):
-                                        text_captures = text_query.captures(comp_node)
-                                        title_texts = []
-                                        for tcap in text_captures:
-                                            title_texts.append(self.usfm_bytes[tcap[0].start_byte:
-                                                                    tcap[0].end_byte].decode('utf-8'))
-                                        dict_output['book']['chapters'][-1]['contents'].append(
-                                            {"title":" ".join(title_texts).strip()})
-                                    case (comp_node, "para"):
-                                        comp_type = comp_node.type
-                                        versenum_captures = versenum_query.captures(comp_node)
-                                        versetext_captures = versetext_query.captures(comp_node)
-                                        combined = {item[0].start_byte: item \
-                                                for item in versenum_captures+versetext_captures}
-                                        sorted_combined = [combined[i] for i in  sorted(combined)]
-                                        inner_contents = []
-                                        for vcap in sorted_combined:
-                                            match vcap:
-                                                case (vnode, "verse"):
-                                                    inner_contents.append(
-                                                        {"verseNumber":self.usfm_bytes[vnode.start_byte:
-                                                            vnode.end_byte].decode('utf-8').strip(),
-                                                         "verseText":""})
-                                                case (vnode, "verse-text"):
-                                                    text_captures = text_query.captures(vnode)
-                                                    text_val = "".join([self.usfm_bytes[tcap[0].start_byte:
-                                                            tcap[0].end_byte].decode('utf-8').replace("\n", " ")
-                                                                        for tcap in text_captures])
-                                                    if len(inner_contents) == 0:
-                                                        inner_contents.append({"verseText":""})
-                                                    inner_contents[-1]['verseText'] += text_val
-
-                                        dict_output['book']['chapters'][-1]["contents"].append(
-                                                                            {comp_type:inner_contents})
-            return dict_output
-        except Exception as exe:
-            raise Exception("Unable to do the conversion. Check for errors in USFMParser.errors")\
-                from exe
-
-        if filt == Filter.ALL.value:
-            # directly converts the syntax_tree to JSON/dict'''
-            return node_2_dict(self.syntax_tree, self.usfm_bytes)
-        raise Exception(f"This filter option, {filt}, is yet to be implemeneted")
-
-    def to_list(self, filt=Filter.SCRIPTURE_BCV.value):
+    def to_list(self, filt=None):
         '''uses the toJSON function and converts JSON to CSV'''
         match filt:
             case Filter.SCRIPTURE_BCV.value | None:
@@ -815,12 +666,12 @@ class USFMParser():
             case _:
                 raise Exception(f"This filter option, {filt}, is yet to be implemeneted")
 
-    def to_markdown(self, filt=Filter.SCRIPTURE_PARAGRAPHS.value):
+    def to_markdown(self, filt=None):
         '''query for chapter, paragraph, text structure'''
         return "yet to be implemeneted"
 
 
-    def to_usx(self, filt=Filter.ALL):
+    def to_usx(self, filt=None):
         '''convert the syntax_tree to the XML format USX'''
         usx_root = etree.Element("usx")
         usx_root.set("version", "3.0")
