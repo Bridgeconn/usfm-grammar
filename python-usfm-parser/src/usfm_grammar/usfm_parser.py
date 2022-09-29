@@ -21,7 +21,7 @@ class Filter_new(str, Enum):
     PARAS_N_TITLES = 'paragraphs-quotes-lists-tables-sectionheadings'
     SCRIPTURE_TEXT = 'verse-texts'
     NOTES = "footnotes-and-crossrefs"
-    WORD_EMBEDDINGS = "character-level-markers"
+    ATTRIBUTES = "character-level-attributes"
     MILESTONES = "milestones-namespaces"
     STUDY_BIBLE = "sidebars-extended-contents"
 
@@ -260,6 +260,8 @@ def reduce_nesting(func):
             if isinstance(result, list):
                 if len(result) == 1:
                     result = result[0]
+                elif len(result) == 0:
+                    result = None
             else:
                 break
         return result
@@ -340,7 +342,6 @@ def node_2_dict_milestone(ms_node, usfm_bytes):
         result['attributes'] = attribs
     return result
 
-@reduce_nesting
 def node_2_dict_generic(node, usfm_bytes, filt):
     '''The general rules to cover the common marker types'''
     marker_name = node.type
@@ -357,7 +358,8 @@ def node_2_dict_generic(node, usfm_bytes, filt):
         elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
             closing_node = child
         elif child.type.endswith("Attribute"):
-            attribs.append(node_2_dict_attrib(child, usfm_bytes, node.type))
+            if Filter_new.ATTRIBUTES in filt:
+                attribs.append(node_2_dict_attrib(child, usfm_bytes, node.type))
         else:
             inner_cont = node_2_dict_new(child, usfm_bytes, filt)
             if inner_cont is not None:
@@ -387,33 +389,60 @@ def node_2_dict_new(node, usfm_bytes, filt):
     if node.type == "v":
         return node_2_dict_verse(node, usfm_bytes)
     if node.type == 'verseText':
-        result = []
-        for child in node.children:
-            if child.type == "text":
-                result.append({'verseText':usfm_bytes[\
-                        child.start_byte:child.end_byte].decode('utf-8').strip()})
-            else:
-                result.append(node_2_dict_new(child,usfm_bytes, filt))
-        return result
+        if Filter_new.SCRIPTURE_TEXT in filt:
+            result = []
+            for child in node.children:
+                if child.type == "text":
+                    result.append({'verseText':usfm_bytes[\
+                            child.start_byte:child.end_byte].decode('utf-8').strip()})
+                else:
+                    processed = node_2_dict_new(child,usfm_bytes, filt)
+                    if processed is not None:
+                        result.append(processed)
+            return result
     if node.type.endswith("Block"):
         result = []
         for child in node.children:
-            result.append(node_2_dict_new(child, usfm_bytes, filt))
+            processed = node_2_dict_new(child,usfm_bytes, filt)
+            if processed is not None:
+                result.append(processed)
         return result
     if node.type == "paragraph":
         result = {node.children[0].type: []}
         for child in node.children[0].children[1:]:
-            result[node.children[0].type].append(node_2_dict_new(child, usfm_bytes, filt))
+            processed = node_2_dict_new(child,usfm_bytes, filt)
+            if processed is not None:
+                result[node.children[0].type].append(processed)
+        if Filter_new.PARAS_N_TITLES not in filt:
+            return list(result.values())
         return result
     if node.type == "poetry":
         result = {"poetry":[]}
         for child in node.children[0].children:
-            result['poetry'].append(node_2_dict_new(child, usfm_bytes, filt))
+            processed = node_2_dict_new(child,usfm_bytes, filt)
+            if processed is not None:
+                result['poetry'].append(processed)
+        if Filter_new.PARAS_N_TITLES not in filt:
+            new_result = []
+            for block in result['poetry']:
+                val = list(block.values())
+                if val and val != [[]]:
+                    new_result += val
+            return new_result
         return result
     if node.type == "list":
         result = {'list':[]}
         for child in node.children[0].children:
-            result['list'].append(node_2_dict_new(child, usfm_bytes, filt))
+            processed = node_2_dict_new(child,usfm_bytes, filt)
+            if processed is not None:
+                result['list'].append(processed)
+        if Filter_new.PARAS_N_TITLES not in filt:
+            new_result = []
+            for block in result['list']:
+                val = list(block.values())
+                if val and val != [[]]:
+                    new_result += val
+            return new_result
         return result
     if node.type == "table":
         result = {"table":[]}
@@ -421,24 +450,41 @@ def node_2_dict_new(node, usfm_bytes, filt):
         for row in rows:
             cells = []
             for child in row[0].children[1:]:
-                cells.append(node_2_dict_new(child, usfm_bytes, filt))
+                processed = node_2_dict_new(child,usfm_bytes, filt)
+                if processed is not None:
+                    cells.append(processed)
             result['table'].append({"tr":cells})
+        if Filter_new.PARAS_N_TITLES not in filt:
+            new_result = []
+            for row in result['table']:
+                for cell in row["tr"]:
+                    val = list(cell.values())
+                    if val and val != [[]]:
+                        new_result += val
+            return new_result
         return result
     if node.type == "milestone":
-        return node_2_dict_milestone(node, usfm_bytes)
+        if Filter_new.MILESTONES in filt:
+            return node_2_dict_milestone(node, usfm_bytes)
     if node.type == "title":
-        result = []
-        for child in node.children:
-            result.append(node_2_dict_new(child, usfm_bytes, filt))
-        return result
+        if Filter_new.PARAS_N_TITLES in filt:
+            result = []
+            for child in node.children:
+                processed = node_2_dict_new(child,usfm_bytes, filt)
+                if processed is not None:
+                    result.append(processed)
+            return result
     if node.type in ['footnote', 'crossref']:
-        return node_2_dict_new(node.children[0], usfm_bytes, filt)
+        if Filter_new.NOTES in filt:
+            return node_2_dict_new(node.children[0], usfm_bytes, filt)
     if node.type == 'caller':
         return {"caller": usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()}
     if node.type == "noteText":
         result = []
         for child in node.children:
-            result.append(node_2_dict_new(child, usfm_bytes, filt))
+            processed = node_2_dict_new(child,usfm_bytes, filt)
+            if processed is not None :
+                result.append(processed)
         return result
     if node.type == 'text':
         val = usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()
@@ -584,10 +630,7 @@ class USFMParser():
                                 if processed is None:
                                     pass
                                 elif isinstance(processed, list):
-                                    if len(processed) == 1:
-                                        chapter_output['contents'].append(processed[0])
-                                    else:
-                                        chapter_output['contents'] += processed
+                                    chapter_output['contents'] += processed
                                 else:
                                     chapter_output['contents'].append(processed)
                         dict_output['book']['chapters'].append(chapter_output)
