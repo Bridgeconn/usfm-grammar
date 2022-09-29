@@ -11,7 +11,8 @@ from usfm_grammar import USFMParser, Filter, Format
 class Filter_CLI(str, Enum):
     '''Defines the values of filter options'''
     BOOK_HEADERS = "BOOK_HEADERS"
-    PARAS_N_TITLES = 'PARAS_N_TITLES'
+    PARAGRAPHS = 'PARAGRAPHS'
+    TITLES = 'TITLES'
     SCRIPTURE_TEXT = 'SCRIPTURE_TEXT'
     NOTES = "NOTES"
     ATTRIBUTES = "ATTRIBUTES"
@@ -65,8 +66,10 @@ def main():
             updated_filt.append(Filter.NOTES)
         if Filter_CLI.ATTRIBUTES in output_filter:
             updated_filt.append(Filter.ATTRIBUTES)
-        if Filter_CLI.PARAS_N_TITLES in output_filter:
-            updated_filt.append(Filter.PARAS_N_TITLES)
+        if Filter_CLI.PARAGRAPHS in output_filter:
+            updated_filt.append(Filter.PARAGRAPHS)
+        if Filter_CLI.TITLES in output_filter:
+            updated_filt.append(Filter.TITLES)
         if Filter_CLI.MILESTONES in output_filter:
             updated_filt.append(Filter.MILESTONES)
         if Filter_CLI.STUDY_BIBLE in output_filter:

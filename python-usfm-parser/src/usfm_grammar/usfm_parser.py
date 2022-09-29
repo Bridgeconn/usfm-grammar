@@ -11,7 +11,8 @@ from lxml import etree
 class Filter(str, Enum):
     '''Defines the values of filter options'''
     BOOK_HEADERS = "book-header-introduction-markers"
-    PARAS_N_TITLES = 'paragraphs-quotes-lists-tables-sectionheadings'
+    PARAGRAPHS = 'paragraphs-quotes-lists-tables'
+    TITLES = "sectionheadings"
     SCRIPTURE_TEXT = 'verse-texts'
     NOTES = "footnotes-and-crossrefs"
     ATTRIBUTES = "character-level-attributes"
@@ -414,7 +415,7 @@ def node_2_dict(node, usfm_bytes, filt):
             processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None:
                 result[node.children[0].type].append(processed)
-        if Filter.PARAS_N_TITLES not in filt:
+        if Filter.PARAGRAPHS not in filt:
             return list(result.values())
         return result
     if node.type == "poetry":
@@ -423,7 +424,7 @@ def node_2_dict(node, usfm_bytes, filt):
             processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None:
                 result['poetry'].append(processed)
-        if Filter.PARAS_N_TITLES not in filt:
+        if Filter.PARAGRAPHS not in filt:
             new_result = []
             for block in result['poetry']:
                 val = list(block.values())
@@ -437,7 +438,7 @@ def node_2_dict(node, usfm_bytes, filt):
             processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None:
                 result['list'].append(processed)
-        if Filter.PARAS_N_TITLES not in filt:
+        if Filter.PARAGRAPHS not in filt:
             new_result = []
             for block in result['list']:
                 val = list(block.values())
@@ -455,7 +456,7 @@ def node_2_dict(node, usfm_bytes, filt):
                 if processed is not None:
                     cells.append(processed)
             result['table'].append({"tr":cells})
-        if Filter.PARAS_N_TITLES not in filt:
+        if Filter.PARAGRAPHS not in filt:
             new_result = []
             for row in result['table']:
                 for cell in row["tr"]:
@@ -468,7 +469,7 @@ def node_2_dict(node, usfm_bytes, filt):
         if Filter.MILESTONES in filt:
             return node_2_dict_milestone(node, usfm_bytes)
     if node.type == "title":
-        if Filter.PARAS_N_TITLES in filt:
+        if Filter.TITLES in filt:
             result = []
             for child in node.children:
                 processed = node_2_dict(child,usfm_bytes, filt)
@@ -552,7 +553,6 @@ class USFMParser():
             upper_book_code = found_book_code.upper()
             self.usfm = self.usfm.replace(found_book_code, upper_book_code, 1)
 
-
         self.usfm_bytes = bytes(self.usfm, "utf8")
         tree = parser.parse(self.usfm_bytes)
         self.syntax_tree = tree.root_node
@@ -617,54 +617,51 @@ class USFMParser():
                 "Check for errors in <USFMParser obj>.errors") from exe
         return dict_output
 
-
     def to_list(self, filt=None):
         '''uses the toJSON function and converts JSON to CSV'''
-        match filt:
-            case Filter.SCRIPTURE_BCV.value | None:
-                scripture_json = self.to_dict(Filter.SCRIPTURE_BCV.value)
-                table_output = [["Book","Chapter","Verse","Text"]]
-                book = scripture_json['book']['bookCode']
-                for chap in scripture_json['book']['chapters']:
-                    chapter = chap['chapterNumber']
-                    for verse in chap['contents']:
-                        row = [book, chapter, verse['verseNumber'], '"'+verse['verseText']+'"']
+        if filt is None:
+            filt = list(Filter)
+        if Filter.PARAGRAPHS in filt:
+            filt.remove(Filter.PARAGRAPHS)
+        scripture_json = self.to_dict(filt)
+        table_output = [["Book","Chapter","Verse","Verse-Text","Notes","Milestone","Other"]]
+        book = scripture_json['book']['bookCode']
+        verse_num = 0
+        verse_text = ""
+        note_text = ""
+        ms_text = ""
+        title_text = ''
+        for chap in scripture_json['book']['chapters']:
+            chapter = chap['chapterNumber']
+            for item in chap['contents']:
+                first_key = list(item.keys())[0]
+                if first_key == "verseNumber":
+                    if verse_num != 0:
+                        row = [book, chapter, verse_num,
+                                '"'+verse_text+'"','"'+note_text+'"',
+                                '"'+ms_text+'"','"'+title_text+'"']
                         table_output.append(row)
-                return table_output
-            case Filter.NOTES.value:
-                notes_json = self.to_dict(Filter.NOTES_TEXT.value)
-                table_output = [["Book","Chapter","Verse","Type", "Note"]]
-                book = notes_json['book']['bookCode']
-                for chap in notes_json['book']['chapters']:
-                    chapter = chap['chapterNumber']
-                    for verse in chap['contents']:
-                        v_num = verse['verseNumber']
-                        for note in verse['notes']:
-                            typ = list(note)[0]
-                            row = [book, chapter, v_num, typ, '"'+note[typ]+'"']
-                        table_output.append(row)
-                return table_output
-            case Filter.SCRIPTURE_PARAGRAPHS.value:
-                notes_json = self.to_dict(Filter.SCRIPTURE_PARAGRAPHS.value)
-                table_output = [["Book","Chapter","Type", "Contents"]]
-                book = notes_json['book']['bookCode']
-                for chap in notes_json['book']['chapters']:
-                    chapter = chap['chapterNumber']
-                    for comp in chap['contents']:
-                        typ = list(comp)[0]
-                        if typ == "title":
-                            cont = comp[typ]
-                        else:
-                            inner_cont = []
-                            for inner_comp in comp[typ]:
-                                inner_cont += list(inner_comp.values())
-                            cont = ' '.join(inner_cont)
-                        row = [book, chapter, typ, cont]
-                        table_output.append(row)
-                return table_output
-
-            case _:
-                raise Exception(f"This filter option, {filt}, is yet to be implemeneted")
+                    verse_text = ""
+                    note_text = ""
+                    ms_text = ""
+                    title_text = ''
+                    verse_num = item['verseNumber']
+                elif first_key == 'verseText':
+                    verse_text += item['verseText'] +" "
+                elif first_key == "milestone":
+                    ms_text += str(item) + "\n"
+                elif first_key in CHAR_STYLE_MARKERS:
+                    verse_text += item[first_key] + " "
+                elif first_key in NOTE_MARKERS:
+                    note_text += str(item)
+                else:
+                    print(first_key)
+                    title_text += str(item[first_key])
+            row = [book, chapter, verse_num,
+                    '"'+verse_text+'"','"'+note_text+'"',
+                    '"'+ms_text+'"','"'+title_text+'"']
+            table_output.append(row)
+        return table_output
 
     def to_markdown(self, filt=None):
         '''query for chapter, paragraph, text structure'''
