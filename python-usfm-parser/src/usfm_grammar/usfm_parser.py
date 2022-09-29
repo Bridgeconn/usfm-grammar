@@ -38,7 +38,7 @@ USFM_LANGUAGE = Language(str(lang_file), 'usfm3')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
 
-PARA_STYLE_MARKERS = ["h", "toc", "toca" #identification
+PARA_STYLE_MARKERS = ["ide", "usfm", "h", "toc", "toca" #identification
                     "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
                     "ili", "iot", "io", "iex", "imte", "ie", # intro
                     "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd", #titles
@@ -369,7 +369,7 @@ def node_2_dict_generic(node, usfm_bytes, filt):
             tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
     if len(content) == 1:
         content = content[0]
-    if text_node is not None: # Assumption: when text content is present inner contents will not be there!
+    if text_node is not None: # when text content is present inner contents will not be there!
         content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip() 
     result = {marker_name:content}
     if len(attribs) > 0:
@@ -431,6 +431,19 @@ def node_2_dict_new(node, usfm_bytes, filt):
         for child in node.children:
             result.append(node_2_dict_new(child, usfm_bytes, filt))
         return result
+    if node.type in ['footnote', 'crossref']:
+        return node_2_dict_new(node.children[0], usfm_bytes, filt)
+    if node.type == 'caller':
+        return {"caller": usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()}
+    if node.type == "noteText":
+        result = []
+        for child in node.children:
+            result.append(node_2_dict_new(child, usfm_bytes, filt))
+        return result
+    if node.type == 'text':
+        val = usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()
+        if val != "":
+            return val
     return None
 
 ###########^^^^^^^^^^^ Logics for syntax-tree to dict conversions ^^^^^^^^^ ##############
