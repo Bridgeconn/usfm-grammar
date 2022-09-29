@@ -326,10 +326,10 @@ def node_2_dict_milestone(ms_node, usfm_bytes):
         result['attributes'] = attribs
     return result
 
-def node_2_dict_generic(node, usfm_bytes):
+def node_2_dict_generic(node, usfm_bytes, filt):
     '''The general rules to cover the common marker types'''
     marker_name = node.type
-    content = ""
+    content = []
     tag_node = None
     text_node = None
     closing_node = None
@@ -344,15 +344,17 @@ def node_2_dict_generic(node, usfm_bytes):
         elif child.type.endswith("Attribute"):
             attribs.append(node_2_dict_attrib(child, usfm_bytes, node.type))
         else:
-            inner_cont = node_2_dict_new(child, usfm_bytes)
+            inner_cont = node_2_dict_new(child, usfm_bytes, filt)
             if inner_cont is not None:
-                content = inner_cont
+                content.append(inner_cont)
             # else:
             #     print("igoring:",child)
     if tag_node is not None:
         marker_name = usfm_bytes[\
             tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
-    if text_node is not None:
+    if len(content) == 1:
+        content = content[0]
+    if text_node is not None: # Assumption: when text content is present inner contents will not be there!
         content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip() 
     result = {marker_name:content}
     if len(attribs) > 0:
@@ -362,19 +364,24 @@ def node_2_dict_generic(node, usfm_bytes):
             closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip()
     return result
 
-def node_2_dict_new(node, usfm_bytes):
+def node_2_dict_new(node, usfm_bytes, filt):
     '''recursive function converting a syntax tree node and its children to dictionary'''
     if node.type in ANY_VALID_MARKER:
-        return node_2_dict_generic(node, usfm_bytes)
+        return node_2_dict_generic(node, usfm_bytes, filt)
     if node.type.endswith("Block"):
         result = []
         for child in node.children:
-            result.append(node_2_dict_new(child, usfm_bytes))
+            result.append(node_2_dict_new(child, usfm_bytes, filt))
         return result
     if node.type == "paragraph":
         result = {node.children[0].type: []}
         for child in node.children[0].children[1:]:
-            result[node.children[0].type].append(node_2_dict_new(child, usfm_bytes))
+            result[node.children[0].type].append(node_2_dict_new(child, usfm_bytes, filt))
+        return result
+    if node.type == "poetry":
+        result = {node.children[0].type: []}
+        for child in node.children[0].children:
+            result[node.children[0].type].append(node_2_dict_new(child, usfm_bytes, filt))
         return result
     if node.type == "v":
         return node_2_dict_verse(node, usfm_bytes)
@@ -385,12 +392,12 @@ def node_2_dict_new(node, usfm_bytes):
                 result.append({'verseText':usfm_bytes[\
                         child.start_byte:child.end_byte].decode('utf-8').strip()})
             else:
-                result.append(node_2_dict_new(child,usfm_bytes))
+                result.append(node_2_dict_new(child,usfm_bytes, filt))
         return result
     if node.type == "list":
         result = {'list':[]}
         for child in node.children:
-            result['list'].append(node_2_dict_new(child, usfm_bytes))
+            result['list'].append(node_2_dict_new(child, usfm_bytes, filt))
         return result
     if node.type == "table":
         result = {"table":[]}
@@ -398,11 +405,20 @@ def node_2_dict_new(node, usfm_bytes):
         for row in rows:
             cells = []
             for child in row[0].children[1:]:
-                cells.append(node_2_dict_new(child, usfm_bytes))
+                cells.append(node_2_dict_new(child, usfm_bytes, filt))
             result['table'].append({"tr":cells})
         return result
     if node.type == "milestone":
         return node_2_dict_milestone(node, usfm_bytes)
+    if node.type == "title" and Filter_new.PARAS_N_TITLES in filt:
+        result = []
+        for child in node.children:
+            result.append(node_2_dict_new(child, usfm_bytes, filt))
+        if len(result) == 1:
+            result = result[0]
+        if isinstance(result, list) and len(result) == 1:
+            result = result[0]
+        return result
     return None
 
 ###########^^^^^^^^^^^ Logics for syntax-tree to dict conversions ^^^^^^^^^ ##############
@@ -540,14 +556,14 @@ class USFMParser():
                         for inner_child in child.children:
                             if inner_child.type not in ['chapterNumber','cl','ca','cp','cd','c']:
                                 chapter_output['contents'].append(
-                                    node_2_dict_new(inner_child, self.usfm_bytes))
+                                    node_2_dict_new(inner_child, self.usfm_bytes, filt))
                         dict_output['book']['chapters'].append(chapter_output)
                     case _:
                         if "headers" not in dict_output['book']:
                             dict_output['book']['headers'] = []
                         if Filter_new.BOOK_HEADERS in filt:
                             dict_output['book']['headers'].append(
-                                node_2_dict_new(child, self.usfm_bytes))
+                                node_2_dict_new(child, self.usfm_bytes, filt))
         except Exception as exe:
             raise Exception("Unable to do the conversion. "+\
                 "Check for errors in <USFMParser obj>.errors") from exe
