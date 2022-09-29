@@ -251,6 +251,20 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
         raise Exception("Encountered unknown element ", str(node))
 
 ###########VVVVVVVVV Logics for syntax-tree to dict conversions VVVVVV ##############
+def reduce_nesting(func):
+    '''decorator function to avoid list of list of just one element'''
+    def bring_out_single_elements(*args, **kwargs):
+        '''inner function in decorator'''
+        result = func(*args, **kwargs)
+        for _ in range(3):
+            if isinstance(result, list):
+                if len(result) == 1:
+                    result = result[0]
+            else:
+                break
+        return result
+    return bring_out_single_elements
+
 
 def node_2_dict_chapter(chapter_node, usfm_bytes):
     '''extract and format chapter head items'''
@@ -326,6 +340,7 @@ def node_2_dict_milestone(ms_node, usfm_bytes):
         result['attributes'] = attribs
     return result
 
+@reduce_nesting
 def node_2_dict_generic(node, usfm_bytes, filt):
     '''The general rules to cover the common marker types'''
     marker_name = node.type
@@ -364,25 +379,11 @@ def node_2_dict_generic(node, usfm_bytes, filt):
             closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip()
     return result
 
+@reduce_nesting
 def node_2_dict_new(node, usfm_bytes, filt):
     '''recursive function converting a syntax tree node and its children to dictionary'''
     if node.type in ANY_VALID_MARKER:
         return node_2_dict_generic(node, usfm_bytes, filt)
-    if node.type.endswith("Block"):
-        result = []
-        for child in node.children:
-            result.append(node_2_dict_new(child, usfm_bytes, filt))
-        return result
-    if node.type == "paragraph":
-        result = {node.children[0].type: []}
-        for child in node.children[0].children[1:]:
-            result[node.children[0].type].append(node_2_dict_new(child, usfm_bytes, filt))
-        return result
-    if node.type == "poetry":
-        result = {node.children[0].type: []}
-        for child in node.children[0].children:
-            result[node.children[0].type].append(node_2_dict_new(child, usfm_bytes, filt))
-        return result
     if node.type == "v":
         return node_2_dict_verse(node, usfm_bytes)
     if node.type == 'verseText':
@@ -394,9 +395,24 @@ def node_2_dict_new(node, usfm_bytes, filt):
             else:
                 result.append(node_2_dict_new(child,usfm_bytes, filt))
         return result
+    if node.type.endswith("Block"):
+        result = []
+        for child in node.children:
+            result.append(node_2_dict_new(child, usfm_bytes, filt))
+        return result
+    if node.type == "paragraph":
+        result = {node.children[0].type: []}
+        for child in node.children[0].children[1:]:
+            result[node.children[0].type].append(node_2_dict_new(child, usfm_bytes, filt))
+        return result
+    if node.type == "poetry":
+        result = {"poetry":[]}
+        for child in node.children[0].children:
+            result['poetry'].append(node_2_dict_new(child, usfm_bytes, filt))
+        return result
     if node.type == "list":
         result = {'list':[]}
-        for child in node.children:
+        for child in node.children[0].children:
             result['list'].append(node_2_dict_new(child, usfm_bytes, filt))
         return result
     if node.type == "table":
@@ -410,14 +426,10 @@ def node_2_dict_new(node, usfm_bytes, filt):
         return result
     if node.type == "milestone":
         return node_2_dict_milestone(node, usfm_bytes)
-    if node.type == "title" and Filter_new.PARAS_N_TITLES in filt:
+    if node.type == "title":
         result = []
         for child in node.children:
             result.append(node_2_dict_new(child, usfm_bytes, filt))
-        if len(result) == 1:
-            result = result[0]
-        if isinstance(result, list) and len(result) == 1:
-            result = result[0]
         return result
     return None
 
@@ -555,13 +567,21 @@ class USFMParser():
                         chapter_output['contents'] = []
                         for inner_child in child.children:
                             if inner_child.type not in ['chapterNumber','cl','ca','cp','cd','c']:
-                                chapter_output['contents'].append(
-                                    node_2_dict_new(inner_child, self.usfm_bytes, filt))
+                                processed = node_2_dict_new(inner_child, self.usfm_bytes, filt)
+                                if processed is None:
+                                    pass
+                                elif isinstance(processed, list):
+                                    if len(processed) == 1:
+                                        chapter_output['contents'].append(processed[0])
+                                    else:
+                                        chapter_output['contents'] += processed
+                                else:
+                                    chapter_output['contents'].append(processed)
                         dict_output['book']['chapters'].append(chapter_output)
                     case _:
-                        if "headers" not in dict_output['book']:
-                            dict_output['book']['headers'] = []
                         if Filter_new.BOOK_HEADERS in filt:
+                            if "headers" not in dict_output['book']:
+                                dict_output['book']['headers'] = []
                             dict_output['book']['headers'].append(
                                 node_2_dict_new(child, self.usfm_bytes, filt))
         except Exception as exe:
