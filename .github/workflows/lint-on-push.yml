@@ -32,4 +32,4 @@ jobs:
         
       - name: Run linter
         working-directory: ./python-usfm-parser
-        run: pylint --extension-pkg-allow-list=lxml src/usfm-grammar/*.py
+        run: pylint --extension-pkg-allow-list=lxml src/usfm_grammar/*.py
