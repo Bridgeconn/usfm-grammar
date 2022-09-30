@@ -8,7 +8,7 @@ from lxml import etree
 
 from usfm_grammar import USFMParser, Filter, Format
 
-class Filter_CLI(str, Enum):
+class FilterCLI(str, Enum):
     '''Defines the values of filter options'''
     BOOK_HEADERS = "BOOK_HEADERS"
     PARAGRAPHS = 'PARAGRAPHS'
@@ -29,7 +29,7 @@ def main():
                             choices=[itm.value for itm in Format],
                             default=Format.JSON.value)
     arg_parser.add_argument('--filter', type=str, help='the type of contents to be included',
-                            choices=[itm.value for itm in Filter_CLI],
+                            choices=[itm.value for itm in FilterCLI],
                             action="append")
     arg_parser.add_argument('--csv_col_sep', type=str,
                             help="column separator or delimiter. Only useful with format=table.",
@@ -58,21 +58,21 @@ def main():
         updated_filt = None
     else:
         updated_filt = []
-        if Filter_CLI.BOOK_HEADERS in output_filter:
+        if FilterCLI.BOOK_HEADERS in output_filter:
             updated_filt.append(Filter.BOOK_HEADERS)
-        if Filter_CLI.SCRIPTURE_TEXT in output_filter:
+        if FilterCLI.SCRIPTURE_TEXT in output_filter:
             updated_filt.append(Filter.SCRIPTURE_TEXT)
-        if Filter_CLI.NOTES in output_filter:
+        if FilterCLI.NOTES in output_filter:
             updated_filt.append(Filter.NOTES)
-        if Filter_CLI.ATTRIBUTES in output_filter:
+        if FilterCLI.ATTRIBUTES in output_filter:
             updated_filt.append(Filter.ATTRIBUTES)
-        if Filter_CLI.PARAGRAPHS in output_filter:
+        if FilterCLI.PARAGRAPHS in output_filter:
             updated_filt.append(Filter.PARAGRAPHS)
-        if Filter_CLI.TITLES in output_filter:
+        if FilterCLI.TITLES in output_filter:
             updated_filt.append(Filter.TITLES)
-        if Filter_CLI.MILESTONES in output_filter:
+        if FilterCLI.MILESTONES in output_filter:
             updated_filt.append(Filter.MILESTONES)
-        if Filter_CLI.STUDY_BIBLE in output_filter:
+        if FilterCLI.STUDY_BIBLE in output_filter:
             updated_filt.append(Filter.STUDY_BIBLE)
 
     match output_format:
@@ -83,11 +83,11 @@ def main():
             table_output = my_parser.to_list(filt = updated_filt)
             print(csv_row_sep.join([csv_col_sep.join(row) for row in table_output]))
         case Format.USX:
-            xmlstr = etree.tostring(my_parser.to_usx(filt=updated_filt),
+            xmlstr = etree.tostring(my_parser.to_usx(),
                 encoding='unicode', pretty_print=True)
             print(xmlstr)
         case Format.MD:
-            print(my_parser.to_markdown(filt = updated_filt))
+            print(my_parser.to_markdown())
         case Format.ST:
             print(my_parser.to_syntax_tree())
         case _:

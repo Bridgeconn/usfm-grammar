@@ -57,7 +57,7 @@ TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
 ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
                     NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS
 
-def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node):
+def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disable=too-many-locals, too-many-branches, too-many-statements
     '''check each node and based on the type convert to corresponding xml element'''
     # print("working with node: ", node, "\n")
     if node.type == "id":
@@ -355,6 +355,8 @@ def node_2_dict_generic(node, usfm_bytes, filt):
     for child in node.children:
         if child.type.endswith("Tag"):
             tag_node = child
+            marker_name = usfm_bytes[\
+                tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
         elif child.type == "text":
             text_node = child
         elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
@@ -368,13 +370,10 @@ def node_2_dict_generic(node, usfm_bytes, filt):
                 content.append(inner_cont)
             # else:
             #     print("igoring:",child)
-    if tag_node is not None:
-        marker_name = usfm_bytes[\
-            tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
-    if len(content) == 1:
-        content = content[0]
     if text_node is not None: # when text content is present inner contents will not be there!
-        content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip() 
+        content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip()
+    elif len(content) == 1:
+        content = content[0]
     result = {marker_name:content}
     if len(attribs) > 0:
         result['attributes'] = attribs
@@ -384,7 +383,7 @@ def node_2_dict_generic(node, usfm_bytes, filt):
     return result
 
 @reduce_nesting
-def node_2_dict(node, usfm_bytes, filt):
+def node_2_dict(node, usfm_bytes, filt): # pylint: disable=too-many-return-statements, too-many-branches, too-many-statements
     '''recursive function converting a syntax tree node and its children to dictionary'''
     if node.type in ANY_VALID_MARKER:
         return node_2_dict_generic(node, usfm_bytes, filt)
@@ -591,7 +590,7 @@ class USFMParser():
                                         dict_output['book']['fileDescription'] = val
                     case "chapter":
                         if "chapters" not in dict_output['book']:
-                            dict_output['book']['chapters'] = [] 
+                            dict_output['book']['chapters'] = []
 
                         chapter_output = node_2_dict_chapter(child, self.usfm_bytes)
 
@@ -599,11 +598,9 @@ class USFMParser():
                         for inner_child in child.children:
                             if inner_child.type not in ['chapterNumber','cl','ca','cp','cd','c']:
                                 processed = node_2_dict(inner_child, self.usfm_bytes, filt)
-                                if processed is None:
-                                    pass
-                                elif isinstance(processed, list):
+                                if isinstance(processed, list):
                                     chapter_output['contents'] += processed
-                                else:
+                                elif processed is not None:
                                     chapter_output['contents'].append(processed)
                         dict_output['book']['chapters'].append(chapter_output)
                     case _:
@@ -663,12 +660,12 @@ class USFMParser():
             table_output.append(row)
         return table_output
 
-    def to_markdown(self, filt=None):
+    def to_markdown(self):
         '''query for chapter, paragraph, text structure'''
         return "yet to be implemeneted"
 
 
-    def to_usx(self, filt=None):
+    def to_usx(self):
         '''convert the syntax_tree to the XML format USX'''
         usx_root = etree.Element("usx")
         usx_root.set("version", "3.0")
