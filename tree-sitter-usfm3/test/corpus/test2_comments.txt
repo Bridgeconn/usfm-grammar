@@ -67,13 +67,16 @@ rem between toc markers and h
     (text))
   (tocBlock
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))))
 
 ================================================================================
@@ -145,13 +148,16 @@ sts between toc markers and h
     (text))
   (tocBlock
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))))
 
 ================================================================================

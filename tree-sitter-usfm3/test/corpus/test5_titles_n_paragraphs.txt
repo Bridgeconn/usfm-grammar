@@ -35,10 +35,12 @@ headers and titles
   (usfm)
   (tocBlock
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text)))
   (mtBlock
     (mt
@@ -139,10 +141,12 @@ Simple p
   (usfm)
   (tocBlock
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text)))
   (ip
     (text))
