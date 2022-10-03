@@ -3,7 +3,6 @@
 import argparse
 import json
 import sys
-from enum import Enum
 from lxml import etree
 
 from usfm_grammar import USFMParser, Filter, Format
