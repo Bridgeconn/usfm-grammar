@@ -8,17 +8,6 @@ from lxml import etree
 
 from usfm_grammar import USFMParser, Filter, Format
 
-class FilterCLI(str, Enum):
-    '''Defines the values of filter options'''
-    BOOK_HEADERS = "BOOK_HEADERS"
-    PARAGRAPHS = 'PARAGRAPHS'
-    TITLES = 'TITLES'
-    SCRIPTURE_TEXT = 'SCRIPTURE_TEXT'
-    NOTES = "NOTES"
-    ATTRIBUTES = "ATTRIBUTES"
-    MILESTONES = "MILESTONES"
-    STUDY_BIBLE = "STUDY_BIBLE"
-
 def main():
     '''handles the command line requests'''
     arg_parser = argparse.ArgumentParser(
@@ -29,7 +18,7 @@ def main():
                             choices=[itm.value for itm in Format],
                             default=Format.JSON.value)
     arg_parser.add_argument('--filter', type=str, help='the type of contents to be included',
-                            choices=[itm.value for itm in FilterCLI],
+                            choices=[itm.name.lower() for itm in Filter],
                             action="append")
     arg_parser.add_argument('--csv_col_sep', type=str,
                             help="column separator or delimiter. Only useful with format=table.",
@@ -58,22 +47,8 @@ def main():
         updated_filt = None
     else:
         updated_filt = []
-        if FilterCLI.BOOK_HEADERS in output_filter:
-            updated_filt.append(Filter.BOOK_HEADERS)
-        if FilterCLI.SCRIPTURE_TEXT in output_filter:
-            updated_filt.append(Filter.SCRIPTURE_TEXT)
-        if FilterCLI.NOTES in output_filter:
-            updated_filt.append(Filter.NOTES)
-        if FilterCLI.ATTRIBUTES in output_filter:
-            updated_filt.append(Filter.ATTRIBUTES)
-        if FilterCLI.PARAGRAPHS in output_filter:
-            updated_filt.append(Filter.PARAGRAPHS)
-        if FilterCLI.TITLES in output_filter:
-            updated_filt.append(Filter.TITLES)
-        if FilterCLI.MILESTONES in output_filter:
-            updated_filt.append(Filter.MILESTONES)
-        if FilterCLI.STUDY_BIBLE in output_filter:
-            updated_filt.append(Filter.STUDY_BIBLE)
+        for itm in output_filter:
+            updated_filt.append(Filter[itm.upper()])
 
     match output_format:
         case Format.JSON:
