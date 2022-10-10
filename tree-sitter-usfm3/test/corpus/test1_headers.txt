@@ -135,13 +135,16 @@ toc markers under h
       (text))
     (tocBlock
       (toc
-        (numberedLevelMax3)
+        (tocTag
+          (numberedLevelMax3))
         (text))
       (toc
-        (numberedLevelMax3)
+        (tocTag
+          (numberedLevelMax3))
         (text))
       (toc
-        (numberedLevelMax3)
+        (tocTag
+          (numberedLevelMax3))
         (text)))))
 
 ================================================================================
@@ -165,13 +168,16 @@ toc markers without h
   (usfm)
   (tocBlock
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))
     (toc
-      (numberedLevelMax3)
+      (tocTag
+        (numberedLevelMax3))
       (text))))
 
 ================================================================================
@@ -200,12 +206,15 @@ toca markers
       (text))
     (tocaBlock
       (toca
+        (tocaTag)
         (text))
       (toca
-        (numberedLevelMax3)
+        (tocaTag
+          (numberedLevelMax3))
         (text))
       (toca
-        (numberedLevelMax3)
+        (tocaTag
+          (numberedLevelMax3))
         (text)))))
 
 ================================================================================
@@ -237,19 +246,25 @@ toca markers along with toc
       (text))
     (tocBlock
       (toc
+        (tocTag)
         (text))
       (toc
-        (numberedLevelMax3)
+        (tocTag
+          (numberedLevelMax3))
         (text))
       (toc
-        (numberedLevelMax3)
+        (tocTag
+          (numberedLevelMax3))
         (text)))
     (tocaBlock
       (toca
+        (tocaTag)
         (text))
       (toca
-        (numberedLevelMax3)
+        (tocaTag
+          (numberedLevelMax3))
         (text))
       (toca
-        (numberedLevelMax3)
+        (tocaTag
+          (numberedLevelMax3))
         (text)))))

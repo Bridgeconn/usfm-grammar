@@ -52,8 +52,10 @@ module.exports = grammar({
 
     h: $ => seq($.hTag, $.text),
     hTag: $ => seq("\\h",optional($.numberedLevelMax3), " "),
-    toc: $ => seq("\\toc",optional($.numberedLevelMax3), " ", $.text),
-    toca: $ => seq("\\toca",optional($.numberedLevelMax3), " ", $.text),
+    toc: $ => seq($.tocTag, $.text),
+    tocTag: $ => seq("\\toc",optional($.numberedLevelMax3), " "),
+    toca: $ => seq($.tocaTag, $.text),
+    tocaTag: $ => seq("\\toca",optional($.numberedLevelMax3), " "),
 
     // Remarks and Comments
     _comments: $ => choice($.rem, $.sts, $.restore, $.lit),
