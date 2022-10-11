@@ -641,7 +641,7 @@ module.exports = grammar({
       $.linkAttribute)))),
     _figAttributes: $ => prec.right(0, seq("|", repeat1(choice($.altAttribute, $.srcAttribute, $.sizeAttribute, $.locAttribute, $.copyAttribute, 
       $.refAttribute, $.customAttribute, $.linkAttribute, $.defaultAttribute)))),
-    lemmaAttribute: $ => seq("lemma", "=", '"', $.attributeValue, '"'),
+    lemmaAttribute: $ => seq("lemma", "=", '"', optional($.attributeValue), '"'),
     strongAttribute: $ => seq("strong", "=", '"', optional($.attributeValue), '"'), 
     scrlocAttribute: $ => seq("srcloc", "=", '"', optional($.attributeValue), '"'),
     glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
