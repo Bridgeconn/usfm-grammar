@@ -116,7 +116,7 @@ module.exports = grammar({
       $._characterMarker,
       ))),
     v: $ => prec.right(0,seq("\\v ", $.verseNumber, repeat($._verseMeta))),
-    verseNumber: $ => /\d+\w?(-\d+\w?)?[\s\n\r]/,
+    verseNumber: $ => /\d+\w?(-\d+\w?)?[\s\n\r]*/,
 
     _verseMeta: $ => choice(
       $.va,
