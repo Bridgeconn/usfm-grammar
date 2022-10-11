@@ -71,7 +71,7 @@ module.exports = grammar({
       optional($.ie))
       ),
     _introText: $ => repeat1(choice($.text, $.iqt,
-      $.xt,
+      $.xt_standalone,
       $._characterMarker
       )),
 
@@ -164,7 +164,7 @@ module.exports = grammar({
     cp: $ => seq("\\cp ", $.text),
     cd: $ => prec.right(0,seq("\\cd ", repeat1(choice($.text,
       $._characterMarker,
-      $.xt
+      $.xt_standalone
       )))),
 
     // Titles & Headings
@@ -390,7 +390,7 @@ module.exports = grammar({
 
     //Cross-reference
     crossref: $ => choice($.x, 
-      $.xt, //using this marker in introtext or cd will not mark it as a crossreference in parse tree
+      $.xt_standalone, //using this marker in introtext or cd will not mark it as a crossreference in parse tree
       // $.ex, 
       $.rq,
       ),
@@ -401,6 +401,9 @@ module.exports = grammar({
     xq: $ => seq("\\xq ", $.noteText, optional("\\xq*")),
     xt: $ => seq("\\xt ", $.noteText,optional(choice($.defaultAttribute, $._attributesInCrossref)), 
       optional("\\xt*")),
+    xt_standalone: $ => seq("\\xt ", $.noteText,
+      optional(choice($.defaultAttribute, $._attributesInCrossref)), 
+      choice("\\xt*", "\\x*")),
     xta: $ => seq("\\xta ", $.noteText, optional("\\xta*")),
     xop: $ => seq("\\xop ", $.noteText, optional("\\xop*")),
     xot: $ => seq("\\xot ", $.noteText, optional("\\xot*")),

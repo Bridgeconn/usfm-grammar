@@ -364,25 +364,25 @@ xt in cd
     (c
       (chapterNumber))
     (cd
-      (xt
+      (xt_standalone
         (noteText
           (text))
         (defaultAttribute
           (attributeValue)))
       (text)
-      (xt
+      (xt_standalone
         (noteText
           (text))
         (defaultAttribute
           (attributeValue)))
       (text)
-      (xt
+      (xt_standalone
         (noteText
           (text))
         (defaultAttribute
           (attributeValue)))
       (text)
-      (xt
+      (xt_standalone
         (noteText
           (text))
         (defaultAttribute
