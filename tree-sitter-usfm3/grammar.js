@@ -629,7 +629,8 @@ module.exports = grammar({
     /* The default attribute is valid for any marker which normally provide attributes. 
       It would be extracted as default attribute without mentioning the corresponding attribute name */
 
-    defaultAttribute: $ => seq("|", $.attributeValue), 
+    defaultAttribute: $ => seq("|", choice($.attributeValue,
+      seq('"',$.attributeValue, '"'))),
 
     /* the special set of attributes valid for each of the normally 
       attributed elements are defined here*/
