@@ -614,7 +614,7 @@ module.exports = grammar({
     /* For user defined attributes starting with x */
 
     customAttribute: $ => seq($.customAttributeName, "=", "\"",optional($.attributeValue),"\""),
-    customAttributeName: $ => seq("x-", /[\w\d_]+/),
+    customAttributeName: $ => /x-[\w\d_]+/,
     attributeValue: $ =>  /[^\\\|"=]+/, //same rule as $.text, with quote and '=' added extra
 
     /* The default attribute is valid for any marker which normally provide attributes. 
