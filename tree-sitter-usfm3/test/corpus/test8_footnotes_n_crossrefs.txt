@@ -695,9 +695,8 @@ than theirs.
               (noteText
                 (text))))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (paragraph
       (m
         (verseText

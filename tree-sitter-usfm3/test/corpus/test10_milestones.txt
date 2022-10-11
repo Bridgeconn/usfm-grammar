@@ -153,9 +153,8 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
           (milestone
             (milestoneEndTag))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (paragraph
       (m
         (verseText
@@ -175,9 +174,8 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
           (milestone
             (milestoneEndTag))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (paragraph
       (m
         (v

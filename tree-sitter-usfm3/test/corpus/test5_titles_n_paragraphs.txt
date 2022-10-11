@@ -225,9 +225,8 @@ of the Law say that the Messiah will be the descendant of David?
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (paragraph
       (m
         (v
@@ -553,8 +552,7 @@ drinks too much! He is even a friend of tax collectors ...
             (verseNumber))
           (verseText
             (text)))))
-    (paragraph
-      (b))
+    (b)
     (poetry
       (qBlock
         (q
@@ -578,9 +576,8 @@ drinks too much! He is even a friend of tax collectors ...
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (paragraph
       (mi
         (v
