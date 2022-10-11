@@ -40,13 +40,13 @@ module.exports = grammar({
     numberedLevelMax5: $ => token.immediate(/[12345]/),
 
     // Headers
-    _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock,
+    _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock, $.tocaBlock,
       $._comments, $.milestone, $.zNameSpaceRegular, $.esb,
       ),
 
     usfm: $ => seq("\\usfm ", /\d+(\.\d+)?/),
     ide: $ => seq("\\ide ", $.text),
-    hBlock: $ => prec.right(0,seq(repeat1($.h), optional($.tocBlock), optional($.tocaBlock))),
+    hBlock: $ => prec.right(0,repeat1($.h)),
     tocBlock: $ => prec.right(0,repeat1($.toc)),
     tocaBlock: $ =>prec.right(0, repeat1($.toca)),//only under some hmarkers
 

@@ -132,20 +132,20 @@ toc markers under h
   (hBlock
     (h
       (hTag)
+      (text)))
+  (tocBlock
+    (toc
+      (tocTag
+        (numberedLevelMax3))
       (text))
-    (tocBlock
-      (toc
-        (tocTag
-          (numberedLevelMax3))
-        (text))
-      (toc
-        (tocTag
-          (numberedLevelMax3))
-        (text))
-      (toc
-        (tocTag
-          (numberedLevelMax3))
-        (text)))))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))))
 
 ================================================================================
 toc markers without h
@@ -203,19 +203,19 @@ toca markers
   (hBlock
     (h
       (hTag)
+      (text)))
+  (tocaBlock
+    (toca
+      (tocaTag)
       (text))
-    (tocaBlock
-      (toca
-        (tocaTag)
-        (text))
-      (toca
-        (tocaTag
-          (numberedLevelMax3))
-        (text))
-      (toca
-        (tocaTag
-          (numberedLevelMax3))
-        (text)))))
+    (toca
+      (tocaTag
+        (numberedLevelMax3))
+      (text))
+    (toca
+      (tocaTag
+        (numberedLevelMax3))
+      (text))))
 
 ================================================================================
 toca markers along with toc
@@ -243,28 +243,28 @@ toca markers along with toc
   (hBlock
     (h
       (hTag)
+      (text)))
+  (tocBlock
+    (toc
+      (tocTag)
       (text))
-    (tocBlock
-      (toc
-        (tocTag)
-        (text))
-      (toc
-        (tocTag
-          (numberedLevelMax3))
-        (text))
-      (toc
-        (tocTag
-          (numberedLevelMax3))
-        (text)))
-    (tocaBlock
-      (toca
-        (tocaTag)
-        (text))
-      (toca
-        (tocaTag
-          (numberedLevelMax3))
-        (text))
-      (toca
-        (tocaTag
-          (numberedLevelMax3))
-        (text)))))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text)))
+  (tocaBlock
+    (toca
+      (tocaTag)
+      (text))
+    (toca
+      (tocaTag
+        (numberedLevelMax3))
+      (text))
+    (toca
+      (tocaTag
+        (numberedLevelMax3))
+      (text))))
