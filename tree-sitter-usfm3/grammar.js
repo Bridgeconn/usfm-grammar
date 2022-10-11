@@ -145,9 +145,11 @@ module.exports = grammar({
       $.footnote,
       $.pb,
       $.ip,
+      $.iex,
       $.milestone,
       $.zNameSpaceRegular,
-      $.esb
+      $.esb,
+      $.b
     ),
 
     //chapter meta
@@ -229,7 +231,7 @@ module.exports = grammar({
       $.nb,
       $.pc,
       $.phBlock,
-      $.b // may be move this to within _paragraphContent, as no text can be contained in this
+      // $.b // may be move this to within _paragraphContent, as no text can be contained in this
     ),
 
     _paragraphContent: $ => choice(
@@ -278,7 +280,8 @@ module.exports = grammar({
     _poetryContent: $ => choice(
       $._paragraphContent,
       $.qac,
-      $.qs
+      $.qs,
+      $.b
     ),
 
     qBlock: $ => prec.right(0, repeat1($.q)),
