@@ -17,7 +17,7 @@ znamespace
     (id
       (bookcode)
       (description)))
-  (zNameSpaceRegular
+  (zNameSpace
     (zSpaceTag)
     (text))
   (chapter
@@ -25,31 +25,33 @@ znamespace
       (chapterNumber))
     (paragraph
       (p
-        (zNameSpaceRegular
+        (zNameSpace
           (zSpaceTag)
           (text))
         (v
           (verseNumber))
         (verseText
-          (text)
-          (zNameSpaceClosed
-            (zSpaceTag)
-            (text))
           (text))
-        (v
-          (verseNumber))
+        (zNameSpace
+          (zSpaceTag)
+          (text))
         (verseText
           (text))
         (v
           (verseNumber))
         (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (zNameSpace
+          (zSpaceTag)
           (text)
-          (zNameSpaceClosed
-            (zSpaceTag)
-            (text)
-            (customAttribute
-              (customAttributeName)
-              (attributeValue)))
+          (customAttribute
+            (customAttributeName)
+            (attributeValue)))
+        (verseText
           (text))
         (v
           (verseNumber))

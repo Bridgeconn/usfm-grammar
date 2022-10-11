@@ -41,7 +41,7 @@ module.exports = grammar({
 
     // Headers
     _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock, $.tocaBlock,
-      $._comments, $.milestone, $.zNameSpaceRegular, $.esb,
+      $._comments, $.milestone, $.zNameSpace, $.esb,
       ),
 
     usfm: $ => seq("\\usfm ", /\d+(\.\d+)?/),
@@ -84,7 +84,7 @@ module.exports = grammar({
     imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
     _midIntroMarker: $ => choice($.isBlock, $.io, $.iot, $.ip, $.im,
       $.ipi, $.imi, $.iliBlock, $.ipq, $.imq, $.ipr, $.ib,
-      $.iqBlock, $.iex, $._comments, $.milestone, $.zNameSpaceRegular, $.esb),
+      $.iqBlock, $.iex, $._comments, $.milestone, $.zNameSpace, $.esb),
     isBlock: $ => prec.right(0,repeat1($.is)),
     is: $ => prec.right(0, seq($.isTag, $._introText)),
     isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
@@ -147,7 +147,7 @@ module.exports = grammar({
       $.ip,
       $.iex,
       $.milestone,
-      $.zNameSpaceRegular,
+      $.zNameSpace,
       $.esb,
       $.b
     ),
@@ -240,7 +240,7 @@ module.exports = grammar({
       $.footnote, 
       $.crossref,
       $.milestone,
-      $.zNameSpaceRegular,
+      $.zNameSpace,
       $._comments,
     ),
 
@@ -491,7 +491,7 @@ module.exports = grammar({
       $.wa,
       $.jmp,
       $.fig,
-      $.zNameSpaceClosed,
+      // $.zNameSpace, makes all zNameSpaces part of paragraph content, like milestones
     ),
 
     addNested: $ => seq("\\+add", $._innerText, "\\+add*"),
@@ -592,9 +592,12 @@ module.exports = grammar({
 
     zSpaceTag: $=> /\\z[\w\d_-]+/,
     _zSpaceClose: $=> /\\z[\w\d_-]+\*/,
-    zNameSpaceRegular: $ => prec.right(0, seq($.zSpaceTag, optional($.text))),
-    zNameSpaceClosed: $ => prec.right(0, seq($.zSpaceTag, optional($.text),
+    _zNameSpaceRegular: $ => prec.right(0, seq($.zSpaceTag, optional($.text))),
+    _zNameSpaceClosed: $ => prec.right(0, seq($.zSpaceTag, optional($.text),
       optional($._milestoneAttributes), $._zSpaceClose)), // This may not support one name space within another
+    _zNameSpaceStandaloneMarker: $ => seq($.zSpaceTag,
+      optional($._milestoneAttributes), "\\*" ),
+    zNameSpace: $ => choice($._zNameSpaceClosed, $._zNameSpaceRegular, $._zNameSpaceStandaloneMarker),
     
     esb: $ => seq("\\esb",  repeat($._esbContents), "\\esbe"),
     _esbContents: $ => choice( 
@@ -608,7 +611,7 @@ module.exports = grammar({
       $.footnote,
       $.pb,
       $.milestone,
-      $.zNameSpaceRegular,
+      $.zNameSpace,
       $.ip,
       ),
 
