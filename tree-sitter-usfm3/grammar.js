@@ -5,7 +5,11 @@ module.exports = grammar({
     File: $ => prec.right(0, seq(
       $._mandatoryHead,
       optional($.mtBlock),
-      optional($._introduction),
+      // optional($._introduction),
+        optional($.imtBlock),
+        repeat($._midIntroMarker),
+        optional($.imteBlock),
+        optional($.ie),
       repeat($.chapter)
       )),
     _mandatoryHead: $ => prec.right(0, seq($.book, repeat($._bookHeader))),
@@ -66,10 +70,10 @@ module.exports = grammar({
     lit: $ => seq("\\lit ", $.text), 
 
     // Introduction
-    _introduction: $ => prec.right(0,seq(
-      optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock),
-      optional($.ie))
-      ),
+    // _introduction: $ => prec.right(0,seq(
+    //   optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock),
+    //   optional($.ie))
+    //   ),
     _introText: $ => repeat1(choice($.text, $.iqt,
       $.xt_standalone,
       $._characterMarker
