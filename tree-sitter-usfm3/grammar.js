@@ -389,7 +389,7 @@ module.exports = grammar({
       $.fdc,
       $.fv,
       $.noteText,
-      $.xt
+      $.xtNested
     ),
 
     //Cross-reference
@@ -405,6 +405,8 @@ module.exports = grammar({
     xq: $ => seq("\\xq ", $.noteText, optional("\\xq*")),
     xt: $ => seq("\\xt ", $.noteText,optional(choice($.defaultAttribute, $._attributesInCrossref)), 
       optional("\\xt*")),
+    xtNested: $ => seq("\\+xt ", $.noteText,optional(choice($.defaultAttribute, $._attributesInCrossref)), 
+      optional("\\+xt*")),
     xt_standalone: $ => seq("\\xt ", $.noteText,
       optional(choice($.defaultAttribute, $._attributesInCrossref)), 
       choice("\\xt*", "\\x*")),
