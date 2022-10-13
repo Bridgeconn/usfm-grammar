@@ -1,0 +1,40 @@
+<usx version="3.0">
+  <book code="MAT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
+  <para style="usfm">3.0</para>
+  <para style="toc1">The Acts of the Apostles</para>
+  <para style="toc2">Acts</para>
+  <para style="mt1">THE ACTS</para>
+  <para style="mt2">of the Apostles</para>
+  <para style="mte2" status="invalid">The End of the Gospel according to</para>
+  <para style="mte1" status="invalid">John</para>
+  <chapter number="1" style="c" sid="MAT 1" />
+  <para style="ms">BOOK ONE</para>
+  <para style="mr">(Psalms 1–41)</para>
+  <para style="s">True Happiness</para>
+  <para style="p">
+    <verse number="1" style="v" sid="MAT 1:1" />ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...<verse eid="MAT 1:1" /></para>
+  <para style="s1">The Thirty Wise Sayings</para>
+  <para style="sr">(22.17--24.22)</para>
+  <para style="r">(Mark 1.1-8; Luke 3.1-18; John 1.19-28) <verse number="2" style="v" sid="MAT 1:2" status="invalid" />നമ്മുടെ പിതാവായ ...<verse eid="MAT 1:2" /></para>
+  <para style="sd2" />
+  <para style="p">
+    <verse number="3" style="v" sid="MAT 1:3" />കർത്താവായ യേശുവിനോടും ... <verse eid="MAT 1:3" /><verse number="4" style="v" sid="MAT 1:4" />The Son was made greater than the angels, just as the name that God gave him is greater than theirs. <verse eid="MAT 1:4" /><verse number="5" style="v" sid="MAT 1:5" />For God never said to any of his angels,</para>
+  <para style="sp" vid="MAT 1:5">God</para>
+  <para style="q1" vid="MAT 1:5">"You are my Son;</para>
+  <para style="q2" vid="MAT 1:5">today I have become your Father." <char style="rq">Psa 2.7</char></para>
+  <para style="b" vid="MAT 1:5" />
+  <para style="m" vid="MAT 1:5">Nor did God say about any angel,</para>
+  <para style="q1" vid="MAT 1:5">"I will be his Father,</para>
+  <para style="q2" vid="MAT 1:5">and he will be my Son." <char style="rq">2Sa 7.14; 1Ch 17.13</char><verse eid="MAT 1:5" /></para>
+  <chapter eid="MAT 1" />
+  <chapter number="3" style="c" sid="MAT 3" />
+  <para style="s1">Trust in God under Adversity</para>
+  <para style="d">A Psalm of David, when he fled from his son Absalom.</para>
+  <para style="q1">
+    <verse number="1" style="v" sid="MAT 3:1" />O <char style="nd">Lord</char>, how many are my foes!</para>
+  <para style="q2" vid="MAT 3:1">Many are rising against me;<verse eid="MAT 3:1" /></para>
+  <para style="q1">
+    <verse number="2" style="v" sid="MAT 3:2" />many are saying to me,</para>
+  <para style="q2" vid="MAT 3:2">“There is no help for you in God.” <char style="qs">Selah</char><verse eid="MAT 3:2" /></para>
+  <chapter eid="MAT 3" />
+</usx>

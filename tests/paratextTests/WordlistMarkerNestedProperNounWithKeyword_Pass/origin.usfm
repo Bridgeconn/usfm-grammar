@@ -1,0 +1,4 @@
+\id GLO
+\c 1
+\p \v 1 something \p  \k keywordkeyw\k* definition
+\v 2 something \p  \w \+pn Proper Noun\+pn*|keyword\w* definition

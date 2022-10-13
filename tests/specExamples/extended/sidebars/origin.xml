@@ -1,0 +1,10 @@
+<usx version="3.0">
+  <book code="MRK" style="id">- Good News Study Bible - Notes Material</book>
+  <chapter number="1" style="c" sid="MRK 1" />
+  <para style="p">
+    <verse number="18" style="v" sid="MRK 1:18" />At once they left their nets and went with him.</para>
+  <sidebar style="esb" category="History"><para style="ms" vid="MRK 1:18">Fish and Fishing</para><para style="p" vid="MRK 1:18">In Jesus' time, fishing took place mostly on lake Galilee, because Jewish people could not use many of the harbors along the coast of the Mediterranean Sea, since these harbors were often controlled by unfriendly neighbors. The most common fish in the Lake of Galilee were carp and catfish. The Law of Moses allowed people to eat any fish with fins and scales, but since catfish lack scales (as do eels and sharks) they were not to be eaten (<char style="xt">Lev 11.9-12</char>). Fish were also probably brought from Tyre and Sidon, where they were dried and salted. ...</para><para style="p" vid="MRK 1:18">Among early Christians, the fish was a favorite image for Jesus, because the Greek word for fish (<char style="tl">ichthus</char>) consists of the first letters of the Greek words that tell who Jesus is: <char style="fig">Christian Fish Image</char><verse eid="MRK 1:18" /></para></sidebar>
+  <para style="p">
+    <verse number="19" style="v" sid="MRK 1:19" />He went a little farther on and saw two other brothers, James and John, the sons of Zebedee.<verse eid="MRK 1:19" /></para>
+  <chapter eid="MRK 1" />
+</usx>

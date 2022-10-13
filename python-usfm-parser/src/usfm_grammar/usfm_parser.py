@@ -326,6 +326,10 @@ def node_2_dict_attrib(attrib_node, usfm_bytes, parent_type):
     else:
         attrib_name = attrib_node.children[0].type
     val_node = val_query.captures(attrib_node)[0]
+    if len(val_query.captures(attrib_node)) > 0:
+        val_node = val_query.captures(attrib_node)[0]
+    else:
+        val_node = ""
     val = usfm_bytes[val_node[0].start_byte:val_node[0].end_byte].decode('utf-8').strip()
     return {attrib_name:val}
 

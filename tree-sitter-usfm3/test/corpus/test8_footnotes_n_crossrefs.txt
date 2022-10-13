@@ -364,25 +364,25 @@ xt in cd
     (c
       (chapterNumber))
     (cd
-      (xt
+      (xt_standalone
         (noteText
           (text))
         (defaultAttribute
           (attributeValue)))
       (text)
-      (xt
+      (xt_standalone
         (noteText
           (text))
         (defaultAttribute
           (attributeValue)))
       (text)
-      (xt
+      (xt_standalone
         (noteText
           (text))
         (defaultAttribute
           (attributeValue)))
       (text)
-      (xt
+      (xt_standalone
         (noteText
           (text))
         (defaultAttribute
@@ -695,9 +695,8 @@ than theirs.
               (noteText
                 (text))))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (paragraph
       (m
         (verseText

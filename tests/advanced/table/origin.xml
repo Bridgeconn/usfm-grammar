@@ -1,0 +1,31 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />the first verse <verse eid="GEN 1:1" /><verse number="2" style="v" sid="GEN 1:2" />the second verse<verse eid="GEN 1:2" /></para>
+  <para style="p">
+    <verse number="12-83" style="v" sid="GEN 1:12-83" />They presented their offerings in the following order:</para>
+  <table>
+    <row style="tr">
+      <cell style="th1" align="start">Day </cell>
+      <cell style="th2" align="start">Tribe </cell>
+      <cell style="th3" align="start">Leader</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1" align="end">1st </cell>
+      <cell style="tc2" align="start">Judah </cell>
+      <cell style="tc3" align="start">Nahshon son of Amminadab</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1" align="end">2nd </cell>
+      <cell style="tc2" align="start">Issachar </cell>
+      <cell style="tc3" align="start">Nethanel son of Zuar</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1" align="end">3rd </cell>
+      <cell style="tc2" align="start">Zebulun </cell>
+      <cell style="tc3" align="start">Eliab son of Helon</cell>
+    </row>
+  </table>
+  <chapter eid="GEN 1" />
+</usx>

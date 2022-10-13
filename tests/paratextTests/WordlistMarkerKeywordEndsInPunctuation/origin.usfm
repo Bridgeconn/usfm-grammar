@@ -1,0 +1,7 @@
+\id GLO
+\c 1
+\p \v 1 something \p  \k blah\k* definition
+\v 2 something \p  \w word|keyword. \w* definition
+\v 2 something \p  \w word|keyword,\w* definition
+\v 2 something \p  \w word|keyword: \w* definition
+\v 2 something \p  \w word|keyword; \w* definition

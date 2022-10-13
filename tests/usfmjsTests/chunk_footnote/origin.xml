@@ -1,0 +1,7 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />son of David, son of Abraham. <note caller="This" style="f">is a footnote about this verse, It shouldn't be rendered inline with the text.</note><verse eid="GEN 1:1" /></para>
+  <chapter eid="GEN 1" />
+</usx>

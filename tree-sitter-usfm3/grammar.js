@@ -5,7 +5,11 @@ module.exports = grammar({
     File: $ => prec.right(0, seq(
       $._mandatoryHead,
       optional($.mtBlock),
-      optional($._introduction),
+      // optional($._introduction),
+        optional($.imtBlock),
+        repeat($._midIntroMarker),
+        optional($.imteBlock),
+        optional($.ie),
       repeat($.chapter)
       )),
     _mandatoryHead: $ => prec.right(0, seq($.book, repeat($._bookHeader))),
@@ -40,13 +44,13 @@ module.exports = grammar({
     numberedLevelMax5: $ => token.immediate(/[12345]/),
 
     // Headers
-    _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock,
-      $._comments, $.milestone, $.zNameSpaceRegular, $.esb,
+    _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock, $.tocaBlock,
+      $._comments, $.milestone, $.zNameSpace, $.esb,
       ),
 
     usfm: $ => seq("\\usfm ", /\d+(\.\d+)?/),
     ide: $ => seq("\\ide ", $.text),
-    hBlock: $ => prec.right(0,seq(repeat1($.h), optional($.tocBlock), optional($.tocaBlock))),
+    hBlock: $ => prec.right(0,repeat1($.h)),
     tocBlock: $ => prec.right(0,repeat1($.toc)),
     tocaBlock: $ =>prec.right(0, repeat1($.toca)),//only under some hmarkers
 
@@ -66,12 +70,12 @@ module.exports = grammar({
     lit: $ => seq("\\lit ", $.text), 
 
     // Introduction
-    _introduction: $ => prec.right(0,seq(
-      optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock),
-      optional($.ie))
-      ),
+    // _introduction: $ => prec.right(0,seq(
+    //   optional($.imtBlock), repeat1($._midIntroMarker), optional($.imteBlock),
+    //   optional($.ie))
+    //   ),
     _introText: $ => repeat1(choice($.text, $.iqt,
-      $.xt,
+      $.xt_standalone,
       $._characterMarker
       )),
 
@@ -84,7 +88,7 @@ module.exports = grammar({
     imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
     _midIntroMarker: $ => choice($.isBlock, $.io, $.iot, $.ip, $.im,
       $.ipi, $.imi, $.iliBlock, $.ipq, $.imq, $.ipr, $.ib,
-      $.iqBlock, $.iex, $._comments, $.milestone, $.zNameSpaceRegular, $.esb),
+      $.iqBlock, $.iex, $._comments, $.milestone, $.zNameSpace, $.esb),
     isBlock: $ => prec.right(0,repeat1($.is)),
     is: $ => prec.right(0, seq($.isTag, $._introText)),
     isTag: $ => seq("\\is",optional(token.immediate(/[12]/)), " "),
@@ -116,7 +120,7 @@ module.exports = grammar({
       $._characterMarker,
       ))),
     v: $ => prec.right(0,seq("\\v ", $.verseNumber, repeat($._verseMeta))),
-    verseNumber: $ => /\d+\w?(-\d+\w?)?[\s\n\r]/,
+    verseNumber: $ => /\d+\w?(-\d+\w?)?[\s\n\r]*/,
 
     _verseMeta: $ => choice(
       $.va,
@@ -145,9 +149,11 @@ module.exports = grammar({
       $.footnote,
       $.pb,
       $.ip,
+      $.iex,
       $.milestone,
-      $.zNameSpaceRegular,
-      $.esb
+      $.zNameSpace,
+      $.esb,
+      $.b
     ),
 
     //chapter meta
@@ -162,7 +168,7 @@ module.exports = grammar({
     cp: $ => seq("\\cp ", $.text),
     cd: $ => prec.right(0,seq("\\cd ", repeat1(choice($.text,
       $._characterMarker,
-      $.xt
+      $.xt_standalone
       )))),
 
     // Titles & Headings
@@ -229,7 +235,7 @@ module.exports = grammar({
       $.nb,
       $.pc,
       $.phBlock,
-      $.b // may be move this to within _paragraphContent, as no text can be contained in this
+      // $.b // may be move this to within _paragraphContent, as no text can be contained in this
     ),
 
     _paragraphContent: $ => choice(
@@ -238,7 +244,7 @@ module.exports = grammar({
       $.footnote, 
       $.crossref,
       $.milestone,
-      $.zNameSpaceRegular,
+      $.zNameSpace,
       $._comments,
     ),
 
@@ -278,7 +284,8 @@ module.exports = grammar({
     _poetryContent: $ => choice(
       $._paragraphContent,
       $.qac,
-      $.qs
+      $.qs,
+      $.b
     ),
 
     qBlock: $ => prec.right(0, repeat1($.q)),
@@ -382,12 +389,12 @@ module.exports = grammar({
       $.fdc,
       $.fv,
       $.noteText,
-      $.xt
+      $.xtNested
     ),
 
     //Cross-reference
     crossref: $ => choice($.x, 
-      $.xt, //using this marker in introtext or cd will not mark it as a crossreference in parse tree
+      $.xt_standalone, //using this marker in introtext or cd will not mark it as a crossreference in parse tree
       // $.ex, 
       $.rq,
       ),
@@ -398,6 +405,11 @@ module.exports = grammar({
     xq: $ => seq("\\xq ", $.noteText, optional("\\xq*")),
     xt: $ => seq("\\xt ", $.noteText,optional(choice($.defaultAttribute, $._attributesInCrossref)), 
       optional("\\xt*")),
+    xtNested: $ => seq("\\+xt ", $.noteText,optional(choice($.defaultAttribute, $._attributesInCrossref)), 
+      optional("\\+xt*")),
+    xt_standalone: $ => seq("\\xt ", $.noteText,
+      optional(choice($.defaultAttribute, $._attributesInCrossref)), 
+      choice("\\xt*", "\\x*")),
     xta: $ => seq("\\xta ", $.noteText, optional("\\xta*")),
     xop: $ => seq("\\xop ", $.noteText, optional("\\xop*")),
     xot: $ => seq("\\xot ", $.noteText, optional("\\xot*")),
@@ -485,7 +497,7 @@ module.exports = grammar({
       $.wa,
       $.jmp,
       $.fig,
-      $.zNameSpaceClosed,
+      // $.zNameSpace, makes all zNameSpaces part of paragraph content, like milestones
     ),
 
     addNested: $ => seq("\\+add", $._innerText, "\\+add*"),
@@ -586,9 +598,12 @@ module.exports = grammar({
 
     zSpaceTag: $=> /\\z[\w\d_-]+/,
     _zSpaceClose: $=> /\\z[\w\d_-]+\*/,
-    zNameSpaceRegular: $ => prec.right(0, seq($.zSpaceTag, optional($.text))),
-    zNameSpaceClosed: $ => prec.right(0, seq($.zSpaceTag, optional($.text),
+    _zNameSpaceRegular: $ => prec.right(0, seq($.zSpaceTag, optional($.text))),
+    _zNameSpaceClosed: $ => prec.right(0, seq($.zSpaceTag, optional($.text),
       optional($._milestoneAttributes), $._zSpaceClose)), // This may not support one name space within another
+    _zNameSpaceStandaloneMarker: $ => seq($.zSpaceTag,
+      optional($._milestoneAttributes), "\\*" ),
+    zNameSpace: $ => choice($._zNameSpaceClosed, $._zNameSpaceRegular, $._zNameSpaceStandaloneMarker),
     
     esb: $ => seq("\\esb",  repeat($._esbContents), "\\esbe"),
     _esbContents: $ => choice( 
@@ -602,7 +617,7 @@ module.exports = grammar({
       $.footnote,
       $.pb,
       $.milestone,
-      $.zNameSpaceRegular,
+      $.zNameSpace,
       $.ip,
       ),
 
@@ -614,13 +629,14 @@ module.exports = grammar({
     /* For user defined attributes starting with x */
 
     customAttribute: $ => seq($.customAttributeName, "=", "\"",optional($.attributeValue),"\""),
-    customAttributeName: $ => seq("x-", /[\w\d_]+/),
+    customAttributeName: $ => /x-[\w\d_]+/,
     attributeValue: $ =>  /[^\\\|"=]+/, //same rule as $.text, with quote and '=' added extra
 
     /* The default attribute is valid for any marker which normally provide attributes. 
       It would be extracted as default attribute without mentioning the corresponding attribute name */
 
-    defaultAttribute: $ => seq("|", $.attributeValue), 
+    defaultAttribute: $ => seq("|", choice($.attributeValue,
+      seq('"',$.attributeValue, '"'))),
 
     /* the special set of attributes valid for each of the normally 
       attributed elements are defined here*/
@@ -632,14 +648,14 @@ module.exports = grammar({
       $.linkAttribute)))),
     _figAttributes: $ => prec.right(0, seq("|", repeat1(choice($.altAttribute, $.srcAttribute, $.sizeAttribute, $.locAttribute, $.copyAttribute, 
       $.refAttribute, $.customAttribute, $.linkAttribute, $.defaultAttribute)))),
-    lemmaAttribute: $ => seq("lemma", "=", '"', $.attributeValue, '"'),
+    lemmaAttribute: $ => seq("lemma", "=", '"', optional($.attributeValue), '"'),
     strongAttribute: $ => seq("strong", "=", '"', optional($.attributeValue), '"'), 
     scrlocAttribute: $ => seq("srcloc", "=", '"', optional($.attributeValue), '"'),
     glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
-    _jmpAttribute: $ => seq("|", $.linkAttribute),
+    _jmpAttribute: $ => seq("|", repeat($.linkAttribute)),
     linkAttribute: $ => seq($._linkAttributeName, "=", '"', optional($.attributeValue), '"'),
     _linkAttributeName: $ => choice("link-href", "link-title", "link-id", $._linkAttributeUserDefinedName),
-    _linkAttributeUserDefinedName: $ => seq("link-", /[\w\d_]+/),
+    _linkAttributeUserDefinedName: $ => seq("x-", /[\w\d_]+/),
     altAttribute: $ => seq("alt", "=", '"', optional($.attributeValue), '"'),
     srcAttribute: $ => seq("src", "=", '"', optional($.attributeValue), '"'),
     sizeAttribute: $ => seq("size", "=", '"', optional($.attributeValue), '"'),

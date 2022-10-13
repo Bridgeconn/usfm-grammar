@@ -1,0 +1,94 @@
+<usx version="3.0">
+  <book code="ACT" style="id">EN_ULT en_English_ltr Wed Oct 10 2018 11:55:23 GMT-0400 (EDT) tc</book>
+  <para style="usfm">3.0</para>
+  <chapter number="1" style="c" sid="ACT 1" />
+  <para style="p">
+    <verse number="20" style="v" sid="ACT 1:20" />"</para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="γὰρ" x-lemma="γάρ" x-morph="Gr,CC,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G10630"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">For</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="γέγραπται" x-lemma="γράφω" x-morph="Gr,V,IEP3,,S," x-occurrence="1" x-occurrences="1" x-strong="G11250"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">it</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">is</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">written</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="ἐν" x-lemma="ἐν" x-morph="Gr,P,,,,,D,,," x-occurrence="1" x-occurrences="2" x-strong="G17220"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">in</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="βίβλῳ" x-lemma="βίβλος" x-morph="Gr,N,,,,,DFS," x-occurrence="1" x-occurrences="1" x-strong="G09760"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">the</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">Book</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="Ψαλμῶν" x-lemma="ψαλμός" x-morph="Gr,N,,,,,GMP," x-occurrence="1" x-occurrences="1" x-strong="G55680"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="2" status="invalid">of</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">Psalms</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" />,</para>
+  <para style="q" vid="ACT 1:20">'</para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="γενηθήτω" x-lemma="γίνομαι" x-morph="Gr,V,MAP3,,S," x-occurrence="1" x-occurrences="1" x-strong="G10960"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">Let</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="αὐτοῦ" x-lemma="αὐτός" x-morph="Gr,RP,,,3GMS," x-occurrence="1" x-occurrences="2" x-strong="G08460"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="2" status="invalid">his</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="ἡ" x-lemma="ὁ" x-morph="Gr,EA,,,,NFS," x-occurrence="1" x-occurrences="1" x-strong="G35880"<unmatched marker="*" /></para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="ἔπαυλις" x-lemma="ἔπαυλις" x-morph="Gr,N,,,,,NFS," x-occurrence="1" x-occurrences="1" x-strong="G18860"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">field</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" />
+  </para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="γενηθήτω" x-lemma="γίνομαι" x-morph="Gr,V,MAP3,,S," x-occurrence="1" x-occurrences="1" x-strong="G10960"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">be</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">made</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="ἔρημος" x-lemma="ἔρημος" x-morph="Gr,NP,,,,NFS," x-occurrence="1" x-occurrences="1" x-strong="G20480"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">desolate</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" />,</para>
+  <para style="q" vid="ACT 1:20" />
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="καὶ" x-lemma="καί" x-morph="Gr,CC,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G25320"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">and</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="ἔστω" x-lemma="εἰμί" x-morph="Gr,V,MPA3,,S," x-occurrence="1" x-occurrences="1" x-strong="G15100"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">do</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="μὴ" x-lemma="μή" x-morph="Gr,D,,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G33610"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">not</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="ἔστω" x-lemma="εἰμί" x-morph="Gr,V,MPA3,,S," x-occurrence="1" x-occurrences="1" x-strong="G15100"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="2" status="invalid">let</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="ὁ" x-lemma="ὁ" x-morph="Gr,RD,,,,NMS," x-occurrence="1" x-occurrences="1" x-strong="G35880"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">even</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">one</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">person</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="κατοικῶν" x-lemma="κατοικέω" x-morph="Gr,V,PPA,NMS," x-occurrence="1" x-occurrences="1" x-strong="G27300"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">live</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="ἐν" x-lemma="ἐν" x-morph="Gr,P,,,,,D,,," x-occurrence="2" x-occurrences="2" x-strong="G17220"<unmatched marker="*" /></para>
+  <para style="zaln-s" status="unknown" vid="ACT 1:20">| x-content="αὐτῇ" x-lemma="αὐτός" x-morph="Gr,RP,,,3DFS," x-occurrence="1" x-occurrences="1" x-strong="G08460"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">there</char></para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" />
+  </para>
+  <para style="zaln-e" status="unknown" vid="ACT 1:20">
+    <unmatched marker="*" />';</para>
+  <para style="q" vid="ACT 1:20">'<verse eid="ACT 1:20" /></para>
+  <para style="zaln-s" status="unknown">| x-content="καί" x-lemma="καί" x-morph="Gr,CC,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G25320"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">And</char></para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-content="λαβέτω" x-lemma="λαμβάνω" x-morph="Gr,V,MAA3,,S," x-occurrence="1" x-occurrences="1" x-strong="G29830"<unmatched marker="*" /><char style="w" x-occurrence="2" x-occurrences="2" status="invalid">let</char></para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-content="ἕτερος" x-lemma="ἕτερος" x-morph="Gr,RI,,,,NMS," x-occurrence="1" x-occurrences="1" x-strong="G20870"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">someone</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">else</char></para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-content="λαβέτω" x-lemma="λαμβάνω" x-morph="Gr,V,MAA3,,S," x-occurrence="1" x-occurrences="1" x-strong="G29830"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">take</char></para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-content="αὐτοῦ" x-lemma="αὐτός" x-morph="Gr,RP,,,3GMS," x-occurrence="2" x-occurrences="2" x-strong="G08460"<unmatched marker="*" /><char style="w" x-occurrence="2" x-occurrences="2" status="invalid">his</char></para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-content="τὴν" x-lemma="ὁ" x-morph="Gr,EA,,,,AFS," x-occurrence="1" x-occurrences="1" x-strong="G35880"<unmatched marker="*" /></para>
+  <para style="zaln-s" status="unknown">| x-content="ἐπισκοπὴν" x-lemma="ἐπισκοπή" x-morph="Gr,N,,,,,AFS," x-occurrence="1" x-occurrences="1" x-strong="G19840"<unmatched marker="*" /><char style="w" x-occurrence="1" x-occurrences="1" status="invalid">position</char> <char style="w" x-occurrence="2" x-occurrences="2" status="invalid">of</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">leadership</char></para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" />
+  </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" />.'</para>
+  <para style="m" />
+  <para style="s5" status="unknown" />
+  <chapter eid="ACT 1" />
+</usx>

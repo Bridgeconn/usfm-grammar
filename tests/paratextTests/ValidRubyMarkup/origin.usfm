@@ -1,0 +1,16 @@
+\id GEN
+\c 1
+\s some text
+\p
+\v 1 verse text 
+\rb B|g\rb* 
+\v 1 verse text
+\rb 僕使御|g\rb* 
+\v 1 verse text 
+\rb BB|g:g\rb* 
+\v 1 verse text 
+\rb BB|gg\rb* 
+\v 1 verse text 
+\rb B僕使御|g:g\rb* 
+\v 1 verse text 
+\rb BB|gloss="g:g"\rb* 

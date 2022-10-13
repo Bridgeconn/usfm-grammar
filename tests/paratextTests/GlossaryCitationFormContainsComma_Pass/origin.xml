@@ -1,0 +1,9 @@
+<usx version="3.0">
+  <book code="GLO" style="id" />
+  <chapter number="1" style="c" sid="GLO 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GLO 1:1" />something</para>
+  <para style="p" vid="GLO 1:1">
+    <char style="k">kw,kw, kw</char> definition<verse eid="GLO 1:1" /></para>
+  <chapter eid="GLO 1" />
+</usx>

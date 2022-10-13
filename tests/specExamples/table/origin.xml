@@ -1,0 +1,44 @@
+<usx version="3.0">
+  <book code="MAT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
+  <para style="usfm">3.0</para>
+  <para style="toc1">The Acts of the Apostles</para>
+  <para style="toc2">Acts</para>
+  <para style="ip">One of these brothers, Joseph, had become...</para>
+  <para style="ipr">(50.24)</para>
+  <chapter number="136" style="c" sid="MAT 136" />
+  <para style="p">
+    <verse number="12-83" style="v" sid="MAT 136:12-83" />They presented their offerings in the following order:</para>
+  <table>
+    <row style="tr">
+      <cell style="th1" align="start">Day </cell>
+      <cell style="th2" align="start">Tribe </cell>
+      <cell style="thr3" align="end">Leader</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1" align="end">1st </cell>
+      <cell style="tc2" align="start">Judah </cell>
+      <cell style="tcr3" align="end">Nahshon son of Amminadab</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1" align="end">2nd </cell>
+      <cell style="tc2" align="start">Issachar </cell>
+      <cell style="tcr3" align="end">Nethanel son of Zuar</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1" align="end">3rd </cell>
+      <cell style="tc2" align="start">Zebulun </cell>
+      <cell style="tcr3" align="end">Eliab son of Helon</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1" align="end">4th </cell>
+      <cell style="tc2" align="start">Reuben </cell>
+      <cell style="tcr3" align="end">Elizur son of Shedeur</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1" align="end">5th </cell>
+      <cell style="tc2" align="start">Simeon </cell>
+      <cell style="tcr3" align="end">Shelumiel son of Zurishaddai</cell>
+    </row>
+  </table>
+  <chapter eid="MAT 136" />
+</usx>

@@ -1,0 +1,8 @@
+\id GEN
+\ib
+\ip Hi mom.
+\c 1
+\p \v 1 Hi there.
+\p And\fig  | src="figure.png"\fig* and some more text
+\p And\fig |||||| \fig* and some more text
+\b
