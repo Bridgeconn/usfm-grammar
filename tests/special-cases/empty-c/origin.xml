@@ -1,0 +1,11 @@
+<usx version="3.0">
+  <book code="SNG" style="id" />
+  <chapter number="1" style="c" sid="SNG 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="SNG 1:1" />The Song of Songs, which is Solomon’s.<verse eid="SNG 1:1" /></para>
+  <chapter eid="SNG 1" />
+  <chapter number="2" style="c" sid="SNG 2" />
+  <chapter eid="SNG 2" />
+  <chapter number="3" style="c" sid="SNG 3" />
+  <chapter eid="SNG 3" />
+</usx>

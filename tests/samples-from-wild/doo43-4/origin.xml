@@ -1,0 +1,60 @@
+<usx version="3.0">
+  <book code="PSA" style="id">- (SOMEVersions)</book>
+  <para style="rem">Copyright © 2003, 2009, 2013 .®</para>
+  <para style="h">Забур</para>
+  <para style="toc1">Забур</para>
+  <para style="toc2">Забур</para>
+  <para style="toc3">Заб.</para>
+  <para style="mt1">Забур</para>
+  <para style="imt">– введение</para>
+  <para style="ip">Книга Забур состоит из ста пятидесяти песен, которые использовались как во время общих богослужений, так и для личной молитвы Всевышнему. Здесь есть песни различных видов: прославления, плачи, благодарения; песни раскаяния и упования на Всевышнего; песни о славе Иерусалима и песни для паломничества в храм; царские гимны (которые исполнялись, например, на коронациях), учительные песни, а также литургические песнопения. В песнях Забура часто выражены глубокие чувства и переживания. Здесь звучит не только радость, хвала и доверие Всевышнему, но и отчаяние, гнев, раскаяние и страх перед врагами. Многие из песен Забура пророчествуют о приходе Исы Масиха. Например, в песнях <char style="xt">2</char> и <char style="xt">109</char> Он описывается как Правитель от Всевышнего на земле, а в песни <char style="xt">21</char> предсказываются Его страдания за грехи всего человечества.</para>
+  <para style="ip">Забур составлен очень искусно, и, чтобы читатель мог лучше его оценить, стоит сделать несколько примечаний о его структуре. Он разделён на пять книг (песни <char style="xt">1–40; 41–71; 72–88; 89–105; 106–150</char>), видимо, в подражание пяти книгам Таурата. Каждая часть заканчивается благословением. Песнь <char style="xt">1</char> служит введением для всей книги, а Песнь <char style="xt">150</char> – это заключительное благословение пятой части и всей книги Забур. Во всей книге есть части, которые изначально были отдельными сборниками. Это, например, песни восхождения (<char style="xt">119–133</char>) или песни Асафа (<char style="xt">72–82</char>). Структура каждой песни хорошо продумана, что лучше всего видно в акростихах (песни <char style="xt">9</char>, <char style="xt">24</char>, <char style="xt">33</char>, <char style="xt">36</char>, <char style="xt">110</char>, <char style="xt">111</char>, <char style="xt">118</char>, <char style="xt">144</char>).</para>
+  <para style="ip">В большинстве случаев в начале песни есть заглавие с указаниями о манере исполнения, с информацией об авторе, жанре или историческом контексте. Так как некоторые из древних терминов, находящихся в заглавиях, сейчас плохо понятны, они могут быть переведены только приблизительно. Существует также мнение, что в некоторых случаях в начале песен упомянут не автор, а тот, о ком написана данная песнь, или кому она посвящена.</para>
+  <para style="ip">Забур – душа Священного Писания – является любимой молитвенной книгой народа Всевышнего во всех поколениях.</para>
+  <para style="iot">Содержание</para>
+  <para style="io1">Первая книга (<char style="ior">Песни 1–40</char>)</para>
+  <para style="io1">Вторая книга (<char style="ior">Песни 41–71</char>)</para>
+  <para style="io1">Третья книга (<char style="ior">Песни 72–88</char>)</para>
+  <para style="io1">Четвёртая книга (<char style="ior">Песни 89–105</char>)</para>
+  <para style="io1">Пятая книга (<char style="ior">Песни 106–150</char>)</para>
+  <para style="ie" />
+  <chapter number="1" style="c" sid="PSA 1" />
+  <para style="cl">Песнь 1</para>
+  <para style="ms">Первая книга</para>
+  <para style="q1">
+    <verse number="1" style="v" sid="PSA 1:1" />Благословен человек,</para>
+  <para style="q2" vid="PSA 1:1">который не следует совету нечестивых,</para>
+  <para style="q1" vid="PSA 1:1">не ходит путями грешников</para>
+  <para style="q2" vid="PSA 1:1">и не сидит в собрании насмешников,<verse eid="PSA 1:1" /></para>
+  <para style="q1">
+    <verse number="2" style="v" sid="PSA 1:2" />но в Законе Вечного<note caller="+" style="f"><char style="fr" closed="false">1:2 </char><char style="fk" closed="false">Вечный </char><char style="ft" closed="false">– на языке оригинала: «Яхве». Под этим именем Всевышний открылся Мусе и народу Исраила (см. <char style="xt">Исх. 3:13-15</char>). См. пояснительный словарь.</char></note> находит радость</para>
+  <para style="q2" vid="PSA 1:2">и о Законе Его размышляет день и ночь.<verse eid="PSA 1:2" /></para>
+  <para style="q1">
+    <verse number="3" style="v" sid="PSA 1:3" />Он как дерево, посаженное у потоков вод,</para>
+  <para style="q2" vid="PSA 1:3">которое приносит плод в своё время,</para>
+  <para style="q2" vid="PSA 1:3">и чей лист не вянет.</para>
+  <para style="q1" vid="PSA 1:3">Что бы он ни сделал, во всём преуспеет.<verse eid="PSA 1:3" /></para>
+  <para style="b" />
+  <para style="q1">
+    <verse number="4" style="v" sid="PSA 1:4" />Не таковы нечестивые!</para>
+  <para style="q2" vid="PSA 1:4">Они как мякина,</para>
+  <para style="q2" vid="PSA 1:4">которую гонит ветер.<verse eid="PSA 1:4" /></para>
+  <para style="q1">
+    <verse number="5" style="v" sid="PSA 1:5" />Поэтому не устоят на суде нечестивые,</para>
+  <para style="q2" vid="PSA 1:5">и грешники – в собрании праведных.<verse eid="PSA 1:5" /></para>
+  <para style="b" />
+  <para style="q1">
+    <verse number="6" style="v" sid="PSA 1:6" />Ведь Вечный охраняет путь праведных,</para>
+  <para style="q2" vid="PSA 1:6">а путь нечестивых погибнет.<verse eid="PSA 1:6" /></para>
+  <chapter eid="PSA 1" />
+  <chapter number="110" style="c" sid="PSA 110" />
+  <para style="cl">Песнь 110<note caller="+" style="f"><char style="fr" closed="false">110 </char><char style="fl" closed="false">Песнь 110 </char><char style="ft" closed="false">В оригинале эта песнь написана в форме акростиха: каждая строка начинается с очередной буквы еврейского алфавита.</char></note></para>
+  <para style="q1" />
+  <para style="b" />
+  <para style="q1">
+    <verse number="1" style="v" sid="PSA 110:1" />Славлю Вечного всем своим сердцем</para>
+  <para style="q2" vid="PSA 110:1">в совете праведных и в собрании народном.<verse eid="PSA 110:1" /></para>
+  <para style="b" />
+  <para style="q1" />
+  <chapter eid="PSA 110" />
+</usx>

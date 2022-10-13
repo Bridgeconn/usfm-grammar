@@ -1,0 +1,6 @@
+<usx version="3.0">
+  <book code="PHM" style="id">Longer Heading</book>
+  <chapter number="1" style="c" sid="PHM 1" />
+  <para style="p" />
+  <chapter eid="PHM 1" />
+</usx>

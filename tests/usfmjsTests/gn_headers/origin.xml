@@ -1,0 +1,66 @@
+<usx version="3.0">
+  <book code="TIT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
+  <para style="usfm">3.0</para>
+  <para style="ide">UTF-8</para>
+  <para style="ide">CP-1252</para>
+  <para style="ide">Custom (TGUARANI.TTF)</para>
+  <para style="sts">2</para>
+  <para style="rem">Assigned to &lt;translator's name&gt;.</para>
+  <para style="rem">First draft complete, waiting for checks.</para>
+  <para style="h">Matthew</para>
+  <para style="toc1">The Gospel According to Matthew</para>
+  <para style="toc2">Matthew</para>
+  <para style="toc3">Mat</para>
+  <para style="mt1">THE ACTS</para>
+  <para style="mt2">of the Apostles</para>
+  <para style="mte2" status="invalid">The End of the Gospel according to</para>
+  <para style="mte1" status="invalid">John</para>
+  <para style="imt1">INTRODUCCIÓN</para>
+  <para style="is1">Importancia del evangelio de Marcos</para>
+  <para style="ip">The following lists summarize each Christian tradition’s views of the books here designated as Deuterocanonicals/Apocrypha.</para>
+  <para style="ipi">Many Protestants consider the following books to be Apocrypha as defined above: Tobit, Judith, additions to Esther (as found in Greek Esther in the CEV) ...</para>
+  <para style="ipi">Roman Catholics consider the following books to be Deuterocanonical and of equal status with all other books of the Old Testament: Tobit, Judith, Greek Esther ...</para>
+  <para style="imt1" status="invalid">Preface:</para>
+  <para style="is1">A Word about the Contemporary English Version</para>
+  <para style="imi">
+    <char style="em">Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water.</char> (“The Translators to the Reader,” King James Version, 1611).</para>
+  <para style="im">The most important document in the history of the English language is the <char style="bk">King James Version</char> of the Bible...</para>
+  <para style="ib" />
+  <para style="imq">Before Joseph died, he told his brothers, “I won't live much longer. But God will take</para>
+  <para style="ipq">Before Joseph died, he told his brothers, “I won't live much longer. But God will take care of you and lead you out of Egypt to the land he promised Abraham, Isaac, and Jacob.”</para>
+  <para style="ipr">(50.24)</para>
+  <para style="iot">A QUICK LOOK AT THIS BOOK</para>
+  <para style="iq1">God our Savior showed us</para>
+  <para style="iq2">how good and kind he is.</para>
+  <para style="iq1">He saved us because</para>
+  <para style="iq2">of his mercy,</para>
+  <para style="iq1">and not because</para>
+  <para style="iq2">of any good things</para>
+  <para style="iq2">that we have done.</para>
+  <para style="ipr">(3.4,5a)</para>
+  <para style="ip">However, he is more than a teacher, healer, or <char style="w">miracle</char>-worker. He is also the Messiah, the Son of God, the Son of Man. These three titles express the first Christians' understanding of who Jesus is.</para>
+  <para style="ili">1 <char style="k" status="invalid">The Messiah</char> is the one promised by God, the one who would come and free God's people. By the time <char style="bk">The Gospel of Mark</char> appeared, the title "Messiah" (in Greek, "<char style="w" status="invalid">christ</char>") had become a proper name, so that the Gospel opens with "the Good News about Jesus Christ" (and not "Jesus the Christ"). Peter's confession (8.29) marks a turning-point in the ministry of Jesus. The title "<char style="w" status="invalid">son of david</char> " (10.46-48) also identifies Jesus as the Messiah, who would restore to Israel the power and glory it enjoyed under David's reign (also 12.35-37).</para>
+  <para style="ili">2 <char style="k" status="invalid">The Son of God</char> is the title by which the heavenly voice addresses Jesus at his baptism (1.11) and his transfiguration (9.7). And at Jesus' death the Roman officer confesses that Jesus is the Son of God (15.39).</para>
+  <para style="ili">3 <char style="k" status="invalid">The Son of Man</char> is the title most often used of Jesus, and it appears only on the lips of Jesus. This enigmatic title appears in <char style="bk">The Book of Daniel</char> (Dan 7.13n), where it is applied to the exalted figure to whom God gives universal dominion. In <char style="bk">Mark</char> the title is used of Jesus in three ways: the Son of Man acts with divine power (2.10, 28); he will be rejected, will suffer and die (8.31; 9.9, 12, 31; 10.33-34, 45; 14.21, 41); he will return in power and glory (8.38; 13.26; 14.62).</para>
+  <para style="ip">The two endings to the Gospel, which are enclosed in brackets, are generally regarded as written by someone other than the author of <char style="bk">Mark</char></para>
+  <para style="iot">Outline of Contents</para>
+  <para style="io1">The beginning of the gospel (1.1-13)</para>
+  <para style="io1">Jesus' public ministry in Galilee (1.14–9.50)</para>
+  <para style="io1">From Galilee to Jerusalem (10.1-52)</para>
+  <para style="io1">The last week in and near Jerusalem (11.1–15.47)</para>
+  <para style="io1">The resurrection of Jesus (16.1-8)</para>
+  <para style="io1">The appearances and ascension of the risen Lord (16.9-20)</para>
+  <para style="io1">The beginning of the gospel <char style="ior">(1.1-13)</char></para>
+  <para style="io1">Jesus' public ministry in Galilee <char style="ior">(1.14–9.50)</char></para>
+  <para style="io1">From Galilee to Jerusalem <char style="ior">(10.1-52)</char></para>
+  <para style="io1">The last week in and near Jerusalem <char style="ior">(11.1–15.47)</char></para>
+  <para style="io1">The resurrection of Jesus <char style="ior">(16.1-8)</char></para>
+  <para style="io1">The appearances and ascension of the risen Lord <char style="ior">(16.9-20)</char></para>
+  <para style="imte">End of the Introduction to the Gospel of Mark</para>
+  <para style="ie" status="invalid" />
+  <chapter number="1" style="c" sid="TIT 1" />
+  <para style="p" />
+  <para style="s5" status="unknown">
+    <verse number="1" style="v" sid="TIT 1:1" status="invalid" />Paul, a servant of God and an apostle of Jesus Christ, for the faith of God's chosen people and the knowledge of the truth that agrees with godliness,<verse eid="TIT 1:1" /></para>
+  <chapter eid="TIT 1" />
+</usx>

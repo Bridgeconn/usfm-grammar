@@ -1,0 +1,9 @@
+<usx version="2.0">
+  <book style="id" code="GAL">- Testing data</book>
+  <para style="h">Galatians</para>
+  <para style="mt">Galatians</para>
+  <para style="p">An erroneous paragraph before the first chapter</para>
+  <chapter style="c" number="1" sid="GAL 1"/>
+  <para style="p" vid="GAL 1:1"><verse style="v" number="1" sid="GAL 1:1"/>This data should be here<verse eid="GAL 1:1"/></para>
+  <chapter eid="GAL 1"/>
+</usx>

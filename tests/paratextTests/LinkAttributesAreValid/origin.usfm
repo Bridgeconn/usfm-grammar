@@ -1,0 +1,5 @@
+\id GEN
+\c 1
+\s some text
+\p
+\v 1 verse text \em text|linkhref="http://somehere.com" linktitle="My Title" linkname="My Name"\em*"

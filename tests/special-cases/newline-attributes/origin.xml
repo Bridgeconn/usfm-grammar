@@ -1,0 +1,7 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="22" style="v" sid="GEN 1:22" />Paul stood up in front of the city council and said, <ms style="qt1-s" sid="qt1_ACT_17:22" who="Paul" />“I see that in every way you Athenians are very religious. <verse eid="GEN 1:22" /><verse number="23" style="v" sid="GEN 1:23" />For as I walked through your city and looked at the places where you worship,<verse eid="GEN 1:23" /></para>
+  <chapter eid="GEN 1" />
+</usx>

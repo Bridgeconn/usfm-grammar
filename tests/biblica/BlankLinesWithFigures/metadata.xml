@@ -1,0 +1,5 @@
+<?xml encoding="utf-8"?>
+<test-metadata>
+        <description>Figure after blank line. It is not clear how a centered figure should be included in Paratext. I originally used `\pc \fig ...\fig*` put this produced Paratext  "empty marker" errors. Since a  `\b` is supposed to be empty I do not get any such errors. This solution seems like a hack to me, so if we do not like it, I need to know what to do instead.</description>
+        <validated>pass</validated>
+</test-metadata>

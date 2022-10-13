@@ -1,0 +1,16 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="4" style="v" sid="GEN 1:4" />
+  </para>
+  <para style="ef" status="unknown" vid="GEN 1:4">- <char style="fr" closed="false" status="invalid">2.4: </char><char style="fk" closed="false" status="invalid">Chief Priests</char><unmatched marker="ef*" /></para>
+  <para style="ef" status="unknown" vid="GEN 1:4">- <char style="fr" closed="false" status="invalid">2.4: </char><char style="fk" closed="false" status="invalid">Teachers of the Law</char><unmatched marker="ef*" />He called together all the chief priests and the teachers of the Law and asked them, “Where will the Messiah be born?”</para>
+  <sidebar style="esb" category="Ideas"><para style="ms" vid="GEN 1:4">Dates in B.C. and A.D.</para><para style="p" vid="GEN 1:4">The initials <char style="sc">b.c.</char> have traditionally been an abbreviation for “Before Christ.” If <char style="bk">Luke</char>'s dating is correct, then Jesus was born at least four years before the years known as <char style="sc">a.d.</char> began. (<char style="sc">a.d.</char> stands for the Latin phrase “in the year of our Lord”). Christian dating was actually not introduced until <char style="sc">a.d.</char> 526 by a monk named Dionysius Exiguus. He was given the job of creating a calendar for the feasts of the church. He fixed the birth of Jesus in the Roman year 754, which was selected as the first year of the Christian era beginning on January 1. Dionysius apparently misjudged Herod's reign by about five years.</para><para style="p" vid="GEN 1:4">The initials <char style="sc">b.c.</char>e. (Before the Common Era) and c.e. (in the Common Era) are sometimes used for the traditional <char style="sc">b.c.</char> and <char style="sc">a.d.</char><verse eid="GEN 1:4" /></para></sidebar>
+  <para style="p">
+    <verse number="5" style="v" sid="GEN 1:5" />
+    <verse eid="GEN 1:5" />
+  </para>
+  <para style="ef" status="unknown">- <char style="fr" closed="false" status="invalid">2.5: </char><char style="fk" closed="false" status="invalid">Prophet</char><unmatched marker="ef*" />“In the town of Bethlehem in Judea,” they answered. “For this is what the prophet wrote:</para>
+  <chapter eid="GEN 1" />
+</usx>

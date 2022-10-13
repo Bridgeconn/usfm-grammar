@@ -1,0 +1,8 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <para style="mt1">ഉല്പത്തിപുസ്തകം</para>
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="pi">
+    <verse number="1" style="v" sid="GEN 1:1" />ആദിയിൽ ദൈവം ആകാശവും ഭൂമിയും സൃഷ്ടിച്ചു.<verse eid="GEN 1:1" /></para>
+  <chapter eid="GEN 1" />
+</usx>

@@ -1,0 +1,6 @@
+<?xml encoding="utf-8"?>
+<test-metadata>
+        <description>Door 43 file with trailing space and id in second line</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

@@ -1,0 +1,6 @@
+<?xml encoding="utf-8"?>
+<test-metadata>
+        <description>  converts invalid usfm to json</description>
+        <validated>fail</validated>
+        <tags></tags>
+</test-metadata>

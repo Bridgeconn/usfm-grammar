@@ -1,0 +1,7 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="4" style="v" sid="GEN 1:4" />When he was meeting together with them, he commanded them not to leave Jerusalem, but to wait for the promise of the Father, about which, he said, <ms style="qt-s" who="Jesus" />"You heard from me<verse eid="GEN 1:4" /></para>
+  <chapter eid="GEN 1" />
+</usx>
