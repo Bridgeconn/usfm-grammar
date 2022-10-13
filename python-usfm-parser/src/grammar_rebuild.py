@@ -3,12 +3,13 @@
 import sys
 from tree_sitter import Language
 
-if len(sys.argv) > 1 :
-  GRAMMAR_PATH = sys.argv[1]
-  OUTPUT_PATH = sys.argv[2]
+if len(sys.argv) == 3 :
+    GRAMMAR_PATH = sys.argv[1]
+    OUTPUT_PATH = sys.argv[2]
 else:
-  GRAMMAR_PATH = '../../tree-sitter-usfm3'
-  OUTPUT_PATH = 'usfm_grammar/my-languages.so'
+    raise Exception('''Usage: python python-usfm-parser/src/grammar_rebuild.py \
+./tree-sitter-usfm3/ python-usfm-parser/src/usfm_grammar/my-languages.so
+from the project root directory''')
 
 Language.build_library(
   # Store the library in the `ext` directory
