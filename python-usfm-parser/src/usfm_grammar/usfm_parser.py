@@ -127,7 +127,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
             usfm_bytes[caller_node.start_byte:caller_node.end_byte].decode('utf-8').strip())
         for child in node.children[2:-1]:
             node_2_usx(child, usfm_bytes, note_xml_node, xml_root_node)
-    elif node.type in CHAR_STYLE_MARKERS:
+    elif node.type in CHAR_STYLE_MARKERS+NESTED_CHAR_STYLE_MARKERS:
         tag_node = node.children[0]
         closing_node = None
         children_range = len(node.children)
