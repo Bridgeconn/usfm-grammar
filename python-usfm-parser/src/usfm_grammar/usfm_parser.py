@@ -77,13 +77,23 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
         if desc is not None and desc.strip() != "":
             book_xml_node.text = desc.strip()
     elif node.type == "chapter":
-        chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num)''').captures(node)[0]
-        chap_num = usfm_bytes[chap_cap[0].start_byte:chap_cap[0].end_byte].decode('utf-8')
+        chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num)
+                                            (ca (chapterNumber) @alt-num)?
+                                            (cp (text) @pub-num)?
+                                        ''').captures(node)
+        chap_num = usfm_bytes[chap_cap[0][0].start_byte:chap_cap[0][0].end_byte].decode('utf-8')
         ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
         chap_xml_node = etree.SubElement(parent_xml_node, "chapter")
         chap_xml_node.set("number", chap_num)
         chap_xml_node.set("style", "c")
         chap_xml_node.set("sid", ref)
+        for tupl in chap_cap:
+            if tupl[1] == "alt-num":
+                alt_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip()
+                chap_xml_node.set('altnumber', alt_num)
+            if tupl[1] == "pub-num":
+                pub_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip()
+                chap_xml_node.set('pubnumber', pub_num)
         for child in node.children[1:]:
             node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
 
@@ -94,16 +104,30 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
                 v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
         chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
         chap_end_xml_node.set("eid", ref)
+    elif node.type in ["ca", "cp"]:
+        pass
     elif node.type == "v":
         prev_verses = xml_root_node.findall(".//verse")
         if len(prev_verses)>0:
             if "sid" in prev_verses[-1].attrib:
                 v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
                 v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
-        verse_num_cap = USFM_LANGUAGE.query("(v (verseNumber) @vnum)").captures(node)[0]
-        verse_num = usfm_bytes[verse_num_cap[0].start_byte:
-            verse_num_cap[0].end_byte].decode('utf-8')
+        verse_num_cap = USFM_LANGUAGE.query('''
+                                (v 
+                                    (verseNumber) @vnum
+                                    (va (verseNumber) @alt)?
+                                    (vp (text) @vp)?
+                                )''').captures(node)
+        verse_num = usfm_bytes[verse_num_cap[0][0].start_byte:
+            verse_num_cap[0][0].end_byte].decode('utf-8')
         v_xml_node = etree.SubElement(parent_xml_node, "verse")
+        for tupl in verse_num_cap:
+            if tupl[1] == 'alt':
+                alt_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
+                v_xml_node.set('altnumber', alt_num)
+            elif tupl[1] == 'vp':
+                vp_text = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
+                v_xml_node.set('pubnumber', vp_text.strip())
         ref = xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
         v_xml_node.set('number', verse_num.strip())
         v_xml_node.set('sid', ref.strip())
