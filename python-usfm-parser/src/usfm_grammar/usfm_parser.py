@@ -184,9 +184,12 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
         if attrib_name == "|":
             attrib_name = DEFAULT_ATTRIB_MAP[node.parent.type]
 
-        attrib_val_cap = USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)[0]
-        attrib_value = usfm_bytes[attrib_val_cap[0].start_byte:attrib_val_cap[0].end_byte] \
-            .decode('utf-8').strip()
+        attrib_val_cap = USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)
+        if len(attrib_val_cap) > 0:
+            attrib_value = usfm_bytes[attrib_val_cap[0][0].start_byte:\
+                attrib_val_cap[0][0].end_byte].decode('utf-8').strip()
+        else:
+            attrib_value = ""
         parent_xml_node.set(attrib_name, attrib_value)
     elif node.type == 'text':
         text_val = usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()
