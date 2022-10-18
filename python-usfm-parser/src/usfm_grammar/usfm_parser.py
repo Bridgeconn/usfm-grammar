@@ -32,12 +32,13 @@ USFM_LANGUAGE = Language(str(lang_file), 'usfm3')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
 
-PARA_STYLE_MARKERS = ["ide", "usfm", "h", "toc", "toca" #identification
+PARA_STYLE_MARKERS = ["ide", "usfm", "h", "toc", "toca", #identification
                     "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
                     "ili", "iot", "io", "iex", "imte", "ie", # intro
                     "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd", #titles
                     "q", "qr", "qc", "qa", "qm", "qd", #poetry
-                    "lh", "li", "lf", "lim", "litl" #lists
+                    "lh", "li", "lf", "lim", "litl", #lists
+                    "sts", "rem", "lit", "restore", #comments
                     ]
 
 NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"]
