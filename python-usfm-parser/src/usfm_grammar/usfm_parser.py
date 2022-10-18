@@ -82,11 +82,11 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
                                             (cp (text) @pub-num)?
                                         ''').captures(node)
         chap_num = usfm_bytes[chap_cap[0][0].start_byte:chap_cap[0][0].end_byte].decode('utf-8')
-        ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
+        chap_ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
         chap_xml_node = etree.SubElement(parent_xml_node, "chapter")
         chap_xml_node.set("number", chap_num)
         chap_xml_node.set("style", "c")
-        chap_xml_node.set("sid", ref)
+        chap_xml_node.set("sid", chap_ref)
         for tupl in chap_cap:
             if tupl[1] == "alt-num":
                 alt_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip()
@@ -103,7 +103,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
                 v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
                 v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
         chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
-        chap_end_xml_node.set("eid", ref)
+        chap_end_xml_node.set("eid", chap_ref)
     elif node.type in ["c", "ca", "cp"]:
         pass
     elif node.type == "v":
@@ -131,6 +131,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
         ref = xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
         v_xml_node.set('number', verse_num.strip())
         v_xml_node.set('sid', ref.strip())
+        v_xml_node.set('style', "v")
     elif node.type == "verseText":
         for child in node.children:
             node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
