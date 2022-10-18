@@ -63,7 +63,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
     # print("working with node: ", node, "\n")
     if node.type == "id":
         id_captures = USFM_LANGUAGE.query('''(id (bookcode) @book-code
-                                                    (description) @desc)''').captures(node)
+                                                    (description)? @desc)''').captures(node)
         code = None
         desc = None
         for tupl in id_captures:
