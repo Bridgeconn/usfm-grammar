@@ -94,7 +94,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
             if tupl[1] == "pub-num":
                 pub_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip()
                 chap_xml_node.set('pubnumber', pub_num)
-        for child in node.children[1:]:
+        for child in node.children:
             node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
 
         prev_verses = xml_root_node.findall(".//verse")
@@ -104,7 +104,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
                 v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
         chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
         chap_end_xml_node.set("eid", ref)
-    elif node.type in ["ca", "cp"]:
+    elif node.type in ["c", "ca", "cp"]:
         pass
     elif node.type == "v":
         prev_verses = xml_root_node.findall(".//verse")
@@ -134,12 +134,20 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
     elif node.type == "verseText":
         for child in node.children:
             node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
-    elif node.type == 'paragraph':
+    elif node.type == 'paragraph' and not node.children[0].type.endswith('Block'):
         para_tag_cap = USFM_LANGUAGE.query("(paragraph (_) @para-marker)").captures(node)[0]
         para_marker = para_tag_cap[0].type
+        if not para_marker.endswith("Block"):
+            para_xml_node = etree.SubElement(parent_xml_node, "para")
+            para_xml_node.set("style", para_marker)
+            for child in para_tag_cap[0].children[1:]:
+                node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+    elif node.type in ['pi', "ph"]:
+        para_marker = usfm_bytes[node.children[0].start_byte:\
+            node.children[0].end_byte].decode('utf-8').replace("\\", "").strip()
         para_xml_node = etree.SubElement(parent_xml_node, "para")
-        para_xml_node.set("style", para_marker)
-        for child in para_tag_cap[0].children[1:]:
+        parent_xml_node.set("style", para_marker)
+        for child in node.children[1:]:
             node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
     elif node.type in NOTE_MARKERS:
         tag_node = node.children[0]
