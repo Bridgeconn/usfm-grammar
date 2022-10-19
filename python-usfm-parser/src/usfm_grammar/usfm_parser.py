@@ -58,88 +58,88 @@ TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
 ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
                     NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS
 
-def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disable=too-many-locals, too-many-branches, too-many-statements
-    '''check each node and based on the type convert to corresponding xml element'''
-    # print("working with node: ", node, "\n")
-    if node.type == "id":
-        id_captures = USFM_LANGUAGE.query('''(id (bookcode) @book-code
-                                                    (description)? @desc)''').captures(node)
-        code = None
-        desc = None
-        for tupl in id_captures:
-            if tupl[1] == "book-code":
-                code = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
-            elif tupl[1] == 'desc':
-                desc = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
-        book_xml_node = etree.SubElement(parent_xml_node, "book")
-        book_xml_node.set("code", code)
-        book_xml_node.set("style", "id")
-        if desc is not None and desc.strip() != "":
-            book_xml_node.text = desc.strip()
-    elif node.type == "chapter":
-        chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num)
-                                            (ca (chapterNumber) @alt-num)?
-                                            (cp (text) @pub-num)?
-                                        ''').captures(node)
-        chap_num = usfm_bytes[chap_cap[0][0].start_byte:chap_cap[0][0].end_byte].decode('utf-8')
-        chap_ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
-        chap_xml_node = etree.SubElement(parent_xml_node, "chapter")
-        chap_xml_node.set("number", chap_num)
-        chap_xml_node.set("style", "c")
-        chap_xml_node.set("sid", chap_ref)
-        for tupl in chap_cap:
-            if tupl[1] == "alt-num":
-                alt_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip()
-                chap_xml_node.set('altnumber', alt_num)
-            if tupl[1] == "pub-num":
-                pub_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip()
-                chap_xml_node.set('pubnumber', pub_num)
-        for child in node.children:
-            node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
+def node_2_usx_id(node, usfm_bytes,parent_xml_node, xml_root_node):
+    '''build id node in USX'''
+    id_captures = USFM_LANGUAGE.query('''(id (bookcode) @book-code
+                                                (description)? @desc)''').captures(node)
+    code = None
+    desc = None
+    for tupl in id_captures:
+        if tupl[1] == "book-code":
+            code = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
+        elif tupl[1] == 'desc':
+            desc = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
+    book_xml_node = etree.SubElement(parent_xml_node, "book")
+    book_xml_node.set("code", code)
+    book_xml_node.set("style", "id")
+    if desc is not None and desc.strip() != "":
+        book_xml_node.text = desc.strip()
 
-        prev_verses = xml_root_node.findall(".//verse")
-        if len(prev_verses)>0:
-            v_end_xml_node = etree.Element("verse")
+def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
+    '''build chapter node in USX'''
+    chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num)
+                                        (ca (chapterNumber) @alt-num)?
+                                        (cp (text) @pub-num)?
+                                    ''').captures(node)
+    chap_num = usfm_bytes[chap_cap[0][0].start_byte:chap_cap[0][0].end_byte].decode('utf-8')
+    chap_ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
+    chap_xml_node = etree.SubElement(parent_xml_node, "chapter")
+    chap_xml_node.set("number", chap_num)
+    chap_xml_node.set("style", "c")
+    chap_xml_node.set("sid", chap_ref)
+    for tupl in chap_cap:
+        if tupl[1] == "alt-num":
+            chap_xml_node.set('altnumber', 
+                usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip())
+        if tupl[1] == "pub-num":
+            chap_xml_node.set('pubnumber', 
+                usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip())
+    for child in node.children:
+        node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
+
+    prev_verses = xml_root_node.findall(".//verse")
+    if len(prev_verses)>0:
+        v_end_xml_node = etree.Element("verse")
+        v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+        last_sibbling = parent_xml_node[-1]
+        if last_sibbling.tag == "para":
+            last_sibbling.append(v_end_xml_node)
+        else:
+            parent_xml_node.append(v_end_xml_node)
+    chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
+    chap_end_xml_node.set("eid", chap_ref)
+
+def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''build verse node in USX'''
+    prev_verses = xml_root_node.findall(".//verse")
+    if len(prev_verses)>0:
+        if "sid" in prev_verses[-1].attrib:
+            v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
             v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
-            last_sibbling = parent_xml_node[-1]
-            if last_sibbling.tag == "para":
-                last_sibbling.append(v_end_xml_node)
-            else:
-                parent_xml_node.append(v_end_xml_node)
-        chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
-        chap_end_xml_node.set("eid", chap_ref)
-    elif node.type in ["c", "ca", "cp"]:
-        pass
-    elif node.type == "v":
-        prev_verses = xml_root_node.findall(".//verse")
-        if len(prev_verses)>0:
-            if "sid" in prev_verses[-1].attrib:
-                v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
-                v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
-        verse_num_cap = USFM_LANGUAGE.query('''
-                                (v 
-                                    (verseNumber) @vnum
-                                    (va (verseNumber) @alt)?
-                                    (vp (text) @vp)?
-                                )''').captures(node)
-        verse_num = usfm_bytes[verse_num_cap[0][0].start_byte:
-            verse_num_cap[0][0].end_byte].decode('utf-8')
-        v_xml_node = etree.SubElement(parent_xml_node, "verse")
-        for tupl in verse_num_cap:
-            if tupl[1] == 'alt':
-                alt_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
-                v_xml_node.set('altnumber', alt_num)
-            elif tupl[1] == 'vp':
-                vp_text = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
-                v_xml_node.set('pubnumber', vp_text.strip())
-        ref = xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
-        v_xml_node.set('number', verse_num.strip())
-        v_xml_node.set('sid', ref.strip())
-        v_xml_node.set('style', "v")
-    elif node.type == "verseText":
-        for child in node.children:
-            node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
-    elif node.type == 'paragraph' and not node.children[0].type.endswith('Block'):
+    verse_num_cap = USFM_LANGUAGE.query('''
+                            (v 
+                                (verseNumber) @vnum
+                                (va (verseNumber) @alt)?
+                                (vp (text) @vp)?
+                            )''').captures(node)
+    verse_num = usfm_bytes[verse_num_cap[0][0].start_byte:
+        verse_num_cap[0][0].end_byte].decode('utf-8')
+    v_xml_node = etree.SubElement(parent_xml_node, "verse")
+    for tupl in verse_num_cap:
+        if tupl[1] == 'alt':
+            alt_num = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
+            v_xml_node.set('altnumber', alt_num)
+        elif tupl[1] == 'vp':
+            vp_text = usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
+            v_xml_node.set('pubnumber', vp_text.strip())
+    ref = xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
+    v_xml_node.set('number', verse_num.strip())
+    v_xml_node.set('sid', ref.strip())
+    v_xml_node.set('style', "v")
+
+def node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''build paragraph nodes in USX'''
+    if node.type == 'paragraph' and not node.children[0].type.endswith('Block'):
         para_tag_cap = USFM_LANGUAGE.query("(paragraph (_) @para-marker)").captures(node)[0]
         para_marker = para_tag_cap[0].type
         if not para_marker.endswith("Block"):
@@ -154,56 +154,58 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
         parent_xml_node.set("style", para_marker)
         for child in node.children[1:]:
             node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
-    elif node.type in NOTE_MARKERS:
-        tag_node = node.children[0]
-        caller_node = node.children[1]
-        note_xml_node = etree.SubElement(parent_xml_node, "note")
-        note_xml_node.set("style",
-            usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
-            .replace("\\","").strip())
-        note_xml_node.set("caller",
-            usfm_bytes[caller_node.start_byte:caller_node.end_byte].decode('utf-8').strip())
-        for child in node.children[2:-1]:
-            node_2_usx(child, usfm_bytes, note_xml_node, xml_root_node)
-    elif node.type in CHAR_STYLE_MARKERS+NESTED_CHAR_STYLE_MARKERS:
-        tag_node = node.children[0]
-        closing_node = None
-        children_range = len(node.children)
-        if node.children[-1].type.startswith('\\'):
-            closing_node = node.children[-1]
-            children_range = children_range-1
-        char_xml_node = etree.SubElement(parent_xml_node, "char")
-        char_xml_node.set("style",
-            usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
-            .replace("\\","").strip())
-        if closing_node is None:
-            char_xml_node.set("closed", "false")
-        else:
-            char_xml_node.set("closed", "true")
-        for child in node.children[1:children_range]:
-            node_2_usx(child, usfm_bytes, char_xml_node, xml_root_node)
-    elif node.type.endswith("Attribute"):
-        attrib_name_node= node.children[0]
-        attrib_name = usfm_bytes[attrib_name_node.start_byte:attrib_name_node.end_byte] \
-            .decode('utf-8').strip()
-        if attrib_name == "|":
-            attrib_name = DEFAULT_ATTRIB_MAP[node.parent.type]
 
-        attrib_val_cap = USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)
-        if len(attrib_val_cap) > 0:
-            attrib_value = usfm_bytes[attrib_val_cap[0][0].start_byte:\
-                attrib_val_cap[0][0].end_byte].decode('utf-8').strip()
-        else:
-            attrib_value = ""
-        parent_xml_node.set(attrib_name, attrib_value)
-    elif node.type == 'text':
-        text_val = usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()
-        siblings = parent_xml_node.findall("./*")
-        if len(siblings) > 0:
-            siblings[-1].tail = text_val
-        else:
-            parent_xml_node.text = text_val
-    elif node.type == "table":
+def node_2_usx_notes(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''build USX nodes for footnotes and corss-refs'''
+    tag_node = node.children[0]
+    caller_node = node.children[1]
+    note_xml_node = etree.SubElement(parent_xml_node, "note")
+    note_xml_node.set("style",
+        usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
+        .replace("\\","").strip())
+    note_xml_node.set("caller",
+        usfm_bytes[caller_node.start_byte:caller_node.end_byte].decode('utf-8').strip())
+    for child in node.children[2:-1]:
+        node_2_usx(child, usfm_bytes, note_xml_node, xml_root_node)
+
+def node_2_usx_char(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''build USX nodes for character markups, both regular and nested'''
+    tag_node = node.children[0]
+    closing_node = None
+    children_range = len(node.children)
+    if node.children[-1].type.startswith('\\'):
+        closing_node = node.children[-1]
+        children_range = children_range-1
+    char_xml_node = etree.SubElement(parent_xml_node, "char")
+    char_xml_node.set("style",
+        usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
+        .replace("\\","").strip())
+    if closing_node is None:
+        char_xml_node.set("closed", "false")
+    else:
+        char_xml_node.set("closed", "true")
+    for child in node.children[1:children_range]:
+        node_2_usx(child, usfm_bytes, char_xml_node, xml_root_node)
+
+def node_2_usx_attrib(node, usfm_bytes, parent_xml_node):
+    '''add attribute values to USX elements'''
+    attrib_name_node= node.children[0]
+    attrib_name = usfm_bytes[attrib_name_node.start_byte:attrib_name_node.end_byte] \
+        .decode('utf-8').strip()
+    if attrib_name == "|":
+        attrib_name = DEFAULT_ATTRIB_MAP[node.parent.type]
+
+    attrib_val_cap = USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)
+    if len(attrib_val_cap) > 0:
+        attrib_value = usfm_bytes[attrib_val_cap[0][0].start_byte:\
+            attrib_val_cap[0][0].end_byte].decode('utf-8').strip()
+    else:
+        attrib_value = ""
+    parent_xml_node.set(attrib_name, attrib_value)
+
+def node_2_usx_table(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''Handle table related components and convert to usx'''
+    if node.type == "table":
         table_xml_node = etree.SubElement(parent_xml_node, "table")
         for child in node.children:
             node_2_usx(child, usfm_bytes, table_xml_node, xml_root_node)
@@ -224,21 +226,25 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
             cell_xml_node.set("align", "start")
         for child in node.children[1:]:
             node_2_usx(child, usfm_bytes, cell_xml_node, xml_root_node)
-    elif  node.type == "milestone":
-        # print(node.children)
-        ms_name_cap = USFM_LANGUAGE.query('''(
-            [(milestoneTag)
-             (milestoneStartTag)
-             (milestoneEndTag)
-             ] @ms-name)''').captures(node)[0]
-        style = usfm_bytes[ms_name_cap[0].start_byte:ms_name_cap[0].end_byte].decode('utf-8')\
-        .replace("\\","").strip()
-        ms_xml_node = etree.SubElement(parent_xml_node, "ms")
-        ms_xml_node.set('style', style)
-        for child in node.children:
-            if child.type.endswith("Attribute"):
-                node_2_usx(child, usfm_bytes, ms_xml_node, xml_root_node)
-    elif node.type == "esb":
+
+def node_2_usx_milestone(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''create ms node in USX'''
+    ms_name_cap = USFM_LANGUAGE.query('''(
+        [(milestoneTag)
+         (milestoneStartTag)
+         (milestoneEndTag)
+         ] @ms-name)''').captures(node)[0]
+    style = usfm_bytes[ms_name_cap[0].start_byte:ms_name_cap[0].end_byte].decode('utf-8')\
+    .replace("\\","").strip()
+    ms_xml_node = etree.SubElement(parent_xml_node, "ms")
+    ms_xml_node.set('style', style)
+    for child in node.children:
+        if child.type.endswith("Attribute"):
+            node_2_usx(child, usfm_bytes, ms_xml_node, xml_root_node)
+
+def node_2_usx_special(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''Build nodes for esb, cat, fig, optbreak in USX'''
+    if node.type == "esb":
         style = "esb"
         sidebar_xml_node = etree.SubElement(parent_xml_node, "sidebar")
         sidebar_xml_node.set("style", style)
@@ -255,28 +261,68 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
             node_2_usx(child, usfm_bytes, fig_xml_node, xml_root_node)
     elif node.type == 'b':
         etree.SubElement(parent_xml_node, "optbreak")
+
+def node_2_usx_generic(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''build nodes for para style markers in USX'''
+    tag_node = node.children[0]
+    style = usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
+    if style.startswith('\\'):
+        style = style.replace('\\','').strip()
+    else:
+        style = node.type
+    children_range_start = 1
+    if len(node.children)>1 and node.children[1].type.startswith("numbered"):
+        num_node = node.children[1]
+        num = usfm_bytes[num_node.start_byte:num_node.end_byte].decode('utf-8')
+        style += num
+        children_range_start = 2
+    para_xml_node = etree.SubElement(parent_xml_node, "para")
+    para_xml_node.set("style", style)
+    # caps = USFM_LANGUAGE.query('((text) @inner-text)').captures(node)
+    # para_xml_node.text = " ".join([usfm_bytes[txt_cap[0].start_byte:
+        # txt_cap[0].end_byte].decode('utf-8').strip()
+    #  for txt_cap in caps])
+    for child in node.children[children_range_start:]:
+        node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+    
+def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disable= too-many-branches
+    '''check each node and based on the type convert to corresponding xml element'''
+    # print("working with node: ", node, "\n")
+    if node.type == "id":
+        node_2_usx_id(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type == "chapter":
+        node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node)
+    elif node.type in ["c", "ca", "cp"]:
+        pass
+    elif node.type == "v":
+        node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type == "verseText":
+        for child in node.children:
+            node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type in ['paragraph', 'pi', "ph"]:
+        node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type in NOTE_MARKERS:
+        node_2_usx_notes(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type in CHAR_STYLE_MARKERS+NESTED_CHAR_STYLE_MARKERS:
+        node_2_usx_char(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type.endswith("Attribute"):
+        node_2_usx_attrib(node, usfm_bytes, parent_xml_node)
+    elif node.type == 'text':
+        text_val = usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()
+        siblings = parent_xml_node.findall("./*")
+        if len(siblings) > 0:
+            siblings[-1].tail = text_val
+        else:
+            parent_xml_node.text = text_val
+    elif node.type in ["table", "tr"]+ TABLE_CELL_MARKERS:
+        node_2_usx_table(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif  node.type == "milestone":
+        node_2_usx_milestone(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type in ["esb", "cat", "fig", "b"]:
+        node_2_usx_special(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif (node.type in PARA_STYLE_MARKERS or
           node.type.replace("\\","").strip() in PARA_STYLE_MARKERS):
-        tag_node = node.children[0]
-        style = usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
-        if style.startswith('\\'):
-            style = style.replace('\\','').strip()
-        else:
-            style = node.type
-        children_range_start = 1
-        if len(node.children)>1 and node.children[1].type.startswith("numbered"):
-            num_node = node.children[1]
-            num = usfm_bytes[num_node.start_byte:num_node.end_byte].decode('utf-8')
-            style += num
-            children_range_start = 2
-        para_xml_node = etree.SubElement(parent_xml_node, "para")
-        para_xml_node.set("style", style)
-        # caps = USFM_LANGUAGE.query('((text) @inner-text)').captures(node)
-        # para_xml_node.text = " ".join([usfm_bytes[txt_cap[0].start_byte:
-            # txt_cap[0].end_byte].decode('utf-8').strip()
-        #  for txt_cap in caps])
-        for child in node.children[children_range_start:]:
-            node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+        node_2_usx_generic(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif node.type.strip() in ["","|"]:
         pass # skip white space nodes
     elif len(node.children)>0:
