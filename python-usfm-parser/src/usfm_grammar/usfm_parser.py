@@ -283,7 +283,12 @@ def node_2_usx_generic(node, usfm_bytes, parent_xml_node, xml_root_node):
         # txt_cap[0].end_byte].decode('utf-8').strip()
     #  for txt_cap in caps])
     for child in node.children[children_range_start:]:
-        node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+        # node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+        if child.type in CHAR_STYLE_MARKERS+NESTED_CHAR_STYLE_MARKERS+\
+        ["text", "footnote", "crossref"]: # only nest these types inside the upper para style node
+            node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
+        else:
+            node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
     
 def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disable= too-many-branches
     '''check each node and based on the type convert to corresponding xml element'''
