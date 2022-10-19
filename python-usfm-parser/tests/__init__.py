@@ -131,7 +131,19 @@ exclude_files = [
         # nested marker not closed. Is closing not mandatory?
     f'{TEST_DIR}/samples-from-wild/doo43-4/origin.usfm',
         # () usage in \ior  is shown as \ior (....) \ior* in the spec
+
+        ########### Temporarily for testing USX conversion ##############
+    f'{TEST_DIR}/specExamples/milestone/origin.usfm',
     ]
 
 for file in exclude_files:
-    all_usfm_files.remove(file)
+    if file in all_usfm_files:
+        all_usfm_files.remove(file)
+
+
+exclude_USX_files = [
+    f'{TEST_DIR}/specExamples/chapter-verse/origin.usx',
+        # ca is added as attribute to cl not chapter node
+    f'{TEST_DIR}/specExamples/milestone/origin.usx',
+        # Znamespace not represented properly. Even no docs of it on https://ubsicap.github.io/usx
+]
