@@ -99,9 +99,13 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
 
         prev_verses = xml_root_node.findall(".//verse")
         if len(prev_verses)>0:
-            if "sid" in prev_verses[-1].attrib:
-                v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
-                v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+            v_end_xml_node = etree.Element("verse")
+            v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+            last_sibbling = parent_xml_node[-1]
+            if last_sibbling.tag == "para":
+                last_sibbling.append(v_end_xml_node)
+            else:
+                parent_xml_node.append(v_end_xml_node)
         chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
         chap_end_xml_node.set("eid", chap_ref)
     elif node.type in ["c", "ca", "cp"]:
