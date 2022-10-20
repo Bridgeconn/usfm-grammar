@@ -54,5 +54,5 @@ jobs:
 
       - name: Run tests
         working-directory: ./python-usfm-parser
-        run: pytest tests/test_parsing_errors.py
+        run: python -m pytest tests/test_parsing_errors.py
 
