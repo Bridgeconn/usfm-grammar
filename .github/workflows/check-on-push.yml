@@ -54,5 +54,7 @@ jobs:
 
       - name: Run tests
         working-directory: ./python-usfm-parser
-        run: python -m pytest tests/test_parsing_errors.py
+        run: |
+          pip install .
+          pytest tests/test_parsing_errors.py
 
