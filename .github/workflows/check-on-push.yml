@@ -52,7 +52,7 @@ jobs:
         working-directory: ./python-usfm-parser
         run: pip install -r dev-requirements.txt
 
-      - name: Run linter
+      - name: Run tests
         working-directory: ./python-usfm-parser
-        run: pytest tests/test_parsing_errors
+        run: pytest tests/test_parsing_errors.py
 
