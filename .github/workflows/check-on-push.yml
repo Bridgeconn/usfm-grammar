@@ -52,9 +52,11 @@ jobs:
         working-directory: ./python-usfm-parser
         run: pip install -r dev-requirements.txt
 
-      - name: Run tests
-        working-directory: ./python-usfm-parser
+      - name: Build grammar binary, install python module and Run tests
+        working-directory: .
         run: |
+          python python-usfm-parser/src/grammar_rebuild.py ./tree-sitter-usfm3/ python-usfm-parser/src/usfm_grammar/my-languages.so
+          cd python-usfm-parser
           pip install .
           pytest tests/test_parsing_errors.py
 
