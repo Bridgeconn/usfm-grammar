@@ -58,7 +58,7 @@ TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
 ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
                     NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS
 
-def node_2_usx_id(node, usfm_bytes,parent_xml_node, xml_root_node):
+def node_2_usx_id(node, usfm_bytes,parent_xml_node):
     '''build id node in USX'''
     id_captures = USFM_LANGUAGE.query('''(id (bookcode) @book-code
                                                 (description)? @desc)''').captures(node)
@@ -89,10 +89,10 @@ def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
     chap_xml_node.set("sid", chap_ref)
     for tupl in chap_cap:
         if tupl[1] == "alt-num":
-            chap_xml_node.set('altnumber', 
+            chap_xml_node.set('altnumber',
                 usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip())
         if tupl[1] == "pub-num":
-            chap_xml_node.set('pubnumber', 
+            chap_xml_node.set('pubnumber',
                 usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip())
     for child in node.children:
         node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
@@ -117,7 +117,7 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
             v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
             v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
     verse_num_cap = USFM_LANGUAGE.query('''
-                            (v 
+                            (v
                                 (verseNumber) @vnum
                                 (va (verseNumber) @alt)?
                                 (vp (text) @vp)?
@@ -289,12 +289,12 @@ def node_2_usx_generic(node, usfm_bytes, parent_xml_node, xml_root_node):
             node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
         else:
             node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
-    
+
 def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disable= too-many-branches
     '''check each node and based on the type convert to corresponding xml element'''
     # print("working with node: ", node, "\n")
     if node.type == "id":
-        node_2_usx_id(node, usfm_bytes, parent_xml_node, xml_root_node)
+        node_2_usx_id(node, usfm_bytes, parent_xml_node)
     elif node.type == "chapter":
         node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node)
     elif node.type in ["c", "ca", "cp"]:
