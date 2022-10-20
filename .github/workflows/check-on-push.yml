@@ -46,14 +46,6 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 14
-      - name: Create Virtual Environment
-        run: python -m venv ENV-dev
-
-      - name: Use VENV
-        run: source ENV-dev/bin/activate
-
-      - name: Install dependencies
-        run: pip install -r ./python-usfm-parser/dev-requirements.txt
 
       - name: Build grammar binary
         run: |
@@ -63,12 +55,21 @@ jobs:
           cd ..
           python python-usfm-parser/src/grammar_rebuild.py ./tree-sitter-usfm3/ python-usfm-parser/src/usfm_grammar/my-languages.so
 
+      - name: Create Virtual Environment
+        run: python -m venv ENV-dev
+
+      - name: Use VENV
+        run: source ENV-dev/bin/activate
+
+      - name: Install dependencies
+        run: pip install -r ./python-usfm-parser/dev-requirements.txt
+
       - name: Install python module
         run: |
           cd python-usfm-parser
           pip install .
 
       - name: Run tests
+        working-directory: ./python-usfm-parser
         run:
           pytest tests/test_parsing_errors.py
-
