@@ -1,0 +1,23 @@
+\id TIT Titus
+\usfm 3.0
+\ide UTF-8
+\h Titus
+\toc2 Titus
+\toc3 Tit
+\mt Titus
+\c 1
+\p
+\v 12 \zaln-s | x-content="τις" x-lemma="τις" x-morph="Gr,RI,,,,NMS," x-occurrence="1" x-occurrences="1" x-strong="G51000"\*\w One|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s | x-content="ἐξ" x-lemma="ἐκ" x-morph="Gr,P,,,,,G,,," x-occurrence="1" x-occurrences="1" x-strong="G15370"\*\w of|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s | x-content="αὐτῶν" x-lemma="αὐτός" x-morph="Gr,RP,,,3GMP," x-occurrence="1" x-occurrences="2" x-strong="G08460"\*\zaln-s | x-content="ἴδιος" x-lemma="ἴδιος" x-morph="Gr,RD,,,,NMS," x-occurrence="1" x-occurrences="1" x-strong="G23980"\*\zaln-s | x-content="αὐτῶν" x-lemma="αὐτός" x-morph="Gr,RP,,,3GMP," x-occurrence="2" x-occurrences="2" x-strong="G08460"\*\w their|x-occurrence="1" x-occurrences="1"\w*
+\w own|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*\zaln-e\*\zaln-e\*
+\zaln-s | x-content="προφήτης" x-lemma="προφήτης" x-morph="Gr,N,,,,,NMS," x-occurrence="1" x-occurrences="1" x-strong="G43960"\*\w prophets|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s | x-content="εἶπέν" x-lemma="λέγω" x-morph="Gr,V,IAA3,,S," x-occurrence="1" x-occurrences="1" x-strong="G30040"\*\w has|x-occurrence="1" x-occurrences="1"\w*
+\w said|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*, "\zaln-s | x-content="Κρῆτες" x-lemma="Κρής" x-morph="Gr,N,,,,,NMP," x-occurrence="1" x-occurrences="1" x-strong="G29120"\*\w Cretans|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s | x-content="ψεῦσται" x-lemma="ψεύστης" x-morph="Gr,N,,,,,NMP," x-occurrence="1" x-occurrences="1" x-strong="G55830"\*\w are|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s | x-content="ἀεὶ" x-lemma="ἀεί" x-morph="Gr,D,,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G01040"\*\w always|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s | x-content="ψεῦσται" x-lemma="ψεύστης" x-morph="Gr,N,,,,,NMP," x-occurrence="1" x-occurrences="1" x-strong="G55830"\*\w liars|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*,
+\zaln-s | x-content="κακὰ" x-lemma="κακός" x-morph="Gr,AA,,,,NNP," x-occurrence="1" x-occurrences="1" x-strong="G25560"\*\w evil|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s | x-content="θηρία" x-lemma="θηρίον" x-morph="Gr,N,,,,,NNP," x-occurrence="1" x-occurrences="1" x-strong="G23420"\*\w beasts|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*,
+\zaln-s | x-content="ἀργαί" x-lemma="ἀργός" x-morph="Gr,AA,,,,NFP," x-occurrence="1" x-occurrences="1" x-strong="G06920"\*\w lazy|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s | x-content="γαστέρες" x-lemma="γαστήρ" x-morph="Gr,N,,,,,NFP," x-occurrence="1" x-occurrences="1" x-strong="G10640"\*\w gluttons|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*."

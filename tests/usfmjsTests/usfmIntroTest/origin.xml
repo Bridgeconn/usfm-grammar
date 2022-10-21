@@ -1,0 +1,96 @@
+<usx version="3.0">
+  <book code="TIT" style="id">Unlocked Literal Bible</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Titus</para>
+  <para style="toc1">The Letter of Paul to Titus</para>
+  <para style="toc2">Titus</para>
+  <para style="toc3">Tit</para>
+  <para style="mt">Titus</para>
+  <para style="iot">Outline of Contents</para>
+  <para style="io1">The beginning of the gospel 1.1-13</para>
+  <para style="io1">Jesus' public ministry in Galilee 1.14-9.50</para>
+  <para style="io1">From Galilee to Jerusalem 10.1-52</para>
+  <para style="io1">The last week in and near Jerusalem 11.1-15.47</para>
+  <para style="io1">The resurrection of Jesus 16.1-8</para>
+  <para style="io1">[An Old Ending to the Gospel 16.9-20]</para>
+  <para style="io1">[Another Old Ending 16.9-10]</para>
+  <para style="ip">The opening words of <char style="bk">The Gospel according to Mark</char> tell its readers that the subject of this book is the Good News about Jesus Christ. With the coming of Jesus Christ, it announces, the time set by God to bring salvation to humankind has arrived (1.15). Though the book concentrates on his deeds and words, it is not a biography of Jesus of Nazareth. Only one year, or a little more, of Jesus' life appears to be recorded (chapters 1--10), and over one-third of the book (chapters 11--16) is taken up with the last week of Jesus in and near <char style="w">Jerusalem</char>. Nothing is said about his birth, childhood, home, or parents. When he first appears, unknown and unannounced, Jesus is a full-grown adult who comes to John the Baptist to be <char style="w">baptized</char> by him.</para>
+  <para style="ip">The author's primary interest in writing is religious. The Gospel is written "from <char style="w">faith</char> to faith".</para>
+  <para style="is1">The Story</para>
+  <para style="ip">
+    <char style="bk">Mark's</char> story of Jesus is told quickly and with an abundance of details that enhance its dramatic impact. Jesus appears suddenly in Judea, where he joins those who are being baptized in the Jordan by John the Baptist. Just as suddenly, he returns to Galilee, where he proclaims the message that the <char style="w">kingdom of god</char> is about to arrive.</para>
+  <para style="ip">However, he is more than a teacher, healer, or <char style="w">miracle</char>-worker. He is also the Messiah, the Son of God, the Son of Man. These three titles express the first Christians' understanding of who Jesus is.</para>
+  <para style="ili">1 <char style="k" status="invalid">The Messiah</char> is the one promised by God, the one who would come and free God's people. By the time <char style="bk">The Gospel of Mark</char> appeared, the title "Messiah" (in Greek, "<char style="w" status="invalid">christ</char>") had become a proper name, so that the Gospel opens with "the Good News about Jesus Christ" (and not "Jesus the Christ"). Peter's confession (8.29) marks a turning-point in the ministry of Jesus. The title "<char style="w" status="invalid">son of david</char> " (10.46-48) also identifies Jesus as the Messiah, who would restore to Israel the power and glory it enjoyed under David's reign (also 12.35-37).</para>
+  <para style="ili">2 <char style="k" status="invalid">The Son of God</char> is the title by which the heavenly voice addresses Jesus at his baptism (1.11) and his transfiguration (9.7). And at Jesus' death the Roman officer confesses that Jesus is the Son of God (15.39).</para>
+  <para style="ili">3 <char style="k" status="invalid">The Son of Man</char> is the title most often used of Jesus, and it appears only on the lips of Jesus. This enigmatic title appears in <char style="bk">The Book of Daniel</char> (Dan 7.13n), where it is applied to the exalted figure to whom God gives universal dominion. In <char style="bk">Mark</char> the title is used of Jesus in three ways: the Son of Man acts with divine power (2.10, 28); he will be rejected, will suffer and die (8.31; 9.9, 12, 31; 10.33-34, 45; 14.21, 41); he will return in power and glory (8.38; 13.26; 14.62).</para>
+  <chapter number="1" style="c" sid="TIT 1" />
+  <para style="s5" status="unknown" />
+  <para style="p">
+    <verse number="1" style="v" sid="TIT 1:1" />Paul, a servant of God and an apostle of Jesus Christ, for the faith of God's chosen people and the knowledge of the truth that agrees with godliness, <verse eid="TIT 1:1" /><verse number="2" style="v" sid="TIT 1:2" />with the certain hope of everlasting life that God, who does not lie, promised before all the ages of time. <verse eid="TIT 1:2" /><verse number="3" style="v" sid="TIT 1:3" />At the right time, he revealed his word by the message that he trusted me to deliver, by the command of God our savior. <verse eid="TIT 1:3" /></para>
+  <para style="s5" status="unknown">
+    <verse number="4" style="v" sid="TIT 1:4" status="invalid" />To Titus, a true son in our common faith. Grace and peace from God the Father and Christ Jesus our savior.<verse eid="TIT 1:4" /></para>
+  <para style="p">
+    <verse number="5" style="v" sid="TIT 1:5" />For this purpose I left you in Crete, that you might set in order things not yet complete and ordain elders in every city as I directed you. <verse eid="TIT 1:5" /></para>
+  <para style="s5" status="unknown">
+    <verse number="6" style="v" sid="TIT 1:6" status="invalid" />An elder must be without blame, the husband of one wife, with faithful children not accused of reckless behavior or undisciplined. <verse eid="TIT 1:6" /><verse number="7" style="v" sid="TIT 1:7" status="invalid" />It is necessary for the overseer, as God's household manager, to be blameless. He must not be arrogant, not be easily angered, not addicted to wine, not a brawler, and not a greedy man. <verse eid="TIT 1:7" /></para>
+  <para style="s5" status="unknown">
+    <verse number="8" style="v" sid="TIT 1:8" status="invalid" />Instead, he should be hospitable and a friend of what is good. He must be sensible, righteous, godly, and self-controlled. <verse eid="TIT 1:8" /><verse number="9" style="v" sid="TIT 1:9" status="invalid" />He should hold tightly to the trustworthy message that was taught, so that he may be able to encourage others with good teaching and correct those who oppose him. <verse eid="TIT 1:9" /></para>
+  <para style="s5" status="unknown" />
+  <para style="p">
+    <verse number="10" style="v" sid="TIT 1:10" />For there are many rebellious people, empty talkers and deceivers, especially those of the circumcision. <verse eid="TIT 1:10" /><verse number="11" style="v" sid="TIT 1:11" />It is necessary to stop them. They are upsetting whole families by teaching for shameful profit what they should not teach. <verse eid="TIT 1:11" /></para>
+  <para style="s5" status="unknown" />
+  <para style="p">
+    <verse number="12" style="v" sid="TIT 1:12" />At once the Spirit made him go into the desert, <verse eid="TIT 1:12" /><verse number="13" style="v" sid="TIT 1:13" />where he stayed 40 days, being tempted by Satan. Wild animals were there also, but angels came and helped him.<verse eid="TIT 1:13" /></para>
+  <para style="ms">Jesus' Public Ministry in Galilee</para>
+  <para style="mr">1.14--9.50</para>
+  <para style="ip" status="invalid">Jesus returns to Galilee and does not go back to Judea until the close of his public ministry. There is no indication of how long his Galilean ministry lasted: only when he is back in Judea is a <char style="w">festival </char> mentioned (14.1). He spends much of his time in Capernaum (1.21; 2.1; 3.1, 20; 9.33) and other places around Lake Galilee (1.9; 2.13; 3.7; 4.1). Twice Jesus ventures out of Galilee: into the region of the Ten Towns (5.1-20) and Phoenicia (7.24-31). His actions and teachings soon arouse opposition from the religious leaders (2.6-7, 24; 3.6, 22; 7.1-13; 8.11-12), and before long he predicts his coming arrest, condemnation, and crucifixion (8.31; 9.30-31).</para>
+  <para style="s1">Jesus Calls Four Fishermen</para>
+  <para style="r">(Mt 4.12-22; Lk 4.14-15; 5.1-11)</para>
+  <para style="ip" status="invalid">Jesus' message is about the arrival of the <char style="w">kingdom of god</char>, which will happen soon. To prepare for it, the people need to repent (1.15). He immediately summons two pairs of fishermen brothers to be his followers and helpers.</para>
+  <para style="p">
+    <verse number="14" style="v" sid="TIT 1:14" />After John had been put in prison, Jesus went to Galilee and preached the Good News from God. <verse eid="TIT 1:14" /></para>
+  <para style="s5" status="unknown">
+    <verse number="15" style="v" sid="TIT 1:15" status="invalid" />To those who are pure, all things are pure. But to those who are corrupt and unbelieving, nothing is pure, but both their minds and their consciences have been corrupted. <verse eid="TIT 1:15" /><verse number="16" style="v" sid="TIT 1:16" status="invalid" />They profess to know God, but they deny him by their actions. They are detestable, disobedient, and unfit for doing any good work. <verse eid="TIT 1:16" /></para>
+  <para style="s5" status="unknown" />
+  <chapter eid="TIT 1" />
+  <chapter number="2" style="c" sid="TIT 2" />
+  <para style="p">
+    <verse number="1" style="v" sid="TIT 2:1" />But you, speak what fits with faithful instruction. <verse eid="TIT 2:1" /><verse number="2" style="v" sid="TIT 2:2" />Teach older men to be temperate, dignified, sensible, sound in faith, in love, and in perseverance. <verse eid="TIT 2:2" /></para>
+  <para style="s5" status="unknown">
+    <verse number="3" style="v" sid="TIT 2:3" status="invalid" />Teach older women likewise to be reverent in behavior, not slanderers or being slaves to much wine, but to be teachers of what is good. <verse eid="TIT 2:3" /><verse number="4" style="v" sid="TIT 2:4" status="invalid" />In this way they may train the younger women to love their own husbands and children, <verse eid="TIT 2:4" /><verse number="5" style="v" sid="TIT 2:5" status="invalid" />to be sensible, pure, good housekeepers, and obedient to their own husbands, so that God's word may not be insulted. <verse eid="TIT 2:5" /></para>
+  <para style="s5" status="unknown">
+    <verse number="6" style="v" sid="TIT 2:6" status="invalid" />In the same way, encourage the younger men to use good sense. <verse eid="TIT 2:6" /><verse number="7" style="v" sid="TIT 2:7" status="invalid" />In all ways present yourself as an example of good works. In your teaching, show integrity, dignity, <verse eid="TIT 2:7" /><verse number="8" style="v" sid="TIT 2:8" status="invalid" />and a correct message that is above criticism, so that anyone who opposes you may be ashamed because they have nothing bad to say about us. <verse eid="TIT 2:8" /></para>
+  <para style="s5" status="unknown">
+    <verse number="9" style="v" sid="TIT 2:9" status="invalid" />Teach slaves to obey their masters in everything, to please them and not argue with them, <verse eid="TIT 2:9" /><verse number="10" style="v" sid="TIT 2:10" status="invalid" />to not steal from them, but instead to demonstrate all good faith, so that in every way they may bring credit to the teaching about God our Savior. <verse eid="TIT 2:10" /></para>
+  <para style="s5" status="unknown">
+    <verse number="11" style="v" sid="TIT 2:11" status="invalid" />For the grace of God has appeared for the salvation of all people. <verse eid="TIT 2:11" /><verse number="12" style="v" sid="TIT 2:12" status="invalid" />It trains us to reject godlessness and worldly passions, and to live self-controlled, upright, and godly lives in this age, <verse eid="TIT 2:12" /><verse number="13" style="v" sid="TIT 2:13" status="invalid" />while we look forward to receiving our blessed hope, the appearance of the glory of our great God and Savior Jesus Christ. <verse eid="TIT 2:13" /></para>
+  <para style="s5" status="unknown">
+    <verse number="14" style="v" sid="TIT 2:14" status="invalid" />Jesus gave himself for us in order to redeem us from all lawlessness and to make pure, for himself, a special people who are eager to do good works. <verse eid="TIT 2:14" /></para>
+  <para style="s5" status="unknown" />
+  <para style="p">
+    <verse number="15" style="v" sid="TIT 2:15" />Speak of these things, encourage people to do them, and give correction with all authority. Let no one disregard you. <verse eid="TIT 2:15" /></para>
+  <para style="s5" status="unknown" />
+  <chapter eid="TIT 2" />
+  <chapter number="3" style="c" sid="TIT 3" />
+  <para style="p">
+    <verse number="1" style="v" sid="TIT 3:1" />Remind them to submit to rulers and authorities, to obey them, to be ready for every good work, <verse eid="TIT 3:1" /><verse number="2" style="v" sid="TIT 3:2" />to revile no one, to not be eager to fight, and to be gentle, showing all humility toward everyone. <verse eid="TIT 3:2" /></para>
+  <para style="s5" status="unknown">
+    <verse number="3" style="v" sid="TIT 3:3" status="invalid" />For once we ourselves were thoughtless and disobedient. We were led astray and enslaved by various passions and pleasures. We lived in evil and envy. We were detestable and hated one another. <verse eid="TIT 3:3" /></para>
+  <para style="s5" status="unknown">
+    <verse number="4" style="v" sid="TIT 3:4" status="invalid" />But when the kindness of God our savior and his love for mankind appeared, <verse eid="TIT 3:4" /><verse number="5" style="v" sid="TIT 3:5" status="invalid" />it was not by works of righteousness that we did, but by his mercy that he saved us, through the washing of new birth and renewal by the Holy Spirit, <verse eid="TIT 3:5" /></para>
+  <para style="s5" status="unknown">
+    <verse number="6" style="v" sid="TIT 3:6" status="invalid" />whom God richly poured on us through our Savior Jesus Christ, <verse eid="TIT 3:6" /><verse number="7" style="v" sid="TIT 3:7" status="invalid" />so that having been justified by his grace, we might become heirs with the certain hope of eternal life. <verse eid="TIT 3:7" /></para>
+  <para style="s5" status="unknown">
+    <verse number="8" style="v" sid="TIT 3:8" status="invalid" />This message is trustworthy. I want you to insist on these things, so that those who have believed in God may be careful to engage themselves in good works. These things are good and useful for everyone. <verse eid="TIT 3:8" /></para>
+  <para style="s5" status="unknown">
+    <verse number="9" style="v" sid="TIT 3:9" status="invalid" />But avoid foolish debates and genealogies and strife and conflict about the law. Those things are unprofitable and worthless. <verse eid="TIT 3:9" /><verse number="10" style="v" sid="TIT 3:10" status="invalid" />Reject anyone who is causing divisions among you, after one or two warnings, <verse eid="TIT 3:10" /><verse number="11" style="v" sid="TIT 3:11" status="invalid" />knowing that such a person has turned from the right way and is sinning and condemns himself. <verse eid="TIT 3:11" /></para>
+  <para style="s5" status="unknown" />
+  <para style="p">
+    <verse number="12" style="v" sid="TIT 3:12" />When I send Artemas or Tychicus to you, hurry and come to me at Nicopolis, where I have decided to spend the winter. <verse eid="TIT 3:12" /><verse number="13" style="v" sid="TIT 3:13" />Do everything you can to send on their way Zenas the lawyer and Apollos, so that they lack nothing. <verse eid="TIT 3:13" /></para>
+  <para style="s5" status="unknown">
+    <verse number="14" style="v" sid="TIT 3:14" status="invalid" />Our people must learn to engage themselves in good works that provide for urgent needs, and so not be unfruitful. <verse eid="TIT 3:14" /></para>
+  <para style="s5" status="unknown" />
+  <para style="p">
+    <verse number="15" style="v" sid="TIT 3:15" />All those who are with me greet you. Greet those who love us in faith. Grace be with all of you.<verse eid="TIT 3:15" /></para>
+  <chapter eid="TIT 3" />
+</usx>

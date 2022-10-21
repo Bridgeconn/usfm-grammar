@@ -11,9 +11,9 @@ on:
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
-  Run-linter-and-tests:
+  Run-Grammar-tests:
     # Name the Job
-    name: Lint n test
+    name: Run Grammar tests
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
@@ -32,4 +32,44 @@ jobs:
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
 
-        
+  Run-Python-tests:
+    name: Run Python tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - uses: actions/setup-python@v2
+        with:
+            python-version: '3.10.6'
+
+      - name: Setup node and npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Create Virtual Environment
+        run: python -m venv ENV-dev
+
+      - name: Use VENV
+        run: source ENV-dev/bin/activate
+
+      - name: Install dependencies
+        run: pip install -r ./python-usfm-parser/dev-requirements.txt
+
+      - name: Build grammar binary
+        run: |
+          cd tree-sitter-usfm3
+          npm install .
+          ./node_modules/.bin/tree-sitter generate
+          cd ..
+          python python-usfm-parser/src/grammar_rebuild.py ./tree-sitter-usfm3/ python-usfm-parser/src/usfm_grammar/my-languages.so
+
+      - name: Install python module
+        run: |
+          cd python-usfm-parser
+          pip install .
+
+      - name: Run tests
+        working-directory: ./python-usfm-parser
+        run:
+          pytest tests/test_parsing_errors.py

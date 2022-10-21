@@ -1,0 +1,18 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="s">some text</para>
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />verse text</para>
+  <table>
+    <row style="tr">
+      <cell style="th1" align="start">header1 </cell>
+      <cell style="th3" align="start">header3</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr2" align="end">cell2 </cell>
+      <cell style="tcr3" align="end">cell3</cell>
+    </row>
+  </table>
+  <chapter eid="GEN 1" />
+</usx>

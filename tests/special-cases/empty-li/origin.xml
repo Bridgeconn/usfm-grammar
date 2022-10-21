@@ -1,0 +1,16 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />The list of verses follows this<verse eid="GEN 1:1" /></para>
+  <para style="li">
+    <verse number="2" style="v" sid="GEN 1:2" />The item one of list<verse eid="GEN 1:2" /></para>
+  <para style="li">
+    <verse number="3" style="v" sid="GEN 1:3" />The item two of list<verse eid="GEN 1:3" /></para>
+  <para style="li">
+    <verse number="4" style="v" sid="GEN 1:4" />The item three <verse eid="GEN 1:4" /><verse number="5" style="v" sid="GEN 1:5" />and four of the list</para>
+  <para style="lh" vid="GEN 1:5">The end of verse list <verse eid="GEN 1:5" /><verse number="6" style="v" sid="GEN 1:6" />A verse out side of the list <verse eid="GEN 1:6" /><verse number="7" style="v" sid="GEN 1:7" />The verse with a list within it</para>
+  <para style="li" vid="GEN 1:7">item one</para>
+  <para style="li" vid="GEN 1:7">item two <verse eid="GEN 1:7" /><verse number="8" style="v" sid="GEN 1:8" />The last verse<verse eid="GEN 1:8" /></para>
+  <chapter eid="GEN 1" />
+</usx>

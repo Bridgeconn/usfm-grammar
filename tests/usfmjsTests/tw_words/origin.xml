@@ -1,0 +1,15 @@
+<usx version="3.0">
+  <book code="TIT" style="id">Titus</book>
+  <para style="usfm">3.0</para>
+  <chapter number="1" style="c" sid="TIT 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="TIT 1:1" />
+    <char style="w" lemma="ἀπόστολος" strong="G06520" x-morph="Gr,N,,,,,NMS," x-tw="rc://*/tw/dict/bible/kt/apostle">ἀπόστολος</char> <char style="w" lemma="δέ" strong="G11610" x-morph="Gr,CC,,,,,,,,">δὲ</char><verse eid="TIT 1:1" /></para>
+  <para style="k-s" status="unknown">| x-tw="rc:<optbreak />*/tw/dict/bible/kt/jesus"<unmatched marker="*" /><char style="w" lemma="Ἰησοῦς" strong="G24240" x-morph="Gr,N,,,,,GMS," status="invalid">Ἰησοῦ</char> <char style="w" lemma="χριστός" strong="G55470" x-morph="Gr,N,,,,,GMS," x-tw="rc://*/tw/dict/bible/kt/christ" status="invalid">Χριστοῦ</char></para>
+  <para style="k-e" status="unknown">
+    <unmatched marker="*" />, <char style="w" lemma="κατά" strong="G25960" x-morph="Gr,P,,,,,A,,," status="invalid">κατὰ</char> <verse number="4" style="v" sid="TIT 1:4" status="invalid" /><char style="w" lemma="ἀπό" strong="G05750" x-morph="Gr,P,,,,,G,,," status="invalid">ἀπὸ</char><verse eid="TIT 1:4" /></para>
+  <para style="k-s" status="unknown">| x-tw="rc:<optbreak />*/tw/dict/bible/kt/godthefather"<unmatched marker="*" /><char style="w" lemma="θεός" strong="G23160" x-morph="Gr,N,,,,,GMS," x-tw="rc://*/tw/dict/bible/kt/god" status="invalid">Θεοῦ</char> <char style="w" lemma="πατήρ" strong="G39620" x-morph="Gr,N,,,,,GMS," status="invalid">Πατρὸς</char></para>
+  <para style="k-e" status="unknown">
+    <unmatched marker="*" /> <char style="w" lemma="καί" strong="G25320" x-morph="Gr,CC,,,,,,,," status="invalid">καὶ</char></para>
+  <chapter eid="TIT 1" />
+</usx>

@@ -1,0 +1,18 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />the first verse <verse eid="GEN 1:1" /><verse number="2" style="v" sid="GEN 1:2" />the second verse<verse eid="GEN 1:2" /></para>
+  <chapter eid="GEN 1" />
+  <chapter number="2" style="c" sid="GEN 2" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 2:1" />the third verse <verse eid="GEN 2:1" /><verse number="2" style="v" sid="GEN 2:2" />the fourth verse<verse eid="GEN 2:2" /></para>
+  <para style="s1">Administration of the Tribes of Israel</para>
+  <para style="lh">
+    <verse number="16-22" style="v" sid="GEN 2:16-22" />This is the list of the administrators of the tribes of Israel:</para>
+  <para style="li1" vid="GEN 2:16-22">Reuben - Eliezer son of Zichri</para>
+  <para style="li1" vid="GEN 2:16-22">Simeon - Shephatiah son of Maacah</para>
+  <para style="li1" vid="GEN 2:16-22">Levi - Hashabiah son of Kemuel</para>
+  <para style="lf" vid="GEN 2:16-22">This was the list of the administrators of the tribes of Israel.<verse eid="GEN 2:16-22" /></para>
+  <chapter eid="GEN 2" />
+</usx>

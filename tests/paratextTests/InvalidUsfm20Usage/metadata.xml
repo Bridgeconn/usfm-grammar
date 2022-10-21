@@ -1,0 +1,6 @@
+<?xml encoding="utf-8"?>
+<test-metadata>
+        <description>InvalidUsfm20Usage. From paratext test suite</description>
+        <validated>fail</validated>
+        <tags>clarify</tags>
+</test-metadata>

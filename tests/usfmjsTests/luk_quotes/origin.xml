@@ -1,0 +1,29 @@
+<usx version="3.0">
+  <book code="LUK" style="id">Unlocked Literal Bible</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Luke</para>
+  <para style="toc1">The Gospel of Luke</para>
+  <para style="toc2">Luke</para>
+  <para style="toc3">Luk</para>
+  <para style="mt">Luke</para>
+  <chapter number="4" style="c" sid="LUK 4" />
+  <para style="s5" status="unknown" />
+  <para style="q1">
+    <verse number="18" style="v" sid="LUK 4:18" />"The Spirit of the Lord is upon me,</para>
+  <para style="q1" vid="LUK 4:18">because he anointed me to tell good news to the poor.</para>
+  <para style="q1" vid="LUK 4:18">He has sent me to proclaim freedom to the captives,</para>
+  <para style="q1" vid="LUK 4:18">and recovery of sight to the blind,</para>
+  <para style="q1" vid="LUK 4:18">to set free those who are oppressed,<verse eid="LUK 4:18" /></para>
+  <para style="q1">
+    <verse number="19" style="v" sid="LUK 4:19" />to proclaim the year of the Lord's favor." <verse eid="LUK 4:19" /></para>
+  <para style="s5" status="unknown" />
+  <chapter eid="LUK 4" />
+  <chapter number="20" style="c" sid="LUK 20" />
+  <para style="p" />
+  <para style="s5" status="unknown">
+    <verse number="17" style="v" sid="LUK 20:17" status="invalid" />But Jesus looked at them, and said, "What is the meaning of that which is written:</para>
+  <para style="q" vid="LUK 20:17">'The stone that the builders rejected has become the cornerstone'?<verse eid="LUK 20:17" /></para>
+  <para style="m">
+    <verse number="18" style="v" sid="LUK 20:18" />Every one who falls on that stone will be broken to pieces. But on whomever it falls, it will crush."<verse eid="LUK 20:18" /></para>
+  <chapter eid="LUK 20" />
+</usx>

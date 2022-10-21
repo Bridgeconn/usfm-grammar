@@ -1,0 +1,13 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="11" style="v" sid="GEN 1:11" />Jesus stood before the Roman governor, who questioned him. <ms style="qt-s" who="Pilate" />“Are you the king of the Jews?”<ms style="qt-e" /> he asked.</para>
+  <para style="p" vid="GEN 1:11">
+    <ms style="qt-s" who="Jesus" />“So you say,”<ms style="qt-e" /> answered Jesus. <verse eid="GEN 1:11" /><verse number="12" style="v" sid="GEN 1:12" />But he said nothing in response to the accusations of the chief priests and elders.<verse eid="GEN 1:12" /></para>
+  <para style="p">
+    <verse number="13" style="v" sid="GEN 1:13" />So Pilate said to him, <ms style="qt-s" who="Pilate" />“Don't you hear all these things they accuse you of?”<ms style="qt-e" /><verse eid="GEN 1:13" /></para>
+  <para style="p">
+    <verse number="14" style="v" sid="GEN 1:14" />But Jesus refused to answer a single word, with the result that the Governor was greatly surprised.<verse eid="GEN 1:14" /></para>
+  <chapter eid="GEN 1" />
+</usx>

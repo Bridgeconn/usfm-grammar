@@ -1,0 +1,5 @@
+\id GEN
+\c 1
+\s some text
+\p
+\v 1 verse text \fig caption|alt="Description" src="image.jpg" size="large" loc="col" copy="copyright" ref="1.1"\fig*"

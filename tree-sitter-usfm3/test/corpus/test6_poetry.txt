@@ -35,8 +35,7 @@ q#
           (verseNumber))
         (verseText
           (text))))
-    (paragraph
-      (b))
+    (b)
     (poetry
       (qBlock
         (q
@@ -189,15 +188,13 @@ qc
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (poetry
       (qc
         (verseText
-          (text))))
-    (paragraph
-      (b))
+          (text))
+        (b)))
     (poetry
       (qBlock
         (q
@@ -423,11 +420,8 @@ qac
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
-    (poetry
-      (qBlock
+            (text))
+          (b))
         (q
           (qTag
             (numberedLevelMax3))
@@ -509,9 +503,8 @@ of “The Thirty,” and he called out,
           (qmTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (paragraph
       (m
         (verseText
@@ -553,11 +546,8 @@ qd
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
-    (poetry
-      (qBlock
+            (text))
+          (b))
         (q
           (qTag
             (numberedLevelMax3))
@@ -574,9 +564,8 @@ qd
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
+            (text))
+          (b))))
     (poetry
       (qd
         (verseText
@@ -650,11 +639,8 @@ b
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
-    (poetry
-      (qBlock
+            (text))
+          (b))
         (q
           (qTag
             (numberedLevelMax3))
@@ -683,11 +669,8 @@ b
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text)))))
-    (paragraph
-      (b))
-    (poetry
-      (qBlock
+            (text))
+          (b))
         (q
           (qTag
             (numberedLevelMax3))

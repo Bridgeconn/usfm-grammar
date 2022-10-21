@@ -1,0 +1,59 @@
+<usx version="3.0">
+  <book code="TIT" style="id">Titus</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Titus</para>
+  <para style="toc2">Titus</para>
+  <para style="toc3">Tit</para>
+  <para style="mt">Titus</para>
+  <chapter number="1" style="c" sid="TIT 1" />
+  <para style="p">
+    <verse number="12" style="v" sid="TIT 1:12" />
+    <verse eid="TIT 1:12" />
+  </para>
+  <para style="zaln-s" status="unknown">| x-strong="G51000" x-lemma="τις" x-morph="Gr,RI,,,,NMS," x-occurrence="1" x-occurrences="1" x-content="τις" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">One</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G15370" x-lemma="ἐκ" x-morph="Gr,P,,,,,G,,," x-occurrence="1" x-occurrences="1" x-content="ἐξ" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">of</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G08460" x-lemma="αὐτός" x-morph="Gr,RP,,,3GMP," x-occurrence="1" x-occurrences="2" x-content="αὐτῶν" </para>
+  <para style="zaln-s" status="unknown">| x-strong="G23980" x-lemma="ἴδιος" x-morph="Gr,RD,,,,NMS," x-occurrence="1" x-occurrences="1" x-content="ἴδιος" </para>
+  <para style="zaln-s" status="unknown">| x-strong="G08460" x-lemma="αὐτός" x-morph="Gr,RP,,,3GMP," x-occurrence="2" x-occurrences="2" x-content="αὐτῶν" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">their</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">own</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G43960" x-lemma="προφήτης" x-morph="Gr,N,,,,,NMS," x-occurrence="1" x-occurrences="1" x-content="προφήτης" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">prophets</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G30040" x-lemma="λέγω" x-morph="Gr,V,IAA3,,S," x-occurrence="1" x-occurrences="1" x-content="εἶπέν" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">has</char> <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">said</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" />, "</para>
+  <para style="zaln-s" status="unknown">| x-strong="G29120" x-lemma="Κρής" x-morph="Gr,N,,,,,NMP," x-occurrence="1" x-occurrences="1" x-content="Κρῆτες" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">Cretans</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G55830" x-lemma="ψεύστης" x-morph="Gr,N,,,,,NMP," x-occurrence="1" x-occurrences="1" x-content="ψεῦσται" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">are</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G01040" x-lemma="ἀεί" x-morph="Gr,D,,,,,,,,," x-occurrence="1" x-occurrences="1" x-content="ἀεὶ" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">always</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G55830" x-lemma="ψεύστης" x-morph="Gr,N,,,,,NMP," x-occurrence="1" x-occurrences="1" x-content="ψεῦσται" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">liars</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" />, </para>
+  <para style="zaln-s" status="unknown">| x-strong="G25560" x-lemma="κακός" x-morph="Gr,AA,,,,NNP," x-occurrence="1" x-occurrences="1" x-content="κακὰ" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">evil</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G23420" x-lemma="θηρίον" x-morph="Gr,N,,,,,NNP," x-occurrence="1" x-occurrences="1" x-content="θηρία" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">beasts</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" />, </para>
+  <para style="zaln-s" status="unknown">| x-strong="G06920" x-lemma="ἀργός" x-morph="Gr,AA,,,,NFP," x-occurrence="1" x-occurrences="1" x-content="ἀργαί" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">lazy</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" /> </para>
+  <para style="zaln-s" status="unknown">| x-strong="G10640" x-lemma="γαστήρ" x-morph="Gr,N,,,,,NFP," x-occurrence="1" x-occurrences="1" x-content="γαστέρες" <char style="w" x-occurrence="1" x-occurrences="1" status="invalid">gluttons</char> </para>
+  <para style="zaln-e" status="unknown">
+    <unmatched marker="*" />."</para>
+  <chapter eid="TIT 1" />
+</usx>

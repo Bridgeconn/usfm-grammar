@@ -1,0 +1,7 @@
+<usx version="3.0">
+  <book code="SNG" style="id" />
+  <chapter number="1" style="c" sid="SNG 1" />
+  <para style="p">
+    <verse number="26" style="v" sid="SNG 1:26" />फिर परमेश्वर ने कहा, “हम <char style="nd">मनुष्य <note caller="+" style="f"><char style="fr" closed="false">1.26 </char><char style="fq" closed="false">मनुष्य: </char><char style="ft" closed="false">मनुष्य नई प्रजाति है, वह विशेष रूप से इस पृथ्वी के अन्य प्रकार के जीवों से भिन्न है। </char></note> </char> को <char style="it">अपने स्वरूप के अनुसार</char><note caller="+" style="f"><char style="fr" closed="false">1.26 </char><char style="fq" closed="false">अपने स्वरूप के अनुसार: </char><char style="ft" closed="false">अर्थात् अपनी समानता में। मनुष्य का स्वर्ग से सम्बंध है और इस पृथ्वी का कोई भी प्राणी नहीं है</char></note> अपनी समानता में बनाएँ; और वे समुद्र की मछलियों, और आकाश के पक्षियों, और घरेलू पशुओं, और सारी पृथ्वी पर, और सब रेंगनेवाले जन्तुओं पर जो पृथ्वी पर रेंगते हैं, अधिकार रखें।”<char style="bdit">(याकू. 3:9) </char><verse eid="SNG 1:26" /></para>
+  <chapter eid="SNG 1" />
+</usx>

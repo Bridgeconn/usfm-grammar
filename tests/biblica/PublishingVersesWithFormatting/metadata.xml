@@ -1,0 +1,6 @@
+<?xml encoding="utf-8"?>
+<test-metadata>
+        <description> Publishing Verses \vp ...\vp* should be able contain formatting. Some implementations need verses formatted, such as for red letter. 
+		</description>
+        <validated>pass</validated>
+</test-metadata>

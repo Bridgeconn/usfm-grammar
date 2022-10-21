@@ -1,0 +1,118 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <para style="ide" />
+  <para style="rem" />
+  <para style="h" />
+  <para style="mt1" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="s1" />
+  <para style="m">
+    <verse number="1" style="v" sid="GEN 1:1" />
+    <verse eid="GEN 1:1" />
+    <verse number="2" style="v" sid="GEN 1:2" />
+    <verse eid="GEN 1:2" />
+    <verse number="3" style="v" sid="GEN 1:3" />
+    <verse eid="GEN 1:3" />
+  </para>
+  <para style="p">
+    <verse number="4" style="v" sid="GEN 1:4" />
+    <verse eid="GEN 1:4" />
+  </para>
+  <para style="p" />
+  <para style="s1" />
+  <para style="m">
+    <verse number="5" style="v" sid="GEN 1:5" />
+    <verse eid="GEN 1:5" />
+    <verse number="6" style="v" sid="GEN 1:6" />
+    <verse eid="GEN 1:6" />
+    <verse number="7" style="v" sid="GEN 1:7" />
+    <verse eid="GEN 1:7" />
+  </para>
+  <para style="p">
+    <verse number="8" style="v" sid="GEN 1:8" />
+    <verse eid="GEN 1:8" />
+    <verse number="9" style="v" sid="GEN 1:9" />
+    <verse eid="GEN 1:9" />
+  </para>
+  <para style="p">
+    <verse number="10" style="v" sid="GEN 1:10" />
+    <verse eid="GEN 1:10" />
+    <verse number="11" style="v" sid="GEN 1:11" />
+    <verse eid="GEN 1:11" />
+    <verse number="12" style="v" sid="GEN 1:12" />
+    <verse eid="GEN 1:12" />
+    <verse number="13" style="v" sid="GEN 1:13" />
+    <verse eid="GEN 1:13" />
+    <verse number="14" style="v" sid="GEN 1:14" />
+    <verse eid="GEN 1:14" />
+  </para>
+  <para style="p">
+    <verse number="15" style="v" sid="GEN 1:15" />
+    <verse eid="GEN 1:15" />
+    <verse number="16" style="v" sid="GEN 1:16" />
+    <verse eid="GEN 1:16" />
+  </para>
+  <chapter eid="GEN 1" />
+  <chapter number="2" style="c" sid="GEN 2" />
+  <para style="s1" />
+  <para style="m">
+    <verse number="1" style="v" sid="GEN 2:1" />
+    <verse eid="GEN 2:1" />
+    <verse number="2" style="v" sid="GEN 2:2" />
+    <verse eid="GEN 2:2" />
+  </para>
+  <para style="p">
+    <verse number="3" style="v" sid="GEN 2:3" />
+    <verse eid="GEN 2:3" />
+    <verse number="4" style="v" sid="GEN 2:4" />
+    <verse eid="GEN 2:4" />
+    <verse number="5" style="v" sid="GEN 2:5" />
+    <verse eid="GEN 2:5" />
+  </para>
+  <para style="p">
+    <verse number="6" style="v" sid="GEN 2:6" />
+    <verse eid="GEN 2:6" />
+    <verse number="7" style="v" sid="GEN 2:7" />
+    <verse eid="GEN 2:7" />
+    <verse number="8" style="v" sid="GEN 2:8" />
+    <verse eid="GEN 2:8" />
+  </para>
+  <para style="p">
+    <verse number="9" style="v" sid="GEN 2:9" />
+    <verse eid="GEN 2:9" />
+    <verse number="10" style="v" sid="GEN 2:10" />
+    <verse eid="GEN 2:10" />
+  </para>
+  <para style="p">
+    <verse number="11" style="v" sid="GEN 2:11" />
+    <verse eid="GEN 2:11" />
+    <verse number="12" style="v" sid="GEN 2:12" />
+    <verse eid="GEN 2:12" />
+    <verse number="13" style="v" sid="GEN 2:13" />
+    <verse eid="GEN 2:13" />
+    <verse number="14" style="v" sid="GEN 2:14" />
+    <verse eid="GEN 2:14" />
+  </para>
+  <para style="p">
+    <verse number="15" style="v" sid="GEN 2:15" />
+    <verse eid="GEN 2:15" />
+  </para>
+  <chapter eid="GEN 2" />
+  <chapter number="3" style="c" sid="GEN 3" />
+  <para style="s1">heading 1</para>
+  <para style="m">
+    <verse number="1" style="v" sid="GEN 3:1" />verser one <verse eid="GEN 3:1" /><verse number="2" style="v" sid="GEN 3:2" />verse two<verse eid="GEN 3:2" /></para>
+  <para style="p">
+    <verse number="3" style="v" sid="GEN 3:3" />verse three<verse eid="GEN 3:3" /></para>
+  <para style="p">
+    <verse number="4" style="v" sid="GEN 3:4" />verse four <verse eid="GEN 3:4" /><verse number="5" style="v" sid="GEN 3:5" /><verse eid="GEN 3:5" /><verse number="6" style="v" sid="GEN 3:6" /><verse eid="GEN 3:6" /><verse number="7" style="v" sid="GEN 3:7" /><verse eid="GEN 3:7" /><verse number="8" style="v" sid="GEN 3:8" /><verse eid="GEN 3:8" /></para>
+  <para style="p">
+    <verse number="9" style="v" sid="GEN 3:9" />verse nine <verse eid="GEN 3:9" /><verse number="10" style="v" sid="GEN 3:10" /><verse eid="GEN 3:10" /><verse number="11" style="v" sid="GEN 3:11" /><verse eid="GEN 3:11" /></para>
+  <para style="s1">heading 2</para>
+  <para style="m">
+    <verse number="12" style="v" sid="GEN 3:12" />verse twelve <verse eid="GEN 3:12" /><verse number="13" style="v" sid="GEN 3:13" /><verse eid="GEN 3:13" /><verse number="14" style="v" sid="GEN 3:14" /><verse eid="GEN 3:14" /></para>
+  <para style="p">
+    <verse number="15" style="v" sid="GEN 3:15" />verse fifteen a</para>
+  <para style="p" vid="GEN 3:15">verse fifteen b<verse eid="GEN 3:15" /></para>
+  <chapter eid="GEN 3" />
+</usx>

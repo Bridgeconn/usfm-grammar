@@ -1,0 +1,13 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <para style="h">3 John</para>
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p" />
+  <para style="v1" status="unknown">The elder to beloved Gaius, whom I love in truth. <verse number="2-" style="v" sid="GEN 1:2-" status="invalid" />Beloved, I pray that you may prosper in all things and be in health, just as your soul prospers. <verse eid="GEN 1:2-" /></para>
+  <para style="v3-" status="unknown">Stuff <verse number="4" style="v" sid="GEN 1:4" status="invalid" />-5 More Stuff <verse eid="GEN 1:4" /><verse number="6" style="v" sid="GEN 1:6" status="invalid" />- 7 " <verse eid="GEN 1:6" /><verse number="8-9Mashed" style="v" sid="GEN 1:8-9Mashed" status="invalid" /><verse eid="GEN 1:8-9Mashed" /><verse number="10Mashed&quot;" style="v" sid="GEN 1:10Mashed&quot;" status="invalid" /><verse eid="GEN 1:10Mashed&quot;" /></para>
+  <para style="c22" status="unknown">
+    <verse number="11" style="v" sid="GEN 1:11" status="invalid" />More <verse eid="GEN 1:11" /><verse number="No" style="v" sid="GEN 1:No" status="invalid" />number" <verse eid="GEN 1:No" /><verse number="" style="v" sid="GEN 1:" status="invalid" /><verse eid="GEN 1:" /><verse number="14" style="v" sid="GEN 1:14" status="invalid" />v 15 <verse eid="GEN 1:14" /></para>
+  <para style="" status="unknown">
+    <verse number="16" style="v" sid="GEN 1:16" status="invalid" />stuff<verse eid="GEN 1:16" /></para>
+  <chapter eid="GEN 1" />
+</usx>

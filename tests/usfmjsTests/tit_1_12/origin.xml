@@ -1,0 +1,13 @@
+<usx version="3.0">
+  <book code="TIT" style="id">Titus</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Titus</para>
+  <para style="toc2">Titus</para>
+  <para style="toc3">Tit</para>
+  <para style="mt">Titus</para>
+  <chapter number="1" style="c" sid="TIT 1" />
+  <para style="p">
+    <verse number="12" style="v" sid="TIT 1:12" />
+    <char style="w" lemma="προφήτης" strong="G43960" x-morph="Gr,N,,,,,NMS,">προφήτης</char>, “<char style="w" lemma="Κρής" strong="G29120" x-morph="Gr,N,,,,,NMP,">Κρῆτες</char> <char style="w" lemma="ἀργός" strong="G06920" x-morph="Gr,AA,,,,NFP,">ἀργαί</char>.”<verse eid="TIT 1:12" /></para>
+  <chapter eid="TIT 1" />
+</usx>

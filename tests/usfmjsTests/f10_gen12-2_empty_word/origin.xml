@@ -1,0 +1,7 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />L'<char style="w" strong="H3068">Éternel</char> <char style="w" strong="H559" x-morph="strongMorph:TH8799">dit</char> à <char style="w" strong="H87">Abram</char>: Va-t-<char style="w" strong="H3212" x-morph="strongMorph:TH8798">en</char> de ton <char style="w" strong="H776">pays</char>, de ta <char style="w" strong="H4138">patrie</char>, et de la <char style="w" strong="H1004">maison</char> de ton <char style="w" strong="H1">père</char>, dans le <char style="w" strong="H776">pays</char> que je te <char style="w" strong="H7200" x-morph="strongMorph:TH8686">montrerai</char>. <verse eid="GEN 1:1" /><verse number="2" style="v" sid="GEN 1:2" />Je ferai de <char style="w" strong="H6213" x-morph="strongMorph:TH8799">toi</char> une <char style="w" strong="H1419">grande</char> <char style="w" strong="H1471">nation</char>, et je te <char style="w" strong="H1288" x-morph="strongMorph:TH8762">bénirai</char>; je <char style="w" strong="H1431">rendrai</char><char style="w" /> ton <char style="w" strong="H8034">nom</char> <char style="w" strong="H1431" x-morph="strongMorph:TH8762">grand</char>, et tu seras une source de <char style="w" strong="H1293">bénédiction</char>.<verse eid="GEN 1:2" /></para>
+  <chapter eid="GEN 1" />
+</usx>
