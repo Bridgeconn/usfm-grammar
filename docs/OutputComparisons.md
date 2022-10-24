@@ -1,5 +1,7 @@
 # Difference in JSON Outputs of 2.x and 3.x
 
+> :warning:  The output of 3.x has been changed and is still under finalization process.
+
 The main changes brought in JSON strcuture of 3.x versions are shown below 
 #### The Basic USFM Components
 
