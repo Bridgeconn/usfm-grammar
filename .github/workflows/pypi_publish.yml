@@ -38,17 +38,27 @@ jobs:
           output-dir: python-usfm-parser/wheelhouse
           config-file: "python-usfm-parser/pyproject.toml"
 
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     path: python-usfm-parser/wheelhouse/*.whl
+      - uses: actions/upload-artifact@v3
+        with:
+          path: python-usfm-parser/wheelhouse/*.whl
 
-      # - uses: actions/download-artifact@v3
-      #   with:
-      #     name: artifact
-      #     path: python-usfm-parser/wheelhouse/
+  publish_to_pypi:
+    runs-on: ubuntu-latest
+      - uses: actions/checkout@master
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
+          path: python-usfm-parser/wheelhouse/
 
-      - uses: pypa/gh-action-pypi-publish@v1.5.0
+      - name: Publish distribution 📦 to Test PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        working-directory: ./python-usfm-parser
         with:
           user: __token__
-          password: ${{ secrets.pypi_password }}
+          password: ${{ secrets.PUBLISH_ON_TEST_PYPI }}
+          repository_url: https://test.pypi.org/legacy/
           
