@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "usfm-grammar"
-MyProject=="3.0.0-alpha.28"
+version=="3.0.0-alpha.28"
 description = "Python parser for USFM files, based on tree-sitter-usfm3"
 readme = "README.md"
 authors = [{ name = "BCS Team", email = "joel@bridgeconn.com" }]
