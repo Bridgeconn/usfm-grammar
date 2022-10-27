@@ -51,11 +51,11 @@ tree-sitter test --update # to update all test files with the current output
 
 This is a parser implemented to use the grammar to obtain syntax tree(AST) for a USFM file and then convert the AST to other formats via APIs(methods or CLI). This module has the python implementation of the parser and is published on pip.
 
-**grammar_rebuild.py** : To be run upon any updations on the actual grammar implementation. This will create the python binding for the grammar at `../tree-sitter-usfm` and store them as `.so` file within this module. Then on, only this `.so` file is required to run the parser and it is not dependant on the outer module, `../tree-sitter-usfm`.
+**src/grammar_rebuild.py** : To be run upon any updations on the actual grammar implementation. This will create the python binding for the grammar at `../tree-sitter-usfm` and store them as `.so` file within this module. Then on, only this `.so` file is required to run the parser and it is not dependant on the outer module, `../tree-sitter-usfm`.
 
-**usfm-grammar.py**: This is where the parser is implemented. It reads USFM, converts to AST, queries the AST, handles errors, converts specific contents of AST to other formats.
+**src/usfm_grammar/**: This is where the parser is implemented. It reads USFM, converts to AST, queries the AST, handles errors, converts specific contents of AST to other formats.
 
-**IPython notebook**: This serves as the documentation on how to use the python library.
+**IPython notebook**: Located in the docs/ folder. This serves as the documentation on how to use the python library.
 
 
 

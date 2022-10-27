@@ -36,66 +36,56 @@ Currently, the parser is implemented in JavaScript. But it is possible to re-use
 </td><td>
 
 ```
-{
-  "book": {    "bookCode": "HAB",
-          "description": "45HABGNT92.usfm, Good News Translation, June 2003"  },
-  "chapters": [
-    {"chapterNumber": "3",
-      "contents": [
-        [ { "s1": "A Prayer of Habakkuk" } ],
-        { "p": null },
-        { "verseNumber": "1",
-          "verseText": "This is a prayer of the prophet Habakkuk:",
-          "contents": [
-            "This is a prayer of the prophet Habakkuk:",
-            { "b": null },
-            { "q1": null }  ] },
-        { "verseNumber": "2",
-          "verseText": "O Lord , I have heard of what you have done, and I am 
-          filled with awe. Now do again in our times the great deeds you used 
-          to do. Be merciful, even when you are angry.",
-          "contents": [
-            "O",
-            { "nd": [ "Lord" ],
-              "closing": "\\nd*" },
-            ", I have heard of what you have done,",
-            { "q2": null },
-            "and I am filled with awe.",
-            { "q1": null },
-            "Now do again in our times",
-            { "q2": null },
-            "the great deeds you used to do.",
-            { "q1": null },
-            "Be merciful, even when you are angry." ] }
-      ]
-    }
-  ],
-  "_messages": {
-    "_warnings": [ "Book code is in lowercase." ] }
+{ "book": {  
+    "bookCode": "HAB",
+    "fileDescription": "45HABGNT92.usfm, Good News Translation, June 2003",
+    "chapters": [
+        {"chapterNumber": "3",
+        "contents": [
+            {"s1": "A Prayer of Habakkuk"},
+            {"p": [
+                {"verseNumber": "1"},
+                {"verseText": "This is a prayer of the prophet Habakkuk:"}
+            ]},
+            {"poetry": [
+                {"q1": [
+                    {"verseNumber": "2"},
+                    [{"verseText": "O"},
+                     {"nd": "Lord", "closing": "\\nd*"},
+                     {"verseText": ", I have heard of what you have done,"}]
+                ]},
+                {"q2": {"verseText": "and I am filled with awe."}},
+                {"q1": {"verseText": "Now do again in our times"}},
+                {"q2": {"verseText": "the great deeds you used to do."}},
+                {"q1": {"verseText": "Be merciful, even when you are angry."}}
+            ]}
+        ]}
+    ]}
 }
-
 ```
 
 </td><td>
   
 ```
-{ "book": { "bookCode": "HAB",
-        "description": "45HABGNT92.usfm, Good News Translation, June 2003" },
-  "chapters": [
-    { "chapterNumber": "3",
-      "contents": [
-        { "verseNumber": "1",
-          "verseText": "This is a prayer of the prophet Habakkuk:" },
-        { "verseNumber": "2",
-          "verseText": "O Lord , I have heard of what you have done, and I am 
-          filled with awe. Now do again in our times the great deeds you used 
-          to do. Be merciful, even when you are angry." }
-      ]
-    }
-  ],
-  "_messages": {
-    "_warnings": [ "Book code is in lowercase. " ]
-  }
+{"book": {
+    "bookCode": "HAB",
+    "fileDescription": "45HABGNT92.usfm, Good News Translation, June 2003",
+    "chapters": [
+        {"chapterNumber": "3",
+        "contents": [
+            {"verseNumber": "1"},
+            {"verseText": "This is a prayer of the prophet Habakkuk:"},
+            {"verseNumber": "2"},
+            {"verseText": "O"},
+            {"nd": "Lord",
+                "closing": "\\nd*"},
+            {"verseText": ", I have heard of what you have done,"},
+            {"verseText": "and I am filled with awe."},
+            {"verseText": "Now do again in our times"},
+            {"verseText": "the great deeds you used to do."},
+            {"verseText": "Be merciful, even when you are angry."}
+        ]}
+    ]}
 }
 ```
 

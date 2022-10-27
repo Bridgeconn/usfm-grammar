@@ -1,4 +1,4 @@
-name: Check-on-push
+name: Test-on-push
 
 # Run this workflow every time a new commit pushed to your repository
 on: 
@@ -69,7 +69,7 @@ jobs:
           cd python-usfm-parser
           pip install .
 
-      - name: Run tests
+      - name: Run tests for parsing errors
         working-directory: ./python-usfm-parser
         run:
           pytest tests/test_parsing_errors.py
