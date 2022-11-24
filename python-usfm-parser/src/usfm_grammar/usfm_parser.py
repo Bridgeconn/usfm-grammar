@@ -115,11 +115,21 @@ def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
 def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''build verse node in USX'''
     prev_verses = xml_root_node.findall(".//verse")
-    if len(prev_verses)>0:
-        if "sid" in prev_verses[-1].attrib:
-            v_parent = prev_verses[-1].getparent() # parent of last v
-            v_end_xml_node = etree.SubElement(v_parent, "verse")
-            v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+    if len(prev_verses)>0 and "sid" in prev_verses[-1].attrib:
+        text_present = ''.join(parent_xml_node.itertext())
+        if text_present != "":
+            v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
+        else:
+            grand_parent = parent_xml_node.getparent()
+            prev_uncle = grand_parent[-2]
+            if prev_uncle.tag == "para":
+                v_end_xml_node = etree.SubElement(prev_uncle, "verse")
+            elif prev_uncle.tag == "table":
+                rows = list(prev_uncle)
+                v_end_xml_node = etree.SubElement(rows[-1], "verse")
+            else:
+                raise Exception(" prev_uncle is "+str(prev_uncle))
+        v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
     verse_num_cap = USFM_LANGUAGE.query('''
                             (v
                                 (verseNumber) @vnum
