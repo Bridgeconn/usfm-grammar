@@ -272,6 +272,7 @@ BookHeaders.para.style.enum = (
     | "toca3" # Alternative language book Abbreviation
     | "rem" # Remark
     | "usfm" # USFM markup version information (may occur if USX was generated from USFM)
+    | "sts" # Added by Kavitha, as the representation of this is missing in USX documentations
     )
 
 BookTitles =

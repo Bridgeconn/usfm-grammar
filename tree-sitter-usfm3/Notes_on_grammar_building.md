@@ -62,3 +62,4 @@ The [rnc grammar](https://github.com/ubsicap/usx/blob/6c490bb5675d281b0fa01876fe
 The [USX doc](https://ubsicap.github.io/usx/structure.html#scripture) also says the same.
 25. The [fm marker](https://ubsicap.github.io/usfm/notes_basic/fnotes.html#fm-fm) is not mentioned in USX docs.
 26. Is there a USFM marker corresponding to the [ref element](https://ubsicap.github.io/usx/elements.html#ref) in USX? IT doesn't even have style, valid in or parent info provided in the docs.
+27. How is sts supposed to be represented in USX? It is missing in USX documentation.
