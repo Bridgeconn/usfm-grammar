@@ -121,7 +121,16 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
             v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
         else:
             grand_parent = parent_xml_node.getparent()
-            prev_uncle = grand_parent[-2]
+            uncle_index = -2
+            found_uncle = False
+            while not found_uncle:
+                if grand_parent[uncle_index].tag in ["sidebar"]:
+                    uncle_index -= 1
+                else:
+                    prev_uncle = grand_parent[uncle_index]
+                    found_uncle = True
+            if prev_uncle.tag in ["sidebar"]:
+                prev_uncle = grand_parent[-3]
             if prev_uncle.tag == "para":
                 v_end_xml_node = etree.SubElement(prev_uncle, "verse")
             elif prev_uncle.tag == "table":
