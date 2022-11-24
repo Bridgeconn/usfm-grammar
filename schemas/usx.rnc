@@ -632,7 +632,8 @@ ChapterStart =
         attribute number { xsd:integer }&
         attribute style { "c" }&
         attribute sid { xsd:string { minLength = "1" pattern = "[A-Z1-4]{3} ?[0-9]+" } }&
-        attribute altnumber { xsd:string { minLength = "1" pattern = "[0-9]+\p{L}?(\x{200F}?[\-,][0-9]+\p{L}?)*" } }?&
+        attribute altnumber { xsd:string { minLength = "1" pattern = "[0-9]+"} }?&
+        # attribute altnumber { xsd:string { minLength = "1" pattern = "[0-9]+\p{L}?(\x{200F}?[\-,][0-9]+\p{L}?)*" } }?&
         attribute pubnumber { xsd:string { minLength = "1" } }?&
         empty
     }
