@@ -193,7 +193,7 @@ def node_2_usx_char(node, usfm_bytes, parent_xml_node, xml_root_node):
     char_xml_node = etree.SubElement(parent_xml_node, "char")
     char_xml_node.set("style",
         usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
-        .replace("\\","").strip())
+        .replace("\\","").replace("+","").strip())
     if closing_node is None:
         char_xml_node.set("closed", "false")
     else:
