@@ -114,7 +114,8 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
     prev_verses = xml_root_node.findall(".//verse")
     if len(prev_verses)>0:
         if "sid" in prev_verses[-1].attrib:
-            v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
+            v_parent = prev_verses[-1].getparent() # parent of last v
+            v_end_xml_node = etree.SubElement(v_parent, "verse")
             v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
     verse_num_cap = USFM_LANGUAGE.query('''
                             (v
@@ -134,8 +135,8 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
             v_xml_node.set('pubnumber', vp_text.strip())
     ref = xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
     v_xml_node.set('number', verse_num.strip())
-    v_xml_node.set('sid', ref.strip())
     v_xml_node.set('style', "v")
+    v_xml_node.set('sid', ref.strip())
 
 def node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''build paragraph nodes in USX'''
