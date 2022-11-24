@@ -551,8 +551,8 @@ drinks too much! He is even a friend of tax collectors ...
           (v
             (verseNumber))
           (verseText
-            (text)))))
-    (b)
+            (text))
+          (b))))
     (poetry
       (qBlock
         (q

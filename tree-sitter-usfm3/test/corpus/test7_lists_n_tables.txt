@@ -213,13 +213,13 @@ Bilshan, Mispereth, Bigvai, Nehum and Baanah):
         (v
           (verseNumber))
         (verseText
-          (text))))
-    (b)
+          (text))
+        (b)))
     (paragraph
       (pm
         (verseText
-          (text))))
-    (b)
+          (text))
+        (b)))
     (list
       (limBlock
         (lim

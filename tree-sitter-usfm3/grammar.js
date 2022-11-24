@@ -153,7 +153,6 @@ module.exports = grammar({
       $.milestone,
       $.zNameSpace,
       $.esb,
-      $.b
     ),
 
     //chapter meta
@@ -235,7 +234,6 @@ module.exports = grammar({
       $.nb,
       $.pc,
       $.phBlock,
-      // $.b // may be move this to within _paragraphContent, as no text can be contained in this
     ),
 
     _paragraphContent: $ => choice(
@@ -246,6 +244,7 @@ module.exports = grammar({
       $.milestone,
       $.zNameSpace,
       $._comments,
+      $.b,
     ),
 
     p: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -285,7 +284,6 @@ module.exports = grammar({
       $._paragraphContent,
       $.qac,
       $.qs,
-      $.b
     ),
 
     qBlock: $ => prec.right(0, repeat1($.q)),
