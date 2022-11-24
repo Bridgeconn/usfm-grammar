@@ -124,7 +124,7 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
             uncle_index = -2
             found_uncle = False
             while not found_uncle:
-                if grand_parent[uncle_index].tag in ["sidebar", "optbreak"]:
+                if grand_parent[uncle_index].tag in ["sidebar"]:
                     uncle_index -= 1
                 else:
                     prev_uncle = grand_parent[uncle_index]
