@@ -104,6 +104,9 @@ def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
         last_sibbling = parent_xml_node[-1]
         if last_sibbling.tag == "para":
             last_sibbling.append(v_end_xml_node)
+        elif last_sibbling.tag == "table":
+            rows = list(last_sibbling)
+            rows[-1].append(v_end_xml_node)
         else:
             parent_xml_node.append(v_end_xml_node)
     chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
