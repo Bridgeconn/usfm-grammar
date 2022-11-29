@@ -139,7 +139,7 @@ exclude_files = [
     f'{TEST_DIR}/usfmjsTests/tit_1_12/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/tit1-1_alignment.oldformat/origin.usfm',
         # custom attributes not su[ported by USX rnc grammar]
-        
+
     f'{TEST_DIR}/paratextTests/GlossaryCitationFormContainsComma_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordWithParentheses_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerNestedProperNoun_Pass/origin.usfm',
@@ -154,8 +154,12 @@ exclude_files = [
     f'{TEST_DIR}/paratextTests/WordlistMarkerWithKeyword_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerNestedProperNounWithKeyword_Pass/origin.usfm',
         # book code GLO is present in usfm docs(for Gloassary) but not present in the USX grammar
+
     f'{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm',
         # USX grammar expects chapters(It actually expects BookIntroduction also, but I changed it to optional)
+
+    f'{TEST_DIR}/usfmjsTests/tstudio/origin.usfm',
+        # \s5 not supported by the USX grammar
     ]
 
 for file in exclude_files:
