@@ -136,7 +136,10 @@ exclude_files = [
     f'{TEST_DIR}/specExamples/milestone/origin.usfm',
 
     f'{TEST_DIR}/advanced/custom-attributes/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit_1_12/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit1-1_alignment.oldformat/origin.usfm',
         # custom attributes not su[ported by USX rnc grammar]
+        
     f'{TEST_DIR}/paratextTests/GlossaryCitationFormContainsComma_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordWithParentheses_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerNestedProperNoun_Pass/origin.usfm',
