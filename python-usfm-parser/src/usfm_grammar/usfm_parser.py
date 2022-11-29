@@ -217,6 +217,8 @@ def node_2_usx_attrib(node, usfm_bytes, parent_xml_node):
         .decode('utf-8').strip()
     if attrib_name == "|":
         attrib_name = DEFAULT_ATTRIB_MAP[node.parent.type]
+    if attrib_name == "src": # for \fig
+        attrib_name = "file"
 
     attrib_val_cap = USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)
     if len(attrib_val_cap) > 0:
