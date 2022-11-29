@@ -134,6 +134,13 @@ exclude_files = [
 
         ########### Temporarily for testing USX conversion ##############
     f'{TEST_DIR}/specExamples/milestone/origin.usfm',
+
+    f'{TEST_DIR}/advanced/custom-attributes/origin.usfm',
+        # custom attributes not su[ported by USX rnc grammar]
+    f'{TEST_DIR}/paratextTests/GlossaryCitationFormContainsComma_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordWithParentheses_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerNestedProperNoun_Pass/origin.usfm',
+        # book code GLO is present in usfm docs(for Gloassary) but not present in the USX grammar
     ]
 
 for file in exclude_files:
@@ -146,4 +153,6 @@ exclude_USX_files = [
         # ca is added as attribute to cl not chapter node
     f'{TEST_DIR}/specExamples/milestone/origin.usx',
         # Znamespace not represented properly. Even no docs of it on https://ubsicap.github.io/usx
+    f'{TEST_DIR}/advanced/table/origin.xml',
+        # There is no verse end node at end(in last row of the table)
 ]
