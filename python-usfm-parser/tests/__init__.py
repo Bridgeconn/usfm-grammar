@@ -138,6 +138,8 @@ exclude_files = [
     f'{TEST_DIR}/advanced/custom-attributes/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/tit_1_12/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/tit1-1_alignment.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/mat-4-6.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/acts_1_11.aligned.oldformat/origin.usfm',
         # custom attributes not su[ported by USX rnc grammar]
 
     f'{TEST_DIR}/paratextTests/GlossaryCitationFormContainsComma_Pass/origin.usfm',
@@ -159,7 +161,11 @@ exclude_files = [
         # USX grammar expects chapters(It actually expects BookIntroduction also, but I changed it to optional)
 
     f'{TEST_DIR}/usfmjsTests/tstudio/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/psa_quotes/origin.usfm',
         # \s5 not supported by the USX grammar
+
+    f'{TEST_DIR}/usfmjsTests/links/origin.usfm',
+        # link-href reported as invalid by usx grammar. Even the doc example doesn't work.
     ]
 
 for file in exclude_files:
