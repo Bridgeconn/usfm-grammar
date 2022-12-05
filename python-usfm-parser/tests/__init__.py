@@ -202,6 +202,10 @@ exclude_files = [
 
     f'{TEST_DIR}/usfmjsTests/links/origin.usfm',
         # link-href reported as invalid by usx grammar. Even the doc example doesn't work.
+
+    f'{TEST_DIR}/usfmjsTests/ts/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/ts_2/origin.usfm',
+        # qt is a chara marker and ts a para marker, not milestones, as per RNC grammar!
     ]
 
 for file in exclude_files:

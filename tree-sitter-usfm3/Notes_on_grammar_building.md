@@ -64,3 +64,4 @@ The [USX doc](https://ubsicap.github.io/usx/structure.html#scripture) also says 
 26. Is there a USFM marker corresponding to the [ref element](https://ubsicap.github.io/usx/elements.html#ref) in USX? IT doesn't even have style, valid in or parent info provided in the docs.
 27. How is sts supposed to be represented in USX? It is missing in USX documentation.
 28. The "src" attribute in \fig in USFM, becomes "file" in USX. Why the name change?
+29. The markers qt and ts, defined as milestones in the USFM docs is given as character marker and paragraph markers resptectively, in the usx.rnc grammar.
