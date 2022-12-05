@@ -65,3 +65,4 @@ The [USX doc](https://ubsicap.github.io/usx/structure.html#scripture) also says 
 27. How is sts supposed to be represented in USX? It is missing in USX documentation.
 28. The "src" attribute in \fig in USFM, becomes "file" in USX. Why the name change?
 29. The markers qt and ts, defined as milestones in the USFM docs is given as character marker and paragraph markers resptectively, in the usx.rnc grammar.
+30. In the USX.rnc grammar use of \\+w inside \\add is not being supported.

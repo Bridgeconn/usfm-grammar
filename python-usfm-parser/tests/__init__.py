@@ -206,6 +206,10 @@ exclude_files = [
     f'{TEST_DIR}/usfmjsTests/ts/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/ts_2/origin.usfm',
         # qt is a chara marker and ts a para marker, not milestones, as per RNC grammar!
+
+    f'{TEST_DIR}/special-cases/nesting/origin.usfm',
+    f'{TEST_DIR}/samples-from-wild/rv3/origin.usfm',
+        # nesting of w within other(add) char markers not supported by the USX.rnc grammar
     ]
 
 for file in exclude_files:
