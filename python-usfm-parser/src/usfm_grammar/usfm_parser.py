@@ -124,13 +124,11 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
             uncle_index = -2
             found_uncle = False
             while not found_uncle:
-                if grand_parent[uncle_index].tag in ["sidebar"]:
+                if grand_parent[uncle_index].tag in ["sidebar", "ms"]:
                     uncle_index -= 1
                 else:
                     prev_uncle = grand_parent[uncle_index]
                     found_uncle = True
-            if prev_uncle.tag in ["sidebar"]:
-                prev_uncle = grand_parent[-3]
             if prev_uncle.tag == "para":
                 v_end_xml_node = etree.SubElement(prev_uncle, "verse")
             elif prev_uncle.tag == "table":
@@ -258,6 +256,7 @@ def node_2_usx_milestone(node, usfm_bytes, parent_xml_node, xml_root_node):
         [(milestoneTag)
          (milestoneStartTag)
          (milestoneEndTag)
+         (zSpaceTag)
          ] @ms-name)''').captures(node)[0]
     style = usfm_bytes[ms_name_cap[0].start_byte:ms_name_cap[0].end_byte].decode('utf-8')\
     .replace("\\","").strip()
@@ -344,6 +343,8 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
     elif node.type in ["table", "tr"]+ TABLE_CELL_MARKERS:
         node_2_usx_table(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif  node.type == "milestone":
+        node_2_usx_milestone(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type == "zNameSpace":
         node_2_usx_milestone(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif node.type in ["esb", "cat", "fig", "b"]:
         node_2_usx_special(node, usfm_bytes, parent_xml_node, xml_root_node)
@@ -581,7 +582,7 @@ def node_2_dict(node, usfm_bytes, filt): # pylint: disable=too-many-return-state
                         new_result += val
             return new_result
         return result
-    if node.type == "milestone":
+    if node.type in ["milestone", "zNameSpace"]:
         if Filter.MILESTONES in filt:
             return node_2_dict_milestone(node, usfm_bytes)
     if node.type == "title":
