@@ -66,3 +66,4 @@ The [USX doc](https://ubsicap.github.io/usx/structure.html#scripture) also says 
 28. The "src" attribute in \fig in USFM, becomes "file" in USX. Why the name change?
 29. The markers qt and ts, defined as milestones in the USFM docs is given as character marker and paragraph markers resptectively, in the usx.rnc grammar.
 30. In the USX.rnc grammar use of \\+w inside \\add is not being supported.
+31. In the USX.rnc grammar, Strong numbers are expected to have 4 or 5 digits. So "G652" is invalid. Is that intended?
