@@ -170,6 +170,7 @@ exclude_files = [
     f'{TEST_DIR}/usfmjsTests/f10_gen12-2_empty_word/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/acts_1_11.aligned/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/heb1-1_multi_alignment.oldformat/origin.usfm',
+    f'{TEST_DIR}/samples-from-wild/alignment/origin.usfm',
         # custom attributes are not supported by USX rnc grammar
         # eg: x-morph, x-tw, x-occurrences etc
 
@@ -181,7 +182,8 @@ exclude_files = [
     f'{TEST_DIR}/paratextTests/GlossaryCitationForm_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerNestedTwoProperNouns_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerTextEndsInSpaceGlossaryEntryPresent_Pass/origin.usfm',
-    f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordEndsInSpaceGlossaryEntryPresent_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordEndsInSpaceGlossaryEntryPresent_Pass/'+\
+        'origin.usfm',
     f'{TEST_DIR}/paratextTests/GlossaryCitationFormEndsWithParentheses_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/GlossaryCitationFormMultipleWords_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerWithKeyword_Pass/origin.usfm',
@@ -189,7 +191,9 @@ exclude_files = [
         # book code GLO is present in usfm docs(for Gloassary) but not present in the USX grammar
 
     f'{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm',
-        # USX grammar expects chapters(It actually expects BookIntroduction also, but I changed it to optional)
+    f'{TEST_DIR}/special-cases/empty-book/origin.usfm',
+        # USX grammar expects chapters
+        # (It actually expects BookTitles also, but I changed it to optional)
 
     f'{TEST_DIR}/usfmjsTests/tstudio/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/psa_quotes/origin.usfm',
@@ -213,7 +217,10 @@ exclude_files = [
 
     f'{TEST_DIR}/special-cases/empty-attributes/origin.usfm',
     # f'{TEST_DIR}/samples-from-wild/rv3/origin.usfm', # already in the list for nested \w
-        # format of Strong number in \w attribute is checked in rnc grammar. But its wrong in this test
+    f'{TEST_DIR}/samples-from-wild/rv1/origin.usfm',
+    f'{TEST_DIR}/samples-from-wild/rv2/origin.usfm',
+        # format of Strong number in \w attribute is checked in rnc grammar.
+        # But its wrong in these tests
 
     f'{TEST_DIR}/samples-from-wild/t4t2/origin.usfm',
         # \b occuring immediately after \s, not within a para
