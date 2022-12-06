@@ -214,6 +214,9 @@ exclude_files = [
     f'{TEST_DIR}/special-cases/empty-attributes/origin.usfm',
     # f'{TEST_DIR}/samples-from-wild/rv3/origin.usfm', # already in the list for nested \w
         # format of Strong number in \w attribute is checked in rnc grammar. But its wrong in this test
+
+    f'{TEST_DIR}/samples-from-wild/t4t2/origin.usfm',
+        # \b occuring immediately after \s, not within a para
     ]
 
 for file in exclude_files:
