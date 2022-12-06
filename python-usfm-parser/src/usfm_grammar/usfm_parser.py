@@ -439,12 +439,11 @@ def node_2_dict_attrib(attrib_node, usfm_bytes, parent_type):
             attrib_name_node.start_byte:attrib_name_node.end_byte].decode('utf-8').strip()
     else:
         attrib_name = attrib_node.children[0].type
-    val_node = val_query.captures(attrib_node)[0]
     if len(val_query.captures(attrib_node)) > 0:
         val_node = val_query.captures(attrib_node)[0]
+        val = usfm_bytes[val_node[0].start_byte:val_node[0].end_byte].decode('utf-8').strip()
     else:
-        val_node = ""
-    val = usfm_bytes[val_node[0].start_byte:val_node[0].end_byte].decode('utf-8').strip()
+        val = ""
     return {attrib_name:val}
 
 def node_2_dict_milestone(ms_node, usfm_bytes):
