@@ -112,23 +112,27 @@ def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
     chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
     chap_end_xml_node.set("eid", chap_ref)
 
+def find_prev_uncle(parent_xml_node):
+    '''To find the ealier sibling of the current parent to attach the verse end node'''
+    grand_parent = parent_xml_node.getparent()
+    uncle_index = -2
+    while True:
+        if grand_parent[uncle_index].tag in ["sidebar", "ms"]:
+            uncle_index -= 1
+        else:
+            prev_uncle = grand_parent[uncle_index]
+            return prev_uncle
+    return None
+
 def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''build verse node in USX'''
     prev_verses = xml_root_node.findall(".//verse")
     if len(prev_verses)>0 and "sid" in prev_verses[-1].attrib:
-        text_present = ''.join(parent_xml_node.itertext())
-        if text_present != "":
+        if ''.join(parent_xml_node.itertext()) != "":
+            # if there is verse text in this parent
             v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
         else:
-            grand_parent = parent_xml_node.getparent()
-            uncle_index = -2
-            found_uncle = False
-            while not found_uncle:
-                if grand_parent[uncle_index].tag in ["sidebar", "ms"]:
-                    uncle_index -= 1
-                else:
-                    prev_uncle = grand_parent[uncle_index]
-                    found_uncle = True
+            prev_uncle = find_prev_uncle(parent_xml_node)
             if prev_uncle.tag == "para":
                 v_end_xml_node = etree.SubElement(prev_uncle, "verse")
             elif prev_uncle.tag == "table":
