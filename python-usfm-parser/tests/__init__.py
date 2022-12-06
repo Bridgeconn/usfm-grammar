@@ -29,7 +29,7 @@ def is_valid_usfm(input_usfm_path):
 
 all_usfm_files = glob(f"{TEST_DIR}/*/*/origin.usfm")
 
-exclude_files = [
+doubtful_usfms = [
     f'{TEST_DIR}/mandatory/v/origin.usfm',
         # Is V really a must? Can't we have empty chapter stubs?
     f'{TEST_DIR}/biblica/BlankLinesWithFigures/origin.usfm',
@@ -132,9 +132,10 @@ exclude_files = [
     f'{TEST_DIR}/samples-from-wild/doo43-4/origin.usfm',
         # () usage in \ior  is shown as \ior (....) \ior* in the spec
 
-        ########### Temporarily for testing USX conversion ##############
-    f'{TEST_DIR}/specExamples/milestone/origin.usfm',
+    ]
 
+doubtful_usxs = [
+        ########### Related to USX validation ##############
     f'{TEST_DIR}/advanced/custom-attributes/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/tit_1_12/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/tit1-1_alignment.oldformat/origin.usfm',
@@ -181,7 +182,8 @@ exclude_files = [
     f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordContainsComma_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/GlossaryCitationForm_Pass/origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerNestedTwoProperNouns_Pass/origin.usfm',
-    f'{TEST_DIR}/paratextTests/WordlistMarkerTextEndsInSpaceGlossaryEntryPresent_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerTextEndsInSpaceGlossaryEntryPresent_Pass/'+\
+       'origin.usfm',
     f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordEndsInSpaceGlossaryEntryPresent_Pass/'+\
         'origin.usfm',
     f'{TEST_DIR}/paratextTests/GlossaryCitationFormEndsWithParentheses_Pass/origin.usfm',
@@ -209,7 +211,7 @@ exclude_files = [
 
     f'{TEST_DIR}/usfmjsTests/ts/origin.usfm',
     f'{TEST_DIR}/usfmjsTests/ts_2/origin.usfm',
-        # qt is a chara marker and ts a para marker, not milestones, as per RNC grammar!
+        # qt is a char marker and ts a para marker, as per RNC grammar!
 
     f'{TEST_DIR}/special-cases/nesting/origin.usfm',
     f'{TEST_DIR}/samples-from-wild/rv3/origin.usfm',
@@ -226,10 +228,10 @@ exclude_files = [
         # \b occuring immediately after \s, not within a para
     ]
 
-for file in exclude_files:
-    if file in all_usfm_files:
-        all_usfm_files.remove(file)
-
+negative_tests = []
+for file_path in all_usfm_files:
+    if not is_valid_usfm(file_path):
+        negative_tests.append(file_path)
 
 exclude_USX_files = [
     f'{TEST_DIR}/specExamples/chapter-verse/origin.usx',
