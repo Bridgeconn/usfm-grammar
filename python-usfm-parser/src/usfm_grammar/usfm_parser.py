@@ -104,18 +104,43 @@ def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
         last_sibbling = parent_xml_node[-1]
         if last_sibbling.tag == "para":
             last_sibbling.append(v_end_xml_node)
+        elif last_sibbling.tag == "table":
+            rows = list(last_sibbling)
+            rows[-1].append(v_end_xml_node)
         else:
             parent_xml_node.append(v_end_xml_node)
     chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
     chap_end_xml_node.set("eid", chap_ref)
 
+def find_prev_uncle(parent_xml_node):
+    '''To find the ealier sibling of the current parent to attach the verse end node'''
+    grand_parent = parent_xml_node.getparent()
+    uncle_index = -2
+    while True:
+        if grand_parent[uncle_index].tag in ["sidebar", "ms"]:
+            uncle_index -= 1
+        else:
+            prev_uncle = grand_parent[uncle_index]
+            return prev_uncle
+    return None
+
 def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''build verse node in USX'''
     prev_verses = xml_root_node.findall(".//verse")
-    if len(prev_verses)>0:
-        if "sid" in prev_verses[-1].attrib:
+    if len(prev_verses)>0 and "sid" in prev_verses[-1].attrib:
+        if ''.join(parent_xml_node.itertext()) != "":
+            # if there is verse text in this parent
             v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
-            v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+        else:
+            prev_uncle = find_prev_uncle(parent_xml_node)
+            if prev_uncle.tag == "para":
+                v_end_xml_node = etree.SubElement(prev_uncle, "verse")
+            elif prev_uncle.tag == "table":
+                rows = list(prev_uncle)
+                v_end_xml_node = etree.SubElement(rows[-1], "verse")
+            else:
+                raise Exception(" prev_uncle is "+str(prev_uncle))
+        v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
     verse_num_cap = USFM_LANGUAGE.query('''
                             (v
                                 (verseNumber) @vnum
@@ -134,8 +159,8 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
             v_xml_node.set('pubnumber', vp_text.strip())
     ref = xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
     v_xml_node.set('number', verse_num.strip())
-    v_xml_node.set('sid', ref.strip())
     v_xml_node.set('style', "v")
+    v_xml_node.set('sid', ref.strip())
 
 def node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''build paragraph nodes in USX'''
@@ -179,7 +204,7 @@ def node_2_usx_char(node, usfm_bytes, parent_xml_node, xml_root_node):
     char_xml_node = etree.SubElement(parent_xml_node, "char")
     char_xml_node.set("style",
         usfm_bytes[tag_node.start_byte:tag_node.end_byte].decode('utf-8')
-        .replace("\\","").strip())
+        .replace("\\","").replace("+","").strip())
     if closing_node is None:
         char_xml_node.set("closed", "false")
     else:
@@ -194,6 +219,8 @@ def node_2_usx_attrib(node, usfm_bytes, parent_xml_node):
         .decode('utf-8').strip()
     if attrib_name == "|":
         attrib_name = DEFAULT_ATTRIB_MAP[node.parent.type]
+    if attrib_name == "src": # for \fig
+        attrib_name = "file"
 
     attrib_val_cap = USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)
     if len(attrib_val_cap) > 0:
@@ -233,6 +260,7 @@ def node_2_usx_milestone(node, usfm_bytes, parent_xml_node, xml_root_node):
         [(milestoneTag)
          (milestoneStartTag)
          (milestoneEndTag)
+         (zSpaceTag)
          ] @ms-name)''').captures(node)[0]
     style = usfm_bytes[ms_name_cap[0].start_byte:ms_name_cap[0].end_byte].decode('utf-8')\
     .replace("\\","").strip()
@@ -278,14 +306,11 @@ def node_2_usx_generic(node, usfm_bytes, parent_xml_node, xml_root_node):
         children_range_start = 2
     para_xml_node = etree.SubElement(parent_xml_node, "para")
     para_xml_node.set("style", style)
-    # caps = USFM_LANGUAGE.query('((text) @inner-text)').captures(node)
-    # para_xml_node.text = " ".join([usfm_bytes[txt_cap[0].start_byte:
-        # txt_cap[0].end_byte].decode('utf-8').strip()
-    #  for txt_cap in caps])
     for child in node.children[children_range_start:]:
         # node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
         if child.type in CHAR_STYLE_MARKERS+NESTED_CHAR_STYLE_MARKERS+\
-        ["text", "footnote", "crossref"]: # only nest these types inside the upper para style node
+        ["text", "footnote", "crossref", "verseText", "v", "b", "milestone", "zNameSpace"]:
+        # only nest these types inside the upper para style node
             node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
         else:
             node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
@@ -322,6 +347,8 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
     elif node.type in ["table", "tr"]+ TABLE_CELL_MARKERS:
         node_2_usx_table(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif  node.type == "milestone":
+        node_2_usx_milestone(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type == "zNameSpace":
         node_2_usx_milestone(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif node.type in ["esb", "cat", "fig", "b"]:
         node_2_usx_special(node, usfm_bytes, parent_xml_node, xml_root_node)
@@ -417,12 +444,11 @@ def node_2_dict_attrib(attrib_node, usfm_bytes, parent_type):
             attrib_name_node.start_byte:attrib_name_node.end_byte].decode('utf-8').strip()
     else:
         attrib_name = attrib_node.children[0].type
-    val_node = val_query.captures(attrib_node)[0]
     if len(val_query.captures(attrib_node)) > 0:
         val_node = val_query.captures(attrib_node)[0]
+        val = usfm_bytes[val_node[0].start_byte:val_node[0].end_byte].decode('utf-8').strip()
     else:
-        val_node = ""
-    val = usfm_bytes[val_node[0].start_byte:val_node[0].end_byte].decode('utf-8').strip()
+        val = ""
     return {attrib_name:val}
 
 def node_2_dict_milestone(ms_node, usfm_bytes):
@@ -560,7 +586,7 @@ def node_2_dict(node, usfm_bytes, filt): # pylint: disable=too-many-return-state
                         new_result += val
             return new_result
         return result
-    if node.type == "milestone":
+    if node.type in ["milestone", "zNameSpace"]:
         if Filter.MILESTONES in filt:
             return node_2_dict_milestone(node, usfm_bytes)
     if node.type == "title":

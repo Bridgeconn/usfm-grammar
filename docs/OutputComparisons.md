@@ -1,6 +1,6 @@
 # Difference in JSON Outputs of 2.x and 3.x
 
-> :warning:  The output of 3.x has been changed and is still under finalization process.
+> :warning:  The output of 3.0.0-alpha.5 python module has been added here and is still under finalization process.
 
 The main changes brought in JSON strcuture of 3.x versions are shown below 
 #### The Basic USFM Components
@@ -18,7 +18,7 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
       "chapters":[
       {"chapterNumber":"1",
           "contents":[
-          {"p":null},
+            {"p":null},
             {"verseNumber":"1",
               "verseText":"verse one",
               "contents":[
@@ -34,39 +34,25 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
       "_messages":{"_warnings":[]}}
     </pre>
   </td><td><pre>
-[
-    {"book": [
-            {"id": [
-                    {"bookcode": []
-                    }
-                ]
-            }
+{"book": {
+    "bookCode": "GEN",
+    "chapters": [
+      {
+        "chapterNumber": "1",
+        "contents": [
+          {
+            "p": [
+              {"verseNumber": "1"},
+              {"verseText": "verse one"},
+              {"verseNumber": "2"},
+              {"verseText": "verse two"}
+            ]
+          }
         ]
-    },
-    {"chapters": [
-            {"chapter": [
-                    {"c": [
-                            {"chapterNumber": "1"}
-                        ]
-                    },
-                    {"p": [
-                            {"v": [
-                                    {"verseNumber": "1"}
-                                ]
-                            },
-                            {"verseText": "verse one"},
-                            {"v": [
-                                    {"verseNumber": "2"}
-                                ]
-                            },
-                            {"verseText": "verse two"}
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-]
+      }
+    ]
+  }
+}
   </pre></td>
   </tr></table>
 
@@ -118,60 +104,39 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
       "_messages":{"_warnings":[]}}
      </pre></td>
      <td><pre>
-[
-    {"book": [
-            {"id": [
-                    {"bookcode": []
-                    }
-                ]
-            }
-        ]
-    },
-    {"chapters": [
-            {"chapter": [
-                    {"c": [
-                            {"chapterNumber": "1"}
-                        ]
-                    },
-                    {"p": [
-                            {"v": [
-                                    {"verseNumber": "1"}
-                                ]
-                            },
-                            {"verseText": "the first verse"},
-                            {"v": [
-                                    {"verseNumber": "2"}
-                                ]
-                            },
-                            {"verseText": "the second verse"}
-                        ]
-                    }
-                ]
-            },
-            {"chapter": [
-                    {"c": [
-                            {"chapterNumber": "2"}
-                        ]
-                    },
-                    {"p": [
-                            {"v": [
-                                    {"verseNumber": "1"}
-                                ]
-                            },
-                            {"verseText": "the third verse"},
-                            {"v": [
-                                    {"verseNumber": "2"}
-                                ]
-                            },
-                            {"verseText": "the fourth verse"}
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-]
-
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     }
+    ]
+   },
+   {
+    "chapterNumber": "2",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the third verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the fourth verse"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
   </pre></td>
    </tr></table>
 
@@ -225,6 +190,37 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       { "verseNumber": "1"},
+       { "verseText": "the first verse"},
+       { "verseNumber": "2"},
+       { "verseText": "the second verse"}
+      ]
+     },
+     {
+      "s": "A new section"
+     },
+     {
+      "p": [
+       { "verseNumber": "3"},
+       { "verseText": "the third verse"},
+       { "verseNumber": "4"},
+       { "verseText": "the fourth verse"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
     
   </pre></td>
   </tr></table>
@@ -291,6 +287,37 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
+{
+ "book": {
+  "bookCode": "MRK",
+  "fileDescription": "The Gospel of Mark",
+  "headers": [
+   {"ide": "UTF-8"},
+   {"usfm": []},
+   {"h": "Mark"},
+   [
+    {"mt2": "The Gospel according to"},
+    {"mt1": "MARK"}
+   ],
+   {"is": "Introduction"},
+   {"ip": "begins with the statement..."
+   }
+  ],
+  "chapters": [
+   {"chapterNumber": "1","contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
     
   </pre></td>
   </tr></table>
@@ -343,7 +370,35 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
-    
+{
+ "book": {
+  "bookCode": "MAT",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       { "verseNumber": "1"},
+       { "verseText": "the first verse"},
+       { "verseNumber": "2"},
+       { "verseText": "the second verse"},
+       { "verseNumber": "3"},
+       { "verseText": "This is the Good News about Jesus \n Christ, the Son of God."},
+       { "f": [
+         {"caller": "+"},
+         {"fr": "1.1:"},
+         {"ft": "Some manuscripts do not have"},
+         {"fq": "the Son of God."}
+        ], "closing": "\\f*"},
+       { "verseText": ""}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
   </pre></td>
   </tr></table>
 
@@ -391,7 +446,36 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
       "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
-    
+{
+ "book": {
+  "bookCode": "MAT",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"},
+       {"verseNumber": "3"},
+       {
+        "x": [
+         {"caller": "-"},
+         {"xo": "2.23:"},
+         {"xt": "Mrk 1.24; \n Luk 2.39; Jhn 1.45."}
+        ],
+        "closing": "\\x*"
+       },
+       {"verseText": "and made his \n home in a town named Nazareth."}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
   </pre></td>
   </tr></table>
 
@@ -487,6 +571,57 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
+{
+ "book": {
+  "bookCode": "JHN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "s1": "The Preaching of John the \n Baptist"
+     },
+     {
+      "p": [
+       { "verseNumber": "1"},
+       { "verseText": "This is the Good News about \n Jesus Christ, the Son of God."},
+       { "verseNumber": "2"},
+       { "verseText": "It began as the prophet \n Isaiah had written:"}
+      ]
+     },
+     {
+      "poetry": [
+       {
+        "q1": { "verseText": "“God said, ‘I will send my \n messenger ahead of you"}
+       },
+       {
+        "q2": { "verseText": "to open the way for you.’"}
+       },
+       {
+        "q1": [
+         {"verseNumber": "3"},
+         {"verseText": "Someone is shouting in \n the desert,"}
+        ]
+       },
+       {
+        "q2": { "verseText": "‘Get the road ready for \n the Lord;"}
+       },
+       {
+        "q2": { "verseText": "make a straight path for \n him to travel!’”"}
+       }
+      ]
+     },
+     {
+      "p": [
+       { "verseNumber": "4"},
+       { "verseText": "So John appeared in the \n desert, baptizing and preaching. \n “Turn away from your sins and \n be baptized,” he told the people, \n “and God will forgive your sins.”"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
     
   </pre></td>
   </tr></table>
@@ -547,7 +682,33 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
-    
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"},
+       {"verseNumber": "15"},
+       [
+        {"verseText": "Tell the Israelites that I, \n the"},
+        {"nd": "Lord",
+         "closing": "\\nd*"},
+        {"verseText": ", the God of their \n ancestors, the God of Abraham, Isaac, \n and Jacob,"}
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}  
   </pre></td>
   </tr></table>
 
@@ -588,7 +749,34 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
-    
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       [
+        {"verseText": "the second verse"},
+        {"w": "gracious",
+         "attributes": [
+          {"lemma": "grace"}
+         ],
+         "closing": "\\w*"},
+        {"verseText": ""}
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
   </pre></td>
   </tr></table>
 
@@ -678,7 +866,46 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
-    
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     }
+    ]
+   },
+   {
+    "chapterNumber": "2",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the third verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the fourth verse"}
+      ]
+     },
+     {"s1": "Administration of the Tribes of Israel"},
+     {
+      "list": [
+       {"verseNumber": "16-22"},
+       {"verseText": "This is the list of the \n administrators of the tribes of Israel:"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
   </pre></td>
   </tr></table>
 
@@ -795,6 +1022,45 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
+{
+ "book": {
+  "bookCode": "MRK",
+  "fileDescription": "41MRKGNT92.SFM, Good News Translation, June 2003",
+  "headers": [
+   {"h": "John"},
+   [
+    {"toc1": "The Gospel according to John"},
+    {"toc2": "John"}
+   ],
+   [
+    {"mt2": "The Gospel"},
+    {"mt3": "according to"},
+    {"mt1": "JOHN"}
+   ],
+   {"ip": ""},
+   {"iot": "Outline of Contents"},
+   {"io1": "The beginning of the \n gospel"},
+   {"io1": "Jesus' public ministry in \n Galilee"},
+   {"io1": "From Galilee to \n Jerusalem"}
+  ],
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {"ms": "BOOK ONE"},
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
     
   </pre></td>
   </tr></table>
@@ -848,7 +1114,34 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
-    
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"},
+       {"verseNumber": "14"},
+       [
+        {"verseText": "That is why"},
+        {
+         "bk": "'s Battles",
+         "closing": "\\bk*"},
+        {"verseText": "speaks of “...the town of Waheb in \n the area of Suphah"}
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
   </pre></td>
   </tr></table>
 
@@ -889,7 +1182,34 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
       "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
-    
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       [
+        {"verseText": "the second verse"},
+        {"w": "gracious",
+         "attributes": [
+          {"lemma": "grace"}
+         ],
+         "closing": "\\w*"},
+        {"verseText": ""}
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
   </pre></td>
   </tr></table>
 
@@ -956,7 +1276,55 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
-    
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       [
+        {"verseText": "the second \n verse"},
+        {"w": "gracious",
+         "attributes": [
+          {"x-myattr": "metadata"}
+         ],
+         "closing": "\\w*"},
+        {"verseText": ""}
+       ]
+      ]
+     },
+     {
+      "poetry": [
+       {
+        "q1": {"verseText": "“Someone is shouting in the desert,"}
+       },
+       {
+        "q2": {"verseText": "‘Prepare a road for the Lord;"}
+       },
+       {
+        "q2": {"verseText": "make a straight path for him to travel!’ ”"}
+       }
+      ]
+     },
+     {
+      "ms": "John the Baptist"
+     },
+     {
+      "p": [
+       {"verseText": "John is sometimes called..."}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
   </pre></td>
   </tr></table>
 
@@ -1029,6 +1397,64 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     },
+     {
+      "p": [
+       {"verseNumber": "12-83"},
+       {"verseText": "They presented their \n offerings in the following order:"}
+      ]
+     },
+     {
+      "table": [
+       {
+        "tr": [
+         {"th1": {"verseText": "Day"}},
+         {"th2": {"verseText": "Tribe"}},
+         {"th3": {"verseText": "Leader"}}
+        ]
+       },
+       {
+        "tr": [
+         {"tcr1": {"verseText": "1st"}},
+         {"tc2": {"verseText": "Judah"}},
+         {"tc3": {"verseText": "Nahshon \n son of Amminadab"}}
+        ]
+       },
+       {
+        "tr": [
+         {"tcr1": {"verseText": "2nd"}},
+         {"tc2": {"verseText": "Issachar"}},
+         {"tc3": {"verseText": "Nethanel\n  son of Zuar"}}
+        ]
+       },
+       {
+        "tr": [
+         {"tcr1": {"verseText": "3rd"}},
+         {"tc2": {"verseText": "Zebulun"}},
+         {"tc3": {"verseText": "Eliab \n son of Helon"}}
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
     
   </pre></td>
   </tr></table>
@@ -1082,6 +1508,42 @@ The main changes brought in JSON strcuture of 3.x versions are shown below
         "_messages":{"_warnings":[]}}
      </pre></td>
    <td><pre>
+{
+    "book": {
+        "bookCode": "GEN",
+        "chapters": [
+            {
+                "chapterNumber": "1",
+                "contents": [
+                    {
+                        "p": [
+                            {"verseNumber": "1"},
+                            {"verseText": "the first verse"},
+                            {"verseNumber": "2"},
+                            {"verseText": "the second verse"},
+                            {"verseNumber": "3"},
+                            {
+                                "milestone": "qt-s",
+                                "attributes": [
+                                    {"sid": "qt_123"},
+                                    {"who": "Pilate"}
+                                ]
+                            },
+                            {"verseText": "“Are you the king of the Jews?”"},
+                            {
+                                "milestone": "qt-e",
+                                "attributes": [
+                                    {"eid": "qt_123"}
+                                ]
+                            },
+                            {"verseText": ""}
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
     
   </pre></td>
   </tr></table>

@@ -34,8 +34,8 @@ q#
         (v
           (verseNumber))
         (verseText
-          (text))))
-    (b)
+          (text))
+        (b)))
     (poetry
       (qBlock
         (q

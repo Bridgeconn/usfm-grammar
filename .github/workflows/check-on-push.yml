@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: 
       - master
-      - dev
+      - version-3
 
 jobs:
   # Set the job key. The key is displayed as the job name
@@ -72,4 +72,4 @@ jobs:
       - name: Run tests for parsing errors
         working-directory: ./python-usfm-parser
         run:
-          pytest tests/test_parsing_errors.py
+          pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not samples-from-wild"

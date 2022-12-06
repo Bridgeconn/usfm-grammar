@@ -29,7 +29,7 @@ def is_valid_usfm(input_usfm_path):
 
 all_usfm_files = glob(f"{TEST_DIR}/*/*/origin.usfm")
 
-exclude_files = [
+doubtful_usfms = [
     f'{TEST_DIR}/mandatory/v/origin.usfm',
         # Is V really a must? Can't we have empty chapter stubs?
     f'{TEST_DIR}/biblica/BlankLinesWithFigures/origin.usfm',
@@ -132,18 +132,112 @@ exclude_files = [
     f'{TEST_DIR}/samples-from-wild/doo43-4/origin.usfm',
         # () usage in \ior  is shown as \ior (....) \ior* in the spec
 
-        ########### Temporarily for testing USX conversion ##############
-    f'{TEST_DIR}/specExamples/milestone/origin.usfm',
     ]
 
-for file in exclude_files:
-    if file in all_usfm_files:
-        all_usfm_files.remove(file)
+doubtful_usxs = [
+        ########### Related to USX validation ##############
+    f'{TEST_DIR}/advanced/custom-attributes/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit_1_12/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit1-1_alignment.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/mat-4-6.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/acts_1_11.aligned.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit_1_12_new_line/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit_1_12.alignment/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/greek_verse_objects/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/acts_1_4.aligned.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/heb1-1_multi_alignment/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/acts_1_4.aligned/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit1-1_alignment_strongs/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/57-TIT.partial/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit_1_12.alignment.zaln.not.start/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit_1_12.alignment.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/hebrew_words.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/mat-4-6/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/57-TIT.partial.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words_chunk/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/mat-4-6.whitespace/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit1-1_alignment/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit_1_12.word.not.at.line.start/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/heb-12-27.grc/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/mat-4-6.whitespace.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/hebrew_words/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/acts-1-20.aligned.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/greek/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/greek.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tit_1_12.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/acts-1-20.aligned/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/f10_gen12-2_empty_word/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/acts_1_11.aligned/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/heb1-1_multi_alignment.oldformat/origin.usfm',
+    f'{TEST_DIR}/samples-from-wild/alignment/origin.usfm',
+        # custom attributes are not supported by USX rnc grammar
+        # eg: x-morph, x-tw, x-occurrences etc
 
+    f'{TEST_DIR}/paratextTests/GlossaryCitationFormContainsComma_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordWithParentheses_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerNestedProperNoun_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/GlossaryNoKeywordErrors/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordContainsComma_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/GlossaryCitationForm_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerNestedTwoProperNouns_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerTextEndsInSpaceGlossaryEntryPresent_Pass/'+\
+       'origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerKeywordEndsInSpaceGlossaryEntryPresent_Pass/'+\
+        'origin.usfm',
+    f'{TEST_DIR}/paratextTests/GlossaryCitationFormEndsWithParentheses_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/GlossaryCitationFormMultipleWords_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerWithKeyword_Pass/origin.usfm',
+    f'{TEST_DIR}/paratextTests/WordlistMarkerNestedProperNounWithKeyword_Pass/origin.usfm',
+        # book code GLO is present in usfm docs(for Gloassary) but not present in the USX grammar
+
+    f'{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm',
+    f'{TEST_DIR}/special-cases/empty-book/origin.usfm',
+        # USX grammar expects chapters
+        # (It actually expects BookTitles also, but I changed it to optional)
+
+    f'{TEST_DIR}/usfmjsTests/tstudio/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/psa_quotes/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/isa_inline_quotes/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/pro_footnote/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/pro_quotes/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/job_footnote/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/out_of_sequence_chapters/origin.usfm',
+        # \s5 not supported by the USX grammar
+
+    f'{TEST_DIR}/usfmjsTests/links/origin.usfm',
+        # link-href reported as invalid by usx grammar. Even the doc example doesn't work.
+
+    f'{TEST_DIR}/usfmjsTests/ts/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/ts_2/origin.usfm',
+        # qt is a char marker and ts a para marker, as per RNC grammar!
+
+    f'{TEST_DIR}/special-cases/nesting/origin.usfm',
+    f'{TEST_DIR}/samples-from-wild/rv3/origin.usfm',
+        # nesting of w within other(add) char markers not supported by the USX.rnc grammar
+
+    f'{TEST_DIR}/special-cases/empty-attributes/origin.usfm',
+    # f'{TEST_DIR}/samples-from-wild/rv3/origin.usfm', # already in the list for nested \w
+    f'{TEST_DIR}/samples-from-wild/rv1/origin.usfm',
+    f'{TEST_DIR}/samples-from-wild/rv2/origin.usfm',
+        # format of Strong number in \w attribute is checked in rnc grammar.
+        # But its wrong in these tests
+
+    f'{TEST_DIR}/samples-from-wild/t4t2/origin.usfm',
+        # \b occuring immediately after \s, not within a para
+    ]
+
+negative_tests = []
+for file_path in all_usfm_files:
+    if not is_valid_usfm(file_path):
+        negative_tests.append(file_path)
 
 exclude_USX_files = [
     f'{TEST_DIR}/specExamples/chapter-verse/origin.usx',
         # ca is added as attribute to cl not chapter node
     f'{TEST_DIR}/specExamples/milestone/origin.usx',
         # Znamespace not represented properly. Even no docs of it on https://ubsicap.github.io/usx
+    f'{TEST_DIR}/advanced/table/origin.xml',
+        # There is no verse end node at end(in last row of the table)
 ]
