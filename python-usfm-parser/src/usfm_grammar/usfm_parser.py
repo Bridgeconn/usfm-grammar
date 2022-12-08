@@ -757,8 +757,8 @@ class USFMParser():
                 if first_key == "verseNumber":
                     if verse_num != 0:
                         row = [book, chapter, verse_num,
-                                '"'+verse_text+'"','"'+note_text+'"',
-                                '"'+ms_text+'"','"'+title_text+'"']
+                                verse_text,note_text,
+                                ms_text,title_text]
                         table_output.append(row)
                     verse_text = ""
                     note_text = ""
