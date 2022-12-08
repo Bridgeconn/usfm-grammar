@@ -777,8 +777,8 @@ class USFMParser():
                     print(first_key)
                     title_text += str(item[first_key])
             row = [book, chapter, verse_num,
-                    '"'+verse_text+'"','"'+note_text+'"',
-                    '"'+ms_text+'"','"'+title_text+'"']
+                    verse_text,note_text,
+                    ms_text,title_text]
             table_output.append(row)
         return table_output
 
