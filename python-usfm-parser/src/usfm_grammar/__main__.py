@@ -30,8 +30,6 @@ def main():
     infile = arg_parser.parse_args().infile
     output_format = arg_parser.parse_args().format
     output_filter = arg_parser.parse_args().filter
-    csv_col_sep = arg_parser.parse_args().csv_col_sep
-    csv_row_sep = arg_parser.parse_args().csv_row_sep
 
     with open(infile, 'r', encoding='utf-8') as usfm_file:
         file_content = usfm_file.read()
@@ -57,7 +55,9 @@ def main():
         case Format.CSV:
             table_output = my_parser.to_list(filt = updated_filt)
             outfile = sys.stdout
-            writer = csv.writer(outfile, delimiter=csv_col_sep, lineterminator=csv_row_sep)
+            writer = csv.writer(outfile,
+                delimiter=arg_parser.parse_args().csv_col_sep,
+                lineterminator=arg_parser.parse_args().csv_row_sep)
             writer.writerows(table_output)
         case Format.USX:
             xmlstr = etree.tostring(my_parser.to_usx(),
