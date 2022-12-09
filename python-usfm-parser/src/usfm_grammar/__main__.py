@@ -3,6 +3,7 @@
 import argparse
 import json
 import sys
+import csv
 from lxml import etree
 
 from usfm_grammar import USFMParser, Filter, Format
@@ -29,8 +30,6 @@ def main():
     infile = arg_parser.parse_args().infile
     output_format = arg_parser.parse_args().format
     output_filter = arg_parser.parse_args().filter
-    csv_col_sep = arg_parser.parse_args().csv_col_sep
-    csv_row_sep = arg_parser.parse_args().csv_row_sep
 
     with open(infile, 'r', encoding='utf-8') as usfm_file:
         file_content = usfm_file.read()
@@ -55,7 +54,11 @@ def main():
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
             table_output = my_parser.to_list(filt = updated_filt)
-            print(csv_row_sep.join([csv_col_sep.join(row) for row in table_output]))
+            outfile = sys.stdout
+            writer = csv.writer(outfile,
+                delimiter=arg_parser.parse_args().csv_col_sep,
+                lineterminator=arg_parser.parse_args().csv_row_sep)
+            writer.writerows(table_output)
         case Format.USX:
             xmlstr = etree.tostring(my_parser.to_usx(),
                 encoding='unicode', pretty_print=True)
