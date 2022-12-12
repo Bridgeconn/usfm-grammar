@@ -50,10 +50,10 @@ def main():
 
     match output_format:
         case Format.JSON:
-            dict_output = my_parser.to_dict(filt=updated_filt)
+            dict_output = my_parser.to_dict(filters=updated_filt)
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
-            table_output = my_parser.to_list(filt = updated_filt)
+            table_output = my_parser.to_list(filters = updated_filt)
             outfile = sys.stdout
             writer = csv.writer(outfile,
                 delimiter=arg_parser.parse_args().csv_col_sep,

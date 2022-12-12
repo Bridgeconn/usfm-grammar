@@ -466,7 +466,7 @@ def node_2_dict_milestone(ms_node, usfm_bytes):
         result['attributes'] = attribs
     return result
 
-def node_2_dict_generic(node, usfm_bytes, filt):
+def node_2_dict_generic(node, usfm_bytes, filters):
     '''The general rules to cover the common marker types'''
     marker_name = node.type
     content = []
@@ -484,10 +484,10 @@ def node_2_dict_generic(node, usfm_bytes, filt):
         elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
             closing_node = child
         elif child.type.endswith("Attribute"):
-            if Filter.ATTRIBUTES in filt:
+            if Filter.ATTRIBUTES in filters:
                 attribs.append(node_2_dict_attrib(child, usfm_bytes, node.type))
         else:
-            inner_cont = node_2_dict(child, usfm_bytes, filt)
+            inner_cont = node_2_dict(child, usfm_bytes, filters)
             if inner_cont is not None:
                 content.append(inner_cont)
             # else:
@@ -505,47 +505,47 @@ def node_2_dict_generic(node, usfm_bytes, filt):
     return result
 
 @reduce_nesting
-def node_2_dict(node, usfm_bytes, filt): # pylint: disable=too-many-return-statements, too-many-branches, too-many-statements
+def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-statements, too-many-branches, too-many-statements
     '''recursive function converting a syntax tree node and its children to dictionary'''
     if node.type in ANY_VALID_MARKER:
-        return node_2_dict_generic(node, usfm_bytes, filt)
+        return node_2_dict_generic(node, usfm_bytes, filters)
     if node.type == "v":
         return node_2_dict_verse(node, usfm_bytes)
     if node.type == 'verseText':
-        if Filter.SCRIPTURE_TEXT in filt:
+        if Filter.SCRIPTURE_TEXT in filters:
             result = []
             for child in node.children:
                 if child.type == "text":
                     result.append({'verseText':usfm_bytes[\
                             child.start_byte:child.end_byte].decode('utf-8').strip()})
                 else:
-                    processed = node_2_dict(child,usfm_bytes, filt)
+                    processed = node_2_dict(child,usfm_bytes, filters)
                     if processed is not None:
                         result.append(processed)
             return result
     if node.type.endswith("Block"):
         result = []
         for child in node.children:
-            processed = node_2_dict(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filters)
             if processed is not None:
                 result.append(processed)
         return result
     if node.type == "paragraph":
         result = {node.children[0].type: []}
         for child in node.children[0].children[1:]:
-            processed = node_2_dict(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filters)
             if processed is not None:
                 result[node.children[0].type].append(processed)
-        if Filter.PARAGRAPHS not in filt:
+        if Filter.PARAGRAPHS not in filters:
             return list(result.values())
         return result
     if node.type == "poetry":
         result = {"poetry":[]}
         for child in node.children[0].children:
-            processed = node_2_dict(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filters)
             if processed is not None:
                 result['poetry'].append(processed)
-        if Filter.PARAGRAPHS not in filt:
+        if Filter.PARAGRAPHS not in filters:
             new_result = []
             for block in result['poetry']:
                 val = list(block.values())
@@ -556,10 +556,10 @@ def node_2_dict(node, usfm_bytes, filt): # pylint: disable=too-many-return-state
     if node.type == "list":
         result = {'list':[]}
         for child in node.children[0].children:
-            processed = node_2_dict(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filters)
             if processed is not None:
                 result['list'].append(processed)
-        if Filter.PARAGRAPHS not in filt:
+        if Filter.PARAGRAPHS not in filters:
             new_result = []
             for block in result['list']:
                 val = list(block.values())
@@ -573,11 +573,11 @@ def node_2_dict(node, usfm_bytes, filt): # pylint: disable=too-many-return-state
         for row in rows:
             cells = []
             for child in row[0].children[1:]:
-                processed = node_2_dict(child,usfm_bytes, filt)
+                processed = node_2_dict(child,usfm_bytes, filters)
                 if processed is not None:
                     cells.append(processed)
             result['table'].append({"tr":cells})
-        if Filter.PARAGRAPHS not in filt:
+        if Filter.PARAGRAPHS not in filters:
             new_result = []
             for row in result['table']:
                 for cell in row["tr"]:
@@ -587,25 +587,25 @@ def node_2_dict(node, usfm_bytes, filt): # pylint: disable=too-many-return-state
             return new_result
         return result
     if node.type in ["milestone", "zNameSpace"]:
-        if Filter.MILESTONES in filt:
+        if Filter.MILESTONES in filters:
             return node_2_dict_milestone(node, usfm_bytes)
     if node.type == "title":
-        if Filter.TITLES in filt:
+        if Filter.TITLES in filters:
             result = []
             for child in node.children:
-                processed = node_2_dict(child,usfm_bytes, filt)
+                processed = node_2_dict(child,usfm_bytes, filters)
                 if processed is not None:
                     result.append(processed)
             return result
     if node.type in ['footnote', 'crossref']:
-        if Filter.NOTES in filt:
-            return node_2_dict(node.children[0], usfm_bytes, filt)
+        if Filter.NOTES in filters:
+            return node_2_dict(node.children[0], usfm_bytes, filters)
     if node.type == 'caller':
         return {"caller": usfm_bytes[node.start_byte:node.end_byte].decode('utf-8').strip()}
     if node.type == "noteText":
         result = []
         for child in node.children:
-            processed = node_2_dict(child,usfm_bytes, filt)
+            processed = node_2_dict(child,usfm_bytes, filters)
             if processed is not None :
                 result.append(processed)
         return result
@@ -690,11 +690,11 @@ class USFMParser():
         '''gives the syntax tree from class, as a string'''
         return self.syntax_tree.sexp()
 
-    def to_dict(self, filt=None):
+    def to_dict(self, filters=None):
         '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
         dict_output = {"book":{}}
-        if filt is None or filt == []:
-            filt = list(Filter)
+        if filters is None or filters == []:
+            filters = list(Filter)
         try:
             for child in self.syntax_tree.children:
                 match child.type:
@@ -719,30 +719,30 @@ class USFMParser():
                         chapter_output['contents'] = []
                         for inner_child in child.children:
                             if inner_child.type not in ['chapterNumber','cl','ca','cp','cd','c']:
-                                processed = node_2_dict(inner_child, self.usfm_bytes, filt)
+                                processed = node_2_dict(inner_child, self.usfm_bytes, filters)
                                 if isinstance(processed, list):
                                     chapter_output['contents'] += processed
                                 elif processed is not None:
                                     chapter_output['contents'].append(processed)
                         dict_output['book']['chapters'].append(chapter_output)
                     case _:
-                        if Filter.BOOK_HEADERS in filt:
+                        if Filter.BOOK_HEADERS in filters:
                             if "headers" not in dict_output['book']:
                                 dict_output['book']['headers'] = []
                             dict_output['book']['headers'].append(
-                                node_2_dict(child, self.usfm_bytes, filt))
+                                node_2_dict(child, self.usfm_bytes, filters))
         except Exception as exe:
             raise Exception("Unable to do the conversion. "+\
                 "Check for errors in <USFMParser obj>.errors") from exe
         return dict_output
 
-    def to_list(self, filt=None):
+    def to_list(self, filters=None):
         '''uses the toJSON function and converts JSON to CSV'''
-        if filt is None:
-            filt = list(Filter)
-        if Filter.PARAGRAPHS in filt:
-            filt.remove(Filter.PARAGRAPHS)
-        scripture_json = self.to_dict(filt)
+        if filters is None:
+            filters = list(Filter)
+        if Filter.PARAGRAPHS in filters:
+            filters.remove(Filter.PARAGRAPHS)
+        scripture_json = self.to_dict(filters)
         table_output = [["Book","Chapter","Verse","Verse-Text","Notes","Milestone","Other"]]
         book = scripture_json['book']['bookCode']
         verse_num = 0
