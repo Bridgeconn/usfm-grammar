@@ -774,7 +774,6 @@ class USFMParser():
                 elif first_key in NOTE_MARKERS:
                     note_text += str(item)
                 else:
-                    print(first_key)
                     title_text += str(item[first_key])
             row = [book, chapter, verse_num,
                     verse_text,note_text,
