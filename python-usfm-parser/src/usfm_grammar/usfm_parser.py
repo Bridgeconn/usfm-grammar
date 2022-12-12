@@ -790,6 +790,9 @@ class USFMParser():
         '''convert the syntax_tree to the XML format USX'''
         usx_root = etree.Element("usx")
         usx_root.set("version", "3.0")
-
-        node_2_usx(self.syntax_tree, self.usfm_bytes, usx_root, usx_root)
+        try:
+            node_2_usx(self.syntax_tree, self.usfm_bytes, usx_root, usx_root)
+        except Exception as exe:
+            raise Exception("Unable to do the conversion. "+\
+                "Check for errors in <USFMParser obj>.errors") from exe
         return usx_root
