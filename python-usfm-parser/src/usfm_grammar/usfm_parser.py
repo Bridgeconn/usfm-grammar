@@ -360,8 +360,8 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
     elif len(node.children)>0:
         for child in node.children:
             node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
-    else:
-        raise Exception("Encountered unknown element ", str(node))
+    # else:
+    #     raise Exception("Encountered unknown element ", str(node))
 
 ###########VVVVVVVVV Logics for syntax-tree to dict conversions VVVVVV ##############
 def reduce_nesting(func):
