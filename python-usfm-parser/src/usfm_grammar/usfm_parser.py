@@ -396,7 +396,7 @@ def node_2_dict_chapter(chapter_node, usfm_bytes):
     for chap_data in chapter_data_cap:
         match chap_data:
             case (node, "chapter-number"):
-                chapter_output['chapterNumber'] = usfm_bytes[\
+                chapter_output['c'] = usfm_bytes[\
                     node.start_byte:node.end_byte].decode('utf-8').strip()
             case (node, "cl-text"):
                 chapter_output['cl'] = usfm_bytes[node.start_byte:
@@ -417,7 +417,7 @@ def node_2_dict_verse(verse_node, usfm_bytes):
     for v_cap in verse_caps:
         match v_cap:
             case (in_node, "verse-number"):
-                result['verseNumber'] = usfm_bytes[\
+                result['v'] = usfm_bytes[\
                     in_node.start_byte:in_node.end_byte].decode('utf-8').strip()
             case (in_node, "va-number"):
                 result['va'] = usfm_bytes[\
