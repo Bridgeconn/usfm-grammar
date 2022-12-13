@@ -733,8 +733,9 @@ class USFMParser():
                             dict_output['book']['headers'].append(
                                 node_2_dict(child, self.usfm_bytes, filters))
         except Exception as exe:
+            err_str = "\n\t".join([":".join(err) for err in self.errors])
             raise Exception("Unable to do the conversion. "+\
-                "Check for errors in <USFMParser obj>.errors") from exe
+                f"Could be due to an error in the USFM\n\t{err_str}")  from exe
         return dict_output
 
     def to_list(self, filters=None):
@@ -794,6 +795,7 @@ class USFMParser():
         try:
             node_2_usx(self.syntax_tree, self.usfm_bytes, usx_root, usx_root)
         except Exception as exe:
+            err_str = "\n\t".join([":".join(err) for err in self.errors])
             raise Exception("Unable to do the conversion. "+\
-                "Check for errors in <USFMParser obj>.errors") from exe
+                f"Could be due to an error in the USFM\n\t{err_str}")  from exe
         return usx_root
