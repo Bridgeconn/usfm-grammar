@@ -57,7 +57,8 @@ DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
 TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
 
 ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
-                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+["fig", "cat", "esb", "b"]
+                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+\
+                    ["fig", "cat", "esb", "b", "ph", "pi"]
 
 def node_2_usx_id(node, usfm_bytes,parent_xml_node):
     '''build id node in USX'''
@@ -546,6 +547,9 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
                 result.append(processed)
         return result
     if node.type == "paragraph":
+        if node.children[0].type.endswith("Block"):
+            processed = node_2_dict(node.children[0], usfm_bytes, filters)
+            return processed
         result = {node.children[0].type: []}
         for child in node.children[0].children[1:]:
             processed = node_2_dict(child,usfm_bytes, filters)
