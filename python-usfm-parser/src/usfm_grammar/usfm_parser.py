@@ -556,7 +556,7 @@ def node_2_dict(node, usfm_bytes, filt): # pylint: disable=too-many-return-state
         return result
     if node.type == "list":
         result = {'list':[]}
-        for child in node.children[0].children:
+        for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filt)
             if processed is not None:
                 result['list'].append(processed)
