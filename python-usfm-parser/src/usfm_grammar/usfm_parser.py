@@ -390,7 +390,7 @@ def reduce_nesting(func):
     return bring_out_single_elements
 
 
-def node_2_dict_chapter(chapter_node, usfm_bytes):
+def node_2_dict_chapter(chapter_node, usfm_bytes, filters):
     '''extract and format chapter head items'''
     chapter_output = {}
     chapter_data_cap = chapter_data_query.captures(chapter_node)
@@ -408,6 +408,16 @@ def node_2_dict_chapter(chapter_node, usfm_bytes):
             case (node, "cp-text"):
                 chapter_output['cp'] = usfm_bytes[node.start_byte:
                                     node.end_byte].decode('utf-8').strip()
+            case (node, "cd-node"):
+                inner_contents = []
+                for child in node.children:
+                    processed = node_2_dict(child, usfm_bytes, filters)
+                    if processed is not None:
+                        inner_contents.append(processed)
+                if len(inner_contents) == 1:
+                    inner_contents = inner_contents[0]
+                chapter_output['cd'] = inner_contents
+
     return chapter_output
 
 
@@ -631,7 +641,8 @@ id_query = USFM_LANGUAGE.query('''(book (id (bookcode) @book-code (description) 
 chapter_data_query = USFM_LANGUAGE.query('''(c (chapterNumber) @chapter-number)
                                             (cl (text) @cl-text)
                                             (cp (text) @cp-text)
-                                            (ca (chapterNumber) @ca-number)''')
+                                            (ca (chapterNumber) @ca-number)
+                                            (cd) @cd-node''')
 
 verse_data_query = USFM_LANGUAGE.query('''(v (verseNumber) @verse-number)
                                             (vp (text) @vp-text)
@@ -719,7 +730,7 @@ class USFMParser():
                         if "chapters" not in dict_output['book']:
                             dict_output['book']['chapters'] = []
 
-                        chapter_output = node_2_dict_chapter(child, self.usfm_bytes)
+                        chapter_output = node_2_dict_chapter(child, self.usfm_bytes, filters)
 
                         chapter_output['contents'] = []
                         for inner_child in child.children:
