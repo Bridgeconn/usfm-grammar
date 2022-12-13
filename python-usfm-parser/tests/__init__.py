@@ -131,6 +131,11 @@ doubtful_usfms = [
         # nested marker not closed. Is closing not mandatory?
     f'{TEST_DIR}/samples-from-wild/doo43-4/origin.usfm',
         # () usage in \ior  is shown as \ior (....) \ior* in the spec
+    f'{TEST_DIR}/usfmjsTests/greek_verse_objects/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words_chunk/origin.usfm',
+        # Are \k-s and \k-e valid usages? Are they milestones?
 
     ]
 
