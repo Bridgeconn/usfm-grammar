@@ -490,9 +490,7 @@ def node_2_dict_generic(node, usfm_bytes, filters):
             tag_node = child
             marker_name = usfm_bytes[\
                 tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
-        elif child.type == "text":
-            text_node = child
-        elif child.type == "category":
+        elif child.type in ["text", "category"]:
             text_node = child
         elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
             closing_node = child
