@@ -518,8 +518,9 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
             result = []
             for child in node.children:
                 if child.type == "text":
-                    result.append({'verseText':usfm_bytes[\
-                            child.start_byte:child.end_byte].decode('utf-8').strip()})
+                    text = usfm_bytes[child.start_byte:child.end_byte].decode('utf-8').strip()
+                    if text != "":
+                        result.append({'verseText':text})
                 else:
                     processed = node_2_dict(child,usfm_bytes, filters)
                     if processed is not None:
