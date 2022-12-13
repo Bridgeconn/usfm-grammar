@@ -269,7 +269,7 @@ module.exports = grammar({
     b: $ => seq("\\b", $._spaceOrLine),
 
     //quotes
-    poetry: $ => choice(
+    poetry: $ => prec.right(0, repeat1(choice(
       $.qBlock,
       $.qr,
       $.qc,
@@ -278,7 +278,7 @@ module.exports = grammar({
       // $.qac,
       $.qmBlock,
       $.qd,
-    ),
+    ))),
 
     _poetryContent: $ => choice(
       $._paragraphContent,

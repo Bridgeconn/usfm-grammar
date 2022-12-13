@@ -105,12 +105,10 @@ qr
           (v
             (verseNumber))
           (verseText
-            (text)))))
-    (poetry
+            (text))))
       (qr
         (verseText
-          (text))))
-    (poetry
+          (text)))
       (qBlock
         (q
           (qTag
@@ -118,12 +116,10 @@ qr
           (v
             (verseNumber))
           (verseText
-            (text)))))
-    (poetry
+            (text))))
       (qr
         (verseText
-          (text))))
-    (poetry
+          (text)))
       (qBlock
         (q
           (qTag
@@ -131,8 +127,7 @@ qr
           (v
             (verseNumber))
           (verseText
-            (text)))))
-    (poetry
+            (text))))
       (qr
         (verseText
           (text))))))
@@ -189,13 +184,11 @@ qc
             (numberedLevelMax3))
           (verseText
             (text))
-          (b))))
-    (poetry
+          (b)))
       (qc
         (verseText
           (text))
-        (b)))
-    (poetry
+        (b))
       (qBlock
         (q
           (qTag
@@ -565,8 +558,7 @@ qd
             (numberedLevelMax3))
           (verseText
             (text))
-          (b))))
-    (poetry
+          (b)))
       (qd
         (verseText
           (text))))))
