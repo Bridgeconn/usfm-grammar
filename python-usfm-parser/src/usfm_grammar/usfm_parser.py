@@ -560,7 +560,7 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         return result
     if node.type == "poetry":
         result = {"poetry":[]}
-        for child in node.children[0].children:
+        for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filters)
             if processed is not None:
                 result['poetry'].append(processed)
