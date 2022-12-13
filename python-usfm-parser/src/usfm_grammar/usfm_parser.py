@@ -492,9 +492,10 @@ def node_2_dict_generic(node, usfm_bytes, filt):
                 content.append(inner_cont)
             # else:
             #     print("igoring:",child)
-    if text_node is not None: # when text content is present inner contents will not be there!
-        content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip()
-    elif len(content) == 1:
+    if text_node is not None:
+        content.append(usfm_bytes[\
+                text_node.start_byte:text_node.end_byte].decode('utf-8').strip())
+    if len(content) == 1:
         content = content[0]
     result = {marker_name:content}
     if len(attribs) > 0:
