@@ -57,7 +57,7 @@ DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
 TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
 
 ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
-                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+["fig", "cat", "esb"]
+                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+["fig", "cat", "esb", "b"]
 
 def node_2_usx_id(node, usfm_bytes,parent_xml_node):
     '''build id node in USX'''
@@ -477,7 +477,7 @@ def node_2_dict_milestone(ms_node, usfm_bytes):
         result['attributes'] = attribs
     return result
 
-def node_2_dict_generic(node, usfm_bytes, filters):
+def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
     '''The general rules to cover the common marker types'''
     marker_name = node.type
     content = []
@@ -508,6 +508,8 @@ def node_2_dict_generic(node, usfm_bytes, filters):
                 text_node.start_byte:text_node.end_byte].decode('utf-8').strip())
     if len(content) == 1:
         content = content[0]
+    elif len(content) == 0:
+        content = None
     result = {marker_name:content}
     if len(attribs) > 0:
         result['attributes'] = attribs
