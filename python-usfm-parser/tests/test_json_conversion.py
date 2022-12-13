@@ -39,13 +39,16 @@ def test_all_markers_are_in_output(file_path):
 
     with open(file_path, "r", encoding="utf-8") as in_usfm_file:
         usfm_str = in_usfm_file.read()
-        all_markers_in_input =[find[1] for find in re.findall(r"\\((\w+\d*)(-[se])?)", usfm_str)]
+        all_markers_in_input =[find[0] for find in re.findall(r"\\((\w+\d*)(-[se])?)", usfm_str)]
     all_markers_in_input = list(set(all_markers_in_input))
     all_markers_in_input.remove("id")
-    all_markers_in_input.remove("c")
-    all_markers_in_input.remove("v")
+    if "esbe" in all_markers_in_input:
+        assert "esb" in all_markers_in_input
+        all_markers_in_input.remove("esbe")
         
     usfm_dict = test_parser.to_dict()
     all_json_keys = get_keys(usfm_dict)
     for marker in all_markers_in_input:
+        if marker.endswith("-s") or marker.endswith("-e") or marker.startswith("z"):
+            marker = "milestone"
         assert marker in all_json_keys, marker

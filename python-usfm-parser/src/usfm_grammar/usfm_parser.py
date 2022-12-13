@@ -57,7 +57,7 @@ DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
 TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
 
 ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
-                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+["fig"]
+                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+["fig", "cat", "esb"]
 
 def node_2_usx_id(node, usfm_bytes,parent_xml_node):
     '''build id node in USX'''
@@ -481,6 +481,8 @@ def node_2_dict_generic(node, usfm_bytes, filters):
             marker_name = usfm_bytes[\
                 tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
         elif child.type == "text":
+            text_node = child
+        elif child.type == "category":
             text_node = child
         elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
             closing_node = child
