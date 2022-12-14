@@ -570,7 +570,12 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         if Filter.PARAGRAPHS not in filters:
             new_result = []
             for block in result['poetry']:
-                val = list(block.values())
+                if isinstance(block, dict):
+                    val = list(block.values())
+                elif isinstance(block, list):
+                    val = []
+                    for item in block:
+                        val += list(item.values())
                 if val and val != [[]]:
                     new_result += val
             return new_result
@@ -718,7 +723,7 @@ class USFMParser():
         '''gives the syntax tree from class, as a string'''
         return self.syntax_tree.sexp()
 
-    def to_dict(self, filters=None):
+    def to_dict(self, filters=None): #pylint: disable=too-many-branches
         '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
         dict_output = {"book":{}}
         if filters is None or filters == []:
@@ -767,8 +772,9 @@ class USFMParser():
             raise Exception(message)  from exe
         return dict_output
 
-    def to_list(self, filters=None):
-        '''uses the toJSON function and converts JSON to CSV'''
+    def to_list(self, filters=None): # pylint: disable=too-many-branches
+        '''uses the toJSON function and converts JSON to CSV
+        To be re-implemented to work with the flat JSON schema'''
         if filters is None:
             filters = list(Filter)
         if Filter.PARAGRAPHS in filters:
@@ -781,9 +787,14 @@ class USFMParser():
         note_text = ""
         ms_text = ""
         title_text = ''
+        if "chapters" not in scripture_json['book']:
+            return table_output
         for chap in scripture_json['book']['chapters']:
             chapter = chap['c']
             for item in chap['contents']:
+                if not item:
+                    # temporary fix. to be removed when implementing this to work with new flat JSON
+                    continue
                 first_key = list(item.keys())[0]
                 if first_key == "v":
                     if verse_num != 0:
