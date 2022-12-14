@@ -181,7 +181,7 @@ def node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node):
         para_marker = usfm_bytes[node.children[0].start_byte:\
             node.children[0].end_byte].decode('utf-8').replace("\\", "").strip()
         para_xml_node = etree.SubElement(parent_xml_node, "para")
-        parent_xml_node.set("style", para_marker)
+        para_xml_node.set("style", para_marker)
         for child in node.children[1:]:
             node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
 
