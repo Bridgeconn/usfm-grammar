@@ -775,10 +775,10 @@ class USFMParser():
         ms_text = ""
         title_text = ''
         for chap in scripture_json['book']['chapters']:
-            chapter = chap['chapterNumber']
+            chapter = chap['c']
             for item in chap['contents']:
                 first_key = list(item.keys())[0]
-                if first_key == "verseNumber":
+                if first_key == "v":
                     if verse_num != 0:
                         row = [book, chapter, verse_num,
                                 verse_text,note_text,
@@ -788,7 +788,7 @@ class USFMParser():
                     note_text = ""
                     ms_text = ""
                     title_text = ''
-                    verse_num = item['verseNumber']
+                    verse_num = item['v']
                 elif first_key == 'verseText':
                     verse_text += item['verseText'] +" "
                 elif first_key == "milestone":
