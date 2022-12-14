@@ -49,6 +49,7 @@ def test_all_markers_are_in_output(file_path):
     usfm_dict = test_parser.to_dict()
     all_json_keys = get_keys(usfm_dict)
     for marker in all_markers_in_input:
-        if marker.endswith("-s") or marker.endswith("-e") or marker.startswith("z"):
+        if (marker in ["ts", "qt"] or marker.endswith("-s") or \
+            marker.endswith("-e") or marker.startswith("z")):
             marker = "milestone"
         assert marker in all_json_keys, marker
