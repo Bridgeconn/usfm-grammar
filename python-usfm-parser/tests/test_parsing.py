@@ -1,8 +1,8 @@
 '''To test parsing success/errors for USFM/X committee's test suite'''
-import re
 import pytest
 
-from tests import all_usfm_files, initialise_parser, is_valid_usfm, doubtful_usfms, negative_tests
+from tests import all_usfm_files, initialise_parser, is_valid_usfm,\
+    doubtful_usfms, negative_tests, find_all_markers
 
 test_files = all_usfm_files.copy()
 for file in doubtful_usfms:
@@ -40,16 +40,7 @@ def test_all_markers_are_in_output(file_path):
     test_parser = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
 
-    all_markers_in_input = []
-    with open(file_path, "r", encoding="utf-8") as in_usfm_file:
-        usfm_str = in_usfm_file.read()
-        for find in re.findall(r"\\(([a-zA-Z]+)(\d*)(-[se])?)", usfm_str):
-            all_markers_in_input.append(find[1]) # No need of numbered part for checking ST
-    all_markers_in_input = list(set(all_markers_in_input))
-    all_markers_in_input.remove("id")
-    if "esbe" in all_markers_in_input:
-        assert "esb" in all_markers_in_input
-        all_markers_in_input.remove("esbe")
+    all_markers_in_input = find_all_markers(file_path, keep_number=False)
 
     all_nodes_in_st = get_nodes(test_parser.syntax_tree)
     for marker in all_markers_in_input:

@@ -5,7 +5,8 @@ import pytest
 from lxml import etree
 from lxml.doctestcompare import LXMLOutputChecker, PARSE_XML
 
-from tests import all_usfm_files, initialise_parser, doubtful_usfms, doubtful_usxs, negative_tests
+from tests import all_usfm_files, initialise_parser, doubtful_usfms,\
+    doubtful_usxs, negative_tests, find_all_markers
 
 lxml_object = etree.Element('Root')
 checker = LXMLOutputChecker()
@@ -64,3 +65,48 @@ def test_testsuite_usx_with_rnc_grammar(file_path):
     usx_file_path = file_path.replace("origin.usfm", "origin.xml")
     origin_xml = etree.parse(usx_file_path)
     relaxng.assertValid(origin_xml)
+
+def get_styles(element):
+    '''Recursive function to traverse all xml nodes and their style attributes'''
+    styles = []
+    if 'style' in element.attrib:
+        styles.append(element.attrib['style'])
+    if element.tag in ['figure', 'optbreak']:
+        styles.append(element.tag)
+    if "altnumber" in element.attrib:
+        styles.append("altnumber")
+    if "pubnumber" in element.attrib:
+        styles.append("pubnumber")
+    if "category" in element.attrib:
+        styles.append("category")
+    if len(element)>0:
+        for child in element:
+            styles += get_styles(child)
+    return styles
+
+@pytest.mark.parametrize('file_path', test_files)
+@pytest.mark.timeout(30)
+def test_all_markers_are_in_output(file_path):
+    '''Tests if all markers in USFM are present in output also'''
+    test_parser = initialise_parser(file_path)
+    assert not test_parser.errors, test_parser.errors
+
+    all_markers_in_input = find_all_markers(file_path, keep_id=True, keep_number=True)
+        
+    usx_xml = test_parser.to_usx()
+    all_styles = get_styles(usx_xml)
+    replacements = {
+        "cat":"category",
+        "ca":"altnumber",
+        "cp":"pubnumber",
+        "va":"altnumber",
+        "vp":"pubnumber",
+        "b":"optbreak",
+        "fig":"figure",}
+    for marker in all_markers_in_input:
+        if replacements.get(marker):
+            marker = replacements[marker]
+        # if (marker in ["ts", "qt"] or marker.endswith("-s") or \
+        #     marker.endswith("-e") or marker.startswith("z")):
+        #     marker = "milestone"
+        assert marker in all_styles, marker

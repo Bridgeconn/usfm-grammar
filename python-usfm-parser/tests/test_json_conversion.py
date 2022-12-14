@@ -1,8 +1,8 @@
 '''Test the to_dict or json conversion API'''
-import re
 import pytest
 
-from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests
+from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests,\
+    find_all_markers
 
 test_files = all_usfm_files.copy()
 for file in doubtful_usfms+negative_tests:
@@ -37,14 +37,7 @@ def test_all_markers_are_in_output(file_path):
     test_parser = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
 
-    with open(file_path, "r", encoding="utf-8") as in_usfm_file:
-        usfm_str = in_usfm_file.read()
-        all_markers_in_input =[find[0] for find in re.findall(r"\\((\w+\d*)(-[se])?)", usfm_str)]
-    all_markers_in_input = list(set(all_markers_in_input))
-    all_markers_in_input.remove("id")
-    if "esbe" in all_markers_in_input:
-        assert "esb" in all_markers_in_input
-        all_markers_in_input.remove("esbe")
+    all_markers_in_input = find_all_markers(file_path)
         
     usfm_dict = test_parser.to_dict()
     all_json_keys = get_keys(usfm_dict)
