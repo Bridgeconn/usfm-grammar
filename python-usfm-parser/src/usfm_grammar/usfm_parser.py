@@ -584,7 +584,12 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         if Filter.PARAGRAPHS not in filters:
             new_result = []
             for block in result['list']:
-                val = list(block.values())
+                if isinstance(block, dict):
+                    val = list(block.values())
+                elif isinstance(block, list):
+                    val = []
+                    for item in block:
+                        val += list(item.values())
                 if val and val != [[]]:
                     new_result += val
             return new_result
@@ -796,7 +801,7 @@ class USFMParser():
                 elif first_key == "milestone":
                     ms_text += str(item) + "\n"
                 elif first_key in CHAR_STYLE_MARKERS:
-                    verse_text += item[first_key] + " "
+                    verse_text += str(item[first_key]) + " "
                 elif first_key in NOTE_MARKERS:
                     note_text += str(item)
                 else:
