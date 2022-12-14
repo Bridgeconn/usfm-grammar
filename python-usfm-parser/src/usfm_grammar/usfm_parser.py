@@ -166,7 +166,10 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
 
 def node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''build paragraph nodes in USX'''
-    if node.type == 'paragraph' and not node.children[0].type.endswith('Block'):
+    if node.children[0].type.endswith('Block'):
+        for child in node.children[0].children:
+            node_2_usx_para(child, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type == 'paragraph':
         para_tag_cap = USFM_LANGUAGE.query("(paragraph (_) @para-marker)").captures(node)[0]
         para_marker = para_tag_cap[0].type
         if not para_marker.endswith("Block"):
