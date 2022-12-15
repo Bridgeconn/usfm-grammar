@@ -1,5 +1,6 @@
 '''The common methods and objects needed in all tests. To be run before all tests'''
 from glob import glob
+import re
 from lxml import etree
 from src.usfm_grammar import USFMParser
 
@@ -26,6 +27,23 @@ def is_valid_usfm(input_usfm_path):
     if node.text == "fail":
         return False
     return True
+
+def find_all_markers(usfm_path, keep_id=False, keep_number=True):
+    '''To use regex pattern and finall markers in the USFM file'''
+    with open(usfm_path, "r", encoding="utf-8") as in_usfm_file:
+        usfm_str = in_usfm_file.read()
+        all_markers_in_input =re.findall(r"\\(([A-Za-z]+)\d*(-[se])?)", usfm_str)
+    if keep_number:
+        all_markers_in_input = [find[0] for find in all_markers_in_input]
+    else:
+        all_markers_in_input = [find[1] for find in all_markers_in_input]
+    all_markers_in_input = list(set(all_markers_in_input))
+    if not keep_id:
+        all_markers_in_input.remove("id")
+    if "esbe" in all_markers_in_input:
+        assert "esb" in all_markers_in_input
+        all_markers_in_input.remove("esbe")
+    return all_markers_in_input
 
 all_usfm_files = glob(f"{TEST_DIR}/*/*/origin.usfm")
 
@@ -131,6 +149,11 @@ doubtful_usfms = [
         # nested marker not closed. Is closing not mandatory?
     f'{TEST_DIR}/samples-from-wild/doo43-4/origin.usfm',
         # () usage in \ior  is shown as \ior (....) \ior* in the spec
+    f'{TEST_DIR}/usfmjsTests/greek_verse_objects/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words.oldformat/origin.usfm',
+    f'{TEST_DIR}/usfmjsTests/tw_words_chunk/origin.usfm',
+        # Are \k-s and \k-e valid usages? Are they milestones?
 
     ]
 

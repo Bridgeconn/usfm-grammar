@@ -32,6 +32,7 @@ USFM_LANGUAGE = Language(str(lang_file), 'usfm3')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
 
+# handled alike by the node_2_usx_generic method
 PARA_STYLE_MARKERS = ["ide", "usfm", "h", "toc", "toca", #identification
                     "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
                     "ili", "iot", "io", "iex", "imte", "ie", # intro
@@ -55,9 +56,12 @@ NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
 DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
                     "xt_standalone":"link-href"}
 TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
+MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
 
+# Handled alike by the node_2_dict_generic method
 ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
-                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS
+                    NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+\
+                    MISC_MARKERS
 
 def node_2_usx_id(node, usfm_bytes,parent_xml_node):
     '''build id node in USX'''
@@ -165,7 +169,10 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
 
 def node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''build paragraph nodes in USX'''
-    if node.type == 'paragraph' and not node.children[0].type.endswith('Block'):
+    if node.children[0].type.endswith('Block'):
+        for child in node.children[0].children:
+            node_2_usx_para(child, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type == 'paragraph':
         para_tag_cap = USFM_LANGUAGE.query("(paragraph (_) @para-marker)").captures(node)[0]
         para_marker = para_tag_cap[0].type
         if not para_marker.endswith("Block"):
@@ -177,7 +184,7 @@ def node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node):
         para_marker = usfm_bytes[node.children[0].start_byte:\
             node.children[0].end_byte].decode('utf-8').replace("\\", "").strip()
         para_xml_node = etree.SubElement(parent_xml_node, "para")
-        parent_xml_node.set("style", para_marker)
+        para_xml_node.set("style", para_marker)
         for child in node.children[1:]:
             node_2_usx(child, usfm_bytes, para_xml_node, xml_root_node)
 
@@ -390,7 +397,7 @@ def reduce_nesting(func):
     return bring_out_single_elements
 
 
-def node_2_dict_chapter(chapter_node, usfm_bytes):
+def node_2_dict_chapter(chapter_node, usfm_bytes, filters):
     '''extract and format chapter head items'''
     chapter_output = {}
     chapter_data_cap = chapter_data_query.captures(chapter_node)
@@ -408,6 +415,16 @@ def node_2_dict_chapter(chapter_node, usfm_bytes):
             case (node, "cp-text"):
                 chapter_output['cp'] = usfm_bytes[node.start_byte:
                                     node.end_byte].decode('utf-8').strip()
+            case (node, "cd-node"):
+                inner_contents = []
+                for child in node.children:
+                    processed = node_2_dict(child, usfm_bytes, filters)
+                    if processed is not None:
+                        inner_contents.append(processed)
+                if len(inner_contents) == 1:
+                    inner_contents = inner_contents[0]
+                chapter_output['cd'] = inner_contents
+
     return chapter_output
 
 
@@ -467,7 +484,7 @@ def node_2_dict_milestone(ms_node, usfm_bytes):
         result['attributes'] = attribs
     return result
 
-def node_2_dict_generic(node, usfm_bytes, filters):
+def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
     '''The general rules to cover the common marker types'''
     marker_name = node.type
     content = []
@@ -480,7 +497,7 @@ def node_2_dict_generic(node, usfm_bytes, filters):
             tag_node = child
             marker_name = usfm_bytes[\
                 tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
-        elif child.type == "text":
+        elif child.type in ["text", "category"]:
             text_node = child
         elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
             closing_node = child
@@ -493,10 +510,13 @@ def node_2_dict_generic(node, usfm_bytes, filters):
                 content.append(inner_cont)
             # else:
             #     print("igoring:",child)
-    if text_node is not None: # when text content is present inner contents will not be there!
-        content = usfm_bytes[text_node.start_byte:text_node.end_byte].decode('utf-8').strip()
-    elif len(content) == 1:
+    if text_node is not None:
+        content.append(usfm_bytes[\
+                text_node.start_byte:text_node.end_byte].decode('utf-8').strip())
+    if len(content) == 1:
         content = content[0]
+    elif len(content) == 0:
+        content = None
     result = {marker_name:content}
     if len(attribs) > 0:
         result['attributes'] = attribs
@@ -517,8 +537,9 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
             result = []
             for child in node.children:
                 if child.type == "text":
-                    result.append({'verseText':usfm_bytes[\
-                            child.start_byte:child.end_byte].decode('utf-8').strip()})
+                    text = usfm_bytes[child.start_byte:child.end_byte].decode('utf-8').strip()
+                    if text != "":
+                        result.append({'verseText':text})
                 else:
                     processed = node_2_dict(child,usfm_bytes, filters)
                     if processed is not None:
@@ -532,6 +553,9 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
                 result.append(processed)
         return result
     if node.type == "paragraph":
+        if node.children[0].type.endswith("Block"):
+            processed = node_2_dict(node.children[0], usfm_bytes, filters)
+            return processed
         result = {node.children[0].type: []}
         for child in node.children[0].children[1:]:
             processed = node_2_dict(child,usfm_bytes, filters)
@@ -542,28 +566,38 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         return result
     if node.type == "poetry":
         result = {"poetry":[]}
-        for child in node.children[0].children:
+        for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filters)
             if processed is not None:
                 result['poetry'].append(processed)
         if Filter.PARAGRAPHS not in filters:
             new_result = []
             for block in result['poetry']:
-                val = list(block.values())
+                if isinstance(block, dict):
+                    val = list(block.values())
+                elif isinstance(block, list):
+                    val = []
+                    for item in block:
+                        val += list(item.values())
                 if val and val != [[]]:
                     new_result += val
             return new_result
         return result
     if node.type == "list":
         result = {'list':[]}
-        for child in node.children[0].children:
+        for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filters)
             if processed is not None:
                 result['list'].append(processed)
         if Filter.PARAGRAPHS not in filters:
             new_result = []
             for block in result['list']:
-                val = list(block.values())
+                if isinstance(block, dict):
+                    val = list(block.values())
+                elif isinstance(block, list):
+                    val = []
+                    for item in block:
+                        val += list(item.values())
                 if val and val != [[]]:
                     new_result += val
             return new_result
@@ -627,7 +661,8 @@ id_query = USFM_LANGUAGE.query('''(book (id (bookcode) @book-code (description) 
 chapter_data_query = USFM_LANGUAGE.query('''(c (chapterNumber) @chapter-number)
                                             (cl (text) @cl-text)
                                             (cp (text) @cp-text)
-                                            (ca (chapterNumber) @ca-number)''')
+                                            (ca (chapterNumber) @ca-number)
+                                            (cd) @cd-node''')
 
 verse_data_query = USFM_LANGUAGE.query('''(v (verseNumber) @verse-number)
                                             (vp (text) @vp-text)
@@ -691,7 +726,7 @@ class USFMParser():
         '''gives the syntax tree from class, as a string'''
         return self.syntax_tree.sexp()
 
-    def to_dict(self, filters=None):
+    def to_dict(self, filters=None): #pylint: disable=too-many-branches
         '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
         dict_output = {"book":{}}
         if filters is None or filters == []:
@@ -715,7 +750,7 @@ class USFMParser():
                         if "chapters" not in dict_output['book']:
                             dict_output['book']['chapters'] = []
 
-                        chapter_output = node_2_dict_chapter(child, self.usfm_bytes)
+                        chapter_output = node_2_dict_chapter(child, self.usfm_bytes, filters)
 
                         chapter_output['contents'] = []
                         for inner_child in child.children:
@@ -733,13 +768,16 @@ class USFMParser():
                             dict_output['book']['headers'].append(
                                 node_2_dict(child, self.usfm_bytes, filters))
         except Exception as exe:
-            err_str = "\n\t".join([":".join(err) for err in self.errors])
-            raise Exception("Unable to do the conversion. "+\
-                f"Could be due to an error in the USFM\n\t{err_str}")  from exe
+            message = "Unable to do the conversion. "
+            if self.errors:
+                err_str = "\n\t".join([":".join(err) for err in self.errors])
+                message += f"Could be due to an error in the USFM\n\t{err_str}"
+            raise Exception(message)  from exe
         return dict_output
 
-    def to_list(self, filters=None):
-        '''uses the toJSON function and converts JSON to CSV'''
+    def to_list(self, filters=None): # pylint: disable=too-many-branches
+        '''uses the toJSON function and converts JSON to CSV
+        To be re-implemented to work with the flat JSON schema'''
         if filters is None:
             filters = list(Filter)
         if Filter.PARAGRAPHS in filters:
@@ -752,11 +790,16 @@ class USFMParser():
         note_text = ""
         ms_text = ""
         title_text = ''
+        if "chapters" not in scripture_json['book']:
+            return table_output
         for chap in scripture_json['book']['chapters']:
-            chapter = chap['chapterNumber']
+            chapter = chap['c']
             for item in chap['contents']:
+                if not item:
+                    # temporary fix. to be removed when implementing this to work with new flat JSON
+                    continue
                 first_key = list(item.keys())[0]
-                if first_key == "verseNumber":
+                if first_key == "v":
                     if verse_num != 0:
                         row = [book, chapter, verse_num,
                                 verse_text,note_text,
@@ -766,13 +809,13 @@ class USFMParser():
                     note_text = ""
                     ms_text = ""
                     title_text = ''
-                    verse_num = item['verseNumber']
+                    verse_num = item['v']
                 elif first_key == 'verseText':
                     verse_text += item['verseText'] +" "
                 elif first_key == "milestone":
                     ms_text += str(item) + "\n"
                 elif first_key in CHAR_STYLE_MARKERS:
-                    verse_text += item[first_key] + " "
+                    verse_text += str(item[first_key]) + " "
                 elif first_key in NOTE_MARKERS:
                     note_text += str(item)
                 else:
@@ -795,7 +838,9 @@ class USFMParser():
         try:
             node_2_usx(self.syntax_tree, self.usfm_bytes, usx_root, usx_root)
         except Exception as exe:
-            err_str = "\n\t".join([":".join(err) for err in self.errors])
-            raise Exception("Unable to do the conversion. "+\
-                f"Could be due to an error in the USFM\n\t{err_str}")  from exe
+            message = "Unable to do the conversion. "
+            if self.errors:
+                err_str = "\n\t".join([":".join(err) for err in self.errors])
+                message += f"Could be due to an error in the USFM\n\t{err_str}"
+            raise Exception(message)  from exe
         return usx_root
