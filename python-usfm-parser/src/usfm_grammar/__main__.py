@@ -53,23 +53,23 @@ def main():
 
     match output_format:
         case Format.JSON:
-            dict_output = my_parser.to_dict(filters=updated_filt)
+            dict_output = my_parser.to_dict(filters=updated_filt, ignore_errors=True)
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
-            table_output = my_parser.to_list(filters = updated_filt)
+            table_output = my_parser.to_list(filters = updated_filt, ignore_errors=True)
             outfile = sys.stdout
             writer = csv.writer(outfile,
                 delimiter=arg_parser.parse_args().csv_col_sep,
                 lineterminator=arg_parser.parse_args().csv_row_sep)
             writer.writerows(table_output)
         case Format.USX:
-            xmlstr = etree.tostring(my_parser.to_usx(),
+            xmlstr = etree.tostring(my_parser.to_usx(ignore_errors=True),
                 encoding='unicode', pretty_print=True)
             print(xmlstr)
         case Format.MD:
             print(my_parser.to_markdown())
         case Format.ST:
-            print(my_parser.to_syntax_tree())
+            print(my_parser.to_syntax_tree(ignore_errors=True))
         case _:
             raise Exception(f"Un-recognized output format:{output_format}!")
 
