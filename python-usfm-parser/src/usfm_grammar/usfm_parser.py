@@ -32,6 +32,7 @@ USFM_LANGUAGE = Language(str(lang_file), 'usfm3')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
 
+# handled alike by the node_2_usx_generic method
 PARA_STYLE_MARKERS = ["ide", "usfm", "h", "toc", "toca", #identification
                     "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
                     "ili", "iot", "io", "iex", "imte", "ie", # intro
@@ -55,10 +56,12 @@ NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
 DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
                     "xt_standalone":"link-href"}
 TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
+MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
 
+# Handled alike by the node_2_dict_generic method
 ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
                     NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+\
-                    ["fig", "cat", "esb", "b", "ph", "pi"]
+                    MISC_MARKERS
 
 def node_2_usx_id(node, usfm_bytes,parent_xml_node):
     '''build id node in USX'''
