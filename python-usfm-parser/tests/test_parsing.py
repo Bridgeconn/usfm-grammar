@@ -1,6 +1,8 @@
 '''To test parsing success/errors for USFM/X committee's test suite'''
 import pytest
+from lxml import etree
 
+from src.usfm_grammar import USFMParser
 from tests import all_usfm_files, initialise_parser, is_valid_usfm,\
     doubtful_usfms, negative_tests, find_all_markers
 
@@ -47,3 +49,59 @@ def test_all_markers_are_in_output(file_path):
         if marker in ['qt', 'ts'] or marker.startswith("z"):
             marker = "milestone"
         assert marker in all_nodes_in_st, marker
+
+USFM_WITH_ERROR = '''
+\\id GEN
+\\c 1
+\\p
+\\v 1 correct verse one
+\\v 2 correct verse two
+\\p
+\\v3 wrong verse
+\\c 3
+\\v 1 verse in chapter without paragraph
+\\p
+\\v 2 a correct verse following one without para
+\\c 4
+\\s5
+\\p
+\\v 1 correct verse three after s5
+'''
+
+def test_partial_parsing_with_errors():
+    '''Test use of ignore_errors flag to obtain some output even when input has errors'''
+    test_parser = USFMParser(USFM_WITH_ERROR)
+    assert test_parser.errors
+
+    # without ignore_errors flag
+    def use_API_negative(test_parser, api_str_expression):
+        '''negative tests to ensure exception is raised'''
+        threw_error = False
+        try:
+            eval(api_str_expression)
+        except Exception as exe:
+            assert "Errors present:" in str(exe), api_str_expression
+            assert "Use ignore_errors=True" in str(exe)
+            threw_error = True
+        assert threw_error
+
+    use_API_negative(test_parser, 'test_parser.to_dict()')
+    use_API_negative(test_parser, 'test_parser.to_list()')
+    use_API_negative(test_parser, 'test_parser.to_usx()')
+
+    # with ignore_errors=True
+    def use_API_positive(test_parser, api_str_expression):
+        '''positive tests to ensure correct portions are made available in output'''
+        output = eval(api_str_expression)
+        if isinstance(output, etree._Element):
+            str_output = etree.tostring(output).decode('utf-8')
+        else:
+            str_output = str(output)
+        assert "correct verse one" in str_output, api_str_expression
+        assert "correct verse two" in str_output, api_str_expression
+        assert "correct verse three after s5" in str_output, api_str_expression
+
+    use_API_positive(test_parser, "test_parser.to_dict(ignore_errors=True)")
+    use_API_positive(test_parser, "test_parser.to_list(ignore_errors=True)")
+    use_API_positive(test_parser, "test_parser.to_usx(ignore_errors=True)")
+    
