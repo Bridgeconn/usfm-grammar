@@ -26,6 +26,9 @@ def main():
     arg_parser.add_argument('--csv_row_sep', type=str,
                             help="row separator or delimiter. Only useful with format=table.",
                             default="\n")
+    arg_parser.add_argument('--ignore_errors',
+                            help="to get some output from successfully parsed portions",
+                            action='store_true')
 
     infile = arg_parser.parse_args().infile
     output_format = arg_parser.parse_args().format
@@ -36,7 +39,7 @@ def main():
 
     my_parser = USFMParser(file_content)
 
-    if my_parser.errors:
+    if my_parser.errors and not arg_parser.parse_args().ignore_errors:
         err_str = "\n\t".join([":".join(err) for err in my_parser.errors])
         print(f"Errors present:\n\t{err_str}")
         sys.exit(1)
@@ -50,23 +53,23 @@ def main():
 
     match output_format:
         case Format.JSON:
-            dict_output = my_parser.to_dict(filters=updated_filt)
+            dict_output = my_parser.to_dict(filters=updated_filt, ignore_errors=True)
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
-            table_output = my_parser.to_list(filters = updated_filt)
+            table_output = my_parser.to_list(filters = updated_filt, ignore_errors=True)
             outfile = sys.stdout
             writer = csv.writer(outfile,
                 delimiter=arg_parser.parse_args().csv_col_sep,
                 lineterminator=arg_parser.parse_args().csv_row_sep)
             writer.writerows(table_output)
         case Format.USX:
-            xmlstr = etree.tostring(my_parser.to_usx(),
+            xmlstr = etree.tostring(my_parser.to_usx(ignore_errors=True),
                 encoding='unicode', pretty_print=True)
             print(xmlstr)
         case Format.MD:
             print(my_parser.to_markdown())
         case Format.ST:
-            print(my_parser.to_syntax_tree())
+            print(my_parser.to_syntax_tree(ignore_errors=True))
         case _:
             raise Exception(f"Un-recognized output format:{output_format}!")
 

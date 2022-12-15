@@ -522,7 +522,7 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
         result['attributes'] = attribs
     if closing_node is not None:
         result['closing'] = usfm_bytes[\
-            closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip()
+            closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip().replace("\\","")
     return result
 
 @reduce_nesting
@@ -722,12 +722,22 @@ class USFMParser():
                                     for err in errors]
 
 
-    def to_syntax_tree(self):
+    def to_syntax_tree(self, ignore_errors=False):
         '''gives the syntax tree from class, as a string'''
+        if not ignore_errors and self.errors:
+            err_str = "\n\t".join([":".join(err) for err in self.errors])
+            raise Exception("Errors present:"+\
+                f'\n\t{err_str}'+\
+                "\nUse ignore_errors=True, to generate output inspite of errors")
         return self.syntax_tree.sexp()
 
-    def to_dict(self, filters=None): #pylint: disable=too-many-branches
+    def to_dict(self, filters=None, ignore_errors=False): #pylint: disable=too-many-branches
         '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
+        if (not ignore_errors) and self.errors:
+            err_str = "\n\t".join([":".join(err) for err in self.errors])
+            raise Exception("Errors present:"+\
+                f'\n\t{err_str}'+\
+                "\nUse ignore_errors=True, to generate output inspite of errors")
         dict_output = {"book":{}}
         if filters is None or filters == []:
             filters = list(Filter)
@@ -775,14 +785,20 @@ class USFMParser():
             raise Exception(message)  from exe
         return dict_output
 
-    def to_list(self, filters=None): # pylint: disable=too-many-branches
+    def to_list(self, filters=None, ignore_errors=False): # pylint: disable=too-many-branches, too-many-locals
         '''uses the toJSON function and converts JSON to CSV
         To be re-implemented to work with the flat JSON schema'''
+        if not ignore_errors and self.errors:
+            err_str = "\n\t".join([":".join(err) for err in self.errors])
+            raise Exception("Errors present:"+\
+                f'\n\t{err_str}'+\
+                "\nUse ignore_errors=True, to generate output inspite of errors")
+
         if filters is None:
             filters = list(Filter)
         if Filter.PARAGRAPHS in filters:
             filters.remove(Filter.PARAGRAPHS)
-        scripture_json = self.to_dict(filters)
+        scripture_json = self.to_dict(filters, ignore_errors=ignore_errors)
         table_output = [["Book","Chapter","Verse","Verse-Text","Notes","Milestone","Other"]]
         book = scripture_json['book']['bookCode']
         verse_num = 0
@@ -831,8 +847,15 @@ class USFMParser():
         return "yet to be implemeneted"
 
 
-    def to_usx(self):
+    def to_usx(self, ignore_errors=False):
         '''convert the syntax_tree to the XML format USX'''
+        if not ignore_errors and self.errors:
+            err_str = "\n\t".join([":".join(err) for err in self.errors])
+            raise Exception("Errors present:"+\
+                f'\n\t{err_str}'+\
+                "\nUse ignore_errors=True, to generate output inspite of errors")
+
+
         usx_root = etree.Element("usx")
         usx_root.set("version", "3.0")
         try:
