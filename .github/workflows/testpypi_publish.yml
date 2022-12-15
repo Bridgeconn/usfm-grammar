@@ -1,8 +1,8 @@
 name: Test.PyPI Publish
 
 on:
-  push:
-  # workflow_dispatch:
+  # push: # need to use this temporarly to be able to publish
+  workflow_dispatch: # works only on default branch
 
 jobs:
   build_wheels:
