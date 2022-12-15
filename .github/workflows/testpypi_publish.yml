@@ -1,10 +1,8 @@
-name: PyPI Publish
+name: Test.PyPI Publish
 
 on:
   # push:
   workflow_dispatch:
-  release:
-    types: [published]
 
 jobs:
   build_wheels:
@@ -57,10 +55,10 @@ jobs:
           name: artifact
           path: python-usfm-parser/dist/
 
-      - name: Publish distribution 📦 to PyPI
+      - name: Publish distribution 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
-          password: ${{ secrets.pypi_token }}
-          # repository_url: https://test.pypi.org/legacy/
+          password: ${{ secrets.PUBLISH_ON_TEST_PYPI }}
+          repository_url: https://test.pypi.org/legacy/
           packages_dir: python-usfm-parser/dist/
