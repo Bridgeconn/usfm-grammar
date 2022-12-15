@@ -26,6 +26,9 @@ def main():
     arg_parser.add_argument('--csv_row_sep', type=str,
                             help="row separator or delimiter. Only useful with format=table.",
                             default="\n")
+    arg_parser.add_argument('--ignore_errors',
+                            help="to get some output from successfully parsed portions",
+                            action='store_true')
 
     infile = arg_parser.parse_args().infile
     output_format = arg_parser.parse_args().format
@@ -36,7 +39,7 @@ def main():
 
     my_parser = USFMParser(file_content)
 
-    if my_parser.errors:
+    if my_parser.errors and not arg_parser.parse_args().ignore_errors:
         err_str = "\n\t".join([":".join(err) for err in my_parser.errors])
         print(f"Errors present:\n\t{err_str}")
         sys.exit(1)
