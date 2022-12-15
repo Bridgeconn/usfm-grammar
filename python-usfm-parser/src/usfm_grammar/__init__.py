@@ -6,4 +6,4 @@ Filter = usfm_parser.Filter
 Format = usfm_parser.Format
 USFMParser = usfm_parser.USFMParser
 
-__version__ = "3.0.0-alpha.29"
+__version__ = "3.0.0-alpha.6"
