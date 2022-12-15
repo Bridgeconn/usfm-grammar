@@ -522,7 +522,7 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
         result['attributes'] = attribs
     if closing_node is not None:
         result['closing'] = usfm_bytes[\
-            closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip()
+            closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip().replace("\\","")
     return result
 
 @reduce_nesting
