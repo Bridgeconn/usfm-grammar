@@ -511,10 +511,12 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
             # else:
             #     print("igoring:",child)
     if text_node is not None:
-        content.append(usfm_bytes[\
-                text_node.start_byte:text_node.end_byte].decode('utf-8').strip())
-    # if len(content) == 1:
-    #     content = content[0]
+        text_content = usfm_bytes[\
+                text_node.start_byte:text_node.end_byte].decode('utf-8').strip()
+        if not content:
+            content = text_content
+        else:
+            content.append(text_content)
     elif len(content) == 0:
         content = None
     result = {marker_name:content}
