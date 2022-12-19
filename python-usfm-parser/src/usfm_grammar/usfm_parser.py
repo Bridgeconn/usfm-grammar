@@ -738,7 +738,7 @@ class USFMParser():
             raise Exception("Errors present:"+\
                 f'\n\t{err_str}'+\
                 "\nUse ignore_errors=True, to generate output inspite of errors")
-        dict_output = {"book":{}}
+        dict_output = {"book": {"id":{}}}
         if filters is None or filters == []:
             filters = list(Filter)
         try:
@@ -749,13 +749,13 @@ class USFMParser():
                         for id_cap in id_captures:
                             match id_cap:
                                 case (node, "book-code"):
-                                    dict_output['book']['bookCode'] = self.usfm_bytes[\
+                                    dict_output['book']['id']['bookCode'] = self.usfm_bytes[\
                                         node.start_byte:node.end_byte].decode('utf-8').strip()
                                 case (node, "desc"):
                                     val = self.usfm_bytes[\
                                         node.start_byte:node.end_byte].decode('utf-8').strip()
                                     if val != "":
-                                        dict_output['book']['fileDescription'] = val
+                                        dict_output['book']['id']['fileDescription'] = val
                     case "chapter":
                         if "chapters" not in dict_output['book']:
                             dict_output['book']['chapters'] = []
