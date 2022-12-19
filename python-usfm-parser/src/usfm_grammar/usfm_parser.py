@@ -419,7 +419,7 @@ def node_2_dict_chapter(chapter_node, usfm_bytes, filters):
                 inner_contents = []
                 for child in node.children:
                     processed = node_2_dict(child, usfm_bytes, filters)
-                    if processed is not None:
+                    if processed:
                         inner_contents.append(processed)
                 if len(inner_contents) == 1:
                     inner_contents = inner_contents[0]
@@ -506,7 +506,7 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
                 attribs.append(node_2_dict_attrib(child, usfm_bytes, node.type))
         else:
             inner_cont = node_2_dict(child, usfm_bytes, filters)
-            if inner_cont is not None:
+            if inner_cont:
                 content.append(inner_cont)
             # else:
             #     print("igoring:",child)
@@ -542,14 +542,14 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
                         result.append({'verseText':text})
                 else:
                     processed = node_2_dict(child,usfm_bytes, filters)
-                    if processed is not None:
+                    if processed:
                         result.append(processed)
             return result
     if node.type.endswith("Block"):
         result = []
         for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filters)
-            if processed is not None:
+            if processed:
                 result.append(processed)
         return result
     if node.type == "paragraph":
@@ -559,7 +559,7 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         result = {node.children[0].type: []}
         for child in node.children[0].children[1:]:
             processed = node_2_dict(child,usfm_bytes, filters)
-            if processed is not None:
+            if processed:
                 result[node.children[0].type].append(processed)
         if Filter.PARAGRAPHS not in filters:
             return list(result.values())
@@ -568,7 +568,7 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         result = {"poetry":[]}
         for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filters)
-            if processed is not None:
+            if processed:
                 result['poetry'].append(processed)
         if Filter.PARAGRAPHS not in filters:
             new_result = []
@@ -587,7 +587,7 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         result = {'list':[]}
         for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filters)
-            if processed is not None:
+            if processed:
                 result['list'].append(processed)
         if Filter.PARAGRAPHS not in filters:
             new_result = []
@@ -609,7 +609,7 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
             cells = []
             for child in row[0].children[1:]:
                 processed = node_2_dict(child,usfm_bytes, filters)
-                if processed is not None:
+                if processed:
                     cells.append(processed)
             result['table'].append({"tr":cells})
         if Filter.PARAGRAPHS not in filters:
@@ -629,7 +629,7 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
             result = []
             for child in node.children:
                 processed = node_2_dict(child,usfm_bytes, filters)
-                if processed is not None:
+                if processed:
                     result.append(processed)
             return result
     if node.type in ['footnote', 'crossref']:
@@ -641,7 +641,7 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         result = []
         for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filters)
-            if processed is not None :
+            if processed:
                 result.append(processed)
         return result
     if node.type == 'text':
