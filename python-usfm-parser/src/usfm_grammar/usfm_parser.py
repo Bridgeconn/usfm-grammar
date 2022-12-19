@@ -536,16 +536,16 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         return node_2_dict_verse(node, usfm_bytes)
     if node.type == 'verseText':
         if Filter.SCRIPTURE_TEXT in filters:
-            result = []
+            result = {"verseText":[]}
             for child in node.children:
                 if child.type == "text":
                     text = usfm_bytes[child.start_byte:child.end_byte].decode('utf-8').strip()
                     if text != "":
-                        result.append({'verseText':text})
+                        result['verseText'].append(text)
                 else:
                     processed = node_2_dict(child,usfm_bytes, filters)
                     if processed:
-                        result.append(processed)
+                        result['verseText'].append(processed)
             return result
     if node.type.endswith("Block"):
         result = []
