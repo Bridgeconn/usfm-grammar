@@ -525,7 +525,7 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
             closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip().replace("\\","")
     return result
 
-@reduce_nesting
+# @reduce_nesting
 def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-statements, too-many-branches, too-many-statements
     '''recursive function converting a syntax tree node and its children to dictionary'''
     if node.type in ANY_VALID_MARKER:
