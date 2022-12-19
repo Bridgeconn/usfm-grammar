@@ -513,8 +513,8 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
     if text_node is not None:
         content.append(usfm_bytes[\
                 text_node.start_byte:text_node.end_byte].decode('utf-8').strip())
-    if len(content) == 1:
-        content = content[0]
+    # if len(content) == 1:
+    #     content = content[0]
     elif len(content) == 0:
         content = None
     result = {marker_name:content}
