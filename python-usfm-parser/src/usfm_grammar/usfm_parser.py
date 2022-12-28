@@ -27,20 +27,28 @@ class Format(str, Enum):
     USX = "usx"
     MD = "markdown"
 
+class JSONSchema(str, Enum):
+    '''The names of two type of JSON/Dict output formats'''
+    NESTED = "nested"
+    FLAT = "flat"
+
 lang_file = resources.path('usfm_grammar','my-languages.so')
 USFM_LANGUAGE = Language(str(lang_file), 'usfm3')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
+
+LIST_MARKERS = ["lh", "li", "lf", "lim", "litl"]
+POETRY_MARKERS = ["q", "qr", "qc", "qa", "qm", "qd"]
+PARAGRAPH_MARKERS = ["p","m","po","pr","cls","pmo","pm","pmc","pmr","pi","mi","nb","pc","ph"]
 
 # handled alike by the node_2_usx_generic method
 PARA_STYLE_MARKERS = ["ide", "usfm", "h", "toc", "toca", #identification
                     "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
                     "ili", "iot", "io", "iex", "imte", "ie", # intro
                     "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd", #titles
-                    "q", "qr", "qc", "qa", "qm", "qd", #poetry
-                    "lh", "li", "lf", "lim", "litl", #lists
                     "sts", "rem", "lit", "restore", #comments
-                    ]
+                    ] + LIST_MARKERS + POETRY_MARKERS
+
 
 NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"]
 CHAR_STYLE_MARKERS = [ "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn",
@@ -372,29 +380,69 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
     #     raise Exception("Encountered unknown element ", str(node))
 
 ###########VVVVVVVVV Logics for syntax-tree to dict conversions VVVVVV ##############
-def reduce_nesting(func):
-    '''decorator function to avoid list of list of just one element'''
-    def bring_out_single_elements(*args, **kwargs):
-        '''inner function in decorator'''
-        result = func(*args, **kwargs)
-        for _ in range(3):
-            if isinstance(result, list):
-                if len(result) == 1:
-                    result = result[0]
-                elif len(result) == 0:
-                    result = None
-                else:
-                    new_list = []
-                    for item in result:
-                        if isinstance(item, list):
-                            new_list += item
-                        else:
-                            new_list.append(item)
-                    result = new_list
+NO_NESTING_MARKERS = ['usfm', 'ide', 'h', 'toc', 'toca',
+                        'sts', 'rem', 'restore', 'lit',
+                        'iqt', 'ior', 'mr', 'sr', 'r',
+                        'v', 'va', 'vp', 'c', 'ca', 'cp', 'cl',
+                        'sp', 'd', 'fig', 'jmp', 'cat']
+
+
+def reduce_nesting(nested_json):
+    '''To convert output from NESTED schema to FLAT. Recursive function'''
+    result = []
+    if isinstance(nested_json, str):
+        return [nested_json]
+    if isinstance(nested_json, dict):
+        for key_orig in nested_json:
+            inner_result = None
+            key = re.sub(r'[\d+]+','',key_orig)
+            if key in ['closing', 'attributes']:
+                continue
+            if isinstance(nested_json[key_orig], str):
+                inner_result = [nested_json[key_orig]]
             else:
-                break
-        return result
-    return bring_out_single_elements
+                inner_result =  reduce_nesting(nested_json[key_orig])
+
+            if key in PARAGRAPH_MARKERS+POETRY_MARKERS+LIST_MARKERS+TABLE_CELL_MARKERS:
+                result.append({key_orig:None})
+                result += inner_result
+            elif key in PARA_STYLE_MARKERS+["c", "v", "id"]:
+                if inner_result is None:
+                    result.append({key_orig:None})
+                else:
+                    for item in inner_result:
+                        if isinstance(item, str):
+                            result.append({key_orig:item})
+                        else:
+                            result.append(item)
+            elif key in CHAR_STYLE_MARKERS+NOTE_MARKERS+["milestone"]:
+                if inner_result is None:
+                    last_index = len(result)
+                    result.append({key_orig:inner_result})
+                else:
+                    for item in inner_result:
+                        if isinstance(item, str):
+                            last_index = len(result)
+                            result.append({key_orig:item})
+                        else:
+                            result.append(item)
+                if 'attributes' in nested_json:
+                    result[last_index] = result[last_index] | nested_json['attributes']
+                if 'closing' in nested_json:
+                    result[last_index]['closing'] = nested_json['closing']
+            else:
+                if inner_result:
+                    if isinstance(inner_result, str):
+                        inner_result = [inner_result]
+                    result += inner_result
+    elif isinstance(nested_json, list):
+        for item in nested_json:
+            inner_result = reduce_nesting(item)
+            if inner_result:
+                result += inner_result
+    if not result:
+        return None
+    return result
 
 
 def node_2_dict_chapter(chapter_node, usfm_bytes, filters):
@@ -738,7 +786,7 @@ class USFMParser():
                 "\nUse ignore_errors=True, to generate output inspite of errors")
         return self.syntax_tree.sexp()
 
-    def to_dict(self, filters=None, ignore_errors=False): #pylint: disable=too-many-branches
+    def to_dict(self, filters=None, ignore_errors=False, output_schema=JSONSchema.NESTED): #pylint: disable=too-many-branches
         '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
         if (not ignore_errors) and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
@@ -790,6 +838,11 @@ class USFMParser():
                 err_str = "\n\t".join([":".join(err) for err in self.errors])
                 message += f"Could be due to an error in the USFM\n\t{err_str}"
             raise Exception(message)  from exe
+        if output_schema == JSONSchema.FLAT:
+            try:
+                dict_output = reduce_nesting(dict_output)
+            except Exception as exe:
+                raise Exception("Error at converting to Flat!") from exe
         return dict_output
 
     def to_list(self, filters=None, ignore_errors=False): # pylint: disable=too-many-branches, too-many-locals
