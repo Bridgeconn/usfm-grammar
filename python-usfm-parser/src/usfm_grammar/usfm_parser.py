@@ -481,15 +481,20 @@ def node_2_dict_milestone(ms_node, usfm_bytes):
             ms_name_node.start_byte:ms_name_node.end_byte].decode('utf-8').strip().replace("\\","")
     result = {'milestone':ms_name}
     if len(attribs) > 0:
-        result['attributes'] = attribs
+        attrib_dict = {}
+        for item in attribs:
+            attrib_name = list(item)[0]
+            attrib_dict[attrib_name] = item[attrib_name]
+        result['attributes'] = attrib_dict
     return result
 
 def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
     '''The general rules to cover the common marker types'''
     marker_name = node.type
+    if "Nested" in marker_name:
+        marker_name = "+"+marker_name.replace("Nested", "")
     content = []
     tag_node = None
-    text_node = None
     closing_node = None
     attribs = []
     for child in node.children:
@@ -497,8 +502,9 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
             tag_node = child
             marker_name = usfm_bytes[\
                 tag_node.start_byte:tag_node.end_byte].decode('utf-8').strip().replace("\\","")
-        elif child.type in ["text", "category"]:
-            text_node = child
+        elif child.type in ["text", "category", "version"]:
+            content.append(usfm_bytes[\
+                child.start_byte:child.end_byte].decode('utf-8').strip())
         elif child.type.strip().startswith('\\') and child.type.strip().endswith("*"):
             closing_node = child
         elif child.type.endswith("Attribute"):
@@ -510,24 +516,23 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
                 content.append(inner_cont)
             # else:
             #     print("igoring:",child)
-    if text_node is not None:
-        text_content = usfm_bytes[\
-                text_node.start_byte:text_node.end_byte].decode('utf-8').strip()
-        if not content:
-            content = text_content
-        else:
-            content.append(text_content)
-    elif len(content) == 0:
+    processed_marker_name = re.sub(r'[+\d]+',"",marker_name)
+    if len(content) == 0:
         content = None
+    elif processed_marker_name in NO_NESTING_MARKERS and len(content) == 1 :
+        content = content[0]
     result = {marker_name:content}
     if len(attribs) > 0:
-        result['attributes'] = attribs
+        attrib_dict = {}
+        for item in attribs:
+            attrib_name = list(item)[0]
+            attrib_dict[attrib_name] = item[attrib_name]
+        result['attributes'] = attrib_dict
     if closing_node is not None:
         result['closing'] = usfm_bytes[\
             closing_node.start_byte:closing_node.end_byte].decode('utf-8').strip().replace("\\","")
     return result
 
-# @reduce_nesting
 def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-statements, too-many-branches, too-many-statements
     '''recursive function converting a syntax tree node and its children to dictionary'''
     if node.type in ANY_VALID_MARKER:
@@ -802,7 +807,7 @@ class USFMParser():
             filters.remove(Filter.PARAGRAPHS)
         scripture_json = self.to_dict(filters, ignore_errors=ignore_errors)
         table_output = [["Book","Chapter","Verse","Verse-Text","Notes","Milestone","Other"]]
-        book = scripture_json['book']['bookCode']
+        book = scripture_json['book']['id']['bookCode']
         verse_num = 0
         verse_text = ""
         note_text = ""
