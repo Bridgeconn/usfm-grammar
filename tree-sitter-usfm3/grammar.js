@@ -47,8 +47,8 @@ module.exports = grammar({
     _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock, $.tocaBlock,
       $._comments, $.milestone, $.zNameSpace, $.esb,
       ),
-
-    usfm: $ => seq("\\usfm ", /\d+(\.\d+)?/),
+    version: $ => /\d+(\.\d+)?/,
+    usfm: $ => seq("\\usfm ", $.version),
     ide: $ => seq("\\ide ", $.text),
     hBlock: $ => prec.right(0,repeat1($.h)),
     tocBlock: $ => prec.right(0,repeat1($.toc)),
