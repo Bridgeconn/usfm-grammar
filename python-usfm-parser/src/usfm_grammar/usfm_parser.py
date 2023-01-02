@@ -387,12 +387,12 @@ NO_NESTING_MARKERS = ['usfm', 'ide', 'h', 'toc', 'toca',
                         'sp', 'd', 'fig', 'jmp', 'cat']
 
 
-def reduce_nesting(nested_json):
+def reduce_nesting(nested_json): # pylint: disable=too-many-nested-blocks, too-many-branches
     '''To convert output from NESTED schema to FLAT. Recursive function'''
     result = []
     if isinstance(nested_json, str):
         return [nested_json]
-    if isinstance(nested_json, dict):
+    if isinstance(nested_json, dict): # pylint: disable=too-many-nested-blocks
         for key_orig in nested_json:
             inner_result = None
             key = re.sub(r'[\d+]+','',key_orig)
@@ -786,7 +786,7 @@ class USFMParser():
                 "\nUse ignore_errors=True, to generate output inspite of errors")
         return self.syntax_tree.sexp()
 
-    def to_dict(self, filters=None, ignore_errors=False, output_schema=JSONSchema.NESTED): #pylint: disable=too-many-branches
+    def to_dict(self, filters=None, ignore_errors=False, output_schema=JSONSchema.NESTED): #pylint: disable=too-many-branches, too-many-locals
         '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
         if (not ignore_errors) and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
