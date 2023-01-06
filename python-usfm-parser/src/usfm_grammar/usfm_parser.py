@@ -561,7 +561,10 @@ def node_2_dict_generic(node, usfm_bytes, filters): # pylint: disable=R0912
         else:
             inner_cont = node_2_dict(child, usfm_bytes, filters)
             if inner_cont:
-                content.append(inner_cont)
+                if child.type == "noteText":
+                    content += inner_cont
+                else:
+                    content.append(inner_cont)
             # else:
             #     print("igoring:",child)
     processed_marker_name = re.sub(r'[+\d]+',"",marker_name)
@@ -592,7 +595,7 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
             result = {"verseText":[]}
             for child in node.children:
                 if child.type == "text":
-                    text = usfm_bytes[child.start_byte:child.end_byte].decode('utf-8').strip()
+                    text = usfm_bytes[child.start_byte:child.end_byte].decode('utf-8')
                     if text != "":
                         result['verseText'].append(text)
                 else:
@@ -624,7 +627,10 @@ def node_2_dict(node, usfm_bytes, filters): # pylint: disable=too-many-return-st
         for child in node.children:
             processed = node_2_dict(child,usfm_bytes, filters)
             if processed:
-                result['poetry'].append(processed)
+                if isinstance(processed, list):
+                    result['poetry'] += processed
+                else:
+                    result['poetry'].append(processed)
         if Filter.PARAGRAPHS not in filters:
             new_result = []
             for block in result['poetry']:
