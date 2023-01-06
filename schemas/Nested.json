@@ -1,0 +1,422 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Bridgeconn/usfm-grammar/blob/master/schemas/FlatJSON.js",
+  "title": "USFM-Grammar JSON(Nested)",
+  "description": "Parsed output of USFM file, with a flat structure",
+  "type": "object",
+  "properties":{
+    "book":{
+      description: "The contents of an entire bible book or a USFM file",
+      type: "object",
+      properties:{
+        "id":{
+          type:"object",
+          properties:{
+            "bookCode":{
+              type:"string",
+              enum:["GEN", "EXO", "LEV", "NUM", "DEU", "JOS", "JDG",
+              "RUT", "1SA", "2SA", "1KI", "2KI", 
+              "1CH", "2CH", "EZR", "NEH", "EST", "JOB", "PSA", "PRO", 
+              "ECC", "SNG", "ISA", "JER", "LAM", "EZK", "DAN", 
+              "HOS", "JOL", "AMO", "OBA", "JON", "MIC", "NAM", "HAB", 
+              "ZEP", "HAG", "ZEC", "MAL", "MAT", "MRK", "LUK", 
+              "JHN", "ACT", "ROM", "1CO", "2CO", "GAL", "EPH", "PHP", 
+              "COL", "1TH", "2TH", "1TI", "2TI", "TIT", "PHM", 
+              "HEB", "JAS", "1PE", "2PE", "1JN", "2JN", "3JN", "JUD", 
+              "REV", "TOB", "JDT", "ESG", "WIS", "SIR", "BAR", 
+              "LJE", "S3Y", "SUS", "BEL", "1MA", "2MA", "3MA", "4MA", 
+              "1ES", "2ES", "MAN", "PS2", "ODA", "PSS", "EZA", 
+              "5EZ", "6EZ", "DAG", "PS3", "2BA", "LBA", "JUB", "ENO", 
+              "1MQ", "2MQ", "3MQ", "REP", "4BA", "LAO", "FRT", 
+              "BAK", "OTH", "INT", "CNC", "GLO", "TDX", "NDX"]
+            },
+            "fileDescription":{type:"string"}
+          },
+          required:["bookCode"],
+          additionalProperties:false
+        },
+        "headers":{
+          type:"array",
+          items:{ "$ref":"#/$defs/marker-or-array"}
+        },
+        "chapters":{
+          type:"array",
+          contains:{
+            type:"object",
+            properties:{
+              "c":{type:"string"},
+              "ca":{type:"string"},
+              "cp":{type:"string"},
+              "cl":{type:"string"},
+              "cd":{type:"string"},
+              "contents":{
+                type:"array",
+                items:{"$ref":"#/$defs/para-title-or-section"}
+              }
+            },
+            additionalProperties:false,
+            required:["c", "contents"]
+          }
+        }
+      },
+      additionalProperties:false,
+      required:["id"]
+    }
+  },
+  required:["book"],
+  additionalProperties:false,
+  "$defs":{
+
+    "para-title-or-section":{
+      oneOf:[
+        {
+          type:"object", 
+          patternProperties:{
+            "^(p|m|po|pr|cls|pmo|pm|pmc|pmr|pi\\d?|mi|pc|ph\\d?|phi)$":{
+              type:"array",
+              items:{"$ref":"#/$defs/text-marker-or-array"}
+            }
+          }, 
+          properties:{
+            "list":{
+              type:"array",
+                items:{ "$ref": "#/$defs/marker"}
+            },
+            "poetry":{
+              type:"array",
+              items:{ "$ref": "#/$defs/marker"}
+            },
+            "table":{
+              type:"array",
+                items:{ 
+                  type: "object",
+                  properties:{
+                    "tr":{type: "array", items:{
+                      type:"object",
+                      patternProperties:{
+                        "^t(c|cr|h|hr)\\d?$":{
+                          type:"array",
+                          items:{"$ref":"#/$defs/text-or-marker"}
+                        }
+                      },
+                      additionalProperties:false
+                    }}
+                  },
+                  additionalProperties:false
+                }
+            }
+          },
+          maxProperties:1, 
+          additionalProperties:false
+        },
+        {type:"array",items:{"$ref":"#/$defs/marker"}}
+      ]
+    },
+
+
+    "text-marker-or-array":{
+      oneOf:[
+        {type:"string"},
+        {"$ref":"#/$defs/marker"},
+        {type:"array",items:{"$ref":"#/$defs/marker"}}
+      ]
+    },
+
+    "marker-or-array":{
+      oneOf:[
+        {"$ref":"#/$defs/marker"},
+        {type:"array",items:{"$ref":"#/$defs/marker"}}
+      ]
+    },
+
+    "text-or-marker":{
+      oneOf:[
+        {type:"string"},
+        {"$ref":"#/$defs/marker"},
+      ]
+    },
+
+    "marker":{
+      oneOf:[
+        {"type":"object", properties:{"ide": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"usfm": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"h": {type: "string"}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^toc\\d?$": {type: "string"}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^toca\\d?$": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"sts": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"rem": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"restore": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"lit": {type: "string"}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^imt\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^is\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"ip":{
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"ipi": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"im": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"imi": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"ipq": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"imq": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"ipr": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"iq": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"ib": {type: "null"}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^ili\\d?$":{
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"iot": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^io\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"ior": {type: "string"}, "closing":{type:"string"}}, additionalProperties: true, required:["ior"]},
+        {"type":"object", properties:{"iqt": {type: "string"}, "closing":{type:"string"}}, additionalProperties: true, required:["iqt"]},
+        {"type":"object", properties:{"iex": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^imte\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"ie": {type: "null"}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^mt\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^mte\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^ms\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"mr": {type: "string"}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^s\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"r": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"rq": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["rq"]},
+        {"type":"object", properties:{"d": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"sp": {type: "string"}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^sd\\d?$": {type: "null"}}, additionalProperties: false},
+        {"type":"object", properties:{"c": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"ca": {type: "string"}, "closing":{type:"string"}}, additionalProperties: true, required:["ca"]},
+        {"type":"object", properties:{"cl": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"cp": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"v": {type: "string"}}, additionalProperties: false},
+        {"type":"object", properties:{"va": {type: "string"}, "closing":{type:"string"}}, additionalProperties: true, required:["va"]},
+        {"type":"object", properties:{"vp": {type: "string"}, "closing":{type:"string"}}, additionalProperties: true, required:["vp"]},
+        {"type":"object", properties:{"b": {type: "null"}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^q\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"qr": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"qc": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"qs": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["qs"]},
+        {"type":"object", properties:{"qa": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"qac": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["qac"]},
+        {"type":"object", patternProperties:{"^qm\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"qd": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"lh": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^li\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"lf": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^lim\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"litl": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["litl"]},
+        {"type":"object", properties:{"lik": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["lik"]},
+        {"type":"object", patternProperties:{"^liv\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false, required:["^liv\\d?$"]},
+        {"type":"object", patternProperties:{"^th\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^thr\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^tc\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", patternProperties:{"^tcr\\d?$": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties: false},
+        {"type":"object", properties:{"f": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fe": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fr": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fq": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fqa": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fk": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fl": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fw": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fp": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fv": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"ft": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fdc": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"fm": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"x": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xo": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xk": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xq": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xt": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xta": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xop": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xot": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xnt": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"xdc": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: false},
+        {"type":"object", properties:{"add": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["add"]},
+        {"type":"object", properties:{"bk": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["bk"]},
+        {"type":"object", properties:{"dc": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["dc"]},
+        {"type":"object", properties:{"k": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["k"]},
+        {"type":"object", properties:{"nd": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["nd"]},
+        {"type":"object", properties:{"ord": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["ord"]},
+        {"type":"object", properties:{"pn": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["pn"]},
+        {"type":"object", properties:{"png": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["png"]},
+        {"type":"object", properties:{"addpn": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["addpn"]},
+        {"type":"object", properties:{"qt": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["qt"]},
+        {"type":"object", properties:{"sig": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["sig"]},
+        {"type":"object", properties:{"sls": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["sls"]},
+        {"type":"object", properties:{"tl": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["tl"]},
+        {"type":"object", properties:{"wj": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["wj"]},
+        {"type":"object", properties:{"em": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["em"]},
+        {"type":"object", properties:{"bd": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["bd"]},
+        {"type":"object", properties:{"it": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["it"]},
+        {"type":"object", properties:{"bdit": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["bdit"]},
+        {"type":"object", properties:{"no": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["no"]},
+        {"type":"object", properties:{"sc": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["sc"]},
+        {"type":"object", properties:{"sup": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["sup"]},
+        {"type":"object", properties:{"pb": {type: "null"}}, additionalProperties: false},
+        {"type":"object", properties:{"fig": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["fig"]},
+        {"type":"object", properties:{"ndx": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["ndx"]},
+        {"type":"object", properties:{"rb": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["rb"]},
+        {"type":"object", properties:{"pro": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["pro"]},
+        {"type":"object", properties:{"w": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["w"]},
+        {"type":"object", properties:{"wg": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["wg"]},
+        {"type":"object", properties:{"wh": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["wh"]},
+        {"type":"object", properties:{"wa": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["wa"]},
+        {"type":"object", properties:{"jmp": {
+          type: "string"}, "closing":{type:"string"}}, additionalProperties: true, required:["jmp"]},
+        {"type":"object", properties:{"+add": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+add"]},
+        {"type":"object", properties:{"+bk": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+bk"]},
+        {"type":"object", properties:{"+dc": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+dc"]},
+        {"type":"object", properties:{"+k": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+k"]},
+        {"type":"object", properties:{"+nd": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+nd"]},
+        {"type":"object", properties:{"+ord": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+ord"]},
+        {"type":"object", properties:{"+pn": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+pn"]},
+        {"type":"object", properties:{"+png": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+png"]},
+        {"type":"object", properties:{"+addpn": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+addpn"]},
+        {"type":"object", properties:{"+qt": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+qt"]},
+        {"type":"object", properties:{"+sig": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+sig"]},
+        {"type":"object", properties:{"+sls": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+sls"]},
+        {"type":"object", properties:{"+tl": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+tl"]},
+        {"type":"object", properties:{"+wj": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+wj"]},
+        {"type":"object", properties:{"+em": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+em"]},
+        {"type":"object", properties:{"+bd": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+bd"]},
+        {"type":"object", properties:{"+it": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+it"]},
+        {"type":"object", properties:{"+bdit": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+bdit"]},
+        {"type":"object", properties:{"+no": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+no"]},
+        {"type":"object", properties:{"+sc": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+sc"]},
+        {"type":"object", properties:{"+sup": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+sup"]},
+        {"type":"object", properties:{"+fig": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+fig"]},
+        {"type":"object", properties:{"+ndx": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+ndx"]},
+        {"type":"object", properties:{"+rb": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+rb"]},
+        {"type":"object", properties:{"+pro": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+pro"]},
+        {"type":"object", properties:{"+w": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+w"]},
+        {"type":"object", properties:{"+wg": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+wg"]},
+        {"type":"object", properties:{"+wh": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+wh"]},
+        {"type":"object", properties:{"+wa": {
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}, "closing":{type:"string"}}, additionalProperties: true, required:["+wa"]},
+        {"type":"object", properties:{"+jmp": {
+          type: "string"}, "closing":{type:"string"}}, additionalProperties: true, required:["+jmp"]},
+        {"type":"object", properties:{"verseText":{
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties:false},
+        {"type":"object", properties:{"caller":{type:"string"}}, additionalProperties:false},
+        {"type":"object", properties:{"milestone":{type:"string"},"attributes":{type:"object"}}, required:["milestone"]},
+        {"type":"object", properties:{"esb":{
+          type: "array", items:{"$ref":"#/$defs/text-or-marker"}}}, additionalProperties:false},
+      ]
+    },
+  }
+}
+
