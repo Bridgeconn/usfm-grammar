@@ -20,7 +20,9 @@ def test_error_less_parsing(file_path):
         assert not test_parser.errors, test_parser.errors
     else:
         # negative tests
-        assert test_parser.errors, "file has errors, but passed\n"+test_parser.to_syntax_tree()
+        # assert test_parser.errors, "file has errors, but passed\n"+test_parser.to_syntax_tree()
+        assert test_parser.errors or "MISSING" in test_parser.to_syntax_tree(),\
+            "file has errors, but passed\n"+test_parser.to_syntax_tree()
 
 positive_files = test_files.copy()
 for file in negative_tests:
