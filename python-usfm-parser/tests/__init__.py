@@ -258,9 +258,20 @@ doubtful_usxs = [
     ]
 
 pass_fail_override_list = {
-    f"{TEST_DIR}/paratextTests/InvalidAttributes/origin.usfm": "fail", # custom attribute without x-
-    f"{TEST_DIR}/paratextTests/CustomAttributesAreValid/origin.usfm": "fail", # significant space missing after \p
-    f"{TEST_DIR}/paratextTests/NestingInFootnote/origin.usfm": "fail", # significant space missing after \p
+    # custom attribute without x-
+    f"{TEST_DIR}/paratextTests/InvalidAttributes/origin.usfm": "fail",
+    f"{TEST_DIR}/paratextTests/InvalidFigureAttributesReported/origin.usfm": "fail",
+
+    # significant space missing after \p 
+    f"{TEST_DIR}/paratextTests/CustomAttributesAreValid/origin.usfm": "fail",
+    f"{TEST_DIR}/paratextTests/NestingInFootnote/origin.usfm": "fail",
+    f"{TEST_DIR}/specExamples/cross-ref/origin.usfm": "fail",
+
+    # No. of columns in table not validated by usfm-grammar
+    f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "fail"
+
+    # WordlistMarkerMissingFromGlossaryCitationForms from paratext. Something to do with \k or \w
+    f"{TEST_DIR}/paratextTests/WordlistMarkerMissingFromGlossaryCitationForms/origin.usfm": "fail",
 }
 
 negative_tests = []
