@@ -262,20 +262,24 @@ pass_fail_override_list = {
     f"{TEST_DIR}/paratextTests/InvalidAttributes/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/InvalidFigureAttributesReported/origin.usfm": "fail",
 
+    # Use of default attribute for non listed marker
+    f"{TEST_DIR}/paratextTests/ValidMilestones/origin.usfm": "fail",
+
     # significant space missing after \p 
     f"{TEST_DIR}/paratextTests/CustomAttributesAreValid/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NestingInFootnote/origin.usfm": "fail",
     f"{TEST_DIR}/specExamples/cross-ref/origin.usfm": "fail",
+    f"{TEST_DIR}/paratextTests/MarkersMissingSpace/origin.usfm": "fail",
 
     # No. of columns in table not validated by usfm-grammar
-    f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "fail",
-    f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "fail"
+    f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "pass",
 
     # WordlistMarkerMissingFromGlossaryCitationForms from paratext. Something to do with \k or \w
-    f"{TEST_DIR}/paratextTests/WordlistMarkerMissingFromGlossaryCitationForms/origin.usfm": "fail",
+    f"{TEST_DIR}/paratextTests/WordlistMarkerMissingFromGlossaryCitationForms/origin.usfm": "pass",
 
     # no content in ide, rem etc
     f"{TEST_DIR}/paratextTests/NoErrorsPartiallyEmptyBook/origin.usfm": "fail",
+    f"{TEST_DIR}/paratextTests/NoErrorsEmptyBook/origin.usfm": "fail",
 }
 
 negative_tests = []
