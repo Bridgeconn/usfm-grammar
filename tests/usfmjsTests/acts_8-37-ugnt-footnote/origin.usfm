@@ -3,29 +3,29 @@
 \p
 \v 37
 \f + \fqa
-\w εἶπεν|lemma="λέγω" strong="G30040" x-morph="Gr,V,IAA3,,S,"\w*
-\w δὲ|lemma="δέ" strong="G11610" x-morph="Gr,CC,,,,,,,,"\w*
-\w αὐτῷ|lemma="αὐτός" strong="G08460" x-morph="Gr,RP,,,,DMS,"\w*
-\w ὁ|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,NMS,"\w*
-\w Φίλιππος|lemma="Φίλιππος" strong="G53760" x-morph="Gr,N,,,,,NMS,"\w*
-\w ἐὰν|lemma="ἐάν" strong="G14370" x-morph="Gr,CS,,,,,,,,"\w*
-\w πιστεύεις|lemma="πιστεύω" strong="G41000" x-morph="Gr,V,IPA2,,S,"\w*
-\w ἐξ|lemma="ἐκ" strong="G15370" x-morph="Gr,P,,,,,G,,,"\w*
-\w ὅλης|lemma="ὅλος" strong="G36500" x-morph="Gr,AA,,,,GFS,"\w*
-\w τῆς|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,GFS,"\w*
-\w καρδίας|lemma="καρδία" strong="G25880" x-morph="Gr,N,,,,,GFS,"\w*
-\w σου|lemma="σύ" strong="G47710" x-morph="Gr,RP,,,2G,S,"\w*
-\w σωθήσει|lemma="σῴζω" strong="G49820" x-morph="Gr,V,IFP2,,S,"\w*;
-\w ἀποκριθεὶς|lemma="ἀποκρίνω" strong="G06110" x-morph="Gr,V,PPA,NMS,"\w*
-\w δὲ|lemma="δέ" strong="G11610" x-morph="Gr,CC,,,,,,,,"\w*
-\w εἶπεν|lemma="λέγω" strong="G30040" x-morph="Gr,V,IAA3,,S,"\w*
-\w Πιστεύω|lemma="πιστεύω" strong="G41000" x-morph="Gr,V,IPA1,,S,"\w*
-\w εἰς|lemma="εἰς" strong="G15190" x-morph="Gr,P,,,,,A,,,"\w*
-\w τὸν|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,AMS,"\w*
-\w Χριστὸν|lemma="Χριστιανός" strong="G55470" x-morph="Gr,N,,,,,AMS,"\w*
-\w τὸν|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,AMS,"\w*
-\w Υἱὸν|lemma="υἱός" strong="G52070" x-morph="Gr,N,,,,,AMS,"\w*
-\w τοῦ|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,GMS,"\w*
-\w θεοῦ|lemma="θεός" strong="G23160" x-morph="Gr,N,,,,,GMS,"\w*.
+\+w εἶπεν|lemma="λέγω" strong="G30040" x-morph="Gr,V,IAA3,,S,"\+w*
+\+w δὲ|lemma="δέ" strong="G11610" x-morph="Gr,CC,,,,,,,,"\+w*
+\+w αὐτῷ|lemma="αὐτός" strong="G08460" x-morph="Gr,RP,,,,DMS,"\+w*
+\+w ὁ|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,NMS,"\+w*
+\+w Φίλιππος|lemma="Φίλιππος" strong="G53760" x-morph="Gr,N,,,,,NMS,"\+w*
+\+w ἐὰν|lemma="ἐάν" strong="G14370" x-morph="Gr,CS,,,,,,,,"\+w*
+\+w πιστεύεις|lemma="πιστεύω" strong="G41000" x-morph="Gr,V,IPA2,,S,"\+w*
+\+w ἐξ|lemma="ἐκ" strong="G15370" x-morph="Gr,P,,,,,G,,,"\+w*
+\+w ὅλης|lemma="ὅλος" strong="G36500" x-morph="Gr,AA,,,,GFS,"\+w*
+\+w τῆς|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,GFS,"\+w*
+\+w καρδίας|lemma="καρδία" strong="G25880" x-morph="Gr,N,,,,,GFS,"\+w*
+\+w σου|lemma="σύ" strong="G47710" x-morph="Gr,RP,,,2G,S,"\+w*
+\+w σωθήσει|lemma="σῴζω" strong="G49820" x-morph="Gr,V,IFP2,,S,"\+w*;
+\+w ἀποκριθεὶς|lemma="ἀποκρίνω" strong="G06110" x-morph="Gr,V,PPA,NMS,"\+w*
+\+w δὲ|lemma="δέ" strong="G11610" x-morph="Gr,CC,,,,,,,,"\+w*
+\+w εἶπεν|lemma="λέγω" strong="G30040" x-morph="Gr,V,IAA3,,S,"\+w*
+\+w Πιστεύω|lemma="πιστεύω" strong="G41000" x-morph="Gr,V,IPA1,,S,"\+w*
+\+w εἰς|lemma="εἰς" strong="G15190" x-morph="Gr,P,,,,,A,,,"\+w*
+\+w τὸν|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,AMS,"\+w*
+\+w Χριστὸν|lemma="Χριστιανός" strong="G55470" x-morph="Gr,N,,,,,AMS,"\+w*
+\+w τὸν|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,AMS,"\+w*
+\+w Υἱὸν|lemma="υἱός" strong="G52070" x-morph="Gr,N,,,,,AMS,"\+w*
+\+w τοῦ|lemma="ὁ" strong="G35880" x-morph="Gr,EA,,,,GMS,"\+w*
+\+w θεοῦ|lemma="θεός" strong="G23160" x-morph="Gr,N,,,,,GMS,"\+w*.
 \f*
 

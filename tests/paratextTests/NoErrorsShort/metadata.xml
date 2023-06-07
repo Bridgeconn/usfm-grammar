@@ -1,6 +1,6 @@
-<?xml encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
         <description>NoErrorsShort. From paratext test suite</description>
-        <validated>pass</validated>
-        <tags>clarify</tags>
+        <validated>fail</validated>
+        <tags>clarify: Minimum content requires a chapter</tags>
 </test-metadata>

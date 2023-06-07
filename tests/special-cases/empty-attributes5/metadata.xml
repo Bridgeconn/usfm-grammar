@@ -1,6 +1,6 @@
-<?xml encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>fail empty attribute values</description>
-        <validated>fail</validated>
+        <description>Accept empty attribute values</description>
+        <validated>pass</validated>
         <tags></tags>
 </test-metadata>

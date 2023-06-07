@@ -1,4 +1,4 @@
-<?xml encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
         <description> Publishing Verses \vp ...\vp* should be able contain formatting. Some implementations need verses formatted, such as for red letter. 
 		</description>

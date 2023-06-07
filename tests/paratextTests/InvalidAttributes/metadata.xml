@@ -1,6 +1,6 @@
-<?xml encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>InvalidAttributes. From paratext test suite</description>
-        <validated>fail</validated>
+        <description>InvalidAttributes. From paratext MarkerCheck test suite. The USFM is syntactically valid, but marker check will report attributes not defined in the style sheet. Paratext is doing some extra checking that won't be enforced in the grammar.</description>
+        <validated>pass</validated>
         <tags></tags>
 </test-metadata>
