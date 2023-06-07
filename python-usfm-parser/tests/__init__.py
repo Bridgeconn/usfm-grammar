@@ -268,10 +268,14 @@ pass_fail_override_list = {
     f"{TEST_DIR}/specExamples/cross-ref/origin.usfm": "fail",
 
     # No. of columns in table not validated by usfm-grammar
+    f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "fail"
 
     # WordlistMarkerMissingFromGlossaryCitationForms from paratext. Something to do with \k or \w
     f"{TEST_DIR}/paratextTests/WordlistMarkerMissingFromGlossaryCitationForms/origin.usfm": "fail",
+
+    # no content in ide, rem etc
+    f"{TEST_DIR}/paratextTests/NoErrorsPartiallyEmptyBook/origin.usfm": "fail",
 }
 
 negative_tests = []
