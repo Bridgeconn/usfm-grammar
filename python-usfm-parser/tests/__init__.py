@@ -286,12 +286,13 @@ pass_fail_override_list = {
     f"{TEST_DIR}/paratextTests/NoErrorsPartiallyEmptyBook/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NoErrorsEmptyBook/origin.usfm": "fail",
 
-    # \s5
-    f"{TEST_DIR}/usfmjsTests/missing_verses/origin.usfm": "fail",
-    f"{TEST_DIR}/usfmjsTests/isa_verse_span/origin.usfm": "fail",
-    f"{TEST_DIR}/usfmjsTests/isa_footnote/origin.usfm": "fail",
-    f"{TEST_DIR}/usfmjsTests/tit_extra_space_after_chapter/origin.usfm": "fail",
-    f"{TEST_DIR}/usfmjsTests/1ch_verse_span/origin.usfm": "fail",
+    # no \p after \s
+    f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.usfm": "fail", # has \s5
+    f"{TEST_DIR}/usfmjsTests/missing_verses/origin.usfm": "fail", # has \s5
+    f"{TEST_DIR}/usfmjsTests/isa_verse_span/origin.usfm": "fail", # has \s5
+    f"{TEST_DIR}/usfmjsTests/isa_footnote/origin.usfm": "fail", # has \s5
+    f"{TEST_DIR}/usfmjsTests/tit_extra_space_after_chapter/origin.usfm": "fail", # has \s5
+    f"{TEST_DIR}/usfmjsTests/1ch_verse_span/origin.usfm": "fail", # has \s5
 
     # \k-s
     f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt.oldformat/origin.usfm": "fail", # also has \toc1 without content
