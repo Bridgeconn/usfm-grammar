@@ -283,11 +283,13 @@ pass_fail_override_list = {
     # WordlistMarkerMissingFromGlossaryCitationForms from paratext. Something to do with \k or \w
     f"{TEST_DIR}/paratextTests/WordlistMarkerMissingFromGlossaryCitationForms/origin.usfm": "pass",
 
-    # no content in ide, rem, toc1 etc
+    # no content in ide, rem, toc1, ip etc
     f"{TEST_DIR}/paratextTests/NoErrorsPartiallyEmptyBook/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NoErrorsEmptyBook/origin.usfm": "fail",
     f"{TEST_DIR}/usfmjsTests/57-TIT.greek.oldformat/origin.usfm": "fail",
     f"{TEST_DIR}/usfmjsTests/57-TIT.greek/origin.usfm": "fail",
+    f"{TEST_DIR}/paratextTests/EmptyMarkers/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt.oldformat/origin.usfm": "fail", #  also \k-s not closed, + not used with \w inside \f
 
     # no \p (usually after \s)
     f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.usfm": "fail", # has \s5
@@ -304,9 +306,6 @@ pass_fail_override_list = {
     f"{TEST_DIR}/usfmjsTests/acts_1_milestone/origin.usfm": "fail",
     f"{TEST_DIR}/usfmjsTests/luk_quotes/origin.usfm": "fail",
     f"{TEST_DIR}/biblica/BlankLinesWithFigures/origin.usfm": "fail", #\fig used without \p, only \b
-
-    # \k-s
-    f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt.oldformat/origin.usfm": "fail", # also has \toc1 without content
 
     # no use of nesting (eg: \w within \f) correct usage: usfmjsTests/acts_8-37-ugnt-footnote
     f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt/origin.usfm": "fail", # also has \toc1 without content
