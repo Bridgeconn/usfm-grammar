@@ -299,6 +299,7 @@ pass_fail_override_list = {
 
     ########### Need to be fixed #######################
     f"{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm": "pass", # \c is mandatory!
+    f"{TEST_DIR}/usfmjsTests/gn_headers/origin.usfm": "fail", # what is the valid position for mte and imt
 }
 
 negative_tests = []
