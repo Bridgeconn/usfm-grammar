@@ -42,7 +42,7 @@ def find_all_markers(usfm_path, keep_id=False, keep_number=True):
     if keep_number:
         all_markers_in_input = [find[0] for find in all_markers_in_input]
     else:
-        all_markers_in_input = [find[1] for find in all_markers_in_input]
+        all_markers_in_input = [find[1]+find[2] for find in all_markers_in_input]
     all_markers_in_input = list(set(all_markers_in_input))
     if not keep_id:
         all_markers_in_input.remove("id")

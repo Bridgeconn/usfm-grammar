@@ -48,7 +48,7 @@ def test_all_markers_are_in_output(file_path):
 
     all_nodes_in_st = get_nodes(test_parser.syntax_tree)
     for marker in all_markers_in_input:
-        if marker in ['qt', 'ts'] or marker.startswith("z"):
+        if marker in ['qt-s', 'qt-e', 'ts'] or marker.startswith("z"):
             marker = "milestone"
         assert marker in all_nodes_in_st, marker
 
