@@ -50,6 +50,8 @@ def test_all_markers_are_in_output(file_path):
     for marker in all_markers_in_input:
         if marker in ['qt-s', 'qt-e', 'ts-s', 'ts-e', 'ts', 'k-s', 'k-e'] or marker.startswith("z"):
             marker = "milestone"
+        elif marker in ['xt']:
+            marker = "crossref"
         assert marker in all_nodes_in_st, marker
 
 USFM_WITH_ERROR = '''
