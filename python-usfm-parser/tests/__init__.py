@@ -297,6 +297,8 @@ pass_fail_override_list = {
     # \k-s
     f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt.oldformat/origin.usfm": "fail", # also has \toc1 without content
 
+    # no use of nesting (eg: \w within \f)
+    f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt/origin.usfm": "fail", # also has \toc1 without content
 
     ########### Need to be fixed #######################
     f"{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm": "pass", # \c is mandatory!
