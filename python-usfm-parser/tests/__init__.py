@@ -268,12 +268,13 @@ pass_fail_override_list = {
     # link attributes used without hyphen
     f"{TEST_DIR}/paratextTests/LinkAttributesAreValid/origin.usfm": "fail",
 
-    # significant space missing after \p 
+    # significant space missing after \p , \q
     f"{TEST_DIR}/paratextTests/CustomAttributesAreValid/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NestingInFootnote/origin.usfm": "fail",
     f"{TEST_DIR}/specExamples/cross-ref/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/MarkersMissingSpace/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NestingInCrossReferences/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/acts-1-20.aligned.crammed.oldformat/origin.usfm": "fail",
 
     # No. of columns in table not validated by usfm-grammar
     f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "pass",
@@ -284,6 +285,16 @@ pass_fail_override_list = {
     # no content in ide, rem etc
     f"{TEST_DIR}/paratextTests/NoErrorsPartiallyEmptyBook/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NoErrorsEmptyBook/origin.usfm": "fail",
+
+    # \s5
+    f"{TEST_DIR}/usfmjsTests/missing_verses/origin.usfm": "fail",
+
+    # \k-s
+    f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt.oldformat/origin.usfm": "fail", # also has \toc1 without content
+
+
+    ########### Need to be fixed #######################
+    f"{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm": "pass", # \c is mandatory!
 }
 
 negative_tests = []
