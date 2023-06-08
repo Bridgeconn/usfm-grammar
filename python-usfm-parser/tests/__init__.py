@@ -268,7 +268,7 @@ pass_fail_override_list = {
     # link attributes used without hyphen
     f"{TEST_DIR}/paratextTests/LinkAttributesAreValid/origin.usfm": "fail",
 
-    # significant space missing after \p , \q, \m
+    # significant space missing after \p , \q, \m, \b
     f"{TEST_DIR}/paratextTests/CustomAttributesAreValid/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NestingInFootnote/origin.usfm": "fail",
     f"{TEST_DIR}/specExamples/cross-ref/origin.usfm": "fail",
@@ -276,6 +276,7 @@ pass_fail_override_list = {
     f"{TEST_DIR}/paratextTests/NestingInCrossReferences/origin.usfm": "fail",
     f"{TEST_DIR}/usfmjsTests/acts-1-20.aligned.crammed.oldformat/origin.usfm": "fail",
     f"{TEST_DIR}/special-cases/empty-para/origin.usfm": "fail",
+    f"{TEST_DIR}/special-cases/sp/origin.usfm": "fail",
 
     # No. of columns in table not validated by usfm-grammar
     f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "pass",
