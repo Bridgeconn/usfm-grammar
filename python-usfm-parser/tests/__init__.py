@@ -268,13 +268,14 @@ pass_fail_override_list = {
     # link attributes used without hyphen
     f"{TEST_DIR}/paratextTests/LinkAttributesAreValid/origin.usfm": "fail",
 
-    # significant space missing after \p , \q
+    # significant space missing after \p , \q, \m
     f"{TEST_DIR}/paratextTests/CustomAttributesAreValid/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NestingInFootnote/origin.usfm": "fail",
     f"{TEST_DIR}/specExamples/cross-ref/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/MarkersMissingSpace/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NestingInCrossReferences/origin.usfm": "fail",
     f"{TEST_DIR}/usfmjsTests/acts-1-20.aligned.crammed.oldformat/origin.usfm": "fail",
+    f"{TEST_DIR}/special-cases/empty-para/origin.usfm": "fail",
 
     # No. of columns in table not validated by usfm-grammar
     f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "pass",
@@ -288,7 +289,7 @@ pass_fail_override_list = {
     f"{TEST_DIR}/usfmjsTests/57-TIT.greek.oldformat/origin.usfm": "fail",
     f"{TEST_DIR}/usfmjsTests/57-TIT.greek/origin.usfm": "fail",
 
-    # no \p after \s
+    # no \p (usually after \s)
     f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.usfm": "fail", # has \s5
     f"{TEST_DIR}/usfmjsTests/missing_verses/origin.usfm": "fail", # has \s5
     f"{TEST_DIR}/usfmjsTests/isa_verse_span/origin.usfm": "fail", # has \s5
@@ -302,6 +303,7 @@ pass_fail_override_list = {
     f"{TEST_DIR}/usfmjsTests/out_of_sequence_verses/origin.usfm": "fail",
     f"{TEST_DIR}/usfmjsTests/acts_1_milestone/origin.usfm": "fail",
     f"{TEST_DIR}/usfmjsTests/luk_quotes/origin.usfm": "fail",
+    f"{TEST_DIR}/biblica/BlankLinesWithFigures/origin.usfm": "fail", #\fig used without \p, only \b
 
     # \k-s
     f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt.oldformat/origin.usfm": "fail", # also has \toc1 without content
@@ -312,7 +314,8 @@ pass_fail_override_list = {
     ########### Need to be fixed #######################
     f"{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm": "pass", # \c is mandatory!
     f"{TEST_DIR}/usfmjsTests/gn_headers/origin.usfm": "fail", # what is the valid position for mte and imt
-    f"{TEST_DIR}/usfmjsTests/acts_8-37-ugnt-footnote/origin.usfm": "fail" # no clue why it fails
+    f"{TEST_DIR}/biblica/PublishingVersesWithFormatting/origin.usfm": "fail", # bookcode XXA
+    f"{TEST_DIR}/usfmjsTests/acts_8-37-ugnt-footnote/origin.usfm": "fail", # no clue why it fails
 }
 
 negative_tests = []
