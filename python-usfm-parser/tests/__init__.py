@@ -265,11 +265,15 @@ pass_fail_override_list = {
     # Use of default attribute for non listed marker
     f"{TEST_DIR}/paratextTests/ValidMilestones/origin.usfm": "fail",
 
+    # link attributes used without hyphen
+    f"{TEST_DIR}/paratextTests/LinkAttributesAreValid/origin.usfm": "fail",
+
     # significant space missing after \p 
     f"{TEST_DIR}/paratextTests/CustomAttributesAreValid/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NestingInFootnote/origin.usfm": "fail",
     f"{TEST_DIR}/specExamples/cross-ref/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/MarkersMissingSpace/origin.usfm": "fail",
+    f"{TEST_DIR}/paratextTests/NestingInCrossReferences/origin.usfm": "fail",
 
     # No. of columns in table not validated by usfm-grammar
     f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "pass",
