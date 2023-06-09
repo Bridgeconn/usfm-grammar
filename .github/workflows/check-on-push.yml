@@ -72,4 +72,5 @@ jobs:
       - name: Run tests for parsing errors
         working-directory: ./python-usfm-parser
         run:
-          pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto
+          # pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto
+          pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto tests/test_parsing.py

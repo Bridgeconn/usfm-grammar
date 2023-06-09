@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <usx version="3.0">
   <book code="GEN" style="id" />
   <chapter number="1" style="c" sid="GEN 1" />
@@ -6,6 +7,6 @@
   <para style="p" vid="GEN 1:2">
     <char style="add">an addition containing the word <char style="nd">Lord</char></char> and further text ...</para>
   <para style="p" vid="GEN 1:2">
-    <char style="add">an addition containing the word <char style="nd" closed="false">Lord</char></char> and further text ... <verse eid="GEN 1:2" /><verse number="3" style="v" sid="GEN 1:3" />That is why <char style="bk">The Book of the <char style="nd">Lord</char>'s Battles</char> speaks of “...the town of Waheb in the area of Suphah, and the valleys; the Arnon River,<verse eid="GEN 1:3" /></para>
+    <char style="add">and an addition containing the word <char style="nd" closed="false">Lord!</char></char> with further text ... <verse eid="GEN 1:2" /><verse number="3" style="v" sid="GEN 1:3" />That is why <char style="bk">The Book of the <char style="nd">Lord</char>'s Battles</char> speaks of “...the town of Waheb in the area of Suphah, and the valleys; the Arnon River,<verse eid="GEN 1:3" /></para>
   <chapter eid="GEN 1" />
 </usx>

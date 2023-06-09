@@ -1,4 +1,4 @@
-<?xml encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
         <description>Test that a body paragraph is not allowed before the first chapter element</description>
         <validated>fail</validated>

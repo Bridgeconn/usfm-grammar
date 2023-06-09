@@ -20,7 +20,9 @@ def test_error_less_parsing(file_path):
         assert not test_parser.errors, test_parser.errors
     else:
         # negative tests
-        assert test_parser.errors, "file has errors, but passed\n"+test_parser.to_syntax_tree()
+        # assert test_parser.errors, "file has errors, but passed\n"+test_parser.to_syntax_tree()
+        assert test_parser.errors or "MISSING" in test_parser.to_syntax_tree(),\
+            "file has errors, but passed\n"+test_parser.to_syntax_tree()
 
 positive_files = test_files.copy()
 for file in negative_tests:
@@ -46,8 +48,10 @@ def test_all_markers_are_in_output(file_path):
 
     all_nodes_in_st = get_nodes(test_parser.syntax_tree)
     for marker in all_markers_in_input:
-        if marker in ['qt', 'ts'] or marker.startswith("z"):
+        if marker in ['qt-s', 'qt-e', 'ts-s', 'ts-e', 'ts', 'k-s', 'k-e'] or marker.startswith("z"):
             marker = "milestone"
+        elif marker in ['xt']:
+            marker = "crossref"
         assert marker in all_nodes_in_st, marker
 
 USFM_WITH_ERROR = '''

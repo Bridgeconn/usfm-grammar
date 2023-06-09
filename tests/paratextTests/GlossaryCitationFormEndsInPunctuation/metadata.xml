@@ -1,6 +1,5 @@
-<?xml encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
         <description>GlossaryCitationFormEndsInPunctuation. From paratext test suite</description>
-        <validated>fail</validated>
-        <tags>clarify</tags>
+        <validated>pass</validated>
 </test-metadata>

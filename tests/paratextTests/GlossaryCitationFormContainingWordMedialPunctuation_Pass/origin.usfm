@@ -2,4 +2,4 @@
 \c 1
 \p \v 1 something \p  \k keywordkeyw\k* definition
 \c 1
-\p \v 1 something \p  \k keyword\'keyw\k* definition
+\p \v 1 something \p  \k keyword'keyw\k* definition
