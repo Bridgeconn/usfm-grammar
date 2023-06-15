@@ -286,8 +286,7 @@ qa
       (chapterNumber))
     (title
       (qa
-        (verseText
-          (text))))
+        (text)))
     (poetry
       (qBlock
         (q
@@ -304,8 +303,7 @@ qa
             (text)))))
     (title
       (qa
-        (verseText
-          (text))))
+        (text)))
     (poetry
       (qBlock
         (q
@@ -375,8 +373,7 @@ qac
           (verseText
             (text))
           (qac
-            (verseText
-              (text)))
+            (text))
           (verseText
             (text)))
         (q
@@ -421,8 +418,7 @@ qac
           (v
             (verseNumber))
           (qac
-            (verseText
-              (text)))
+            (text))
           (verseText
             (text)))
         (q
