@@ -80,7 +80,7 @@ def node_2_usx_id(node, usfm_bytes,parent_xml_node):
     if desc is not None and desc.strip() != "":
         book_xml_node.text = desc.strip()
 
-def node_2_usx_c(node, usfm_bytes,parent_xml_node, xml_root_node):
+def node_2_usx_c(node, usfm_bytes,parent_xml_node):
     '''Build c, the chapter milestone node in usx'''
     chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num
                                         (ca (chapterNumber) @alt-num)?
@@ -105,7 +105,7 @@ def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
     '''build chapter node in USX'''
     for child in node.children:
         if child.type == "c":
-            chap_ref = node_2_usx_c(child, usfm_bytes,parent_xml_node, xml_root_node)
+            chap_ref = node_2_usx_c(child, usfm_bytes,parent_xml_node)
         else:
             node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
 
@@ -176,7 +176,7 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
     v_xml_node.set('style', "v")
     v_xml_node.set('sid', ref.strip())
 
-def node_2_usx_ca_va(node, usfm_bytes, parent_xml_node, xml_root_node):
+def node_2_usx_ca_va(node, usfm_bytes, parent_xml_node):
     '''Build elements for independant ca and va away from c and v'''
     style = node.type
     char_xml_node = etree.SubElement(parent_xml_node, "char")
@@ -356,7 +356,7 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
     elif node.type in ["cl", "cp", "cd", "vp"]:
         node_2_usx_generic(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif node.type in ["ca", "va"]:
-        node_2_usx_ca_va(node, usfm_bytes, parent_xml_node, xml_root_node)
+        node_2_usx_ca_va(node, usfm_bytes, parent_xml_node)
     elif node.type == "v":
         node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif node.type == "verseText":
