@@ -80,11 +80,11 @@ def node_2_usx_id(node, usfm_bytes,parent_xml_node):
     if desc is not None and desc.strip() != "":
         book_xml_node.text = desc.strip()
 
-def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
-    '''build chapter node in USX'''
-    chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num)
+def node_2_usx_c(node, usfm_bytes,parent_xml_node, xml_root_node):
+    '''Build c, the chapter milestone node in usx'''
+    chap_cap = USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num
                                         (ca (chapterNumber) @alt-num)?
-                                        (cp (text) @pub-num)?
+                                        (cp (text) @pub-num)?)
                                     ''').captures(node)
     chap_num = usfm_bytes[chap_cap[0][0].start_byte:chap_cap[0][0].end_byte].decode('utf-8')
     chap_ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
@@ -99,11 +99,18 @@ def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
         if tupl[1] == "pub-num":
             chap_xml_node.set('pubnumber',
                 usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip())
+    return chap_ref
+
+def node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node):
+    '''build chapter node in USX'''
     for child in node.children:
-        node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
+        if child.type == "c":
+            chap_ref = node_2_usx_c(child, usfm_bytes,parent_xml_node, xml_root_node)
+        else:
+            node_2_usx(child, usfm_bytes, parent_xml_node, xml_root_node)
 
     prev_verses = xml_root_node.findall(".//verse")
-    if len(prev_verses)>0:
+    if len(prev_verses)>0 and prev_verses[-1].get("eid") is None:
         v_end_xml_node = etree.Element("verse")
         v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
         last_sibbling = parent_xml_node[-1]
@@ -123,6 +130,8 @@ def find_prev_uncle(parent_xml_node):
     uncle_index = -2
     while True:
         if grand_parent[uncle_index].tag in ["sidebar", "ms"]:
+            uncle_index -= 1
+        elif grand_parent[uncle_index].get('style') in ['ca', 'cp']:
             uncle_index -= 1
         else:
             prev_uncle = grand_parent[uncle_index]
@@ -166,6 +175,20 @@ def node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node):
     v_xml_node.set('number', verse_num.strip())
     v_xml_node.set('style', "v")
     v_xml_node.set('sid', ref.strip())
+
+def node_2_usx_ca_va(node, usfm_bytes, parent_xml_node, xml_root_node):
+    '''Build elements for independant ca and va away from c and v'''
+    style = node.type
+    char_xml_node = etree.SubElement(parent_xml_node, "char")
+    char_xml_node.set("style", style)
+    alt_num_match = USFM_LANGUAGE.query('''([
+                                        (chapterNumber)
+                                        (verseNumber)
+                                        ] @alt-num)''').captures(node)[0]
+    alt_num = usfm_bytes[alt_num_match[0].start_byte:alt_num_match[0].end_byte] \
+        .decode('utf-8').strip()
+    char_xml_node.set("altnumber", alt_num)
+    char_xml_node.set("closed", "true")
 
 def node_2_usx_para(node, usfm_bytes, parent_xml_node, xml_root_node):
     '''build paragraph nodes in USX'''
@@ -330,8 +353,10 @@ def node_2_usx(node, usfm_bytes, parent_xml_node, xml_root_node): # pylint: disa
         node_2_usx_id(node, usfm_bytes, parent_xml_node)
     elif node.type == "chapter":
         node_2_usx_chapter(node, usfm_bytes,parent_xml_node, xml_root_node)
-    elif node.type in ["c", "ca", "cp"]:
-        pass
+    elif node.type in ["cl", "cp", "cd", "vp"]:
+        node_2_usx_generic(node, usfm_bytes, parent_xml_node, xml_root_node)
+    elif node.type in ["ca", "va"]:
+        node_2_usx_ca_va(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif node.type == "v":
         node_2_usx_verse(node, usfm_bytes, parent_xml_node, xml_root_node)
     elif node.type == "verseText":

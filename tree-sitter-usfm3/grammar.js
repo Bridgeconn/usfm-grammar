@@ -142,7 +142,7 @@ module.exports = grammar({
         $.c,
         repeat($._chapterContent)
       )),
-    c: $ => seq("\\c ", $.chapterNumber),
+    c: $ => prec.right(0,seq("\\c ", $.chapterNumber, repeat($._chapterMeta))),
     chapterNumber: $ => /\d+/,
 
     _chapterContent: $ => choice(
@@ -245,6 +245,7 @@ module.exports = grammar({
 
     _paragraphContent: $ => choice(
       $.v,
+      $._verseMeta,
       $.verseText,
       $.footnote, 
       $.crossref,

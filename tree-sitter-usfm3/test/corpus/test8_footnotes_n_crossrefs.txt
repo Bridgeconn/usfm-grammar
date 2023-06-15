@@ -362,32 +362,32 @@ xt in cd
       (description)))
   (chapter
     (c
-      (chapterNumber))
-    (cd
-      (xt_standalone
-        (noteText
-          (text))
-        (defaultAttribute
-          (attributeValue)))
-      (text)
-      (xt_standalone
-        (noteText
-          (text))
-        (defaultAttribute
-          (attributeValue)))
-      (text)
-      (xt_standalone
-        (noteText
-          (text))
-        (defaultAttribute
-          (attributeValue)))
-      (text)
-      (xt_standalone
-        (noteText
-          (text))
-        (defaultAttribute
-          (attributeValue)))
-      (text))
+      (chapterNumber)
+      (cd
+        (xt_standalone
+          (noteText
+            (text))
+          (defaultAttribute
+            (attributeValue)))
+        (text)
+        (xt_standalone
+          (noteText
+            (text))
+          (defaultAttribute
+            (attributeValue)))
+        (text)
+        (xt_standalone
+          (noteText
+            (text))
+          (defaultAttribute
+            (attributeValue)))
+        (text)
+        (xt_standalone
+          (noteText
+            (text))
+          (defaultAttribute
+            (attributeValue)))
+        (text)))
     (paragraph
       (p
         (v
