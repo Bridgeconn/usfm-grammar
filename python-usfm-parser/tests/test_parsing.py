@@ -48,7 +48,9 @@ def test_all_markers_are_in_output(file_path):
 
     all_nodes_in_st = get_nodes(test_parser.syntax_tree)
     for marker in all_markers_in_input:
-        if marker in ['qt-s', 'qt-e', 'ts-s', 'ts-e', 'ts', 'k-s', 'k-e'] or marker.startswith("z"):
+        if marker.startswith("z"):
+            marker = "zNameSpace"
+        elif marker in ['qte','qts', 'ts'] or marker.endswith('-e') or marker.endswith("-s"):
             marker = "milestone"
         elif marker in ['xt']:
             marker = "crossref"

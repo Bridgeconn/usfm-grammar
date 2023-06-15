@@ -580,14 +580,14 @@ module.exports = grammar({
 
     //Milestone
     /* since milestones can be user defined, their name is defined as any set of 
-      letters of digits.*/
+      letters of digits.-- not following this. ony qt, ts or znamespaces are valid milestones*/
 
-    milestoneTag: $=> seq("\\", prec.right(1,token.immediate(/[\w\d_]+/))),
+    milestoneTag: $=> seq("\\", prec.right(1,token.immediate(/(ts|qte|qts)/))),
     _milestoneStandaloneMarker: $ => seq($.milestoneTag,
       optional($._milestoneAttributes), "\\*" ),
 
-    milestoneStartTag: $ => /\\[\w\d_]+-s/,
-    milestoneEndTag: $=> /\\[\w\d_]+-e/,
+    milestoneStartTag: $ => /\\(t|ts|qt|k)(\d+)?-s/,
+    milestoneEndTag: $=> /\\(t|ts|qt|k)(\d+)?-e/,
     _milestoneStart: $ => seq($.milestoneStartTag,
       optional($._milestoneAttributes), "\\*" ),
     _milestoneEnd: $ => seq($.milestoneEndTag,
@@ -607,7 +607,7 @@ module.exports = grammar({
     _zNameSpaceRegular: $ => prec.right(0, seq($.zSpaceTag, optional($.text))),
     _zNameSpaceClosed: $ => prec.right(0, seq($.zSpaceTag, optional($.text),
       optional($._milestoneAttributes), $._zSpaceClose)), // This may not support one name space within another
-    _zNameSpaceStandaloneMarker: $ => seq($.zSpaceTag,
+    _zNameSpaceStandaloneMarker: $ => seq($.zSpaceTag, optional($.text),
       optional($._milestoneAttributes), "\\*" ),
     zNameSpace: $ => choice($._zNameSpaceClosed, $._zNameSpaceRegular, $._zNameSpaceStandaloneMarker),
     
