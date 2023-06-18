@@ -28,7 +28,14 @@ module.exports = grammar({
               "1ES", "2ES", "MAN", "PS2", "ODA", "PSS", "EZA", 
               "5EZ", "6EZ", "DAG", "PS3", "2BA", "LBA", "JUB", "ENO", 
               "1MQ", "2MQ", "3MQ", "REP", "4BA", "LAO", "FRT", 
-              "BAK", "OTH", "INT", "CNC", "GLO", "TDX", "NDX"),
+              "BAK", "OTH", "INT", "CNC", "GLO", "TDX", "NDX", "TOB",
+              "JDT", "ESG", "WIS", "SIR", "BAR", "LJE", "S3Y", 
+              "SUS", "BEL", "1MA", "2MA", "3MA", "4MA", "1ES", "2ES", 
+              "MAN", "PS2", "ODA", "PSS", "EZA", "5EZ", "6EZ", 
+              "DAG", "PS3", "2BA", "LBA", "JUB", "ENO", "1MQ", "2MQ", 
+              "3MQ", "REP", "4BA", "LAO", "FRT", "BAK", "OTH", 
+              "INT", "CNC", "GLO", "TDX", "NDX", "XXA", "XXB", "XXC", 
+              "XXD", "XXE", "XXF", "XXG"),
     text: $ => /[^\\\|]+/,
     _text: $ => /[^\\\|]+/,
     _spaceOrLine: $ => /[\s\n\r]/,
@@ -135,7 +142,7 @@ module.exports = grammar({
         $.c,
         repeat($._chapterContent)
       )),
-    c: $ => seq("\\c ", $.chapterNumber),
+    c: $ => prec.right(0,seq("\\c ", $.chapterNumber, repeat($._chapterMeta))),
     chapterNumber: $ => /\d+/,
 
     _chapterContent: $ => choice(
@@ -238,6 +245,7 @@ module.exports = grammar({
 
     _paragraphContent: $ => choice(
       $.v,
+      $._verseMeta,
       $.verseText,
       $.footnote, 
       $.crossref,
@@ -292,8 +300,8 @@ module.exports = grammar({
     qr: $ => prec.right(0, seq("\\qr", $._spaceOrLine, repeat($._poetryContent))),
     qc: $ => prec.right(0, seq("\\qc",$._spaceOrLine, repeat($._poetryContent))),
     qs: $ => seq("\\qs", $._spaceOrLine, repeat($._poetryContent), "\\qs*"),
-    qa: $ => prec.right(0, seq("\\qa",$._spaceOrLine, repeat($._poetryContent))),
-    qac: $ => seq("\\qac", $._spaceOrLine, repeat($._poetryContent), token("\\qac*")),
+    qa: $ => prec.right(0, seq("\\qa",$._spaceOrLine, repeat($.text))),
+    qac: $ => seq("\\qac", $._spaceOrLine, repeat($.text), token("\\qac*")),
     qmBlock: $ => prec.right(0, repeat1($.qm)),
     qm: $ => prec.right(0, seq($.qmTag, repeat($._poetryContent))),
     qmTag: $ => seq("\\qm", optional($.numberedLevelMax3), $._spaceOrLine),
@@ -572,14 +580,14 @@ module.exports = grammar({
 
     //Milestone
     /* since milestones can be user defined, their name is defined as any set of 
-      letters of digits.*/
+      letters of digits.-- not following this. ony qt, ts or znamespaces are valid milestones*/
 
-    milestoneTag: $=> seq("\\", prec.right(1,token.immediate(/[\w\d_]+/))),
+    milestoneTag: $=> seq("\\", prec.right(1,token.immediate(/(ts|qte|qts)/))),
     _milestoneStandaloneMarker: $ => seq($.milestoneTag,
       optional($._milestoneAttributes), "\\*" ),
 
-    milestoneStartTag: $ => /\\[\w\d_]+-s/,
-    milestoneEndTag: $=> /\\[\w\d_]+-e/,
+    milestoneStartTag: $ => /\\(t|ts|qt|k)(\d+)?-s/,
+    milestoneEndTag: $=> /\\(t|ts|qt|k)(\d+)?-e/,
     _milestoneStart: $ => seq($.milestoneStartTag,
       optional($._milestoneAttributes), "\\*" ),
     _milestoneEnd: $ => seq($.milestoneEndTag,
@@ -599,7 +607,7 @@ module.exports = grammar({
     _zNameSpaceRegular: $ => prec.right(0, seq($.zSpaceTag, optional($.text))),
     _zNameSpaceClosed: $ => prec.right(0, seq($.zSpaceTag, optional($.text),
       optional($._milestoneAttributes), $._zSpaceClose)), // This may not support one name space within another
-    _zNameSpaceStandaloneMarker: $ => seq($.zSpaceTag,
+    _zNameSpaceStandaloneMarker: $ => seq($.zSpaceTag, optional($.text),
       optional($._milestoneAttributes), "\\*" ),
     zNameSpace: $ => choice($._zNameSpaceClosed, $._zNameSpaceRegular, $._zNameSpaceStandaloneMarker),
     

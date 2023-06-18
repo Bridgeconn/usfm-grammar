@@ -39,9 +39,9 @@ cl markers
       (description)))
   (chapter
     (c
-      (chapterNumber))
-    (cl
-      (text))
+      (chapterNumber)
+      (cl
+        (text)))
     (paragraph
       (p
         (v
@@ -76,11 +76,11 @@ cl ca cp markers
     (cl
       (text))
     (c
-      (chapterNumber))
-    (ca
-      (chapterNumber))
-    (cp
-      (text))
+      (chapterNumber)
+      (ca
+        (chapterNumber))
+      (cp
+        (text)))
     (paragraph
       (p
         (v
@@ -189,5 +189,70 @@ va vp markers
           (verseNumber)
           (vp
             (text)))
+        (verseText
+          (text))))))
+
+================================================================================
+ca cp va vp markers occuring within content
+================================================================================
+\id GEN
+\c 1
+\p 
+\v 1 text - text
+\v 2 again text
+\cp 1
+\p
+\v 3 The first verse of after some a represented vp marker
+\va 3a \va* with va occuring away from v 
+\v 3 some more text \vp I-I \vp* and vp occuring away from v
+\ca 1 \ca* 
+\p
+\v 4 text after a ca that is thrown in the middle of a chapter content
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (cp
+      (text))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (va
+          (verseNumber))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (vp
+          (text))
+        (verseText
+          (text))))
+    (ca
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
         (verseText
           (text))))))

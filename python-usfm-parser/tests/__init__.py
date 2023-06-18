@@ -204,10 +204,10 @@ pass_fail_override_list = {
     # no use of nesting (eg: \w within \f) correct usage: usfmjsTests/acts_8-37-ugnt-footnote
     f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt/origin.usfm": "fail", # also has \toc1 without content
 
+    f"{TEST_DIR}/biblica/PublishingVersesWithFormatting/origin.usfm": "fail", # \c without number
     ########### Need to be fixed #######################
     f"{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm": "pass", # \c is mandatory!
     f"{TEST_DIR}/usfmjsTests/gn_headers/origin.usfm": "fail", # what is the valid position for mte and imt
-    f"{TEST_DIR}/biblica/PublishingVersesWithFormatting/origin.usfm": "fail", # bookcode XXA
     f"{TEST_DIR}/usfmjsTests/acts_8-37-ugnt-footnote/origin.usfm": "fail", # no clue why it fails
 }
 

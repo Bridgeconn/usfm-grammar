@@ -104,9 +104,10 @@ def test_all_markers_are_in_output(file_path):
         "b":"optbreak",
         "fig":"figure",}
     for marker in all_markers_in_input:
+        synonym = marker
         if replacements.get(marker):
-            marker = replacements[marker]
+            synonym = replacements[marker]
         # if (marker in ["ts", "qt"] or marker.endswith("-s") or \
         #     marker.endswith("-e") or marker.startswith("z")):
         #     marker = "milestone"
-        assert marker in all_styles, marker
+        assert marker in all_styles or synonym in all_styles, marker
