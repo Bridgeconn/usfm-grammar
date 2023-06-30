@@ -630,7 +630,7 @@
         <attribute>
           <name ns="">vid</name>
           <data type="string">
-            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*</param>
+            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*([\-,][0-9]+)*</param>
           </data>
         </attribute>
       </optional>
@@ -641,6 +641,7 @@
           <ref name="CrossReference"/>
           <ref name="Char"/>
           <ref name="Milestone"/>
+          <ref name="VerseEnd" usfm:ignore="true"/>
           <ref name="Break"/>
           <text>
             <usfm:text/>
@@ -665,6 +666,8 @@
       <value>r</value>
       <value>s1</value>
       <value>s2</value>
+      <value>s3</value>
+      <value>s4</value>
       <value>sr</value>
       <value>sp</value>
       <value>sd1</value>
@@ -689,7 +692,7 @@
         <attribute>
           <name ns="">vid</name>
           <data type="string">
-            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*</param>
+            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*([\-,][0-9]+)*</param>
           </data>
         </attribute>
       </optional>
@@ -750,8 +753,6 @@
       <value>d</value>
       <value>mi</value>
       <value>m</value>
-      <value>s3</value>
-      <value>s4</value>
       <value>ts</value>
       <value>k1</value>
       <value>k2</value>
@@ -771,7 +772,7 @@
         <attribute>
           <name ns="">vid</name>
           <data type="string">
-            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*</param>
+            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*([\-,][0-9]+)*</param>
           </data>
         </attribute>
       </optional>
@@ -815,7 +816,7 @@
         <attribute>
           <name ns="">vid</name>
           <data type="string">
-            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:\p{L}\p{Mn}]*</param>
+            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*([\-,][0-9]+)*</param>
           </data>
         </attribute>
       </optional>
@@ -1548,6 +1549,7 @@
           </text>
         </choice>
       </zeroOrMore>
+      <usfm:endtag usfm:many="?"/>
     </element>
   </define>
   <define name="FootnoteChar.char.style.enum">
@@ -1615,6 +1617,7 @@
           </text>
         </choice>
       </oneOrMore>
+      <usfm:endtag usfm:many="?"/>
     </element>
   </define>
   <define name="CrossReferenceChar.char.style.enum">
@@ -1656,9 +1659,9 @@
   </define>
   <define name="category">
     <attribute>
-      <usfm:tag>cat</usfm:tag>
+      <usfm:tag dump="true">cat</usfm:tag>
       <usfm:text/>
-      <usfm:endtag>cat</usfm:endtag>
+      <usfm:endtag dump="true">cat</usfm:endtag>
       <name ns="">category</name>
       <text/>
     </attribute>
