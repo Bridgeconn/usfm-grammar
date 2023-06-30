@@ -11,9 +11,13 @@ from tests import all_usfm_files, initialise_parser, doubtful_usfms,\
 lxml_object = etree.Element('Root')
 checker = LXMLOutputChecker()
 
-with open("../schemas/usx.rnc", encoding='utf-8') as f:
-    usxrnc_doc  = f.read()
-relaxng = etree.RelaxNG.from_rnc_string(usxrnc_doc)
+# with open("../schemas/usx.rnc", encoding='utf-8') as f:
+#     usxrnc_doc  = f.read()
+# relaxng = etree.RelaxNG.from_rnc_string(usxrnc_doc)
+
+with open("../schemas/usx.rng", encoding='utf-8') as f:
+    relaxng_doc = etree.parse(f)
+relaxng = etree.RelaxNG(relaxng_doc)
 
 test_files = all_usfm_files.copy()
 for file in doubtful_usfms+doubtful_usxs+negative_tests:
