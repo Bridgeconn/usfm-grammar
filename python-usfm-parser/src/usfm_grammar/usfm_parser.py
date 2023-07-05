@@ -8,6 +8,7 @@ from tree_sitter import Language, Parser
 from lxml import etree
 
 from usfm_grammar.usx_generator import USXGenerator
+from usfm_grammar.usj_generator import USJGenerator
 
 class Filter(str, Enum):
     '''Defines the values of filter options'''
@@ -92,59 +93,29 @@ class USFMParser():
                 "\nUse ignore_errors=True, to generate output inspite of errors")
         return self.syntax_tree.sexp()
 
-    def to_dict(self, filters=None, ignore_errors=False): #pylint: disable=too-many-branches
-        '''Converts syntax tree to dictionary/json and selection of desired type of contents'''
-        if (not ignore_errors) and self.errors:
+    def to_usj(self, filters=None, ignore_errors=False): #pylint: disable=unused-argument
+        '''convert the syntax_tree to the JSON format USJ.
+        Filtering of desired contents to be implemented'''
+        if not ignore_errors and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
             raise Exception("Errors present:"+\
                 f'\n\t{err_str}'+\
                 "\nUse ignore_errors=True, to generate output inspite of errors")
-        dict_output = {"book":{}}
-        if filters is None or filters == []:
-            filters = list(Filter)
+        json_root_obj = {
+                "type": "USJ",
+                "version": "0.0.1-alpha.2",
+                "content":[]
+            }
         try:
-            for child in self.syntax_tree.children:
-                match child.type:
-                    case "book":
-                        id_captures = id_query.captures(child)
-                        for id_cap in id_captures:
-                            match id_cap:
-                                case (node, "book-code"):
-                                    dict_output['book']['bookCode'] = self.usfm_bytes[\
-                                        node.start_byte:node.end_byte].decode('utf-8').strip()
-                                case (node, "desc"):
-                                    val = self.usfm_bytes[\
-                                        node.start_byte:node.end_byte].decode('utf-8').strip()
-                                    if val != "":
-                                        dict_output['book']['fileDescription'] = val
-                    case "chapter":
-                        if "chapters" not in dict_output['book']:
-                            dict_output['book']['chapters'] = []
-
-                        chapter_output = node_2_dict_chapter(child, self.usfm_bytes, filters)
-
-                        chapter_output['contents'] = []
-                        for inner_child in child.children:
-                            if inner_child.type not in ['chapterNumber','cl','ca','cp','cd','c']:
-                                processed = node_2_dict(inner_child, self.usfm_bytes, filters)
-                                if isinstance(processed, list):
-                                    chapter_output['contents'] += processed
-                                elif processed is not None:
-                                    chapter_output['contents'].append(processed)
-                        dict_output['book']['chapters'].append(chapter_output)
-                    case _:
-                        if Filter.BOOK_HEADERS in filters:
-                            if "headers" not in dict_output['book']:
-                                dict_output['book']['headers'] = []
-                            dict_output['book']['headers'].append(
-                                node_2_dict(child, self.usfm_bytes, filters))
+            usj_generator = USJGenerator(USFM_LANGUAGE, json_root_obj)
+            usj_generator.node_2_usj(self.syntax_tree, self.usfm_bytes, json_root_obj)
         except Exception as exe:
             message = "Unable to do the conversion. "
             if self.errors:
                 err_str = "\n\t".join([":".join(err) for err in self.errors])
                 message += f"Could be due to an error in the USFM\n\t{err_str}"
             raise Exception(message)  from exe
-        return dict_output
+        return usj_generator.json_root_obj
 
     def to_list(self, filters=None, ignore_errors=False): # pylint: disable=too-many-branches, too-many-locals
         '''uses the toJSON function and converts JSON to CSV
@@ -220,9 +191,7 @@ class USFMParser():
         usx_root = etree.Element("usx")
         usx_root.set("version", "3.0")
         try:
-            usx_generator = USXGenerator()
-            usx_generator.USFM_LANGUAGE = USFM_LANGUAGE
-            usx_generator.xml_root_node = usx_root
+            usx_generator = USXGenerator(USFM_LANGUAGE, usx_root)
             usx_generator.node_2_usx(self.syntax_tree, self.usfm_bytes, usx_root)
         except Exception as exe:
             message = "Unable to do the conversion. "

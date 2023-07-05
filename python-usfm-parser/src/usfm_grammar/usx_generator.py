@@ -4,8 +4,6 @@ from lxml import etree
 
 class USXGenerator:
     '''A binding for all methods used in generating USX from Syntax tree'''
-    USFM_LANGUAGE = None
-    xml_root_node = None
 
     # handled alike by the node_2_usx_generic method
     PARA_STYLE_MARKERS = ["ide", "usfm", "h", "toc", "toca", #identification
@@ -33,10 +31,18 @@ class USXGenerator:
     TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
 
+    def __init__(self, tree_sitter_language_obj, usx_root_element=None):
+        '''Initialize the class with usfm language and an empty output'''
+        self.usfm_language = tree_sitter_language_obj
+        if usx_root_element is None:
+            self.xml_root_node = etree.Element("usx")
+            self.xml_root_node.set("version", "3.0")
+        else:
+            self.xml_root_node = usx_root_element
 
     def node_2_usx_id(self, node, usfm_bytes,parent_xml_node):
         '''build id node in USX'''
-        id_captures = self.USFM_LANGUAGE.query('''(id (bookcode) @book-code
+        id_captures = self.usfm_language.query('''(id (bookcode) @book-code
                                                     (description)? @desc)''').captures(node)
         code = None
         desc = None
@@ -53,7 +59,7 @@ class USXGenerator:
 
     def node_2_usx_c(self, node, usfm_bytes,parent_xml_node):
         '''Build c, the chapter milestone node in usx'''
-        chap_cap = self.USFM_LANGUAGE.query('''(c (chapterNumber) @chap-num
+        chap_cap = self.usfm_language.query('''(c (chapterNumber) @chap-num
                                             (ca (chapterNumber) @alt-num)?
                                             (cp (text) @pub-num)?)
                                         ''').captures(node)
@@ -126,7 +132,7 @@ class USXGenerator:
                 else:
                     raise Exception(" prev_uncle is "+str(prev_uncle))
             v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
-        verse_num_cap = self.USFM_LANGUAGE.query('''
+        verse_num_cap = self.usfm_language.query('''
                                 (v
                                     (verseNumber) @vnum
                                     (va (verseNumber) @alt)?
@@ -152,7 +158,7 @@ class USXGenerator:
         style = node.type
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set("style", style)
-        alt_num_match = self.USFM_LANGUAGE.query('''([
+        alt_num_match = self.usfm_language.query('''([
                                             (chapterNumber)
                                             (verseNumber)
                                             ] @alt-num)''').captures(node)[0]
@@ -167,7 +173,7 @@ class USXGenerator:
             for child in node.children[0].children:
                 self.node_2_usx_para(child, usfm_bytes, parent_xml_node)
         elif node.type == 'paragraph':
-            para_tag_cap = self.USFM_LANGUAGE.query(
+            para_tag_cap = self.usfm_language.query(
                 "(paragraph (_) @para-marker)").captures(node)[0]
             para_marker = para_tag_cap[0].type
             if not para_marker.endswith("Block"):
@@ -225,7 +231,7 @@ class USXGenerator:
         if attrib_name == "src": # for \fig
             attrib_name = "file"
 
-        attrib_val_cap = self.USFM_LANGUAGE.query("((attributeValue) @attrib-val)").captures(node)
+        attrib_val_cap = self.usfm_language.query("((attributeValue) @attrib-val)").captures(node)
         if len(attrib_val_cap) > 0:
             attrib_value = usfm_bytes[attrib_val_cap[0][0].start_byte:\
                 attrib_val_cap[0][0].end_byte].decode('utf-8').strip()
@@ -259,7 +265,7 @@ class USXGenerator:
 
     def node_2_usx_milestone(self, node, usfm_bytes, parent_xml_node):
         '''create ms node in USX'''
-        ms_name_cap = self.USFM_LANGUAGE.query('''(
+        ms_name_cap = self.usfm_language.query('''(
             [(milestoneTag)
              (milestoneStartTag)
              (milestoneEndTag)
@@ -282,7 +288,7 @@ class USXGenerator:
             for child in node.children[1:-1]:
                 self.node_2_usx(child, usfm_bytes, sidebar_xml_node)
         elif node.type == "cat":
-            cat_cap = self.USFM_LANGUAGE.query('((category) @category)').captures(node)[0]
+            cat_cap = self.usfm_language.query('((category) @category)').captures(node)[0]
             category = usfm_bytes[cat_cap[0].start_byte:cat_cap[0].end_byte].decode('utf-8').strip()
             parent_xml_node.set('category', category)
         elif node.type == 'fig':

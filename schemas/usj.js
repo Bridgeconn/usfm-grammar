@@ -23,9 +23,17 @@ exports.USJSchemaDefinition = {
           description: "Indicates the Book-chapter-verse value in the paragraph based structure",
           type: "string",
         },
+        // eid: {
+        //   description: "Indicates the closing of a Book-chapter-verse component",
+        //   type: "string",
+        // },
+        // closed: {
+        //   description: "Indicates if a character marker is explicitly closed or not",
+        //   type: "bool",
+        // },
         number: {
           description: "Chapter number or verse number",
-          type: "integer",
+          type: "string",
         },
         code: {
           description: "The 3-letter book code in id element",
@@ -34,10 +42,22 @@ exports.USJSchemaDefinition = {
         },
         altnumber: {
           description: "Alternate chapter number or verse number",
-          type: "integer",
+          type: "string",
         },
         pubnumber: {
-          description: "Publsihed character of chapter or verse",
+          description: "Published character of chapter or verse",
+          type: "string",
+        },
+        caller: {
+          description: "Caller character for footnotes and cross-refs",
+          type: "string",
+        },
+        align: {
+          description: "Alignment of table cells",
+          type: "string",
+        },
+        category: {
+          description: "Category of extended study bible sections",
           type: "string",
         },
       },
@@ -46,7 +66,7 @@ exports.USJSchemaDefinition = {
    }
   properties: {
     type: {
-      description: "The kind of node or element this is",
+      description: "The kind of node/element/marker this is",
       type: "string"
     },
     version: {
