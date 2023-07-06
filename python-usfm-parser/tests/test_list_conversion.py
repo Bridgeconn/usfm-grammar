@@ -15,5 +15,5 @@ def test_list_converions_without_filter(file_path):
     '''Tests if input parses without errors'''
     test_parser = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
-    usfm_dict = test_parser.to_list([Filter.SCRIPTURE_TEXT])
-    assert isinstance(usfm_dict, list)
+    usfm_list = test_parser.to_list([Filter.SCRIPTURE_TEXT])
+    assert isinstance(usfm_list, list)

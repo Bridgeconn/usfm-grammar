@@ -9,6 +9,7 @@ from lxml import etree
 
 from usfm_grammar.usx_generator import USXGenerator
 from usfm_grammar.usj_generator import USJGenerator
+from usfm_grammar.list_generator import ListGenerator
 
 class Filter(str, Enum):
     '''Defines the values of filter options'''
@@ -130,49 +131,25 @@ class USFMParser():
             filters = list(Filter)
         if Filter.PARAGRAPHS in filters:
             filters.remove(Filter.PARAGRAPHS)
-        scripture_json = self.to_dict(filters, ignore_errors=ignore_errors)
-        table_output = [["Book","Chapter","Verse","Verse-Text","Notes","Milestone","Other"]]
-        book = scripture_json['book']['bookCode']
-        verse_num = 0
-        verse_text = ""
-        note_text = ""
-        ms_text = ""
-        title_text = ''
-        if "chapters" not in scripture_json['book']:
-            return table_output
-        for chap in scripture_json['book']['chapters']:
-            chapter = chap['c']
-            for item in chap['contents']:
-                if not item:
-                    # temporary fix. to be removed when implementing this to work with new flat JSON
-                    continue
-                first_key = list(item.keys())[0]
-                if first_key == "v":
-                    if verse_num != 0:
-                        row = [book, chapter, verse_num,
-                                verse_text,note_text,
-                                ms_text,title_text]
-                        table_output.append(row)
-                    verse_text = ""
-                    note_text = ""
-                    ms_text = ""
-                    title_text = ''
-                    verse_num = item['v']
-                elif first_key == 'verseText':
-                    verse_text += item['verseText'] +" "
-                elif first_key == "milestone":
-                    ms_text += str(item) + "\n"
-                elif first_key in CHAR_STYLE_MARKERS:
-                    verse_text += str(item[first_key]) + " "
-                elif first_key in NOTE_MARKERS:
-                    note_text += str(item)
-                else:
-                    title_text += str(item[first_key])
-            row = [book, chapter, verse_num,
-                    verse_text,note_text,
-                    ms_text,title_text]
-            table_output.append(row)
-        return table_output
+        json_root_obj = {
+                "type": "USJ",
+                "version": "0.0.1-alpha.2",
+                "content":[]
+            }
+        try:
+            usj_generator = USJGenerator(USFM_LANGUAGE, json_root_obj)
+            usj_generator.node_2_usj(self.syntax_tree, self.usfm_bytes, json_root_obj)
+            usj_dict = usj_generator.json_root_obj
+
+            list_generator = ListGenerator()
+            list_generator.usj_to_list(usj_dict)
+        except Exception as exe:
+            message = "Unable to do the conversion. "
+            if self.errors:
+                err_str = "\n\t".join([":".join(err) for err in self.errors])
+                message += f"Could be due to an error in the USFM\n\t{err_str}"
+            raise Exception(message)  from exe
+        return list_generator.list
 
     def to_markdown(self):
         '''query for chapter, paragraph, text structure'''
