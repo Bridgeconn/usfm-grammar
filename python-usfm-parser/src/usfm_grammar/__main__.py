@@ -53,7 +53,7 @@ def main():
 
     match output_format:
         case Format.JSON:
-            dict_output = my_parser.to_dict(filters=updated_filt, ignore_errors=True)
+            dict_output = my_parser.to_usj(filters=updated_filt, ignore_errors=True)
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
             table_output = my_parser.to_list(filters = updated_filt, ignore_errors=True)
