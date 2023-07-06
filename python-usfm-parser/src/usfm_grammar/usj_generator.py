@@ -78,6 +78,10 @@ class USJGenerator:
                     usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip()
         parent_json_obj['content'].append(chap_json_obj)
 
+        for child in node.children:
+            if child.type in ["cl", "cd"]:
+                self.node_2_usj(child, usfm_bytes,parent_json_obj)
+
     def node_2_usj_chapter(self, node, usfm_bytes, parent_json_obj):
         '''build chapter node in USX'''
         for child in node.children:
@@ -271,7 +275,6 @@ class USJGenerator:
             children_range_start = 2
         para_json_obj = {"type": f"para:{style}", "content":[]}
         for child in node.children[children_range_start:]:
-            # self.node_2_usj(child, usfm_bytes, para_xml_node)
             if child.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+\
             ["text", "footnote", "crossref", "verseText", "v", "b", "milestone", "zNameSpace"]:
             # only nest these types inside the upper para style node
@@ -300,7 +303,7 @@ class USJGenerator:
             self.node_2_usj_para(node, usfm_bytes, parent_json_obj)
         elif node.type in self.NOTE_MARKERS:
             self.node_2_usj_notes(node, usfm_bytes, parent_json_obj)
-        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS:
+        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+["xt_standalone"]:
             self.node_2_usj_char(node, usfm_bytes, parent_json_obj)
         elif node.type.endswith("Attribute"):
             self.node_2_usj_attrib(node, usfm_bytes, parent_json_obj)

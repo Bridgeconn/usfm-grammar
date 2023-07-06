@@ -76,6 +76,9 @@ class USXGenerator:
             if tupl[1] == "pub-num":
                 chap_xml_node.set('pubnumber',
                     usfm_bytes[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8').strip())
+        for child in node.children:
+            if child.type in ["cl", "cd"]:
+                self.node_2_usx(child, usfm_bytes,parent_xml_node)
         return chap_ref
 
     def node_2_usx_chapter(self, node, usfm_bytes, parent_xml_node):
@@ -344,7 +347,7 @@ class USXGenerator:
             self.node_2_usx_para(node, usfm_bytes, parent_xml_node)
         elif node.type in self.NOTE_MARKERS:
             self.node_2_usx_notes(node, usfm_bytes, parent_xml_node)
-        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS:
+        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+["xt_standalone"]:
             self.node_2_usx_char(node, usfm_bytes, parent_xml_node)
         elif node.type.endswith("Attribute"):
             self.node_2_usx_attrib(node, usfm_bytes, parent_xml_node)
