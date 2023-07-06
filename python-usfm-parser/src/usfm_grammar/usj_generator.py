@@ -1,6 +1,7 @@
 '''Logics for syntax-tree to dict(USJ) conversions'''
 from usfm_grammar.usx_generator import USXGenerator
 
+#pylint: disable=duplicate-code
 class USJGenerator:
     '''A binding for all methods used in generating USJ from Syntax tree'''
 
@@ -62,7 +63,7 @@ class USJGenerator:
                                             (cp (text) @pub-num)?)
                                         ''').captures(node)
         chap_num = self.usfm[chap_cap[0][0].start_byte:chap_cap[0][0].end_byte].decode('utf-8')
-        chap_ref = None 
+        chap_ref = None
         for child in self.json_root_obj['content']:
             if child['type'] == "book:id":
                 chap_ref = child['code']+" "+chap_num

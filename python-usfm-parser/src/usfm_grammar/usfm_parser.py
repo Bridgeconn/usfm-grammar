@@ -40,7 +40,7 @@ parser.set_language(USFM_LANGUAGE)
 # ANY_VALID_MARKER = PARA_STYLE_MARKERS+NOTE_MARKERS+CHAR_STYLE_MARKERS+\
                     # NESTED_CHAR_STYLE_MARKERS+TABLE_CELL_MARKERS+\
                     # MISC_MARKERS
-    
+
 
 id_query = USFM_LANGUAGE.query('''(book (id (bookcode) @book-code (description) @desc))''')
 
