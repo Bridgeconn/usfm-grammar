@@ -20,7 +20,7 @@ jobs:
       - name: Setup node and npm
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 20.4
       - name: Build the tree-sitter parser
         run: |
           cd tree-sitter-usfm3
