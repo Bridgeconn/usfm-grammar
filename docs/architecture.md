@@ -47,7 +47,7 @@ tree-sitter test     # to run all test in test/corpus
 tree-sitter test --update # to update all test files with the current output
 ```
 
-### usfm-grammar/python-usfm-parser
+### usfm-grammar/py-usfm-parser
 
 This is a parser implemented to use the grammar to obtain syntax tree(AST) for a USFM file and then convert the AST to other formats via APIs(methods or CLI). This module has the python implementation of the parser and is published on pip.
 
@@ -67,5 +67,5 @@ This is a parser implemented to use the grammar to obtain syntax tree(AST) for a
 
 ### usfm-grammar/javascript-usfm-parser
 
-Just like the python-usfm-parser, this is a parser implemented to use the grammar to obtain syntax tree(AST) for a USFM file and then convert the AST to other formats via APIs(methods or CLI). This module has the javascript implementation of the parser and is published on npm (as usfm-grammar-3.x.x).
+Just like the py-usfm-parser, this is a parser implemented to use the grammar to obtain syntax tree(AST) for a USFM file and then convert the AST to other formats via APIs(methods or CLI). This module has the javascript implementation of the parser and is published on npm (as usfm-grammar-3.x.x).
 

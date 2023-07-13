@@ -27,9 +27,9 @@ jobs:
         run: source ENV-dev/bin/activate
         
       - name: install packages
-        working-directory: ./python-usfm-parser
+        working-directory: ./py-usfm-parser
         run: pip install -r dev-requirements.txt
         
       - name: Run linter
-        working-directory: ./python-usfm-parser
+        working-directory: ./py-usfm-parser
         run: pylint --extension-pkg-allow-list=lxml src/usfm_grammar/*.py
