@@ -24,7 +24,7 @@ jobs:
       - name: Setup node and npm
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 20.4
       - name: Run tests
         run: |
           cd tree-sitter-usfm3
@@ -45,7 +45,7 @@ jobs:
       - name: Setup node and npm
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 20.4
 
       - name: Create Virtual Environment
         run: python -m venv ENV-dev
@@ -54,7 +54,7 @@ jobs:
         run: source ENV-dev/bin/activate
 
       - name: Install dependencies
-        run: pip install -r ./python-usfm-parser/dev-requirements.txt
+        run: pip install -r ./py-usfm-parser/dev-requirements.txt
 
       - name: Build grammar binary
         run: |
@@ -62,15 +62,15 @@ jobs:
           npm install .
           ./node_modules/.bin/tree-sitter generate
           cd ..
-          python python-usfm-parser/src/grammar_rebuild.py ./tree-sitter-usfm3/ python-usfm-parser/src/usfm_grammar/my-languages.so
+          python py-usfm-parser/src/grammar_rebuild.py ./tree-sitter-usfm3/ py-usfm-parser/src/usfm_grammar/my-languages.so
 
       - name: Install python module
         run: |
-          cd python-usfm-parser
+          cd py-usfm-parser
           pip install .
 
       - name: Run tests for parsing errors
-        working-directory: ./python-usfm-parser
+        working-directory: ./py-usfm-parser
         run:
           # pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto
-          pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto tests/test_parsing.py
+          pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not generated_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto

@@ -31,7 +31,7 @@ requires-python = ">=3.10"
 dev = ["rnc2rng", "jupyterlab", "pytest"]
 
 [project.urls]
-Homepage = "https://github.com/Bridgeconn/usfm-grammar/python-usfm-grammar#readme"
+Homepage = "https://github.com/Bridgeconn/usfm-grammar/py-usfm-grammar#readme"
 
 [project.scripts]
 usfm-grammar = "usfm_grammar.__main__:main"

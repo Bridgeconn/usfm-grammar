@@ -20,7 +20,7 @@ jobs:
       - name: Setup node and npm
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 20.4
       - name: Build the tree-sitter parser
         run: |
           cd tree-sitter-usfm3
@@ -32,15 +32,15 @@ jobs:
         env:
           CIBW_BEFORE_BUILD: >
               python -m pip install tree-sitter==0.20.0 &&
-              python python-usfm-parser/src/grammar_rebuild.py tree-sitter-usfm3 python-usfm-parser/src/usfm_grammar/my-languages.so
+              python py-usfm-parser/src/grammar_rebuild.py tree-sitter-usfm3 py-usfm-parser/src/usfm_grammar/my-languages.so
         with:
-          package-dir: python-usfm-parser
-          output-dir: python-usfm-parser/dist
-          config-file: "python-usfm-parser/pyproject.toml"
+          package-dir: py-usfm-parser
+          output-dir: py-usfm-parser/dist
+          config-file: "py-usfm-parser/pyproject.toml"
 
       - uses: actions/upload-artifact@v3
         with:
-          path: python-usfm-parser/dist/*.whl
+          path: py-usfm-parser/dist/*.whl
 
   publish_to_pypi:
     needs: [build_wheels]
@@ -55,7 +55,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: artifact
-          path: python-usfm-parser/dist/
+          path: py-usfm-parser/dist/
 
       - name: Publish distribution 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -63,4 +63,4 @@ jobs:
           user: __token__
           password: ${{ secrets.pypi_token }}
           # repository_url: https://test.pypi.org/legacy/
-          packages_dir: python-usfm-parser/dist/
+          packages_dir: py-usfm-parser/dist/

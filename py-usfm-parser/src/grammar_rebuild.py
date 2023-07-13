@@ -8,7 +8,7 @@ if len(sys.argv) == 3 :
     OUTPUT_PATH = sys.argv[2]
 else:
     raise Exception('''Usage: python python-usfm-parser/src/grammar_rebuild.py \
-./tree-sitter-usfm3/ python-usfm-parser/src/usfm_grammar/my-languages.so
+./tree-sitter-usfm3/ py-usfm-parser/src/usfm_grammar/my-languages.so
 from the project root directory''')
 
 Language.build_library(

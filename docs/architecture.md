@@ -47,13 +47,19 @@ tree-sitter test     # to run all test in test/corpus
 tree-sitter test --update # to update all test files with the current output
 ```
 
-### usfm-grammar/python-usfm-parser
+### usfm-grammar/py-usfm-parser
 
 This is a parser implemented to use the grammar to obtain syntax tree(AST) for a USFM file and then convert the AST to other formats via APIs(methods or CLI). This module has the python implementation of the parser and is published on pip.
 
 **src/grammar_rebuild.py** : To be run upon any updations on the actual grammar implementation. This will create the python binding for the grammar at `../tree-sitter-usfm` and store them as `.so` file within this module. Then on, only this `.so` file is required to run the parser and it is not dependant on the outer module, `../tree-sitter-usfm`.
 
 **src/usfm_grammar/**: This is where the parser is implemented. It reads USFM, converts to AST, queries the AST, handles errors, converts specific contents of AST to other formats.
+* **src/usfm_grammar/usfm_parser.py**:
+	Contains the USFMParser class that uses the grammar to obtain the AST and calls generator classes to convert to other formats
+* **src/usfm_grammar/usx_generator.py**:
+	Contains the USXGenerator class that contains, AST node to USX(xml) node conversion method and its supporting methods and data types. Used internally by USFMParser class. Not exposed to user.
+* **src/usfm_grammar/usj_generator.py**:
+	Contains the USJGenerator class that contains, AST node to USJ(dict/json) object conversion method and its supporting methods and data types. Used internally by USFMParser class. Not exposed to user.
 
 **IPython notebook**: Located in the docs/ folder. This serves as the documentation on how to use the python library.
 
@@ -61,5 +67,5 @@ This is a parser implemented to use the grammar to obtain syntax tree(AST) for a
 
 ### usfm-grammar/javascript-usfm-parser
 
-Just like the python-usfm-parser, this is a parser implemented to use the grammar to obtain syntax tree(AST) for a USFM file and then convert the AST to other formats via APIs(methods or CLI). This module has the javascript implementation of the parser and is published on npm (as usfm-grammar-3.x.x).
+Just like the py-usfm-parser, this is a parser implemented to use the grammar to obtain syntax tree(AST) for a USFM file and then convert the AST to other formats via APIs(methods or CLI). This module has the javascript implementation of the parser and is published on npm (as usfm-grammar-3.x.x).
 

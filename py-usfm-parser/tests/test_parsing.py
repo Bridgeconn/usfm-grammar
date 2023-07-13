@@ -91,7 +91,7 @@ def test_partial_parsing_with_errors():
             threw_error = True
         assert threw_error
 
-    use_API_negative(test_parser, 'test_parser.to_dict()')
+    use_API_negative(test_parser, 'test_parser.to_usj()')
     use_API_negative(test_parser, 'test_parser.to_list()')
     use_API_negative(test_parser, 'test_parser.to_usx()')
 
@@ -107,7 +107,7 @@ def test_partial_parsing_with_errors():
         assert "correct verse two" in str_output, api_str_expression
         assert "correct verse three after s5" in str_output, api_str_expression
 
-    use_API_positive(test_parser, "test_parser.to_dict(ignore_errors=True)")
+    use_API_positive(test_parser, "test_parser.to_usj(ignore_errors=True)")
     use_API_positive(test_parser, "test_parser.to_list(ignore_errors=True)")
     use_API_positive(test_parser, "test_parser.to_usx(ignore_errors=True)")
     

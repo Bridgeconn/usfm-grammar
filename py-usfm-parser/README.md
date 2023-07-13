@@ -47,11 +47,11 @@ print(etree.tostring(usx_elem, encoding="unicode", pretty_print=True))
 To convert to Dict
 
 ```
-output = my_parser.to_dict() # default all markers
-#output = my_parser.to_dict([Filter.SCRIPTURE_TEXT])
-#output = my_parser.to_dict([Filter.NOTES])
-#output = my_parser.to_dict([Filter.NOTES, Filter.ATTRIBUTES])
-#output = my_parser.to_dict([Filter.SCRIPTURE_TEXT, Filter.TITLES, Filter.PARAGRAPHS)
+output = my_parser.to_usj() # default all markers
+#output = my_parser.to_usj([Filter.SCRIPTURE_TEXT])
+#output = my_parser.to_usj([Filter.NOTES])
+#output = my_parser.to_usj([Filter.NOTES, Filter.ATTRIBUTES])
+#output = my_parser.to_usj([Filter.SCRIPTURE_TEXT, Filter.TITLES, Filter.PARAGRAPHS)
 
 print(output)
 ```
@@ -59,7 +59,7 @@ print(output)
 To save as json
 ```
 import json
-dict_output = my_parser.to_dict()
+dict_output = my_parser.to_usj()
 with open("file_path.json", "w", encoding='utf-8') as fp:
 	json.dump(dict_output, fp)
 ```
