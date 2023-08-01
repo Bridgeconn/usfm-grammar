@@ -367,10 +367,11 @@ module.exports = grammar({
       $._nestedCharacterMarker,
       ))),
 
-    footnote: $ => choice($.f, $.fe, $.fm),
+    footnote: $ => choice($.f, $.fe, $.fm, $.ef),
 
     f: $ => seq("\\f ",$.caller, repeat($._footnoteContents), "\\f*"),
-    fe: $ => seq("\\fe ",$.caller, $._footnoteContents, "\\fe*"),
+    fe: $ => seq("\\fe ",$.caller, repeat($._footnoteContents), "\\fe*"),
+    ef: $ => seq("\\ef ",$.caller, repeat($._footnoteContents), "\\ef*"),
     fr: $ => seq("\\fr ", $.noteText, optional("\\fr*")),
     fq: $ => seq("\\fq ", $.noteText, optional("\\fq*")),
     fqa: $ => seq("\\fqa ", $.noteText, optional("\\fqa*")),
