@@ -1,0 +1,178 @@
+{
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "GEN"
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "content": [],
+          "number": "4",
+          "sid": "GEN 1:4"
+        },
+        {
+          "type": "note:ef",
+          "content": [
+            "",
+            {
+              "type": "char:fr",
+              "content": [
+                "2.4:"
+              ]
+            },
+            {
+              "type": "char:fk",
+              "content": [
+                "Chief Priests"
+              ]
+            }
+          ],
+          "caller": "-"
+        },
+        {
+          "type": "note:ef",
+          "content": [
+            "",
+            {
+              "type": "char:fr",
+              "content": [
+                "2.4:"
+              ]
+            },
+            {
+              "type": "char:fk",
+              "content": [
+                "Teachers of the Law"
+              ]
+            }
+          ],
+          "caller": "-"
+        },
+        "He\ncalled together all the chief priests and the teachers of the Law and asked them, “Where\nwill the Messiah be born?”"
+      ]
+    },
+    {
+      "type": "sidebar:esb",
+      "content": [
+        {
+          "type": "para:ms",
+          "content": [
+            "Dates in B.C. and A.D."
+          ]
+        },
+        {
+          "type": "para:p",
+          "content": [
+            "The initials",
+            {
+              "type": "char:sc",
+              "content": [
+                "b.c."
+              ]
+            },
+            "have traditionally been an abbreviation for “Before Christ.”\nIf",
+            {
+              "type": "char:bk",
+              "content": [
+                "Luke"
+              ]
+            },
+            "'s dating is correct, then Jesus was born at least four years before the\nyears known as",
+            {
+              "type": "char:sc",
+              "content": [
+                "a.d."
+              ]
+            },
+            "began. (",
+            {
+              "type": "char:sc",
+              "content": [
+                "a.d."
+              ]
+            },
+            "stands for the Latin phrase “in the year\nof our Lord”). Christian dating was actually not introduced until",
+            {
+              "type": "char:sc",
+              "content": [
+                "a.d."
+              ]
+            },
+            "526 by a\nmonk named Dionysius Exiguus. He was given the job of creating a calendar for the feasts\nof the church. He fixed the birth of Jesus in the Roman year 754, which was selected as\nthe first year of the Christian era beginning on January 1. Dionysius apparently\nmisjudged Herod's reign by about five years."
+          ]
+        },
+        {
+          "type": "para:p",
+          "content": [
+            "The initials",
+            {
+              "type": "char:sc",
+              "content": [
+                "b.c."
+              ]
+            },
+            "e. (Before the Common Era) and c.e. (in the Common Era) are\nsometimes used for the traditional",
+            {
+              "type": "char:sc",
+              "content": [
+                "b.c."
+              ]
+            },
+            "and",
+            {
+              "type": "char:sc",
+              "content": [
+                "a.d."
+              ]
+            },
+            ""
+          ]
+        }
+      ],
+      "category": "Ideas"
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "content": [],
+          "number": "5",
+          "sid": "GEN 1:5"
+        },
+        {
+          "type": "note:ef",
+          "content": [
+            "",
+            {
+              "type": "char:fr",
+              "content": [
+                "2.5:"
+              ]
+            },
+            {
+              "type": "char:fk",
+              "content": [
+                "Prophet"
+              ]
+            }
+          ],
+          "caller": "-"
+        },
+        "“In the town of Bethlehem in Judea,” they answered.\n“For this is what the prophet wrote:"
+      ]
+    }
+  ]
+}
