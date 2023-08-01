@@ -1,35 +1,35 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "GEN"
+    },
+    {
+      "type": "para:mt1",
+      "content": [
+        "ഉല്പത്തിപുസ്തകം"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:pi",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GEN 1:1"
         },
-        {
-            "type": "para:mt1",
-            "content": [
-                "ഉല്പത്തിപുസ്തകം"
-            ]
-        },
-        {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "GEN 1"
-        },
-        {
-            "type": "para:pi",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "ആദിയിൽ ദൈവം ആകാശവും ഭൂമിയും സൃഷ്ടിച്ചു."
-            ]
-        }
-    ]
+        "ആദിയിൽ ദൈവം ആകാശവും ഭൂമിയും സൃഷ്ടിച്ചു."
+      ]
+    }
+  ]
 }

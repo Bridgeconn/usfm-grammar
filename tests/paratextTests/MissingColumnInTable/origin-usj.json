@@ -1,78 +1,78 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "GEN"
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:s",
+      "content": [
+        "some text"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text"
+      ]
+    },
+    {
+      "type": "table",
+      "content": [
+        {
+          "type": "table:row:tr",
+          "content": [
+            {
+              "type": "table:cell:th1",
+              "content": [
+                "header1"
+              ],
+              "align": "start"
+            },
+            {
+              "type": "table:cell:th3",
+              "content": [
+                "header3"
+              ],
+              "align": "start"
+            }
+          ]
         },
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "GEN 1"
-        },
-        {
-            "type": "para:s",
-            "content": [
-                "some text"
-            ]
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "verse text"
-            ]
-        },
-        {
-            "type": "table",
-            "content": [
-                {
-                    "type": "table:row:tr",
-                    "content": [
-                        {
-                            "type": "table:cell:th1",
-                            "content": [
-                                "header1"
-                            ],
-                            "align": "start"
-                        },
-                        {
-                            "type": "table:cell:th3",
-                            "content": [
-                                "header3"
-                            ],
-                            "align": "start"
-                        }
-                    ]
-                },
-                {
-                    "type": "table:row:tr",
-                    "content": [
-                        {
-                            "type": "table:cell:tcr2",
-                            "content": [
-                                "cell2"
-                            ],
-                            "align": "end"
-                        },
-                        {
-                            "type": "table:cell:tcr3",
-                            "content": [
-                                "cell3"
-                            ],
-                            "align": "end"
-                        }
-                    ]
-                }
-            ]
+          "type": "table:row:tr",
+          "content": [
+            {
+              "type": "table:cell:tcr2",
+              "content": [
+                "cell2"
+              ],
+              "align": "end"
+            },
+            {
+              "type": "table:cell:tcr3",
+              "content": [
+                "cell3"
+              ],
+              "align": "end"
+            }
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }

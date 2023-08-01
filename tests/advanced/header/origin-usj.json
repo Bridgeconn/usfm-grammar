@@ -1,141 +1,141 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [
+        "41MRKGNT92.SFM, Good News Translation, June 2003"
+      ],
+      "code": "MRK"
+    },
+    {
+      "type": "para:h",
+      "content": [
+        "John"
+      ]
+    },
+    {
+      "type": "para:toc1",
+      "content": [
+        "The Gospel according to John"
+      ]
+    },
+    {
+      "type": "para:toc2",
+      "content": [
+        "John"
+      ]
+    },
+    {
+      "type": "para:mt2",
+      "content": [
+        "The Gospel"
+      ]
+    },
+    {
+      "type": "para:mt3",
+      "content": [
+        "according to"
+      ]
+    },
+    {
+      "type": "para:mt1",
+      "content": [
+        "JOHN"
+      ]
+    },
+    {
+      "type": "para:ip",
+      "content": [
+        "The two endings to the Gospel, which are enclosed in brackets, are regarded as written by someone other than the author of",
         {
-            "type": "book:id",
-            "content": [
-                "41MRKGNT92.SFM, Good News Translation, June 2003"
-            ],
-            "code": "MRK"
+          "type": "char:bk",
+          "content": [
+            "Mark"
+          ]
         },
+        ""
+      ]
+    },
+    {
+      "type": "para:iot",
+      "content": [
+        "Outline of Contents"
+      ]
+    },
+    {
+      "type": "para:io1",
+      "content": [
+        "The beginning of the gospel",
         {
-            "type": "para:h",
-            "content": [
-                "John"
-            ]
-        },
-        {
-            "type": "para:toc1",
-            "content": [
-                "The Gospel according to John"
-            ]
-        },
-        {
-            "type": "para:toc2",
-            "content": [
-                "John"
-            ]
-        },
-        {
-            "type": "para:mt2",
-            "content": [
-                "The Gospel"
-            ]
-        },
-        {
-            "type": "para:mt3",
-            "content": [
-                "according to"
-            ]
-        },
-        {
-            "type": "para:mt1",
-            "content": [
-                "JOHN"
-            ]
-        },
-        {
-            "type": "para:ip",
-            "content": [
-                "The two endings to the Gospel, which are enclosed in brackets, are regarded as written by someone other than the author of",
-                {
-                    "type": "char:bk",
-                    "content": [
-                        "Mark"
-                    ]
-                },
-                ""
-            ]
-        },
-        {
-            "type": "para:iot",
-            "content": [
-                "Outline of Contents"
-            ]
-        },
-        {
-            "type": "para:io1",
-            "content": [
-                "The beginning of the gospel",
-                {
-                    "type": "char:ior",
-                    "content": [
-                        "(1.1-13)"
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "para:io1",
-            "content": [
-                "Jesus' public ministry in Galilee",
-                {
-                    "type": "char:ior",
-                    "content": [
-                        "(1.14–9.50)"
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "para:io1",
-            "content": [
-                "From Galilee to Jerusalem",
-                {
-                    "type": "char:ior",
-                    "content": [
-                        "(10.1-52)"
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "MRK 1"
-        },
-        {
-            "type": "para:mr",
-            "content": [
-                "(Psalms 1–41)"
-            ]
-        },
-        {
-            "type": "para:ms",
-            "content": [
-                "BOOK ONE"
-            ]
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "MRK 1:1"
-                },
-                "the first verse",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "MRK 1:2"
-                },
-                "the second verse"
-            ]
+          "type": "char:ior",
+          "content": [
+            "(1.1-13)"
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "type": "para:io1",
+      "content": [
+        "Jesus' public ministry in Galilee",
+        {
+          "type": "char:ior",
+          "content": [
+            "(1.14–9.50)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para:io1",
+      "content": [
+        "From Galilee to Jerusalem",
+        {
+          "type": "char:ior",
+          "content": [
+            "(10.1-52)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "MRK 1"
+    },
+    {
+      "type": "para:mr",
+      "content": [
+        "(Psalms 1–41)"
+      ]
+    },
+    {
+      "type": "para:ms",
+      "content": [
+        "BOOK ONE"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "MRK 1:1"
+        },
+        "the first verse",
+        {
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "MRK 1:2"
+        },
+        "the second verse"
+      ]
+    }
+  ]
 }

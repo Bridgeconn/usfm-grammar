@@ -1,48 +1,48 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "SNG"
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "SNG 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "SNG"
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "SNG 1:1"
         },
+        "verse"
+      ]
+    },
+    {
+      "type": "para:qa",
+      "content": [
+        "nonverse"
+      ]
+    },
+    {
+      "type": "para:q",
+      "content": [
+        "more verse",
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "SNG 1"
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "SNG 1:2"
         },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "SNG 1:1"
-                },
-                "verse"
-            ]
-        },
-        {
-            "type": "para:qa",
-            "content": [
-                "nonverse"
-            ]
-        },
-        {
-            "type": "para:q",
-            "content": [
-                "more verse",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "SNG 1:2"
-                },
-                "verse"
-            ]
-        }
-    ]
+        "verse"
+      ]
+    }
+  ]
 }

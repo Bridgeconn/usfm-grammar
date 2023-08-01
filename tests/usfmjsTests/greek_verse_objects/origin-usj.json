@@ -1,60 +1,60 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "GEN"
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GEN 1:1"
         },
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "ms:k-s",
+          "content": [],
+          "x-tw": "rc://*/tw/dict/bible/kt/jesus"
         },
+        "",
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                {
-                    "type": "ms:k-s",
-                    "content": [],
-                    "x-tw": "rc://*/tw/dict/bible/kt/jesus"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "Ἰησοῦ"
-                    ],
-                    "lemma": "Ἰησοῦς",
-                    "strong": "G24240",
-                    "x-morph": "Gr,N,,,,,GMS,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "Χριστοῦ"
-                    ],
-                    "lemma": "χριστός",
-                    "strong": "G55470",
-                    "x-morph": "Gr,N,,,,,GMS,",
-                    "x-tw": "rc://*/tw/dict/bible/kt/christ"
-                },
-                "",
-                {
-                    "type": "ms:k-e",
-                    "content": []
-                },
-                ","
-            ]
-        }
-    ]
+          "type": "char:w",
+          "content": [
+            "Ἰησοῦ"
+          ],
+          "lemma": "Ἰησοῦς",
+          "strong": "G24240",
+          "x-morph": "Gr,N,,,,,GMS,"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "Χριστοῦ"
+          ],
+          "lemma": "χριστός",
+          "strong": "G55470",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/christ"
+        },
+        "",
+        {
+          "type": "ms:k-e",
+          "content": []
+        },
+        ","
+      ]
+    }
+  ]
 }

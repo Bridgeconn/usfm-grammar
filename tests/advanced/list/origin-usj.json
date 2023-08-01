@@ -1,103 +1,103 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "GEN"
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GEN 1:1"
         },
+        "the first verse",
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "GEN 1:2"
         },
+        "the second verse"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "2",
+      "sid": "GEN 2"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "the first verse",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "GEN 1:2"
-                },
-                "the second verse"
-            ]
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GEN 2:1"
         },
+        "the third verse",
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "2",
-            "sid": "GEN 2"
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "GEN 2:2"
         },
+        "the fourth verse"
+      ]
+    },
+    {
+      "type": "para:s1",
+      "content": [
+        "Administration of the Tribes of Israel"
+      ]
+    },
+    {
+      "type": "para:lh",
+      "content": [
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GEN 2:1"
-                },
-                "the third verse",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "GEN 2:2"
-                },
-                "the fourth verse"
-            ]
+          "type": "verse:v",
+          "content": [],
+          "number": "16-22",
+          "sid": "GEN 2:16-22"
         },
-        {
-            "type": "para:s1",
-            "content": [
-                "Administration of the Tribes of Israel"
-            ]
-        },
-        {
-            "type": "para:lh",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "16-22",
-                    "sid": "GEN 2:16-22"
-                },
-                "This is the list of the administrators of the tribes of Israel:"
-            ]
-        },
-        {
-            "type": "para:li1",
-            "content": [
-                "Reuben - Eliezer son of Zichri"
-            ]
-        },
-        {
-            "type": "para:li1",
-            "content": [
-                "Simeon - Shephatiah son of Maacah"
-            ]
-        },
-        {
-            "type": "para:li1",
-            "content": [
-                "Levi - Hashabiah son of Kemuel"
-            ]
-        },
-        {
-            "type": "para:lf",
-            "content": [
-                "This was the list of the administrators of the tribes of Israel."
-            ]
-        }
-    ]
+        "This is the list of the administrators of the tribes of Israel:"
+      ]
+    },
+    {
+      "type": "para:li1",
+      "content": [
+        "Reuben - Eliezer son of Zichri"
+      ]
+    },
+    {
+      "type": "para:li1",
+      "content": [
+        "Simeon - Shephatiah son of Maacah"
+      ]
+    },
+    {
+      "type": "para:li1",
+      "content": [
+        "Levi - Hashabiah son of Kemuel"
+      ]
+    },
+    {
+      "type": "para:lf",
+      "content": [
+        "This was the list of the administrators of the tribes of Israel."
+      ]
+    }
+  ]
 }

@@ -1,61 +1,61 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "GEN"
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GEN 1:1"
         },
+        "the first verse",
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "GEN 1:2"
         },
+        "the second verse"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "2",
+      "sid": "GEN 2"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "the first verse",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "GEN 1:2"
-                },
-                "the second verse"
-            ]
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GEN 2:1"
         },
+        "the third verse",
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "2",
-            "sid": "GEN 2"
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "GEN 2:2"
         },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GEN 2:1"
-                },
-                "the third verse",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "GEN 2:2"
-                },
-                "the fourth verse"
-            ]
-        }
-    ]
+        "the fourth verse"
+      ]
+    }
+  ]
 }

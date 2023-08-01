@@ -1,121 +1,121 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "GLO"
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "GLO 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GLO"
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GLO 1:1"
         },
+        "something"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "GLO 1"
+          "type": "char:k",
+          "content": [
+            "keyword"
+          ]
         },
+        "definition",
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GLO 1:1"
-                },
-                "something"
-            ]
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "GLO 1:2"
         },
+        "something"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "char:k",
-                    "content": [
-                        "keyword"
-                    ]
-                },
-                "definition",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "GLO 1:2"
-                },
-                "something"
-            ]
+          "type": "char:w",
+          "content": [
+            "word."
+          ],
+          "lemma": "keyword"
         },
+        "definition",
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "char:w",
-                    "content": [
-                        "word."
-                    ],
-                    "lemma": "keyword"
-                },
-                "definition",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "GLO 1:2"
-                },
-                "something"
-            ]
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "GLO 1:2"
         },
+        "something"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "char:w",
-                    "content": [
-                        "word,"
-                    ],
-                    "lemma": "keyword"
-                },
-                "definition",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "GLO 1:2"
-                },
-                "something"
-            ]
+          "type": "char:w",
+          "content": [
+            "word,"
+          ],
+          "lemma": "keyword"
         },
+        "definition",
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "char:w",
-                    "content": [
-                        "word;"
-                    ],
-                    "lemma": "keyword"
-                },
-                "definition",
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "2",
-                    "sid": "GLO 1:2"
-                },
-                "something"
-            ]
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "GLO 1:2"
         },
+        "something"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "char:w",
-                    "content": [
-                        "word:"
-                    ],
-                    "lemma": "keyword"
-                },
-                "definition"
-            ]
-        }
-    ]
+          "type": "char:w",
+          "content": [
+            "word;"
+          ],
+          "lemma": "keyword"
+        },
+        "definition",
+        {
+          "type": "verse:v",
+          "content": [],
+          "number": "2",
+          "sid": "GLO 1:2"
+        },
+        "something"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "char:w",
+          "content": [
+            "word:"
+          ],
+          "lemma": "keyword"
+        },
+        "definition"
+      ]
+    }
+  ]
 }

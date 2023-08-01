@@ -1,59 +1,59 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [],
+      "code": "GEN"
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "content": [],
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "something",
+        {
+          "type": "char:wj",
+          "content": [
+            "testing"
+          ]
         },
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "note:x",
+          "content": [
+            {
+              "type": "char:xo",
+              "content": [
+                "1.1"
+              ]
+            },
+            {
+              "type": "char:xq",
+              "content": [
+                "stuff"
+              ]
+            }
+          ],
+          "caller": "+"
         },
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "something",
-                {
-                    "type": "char:wj",
-                    "content": [
-                        "testing"
-                    ]
-                },
-                {
-                    "type": "note:x",
-                    "content": [
-                        {
-                            "type": "char:xo",
-                            "content": [
-                                "1.1"
-                            ]
-                        },
-                        {
-                            "type": "char:xq",
-                            "content": [
-                                "stuff"
-                            ]
-                        }
-                    ],
-                    "caller": "+"
-                },
-                {
-                    "type": "char:wj",
-                    "content": [
-                        "*"
-                    ]
-                }
-            ]
+          "type": "char:wj",
+          "content": [
+            "*"
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }

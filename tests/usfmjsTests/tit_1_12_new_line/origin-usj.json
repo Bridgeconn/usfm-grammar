@@ -1,90 +1,90 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [
+        "Titus"
+      ],
+      "code": "TIT"
+    },
+    {
+      "type": "para:ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para:h",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para:toc2",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para:toc3",
+      "content": [
+        "Tit"
+      ]
+    },
+    {
+      "type": "para:mt",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [
-                "Titus"
-            ],
-            "code": "TIT"
+          "type": "verse:v",
+          "content": [],
+          "number": "12",
+          "sid": "TIT 1:12"
         },
         {
-            "type": "para:ide",
-            "content": [
-                "UTF-8"
-            ]
+          "type": "char:w",
+          "content": [
+            "προφήτης"
+          ],
+          "lemma": "προφήτης",
+          "strong": "G43960",
+          "x-morph": "Gr,N,,,,,NMS,"
         },
+        ",\n“",
         {
-            "type": "para:h",
-            "content": [
-                "Titus"
-            ]
+          "type": "char:w",
+          "content": [
+            "Κρῆτες"
+          ],
+          "lemma": "Κρής",
+          "strong": "G29120",
+          "x-morph": "Gr,N,,,,,NMP,"
         },
+        "",
         {
-            "type": "para:toc2",
-            "content": [
-                "Titus"
-            ]
+          "type": "char:w",
+          "content": [
+            "ἀργαί"
+          ],
+          "lemma": "ἀργός",
+          "strong": "G06920",
+          "x-morph": "Gr,AA,,,,NFP,"
         },
-        {
-            "type": "para:toc3",
-            "content": [
-                "Tit"
-            ]
-        },
-        {
-            "type": "para:mt",
-            "content": [
-                "Titus"
-            ]
-        },
-        {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "TIT 1"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "12",
-                    "sid": "TIT 1:12"
-                },
-                {
-                    "type": "char:w",
-                    "content": [
-                        "προφήτης"
-                    ],
-                    "lemma": "προφήτης",
-                    "strong": "G43960",
-                    "x-morph": "Gr,N,,,,,NMS,"
-                },
-                ",\n“",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "Κρῆτες"
-                    ],
-                    "lemma": "Κρής",
-                    "strong": "G29120",
-                    "x-morph": "Gr,N,,,,,NMP,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "ἀργαί"
-                    ],
-                    "lemma": "ἀργός",
-                    "strong": "G06920",
-                    "x-morph": "Gr,AA,,,,NFP,"
-                },
-                ".”"
-            ]
-        }
-    ]
+        ".”"
+      ]
+    }
+  ]
 }

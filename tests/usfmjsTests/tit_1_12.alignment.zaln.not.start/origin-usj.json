@@ -1,435 +1,435 @@
 {
-    "type": "USJ",
-    "version": "0.0.1-alpha.2",
-    "content": [
+  "type": "USJ",
+  "version": "0.0.1-alpha.2",
+  "content": [
+    {
+      "type": "book:id",
+      "content": [
+        "Titus"
+      ],
+      "code": "TIT"
+    },
+    {
+      "type": "para:ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para:h",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para:toc2",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para:toc3",
+      "content": [
+        "Tit"
+      ]
+    },
+    {
+      "type": "para:mt",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "content": [],
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [
-                "Titus"
-            ],
-            "code": "TIT"
+          "type": "verse:v",
+          "content": [],
+          "number": "12",
+          "sid": "TIT 1:12"
         },
         {
-            "type": "para:ide",
-            "content": [
-                "UTF-8"
-            ]
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G51000",
+          "x-lemma": "τις",
+          "x-morph": "Gr,RI,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "τις"
         },
+        "",
         {
-            "type": "para:h",
-            "content": [
-                "Titus"
-            ]
+          "type": "char:w",
+          "content": [
+            "One"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
         },
+        "",
         {
-            "type": "para:toc2",
-            "content": [
-                "Titus"
-            ]
+          "type": "ms:zaln-e",
+          "content": []
         },
+        "",
         {
-            "type": "para:toc3",
-            "content": [
-                "Tit"
-            ]
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G15370",
+          "x-lemma": "ἐκ",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "ἐξ"
         },
+        "",
         {
-            "type": "para:mt",
-            "content": [
-                "Titus"
-            ]
+          "type": "char:w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
         },
+        "",
         {
-            "type": "chapter:c",
-            "content": [],
-            "number": "1",
-            "sid": "TIT 1"
+          "type": "ms:zaln-e",
+          "content": []
         },
+        "",
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "content": [],
-                    "number": "12",
-                    "sid": "TIT 1:12"
-                },
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G51000",
-                    "x-lemma": "τις",
-                    "x-morph": "Gr,RI,,,,NMS,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "τις"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "One"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G15370",
-                    "x-lemma": "ἐκ",
-                    "x-morph": "Gr,P,,,,,G,,,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "ἐξ"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "of"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G08460",
-                    "x-lemma": "αὐτός",
-                    "x-morph": "Gr,RP,,,3GMP,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "2",
-                    "x-content": "αὐτῶν"
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G23980",
-                    "x-lemma": "ἴδιος",
-                    "x-morph": "Gr,RD,,,,NMS,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "ἴδιος"
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G08460",
-                    "x-lemma": "αὐτός",
-                    "x-morph": "Gr,RP,,,3GMP,",
-                    "x-occurrence": "2",
-                    "x-occurrences": "2",
-                    "x-content": "αὐτῶν"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "their"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "own"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G43960",
-                    "x-lemma": "προφήτης",
-                    "x-morph": "Gr,N,,,,,NMS,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "προφήτης"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "prophets"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G30040",
-                    "x-lemma": "λέγω",
-                    "x-morph": "Gr,V,IAA3,,S,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "εἶπέν"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "has"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "said"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                ", \"",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G29120",
-                    "x-lemma": "Κρής",
-                    "x-morph": "Gr,N,,,,,NMP,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "Κρῆτες"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "Cretans"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G55830",
-                    "x-lemma": "ψεύστης",
-                    "x-morph": "Gr,N,,,,,NMP,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "ψεῦσται"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "are"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G01040",
-                    "x-lemma": "ἀεί",
-                    "x-morph": "Gr,D,,,,,,,,,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "ἀεὶ"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "always"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G55830",
-                    "x-lemma": "ψεύστης",
-                    "x-morph": "Gr,N,,,,,NMP,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "ψεῦσται"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "liars"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                ",",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G25560",
-                    "x-lemma": "κακός",
-                    "x-morph": "Gr,AA,,,,NNP,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "κακὰ"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "evil"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G23420",
-                    "x-lemma": "θηρίον",
-                    "x-morph": "Gr,N,,,,,NNP,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "θηρία"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "beasts"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                ",",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G06920",
-                    "x-lemma": "ἀργός",
-                    "x-morph": "Gr,AA,,,,NFP,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "ἀργαί"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "lazy"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                "",
-                {
-                    "type": "ms:zaln-s",
-                    "content": [],
-                    "x-strong": "G10640",
-                    "x-lemma": "γαστήρ",
-                    "x-morph": "Gr,N,,,,,NFP,",
-                    "x-occurrence": "1",
-                    "x-occurrences": "1",
-                    "x-content": "γαστέρες"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "gluttons"
-                    ],
-                    "x-occurrence": "1",
-                    "x-occurrences": "1"
-                },
-                "",
-                {
-                    "type": "ms:zaln-e",
-                    "content": []
-                },
-                ".\""
-            ]
-        }
-    ]
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G08460",
+          "x-lemma": "αὐτός",
+          "x-morph": "Gr,RP,,,3GMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "x-content": "αὐτῶν"
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G23980",
+          "x-lemma": "ἴδιος",
+          "x-morph": "Gr,RD,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "ἴδιος"
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G08460",
+          "x-lemma": "αὐτός",
+          "x-morph": "Gr,RP,,,3GMP,",
+          "x-occurrence": "2",
+          "x-occurrences": "2",
+          "x-content": "αὐτῶν"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "own"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G43960",
+          "x-lemma": "προφήτης",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "προφήτης"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "prophets"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G30040",
+          "x-lemma": "λέγω",
+          "x-morph": "Gr,V,IAA3,,S,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "εἶπέν"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "has"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "said"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        ", \"",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G29120",
+          "x-lemma": "Κρής",
+          "x-morph": "Gr,N,,,,,NMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "Κρῆτες"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "Cretans"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G55830",
+          "x-lemma": "ψεύστης",
+          "x-morph": "Gr,N,,,,,NMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "ψεῦσται"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G01040",
+          "x-lemma": "ἀεί",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "ἀεὶ"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "always"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G55830",
+          "x-lemma": "ψεύστης",
+          "x-morph": "Gr,N,,,,,NMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "ψεῦσται"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "liars"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        ",",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G25560",
+          "x-lemma": "κακός",
+          "x-morph": "Gr,AA,,,,NNP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "κακὰ"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "evil"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G23420",
+          "x-lemma": "θηρίον",
+          "x-morph": "Gr,N,,,,,NNP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "θηρία"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "beasts"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        ",",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G06920",
+          "x-lemma": "ἀργός",
+          "x-morph": "Gr,AA,,,,NFP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "ἀργαί"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "lazy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        "",
+        {
+          "type": "ms:zaln-s",
+          "content": [],
+          "x-strong": "G10640",
+          "x-lemma": "γαστήρ",
+          "x-morph": "Gr,N,,,,,NFP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "γαστέρες"
+        },
+        "",
+        {
+          "type": "char:w",
+          "content": [
+            "gluttons"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "",
+        {
+          "type": "ms:zaln-e",
+          "content": []
+        },
+        ".\""
+      ]
+    }
+  ]
 }
