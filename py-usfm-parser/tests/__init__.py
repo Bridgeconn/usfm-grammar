@@ -51,7 +51,9 @@ def find_all_markers(usfm_path, keep_id=False, keep_number=True):
         all_markers_in_input.remove("esbe")
     return all_markers_in_input
 
-all_usfm_files = glob(f"{TEST_DIR}/*/*/origin.usfm")
+all_usfm_files = glob(f"{TEST_DIR}/*/*/origin.usfm") +\
+                glob(f"{TEST_DIR}/*/origin.usfm") +\
+                glob(f"{TEST_DIR}/*/*/*/origin.usfm")
 
 doubtful_usfms = [
     ]
@@ -170,6 +172,7 @@ pass_fail_override_list = {
     f"{TEST_DIR}/usfmjsTests/acts-1-20.aligned.crammed.oldformat/origin.usfm": "fail",
     f"{TEST_DIR}/special-cases/empty-para/origin.usfm": "fail",
     f"{TEST_DIR}/special-cases/sp/origin.usfm": "fail",
+    f"{TEST_DIR}/specExamples/extended/sidebars/origin.usfm":"fail",
 
     # No. of columns in table not validated by usfm-grammar
     f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm": "pass",
@@ -205,6 +208,8 @@ pass_fail_override_list = {
     f"{TEST_DIR}/usfmjsTests/45-ACT.ugnt/origin.usfm": "fail", # also has \toc1 without content
 
     f"{TEST_DIR}/biblica/PublishingVersesWithFormatting/origin.usfm": "fail", # \c without number
+
+    f"{TEST_DIR}/specExamples/extended/contentCatogories1/origin.usfm": "fail", # cat inside footnote
     ########### Need to be fixed #######################
     f"{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm": "pass", # \c is mandatory!
     f"{TEST_DIR}/usfmjsTests/gn_headers/origin.usfm": "fail", # what is the valid position for mte and imt
