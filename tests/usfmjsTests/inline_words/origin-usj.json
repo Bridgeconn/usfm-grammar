@@ -1,1 +1,83 @@
-{"type": "USJ", "version": "0.0.1-alpha.2", "content": [{"type": "book:id", "content": [], "code": "GEN"}, {"type": "chapter:c", "content": [], "number": "1", "sid": "GEN 1"}, {"type": "para:p", "content": [{"type": "verse:v", "content": [], "number": "13", "sid": "GEN 1:13"}, "where he stayed 40 days, being\ntempted by Satan. Wild animals were there also, but angels came and helped him."]}, {"type": "para:mr", "content": ["1.14--9.50"]}, {"type": "para:ms", "content": ["Jesus' Public Ministry in Galilee"]}, {"type": "para:ip", "content": ["Jesus returns to Galilee and does not go back to Judea until the close of his public\nministry. There is no indication of how long his Galilean ministry lasted: only when he is\nback in Judea is a", {"type": "char:w", "content": ["festival"]}, "mentioned (14.1). He spends much of his\ntime in Capernaum (1.21; 2.1; 3.1, 20; 9.33) and other places around Lake Galilee (1.9; 2.13;\n3.7; 4.1). Twice Jesus ventures out of Galilee: into the region of the Ten Towns (5.1-20) and\nPhoenicia (7.24-31). His actions and teachings soon arouse opposition from the religious\nleaders (2.6-7, 24; 3.6, 22; 7.1-13; 8.11-12), and before long he predicts his coming arrest,\ncondemnation, and crucifixion (8.31; 9.30-31)."]}, {"type": "para:r", "content": ["(Mt 4.12-22; Lk 4.14-15; 5.1-11)"]}, {"type": "para:s1", "content": ["Jesus Calls Four Fishermen"]}, {"type": "para:ip", "content": ["Jesus' message is about the arrival of the", {"type": "char:w", "content": ["kingdom of god"]}, ", which will happen soon.\nTo prepare for it, the people need to repent (1.15). He immediately summons two pairs of\nfishermen brothers to be his followers and helpers."]}, {"type": "para:p", "content": []}]}
+{
+    "type": "USJ",
+    "version": "0.0.1-alpha.2",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "13",
+                    "sid": "GEN 1:13"
+                },
+                "where he stayed 40 days, being\ntempted by Satan. Wild animals were there also, but angels came and helped him."
+            ]
+        },
+        {
+            "type": "para:mr",
+            "content": [
+                "1.14--9.50"
+            ]
+        },
+        {
+            "type": "para:ms",
+            "content": [
+                "Jesus' Public Ministry in Galilee"
+            ]
+        },
+        {
+            "type": "para:ip",
+            "content": [
+                "Jesus returns to Galilee and does not go back to Judea until the close of his public\nministry. There is no indication of how long his Galilean ministry lasted: only when he is\nback in Judea is a",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "festival"
+                    ]
+                },
+                "mentioned (14.1). He spends much of his\ntime in Capernaum (1.21; 2.1; 3.1, 20; 9.33) and other places around Lake Galilee (1.9; 2.13;\n3.7; 4.1). Twice Jesus ventures out of Galilee: into the region of the Ten Towns (5.1-20) and\nPhoenicia (7.24-31). His actions and teachings soon arouse opposition from the religious\nleaders (2.6-7, 24; 3.6, 22; 7.1-13; 8.11-12), and before long he predicts his coming arrest,\ncondemnation, and crucifixion (8.31; 9.30-31)."
+            ]
+        },
+        {
+            "type": "para:r",
+            "content": [
+                "(Mt 4.12-22; Lk 4.14-15; 5.1-11)"
+            ]
+        },
+        {
+            "type": "para:s1",
+            "content": [
+                "Jesus Calls Four Fishermen"
+            ]
+        },
+        {
+            "type": "para:ip",
+            "content": [
+                "Jesus' message is about the arrival of the",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "kingdom of god"
+                    ]
+                },
+                ", which will happen soon.\nTo prepare for it, the people need to repent (1.15). He immediately summons two pairs of\nfishermen brothers to be his followers and helpers."
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": []
+        }
+    ]
+}

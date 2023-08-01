@@ -1,1 +1,194 @@
-{"type": "USJ", "version": "0.0.1-alpha.2", "content": [{"type": "book:id", "content": ["Unlocked Literal Bible"], "code": "PRO"}, {"type": "para:ide", "content": ["UTF-8"]}, {"type": "para:h", "content": ["Proverbs"]}, {"type": "para:toc1", "content": ["The Book of Proverbs"]}, {"type": "para:toc2", "content": ["Proverbs"]}, {"type": "para:toc3", "content": ["Pro"]}, {"type": "para:mt", "content": ["Proverbs"]}, {"type": "chapter:c", "content": [], "number": "21", "sid": "PRO 21"}, {"type": "para:s5", "content": []}, {"type": "para:q", "content": [{"type": "verse:v", "content": [], "number": "9", "sid": "PRO 21:9"}, "It is better to live on a corner of the roof"]}, {"type": "para:q", "content": ["than in a house shared with a quarrelsome wife."]}, {"type": "para:q", "content": [{"type": "verse:v", "content": [], "number": "10", "sid": "PRO 21:10"}, "The appetite of the wicked craves evil;"]}, {"type": "para:q", "content": ["his neighbor finds no favor in his eyes."]}, {"type": "para:s5", "content": []}, {"type": "para:q", "content": [{"type": "verse:v", "content": [], "number": "19", "sid": "PRO 21:19"}, "Long ago you spoke in a vision to your faithful ones", {"type": "note:f", "content": ["", {"type": "char:ft", "content": ["Many mss have the singular"]}, {"type": "char:fqa", "content": ["faithful one"]}, "instead of", {"type": "char:fqa", "content": ["faithful ones."]}], "caller": "+"}, ";"]}, {"type": "para:q", "content": ["you said,"]}, {"type": "para:q", "content": ["\"I have set a crown on a mighty one", {"type": "note:f", "content": ["", {"type": "char:ft", "content": ["The MT has"]}, {"type": "char:fqa", "content": ["I will place help upon a warrior"]}, ". Some translate the word for", {"type": "char:fqa", "content": ["help"]}, "as", {"type": "char:fqa", "content": ["crown, which is followed by the ULB here."]}], "caller": "+"}, "\""]}, {"type": "para:q", "content": ["I have raised up one chosen from among the people."]}, {"type": "para:q", "content": []}]}
+{
+    "type": "USJ",
+    "version": "0.0.1-alpha.2",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "Unlocked Literal Bible"
+            ],
+            "code": "PRO"
+        },
+        {
+            "type": "para:ide",
+            "content": [
+                "UTF-8"
+            ]
+        },
+        {
+            "type": "para:h",
+            "content": [
+                "Proverbs"
+            ]
+        },
+        {
+            "type": "para:toc1",
+            "content": [
+                "The Book of Proverbs"
+            ]
+        },
+        {
+            "type": "para:toc2",
+            "content": [
+                "Proverbs"
+            ]
+        },
+        {
+            "type": "para:toc3",
+            "content": [
+                "Pro"
+            ]
+        },
+        {
+            "type": "para:mt",
+            "content": [
+                "Proverbs"
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "21",
+            "sid": "PRO 21"
+        },
+        {
+            "type": "para:s5",
+            "content": []
+        },
+        {
+            "type": "para:q",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "9",
+                    "sid": "PRO 21:9"
+                },
+                "It is better to live on a corner of the roof"
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                "than in a house shared with a quarrelsome wife."
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "10",
+                    "sid": "PRO 21:10"
+                },
+                "The appetite of the wicked craves evil;"
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                "his neighbor finds no favor in his eyes."
+            ]
+        },
+        {
+            "type": "para:s5",
+            "content": []
+        },
+        {
+            "type": "para:q",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "19",
+                    "sid": "PRO 21:19"
+                },
+                "Long ago you spoke in a vision to your faithful ones",
+                {
+                    "type": "note:f",
+                    "content": [
+                        "",
+                        {
+                            "type": "char:ft",
+                            "content": [
+                                "Many mss have the singular"
+                            ]
+                        },
+                        {
+                            "type": "char:fqa",
+                            "content": [
+                                "faithful one"
+                            ]
+                        },
+                        "instead of",
+                        {
+                            "type": "char:fqa",
+                            "content": [
+                                "faithful ones."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                ";"
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                "you said,"
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                "\"I have set a crown on a mighty one",
+                {
+                    "type": "note:f",
+                    "content": [
+                        "",
+                        {
+                            "type": "char:ft",
+                            "content": [
+                                "The MT has"
+                            ]
+                        },
+                        {
+                            "type": "char:fqa",
+                            "content": [
+                                "I will place help upon a warrior"
+                            ]
+                        },
+                        ". Some translate the word for",
+                        {
+                            "type": "char:fqa",
+                            "content": [
+                                "help"
+                            ]
+                        },
+                        "as",
+                        {
+                            "type": "char:fqa",
+                            "content": [
+                                "crown, which is followed by the ULB here."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "\""
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                "I have raised up one chosen from among the people."
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": []
+        }
+    ]
+}

@@ -1,1 +1,61 @@
-{"type": "USJ", "version": "0.0.1-alpha.2", "content": [{"type": "book:id", "content": ["Titus"], "code": "TIT"}, {"type": "para:ide", "content": ["UTF-8"]}, {"type": "para:h", "content": ["Titus"]}, {"type": "para:toc2", "content": ["Titus"]}, {"type": "para:toc3", "content": ["Tit"]}, {"type": "para:mt", "content": ["Titus"]}, {"type": "chapter:c", "content": [], "number": "1", "sid": "TIT 1"}, {"type": "para:p", "content": [{"type": "verse:v", "content": [], "number": "12", "sid": "TIT 1:12"}, "One of their own prophets has said, \"Cretans are always liars, evil beasts, lazy gluttons.\""]}]}
+{
+    "type": "USJ",
+    "version": "0.0.1-alpha.2",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "Titus"
+            ],
+            "code": "TIT"
+        },
+        {
+            "type": "para:ide",
+            "content": [
+                "UTF-8"
+            ]
+        },
+        {
+            "type": "para:h",
+            "content": [
+                "Titus"
+            ]
+        },
+        {
+            "type": "para:toc2",
+            "content": [
+                "Titus"
+            ]
+        },
+        {
+            "type": "para:toc3",
+            "content": [
+                "Tit"
+            ]
+        },
+        {
+            "type": "para:mt",
+            "content": [
+                "Titus"
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "TIT 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "12",
+                    "sid": "TIT 1:12"
+                },
+                "One of their own prophets has said, \"Cretans are always liars, evil beasts, lazy gluttons.\""
+            ]
+        }
+    ]
+}

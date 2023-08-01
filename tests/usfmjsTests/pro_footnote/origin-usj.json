@@ -1,1 +1,134 @@
-{"type": "USJ", "version": "0.0.1-alpha.2", "content": [{"type": "book:id", "content": ["Unlocked Literal Bible"], "code": "PRO"}, {"type": "para:ide", "content": ["UTF-8"]}, {"type": "para:h", "content": ["Proverbs"]}, {"type": "para:toc1", "content": ["The Book of Proverbs"]}, {"type": "para:toc2", "content": ["Proverbs"]}, {"type": "para:toc3", "content": ["Pro"]}, {"type": "para:mt", "content": ["Proverbs"]}, {"type": "chapter:c", "content": [], "number": "30", "sid": "PRO 30"}, {"type": "para:s5", "content": []}, {"type": "para:p", "content": [{"type": "verse:v", "content": [], "number": "1", "sid": "PRO 30:1"}, "The words of Agur son of Jakeh\u2014the utterance:"]}, {"type": "para:q", "content": ["This man declared to Ithiel, to Ithiel and Ucal:", {"type": "note:f", "content": ["", {"type": "char:ft", "content": ["Some versions have"]}, {"type": "char:fqa", "content": ["This man declared, \"I am weary, O God, I am weary. I am unable to do anything.\""]}, ""], "caller": "+"}, ""]}, {"type": "para:q", "content": [{"type": "verse:v", "content": [], "number": "2", "sid": "PRO 30:2"}, "Surely I am more like an animal than any human"]}, {"type": "para:q", "content": ["and I do not have the understanding of a human being."]}, {"type": "para:q", "content": [{"type": "verse:v", "content": [], "number": "3", "sid": "PRO 30:3"}, "I have not learned wisdom,"]}, {"type": "para:q", "content": ["nor do I have knowledge of the Holy One."]}]}
+{
+    "type": "USJ",
+    "version": "0.0.1-alpha.2",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "Unlocked Literal Bible"
+            ],
+            "code": "PRO"
+        },
+        {
+            "type": "para:ide",
+            "content": [
+                "UTF-8"
+            ]
+        },
+        {
+            "type": "para:h",
+            "content": [
+                "Proverbs"
+            ]
+        },
+        {
+            "type": "para:toc1",
+            "content": [
+                "The Book of Proverbs"
+            ]
+        },
+        {
+            "type": "para:toc2",
+            "content": [
+                "Proverbs"
+            ]
+        },
+        {
+            "type": "para:toc3",
+            "content": [
+                "Pro"
+            ]
+        },
+        {
+            "type": "para:mt",
+            "content": [
+                "Proverbs"
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "30",
+            "sid": "PRO 30"
+        },
+        {
+            "type": "para:s5",
+            "content": []
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "1",
+                    "sid": "PRO 30:1"
+                },
+                "The words of Agur son of Jakeh—the utterance:"
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                "This man declared to Ithiel, to Ithiel and Ucal:",
+                {
+                    "type": "note:f",
+                    "content": [
+                        "",
+                        {
+                            "type": "char:ft",
+                            "content": [
+                                "Some versions have"
+                            ]
+                        },
+                        {
+                            "type": "char:fqa",
+                            "content": [
+                                "This man declared, \"I am weary, O God, I am weary. I am unable to do anything.\""
+                            ]
+                        },
+                        ""
+                    ],
+                    "caller": "+"
+                },
+                ""
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "2",
+                    "sid": "PRO 30:2"
+                },
+                "Surely I am more like an animal than any human"
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                "and I do not have the understanding of a human being."
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "3",
+                    "sid": "PRO 30:3"
+                },
+                "I have not learned wisdom,"
+            ]
+        },
+        {
+            "type": "para:q",
+            "content": [
+                "nor do I have knowledge of the Holy One."
+            ]
+        }
+    ]
+}

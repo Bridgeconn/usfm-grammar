@@ -1,1 +1,43 @@
-{"type": "USJ", "version": "0.0.1-alpha.2", "content": [{"type": "book:id", "content": [], "code": "GEN"}, {"type": "chapter:c", "content": [], "number": "1", "sid": "GEN 1"}, {"type": "para:p", "content": [{"type": "verse:v", "content": [], "number": "22", "sid": "GEN 1:22"}, "Paul stood up in front of the city council and said,", {"type": "ms:qt1-s", "content": [], "sid": "qt1_ACT_17:22", "who": "Paul"}, "\u201cI see that in every way you Athenians are very religious.", {"type": "verse:v", "content": [], "number": "23", "sid": "GEN 1:23"}, "For as I walked through your city and looked at the places where you worship,"]}]}
+{
+    "type": "USJ",
+    "version": "0.0.1-alpha.2",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "22",
+                    "sid": "GEN 1:22"
+                },
+                "Paul stood up in front of the city council and said,",
+                {
+                    "type": "ms:qt1-s",
+                    "content": [],
+                    "sid": "qt1_ACT_17:22",
+                    "who": "Paul"
+                },
+                "“I see that in every way you Athenians are very religious.",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "23",
+                    "sid": "GEN 1:23"
+                },
+                "For as I walked through your city and looked at the places where you worship,"
+            ]
+        }
+    ]
+}

@@ -1,1 +1,47 @@
-{"type": "USJ", "version": "0.0.1-alpha.2", "content": [{"type": "book:id", "content": [], "code": "GEN"}, {"type": "chapter:c", "content": [], "number": "1", "sid": "GEN 1"}, {"type": "para:p", "content": [{"type": "verse:v", "content": [], "number": "26", "sid": "GEN 1:26"}, {"type": "note:x", "content": [{"type": "char:xo", "content": ["3.26"]}, {"type": "char:xt", "content": ["\u101a\u1005\u1036\u1038"]}], "caller": "-"}, "\u1012\u103a\u101e\u102d\u1038\u1021\u1000\u1012\u102f\u1038\u1014\u1032\u1063\u103a\u1021\u1010\u1062\u103a\u1010\u102e\u1010\u1062\u103a \u101c\u102d\u1064\u1021\u1000\u1010\u102e\u1062\u103a\u1016\u1032\u1021\u1036\u1064,"]}]}
+{
+    "type": "USJ",
+    "version": "0.0.1-alpha.2",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "26",
+                    "sid": "GEN 1:26"
+                },
+                {
+                    "type": "note:x",
+                    "content": [
+                        {
+                            "type": "char:xo",
+                            "content": [
+                                "3.26"
+                            ]
+                        },
+                        {
+                            "type": "char:xt",
+                            "content": [
+                                "ယစံး"
+                            ]
+                        }
+                    ],
+                    "caller": "-"
+                },
+                "ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,"
+            ]
+        }
+    ]
+}
