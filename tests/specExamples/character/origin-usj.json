@@ -1,344 +1,344 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [
-        "41MATGNT92.SFM, Good News Translation, June 2003"
-      ],
-      "code": "MAT"
-    },
-    {
-      "type": "para:is",
-      "content": [
-        "Introduction"
-      ]
-    },
-    {
-      "type": "para:ip",
-      "content": [
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "char:bk",
-          "content": [
-            "The Acts of the Apostles"
-          ]
+            "type": "book:id",
+            "content": [
+                "41MATGNT92.SFM, Good News Translation, June 2003"
+            ],
+            "code": "MAT"
         },
-        "is a continuation of",
         {
-          "type": "char:bk",
-          "content": [
-            "The Gospel according to Luke"
-          ]
+            "type": "para:is",
+            "content": [
+                "Introduction"
+            ]
         },
-        "Its chief purpose is..."
-      ]
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "6",
-      "sid": "MAT 6"
-    },
-    {
-      "type": "para:p",
-      "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "14",
-          "sid": "MAT 6:14"
-        },
-        "That is why",
-        {
-          "type": "char:bk",
-          "content": [
-            "The Book of the",
-            {
-              "type": "char:nd",
-              "content": [
-                "Lord"
-              ]
-            },
-            "'s Battles"
-          ]
-        },
-        "speaks of “...the town of Waheb in the area of ...",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "15",
-          "sid": "MAT 6:15"
-        },
-        "and the slope of the valleys ..."
-      ]
-    },
-    {
-      "type": "para:s1",
-      "content": [
-        "The Garden of Eden"
-      ]
-    },
-    {
-      "type": "para:p",
-      "content": [
-        "When the",
-        {
-          "type": "char:nd",
-          "content": [
-            "Lord"
-          ]
-        },
-        "",
-        {
-          "type": "note:f",
-          "content": [
-            "",
-            {
-              "type": "char:fr",
-              "content": [
-                "2.4:"
-              ]
-            },
-            {
-              "type": "char:fk",
-              "content": [
-                "the",
+            "type": "para:ip",
+            "content": [
                 {
-                  "type": "char:nd",
-                  "content": [
-                    "Lord"
-                  ]
+                    "type": "char:bk",
+                    "content": [
+                        "The Acts of the Apostles"
+                    ]
                 },
-                ":"
-              ]
-            },
-            {
-              "type": "char:ft",
-              "content": [
-                "Where the Hebrew text has Yahweh, traditionally transliterated as Jehovah, this translation employs",
+                "is a continuation of",
                 {
-                  "type": "char:nd",
-                  "content": [
-                    "Lord"
-                  ]
+                    "type": "char:bk",
+                    "content": [
+                        "The Gospel according to Luke"
+                    ]
                 },
-                "with capital letters, following a usage which is widespread in English versions."
-              ]
-            }
-          ],
-          "caller": "+"
+                "Its chief purpose is..."
+            ]
         },
-        "God made the universe,",
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "5",
-          "sid": "MAT 6:5"
+            "type": "chapter:c",
+            "content": [],
+            "number": "6",
+            "sid": "MAT 6"
         },
-        "there were no plants on the earth and no seeds had sprouted, because he had not sent any rain, and there was no one to cultivate the land;"
-      ]
-    },
-    {
-      "type": "para:p",
-      "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "29",
-          "sid": "MAT 6:29"
-        },
-        "И нарек ему имя: Ной, сказав: он утешит нас в работе нашей и в трудах рук наших при",
-        {
-          "type": "char:add",
-          "content": [
-            "возделывании"
-          ]
-        },
-        "земли, которую проклял Господь.",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "3",
-          "sid": "MAT 6:3"
-        },
-        "Él es el resplandor glorioso de Dios,",
-        {
-          "type": "note:f",
-          "content": [
-            "",
-            {
-              "type": "char:fr",
-              "content": [
-                "1.3:"
-              ]
-            },
-            {
-              "type": "char:fk",
-              "content": [
-                "Resplandor:"
-              ]
-            },
-            {
-              "type": "char:ft",
-              "content": [
-                "Cf. Jn 1.4-9,14",
+            "type": "para:p",
+            "content": [
                 {
-                  "type": "char:dc",
-                  "content": [
-                    "; también Sab 7.25-26, donde algo parecido se dice de la sabiduría"
-                  ]
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "14",
+                    "sid": "MAT 6:14"
                 },
-                "."
-              ]
-            }
-          ],
-          "caller": "c"
-        },
-        "la imagen misma de",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "9",
-          "sid": "MAT 6:9"
-        },
-        "От Господа спасение. Над народом Твоим благословение Твое.",
-        {
-          "type": "para:lit",
-          "content": [
-            "Слава:"
-          ]
-        },
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "15",
-          "sid": "MAT 6:15"
-        },
-        "Tell the Israelites that I, the",
-        {
-          "type": "char:nd",
-          "content": [
-            "Lord"
-          ]
-        },
-        ", the God...",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "2",
-          "sid": "MAT 6:2"
-        },
-        "It began as the prophet Isaiah had written:"
-      ]
-    },
-    {
-      "type": "para:q1",
-      "content": [
-        {
-          "type": "char:qt",
-          "content": [
-            "“God said, ‘I will send my messenger ahead of you"
-          ]
-        },
-        ""
-      ]
-    },
-    {
-      "type": "para:q2",
-      "content": [
-        {
-          "type": "char:qt",
-          "content": [
-            "to open the way for you.’"
-          ]
-        },
-        "",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "18",
-          "sid": "MAT 6:18"
-        },
-        "With my own hand I write this:",
-        {
-          "type": "char:sig",
-          "content": [
-            "Greetings from Paul"
-          ]
-        },
-        ". Do not...",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "8",
-          "sid": "MAT 6:8"
+                "That is why",
+                {
+                    "type": "char:bk",
+                    "content": [
+                        "The Book of the",
+                        {
+                            "type": "char:nd",
+                            "content": [
+                                "Lord"
+                            ]
+                        },
+                        "'s Battles"
+                    ]
+                },
+                "speaks of “...the town of Waheb in the area of ...",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "15",
+                    "sid": "MAT 6:15"
+                },
+                "and the slope of the valleys ..."
+            ]
         },
         {
-          "type": "char:sls",
-          "content": [
-            "Rehoum, chancelier, et Shimshaï, secrétaire, écrivirent au roi Artaxerxès la lettre suivante concernant Jérusalem, savoir:"
-          ]
+            "type": "para:s1",
+            "content": [
+                "The Garden of Eden"
+            ]
         },
-        ""
-      ]
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "9",
-      "sid": "MAT 9"
-    },
-    {
-      "type": "para:p",
-      "content": []
-    },
-    {
-      "type": "para:r",
-      "content": [
-        "(Mark 2.1-12; Luke 5.17-26)"
-      ]
-    },
-    {
-      "type": "para:s1",
-      "content": [
-        "Jesus Heals a Man // Who Could Not Walk"
-      ]
-    },
-    {
-      "type": "para:p",
-      "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "46",
-          "sid": "MAT 9:46"
+            "type": "para:p",
+            "content": [
+                "When the",
+                {
+                    "type": "char:nd",
+                    "content": [
+                        "Lord"
+                    ]
+                },
+                "",
+                {
+                    "type": "note:f",
+                    "content": [
+                        "",
+                        {
+                            "type": "char:fr",
+                            "content": [
+                                "2.4:"
+                            ]
+                        },
+                        {
+                            "type": "char:fk",
+                            "content": [
+                                "the",
+                                {
+                                    "type": "char:nd",
+                                    "content": [
+                                        "Lord"
+                                    ]
+                                },
+                                ":"
+                            ]
+                        },
+                        {
+                            "type": "char:ft",
+                            "content": [
+                                "Where the Hebrew text has Yahweh, traditionally transliterated as Jehovah, this translation employs",
+                                {
+                                    "type": "char:nd",
+                                    "content": [
+                                        "Lord"
+                                    ]
+                                },
+                                "with capital letters, following a usage which is widespread in English versions."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "God made the universe,",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "5",
+                    "sid": "MAT 6:5"
+                },
+                "there were no plants on the earth and no seeds had sprouted, because he had not sent any rain, and there was no one to cultivate the land;"
+            ]
         },
-        "At about three o'clock Jesus cried out with a loud shout,",
         {
-          "type": "char:tl",
-          "content": [
-            "“Eli, Eli, lema sabachthani?”"
-          ]
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "29",
+                    "sid": "MAT 6:29"
+                },
+                "И нарек ему имя: Ной, сказав: он утешит нас в работе нашей и в трудах рук наших при",
+                {
+                    "type": "char:add",
+                    "content": [
+                        "возделывании"
+                    ]
+                },
+                "земли, которую проклял Господь.",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "3",
+                    "sid": "MAT 6:3"
+                },
+                "Él es el resplandor glorioso de Dios,",
+                {
+                    "type": "note:f",
+                    "content": [
+                        "",
+                        {
+                            "type": "char:fr",
+                            "content": [
+                                "1.3:"
+                            ]
+                        },
+                        {
+                            "type": "char:fk",
+                            "content": [
+                                "Resplandor:"
+                            ]
+                        },
+                        {
+                            "type": "char:ft",
+                            "content": [
+                                "Cf. Jn 1.4-9,14",
+                                {
+                                    "type": "char:dc",
+                                    "content": [
+                                        "; también Sab 7.25-26, donde algo parecido se dice de la sabiduría"
+                                    ]
+                                },
+                                "."
+                            ]
+                        }
+                    ],
+                    "caller": "c"
+                },
+                "la imagen misma de",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "9",
+                    "sid": "MAT 6:9"
+                },
+                "От Господа спасение. Над народом Твоим благословение Твое.",
+                {
+                    "type": "para:lit",
+                    "content": [
+                        "Слава:"
+                    ]
+                },
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "15",
+                    "sid": "MAT 6:15"
+                },
+                "Tell the Israelites that I, the",
+                {
+                    "type": "char:nd",
+                    "content": [
+                        "Lord"
+                    ]
+                },
+                ", the God...",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "2",
+                    "sid": "MAT 6:2"
+                },
+                "It began as the prophet Isaiah had written:"
+            ]
         },
-        "which means, “My God, my God, why did you",
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "18",
-          "sid": "MAT 9:18"
+            "type": "para:q1",
+            "content": [
+                {
+                    "type": "char:qt",
+                    "content": [
+                        "“God said, ‘I will send my messenger ahead of you"
+                    ]
+                },
+                ""
+            ]
         },
-        "At once they left their nets and went with him.",
         {
-          "type": "figure:fig",
-          "content": [
-            "At once they left their nets."
-          ],
-          "file": "avnt016.jpg",
-          "size": "span",
-          "ref": "1.18"
+            "type": "para:q2",
+            "content": [
+                {
+                    "type": "char:qt",
+                    "content": [
+                        "to open the way for you.’"
+                    ]
+                },
+                "",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "18",
+                    "sid": "MAT 6:18"
+                },
+                "With my own hand I write this:",
+                {
+                    "type": "char:sig",
+                    "content": [
+                        "Greetings from Paul"
+                    ]
+                },
+                ". Do not...",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "8",
+                    "sid": "MAT 6:8"
+                },
+                {
+                    "type": "char:sls",
+                    "content": [
+                        "Rehoum, chancelier, et Shimshaï, secrétaire, écrivirent au roi Artaxerxès la lettre suivante concernant Jérusalem, savoir:"
+                    ]
+                },
+                ""
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "9",
+            "sid": "MAT 9"
+        },
+        {
+            "type": "para:p",
+            "content": []
+        },
+        {
+            "type": "para:r",
+            "content": [
+                "(Mark 2.1-12; Luke 5.17-26)"
+            ]
+        },
+        {
+            "type": "para:s1",
+            "content": [
+                "Jesus Heals a Man // Who Could Not Walk"
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "46",
+                    "sid": "MAT 9:46"
+                },
+                "At about three o'clock Jesus cried out with a loud shout,",
+                {
+                    "type": "char:tl",
+                    "content": [
+                        "“Eli, Eli, lema sabachthani?”"
+                    ]
+                },
+                "which means, “My God, my God, why did you",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "18",
+                    "sid": "MAT 9:18"
+                },
+                "At once they left their nets and went with him.",
+                {
+                    "type": "figure:fig",
+                    "content": [
+                        "At once they left their nets."
+                    ],
+                    "file": "avnt016.jpg",
+                    "size": "span",
+                    "ref": "1.18"
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

@@ -1,66 +1,66 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [],
-      "code": "GEN"
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "1",
-      "sid": "GEN 1"
-    },
-    {
-      "type": "para:p",
-      "content": [
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "6",
-          "sid": "GEN 1:6"
-        },
-        "जब अम्मोनियों ने देखा, कि हम दाऊद को घिनौने लगते हैं, तब हानून और अम्मोनियों ने",
-        {
-          "type": "char:it",
-          "content": [
-            "एक हजार किक्कार चाँदी"
-          ]
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
         },
         {
-          "type": "note:f",
-          "content": [
-            "",
-            {
-              "type": "char:fr",
-              "content": [
-                "19.6"
-              ]
-            },
-            {
-              "type": "char:fq",
-              "content": [
-                "एक हजार किक्कार चाँदी:"
-              ]
-            },
-            {
-              "type": "char:ft",
-              "content": [
-                "उस समय पश्चिमी आसिया में सैनिकों को किराए पर लेने का प्रचलन था।"
-              ]
-            }
-          ],
-          "caller": "+"
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
         },
         {
-          "type": "char:it",
-          "content": [
-            "*, अरम्नहरैम और अरम्माका और सोबा को भेजी, कि रथ और सवार किराये पर बुलाए।"
-          ]
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "6",
+                    "sid": "GEN 1:6"
+                },
+                "जब अम्मोनियों ने देखा, कि हम दाऊद को घिनौने लगते हैं, तब हानून और अम्मोनियों ने",
+                {
+                    "type": "char:it",
+                    "content": [
+                        "एक हजार किक्कार चाँदी"
+                    ]
+                },
+                {
+                    "type": "note:f",
+                    "content": [
+                        "",
+                        {
+                            "type": "char:fr",
+                            "content": [
+                                "19.6"
+                            ]
+                        },
+                        {
+                            "type": "char:fq",
+                            "content": [
+                                "एक हजार किक्कार चाँदी:"
+                            ]
+                        },
+                        {
+                            "type": "char:ft",
+                            "content": [
+                                "उस समय पश्चिमी आसिया में सैनिकों को किराए पर लेने का प्रचलन था।"
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                {
+                    "type": "char:it",
+                    "content": [
+                        "*, अरम्नहरैम और अरम्माका और सोबा को भेजी, कि रथ और सवार किराये पर बुलाए।"
+                    ]
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

@@ -1,132 +1,132 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [
-        "41MATGNT92.SFM, Good News Translation, June 2003"
-      ],
-      "code": "MAT"
-    },
-    {
-      "type": "para:usfm",
-      "content": []
-    },
-    {
-      "type": "para:ide",
-      "content": [
-        "UTF-8"
-      ]
-    },
-    {
-      "type": "para:ide",
-      "content": [
-        "CP-1252"
-      ]
-    },
-    {
-      "type": "para:ide",
-      "content": [
-        "Custom (TGUARANI.TTF)"
-      ]
-    },
-    {
-      "type": "para:sts",
-      "content": [
-        "2"
-      ]
-    },
-    {
-      "type": "para:h1",
-      "content": [
-        "Matthew"
-      ]
-    },
-    {
-      "type": "para:rem",
-      "content": [
-        "Assigned to <translator's name>."
-      ]
-    },
-    {
-      "type": "para:rem",
-      "content": [
-        "First draft complete, waiting for checks."
-      ]
-    },
-    {
-      "type": "para:toc1",
-      "content": [
-        "The Gospel According to Matthew"
-      ]
-    },
-    {
-      "type": "para:toc2",
-      "content": [
-        "Matthew"
-      ]
-    },
-    {
-      "type": "para:toc3",
-      "content": [
-        "Mat"
-      ]
-    },
-    {
-      "type": "para:toca1",
-      "content": [
-        "മത്തായി എഴുതിയ സുവിശേഷം"
-      ]
-    },
-    {
-      "type": "para:toca2",
-      "content": [
-        "മത്തായി"
-      ]
-    },
-    {
-      "type": "para:toca3",
-      "content": [
-        "മത്താ"
-      ]
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "1",
-      "sid": "MAT 1"
-    },
-    {
-      "type": "para:p",
-      "content": [
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "1",
-          "sid": "MAT 1:1"
+            "type": "book:id",
+            "content": [
+                "41MATGNT92.SFM, Good News Translation, June 2003"
+            ],
+            "code": "MAT"
         },
-        "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...",
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "2",
-          "sid": "MAT 1:2"
+            "type": "para:usfm",
+            "content": []
         },
-        "നമ്മുടെ പിതാവായ ..."
-      ]
-    },
-    {
-      "type": "para:p",
-      "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "3",
-          "sid": "MAT 1:3"
+            "type": "para:ide",
+            "content": [
+                "UTF-8"
+            ]
         },
-        "കർത്താവായ യേശുവിനോടും ..."
-      ]
-    }
-  ]
+        {
+            "type": "para:ide",
+            "content": [
+                "CP-1252"
+            ]
+        },
+        {
+            "type": "para:ide",
+            "content": [
+                "Custom (TGUARANI.TTF)"
+            ]
+        },
+        {
+            "type": "para:sts",
+            "content": [
+                "2"
+            ]
+        },
+        {
+            "type": "para:h1",
+            "content": [
+                "Matthew"
+            ]
+        },
+        {
+            "type": "para:rem",
+            "content": [
+                "Assigned to <translator's name>."
+            ]
+        },
+        {
+            "type": "para:rem",
+            "content": [
+                "First draft complete, waiting for checks."
+            ]
+        },
+        {
+            "type": "para:toc1",
+            "content": [
+                "The Gospel According to Matthew"
+            ]
+        },
+        {
+            "type": "para:toc2",
+            "content": [
+                "Matthew"
+            ]
+        },
+        {
+            "type": "para:toc3",
+            "content": [
+                "Mat"
+            ]
+        },
+        {
+            "type": "para:toca1",
+            "content": [
+                "മത്തായി എഴുതിയ സുവിശേഷം"
+            ]
+        },
+        {
+            "type": "para:toca2",
+            "content": [
+                "മത്തായി"
+            ]
+        },
+        {
+            "type": "para:toca3",
+            "content": [
+                "മത്താ"
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "MAT 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "1",
+                    "sid": "MAT 1:1"
+                },
+                "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "2",
+                    "sid": "MAT 1:2"
+                },
+                "നമ്മുടെ പിതാവായ ..."
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "3",
+                    "sid": "MAT 1:3"
+                },
+                "കർത്താവായ യേശുവിനോടും ..."
+            ]
+        }
+    ]
 }

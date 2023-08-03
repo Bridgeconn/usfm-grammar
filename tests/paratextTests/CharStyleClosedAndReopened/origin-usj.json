@@ -1,82 +1,82 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [],
-      "code": "GEN"
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "1",
-      "sid": "GEN 1"
-    },
-    {
-      "type": "para:p",
-      "content": [
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "1",
-          "sid": "GEN 1:1"
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
         },
         {
-          "type": "char:em",
-          "content": [
-            "word"
-          ]
-        },
-        "",
-        {
-          "type": "char:em",
-          "content": [
-            "wordtwo"
-          ]
-        },
-        "word3",
-        {
-          "type": "char:em",
-          "content": [
-            "word4"
-          ]
-        },
-        "",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "2",
-          "sid": "GEN 1:2"
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
         },
         {
-          "type": "char:em",
-          "content": [
-            "word5"
-          ]
-        },
-        "",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "3",
-          "sid": "GEN 1:3"
-        },
-        {
-          "type": "char:w",
-          "content": [
-            "glossaryone"
-          ]
-        },
-        "",
-        {
-          "type": "char:w",
-          "content": [
-            "glossarytwo"
-          ]
-        },
-        "r"
-      ]
-    }
-  ]
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                {
+                    "type": "char:em",
+                    "content": [
+                        "word"
+                    ]
+                },
+                "",
+                {
+                    "type": "char:em",
+                    "content": [
+                        "wordtwo"
+                    ]
+                },
+                "word3",
+                {
+                    "type": "char:em",
+                    "content": [
+                        "word4"
+                    ]
+                },
+                "",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                {
+                    "type": "char:em",
+                    "content": [
+                        "word5"
+                    ]
+                },
+                "",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "3",
+                    "sid": "GEN 1:3"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "glossaryone"
+                    ]
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "glossarytwo"
+                    ]
+                },
+                "r"
+            ]
+        }
+    ]
 }

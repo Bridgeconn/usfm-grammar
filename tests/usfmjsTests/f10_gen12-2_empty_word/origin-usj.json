@@ -1,192 +1,192 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [],
-      "code": "GEN"
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "1",
-      "sid": "GEN 1"
-    },
-    {
-      "type": "para:p",
-      "content": [
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "1",
-          "sid": "GEN 1:1"
-        },
-        "L'",
-        {
-          "type": "char:w",
-          "content": [
-            "Éternel"
-          ],
-          "strong": "H3068"
-        },
-        "",
-        {
-          "type": "char:w",
-          "content": [
-            "dit"
-          ],
-          "strong": "H559",
-          "x-morph": "strongMorph:TH8799"
-        },
-        "à",
-        {
-          "type": "char:w",
-          "content": [
-            "Abram"
-          ],
-          "strong": "H87"
-        },
-        ": Va-t-",
-        {
-          "type": "char:w",
-          "content": [
-            "en"
-          ],
-          "strong": "H3212",
-          "x-morph": "strongMorph:TH8798"
-        },
-        "de ton",
-        {
-          "type": "char:w",
-          "content": [
-            "pays"
-          ],
-          "strong": "H776"
-        },
-        ", de ta",
-        {
-          "type": "char:w",
-          "content": [
-            "patrie"
-          ],
-          "strong": "H4138"
-        },
-        ", et de la",
-        {
-          "type": "char:w",
-          "content": [
-            "maison"
-          ],
-          "strong": "H1004"
-        },
-        "de ton",
-        {
-          "type": "char:w",
-          "content": [
-            "père"
-          ],
-          "strong": "H1"
-        },
-        ", dans le",
-        {
-          "type": "char:w",
-          "content": [
-            "pays"
-          ],
-          "strong": "H776"
-        },
-        "que je te",
-        {
-          "type": "char:w",
-          "content": [
-            "montrerai"
-          ],
-          "strong": "H7200",
-          "x-morph": "strongMorph:TH8686"
-        },
-        ".",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "2",
-          "sid": "GEN 1:2"
-        },
-        "Je ferai de",
-        {
-          "type": "char:w",
-          "content": [
-            "toi"
-          ],
-          "strong": "H6213",
-          "x-morph": "strongMorph:TH8799"
-        },
-        "une",
-        {
-          "type": "char:w",
-          "content": [
-            "grande"
-          ],
-          "strong": "H1419"
-        },
-        "",
-        {
-          "type": "char:w",
-          "content": [
-            "nation"
-          ],
-          "strong": "H1471"
-        },
-        ", et je te",
-        {
-          "type": "char:w",
-          "content": [
-            "bénirai"
-          ],
-          "strong": "H1288",
-          "x-morph": "strongMorph:TH8762"
-        },
-        "; je",
-        {
-          "type": "char:w",
-          "content": [
-            "rendrai"
-          ],
-          "strong": "H1431"
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
         },
         {
-          "type": "char:w",
-          "content": [
-            ""
-          ]
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
         },
-        "ton",
         {
-          "type": "char:w",
-          "content": [
-            "nom"
-          ],
-          "strong": "H8034"
-        },
-        "",
-        {
-          "type": "char:w",
-          "content": [
-            "grand"
-          ],
-          "strong": "H1431",
-          "x-morph": "strongMorph:TH8762"
-        },
-        ", et tu seras une source de",
-        {
-          "type": "char:w",
-          "content": [
-            "bénédiction"
-          ],
-          "strong": "H1293"
-        },
-        "."
-      ]
-    }
-  ]
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "L'",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Éternel"
+                    ],
+                    "strong": "H3068"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "dit"
+                    ],
+                    "strong": "H559",
+                    "x-morph": "strongMorph:TH8799"
+                },
+                "à",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Abram"
+                    ],
+                    "strong": "H87"
+                },
+                ": Va-t-",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "en"
+                    ],
+                    "strong": "H3212",
+                    "x-morph": "strongMorph:TH8798"
+                },
+                "de ton",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "pays"
+                    ],
+                    "strong": "H776"
+                },
+                ", de ta",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "patrie"
+                    ],
+                    "strong": "H4138"
+                },
+                ", et de la",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "maison"
+                    ],
+                    "strong": "H1004"
+                },
+                "de ton",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "père"
+                    ],
+                    "strong": "H1"
+                },
+                ", dans le",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "pays"
+                    ],
+                    "strong": "H776"
+                },
+                "que je te",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "montrerai"
+                    ],
+                    "strong": "H7200",
+                    "x-morph": "strongMorph:TH8686"
+                },
+                ".",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "Je ferai de",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "toi"
+                    ],
+                    "strong": "H6213",
+                    "x-morph": "strongMorph:TH8799"
+                },
+                "une",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "grande"
+                    ],
+                    "strong": "H1419"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "nation"
+                    ],
+                    "strong": "H1471"
+                },
+                ", et je te",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "bénirai"
+                    ],
+                    "strong": "H1288",
+                    "x-morph": "strongMorph:TH8762"
+                },
+                "; je",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "rendrai"
+                    ],
+                    "strong": "H1431"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        ""
+                    ]
+                },
+                "ton",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "nom"
+                    ],
+                    "strong": "H8034"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "grand"
+                    ],
+                    "strong": "H1431",
+                    "x-morph": "strongMorph:TH8762"
+                },
+                ", et tu seras une source de",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "bénédiction"
+                    ],
+                    "strong": "H1293"
+                },
+                "."
+            ]
+        }
+    ]
 }

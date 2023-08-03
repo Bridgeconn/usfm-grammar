@@ -1,92 +1,92 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [],
-      "code": "GEN"
-    },
-    {
-      "type": "para:mt1",
-      "content": [
-        "ഉല്പത്തിപുസ്തകം"
-      ]
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "1",
-      "sid": "GEN 1"
-    },
-    {
-      "type": "para:p",
-      "content": [
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "1",
-          "sid": "GEN 1:1"
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
         },
-        "ആദിയിൽ ദൈവം",
         {
-          "type": "char:w",
-          "content": [
-            "ആകാശവും"
-          ],
-          "lemma": "ആകാശം",
-          "strong": "l",
-          "x-morph": "He,R:Sp1cs"
+            "type": "para:mt1",
+            "content": [
+                "ഉല്പത്തിപുസ്തകം"
+            ]
         },
-        "ഭൂമിയും സൃഷ്ടിച്ചു.",
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "2",
-          "sid": "GEN 1:2"
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
         },
-        "ആദിയിൽ ദൈവം",
         {
-          "type": "char:w",
-          "content": [
-            "ആകാശവും"
-          ],
-          "lemma": "",
-          "strong": "l",
-          "x-morph": "He,R:Sp1cs"
-        },
-        "ഭൂമിയും സൃഷ്ടിച്ചു.",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "3",
-          "sid": "GEN 1:3"
-        },
-        "ആദിയിൽ ദൈവം",
-        {
-          "type": "char:w",
-          "content": [
-            "ആകാശവും"
-          ],
-          "lemma": "ആകാശം"
-        },
-        "ഭൂമിയും സൃഷ്ടിച്ചു.",
-        {
-          "type": "verse:v",
-          "content": [],
-          "number": "4",
-          "sid": "GEN 1:4"
-        },
-        "ആദിയിൽ ദൈവം",
-        {
-          "type": "char:w",
-          "content": [
-            "ആകാശവും"
-          ],
-          "lemma": "ആകാശം"
-        },
-        "ഭൂമിയും സൃഷ്ടിച്ചു."
-      ]
-    }
-  ]
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "ആദിയിൽ ദൈവം",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "ആകാശവും"
+                    ],
+                    "lemma": "ആകാശം",
+                    "strong": "l",
+                    "x-morph": "He,R:Sp1cs"
+                },
+                "ഭൂമിയും സൃഷ്ടിച്ചു.",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "ആദിയിൽ ദൈവം",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "ആകാശവും"
+                    ],
+                    "lemma": "",
+                    "strong": "l",
+                    "x-morph": "He,R:Sp1cs"
+                },
+                "ഭൂമിയും സൃഷ്ടിച്ചു.",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "3",
+                    "sid": "GEN 1:3"
+                },
+                "ആദിയിൽ ദൈവം",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "ആകാശവും"
+                    ],
+                    "lemma": "ആകാശം"
+                },
+                "ഭൂമിയും സൃഷ്ടിച്ചു.",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "4",
+                    "sid": "GEN 1:4"
+                },
+                "ആദിയിൽ ദൈവം",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "ആകാശവും"
+                    ],
+                    "lemma": "ആകാശം"
+                },
+                "ഭൂമിയും സൃഷ്ടിച്ചു."
+            ]
+        }
+    ]
 }

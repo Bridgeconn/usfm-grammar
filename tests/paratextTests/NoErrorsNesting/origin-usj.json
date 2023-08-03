@@ -1,82 +1,82 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [],
-      "code": "GEN"
-    },
-    {
-      "type": "para:ib",
-      "content": []
-    },
-    {
-      "type": "para:ip",
-      "content": [
-        "Hi mom."
-      ]
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "1",
-      "sid": "GEN 1"
-    },
-    {
-      "type": "para:p",
-      "content": [
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "1",
-          "sid": "GEN 1:1"
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
         },
-        "Hi",
         {
-          "type": "char:em",
-          "content": [
-            "Mr.",
-            {
-              "type": "char:nd",
-              "content": [
-                "Bob"
-              ]
-            }
-          ]
+            "type": "para:ib",
+            "content": []
         },
-        "."
-      ]
-    },
-    {
-      "type": "para:p",
-      "content": [
-        "And",
         {
-          "type": "note:f",
-          "content": [
-            "",
-            {
-              "type": "char:fr",
-              "content": [
-                "1.1"
-              ]
-            },
-            {
-              "type": "char:ft",
-              "content": [
-                "stuff"
-              ]
-            }
-          ],
-          "caller": "+"
+            "type": "para:ip",
+            "content": [
+                "Hi mom."
+            ]
         },
-        "",
         {
-          "type": "optbreak:b",
-          "content": []
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "Hi",
+                {
+                    "type": "char:em",
+                    "content": [
+                        "Mr.",
+                        {
+                            "type": "char:nd",
+                            "content": [
+                                "Bob"
+                            ]
+                        }
+                    ]
+                },
+                "."
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                "And",
+                {
+                    "type": "note:f",
+                    "content": [
+                        "",
+                        {
+                            "type": "char:fr",
+                            "content": [
+                                "1.1"
+                            ]
+                        },
+                        {
+                            "type": "char:ft",
+                            "content": [
+                                "stuff"
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "",
+                {
+                    "type": "optbreak:b",
+                    "content": []
+                }
+            ]
         }
-      ]
-    }
-  ]
+    ]
 }

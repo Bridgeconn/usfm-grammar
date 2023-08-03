@@ -1,47 +1,47 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [],
-      "code": "GEN"
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "1",
-      "sid": "GEN 1"
-    },
-    {
-      "type": "para:p",
-      "content": [
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "1",
-          "sid": "GEN 1:1"
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
         },
-        "But you, speak what fits with faithful instruction.\nThe traditional translation of verse 1, as given in",
         {
-          "type": "char:jmp",
-          "content": [
-            "RSV"
-          ],
-          "link-href": "prj:RSV52 GEN 1:1",
-          "link-title": "Revised Standard Version"
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "GEN 1"
         },
-        ", may be appropriate. Storehouses, as used here, refers to large buildings with walls and roof, where grain was kept until needed. (See illustration:",
         {
-          "type": "char:jmp",
-          "content": [
-            "Storehouse"
-          ],
-          "link-href": "figures/storehouse.png",
-          "link-title": "Ancient storehouse"
-        },
-        ")"
-      ]
-    }
-  ]
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "But you, speak what fits with faithful instruction.\nThe traditional translation of verse 1, as given in",
+                {
+                    "type": "char:jmp",
+                    "content": [
+                        "RSV"
+                    ],
+                    "link-href": "prj:RSV52 GEN 1:1",
+                    "link-title": "Revised Standard Version"
+                },
+                ", may be appropriate. Storehouses, as used here, refers to large buildings with walls and roof, where grain was kept until needed. (See illustration:",
+                {
+                    "type": "char:jmp",
+                    "content": [
+                        "Storehouse"
+                    ],
+                    "link-href": "figures/storehouse.png",
+                    "link-title": "Ancient storehouse"
+                },
+                ")"
+            ]
+        }
+    ]
 }

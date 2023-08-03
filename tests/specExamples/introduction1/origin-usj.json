@@ -1,135 +1,135 @@
 {
-  "type": "USJ",
-  "version": "0.0.1-alpha.2",
-  "content": [
-    {
-      "type": "book:id",
-      "content": [
-        "41MATGNT92.SFM, Good News Translation, June 2003"
-      ],
-      "code": "MAT"
-    },
-    {
-      "type": "para:usfm",
-      "content": []
-    },
-    {
-      "type": "para:h",
-      "content": [
-        "SAN MARCOS"
-      ]
-    },
-    {
-      "type": "para:mt2",
-      "content": [
-        "Evangelio según"
-      ]
-    },
-    {
-      "type": "para:mt1",
-      "content": [
-        "SAN MARCOS"
-      ]
-    },
-    {
-      "type": "para:imt1",
-      "content": [
-        "INTRODUCCIÓN"
-      ]
-    },
-    {
-      "type": "para:is1",
-      "content": [
-        "Importancia del evangelio de Marcos"
-      ]
-    },
-    {
-      "type": "para:ip",
-      "content": [
-        "Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca igualmente en",
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
         {
-          "type": "char:bk",
-          "content": [
-            "Mateo"
-          ]
+            "type": "book:id",
+            "content": [
+                "41MATGNT92.SFM, Good News Translation, June 2003"
+            ],
+            "code": "MAT"
         },
-        "y",
         {
-          "type": "char:bk",
-          "content": [
-            "Lucas."
-          ]
+            "type": "para:usfm",
+            "content": []
         },
-        ""
-      ]
-    },
-    {
-      "type": "para:ipi",
-      "content": [
-        "Many Protestants consider the following books to be Apocrypha as defined above: Tobit, Judith, additions to Esther (as found in Greek Esther in the CEV) ..."
-      ]
-    },
-    {
-      "type": "para:imi",
-      "content": [
         {
-          "type": "char:em",
-          "content": [
-            "Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water."
-          ]
+            "type": "para:h",
+            "content": [
+                "SAN MARCOS"
+            ]
         },
-        "(“The Translators to the Reader,” King James Version, 1611)."
-      ]
-    },
-    {
-      "type": "para:im",
-      "content": [
-        "The most important document in the history of the English language is the",
         {
-          "type": "char:bk",
-          "content": [
-            "King James Version"
-          ]
+            "type": "para:mt2",
+            "content": [
+                "Evangelio según"
+            ]
         },
-        "of the Bible..."
-      ]
-    },
-    {
-      "type": "chapter:c",
-      "content": [],
-      "number": "1",
-      "sid": "MAT 1"
-    },
-    {
-      "type": "para:p",
-      "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "1",
-          "sid": "MAT 1:1"
+            "type": "para:mt1",
+            "content": [
+                "SAN MARCOS"
+            ]
         },
-        "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...",
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "2",
-          "sid": "MAT 1:2"
+            "type": "para:imt1",
+            "content": [
+                "INTRODUCCIÓN"
+            ]
         },
-        "നമ്മുടെ പിതാവായ ..."
-      ]
-    },
-    {
-      "type": "para:p",
-      "content": [
         {
-          "type": "verse:v",
-          "content": [],
-          "number": "3",
-          "sid": "MAT 1:3"
+            "type": "para:is1",
+            "content": [
+                "Importancia del evangelio de Marcos"
+            ]
         },
-        "കർത്താവായ യേശുവിനോടും ..."
-      ]
-    }
-  ]
+        {
+            "type": "para:ip",
+            "content": [
+                "Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca igualmente en",
+                {
+                    "type": "char:bk",
+                    "content": [
+                        "Mateo"
+                    ]
+                },
+                "y",
+                {
+                    "type": "char:bk",
+                    "content": [
+                        "Lucas."
+                    ]
+                },
+                ""
+            ]
+        },
+        {
+            "type": "para:ipi",
+            "content": [
+                "Many Protestants consider the following books to be Apocrypha as defined above: Tobit, Judith, additions to Esther (as found in Greek Esther in the CEV) ..."
+            ]
+        },
+        {
+            "type": "para:imi",
+            "content": [
+                {
+                    "type": "char:em",
+                    "content": [
+                        "Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water."
+                    ]
+                },
+                "(“The Translators to the Reader,” King James Version, 1611)."
+            ]
+        },
+        {
+            "type": "para:im",
+            "content": [
+                "The most important document in the history of the English language is the",
+                {
+                    "type": "char:bk",
+                    "content": [
+                        "King James Version"
+                    ]
+                },
+                "of the Bible..."
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "content": [],
+            "number": "1",
+            "sid": "MAT 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "1",
+                    "sid": "MAT 1:1"
+                },
+                "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...",
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "2",
+                    "sid": "MAT 1:2"
+                },
+                "നമ്മുടെ പിതാവായ ..."
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "content": [],
+                    "number": "3",
+                    "sid": "MAT 1:3"
+                },
+                "കർത്താവായ യേശുവിനോടും ..."
+            ]
+        }
+    ]
 }
