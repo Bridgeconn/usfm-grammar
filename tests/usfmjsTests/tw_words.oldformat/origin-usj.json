@@ -11,7 +11,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "TIT 1"
         },
@@ -20,7 +19,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "TIT 1:1"
                 },
@@ -47,7 +45,6 @@
                 "",
                 {
                     "type": "ms:k-s",
-                    "content": [],
                     "x-tw": "rc://*/tw/dict/bible/kt/jesus"
                 },
                 "",
@@ -73,8 +70,7 @@
                 },
                 "",
                 {
-                    "type": "ms:k-e",
-                    "content": []
+                    "type": "ms:k-e"
                 },
                 ",",
                 {
@@ -89,7 +85,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "TIT 1:4"
                 },
@@ -105,7 +100,6 @@
                 "",
                 {
                     "type": "ms:k-s",
-                    "content": [],
                     "x-tw": "rc://*/tw/dict/bible/kt/godthefather"
                 },
                 "",
@@ -131,8 +125,7 @@
                 },
                 "",
                 {
-                    "type": "ms:k-e",
-                    "content": []
+                    "type": "ms:k-e"
                 },
                 "",
                 {

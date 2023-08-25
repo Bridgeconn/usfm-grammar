@@ -45,7 +45,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "4",
             "sid": "PHP 4"
         },
@@ -54,7 +53,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "PHP 4:1"
                 },
@@ -67,7 +65,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "PHP 1"
         },
@@ -76,14 +73,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "PHP 1:1"
                 },
                 "Paul and Timothy, servants of Christ Jesus, to all the ones set apart in Christ Jesus who are at Philippi, with the overseers and deacons.",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "PHP 1:2"
                 },
@@ -96,7 +91,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "3",
             "sid": "PHP 3"
         },
@@ -105,14 +99,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "PHP 3:1"
                 },
                 "Finally, my brothers, rejoice in the Lord.  For me to write these same things to you is not a problem, and they will keep you safe.",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "PHP 3:2"
                 },
@@ -125,7 +117,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "2",
             "sid": "PHP 2"
         },
@@ -134,14 +125,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "PHP 2:1"
                 },
                 "If there is therefore any encouragement in Christ, if any comfort from his love, if any fellowship of the Spirit, if any tender mercies and compassions,",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "PHP 2:2"
                 },

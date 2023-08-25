@@ -57,7 +57,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "MRK 1"
         },
@@ -66,14 +65,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "MRK 1:1"
                 },
                 "the first verse",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "MRK 1:2"
                 },

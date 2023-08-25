@@ -15,7 +15,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "ACT 1"
         },
@@ -24,13 +23,11 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "ACT 1:4"
                 },
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "καὶ",
                     "x-lemma": "καί",
                     "x-morph": "Gr,CC,,,,,,,,",
@@ -47,13 +44,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "συναλιζόμενος",
                     "x-lemma": "συναλίζω",
                     "x-morph": "Gr,V,PPM,NMS,",
@@ -115,13 +110,11 @@
                     "x-occurrences": "2"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "παρήγγειλεν",
                     "x-lemma": "παραγγέλλω",
                     "x-morph": "Gr,V,IAA3,,S,",
@@ -147,13 +140,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "αὐτοῖς",
                     "x-lemma": "αὐτός",
                     "x-morph": "Gr,RP,,,3DMP,",
@@ -170,13 +161,11 @@
                     "x-occurrences": "2"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "μὴ",
                     "x-lemma": "μή",
                     "x-morph": "Gr,DO,,,,,,,,",
@@ -193,13 +182,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "χωρίζεσθαι",
                     "x-lemma": "χωρίζω",
                     "x-morph": "Gr,V,NPP,,,,,",
@@ -225,13 +212,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "ἀπὸ",
                     "x-lemma": "ἀπό",
                     "x-morph": "Gr,P,,,,,G,,,",
@@ -241,7 +226,6 @@
                 },
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "Ἱεροσολύμων",
                     "x-lemma": "Ἱεροσόλυμα",
                     "x-morph": "Gr,N,,,,,GNP,",
@@ -258,17 +242,14 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "ἀλλὰ",
                     "x-lemma": "ἀλλά",
                     "x-morph": "Gr,CO,,,,,,,,",
@@ -285,13 +266,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "περιμένειν",
                     "x-lemma": "περιμένω",
                     "x-morph": "Gr,V,NPA,,,,,",
@@ -326,13 +305,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "τὴν",
                     "x-lemma": "ὁ",
                     "x-morph": "Gr,EA,,,,AFS,",
@@ -349,13 +326,11 @@
                     "x-occurrences": "2"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "ἐπαγγελίαν",
                     "x-lemma": "ἐπαγγελία",
                     "x-morph": "Gr,N,,,,,AFS,",
@@ -372,13 +347,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "τοῦ",
                     "x-lemma": "ὁ",
                     "x-morph": "Gr,EA,,,,GMS,",
@@ -404,13 +377,11 @@
                     "x-occurrences": "2"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "Πατρὸς",
                     "x-lemma": "πατήρ",
                     "x-morph": "Gr,N,,,,,GMS,",
@@ -427,13 +398,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "ἣν",
                     "x-lemma": "ὅς",
                     "x-morph": "Gr,RR,,,,AFS,",
@@ -459,13 +428,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "ἣν",
                     "x-lemma": "ὅς",
                     "x-morph": "Gr,RR,,,,AFS,",
@@ -491,19 +458,16 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "who": "Jesus"
                 },
                 "\"",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "μου",
                     "x-lemma": "ἐγώ",
                     "x-morph": "Gr,RP,,,1G,S,",
@@ -520,13 +484,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-content": "ἠκούσατέ",
                     "x-lemma": "ἀκούω",
                     "x-morph": "Gr,V,IAA2,,P,",
@@ -561,8 +523,7 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ""
             ]

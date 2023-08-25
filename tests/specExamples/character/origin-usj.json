@@ -36,7 +36,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "6",
             "sid": "MAT 6"
         },
@@ -45,7 +44,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "14",
                     "sid": "MAT 6:14"
                 },
@@ -66,7 +64,6 @@
                 "speaks of “...the town of Waheb in the area of ...",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "15",
                     "sid": "MAT 6:15"
                 },
@@ -132,7 +129,6 @@
                 "God made the universe,",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "5",
                     "sid": "MAT 6:5"
                 },
@@ -144,7 +140,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "29",
                     "sid": "MAT 6:29"
                 },
@@ -158,7 +153,6 @@
                 "земли, которую проклял Господь.",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "MAT 6:3"
                 },
@@ -198,7 +192,6 @@
                 "la imagen misma de",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "9",
                     "sid": "MAT 6:9"
                 },
@@ -211,7 +204,6 @@
                 },
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "15",
                     "sid": "MAT 6:15"
                 },
@@ -225,7 +217,6 @@
                 ", the God...",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "MAT 6:2"
                 },
@@ -256,7 +247,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "18",
                     "sid": "MAT 6:18"
                 },
@@ -270,7 +260,6 @@
                 ". Do not...",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "8",
                     "sid": "MAT 6:8"
                 },
@@ -285,7 +274,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "9",
             "sid": "MAT 9"
         },
@@ -310,7 +298,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "46",
                     "sid": "MAT 9:46"
                 },
@@ -324,7 +311,6 @@
                 "which means, “My God, my God, why did you",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "18",
                     "sid": "MAT 9:18"
                 },

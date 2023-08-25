@@ -39,7 +39,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "136",
             "sid": "MAT 136"
         },
@@ -60,7 +59,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "MAT 136:1"
                 },
@@ -98,7 +96,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "MAT 136:2"
                 },
@@ -110,8 +107,7 @@
             "content": [
                 "May his glory fill the whole world.",
                 {
-                    "type": "optbreak:b",
-                    "content": []
+                    "type": "optbreak:b"
                 }
             ]
         },
@@ -126,12 +122,10 @@
             "content": [
                 "For the director of music. On my stringed instruments.",
                 {
-                    "type": "optbreak:b",
-                    "content": []
+                    "type": "optbreak:b"
                 },
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "18",
                     "sid": "MAT 136:18"
                 },
@@ -155,8 +149,7 @@
             "content": [
                 "God is on your side.”",
                 {
-                    "type": "optbreak:b",
-                    "content": []
+                    "type": "optbreak:b"
                 }
             ]
         },

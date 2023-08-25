@@ -39,7 +39,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "136",
             "sid": "MAT 136"
         },
@@ -48,7 +47,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "12-83",
                     "sid": "MAT 136:12-83"
                 },

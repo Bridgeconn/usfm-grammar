@@ -47,7 +47,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "1SA 1"
         },
@@ -56,7 +55,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "1SA 1:1"
                 },
@@ -91,7 +89,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "1SA 1:2"
                 },
@@ -107,7 +104,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "8",
                     "sid": "1SA 1:8"
                 },
@@ -142,7 +138,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "9",
                     "sid": "1SA 1:9"
                 },

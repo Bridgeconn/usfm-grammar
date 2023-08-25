@@ -35,7 +35,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "OBA 1"
         },
@@ -44,7 +43,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "OBA 1:1"
                 },
@@ -118,7 +116,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "OBA 1:2"
                 },
@@ -143,7 +140,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "OBA 1:3"
                 },
@@ -167,7 +163,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "OBA 1:4"
                 },
@@ -191,8 +186,7 @@
             "content": [
                 "这是耶和华说的。",
                 {
-                    "type": "optbreak:b",
-                    "content": []
+                    "type": "optbreak:b"
                 }
             ]
         },
@@ -201,7 +195,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "5",
                     "sid": "OBA 1:5"
                 },
@@ -243,7 +236,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "6",
                     "sid": "OBA 1:6"
                 },
@@ -273,7 +265,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "7",
                     "sid": "OBA 1:7"
                 },
@@ -303,7 +294,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "8",
                     "sid": "OBA 1:8"
                 },
@@ -341,7 +331,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "9",
                     "sid": "OBA 1:9"
                 },
@@ -384,7 +373,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "10",
                     "sid": "OBA 1:10"
                 },
@@ -415,7 +403,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "11",
                     "sid": "OBA 1:11"
                 },
@@ -459,7 +446,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "12",
                     "sid": "OBA 1:12"
                 },
@@ -507,7 +493,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "13",
                     "sid": "OBA 1:13"
                 },
@@ -549,7 +534,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "14",
                     "sid": "OBA 1:14"
                 },
@@ -586,7 +570,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "15",
                     "sid": "OBA 1:15"
                 },
@@ -617,7 +600,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "16",
                     "sid": "OBA 1:16"
                 },
@@ -661,7 +643,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "17",
                     "sid": "OBA 1:17"
                 },
@@ -698,7 +679,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "18",
                     "sid": "OBA 1:18"
                 },
@@ -758,8 +738,7 @@
             "content": [
                 "这是耶和华说的。",
                 {
-                    "type": "optbreak:b",
-                    "content": []
+                    "type": "optbreak:b"
                 }
             ]
         },
@@ -768,7 +747,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "19",
                     "sid": "OBA 1:19"
                 },
@@ -839,7 +817,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "20",
                     "sid": "OBA 1:20"
                 },
@@ -910,7 +887,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "21",
                     "sid": "OBA 1:21"
                 },

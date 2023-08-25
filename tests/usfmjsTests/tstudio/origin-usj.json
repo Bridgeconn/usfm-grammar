@@ -47,7 +47,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "091",
             "sid": "PSA 091"
         },
@@ -70,7 +69,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "01",
                     "sid": "PSA 091:01"
                 },
@@ -88,7 +86,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "02",
                     "sid": "PSA 091:02"
                 },
@@ -110,7 +107,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "03-04",
                     "sid": "PSA 091:03-04"
                 },

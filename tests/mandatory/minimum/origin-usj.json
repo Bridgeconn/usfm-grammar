@@ -11,7 +11,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "PHM 1"
         },
@@ -20,14 +19,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "PHM 1:1"
                 },
                 "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "PHM 1:2"
                 },
@@ -39,7 +36,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "PHM 1:3"
                 },

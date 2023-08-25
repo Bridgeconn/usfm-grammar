@@ -9,7 +9,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "SNG 1"
         },
@@ -18,7 +17,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "SNG 1:1"
                 },
@@ -27,13 +25,11 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "2",
             "sid": "SNG 2"
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "3",
             "sid": "SNG 3"
         }

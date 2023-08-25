@@ -9,7 +9,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -18,14 +17,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "GEN 1:4"
                 },
                 "When he was meeting together with them, he commanded them not to leave Jerusalem, but to wait for the promise of the Father, about which, he said,",
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "who": "Jesus"
                 },
                 "\"You heard from me"

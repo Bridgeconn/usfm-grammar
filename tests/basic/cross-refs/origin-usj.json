@@ -9,7 +9,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "MAT 1"
         },
@@ -18,21 +17,18 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "MAT 1:1"
                 },
                 "the first verse",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "MAT 1:2"
                 },
                 "the second verse",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "MAT 1:3"
                 },

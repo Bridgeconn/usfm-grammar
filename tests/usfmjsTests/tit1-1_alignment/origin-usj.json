@@ -15,7 +15,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "TIT 1"
         },
@@ -24,13 +23,11 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "TIT 1:1"
                 },
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G39720",
@@ -45,13 +42,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G14010",
@@ -75,13 +70,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "2",
                     "x-strong": "G23160",
@@ -105,13 +98,11 @@
                     "x-occurrences": "2"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G06520",
@@ -144,13 +135,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G11610",
@@ -165,13 +154,11 @@
                     "x-occurrences": "4"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G24240",
@@ -186,13 +173,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G55470",
@@ -207,13 +192,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G25960",
@@ -228,13 +211,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G41020",
@@ -258,13 +239,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "2",
                     "x-occurrences": "2",
                     "x-strong": "G23160",
@@ -297,13 +276,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G15880",
@@ -327,13 +304,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G25320",
@@ -348,13 +323,11 @@
                     "x-occurrences": "2"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G02250",
@@ -369,13 +342,11 @@
                     "x-occurrences": "3"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G19220",
@@ -390,13 +361,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G02250",
@@ -429,13 +398,11 @@
                     "x-occurrences": "3"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G35880",
@@ -450,13 +417,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G25960",
@@ -480,13 +445,11 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-occurrence": "1",
                     "x-occurrences": "1",
                     "x-strong": "G21500",
@@ -501,8 +464,7 @@
                     "x-occurrences": "1"
                 },
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ","
             ]

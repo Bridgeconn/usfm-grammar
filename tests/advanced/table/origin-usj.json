@@ -9,7 +9,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -18,14 +17,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "GEN 1:1"
                 },
                 "the first verse",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "GEN 1:2"
                 },
@@ -37,7 +34,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "12-83",
                     "sid": "GEN 1:12-83"
                 },

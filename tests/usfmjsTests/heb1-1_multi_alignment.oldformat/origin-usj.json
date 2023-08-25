@@ -17,7 +17,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "HEB 1"
         },
@@ -26,13 +25,11 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "HEB 1:1"
                 },
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G38190",
                     "x-lemma": "πάλαι",
                     "x-morph": "Gr,D,,,,,,,,,",
@@ -60,13 +57,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G35880",
                     "x-lemma": "ὁ",
                     "x-morph": "Gr,EA,,,,NMS,",
@@ -77,7 +72,6 @@
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G23160",
                     "x-lemma": "θεός",
                     "x-morph": "Gr,N,,,,,NMS,",
@@ -96,18 +90,15 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G29800",
                     "x-lemma": "λαλέω",
                     "x-morph": "Gr,V,PAA,NMS,",
@@ -135,13 +126,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G35880",
                     "x-lemma": "ὁ",
                     "x-morph": "Gr,EA,,,,DMP,",
@@ -160,13 +149,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G35880",
                     "x-lemma": "ὁ",
                     "x-morph": "Gr,EA,,,,DMP,",
@@ -177,7 +164,6 @@
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G39620",
                     "x-lemma": "πατήρ",
                     "x-morph": "Gr,N,,,,,DMP,",
@@ -188,7 +174,6 @@
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G17220",
                     "x-lemma": "ἐν",
                     "x-morph": "Gr,P,,,,,D,,,",
@@ -216,23 +201,19 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G43960",
                     "x-lemma": "προφήτης",
                     "x-morph": "Gr,N,,,,,DMP,",
@@ -261,13 +242,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G41810",
                     "x-lemma": "πολυμερῶς",
                     "x-morph": "Gr,D,,,,,,,,,",
@@ -304,13 +283,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G25320",
                     "x-lemma": "καί",
                     "x-morph": "Gr,CC,,,,,,,,",
@@ -329,13 +306,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G41870",
                     "x-lemma": "πολυτρόπως",
                     "x-morph": "Gr,D,,,,,,,,,",
@@ -372,8 +347,7 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "."
             ]

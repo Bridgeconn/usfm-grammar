@@ -13,7 +13,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -22,14 +21,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "GEN 1:1"
                 },
                 "From Gen 1:",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "GEN 1:2"
                 },
@@ -175,14 +172,12 @@
                 "׃",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "GEN 1:3"
                 },
                 "From Isa:",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "GEN 1:4"
                 },

@@ -9,7 +9,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -18,7 +17,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "GEN 1:1"
                 },
@@ -32,7 +30,6 @@
                 "created.",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "GEN 1:2"
                 },
@@ -89,7 +86,6 @@
                 "with further text ...",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "GEN 1:3"
                 },

@@ -9,7 +9,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -18,20 +17,17 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "11",
                     "sid": "GEN 1:11"
                 },
                 "Jesus stood before the Roman governor, who questioned him.",
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "who": "Pilate"
                 },
                 "“Are\nyou the king of the Jews?”",
                 {
-                    "type": "ms:qt-e",
-                    "content": []
+                    "type": "ms:qt-e"
                 },
                 "he asked."
             ]
@@ -41,18 +37,15 @@
             "content": [
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "who": "Jesus"
                 },
                 "“So you say,”",
                 {
-                    "type": "ms:qt-e",
-                    "content": []
+                    "type": "ms:qt-e"
                 },
                 "answered Jesus.",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "12",
                     "sid": "GEN 1:12"
                 },
@@ -64,20 +57,17 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "13",
                     "sid": "GEN 1:13"
                 },
                 "So Pilate said to him,",
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "who": "Pilate"
                 },
                 "“Don't you hear all these things they\naccuse you of?”",
                 {
-                    "type": "ms:qt-e",
-                    "content": []
+                    "type": "ms:qt-e"
                 },
                 ""
             ]
@@ -87,7 +77,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "14",
                     "sid": "GEN 1:14"
                 },

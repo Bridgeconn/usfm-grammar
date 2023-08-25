@@ -11,7 +11,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "MAT 1"
         },
@@ -20,7 +19,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "MAT 1:1"
                 }
@@ -32,38 +30,32 @@
                 "“Someone is shouting in the desert,",
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "sid": "qt_123",
                     "who": "Pilate"
                 },
                 "“Are you the king of the Jews?”",
                 {
                     "type": "ms:qt-e",
-                    "content": [],
                     "eid": "qt_123"
                 },
                 "",
                 {
-                    "type": "ms:zms",
-                    "content": []
+                    "type": "ms:zms"
                 },
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "11",
                     "sid": "MAT 1:11"
                 },
                 "Jesus stood before the Roman governor, who questioned him.",
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "who": "Pilate"
                 },
                 "“Are you the king of the Jews?”",
                 {
-                    "type": "ms:qt-e",
-                    "content": []
+                    "type": "ms:qt-e"
                 },
                 "he asked."
             ]
@@ -73,18 +65,15 @@
             "content": [
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "who": "Jesus"
                 },
                 "“So you say,”",
                 {
-                    "type": "ms:qt-e",
-                    "content": []
+                    "type": "ms:qt-e"
                 },
                 "answered Jesus.",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "12",
                     "sid": "MAT 1:12"
                 },
@@ -96,20 +85,17 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "13",
                     "sid": "MAT 1:13"
                 },
                 "So Pilate said to him,",
                 {
                     "type": "ms:qt-s",
-                    "content": [],
                     "who": "Pilate"
                 },
                 "“Don't you hear all these things they accuse you of?”",
                 {
-                    "type": "ms:qt-e",
-                    "content": []
+                    "type": "ms:qt-e"
                 },
                 ""
             ]
@@ -119,14 +105,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "14",
                     "sid": "MAT 1:14"
                 },
                 "But Jesus refused to answer ...",
                 {
-                    "type": "ms:ts",
-                    "content": []
+                    "type": "ms:ts"
                 },
                 ""
             ]
@@ -136,14 +120,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "5",
                     "sid": "MAT 1:5"
                 },
                 "Now I wish to remind you, although...",
                 {
                     "type": "ms:ts-s",
-                    "content": [],
                     "sid": "ts_JUD_5-6"
                 },
                 ""
@@ -154,21 +136,18 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "5",
                     "sid": "MAT 1:5"
                 },
                 "Now I wish to remind you, although you know everything, that the Lord once saved a\npeople out of the land of Egypt, but that afterward he destroyed those who did not believe.",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "6",
                     "sid": "MAT 1:6"
                 },
                 "And angels who did not keep to their own principality, but left their proper dwelling\nplace—God has kept them in everlasting chains in darkness for the judgment of the\ngreat day.",
                 {
                     "type": "ms:ts-e",
-                    "content": [],
                     "eid": "ts_JUD_5-6"
                 },
                 ""

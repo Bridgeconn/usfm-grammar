@@ -9,7 +9,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -18,7 +17,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "50",
                     "sid": "GEN 1:50"
                 },
@@ -45,7 +43,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "11",
                     "sid": "GEN 1:11"
                 },
@@ -71,7 +68,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "28",
                     "sid": "GEN 1:28"
                 },
@@ -84,7 +80,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "34",
                     "sid": "GEN 1:34"
                 },
@@ -110,7 +105,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "49",
                     "sid": "GEN 1:49"
                 },

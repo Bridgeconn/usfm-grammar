@@ -9,7 +9,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -18,7 +17,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "GEN 1:1"
                 },
@@ -44,7 +42,6 @@
                 },
                 {
                     "type": "ms:k-s",
-                    "content": [],
                     "x-tw": "rc://*/tw/dict/bible/kt/jesus"
                 },
                 {
@@ -68,8 +65,7 @@
                     "x-tw": "rc://*/tw/dict/bible/kt/christ"
                 },
                 {
-                    "type": "ms:k-e",
-                    "content": []
+                    "type": "ms:k-e"
                 },
                 ",",
                 {
@@ -84,7 +80,6 @@
                 "",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "GEN 1:4"
                 },
@@ -99,7 +94,6 @@
                 },
                 {
                     "type": "ms:k-s",
-                    "content": [],
                     "x-tw": "rc://*/tw/dict/bible/kt/godthefather"
                 },
                 {
@@ -123,8 +117,7 @@
                     "x-morph": "Gr,N,,,,,GMS,"
                 },
                 {
-                    "type": "ms:k-e",
-                    "content": []
+                    "type": "ms:k-e"
                 },
                 "",
                 {

@@ -17,7 +17,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "TIT 1"
         },
@@ -26,13 +25,11 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "TIT 1:1"
                 },
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G39720",
                     "x-lemma": "Παῦλος",
                     "x-morph": "Gr,N,,,,,NMS,",
@@ -51,13 +48,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G14010",
                     "x-lemma": "δοῦλος",
                     "x-morph": "Gr,N,,,,,NMS,",
@@ -94,13 +89,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G23160",
                     "x-lemma": "θεός",
                     "x-morph": "Gr,N,,,,,GMS,",
@@ -119,13 +112,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G06520",
                     "x-lemma": "ἀπόστολος",
                     "x-morph": "Gr,N,,,,,NMS,",
@@ -162,13 +153,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G11610",
                     "x-lemma": "δέ",
                     "x-morph": "Gr,CC,,,,,,,,",
@@ -187,13 +176,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G24240",
                     "x-lemma": "Ἰησοῦς",
                     "x-morph": "Gr,N,,,,,GMS,",
@@ -212,13 +199,11 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 "",
                 {
                     "type": "ms:zaln-s",
-                    "content": [],
                     "x-strong": "G55470",
                     "x-lemma": "χριστός",
                     "x-morph": "Gr,N,,,,,GMS,",
@@ -237,8 +222,7 @@
                 },
                 "",
                 {
-                    "type": "ms:zaln-e",
-                    "content": []
+                    "type": "ms:zaln-e"
                 },
                 ",",
                 {
@@ -405,7 +389,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "TIT 1:2"
                 },
@@ -591,13 +574,11 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "TIT 1:3"
                 },
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "TIT 1:4"
                 },
@@ -792,7 +773,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "5",
                     "sid": "TIT 1:5"
                 },
@@ -1050,7 +1030,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "6",
                     "sid": "TIT 1:6"
                 },
@@ -1245,7 +1224,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "7",
                     "sid": "TIT 1:7"
                 },
@@ -1566,7 +1544,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "8",
                     "sid": "TIT 1:8"
                 },
@@ -1761,7 +1738,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "9",
                     "sid": "TIT 1:9"
                 },
@@ -2028,7 +2004,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "10",
                     "sid": "TIT 1:10"
                 },
@@ -2169,7 +2144,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "11",
                     "sid": "TIT 1:11"
                 },
@@ -2373,7 +2347,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "12",
                     "sid": "TIT 1:12"
                 },
@@ -2514,7 +2487,6 @@
                 ".\"",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "13",
                     "sid": "TIT 1:13"
                 },
@@ -2673,13 +2645,11 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "14",
                     "sid": "TIT 1:14"
                 },
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "15",
                     "sid": "TIT 1:15"
                 },
@@ -2955,7 +2925,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "16",
                     "sid": "TIT 1:16"
                 },
@@ -3170,7 +3139,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "2",
             "sid": "TIT 2"
         },
@@ -3179,7 +3147,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "TIT 2:1"
                 },
@@ -3257,7 +3224,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "TIT 2:2"
                 },
@@ -3407,7 +3373,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "TIT 2:3"
                 },
@@ -3638,7 +3603,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "TIT 2:4"
                 },
@@ -3788,7 +3752,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "5",
                     "sid": "TIT 2:5"
                 },
@@ -4028,7 +3991,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "6",
                     "sid": "TIT 2:6"
                 },
@@ -4142,7 +4104,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "7",
                     "sid": "TIT 2:7"
                 },
@@ -4301,7 +4262,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "8",
                     "sid": "TIT 2:8"
                 },
@@ -4505,7 +4465,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "9",
                     "sid": "TIT 2:9"
                 },
@@ -4655,7 +4614,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "10",
                     "sid": "TIT 2:10"
                 },
@@ -4913,7 +4871,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "11",
                     "sid": "TIT 2:11"
                 },
@@ -5036,7 +4993,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "12",
                     "sid": "TIT 2:12"
                 },
@@ -5231,7 +5187,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "13",
                     "sid": "TIT 2:13"
                 },
@@ -5435,7 +5390,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "14",
                     "sid": "TIT 2:14"
                 },
@@ -5702,7 +5656,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "15",
                     "sid": "TIT 2:15"
                 },
@@ -5890,7 +5843,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "3",
             "sid": "TIT 3"
         },
@@ -5899,7 +5851,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "TIT 3:1"
                 },
@@ -6067,7 +6018,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "TIT 3:2"
                 },
@@ -6244,7 +6194,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "TIT 3:3"
                 },
@@ -6538,7 +6487,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "TIT 3:4"
                 },
@@ -6670,7 +6618,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "5",
                     "sid": "TIT 3:5"
                 },
@@ -6973,7 +6920,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "6",
                     "sid": "TIT 3:6"
                 },
@@ -7096,7 +7042,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "7",
                     "sid": "TIT 3:7"
                 },
@@ -7273,7 +7218,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "8",
                     "sid": "TIT 3:8"
                 },
@@ -7612,7 +7556,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "9",
                     "sid": "TIT 3:9"
                 },
@@ -7789,7 +7732,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "10",
                     "sid": "TIT 3:10"
                 },
@@ -7912,7 +7854,6 @@
                 ",",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "11",
                     "sid": "TIT 3:11"
                 },
@@ -8071,7 +8012,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "12",
                     "sid": "TIT 3:12"
                 },
@@ -8284,7 +8224,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "13",
                     "sid": "TIT 3:13"
                 },
@@ -8461,7 +8400,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "14",
                     "sid": "TIT 3:14"
                 },
@@ -8647,7 +8585,6 @@
                 ".",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "15",
                     "sid": "TIT 3:15"
                 },

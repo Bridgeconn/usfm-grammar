@@ -39,7 +39,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "MAT 1"
         },
@@ -48,7 +47,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "MAT 1:1"
                 },
@@ -61,7 +59,6 @@
                 "“And all the people will answer, ‘Amen!’",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "2",
                     "sid": "MAT 1:2"
                 },
@@ -85,7 +82,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "3",
                     "sid": "MAT 1:3"
                 },
@@ -103,8 +99,7 @@
             "content": [
                 "make a straight path for him to travel!’”",
                 {
-                    "type": "optbreak:b",
-                    "content": []
+                    "type": "optbreak:b"
                 }
             ]
         },
@@ -113,7 +108,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "4",
                     "sid": "MAT 1:4"
                 },
@@ -131,14 +125,12 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "24",
                     "sid": "MAT 1:24"
                 },
                 "We have heard that some ...",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "25",
                     "sid": "MAT 1:25"
                 },
@@ -147,7 +139,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "8",
             "sid": "MAT 8"
         },
@@ -156,7 +147,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "26",
                     "sid": "MAT 8:26"
                 },
@@ -169,7 +159,6 @@
                 "I AM THE GREAT CITY OF BABYLON, ...",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "27",
                     "sid": "MAT 8:27"
                 },
@@ -181,7 +170,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "37",
                     "sid": "MAT 8:37"
                 },
@@ -199,7 +187,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "28",
                     "sid": "MAT 8:28"
                 },

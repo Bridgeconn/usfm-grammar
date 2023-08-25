@@ -39,7 +39,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "136",
             "sid": "MAT 136"
         },
@@ -58,7 +57,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "16-22",
                     "sid": "MAT 136:16-22"
                 },
@@ -89,14 +87,12 @@
                 "This was the list of the administrators of the tribes of Israel.",
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "7",
                     "sid": "MAT 136:7"
                 },
                 "in company with Zerubbabel, Jeshua, Nehemiah, Azariah, Raamiah, Nahamani, Mordecai,Bilshan, Mispereth, Bigvai, Nehum and Baanah):",
                 {
-                    "type": "optbreak:b",
-                    "content": []
+                    "type": "optbreak:b"
                 }
             ]
         },
@@ -105,8 +101,7 @@
             "content": [
                 "The list of the men of Israel:",
                 {
-                    "type": "optbreak:b",
-                    "content": []
+                    "type": "optbreak:b"
                 }
             ]
         },
@@ -115,7 +110,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "8",
                     "sid": "MAT 136:8"
                 },
@@ -134,7 +128,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "9",
                     "sid": "MAT 136:9"
                 },

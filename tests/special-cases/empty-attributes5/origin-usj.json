@@ -15,7 +15,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -24,7 +23,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "6",
                     "sid": "GEN 1:6"
                 },

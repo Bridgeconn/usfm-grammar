@@ -47,7 +47,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "21",
             "sid": "PRO 21"
         },
@@ -60,7 +59,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "9",
                     "sid": "PRO 21:9"
                 },
@@ -78,7 +76,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "10",
                     "sid": "PRO 21:10"
                 },
@@ -100,7 +97,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "19",
                     "sid": "PRO 21:19"
                 },

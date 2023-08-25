@@ -19,7 +19,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "1",
             "sid": "GEN 1"
         },
@@ -28,7 +27,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "GEN 1:1"
                 },
@@ -37,7 +35,6 @@
         },
         {
             "type": "chapter:c",
-            "content": [],
             "number": "2",
             "sid": "GEN 2"
         },
@@ -46,7 +43,6 @@
             "content": [
                 {
                     "type": "verse:v",
-                    "content": [],
                     "number": "1",
                     "sid": "GEN 2:1"
                 },
