@@ -11,7 +11,9 @@
         },
         {
             "type": "para:usfm",
-            "content": []
+            "content": [
+                "3.0"
+            ]
         },
         {
             "type": "para:h",

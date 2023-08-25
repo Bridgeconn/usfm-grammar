@@ -266,6 +266,12 @@ class USJGenerator:
         elif node.type == 'b':
             b_json_obj = {"type": "optbreak:b"}
             parent_json_obj['content'].append(b_json_obj)
+        elif node.type == "usfm":
+            ver_json_obj = {"type": "para:usfm", "content":[]}
+            version = self.usfm[
+                node.start_byte:node.end_byte].decode('utf-8').replace("\\usfm","").strip()
+            ver_json_obj['content'].append(version)
+            parent_json_obj['content'].append(ver_json_obj)
 
     def node_2_usj_generic(self, node, parent_json_obj):
         '''build nodes for para style markers in USX'''
@@ -324,7 +330,7 @@ class USJGenerator:
             self.node_2_usj_milestone(node, parent_json_obj)
         elif node.type == "zNameSpace":
             self.node_2_usj_milestone(node, parent_json_obj)
-        elif node.type in ["esb", "cat", "fig", "b"]:
+        elif node.type in ["esb", "cat", "fig", "b", "usfm"]:
             self.node_2_usj_special(node, parent_json_obj)
         elif (node.type in self.PARA_STYLE_MARKERS or
               node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):
