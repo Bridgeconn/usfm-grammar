@@ -1,0 +1,764 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "EN_ULT en_English_ltr Wed Oct 10 2018 11:55:23 GMT-0400 (EDT) tc"
+            ],
+            "code": "ACT"
+        },
+        {
+            "type": "para:usfm",
+            "content": [
+                "3.0"
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "ACT 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "ACT 1:1"
+                },
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "καὶ",
+                    "x-lemma": "καί",
+                    "x-morph": "Gr,D,,,,,,,,,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G25320"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "And"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "οἳ",
+                    "x-lemma": "ὅς",
+                    "x-morph": "Gr,RR,,,,NMP,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G37390"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "they"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "εἶπαν",
+                    "x-lemma": "λέγω",
+                    "x-morph": "Gr,V,IAA3,,P,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G30040"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "said"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                ",\"",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ἄνδρες",
+                    "x-lemma": "ἀνήρ",
+                    "x-morph": "Gr,N,,,,,VMP,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G04350"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Men"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "Γαλιλαῖοι",
+                    "x-lemma": "Γαλιλαῖος",
+                    "x-morph": "Gr,NS,,,,VMP,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G10570"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "of"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Galilee"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                ",",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "τί",
+                    "x-lemma": "τίς",
+                    "x-morph": "Gr,RT,,,,ANS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G51010"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "why"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ἑστήκατε",
+                    "x-lemma": "ἵστημι",
+                    "x-morph": "Gr,V,IEA2,,P,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G24760"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "do"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "you"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "3"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "stand"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "βλέποντες",
+                    "x-lemma": "βλέπω",
+                    "x-morph": "Gr,V,PPA,NMP,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G09910"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "looking"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "εἰς",
+                    "x-lemma": "εἰς",
+                    "x-morph": "Gr,P,,,,,A,,,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "3",
+                    "x-strong": "G15190"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "into"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "3"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "τὸν",
+                    "x-lemma": "ὁ",
+                    "x-morph": "Gr,EA,,,,AMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "3",
+                    "x-strong": "G35880"
+                },
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "οὐρανόν",
+                    "x-lemma": "οὐρανός",
+                    "x-morph": "Gr,N,,,,,AMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "2",
+                    "x-strong": "G37720"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "heaven"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "3"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "?",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "οὗτος",
+                    "x-lemma": "οὗτος",
+                    "x-morph": "Gr,ED,,,,NMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G37780"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "This"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ὁ",
+                    "x-lemma": "ὁ",
+                    "x-morph": "Gr,EA,,,,NMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "2",
+                    "x-strong": "G35880"
+                },
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "Ἰησοῦς",
+                    "x-lemma": "Ἰησοῦς",
+                    "x-morph": "Gr,N,,,,,NMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G24240"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Jesus"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ὁ",
+                    "x-lemma": "ὁ",
+                    "x-morph": "Gr,RD,,,,NMS,",
+                    "x-occurrence": "2",
+                    "x-occurrences": "2",
+                    "x-strong": "G35880"
+                },
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ἀναλημφθεὶς",
+                    "x-lemma": "ἀναλαμβάνω",
+                    "x-morph": "Gr,V,PAP,NMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G03530"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "who"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "has"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "been"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "taken"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "up"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ἀφ’",
+                    "x-lemma": "ἀπό",
+                    "x-morph": "Gr,P,,,,,G,,,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G05750"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "from"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ὑμῶν",
+                    "x-lemma": "σύ",
+                    "x-morph": "Gr,RP,,,2G,P,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G47710"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "you"
+                    ],
+                    "x-occurrence": "2",
+                    "x-occurrences": "3"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "εἰς",
+                    "x-lemma": "εἰς",
+                    "x-morph": "Gr,P,,,,,A,,,",
+                    "x-occurrence": "2",
+                    "x-occurrences": "3",
+                    "x-strong": "G15190"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "into"
+                    ],
+                    "x-occurrence": "2",
+                    "x-occurrences": "3"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "τὸν",
+                    "x-lemma": "ὁ",
+                    "x-morph": "Gr,EA,,,,AMS,",
+                    "x-occurrence": "2",
+                    "x-occurrences": "3",
+                    "x-strong": "G35880"
+                },
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "οὐρανὸν",
+                    "x-lemma": "οὐρανός",
+                    "x-morph": "Gr,N,,,,,AMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G37720"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "heaven"
+                    ],
+                    "x-occurrence": "2",
+                    "x-occurrences": "3"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                ",",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ἐλεύσεται",
+                    "x-lemma": "ἔρχομαι",
+                    "x-morph": "Gr,V,IFM3,,S,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G20640"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "will"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "οὕτως",
+                    "x-lemma": "οὕτως",
+                    "x-morph": "Gr,D,,,,,,,,,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G37790"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "likewise"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ἐλεύσεται",
+                    "x-lemma": "ἔρχομαι",
+                    "x-morph": "Gr,V,IFM3,,S,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G20640"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "return"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ὃν",
+                    "x-lemma": "ὅς",
+                    "x-morph": "Gr,ER,,,,AMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G37390"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "in"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "the"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "same"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "τρόπον",
+                    "x-lemma": "τρόπος",
+                    "x-morph": "Gr,N,,,,,AMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G51580"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "manner"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "ἐθεάσασθε",
+                    "x-lemma": "θεάομαι",
+                    "x-morph": "Gr,V,IAM2,,P,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G23000"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "as"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "you"
+                    ],
+                    "x-occurrence": "3",
+                    "x-occurrences": "3"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "saw"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "αὐτὸν",
+                    "x-lemma": "αὐτός",
+                    "x-morph": "Gr,RP,,,3AMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G08460"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "him"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "πορευόμενον",
+                    "x-lemma": "πορεύω",
+                    "x-morph": "Gr,V,PPM,AMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G41980"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "going"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "εἰς",
+                    "x-lemma": "εἰς",
+                    "x-morph": "Gr,P,,,,,A,,,",
+                    "x-occurrence": "3",
+                    "x-occurrences": "3",
+                    "x-strong": "G15190"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "into"
+                    ],
+                    "x-occurrence": "3",
+                    "x-occurrences": "3"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                "",
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "τὸν",
+                    "x-lemma": "ὁ",
+                    "x-morph": "Gr,EA,,,,AMS,",
+                    "x-occurrence": "3",
+                    "x-occurrences": "3",
+                    "x-strong": "G35880"
+                },
+                {
+                    "type": "ms:zaln-s",
+                    "x-content": "οὐρανόν",
+                    "x-lemma": "οὐρανός",
+                    "x-morph": "Gr,N,,,,,AMS,",
+                    "x-occurrence": "2",
+                    "x-occurrences": "2",
+                    "x-strong": "G37720"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "heaven"
+                    ],
+                    "x-occurrence": "3",
+                    "x-occurrences": "3"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                {
+                    "type": "ms:zaln-e"
+                },
+                ".\""
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": []
+        }
+    ]
+}

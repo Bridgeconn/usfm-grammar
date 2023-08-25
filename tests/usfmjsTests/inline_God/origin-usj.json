@@ -1,0 +1,110 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "In the beginning G",
+                {
+                    "type": "char:sc",
+                    "content": [
+                        "od"
+                    ]
+                },
+                "created.",
+                {
+                    "type": "verse:v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "The following is a",
+                {
+                    "type": "char:add",
+                    "content": [
+                        "translator's addition containing the word",
+                        {
+                            "type": "char:nd",
+                            "content": [
+                                "Lord"
+                            ]
+                        },
+                        "within it"
+                    ]
+                },
+                ""
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "char:add",
+                    "content": [
+                        "an addition containing the word",
+                        {
+                            "type": "char:nd",
+                            "content": [
+                                "Lord"
+                            ]
+                        }
+                    ]
+                },
+                "and further text ..."
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "char:add",
+                    "content": [
+                        "and an addition containing the word",
+                        {
+                            "type": "char:nd",
+                            "content": [
+                                "Lord!"
+                            ]
+                        }
+                    ]
+                },
+                "with further text ...",
+                {
+                    "type": "verse:v",
+                    "number": "3",
+                    "sid": "GEN 1:3"
+                },
+                "That is why",
+                {
+                    "type": "char:bk",
+                    "content": [
+                        "The Book of the",
+                        {
+                            "type": "char:nd",
+                            "content": [
+                                "Lord"
+                            ]
+                        },
+                        "'s Battles"
+                    ]
+                },
+                "speaks of “...the\ntown of Waheb in the area of Suphah, and the valleys; the Arnon River,"
+            ]
+        }
+    ]
+}

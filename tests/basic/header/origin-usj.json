@@ -1,0 +1,83 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "The Gospel of Mark"
+            ],
+            "code": "MRK"
+        },
+        {
+            "type": "para:ide",
+            "content": [
+                "UTF-8"
+            ]
+        },
+        {
+            "type": "para:usfm",
+            "content": [
+                "3.0"
+            ]
+        },
+        {
+            "type": "para:h",
+            "content": [
+                "Mark"
+            ]
+        },
+        {
+            "type": "para:mt2",
+            "content": [
+                "The Gospel according to"
+            ]
+        },
+        {
+            "type": "para:mt1",
+            "content": [
+                "MARK"
+            ]
+        },
+        {
+            "type": "para:is",
+            "content": [
+                "Introduction"
+            ]
+        },
+        {
+            "type": "para:ip",
+            "content": [
+                {
+                    "type": "char:bk",
+                    "content": [
+                        "The Gospel according to Mark"
+                    ]
+                },
+                "begins with the statement..."
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "MRK 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "MRK 1:1"
+                },
+                "the first verse",
+                {
+                    "type": "verse:v",
+                    "number": "2",
+                    "sid": "MRK 1:2"
+                },
+                "the second verse"
+            ]
+        }
+    ]
+}

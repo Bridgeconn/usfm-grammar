@@ -13,6 +13,8 @@ class USJGenerator:
     TABLE_CELL_MARKERS = USXGenerator.TABLE_CELL_MARKERS
     MISC_MARKERS = USXGenerator.MISC_MARKERS
 
+    # NO_CONTENT_MARKERS = ["v", "c", "b", "ca", "va", "milestone"]
+
     def __init__(self, tree_sitter_language_obj, usfm_bytes, usj_root_obj=None):
         '''Initialzes the USJ generator with USFM and root object'''
         self.usfm_language = tree_sitter_language_obj
@@ -20,7 +22,7 @@ class USJGenerator:
         if usj_root_obj is None:
             self.json_root_obj = {
                 "type": "USJ",
-                "version": "0.0.1-alpha.2",
+                "version": "0.1.0",
                 "content":[]
             }
         else:
@@ -31,12 +33,13 @@ class USJGenerator:
         output = None
         if json_obj['type'] == type_value or type_value in json_obj['type'].split(':'):
             output = json_obj
-        for child in json_obj['content']:
-            if isinstance(child, str):
-                continue
-            child_output = self.findlast_from_json(child, type_value)
-            if child_output is not None:
-                output = child_output
+        if 'content' in json_obj:
+            for child in json_obj['content']:
+                if isinstance(child, str):
+                    continue
+                child_output = self.findlast_from_json(child, type_value)
+                if child_output is not None:
+                    output = child_output
         return output
 
     def node_2_usj_id(self, node, parent_json_obj):
@@ -68,7 +71,7 @@ class USJGenerator:
             if child['type'] == "book:id":
                 chap_ref = child['code']+" "+chap_num
                 break
-        chap_json_obj = {"type":"chapter:c", "content":[]}
+        chap_json_obj = {"type":"chapter:c"}
         chap_json_obj["number"] = chap_num
         chap_json_obj["sid"] = chap_ref
         for tupl in chap_cap:
@@ -102,7 +105,7 @@ class USJGenerator:
                                 )''').captures(node)
         verse_num = self.usfm[verse_num_cap[0][0].start_byte:
             verse_num_cap[0][0].end_byte].decode('utf-8')
-        v_json_obj = {"type":"verse:v", "content":[]}
+        v_json_obj = {"type":"verse:v"}
         for tupl in verse_num_cap:
             if tupl[1] == 'alt':
                 alt_num = self.usfm[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
@@ -118,7 +121,7 @@ class USJGenerator:
     def node_2_usj_ca_va(self, node, parent_json_obj):
         '''Build elements for independant ca and va away from c and v'''
         style = node.type
-        char_json_obj = {"type":f"char:{style}", "content":[]}
+        char_json_obj = {"type":f"char:{style}"}
         alt_num_match = self.usfm_language.query('''([
                                             (chapterNumber)
                                             (verseNumber)
@@ -239,6 +242,9 @@ class USJGenerator:
         for child in node.children:
             if child.type.endswith("Attribute"):
                 self.node_2_usj(child, ms_json_obj)
+        if not ms_json_obj['content']:
+        # Though normally milestones dont have contents, custom z-namespaces could have them
+            del ms_json_obj['content']
         parent_json_obj['content'].append(ms_json_obj)
 
     def node_2_usj_special(self, node, parent_json_obj):
@@ -258,8 +264,14 @@ class USJGenerator:
                 self.node_2_usj(child, fig_json_obj)
             parent_json_obj['content'].append(fig_json_obj)
         elif node.type == 'b':
-            b_json_obj = {"type": "optbreak:b", "content":[]}
+            b_json_obj = {"type": "optbreak:b"}
             parent_json_obj['content'].append(b_json_obj)
+        elif node.type == "usfm":
+            ver_json_obj = {"type": "para:usfm", "content":[]}
+            version = self.usfm[
+                node.start_byte:node.end_byte].decode('utf-8').replace("\\usfm","").strip()
+            ver_json_obj['content'].append(version)
+            parent_json_obj['content'].append(ver_json_obj)
 
     def node_2_usj_generic(self, node, parent_json_obj):
         '''build nodes for para style markers in USX'''
@@ -318,7 +330,7 @@ class USJGenerator:
             self.node_2_usj_milestone(node, parent_json_obj)
         elif node.type == "zNameSpace":
             self.node_2_usj_milestone(node, parent_json_obj)
-        elif node.type in ["esb", "cat", "fig", "b"]:
+        elif node.type in ["esb", "cat", "fig", "b", "usfm"]:
             self.node_2_usj_special(node, parent_json_obj)
         elif (node.type in self.PARA_STYLE_MARKERS or
               node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):

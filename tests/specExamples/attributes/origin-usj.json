@@ -1,0 +1,97 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "41MATGNT92.SFM, Good News Translation, June 2003"
+            ],
+            "code": "MAT"
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "MAT 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "MAT 1:1"
+                }
+            ]
+        },
+        {
+            "type": "para:q1",
+            "content": [
+                "“Someone is shouting in the desert,"
+            ]
+        },
+        {
+            "type": "para:q2",
+            "content": [
+                "‘Prepare a road for the Lord;"
+            ]
+        },
+        {
+            "type": "para:q2",
+            "content": [
+                "make a straight path for him to travel!’ ”"
+            ]
+        },
+        {
+            "type": "sidebar:esb",
+            "content": [
+                {
+                    "type": "para:ms",
+                    "content": [
+                        {
+                            "type": "char:jmp",
+                            "content": [
+                                ""
+                            ],
+                            "link-id": "article-john_the_baptist"
+                        },
+                        "John the Baptist"
+                    ]
+                },
+                {
+                    "type": "para:p",
+                    "content": [
+                        "John is sometimes called the last “Old Testament prophet” because of the warnings he brought about God's judgment and because he announced the coming of God's “Chosen One” (Messiah)."
+                    ]
+                }
+            ],
+            "category": "People"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "2-6",
+                    "sid": "MAT 1:2-6"
+                },
+                "From Abraham to King David, the following ancestors are listed: Abraham,...mother was",
+                {
+                    "type": "char:jmp",
+                    "content": [
+                        "Ruth"
+                    ],
+                    "link-href": "#article-Ruth"
+                },
+                "), Jesse, and King David.",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "gracious"
+                    ],
+                    "link-href": "http://bibles.org/search/grace/eng-GNTD/all"
+                }
+            ]
+        }
+    ]
+}

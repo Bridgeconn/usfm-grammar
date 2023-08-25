@@ -1,0 +1,157 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "41MATGNT92.SFM, Good News Translation, June 2003"
+            ],
+            "code": "MAT"
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "MAT 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "MAT 1:1"
+                }
+            ]
+        },
+        {
+            "type": "para:q1",
+            "content": [
+                "“Someone is shouting in the desert,",
+                {
+                    "type": "ms:qt-s",
+                    "sid": "qt_123",
+                    "who": "Pilate"
+                },
+                "“Are you the king of the Jews?”",
+                {
+                    "type": "ms:qt-e",
+                    "eid": "qt_123"
+                },
+                "",
+                {
+                    "type": "ms:zms"
+                },
+                "",
+                {
+                    "type": "verse:v",
+                    "number": "11",
+                    "sid": "MAT 1:11"
+                },
+                "Jesus stood before the Roman governor, who questioned him.",
+                {
+                    "type": "ms:qt-s",
+                    "who": "Pilate"
+                },
+                "“Are you the king of the Jews?”",
+                {
+                    "type": "ms:qt-e"
+                },
+                "he asked."
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "ms:qt-s",
+                    "who": "Jesus"
+                },
+                "“So you say,”",
+                {
+                    "type": "ms:qt-e"
+                },
+                "answered Jesus.",
+                {
+                    "type": "verse:v",
+                    "number": "12",
+                    "sid": "MAT 1:12"
+                },
+                "But he said nothing in response to the accusations of the chief priests and elders."
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "13",
+                    "sid": "MAT 1:13"
+                },
+                "So Pilate said to him,",
+                {
+                    "type": "ms:qt-s",
+                    "who": "Pilate"
+                },
+                "“Don't you hear all these things they accuse you of?”",
+                {
+                    "type": "ms:qt-e"
+                },
+                ""
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "14",
+                    "sid": "MAT 1:14"
+                },
+                "But Jesus refused to answer ...",
+                {
+                    "type": "ms:ts"
+                },
+                ""
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "5",
+                    "sid": "MAT 1:5"
+                },
+                "Now I wish to remind you, although...",
+                {
+                    "type": "ms:ts-s",
+                    "sid": "ts_JUD_5-6"
+                },
+                ""
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "5",
+                    "sid": "MAT 1:5"
+                },
+                "Now I wish to remind you, although you know everything, that the Lord once saved a\npeople out of the land of Egypt, but that afterward he destroyed those who did not believe.",
+                {
+                    "type": "verse:v",
+                    "number": "6",
+                    "sid": "MAT 1:6"
+                },
+                "And angels who did not keep to their own principality, but left their proper dwelling\nplace—God has kept them in everlasting chains in darkness for the judgment of the\ngreat day.",
+                {
+                    "type": "ms:ts-e",
+                    "eid": "ts_JUD_5-6"
+                },
+                ""
+            ]
+        }
+    ]
+}

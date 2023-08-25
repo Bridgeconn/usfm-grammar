@@ -1,0 +1,11 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
+        }
+    ]
+}

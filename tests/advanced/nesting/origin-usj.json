@@ -1,0 +1,53 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "the first verse",
+                {
+                    "type": "verse:v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "the second verse",
+                {
+                    "type": "verse:v",
+                    "number": "14",
+                    "sid": "GEN 1:14"
+                },
+                "That is why",
+                {
+                    "type": "char:bk",
+                    "content": [
+                        "The Book of the",
+                        {
+                            "type": "char:nd",
+                            "content": [
+                                "Lord"
+                            ]
+                        },
+                        "'s Battles"
+                    ]
+                },
+                "speaks of “...the town of Waheb in the area of Suphah"
+            ]
+        }
+    ]
+}

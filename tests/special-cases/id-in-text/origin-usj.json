@@ -1,0 +1,33 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "verse one",
+                {
+                    "type": "verse:v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "verse two did have an id EXO in it."
+            ]
+        }
+    ]
+}

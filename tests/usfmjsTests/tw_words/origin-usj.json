@@ -1,0 +1,144 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "Titus"
+            ],
+            "code": "TIT"
+        },
+        {
+            "type": "para:usfm",
+            "content": [
+                "3.0"
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "TIT 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "TIT 1:1"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "ἀπόστολος"
+                    ],
+                    "lemma": "ἀπόστολος",
+                    "strong": "G06520",
+                    "x-morph": "Gr,N,,,,,NMS,",
+                    "x-tw": "rc://*/tw/dict/bible/kt/apostle"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "δὲ"
+                    ],
+                    "lemma": "δέ",
+                    "strong": "G11610",
+                    "x-morph": "Gr,CC,,,,,,,,"
+                },
+                {
+                    "type": "ms:k-s",
+                    "x-tw": "rc://*/tw/dict/bible/kt/jesus"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Ἰησοῦ"
+                    ],
+                    "lemma": "Ἰησοῦς",
+                    "strong": "G24240",
+                    "x-morph": "Gr,N,,,,,GMS,"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Χριστοῦ"
+                    ],
+                    "lemma": "χριστός",
+                    "strong": "G55470",
+                    "x-morph": "Gr,N,,,,,GMS,",
+                    "x-tw": "rc://*/tw/dict/bible/kt/christ"
+                },
+                {
+                    "type": "ms:k-e"
+                },
+                ",",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "κατὰ"
+                    ],
+                    "lemma": "κατά",
+                    "strong": "G25960",
+                    "x-morph": "Gr,P,,,,,A,,,"
+                },
+                "",
+                {
+                    "type": "verse:v",
+                    "number": "4",
+                    "sid": "TIT 1:4"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "ἀπὸ"
+                    ],
+                    "lemma": "ἀπό",
+                    "strong": "G05750",
+                    "x-morph": "Gr,P,,,,,G,,,"
+                },
+                {
+                    "type": "ms:k-s",
+                    "x-tw": "rc://*/tw/dict/bible/kt/godthefather"
+                },
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Θεοῦ"
+                    ],
+                    "lemma": "θεός",
+                    "strong": "G23160",
+                    "x-morph": "Gr,N,,,,,GMS,",
+                    "x-tw": "rc://*/tw/dict/bible/kt/god"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "Πατρὸς"
+                    ],
+                    "lemma": "πατήρ",
+                    "strong": "G39620",
+                    "x-morph": "Gr,N,,,,,GMS,"
+                },
+                {
+                    "type": "ms:k-e"
+                },
+                "",
+                {
+                    "type": "char:w",
+                    "content": [
+                        "καὶ"
+                    ],
+                    "lemma": "καί",
+                    "strong": "G25320",
+                    "x-morph": "Gr,CC,,,,,,,,"
+                },
+                ""
+            ]
+        }
+    ]
+}

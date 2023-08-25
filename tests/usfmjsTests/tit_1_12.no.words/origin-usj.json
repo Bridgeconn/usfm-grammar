@@ -1,0 +1,59 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [
+                "Titus"
+            ],
+            "code": "TIT"
+        },
+        {
+            "type": "para:ide",
+            "content": [
+                "UTF-8"
+            ]
+        },
+        {
+            "type": "para:h",
+            "content": [
+                "Titus"
+            ]
+        },
+        {
+            "type": "para:toc2",
+            "content": [
+                "Titus"
+            ]
+        },
+        {
+            "type": "para:toc3",
+            "content": [
+                "Tit"
+            ]
+        },
+        {
+            "type": "para:mt",
+            "content": [
+                "Titus"
+            ]
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "TIT 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "12",
+                    "sid": "TIT 1:12"
+                },
+                "One of their own prophets has said, \"Cretans are always liars, evil beasts, lazy gluttons.\""
+            ]
+        }
+    ]
+}

@@ -1,0 +1,153 @@
+{
+    "type": "USJ",
+    "version": "0.1.0",
+    "content": [
+        {
+            "type": "book:id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter:c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "the first verse",
+                {
+                    "type": "verse:v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "the second verse"
+            ]
+        },
+        {
+            "type": "para:p",
+            "content": [
+                {
+                    "type": "verse:v",
+                    "number": "12-83",
+                    "sid": "GEN 1:12-83"
+                },
+                "They presented their offerings in the following order:"
+            ]
+        },
+        {
+            "type": "table",
+            "content": [
+                {
+                    "type": "table:row:tr",
+                    "content": [
+                        {
+                            "type": "table:cell:th1",
+                            "content": [
+                                "Day"
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell:th2",
+                            "content": [
+                                "Tribe"
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell:th3",
+                            "content": [
+                                "Leader"
+                            ],
+                            "align": "start"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row:tr",
+                    "content": [
+                        {
+                            "type": "table:cell:tcr1",
+                            "content": [
+                                "1st"
+                            ],
+                            "align": "end"
+                        },
+                        {
+                            "type": "table:cell:tc2",
+                            "content": [
+                                "Judah"
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell:tc3",
+                            "content": [
+                                "Nahshon son of Amminadab"
+                            ],
+                            "align": "start"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row:tr",
+                    "content": [
+                        {
+                            "type": "table:cell:tcr1",
+                            "content": [
+                                "2nd"
+                            ],
+                            "align": "end"
+                        },
+                        {
+                            "type": "table:cell:tc2",
+                            "content": [
+                                "Issachar"
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell:tc3",
+                            "content": [
+                                "Nethanel son of Zuar"
+                            ],
+                            "align": "start"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row:tr",
+                    "content": [
+                        {
+                            "type": "table:cell:tcr1",
+                            "content": [
+                                "3rd"
+                            ],
+                            "align": "end"
+                        },
+                        {
+                            "type": "table:cell:tc2",
+                            "content": [
+                                "Zebulun"
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell:tc3",
+                            "content": [
+                                "Eliab son of Helon"
+                            ],
+                            "align": "start"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
