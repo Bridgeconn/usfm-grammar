@@ -30,9 +30,10 @@ class ListGenerator:
             self.usj_to_list_c(obj)
         elif obj['type'] == "verse:v":
             self.usj_to_list_v(obj)
-        for item in obj['content']:
-            if isinstance(item, str):
-                self.list.append(
-                    [self.book, self.current_chapter, self.current_verse, item, obj['type']])
-            else:
-                self.usj_to_list(item)
+        if 'content' in obj:
+            for item in obj['content']:
+                if isinstance(item, str):
+                    self.list.append(
+                        [self.book, self.current_chapter, self.current_verse, item, obj['type']])
+                else:
+                    self.usj_to_list(item)

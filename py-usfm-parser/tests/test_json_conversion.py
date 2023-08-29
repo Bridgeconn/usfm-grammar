@@ -39,8 +39,9 @@ def get_types(element):
                 types.append("vp")
         if "category" in element:
             types.append("cat")
-        for item in element['content']:
-            types += get_types(item)
+        if 'content' in element:
+            for item in element['content']:
+                types += get_types(item)
     return types
 
 @pytest.mark.parametrize('file_path', test_files)
