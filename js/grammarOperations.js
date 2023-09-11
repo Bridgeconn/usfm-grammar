@@ -71,9 +71,9 @@ function buildVerseText(elmts) {
         const innerKey = Object.keys(elmts[key][j])[0];
         if (elmts[key][j][innerKey] !== null) {
           let listText = '';
-          if (typeof elmts[key][j][innerKey] === 'string'){
+          if (typeof elmts[key][j][innerKey] === 'string') {
             listText = elmts[key][j][innerKey];
-          }else{
+          } else {
             listText = buildVerseText(elmts[key][j][innerKey]);
           }
           if (punctPattern1.test(elmts[key][j][innerKey])
