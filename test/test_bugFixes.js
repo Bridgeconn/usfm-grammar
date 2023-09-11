@@ -372,4 +372,17 @@ describe('Test bug fixes', () => {
     const relaxedJsonOutput = usfmParserRelaxed.toJSON();
     assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, 'जब अम्मोनियों ने देखा, कि हम दाऊद को घिनौने लगते हैं, तब हानून और अम्मोनियों ने एक हजार किक्कार चाँदी , अरम्नहरैम और अरम्माका और सोबा को भेजी, कि रथ और सवार किराये पर बुलाए।');
   });
+
+  it('204-extracting-versetext-from-li', () => {
+    // https://github.com/Bridgeconn/usfm-grammar/issues/204
+    const inputUsfm = '\\id GEN\n\\c 1\n\\p\n\\v 19 \\w These|strong="H0428"\\w* \\w are|strong="H0428"\\w* \\w the|strong="H8034"\\w* \\w names|strong="H8034"\\w* \\w of|strong="H1121"\\w* \\w the|strong="H8034"\\w* leaders: \n\\b\n\\li1 \\w from|strong="H0376"\\w* \\w the|strong="H8034"\\w* \\w tribe|strong="H4294"\\w* \\w of|strong="H1121"\\w* \\w Judah|strong="H3063"\\w*—\\w Caleb|strong="H3612"\\w* \\w son|strong="H1121"\\w* \\w of|strong="H1121"\\w* \\w Jephunneh|strong="H3312"\\w*; \n\\li1 \n\\v 20 \\w from|strong="H1121"\\w* \\w the|strong="H1121"\\w* \\w tribe|strong="H4294"\\w* \\w of|strong="H1121"\\w* \\w Simeon|strong="H8095"\\w*—\\w Shemuel|strong="H8050"\\w* \\w son|strong="H1121"\\w* \\w of|strong="H1121"\\w* \\w Ammihud|strong="H5989"\\w*;';
+    const usfmParser = new grammar.USFMParser(inputUsfm);
+    const jsonOutput = usfmParser.toJSON();
+    assert.strictEqual(jsonOutput.chapters[0].contents[1].verseText, 'These are the names of the leaders: from the tribe of Judah—Caleb son of Jephunneh; 1');
+    assert.strictEqual(jsonOutput.chapters[0].contents[2].verseText, 'from the tribe of Simeon—Shemuel son of Ammihud;');
+    const usfmParserRelaxed = new grammar.USFMParser(inputUsfm, grammar.LEVEL.RELAXED);
+    const relaxedJsonOutput = usfmParserRelaxed.toJSON();
+    assert.strictEqual(relaxedJsonOutput.chapters[0].contents[1].verseText, 'These are the names of the leaders: from the tribe of Judah—Caleb son of Jephunneh;');
+    assert.strictEqual(relaxedJsonOutput.chapters[0].contents[2].verseText, 'from the tribe of Simeon—Shemuel son of Ammihud;');
+  });
 });

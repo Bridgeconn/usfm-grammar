@@ -70,12 +70,18 @@ function buildVerseText(elmts) {
       for (let j = 0; j < elmts[key].length; j += 1) {
         const innerKey = Object.keys(elmts[key][j])[0];
         if (elmts[key][j][innerKey] !== null) {
+          let listText = '';
+          if (typeof elmts[key][j][innerKey] === 'string'){
+            listText = elmts[key][j][innerKey];
+          }else{
+            listText = buildVerseText(elmts[key][j][innerKey]);
+          }
           if (punctPattern1.test(elmts[key][j][innerKey])
             || punctPattern2.test(verseTextPartial)
             || verseTextPartial.endsWith(' ') || verseTextPartial === '') {
-            verseTextPartial += elmts[key][j][innerKey];
+            verseTextPartial += listText;
           } else {
-            verseTextPartial += ` ${elmts[key][j][innerKey]}`;
+            verseTextPartial += ` ${listText}`;
           }
         }
       }
