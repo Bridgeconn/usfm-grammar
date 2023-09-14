@@ -21,8 +21,8 @@ class Filter(list, Enum):
     COMMENTS = ["sts", "rem", "lit", "restore"]  # comment markers
     PARAGRAPHS = ["p", "m", "po", "pr", "cls", "pmo", "pm", "pmc", #'paragraphs-quotes-lists-tables'
                 "pmr", "pi", "mi", "nb", "pc", "ph",
-                "q", "qr", "qc", "qa", "qm", "qd", 
-                "lh", "li", "lf", "lim", "litl", 
+                "q", "qr", "qc", "qa", "qm", "qd",
+                "lh", "li", "lf", "lim", "litl",
                 'tr', "tc", "th", "tcr", "thr", 'table',
                 "b"]
     CHARACTERS = ["add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn",

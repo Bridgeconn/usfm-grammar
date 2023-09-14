@@ -83,7 +83,7 @@ def exclude_markers_in_usj(input_usj,
     return []
 
 def include_markers_in_usj(input_usj,
-    include_markers:list, 
+    include_markers:list,
     combine_texts=True,
     excluded_parent=False):
     """keeping only chosen markers in USJ, as per provided the list"""

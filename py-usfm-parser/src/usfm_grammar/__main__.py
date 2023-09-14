@@ -12,7 +12,7 @@ for member in Filter:
     all_markers += member.value
 
 
-def main():
+def main(): #pylint: disable=too-many-locals
     '''handles the command line requests'''
     arg_parser = argparse.ArgumentParser(
         description='Uses the tree-sitter-usfm grammar to parse and convert USFM to '+\
@@ -21,10 +21,12 @@ def main():
     arg_parser.add_argument('--format', type=str, help='output format',
                             choices=[itm.value for itm in Format],
                             default=Format.JSON.value)
-    arg_parser.add_argument('--include_markers', type=str, help='the list of of contents to be included',
+    arg_parser.add_argument('--include_markers', type=str,
+                            help='the list of of contents to be included',
                             choices=[itm.name.lower() for itm in Filter]+all_markers,
                             action='append')
-    arg_parser.add_argument('--exclude_markers', type=str, help='the list of of contents to be included',
+    arg_parser.add_argument('--exclude_markers', type=str,
+                            help='the list of of contents to be included',
                             choices=[itm.name.lower() for itm in Filter]+all_markers,
                             action='append')
     arg_parser.add_argument('--csv_col_sep', type=str,
