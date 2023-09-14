@@ -2,7 +2,7 @@
 from glob import glob
 import re
 from lxml import etree
-from src.usfm_grammar import USFMParser
+from src.usfm_grammar import USFMParser, Filter
 
 TEST_DIR = "../tests"
 
