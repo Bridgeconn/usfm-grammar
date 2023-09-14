@@ -23,12 +23,14 @@ class Filter(list, Enum):
                 "pmr", "pi", "mi", "nb", "pc", "ph",
                 "q", "qr", "qc", "qa", "qm", "qd", 
                 "lh", "li", "lf", "lim", "litl", 
-                'tr', "tc", "th", "tcr", "thr", 'table']  
+                'tr', "tc", "th", "tcr", "thr", 'table',
+                "b"]
     CHARACTERS = ["add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn",
                 "png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj", # Special-text
                 "em", "bd", "bdit", "it", "no", "sc", "sup", # character styling
                  "rb", "pro", "w", "wh", "wa", "wg", #special-features
-                 "lik", "liv",] #structred list entries
+                 "lik", "liv", #structred list entries
+                 "jmp"]
     NOTES = ["f", "fe", "ef", "efe", "x", "ex", # "footnotes-and-crossrefs"
              "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",
              "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc"
