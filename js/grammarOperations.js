@@ -1219,7 +1219,7 @@ sem.addOperation('composeJson', {
   },
 
   _iter(...children) {
-  return children.map(c => c.composeJson());
+    return children.map((c) => c.composeJson());
   },
 
 });

@@ -209,8 +209,8 @@ sem.addOperation('buildJson', {
   },
 
   _iter(...children) {
-  return children.map(c => c.buildJson());
-  }
+    return children.map((c) => c.buildJson());
+  },
 
 });
 
