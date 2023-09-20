@@ -7,32 +7,47 @@ import csv
 from lxml import etree
 
 from usfm_grammar import USFMParser, Filter, Format
+all_markers = []
+for member in Filter:
+    all_markers += member.value
 
-def main():
+
+def main(): #pylint: disable=too-many-locals
     '''handles the command line requests'''
     arg_parser = argparse.ArgumentParser(
-        description='Uses the tree-sitter-usfm grammar to parse and convert USFM to "+\
-        "Syntax-tree, JSON, CSV, USX etc.')
+        description='Uses the tree-sitter-usfm grammar to parse and convert USFM to '+\
+        'Syntax-tree, JSON, CSV, USX etc.')
     arg_parser.add_argument('infile', type=str, help='input usfm file')
     arg_parser.add_argument('--format', type=str, help='output format',
                             choices=[itm.value for itm in Format],
                             default=Format.JSON.value)
-    arg_parser.add_argument('--filter', type=str, help='the type of contents to be included',
-                            choices=[itm.name.lower() for itm in Filter],
-                            action="append")
+    arg_parser.add_argument('--include_markers', type=str,
+                            help='the list of of contents to be included',
+                            choices=[itm.name.lower() for itm in Filter]+all_markers,
+                            action='append')
+    arg_parser.add_argument('--exclude_markers', type=str,
+                            help='the list of of contents to be included',
+                            choices=[itm.name.lower() for itm in Filter]+all_markers,
+                            action='append')
     arg_parser.add_argument('--csv_col_sep', type=str,
-                            help="column separator or delimiter. Only useful with format=table.",
-                            default="\t")
+                            help='column separator or delimiter. Only useful with format=table.',
+                            default='\t')
     arg_parser.add_argument('--csv_row_sep', type=str,
-                            help="row separator or delimiter. Only useful with format=table.",
-                            default="\n")
+                            help='row separator or delimiter. Only useful with format=table.',
+                            default='\n')
     arg_parser.add_argument('--ignore_errors',
-                            help="to get some output from successfully parsed portions",
+                            help='to get some output from successfully parsed portions',
+                            action='store_true')
+    arg_parser.add_argument('--combine_text',
+                            help='to be used along with exclude_markers or include_markers, '+\
+                            'to concatinate the consecutive text snippets, '+\
+                            'from different components, or not',
                             action='store_true')
 
     infile = arg_parser.parse_args().infile
     output_format = arg_parser.parse_args().format
-    output_filter = arg_parser.parse_args().filter
+    exclude_markers = arg_parser.parse_args().exclude_markers
+    include_markers = arg_parser.parse_args().include_markers
 
     with open(infile, 'r', encoding='utf-8') as usfm_file:
         file_content = usfm_file.read()
@@ -44,19 +59,38 @@ def main():
         print(f"Errors present:\n\t{err_str}")
         sys.exit(1)
 
-    if output_filter is None:
-        updated_filt = None
+    filter_names =  [member.name for member in Filter]
+    if exclude_markers is None:
+        updated_exclude_markers = None
     else:
-        updated_filt = []
-        for itm in output_filter:
-            updated_filt.append(Filter[itm.upper()])
+        updated_exclude_markers = []
+        for itm in exclude_markers:
+            if itm.upper() in filter_names:
+                updated_exclude_markers += Filter[itm.upper()]
+            else:
+                updated_exclude_markers.append(itm.lower().replace("\\", ""))
+    if include_markers is None:
+        updated_include_markers = None
+    else:
+        updated_include_markers = []
+        for itm in include_markers:
+            if itm.upper() in filter_names:
+                updated_include_markers += Filter[itm.upper()]
+            else:
+                updated_include_markers.append(itm.lower().replace("\\", ""))
 
     match output_format:
         case Format.JSON:
-            dict_output = my_parser.to_usj(filters=updated_filt, ignore_errors=True)
+            dict_output = my_parser.to_usj(
+                exclude_markers=updated_exclude_markers,
+                include_markers=updated_include_markers,
+                ignore_errors=True)
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
-            table_output = my_parser.to_list(filters = updated_filt, ignore_errors=True)
+            table_output = my_parser.to_list(
+                exclude_markers=updated_exclude_markers,
+                include_markers=updated_include_markers,
+                ignore_errors=True)
             outfile = sys.stdout
             writer = csv.writer(outfile,
                 delimiter=arg_parser.parse_args().csv_col_sep,

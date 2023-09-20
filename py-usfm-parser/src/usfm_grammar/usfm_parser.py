@@ -10,17 +10,35 @@ from lxml import etree
 from usfm_grammar.usx_generator import USXGenerator
 from usfm_grammar.usj_generator import USJGenerator
 from usfm_grammar.list_generator import ListGenerator
+from usfm_grammar.filters import exclude_markers_in_usj, include_markers_in_usj
 
-class Filter(str, Enum):
+class Filter(list, Enum):
     '''Defines the values of filter options'''
-    BOOK_HEADERS = "book-header-introduction-markers"
-    PARAGRAPHS = 'paragraphs-quotes-lists-tables'
-    TITLES = "sectionheadings"
-    SCRIPTURE_TEXT = 'verse-texts'
-    NOTES = "footnotes-and-crossrefs"
-    ATTRIBUTES = "character-level-attributes"
-    MILESTONES = "milestones-namespaces"
-    STUDY_BIBLE = "sidebars-extended-contents"
+    BOOK_HEADERS = ["ide", "usfm", "h", "toc", "toca", #identification
+                "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
+                "ili", "iot", "io", "iex", "imte", "ie"] # intro
+    TITLES = ["mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd"]  # "headings"
+    COMMENTS = ["sts", "rem", "lit", "restore"]  # comment markers
+    PARAGRAPHS = ["p", "m", "po", "pr", "cls", "pmo", "pm", "pmc", #'paragraphs-quotes-lists-tables'
+                "pmr", "pi", "mi", "nb", "pc", "ph",
+                "q", "qr", "qc", "qa", "qm", "qd",
+                "lh", "li", "lf", "lim", "litl",
+                'tr', "tc", "th", "tcr", "thr", 'table',
+                "b"]
+    CHARACTERS = ["add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn",
+                "png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj", # Special-text
+                "em", "bd", "bdit", "it", "no", "sc", "sup", # character styling
+                 "rb", "pro", "w", "wh", "wa", "wg", #special-features
+                 "lik", "liv", #structred list entries
+                 "jmp"]
+    NOTES = ["f", "fe", "ef", "efe", "x", "ex", # "footnotes-and-crossrefs"
+             "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",
+             "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc"
+            ]
+    STUDY_BIBLE = ['esb', 'cat']  # "sidebars-extended-contents"
+    BCV = ['id','c','v']
+    TEXT = ['text-in-excluded-parent']
+    # INNER_CONTENT = ['content-in-excluded-parent']
 
 class Format(str, Enum):
     '''Defines the valid values for output formats'''
@@ -94,9 +112,13 @@ class USFMParser():
                 "\nUse ignore_errors=True, to generate output inspite of errors")
         return self.syntax_tree.sexp()
 
-    def to_usj(self, filters=None, ignore_errors=False): #pylint: disable=unused-argument
+    def to_usj(self,
+            exclude_markers=None,
+            include_markers=None,
+            ignore_errors=False,
+            combine_texts=True):
         '''convert the syntax_tree to the JSON format USJ.
-        Filtering of desired contents to be implemented'''
+        Filtering of desired contents using exclude markers option'''
         if not ignore_errors and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
             raise Exception("Errors present:"+\
@@ -116,9 +138,20 @@ class USFMParser():
                 err_str = "\n\t".join([":".join(err) for err in self.errors])
                 message += f"Could be due to an error in the USFM\n\t{err_str}"
             raise Exception(message)  from exe
-        return usj_generator.json_root_obj
+        output_usj = usj_generator.json_root_obj
+        if include_markers:
+            output_usj = include_markers_in_usj(output_usj,
+                                            include_markers+['USJ'], combine_texts)
+        if exclude_markers:
+            output_usj = exclude_markers_in_usj(output_usj,
+                                            exclude_markers, combine_texts)
+        return output_usj
 
-    def to_list(self, filters=None, ignore_errors=False): # pylint: disable=too-many-branches, too-many-locals
+    def to_list(self,
+            exclude_markers=None,
+            include_markers=None,
+            ignore_errors=False,
+            combine_texts=True):
         '''uses the toJSON function and converts JSON to CSV
         To be re-implemented to work with the flat JSON schema'''
         if not ignore_errors and self.errors:
@@ -127,10 +160,6 @@ class USFMParser():
                 f'\n\t{err_str}'+\
                 "\nUse ignore_errors=True, to generate output inspite of errors")
 
-        if filters is None:
-            filters = list(Filter)
-        if Filter.PARAGRAPHS in filters:
-            filters.remove(Filter.PARAGRAPHS)
         json_root_obj = {
                 "type": "USJ",
                 "version": "0.0.1-alpha.2",
@@ -140,6 +169,11 @@ class USFMParser():
             usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
             usj_generator.node_2_usj(self.syntax_tree, json_root_obj)
             usj_dict = usj_generator.json_root_obj
+            if include_markers:
+                usj_dict = include_markers_in_usj(usj_dict,
+                            include_markers+['USJ']+Filter.BCV, combine_texts)
+            if exclude_markers:
+                usj_dict = exclude_markers_in_usj(usj_dict, exclude_markers, combine_texts)
 
             list_generator = ListGenerator()
             list_generator.usj_to_list(usj_dict)
