@@ -208,6 +208,10 @@ sem.addOperation('buildJson', {
     return note.buildJson();
   },
 
+  _iter(...children) {
+    return children.map((c) => c.buildJson());
+  },
+
 });
 
 function relaxParse(str) {

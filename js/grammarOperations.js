@@ -1218,6 +1218,10 @@ sem.addOperation('composeJson', {
     return { esb: content.composeJson(), closing: _7.sourceString + _8.sourceString };
   },
 
+  _iter(...children) {
+    return children.map((c) => c.composeJson());
+  },
+
 });
 
 function match(str) {
