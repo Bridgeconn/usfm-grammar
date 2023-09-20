@@ -10,10 +10,10 @@
         "test-on-github": "mocha --expose-gc --timeout 40000 --ignore test/test_filesFromWild.js"
     },
     "dependencies": {
-        "jsonschema": "^1.4.0",
+        "jsonschema": "^1.4.1",
         "npm": "^8.11.0",
-        "ohm-js": "^15.5.0",
-        "yargs": "^17.0.1"
+        "ohm-js": "^17.1.0",
+        "yargs": "^17.7.2"
     },
     "repository": {
         "type": "git",
