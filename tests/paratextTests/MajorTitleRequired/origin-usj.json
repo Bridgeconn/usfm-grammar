@@ -1,33 +1,33 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:s",
+      "content": [
+        "heading"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 1:1"
         },
-        {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
-        },
-        {
-            "type": "para:s",
-            "content": [
-                "heading"
-            ]
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "verse text"
-            ]
-        }
-    ]
+        "verse text"
+      ]
+    }
+  ]
 }

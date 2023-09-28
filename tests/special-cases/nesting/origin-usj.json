@@ -1,111 +1,104 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse one",
+        {
+          "type": "verse:v",
+          "number": "2",
+          "sid": "GEN 1:2"
+        },
+        "...",
+        {
+          "type": "char:w",
+          "strong": "H6212",
+          "content": [
+            "herbs"
+          ]
         },
         {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "char:w",
+          "strong": "H2232",
+          "content": [
+            "yielding"
+          ]
         },
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "verse one",
-                {
-                    "type": "verse:v",
-                    "number": "2",
-                    "sid": "GEN 1:2"
-                },
-                "...",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "herbs"
-                    ],
-                    "strong": "H6212"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "yielding"
-                    ],
-                    "strong": "H2232"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "seed"
-                    ],
-                    "strong": "H2233"
-                },
-                ",",
-                {
-                    "type": "char:add",
-                    "content": [
-                        "",
-                        {
-                            "type": "char:w",
-                            "content": [
-                                "and"
-                            ],
-                            "strong": "H430"
-                        }
-                    ]
-                },
-                "fruit-trees",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "bearing"
-                    ],
-                    "strong": "H6213"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "fruit"
-                    ],
-                    "strong": "H6529"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "after"
-                    ],
-                    "strong": "H5921"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "their"
-                    ],
-                    "strong": "H5921"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "kind"
-                    ],
-                    "strong": "H4327"
-                },
-                ",..."
-            ]
-        }
-    ]
+          "type": "char:w",
+          "strong": "H2233",
+          "content": [
+            "seed"
+          ]
+        },
+        ",",
+        {
+          "type": "char:add",
+          "content": [
+            {
+              "type": "char:w",
+              "strong": "H430",
+              "content": [
+                "and"
+              ]
+            }
+          ]
+        },
+        "fruit-trees",
+        {
+          "type": "char:w",
+          "strong": "H6213",
+          "content": [
+            "bearing"
+          ]
+        },
+        {
+          "type": "char:w",
+          "strong": "H6529",
+          "content": [
+            "fruit"
+          ]
+        },
+        {
+          "type": "char:w",
+          "strong": "H5921",
+          "content": [
+            "after"
+          ]
+        },
+        {
+          "type": "char:w",
+          "strong": "H5921",
+          "content": [
+            "their"
+          ]
+        },
+        {
+          "type": "char:w",
+          "strong": "H4327",
+          "content": [
+            "kind"
+          ]
+        },
+        ",..."
+      ]
+    }
+  ]
 }

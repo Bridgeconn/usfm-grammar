@@ -1,0 +1,34 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "EXO",
+      "content": [
+        "- Central Asian Russian Scriptures (CARS)"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "25",
+      "sid": "EXO 25"
+    },
+    {
+      "type": "optbreak:b",
+      "content": [
+        {
+          "type": "figure:fig",
+          "alt": "Священный шатёр",
+          "file": "Exo25.jpg",
+          "size": "span",
+          "loc": "EXO 25-30",
+          "ref": "Исх. 25–30",
+          "content": [
+            "Священный шатёр"
+          ]
+        }
+      ]
+    }
+  ]
+}

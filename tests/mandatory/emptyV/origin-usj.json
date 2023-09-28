@@ -1,28 +1,28 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "PHM",
+      "content": [
+        "Longer Heading"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "PHM 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [
-                "Longer Heading"
-            ],
-            "code": "PHM"
-        },
-        {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "PHM 1"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "PHM 1:1"
-                }
-            ]
+          "type": "verse:v",
+          "number": "1",
+          "sid": "PHM 1:1"
         }
-    ]
+      ]
+    }
+  ]
 }

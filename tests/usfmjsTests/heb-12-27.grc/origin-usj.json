@@ -1,177 +1,167 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "27",
+          "sid": "GEN 1:27"
         },
         {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "char:w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,NNS,",
+          "content": [
+            "τὸ"
+          ]
         },
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "27",
-                    "sid": "GEN 1:27"
-                },
-                {
-                    "type": "char:w",
-                    "content": [
-                        "τὸ"
-                    ],
-                    "lemma": "ὁ",
-                    "strong": "G35880",
-                    "x-morph": "Gr,RD,,,,NNS,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "δὲ"
-                    ],
-                    "lemma": "δέ",
-                    "strong": "G11610",
-                    "x-morph": "Gr,CC,,,,,,,,"
-                },
-                ",\n“",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "ἔτι"
-                    ],
-                    "lemma": "ἔτι",
-                    "strong": "G20890",
-                    "x-morph": "Gr,D,,,,,,,,,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "ἅπαξ"
-                    ],
-                    "lemma": "ἅπαξ",
-                    "strong": "G05300",
-                    "x-morph": "Gr,D,,,,,,,,,"
-                },
-                "”,",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "δηλοῖ"
-                    ],
-                    "lemma": "δηλόω",
-                    "strong": "G12130",
-                    "x-morph": "Gr,V,IPA3,,S,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "τῶν"
-                    ],
-                    "lemma": "ὁ",
-                    "strong": "G35880",
-                    "x-morph": "Gr,RD,,,,GNP,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "σαλευομένων"
-                    ],
-                    "lemma": "σαλεύω",
-                    "strong": "G45310",
-                    "x-morph": "Gr,V,PPP,GNP,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "μετάθεσιν"
-                    ],
-                    "lemma": "μετάθεσις",
-                    "strong": "G33310",
-                    "x-morph": "Gr,N,,,,,AFS,"
-                },
-                ",",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "ὡς"
-                    ],
-                    "lemma": "ὡς",
-                    "strong": "G56130",
-                    "x-morph": "Gr,CS,,,,,,,,",
-                    "x-tw": "rc://*/tw/dict/bible/other/like"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "πεποιημένων"
-                    ],
-                    "lemma": "ποιέω",
-                    "strong": "G41600",
-                    "x-morph": "Gr,V,PEP,GNP,"
-                },
-                ",",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "ἵνα"
-                    ],
-                    "lemma": "ἵνα",
-                    "strong": "G24430",
-                    "x-morph": "Gr,CS,,,,,,,,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "μείνῃ"
-                    ],
-                    "lemma": "μένω",
-                    "strong": "G33060",
-                    "x-morph": "Gr,V,SAA3,,S,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "τὰ"
-                    ],
-                    "lemma": "ὁ",
-                    "strong": "G35880",
-                    "x-morph": "Gr,RD,,,,NNP,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "μὴ"
-                    ],
-                    "lemma": "μή",
-                    "strong": "G33610",
-                    "x-morph": "Gr,D,,,,,,,,,"
-                },
-                "",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "σαλευόμενα"
-                    ],
-                    "lemma": "σαλεύω",
-                    "strong": "G45310",
-                    "x-morph": "Gr,V,PPP,NNP,"
-                },
-                "."
-            ]
-        }
-    ]
+          "type": "char:w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        ", “",
+        {
+          "type": "char:w",
+          "lemma": "ἔτι",
+          "strong": "G20890",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "ἔτι"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "ἅπαξ",
+          "strong": "G05300",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "ἅπαξ"
+          ]
+        },
+        "”,",
+        {
+          "type": "char:w",
+          "lemma": "δηλόω",
+          "strong": "G12130",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "δηλοῖ"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,GNP,",
+          "content": [
+            "τῶν"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "σαλεύω",
+          "strong": "G45310",
+          "x-morph": "Gr,V,PPP,GNP,",
+          "content": [
+            "σαλευομένων"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "μετάθεσις",
+          "strong": "G33310",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "content": [
+            "μετάθεσιν"
+          ]
+        },
+        ",",
+        {
+          "type": "char:w",
+          "lemma": "ὡς",
+          "strong": "G56130",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/like",
+          "content": [
+            "ὡς"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "ποιέω",
+          "strong": "G41600",
+          "x-morph": "Gr,V,PEP,GNP,",
+          "content": [
+            "πεποιημένων"
+          ]
+        },
+        ",",
+        {
+          "type": "char:w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "μένω",
+          "strong": "G33060",
+          "x-morph": "Gr,V,SAA3,,S,",
+          "content": [
+            "μείνῃ"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,NNP,",
+          "content": [
+            "τὰ"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char:w",
+          "lemma": "σαλεύω",
+          "strong": "G45310",
+          "x-morph": "Gr,V,PPP,NNP,",
+          "content": [
+            "σαλευόμενα"
+          ]
+        },
+        "."
+      ]
+    }
+  ]
 }

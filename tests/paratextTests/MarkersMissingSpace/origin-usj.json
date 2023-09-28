@@ -1,0 +1,65 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "should have error"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "char:nd",
+          "content": [
+            "testing"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "2",
+      "sid": "GEN 2"
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "2",
+          "sid": "GEN 2:2"
+        },
+        {
+          "type": "char:em",
+          "content": [
+            "end/beg markers"
+          ]
+        },
+        {
+          "type": "char:nd",
+          "content": [
+            "with no space are OK"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "para:mt1",
+      "content": [
+        "ഉല്പത്തി പുസ്തകം"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "ആദിയിൽ ദൈവം",
+        {
+          "type": "char:w",
+          "content": [
+            "ആകാശവും |lemma= strong=\"l\" x-morph=\"He,R:Sp1cs\""
+          ]
+        },
+        "ഭൂമിയും സൃഷ്ടിച്ചു."
+      ]
+    }
+  ]
+}

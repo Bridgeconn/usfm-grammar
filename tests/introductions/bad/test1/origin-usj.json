@@ -1,0 +1,47 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GAL",
+      "content": [
+        "- Testing data"
+      ]
+    },
+    {
+      "type": "para:h",
+      "content": [
+        "Galatians"
+      ]
+    },
+    {
+      "type": "para:mt",
+      "content": [
+        "Galatians"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        "An erroneous paragraph before the first chapter"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GAL 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GAL 1:1"
+        },
+        "This data should be here"
+      ]
+    }
+  ]
+}
