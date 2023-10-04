@@ -2,7 +2,7 @@
 from glob import glob
 import re
 from lxml import etree
-from src.usfm_grammar import USFMParser, Filter
+from src.usfm_grammar import USFMParser, Filter, USFMGenerator
 
 TEST_DIR = "../tests"
 
@@ -10,6 +10,17 @@ def initialise_parser(input_usfm_path):
     '''Open and parse the given file'''
     with open(input_usfm_path, 'r', encoding='utf-8') as usfm_file:
         usfm_string = usfm_file.read()
+    test_parser = USFMParser(usfm_string)
+    return test_parser
+
+def generate_USFM_from_USJ(input_usj):
+    '''Create a generator, and use usj_to_usfm convertion API'''
+    test_generator = USFMGenerator()
+    test_generator.usj_to_usfm(input_usj)
+    return test_generator.usfm_string
+
+def parse_USFM_string(usfm_string):
+    '''Set up a parser obj with given string input'''
     test_parser = USFMParser(usfm_string)
     return test_parser
 

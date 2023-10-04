@@ -288,6 +288,7 @@ class USJGenerator:
             style += num
             children_range_start = 2
         para_json_obj = {"type": f"para:{style}", "content":[]}
+        parent_json_obj['content'].append(para_json_obj)
         for child in node.children[children_range_start:]:
             if child.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+\
             ["text", "footnote", "crossref", "verseText", "v", "b", "milestone", "zNameSpace"]:
@@ -295,7 +296,6 @@ class USJGenerator:
                 self.node_2_usj(child, para_json_obj)
             else:
                 self.node_2_usj(child, parent_json_obj)
-        parent_json_obj['content'].append(para_json_obj)
 
     def node_2_usj(self, node, parent_json_obj): # pylint: disable= too-many-branches
         '''check each node and based on the type convert to corresponding xml element'''
