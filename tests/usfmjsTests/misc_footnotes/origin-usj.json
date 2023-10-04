@@ -1,135 +1,126 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "50",
+          "sid": "GEN 1:50"
         },
         {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "note:f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char:ft",
+              "content": [
+                "Some modern versions have"
+              ]
+            },
+            {
+              "type": "char:fqa",
+              "content": [
+                "and in the ruins of the rich, lambs will graze"
+              ]
+            },
+            "."
+          ]
         },
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "50",
-                    "sid": "GEN 1:50"
-                },
-                {
-                    "type": "note:f",
-                    "content": [
-                        "",
-                        {
-                            "type": "char:ft",
-                            "content": [
-                                "Some modern versions have"
-                            ]
-                        },
-                        {
-                            "type": "char:fqa",
-                            "content": [
-                                "and in the ruins of the rich, lambs will graze"
-                            ]
-                        },
-                        "."
-                    ],
-                    "caller": "+"
-                },
-                "",
-                {
-                    "type": "verse:v",
-                    "number": "11",
-                    "sid": "GEN 1:11"
-                },
-                {
-                    "type": "note:f",
-                    "content": [
-                        "",
-                        {
-                            "type": "char:fr",
-                            "content": [
-                                "18:11"
-                            ]
-                        },
-                        {
-                            "type": "char:ft",
-                            "content": [
-                                "Some later manuscripts add, For the Son of Mana has come to save the lost."
-                            ]
-                        }
-                    ],
-                    "caller": "+"
-                },
-                "",
-                {
-                    "type": "verse:v",
-                    "number": "28",
-                    "sid": "GEN 1:28"
-                },
-                {
-                    "type": "char:wj",
-                    "content": [
-                        "But do not allow yourselves to be called ‘Rabbi,’ for you have only one teacher, and you yourselves are all [neut:brothers and sisters./masc:brothers.]"
-                    ]
-                },
-                "",
-                {
-                    "type": "verse:v",
-                    "number": "34",
-                    "sid": "GEN 1:34"
-                },
-                {
-                    "type": "note:f",
-                    "content": [
-                        "",
-                        {
-                            "type": "char:fr",
-                            "content": [
-                                "23:14"
-                            ]
-                        },
-                        {
-                            "type": "char:ft",
-                            "content": [
-                                "Some later manuscripts add: Alas for you teachers of the law and Pharisees, hypocrites! You devour widows' property, and pray long prayers just for show! This is why you will receive a more severe punishment."
-                            ]
-                        }
-                    ],
-                    "caller": "+"
-                },
-                "",
-                {
-                    "type": "verse:v",
-                    "number": "49",
-                    "sid": "GEN 1:49"
-                },
-                "But the rest said, “Wait and let us see if Elijah is coming to save him.”",
-                {
-                    "type": "note:f",
-                    "content": [
-                        "",
-                        {
-                            "type": "char:fr",
-                            "content": [
-                                "27:49"
-                            ]
-                        },
-                        {
-                            "type": "char:ft",
-                            "content": [
-                                "Some later manuscripts add: However another man took a spear, and pierced his side; and water and blood flowed from it."
-                            ]
-                        }
-                    ],
-                    "caller": "+"
-                },
-                ""
-            ]
+          "type": "verse:v",
+          "number": "11",
+          "sid": "GEN 1:11"
+        },
+        {
+          "type": "note:f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char:fr",
+              "content": [
+                "18:11"
+              ]
+            },
+            {
+              "type": "char:ft",
+              "content": [
+                "Some later manuscripts add, For the Son of Mana has come to save the lost."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "verse:v",
+          "number": "28",
+          "sid": "GEN 1:28"
+        },
+        {
+          "type": "char:wj",
+          "content": [
+            "But do not allow yourselves to be called ‘Rabbi,’ for you have only one teacher, and you yourselves are all [neut:brothers and sisters./masc:brothers.]"
+          ]
+        },
+        {
+          "type": "verse:v",
+          "number": "34",
+          "sid": "GEN 1:34"
+        },
+        {
+          "type": "note:f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char:fr",
+              "content": [
+                "23:14"
+              ]
+            },
+            {
+              "type": "char:ft",
+              "content": [
+                "Some later manuscripts add: Alas for you teachers of the law and Pharisees, hypocrites! You devour widows' property, and pray long prayers just for show! This is why you will receive a more severe punishment."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "verse:v",
+          "number": "49",
+          "sid": "GEN 1:49"
+        },
+        "But the rest said, “Wait and let us see if Elijah is coming to save him.”",
+        {
+          "type": "note:f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char:fr",
+              "content": [
+                "27:49"
+              ]
+            },
+            {
+              "type": "char:ft",
+              "content": [
+                "Some later manuscripts add: However another man took a spear, and pierced his side; and water and blood flowed from it."
+              ]
+            }
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }

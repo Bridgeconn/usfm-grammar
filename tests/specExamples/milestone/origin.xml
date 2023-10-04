@@ -4,17 +4,16 @@
   <para style="p">
     <verse number="1" style="v" sid="MAT 1:1" />
   </para>
-  <para style="q1" vid="MAT 1:1">“Someone is shouting in the desert, <ms style="qt-s" sid="qt_123" who="Pilate" />“Are you the king of the Jews?”<ms style="qt-e" eid="qt_123" /> <verse eid="MAT 1:1" /></para>
-  <para style="zms" status="unknown">
-    <unmatched marker="*" /> <verse number="11" style="v" sid="MAT 1:11" status="invalid" />Jesus stood before the Roman governor, who questioned him. <ms style="qt-s" who="Pilate" />“Are you the king of the Jews?”<ms style="qt-e" /> he asked.</para>
+  <para style="q1" vid="MAT 1:1">“Someone is shouting in the desert, <ms style="qt-s" sid="qt_123" who="Pilate" />“Are you the king of the Jews?”<ms style="qt-e" eid="qt_123" />
+  <ms style="zms"/><verse eid="MAT 1:1" />
+     <verse number="11" style="v" sid="MAT 1:11"/>Jesus stood before the Roman governor, who questioned him. <ms style="qt-s" who="Pilate" />“Are you the king of the Jews?”<ms style="qt-e" /> he asked.</para>
   <para style="p" vid="MAT 1:11">
     <ms style="qt-s" who="Jesus" />“So you say,”<ms style="qt-e" /> answered Jesus. <verse eid="MAT 1:11" /><verse number="12" style="v" sid="MAT 1:12" />But he said nothing in response to the accusations of the chief priests and elders.<verse eid="MAT 1:12" /></para>
   <para style="p">
     <verse number="13" style="v" sid="MAT 1:13" />So Pilate said to him, <ms style="qt-s" who="Pilate" />“Don't you hear all these things they accuse you of?”<ms style="qt-e" /><verse eid="MAT 1:13" /></para>
   <para style="p">
-    <verse number="14" style="v" sid="MAT 1:14" />But Jesus refused to answer ... <verse eid="MAT 1:14" /></para>
-  <para style="ts" status="unknown">
-    <unmatched marker="*" /></para>
+    <verse number="14" style="v" sid="MAT 1:14" />But Jesus refused to answer ...
+  <ms style="ts"/> <verse eid="MAT 1:14" /></para>
   <para style="p">
     <verse number="5" style="v" sid="MAT 1:5" />Now I wish to remind you, although... <ms style="ts-s" sid="ts_JUD_5-6" /><verse eid="MAT 1:5" /></para>
   <para style="p">

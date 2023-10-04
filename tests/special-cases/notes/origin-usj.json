@@ -1,45 +1,45 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "26",
+          "sid": "GEN 1:26"
         },
         {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "note:x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char:xo",
+              "content": [
+                "3.26"
+              ]
+            },
+            {
+              "type": "char:xt",
+              "content": [
+                "ယစံး"
+              ]
+            }
+          ]
         },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "26",
-                    "sid": "GEN 1:26"
-                },
-                {
-                    "type": "note:x",
-                    "content": [
-                        {
-                            "type": "char:xo",
-                            "content": [
-                                "3.26"
-                            ]
-                        },
-                        {
-                            "type": "char:xt",
-                            "content": [
-                                "ယစံး"
-                            ]
-                        }
-                    ],
-                    "caller": "-"
-                },
-                "ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,"
-            ]
-        }
-    ]
+        "ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,"
+      ]
+    }
+  ]
 }

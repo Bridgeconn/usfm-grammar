@@ -1,53 +1,53 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "para:ib",
+      "content": []
+    },
+    {
+      "type": "para:ip",
+      "content": [
+        "Hi mom."
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 1:1"
         },
+        "Hi Bob."
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "2",
+      "sid": "GEN 2"
+    },
+    {
+      "type": "para:nb",
+      "content": [
         {
-            "type": "para:ib",
-            "content": []
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 2:1"
         },
-        {
-            "type": "para:ip",
-            "content": [
-                "Hi mom."
-            ]
-        },
-        {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "Hi Bob."
-            ]
-        },
-        {
-            "type": "chapter:c",
-            "number": "2",
-            "sid": "GEN 2"
-        },
-        {
-            "type": "para:nb",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "GEN 2:1"
-                },
-                "Soup is good!"
-            ]
-        }
-    ]
+        "Soup is good!"
+      ]
+    }
+  ]
 }

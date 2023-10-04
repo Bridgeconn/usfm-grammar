@@ -1,58 +1,58 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GLO",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GLO 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GLO"
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GLO 1:1"
         },
+        "something"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GLO 1"
+          "type": "char:k",
+          "content": [
+            "blah"
+          ]
         },
+        "definition",
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "GLO 1:1"
-                },
-                "something"
-            ]
+          "type": "verse:v",
+          "number": "2",
+          "sid": "GLO 1:2"
         },
+        "something"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "char:k",
-                    "content": [
-                        "blah"
-                    ]
-                },
-                "definition",
-                {
-                    "type": "verse:v",
-                    "number": "2",
-                    "sid": "GLO 1:2"
-                },
-                "something"
-            ]
+          "type": "char:w",
+          "lemma": "keyword ",
+          "content": [
+            "word"
+          ]
         },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "char:w",
-                    "content": [
-                        "word"
-                    ],
-                    "lemma": "keyword"
-                },
-                "definition"
-            ]
-        }
-    ]
+        "definition"
+      ]
+    }
+  ]
 }

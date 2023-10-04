@@ -34,8 +34,9 @@ q#
         (v
           (verseNumber))
         (verseText
-          (text))
-        (b)))
+          (text))))
+    (paragraph
+      (b))
     (poetry
       (qBlock
         (q
@@ -183,12 +184,16 @@ qc
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text))
-          (b)))
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
       (qc
         (verseText
-          (text))
-        (b))
+          (text))))
+    (paragraph
+      (b))
+    (poetry
       (qBlock
         (q
           (qTag
@@ -410,8 +415,11 @@ qac
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text))
-          (b))
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
         (q
           (qTag
             (numberedLevelMax3))
@@ -492,8 +500,9 @@ of “The Thirty,” and he called out,
           (qmTag
             (numberedLevelMax3))
           (verseText
-            (text))
-          (b))))
+            (text)))))
+    (paragraph
+      (b))
     (paragraph
       (m
         (verseText
@@ -535,8 +544,11 @@ qd
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text))
-          (b))
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
         (q
           (qTag
             (numberedLevelMax3))
@@ -553,8 +565,10 @@ qd
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text))
-          (b)))
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
       (qd
         (verseText
           (text))))))
@@ -627,8 +641,11 @@ b
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text))
-          (b))
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
         (q
           (qTag
             (numberedLevelMax3))
@@ -657,8 +674,11 @@ b
           (qTag
             (numberedLevelMax3))
           (verseText
-            (text))
-          (b))
+            (text)))))
+    (paragraph
+      (b))
+    (poetry
+      (qBlock
         (q
           (qTag
             (numberedLevelMax3))
