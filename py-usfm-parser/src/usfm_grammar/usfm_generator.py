@@ -84,6 +84,6 @@ class USFMGenerator:
                 self.usfm_string += "\n"
 
     # def usx_to_usfm(self, usx_xml_tree) -> str: # should we call it just from_usx() instead
-    #     '''Traverses xml tree and converts nodes to usfm elements based on type and style fields'''
+    #     '''Traverses xml tree and converts nodes to usfm elements
+    #     based on type and style fields'''
     #     return self.usfm_string
-

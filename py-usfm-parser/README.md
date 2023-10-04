@@ -86,6 +86,33 @@ print(table_output)
 
 ```
 
+To round trip
+```
+from usfm_grammar import USFMParser, Filter
+from usfm_grammar import USFMParser, USFMGenerator
+
+my_parser = USFMParser(input_usfm_str)
+usj_obj = my_parser.to_usj()
+
+my_generator = USFMGenerator()
+my_generator.usj_to_usfm(usj_obj)
+print(my_generator.usfm_string)
+
+```
+:warning: There will be differences between first USFM and the generated one in 1. Spaces and lines 2. Default attributes will be given their names 3. Closing markers may be newly added
+
+To remove unwanted markers from USFM
+```
+from usfm_grammar import USFMParser, Filter, USFMGenerator
+
+my_parser = USFMParser(input_usfm_str)
+usj_obj = my_parser.to_usj(include_markers=Filter.BCV+Filter.TEXT)
+
+my_generator = USFMGenerator()
+my_generator.usj_to_usfm(usj_obj)
+print(my_generator.usfm_string)
+```
+
 ### From CLI
 
 ```
