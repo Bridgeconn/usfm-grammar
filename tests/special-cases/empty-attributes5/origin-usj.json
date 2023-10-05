@@ -1,41 +1,41 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "para:mt1",
+      "content": [
+        "ഉല്പത്തിപുസ്തകം"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:pi",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "6",
+          "sid": "GEN 1:6"
         },
+        "ആദിയിൽ ദൈവം",
         {
-            "type": "para:mt1",
-            "content": [
-                "ഉല്പത്തിപുസ്തകം"
-            ]
+          "type": "char:w",
+          "lemma": " ",
+          "content": [
+            "ആകാശവും"
+          ]
         },
-        {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
-        },
-        {
-            "type": "para:pi",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "6",
-                    "sid": "GEN 1:6"
-                },
-                "ആദിയിൽ ദൈവം",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "ആകാശവും"
-                    ],
-                    "lemma": ""
-                },
-                "ഭൂമിയും സൃഷ്ടിച്ചു."
-            ]
-        }
-    ]
+        "ഭൂമിയും സൃഷ്ടിച്ചു."
+      ]
+    }
+  ]
 }

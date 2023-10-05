@@ -1,141 +1,141 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "PHP",
+      "content": []
+    },
+    {
+      "type": "para:ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para:h",
+      "content": [
+        "Philippians"
+      ]
+    },
+    {
+      "type": "para:toc1",
+      "content": [
+        "The Epistle of Paul the Apostle to the Philippians"
+      ]
+    },
+    {
+      "type": "para:toc2",
+      "content": [
+        "Philippians"
+      ]
+    },
+    {
+      "type": "para:toc3",
+      "content": [
+        "Php"
+      ]
+    },
+    {
+      "type": "para:mt",
+      "content": [
+        "The Epistle of Paul the Apostle to the Philippians"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "4",
+      "sid": "PHP 4"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "PHP"
+          "type": "verse:v",
+          "number": "1",
+          "sid": "PHP 4:1"
         },
+        "Therefore, my beloved brothers whom I long for, my joy and crown, in this way stand firm in the Lord, beloved friends."
+      ]
+    },
+    {
+      "type": "para:s5",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "PHP 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:ide",
-            "content": [
-                "UTF-8"
-            ]
+          "type": "verse:v",
+          "number": "1",
+          "sid": "PHP 1:1"
         },
+        "Paul and Timothy, servants of Christ Jesus, to all the ones set apart in Christ Jesus who are at Philippi, with the overseers and deacons.",
         {
-            "type": "para:h",
-            "content": [
-                "Philippians"
-            ]
+          "type": "verse:v",
+          "number": "2",
+          "sid": "PHP 1:2"
         },
+        "Grace to you and peace from God our Father and the Lord Jesus Christ."
+      ]
+    },
+    {
+      "type": "para:s5",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "3",
+      "sid": "PHP 3"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:toc1",
-            "content": [
-                "The Epistle of Paul the Apostle to the Philippians"
-            ]
+          "type": "verse:v",
+          "number": "1",
+          "sid": "PHP 3:1"
         },
+        "Finally, my brothers, rejoice in the Lord. For me to write these same things to you is not a problem, and they will keep you safe.",
         {
-            "type": "para:toc2",
-            "content": [
-                "Philippians"
-            ]
+          "type": "verse:v",
+          "number": "2",
+          "sid": "PHP 3:2"
         },
+        "Watch out for the dogs. Watch out for the evil workers. Watch out for the mutilators."
+      ]
+    },
+    {
+      "type": "para:s5",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "2",
+      "sid": "PHP 2"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "para:toc3",
-            "content": [
-                "Php"
-            ]
+          "type": "verse:v",
+          "number": "1",
+          "sid": "PHP 2:1"
         },
+        "If there is therefore any encouragement in Christ, if any comfort from his love, if any fellowship of the Spirit, if any tender mercies and compassions,",
         {
-            "type": "para:mt",
-            "content": [
-                "The Epistle of Paul the Apostle to the Philippians"
-            ]
+          "type": "verse:v",
+          "number": "2",
+          "sid": "PHP 2:2"
         },
-        {
-            "type": "chapter:c",
-            "number": "4",
-            "sid": "PHP 4"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "PHP 4:1"
-                },
-                "Therefore, my beloved brothers whom I long for, my joy and crown, in this way stand firm in the Lord, beloved friends."
-            ]
-        },
-        {
-            "type": "para:s5",
-            "content": []
-        },
-        {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "PHP 1"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "PHP 1:1"
-                },
-                "Paul and Timothy, servants of Christ Jesus, to all the ones set apart in Christ Jesus who are at Philippi, with the overseers and deacons.",
-                {
-                    "type": "verse:v",
-                    "number": "2",
-                    "sid": "PHP 1:2"
-                },
-                "Grace to you and peace from God our Father and the Lord Jesus Christ."
-            ]
-        },
-        {
-            "type": "para:s5",
-            "content": []
-        },
-        {
-            "type": "chapter:c",
-            "number": "3",
-            "sid": "PHP 3"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "PHP 3:1"
-                },
-                "Finally, my brothers, rejoice in the Lord.  For me to write these same things to you is not a problem, and they will keep you safe.",
-                {
-                    "type": "verse:v",
-                    "number": "2",
-                    "sid": "PHP 3:2"
-                },
-                "Watch out for the dogs. Watch out for the evil workers. Watch out for the mutilators."
-            ]
-        },
-        {
-            "type": "para:s5",
-            "content": []
-        },
-        {
-            "type": "chapter:c",
-            "number": "2",
-            "sid": "PHP 2"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "PHP 2:1"
-                },
-                "If there is therefore any encouragement in Christ, if any comfort from his love, if any fellowship of the Spirit, if any tender mercies and compassions,",
-                {
-                    "type": "verse:v",
-                    "number": "2",
-                    "sid": "PHP 2:2"
-                },
-                "make my joy full so that you are of the same mind, have the same love, are united in spirit, and have the same purpose."
-            ]
-        }
-    ]
+        "make my joy full so that you are of the same mind, have the same love, are united in spirit, and have the same purpose."
+      ]
+    }
+  ]
 }

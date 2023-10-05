@@ -8,7 +8,7 @@
   <para style="mt">The Book of Psalms</para>
   <chapter number="091" style="c" sid="PSA 91" />
   <para style="ms">Book One </para>
-  <para style="s5" status="unknown" />
+  <para style="s5" />
   <para style="m" />
   <para style="q">
     <verse number="01" style="v" sid="PSA 91:1" />He who lives in the shelter of the Most High</para>
@@ -16,7 +16,7 @@
   <para style="q">
     <verse number="02" style="v" sid="PSA 91:2" />I will say of Yahweh, "He is my refuge and my fortress,</para>
   <para style="q" vid="PSA 91:2">my God, in whom I trust." <verse eid="PSA 91:2" /></para>
-  <para style="s5" status="unknown" />
+  <para style="s5" />
   <para style="q">
     <verse number="03-04" style="v" sid="PSA 91:03-04" />For he will rescue you from the snare of the hunter</para>
   <para style="q" vid="PSA 91:03-04">and from the deadly plague.</para>

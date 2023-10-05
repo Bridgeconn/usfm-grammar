@@ -4,7 +4,11 @@ import json
 from jsonschema import validate
 
 from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests,\
+<<<<<<< HEAD
     find_all_markers, Filter, generate_USFM_from_USJ, parse_USFM_string
+=======
+    find_all_markers, Filter, exclude_USX_files
+>>>>>>> e4347d702c8bf62b48a4180c1462e6dbe71487d1
 
 all_valid_markers = []
 for member in Filter:
@@ -130,3 +134,54 @@ def test_usj_round_tripping(file_path):
     assert not test_parser2.errors, str(test_parser2.errors)#+"\n"+ generated_USFM
 
     # assert test_parser1.to_syntax_tree() == test_parser2.to_syntax_tree(), generated_USFM
+
+def remove_newlines_in_text(usj_dict):
+    '''The test samples in testsuite do not preserve new lines in. But we do in usfm-grammar.
+    So removing them just for comparison'''
+    if "content" in usj_dict:
+        for i,item in enumerate(usj_dict["content"]):
+            if isinstance(item, str):
+                usj_dict['content'][i] = item.replace("\n", " ")
+                usj_dict['content'][i] = usj_dict['content'][i].replace("  ", " ")
+                usj_dict['content'][i] = usj_dict['content'][i].replace("     ", " ")
+                continue
+            if "sid" in item and "PSA 09" in item['sid']: # for /usfmjsTests/tstudio/origin.usfm
+                item['sid'] = item['sid'].replace("PSA 091:01", "PSA 91:1")
+                item['sid'] = item['sid'].replace("PSA 091:02", "PSA 91:2")
+                item['sid'] = item['sid'].replace("PSA 09", "PSA 9")
+            remove_newlines_in_text(item)
+
+def strip_default_attrib_value(usj_dict):
+    '''The USX samples in test suite have space in lemma values when given as default attribute'''
+    if "content" in usj_dict:
+        for item in usj_dict["content"]:
+            if isinstance(item, dict):
+                if item['type'] == "char:w":
+                    if "lemma" in item:
+                        item['lemma'] = item['lemma'].strip()
+            strip_default_attrib_value(item)
+
+
+@pytest.mark.parametrize('file_path', test_files)
+@pytest.mark.timeout(30)
+def test_compare_usj_with_testsuite_samples(file_path):
+    '''Compare the generated USX with the origin.xml in test suite'''
+    test_parser = initialise_parser(file_path)
+    assert not test_parser.errors, test_parser.errors
+    usx_file_path = file_path.replace("origin.usfm", "origin.xml")
+    if usx_file_path not in exclude_USX_files:
+        usj_dict = test_parser.to_usj()
+        remove_newlines_in_text(usj_dict)
+        try:
+            usj_file_path = file_path.replace("origin.usfm", "origin-usj.json")
+            with open(usj_file_path, 'r', encoding='utf-8') as usj_file:
+                origin_usj = json.load(usj_file)
+            assert usj_dict == origin_usj, f"generated USJ:\n{usj_dict}\n"+\
+                    f"USJ in testsuite:\n{origin_usj}\n syntax tree: {test_parser.to_syntax_tree()}"
+        except FileNotFoundError:
+            pass
+        except AssertionError:
+            strip_default_attrib_value(origin_usj)
+            assert usj_dict == origin_usj, f"generated USJ:\n{usj_dict}\n"+\
+                    f"USJ in testsuite:\n{origin_usj}\n syntax tree: {test_parser.to_syntax_tree()}"
+    # assert usj_dict == origin_usj

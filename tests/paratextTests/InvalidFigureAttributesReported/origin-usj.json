@@ -1,0 +1,44 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:s",
+      "content": [
+        "some text"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "figure:fig",
+          "file": "file",
+          "size": "small",
+          "ref": "1.1",
+          "rotate": "90",
+          "content": [
+            "caption"
+          ]
+        },
+        "\""
+      ]
+    }
+  ]
+}

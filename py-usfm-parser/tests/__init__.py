@@ -221,6 +221,9 @@ pass_fail_override_list = {
     f"{TEST_DIR}/biblica/PublishingVersesWithFormatting/origin.usfm": "fail", # \c without number
 
     f"{TEST_DIR}/specExamples/extended/contentCatogories1/origin.usfm": "fail", # cat inside footnote
+    
+    f'{TEST_DIR}/special-cases/figure_with_quotes_in_desc/origin.usfm': "fail", # quote within quote
+    f'{TEST_DIR}/specExamples/poetry/origin.usfm': "fail", # \b not followed by a \p or \q
     ########### Need to be fixed #######################
     f"{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm": "pass", # \c is mandatory!
     f"{TEST_DIR}/usfmjsTests/gn_headers/origin.usfm": "fail", # what is the valid position for mte and imt
@@ -233,10 +236,36 @@ for file_path in all_usfm_files:
         negative_tests.append(file_path)
 
 exclude_USX_files = [
-    # f'{TEST_DIR}/specExamples/chapter-verse/origin.usx',
+    # f'{TEST_DIR}/specExamples/chapter-verse/origin.xml',
     #     # ca is added as attribute to cl not chapter node
-    # f'{TEST_DIR}/specExamples/milestone/origin.usx',
+    # f'{TEST_DIR}/specExamples/milestone/origin.xml',
     #     # Znamespace not represented properly. Even no docs of it on https://ubsicap.github.io/usx
     # f'{TEST_DIR}/advanced/table/origin.xml',
     #     # There is no verse end node at end(in last row of the table)
+    f'{TEST_DIR}/specExamples/extended/contentCatogories2/origin.xml',
+            # \ef not treated as inline content of paragraph
+    f'{TEST_DIR}/specExamples/extended/sectionIntroductions/origin.xml',
+            # verse number="+"!!!
+    f'{TEST_DIR}/specExamples/character/origin.xml',
+            # lit element treated as a body paragraph enclosing a verse!   
+    f'{TEST_DIR}/usfmjsTests/esb/origin.xml',
+            # last verse text given outside of paragraph. 
+    f'{TEST_DIR}/special-cases/nbsp/origin.xml',
+            # ~ not being replaced by nbsp in usfm-grammar
+    f'{TEST_DIR}/special-cases/empty-attributes/origin.xml',
+            # attributes treated as text content of marker
 ]
+
+invalid_usxs = []
+for file_path in all_usfm_files:
+    usx_path = file_path.replace("origin.usfm", "origin.xml")
+    try:
+        with open(usx_path, 'r', encoding='utf-8') as usx_file:
+            usx_text = usx_file.read()
+            if 'status="invalid"' in usx_text:
+                invalid_usxs.append(usx_path)
+    except FileNotFoundError as exe:
+        print(exe)
+        invalid_usxs.append(usx_path)
+
+exclude_USX_files += invalid_usxs

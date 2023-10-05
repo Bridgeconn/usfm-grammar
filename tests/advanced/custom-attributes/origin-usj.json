@@ -1,78 +1,75 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 1:1"
         },
+        "the first verse",
         {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
+          "type": "verse:v",
+          "number": "2",
+          "sid": "GEN 1:2"
         },
+        "the second verse",
         {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "1",
-                    "sid": "GEN 1:1"
-                },
-                "the first verse",
-                {
-                    "type": "verse:v",
-                    "number": "2",
-                    "sid": "GEN 1:2"
-                },
-                "the second verse",
-                {
-                    "type": "char:w",
-                    "content": [
-                        "gracious"
-                    ],
-                    "x-myattr": "metadata"
-                },
-                ""
-            ]
-        },
-        {
-            "type": "para:q1",
-            "content": [
-                "“Someone is shouting in the desert,"
-            ]
-        },
-        {
-            "type": "para:q2",
-            "content": [
-                "‘Prepare a road for the Lord;"
-            ]
-        },
-        {
-            "type": "para:q2",
-            "content": [
-                "make a straight path for him to travel!’ ”"
-            ]
-        },
-        {
-            "type": "para:s",
-            "content": [
-                {
-                    "type": "char:jmp",
-                    "content": [
-                        ""
-                    ],
-                    "link-id": "article-john_the_baptist"
-                },
-                "John the Baptist"
-            ]
-        },
-        {
-            "type": "para:p",
-            "content": [
-                "John is sometimes called..."
-            ]
+          "type": "char:w",
+          "x-myattr": "metadata",
+          "content": [
+            "gracious"
+          ]
         }
-    ]
+      ]
+    },
+    {
+      "type": "para:q1",
+      "content": [
+        "“Someone is shouting in the desert,"
+      ]
+    },
+    {
+      "type": "para:q2",
+      "content": [
+        "‘Prepare a road for the Lord;"
+      ]
+    },
+    {
+      "type": "para:q2",
+      "content": [
+        "make a straight path for him to travel!’ ”"
+      ]
+    },
+    {
+      "type": "para:s",
+      "content": [
+        {
+          "type": "char:jmp",
+          "link-id": "article-john_the_baptist",
+          "content": []
+        },
+        "John the Baptist"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        "John is sometimes called..."
+      ]
+    }
+  ]
 }

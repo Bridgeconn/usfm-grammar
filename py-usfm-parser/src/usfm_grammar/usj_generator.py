@@ -140,7 +140,9 @@ class USJGenerator:
             para_tag_cap = self.usfm_language.query(
                 "(paragraph (_) @para-marker)").captures(node)[0]
             para_marker = para_tag_cap[0].type
-            if not para_marker.endswith("Block"):
+            if para_marker == "b":
+                self.node_2_usj_special(para_tag_cap[0], parent_json_obj)
+            elif not para_marker.endswith("Block"):
                 para_json_obj = {"type": f"para:{para_marker}", "content":[]}
                 for child in para_tag_cap[0].children[1:]:
                     self.node_2_usj(child, para_json_obj)
@@ -323,14 +325,15 @@ class USJGenerator:
             self.node_2_usj_attrib(node, parent_json_obj)
         elif node.type == 'text':
             text_val = self.usfm[node.start_byte:node.end_byte].decode('utf-8').strip()
-            parent_json_obj['content'].append(text_val)
+            if text_val != "":
+                parent_json_obj['content'].append(text_val)
         elif node.type in ["table", "tr"]+ self.TABLE_CELL_MARKERS:
             self.node_2_usj_table(node, parent_json_obj)
         elif  node.type == "milestone":
             self.node_2_usj_milestone(node, parent_json_obj)
         elif node.type == "zNameSpace":
             self.node_2_usj_milestone(node, parent_json_obj)
-        elif node.type in ["esb", "cat", "fig", "b", "usfm"]:
+        elif node.type in ["esb", "cat", "fig", "usfm"]:
             self.node_2_usj_special(node, parent_json_obj)
         elif (node.type in self.PARA_STYLE_MARKERS or
               node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):

@@ -1,0 +1,403 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "para:ide",
+      "content": []
+    },
+    {
+      "type": "para:rem",
+      "content": []
+    },
+    {
+      "type": "para:h",
+      "content": []
+    },
+    {
+      "type": "para:mt1",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:s1",
+      "content": []
+    },
+    {
+      "type": "para:m",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        {
+          "type": "verse:v",
+          "number": "2",
+          "sid": "GEN 1:2"
+        },
+        {
+          "type": "verse:v",
+          "number": "3",
+          "sid": "GEN 1:3"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "4",
+          "sid": "GEN 1:4"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": []
+    },
+    {
+      "type": "para:s1",
+      "content": []
+    },
+    {
+      "type": "para:m",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "5",
+          "sid": "GEN 1:5"
+        },
+        {
+          "type": "verse:v",
+          "number": "6",
+          "sid": "GEN 1:6"
+        },
+        {
+          "type": "verse:v",
+          "number": "7",
+          "sid": "GEN 1:7"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "8",
+          "sid": "GEN 1:8"
+        },
+        {
+          "type": "verse:v",
+          "number": "9",
+          "sid": "GEN 1:9"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "10",
+          "sid": "GEN 1:10"
+        },
+        {
+          "type": "verse:v",
+          "number": "11",
+          "sid": "GEN 1:11"
+        },
+        {
+          "type": "verse:v",
+          "number": "12",
+          "sid": "GEN 1:12"
+        },
+        {
+          "type": "verse:v",
+          "number": "13",
+          "sid": "GEN 1:13"
+        },
+        {
+          "type": "verse:v",
+          "number": "14",
+          "sid": "GEN 1:14"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "15",
+          "sid": "GEN 1:15"
+        },
+        {
+          "type": "verse:v",
+          "number": "16",
+          "sid": "GEN 1:16"
+        }
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "2",
+      "sid": "GEN 2"
+    },
+    {
+      "type": "para:s1",
+      "content": []
+    },
+    {
+      "type": "para:m",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 2:1"
+        },
+        {
+          "type": "verse:v",
+          "number": "2",
+          "sid": "GEN 2:2"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "3",
+          "sid": "GEN 2:3"
+        },
+        {
+          "type": "verse:v",
+          "number": "4",
+          "sid": "GEN 2:4"
+        },
+        {
+          "type": "verse:v",
+          "number": "5",
+          "sid": "GEN 2:5"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "6",
+          "sid": "GEN 2:6"
+        },
+        {
+          "type": "verse:v",
+          "number": "7",
+          "sid": "GEN 2:7"
+        },
+        {
+          "type": "verse:v",
+          "number": "8",
+          "sid": "GEN 2:8"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "9",
+          "sid": "GEN 2:9"
+        },
+        {
+          "type": "verse:v",
+          "number": "10",
+          "sid": "GEN 2:10"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "11",
+          "sid": "GEN 2:11"
+        },
+        {
+          "type": "verse:v",
+          "number": "12",
+          "sid": "GEN 2:12"
+        },
+        {
+          "type": "verse:v",
+          "number": "13",
+          "sid": "GEN 2:13"
+        },
+        {
+          "type": "verse:v",
+          "number": "14",
+          "sid": "GEN 2:14"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "15",
+          "sid": "GEN 2:15"
+        }
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "3",
+      "sid": "GEN 3"
+    },
+    {
+      "type": "para:s1",
+      "content": [
+        "heading 1"
+      ]
+    },
+    {
+      "type": "para:m",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "1",
+          "sid": "GEN 3:1"
+        },
+        "verser one",
+        {
+          "type": "verse:v",
+          "number": "2",
+          "sid": "GEN 3:2"
+        },
+        "verse two"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "3",
+          "sid": "GEN 3:3"
+        },
+        "verse three"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "4",
+          "sid": "GEN 3:4"
+        },
+        "verse four",
+        {
+          "type": "verse:v",
+          "number": "5",
+          "sid": "GEN 3:5"
+        },
+        {
+          "type": "verse:v",
+          "number": "6",
+          "sid": "GEN 3:6"
+        },
+        {
+          "type": "verse:v",
+          "number": "7",
+          "sid": "GEN 3:7"
+        },
+        {
+          "type": "verse:v",
+          "number": "8",
+          "sid": "GEN 3:8"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "9",
+          "sid": "GEN 3:9"
+        },
+        "verse nine",
+        {
+          "type": "verse:v",
+          "number": "10",
+          "sid": "GEN 3:10"
+        },
+        {
+          "type": "verse:v",
+          "number": "11",
+          "sid": "GEN 3:11"
+        }
+      ]
+    },
+    {
+      "type": "para:s1",
+      "content": [
+        "heading 2"
+      ]
+    },
+    {
+      "type": "para:m",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "12",
+          "sid": "GEN 3:12"
+        },
+        "verse twelve",
+        {
+          "type": "verse:v",
+          "number": "13",
+          "sid": "GEN 3:13"
+        },
+        {
+          "type": "verse:v",
+          "number": "14",
+          "sid": "GEN 3:14"
+        }
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        {
+          "type": "verse:v",
+          "number": "15",
+          "sid": "GEN 3:15"
+        },
+        "verse fifteen a"
+      ]
+    },
+    {
+      "type": "para:p",
+      "content": [
+        "verse fifteen b"
+      ]
+    }
+  ]
+}

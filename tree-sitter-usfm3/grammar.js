@@ -241,6 +241,7 @@ module.exports = grammar({
       $.nb,
       $.pc,
       $.phBlock,
+      $.b,
     ),
 
     _paragraphContent: $ => choice(
@@ -252,7 +253,6 @@ module.exports = grammar({
       $.milestone,
       $.zNameSpace,
       $._comments,
-      $.b,
     ),
 
     p: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -440,6 +440,8 @@ module.exports = grammar({
     _innerText: $ => prec.right(0, repeat1(choice(
       $.text,
       $._nestedCharacterMarker,
+      $.footnote,
+      $.crossref
     ))),
 
     add: $ => seq("\\add", $._innerText, "\\add*"),

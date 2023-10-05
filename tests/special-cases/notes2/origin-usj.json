@@ -1,64 +1,58 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [],
-            "code": "GEN"
+          "type": "verse:v",
+          "number": "6",
+          "sid": "GEN 1:6"
         },
+        "जब अम्मोनियों ने देखा, कि हम दाऊद को घिनौने लगते हैं, तब हानून और अम्मोनियों ने",
         {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "GEN 1"
-        },
-        {
-            "type": "para:p",
-            "content": [
+          "type": "char:it",
+          "content": [
+            "एक हजार किक्कार चाँदी",
+            {
+              "type": "note:f",
+              "caller": "+",
+              "content": [
                 {
-                    "type": "verse:v",
-                    "number": "6",
-                    "sid": "GEN 1:6"
-                },
-                "जब अम्मोनियों ने देखा, कि हम दाऊद को घिनौने लगते हैं, तब हानून और अम्मोनियों ने",
-                {
-                    "type": "char:it",
-                    "content": [
-                        "एक हजार किक्कार चाँदी"
-                    ]
+                  "type": "char:fr",
+                  "content": [
+                    "19.6"
+                  ]
                 },
                 {
-                    "type": "note:f",
-                    "content": [
-                        "",
-                        {
-                            "type": "char:fr",
-                            "content": [
-                                "19.6"
-                            ]
-                        },
-                        {
-                            "type": "char:fq",
-                            "content": [
-                                "एक हजार किक्कार चाँदी:"
-                            ]
-                        },
-                        {
-                            "type": "char:ft",
-                            "content": [
-                                "उस समय पश्चिमी आसिया में सैनिकों को किराए पर लेने का प्रचलन था।"
-                            ]
-                        }
-                    ],
-                    "caller": "+"
+                  "type": "char:fq",
+                  "content": [
+                    "एक हजार किक्कार चाँदी:"
+                  ]
                 },
                 {
-                    "type": "char:it",
-                    "content": [
-                        "*, अरम्नहरैम और अरम्माका और सोबा को भेजी, कि रथ और सवार किराये पर बुलाए।"
-                    ]
+                  "type": "char:ft",
+                  "content": [
+                    "उस समय पश्चिमी आसिया में सैनिकों को किराए पर लेने का प्रचलन था।"
+                  ]
                 }
-            ]
-        }
-    ]
+              ]
+            }
+          ]
+        },
+        ", अरम्नहरैम और अरम्माका और सोबा को भेजी, कि रथ और सवार किराये पर बुलाए।"
+      ]
+    }
+  ]
 }

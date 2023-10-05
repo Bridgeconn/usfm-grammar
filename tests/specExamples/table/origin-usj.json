@@ -1,220 +1,220 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "MAT",
+      "content": [
+        "41MATGNT92.SFM, Good News Translation, June 2003"
+      ]
+    },
+    {
+      "type": "para:usfm",
+      "content": [
+        "3.0"
+      ]
+    },
+    {
+      "type": "para:toc1",
+      "content": [
+        "The Acts of the Apostles"
+      ]
+    },
+    {
+      "type": "para:toc2",
+      "content": [
+        "Acts"
+      ]
+    },
+    {
+      "type": "para:ip",
+      "content": [
+        "One of these brothers, Joseph, had become..."
+      ]
+    },
+    {
+      "type": "para:ipr",
+      "content": [
+        "(50.24)"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "136",
+      "sid": "MAT 136"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [
-                "41MATGNT92.SFM, Good News Translation, June 2003"
-            ],
-            "code": "MAT"
+          "type": "verse:v",
+          "number": "12-83",
+          "sid": "MAT 136:12-83"
+        },
+        "They presented their offerings in the following order:"
+      ]
+    },
+    {
+      "type": "table",
+      "content": [
+        {
+          "type": "table:row:tr",
+          "content": [
+            {
+              "type": "table:cell:th1",
+              "align": "start",
+              "content": [
+                "Day"
+              ]
+            },
+            {
+              "type": "table:cell:th2",
+              "align": "start",
+              "content": [
+                "Tribe"
+              ]
+            },
+            {
+              "type": "table:cell:thr3",
+              "align": "end",
+              "content": [
+                "Leader"
+              ]
+            }
+          ]
         },
         {
-            "type": "para:usfm",
-            "content": [
-                "3.0"
-            ]
+          "type": "table:row:tr",
+          "content": [
+            {
+              "type": "table:cell:tcr1",
+              "align": "end",
+              "content": [
+                "1st"
+              ]
+            },
+            {
+              "type": "table:cell:tc2",
+              "align": "start",
+              "content": [
+                "Judah"
+              ]
+            },
+            {
+              "type": "table:cell:tcr3",
+              "align": "end",
+              "content": [
+                "Nahshon son of Amminadab"
+              ]
+            }
+          ]
         },
         {
-            "type": "para:toc1",
-            "content": [
-                "The Acts of the Apostles"
-            ]
+          "type": "table:row:tr",
+          "content": [
+            {
+              "type": "table:cell:tcr1",
+              "align": "end",
+              "content": [
+                "2nd"
+              ]
+            },
+            {
+              "type": "table:cell:tc2",
+              "align": "start",
+              "content": [
+                "Issachar"
+              ]
+            },
+            {
+              "type": "table:cell:tcr3",
+              "align": "end",
+              "content": [
+                "Nethanel son of Zuar"
+              ]
+            }
+          ]
         },
         {
-            "type": "para:toc2",
-            "content": [
-                "Acts"
-            ]
+          "type": "table:row:tr",
+          "content": [
+            {
+              "type": "table:cell:tcr1",
+              "align": "end",
+              "content": [
+                "3rd"
+              ]
+            },
+            {
+              "type": "table:cell:tc2",
+              "align": "start",
+              "content": [
+                "Zebulun"
+              ]
+            },
+            {
+              "type": "table:cell:tcr3",
+              "align": "end",
+              "content": [
+                "Eliab son of Helon"
+              ]
+            }
+          ]
         },
         {
-            "type": "para:ip",
-            "content": [
-                "One of these brothers, Joseph, had become..."
-            ]
+          "type": "table:row:tr",
+          "content": [
+            {
+              "type": "table:cell:tcr1",
+              "align": "end",
+              "content": [
+                "4th"
+              ]
+            },
+            {
+              "type": "table:cell:tc2",
+              "align": "start",
+              "content": [
+                "Reuben"
+              ]
+            },
+            {
+              "type": "table:cell:tcr3",
+              "align": "end",
+              "content": [
+                "Elizur son of Shedeur"
+              ]
+            }
+          ]
         },
         {
-            "type": "para:ipr",
-            "content": [
-                "(50.24)"
-            ]
-        },
-        {
-            "type": "chapter:c",
-            "number": "136",
-            "sid": "MAT 136"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "12-83",
-                    "sid": "MAT 136:12-83"
-                },
-                "They presented their offerings in the following order:"
-            ]
-        },
-        {
-            "type": "table",
-            "content": [
-                {
-                    "type": "table:row:tr",
-                    "content": [
-                        {
-                            "type": "table:cell:th1",
-                            "content": [
-                                "Day"
-                            ],
-                            "align": "start"
-                        },
-                        {
-                            "type": "table:cell:th2",
-                            "content": [
-                                "Tribe"
-                            ],
-                            "align": "start"
-                        },
-                        {
-                            "type": "table:cell:thr3",
-                            "content": [
-                                "Leader"
-                            ],
-                            "align": "end"
-                        }
-                    ]
-                },
-                {
-                    "type": "table:row:tr",
-                    "content": [
-                        {
-                            "type": "table:cell:tcr1",
-                            "content": [
-                                "1st"
-                            ],
-                            "align": "end"
-                        },
-                        {
-                            "type": "table:cell:tc2",
-                            "content": [
-                                "Judah"
-                            ],
-                            "align": "start"
-                        },
-                        {
-                            "type": "table:cell:tcr3",
-                            "content": [
-                                "Nahshon son of Amminadab"
-                            ],
-                            "align": "end"
-                        }
-                    ]
-                },
-                {
-                    "type": "table:row:tr",
-                    "content": [
-                        {
-                            "type": "table:cell:tcr1",
-                            "content": [
-                                "2nd"
-                            ],
-                            "align": "end"
-                        },
-                        {
-                            "type": "table:cell:tc2",
-                            "content": [
-                                "Issachar"
-                            ],
-                            "align": "start"
-                        },
-                        {
-                            "type": "table:cell:tcr3",
-                            "content": [
-                                "Nethanel son of Zuar"
-                            ],
-                            "align": "end"
-                        }
-                    ]
-                },
-                {
-                    "type": "table:row:tr",
-                    "content": [
-                        {
-                            "type": "table:cell:tcr1",
-                            "content": [
-                                "3rd"
-                            ],
-                            "align": "end"
-                        },
-                        {
-                            "type": "table:cell:tc2",
-                            "content": [
-                                "Zebulun"
-                            ],
-                            "align": "start"
-                        },
-                        {
-                            "type": "table:cell:tcr3",
-                            "content": [
-                                "Eliab son of Helon"
-                            ],
-                            "align": "end"
-                        }
-                    ]
-                },
-                {
-                    "type": "table:row:tr",
-                    "content": [
-                        {
-                            "type": "table:cell:tcr1",
-                            "content": [
-                                "4th"
-                            ],
-                            "align": "end"
-                        },
-                        {
-                            "type": "table:cell:tc2",
-                            "content": [
-                                "Reuben"
-                            ],
-                            "align": "start"
-                        },
-                        {
-                            "type": "table:cell:tcr3",
-                            "content": [
-                                "Elizur son of Shedeur"
-                            ],
-                            "align": "end"
-                        }
-                    ]
-                },
-                {
-                    "type": "table:row:tr",
-                    "content": [
-                        {
-                            "type": "table:cell:tcr1",
-                            "content": [
-                                "5th"
-                            ],
-                            "align": "end"
-                        },
-                        {
-                            "type": "table:cell:tc2",
-                            "content": [
-                                "Simeon"
-                            ],
-                            "align": "start"
-                        },
-                        {
-                            "type": "table:cell:tcr3",
-                            "content": [
-                                "Shelumiel son of Zurishaddai"
-                            ],
-                            "align": "end"
-                        }
-                    ]
-                }
-            ]
+          "type": "table:row:tr",
+          "content": [
+            {
+              "type": "table:cell:tcr1",
+              "align": "end",
+              "content": [
+                "5th"
+              ]
+            },
+            {
+              "type": "table:cell:tc2",
+              "align": "start",
+              "content": [
+                "Simeon"
+              ]
+            },
+            {
+              "type": "table:cell:tcr3",
+              "align": "end",
+              "content": [
+                "Shelumiel son of Zurishaddai"
+              ]
+            }
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }

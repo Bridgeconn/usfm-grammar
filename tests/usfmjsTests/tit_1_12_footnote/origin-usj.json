@@ -1,86 +1,84 @@
 {
-    "type": "USJ",
-    "version": "0.1.0",
-    "content": [
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book:id",
+      "code": "TIT",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para:ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para:h",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para:toc2",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para:toc3",
+      "content": [
+        "Tit"
+      ]
+    },
+    {
+      "type": "para:mt",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "chapter:c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para:p",
+      "content": [
         {
-            "type": "book:id",
-            "content": [
-                "Titus"
-            ],
-            "code": "TIT"
+          "type": "verse:v",
+          "number": "12",
+          "sid": "TIT 1:12"
         },
+        "..."
+      ]
+    },
+    {
+      "type": "para:q",
+      "content": [
+        "Christ Jesus.",
         {
-            "type": "para:ide",
-            "content": [
-                "UTF-8"
-            ]
-        },
-        {
-            "type": "para:h",
-            "content": [
-                "Titus"
-            ]
-        },
-        {
-            "type": "para:toc2",
-            "content": [
-                "Titus"
-            ]
-        },
-        {
-            "type": "para:toc3",
-            "content": [
-                "Tit"
-            ]
-        },
-        {
-            "type": "para:mt",
-            "content": [
-                "Titus"
-            ]
-        },
-        {
-            "type": "chapter:c",
-            "number": "1",
-            "sid": "TIT 1"
-        },
-        {
-            "type": "para:p",
-            "content": [
-                {
-                    "type": "verse:v",
-                    "number": "12",
-                    "sid": "TIT 1:12"
-                },
-                "..."
-            ]
-        },
-        {
-            "type": "para:q",
-            "content": [
-                "Christ Jesus.",
-                {
-                    "type": "note:f",
-                    "content": [
-                        "",
-                        {
-                            "type": "char:ft",
-                            "content": [
-                                "Some early versions omit,"
-                            ]
-                        },
-                        {
-                            "type": "char:fqa",
-                            "content": [
-                                "in Ephesus,"
-                            ]
-                        },
-                        "but this expression is probably in Paul's original letter."
-                    ],
-                    "caller": "+"
-                },
-                ""
-            ]
+          "type": "note:f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char:ft",
+              "content": [
+                "Some early versions omit,"
+              ]
+            },
+            {
+              "type": "char:fqa",
+              "content": [
+                "in Ephesus,"
+              ]
+            },
+            "but this expression is probably in Paul's original letter."
+          ]
         }
-    ]
+      ]
+    }
+  ]
 }
