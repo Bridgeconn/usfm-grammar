@@ -4,11 +4,7 @@ import json
 from jsonschema import validate
 
 from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests,\
-<<<<<<< HEAD
-    find_all_markers, Filter, generate_USFM_from_USJ, parse_USFM_string
-=======
-    find_all_markers, Filter, exclude_USX_files
->>>>>>> e4347d702c8bf62b48a4180c1462e6dbe71487d1
+    find_all_markers, Filter, generate_USFM_from_USJ, parse_USFM_string, exclude_USX_files
 
 all_valid_markers = []
 for member in Filter:
