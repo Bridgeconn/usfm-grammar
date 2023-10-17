@@ -86,18 +86,15 @@ print(table_output)
 
 ```
 
-To round trip
+To round trip with USJ
 ```
 from usfm_grammar import USFMParser, Filter
-from usfm_grammar import USFMParser, USFMGenerator
 
 my_parser = USFMParser(input_usfm_str)
 usj_obj = my_parser.to_usj()
 
-my_generator = USFMGenerator()
-my_generator.usj_to_usfm(usj_obj)
-print(my_generator.usfm_string)
-
+my_parser2 = USFMParser(from_usj=usj_obj)
+print(my_parser2.usfm)
 ```
 :warning: There will be differences between first USFM and the generated one in 1. Spaces and lines 2. Default attributes will be given their names 3. Closing markers may be newly added
 
@@ -108,15 +105,25 @@ from usfm_grammar import USFMParser, Filter, USFMGenerator
 my_parser = USFMParser(input_usfm_str)
 usj_obj = my_parser.to_usj(include_markers=Filter.BCV+Filter.TEXT)
 
-my_generator = USFMGenerator()
-my_generator.usj_to_usfm(usj_obj)
-print(my_generator.usfm_string)
+my_parser2 = USFMParser(from_usj=usj_obj)
+print(my_parser2.usfm)
 ```
+USJ to USX or Table
+```
+rom usfm_grammar import USFMParser, Filter
 
+my_parser = USFMParser(input_usfm_str)
+usj_obj = my_parser.to_usj()
+
+my_parser2 = USFMParser(from_usj=usj_obj)
+print(my_parser2.to_usx())
+# print(my_parser2.to_list())
+```
 ### From CLI
 
 ```
-usage: usfm-grammar [-h] [--format {json,table,syntax-tree,usx,markdown}]
+usage: usfm-grammar [-h] [--in_format {usfm,usj}]
+                    [--out_format {usj,table,syntax-tree,usx,markdown,usfm}]
                     [--include_markers {book_headers,titles,...}]
                     [--exclude_markers {book_headers,titles,...}]
                     [--csv_col_sep CSV_COL_SEP] [--csv_row_sep CSV_ROW_SEP]
@@ -127,11 +134,13 @@ Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree,
 JSON, CSV, USX etc.
 
 positional arguments:
-  infile                input usfm file
+  infile                input usfm or usj file
 
 options:
   -h, --help            show this help message and exit
-  --format {json,table,syntax-tree,usx,markdown}
+  --in_format {usfm,usj}
+                        input file format
+  --out_format {usj,table,syntax-tree,usx,markdown,usfm}
                         output format
   --include_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}
                         the list of of contents to be included
@@ -150,11 +159,15 @@ options:
 ```
 Example
 ```
->>> python3 -m usfm_grammar sample.usfm --format usx
+>>> python3 -m usfm_grammar sample.usfm --out_format usx
 
->>> usfm-grammar sample.usfm --format usx
+>>> usfm-grammar sample.usfm
+
+>>> usfm-grammar sample.usfm --out_format usx
 
 >>> usfm-grammar sample.usfm --include_markers bcv --include_markers text --include_markers s
+
+>>> usfm-grammar sample-usj.json --out_format usfm
 ```
 
 ### Filtering on USJ
