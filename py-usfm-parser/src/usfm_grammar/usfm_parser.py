@@ -10,6 +10,7 @@ from lxml import etree
 from usfm_grammar.usx_generator import USXGenerator
 from usfm_grammar.usj_generator import USJGenerator
 from usfm_grammar.list_generator import ListGenerator
+from usfm_grammar.usfm_generator import USFMGenerator
 from usfm_grammar.filters import exclude_markers_in_usj, include_markers_in_usj
 
 class Filter(list, Enum):
@@ -41,12 +42,13 @@ class Filter(list, Enum):
     # INNER_CONTENT = ['content-in-excluded-parent']
 
 class Format(str, Enum):
-    '''Defines the valid values for output formats'''
-    JSON = "json"
+    '''Defines the valid values for input and output formats'''
+    JSON = "usj"
     CSV = "table"
     ST = "syntax-tree"
     USX = "usx"
     MD = "markdown"
+    USFM = "usfm"
 
 lang_file = resources.path('usfm_grammar','my-languages.so')
 USFM_LANGUAGE = Language(str(lang_file), 'usfm3')
@@ -75,9 +77,19 @@ error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 
 class USFMParser():
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
-    def __init__(self, usfm_string):
+    def __init__(self, usfm_string:str=None, from_usj:dict=None):
         # super(USFMParser, self).__init__()
-        self.usfm = usfm_string
+        if usfm_string is not None and from_usj is not None:
+            raise Exception("Found USFM and USJ inputs! Only one supported in one object.")
+        if usfm_string is not None:
+            self.usfm = usfm_string
+        elif from_usj is not None:
+            usj_converter = USFMGenerator()
+            usj_converter.usj_to_usfm(from_usj)
+            self.usfm = usj_converter.usfm_string
+        else:
+            raise Exception("Missing input! Either USFM or USJ to be provided.")
+
         self.usfm_bytes = None
         self.syntax_tree = None
         self.errors = None

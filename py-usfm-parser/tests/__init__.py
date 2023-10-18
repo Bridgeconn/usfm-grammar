@@ -13,6 +13,16 @@ def initialise_parser(input_usfm_path):
     test_parser = USFMParser(usfm_string)
     return test_parser
 
+def generate_USFM_from_USJ(input_usj):
+    '''Create a generator, and use usj_to_usfm convertion API'''
+    usj_parser = USFMParser(from_usj=input_usj)
+    return usj_parser.usfm
+
+def parse_USFM_string(usfm_string):
+    '''Set up a parser obj with given string input'''
+    test_parser = USFMParser(usfm_string)
+    return test_parser
+
 def is_valid_usfm(input_usfm_path):
     '''Checks the metadata.xml to see is the USFM is a valid one'''
     if input_usfm_path in pass_fail_override_list:
