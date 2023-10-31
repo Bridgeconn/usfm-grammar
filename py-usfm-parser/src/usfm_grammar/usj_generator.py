@@ -31,7 +31,9 @@ class USJGenerator:
     def findlast_from_json(self, json_obj, type_value):
         '''Traverse the given JSON and list all elements with given value in type field'''
         output = None
-        if json_obj['type'] == type_value or type_value in json_obj['type'].split(':'):
+        if type_value == json_obj['type']:
+            output = json_obj
+        elif "marker" in json_obj and type_value == json_obj['marker']:
             output = json_obj
         if 'content' in json_obj:
             for child in json_obj['content']:
@@ -53,7 +55,7 @@ class USJGenerator:
                 code = self.usfm[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
             elif tupl[1] == 'desc':
                 desc = self.usfm[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
-        book_json_obj = {"type": "book:id", "content":[]}
+        book_json_obj = {"type": "book", "marker":"id", "content":[]}
         book_json_obj['code'] = code
         if desc is not None and desc.strip() != "":
             book_json_obj['content'].append(desc.strip())
@@ -68,10 +70,10 @@ class USJGenerator:
         chap_num = self.usfm[chap_cap[0][0].start_byte:chap_cap[0][0].end_byte].decode('utf-8')
         chap_ref = None
         for child in self.json_root_obj['content']:
-            if child['type'] == "book:id":
+            if child['type'] == "book":
                 chap_ref = child['code']+" "+chap_num
                 break
-        chap_json_obj = {"type":"chapter:c"}
+        chap_json_obj = {"type":"chapter", "marker":"c"}
         chap_json_obj["number"] = chap_num
         chap_json_obj["sid"] = chap_ref
         for tupl in chap_cap:
@@ -105,7 +107,7 @@ class USJGenerator:
                                 )''').captures(node)
         verse_num = self.usfm[verse_num_cap[0][0].start_byte:
             verse_num_cap[0][0].end_byte].decode('utf-8')
-        v_json_obj = {"type":"verse:v"}
+        v_json_obj = {"type":"verse", "marker":"v"}
         for tupl in verse_num_cap:
             if tupl[1] == 'alt':
                 alt_num = self.usfm[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
@@ -121,7 +123,7 @@ class USJGenerator:
     def node_2_usj_ca_va(self, node, parent_json_obj):
         '''Build elements for independant ca and va away from c and v'''
         style = node.type
-        char_json_obj = {"type":f"char:{style}"}
+        char_json_obj = {"type":"char", "marker":style}
         alt_num_match = self.usfm_language.query('''([
                                             (chapterNumber)
                                             (verseNumber)
@@ -143,14 +145,14 @@ class USJGenerator:
             if para_marker == "b":
                 self.node_2_usj_special(para_tag_cap[0], parent_json_obj)
             elif not para_marker.endswith("Block"):
-                para_json_obj = {"type": f"para:{para_marker}", "content":[]}
+                para_json_obj = {"type": "para", "marker":para_marker, "content":[]}
                 for child in para_tag_cap[0].children[1:]:
                     self.node_2_usj(child, para_json_obj)
                 parent_json_obj['content'].append(para_json_obj)
         elif node.type in ['pi', "ph"]:
             para_marker = self.usfm[node.children[0].start_byte:\
                 node.children[0].end_byte].decode('utf-8').replace("\\", "").strip()
-            para_json_obj = {"type": f"para:{para_marker}", "content":[]}
+            para_json_obj = {"type": "para", "marker":para_marker, "content":[]}
             for child in node.children[1:]:
                 self.node_2_usj(child, para_json_obj)
             parent_json_obj['content'].append(para_json_obj)
@@ -161,7 +163,7 @@ class USJGenerator:
         caller_node = node.children[1]
         style = self.usfm[tag_node.start_byte:tag_node.end_byte].decode(
             'utf-8').replace("\\","").strip()
-        note_json_obj = {"type": f"note:{style}", "content":[]}
+        note_json_obj = {"type": "note", "marker":style, "content":[]}
         note_json_obj["caller"] = \
             self.usfm[caller_node.start_byte:caller_node.end_byte].decode('utf-8').strip()
         for child in node.children[2:-1]:
@@ -178,7 +180,7 @@ class USJGenerator:
             children_range = children_range-1
         style = self.usfm[tag_node.start_byte:tag_node.end_byte].decode(
             'utf-8').replace("\\","").replace("+","").strip()
-        char_json_obj = {"type": f"char:{style}", "content":[]}
+        char_json_obj = {"type": "char", "marker":style, "content":[]}
         # if closing_node is None:
         #     char_json_obj["closed"] = false
         # else:
@@ -213,7 +215,7 @@ class USJGenerator:
                 self.node_2_usj(child, table_json_obj)
             parent_json_obj['content'].append(table_json_obj)
         elif node.type == "tr":
-            row_json_obj = {"type": "table:row:tr", "content":[]}
+            row_json_obj = {"type": "table:row", "marker":"tr", "content":[]}
             for child in node.children[1:]:
                 self.node_2_usj(child, row_json_obj)
             parent_json_obj['content'].append(row_json_obj)
@@ -221,7 +223,7 @@ class USJGenerator:
             tag_node = node.children[0]
             style = self.usfm[tag_node.start_byte:tag_node.end_byte].decode('utf-8')\
             .replace("\\","").strip()
-            cell_json_obj = {"type": f"table:cell:{style}", "content":[]}
+            cell_json_obj = {"type": "table:cell", "marker":style, "content":[]}
             if "r" in style:
                 cell_json_obj["align"] = "end"
             else:
@@ -240,7 +242,7 @@ class USJGenerator:
              ] @ms-name)''').captures(node)[0]
         style = self.usfm[ms_name_cap[0].start_byte:ms_name_cap[0].end_byte].decode('utf-8')\
         .replace("\\","").strip()
-        ms_json_obj = {"type": f"ms:{style}", "content":[]}
+        ms_json_obj = {"type": "ms", 'marker':style, "content":[]}
         for child in node.children:
             if child.type.endswith("Attribute"):
                 self.node_2_usj(child, ms_json_obj)
@@ -252,7 +254,7 @@ class USJGenerator:
     def node_2_usj_special(self, node, parent_json_obj):
         '''Build nodes for esb, cat, fig, optbreak in USX'''
         if node.type == "esb":
-            sidebar_json_obj = {"type": "sidebar:esb", "content":[]}
+            sidebar_json_obj = {"type": "sidebar", "marker":"esb", "content":[]}
             for child in node.children[1:-1]:
                 self.node_2_usj(child, sidebar_json_obj)
             parent_json_obj['content'].append(sidebar_json_obj)
@@ -261,15 +263,15 @@ class USJGenerator:
             category = self.usfm[cat_cap[0].start_byte:cat_cap[0].end_byte].decode('utf-8').strip()
             parent_json_obj['category'] = category
         elif node.type == 'fig':
-            fig_json_obj = {"type":"figure:fig", "content":[]}
+            fig_json_obj = {"type":"figure", "marker":"fig", "content":[]}
             for child in node.children[1:-1]:
                 self.node_2_usj(child, fig_json_obj)
             parent_json_obj['content'].append(fig_json_obj)
         elif node.type == 'b':
-            b_json_obj = {"type": "optbreak:b"}
+            b_json_obj = {"type": "optbreak", "marker":"b"}
             parent_json_obj['content'].append(b_json_obj)
         elif node.type == "usfm":
-            ver_json_obj = {"type": "para:usfm", "content":[]}
+            ver_json_obj = {"type": "para", "marker":"usfm", "content":[]}
             version = self.usfm[
                 node.start_byte:node.end_byte].decode('utf-8').replace("\\usfm","").strip()
             ver_json_obj['content'].append(version)
@@ -289,7 +291,7 @@ class USJGenerator:
             num = self.usfm[num_node.start_byte:num_node.end_byte].decode('utf-8')
             style += num
             children_range_start = 2
-        para_json_obj = {"type": f"para:{style}", "content":[]}
+        para_json_obj = {"type": "para", "marker":style, "content":[]}
         parent_json_obj['content'].append(para_json_obj)
         for child in node.children[children_range_start:]:
             if child.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+\
