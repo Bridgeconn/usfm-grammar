@@ -15,7 +15,7 @@
         "content": {
           "type": "array",
           "items": {
-            "oneOf":[
+            "anyOf":[
               {"type": "string"},
               {"$ref": "#/$defs/markerObject"}
             ]
@@ -71,7 +71,7 @@
       "description": "The JSON representation of scripture contents from USFM/USX",
       "type": "array",
       "items":{
-        "oneOf":[
+        "anyOf":[
           {"type": "string"},
           {"$ref": "#/$defs/markerObject"}
         ]
