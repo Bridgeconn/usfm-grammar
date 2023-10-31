@@ -9,8 +9,12 @@
       "type": "object",
       "properties": {
         "type": { 
-        	"description": "The kind of node or element this is, corresponding each marker in USFM or each node in USX",
+        	"description": "The kind/category of node or element this is, corresponding the USFM marker and USX node",
         	"type": "string"
+        },
+        "marker": { 
+          "description": "The corresponding marker in USFM or style in USX",
+          "type": "string"
         },
         "content": {
           "type": "array",
