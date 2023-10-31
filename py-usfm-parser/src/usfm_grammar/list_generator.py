@@ -31,7 +31,7 @@ class ListGenerator:
         elif obj['type'] == "verse":
             self.usj_to_list_v(obj)
         marker_type = obj['type']
-        marker_name = obj['marker']
+        marker_name = obj['marker'] if "marker" in obj else ''
         if marker_type == "USJ":
             # This would occur if the JSON got flatttened after removing paragraph markers
             marker_type = ""
