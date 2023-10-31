@@ -169,7 +169,7 @@ def test_compare_usj_with_testsuite_samples(file_path):
     usx_file_path = file_path.replace("origin.usfm", "origin.xml")
     if usx_file_path not in exclude_USX_files:
         usj_dict = test_parser.to_usj()
-        remove_newlines_in_text(usj_dict)
+        # remove_newlines_in_text(usj_dict) # need this if using USJ generated from tcdocs
         try:
             usj_file_path = file_path.replace("origin.usfm", "origin-usj.json")
             with open(usj_file_path, 'r', encoding='utf-8') as usj_file:
