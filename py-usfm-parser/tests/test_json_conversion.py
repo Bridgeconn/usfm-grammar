@@ -23,6 +23,9 @@ def test_usj_converions_without_filter(file_path):
     assert not test_parser.errors, test_parser.errors
     usfm_dict = test_parser.to_usj()
     assert isinstance(usfm_dict, dict)
+    # usj_file_path = file_path.replace("origin.usfm", "origin-usj.json")
+    # with open(usj_file_path, 'w', encoding='utf-8') as usj_file:
+    #     json.dump(usfm_dict, usj_file, indent=2 )
 
 @pytest.mark.parametrize('file_path', test_files)
 @pytest.mark.parametrize('exclude_markers', [
@@ -64,11 +67,9 @@ def get_types(element):
     types = []
     if isinstance(element, str):
         pass
-    elif element['type'].split(':')[0] == "ms":
-        types.append('milestone')
-        types.append(element['type'].split(':')[-1] )
     else:
-        types += element['type'].split(':')
+        if 'marker' in element:
+            types.append(element['marker'])
         if "altnumber" in element:
             if "c" in element['type']:
                 types.append("ca")
@@ -120,7 +121,8 @@ def test_usj_output_is_valid(file_path):
 @pytest.mark.parametrize('file_path', test_files)
 @pytest.mark.timeout(30)
 def test_usj_round_tripping(file_path):
-    '''Convert USFM to USJ and back to USFM. Compare first USFM and second USFM based on parse tree''' 
+    '''Convert USFM to USJ and back to USFM.
+    Compare first USFM and second USFM based on parse tree''' 
     test_parser1 = initialise_parser(file_path)
     assert not test_parser1.errors, test_parser1.errors
     usj_dict = test_parser1.to_usj()
