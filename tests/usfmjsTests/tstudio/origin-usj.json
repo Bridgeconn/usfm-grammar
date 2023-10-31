@@ -3,136 +3,160 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "PSA",
+      "type": "book",
+      "marker": "id",
       "content": [
         "Unlocked Literal Bible"
-      ]
+      ],
+      "code": "PSA"
     },
     {
-      "type": "para:ide",
+      "type": "para",
+      "marker": "ide",
       "content": [
         "UTF-8"
       ]
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
         "Psalms"
       ]
     },
     {
-      "type": "para:toc1",
+      "type": "para",
+      "marker": "toc1",
       "content": [
         "The Book of Psalms"
       ]
     },
     {
-      "type": "para:toc2",
+      "type": "para",
+      "marker": "toc2",
       "content": [
         "Psalms"
       ]
     },
     {
-      "type": "para:toc3",
+      "type": "para",
+      "marker": "toc3",
       "content": [
         "Psa"
       ]
     },
     {
-      "type": "para:mt",
+      "type": "para",
+      "marker": "mt",
       "content": [
         "The Book of Psalms"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "091",
-      "sid": "PSA 91"
+      "sid": "PSA 091"
     },
     {
-      "type": "para:ms",
+      "type": "para",
+      "marker": "ms",
       "content": [
         "Book One"
       ]
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:m",
+      "type": "para",
+      "marker": "m",
       "content": []
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "01",
-          "sid": "PSA 91:1"
+          "sid": "PSA 091:01"
         },
         "He who lives in the shelter of the Most High"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "will stay in the shadow of the Almighty."
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "02",
-          "sid": "PSA 91:2"
+          "sid": "PSA 091:02"
         },
         "I will say of Yahweh, \"He is my refuge and my fortress,"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "my God, in whom I trust.\""
       ]
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "03-04",
-          "sid": "PSA 91:03-04"
+          "sid": "PSA 091:03-04"
         },
         "For he will rescue you from the snare of the hunter"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "and from the deadly plague."
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "He will cover you with his wings,"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "and under his wings you will find refuge."
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "His trustworthiness is a shield and protection."
       ]

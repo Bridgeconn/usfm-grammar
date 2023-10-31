@@ -3,202 +3,227 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "para:usfm",
+      "type": "para",
+      "marker": "usfm",
       "content": [
         "3.0"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "From Gen 1:",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GEN 1:2"
         },
         {
-          "type": "char:w",
-          "lemma": "אֶרֶץ",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05d5\u05b0\u200b\u05d4\u05b8\u200b\u05d0\u05b8\u0597\u05e8\u05b6\u05e5"
+          ],
+          "lemma": "\u05d0\u05b6\u05e8\u05b6\u05e5",
           "strong": "c:d:H0776",
-          "x-morph": "He,C:Td:Ncbsa",
-          "content": [
-            "וְ​הָ​אָ֗רֶץ"
-          ]
+          "x-morph": "He,C:Td:Ncbsa"
         },
         {
-          "type": "char:w",
-          "lemma": "הָיָה",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05d4\u05b8\u05d9\u05b0\u05ea\u05b8\u05a5\u05d4"
+          ],
+          "lemma": "\u05d4\u05b8\u05d9\u05b8\u05d4",
           "strong": "H1961",
-          "x-morph": "He,Vqp3fs",
-          "content": [
-            "הָיְתָ֥ה"
-          ]
+          "x-morph": "He,Vqp3fs"
         },
         {
-          "type": "char:w",
-          "lemma": "תֹּהוּ",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05ea\u05b9\u05a8\u05d4\u05d5\u05bc\u0599"
+          ],
+          "lemma": "\u05ea\u05bc\u05b9\u05d4\u05d5\u05bc",
           "strong": "H8414",
-          "x-morph": "He,Ncmsa",
-          "content": [
-            "תֹ֨הוּ֙"
-          ]
+          "x-morph": "He,Ncmsa"
         },
         {
-          "type": "char:w",
-          "lemma": "בֹּהוּ",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05d5\u05b8\u200b\u05d1\u05b9\u0594\u05d4\u05d5\u05bc"
+          ],
+          "lemma": "\u05d1\u05bc\u05b9\u05d4\u05d5\u05bc",
           "strong": "c:H0922",
-          "x-morph": "He,C:Ncmsa",
-          "content": [
-            "וָ​בֹ֔הוּ"
-          ]
+          "x-morph": "He,C:Ncmsa"
         },
         {
-          "type": "char:w",
-          "lemma": "חֹשֶׁךְ",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05d5\u05b0\u200b\u05d7\u05b9\u0596\u05e9\u05c1\u05b6\u05da\u05b0"
+          ],
+          "lemma": "\u05d7\u05b9\u05e9\u05c1\u05b6\u05da\u05b0",
           "strong": "c:H2822",
-          "x-morph": "He,C:Ncmsa",
-          "content": [
-            "וְ​חֹ֖שֶׁךְ"
-          ]
+          "x-morph": "He,C:Ncmsa"
         },
         {
-          "type": "char:w",
-          "lemma": "עַל",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05e2\u05b7\u05dc"
+          ],
+          "lemma": "\u05e2\u05b7\u05dc",
           "strong": "H5921a",
-          "x-morph": "He,R",
-          "content": [
-            "עַל"
-          ]
+          "x-morph": "He,R"
         },
-        "־",
+        "\u05be",
         {
-          "type": "char:w",
-          "lemma": "פָּנִים",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05e4\u05bc\u05b0\u05e0\u05b5\u05a3\u05d9"
+          ],
+          "lemma": "\u05e4\u05bc\u05b8\u05e0\u05b4\u05d9\u05dd",
           "strong": "H6440",
-          "x-morph": "He,Ncbpc",
-          "content": [
-            "פְּנֵ֣י"
-          ]
+          "x-morph": "He,Ncbpc"
         },
         {
-          "type": "char:w",
-          "lemma": "תְּהוֹם",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05ea\u05b0\u05d4\u0591\u05d5\u05b9\u05dd"
+          ],
+          "lemma": "\u05ea\u05bc\u05b0\u05d4\u05d5\u05b9\u05dd",
           "strong": "H8415",
-          "x-morph": "He,Ncbsa",
-          "content": [
-            "תְה֑וֹם"
-          ]
+          "x-morph": "He,Ncbsa"
         },
         {
-          "type": "char:w",
-          "lemma": "רוּחַ",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05d5\u05b0\u200b\u05e8\u05a3\u05d5\u05bc\u05d7\u05b7"
+          ],
+          "lemma": "\u05e8\u05d5\u05bc\u05d7\u05b7",
           "strong": "c:H7307",
-          "x-morph": "He,C:Ncbsc",
-          "content": [
-            "וְ​ר֣וּחַ"
-          ]
+          "x-morph": "He,C:Ncbsc"
         },
         {
-          "type": "char:w",
-          "lemma": "אֱלֹהִים",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05d0\u05b1\u05dc\u05b9\u05d4\u05b4\u0594\u05d9\u05dd"
+          ],
+          "lemma": "\u05d0\u05b1\u05dc\u05b9\u05d4\u05b4\u05d9\u05dd",
           "strong": "H0430",
-          "x-morph": "He,Ncmpa",
-          "content": [
-            "אֱלֹהִ֔ים"
-          ]
+          "x-morph": "He,Ncmpa"
         },
         {
-          "type": "char:w",
-          "lemma": "רָחַף",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05de\u05b0\u05e8\u05b7\u05d7\u05b6\u0596\u05e4\u05b6\u05ea"
+          ],
+          "lemma": "\u05e8\u05b8\u05d7\u05b7\u05e3",
           "strong": "H7363b",
-          "x-morph": "He,Vprfsa",
-          "content": [
-            "מְרַחֶ֖פֶת"
-          ]
+          "x-morph": "He,Vprfsa"
         },
         {
-          "type": "char:w",
-          "lemma": "עַל",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05e2\u05b7\u05dc"
+          ],
+          "lemma": "\u05e2\u05b7\u05dc",
           "strong": "H5921a",
-          "x-morph": "He,R",
-          "content": [
-            "עַל"
-          ]
+          "x-morph": "He,R"
         },
-        "־",
+        "\u05be",
         {
-          "type": "char:w",
-          "lemma": "פָּנִים",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05e4\u05bc\u05b0\u05e0\u05b5\u05a5\u05d9"
+          ],
+          "lemma": "\u05e4\u05bc\u05b8\u05e0\u05b4\u05d9\u05dd",
           "strong": "H6440",
-          "x-morph": "He,Ncbpc",
-          "content": [
-            "פְּנֵ֥י"
-          ]
+          "x-morph": "He,Ncbpc"
         },
         {
-          "type": "char:w",
-          "lemma": "מַיִם",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05d4\u05b7\u200b\u05de\u05bc\u05b8\u05bd\u05d9\u05b4\u05dd"
+          ],
+          "lemma": "\u05de\u05b7\u05d9\u05b4\u05dd",
           "strong": "d:H4325",
-          "x-morph": "He,Td:Ncmpa",
-          "content": [
-            "הַ​מָּֽיִם"
-          ]
+          "x-morph": "He,Td:Ncmpa"
         },
-        "׃",
+        "\u05c3",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "GEN 1:3"
         },
         "From Isa:",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "GEN 1:4"
         },
         {
-          "type": "char:w",
-          "lemma": "עַל",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05e2\u05b7\u05dc"
+          ],
+          "lemma": "\u05e2\u05b7\u05dc",
           "strong": "H5921a",
-          "x-morph": "He,R",
-          "content": [
-            "עַל"
-          ]
+          "x-morph": "He,R"
         },
-        "־",
+        "\u05be",
         {
-          "type": "char:w",
-          "lemma": "פָּנִים",
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u05e4\u05bc\u05b0\u05e0\u05b5\u05a3\u05d9"
+          ],
+          "lemma": "\u05e4\u05bc\u05b8\u05e0\u05b4\u05d9\u05dd",
           "strong": "H6440",
-          "x-morph": "He,Ncbpc",
-          "content": [
-            "פְּנֵ֣י"
-          ]
+          "x-morph": "He,Ncbpc"
         },
         {
-          "type": "char:w",
-          "lemma": "תְּהוֹם",
-          "strong": "H8415",
-          "x-morph": "He,Ncbsa",
+          "type": "char",
+          "marker": "w",
           "content": [
-            "תְה֑וֹם"
-          ]
+            "\u05ea\u05b0\u05d4\u0591\u05d5\u05b9\u05dd"
+          ],
+          "lemma": "\u05ea\u05bc\u05b0\u05d4\u05d5\u05b9\u05dd",
+          "strong": "H8415",
+          "x-morph": "He,Ncbsa"
         }
       ]
     }

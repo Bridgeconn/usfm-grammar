@@ -3,101 +3,117 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:s",
+      "type": "para",
+      "marker": "s",
       "content": [
         "some text"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "verse text",
         {
-          "type": "char:rb",
-          "gloss": "g",
+          "type": "char",
+          "marker": "rb",
           "content": [
             "B"
-          ]
+          ],
+          "gloss": "g"
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "verse text",
         {
-          "type": "char:rb",
-          "gloss": "g",
+          "type": "char",
+          "marker": "rb",
           "content": [
-            "僕使御"
-          ]
+            "\u50d5\u4f7f\u5fa1"
+          ],
+          "gloss": "g"
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "verse text",
         {
-          "type": "char:rb",
-          "gloss": "g:g",
-          "content": [
-            "BB"
-          ]
-        },
-        {
-          "type": "verse:v",
-          "number": "1",
-          "sid": "GEN 1:1"
-        },
-        "verse text",
-        {
-          "type": "char:rb",
-          "gloss": "gg",
+          "type": "char",
+          "marker": "rb",
           "content": [
             "BB"
-          ]
+          ],
+          "gloss": "g:g"
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "verse text",
         {
-          "type": "char:rb",
-          "gloss": "g:g",
-          "content": [
-            "B僕使御"
-          ]
-        },
-        {
-          "type": "verse:v",
-          "number": "1",
-          "sid": "GEN 1:1"
-        },
-        "verse text",
-        {
-          "type": "char:rb",
-          "gloss": "g:g",
+          "type": "char",
+          "marker": "rb",
           "content": [
             "BB"
-          ]
+          ],
+          "gloss": "gg"
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "rb",
+          "content": [
+            "B\u50d5\u4f7f\u5fa1"
+          ],
+          "gloss": "g:g"
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "rb",
+          "content": [
+            "BB"
+          ],
+          "gloss": "g:g"
         }
       ]
     }

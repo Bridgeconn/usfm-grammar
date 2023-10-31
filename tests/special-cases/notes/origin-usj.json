@@ -3,42 +3,49 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "26",
           "sid": "GEN 1:26"
         },
         {
-          "type": "note:x",
-          "caller": "-",
+          "type": "note",
+          "marker": "x",
           "content": [
             {
-              "type": "char:xo",
+              "type": "char",
+              "marker": "xo",
               "content": [
                 "3.26"
               ]
             },
             {
-              "type": "char:xt",
+              "type": "char",
+              "marker": "xt",
               "content": [
-                "ယစံး"
+                "\u101a\u1005\u1036\u1038"
               ]
             }
-          ]
+          ],
+          "caller": "-"
         },
-        "ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,"
+        "\u1012\u103a\u101e\u102d\u1038\u1021\u1000\u1012\u102f\u1038\u1014\u1032\u1063\u103a\u1021\u1010\u1062\u103a\u1010\u102e\u1010\u1062\u103a \u101c\u102d\u1064\u1021\u1000\u1010\u102e\u1062\u103a\u1016\u1032\u1021\u1036\u1064,"
       ]
     }
   ]

@@ -3,19 +3,22 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "PHM",
+      "type": "book",
+      "marker": "id",
       "content": [
         "Longer Heading"
-      ]
+      ],
+      "code": "PHM"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "PHM 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": []
     }
   ]

@@ -3,190 +3,221 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "MAT",
+      "type": "book",
+      "marker": "id",
       "content": [
         "41MATGNT92.SFM, Good News Translation, June 2003"
-      ]
+      ],
+      "code": "MAT"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "136",
       "sid": "MAT 136"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
         "The Preaching of John the Baptist"
       ]
     },
     {
-      "type": "para:r",
+      "type": "para",
+      "marker": "r",
       "content": [
         "(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "MAT 136:1"
         },
         "This is the Good News about Jesus Christ, the Son of God.",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "1.1:"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "Some manuscripts do not have"
               ]
             },
             {
-              "type": "char:fq",
+              "type": "char",
+              "marker": "fq",
               "content": [
                 "the Son of God."
               ]
             }
-          ]
+          ],
+          "caller": "+"
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "20",
           "sid": "MAT 136:20"
         },
         "Adam",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "3.20:"
               ]
             },
             {
-              "type": "char:fk",
+              "type": "char",
+              "marker": "fk",
               "content": [
                 "Adam:"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
-                "This name in Hebrew means “all human beings.”"
+                "This name in Hebrew means \u201call human beings.\u201d"
               ]
             }
-          ]
+          ],
+          "caller": "+"
         },
         "named his wife Eve,",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "3.20:"
               ]
             },
             {
-              "type": "char:fk",
+              "type": "char",
+              "marker": "fk",
               "content": [
                 "Eve:"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
-                "This name sounds similar to the Hebrew word for “living,” which is rendered in this context as “human beings.”"
+                "This name sounds similar to the Hebrew word for \u201cliving,\u201d which is rendered in this context as \u201chuman beings.\u201d"
               ]
             }
-          ]
+          ],
+          "caller": "+"
         },
         "because she was the mother of all human beings.",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "38",
           "sid": "MAT 136:38"
         },
-        "whoever believes in me should drink. As the scripture says, ‘Streams of life-giving water will pour out from his side.’”",
+        "whoever believes in me should drink. As the scripture says, \u2018Streams of life-giving water will pour out from his side.\u2019\u201d",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "7.38:"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "Jesus' words in verses 37-38 may be translated:"
               ]
             },
             {
-              "type": "char:fqa",
+              "type": "char",
+              "marker": "fqa",
               "content": [
-                "“Whoever is thirsty should come to me and drink."
+                "\u201cWhoever is thirsty should come to me and drink."
               ]
             },
             {
-              "type": "char:fv",
+              "type": "char",
+              "marker": "fv",
               "content": [
                 "38"
               ]
             },
-            "As the scripture says, ‘Streams of life-giving water will pour out ...’”"
-          ]
+            "As the scripture says, \u2018Streams of life-giving water will pour out ...\u2019\u201d"
+          ],
+          "caller": "+"
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "MAT 136:3"
         },
-        "Él es el resplandor glorioso de Dios,",
+        "\u00c9l es el resplandor glorioso de Dios,",
         {
-          "type": "note:f",
-          "caller": "c",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "1.3:"
               ]
             },
             {
-              "type": "char:fk",
+              "type": "char",
+              "marker": "fk",
               "content": [
                 "Resplandor:"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "Cf. Jn 1.4-9,14"
               ]
             },
             {
-              "type": "char:fdc",
+              "type": "char",
+              "marker": "fdc",
               "content": [
-                "; también Sab 7.25-26, donde algo parecido se dice de la sabiduría."
+                "; tambi\u00e9n Sab 7.25-26, donde algo parecido se dice de la sabidur\u00eda."
               ]
             }
-          ]
+          ],
+          "caller": "c"
         },
         "la imagen misma ..."
       ]

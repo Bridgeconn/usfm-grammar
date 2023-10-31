@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "SNG",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "SNG"
     }
   ]
 }

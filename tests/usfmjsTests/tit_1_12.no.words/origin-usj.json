@@ -3,52 +3,61 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "TIT",
+      "type": "book",
+      "marker": "id",
       "content": [
         "Titus"
-      ]
+      ],
+      "code": "TIT"
     },
     {
-      "type": "para:ide",
+      "type": "para",
+      "marker": "ide",
       "content": [
         "UTF-8"
       ]
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
         "Titus"
       ]
     },
     {
-      "type": "para:toc2",
+      "type": "para",
+      "marker": "toc2",
       "content": [
         "Titus"
       ]
     },
     {
-      "type": "para:toc3",
+      "type": "para",
+      "marker": "toc3",
       "content": [
         "Tit"
       ]
     },
     {
-      "type": "para:mt",
+      "type": "para",
+      "marker": "mt",
       "content": [
         "Titus"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "TIT 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "12",
           "sid": "TIT 1:12"
         },

@@ -3,38 +3,45 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "JHN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "JHN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "JHN 1"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
         "The Preaching of John the Baptist"
       ]
     },
     {
-      "type": "para:r",
+      "type": "para",
+      "marker": "r",
       "content": [
         "(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "JHN 1:1"
         },
         "This is the Good News about Jesus Christ, the Son of God.",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "JHN 1:2"
         },
@@ -42,22 +49,26 @@
       ]
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
-        "“God said, ‘I will send my messenger ahead of you"
+        "\u201cGod said, \u2018I will send my messenger ahead of you"
       ]
     },
     {
-      "type": "para:q2",
+      "type": "para",
+      "marker": "q2",
       "content": [
-        "to open the way for you.’"
+        "to open the way for you.\u2019"
       ]
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "JHN 1:3"
         },
@@ -65,26 +76,30 @@
       ]
     },
     {
-      "type": "para:q2",
+      "type": "para",
+      "marker": "q2",
       "content": [
-        "‘Get the road ready for the Lord;"
+        "\u2018Get the road ready for the Lord;"
       ]
     },
     {
-      "type": "para:q2",
+      "type": "para",
+      "marker": "q2",
       "content": [
-        "make a straight path for him to travel!’”"
+        "make a straight path for him to travel!\u2019\u201d"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "JHN 1:4"
         },
-        "So John appeared in the desert, baptizing and preaching. “Turn away from your sins and be baptized,” he told the people, “and God will forgive your sins.”"
+        "So John appeared in the desert, baptizing and preaching. \u201cTurn away from your sins and be baptized,\u201d he told the people, \u201cand God will forgive your sins.\u201d"
       ]
     }
   ]

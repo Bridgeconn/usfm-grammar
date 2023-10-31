@@ -3,62 +3,73 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "MAT",
+      "type": "book",
+      "marker": "id",
       "content": [
         "41MATGNT92.SFM, Good News Translation, June 2003"
-      ]
+      ],
+      "code": "MAT"
     },
     {
-      "type": "para:usfm",
+      "type": "para",
+      "marker": "usfm",
       "content": [
         "3.0"
       ]
     },
     {
-      "type": "para:toc1",
+      "type": "para",
+      "marker": "toc1",
       "content": [
         "The Acts of the Apostles"
       ]
     },
     {
-      "type": "para:toc2",
+      "type": "para",
+      "marker": "toc2",
       "content": [
         "Acts"
       ]
     },
     {
-      "type": "para:ip",
+      "type": "para",
+      "marker": "ip",
       "content": [
         "One of these brothers, Joseph, had become..."
       ]
     },
     {
-      "type": "para:ipr",
+      "type": "para",
+      "marker": "ipr",
       "content": [
         "(50.24)"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "136",
       "sid": "MAT 136"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": []
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
         "God's Love Never Fails"
       ]
     },
     {
-      "type": "para:lh",
+      "type": "para",
+      "marker": "lh",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "16-22",
           "sid": "MAT 136:16-22"
         },
@@ -66,29 +77,34 @@
       ]
     },
     {
-      "type": "para:li1",
+      "type": "para",
+      "marker": "li1",
       "content": [
         "Reuben - Eliezer son of Zichri"
       ]
     },
     {
-      "type": "para:li1",
+      "type": "para",
+      "marker": "li1",
       "content": [
         "Simeon - Shephatiah son of Maacah"
       ]
     },
     {
-      "type": "para:li1",
+      "type": "para",
+      "marker": "li1",
       "content": [
         "Levi - Hashabiah son of Kemuel"
       ]
     },
     {
-      "type": "para:lf",
+      "type": "para",
+      "marker": "lf",
       "content": [
         "This was the list of the administrators of the tribes of Israel.",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "MAT 136:7"
         },
@@ -96,28 +112,34 @@
       ]
     },
     {
-      "type": "optbreak:b"
+      "type": "optbreak",
+      "marker": "b"
     },
     {
-      "type": "para:pm",
+      "type": "para",
+      "marker": "pm",
       "content": [
         "The list of the men of Israel:"
       ]
     },
     {
-      "type": "optbreak:b"
+      "type": "optbreak",
+      "marker": "b"
     },
     {
-      "type": "para:lim1",
+      "type": "para",
+      "marker": "lim1",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "MAT 136:8"
         },
         "the descendants of Parosh -",
         {
-          "type": "char:litl",
+          "type": "char",
+          "marker": "litl",
           "content": [
             "2,172"
           ]
@@ -125,16 +147,19 @@
       ]
     },
     {
-      "type": "para:lim1",
+      "type": "para",
+      "marker": "lim1",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "MAT 136:9"
         },
         "of Shephatiah -",
         {
-          "type": "char:litl",
+          "type": "char",
+          "marker": "litl",
           "content": [
             "372"
           ]

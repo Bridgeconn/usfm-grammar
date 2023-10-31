@@ -3,70 +3,82 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "the first verse",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GEN 1:2"
         },
         "the second verse",
         {
-          "type": "char:w",
-          "x-myattr": "metadata",
+          "type": "char",
+          "marker": "w",
           "content": [
             "gracious"
-          ]
+          ],
+          "x-myattr": "metadata"
         }
       ]
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
-        "“Someone is shouting in the desert,"
+        "\u201cSomeone is shouting in the desert,"
       ]
     },
     {
-      "type": "para:q2",
+      "type": "para",
+      "marker": "q2",
       "content": [
-        "‘Prepare a road for the Lord;"
+        "\u2018Prepare a road for the Lord;"
       ]
     },
     {
-      "type": "para:q2",
+      "type": "para",
+      "marker": "q2",
       "content": [
-        "make a straight path for him to travel!’ ”"
+        "make a straight path for him to travel!\u2019 \u201d"
       ]
     },
     {
-      "type": "para:s",
+      "type": "para",
+      "marker": "s",
       "content": [
         {
-          "type": "char:jmp",
-          "link-id": "article-john_the_baptist",
-          "content": []
+          "type": "char",
+          "marker": "jmp",
+          "content": [],
+          "link-id": "article-john_the_baptist"
         },
         "John the Baptist"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         "John is sometimes called..."
       ]

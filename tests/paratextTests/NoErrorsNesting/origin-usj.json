@@ -3,40 +3,48 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
+    },
+    {
+      "type": "para",
+      "marker": "ib",
       "content": []
     },
     {
-      "type": "para:ib",
-      "content": []
-    },
-    {
-      "type": "para:ip",
+      "type": "para",
+      "marker": "ip",
       "content": [
         "Hi mom."
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "Hi",
         {
-          "type": "char:em",
+          "type": "char",
+          "marker": "em",
           "content": [
             "Mr.",
             {
-              "type": "char:nd",
+              "type": "char",
+              "marker": "nd",
               "content": [
                 "Bob"
               ]
@@ -47,31 +55,36 @@
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         "And",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "1.1"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "stuff"
               ]
             }
-          ]
+          ],
+          "caller": "+"
         }
       ]
     },
     {
-      "type": "optbreak:b"
+      "type": "optbreak",
+      "marker": "b"
     }
   ]
 }

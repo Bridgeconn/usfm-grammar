@@ -1,0 +1,8976 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "content": [
+        "EN_ULT es_espa\u00f1ol_ltr Mon Mar 26 2018 11:44:25 GMT-0400 (EDT) tc"
+      ],
+      "code": "TIT"
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G39720",
+          "x-lemma": "\u03a0\u03b1\u1fe6\u03bb\u03bf\u03c2",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03a0\u03b1\u1fe6\u03bb\u03bf\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Paul"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G14010",
+          "x-lemma": "\u03b4\u03bf\u1fe6\u03bb\u03bf\u03c2",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03b4\u03bf\u1fe6\u03bb\u03bf\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "servant"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G23160",
+          "x-lemma": "\u03b8\u03b5\u03cc\u03c2",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "x-content": "\u0398\u03b5\u03bf\u1fe6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G06520",
+          "x-lemma": "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "an"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "apostle"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G11610",
+          "x-lemma": "\u03b4\u03ad",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03b4\u1f72"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G24240",
+          "x-lemma": "\u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f38\u03b7\u03c3\u03bf\u1fe6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Jesus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G55470",
+          "x-lemma": "\u03c7\u03c1\u03b9\u03c3\u03c4\u03cc\u03c2",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03a7\u03c1\u03b9\u03c3\u03c4\u03bf\u1fe6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Christ"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faith"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        "'",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "s"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "chosen"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "people"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "knowledge"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "4",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "truth"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "agrees"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "godliness"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 1:2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "certain"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "hope"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "everlasting"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "life"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "does"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "lie"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "promised"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "before"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ages"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "time"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 1:3"
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 1:4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "To"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Titus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "true"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "son"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "our"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "common"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faith"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Grace"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "peace"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "from"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Father"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Christ"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Jesus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "our"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "savior"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 1:5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "For"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "this"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "purpose"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "I"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "left"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Crete"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "might"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "set"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "order"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "things"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "yet"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "complete"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ordain"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "elders"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "every"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "city"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "as"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "I"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "directed"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 1:6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "An"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "elder"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "must"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "without"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "blame"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "husband"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "one"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "wife"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faithful"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "children"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "accused"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "reckless"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "behavior"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "or"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "undisciplined"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 1:7"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "It"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "necessary"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "overseer"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "as"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "'",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "s"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "household"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "manager"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "blameless"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "He"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "must"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "arrogant"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "easily"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "angered"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "addicted"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "wine"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "4",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "brawler"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "5",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "greedy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "man"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 1:8"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Instead"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "he"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "should"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "hospitable"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "friend"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "what"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "He"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "must"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "sensible"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "righteous"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "godly"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "self"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "-",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "controlled"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 1:9"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "He"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "should"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "hold"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "tightly"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "trustworthy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "message"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "was"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "taught"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "he"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "may"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "able"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "encourage"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "others"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "teaching"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "correct"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "those"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "oppose"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "him"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 1:10"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "For"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "there"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "many"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "rebellious"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "people"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "empty"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "talkers"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "deceivers"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "especially"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "those"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "circumcision"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 1:11"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "It"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "necessary"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "stop"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "them"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "They"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "breaking"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "up"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "whole"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "families"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "by"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "teaching"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "shameful"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "profit"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "what"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "they"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "should"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "teach"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 1:12"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "One"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "own"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "prophets"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "has"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "said"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",\"",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Cretans"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "always"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "liars"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "evil"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "beasts"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "lazy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "gluttons"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".\"",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 1:13"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "This"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "statement"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "true"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Therefore"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "correct"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "them"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "severely"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "they"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "may"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "sound"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faith"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 1:14"
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 1:15"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "To"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "those"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "pure"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "things"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "pure"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "But"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "those"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "corrupt"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "unbelieving"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "nothing"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "pure"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "but"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "both"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "minds"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "consciences"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "have"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "been"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "corrupted"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "TIT 1:16"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "They"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "profess"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "know"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "but"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "they"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "deny"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "him"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "by"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "actions"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "They"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "detestable"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "disobedient"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "unfit"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "doing"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "any"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "work"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "TIT 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 2:1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "But"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "speak"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "what"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "fits"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faithful"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "instruction"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 2:2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Teach"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "older"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "men"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "temperate"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "dignified"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "sensible"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "sound"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faith"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "love"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "perseverance"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 2:3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Teach"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "older"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "women"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "likewise"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "reverent"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "behavior"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "slanderers"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "or"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "being"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "slaves"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "much"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "wine"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "but"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "teachers"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "what"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 2:4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "In"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "this"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "way"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "they"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "may"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "train"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "younger"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "women"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "love"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "own"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "husbands"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "children"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 2:5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "sensible"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "pure"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "housekeepers"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "obedient"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "own"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "husbands"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "They"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "should"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "do"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "these"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "things"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "'",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "s"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "word"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "may"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "insulted"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 2:6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "In"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "same"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "way"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "encourage"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "younger"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "men"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "use"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "sense"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 2:7"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "In"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ways"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "present"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "yourself"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "as"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "an"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "example"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "works"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "In"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "your"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "teaching"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "show"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "integrity"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "dignity"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 2:8"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "correct"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "message"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "anyone"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "opposes"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "may"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ashamed"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "because"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "they"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "have"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "nothing"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "bad"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "say"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "about"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "us"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 2:9"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Teach"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "slaves"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "obey"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "masters"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "everything"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "please"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "them"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "argue"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "them"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 2:10"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "steal"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "from"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "them"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "but"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "instead"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "demonstrate"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faith"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "every"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "way"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "they"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "may"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "bring"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "credit"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "teaching"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "about"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "our"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Savior"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 2:11"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "For"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "grace"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "has"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "appeared"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "salvation"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "people"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 2:12"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "It"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "trains"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "us"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "reject"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "godlessness"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "worldly"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "passions"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "live"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "self"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "-",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "controlled"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "upright"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "godly"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "lives"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "this"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "age"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 2:13"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "while"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "we"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "look"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "forward"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "receiving"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "our"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "blessed"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "hope"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "appearance"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "glory"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "our"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "great"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Savior"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Jesus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Christ"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 2:14"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Jesus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "gave"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "himself"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "us"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "order"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "redeem"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "us"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "from"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "lawlessness"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "make"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "pure"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "himself"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "special"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "people"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "eager"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "do"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "works"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 2:15"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Speak"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "these"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "things"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "encourage"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "people"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "do"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "them"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "give"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "correction"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "authority"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Let"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "no"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "one"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "disregard"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        "."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "3",
+      "sid": "TIT 3"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 3:1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Remind"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "them"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "submit"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "rulers"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "authorities"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "obey"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "them"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "4",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ready"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "every"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "work"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 3:2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "revile"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "no"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "one"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "eager"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "fight"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "4",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "gentle"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "showing"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "humility"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "toward"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "everyone"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 3:3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "For"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "once"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "we"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ourselves"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "were"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "thoughtless"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "disobedient"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "We"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "were"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "led"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "astray"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "enslaved"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "by"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "various"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "passions"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "pleasures"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "We"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "lived"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "evil"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "4",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "envy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "We"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "were"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "detestable"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "5",
+          "x-occurrences": "5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "hated"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "one"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "another"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 3:4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "But"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "when"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "kindness"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "our"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "savior"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "his"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "love"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "mankind"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "appeared"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 3:5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "it"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "was"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "by"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "works"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "righteousness"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "we"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "did"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "but"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "by"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "his"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "mercy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "he"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "saved"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "us"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "He"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "saved"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "us"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "through"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "washing"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "new"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "birth"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "renewal"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "by"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Holy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Spirit"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 3:6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "richly"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "poured"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Holy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Spirit"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "on"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "us"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "through"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "our"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Savior"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Jesus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Christ"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 3:7"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "having"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "been"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "justified"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "by"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "his"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "grace"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "we"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "might"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "become"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "heirs"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "certain"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "hope"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "eternal"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "life"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 3:8"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "This"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "message"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "trustworthy"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "I"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "want"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "insist"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "on"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "these"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "things"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "those"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "have"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "believed"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "may"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "careful"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "engage"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "themselves"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "works"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "These"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "things"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "useful"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "everyone"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 3:9"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "But"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "avoid"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "foolish"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "debates"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "genealogies"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "strife"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "conflict"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "about"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "law"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Those"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "things"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "unprofitable"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "4",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "worthless"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 3:10"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Reject"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "anyone"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "causing"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "divisions"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "among"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "after"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "one"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "or"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "two"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "warnings"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 3:11"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "knowing"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "such"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "person"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "has"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "turned"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "from"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "right"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "way"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "is"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "sinning"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "condemns"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "himself"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 3:12"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "When"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "I"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "send"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Artemas"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "or"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Tychicus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "hurry"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "come"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "me"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "at"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Nicopolis"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "where"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "I"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "have"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "decided"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "spend"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "winter"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 3:13"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Do"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "everything"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "can"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "send"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "on"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "their"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "way"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Zenas"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "lawyer"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Apollos"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "they"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "lack"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "nothing"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 3:14"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Our"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "people"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "must"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "learn"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "engage"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "themselves"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "good"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "works"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "provide"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "urgent"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "needs"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "so"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "not"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "unfruitful"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 3:15"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "All"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "those"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "are"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "me"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "greet"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Greet"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "those"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "love"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "us"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faith"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        ".",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Grace"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "be"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "all"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        "."
+      ]
+    }
+  ]
+}
