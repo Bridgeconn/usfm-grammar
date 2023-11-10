@@ -9,13 +9,17 @@
       "type": "object",
       "properties": {
         "type": { 
-        	"description": "The kind of node or element this is, corresponding each marker in USFM or each node in USX",
+        	"description": "The kind/category of node or element this is, corresponding the USFM marker and USX node",
         	"type": "string"
+        },
+        "marker": { 
+          "description": "The corresponding marker in USFM or style in USX",
+          "type": "string"
         },
         "content": {
           "type": "array",
           "items": {
-            "oneOf":[
+            "anyOf":[
               {"type": "string"},
               {"$ref": "#/$defs/markerObject"}
             ]
@@ -71,7 +75,7 @@
       "description": "The JSON representation of scripture contents from USFM/USX",
       "type": "array",
       "items":{
-        "oneOf":[
+        "anyOf":[
           {"type": "string"},
           {"$ref": "#/$defs/markerObject"}
         ]

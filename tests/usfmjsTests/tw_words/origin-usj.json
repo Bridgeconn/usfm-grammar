@@ -1,0 +1,157 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "content": [
+        "Titus"
+      ],
+      "code": "TIT"
+    },
+    {
+      "type": "para",
+      "marker": "usfm",
+      "content": [
+        "3.0"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2"
+          ],
+          "lemma": "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2",
+          "strong": "G06520",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/apostle"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u03b4\u1f72"
+          ],
+          "lemma": "\u03b4\u03ad",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,"
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/jesus"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u1f38\u03b7\u03c3\u03bf\u1fe6"
+          ],
+          "lemma": "\u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2",
+          "strong": "G24240",
+          "x-morph": "Gr,N,,,,,GMS,"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u03a7\u03c1\u03b9\u03c3\u03c4\u03bf\u1fe6"
+          ],
+          "lemma": "\u03c7\u03c1\u03b9\u03c3\u03c4\u03cc\u03c2",
+          "strong": "G55470",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/christ"
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u03ba\u03b1\u03c4\u1f70"
+          ],
+          "lemma": "\u03ba\u03b1\u03c4\u03ac",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,"
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 1:4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u1f00\u03c0\u1f78"
+          ],
+          "lemma": "\u1f00\u03c0\u03cc",
+          "strong": "G05750",
+          "x-morph": "Gr,P,,,,,G,,,"
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/godthefather"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u0398\u03b5\u03bf\u1fe6"
+          ],
+          "lemma": "\u03b8\u03b5\u03cc\u03c2",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u03a0\u03b1\u03c4\u03c1\u1f78\u03c2"
+          ],
+          "lemma": "\u03c0\u03b1\u03c4\u03ae\u03c1",
+          "strong": "G39620",
+          "x-morph": "Gr,N,,,,,GMS,"
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "\u03ba\u03b1\u1f76"
+          ],
+          "lemma": "\u03ba\u03b1\u03af",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,"
+        }
+      ]
+    }
+  ]
+}

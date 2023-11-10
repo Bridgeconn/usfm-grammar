@@ -3,26 +3,31 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "the first verse",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GEN 1:2"
         },
@@ -30,22 +35,26 @@
       ]
     },
     {
-      "type": "para:s",
+      "type": "para",
+      "marker": "s",
       "content": [
         "A new section"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "GEN 1:3"
         },
         "the third verse",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "GEN 1:4"
         },

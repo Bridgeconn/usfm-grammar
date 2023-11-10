@@ -3,53 +3,62 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "MRK",
+      "type": "book",
+      "marker": "id",
       "content": [
         "The Gospel of Mark"
-      ]
+      ],
+      "code": "MRK"
     },
     {
-      "type": "para:ide",
+      "type": "para",
+      "marker": "ide",
       "content": [
         "UTF-8"
       ]
     },
     {
-      "type": "para:usfm",
+      "type": "para",
+      "marker": "usfm",
       "content": [
         "3.0"
       ]
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
         "Mark"
       ]
     },
     {
-      "type": "para:mt2",
+      "type": "para",
+      "marker": "mt2",
       "content": [
         "The Gospel according to"
       ]
     },
     {
-      "type": "para:mt1",
+      "type": "para",
+      "marker": "mt1",
       "content": [
         "MARK"
       ]
     },
     {
-      "type": "para:is",
+      "type": "para",
+      "marker": "is",
       "content": [
         "Introduction"
       ]
     },
     {
-      "type": "para:ip",
+      "type": "para",
+      "marker": "ip",
       "content": [
         {
-          "type": "char:bk",
+          "type": "char",
+          "marker": "bk",
           "content": [
             "The Gospel according to Mark"
           ]
@@ -58,21 +67,25 @@
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "MRK 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "MRK 1:1"
         },
         "the first verse",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "MRK 1:2"
         },

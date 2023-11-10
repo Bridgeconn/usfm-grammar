@@ -3,20 +3,24 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GLO",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GLO"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GLO 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GLO 1:1"
         },
@@ -24,17 +28,20 @@
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "char:k",
+          "type": "char",
+          "marker": "k",
           "content": [
             "blah"
           ]
         },
         "definition",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GLO 1:2"
         },
@@ -42,18 +49,21 @@
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "char:w",
-          "lemma": "kw. keyword ",
+          "type": "char",
+          "marker": "w",
           "content": [
             "word"
-          ]
+          ],
+          "lemma": "kw. keyword"
         },
         "definition",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GLO 1:2"
         },
@@ -61,14 +71,16 @@
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "char:w",
-          "lemma": "kw; keyword ",
+          "type": "char",
+          "marker": "w",
           "content": [
             "word"
-          ]
+          ],
+          "lemma": "kw; keyword"
         },
         "definition"
       ]

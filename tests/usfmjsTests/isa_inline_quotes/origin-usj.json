@@ -3,138 +3,162 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "ISA",
+      "type": "book",
+      "marker": "id",
       "content": [
         "Unlocked Literal Bible"
-      ]
+      ],
+      "code": "ISA"
     },
     {
-      "type": "para:ide",
+      "type": "para",
+      "marker": "ide",
       "content": [
         "UTF-8"
       ]
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
         "Isaiah"
       ]
     },
     {
-      "type": "para:toc1",
+      "type": "para",
+      "marker": "toc1",
       "content": [
         "The Book of Isaiah"
       ]
     },
     {
-      "type": "para:toc2",
+      "type": "para",
+      "marker": "toc2",
       "content": [
         "Isaiah"
       ]
     },
     {
-      "type": "para:toc3",
+      "type": "para",
+      "marker": "toc3",
       "content": [
         "Isa"
       ]
     },
     {
-      "type": "para:mt",
+      "type": "para",
+      "marker": "mt",
       "content": [
         "Isaiah"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "6",
       "sid": "ISA 6"
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "19",
           "sid": "ISA 6:19"
         },
         "Yahweh attacked some of the men of Beth Shemesh because they had looked into the ark of Yahweh. He killed 50,070 men. The people mourned, because Yahweh had given the people a great blow.",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "Instead of"
               ]
             },
             {
-              "type": "char:fqa",
+              "type": "char",
+              "marker": "fqa",
               "content": [
                 "50,070 men"
               ]
             },
             ", some later copies and modern versions have,",
             {
-              "type": "char:fqa",
+              "type": "char",
+              "marker": "fqa",
               "content": [
                 "seventy men."
               ]
             }
-          ]
+          ],
+          "caller": "+"
         }
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "15",
       "sid": "ISA 15"
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "16",
           "sid": "ISA 15:16"
         },
         "Then Menahem attacked Tiphsah and all who were there, and the borders around Tirzah, because they did not open up the city to him. So he attacked it, and he ripped open all the pregnant women in that village.",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "Instead of"
               ]
             },
             {
-              "type": "char:fqa",
+              "type": "char",
+              "marker": "fqa",
               "content": [
                 "Tiphsah"
               ]
             },
             ", one ancient version and some modern versions read,",
             {
-              "type": "char:fqa",
+              "type": "char",
+              "marker": "fqa",
               "content": [
                 "Tappuah."
               ]
             }
-          ]
+          ],
+          "caller": "+"
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "19-21",
           "sid": "ISA 15:19-21"
         },
@@ -142,19 +166,23 @@
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "60",
       "sid": "ISA 60"
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "ISA 60:6"
         },
@@ -162,22 +190,26 @@
       ]
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
         "all of them will come from Sheba;"
       ]
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
         "they will bring gold and frankincense, and will sing the praises of Yahweh."
       ]
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "ISA 60:7"
         },
@@ -185,7 +217,8 @@
       ]
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
         "they will be acceptable offerings on my altar; and I will glorify my glorious house."
       ]

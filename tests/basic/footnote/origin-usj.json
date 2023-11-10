@@ -3,62 +3,73 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "MAT",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "MAT"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "MAT 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "MAT 1:1"
         },
         "the first verse",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "MAT 1:2"
         },
         "the second verse",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "MAT 1:3"
         },
         "This is the Good News about Jesus Christ, the Son of God.",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "1.1:"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "Some manuscripts do not have"
               ]
             },
             {
-              "type": "char:fq",
+              "type": "char",
+              "marker": "fq",
               "content": [
                 "the Son of God."
               ]
             }
-          ]
+          ],
+          "caller": "+"
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "MAT 1:4"
         },

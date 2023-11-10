@@ -3,97 +3,114 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "PRO",
+      "type": "book",
+      "marker": "id",
       "content": [
         "Unlocked Literal Bible"
-      ]
+      ],
+      "code": "PRO"
     },
     {
-      "type": "para:ide",
+      "type": "para",
+      "marker": "ide",
       "content": [
         "UTF-8"
       ]
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
         "Proverbs"
       ]
     },
     {
-      "type": "para:toc1",
+      "type": "para",
+      "marker": "toc1",
       "content": [
         "The Book of Proverbs"
       ]
     },
     {
-      "type": "para:toc2",
+      "type": "para",
+      "marker": "toc2",
       "content": [
         "Proverbs"
       ]
     },
     {
-      "type": "para:toc3",
+      "type": "para",
+      "marker": "toc3",
       "content": [
         "Pro"
       ]
     },
     {
-      "type": "para:mt",
+      "type": "para",
+      "marker": "mt",
       "content": [
         "Proverbs"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "30",
       "sid": "PRO 30"
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "PRO 30:1"
         },
-        "The words of Agur son of Jakeh—the utterance:"
+        "The words of Agur son of Jakeh\u2014the utterance:"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "This man declared to Ithiel, to Ithiel and Ucal:",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "Some versions have"
               ]
             },
             {
-              "type": "char:fqa",
+              "type": "char",
+              "marker": "fqa",
               "content": [
                 "This man declared, \"I am weary, O God, I am weary. I am unable to do anything.\""
               ]
             }
-          ]
+          ],
+          "caller": "+"
         }
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "PRO 30:2"
         },
@@ -101,16 +118,19 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "and I do not have the understanding of a human being."
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "PRO 30:3"
         },
@@ -118,7 +138,8 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "nor do I have knowledge of the Holy One."
       ]

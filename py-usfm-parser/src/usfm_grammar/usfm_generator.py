@@ -3,7 +3,7 @@
 NO_USFM_USJ_TYPES = ['USJ', 'table']
 NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell']
 CLOSING_USJ_TYPES = ['char', 'note', 'figure']
-NON_ATTRIB_USJ_KEYS = ['type', 'content', 'number', 'sid',
+NON_ATTRIB_USJ_KEYS = ['type', 'marker', 'content', 'number', 'sid',
                         'code', 'caller', 'align',
                         'version', 'altnumber', 'pubnumber', 'category']
 
@@ -20,17 +20,16 @@ class USFMGenerator:
 
     def usj_to_usfm(self, usj_obj: dict, nested=False) -> None: # pylint: disable=too-many-statements, too-many-branches
         '''Traverses through the dict/json and uses 'type' field to form USFM elements'''
-        marker_types = usj_obj['type'].split(':')
         if usj_obj['type'] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
-            if nested and marker_types[0] == 'char':
+            if nested and usj_obj['type'] == 'char':
                 self.usfm_string+="+"
-            self.usfm_string += f"{marker_types[-1]} "
+            self.usfm_string += f"{usj_obj['marker']} "
         if 'code' in usj_obj:
             self.usfm_string += f"{usj_obj['code']} "
         if 'number' in usj_obj:
             self.usfm_string += usj_obj['number']
-            if marker_types[0] == "verse":
+            if usj_obj['type'] == "verse":
                 self.usfm_string += " "
         if 'caller' in usj_obj:
             self.usfm_string += f"{usj_obj['caller']} "
@@ -41,7 +40,7 @@ class USFMGenerator:
                 if isinstance(item, str):
                     self.usfm_string += item
                 else:
-                    if marker_types[0] in ['char']:
+                    if usj_obj['type']in ['char']:
                         self.usj_to_usfm(item, nested=True)
                     else:
                         self.usj_to_usfm(item)
@@ -56,30 +55,30 @@ class USFMGenerator:
                 else:
                     self.usfm_string += f"{key}=\"{usj_obj[key]}\" "
 
-        if marker_types[0] in CLOSING_USJ_TYPES:
+        if usj_obj['type'] in CLOSING_USJ_TYPES:
             self.usfm_string = self.usfm_string.strip() + "\\"
-            if nested and marker_types[0] == 'char':
+            if nested and usj_obj['type'] == 'char':
                 self.usfm_string+="+"
-            self.usfm_string += f"{marker_types[-1]}* "
-        if marker_types[0] == "ms":
+            self.usfm_string += f"{usj_obj['marker']}* "
+        if usj_obj['type'] == "ms":
             if "sid" in usj_obj:
                 if not attributes:
                     self.usfm_string += "|"
                     attributes = True
                 self.usfm_string += f"sid=\"{usj_obj['sid']}\" "
             self.usfm_string = self.usfm_string.strip() + "\\*"
-        if marker_types[0] == "sidebar":
+        if usj_obj['type'] == "sidebar":
             self.usfm_string += "\\esbe"
-        if ":".join(marker_types[:-1]) not in NO_NEWLINE_USJ_TYPES and \
+        if usj_obj['type'] not in NO_NEWLINE_USJ_TYPES and \
             self.usfm_string[-1] != "\n":
             self.usfm_string += "\n"
         if "altnumber" in usj_obj:
-            self.usfm_string += f"\\{marker_types[-1]}a {usj_obj['altnumber']}"
-            self.usfm_string += f"\\{marker_types[-1]}a* "
+            self.usfm_string += f"\\{usj_obj['marker']}a {usj_obj['altnumber']}"
+            self.usfm_string += f"\\{usj_obj['marker']}a* "
         if "pubnumber" in usj_obj:
-            self.usfm_string += f"\\{marker_types[-1]}p {usj_obj['pubnumber']}"
-            if marker_types[-1] == "v":
-                self.usfm_string += f"\\{marker_types[-1]}p* "
+            self.usfm_string += f"\\{usj_obj['marker']}p {usj_obj['pubnumber']}"
+            if usj_obj['marker'] == "v":
+                self.usfm_string += f"\\{usj_obj['marker']}p* "
             else:
                 self.usfm_string += "\n"
 

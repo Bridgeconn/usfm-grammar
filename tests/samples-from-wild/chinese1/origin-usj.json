@@ -3,3962 +3,4573 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "EST",
+      "type": "book",
+      "marker": "id",
       "content": [
         "Chinese-Simplified Script: Chinese Union New Punctuation 1989"
-      ]
+      ],
+      "code": "EST"
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
-        "以斯帖记"
+        "\u4ee5\u65af\u5e16\u8bb0"
       ]
     },
     {
-      "type": "para:toc1",
+      "type": "para",
+      "marker": "toc1",
       "content": [
-        "以斯帖记"
+        "\u4ee5\u65af\u5e16\u8bb0"
       ]
     },
     {
-      "type": "para:toc2",
+      "type": "para",
+      "marker": "toc2",
       "content": [
-        "以斯帖记"
+        "\u4ee5\u65af\u5e16\u8bb0"
       ]
     },
     {
-      "type": "para:mt1",
+      "type": "para",
+      "marker": "mt1",
       "content": [
-        "以斯帖记"
+        "\u4ee5\u65af\u5e16\u8bb0"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "EST 1"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "亚哈随鲁王废瓦实提王后"
+        "\u4e9a\u54c8\u968f\u9c81\u738b\u5e9f\u74e6\u5b9e\u63d0\u738b\u540e"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 1:1"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "作王，从",
+        "\u4f5c\u738b\uff0c\u4ece",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "印度"
+            "\u5370\u5ea6"
           ]
         },
-        "直到",
+        "\u76f4\u5230",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "古实"
+            "\u53e4\u5b9e"
           ]
         },
-        "，统管一百二十七省。",
+        "\uff0c\u7edf\u7ba1\u4e00\u767e\u4e8c\u5341\u4e03\u7701\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 1:2"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王在",
+        "\u738b\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城的宫登基；",
+        "\u57ce\u7684\u5bab\u767b\u57fa\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 1:3"
         },
-        "在位第三年，为他一切首领臣仆设摆筵席，有",
+        "\u5728\u4f4d\u7b2c\u4e09\u5e74\uff0c\u4e3a\u4ed6\u4e00\u5207\u9996\u9886\u81e3\u4ec6\u8bbe\u6446\u7b75\u5e2d\uff0c\u6709",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "波斯"
+            "\u6ce2\u65af"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米底亚"
+            "\u7c73\u5e95\u4e9a"
           ]
         },
-        "的权贵，就是各省的贵胄与首领，在他面前。",
+        "\u7684\u6743\u8d35\uff0c\u5c31\u662f\u5404\u7701\u7684\u8d35\u80c4\u4e0e\u9996\u9886\uff0c\u5728\u4ed6\u9762\u524d\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 1:4"
         },
-        "他把他荣耀之国的丰富和他美好威严的尊贵给他们看了许多日，就是一百八十日。",
+        "\u4ed6\u628a\u4ed6\u8363\u8000\u4e4b\u56fd\u7684\u4e30\u5bcc\u548c\u4ed6\u7f8e\u597d\u5a01\u4e25\u7684\u5c0a\u8d35\u7ed9\u4ed6\u4eec\u770b\u4e86\u8bb8\u591a\u65e5\uff0c\u5c31\u662f\u4e00\u767e\u516b\u5341\u65e5\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 1:5"
         },
-        "这日子满了，又为所有住",
+        "\u8fd9\u65e5\u5b50\u6ee1\u4e86\uff0c\u53c8\u4e3a\u6240\u6709\u4f4f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城的大小人民在御园的院子里设摆筵席七日。",
+        "\u57ce\u7684\u5927\u5c0f\u4eba\u6c11\u5728\u5fa1\u56ed\u7684\u9662\u5b50\u91cc\u8bbe\u6446\u7b75\u5e2d\u4e03\u65e5\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 1:6"
         },
-        "有白色、绿色、蓝色的",
+        "\u6709\u767d\u8272\u3001\u7eff\u8272\u3001\u84dd\u8272\u7684",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "帐子"
+            "\u5e10\u5b50"
           ]
         },
-        "，用细麻绳、紫色绳从银环内系在白玉石柱上；有金银的床榻摆在红、白、黄、黑玉石的铺石地上。",
+        "\uff0c\u7528\u7ec6\u9ebb\u7ef3\u3001\u7d2b\u8272\u7ef3\u4ece\u94f6\u73af\u5185\u7cfb\u5728\u767d\u7389\u77f3\u67f1\u4e0a\uff1b\u6709\u91d1\u94f6\u7684\u5e8a\u69bb\u6446\u5728\u7ea2\u3001\u767d\u3001\u9ec4\u3001\u9ed1\u7389\u77f3\u7684\u94fa\u77f3\u5730\u4e0a\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 1:7"
         },
-        "用金器皿赐酒，器皿各有不同。御酒甚多，足显王的厚意。",
+        "\u7528\u91d1\u5668\u76bf\u8d50\u9152\uff0c\u5668\u76bf\u5404\u6709\u4e0d\u540c\u3002\u5fa1\u9152\u751a\u591a\uff0c\u8db3\u663e\u738b\u7684\u539a\u610f\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 1:8"
         },
-        "喝酒有例，不准勉强人，因王吩咐宫里的一切臣宰，让人各随己意。",
+        "\u559d\u9152\u6709\u4f8b\uff0c\u4e0d\u51c6\u52c9\u5f3a\u4eba\uff0c\u56e0\u738b\u5429\u5490\u5bab\u91cc\u7684\u4e00\u5207\u81e3\u5bb0\uff0c\u8ba9\u4eba\u5404\u968f\u5df1\u610f\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 1:9"
         },
-        "王后",
+        "\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "在",
+        "\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王的宫内也为妇女设摆筵席。"
+        "\u738b\u7684\u5bab\u5185\u4e5f\u4e3a\u5987\u5973\u8bbe\u6446\u7b75\u5e2d\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 1:10"
         },
-        "第七日，",
+        "\u7b2c\u4e03\u65e5\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王饮酒，心中快乐，就吩咐在他面前侍立的七个太监",
+        "\u738b\u996e\u9152\uff0c\u5fc3\u4e2d\u5feb\u4e50\uff0c\u5c31\u5429\u5490\u5728\u4ed6\u9762\u524d\u4f8d\u7acb\u7684\u4e03\u4e2a\u592a\u76d1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米户幔"
+            "\u7c73\u6237\u5e54"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "比斯他"
+            "\u6bd4\u65af\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈波拿"
+            "\u54c8\u6ce2\u62ff"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "比革他"
+            "\u6bd4\u9769\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚拔他"
+            "\u4e9a\u62d4\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "西达"
+            "\u897f\u8fbe"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "甲迦"
+            "\u7532\u8fe6"
           ]
         },
-        "，",
+        "\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "11",
           "sid": "EST 1:11"
         },
-        "请王后",
+        "\u8bf7\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "头戴王后的冠冕到王面前，使各等臣民看她的美貌，因为她容貌甚美。",
+        "\u5934\u6234\u738b\u540e\u7684\u51a0\u5195\u5230\u738b\u9762\u524d\uff0c\u4f7f\u5404\u7b49\u81e3\u6c11\u770b\u5979\u7684\u7f8e\u8c8c\uff0c\u56e0\u4e3a\u5979\u5bb9\u8c8c\u751a\u7f8e\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "12",
           "sid": "EST 1:12"
         },
-        "王后",
+        "\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "却不肯遵太监所传的王命而来，所以王甚发怒，心如火烧。"
+        "\u5374\u4e0d\u80af\u9075\u592a\u76d1\u6240\u4f20\u7684\u738b\u547d\u800c\u6765\uff0c\u6240\u4ee5\u738b\u751a\u53d1\u6012\uff0c\u5fc3\u5982\u706b\u70e7\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "13-14",
           "sid": "EST 1:13-14"
         },
-        "那时，在王左右常见王面、国中坐高位的，有",
+        "\u90a3\u65f6\uff0c\u5728\u738b\u5de6\u53f3\u5e38\u89c1\u738b\u9762\u3001\u56fd\u4e2d\u5750\u9ad8\u4f4d\u7684\uff0c\u6709",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "波斯"
+            "\u6ce2\u65af"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米底亚"
+            "\u7c73\u5e95\u4e9a"
           ]
         },
-        "的七个大臣，就是",
+        "\u7684\u4e03\u4e2a\u5927\u81e3\uff0c\u5c31\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "甲示拿"
+            "\u7532\u793a\u62ff"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "示达"
+            "\u793a\u8fbe"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "押玛他"
+            "\u62bc\u739b\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "他施斯"
+            "\u4ed6\u65bd\u65af"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米力"
+            "\u7c73\u529b"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "玛西拿"
+            "\u739b\u897f\u62ff"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米母干"
+            "\u7c73\u6bcd\u5e72"
           ]
         },
-        "，都是达时务的明哲人。按王的常规，办事必先询问知例明法的人。王问他们说：",
+        "\uff0c\u90fd\u662f\u8fbe\u65f6\u52a1\u7684\u660e\u54f2\u4eba\u3002\u6309\u738b\u7684\u5e38\u89c4\uff0c\u529e\u4e8b\u5fc5\u5148\u8be2\u95ee\u77e5\u4f8b\u660e\u6cd5\u7684\u4eba\u3002\u738b\u95ee\u4ed6\u4eec\u8bf4\uff1a",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "15",
           "sid": "EST 1:15"
         },
-        "「王后",
+        "\u300c\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "不遵太监所传的王命，照例应当怎样办理呢？」",
+        "\u4e0d\u9075\u592a\u76d1\u6240\u4f20\u7684\u738b\u547d\uff0c\u7167\u4f8b\u5e94\u5f53\u600e\u6837\u529e\u7406\u5462\uff1f\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "16",
           "sid": "EST 1:16"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米母干"
+            "\u7c73\u6bcd\u5e72"
           ]
         },
-        "在王和众首领面前回答说：「王后",
+        "\u5728\u738b\u548c\u4f17\u9996\u9886\u9762\u524d\u56de\u7b54\u8bf4\uff1a\u300c\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "这事，不但得罪王，并且有害于王各省的臣民；",
+        "\u8fd9\u4e8b\uff0c\u4e0d\u4f46\u5f97\u7f6a\u738b\uff0c\u5e76\u4e14\u6709\u5bb3\u4e8e\u738b\u5404\u7701\u7684\u81e3\u6c11\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "17",
           "sid": "EST 1:17"
         },
-        "因为王后这事必传到众妇人的耳中，说：『",
+        "\u56e0\u4e3a\u738b\u540e\u8fd9\u4e8b\u5fc5\u4f20\u5230\u4f17\u5987\u4eba\u7684\u8033\u4e2d\uff0c\u8bf4\uff1a\u300e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王吩咐王后",
+        "\u738b\u5429\u5490\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "到王面前，她却不来』，她们就藐视自己的丈夫。",
+        "\u5230\u738b\u9762\u524d\uff0c\u5979\u5374\u4e0d\u6765\u300f\uff0c\u5979\u4eec\u5c31\u85d0\u89c6\u81ea\u5df1\u7684\u4e08\u592b\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "18",
           "sid": "EST 1:18"
         },
-        "今日",
+        "\u4eca\u65e5",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "波斯"
+            "\u6ce2\u65af"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米底亚"
+            "\u7c73\u5e95\u4e9a"
           ]
         },
-        "的众夫人听见王后这事，必向王的大臣",
+        "\u7684\u4f17\u592b\u4eba\u542c\u89c1\u738b\u540e\u8fd9\u4e8b\uff0c\u5fc5\u5411\u738b\u7684\u5927\u81e3",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "照样"
+            "\u7167\u6837"
           ]
         },
-        "行；从此必大开藐视和忿怒之端。",
+        "\u884c\uff1b\u4ece\u6b64\u5fc5\u5927\u5f00\u85d0\u89c6\u548c\u5fff\u6012\u4e4b\u7aef\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "19",
           "sid": "EST 1:19"
         },
-        "王若以为美，就降旨写在",
+        "\u738b\u82e5\u4ee5\u4e3a\u7f8e\uff0c\u5c31\u964d\u65e8\u5199\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "波斯"
+            "\u6ce2\u65af"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米底亚"
+            "\u7c73\u5e95\u4e9a"
           ]
         },
-        "人的例中，永不更改，不准",
+        "\u4eba\u7684\u4f8b\u4e2d\uff0c\u6c38\u4e0d\u66f4\u6539\uff0c\u4e0d\u51c6",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "再到王面前，将她王后的位分赐给比她还好的人。",
+        "\u518d\u5230\u738b\u9762\u524d\uff0c\u5c06\u5979\u738b\u540e\u7684\u4f4d\u5206\u8d50\u7ed9\u6bd4\u5979\u8fd8\u597d\u7684\u4eba\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "20",
           "sid": "EST 1:20"
         },
-        "所降的旨意传遍通国（国度本来广大），所有的妇人，无论丈夫贵贱都必尊敬他。」",
+        "\u6240\u964d\u7684\u65e8\u610f\u4f20\u904d\u901a\u56fd\uff08\u56fd\u5ea6\u672c\u6765\u5e7f\u5927\uff09\uff0c\u6240\u6709\u7684\u5987\u4eba\uff0c\u65e0\u8bba\u4e08\u592b\u8d35\u8d31\u90fd\u5fc5\u5c0a\u656c\u4ed6\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "21",
           "sid": "EST 1:21"
         },
-        "王和众首领都以",
+        "\u738b\u548c\u4f17\u9996\u9886\u90fd\u4ee5",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米母干"
+            "\u7c73\u6bcd\u5e72"
           ]
         },
-        "的话为美，王就照这话去行，",
+        "\u7684\u8bdd\u4e3a\u7f8e\uff0c\u738b\u5c31\u7167\u8fd9\u8bdd\u53bb\u884c\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "22",
           "sid": "EST 1:22"
         },
-        "发诏书，用各省的文字、各族的方言通知各省，使为丈夫的在家中作主，各说本地的方言。"
+        "\u53d1\u8bcf\u4e66\uff0c\u7528\u5404\u7701\u7684\u6587\u5b57\u3001\u5404\u65cf\u7684\u65b9\u8a00\u901a\u77e5\u5404\u7701\uff0c\u4f7f\u4e3a\u4e08\u592b\u7684\u5728\u5bb6\u4e2d\u4f5c\u4e3b\uff0c\u5404\u8bf4\u672c\u5730\u7684\u65b9\u8a00\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "2",
       "sid": "EST 2"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "以斯帖被立为王后"
+        "\u4ee5\u65af\u5e16\u88ab\u7acb\u4e3a\u738b\u540e"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 2:1"
         },
-        "这事以后，",
+        "\u8fd9\u4e8b\u4ee5\u540e\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王的忿怒止息，就想念",
+        "\u738b\u7684\u5fff\u6012\u6b62\u606f\uff0c\u5c31\u60f3\u5ff5",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "和她所行的，并怎样降旨办她。",
+        "\u548c\u5979\u6240\u884c\u7684\uff0c\u5e76\u600e\u6837\u964d\u65e8\u529e\u5979\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 2:2"
         },
-        "于是王的侍臣对王说：「不如为王寻找美貌的处女。",
+        "\u4e8e\u662f\u738b\u7684\u4f8d\u81e3\u5bf9\u738b\u8bf4\uff1a\u300c\u4e0d\u5982\u4e3a\u738b\u5bfb\u627e\u7f8e\u8c8c\u7684\u5904\u5973\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 2:3"
         },
-        "王可以派官在国中的各省招聚美貌的处女到",
+        "\u738b\u53ef\u4ee5\u6d3e\u5b98\u5728\u56fd\u4e2d\u7684\u5404\u7701\u62db\u805a\u7f8e\u8c8c\u7684\u5904\u5973\u5230",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城",
+        "\u57ce",
         {
-          "type": "note:f",
-          "caller": "-",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "2:3"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
-                "或译：宫"
+                "\u6216\u8bd1\uff1a\u5bab"
               ]
             }
-          ]
+          ],
+          "caller": "-"
         },
-        "的女院，交给掌管女子的太监",
+        "\u7684\u5973\u9662\uff0c\u4ea4\u7ed9\u638c\u7ba1\u5973\u5b50\u7684\u592a\u76d1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "希该"
+            "\u5e0c\u8be5"
           ]
         },
-        "，给她们当用的香品。",
+        "\uff0c\u7ed9\u5979\u4eec\u5f53\u7528\u7684\u9999\u54c1\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 2:4"
         },
-        "王所喜爱的女子可以立为王后，代替",
+        "\u738b\u6240\u559c\u7231\u7684\u5973\u5b50\u53ef\u4ee5\u7acb\u4e3a\u738b\u540e\uff0c\u4ee3\u66ff",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "。」王以这事为美，就如此行。"
+        "\u3002\u300d\u738b\u4ee5\u8fd9\u4e8b\u4e3a\u7f8e\uff0c\u5c31\u5982\u6b64\u884c\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 2:5"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城有一个",
+        "\u57ce\u6709\u4e00\u4e2a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，名叫",
+        "\u4eba\uff0c\u540d\u53eb",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "，是",
+        "\uff0c\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "便雅悯"
+            "\u4fbf\u96c5\u60af"
           ]
         },
-        "人",
+        "\u4eba",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "基士"
+            "\u57fa\u58eb"
           ]
         },
-        "的曾孙，",
+        "\u7684\u66fe\u5b59\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "示每"
+            "\u793a\u6bcf"
           ]
         },
-        "的孙子，",
+        "\u7684\u5b59\u5b50\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "睚珥"
+            "\u775a\u73e5"
           ]
         },
-        "的儿子。",
+        "\u7684\u513f\u5b50\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 2:6"
         },
-        "从前",
+        "\u4ece\u524d",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "巴比伦"
+            "\u5df4\u6bd4\u4f26"
           ]
         },
-        "王",
+        "\u738b",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "尼布甲尼撒"
+            "\u5c3c\u5e03\u7532\u5c3c\u6492"
           ]
         },
-        "将",
+        "\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "王",
+        "\u738b",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "耶哥尼雅"
+            "\u8036\u54e5\u5c3c\u96c5"
           ]
         },
         {
-          "type": "note:f",
-          "caller": "-",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:fr",
+              "type": "char",
+              "marker": "fr",
               "content": [
                 "2:6"
               ]
             },
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
-                "又名约雅斤"
+                "\u53c8\u540d\u7ea6\u96c5\u65a4"
               ]
             }
-          ]
+          ],
+          "caller": "-"
         },
-        "和百姓从",
+        "\u548c\u767e\u59d3\u4ece",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "耶路撒冷"
+            "\u8036\u8def\u6492\u51b7"
           ]
         },
-        "掳去，",
+        "\u63b3\u53bb\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "也在其内。",
+        "\u4e5f\u5728\u5176\u5185\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 2:7"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "抚养他叔叔的女儿",
+        "\u629a\u517b\u4ed6\u53d4\u53d4\u7684\u5973\u513f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈大沙"
+            "\u54c8\u5927\u6c99"
           ]
         },
-        "（后名",
+        "\uff08\u540e\u540d",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "），因为她没有父母。这女子又容貌俊美；她父母死了，",
+        "\uff09\uff0c\u56e0\u4e3a\u5979\u6ca1\u6709\u7236\u6bcd\u3002\u8fd9\u5973\u5b50\u53c8\u5bb9\u8c8c\u4fca\u7f8e\uff1b\u5979\u7236\u6bcd\u6b7b\u4e86\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "就收她为自己的女儿。",
+        "\u5c31\u6536\u5979\u4e3a\u81ea\u5df1\u7684\u5973\u513f\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 2:8"
         },
-        "王的谕旨传出，就招聚许多女子到",
+        "\u738b\u7684\u8c15\u65e8\u4f20\u51fa\uff0c\u5c31\u62db\u805a\u8bb8\u591a\u5973\u5b50\u5230",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城，交给掌管女子的",
+        "\u57ce\uff0c\u4ea4\u7ed9\u638c\u7ba1\u5973\u5b50\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "希该"
+            "\u5e0c\u8be5"
           ]
         },
-        "；",
+        "\uff1b",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "也送入王宫，交付",
+        "\u4e5f\u9001\u5165\u738b\u5bab\uff0c\u4ea4\u4ed8",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "希该"
+            "\u5e0c\u8be5"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 2:9"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "希该"
+            "\u5e0c\u8be5"
           ]
         },
-        "喜悦",
+        "\u559c\u60a6",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "，就恩待她，急忙给她需用的香品和她所当得的分，又派所当得的七个宫女服事她，使她和她的宫女搬入女院上好的房屋。",
+        "\uff0c\u5c31\u6069\u5f85\u5979\uff0c\u6025\u5fd9\u7ed9\u5979\u9700\u7528\u7684\u9999\u54c1\u548c\u5979\u6240\u5f53\u5f97\u7684\u5206\uff0c\u53c8\u6d3e\u6240\u5f53\u5f97\u7684\u4e03\u4e2a\u5bab\u5973\u670d\u4e8b\u5979\uff0c\u4f7f\u5979\u548c\u5979\u7684\u5bab\u5973\u642c\u5165\u5973\u9662\u4e0a\u597d\u7684\u623f\u5c4b\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 2:10"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "未曾将籍贯宗族告诉人，因为",
+        "\u672a\u66fe\u5c06\u7c4d\u8d2f\u5b97\u65cf\u544a\u8bc9\u4eba\uff0c\u56e0\u4e3a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "嘱咐她不可叫人知道。",
+        "\u5631\u5490\u5979\u4e0d\u53ef\u53eb\u4eba\u77e5\u9053\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "11",
           "sid": "EST 2:11"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "天天在女院前边行走，要知道",
+        "\u5929\u5929\u5728\u5973\u9662\u524d\u8fb9\u884c\u8d70\uff0c\u8981\u77e5\u9053",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "平安不平安，并后事如何。"
+        "\u5e73\u5b89\u4e0d\u5e73\u5b89\uff0c\u5e76\u540e\u4e8b\u5982\u4f55\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "12",
           "sid": "EST 2:12"
         },
-        "众女子照例先洁净身体十二个月：六个月用没药油，六个月用香料和洁身之物。满了日期，然后挨次进去见",
+        "\u4f17\u5973\u5b50\u7167\u4f8b\u5148\u6d01\u51c0\u8eab\u4f53\u5341\u4e8c\u4e2a\u6708\uff1a\u516d\u4e2a\u6708\u7528\u6ca1\u836f\u6cb9\uff0c\u516d\u4e2a\u6708\u7528\u9999\u6599\u548c\u6d01\u8eab\u4e4b\u7269\u3002\u6ee1\u4e86\u65e5\u671f\uff0c\u7136\u540e\u6328\u6b21\u8fdb\u53bb\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王。",
+        "\u738b\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "13",
           "sid": "EST 2:13"
         },
-        "女子进去见王是这样：从女院到王宫的时候，凡她所要的都必给她。",
+        "\u5973\u5b50\u8fdb\u53bb\u89c1\u738b\u662f\u8fd9\u6837\uff1a\u4ece\u5973\u9662\u5230\u738b\u5bab\u7684\u65f6\u5019\uff0c\u51e1\u5979\u6240\u8981\u7684\u90fd\u5fc5\u7ed9\u5979\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "14",
           "sid": "EST 2:14"
         },
-        "晚上进去，次日回到女子第二院，交给掌管妃嫔的太监",
+        "\u665a\u4e0a\u8fdb\u53bb\uff0c\u6b21\u65e5\u56de\u5230\u5973\u5b50\u7b2c\u4e8c\u9662\uff0c\u4ea4\u7ed9\u638c\u7ba1\u5983\u5ad4\u7684\u592a\u76d1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "沙甲"
+            "\u6c99\u7532"
           ]
         },
-        "；除非王喜爱她，再提名召她，就不再进去见王。"
+        "\uff1b\u9664\u975e\u738b\u559c\u7231\u5979\uff0c\u518d\u63d0\u540d\u53ec\u5979\uff0c\u5c31\u4e0d\u518d\u8fdb\u53bb\u89c1\u738b\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "15",
           "sid": "EST 2:15"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "叔叔",
+        "\u53d4\u53d4",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚比孩"
+            "\u4e9a\u6bd4\u5b69"
           ]
         },
-        "的女儿，就是",
+        "\u7684\u5973\u513f\uff0c\u5c31\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "收为自己女儿的",
+        "\u6536\u4e3a\u81ea\u5df1\u5973\u513f\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "，按次序当进去见王的时候，除了掌管女子的太监",
+        "\uff0c\u6309\u6b21\u5e8f\u5f53\u8fdb\u53bb\u89c1\u738b\u7684\u65f6\u5019\uff0c\u9664\u4e86\u638c\u7ba1\u5973\u5b50\u7684\u592a\u76d1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "希该"
+            "\u5e0c\u8be5"
           ]
         },
-        "所派定给她的，她别无所求。凡看见",
+        "\u6240\u6d3e\u5b9a\u7ed9\u5979\u7684\uff0c\u5979\u522b\u65e0\u6240\u6c42\u3002\u51e1\u770b\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "的都喜悦她。",
+        "\u7684\u90fd\u559c\u60a6\u5979\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "16",
           "sid": "EST 2:16"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王第七年十月，就是提别月，",
+        "\u738b\u7b2c\u4e03\u5e74\u5341\u6708\uff0c\u5c31\u662f\u63d0\u522b\u6708\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "被引入宫见王。",
+        "\u88ab\u5f15\u5165\u5bab\u89c1\u738b\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "17",
           "sid": "EST 2:17"
         },
-        "王爱",
+        "\u738b\u7231",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "过于爱众女，她在王眼前蒙宠爱比众处女更甚。王就把王后的冠冕戴在她头上，立她为王后，代替",
+        "\u8fc7\u4e8e\u7231\u4f17\u5973\uff0c\u5979\u5728\u738b\u773c\u524d\u8499\u5ba0\u7231\u6bd4\u4f17\u5904\u5973\u66f4\u751a\u3002\u738b\u5c31\u628a\u738b\u540e\u7684\u51a0\u5195\u6234\u5728\u5979\u5934\u4e0a\uff0c\u7acb\u5979\u4e3a\u738b\u540e\uff0c\u4ee3\u66ff",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦实提"
+            "\u74e6\u5b9e\u63d0"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "18",
           "sid": "EST 2:18"
         },
-        "王因",
+        "\u738b\u56e0",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "的缘故给众首领和臣仆设摆大筵席，又豁免各省的",
+        "\u7684\u7f18\u6545\u7ed9\u4f17\u9996\u9886\u548c\u81e3\u4ec6\u8bbe\u6446\u5927\u7b75\u5e2d\uff0c\u53c8\u8c41\u514d\u5404\u7701\u7684",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "租税"
+            "\u79df\u7a0e"
           ]
         },
-        "，并照王的厚意大颁赏赐。"
+        "\uff0c\u5e76\u7167\u738b\u7684\u539a\u610f\u5927\u9881\u8d4f\u8d50\u3002"
       ]
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "末底改救王的命"
+        "\u672b\u5e95\u6539\u6551\u738b\u7684\u547d"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "19",
           "sid": "EST 2:19"
         },
-        "第二次招聚处女的时候，",
+        "\u7b2c\u4e8c\u6b21\u62db\u805a\u5904\u5973\u7684\u65f6\u5019\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "坐在朝门。",
+        "\u5750\u5728\u671d\u95e8\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "20",
           "sid": "EST 2:20"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "照着",
+        "\u7167\u7740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "所嘱咐的，还没有将籍贯宗族告诉人；因为",
+        "\u6240\u5631\u5490\u7684\uff0c\u8fd8\u6ca1\u6709\u5c06\u7c4d\u8d2f\u5b97\u65cf\u544a\u8bc9\u4eba\uff1b\u56e0\u4e3a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "遵",
+        "\u9075",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "的命，如抚养她的时候一样。",
+        "\u7684\u547d\uff0c\u5982\u629a\u517b\u5979\u7684\u65f6\u5019\u4e00\u6837\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "21",
           "sid": "EST 2:21"
         },
-        "当那时候，",
+        "\u5f53\u90a3\u65f6\u5019\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "坐在朝门，王的太监中有两个守门的，",
+        "\u5750\u5728\u671d\u95e8\uff0c\u738b\u7684\u592a\u76d1\u4e2d\u6709\u4e24\u4e2a\u5b88\u95e8\u7684\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "辟探"
+            "\u8f9f\u63a2"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "提列"
+            "\u63d0\u5217"
           ]
         },
-        "，恼恨",
+        "\uff0c\u607c\u6068",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王，想要下手害他。",
+        "\u738b\uff0c\u60f3\u8981\u4e0b\u624b\u5bb3\u4ed6\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "22",
           "sid": "EST 2:22"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "知道了，就告诉王后",
+        "\u77e5\u9053\u4e86\uff0c\u5c31\u544a\u8bc9\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "奉",
+        "\u5949",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "的名，报告于王；",
+        "\u7684\u540d\uff0c\u62a5\u544a\u4e8e\u738b\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "23",
           "sid": "EST 2:23"
         },
-        "究察这事，果然是实，就把二人挂在木头上，将这事在王面前写于历史上。"
+        "\u7a76\u5bdf\u8fd9\u4e8b\uff0c\u679c\u7136\u662f\u5b9e\uff0c\u5c31\u628a\u4e8c\u4eba\u6302\u5728\u6728\u5934\u4e0a\uff0c\u5c06\u8fd9\u4e8b\u5728\u738b\u9762\u524d\u5199\u4e8e\u5386\u53f2\u4e0a\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "3",
       "sid": "EST 3"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "哈曼阴谋除灭犹大人"
+        "\u54c8\u66fc\u9634\u8c0b\u9664\u706d\u72b9\u5927\u4eba"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 3:1"
         },
-        "这事以后，",
+        "\u8fd9\u4e8b\u4ee5\u540e\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王抬举",
+        "\u738b\u62ac\u4e3e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚甲"
+            "\u4e9a\u7532"
           ]
         },
-        "族",
+        "\u65cf",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈米大他"
+            "\u54c8\u7c73\u5927\u4ed6"
           ]
         },
-        "的儿子",
+        "\u7684\u513f\u5b50",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "，使他高升，叫他的爵位超过与他同事的一切臣宰。",
+        "\uff0c\u4f7f\u4ed6\u9ad8\u5347\uff0c\u53eb\u4ed6\u7684\u7235\u4f4d\u8d85\u8fc7\u4e0e\u4ed6\u540c\u4e8b\u7684\u4e00\u5207\u81e3\u5bb0\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 3:2"
         },
-        "在朝门的一切臣仆都跪拜",
+        "\u5728\u671d\u95e8\u7684\u4e00\u5207\u81e3\u4ec6\u90fd\u8dea\u62dc",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "，因为王如此吩咐；惟独",
+        "\uff0c\u56e0\u4e3a\u738b\u5982\u6b64\u5429\u5490\uff1b\u60df\u72ec",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "不跪不拜。",
+        "\u4e0d\u8dea\u4e0d\u62dc\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 3:3"
         },
-        "在朝门的臣仆问",
+        "\u5728\u671d\u95e8\u7684\u81e3\u4ec6\u95ee",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "说：「你为何违背王的命令呢？」",
+        "\u8bf4\uff1a\u300c\u4f60\u4e3a\u4f55\u8fdd\u80cc\u738b\u7684\u547d\u4ee4\u5462\uff1f\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 3:4"
         },
-        "他们天天劝他，他还是不听，他们就告诉",
+        "\u4ed6\u4eec\u5929\u5929\u529d\u4ed6\uff0c\u4ed6\u8fd8\u662f\u4e0d\u542c\uff0c\u4ed6\u4eec\u5c31\u544a\u8bc9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "，要看",
+        "\uff0c\u8981\u770b",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "的事站得住站不住，因他已经告诉他们自己是",
+        "\u7684\u4e8b\u7ad9\u5f97\u4f4f\u7ad9\u4e0d\u4f4f\uff0c\u56e0\u4ed6\u5df2\u7ecf\u544a\u8bc9\u4ed6\u4eec\u81ea\u5df1\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人。",
+        "\u4eba\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 3:5"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "见",
+        "\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "不跪不拜，他就怒气填胸。",
+        "\u4e0d\u8dea\u4e0d\u62dc\uff0c\u4ed6\u5c31\u6012\u6c14\u586b\u80f8\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 3:6"
         },
-        "他们已将",
+        "\u4ed6\u4eec\u5df2\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "的本族告诉",
+        "\u7684\u672c\u65cf\u544a\u8bc9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "；他以为下手害",
+        "\uff1b\u4ed6\u4ee5\u4e3a\u4e0b\u624b\u5bb3",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "一人是小事，就要灭绝",
+        "\u4e00\u4eba\u662f\u5c0f\u4e8b\uff0c\u5c31\u8981\u706d\u7edd",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王通国所有的",
+        "\u738b\u901a\u56fd\u6240\u6709\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，就是",
+        "\u4eba\uff0c\u5c31\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "的本族。"
+        "\u7684\u672c\u65cf\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 3:7"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王十二年正月，就是尼散月，人在",
+        "\u738b\u5341\u4e8c\u5e74\u6b63\u6708\uff0c\u5c31\u662f\u5c3c\u6563\u6708\uff0c\u4eba\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "面前，按日日月月掣普珥，就是掣签，要定何月何日为吉，择定了十二月，就是亚达月。",
+        "\u9762\u524d\uff0c\u6309\u65e5\u65e5\u6708\u6708\u63a3\u666e\u73e5\uff0c\u5c31\u662f\u63a3\u7b7e\uff0c\u8981\u5b9a\u4f55\u6708\u4f55\u65e5\u4e3a\u5409\uff0c\u62e9\u5b9a\u4e86\u5341\u4e8c\u6708\uff0c\u5c31\u662f\u4e9a\u8fbe\u6708\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 3:8"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "对",
+        "\u5bf9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王说：「有一种民散居在王国各省的民中；他们的律例与万民的律例不同，也不守王的律例，所以容留他们与王无益。",
+        "\u738b\u8bf4\uff1a\u300c\u6709\u4e00\u79cd\u6c11\u6563\u5c45\u5728\u738b\u56fd\u5404\u7701\u7684\u6c11\u4e2d\uff1b\u4ed6\u4eec\u7684\u5f8b\u4f8b\u4e0e\u4e07\u6c11\u7684\u5f8b\u4f8b\u4e0d\u540c\uff0c\u4e5f\u4e0d\u5b88\u738b\u7684\u5f8b\u4f8b\uff0c\u6240\u4ee5\u5bb9\u7559\u4ed6\u4eec\u4e0e\u738b\u65e0\u76ca\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 3:9"
         },
-        "王若以为美，请下旨意灭绝他们；我就捐一万他连得银子交给掌管国帑的人，纳入王的府库。」",
+        "\u738b\u82e5\u4ee5\u4e3a\u7f8e\uff0c\u8bf7\u4e0b\u65e8\u610f\u706d\u7edd\u4ed6\u4eec\uff1b\u6211\u5c31\u6350\u4e00\u4e07\u4ed6\u8fde\u5f97\u94f6\u5b50\u4ea4\u7ed9\u638c\u7ba1\u56fd\u5e11\u7684\u4eba\uff0c\u7eb3\u5165\u738b\u7684\u5e9c\u5e93\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 3:10"
         },
-        "于是王从自己手上摘下戒指给",
+        "\u4e8e\u662f\u738b\u4ece\u81ea\u5df1\u624b\u4e0a\u6458\u4e0b\u6212\u6307\u7ed9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人的仇敌—",
+        "\u4eba\u7684\u4ec7\u654c\u2014",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚甲"
+            "\u4e9a\u7532"
           ]
         },
-        "族",
+        "\u65cf",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈米大他"
+            "\u54c8\u7c73\u5927\u4ed6"
           ]
         },
-        "的儿子",
+        "\u7684\u513f\u5b50",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "11",
           "sid": "EST 3:11"
         },
-        "王对",
+        "\u738b\u5bf9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "说：「这银子仍赐给你，这民也交给你，你可以随意待他们。」"
+        "\u8bf4\uff1a\u300c\u8fd9\u94f6\u5b50\u4ecd\u8d50\u7ed9\u4f60\uff0c\u8fd9\u6c11\u4e5f\u4ea4\u7ed9\u4f60\uff0c\u4f60\u53ef\u4ee5\u968f\u610f\u5f85\u4ed6\u4eec\u3002\u300d"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "12",
           "sid": "EST 3:12"
         },
-        "正月十三日，就召了王的书记来，照着",
+        "\u6b63\u6708\u5341\u4e09\u65e5\uff0c\u5c31\u53ec\u4e86\u738b\u7684\u4e66\u8bb0\u6765\uff0c\u7167\u7740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "一切所吩咐的，用各省的文字、各族的方言，奉",
+        "\u4e00\u5207\u6240\u5429\u5490\u7684\uff0c\u7528\u5404\u7701\u7684\u6587\u5b57\u3001\u5404\u65cf\u7684\u65b9\u8a00\uff0c\u5949",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王的名写旨意，传与总督和各省的省长，并各族的首领；又用王的戒指盖印，",
+        "\u738b\u7684\u540d\u5199\u65e8\u610f\uff0c\u4f20\u4e0e\u603b\u7763\u548c\u5404\u7701\u7684\u7701\u957f\uff0c\u5e76\u5404\u65cf\u7684\u9996\u9886\uff1b\u53c8\u7528\u738b\u7684\u6212\u6307\u76d6\u5370\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "13",
           "sid": "EST 3:13"
         },
-        "交给驿卒传到王的各省，吩咐将",
+        "\u4ea4\u7ed9\u9a7f\u5352\u4f20\u5230\u738b\u7684\u5404\u7701\uff0c\u5429\u5490\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，无论老少妇女孩子，在一日之间，十二月，就是亚达月十三日，全然剪除，杀戮灭绝，并夺他们的财为掠物。",
+        "\u4eba\uff0c\u65e0\u8bba\u8001\u5c11\u5987\u5973\u5b69\u5b50\uff0c\u5728\u4e00\u65e5\u4e4b\u95f4\uff0c\u5341\u4e8c\u6708\uff0c\u5c31\u662f\u4e9a\u8fbe\u6708\u5341\u4e09\u65e5\uff0c\u5168\u7136\u526a\u9664\uff0c\u6740\u622e\u706d\u7edd\uff0c\u5e76\u593a\u4ed6\u4eec\u7684\u8d22\u4e3a\u63a0\u7269\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "14",
           "sid": "EST 3:14"
         },
-        "抄录这旨意，颁行各省，宣告各族，使他们预备等候那日。",
+        "\u6284\u5f55\u8fd9\u65e8\u610f\uff0c\u9881\u884c\u5404\u7701\uff0c\u5ba3\u544a\u5404\u65cf\uff0c\u4f7f\u4ed6\u4eec\u9884\u5907\u7b49\u5019\u90a3\u65e5\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "15",
           "sid": "EST 3:15"
         },
-        "驿卒奉王命急忙起行，旨意也传遍",
+        "\u9a7f\u5352\u5949\u738b\u547d\u6025\u5fd9\u8d77\u884c\uff0c\u65e8\u610f\u4e5f\u4f20\u904d",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城。王同",
+        "\u57ce\u3002\u738b\u540c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "坐下饮",
+        "\u5750\u4e0b\u996e",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "酒"
+            "\u9152"
           ]
         },
-        "，",
+        "\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城的民却都慌乱。"
+        "\u57ce\u7684\u6c11\u5374\u90fd\u614c\u4e71\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "4",
       "sid": "EST 4"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "末底改求以斯帖帮忙"
+        "\u672b\u5e95\u6539\u6c42\u4ee5\u65af\u5e16\u5e2e\u5fd9"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 4:1"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "知道所做的这一切事，就撕裂衣服，穿麻衣，蒙灰尘，在城中行走，痛哭哀号。",
+        "\u77e5\u9053\u6240\u505a\u7684\u8fd9\u4e00\u5207\u4e8b\uff0c\u5c31\u6495\u88c2\u8863\u670d\uff0c\u7a7f\u9ebb\u8863\uff0c\u8499\u7070\u5c18\uff0c\u5728\u57ce\u4e2d\u884c\u8d70\uff0c\u75db\u54ed\u54c0\u53f7\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 4:2"
         },
-        "到了朝门前",
+        "\u5230\u4e86\u671d\u95e8\u524d",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "停住脚步"
+            "\u505c\u4f4f\u811a\u6b65"
           ]
         },
-        "，因为穿麻衣的不可进朝门。",
+        "\uff0c\u56e0\u4e3a\u7a7f\u9ebb\u8863\u7684\u4e0d\u53ef\u8fdb\u671d\u95e8\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 4:3"
         },
-        "王的谕旨所到的各省各处，",
+        "\u738b\u7684\u8c15\u65e8\u6240\u5230\u7684\u5404\u7701\u5404\u5904\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人大大悲哀，禁食哭泣哀号，穿麻衣躺在灰中的甚多。"
+        "\u4eba\u5927\u5927\u60b2\u54c0\uff0c\u7981\u98df\u54ed\u6ce3\u54c0\u53f7\uff0c\u7a7f\u9ebb\u8863\u8eba\u5728\u7070\u4e2d\u7684\u751a\u591a\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 4:4"
         },
-        "王后",
+        "\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "的宫女和太监来把这事告诉",
+        "\u7684\u5bab\u5973\u548c\u592a\u76d1\u6765\u628a\u8fd9\u4e8b\u544a\u8bc9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "，她甚是忧愁，就送衣服给",
+        "\uff0c\u5979\u751a\u662f\u5fe7\u6101\uff0c\u5c31\u9001\u8863\u670d\u7ed9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "穿，要他脱下麻衣，他却不受。",
+        "\u7a7f\uff0c\u8981\u4ed6\u8131\u4e0b\u9ebb\u8863\uff0c\u4ed6\u5374\u4e0d\u53d7\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 4:5"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "就把王所派伺候她的一个太监，名叫",
+        "\u5c31\u628a\u738b\u6240\u6d3e\u4f3a\u5019\u5979\u7684\u4e00\u4e2a\u592a\u76d1\uff0c\u540d\u53eb",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈他革"
+            "\u54c8\u4ed6\u9769"
           ]
         },
-        "召来，吩咐他去见",
+        "\u53ec\u6765\uff0c\u5429\u5490\u4ed6\u53bb\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "，要知道这是什么事，是什么缘故。",
+        "\uff0c\u8981\u77e5\u9053\u8fd9\u662f\u4ec0\u4e48\u4e8b\uff0c\u662f\u4ec0\u4e48\u7f18\u6545\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 4:6"
         },
-        "于是",
+        "\u4e8e\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈他革"
+            "\u54c8\u4ed6\u9769"
           ]
         },
-        "出到朝门前的宽阔处见",
+        "\u51fa\u5230\u671d\u95e8\u524d\u7684\u5bbd\u9614\u5904\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 4:7"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "将自己所遇的事，并",
+        "\u5c06\u81ea\u5df1\u6240\u9047\u7684\u4e8b\uff0c\u5e76",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "为灭绝",
+        "\u4e3a\u706d\u7edd",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人应许捐入王库的银数都告诉了他；",
+        "\u4eba\u5e94\u8bb8\u6350\u5165\u738b\u5e93\u7684\u94f6\u6570\u90fd\u544a\u8bc9\u4e86\u4ed6\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 4:8"
         },
-        "又将所抄写传遍",
+        "\u53c8\u5c06\u6240\u6284\u5199\u4f20\u904d",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城要灭绝",
+        "\u57ce\u8981\u706d\u7edd",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人的旨意交给",
+        "\u4eba\u7684\u65e8\u610f\u4ea4\u7ed9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈他革"
+            "\u54c8\u4ed6\u9769"
           ]
         },
-        "，要给",
+        "\uff0c\u8981\u7ed9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "看，又要给她说明，并嘱咐她进去见王，为本族的人在王面前恳切祈求。",
+        "\u770b\uff0c\u53c8\u8981\u7ed9\u5979\u8bf4\u660e\uff0c\u5e76\u5631\u5490\u5979\u8fdb\u53bb\u89c1\u738b\uff0c\u4e3a\u672c\u65cf\u7684\u4eba\u5728\u738b\u9762\u524d\u6073\u5207\u7948\u6c42\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 4:9"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈他革"
+            "\u54c8\u4ed6\u9769"
           ]
         },
-        "回来，将",
+        "\u56de\u6765\uff0c\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "的话告诉",
+        "\u7684\u8bdd\u544a\u8bc9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "；",
+        "\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 4:10"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "就吩咐",
+        "\u5c31\u5429\u5490",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈他革"
+            "\u54c8\u4ed6\u9769"
           ]
         },
-        "去见",
+        "\u53bb\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "，",
+        "\uff0c",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "说"
+            "\u8bf4"
           ]
         },
-        "：",
+        "\uff1a",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "11",
           "sid": "EST 4:11"
         },
-        "「王的一切臣仆和各省的人民都知道有一个定例：若不蒙召，擅入内院见王的，无论男女必被治死；除非王向他伸出金杖，不得存活。现在我没有蒙召进去见王已经三十日了。」",
+        "\u300c\u738b\u7684\u4e00\u5207\u81e3\u4ec6\u548c\u5404\u7701\u7684\u4eba\u6c11\u90fd\u77e5\u9053\u6709\u4e00\u4e2a\u5b9a\u4f8b\uff1a\u82e5\u4e0d\u8499\u53ec\uff0c\u64c5\u5165\u5185\u9662\u89c1\u738b\u7684\uff0c\u65e0\u8bba\u7537\u5973\u5fc5\u88ab\u6cbb\u6b7b\uff1b\u9664\u975e\u738b\u5411\u4ed6\u4f38\u51fa\u91d1\u6756\uff0c\u4e0d\u5f97\u5b58\u6d3b\u3002\u73b0\u5728\u6211\u6ca1\u6709\u8499\u53ec\u8fdb\u53bb\u89c1\u738b\u5df2\u7ecf\u4e09\u5341\u65e5\u4e86\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "12",
           "sid": "EST 4:12"
         },
-        "人就把",
+        "\u4eba\u5c31\u628a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "这话告诉",
+        "\u8fd9\u8bdd\u544a\u8bc9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "13",
           "sid": "EST 4:13"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "托人回复",
+        "\u6258\u4eba\u56de\u590d",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "说：「你莫想在王宫里强过一切",
+        "\u8bf4\uff1a\u300c\u4f60\u83ab\u60f3\u5728\u738b\u5bab\u91cc\u5f3a\u8fc7\u4e00\u5207",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，得免这祸。",
+        "\u4eba\uff0c\u5f97\u514d\u8fd9\u7978\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "14",
           "sid": "EST 4:14"
         },
-        "此时你若闭口不言，",
+        "\u6b64\u65f6\u4f60\u82e5\u95ed\u53e3\u4e0d\u8a00\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人必从别处得解脱，蒙拯救；你和你父家必致灭亡。焉知你得了王后的位分不是为现今的机会吗？」",
+        "\u4eba\u5fc5\u4ece\u522b\u5904\u5f97\u89e3\u8131\uff0c\u8499\u62ef\u6551\uff1b\u4f60\u548c\u4f60\u7236\u5bb6\u5fc5\u81f4\u706d\u4ea1\u3002\u7109\u77e5\u4f60\u5f97\u4e86\u738b\u540e\u7684\u4f4d\u5206\u4e0d\u662f\u4e3a\u73b0\u4eca\u7684\u673a\u4f1a\u5417\uff1f\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "15",
           "sid": "EST 4:15"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "就吩咐人回报",
+        "\u5c31\u5429\u5490\u4eba\u56de\u62a5",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "说：",
+        "\u8bf4\uff1a",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "16",
           "sid": "EST 4:16"
         },
-        "「你当去招聚",
+        "\u300c\u4f60\u5f53\u53bb\u62db\u805a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城所有的",
+        "\u57ce\u6240\u6709\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，为我禁食三昼三夜，不吃不喝；我和我的宫女也要这样禁食。然后我违例进去见王，我若死就死吧！」",
+        "\u4eba\uff0c\u4e3a\u6211\u7981\u98df\u4e09\u663c\u4e09\u591c\uff0c\u4e0d\u5403\u4e0d\u559d\uff1b\u6211\u548c\u6211\u7684\u5bab\u5973\u4e5f\u8981\u8fd9\u6837\u7981\u98df\u3002\u7136\u540e\u6211\u8fdd\u4f8b\u8fdb\u53bb\u89c1\u738b\uff0c\u6211\u82e5\u6b7b\u5c31\u6b7b\u5427\uff01\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "17",
           "sid": "EST 4:17"
         },
-        "于是",
+        "\u4e8e\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "照",
+        "\u7167",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "一切所吩咐的去行。"
+        "\u4e00\u5207\u6240\u5429\u5490\u7684\u53bb\u884c\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "5",
       "sid": "EST 5"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "以斯帖为王和哈曼设筵席"
+        "\u4ee5\u65af\u5e16\u4e3a\u738b\u548c\u54c8\u66fc\u8bbe\u7b75\u5e2d"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 5:1"
         },
-        "第三日，",
+        "\u7b2c\u4e09\u65e5\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "穿上朝服，进王宫的内院，对殿站立。王在殿里坐在宝座上，对着殿门。",
+        "\u7a7f\u4e0a\u671d\u670d\uff0c\u8fdb\u738b\u5bab\u7684\u5185\u9662\uff0c\u5bf9\u6bbf\u7ad9\u7acb\u3002\u738b\u5728\u6bbf\u91cc\u5750\u5728\u5b9d\u5ea7\u4e0a\uff0c\u5bf9\u7740\u6bbf\u95e8\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 5:2"
         },
-        "王见王后",
+        "\u738b\u89c1\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "站在院内，就施恩于她，向她伸出手中的金杖；",
+        "\u7ad9\u5728\u9662\u5185\uff0c\u5c31\u65bd\u6069\u4e8e\u5979\uff0c\u5411\u5979\u4f38\u51fa\u624b\u4e2d\u7684\u91d1\u6756\uff1b",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "便向前摸杖头。",
+        "\u4fbf\u5411\u524d\u6478\u6756\u5934\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 5:3"
         },
-        "王对她说：「王后",
+        "\u738b\u5bf9\u5979\u8bf4\uff1a\u300c\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "啊，你要什么？你求什么，就是国的一半也必赐给你。」",
+        "\u554a\uff0c\u4f60\u8981\u4ec0\u4e48\uff1f\u4f60\u6c42\u4ec0\u4e48\uff0c\u5c31\u662f\u56fd\u7684\u4e00\u534a\u4e5f\u5fc5\u8d50\u7ed9\u4f60\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 5:4"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "说：「王若以为美，就请王带着",
+        "\u8bf4\uff1a\u300c\u738b\u82e5\u4ee5\u4e3a\u7f8e\uff0c\u5c31\u8bf7\u738b\u5e26\u7740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "今日赴我所预备的筵席。」",
+        "\u4eca\u65e5\u8d74\u6211\u6240\u9884\u5907\u7684\u7b75\u5e2d\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 5:5"
         },
-        "王说：「叫",
+        "\u738b\u8bf4\uff1a\u300c\u53eb",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "速速照",
+        "\u901f\u901f\u7167",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "的话去行。」于是王带着",
+        "\u7684\u8bdd\u53bb\u884c\u3002\u300d\u4e8e\u662f\u738b\u5e26\u7740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "赴",
+        "\u8d74",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "所预备的筵席。",
+        "\u6240\u9884\u5907\u7684\u7b75\u5e2d\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 5:6"
         },
-        "在酒席筵前，王又问",
+        "\u5728\u9152\u5e2d\u7b75\u524d\uff0c\u738b\u53c8\u95ee",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "说：「你要什么，我必赐给你；你求什么，就是国的一半也必",
+        "\u8bf4\uff1a\u300c\u4f60\u8981\u4ec0\u4e48\uff0c\u6211\u5fc5\u8d50\u7ed9\u4f60\uff1b\u4f60\u6c42\u4ec0\u4e48\uff0c\u5c31\u662f\u56fd\u7684\u4e00\u534a\u4e5f\u5fc5",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "为你"
+            "\u4e3a\u4f60"
           ]
         },
-        "成就。」",
+        "\u6210\u5c31\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 5:7"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "回答说：「我有所要，我有所求。",
+        "\u56de\u7b54\u8bf4\uff1a\u300c\u6211\u6709\u6240\u8981\uff0c\u6211\u6709\u6240\u6c42\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 5:8"
         },
-        "我若在王眼前蒙恩，王若愿意赐我所要的，准我所求的，就请王带着",
+        "\u6211\u82e5\u5728\u738b\u773c\u524d\u8499\u6069\uff0c\u738b\u82e5\u613f\u610f\u8d50\u6211\u6240\u8981\u7684\uff0c\u51c6\u6211\u6240\u6c42\u7684\uff0c\u5c31\u8bf7\u738b\u5e26\u7740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "再赴我所要预备的筵席。明日我必照王所问的说明。」"
+        "\u518d\u8d74\u6211\u6240\u8981\u9884\u5907\u7684\u7b75\u5e2d\u3002\u660e\u65e5\u6211\u5fc5\u7167\u738b\u6240\u95ee\u7684\u8bf4\u660e\u3002\u300d"
       ]
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "哈曼阴谋杀末底改"
+        "\u54c8\u66fc\u9634\u8c0b\u6740\u672b\u5e95\u6539"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 5:9"
         },
-        "那日",
+        "\u90a3\u65e5",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "心中快乐，欢欢喜喜地出来；但见",
+        "\u5fc3\u4e2d\u5feb\u4e50\uff0c\u6b22\u6b22\u559c\u559c\u5730\u51fa\u6765\uff1b\u4f46\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "在朝门不站起来，连身也不动，就满心恼怒",
+        "\u5728\u671d\u95e8\u4e0d\u7ad9\u8d77\u6765\uff0c\u8fde\u8eab\u4e5f\u4e0d\u52a8\uff0c\u5c31\u6ee1\u5fc3\u607c\u6012",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 5:10"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "暂且忍耐回家，叫人请他朋友和他妻子",
+        "\u6682\u4e14\u5fcd\u8010\u56de\u5bb6\uff0c\u53eb\u4eba\u8bf7\u4ed6\u670b\u53cb\u548c\u4ed6\u59bb\u5b50",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "细利斯"
+            "\u7ec6\u5229\u65af"
           ]
         },
-        "来。",
+        "\u6765\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "11",
           "sid": "EST 5:11"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "将他富厚的荣耀、众多的儿女，和王抬举他使他超乎首领臣仆之上，都述说给他们听。",
+        "\u5c06\u4ed6\u5bcc\u539a\u7684\u8363\u8000\u3001\u4f17\u591a\u7684\u513f\u5973\uff0c\u548c\u738b\u62ac\u4e3e\u4ed6\u4f7f\u4ed6\u8d85\u4e4e\u9996\u9886\u81e3\u4ec6\u4e4b\u4e0a\uff0c\u90fd\u8ff0\u8bf4\u7ed9\u4ed6\u4eec\u542c\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "12",
           "sid": "EST 5:12"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "又说：「王后",
+        "\u53c8\u8bf4\uff1a\u300c\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "预备筵席，除了我之外不许别人随王赴席。明日王后又请我随王赴席；",
+        "\u9884\u5907\u7b75\u5e2d\uff0c\u9664\u4e86\u6211\u4e4b\u5916\u4e0d\u8bb8\u522b\u4eba\u968f\u738b\u8d74\u5e2d\u3002\u660e\u65e5\u738b\u540e\u53c8\u8bf7\u6211\u968f\u738b\u8d74\u5e2d\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "13",
           "sid": "EST 5:13"
         },
-        "只是我见",
+        "\u53ea\u662f\u6211\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人",
+        "\u4eba",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "坐在朝门，虽有这一切",
+        "\u5750\u5728\u671d\u95e8\uff0c\u867d\u6709\u8fd9\u4e00\u5207",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "荣耀"
+            "\u8363\u8000"
           ]
         },
-        "，也与我无益。」",
+        "\uff0c\u4e5f\u4e0e\u6211\u65e0\u76ca\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "14",
           "sid": "EST 5:14"
         },
-        "他的妻",
+        "\u4ed6\u7684\u59bb",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "细利斯"
+            "\u7ec6\u5229\u65af"
           ]
         },
-        "和他一切的朋友对他说：「不如立一个五丈高的木架，明早求王将",
+        "\u548c\u4ed6\u4e00\u5207\u7684\u670b\u53cb\u5bf9\u4ed6\u8bf4\uff1a\u300c\u4e0d\u5982\u7acb\u4e00\u4e2a\u4e94\u4e08\u9ad8\u7684\u6728\u67b6\uff0c\u660e\u65e9\u6c42\u738b\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "挂在其上，然后你可以欢欢喜喜地随王赴席。」",
+        "\u6302\u5728\u5176\u4e0a\uff0c\u7136\u540e\u4f60\u53ef\u4ee5\u6b22\u6b22\u559c\u559c\u5730\u968f\u738b\u8d74\u5e2d\u3002\u300d",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "以这话为美，就叫人做了木架。"
+        "\u4ee5\u8fd9\u8bdd\u4e3a\u7f8e\uff0c\u5c31\u53eb\u4eba\u505a\u4e86\u6728\u67b6\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "6",
       "sid": "EST 6"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "王赐末底改荣誉"
+        "\u738b\u8d50\u672b\u5e95\u6539\u8363\u8a89"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 6:1"
         },
-        "那夜王睡不着觉，就吩咐人取历史来，念给他听。",
+        "\u90a3\u591c\u738b\u7761\u4e0d\u7740\u89c9\uff0c\u5c31\u5429\u5490\u4eba\u53d6\u5386\u53f2\u6765\uff0c\u5ff5\u7ed9\u4ed6\u542c\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 6:2"
         },
-        "正遇见书上写着",
+        "\u6b63\u9047\u89c1\u4e66\u4e0a\u5199\u7740",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "说"
+            "\u8bf4"
           ]
         },
-        "：王的太监中有两个守门的，",
+        "\uff1a\u738b\u7684\u592a\u76d1\u4e2d\u6709\u4e24\u4e2a\u5b88\u95e8\u7684\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "辟探"
+            "\u8f9f\u63a2"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "提列"
+            "\u63d0\u5217"
           ]
         },
-        "，想要下手害",
+        "\uff0c\u60f3\u8981\u4e0b\u624b\u5bb3",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王，",
+        "\u738b\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "将这事告诉",
+        "\u5c06\u8fd9\u4e8b\u544a\u8bc9",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "王后"
+            "\u738b\u540e"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 6:3"
         },
-        "王说：「",
+        "\u738b\u8bf4\uff1a\u300c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "行了这事，赐他什么尊荣爵位没有？」伺候王的臣仆回答说：「没有赐他什么。」",
+        "\u884c\u4e86\u8fd9\u4e8b\uff0c\u8d50\u4ed6\u4ec0\u4e48\u5c0a\u8363\u7235\u4f4d\u6ca1\u6709\uff1f\u300d\u4f3a\u5019\u738b\u7684\u81e3\u4ec6\u56de\u7b54\u8bf4\uff1a\u300c\u6ca1\u6709\u8d50\u4ed6\u4ec0\u4e48\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 6:4"
         },
-        "王说：「谁在院子里？」（那时",
+        "\u738b\u8bf4\uff1a\u300c\u8c01\u5728\u9662\u5b50\u91cc\uff1f\u300d\uff08\u90a3\u65f6",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "正进王宫的外院，要求王将",
+        "\u6b63\u8fdb\u738b\u5bab\u7684\u5916\u9662\uff0c\u8981\u6c42\u738b\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "挂在他所预备的木架上。）",
+        "\u6302\u5728\u4ed6\u6240\u9884\u5907\u7684\u6728\u67b6\u4e0a\u3002\uff09",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 6:5"
         },
-        "臣仆说：「",
+        "\u81e3\u4ec6\u8bf4\uff1a\u300c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "站在院内。」王说：「叫他进来。」",
+        "\u7ad9\u5728\u9662\u5185\u3002\u300d\u738b\u8bf4\uff1a\u300c\u53eb\u4ed6\u8fdb\u6765\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 6:6"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "就进去。王问他说：「王所喜悦尊荣的人，当如何待他呢？」",
+        "\u5c31\u8fdb\u53bb\u3002\u738b\u95ee\u4ed6\u8bf4\uff1a\u300c\u738b\u6240\u559c\u60a6\u5c0a\u8363\u7684\u4eba\uff0c\u5f53\u5982\u4f55\u5f85\u4ed6\u5462\uff1f\u300d",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "心里说：「王所喜悦尊荣的，不是我是谁呢？」",
+        "\u5fc3\u91cc\u8bf4\uff1a\u300c\u738b\u6240\u559c\u60a6\u5c0a\u8363\u7684\uff0c\u4e0d\u662f\u6211\u662f\u8c01\u5462\uff1f\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 6:7"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "就回答说：「王所喜悦尊荣的，",
+        "\u5c31\u56de\u7b54\u8bf4\uff1a\u300c\u738b\u6240\u559c\u60a6\u5c0a\u8363\u7684\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 6:8"
         },
-        "当将王常穿的朝服和戴冠的御马，",
+        "\u5f53\u5c06\u738b\u5e38\u7a7f\u7684\u671d\u670d\u548c\u6234\u51a0\u7684\u5fa1\u9a6c\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 6:9"
         },
-        "都交给王极尊贵的一个大臣，命他将衣服给王所喜悦尊荣的人穿上，使他骑上马，走遍城里的街市，在他面前宣告说：王所喜悦尊荣的人，就如此待他。」",
+        "\u90fd\u4ea4\u7ed9\u738b\u6781\u5c0a\u8d35\u7684\u4e00\u4e2a\u5927\u81e3\uff0c\u547d\u4ed6\u5c06\u8863\u670d\u7ed9\u738b\u6240\u559c\u60a6\u5c0a\u8363\u7684\u4eba\u7a7f\u4e0a\uff0c\u4f7f\u4ed6\u9a91\u4e0a\u9a6c\uff0c\u8d70\u904d\u57ce\u91cc\u7684\u8857\u5e02\uff0c\u5728\u4ed6\u9762\u524d\u5ba3\u544a\u8bf4\uff1a\u738b\u6240\u559c\u60a6\u5c0a\u8363\u7684\u4eba\uff0c\u5c31\u5982\u6b64\u5f85\u4ed6\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 6:10"
         },
-        "王对",
+        "\u738b\u5bf9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "说：「你速速将这衣服和马，照你所说的，向坐在朝门的",
+        "\u8bf4\uff1a\u300c\u4f60\u901f\u901f\u5c06\u8fd9\u8863\u670d\u548c\u9a6c\uff0c\u7167\u4f60\u6240\u8bf4\u7684\uff0c\u5411\u5750\u5728\u671d\u95e8\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人",
+        "\u4eba",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "去行。凡你所说的，一样不可缺。」",
+        "\u53bb\u884c\u3002\u51e1\u4f60\u6240\u8bf4\u7684\uff0c\u4e00\u6837\u4e0d\u53ef\u7f3a\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "11",
           "sid": "EST 6:11"
         },
-        "于是",
+        "\u4e8e\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "将朝服给",
+        "\u5c06\u671d\u670d\u7ed9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "穿上，使他骑上马，走遍城里的街市，在他面前宣告说：「王所喜悦尊荣的人，就如此待他。」"
+        "\u7a7f\u4e0a\uff0c\u4f7f\u4ed6\u9a91\u4e0a\u9a6c\uff0c\u8d70\u904d\u57ce\u91cc\u7684\u8857\u5e02\uff0c\u5728\u4ed6\u9762\u524d\u5ba3\u544a\u8bf4\uff1a\u300c\u738b\u6240\u559c\u60a6\u5c0a\u8363\u7684\u4eba\uff0c\u5c31\u5982\u6b64\u5f85\u4ed6\u3002\u300d"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "12",
           "sid": "EST 6:12"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "仍回到朝门，",
+        "\u4ecd\u56de\u5230\u671d\u95e8\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "却忧忧闷闷地蒙着头，急忙回家去了，",
+        "\u5374\u5fe7\u5fe7\u95f7\u95f7\u5730\u8499\u7740\u5934\uff0c\u6025\u5fd9\u56de\u5bb6\u53bb\u4e86\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "13",
           "sid": "EST 6:13"
         },
-        "将所遇的一切事详细说给他的妻",
+        "\u5c06\u6240\u9047\u7684\u4e00\u5207\u4e8b\u8be6\u7ec6\u8bf4\u7ed9\u4ed6\u7684\u59bb",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "细利斯"
+            "\u7ec6\u5229\u65af"
           ]
         },
-        "和他的众朋友听。他的智慧人和他的妻",
+        "\u548c\u4ed6\u7684\u4f17\u670b\u53cb\u542c\u3002\u4ed6\u7684\u667a\u6167\u4eba\u548c\u4ed6\u7684\u59bb",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "细利斯"
+            "\u7ec6\u5229\u65af"
           ]
         },
-        "对他说：「你在",
+        "\u5bf9\u4ed6\u8bf4\uff1a\u300c\u4f60\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "面前始而败落，他如果是",
+        "\u9762\u524d\u59cb\u800c\u8d25\u843d\uff0c\u4ed6\u5982\u679c\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，你必不能胜他，终必在他面前败落。」"
+        "\u4eba\uff0c\u4f60\u5fc5\u4e0d\u80fd\u80dc\u4ed6\uff0c\u7ec8\u5fc5\u5728\u4ed6\u9762\u524d\u8d25\u843d\u3002\u300d"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "14",
           "sid": "EST 6:14"
         },
-        "他们还与",
+        "\u4ed6\u4eec\u8fd8\u4e0e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "说话的时候，王的太监来催",
+        "\u8bf4\u8bdd\u7684\u65f6\u5019\uff0c\u738b\u7684\u592a\u76d1\u6765\u50ac",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "快去赴",
+        "\u5feb\u53bb\u8d74",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "所预备的筵席。"
+        "\u6240\u9884\u5907\u7684\u7b75\u5e2d\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "7",
       "sid": "EST 7"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "哈曼被处死"
+        "\u54c8\u66fc\u88ab\u5904\u6b7b"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 7:1"
         },
-        "王带着",
+        "\u738b\u5e26\u7740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "来赴王后",
+        "\u6765\u8d74\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "的筵席。",
+        "\u7684\u7b75\u5e2d\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 7:2"
         },
-        "这第二次在酒席筵前，王又问",
+        "\u8fd9\u7b2c\u4e8c\u6b21\u5728\u9152\u5e2d\u7b75\u524d\uff0c\u738b\u53c8\u95ee",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "说：「王后",
+        "\u8bf4\uff1a\u300c\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "啊，你要什么，我必赐给你；你求什么，就是国的一半也必",
+        "\u554a\uff0c\u4f60\u8981\u4ec0\u4e48\uff0c\u6211\u5fc5\u8d50\u7ed9\u4f60\uff1b\u4f60\u6c42\u4ec0\u4e48\uff0c\u5c31\u662f\u56fd\u7684\u4e00\u534a\u4e5f\u5fc5",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "为你"
+            "\u4e3a\u4f60"
           ]
         },
-        "成就。」",
+        "\u6210\u5c31\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 7:3"
         },
-        "王后",
+        "\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "回答说：「我若在王眼前蒙恩，王若以为美，我所愿的，是愿王将我的性命赐给我；我所求的，是求王将我的本族赐给我。",
+        "\u56de\u7b54\u8bf4\uff1a\u300c\u6211\u82e5\u5728\u738b\u773c\u524d\u8499\u6069\uff0c\u738b\u82e5\u4ee5\u4e3a\u7f8e\uff0c\u6211\u6240\u613f\u7684\uff0c\u662f\u613f\u738b\u5c06\u6211\u7684\u6027\u547d\u8d50\u7ed9\u6211\uff1b\u6211\u6240\u6c42\u7684\uff0c\u662f\u6c42\u738b\u5c06\u6211\u7684\u672c\u65cf\u8d50\u7ed9\u6211\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 7:4"
         },
-        "因我和我的本族被卖了，要剪除杀戮灭绝我们。我们若被卖为奴为婢，我也闭口不言；但王的损失，敌人万不能补足。」",
+        "\u56e0\u6211\u548c\u6211\u7684\u672c\u65cf\u88ab\u5356\u4e86\uff0c\u8981\u526a\u9664\u6740\u622e\u706d\u7edd\u6211\u4eec\u3002\u6211\u4eec\u82e5\u88ab\u5356\u4e3a\u5974\u4e3a\u5a62\uff0c\u6211\u4e5f\u95ed\u53e3\u4e0d\u8a00\uff1b\u4f46\u738b\u7684\u635f\u5931\uff0c\u654c\u4eba\u4e07\u4e0d\u80fd\u8865\u8db3\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 7:5"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王问王后",
+        "\u738b\u95ee\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "说：「擅敢起意如此行的是谁？这人在哪里呢？」",
+        "\u8bf4\uff1a\u300c\u64c5\u6562\u8d77\u610f\u5982\u6b64\u884c\u7684\u662f\u8c01\uff1f\u8fd9\u4eba\u5728\u54ea\u91cc\u5462\uff1f\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 7:6"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "说：「仇人敌人就是这恶人",
+        "\u8bf4\uff1a\u300c\u4ec7\u4eba\u654c\u4eba\u5c31\u662f\u8fd9\u6076\u4eba",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "！」"
+        "\uff01\u300d"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "在王和王后面前就甚惊惶。",
+        "\u5728\u738b\u548c\u738b\u540e\u9762\u524d\u5c31\u751a\u60ca\u60f6\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 7:7"
         },
-        "王便大怒，起来离开酒席往御园去了。",
+        "\u738b\u4fbf\u5927\u6012\uff0c\u8d77\u6765\u79bb\u5f00\u9152\u5e2d\u5f80\u5fa1\u56ed\u53bb\u4e86\u3002",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "见王定意要加罪与他，就起来，求王后",
+        "\u89c1\u738b\u5b9a\u610f\u8981\u52a0\u7f6a\u4e0e\u4ed6\uff0c\u5c31\u8d77\u6765\uff0c\u6c42\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "救命。",
+        "\u6551\u547d\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 7:8"
         },
-        "王从御园回到酒席之处，见",
+        "\u738b\u4ece\u5fa1\u56ed\u56de\u5230\u9152\u5e2d\u4e4b\u5904\uff0c\u89c1",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "伏在",
+        "\u4f0f\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "所靠的榻上；王说：「他竟敢在宫内、在我面前凌辱王后吗？」这话一出王口，人就蒙了",
+        "\u6240\u9760\u7684\u69bb\u4e0a\uff1b\u738b\u8bf4\uff1a\u300c\u4ed6\u7adf\u6562\u5728\u5bab\u5185\u3001\u5728\u6211\u9762\u524d\u51cc\u8fb1\u738b\u540e\u5417\uff1f\u300d\u8fd9\u8bdd\u4e00\u51fa\u738b\u53e3\uff0c\u4eba\u5c31\u8499\u4e86",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "的脸。",
+        "\u7684\u8138\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 7:9"
         },
-        "伺候王的一个太监名叫",
+        "\u4f3a\u5019\u738b\u7684\u4e00\u4e2a\u592a\u76d1\u540d\u53eb",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈波拿"
+            "\u54c8\u6ce2\u62ff"
           ]
         },
-        "，说：「",
+        "\uff0c\u8bf4\uff1a\u300c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "为那救王有功的",
+        "\u4e3a\u90a3\u6551\u738b\u6709\u529f\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "做了五丈高的木架，现今立在",
+        "\u505a\u4e86\u4e94\u4e08\u9ad8\u7684\u6728\u67b6\uff0c\u73b0\u4eca\u7acb\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "家里。」王说：「把",
+        "\u5bb6\u91cc\u3002\u300d\u738b\u8bf4\uff1a\u300c\u628a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "挂在其上。」",
+        "\u6302\u5728\u5176\u4e0a\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 7:10"
         },
-        "于是人将",
+        "\u4e8e\u662f\u4eba\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "挂在他为",
+        "\u6302\u5728\u4ed6\u4e3a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "所预备的木架上。王的忿怒这才止息。"
+        "\u6240\u9884\u5907\u7684\u6728\u67b6\u4e0a\u3002\u738b\u7684\u5fff\u6012\u8fd9\u624d\u6b62\u606f\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "8",
       "sid": "EST 8"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "犹大人的反击"
+        "\u72b9\u5927\u4eba\u7684\u53cd\u51fb"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 8:1"
         },
-        "当日，",
+        "\u5f53\u65e5\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王把",
+        "\u738b\u628a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人仇敌",
+        "\u4eba\u4ec7\u654c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "的家产赐给王后",
+        "\u7684\u5bb6\u4ea7\u8d50\u7ed9\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "也来到王面前，因为",
+        "\u4e5f\u6765\u5230\u738b\u9762\u524d\uff0c\u56e0\u4e3a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "已经告诉王，",
+        "\u5df2\u7ecf\u544a\u8bc9\u738b\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "是她的亲属。",
+        "\u662f\u5979\u7684\u4eb2\u5c5e\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 8:2"
         },
-        "王摘下自己的戒指，就是从",
+        "\u738b\u6458\u4e0b\u81ea\u5df1\u7684\u6212\u6307\uff0c\u5c31\u662f\u4ece",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "追回的，给了",
+        "\u8ffd\u56de\u7684\uff0c\u7ed9\u4e86",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "派",
+        "\u6d3e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "管理",
+        "\u7ba1\u7406",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "的家产。"
+        "\u7684\u5bb6\u4ea7\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 8:3"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "又俯伏在王脚前，流泪哀告，求他除掉",
+        "\u53c8\u4fef\u4f0f\u5728\u738b\u811a\u524d\uff0c\u6d41\u6cea\u54c0\u544a\uff0c\u6c42\u4ed6\u9664\u6389",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚甲"
+            "\u4e9a\u7532"
           ]
         },
-        "族",
+        "\u65cf",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "害",
+        "\u5bb3",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人的恶谋。",
+        "\u4eba\u7684\u6076\u8c0b\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 8:4"
         },
-        "王向",
+        "\u738b\u5411",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "伸出金杖；",
+        "\u4f38\u51fa\u91d1\u6756\uff1b",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "就起来，站在王前，",
+        "\u5c31\u8d77\u6765\uff0c\u7ad9\u5728\u738b\u524d\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 8:5"
         },
-        "说：「",
+        "\u8bf4\uff1a\u300c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚甲"
+            "\u4e9a\u7532"
           ]
         },
-        "族",
+        "\u65cf",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈米大他"
+            "\u54c8\u7c73\u5927\u4ed6"
           ]
         },
-        "的儿子",
+        "\u7684\u513f\u5b50",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "设谋传旨，要杀灭在王各省的",
+        "\u8bbe\u8c0b\u4f20\u65e8\uff0c\u8981\u6740\u706d\u5728\u738b\u5404\u7701\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人。现今王若愿意，我若在王眼前蒙恩，王若以为美，若喜悦我，请王另下旨意，废除",
+        "\u4eba\u3002\u73b0\u4eca\u738b\u82e5\u613f\u610f\uff0c\u6211\u82e5\u5728\u738b\u773c\u524d\u8499\u6069\uff0c\u738b\u82e5\u4ee5\u4e3a\u7f8e\uff0c\u82e5\u559c\u60a6\u6211\uff0c\u8bf7\u738b\u53e6\u4e0b\u65e8\u610f\uff0c\u5e9f\u9664",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "所传的那旨意。",
+        "\u6240\u4f20\u7684\u90a3\u65e8\u610f\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 8:6"
         },
-        "我何忍见我本族的人受害？何忍见我同宗的人被灭呢？」",
+        "\u6211\u4f55\u5fcd\u89c1\u6211\u672c\u65cf\u7684\u4eba\u53d7\u5bb3\uff1f\u4f55\u5fcd\u89c1\u6211\u540c\u5b97\u7684\u4eba\u88ab\u706d\u5462\uff1f\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 8:7"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王对王后",
+        "\u738b\u5bf9\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人",
+        "\u4eba",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "说：「因",
+        "\u8bf4\uff1a\u300c\u56e0",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "要下手害",
+        "\u8981\u4e0b\u624b\u5bb3",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，我已将他的家产赐给",
+        "\u4eba\uff0c\u6211\u5df2\u5c06\u4ed6\u7684\u5bb6\u4ea7\u8d50\u7ed9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "，人也将",
+        "\uff0c\u4eba\u4e5f\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "挂在木架上。",
+        "\u6302\u5728\u6728\u67b6\u4e0a\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 8:8"
         },
-        "现在你们可以随意奉王的名写谕旨给",
+        "\u73b0\u5728\u4f60\u4eec\u53ef\u4ee5\u968f\u610f\u5949\u738b\u7684\u540d\u5199\u8c15\u65e8\u7ed9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，用王的戒指盖印；因为奉王名所写、用王戒指盖印的谕旨，人都不能废除。」"
+        "\u4eba\uff0c\u7528\u738b\u7684\u6212\u6307\u76d6\u5370\uff1b\u56e0\u4e3a\u5949\u738b\u540d\u6240\u5199\u3001\u7528\u738b\u6212\u6307\u76d6\u5370\u7684\u8c15\u65e8\uff0c\u4eba\u90fd\u4e0d\u80fd\u5e9f\u9664\u3002\u300d"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 8:9"
         },
-        "三月，就是西弯月二十三日，将王的书记召来，按着",
+        "\u4e09\u6708\uff0c\u5c31\u662f\u897f\u5f2f\u6708\u4e8c\u5341\u4e09\u65e5\uff0c\u5c06\u738b\u7684\u4e66\u8bb0\u53ec\u6765\uff0c\u6309\u7740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "所吩咐的，用各省的文字、各族的方言，并",
+        "\u6240\u5429\u5490\u7684\uff0c\u7528\u5404\u7701\u7684\u6587\u5b57\u3001\u5404\u65cf\u7684\u65b9\u8a00\uff0c\u5e76",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人的文字方言写谕旨，传给那从",
+        "\u4eba\u7684\u6587\u5b57\u65b9\u8a00\u5199\u8c15\u65e8\uff0c\u4f20\u7ed9\u90a3\u4ece",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "印度"
+            "\u5370\u5ea6"
           ]
         },
-        "直到",
+        "\u76f4\u5230",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "古实"
+            "\u53e4\u5b9e"
           ]
         },
-        "一百二十七省的",
+        "\u4e00\u767e\u4e8c\u5341\u4e03\u7701\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人和总督省长首领。",
+        "\u4eba\u548c\u603b\u7763\u7701\u957f\u9996\u9886\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 8:10"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "奉",
+        "\u5949",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王的名写谕旨，用王的戒指盖印，交给骑御马圈快马的驿卒，传",
+        "\u738b\u7684\u540d\u5199\u8c15\u65e8\uff0c\u7528\u738b\u7684\u6212\u6307\u76d6\u5370\uff0c\u4ea4\u7ed9\u9a91\u5fa1\u9a6c\u5708\u5feb\u9a6c\u7684\u9a7f\u5352\uff0c\u4f20",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "到各处"
+            "\u5230\u5404\u5904"
           ]
         },
-        "。",
+        "\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "11-12",
           "sid": "EST 8:11-12"
         },
-        "谕旨中，王准各省各城的",
+        "\u8c15\u65e8\u4e2d\uff0c\u738b\u51c6\u5404\u7701\u5404\u57ce\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人在一日之间，十二月，就是亚达月十三日，聚集保护性命，剪除杀戮灭绝那要攻击",
+        "\u4eba\u5728\u4e00\u65e5\u4e4b\u95f4\uff0c\u5341\u4e8c\u6708\uff0c\u5c31\u662f\u4e9a\u8fbe\u6708\u5341\u4e09\u65e5\uff0c\u805a\u96c6\u4fdd\u62a4\u6027\u547d\uff0c\u526a\u9664\u6740\u622e\u706d\u7edd\u90a3\u8981\u653b\u51fb",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人的一切仇敌和他们的妻子儿女，夺取他们的财为掠物。",
+        "\u4eba\u7684\u4e00\u5207\u4ec7\u654c\u548c\u4ed6\u4eec\u7684\u59bb\u5b50\u513f\u5973\uff0c\u593a\u53d6\u4ed6\u4eec\u7684\u8d22\u4e3a\u63a0\u7269\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "13",
           "sid": "EST 8:13"
         },
-        "抄录这谕旨，颁行各省，宣告各族，使",
+        "\u6284\u5f55\u8fd9\u8c15\u65e8\uff0c\u9881\u884c\u5404\u7701\uff0c\u5ba3\u544a\u5404\u65cf\uff0c\u4f7f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人预备等候那日，在仇敌身上报仇。",
+        "\u4eba\u9884\u5907\u7b49\u5019\u90a3\u65e5\uff0c\u5728\u4ec7\u654c\u8eab\u4e0a\u62a5\u4ec7\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "14",
           "sid": "EST 8:14"
         },
-        "于是骑快马的驿卒被王命催促，急忙起行；谕旨也传遍",
+        "\u4e8e\u662f\u9a91\u5feb\u9a6c\u7684\u9a7f\u5352\u88ab\u738b\u547d\u50ac\u4fc3\uff0c\u6025\u5fd9\u8d77\u884c\uff1b\u8c15\u65e8\u4e5f\u4f20\u904d",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城。"
+        "\u57ce\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "15",
           "sid": "EST 8:15"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "穿着蓝色白色的朝服，头戴大金冠冕，又穿紫色细麻布的外袍，从王面前出来；",
+        "\u7a7f\u7740\u84dd\u8272\u767d\u8272\u7684\u671d\u670d\uff0c\u5934\u6234\u5927\u91d1\u51a0\u5195\uff0c\u53c8\u7a7f\u7d2b\u8272\u7ec6\u9ebb\u5e03\u7684\u5916\u888d\uff0c\u4ece\u738b\u9762\u524d\u51fa\u6765\uff1b",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城的人民都欢呼快乐。",
+        "\u57ce\u7684\u4eba\u6c11\u90fd\u6b22\u547c\u5feb\u4e50\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "16",
           "sid": "EST 8:16"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人有光荣，欢喜快乐而得尊贵。",
+        "\u4eba\u6709\u5149\u8363\uff0c\u6b22\u559c\u5feb\u4e50\u800c\u5f97\u5c0a\u8d35\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "17",
           "sid": "EST 8:17"
         },
-        "王的谕旨所到的各省各城，",
+        "\u738b\u7684\u8c15\u65e8\u6240\u5230\u7684\u5404\u7701\u5404\u57ce\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人都欢喜快乐，设摆筵宴，以那日为吉日。那国的人民，有许多因惧怕",
+        "\u4eba\u90fd\u6b22\u559c\u5feb\u4e50\uff0c\u8bbe\u6446\u7b75\u5bb4\uff0c\u4ee5\u90a3\u65e5\u4e3a\u5409\u65e5\u3002\u90a3\u56fd\u7684\u4eba\u6c11\uff0c\u6709\u8bb8\u591a\u56e0\u60e7\u6015",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，就入了",
+        "\u4eba\uff0c\u5c31\u5165\u4e86",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "籍。"
+        "\u7c4d\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "9",
       "sid": "EST 9"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "犹大人除灭他们的仇敌"
+        "\u72b9\u5927\u4eba\u9664\u706d\u4ed6\u4eec\u7684\u4ec7\u654c"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 9:1"
         },
-        "十二月，乃亚达月十三日，王的谕旨将要举行，就是",
+        "\u5341\u4e8c\u6708\uff0c\u4e43\u4e9a\u8fbe\u6708\u5341\u4e09\u65e5\uff0c\u738b\u7684\u8c15\u65e8\u5c06\u8981\u4e3e\u884c\uff0c\u5c31\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人的仇敌盼望辖制他们的日子，",
+        "\u4eba\u7684\u4ec7\u654c\u76fc\u671b\u8f96\u5236\u4ed6\u4eec\u7684\u65e5\u5b50\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人反倒辖制恨他们的人。",
+        "\u4eba\u53cd\u5012\u8f96\u5236\u6068\u4ed6\u4eec\u7684\u4eba\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 9:2"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人在",
+        "\u4eba\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王各省的城里聚集，下手击杀那要害他们的人。无人能敌挡他们，因为各族都惧怕他们。",
+        "\u738b\u5404\u7701\u7684\u57ce\u91cc\u805a\u96c6\uff0c\u4e0b\u624b\u51fb\u6740\u90a3\u8981\u5bb3\u4ed6\u4eec\u7684\u4eba\u3002\u65e0\u4eba\u80fd\u654c\u6321\u4ed6\u4eec\uff0c\u56e0\u4e3a\u5404\u65cf\u90fd\u60e7\u6015\u4ed6\u4eec\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 9:3"
         },
-        "各省的首领、总督、省长，和办理王事的人，因惧怕",
+        "\u5404\u7701\u7684\u9996\u9886\u3001\u603b\u7763\u3001\u7701\u957f\uff0c\u548c\u529e\u7406\u738b\u4e8b\u7684\u4eba\uff0c\u56e0\u60e7\u6015",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "，就都帮助",
+        "\uff0c\u5c31\u90fd\u5e2e\u52a9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人。",
+        "\u4eba\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "EST 9:4"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "在朝中为大，名声传遍各省，日渐昌盛。",
+        "\u5728\u671d\u4e2d\u4e3a\u5927\uff0c\u540d\u58f0\u4f20\u904d\u5404\u7701\uff0c\u65e5\u6e10\u660c\u76db\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "EST 9:5"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人用刀击杀一切仇敌，任意杀灭恨他们的人。",
+        "\u4eba\u7528\u5200\u51fb\u6740\u4e00\u5207\u4ec7\u654c\uff0c\u4efb\u610f\u6740\u706d\u6068\u4ed6\u4eec\u7684\u4eba\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "6",
           "sid": "EST 9:6"
         },
-        "在",
+        "\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城，",
+        "\u57ce\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人杀灭了五百人；",
+        "\u4eba\u6740\u706d\u4e86\u4e94\u767e\u4eba\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "7",
           "sid": "EST 9:7"
         },
-        "又杀",
+        "\u53c8\u6740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "巴珊大他"
+            "\u5df4\u73ca\u5927\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "达分"
+            "\u8fbe\u5206"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚斯帕他"
+            "\u4e9a\u65af\u5e15\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "8",
           "sid": "EST 9:8"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "破拉他"
+            "\u7834\u62c9\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚大利雅"
+            "\u4e9a\u5927\u5229\u96c5"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚利大他"
+            "\u4e9a\u5229\u5927\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "9",
           "sid": "EST 9:9"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "帕玛斯他"
+            "\u5e15\u739b\u65af\u4ed6"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚利赛"
+            "\u4e9a\u5229\u8d5b"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚利代"
+            "\u4e9a\u5229\u4ee3"
           ]
         },
-        "、",
+        "\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "瓦耶撒他"
+            "\u74e6\u8036\u6492\u4ed6"
           ]
         },
-        "；",
+        "\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "10",
           "sid": "EST 9:10"
         },
-        "这十人都是",
+        "\u8fd9\u5341\u4eba\u90fd\u662f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈米大他"
+            "\u54c8\u7c73\u5927\u4ed6"
           ]
         },
-        "的孙子、",
+        "\u7684\u5b59\u5b50\u3001",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人仇敌",
+        "\u4eba\u4ec7\u654c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "的儿子。",
+        "\u7684\u513f\u5b50\u3002",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人却没有下手夺取财物。"
+        "\u4eba\u5374\u6ca1\u6709\u4e0b\u624b\u593a\u53d6\u8d22\u7269\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "11",
           "sid": "EST 9:11"
         },
-        "当日，将",
+        "\u5f53\u65e5\uff0c\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城被杀的人数呈在王前。",
+        "\u57ce\u88ab\u6740\u7684\u4eba\u6570\u5448\u5728\u738b\u524d\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "12",
           "sid": "EST 9:12"
         },
-        "王对王后",
+        "\u738b\u5bf9\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "说：「",
+        "\u8bf4\uff1a\u300c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人在",
+        "\u4eba\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "城杀灭了五百人，又杀了",
+        "\u57ce\u6740\u706d\u4e86\u4e94\u767e\u4eba\uff0c\u53c8\u6740\u4e86",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "的十个儿子，在王的各省不知如何呢？现在你要什么，我必赐给你；你还求什么，也必",
+        "\u7684\u5341\u4e2a\u513f\u5b50\uff0c\u5728\u738b\u7684\u5404\u7701\u4e0d\u77e5\u5982\u4f55\u5462\uff1f\u73b0\u5728\u4f60\u8981\u4ec0\u4e48\uff0c\u6211\u5fc5\u8d50\u7ed9\u4f60\uff1b\u4f60\u8fd8\u6c42\u4ec0\u4e48\uff0c\u4e5f\u5fc5",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "为你"
+            "\u4e3a\u4f60"
           ]
         },
-        "成就。」",
+        "\u6210\u5c31\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "13",
           "sid": "EST 9:13"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "说：「王若以为美，求你准",
+        "\u8bf4\uff1a\u300c\u738b\u82e5\u4ee5\u4e3a\u7f8e\uff0c\u6c42\u4f60\u51c6",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "的",
+        "\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，明日也照今日的旨意行，并将",
+        "\u4eba\uff0c\u660e\u65e5\u4e5f\u7167\u4eca\u65e5\u7684\u65e8\u610f\u884c\uff0c\u5e76\u5c06",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "十个儿子的尸首挂在木架上。」",
+        "\u5341\u4e2a\u513f\u5b50\u7684\u5c38\u9996\u6302\u5728\u6728\u67b6\u4e0a\u3002\u300d",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "14",
           "sid": "EST 9:14"
         },
-        "王便允准如此行。旨意传在",
+        "\u738b\u4fbf\u5141\u51c6\u5982\u6b64\u884c\u3002\u65e8\u610f\u4f20\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "，人就把",
+        "\uff0c\u4eba\u5c31\u628a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "十个儿子的尸首挂起来了。",
+        "\u5341\u4e2a\u513f\u5b50\u7684\u5c38\u9996\u6302\u8d77\u6765\u4e86\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "15",
           "sid": "EST 9:15"
         },
-        "亚达月十四日，",
+        "\u4e9a\u8fbe\u6708\u5341\u56db\u65e5\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "的",
+        "\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人又聚集在",
+        "\u4eba\u53c8\u805a\u96c6\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "，杀了三百人，却没有下手夺取财物。"
+        "\uff0c\u6740\u4e86\u4e09\u767e\u4eba\uff0c\u5374\u6ca1\u6709\u4e0b\u624b\u593a\u53d6\u8d22\u7269\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "16",
           "sid": "EST 9:16"
         },
-        "在王各省其余的",
+        "\u5728\u738b\u5404\u7701\u5176\u4f59\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人也都聚集保护性命，杀了恨他们的人七万五千，却没有下手夺取财物。这样，就脱离仇敌，得享平安。",
+        "\u4eba\u4e5f\u90fd\u805a\u96c6\u4fdd\u62a4\u6027\u547d\uff0c\u6740\u4e86\u6068\u4ed6\u4eec\u7684\u4eba\u4e03\u4e07\u4e94\u5343\uff0c\u5374\u6ca1\u6709\u4e0b\u624b\u593a\u53d6\u8d22\u7269\u3002\u8fd9\u6837\uff0c\u5c31\u8131\u79bb\u4ec7\u654c\uff0c\u5f97\u4eab\u5e73\u5b89\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "17",
           "sid": "EST 9:17"
         },
-        "亚达月十三日，",
+        "\u4e9a\u8fbe\u6708\u5341\u4e09\u65e5\uff0c",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "行了这事"
+            "\u884c\u4e86\u8fd9\u4e8b"
           ]
         },
-        "；十四日安息，以这日为设筵欢乐的日子。",
+        "\uff1b\u5341\u56db\u65e5\u5b89\u606f\uff0c\u4ee5\u8fd9\u65e5\u4e3a\u8bbe\u7b75\u6b22\u4e50\u7684\u65e5\u5b50\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "18",
           "sid": "EST 9:18"
         },
-        "但",
+        "\u4f46",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "书珊"
+            "\u4e66\u73ca"
           ]
         },
-        "的",
+        "\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，这十三日、十四日聚集",
+        "\u4eba\uff0c\u8fd9\u5341\u4e09\u65e5\u3001\u5341\u56db\u65e5\u805a\u96c6",
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "杀戮仇敌"
+            "\u6740\u622e\u4ec7\u654c"
           ]
         },
-        "；十五日安息，以这日为设筵欢乐的日子。",
+        "\uff1b\u5341\u4e94\u65e5\u5b89\u606f\uff0c\u4ee5\u8fd9\u65e5\u4e3a\u8bbe\u7b75\u6b22\u4e50\u7684\u65e5\u5b50\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "19",
           "sid": "EST 9:19"
         },
-        "所以住无城墙乡村的",
+        "\u6240\u4ee5\u4f4f\u65e0\u57ce\u5899\u4e61\u6751\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，如今都以亚达月十四日为设筵欢乐的吉日，彼此馈送礼物。"
+        "\u4eba\uff0c\u5982\u4eca\u90fd\u4ee5\u4e9a\u8fbe\u6708\u5341\u56db\u65e5\u4e3a\u8bbe\u7b75\u6b22\u4e50\u7684\u5409\u65e5\uff0c\u5f7c\u6b64\u9988\u9001\u793c\u7269\u3002"
       ]
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "普珥日"
+        "\u666e\u73e5\u65e5"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "20",
           "sid": "EST 9:20"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "记录这事，写信与",
+        "\u8bb0\u5f55\u8fd9\u4e8b\uff0c\u5199\u4fe1\u4e0e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王各省远近所有的",
+        "\u738b\u5404\u7701\u8fdc\u8fd1\u6240\u6709\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，",
+        "\u4eba\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "21",
           "sid": "EST 9:21"
         },
-        "嘱咐他们每年守亚达月十四、十五两日，",
+        "\u5631\u5490\u4ed6\u4eec\u6bcf\u5e74\u5b88\u4e9a\u8fbe\u6708\u5341\u56db\u3001\u5341\u4e94\u4e24\u65e5\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "22",
           "sid": "EST 9:22"
         },
-        "以这月的两日为",
+        "\u4ee5\u8fd9\u6708\u7684\u4e24\u65e5\u4e3a",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人脱离仇敌得平安、转忧为喜、转悲为乐的吉日。在这两日设筵欢乐，彼此馈送礼物，周济穷人。"
+        "\u4eba\u8131\u79bb\u4ec7\u654c\u5f97\u5e73\u5b89\u3001\u8f6c\u5fe7\u4e3a\u559c\u3001\u8f6c\u60b2\u4e3a\u4e50\u7684\u5409\u65e5\u3002\u5728\u8fd9\u4e24\u65e5\u8bbe\u7b75\u6b22\u4e50\uff0c\u5f7c\u6b64\u9988\u9001\u793c\u7269\uff0c\u5468\u6d4e\u7a77\u4eba\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "23",
           "sid": "EST 9:23"
         },
-        "于是，",
+        "\u4e8e\u662f\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人按着",
+        "\u4eba\u6309\u7740",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "所写与他们的信，应承照初次所守的守为永例；",
+        "\u6240\u5199\u4e0e\u4ed6\u4eec\u7684\u4fe1\uff0c\u5e94\u627f\u7167\u521d\u6b21\u6240\u5b88\u7684\u5b88\u4e3a\u6c38\u4f8b\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "24",
           "sid": "EST 9:24"
         },
-        "是因",
+        "\u662f\u56e0",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人的仇敌",
+        "\u4eba\u7684\u4ec7\u654c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚甲"
+            "\u4e9a\u7532"
           ]
         },
-        "族",
+        "\u65cf",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈米大他"
+            "\u54c8\u7c73\u5927\u4ed6"
           ]
         },
-        "的儿子",
+        "\u7684\u513f\u5b50",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "设谋杀害",
+        "\u8bbe\u8c0b\u6740\u5bb3",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，掣普珥，就是掣签，为要杀尽灭绝他们；",
+        "\u4eba\uff0c\u63a3\u666e\u73e5\uff0c\u5c31\u662f\u63a3\u7b7e\uff0c\u4e3a\u8981\u6740\u5c3d\u706d\u7edd\u4ed6\u4eec\uff1b",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "25",
           "sid": "EST 9:25"
         },
-        "这事报告于王，王便降旨使",
+        "\u8fd9\u4e8b\u62a5\u544a\u4e8e\u738b\uff0c\u738b\u4fbf\u964d\u65e8\u4f7f",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "哈曼"
+            "\u54c8\u66fc"
           ]
         },
-        "谋害",
+        "\u8c0b\u5bb3",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人的恶事归到他自己的头上，并吩咐把他和他的众子都挂在木架上。",
+        "\u4eba\u7684\u6076\u4e8b\u5f52\u5230\u4ed6\u81ea\u5df1\u7684\u5934\u4e0a\uff0c\u5e76\u5429\u5490\u628a\u4ed6\u548c\u4ed6\u7684\u4f17\u5b50\u90fd\u6302\u5728\u6728\u67b6\u4e0a\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "26",
           "sid": "EST 9:26"
         },
-        "照着普珥的名字，",
+        "\u7167\u7740\u666e\u73e5\u7684\u540d\u5b57\uff0c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人就称这两日为「普珥日」。他们因这信上的话，又因所看见所遇见的事，",
+        "\u4eba\u5c31\u79f0\u8fd9\u4e24\u65e5\u4e3a\u300c\u666e\u73e5\u65e5\u300d\u3002\u4ed6\u4eec\u56e0\u8fd9\u4fe1\u4e0a\u7684\u8bdd\uff0c\u53c8\u56e0\u6240\u770b\u89c1\u6240\u9047\u89c1\u7684\u4e8b\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "27",
           "sid": "EST 9:27"
         },
-        "就应承自己与后裔，并归附他们的人，每年按时必守这两日，永远不废。",
+        "\u5c31\u5e94\u627f\u81ea\u5df1\u4e0e\u540e\u88d4\uff0c\u5e76\u5f52\u9644\u4ed6\u4eec\u7684\u4eba\uff0c\u6bcf\u5e74\u6309\u65f6\u5fc5\u5b88\u8fd9\u4e24\u65e5\uff0c\u6c38\u8fdc\u4e0d\u5e9f\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "28",
           "sid": "EST 9:28"
         },
-        "各省各城、家家户户、世世代代纪念遵守这两日，使这「普珥日」在",
+        "\u5404\u7701\u5404\u57ce\u3001\u5bb6\u5bb6\u6237\u6237\u3001\u4e16\u4e16\u4ee3\u4ee3\u7eaa\u5ff5\u9075\u5b88\u8fd9\u4e24\u65e5\uff0c\u4f7f\u8fd9\u300c\u666e\u73e5\u65e5\u300d\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人中不可废掉，在他们后裔中也不可忘记。"
+        "\u4eba\u4e2d\u4e0d\u53ef\u5e9f\u6389\uff0c\u5728\u4ed6\u4eec\u540e\u88d4\u4e2d\u4e5f\u4e0d\u53ef\u5fd8\u8bb0\u3002"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "29",
           "sid": "EST 9:29"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚比孩"
+            "\u4e9a\u6bd4\u5b69"
           ]
         },
-        "的女儿—王后",
+        "\u7684\u5973\u513f\u2014\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人",
+        "\u4eba",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "以全权写第二封信，坚嘱",
+        "\u4ee5\u5168\u6743\u5199\u7b2c\u4e8c\u5c01\u4fe1\uff0c\u575a\u5631",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人守这「普珥日」，",
+        "\u4eba\u5b88\u8fd9\u300c\u666e\u73e5\u65e5\u300d\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "30",
           "sid": "EST 9:30"
         },
-        "用和平诚实话写信给",
+        "\u7528\u548c\u5e73\u8bda\u5b9e\u8bdd\u5199\u4fe1\u7ed9",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
         {
-          "type": "char:add",
+          "type": "char",
+          "marker": "add",
           "content": [
-            "王"
+            "\u738b"
           ]
         },
-        "国中一百二十七省所有的",
+        "\u56fd\u4e2d\u4e00\u767e\u4e8c\u5341\u4e03\u7701\u6240\u6709\u7684",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人，",
+        "\u4eba\uff0c",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "31",
           "sid": "EST 9:31"
         },
-        "劝他们按时守这「普珥日」，禁食呼求，是照",
+        "\u529d\u4ed6\u4eec\u6309\u65f6\u5b88\u8fd9\u300c\u666e\u73e5\u65e5\u300d\uff0c\u7981\u98df\u547c\u6c42\uff0c\u662f\u7167",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人",
+        "\u4eba",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "和王后",
+        "\u548c\u738b\u540e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "所嘱咐的，也照",
+        "\u6240\u5631\u5490\u7684\uff0c\u4e5f\u7167",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人为自己与后裔所应承的。",
+        "\u4eba\u4e3a\u81ea\u5df1\u4e0e\u540e\u88d4\u6240\u5e94\u627f\u7684\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "32",
           "sid": "EST 9:32"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "以斯帖"
+            "\u4ee5\u65af\u5e16"
           ]
         },
-        "命定守「普珥日」，这事也记录在书上。"
+        "\u547d\u5b9a\u5b88\u300c\u666e\u73e5\u65e5\u300d\uff0c\u8fd9\u4e8b\u4e5f\u8bb0\u5f55\u5728\u4e66\u4e0a\u3002"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "10",
       "sid": "EST 10"
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
-        "亚哈随鲁和末底改的功绩"
+        "\u4e9a\u54c8\u968f\u9c81\u548c\u672b\u5e95\u6539\u7684\u529f\u7ee9"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "EST 10:1"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王使旱地和海岛的人民都进贡。",
+        "\u738b\u4f7f\u65f1\u5730\u548c\u6d77\u5c9b\u7684\u4eba\u6c11\u90fd\u8fdb\u8d21\u3002",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "EST 10:2"
         },
-        "他以权柄能力所行的，并他抬举",
+        "\u4ed6\u4ee5\u6743\u67c4\u80fd\u529b\u6240\u884c\u7684\uff0c\u5e76\u4ed6\u62ac\u4e3e",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "使他高升的事，岂不都写在",
+        "\u4f7f\u4ed6\u9ad8\u5347\u7684\u4e8b\uff0c\u5c82\u4e0d\u90fd\u5199\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "米底亚"
+            "\u7c73\u5e95\u4e9a"
           ]
         },
-        "和",
+        "\u548c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "波斯"
+            "\u6ce2\u65af"
           ]
         },
-        "王的历史上吗？",
+        "\u738b\u7684\u5386\u53f2\u4e0a\u5417\uff1f",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "EST 10:3"
         },
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人",
+        "\u4eba",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "末底改"
+            "\u672b\u5e95\u6539"
           ]
         },
-        "作",
+        "\u4f5c",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "亚哈随鲁"
+            "\u4e9a\u54c8\u968f\u9c81"
           ]
         },
-        "王的宰相，在",
+        "\u738b\u7684\u5bb0\u76f8\uff0c\u5728",
         {
-          "type": "char:pn",
+          "type": "char",
+          "marker": "pn",
           "content": [
-            "犹大"
+            "\u72b9\u5927"
           ]
         },
-        "人中为大，得他众弟兄的喜悦，为本族的人求好处，向他们说和平的话。"
+        "\u4eba\u4e2d\u4e3a\u5927\uff0c\u5f97\u4ed6\u4f17\u5f1f\u5144\u7684\u559c\u60a6\uff0c\u4e3a\u672c\u65cf\u7684\u4eba\u6c42\u597d\u5904\uff0c\u5411\u4ed6\u4eec\u8bf4\u548c\u5e73\u7684\u8bdd\u3002"
       ]
     }
   ]

@@ -3,62 +3,73 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "JOB",
+      "type": "book",
+      "marker": "id",
       "content": [
         "Unlocked Literal Bible"
-      ]
+      ],
+      "code": "JOB"
     },
     {
-      "type": "para:ide",
+      "type": "para",
+      "marker": "ide",
       "content": [
         "UTF-8"
       ]
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
         "Job"
       ]
     },
     {
-      "type": "para:toc1",
+      "type": "para",
+      "marker": "toc1",
       "content": [
         "The Book of Job"
       ]
     },
     {
-      "type": "para:toc2",
+      "type": "para",
+      "marker": "toc2",
       "content": [
         "Job"
       ]
     },
     {
-      "type": "para:toc3",
+      "type": "para",
+      "marker": "toc3",
       "content": [
         "Job"
       ]
     },
     {
-      "type": "para:mt",
+      "type": "para",
+      "marker": "mt",
       "content": [
         "Job"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "23",
       "sid": "JOB 23"
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "JOB 23:1"
         },
@@ -66,10 +77,12 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "JOB 23:2"
         },
@@ -77,26 +90,30 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "my hand",
         {
-          "type": "note:f",
-          "caller": "+",
+          "type": "note",
+          "marker": "f",
           "content": [
             {
-              "type": "char:ft",
+              "type": "char",
+              "marker": "ft",
               "content": [
                 "Some copies have:"
               ]
             },
             {
-              "type": "char:fqa",
+              "type": "char",
+              "marker": "fqa",
               "content": [
                 "... his hand ..."
               ]
             }
-          ]
+          ],
+          "caller": "+"
         },
         "is heavy because of my groaning."
       ]

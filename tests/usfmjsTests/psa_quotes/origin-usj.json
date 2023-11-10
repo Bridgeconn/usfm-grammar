@@ -3,74 +3,87 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "PSA",
+      "type": "book",
+      "marker": "id",
       "content": [
         "Unlocked Literal Bible"
-      ]
+      ],
+      "code": "PSA"
     },
     {
-      "type": "para:ide",
+      "type": "para",
+      "marker": "ide",
       "content": [
         "UTF-8"
       ]
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
         "Psalms"
       ]
     },
     {
-      "type": "para:toc1",
+      "type": "para",
+      "marker": "toc1",
       "content": [
         "The Book of Psalms"
       ]
     },
     {
-      "type": "para:toc2",
+      "type": "para",
+      "marker": "toc2",
       "content": [
         "Psalms"
       ]
     },
     {
-      "type": "para:toc3",
+      "type": "para",
+      "marker": "toc3",
       "content": [
         "Psa"
       ]
     },
     {
-      "type": "para:mt",
+      "type": "para",
+      "marker": "mt",
       "content": [
         "The Book of Psalms"
       ]
     },
     {
-      "type": "para:cl",
+      "type": "para",
+      "marker": "cl",
       "content": [
         "Psalm"
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "PSA 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": []
     },
     {
-      "type": "para:ms",
+      "type": "para",
+      "marker": "ms",
       "content": [
         "Book One"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "PSA 1:1"
         },
@@ -78,22 +91,26 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "or stand in the pathway with sinners,"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "or sit in the assembly of mockers."
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "PSA 1:2"
         },
@@ -101,11 +118,13 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "and on his law he meditates day and night.",
         {
-          "type": "char:qs",
+          "type": "char",
+          "marker": "qs",
           "content": [
             "Selah"
           ]
@@ -113,14 +132,17 @@
       ]
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "PSA 1:3"
         },
@@ -128,32 +150,38 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "that produces its fruit in its season,"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "whose leaves do not wither;"
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "whatever he does will prosper."
       ]
     },
     {
-      "type": "para:s5",
+      "type": "para",
+      "marker": "s5",
       "content": []
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "4",
           "sid": "PSA 1:4"
         },
@@ -161,16 +189,19 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "but are instead like the chaff that the wind drives away."
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "5",
           "sid": "PSA 1:5"
         },
@@ -178,7 +209,8 @@
       ]
     },
     {
-      "type": "para:q",
+      "type": "para",
+      "marker": "q",
       "content": [
         "nor sinners in the assembly of the righteous."
       ]

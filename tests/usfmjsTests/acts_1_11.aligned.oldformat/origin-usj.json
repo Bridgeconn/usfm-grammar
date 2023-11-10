@@ -1,0 +1,832 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "content": [
+        "EN_ULT en_English_ltr Wed Oct 10 2018 11:55:23 GMT-0400 (EDT) tc"
+      ],
+      "code": "ACT"
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "ACT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "ACT 1:1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G25320",
+          "x-lemma": "\u03ba\u03b1\u03af",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03ba\u03b1\u1f76"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "And"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G37390",
+          "x-lemma": "\u1f45\u03c2",
+          "x-morph": "Gr,RR,,,,NMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03bf\u1f33"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "they"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G30040",
+          "x-lemma": "\u03bb\u03ad\u03b3\u03c9",
+          "x-morph": "Gr,V,IAA3,,P,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03b5\u1f36\u03c0\u03b1\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "said"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",\"",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G04350",
+          "x-lemma": "\u1f00\u03bd\u03ae\u03c1",
+          "x-morph": "Gr,N,,,,,VMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f04\u03bd\u03b4\u03c1\u03b5\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Men"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G10570",
+          "x-lemma": "\u0393\u03b1\u03bb\u03b9\u03bb\u03b1\u1fd6\u03bf\u03c2",
+          "x-morph": "Gr,NS,,,,VMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u0393\u03b1\u03bb\u03b9\u03bb\u03b1\u1fd6\u03bf\u03b9"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Galilee"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G51010",
+          "x-lemma": "\u03c4\u03af\u03c2",
+          "x-morph": "Gr,RT,,,,ANS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03c4\u03af"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "why"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G24760",
+          "x-lemma": "\u1f35\u03c3\u03c4\u03b7\u03bc\u03b9",
+          "x-morph": "Gr,V,IEA2,,P,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f11\u03c3\u03c4\u03ae\u03ba\u03b1\u03c4\u03b5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "do"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "stand"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G09910",
+          "x-lemma": "\u03b2\u03bb\u03ad\u03c0\u03c9",
+          "x-morph": "Gr,V,PPA,NMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03b2\u03bb\u03ad\u03c0\u03bf\u03bd\u03c4\u03b5\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "looking"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G15190",
+          "x-lemma": "\u03b5\u1f30\u03c2",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "3",
+          "x-content": "\u03b5\u1f30\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "into"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G35880",
+          "x-lemma": "\u1f41",
+          "x-morph": "Gr,EA,,,,AMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "3",
+          "x-content": "\u03c4\u1f78\u03bd"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G37720",
+          "x-lemma": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03c2",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "x-content": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "heaven"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        "?",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G37780",
+          "x-lemma": "\u03bf\u1f57\u03c4\u03bf\u03c2",
+          "x-morph": "Gr,ED,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03bf\u1f57\u03c4\u03bf\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "This"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G35880",
+          "x-lemma": "\u1f41",
+          "x-morph": "Gr,EA,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "x-content": "\u1f41"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G24240",
+          "x-lemma": "\u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f38\u03b7\u03c3\u03bf\u1fe6\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Jesus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G35880",
+          "x-lemma": "\u1f41",
+          "x-morph": "Gr,RD,,,,NMS,",
+          "x-occurrence": "2",
+          "x-occurrences": "2",
+          "x-content": "\u1f41"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G03530",
+          "x-lemma": "\u1f00\u03bd\u03b1\u03bb\u03b1\u03bc\u03b2\u03ac\u03bd\u03c9",
+          "x-morph": "Gr,V,PAP,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f00\u03bd\u03b1\u03bb\u03b7\u03bc\u03c6\u03b8\u03b5\u1f76\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "who"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "has"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "been"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "taken"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "up"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G05750",
+          "x-lemma": "\u1f00\u03c0\u03cc",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f00\u03c6\u2019"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "from"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G47710",
+          "x-lemma": "\u03c3\u03cd",
+          "x-morph": "Gr,RP,,,2G,P,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f51\u03bc\u1ff6\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G15190",
+          "x-lemma": "\u03b5\u1f30\u03c2",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "x-occurrence": "2",
+          "x-occurrences": "3",
+          "x-content": "\u03b5\u1f30\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "into"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G35880",
+          "x-lemma": "\u1f41",
+          "x-morph": "Gr,EA,,,,AMS,",
+          "x-occurrence": "2",
+          "x-occurrences": "3",
+          "x-content": "\u03c4\u1f78\u03bd"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G37720",
+          "x-lemma": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03c2",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03bf\u1f50\u03c1\u03b1\u03bd\u1f78\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "heaven"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G20640",
+          "x-lemma": "\u1f14\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+          "x-morph": "Gr,V,IFM3,,S,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f10\u03bb\u03b5\u03cd\u03c3\u03b5\u03c4\u03b1\u03b9"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "will"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G37790",
+          "x-lemma": "\u03bf\u1f55\u03c4\u03c9\u03c2",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03bf\u1f55\u03c4\u03c9\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "likewise"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G20640",
+          "x-lemma": "\u1f14\u03c1\u03c7\u03bf\u03bc\u03b1\u03b9",
+          "x-morph": "Gr,V,IFM3,,S,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f10\u03bb\u03b5\u03cd\u03c3\u03b5\u03c4\u03b1\u03b9"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "return"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G37390",
+          "x-lemma": "\u1f45\u03c2",
+          "x-morph": "Gr,ER,,,,AMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f43\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "same"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G51580",
+          "x-lemma": "\u03c4\u03c1\u03cc\u03c0\u03bf\u03c2",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03c4\u03c1\u03cc\u03c0\u03bf\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "manner"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G23000",
+          "x-lemma": "\u03b8\u03b5\u03ac\u03bf\u03bc\u03b1\u03b9",
+          "x-morph": "Gr,V,IAM2,,P,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u1f10\u03b8\u03b5\u03ac\u03c3\u03b1\u03c3\u03b8\u03b5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "as"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "you"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "saw"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G08460",
+          "x-lemma": "\u03b1\u1f50\u03c4\u03cc\u03c2",
+          "x-morph": "Gr,RP,,,3AMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03b1\u1f50\u03c4\u1f78\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "him"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G41980",
+          "x-lemma": "\u03c0\u03bf\u03c1\u03b5\u03cd\u03c9",
+          "x-morph": "Gr,V,PPM,AMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-content": "\u03c0\u03bf\u03c1\u03b5\u03c5\u03cc\u03bc\u03b5\u03bd\u03bf\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "going"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G15190",
+          "x-lemma": "\u03b5\u1f30\u03c2",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "x-occurrence": "3",
+          "x-occurrences": "3",
+          "x-content": "\u03b5\u1f30\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "into"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G35880",
+          "x-lemma": "\u1f41",
+          "x-morph": "Gr,EA,,,,AMS,",
+          "x-occurrence": "3",
+          "x-occurrences": "3",
+          "x-content": "\u03c4\u1f78\u03bd"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-strong": "G37720",
+          "x-lemma": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03c2",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-occurrence": "2",
+          "x-occurrences": "2",
+          "x-content": "\u03bf\u1f50\u03c1\u03b1\u03bd\u03cc\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "heaven"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ".\""
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": []
+    }
+  ]
+}

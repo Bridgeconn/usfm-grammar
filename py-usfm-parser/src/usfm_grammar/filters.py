@@ -53,9 +53,10 @@ def exclude_markers_in_usj(input_usj,
             return []
         return [input_usj]
     cleaned_kids = []
-    exclude_markers = [re.sub(trailing_num_pattern, '', item.split(':')[-1])
+    exclude_markers = [re.sub(trailing_num_pattern, '', item)
                                                      for item in exclude_markers]
-    this_marker = re.sub(trailing_num_pattern,'', input_usj['type'].split(':')[-1])
+    this_marker = input_usj['marker'] if 'marker' in input_usj else ''
+    this_marker = re.sub(trailing_num_pattern, '', this_marker)
     this_marker_needed = True
     excluded_parent=False # used to check if its text is needed or not, in the subsequent call
     inner_content_needed = True
@@ -92,13 +93,14 @@ def include_markers_in_usj(input_usj,
             return []
         return [input_usj]
     cleaned_kids = []
-    include_markers = [re.sub(trailing_num_pattern,'', item.split(':')[-1])
+    include_markers = [re.sub(trailing_num_pattern,'', item)
                                                 for item in include_markers]
-    this_marker = re.sub(trailing_num_pattern,'', input_usj['type'].split(':')[-1])
+    this_marker = input_usj['marker'] if 'marker' in input_usj else ''
+    this_marker = re.sub(trailing_num_pattern, '', this_marker)
     this_marker_needed = True
     excluded_parent = False # used to check if its text is needed or not in the subsequent call
     inner_content_needed = True
-    if this_marker not in include_markers:
+    if this_marker not in include_markers+['']:
         this_marker_needed =False
         excluded_parent = True
         if this_marker in MARKERS_WITH_DISCARDABLE_CONTENTS:

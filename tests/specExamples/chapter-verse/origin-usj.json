@@ -1,0 +1,111 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "content": [
+        "41MATGNT92.SFM, Good News Translation, June 2003"
+      ],
+      "code": "MAT"
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "MAT 1",
+      "altnumber": "2",
+      "pubnumber": "M"
+    },
+    {
+      "type": "para",
+      "marker": "cl",
+      "content": [
+        "Matthew"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "cd",
+      "content": [
+        "Additional deacription about the chapter"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "The Ancestors of Jesus Christ"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "r",
+      "content": [
+        "(Luke 3.23-38)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "altnumber": "3",
+          "pubnumber": "1b",
+          "number": "1",
+          "sid": "MAT 1:1"
+        },
+        "This is the list of the ancestors of Jesus Christ, a descendant of David, who was a descendant of Abraham."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "MAT 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MAT 2:1"
+        },
+        "\u0d15\u0d4d\u0d30\u0d3f\u0d38\u0d4d\u0d24\u0d41\u0d2f\u0d47\u0d36\u0d41\u0d35\u0d3f\u0d28\u0d4d\u0d31\u0d46 \u0d2c\u0d26\u0d4d\u0d27\u0d28\u0d3e\u0d2f ...",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "MAT 2:2"
+        },
+        "\u0d28\u0d2e\u0d4d\u0d2e\u0d41\u0d1f\u0d46 \u0d2a\u0d3f\u0d24\u0d3e\u0d35\u0d3e\u0d2f ..."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iex",
+      "content": [
+        "Written to the Romans from Corinthus, and sent by Phebe servant of the church at Cenchrea."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "MAT 2:3"
+        },
+        "\u0d15\u0d7c\u0d24\u0d4d\u0d24\u0d3e\u0d35\u0d3e\u0d2f \u0d2f\u0d47\u0d36\u0d41\u0d35\u0d3f\u0d28\u0d4b\u0d1f\u0d41\u0d02 ..."
+      ]
+    }
+  ]
+}

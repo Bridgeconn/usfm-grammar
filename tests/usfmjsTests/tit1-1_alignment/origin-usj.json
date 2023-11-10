@@ -1,0 +1,520 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "content": [
+        "Titus"
+      ],
+      "code": "TIT"
+    },
+    {
+      "type": "para",
+      "marker": "usfm",
+      "content": [
+        "3.0"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G39720",
+          "x-ugnt": "\u03a0\u03b1\u1fe6\u03bb\u03bf\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Paul"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G14010",
+          "x-ugnt": "\u03b4\u03bf\u1fe6\u03bb\u03bf\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "a"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "servant"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "x-strong": "G23160",
+          "x-ugnt": "\u0398\u03b5\u03bf\u1fe6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G06520",
+          "x-ugnt": "\u1f00\u03c0\u03cc\u03c3\u03c4\u03bf\u03bb\u03bf\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "an"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "apostle"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G11610",
+          "x-ugnt": "\u03b4\u1f72"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G24240",
+          "x-ugnt": "\u1f38\u03b7\u03c3\u03bf\u1fe6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Jesus"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G55470",
+          "x-ugnt": "\u03a7\u03c1\u03b9\u03c3\u03c4\u03bf\u1fe6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Christ"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G25960",
+          "x-ugnt": "\u03ba\u03b1\u03c4\u1f70"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "for"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G41020",
+          "x-ugnt": "\u03c0\u03af\u03c3\u03c4\u03b9\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "faith"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "2",
+          "x-occurrences": "2",
+          "x-strong": "G23160",
+          "x-ugnt": "\u0398\u03b5\u03bf\u1fe6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        "'",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "s"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G15880",
+          "x-ugnt": "\u1f10\u03ba\u03bb\u03b5\u03ba\u03c4\u1ff6\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "chosen"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "people"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G25320",
+          "x-ugnt": "\u03ba\u03b1\u1f76"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G02250",
+          "x-ugnt": "\u1f00\u03bb\u03b7\u03b8\u03b5\u03af\u03b1\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G19220",
+          "x-ugnt": "\u1f10\u03c0\u03af\u03b3\u03bd\u03c9\u03c3\u03b9\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "knowledge"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G02250",
+          "x-ugnt": "\u1f00\u03bb\u03b7\u03b8\u03b5\u03af\u03b1\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "of"
+          ],
+          "x-occurrence": "4",
+          "x-occurrences": "4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "truth"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "3",
+          "x-occurrences": "3"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G35880",
+          "x-ugnt": "\u03c4\u1fc6\u03c2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "that"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G25960",
+          "x-ugnt": "\u03ba\u03b1\u03c4\u2019"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "agrees"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "with"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G21500",
+          "x-ugnt": "\u03b5\u1f50\u03c3\u03ad\u03b2\u03b5\u03b9\u03b1\u03bd"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "godliness"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ","
+      ]
+    }
+  ]
+}

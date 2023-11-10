@@ -1,0 +1,369 @@
+{
+  "type": "USJ",
+  "version": "0.1.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "content": [
+        "EN_ULB en_English_ltr Wed Feb 07 2018 19:07:07 GMT-0500 (EST) tc"
+      ],
+      "code": "HEB"
+    },
+    {
+      "type": "para",
+      "marker": "usfm",
+      "content": [
+        "3.0"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Hebrews"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "HEB 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "HEB 1:1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u03c0\u03ac\u03bb\u03b1\u03b9",
+          "x-lemma": "\u03c0\u03ac\u03bb\u03b1\u03b9",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G38190"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "Long"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ago"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u1f41",
+          "x-lemma": "\u1f41",
+          "x-morph": "Gr,EA,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G35880"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u0398\u03b5\u1f78\u03c2",
+          "x-lemma": "\u03b8\u03b5\u03cc\u03c2",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G23160"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "God"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u03bb\u03b1\u03bb\u03ae\u03c3\u03b1\u03c2",
+          "x-lemma": "\u03bb\u03b1\u03bb\u03ad\u03c9",
+          "x-morph": "Gr,V,PAA,NMS,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G29800"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "spoke"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "to"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u03c4\u03bf\u1fd6\u03c2",
+          "x-lemma": "\u1f41",
+          "x-morph": "Gr,EA,,,,DMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "x-strong": "G35880"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "our"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u03c4\u03bf\u1fd6\u03c2",
+          "x-lemma": "\u1f41",
+          "x-morph": "Gr,EA,,,,DMP,",
+          "x-occurrence": "2",
+          "x-occurrences": "2",
+          "x-strong": "G35880"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u03c0\u03b1\u03c4\u03c1\u03ac\u03c3\u03b9\u03bd",
+          "x-lemma": "\u03c0\u03b1\u03c4\u03ae\u03c1",
+          "x-morph": "Gr,N,,,,,DMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G39620"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u1f10\u03bd",
+          "x-lemma": "\u1f10\u03bd",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G17220"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ancestors"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "through"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-alignmentIndex": "10",
+          "x-content": "\u03c0\u03c1\u03bf\u03c6\u03ae\u03c4\u03b1\u03b9\u03c2",
+          "x-lemma": "\u03c0\u03c1\u03bf\u03c6\u03ae\u03c4\u03b7\u03c2",
+          "x-morph": "Gr,N,,,,,DMP,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G43960"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "the"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "prophets"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u03c0\u03bf\u03bb\u03c5\u03bc\u03b5\u03c1\u1ff6\u03c2",
+          "x-lemma": "\u03c0\u03bf\u03bb\u03c5\u03bc\u03b5\u03c1\u1ff6\u03c2",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G41810"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "at"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "many"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "times"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u03ba\u03b1\u1f76",
+          "x-lemma": "\u03ba\u03b1\u03af",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G25320"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "and"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-content": "\u03c0\u03bf\u03bb\u03c5\u03c4\u03c1\u03cc\u03c0\u03c9\u03c2",
+          "x-lemma": "\u03c0\u03bf\u03bb\u03c5\u03c4\u03c1\u03cc\u03c0\u03c9\u03c2",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strong": "G41870"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "in"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "many"
+          ],
+          "x-occurrence": "2",
+          "x-occurrences": "2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ways"
+          ],
+          "x-occurrence": "1",
+          "x-occurrences": "1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        "."
+      ]
+    }
+  ]
+}

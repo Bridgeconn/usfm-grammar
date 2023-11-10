@@ -29,7 +29,7 @@ def test_list_converions_with_exclude_markers(file_path, exclude_markers):
     usfm_list = test_parser.to_list(exclude_markers=exclude_markers)
     assert isinstance(usfm_list, list)
     for row in usfm_list[1:]:
-        assert row[4].split(':')[-1] not in exclude_markers
+        assert row[5] not in exclude_markers
 
 trailing_num_pattern = re.compile(r'\d+$')
 @pytest.mark.parametrize('file_path', test_files)
@@ -42,7 +42,7 @@ def test_list_converions_with_include_markers(file_path, include_markers):
     usfm_list = test_parser.to_list(include_markers=include_markers)
     assert isinstance(usfm_list, list)
     for row in usfm_list[1:]:
-        marker = row[4].split(':')[-1]
+        marker = row[5]
         marker = re.sub(trailing_num_pattern, "", marker)
         assert marker in include_markers
             

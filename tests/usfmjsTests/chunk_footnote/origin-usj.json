@@ -3,30 +3,35 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "son of David, son of Abraham.",
         {
-          "type": "note:f",
-          "caller": "This",
+          "type": "note",
+          "marker": "f",
           "content": [
             "is a footnote about this verse, It shouldn't be rendered inline with the text."
-          ]
+          ],
+          "caller": "This"
         }
       ]
     }

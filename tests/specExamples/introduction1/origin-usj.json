@@ -3,61 +3,71 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "MAT",
+      "type": "book",
+      "marker": "id",
       "content": [
         "41MATGNT92.SFM, Good News Translation, June 2003"
-      ]
+      ],
+      "code": "MAT"
     },
     {
-      "type": "para:usfm",
+      "type": "para",
+      "marker": "usfm",
       "content": [
         "3.0"
       ]
     },
     {
-      "type": "para:h",
+      "type": "para",
+      "marker": "h",
       "content": [
         "SAN MARCOS"
       ]
     },
     {
-      "type": "para:mt2",
+      "type": "para",
+      "marker": "mt2",
       "content": [
-        "Evangelio según"
+        "Evangelio seg\u00fan"
       ]
     },
     {
-      "type": "para:mt1",
+      "type": "para",
+      "marker": "mt1",
       "content": [
         "SAN MARCOS"
       ]
     },
     {
-      "type": "para:imt1",
+      "type": "para",
+      "marker": "imt1",
       "content": [
-        "INTRODUCCIÓN"
+        "INTRODUCCI\u00d3N"
       ]
     },
     {
-      "type": "para:is1",
+      "type": "para",
+      "marker": "is1",
       "content": [
         "Importancia del evangelio de Marcos"
       ]
     },
     {
-      "type": "para:ip",
+      "type": "para",
+      "marker": "ip",
       "content": [
         "Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca igualmente en",
         {
-          "type": "char:bk",
+          "type": "char",
+          "marker": "bk",
           "content": [
             "Mateo"
           ]
         },
         "y",
         {
-          "type": "char:bk",
+          "type": "char",
+          "marker": "bk",
           "content": [
             "Lucas."
           ]
@@ -65,29 +75,34 @@
       ]
     },
     {
-      "type": "para:ipi",
+      "type": "para",
+      "marker": "ipi",
       "content": [
         "Many Protestants consider the following books to be Apocrypha as defined above: Tobit, Judith, additions to Esther (as found in Greek Esther in the CEV) ..."
       ]
     },
     {
-      "type": "para:imi",
+      "type": "para",
+      "marker": "imi",
       "content": [
         {
-          "type": "char:em",
+          "type": "char",
+          "marker": "em",
           "content": [
             "Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water."
           ]
         },
-        "(“The Translators to the Reader,” King James Version, 1611)."
+        "(\u201cThe Translators to the Reader,\u201d King James Version, 1611)."
       ]
     },
     {
-      "type": "para:im",
+      "type": "para",
+      "marker": "im",
       "content": [
         "The most important document in the history of the English language is the",
         {
-          "type": "char:bk",
+          "type": "char",
+          "marker": "bk",
           "content": [
             "King James Version"
           ]
@@ -96,36 +111,42 @@
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "MAT 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "MAT 1:1"
         },
-        "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...",
+        "\u0d15\u0d4d\u0d30\u0d3f\u0d38\u0d4d\u0d24\u0d41\u0d2f\u0d47\u0d36\u0d41\u0d35\u0d3f\u0d28\u0d4d\u0d31\u0d46 \u0d2c\u0d26\u0d4d\u0d27\u0d28\u0d3e\u0d2f ...",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "MAT 1:2"
         },
-        "നമ്മുടെ പിതാവായ ..."
+        "\u0d28\u0d2e\u0d4d\u0d2e\u0d41\u0d1f\u0d46 \u0d2a\u0d3f\u0d24\u0d3e\u0d35\u0d3e\u0d2f ..."
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "MAT 1:3"
         },
-        "കർത്താവായ യേശുവിനോടും ..."
+        "\u0d15\u0d7c\u0d24\u0d4d\u0d24\u0d3e\u0d35\u0d3e\u0d2f \u0d2f\u0d47\u0d36\u0d41\u0d35\u0d3f\u0d28\u0d4b\u0d1f\u0d41\u0d02 ..."
       ]
     }
   ]

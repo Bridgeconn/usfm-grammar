@@ -3,26 +3,31 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "the first verse",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GEN 1:2"
         },
@@ -30,21 +35,25 @@
       ]
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "2",
       "sid": "GEN 2"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 2:1"
         },
         "the third verse",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GEN 2:2"
         },
@@ -52,16 +61,19 @@
       ]
     },
     {
-      "type": "para:s1",
+      "type": "para",
+      "marker": "s1",
       "content": [
         "Administration of the Tribes of Israel"
       ]
     },
     {
-      "type": "para:lh",
+      "type": "para",
+      "marker": "lh",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "16-22",
           "sid": "GEN 2:16-22"
         },
@@ -69,25 +81,29 @@
       ]
     },
     {
-      "type": "para:li1",
+      "type": "para",
+      "marker": "li1",
       "content": [
         "Reuben - Eliezer son of Zichri"
       ]
     },
     {
-      "type": "para:li1",
+      "type": "para",
+      "marker": "li1",
       "content": [
         "Simeon - Shephatiah son of Maacah"
       ]
     },
     {
-      "type": "para:li1",
+      "type": "para",
+      "marker": "li1",
       "content": [
         "Levi - Hashabiah son of Kemuel"
       ]
     },
     {
-      "type": "para:lf",
+      "type": "para",
+      "marker": "lf",
       "content": [
         "This was the list of the administrators of the tribes of Israel."
       ]

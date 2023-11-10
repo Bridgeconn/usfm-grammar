@@ -3,179 +3,203 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         "L'",
         {
-          "type": "char:w",
-          "strong": "H3068",
+          "type": "char",
+          "marker": "w",
           "content": [
-            "Éternel"
-          ]
+            "\u00c9ternel"
+          ],
+          "strong": "H3068"
         },
         {
-          "type": "char:w",
-          "strong": "H559",
-          "x-morph": "strongMorph:TH8799",
+          "type": "char",
+          "marker": "w",
           "content": [
             "dit"
-          ]
+          ],
+          "strong": "H559",
+          "x-morph": "strongMorph:TH8799"
         },
-        "à",
+        "\u00e0",
         {
-          "type": "char:w",
-          "strong": "H87",
+          "type": "char",
+          "marker": "w",
           "content": [
             "Abram"
-          ]
+          ],
+          "strong": "H87"
         },
         ": Va-t-",
         {
-          "type": "char:w",
-          "strong": "H3212",
-          "x-morph": "strongMorph:TH8798",
+          "type": "char",
+          "marker": "w",
           "content": [
             "en"
-          ]
+          ],
+          "strong": "H3212",
+          "x-morph": "strongMorph:TH8798"
         },
         "de ton",
         {
-          "type": "char:w",
-          "strong": "H776",
+          "type": "char",
+          "marker": "w",
           "content": [
             "pays"
-          ]
+          ],
+          "strong": "H776"
         },
         ", de ta",
         {
-          "type": "char:w",
-          "strong": "H4138",
+          "type": "char",
+          "marker": "w",
           "content": [
             "patrie"
-          ]
+          ],
+          "strong": "H4138"
         },
         ", et de la",
         {
-          "type": "char:w",
-          "strong": "H1004",
+          "type": "char",
+          "marker": "w",
           "content": [
             "maison"
-          ]
+          ],
+          "strong": "H1004"
         },
         "de ton",
         {
-          "type": "char:w",
-          "strong": "H1",
+          "type": "char",
+          "marker": "w",
           "content": [
-            "père"
-          ]
+            "p\u00e8re"
+          ],
+          "strong": "H1"
         },
         ", dans le",
         {
-          "type": "char:w",
-          "strong": "H776",
+          "type": "char",
+          "marker": "w",
           "content": [
             "pays"
-          ]
+          ],
+          "strong": "H776"
         },
         "que je te",
         {
-          "type": "char:w",
-          "strong": "H7200",
-          "x-morph": "strongMorph:TH8686",
+          "type": "char",
+          "marker": "w",
           "content": [
             "montrerai"
-          ]
+          ],
+          "strong": "H7200",
+          "x-morph": "strongMorph:TH8686"
         },
         ".",
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GEN 1:2"
         },
         "Je ferai de",
         {
-          "type": "char:w",
-          "strong": "H6213",
-          "x-morph": "strongMorph:TH8799",
+          "type": "char",
+          "marker": "w",
           "content": [
             "toi"
-          ]
+          ],
+          "strong": "H6213",
+          "x-morph": "strongMorph:TH8799"
         },
         "une",
         {
-          "type": "char:w",
-          "strong": "H1419",
+          "type": "char",
+          "marker": "w",
           "content": [
             "grande"
-          ]
+          ],
+          "strong": "H1419"
         },
         {
-          "type": "char:w",
-          "strong": "H1471",
+          "type": "char",
+          "marker": "w",
           "content": [
             "nation"
-          ]
+          ],
+          "strong": "H1471"
         },
         ", et je te",
         {
-          "type": "char:w",
-          "strong": "H1288",
-          "x-morph": "strongMorph:TH8762",
+          "type": "char",
+          "marker": "w",
           "content": [
-            "bénirai"
-          ]
+            "b\u00e9nirai"
+          ],
+          "strong": "H1288",
+          "x-morph": "strongMorph:TH8762"
         },
         "; je",
         {
-          "type": "char:w",
-          "strong": "H1431",
+          "type": "char",
+          "marker": "w",
           "content": [
             "rendrai"
-          ]
+          ],
+          "strong": "H1431"
         },
         {
-          "type": "char:w",
+          "type": "char",
+          "marker": "w",
           "content": []
         },
         "ton",
         {
-          "type": "char:w",
-          "strong": "H8034",
+          "type": "char",
+          "marker": "w",
           "content": [
             "nom"
-          ]
+          ],
+          "strong": "H8034"
         },
         {
-          "type": "char:w",
-          "strong": "H1431",
-          "x-morph": "strongMorph:TH8762",
+          "type": "char",
+          "marker": "w",
           "content": [
             "grand"
-          ]
+          ],
+          "strong": "H1431",
+          "x-morph": "strongMorph:TH8762"
         },
         ", et tu seras une source de",
         {
-          "type": "char:w",
-          "strong": "H1293",
+          "type": "char",
+          "marker": "w",
           "content": [
-            "bénédiction"
-          ]
+            "b\u00e9n\u00e9diction"
+          ],
+          "strong": "H1293"
         },
         "."
       ]

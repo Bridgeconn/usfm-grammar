@@ -3,91 +3,106 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "MAT",
+      "type": "book",
+      "marker": "id",
       "content": [
         "41MATGNT92.SFM, Good News Translation, June 2003"
-      ]
+      ],
+      "code": "MAT"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "MAT 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "MAT 1:1"
         }
       ]
     },
     {
-      "type": "para:q1",
+      "type": "para",
+      "marker": "q1",
       "content": [
-        "“Someone is shouting in the desert,"
+        "\u201cSomeone is shouting in the desert,"
       ]
     },
     {
-      "type": "para:q2",
+      "type": "para",
+      "marker": "q2",
       "content": [
-        "‘Prepare a road for the Lord;"
+        "\u2018Prepare a road for the Lord;"
       ]
     },
     {
-      "type": "para:q2",
+      "type": "para",
+      "marker": "q2",
       "content": [
-        "make a straight path for him to travel!’ ”"
+        "make a straight path for him to travel!\u2019 \u201d"
       ]
     },
     {
-      "type": "sidebar:esb",
-      "category": "People",
+      "type": "sidebar",
+      "marker": "esb",
       "content": [
         {
-          "type": "para:ms",
+          "type": "para",
+          "marker": "ms",
           "content": [
             {
-              "type": "char:jmp",
-              "link-id": "article-john_the_baptist",
-              "content": []
+              "type": "char",
+              "marker": "jmp",
+              "content": [],
+              "link-id": "article-john_the_baptist"
             },
             "John the Baptist"
           ]
         },
         {
-          "type": "para:p",
+          "type": "para",
+          "marker": "p",
           "content": [
-            "John is sometimes called the last “Old Testament prophet” because of the warnings he brought about God's judgment and because he announced the coming of God's “Chosen One” (Messiah)."
+            "John is sometimes called the last \u201cOld Testament prophet\u201d because of the warnings he brought about God's judgment and because he announced the coming of God's \u201cChosen One\u201d (Messiah)."
           ]
         }
-      ]
+      ],
+      "category": "People"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2-6",
           "sid": "MAT 1:2-6"
         },
         "From Abraham to King David, the following ancestors are listed: Abraham,...mother was",
         {
-          "type": "char:jmp",
-          "link-href": "#article-Ruth",
+          "type": "char",
+          "marker": "jmp",
           "content": [
             "Ruth"
-          ]
+          ],
+          "link-href": "#article-Ruth"
         },
         "), Jesse, and King David.",
         {
-          "type": "char:w",
-          "link-href": "http://bibles.org/search/grace/eng-GNTD/all",
+          "type": "char",
+          "marker": "w",
           "content": [
             "gracious"
-          ]
+          ],
+          "link-href": "http://bibles.org/search/grace/eng-GNTD/all"
         }
       ]
     }

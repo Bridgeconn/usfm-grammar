@@ -3,26 +3,31 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:s",
+      "type": "para",
+      "marker": "s",
       "content": [
         "some text"
       ]
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
@@ -33,40 +38,46 @@
       "type": "table",
       "content": [
         {
-          "type": "table:row:tr",
+          "type": "table:row",
+          "marker": "tr",
           "content": [
             {
-              "type": "table:cell:th1",
-              "align": "start",
+              "type": "table:cell",
+              "marker": "th1",
               "content": [
                 "header1"
-              ]
+              ],
+              "align": "start"
             },
             {
-              "type": "table:cell:th3",
-              "align": "start",
+              "type": "table:cell",
+              "marker": "th3",
               "content": [
                 "header3"
-              ]
+              ],
+              "align": "start"
             }
           ]
         },
         {
-          "type": "table:row:tr",
+          "type": "table:row",
+          "marker": "tr",
           "content": [
             {
-              "type": "table:cell:tcr2",
-              "align": "end",
+              "type": "table:cell",
+              "marker": "tcr2",
               "content": [
                 "cell2"
-              ]
+              ],
+              "align": "end"
             },
             {
-              "type": "table:cell:tcr3",
-              "align": "end",
+              "type": "table:cell",
+              "marker": "tcr3",
               "content": [
                 "cell3"
-              ]
+              ],
+              "align": "end"
             }
           ]
         }

@@ -3,66 +3,78 @@
   "version": "0.1.0",
   "content": [
     {
-      "type": "book:id",
-      "code": "GEN",
-      "content": []
+      "type": "book",
+      "marker": "id",
+      "content": [],
+      "code": "GEN"
     },
     {
-      "type": "chapter:c",
+      "type": "chapter",
+      "marker": "c",
       "number": "1",
       "sid": "GEN 1"
     },
     {
-      "type": "para:p",
+      "type": "para",
+      "marker": "p",
       "content": [
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "1",
           "sid": "GEN 1:1"
         },
         {
-          "type": "char:em",
+          "type": "char",
+          "marker": "em",
           "content": [
             "word"
           ]
         },
         {
-          "type": "char:em",
+          "type": "char",
+          "marker": "em",
           "content": [
             "wordtwo"
           ]
         },
         "word3",
         {
-          "type": "char:em",
+          "type": "char",
+          "marker": "em",
           "content": [
             "word4"
           ]
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "2",
           "sid": "GEN 1:2"
         },
         {
-          "type": "char:em",
+          "type": "char",
+          "marker": "em",
           "content": [
             "word5"
           ]
         },
         {
-          "type": "verse:v",
+          "type": "verse",
+          "marker": "v",
           "number": "3",
           "sid": "GEN 1:3"
         },
         {
-          "type": "char:w",
+          "type": "char",
+          "marker": "w",
           "content": [
             "glossaryone"
           ]
         },
         {
-          "type": "char:w",
+          "type": "char",
+          "marker": "w",
           "content": [
             "glossarytwo"
           ]
