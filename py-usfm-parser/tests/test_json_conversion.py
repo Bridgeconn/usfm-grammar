@@ -23,7 +23,7 @@ def test_usj_converions_without_filter(file_path):
     assert not test_parser.errors, test_parser.errors
     usfm_dict = test_parser.to_usj()
     assert isinstance(usfm_dict, dict)
-    # usj_file_path = file_path.replace("origin.usfm", "origin-usj.json")
+    # usj_file_path = file_path.replace("origin.usfm", "origin.json")
     # with open(usj_file_path, 'w', encoding='utf-8') as usj_file:
     #     json.dump(usfm_dict, usj_file, indent=2 )
 
@@ -171,7 +171,7 @@ def test_compare_usj_with_testsuite_samples(file_path):
         usj_dict = test_parser.to_usj()
         # remove_newlines_in_text(usj_dict) # need this if using USJ generated from tcdocs
         try:
-            usj_file_path = file_path.replace("origin.usfm", "origin-usj.json")
+            usj_file_path = file_path.replace("origin.usfm", "origin.json")
             with open(usj_file_path, 'r', encoding='utf-8') as usj_file:
                 origin_usj = json.load(usj_file)
             assert usj_dict == origin_usj, f"generated USJ:\n{usj_dict}\n"+\
