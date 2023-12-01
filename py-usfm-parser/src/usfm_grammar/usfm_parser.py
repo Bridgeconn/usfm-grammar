@@ -138,7 +138,7 @@ class USFMParser():
                 "\nUse ignore_errors=True, to generate output inspite of errors")
         json_root_obj = {
                 "type": "USJ",
-                "version": "0.1.0",
+                "version": "0.2.0",
                 "content":[]
             }
         try:
