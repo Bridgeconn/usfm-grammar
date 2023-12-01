@@ -73,4 +73,4 @@ jobs:
         working-directory: ./py-usfm-parser
         run:
           # pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto
-          pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not generated_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto
+          pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not generated_usx_with_rnc_grammar and not samples-from-wild" -n auto
