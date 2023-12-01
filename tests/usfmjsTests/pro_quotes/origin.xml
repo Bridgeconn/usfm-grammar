@@ -1,4 +1,4 @@
-<usx version="3.0">
+﻿<usx version="3.0">
   <book code="PRO" style="id">Unlocked Literal Bible</book>
   <para style="ide">UTF-8</para>
   <para style="h">Proverbs</para>
@@ -7,14 +7,14 @@
   <para style="toc3">Pro</para>
   <para style="mt">Proverbs</para>
   <chapter number="21" style="c" sid="PRO 21" />
-  <para style="s5" status="unknown" />
+  <para style="s5" />
   <para style="q">
     <verse number="9" style="v" sid="PRO 21:9" />It is better to live on a corner of the roof</para>
   <para style="q" vid="PRO 21:9">than in a house shared with a quarrelsome wife.<verse eid="PRO 21:9" /></para>
   <para style="q">
     <verse number="10" style="v" sid="PRO 21:10" />The appetite of the wicked craves evil;</para>
-  <para style="q" vid="PRO 21:10">his neighbor finds no favor in his eyes. <verse eid="PRO 21:10" /></para>
-  <para style="s5" status="unknown" />
+  <para style="q" vid="PRO 21:10">his neighbor finds no favor in his eyes.<verse eid="PRO 21:10" /></para>
+  <para style="s5" />
   <para style="q">
     <verse number="19" style="v" sid="PRO 21:19" />Long ago you spoke in a vision to your faithful ones <note caller="+" style="f"><char style="ft" closed="false">Many mss have the singular </char><char style="fqa">faithful one</char> instead of <char style="fqa" closed="false">faithful ones.</char></note>;</para>
   <para style="q" vid="PRO 21:19">you said,</para>

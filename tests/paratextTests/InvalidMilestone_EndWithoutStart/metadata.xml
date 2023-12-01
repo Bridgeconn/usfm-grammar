@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>InvalidMilestone_EndWithoutStart. From paratext test suite</description>
-        <validated>fail</validated>
+        <description>InvalidMilestone_EndWithoutStart. From paratext test suite
+		
+		Will pass since validation of s/e milestones is a semantic check</description>
+        <validated>pass</validated>
         <tags></tags>
 </test-metadata>

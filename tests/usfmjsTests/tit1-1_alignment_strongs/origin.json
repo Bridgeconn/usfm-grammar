@@ -1,0 +1,520 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "TIT",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "usfm",
+      "content": [
+        "3.0"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G39720",
+          "x-ugnt": "Παῦλος"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "Paul"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G14010",
+          "x-ugnt": "δοῦλος"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "a"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "servant"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "x-strongs": "G23160",
+          "x-ugnt": "Θεοῦ"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "4",
+          "content": [
+            "of"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "content": [
+            "God"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G06520",
+          "x-ugnt": "ἀπόστολος"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "2",
+          "content": [
+            "and"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "4",
+          "content": [
+            "an"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "apostle"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G11610",
+          "x-ugnt": "δὲ"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "2",
+          "x-occurrences": "4",
+          "content": [
+            "of"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G24240",
+          "x-ugnt": "Ἰησοῦ"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "Jesus"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G55470",
+          "x-ugnt": "Χριστοῦ"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "Christ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ",",
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G25960",
+          "x-ugnt": "κατὰ"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "for"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G41020",
+          "x-ugnt": "πίστιν"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "3",
+          "content": [
+            "the"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "faith"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "2",
+          "x-occurrences": "2",
+          "x-strongs": "G23160",
+          "x-ugnt": "Θεοῦ"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "3",
+          "x-occurrences": "4",
+          "content": [
+            "of"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "2",
+          "x-occurrences": "2",
+          "content": [
+            "God"
+          ]
+        },
+        "'",
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "s"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G15880",
+          "x-ugnt": "ἐκλεκτῶν"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "chosen"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "people"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G25320",
+          "x-ugnt": "καὶ"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "2",
+          "x-occurrences": "2",
+          "content": [
+            "and"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G02250",
+          "x-ugnt": "ἀληθείας"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "2",
+          "x-occurrences": "3",
+          "content": [
+            "the"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G19220",
+          "x-ugnt": "ἐπίγνωσιν"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "knowledge"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G02250",
+          "x-ugnt": "ἀληθείας"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "4",
+          "x-occurrences": "4",
+          "content": [
+            "of"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "truth"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "3",
+          "x-occurrences": "3",
+          "content": [
+            "the"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G35880",
+          "x-ugnt": "τῆς"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "that"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G25960",
+          "x-ugnt": "κατ’"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "agrees"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "with"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-s",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "x-strongs": "G21500",
+          "x-ugnt": "εὐσέβειαν"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-occurrence": "1",
+          "x-occurrences": "1",
+          "content": [
+            "godliness"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "zaln-e"
+        },
+        ","
+      ]
+    }
+  ]
+}

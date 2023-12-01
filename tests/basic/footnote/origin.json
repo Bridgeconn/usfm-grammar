@@ -1,0 +1,80 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "MAT",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "MAT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MAT 1:1"
+        },
+        "the first verse",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "MAT 1:2"
+        },
+        "the second verse",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "MAT 1:3"
+        },
+        "This is the Good News about Jesus Christ, the Son of God.",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.1:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Some manuscripts do not have"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "the Son of God."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "MAT 1:4"
+        },
+        "yet another verse."
+      ]
+    }
+  ]
+}

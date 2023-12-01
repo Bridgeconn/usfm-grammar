@@ -1,0 +1,121 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "s",
+      "content": [
+        "some text"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "g",
+          "content": [
+            "B"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "g",
+          "content": [
+            "僕使御"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "g:g",
+          "content": [
+            "BB"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "gg",
+          "content": [
+            "BB"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "g:g",
+          "content": [
+            "B僕使御"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "g:g",
+          "content": [
+            "BB"
+          ]
+        }
+      ]
+    }
+  ]
+}

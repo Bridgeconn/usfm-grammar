@@ -1,0 +1,165 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "PSA",
+      "content": [
+        "Unlocked Literal Bible"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Psalms"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "The Book of Psalms"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Psalms"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "Psa"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt",
+      "content": [
+        "The Book of Psalms"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "091",
+      "sid": "PSA 91"
+    },
+    {
+      "type": "para",
+      "marker": "ms",
+      "content": [
+        "Book One"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "m",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "01",
+          "sid": "PSA 91:1"
+        },
+        "He who lives in the shelter of the Most High"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        "will stay in the shadow of the Almighty."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "02",
+          "sid": "PSA 91:2"
+        },
+        "I will say of Yahweh, \"He is my refuge and my fortress,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        "my God, in whom I trust.\""
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "03-04",
+          "sid": "PSA 91:03-04"
+        },
+        "For he will rescue you from the snare of the hunter"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        "and from the deadly plague."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        "He will cover you with his wings,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        "and under his wings you will find refuge."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        "His trustworthiness is a shield and protection."
+      ]
+    }
+  ]
+}

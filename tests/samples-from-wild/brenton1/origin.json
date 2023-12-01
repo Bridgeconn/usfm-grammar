@@ -1,0 +1,1025 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "RUT",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Ruth"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "RUTH"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Ruth"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "RUT"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt1",
+      "content": [
+        "RUTH"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "RUT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "RUT 1:1"
+        },
+        "And it came to pass when the judges ruled, that there was a famine in the land: and a man went from Bethleem Juda to sojourn in the land of Moab, he, and his wife, and his two sons.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "RUT 1:2"
+        },
+        "And the man's name",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "was"
+          ]
+        },
+        "Elimelech, and his wife's name Noemin, and the names of his two sons Maalon and Chelaion, Ephrathites of Bethleem of Juda: and they came to the land of Moab, and remained there.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "RUT 1:3"
+        },
+        "And Elimelech the husband of Noemin died; and she was left, and her two sons.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "RUT 1:4"
+        },
+        "And they took to themselves wives, women of Moab; the name of the one",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "was"
+          ]
+        },
+        "Orpha, and the name of the second Ruth; and they dwelt there about ten years.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "RUT 1:5"
+        },
+        "And both Maalon and Chelaion died also; and the woman was left of her husband and her two sons.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "RUT 1:6"
+        },
+        "And she rose up and her two daughters-in-law, and they returned out of the country of Moab, for she heard in the country of Moab that the Lord",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "had"
+          ]
+        },
+        "visited his people to give them bread.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "RUT 1:7"
+        },
+        "And she went forth out of the place where she was, and her two daughters-in-law with her: and they went by the way to return to the land of Juda.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "RUT 1:8"
+        },
+        "And Noemin said to her daughter-in-law, Go now, return each to the house of her mother: the Lord deal mercifully with you, as ye have dealt with the dead, and with me.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "RUT 1:9"
+        },
+        "The Lord grant you that ye may find rest each of you in the house of her husband: and she kissed them; and they lifted up their voice, and wept.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "RUT 1:10"
+        },
+        "And they said to her, We will return with thee to thy people.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "RUT 1:11"
+        },
+        "And Noemin said, Return now, my daughters; and why do ye go with me? have I yet sons in my womb to be your husbands?",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "RUT 1:12"
+        },
+        "Turn now, my daughters, for I am too old to be married: for I said, Suppose I were married, and should bear sons;",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "RUT 1:13"
+        },
+        "would ye wait for them till they should be grown? or would ye refrain from being married for their sakes? Not so, my daughters; for I am grieved for you, that the hand of the Lord has gone forth against me.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "RUT 1:14"
+        },
+        "And they lifted up their voice, and wept again; and Orpha kissed her mother-in-law and returned to her people; but Ruth followed her.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "RUT 1:15"
+        },
+        "And Noemin said to Ruth, Behold, thy sister-in-law has returned to her people and to her gods; turn now thou also after thy sister-in-law.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "RUT 1:16"
+        },
+        "And Ruth said, Intreat me not to leave thee, or to return from following thee; for whithersoever thou goest, I will go, and wheresoever thou lodgest, I will lodge; thy people",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "shall be"
+          ]
+        },
+        "my people, and thy God my God.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "RUT 1:17"
+        },
+        "And wherever thou diest, I will die, and there will I be buried: the Lord do so to me, and more also,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "if I leave thee"
+          ]
+        },
+        ", for death",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "only"
+          ]
+        },
+        "shall divide between me and thee.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "18",
+          "sid": "RUT 1:18"
+        },
+        "And Noemin seeing that she was determined to go with her, ceased to speak to her any more.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "19",
+          "sid": "RUT 1:19"
+        },
+        "And they went both of them until they came to Bethleem: and it came to pass, when they arrived at Bethleem, that all the city rang with them, and they said, Is this Noemin?",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "20",
+          "sid": "RUT 1:20"
+        },
+        "And she said to them, Nay, do not call me Noemin; call me 'Bitter,' for the Mighty One has dealt very bitterly with me.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "21",
+          "sid": "RUT 1:21"
+        },
+        "I went out full, and the Lord has brought me back empty: and why call ye me Noemin, whereas the Lord has humbled me and the Mighty One has afflicted me?",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "22",
+          "sid": "RUT 1:22"
+        },
+        "So Noemin and Ruth the Moabitess, her daughter-in-law, returned from the country of Moab; and they came to Bethleem in the beginning of barley harvest."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "RUT 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "RUT 2:1"
+        },
+        "And Noemin had",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "a friend"
+          ]
+        },
+        "an acquaintance of her husband, and the man",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "was"
+          ]
+        },
+        "a mighty man of the kindred of Elimelech, and his name",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "was"
+          ]
+        },
+        "Booz.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "RUT 2:2"
+        },
+        "And Ruth the Moabitess said to Noemin, Let me go now to the field, and I will glean among the ears behind the man with whomsoever I shall find favour: and she said to her, Go, daughter.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "RUT 2:3"
+        },
+        "And she went; and came and gleaned in the field behind the reapers; and she happened by chance to come on a portion of the land of Booz, of the kindred of Elimelech.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "RUT 2:4"
+        },
+        "And, behold, Booz came from Bethleem, and said to the reapers, The Lord",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "be"
+          ]
+        },
+        "with you: and they said to him, The Lord bless thee.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "RUT 2:5"
+        },
+        "And Booz said to his servant who was set over the reapers, Whose",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "is"
+          ]
+        },
+        "this damsel?",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "RUT 2:6"
+        },
+        "And his servant who was set over the reapers answered and said, It is the Moabitish damsel who returned with Noemin out of the land of Moab.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "RUT 2:7"
+        },
+        "And she said, I pray you, let me glean and gather among the sheaves after the reapers: and she came and stood from morning till evening, and rested not",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "even"
+          ]
+        },
+        "a little in the field.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "RUT 2:8"
+        },
+        "And Booz said to Ruth, Hast thou not heard,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        "daughter? go not to glean in another field; and depart not thou hence, join thyself here with my damsels.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "RUT 2:9"
+        },
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "Let"
+          ]
+        },
+        "thine eyes",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "be"
+          ]
+        },
+        "on the field where",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my men"
+          ]
+        },
+        "shall reap, and thou shalt go after them: behold, I have charged the young men not to touch thee: and when you shalt thirst, then thou shalt go to the vessels, and drink of that which the young men shall have drawn.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "RUT 2:10"
+        },
+        "And she fell upon her face, and did reverence to the ground, and said to him, How is it that I have found grace in thine eyes, that thou shouldest take notice of me, whereas I am a stranger?",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "RUT 2:11"
+        },
+        "And Booz answered and said to her, It has fully been told me how thou hast dealt with thy mother-in-law after the death of thy husband; and how thou didst leave thy father and thy mother, and the land of thy birth, and camest to a people whom thou knewest not before.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "RUT 2:12"
+        },
+        "The Lord recompense thy work; may a full reward be given thee of the Lord God of Israel, to whom thou hast come to trust under his wings.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "RUT 2:13"
+        },
+        "And she said, Let me find grace in thy sight, my lord, because thou hast comforted me, and because thou hast spoken kindly to thy handmaid, and behold, I shall be as one of thy servants.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "RUT 2:14"
+        },
+        "And Booz said to her, Now",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "it is"
+          ]
+        },
+        "time to eat; come hither, and thou shalt eat of the bread, and thou shalt dip thy morsel in the vinegar: and Ruth sat by the side of the reapers: and Booz handed her meal, and she ate, and was satisfied, and left.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "RUT 2:15"
+        },
+        "And she rose up to glean; and Booz charged his young men, saying, Let her even glean among the sheaves, and reproach her not.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "RUT 2:16"
+        },
+        "And do ye by all means carry it for her, and ye shall surely let fall for her some of that which is heaped up; and let her eat, and glean, and rebuke her not.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "RUT 2:17"
+        },
+        "So she gleaned in the field till evening, and beat out that she had gleaned, and it was about an ephah of barely.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "18",
+          "sid": "RUT 2:18"
+        },
+        "And she took",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "it"
+          ]
+        },
+        "up, and went into the city: and her mother-in-law saw what she had gleaned, and Ruth brought forth and gave to her the food which she had left from what she had been satisfied with.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "19",
+          "sid": "RUT 2:19"
+        },
+        "And her mother-in-law said to her, Where hast thou gleaned to-day, and where hast thou wrought? blessed be he that took notice of thee. And Ruth told her mother-in-law where she",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "had"
+          ]
+        },
+        "wrought, and said, The name of the man with whom I wrought to-day",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "is"
+          ]
+        },
+        "Booz.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "20",
+          "sid": "RUT 2:20"
+        },
+        "And Noemin said to her daughter-in-law, Blessed is he of the Lord, because he has not failed in his mercy with the living and with the dead: and Noemin said to her, The man is near akin to us, he is one of our relations.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "21",
+          "sid": "RUT 2:21"
+        },
+        "And Ruth said to her mother-in-law, Yea, he said also to me, Keep close to my damsels, until the men shall have finished all my reaping.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "22",
+          "sid": "RUT 2:22"
+        },
+        "And Noemin said to Ruth her daughter-in-law,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "It is"
+          ]
+        },
+        "well, daughter, that thou wentest out with his damsels; thus they shall not meet thee in another field.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "23",
+          "sid": "RUT 2:23"
+        },
+        "And Ruth joined herself to the damsels of Booz to glean until they had finished the barley-harvest and the wheat-harvest."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "3",
+      "sid": "RUT 3"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "RUT 3:1"
+        },
+        "And she lodged with her mother-in-law: and Noemin her mother-in-law said to her, My daughter, shall I not seek rest for thee, that it may be well with thee?",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "RUT 3:2"
+        },
+        "And now",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "is"
+          ]
+        },
+        "not Booz our kinsman, with whose damsels thou wast? behold, he winnows barley this night in the floor.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "RUT 3:3"
+        },
+        "But do thou wash, and anoint thyself, and put thy raiment upon thee, and go up to the threshing-floor: do not discover thyself to the man until he has done eating and drinking.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "RUT 3:4"
+        },
+        "And it shall come to pass when he lies down, that thou shalt mark the place where he lies down, and shalt come and lift up the covering of his feet, and shalt lie down; and he shall tell thee what thou shalt do.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "RUT 3:5"
+        },
+        "And Ruth said to her, All that thou shalt say, I will do.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "RUT 3:6"
+        },
+        "And she went down to the threshing-floor, and did according to all that her mother-in-law enjoined her.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "RUT 3:7"
+        },
+        "And Booz ate and drank, and his heart was glad, and he came to lie down by the side of the heap of corn; and she came secretly, and lifted up the covering of his feet.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "RUT 3:8"
+        },
+        "And it came to pass at midnight that the man was amazed, and troubled, and behold, a woman lay at his feet.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "RUT 3:9"
+        },
+        "And he said, Who art thou? and she said, I am thine handmaid Ruth; spread therefore thy skirt over thine handmaid, for thou art a near relation.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "RUT 3:10"
+        },
+        "And Booz said, Blessed",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "be"
+          ]
+        },
+        "thou of the Lord God,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        "daughter, for thou hast made thy latter kindness greater than the former, in that thou followest not after young men, whether",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "any be"
+          ]
+        },
+        "poor or rich.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "RUT 3:11"
+        },
+        "And now fear not, my daughter, whatever thou shalt say I will do to thee; for all the tribe of my people knows that thou art a virtuous woman.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "RUT 3:12"
+        },
+        "And now I am truly akin to thee; nevertheless there is a kinsman nearer than I.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "RUT 3:13"
+        },
+        "Lodge",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "here"
+          ]
+        },
+        "for the night, and it shall be in the morning, if he will do the part of a kinsman to thee, well—let him do it: but if he will not do the part of a kinsman to thee, I will do the kinsman's part to thee,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "as"
+          ]
+        },
+        "the Lord lives; lie down till the morning.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "RUT 3:14"
+        },
+        "And she lay at his feet until the morning; and she rose up before a man could know his neighbour; and Booz said, Let it not be known that a woman came into the floor.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "RUT 3:15"
+        },
+        "And he said to her, Bring the apron that is upon thee: and she held it, and he measured six measures of barley, and put them upon her, and she went into the city.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "RUT 3:16"
+        },
+        "And Ruth went in to her mother-in-law, and she said to her,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "My"
+          ]
+        },
+        "daughter! and",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "Ruth"
+          ]
+        },
+        "told her all that the man had done to her.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "RUT 3:17"
+        },
+        "And she said to her, He gave me these six measures of barley, for he said to me, Go not empty to thy mother-in-law.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "18",
+          "sid": "RUT 3:18"
+        },
+        "And she said, Sit still,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        "daughter, until thou shalt know how the matter will fall out; for the man will not rest until the matter be accomplished this day."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "4",
+      "sid": "RUT 4"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "RUT 4:1"
+        },
+        "And Booz went up to the gate, and sat there; and behold, the relative passed by, of whom Booz spoke: and Booz said to him, Turn aside, sit down here, such a one: and he turned aside and sat down.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "RUT 4:2"
+        },
+        "And Booz took ten men of the elders of the city, and said, Sit ye here; and they sat down.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "RUT 4:3"
+        },
+        "And Booz said to the relative,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "The matter regards"
+          ]
+        },
+        "the portion of the field which was our brother Elimelech's which was given to Noemin, now returning out of the land of Moab;",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "RUT 4:4"
+        },
+        "and I said, I will inform thee, saying, Buy it before those that sit, and before the elders of my people: if thou wilt redeem it, redeem it, but if thou wilt not redeem it, tell me, and I shall know; for there is no one beside thee to do the office of a kinsman, and I am after thee: and he said, I am",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "here"
+          ]
+        },
+        ", I will redeem it.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "RUT 4:5"
+        },
+        "And Booz said, In the day of thy buying the field of the hand of Noemin and of Ruth the Moabitess the wife of the deceased, thou must also buy her, so as to raise up the name of the dead upon his inheritance.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "RUT 4:6"
+        },
+        "And the kinsman said, I shall not be able to redeem it for myself, lest I mar my own inheritance; do thou redeem my right for thyself, for I shall not be able to redeem",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "it"
+          ]
+        },
+        ".",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "RUT 4:7"
+        },
+        "And this",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "was"
+          ]
+        },
+        "in former time the ordinance in Israel for redemption, and for a bargain, to confirm every word: A man loosed his shoe, and gave it to his neighbour that redeemed his right; and this was a testimony in Israel.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "RUT 4:8"
+        },
+        "And the kinsman said to Booz, Buy my right for thyself: and he took off his shoe and gave it to him.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "RUT 4:9"
+        },
+        "And Booz said to the elders and to all the people, Ye",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "are"
+          ]
+        },
+        "this day witnesses, that I have bought all that was Elimelech's, and all that belonged to Chelaion and Maalon, of the hand of Noemin.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "RUT 4:10"
+        },
+        "Moreover I have bought for myself for a wife Ruth the Moabitess, the wife of Maalon, to raise up the name of the dead upon his inheritance; so the name of the dead shall not be destroyed from among his brethren, and from the tribe of his people: ye",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "are"
+          ]
+        },
+        "this day witnesses.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "RUT 4:11"
+        },
+        "And all the people who were in the gate said,",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "We are"
+          ]
+        },
+        "witnesses: and the elders said, The Lord make thy wife who goes into thy house, as Rachel and as Lia, who both",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "together"
+          ]
+        },
+        "built the house of Israel, and wrought mightily in Ephratha, and there shall be a name",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "to thee"
+          ]
+        },
+        "in Bethleem.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "RUT 4:12"
+        },
+        "And let thy house be as the house of Phares, whom Thamar bore to Juda, of the seed which the Lord shall give thee of this handmaid.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "RUT 4:13"
+        },
+        "And Booz took Ruth, and she became his wife, and he went in to her; and the Lord gave her conception, and she bore a son.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "RUT 4:14"
+        },
+        "And the woman said to Noemin, Blessed",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "is"
+          ]
+        },
+        "the Lord, who has not suffered a redeemer to fail thee this day, even to make thy name famous in Israel.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "RUT 4:15"
+        },
+        "And he shall be to thee a restorer of thy soul, and one to cherish thy old age; for thy daughter-in-law which has loved thee, who is better to thee than seven sons, has born him.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "RUT 4:16"
+        },
+        "And Noemin took the child and laid it in her bosom, and became a nurse to it.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "RUT 4:17"
+        },
+        "And the neighbours gave it a name, saying, A son has been born to Noemin; and they called his name Obed; this",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "is"
+          ]
+        },
+        "the father of Jessae the father of David.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "18",
+          "sid": "RUT 4:18"
+        },
+        "And these",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "are"
+          ]
+        },
+        "the generations of Phares: Phares begot Esrom:",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "19",
+          "sid": "RUT 4:19"
+        },
+        "Esrom begot Aram; and Aram begot Aminadab.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "20",
+          "sid": "RUT 4:20"
+        },
+        "And Aminadab begot Naasson; and Naasson begot Salmon.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "21",
+          "sid": "RUT 4:21"
+        },
+        "And Salmon begot Booz; and Booz begot Obed.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "22",
+          "sid": "RUT 4:22"
+        },
+        "And Obed begot Jessae; and Jessae begot David."
+      ]
+    }
+  ]
+}

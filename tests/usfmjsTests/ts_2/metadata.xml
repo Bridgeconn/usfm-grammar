@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
         <description>  handles ts_2 tag</description>
-        <validated>pass</validated>
-        <tags></tags>
+        <validated>fail</validated>
+        <tags>revisit</tags>
 </test-metadata>

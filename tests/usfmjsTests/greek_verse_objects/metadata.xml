@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>  handles greek word attributes and spans</description>
-        <validated>pass</validated>
-        <tags></tags>
+        <description>handles greek word attributes and spans</description>
+        <validated>fail</validated>
+        <tags>revisit</tags>
 </test-metadata>

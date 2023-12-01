@@ -1,0 +1,285 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "37",
+          "sid": "GEN 1:37"
+        },
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fqa",
+              "content": [
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "λέγω",
+                  "strong": "G30040",
+                  "x-morph": "Gr,V,IAA3,,S,",
+                  "content": [
+                    "εἶπεν"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "δέ",
+                  "strong": "G11610",
+                  "x-morph": "Gr,CC,,,,,,,,",
+                  "content": [
+                    "δὲ"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "αὐτός",
+                  "strong": "G08460",
+                  "x-morph": "Gr,RP,,,,DMS,",
+                  "content": [
+                    "αὐτῷ"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ὁ",
+                  "strong": "G35880",
+                  "x-morph": "Gr,EA,,,,NMS,",
+                  "content": [
+                    "ὁ"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "Φίλιππος",
+                  "strong": "G53760",
+                  "x-morph": "Gr,N,,,,,NMS,",
+                  "content": [
+                    "Φίλιππος"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ἐάν",
+                  "strong": "G14370",
+                  "x-morph": "Gr,CS,,,,,,,,",
+                  "content": [
+                    "ἐὰν"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "πιστεύω",
+                  "strong": "G41000",
+                  "x-morph": "Gr,V,IPA2,,S,",
+                  "content": [
+                    "πιστεύεις"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ἐκ",
+                  "strong": "G15370",
+                  "x-morph": "Gr,P,,,,,G,,,",
+                  "content": [
+                    "ἐξ"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ὅλος",
+                  "strong": "G36500",
+                  "x-morph": "Gr,AA,,,,GFS,",
+                  "content": [
+                    "ὅλης"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ὁ",
+                  "strong": "G35880",
+                  "x-morph": "Gr,EA,,,,GFS,",
+                  "content": [
+                    "τῆς"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "καρδία",
+                  "strong": "G25880",
+                  "x-morph": "Gr,N,,,,,GFS,",
+                  "content": [
+                    "καρδίας"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "σύ",
+                  "strong": "G47710",
+                  "x-morph": "Gr,RP,,,2G,S,",
+                  "content": [
+                    "σου"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "σῴζω",
+                  "strong": "G49820",
+                  "x-morph": "Gr,V,IFP2,,S,",
+                  "content": [
+                    "σωθήσει"
+                  ]
+                },
+                ";",
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ἀποκρίνω",
+                  "strong": "G06110",
+                  "x-morph": "Gr,V,PPA,NMS,",
+                  "content": [
+                    "ἀποκριθεὶς"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "δέ",
+                  "strong": "G11610",
+                  "x-morph": "Gr,CC,,,,,,,,",
+                  "content": [
+                    "δὲ"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "λέγω",
+                  "strong": "G30040",
+                  "x-morph": "Gr,V,IAA3,,S,",
+                  "content": [
+                    "εἶπεν"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "πιστεύω",
+                  "strong": "G41000",
+                  "x-morph": "Gr,V,IPA1,,S,",
+                  "content": [
+                    "Πιστεύω"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "εἰς",
+                  "strong": "G15190",
+                  "x-morph": "Gr,P,,,,,A,,,",
+                  "content": [
+                    "εἰς"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ὁ",
+                  "strong": "G35880",
+                  "x-morph": "Gr,EA,,,,AMS,",
+                  "content": [
+                    "τὸν"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "Χριστιανός",
+                  "strong": "G55470",
+                  "x-morph": "Gr,N,,,,,AMS,",
+                  "content": [
+                    "Χριστὸν"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ὁ",
+                  "strong": "G35880",
+                  "x-morph": "Gr,EA,,,,AMS,",
+                  "content": [
+                    "τὸν"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "υἱός",
+                  "strong": "G52070",
+                  "x-morph": "Gr,N,,,,,AMS,",
+                  "content": [
+                    "Υἱὸν"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "ὁ",
+                  "strong": "G35880",
+                  "x-morph": "Gr,EA,,,,GMS,",
+                  "content": [
+                    "τοῦ"
+                  ]
+                },
+                {
+                  "type": "char",
+                  "marker": "w",
+                  "lemma": "θεός",
+                  "strong": "G23160",
+                  "x-morph": "Gr,N,,,,,GMS,",
+                  "content": [
+                    "θεοῦ"
+                  ]
+                },
+                "."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

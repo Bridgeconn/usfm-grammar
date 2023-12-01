@@ -7,8 +7,8 @@
 \toc3 Act
 \mt Acts
 \c 1
-\p
 \s5
+\p
 \v 1 \zaln-s |x-content="τὸν" x-lemma="ὁ" x-morph="Gr,EA,,,,AMS," x-occurrence="1" x-occurrences="1" x-strong="G35880"\*\w The|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
 \zaln-s |x-content="μὲν" x-lemma="μέν" x-morph="Gr,T,,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G33030"\*\zaln-s |x-content="πρῶτον" x-lemma="πρῶτος" x-morph="Gr,EO,,,,AMS," x-occurrence="1" x-occurrences="1" x-strong="G44130"\*\w former|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*\zaln-e\*
 \zaln-s |x-content="λόγον" x-lemma="λόγος" x-morph="Gr,N,,,,,AMS," x-occurrence="1" x-occurrences="1" x-strong="G30560"\*\w book|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
@@ -75,6 +75,7 @@
 \zaln-s |x-content="τοῦ" x-lemma="ὁ" x-morph="Gr,EA,,,,GMS," x-occurrence="1" x-occurrences="1" x-strong="G35880"\*\zaln-s |x-content="Θεοῦ" x-lemma="θεός" x-morph="Gr,N,,,,,GMS," x-occurrence="1" x-occurrences="1" x-strong="G23160"\*\w of|x-occurrence="1" x-occurrences="1"\w*
 \w God|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*\zaln-e\*.
 \s5
+\p
 \v 4 \zaln-s |x-content="καὶ" x-lemma="καί" x-morph="Gr,CC,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G25320"\*\w When|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
 \zaln-s |x-content="συναλιζόμενος" x-lemma="συναλίζω" x-morph="Gr,V,PPM,NMS," x-occurrence="1" x-occurrences="1" x-strong="G48710"\*\w he|x-occurrence="1" x-occurrences="3"\w*
 \w was|x-occurrence="1" x-occurrences="1"\w*
@@ -120,6 +121,7 @@
 \zaln-s |x-content="πολλὰς" x-lemma="πολλός" x-morph="Gr,EQ,,,,AFP," x-occurrence="1" x-occurrences="1" x-strong="G41830"\*\w many|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
 \zaln-s |x-content="ταύτας" x-lemma="οὗτος" x-morph="Gr,ED,,,,AFP," x-occurrence="1" x-occurrences="1" x-strong="G37780"\*\zaln-s |x-content="ἡμέρας" x-lemma="ἡμέρα" x-morph="Gr,N,,,,,AFP," x-occurrence="1" x-occurrences="1" x-strong="G22500"\*\w days|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*\zaln-e\*."\qt-e\*
 \s5
+\p
 \v 6 \zaln-s |x-content="μὲν" x-lemma="μέν" x-morph="Gr,D,,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G33030"\*\w When|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
 \zaln-s |x-content="οὖν" x-lemma="οὖν" x-morph="Gr,CC,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G37670"\*\w therefore|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
 \zaln-s |x-content="οἱ" x-lemma="ὁ" x-morph="Gr,RD,,,,NMP," x-occurrence="1" x-occurrences="1" x-strong="G35880"\*\w they|x-occurrence="1" x-occurrences="2"\w*\zaln-e\*

@@ -1,0 +1,76 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "should have error"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "nd",
+          "content": [
+            "testing"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "GEN 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GEN 2:2"
+        },
+        {
+          "type": "char",
+          "marker": "em",
+          "content": [
+            "end/beg markers"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "nd",
+          "content": [
+            "with no space are OK"
+          ]
+        }
+      ]
+    }
+  ]
+}

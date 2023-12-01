@@ -1,0 +1,6 @@
+<usx version="3.0">
+	<book code="FRT" style="id" />
+	<periph alt="My Title" id="title">
+		<para style="p">this is the title details</para>
+	</periph>
+</usx>

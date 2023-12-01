@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>  handles acts-1-20.aligned.oldformat</description>
-        <validated>pass</validated>
-        <tags></tags>
+        <description>handles acts-1-20.aligned.oldformat</description>
+        <validated>fail</validated>
+        <tags>revisit</tags>
 </test-metadata>

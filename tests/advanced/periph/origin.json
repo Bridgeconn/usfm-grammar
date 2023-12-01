@@ -1,0 +1,26 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "FRT",
+      "content": []
+    },
+    {
+      "type": "periph",
+      "alt": "My Title",
+      "id": "title",
+      "content": [
+        {
+          "type": "para",
+          "marker": "p",
+          "content": [
+            "this is the title details"
+          ]
+        }
+      ]
+    }
+  ]
+}

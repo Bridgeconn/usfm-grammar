@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>  process tstudio format with leading zeros</description>
-        <validated>pass</validated>
-        <tags></tags>
+        <description>process tstudio format with leading zeros
+
+		Paratext XML has zeros stripped off of references - this seems correct. Though it is inconsistent on verse ranges where actual verse string is used
+		</description>
+        <validated>fail</validated>
+        <tags>revisit</tags>
 </test-metadata>

@@ -1,0 +1,148 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "ISA",
+      "content": [
+        "Unlocked Literal Bible"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Isaiah"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "The Book of Isaiah"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Isaiah"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "Isa"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt",
+      "content": [
+        "The Book of the Prophet Isaiah"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "5",
+      "sid": "ISA 5"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "ISA 5:15"
+        },
+        "Man is brought down, and the great man is humbled, and the eyes of the lofty are cast down."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "ISA 5:16"
+        },
+        "Yahweh of hosts is exalted in his justice, and God the Holy One shows himself holy by his righteousness."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "ISA 5:17"
+        },
+        "Then the sheep will feed as in their own pasture, and in the ruins, lambs will graze as foreigners.",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Some modern versions have"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fqa",
+              "content": [
+                "and in the ruins of the rich, lambs will graze"
+              ]
+            },
+            "."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": []
+    }
+  ]
+}

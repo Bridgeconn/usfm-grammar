@@ -1,0 +1,129 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "ISA",
+      "content": [
+        "Unlocked Literal Bible"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Isaiah"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "The Book of Isaiah"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Isaiah"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "Isa"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt",
+      "content": [
+        "The Book of the Prophet Isaiah"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "8",
+      "sid": "ISA 8"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "ISA 8:14"
+        },
+        "Beriah had these sons: Ahio, Shashak, Jeremoth,",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "ISA 8:15"
+        },
+        "Zebadiah, Arad, Eder,",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "ISA 8:16"
+        },
+        "Michael, Ishpah, and Joha were the sons of Beriah.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17-18",
+          "sid": "ISA 8:17-18"
+        },
+        "Elpaal had these sons: Zebadiah, Meshullam, Hizki, Heber, Ishmerai, Izliah, and Jobab."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "19-21",
+          "sid": "ISA 8:19-21"
+        },
+        "Shimei had these sons: Jakim, Zikri, Zabdi, Elienai, Zillethai, Eliel, Adaiah, Beraiah, and Shimrath."
+      ]
+    }
+  ]
+}

@@ -8,7 +8,7 @@
   <chapter number="136" style="c" sid="MAT 136" />
   <para style="p">
     <verse number="12-83" style="v" sid="MAT 136:12-83" />They presented their offerings in the following order:</para>
-  <table>
+  <table vid="MAT 136:12-83">
     <row style="tr">
       <cell style="th1" align="start">Day </cell>
       <cell style="th2" align="start">Tribe </cell>
@@ -37,7 +37,7 @@
     <row style="tr">
       <cell style="tcr1" align="end">5th </cell>
       <cell style="tc2" align="start">Simeon </cell>
-      <cell style="tcr3" align="end">Shelumiel son of Zurishaddai</cell>
+      <cell style="tcr3" align="end">Shelumiel son of Zurishaddai<verse eid="MAT 136:12-83" /></cell>
     </row>
   </table>
   <chapter eid="MAT 136" />

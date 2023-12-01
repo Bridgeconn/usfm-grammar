@@ -1,0 +1,4576 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "EST",
+      "content": [
+        "Chinese-Simplified Script: Chinese Union New Punctuation 1989"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "以斯帖记"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "以斯帖记"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "以斯帖记"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt1",
+      "content": [
+        "以斯帖记"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "EST 1"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "亚哈随鲁王废瓦实提王后"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 1:1"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "作王，从",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "印度"
+          ]
+        },
+        "直到",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "古实"
+          ]
+        },
+        "，统管一百二十七省。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 1:2"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城的宫登基；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 1:3"
+        },
+        "在位第三年，为他一切首领臣仆设摆筵席，有",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "波斯"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米底亚"
+          ]
+        },
+        "的权贵，就是各省的贵胄与首领，在他面前。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 1:4"
+        },
+        "他把他荣耀之国的丰富和他美好威严的尊贵给他们看了许多日，就是一百八十日。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 1:5"
+        },
+        "这日子满了，又为所有住",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城的大小人民在御园的院子里设摆筵席七日。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 1:6"
+        },
+        "有白色、绿色、蓝色的",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "帐子"
+          ]
+        },
+        "，用细麻绳、紫色绳从银环内系在白玉石柱上；有金银的床榻摆在红、白、黄、黑玉石的铺石地上。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 1:7"
+        },
+        "用金器皿赐酒，器皿各有不同。御酒甚多，足显王的厚意。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 1:8"
+        },
+        "喝酒有例，不准勉强人，因王吩咐宫里的一切臣宰，让人各随己意。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 1:9"
+        },
+        "王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王的宫内也为妇女设摆筵席。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 1:10"
+        },
+        "第七日，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王饮酒，心中快乐，就吩咐在他面前侍立的七个太监",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米户幔"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "比斯他"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈波拿"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "比革他"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚拔他"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "西达"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "甲迦"
+          ]
+        },
+        "，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "EST 1:11"
+        },
+        "请王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "头戴王后的冠冕到王面前，使各等臣民看她的美貌，因为她容貌甚美。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "EST 1:12"
+        },
+        "王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "却不肯遵太监所传的王命而来，所以王甚发怒，心如火烧。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13-14",
+          "sid": "EST 1:13-14"
+        },
+        "那时，在王左右常见王面、国中坐高位的，有",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "波斯"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米底亚"
+          ]
+        },
+        "的七个大臣，就是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "甲示拿"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "示达"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "押玛他"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "他施斯"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米力"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "玛西拿"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米母干"
+          ]
+        },
+        "，都是达时务的明哲人。按王的常规，办事必先询问知例明法的人。王问他们说：",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "EST 1:15"
+        },
+        "「王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "不遵太监所传的王命，照例应当怎样办理呢？」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "EST 1:16"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米母干"
+          ]
+        },
+        "在王和众首领面前回答说：「王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "这事，不但得罪王，并且有害于王各省的臣民；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "EST 1:17"
+        },
+        "因为王后这事必传到众妇人的耳中，说：『",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王吩咐王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "到王面前，她却不来』，她们就藐视自己的丈夫。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "18",
+          "sid": "EST 1:18"
+        },
+        "今日",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "波斯"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米底亚"
+          ]
+        },
+        "的众夫人听见王后这事，必向王的大臣",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "照样"
+          ]
+        },
+        "行；从此必大开藐视和忿怒之端。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "19",
+          "sid": "EST 1:19"
+        },
+        "王若以为美，就降旨写在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "波斯"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米底亚"
+          ]
+        },
+        "人的例中，永不更改，不准",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "再到王面前，将她王后的位分赐给比她还好的人。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "20",
+          "sid": "EST 1:20"
+        },
+        "所降的旨意传遍通国（国度本来广大），所有的妇人，无论丈夫贵贱都必尊敬他。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "21",
+          "sid": "EST 1:21"
+        },
+        "王和众首领都以",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米母干"
+          ]
+        },
+        "的话为美，王就照这话去行，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "22",
+          "sid": "EST 1:22"
+        },
+        "发诏书，用各省的文字、各族的方言通知各省，使为丈夫的在家中作主，各说本地的方言。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "EST 2"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "以斯帖被立为王后"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 2:1"
+        },
+        "这事以后，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王的忿怒止息，就想念",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "和她所行的，并怎样降旨办她。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 2:2"
+        },
+        "于是王的侍臣对王说：「不如为王寻找美貌的处女。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 2:3"
+        },
+        "王可以派官在国中的各省招聚美貌的处女到",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "2:3"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "或译：宫"
+              ]
+            }
+          ]
+        },
+        "的女院，交给掌管女子的太监",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "希该"
+          ]
+        },
+        "，给她们当用的香品。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 2:4"
+        },
+        "王所喜爱的女子可以立为王后，代替",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "。」王以这事为美，就如此行。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 2:5"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城有一个",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，名叫",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "，是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "便雅悯"
+          ]
+        },
+        "人",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "基士"
+          ]
+        },
+        "的曾孙，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "示每"
+          ]
+        },
+        "的孙子，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "睚珥"
+          ]
+        },
+        "的儿子。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 2:6"
+        },
+        "从前",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "巴比伦"
+          ]
+        },
+        "王",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "尼布甲尼撒"
+          ]
+        },
+        "将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "王",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "耶哥尼雅"
+          ]
+        },
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "2:6"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "又名约雅斤"
+              ]
+            }
+          ]
+        },
+        "和百姓从",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "耶路撒冷"
+          ]
+        },
+        "掳去，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "也在其内。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 2:7"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "抚养他叔叔的女儿",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈大沙"
+          ]
+        },
+        "（后名",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "），因为她没有父母。这女子又容貌俊美；她父母死了，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "就收她为自己的女儿。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 2:8"
+        },
+        "王的谕旨传出，就招聚许多女子到",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城，交给掌管女子的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "希该"
+          ]
+        },
+        "；",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "也送入王宫，交付",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "希该"
+          ]
+        },
+        "。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 2:9"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "希该"
+          ]
+        },
+        "喜悦",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "，就恩待她，急忙给她需用的香品和她所当得的分，又派所当得的七个宫女服事她，使她和她的宫女搬入女院上好的房屋。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 2:10"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "未曾将籍贯宗族告诉人，因为",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "嘱咐她不可叫人知道。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "EST 2:11"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "天天在女院前边行走，要知道",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "平安不平安，并后事如何。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "EST 2:12"
+        },
+        "众女子照例先洁净身体十二个月：六个月用没药油，六个月用香料和洁身之物。满了日期，然后挨次进去见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "EST 2:13"
+        },
+        "女子进去见王是这样：从女院到王宫的时候，凡她所要的都必给她。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "EST 2:14"
+        },
+        "晚上进去，次日回到女子第二院，交给掌管妃嫔的太监",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "沙甲"
+          ]
+        },
+        "；除非王喜爱她，再提名召她，就不再进去见王。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "EST 2:15"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "叔叔",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚比孩"
+          ]
+        },
+        "的女儿，就是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "收为自己女儿的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "，按次序当进去见王的时候，除了掌管女子的太监",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "希该"
+          ]
+        },
+        "所派定给她的，她别无所求。凡看见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "的都喜悦她。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "EST 2:16"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王第七年十月，就是提别月，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "被引入宫见王。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "EST 2:17"
+        },
+        "王爱",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "过于爱众女，她在王眼前蒙宠爱比众处女更甚。王就把王后的冠冕戴在她头上，立她为王后，代替",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦实提"
+          ]
+        },
+        "。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "18",
+          "sid": "EST 2:18"
+        },
+        "王因",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "的缘故给众首领和臣仆设摆大筵席，又豁免各省的",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "租税"
+          ]
+        },
+        "，并照王的厚意大颁赏赐。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "末底改救王的命"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "19",
+          "sid": "EST 2:19"
+        },
+        "第二次招聚处女的时候，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "坐在朝门。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "20",
+          "sid": "EST 2:20"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "照着",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "所嘱咐的，还没有将籍贯宗族告诉人；因为",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "遵",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "的命，如抚养她的时候一样。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "21",
+          "sid": "EST 2:21"
+        },
+        "当那时候，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "坐在朝门，王的太监中有两个守门的，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "辟探"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "提列"
+          ]
+        },
+        "，恼恨",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王，想要下手害他。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "22",
+          "sid": "EST 2:22"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "知道了，就告诉王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "。",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "奉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "的名，报告于王；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "23",
+          "sid": "EST 2:23"
+        },
+        "究察这事，果然是实，就把二人挂在木头上，将这事在王面前写于历史上。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "3",
+      "sid": "EST 3"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "哈曼阴谋除灭犹大人"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 3:1"
+        },
+        "这事以后，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王抬举",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚甲"
+          ]
+        },
+        "族",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈米大他"
+          ]
+        },
+        "的儿子",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "，使他高升，叫他的爵位超过与他同事的一切臣宰。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 3:2"
+        },
+        "在朝门的一切臣仆都跪拜",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "，因为王如此吩咐；惟独",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "不跪不拜。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 3:3"
+        },
+        "在朝门的臣仆问",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "说：「你为何违背王的命令呢？」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 3:4"
+        },
+        "他们天天劝他，他还是不听，他们就告诉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "，要看",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "的事站得住站不住，因他已经告诉他们自己是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 3:5"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "不跪不拜，他就怒气填胸。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 3:6"
+        },
+        "他们已将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "的本族告诉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "；他以为下手害",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "一人是小事，就要灭绝",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王通国所有的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，就是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "的本族。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 3:7"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王十二年正月，就是尼散月，人在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "面前，按日日月月掣普珥，就是掣签，要定何月何日为吉，择定了十二月，就是亚达月。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 3:8"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "对",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王说：「有一种民散居在王国各省的民中；他们的律例与万民的律例不同，也不守王的律例，所以容留他们与王无益。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 3:9"
+        },
+        "王若以为美，请下旨意灭绝他们；我就捐一万他连得银子交给掌管国帑的人，纳入王的府库。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 3:10"
+        },
+        "于是王从自己手上摘下戒指给",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人的仇敌—",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚甲"
+          ]
+        },
+        "族",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈米大他"
+          ]
+        },
+        "的儿子",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "EST 3:11"
+        },
+        "王对",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "说：「这银子仍赐给你，这民也交给你，你可以随意待他们。」"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "EST 3:12"
+        },
+        "正月十三日，就召了王的书记来，照着",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "一切所吩咐的，用各省的文字、各族的方言，奉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王的名写旨意，传与总督和各省的省长，并各族的首领；又用王的戒指盖印，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "EST 3:13"
+        },
+        "交给驿卒传到王的各省，吩咐将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，无论老少妇女孩子，在一日之间，十二月，就是亚达月十三日，全然剪除，杀戮灭绝，并夺他们的财为掠物。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "EST 3:14"
+        },
+        "抄录这旨意，颁行各省，宣告各族，使他们预备等候那日。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "EST 3:15"
+        },
+        "驿卒奉王命急忙起行，旨意也传遍",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城。王同",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "坐下饮",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "酒"
+          ]
+        },
+        "，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城的民却都慌乱。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "4",
+      "sid": "EST 4"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "末底改求以斯帖帮忙"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 4:1"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "知道所做的这一切事，就撕裂衣服，穿麻衣，蒙灰尘，在城中行走，痛哭哀号。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 4:2"
+        },
+        "到了朝门前",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "停住脚步"
+          ]
+        },
+        "，因为穿麻衣的不可进朝门。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 4:3"
+        },
+        "王的谕旨所到的各省各处，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人大大悲哀，禁食哭泣哀号，穿麻衣躺在灰中的甚多。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 4:4"
+        },
+        "王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "的宫女和太监来把这事告诉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "，她甚是忧愁，就送衣服给",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "穿，要他脱下麻衣，他却不受。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 4:5"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "就把王所派伺候她的一个太监，名叫",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈他革"
+          ]
+        },
+        "召来，吩咐他去见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "，要知道这是什么事，是什么缘故。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 4:6"
+        },
+        "于是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈他革"
+          ]
+        },
+        "出到朝门前的宽阔处见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 4:7"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "将自己所遇的事，并",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "为灭绝",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人应许捐入王库的银数都告诉了他；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 4:8"
+        },
+        "又将所抄写传遍",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城要灭绝",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人的旨意交给",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈他革"
+          ]
+        },
+        "，要给",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "看，又要给她说明，并嘱咐她进去见王，为本族的人在王面前恳切祈求。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 4:9"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈他革"
+          ]
+        },
+        "回来，将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "的话告诉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 4:10"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "就吩咐",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈他革"
+          ]
+        },
+        "去见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "，",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "说"
+          ]
+        },
+        "：",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "EST 4:11"
+        },
+        "「王的一切臣仆和各省的人民都知道有一个定例：若不蒙召，擅入内院见王的，无论男女必被治死；除非王向他伸出金杖，不得存活。现在我没有蒙召进去见王已经三十日了。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "EST 4:12"
+        },
+        "人就把",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "这话告诉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "EST 4:13"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "托人回复",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "说：「你莫想在王宫里强过一切",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，得免这祸。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "EST 4:14"
+        },
+        "此时你若闭口不言，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人必从别处得解脱，蒙拯救；你和你父家必致灭亡。焉知你得了王后的位分不是为现今的机会吗？」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "EST 4:15"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "就吩咐人回报",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "说：",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "EST 4:16"
+        },
+        "「你当去招聚",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城所有的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，为我禁食三昼三夜，不吃不喝；我和我的宫女也要这样禁食。然后我违例进去见王，我若死就死吧！」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "EST 4:17"
+        },
+        "于是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "照",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "一切所吩咐的去行。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "5",
+      "sid": "EST 5"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "以斯帖为王和哈曼设筵席"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 5:1"
+        },
+        "第三日，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "穿上朝服，进王宫的内院，对殿站立。王在殿里坐在宝座上，对着殿门。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 5:2"
+        },
+        "王见王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "站在院内，就施恩于她，向她伸出手中的金杖；",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "便向前摸杖头。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 5:3"
+        },
+        "王对她说：「王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "啊，你要什么？你求什么，就是国的一半也必赐给你。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 5:4"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "说：「王若以为美，就请王带着",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "今日赴我所预备的筵席。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 5:5"
+        },
+        "王说：「叫",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "速速照",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "的话去行。」于是王带着",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "赴",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "所预备的筵席。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 5:6"
+        },
+        "在酒席筵前，王又问",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "说：「你要什么，我必赐给你；你求什么，就是国的一半也必",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "为你"
+          ]
+        },
+        "成就。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 5:7"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "回答说：「我有所要，我有所求。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 5:8"
+        },
+        "我若在王眼前蒙恩，王若愿意赐我所要的，准我所求的，就请王带着",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "再赴我所要预备的筵席。明日我必照王所问的说明。」"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "哈曼阴谋杀末底改"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 5:9"
+        },
+        "那日",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "心中快乐，欢欢喜喜地出来；但见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "在朝门不站起来，连身也不动，就满心恼怒",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 5:10"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "暂且忍耐回家，叫人请他朋友和他妻子",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "细利斯"
+          ]
+        },
+        "来。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "EST 5:11"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "将他富厚的荣耀、众多的儿女，和王抬举他使他超乎首领臣仆之上，都述说给他们听。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "EST 5:12"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "又说：「王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "预备筵席，除了我之外不许别人随王赴席。明日王后又请我随王赴席；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "EST 5:13"
+        },
+        "只是我见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "坐在朝门，虽有这一切",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "荣耀"
+          ]
+        },
+        "，也与我无益。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "EST 5:14"
+        },
+        "他的妻",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "细利斯"
+          ]
+        },
+        "和他一切的朋友对他说：「不如立一个五丈高的木架，明早求王将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "挂在其上，然后你可以欢欢喜喜地随王赴席。」",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "以这话为美，就叫人做了木架。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "6",
+      "sid": "EST 6"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "王赐末底改荣誉"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 6:1"
+        },
+        "那夜王睡不着觉，就吩咐人取历史来，念给他听。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 6:2"
+        },
+        "正遇见书上写着",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "说"
+          ]
+        },
+        "：王的太监中有两个守门的，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "辟探"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "提列"
+          ]
+        },
+        "，想要下手害",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "将这事告诉",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "王后"
+          ]
+        },
+        "。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 6:3"
+        },
+        "王说：「",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "行了这事，赐他什么尊荣爵位没有？」伺候王的臣仆回答说：「没有赐他什么。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 6:4"
+        },
+        "王说：「谁在院子里？」（那时",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "正进王宫的外院，要求王将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "挂在他所预备的木架上。）",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 6:5"
+        },
+        "臣仆说：「",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "站在院内。」王说：「叫他进来。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 6:6"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "就进去。王问他说：「王所喜悦尊荣的人，当如何待他呢？」",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "心里说：「王所喜悦尊荣的，不是我是谁呢？」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 6:7"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "就回答说：「王所喜悦尊荣的，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 6:8"
+        },
+        "当将王常穿的朝服和戴冠的御马，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 6:9"
+        },
+        "都交给王极尊贵的一个大臣，命他将衣服给王所喜悦尊荣的人穿上，使他骑上马，走遍城里的街市，在他面前宣告说：王所喜悦尊荣的人，就如此待他。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 6:10"
+        },
+        "王对",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "说：「你速速将这衣服和马，照你所说的，向坐在朝门的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "去行。凡你所说的，一样不可缺。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "EST 6:11"
+        },
+        "于是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "将朝服给",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "穿上，使他骑上马，走遍城里的街市，在他面前宣告说：「王所喜悦尊荣的人，就如此待他。」"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "EST 6:12"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "仍回到朝门，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "却忧忧闷闷地蒙着头，急忙回家去了，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "EST 6:13"
+        },
+        "将所遇的一切事详细说给他的妻",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "细利斯"
+          ]
+        },
+        "和他的众朋友听。他的智慧人和他的妻",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "细利斯"
+          ]
+        },
+        "对他说：「你在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "面前始而败落，他如果是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，你必不能胜他，终必在他面前败落。」"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "EST 6:14"
+        },
+        "他们还与",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "说话的时候，王的太监来催",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "快去赴",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "所预备的筵席。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "7",
+      "sid": "EST 7"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "哈曼被处死"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 7:1"
+        },
+        "王带着",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "来赴王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "的筵席。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 7:2"
+        },
+        "这第二次在酒席筵前，王又问",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "说：「王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "啊，你要什么，我必赐给你；你求什么，就是国的一半也必",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "为你"
+          ]
+        },
+        "成就。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 7:3"
+        },
+        "王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "回答说：「我若在王眼前蒙恩，王若以为美，我所愿的，是愿王将我的性命赐给我；我所求的，是求王将我的本族赐给我。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 7:4"
+        },
+        "因我和我的本族被卖了，要剪除杀戮灭绝我们。我们若被卖为奴为婢，我也闭口不言；但王的损失，敌人万不能补足。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 7:5"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王问王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "说：「擅敢起意如此行的是谁？这人在哪里呢？」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 7:6"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "说：「仇人敌人就是这恶人",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "！」"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "在王和王后面前就甚惊惶。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 7:7"
+        },
+        "王便大怒，起来离开酒席往御园去了。",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "见王定意要加罪与他，就起来，求王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "救命。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 7:8"
+        },
+        "王从御园回到酒席之处，见",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "伏在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "所靠的榻上；王说：「他竟敢在宫内、在我面前凌辱王后吗？」这话一出王口，人就蒙了",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "的脸。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 7:9"
+        },
+        "伺候王的一个太监名叫",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈波拿"
+          ]
+        },
+        "，说：「",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "为那救王有功的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "做了五丈高的木架，现今立在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "家里。」王说：「把",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "挂在其上。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 7:10"
+        },
+        "于是人将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "挂在他为",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "所预备的木架上。王的忿怒这才止息。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "8",
+      "sid": "EST 8"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "犹大人的反击"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 8:1"
+        },
+        "当日，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王把",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人仇敌",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "的家产赐给王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "。",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "也来到王面前，因为",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "已经告诉王，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "是她的亲属。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 8:2"
+        },
+        "王摘下自己的戒指，就是从",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "追回的，给了",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "。",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "派",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "管理",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "的家产。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 8:3"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "又俯伏在王脚前，流泪哀告，求他除掉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚甲"
+          ]
+        },
+        "族",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "害",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人的恶谋。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 8:4"
+        },
+        "王向",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "伸出金杖；",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "就起来，站在王前，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 8:5"
+        },
+        "说：「",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚甲"
+          ]
+        },
+        "族",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈米大他"
+          ]
+        },
+        "的儿子",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "设谋传旨，要杀灭在王各省的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人。现今王若愿意，我若在王眼前蒙恩，王若以为美，若喜悦我，请王另下旨意，废除",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "所传的那旨意。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 8:6"
+        },
+        "我何忍见我本族的人受害？何忍见我同宗的人被灭呢？」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 8:7"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王对王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "说：「因",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "要下手害",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，我已将他的家产赐给",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "，人也将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "挂在木架上。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 8:8"
+        },
+        "现在你们可以随意奉王的名写谕旨给",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，用王的戒指盖印；因为奉王名所写、用王戒指盖印的谕旨，人都不能废除。」"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 8:9"
+        },
+        "三月，就是西弯月二十三日，将王的书记召来，按着",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "所吩咐的，用各省的文字、各族的方言，并",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人的文字方言写谕旨，传给那从",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "印度"
+          ]
+        },
+        "直到",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "古实"
+          ]
+        },
+        "一百二十七省的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人和总督省长首领。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 8:10"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "奉",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王的名写谕旨，用王的戒指盖印，交给骑御马圈快马的驿卒，传",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "到各处"
+          ]
+        },
+        "。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11-12",
+          "sid": "EST 8:11-12"
+        },
+        "谕旨中，王准各省各城的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人在一日之间，十二月，就是亚达月十三日，聚集保护性命，剪除杀戮灭绝那要攻击",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人的一切仇敌和他们的妻子儿女，夺取他们的财为掠物。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "EST 8:13"
+        },
+        "抄录这谕旨，颁行各省，宣告各族，使",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人预备等候那日，在仇敌身上报仇。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "EST 8:14"
+        },
+        "于是骑快马的驿卒被王命催促，急忙起行；谕旨也传遍",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "EST 8:15"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "穿着蓝色白色的朝服，头戴大金冠冕，又穿紫色细麻布的外袍，从王面前出来；",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城的人民都欢呼快乐。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "EST 8:16"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人有光荣，欢喜快乐而得尊贵。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "EST 8:17"
+        },
+        "王的谕旨所到的各省各城，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人都欢喜快乐，设摆筵宴，以那日为吉日。那国的人民，有许多因惧怕",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，就入了",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "籍。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "9",
+      "sid": "EST 9"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "犹大人除灭他们的仇敌"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 9:1"
+        },
+        "十二月，乃亚达月十三日，王的谕旨将要举行，就是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人的仇敌盼望辖制他们的日子，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人反倒辖制恨他们的人。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 9:2"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王各省的城里聚集，下手击杀那要害他们的人。无人能敌挡他们，因为各族都惧怕他们。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 9:3"
+        },
+        "各省的首领、总督、省长，和办理王事的人，因惧怕",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "，就都帮助",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "EST 9:4"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "在朝中为大，名声传遍各省，日渐昌盛。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "EST 9:5"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人用刀击杀一切仇敌，任意杀灭恨他们的人。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "EST 9:6"
+        },
+        "在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人杀灭了五百人；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "EST 9:7"
+        },
+        "又杀",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "巴珊大他"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "达分"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚斯帕他"
+          ]
+        },
+        "、",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "EST 9:8"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "破拉他"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚大利雅"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚利大他"
+          ]
+        },
+        "、",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "EST 9:9"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "帕玛斯他"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚利赛"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚利代"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "瓦耶撒他"
+          ]
+        },
+        "；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "EST 9:10"
+        },
+        "这十人都是",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈米大他"
+          ]
+        },
+        "的孙子、",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人仇敌",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "的儿子。",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人却没有下手夺取财物。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "EST 9:11"
+        },
+        "当日，将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城被杀的人数呈在王前。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "EST 9:12"
+        },
+        "王对王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "说：「",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "城杀灭了五百人，又杀了",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "的十个儿子，在王的各省不知如何呢？现在你要什么，我必赐给你；你还求什么，也必",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "为你"
+          ]
+        },
+        "成就。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "EST 9:13"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "说：「王若以为美，求你准",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，明日也照今日的旨意行，并将",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "十个儿子的尸首挂在木架上。」",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "EST 9:14"
+        },
+        "王便允准如此行。旨意传在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "，人就把",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "十个儿子的尸首挂起来了。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "EST 9:15"
+        },
+        "亚达月十四日，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人又聚集在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "，杀了三百人，却没有下手夺取财物。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "EST 9:16"
+        },
+        "在王各省其余的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人也都聚集保护性命，杀了恨他们的人七万五千，却没有下手夺取财物。这样，就脱离仇敌，得享平安。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "EST 9:17"
+        },
+        "亚达月十三日，",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "行了这事"
+          ]
+        },
+        "；十四日安息，以这日为设筵欢乐的日子。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "18",
+          "sid": "EST 9:18"
+        },
+        "但",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "书珊"
+          ]
+        },
+        "的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，这十三日、十四日聚集",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "杀戮仇敌"
+          ]
+        },
+        "；十五日安息，以这日为设筵欢乐的日子。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "19",
+          "sid": "EST 9:19"
+        },
+        "所以住无城墙乡村的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，如今都以亚达月十四日为设筵欢乐的吉日，彼此馈送礼物。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "普珥日"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "20",
+          "sid": "EST 9:20"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "记录这事，写信与",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王各省远近所有的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "21",
+          "sid": "EST 9:21"
+        },
+        "嘱咐他们每年守亚达月十四、十五两日，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "22",
+          "sid": "EST 9:22"
+        },
+        "以这月的两日为",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人脱离仇敌得平安、转忧为喜、转悲为乐的吉日。在这两日设筵欢乐，彼此馈送礼物，周济穷人。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "23",
+          "sid": "EST 9:23"
+        },
+        "于是，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人按着",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "所写与他们的信，应承照初次所守的守为永例；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "24",
+          "sid": "EST 9:24"
+        },
+        "是因",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人的仇敌",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚甲"
+          ]
+        },
+        "族",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈米大他"
+          ]
+        },
+        "的儿子",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "设谋杀害",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，掣普珥，就是掣签，为要杀尽灭绝他们；",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "25",
+          "sid": "EST 9:25"
+        },
+        "这事报告于王，王便降旨使",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "哈曼"
+          ]
+        },
+        "谋害",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人的恶事归到他自己的头上，并吩咐把他和他的众子都挂在木架上。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "26",
+          "sid": "EST 9:26"
+        },
+        "照着普珥的名字，",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人就称这两日为「普珥日」。他们因这信上的话，又因所看见所遇见的事，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "27",
+          "sid": "EST 9:27"
+        },
+        "就应承自己与后裔，并归附他们的人，每年按时必守这两日，永远不废。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "28",
+          "sid": "EST 9:28"
+        },
+        "各省各城、家家户户、世世代代纪念遵守这两日，使这「普珥日」在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人中不可废掉，在他们后裔中也不可忘记。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "29",
+          "sid": "EST 9:29"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚比孩"
+          ]
+        },
+        "的女儿—王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "以全权写第二封信，坚嘱",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人守这「普珥日」，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "30",
+          "sid": "EST 9:30"
+        },
+        "用和平诚实话写信给",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "王"
+          ]
+        },
+        "国中一百二十七省所有的",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人，",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "31",
+          "sid": "EST 9:31"
+        },
+        "劝他们按时守这「普珥日」，禁食呼求，是照",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "和王后",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "所嘱咐的，也照",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人为自己与后裔所应承的。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "32",
+          "sid": "EST 9:32"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "以斯帖"
+          ]
+        },
+        "命定守「普珥日」，这事也记录在书上。"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "10",
+      "sid": "EST 10"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "亚哈随鲁和末底改的功绩"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "EST 10:1"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王使旱地和海岛的人民都进贡。",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "EST 10:2"
+        },
+        "他以权柄能力所行的，并他抬举",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "使他高升的事，岂不都写在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "米底亚"
+          ]
+        },
+        "和",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "波斯"
+          ]
+        },
+        "王的历史上吗？",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "EST 10:3"
+        },
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "末底改"
+          ]
+        },
+        "作",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "亚哈随鲁"
+          ]
+        },
+        "王的宰相，在",
+        {
+          "type": "char",
+          "marker": "pn",
+          "content": [
+            "犹大"
+          ]
+        },
+        "人中为大，得他众弟兄的喜悦，为本族的人求好处，向他们说和平的话。"
+      ]
+    }
+  ]
+}
