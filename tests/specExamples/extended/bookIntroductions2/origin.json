@@ -1,0 +1,62 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "MRK",
+      "content": [
+        "- Good News Study Bible - Notes Material"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "is1",
+      "content": [
+        "The Story"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ip",
+      "content": [
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "Mark's"
+          ]
+        },
+        "story of Jesus is told quickly and with an abundance of details that enhance its dramatic impact. Jesus appears suddenly in Judea, where he joins those who are being baptized in the Jordan by John the Baptist. Just as suddenly, he returns to Galilee, where he proclaims the message that the",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "kingdom of god"
+          ]
+        },
+        "is about to arrive..."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "MRK 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MRK 1:1"
+        },
+        "sample verse"
+      ]
+    }
+  ]
+}

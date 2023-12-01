@@ -1,0 +1,451 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "MRK",
+      "content": [
+        "- Good News Study Bible - Notes Material"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "MRK 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MRK 1:1"
+        },
+        "This is the Good News about Jesus Christ, the Son of God",
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.1:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "the Son of God:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Not included in some manuscripts."
+              ]
+            }
+          ]
+        },
+        ".",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.1"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Some manuscripts do not have"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "the Son of God."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "MRK 1:2"
+        },
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.2:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fk",
+              "content": [
+                "Prophet"
+              ]
+            }
+          ]
+        },
+        "It began as the prophet Isaiah had written",
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.2:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "Isaiah had written:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "The quotation in 1.2 is from Mal 3.1; “ahead of you” may be from Ex 23.20, “Someone is shouting in the desert, ‘Get the road ready for the Lord; make a straight path for our God to travel!’ ”."
+              ]
+            }
+          ]
+        },
+        ":",
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "1.2:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Mal 3.1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": [
+        "“God said, ‘I will send my messenger ahead of you"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "to clear the way for you.’"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "MRK 1:3"
+        },
+        "Someone is shouting in the desert,",
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "1.3:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Is 40.3 (LXX)"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "‘Get the road ready for the Lord;"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "make a straight path for him to travel",
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.3:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "someone is…travel:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "is from Is 40.3, following Septuagint; the Hebrew means, “Get the road ready in the desert”."
+              ]
+            }
+          ]
+        },
+        "!’”"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "MRK 1:4"
+        },
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.4:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fk",
+              "content": [
+                "Baptizing"
+              ]
+            }
+          ]
+        },
+        "So John appeared",
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.4:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "John appeared:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "John probably began his ministry in AD 27 (Lk 3.1-3)."
+              ]
+            }
+          ]
+        },
+        "in the desert",
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.4:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "the desert:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "The desolate region on the west side of the River Jordan, not far from where it empties into the Dead Sea."
+              ]
+            }
+          ]
+        },
+        ", baptizing and preaching.",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.4"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "John appeared in the desert, baptizing and preaching;"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "some manuscripts have"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "John the Baptist appeared in the desert, preaching."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.4:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "John…baptizing and preaching:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Some manuscripts have “John the Baptist appeared in the desert, preaching”."
+              ]
+            }
+          ]
+        },
+        "“Turn away from your sins and be baptized,” he told the people, “and God will forgive your sins.”",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "MRK 1:5"
+        },
+        "Many people from the province of Judea",
+        {
+          "type": "note",
+          "marker": "ef",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.5:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "Judea:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "One of the provinces, in the south, into which the land of Israel was then divided."
+              ]
+            }
+          ]
+        },
+        "and the city of Jerusalem went out to hear John. They confessed their sins, and he baptized them in the River Jordan. ..."
+      ]
+    }
+  ]
+}

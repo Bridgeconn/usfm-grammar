@@ -1,6 +1,7 @@
 '''Test the to_dict or json conversion API'''
 import pytest
 import json
+import re
 from jsonschema import validate
 
 from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests,\
@@ -23,7 +24,7 @@ def test_usj_converions_without_filter(file_path):
     assert not test_parser.errors, test_parser.errors
     usfm_dict = test_parser.to_usj()
     assert isinstance(usfm_dict, dict)
-    # usj_file_path = file_path.replace("origin.usfm", "origin-usj.json")
+    # usj_file_path = file_path.replace("origin.usfm", "origin.json")
     # with open(usj_file_path, 'w', encoding='utf-8') as usj_file:
     #     json.dump(usfm_dict, usj_file, indent=2 )
 
@@ -71,12 +72,12 @@ def get_types(element):
         if 'marker' in element:
             types.append(element['marker'])
         if "altnumber" in element:
-            if "c" in element['type']:
+            if element['marker'] == "c":
                 types.append("ca")
             else:
                 types.append("va")
         if "pubnumber" in element:
-            if "c" in element['type']:
+            if element['marker'] == "c":
                 types.append("cp")
             else:
                 types.append("vp")
@@ -140,13 +141,8 @@ def remove_newlines_in_text(usj_dict):
         for i,item in enumerate(usj_dict["content"]):
             if isinstance(item, str):
                 usj_dict['content'][i] = item.replace("\n", " ")
-                usj_dict['content'][i] = usj_dict['content'][i].replace("  ", " ")
-                usj_dict['content'][i] = usj_dict['content'][i].replace("     ", " ")
+                usj_dict['content'][i] = re.sub(r" +", " ", usj_dict['content'][i])
                 continue
-            if "sid" in item and "PSA 09" in item['sid']: # for /usfmjsTests/tstudio/origin.usfm
-                item['sid'] = item['sid'].replace("PSA 091:01", "PSA 91:1")
-                item['sid'] = item['sid'].replace("PSA 091:02", "PSA 91:2")
-                item['sid'] = item['sid'].replace("PSA 09", "PSA 9")
             remove_newlines_in_text(item)
 
 def strip_default_attrib_value(usj_dict):
@@ -154,7 +150,7 @@ def strip_default_attrib_value(usj_dict):
     if "content" in usj_dict:
         for item in usj_dict["content"]:
             if isinstance(item, dict):
-                if item['type'] == "char:w":
+                if item['type'] == "char" and item['marker'] == "w":
                     if "lemma" in item:
                         item['lemma'] = item['lemma'].strip()
             strip_default_attrib_value(item)
@@ -169,9 +165,9 @@ def test_compare_usj_with_testsuite_samples(file_path):
     usx_file_path = file_path.replace("origin.usfm", "origin.xml")
     if usx_file_path not in exclude_USX_files:
         usj_dict = test_parser.to_usj()
-        # remove_newlines_in_text(usj_dict) # need this if using USJ generated from tcdocs
+        remove_newlines_in_text(usj_dict) # need this if using USJ generated from tcdocs
         try:
-            usj_file_path = file_path.replace("origin.usfm", "origin-usj.json")
+            usj_file_path = file_path.replace("origin.usfm", "origin.json")
             with open(usj_file_path, 'r', encoding='utf-8') as usj_file:
                 origin_usj = json.load(usj_file)
             assert usj_dict == origin_usj, f"generated USJ:\n{usj_dict}\n"+\

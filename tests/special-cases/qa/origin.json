@@ -1,0 +1,52 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "SNG",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "SNG 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 1:1"
+        },
+        "verse"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "qa",
+      "content": [
+        "nonverse"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        "more verse",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 1:2"
+        },
+        "verse"
+      ]
+    }
+  ]
+}

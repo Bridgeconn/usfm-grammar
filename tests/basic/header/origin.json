@@ -1,0 +1,96 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "MRK",
+      "content": [
+        "The Gospel of Mark"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "usfm",
+      "content": [
+        "3.0"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Mark"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt2",
+      "content": [
+        "The Gospel according to"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt1",
+      "content": [
+        "MARK"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "is",
+      "content": [
+        "Introduction"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ip",
+      "content": [
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "The Gospel according to Mark"
+          ]
+        },
+        "begins with the statement..."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "MRK 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MRK 1:1"
+        },
+        "the first verse",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "MRK 1:2"
+        },
+        "the second verse"
+      ]
+    }
+  ]
+}

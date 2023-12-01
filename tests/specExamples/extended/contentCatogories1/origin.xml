@@ -1,18 +1,13 @@
-<usx version="3.0">
+﻿<usx version="3.0">
   <book code="GEN" style="id" />
   <chapter number="1" style="c" sid="GEN 1" />
   <para style="p">
     <verse number="1" style="v" sid="GEN 1:1" />This is the list of the ancestors of Jesus Christ, a descendant of David, who was a descendant of Abraham.<verse eid="GEN 1:1" /></para>
   <para style="p">
-    <verse number="2-6a" style="v" sid="GEN 1:2-6a" />From Abraham to King David, the following ancestors are listed: Abraham, Isaac, Jacob, Judah and his brothers; then Perez and Zerah (their mother was Tamar <verse eid="GEN 1:2-6a" /></para>
-  <para style="ef" status="unknown">- </para>
-  <para style="cat" status="unknown">People<unmatched marker="cat*" /><char style="fr" closed="false" status="invalid">1.2-6a: </char><char style="fq" closed="false" status="invalid">Tamar: </char><char style="ft" closed="false" status="invalid">Bore her twin sons out of wedlock (Gen 38.6-30).</char><unmatched marker="ef*" />), Hezron, Ram, Amminadab, Nahshon, Salmon, Boaz (his mother was Rahab </para>
-  <para style="ef" status="unknown">- </para>
-  <para style="cat" status="unknown">People<unmatched marker="cat*" /><char style="fr" closed="false" status="invalid">1.2-6a: </char><char style="fq" closed="false" status="invalid">Rahab: </char><char style="ft" closed="false" status="invalid">A prostitute in Jericho (Josh 2.1-21; 6.17-25; Jas 2.25).</char><unmatched marker="ef*" />), Obed (his mother was Ruth</para>
-  <para style="ef" status="unknown">- </para>
-  <para style="cat" status="unknown">People<unmatched marker="cat*" /><char style="fr" closed="false" status="invalid">1.2-6a: </char><char style="fq" closed="false" status="invalid">Ruth: </char><char style="ft" closed="false" status="invalid">A Moabite (Ruth 1.4). Only outstanding women were normally included in Jewish genealogical lists.</char><unmatched marker="ef*" />), Jesse, and King David.</para>
+    <verse number="2-6a" style="v" sid="GEN 1:2-6a" />From Abraham to King David, the following ancestors are listed: Abraham, Isaac, Jacob, Judah and his brothers; then Perez and Zerah (their mother was Tamar <note caller="-" style="ef" category="People"><char style="fr" closed="false">1.2-6a: </char><char style="fq" closed="false">Tamar: </char><char style="ft" closed="false">Bore her twin sons out of wedlock (Gen 38.6-30).</char></note>), Hezron, Ram, Amminadab, Nahshon, Salmon, Boaz (his mother was Rahab <note caller="-" style="ef" category="People"><char style="fr" closed="false">1.2-6a: </char><char style="fq" closed="false">Rahab: </char><char style="ft" closed="false">A prostitute in Jericho (Josh 2.1-21; 6.17-25; Jas 2.25).</char></note>), Obed (his mother was Ruth<note caller="-" style="ef" category="People"><char style="fr" closed="false">1.2-6a: </char><char style="fq" closed="false">Ruth: </char><char style="ft" closed="false">A Moabite (Ruth 1.4). Only outstanding women were normally included in Jewish genealogical lists.</char></note>), Jesse, and King David.<verse eid="GEN 1:2-6a" /></para>
   <para style="p">
-    <verse number="6b-11" style="v" sid="GEN 1:6b-11" />From David to the time when the people of Israel were taken into exile in Babylon<verse eid="GEN 1:6b-11" /></para>
-  <para style="ef" status="unknown">- <char style="fr" closed="false" status="invalid">1.6b-11: </char><char style="fq" closed="false" status="invalid">exile in Babylon: </char><char style="ft" closed="false" status="invalid">In 597 </char><char style="sc" status="invalid">BC</char> King Nebuchadnezzar of Babylonia conquered Jerusalem and took many of its inhabitants as prisoners to his country (2 Kgs 24.10-16; 2 Chr 36.9-10).<unmatched marker="ef*" />, the following ancestors are listed: ...</para>
+    <verse number="6b-11" style="v" sid="GEN 1:6b-11" />From David to the time when the people of Israel were taken into exile in Babylon<note caller="-" style="ef"><char style="fr" closed="false">1.6b-11: </char><char style="fq" closed="false">exile in Babylon: </char><char style="ft" closed="false">In 597 </char><char style="sc">BC</char> King Nebuchadnezzar 
+of Babylonia conquered Jerusalem and took many of its inhabitants as prisoners to his 
+country (2 Kgs 24.10-16; 2 Chr 36.9-10).</note>, the following ancestors are listed: ...<verse eid="GEN 1:6b-11" /></para>
   <chapter eid="GEN 1" />
 </usx>

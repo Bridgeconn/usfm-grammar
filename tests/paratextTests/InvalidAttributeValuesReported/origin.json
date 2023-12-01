@@ -1,0 +1,59 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "s",
+      "content": [
+        "some text"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "em",
+          "content": [
+            "caption|no default attr"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GEN 1:2"
+        },
+        "verse text",
+        {
+          "type": "char",
+          "marker": "em",
+          "content": [
+            "caption|xattr=no quotes"
+          ]
+        }
+      ]
+    }
+  ]
+}

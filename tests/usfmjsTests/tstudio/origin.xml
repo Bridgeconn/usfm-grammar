@@ -1,4 +1,4 @@
-<usx version="3.0">
+﻿<usx version="3.0">
   <book code="PSA" style="id">Unlocked Literal Bible</book>
   <para style="ide">UTF-8</para>
   <para style="h">Psalms</para>
@@ -7,7 +7,7 @@
   <para style="toc3">Psa</para>
   <para style="mt">The Book of Psalms</para>
   <chapter number="091" style="c" sid="PSA 91" />
-  <para style="ms">Book One </para>
+  <para style="ms">Book One</para>
   <para style="s5" />
   <para style="m" />
   <para style="q">
@@ -15,7 +15,7 @@
   <para style="q" vid="PSA 91:1">will stay in the shadow of the Almighty.<verse eid="PSA 91:1" /></para>
   <para style="q">
     <verse number="02" style="v" sid="PSA 91:2" />I will say of Yahweh, "He is my refuge and my fortress,</para>
-  <para style="q" vid="PSA 91:2">my God, in whom I trust." <verse eid="PSA 91:2" /></para>
+  <para style="q" vid="PSA 91:2">my God, in whom I trust."<verse eid="PSA 91:2" /></para>
   <para style="s5" />
   <para style="q">
     <verse number="03-04" style="v" sid="PSA 91:03-04" />For he will rescue you from the snare of the hunter</para>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>  process inline_words</description>
+        <description>process inline_words
+		
+		Fails because of verse attribute and verse end being put on non-verse text paragraphs</description>
         <validated>pass</validated>
         <tags></tags>
 </test-metadata>

@@ -1,0 +1,119 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse one",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GEN 1:2"
+        },
+        "...",
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H6212",
+          "content": [
+            "herbs"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H2232",
+          "content": [
+            "yielding"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H2233",
+          "content": [
+            "seed"
+          ]
+        },
+        ",",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            {
+              "type": "char",
+              "marker": "w",
+              "strong": "H430",
+              "content": [
+                "and"
+              ]
+            }
+          ]
+        },
+        "fruit-trees",
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H6213",
+          "content": [
+            "bearing"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H6529",
+          "content": [
+            "fruit"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H5921",
+          "content": [
+            "after"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H5921",
+          "content": [
+            "their"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H4327",
+          "content": [
+            "kind"
+          ]
+        },
+        ",..."
+      ]
+    }
+  ]
+}

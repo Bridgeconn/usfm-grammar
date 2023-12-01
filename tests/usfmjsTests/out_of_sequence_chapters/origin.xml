@@ -1,4 +1,4 @@
-<usx version="3.0">
+﻿<usx version="3.0">
   <book code="PHP" style="id" />
   <para style="ide">UTF-8</para>
   <para style="h">Philippians</para>
@@ -8,18 +8,18 @@
   <para style="mt">The Epistle of Paul the Apostle to the Philippians</para>
   <chapter number="4" style="c" sid="PHP 4" />
   <para style="p">
-    <verse number="1" style="v" sid="PHP 4:1" />Therefore, my beloved brothers whom I long for, my joy and crown, in this way stand firm in the Lord, beloved friends. <verse eid="PHP 4:1" /></para>
-  <para style="s5" status="unknown" />
+    <verse number="1" style="v" sid="PHP 4:1" />Therefore, my beloved brothers whom I long for, my joy and crown, in this way stand firm in the Lord, beloved friends.<verse eid="PHP 4:1" /></para>
+  <para style="s5" />
   <chapter eid="PHP 4" />
   <chapter number="1" style="c" sid="PHP 1" />
   <para style="p">
-    <verse number="1" style="v" sid="PHP 1:1" />Paul and Timothy, servants of Christ Jesus, to all the ones set apart in Christ Jesus who are at Philippi, with the overseers and deacons. <verse eid="PHP 1:1" /><verse number="2" style="v" sid="PHP 1:2" />Grace to you and peace from God our Father and the Lord Jesus Christ. <verse eid="PHP 1:2" /></para>
-  <para style="s5" status="unknown" />
+    <verse number="1" style="v" sid="PHP 1:1" />Paul and Timothy, servants of Christ Jesus, to all the ones set apart in Christ Jesus who are at Philippi, with the overseers and deacons. <verse eid="PHP 1:1" /><verse number="2" style="v" sid="PHP 1:2" />Grace to you and peace from God our Father and the Lord Jesus Christ.<verse eid="PHP 1:2" /></para>
+  <para style="s5" />
   <chapter eid="PHP 1" />
   <chapter number="3" style="c" sid="PHP 3" />
   <para style="p">
-    <verse number="1" style="v" sid="PHP 3:1" />Finally, my brothers, rejoice in the Lord. For me to write these same things to you is not a problem, and they will keep you safe. <verse eid="PHP 3:1" /><verse number="2" style="v" sid="PHP 3:2" />Watch out for the dogs. Watch out for the evil workers. Watch out for the mutilators. <verse eid="PHP 3:2" /></para>
-  <para style="s5" status="unknown" />
+    <verse number="1" style="v" sid="PHP 3:1" />Finally, my brothers, rejoice in the Lord. For me to write these same things to you is not a problem, and they will keep you safe. <verse eid="PHP 3:1" /><verse number="2" style="v" sid="PHP 3:2" />Watch out for the dogs. Watch out for the evil workers. Watch out for the mutilators.<verse eid="PHP 3:2" /></para>
+  <para style="s5" />
   <chapter eid="PHP 3" />
   <chapter number="2" style="c" sid="PHP 2" />
   <para style="p">

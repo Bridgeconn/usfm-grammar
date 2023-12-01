@@ -1,0 +1,144 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "TIT",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Παῦλος",
+          "strong": "G39720",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "content": [
+            "Παῦλος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δοῦλος",
+          "strong": "G14010",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "content": [
+            "δοῦλος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Χριστός",
+          "strong": "G55470",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "content": [
+            "Χριστοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατὰ"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "TIT 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 2:1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2N,S,",
+          "content": [
+            "Σὺ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λαλέω",
+          "strong": "G29800",
+          "x-morph": "Gr,VTMPA2,,S,",
+          "content": [
+            "λάλει"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RR,,,,ANP,",
+          "content": [
+            "ἃ"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,13 +1,12 @@
-<usx version="3.0">
+﻿<usx version="3.0">
   <book code="MAT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
-  <chapter number="1" style="c" sid="MAT 1" />
-  <para style="cl">Matthew <char style="ca" status="invalid">2</char></para>
-  <para style="cp">M</para>
+  <chapter number="1" style="c" altnumber="2" pubnumber="M" sid="MAT 1" />
+  <para style="cl">Matthew</para>
   <para style="cd">Additional deacription about the chapter</para>
   <para style="s1">The Ancestors of Jesus Christ</para>
   <para style="r">(Luke 3.23-38)</para>
   <para style="p">
-    <verse number="1" style="v" altnumber="3" sid="MAT 1:1" /> <char style="vp">1b</char> This is the list of the ancestors of Jesus Christ, a descendant of David, who was a descendant of Abraham.<verse eid="MAT 1:1" /></para>
+    <verse number="1" style="v" altnumber="3" sid="MAT 1:1" pubnumber="1b"/>This is the list of the ancestors of Jesus Christ, a descendant of David, who was a descendant of Abraham.<verse eid="MAT 1:1" /></para>
   <chapter eid="MAT 1" />
   <chapter number="2" style="c" sid="MAT 2" />
   <para style="p">

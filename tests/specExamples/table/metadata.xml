@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>table Markers. From examples in USFM documentation.</description>
+        <description>table Markers. From examples in USFM documentation.
+		
+		Currently fails because of missing end of verse element in origin.xml - where should this be?</description>
         <validated>pass</validated>
         <tags></tags>
 </test-metadata>

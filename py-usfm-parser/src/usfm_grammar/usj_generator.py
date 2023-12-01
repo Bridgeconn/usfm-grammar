@@ -22,7 +22,7 @@ class USJGenerator:
         if usj_root_obj is None:
             self.json_root_obj = {
                 "type": "USJ",
-                "version": "0.1.0",
+                "version": "0.2.0",
                 "content":[]
             }
         else:

@@ -2,5 +2,5 @@
 \c 1
 \s some text
 \p
-\v 1 \qts |sid="qt1" who="Speaker"\*verse text 
-\v 2 verse text\qte |eid="qt2"\*
+\v 1 \qt-s |sid="qt1" who="Speaker"\*verse text 
+\v 2 verse text\qt-e |eid="qt2"\*

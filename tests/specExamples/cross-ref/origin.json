@@ -1,0 +1,350 @@
+{
+  "type": "USJ",
+  "version": "0.2.0",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "MAT",
+      "content": [
+        "41MATGNT92.SFM, Good News Translation, June 2003"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "6",
+      "sid": "MAT 6"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "18",
+          "sid": "MAT 6:18"
+        },
+        "“Why do you call me good?” Jesus asked him. “No one is good except God alone.",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "19",
+          "sid": "MAT 6:19"
+        },
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "10.19: a"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.13; Deu 5.17;"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "b"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.14; Deu 5.18;"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "c"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.15; Deu 5.19;"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "d"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.16; Deu 5.20;"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "e"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.12; Deu 5.16."
+              ]
+            }
+          ]
+        },
+        "You know the commandments: ‘Do not commit murder..."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "MAT 2"
+    },
+    {
+      "type": "para",
+      "marker": "cd",
+      "content": [
+        {
+          "type": "char",
+          "marker": "xt",
+          "link-href": "GEN 2:1",
+          "content": [
+            "1"
+          ]
+        },
+        "Бог благословляет седьмой день;",
+        {
+          "type": "char",
+          "marker": "xt",
+          "link-href": "GEN 2:8",
+          "content": [
+            "8"
+          ]
+        },
+        "человек в раю Едемском; четыре реки; дерево познания добра и зла.",
+        {
+          "type": "char",
+          "marker": "xt",
+          "link-href": "GEN 2:18",
+          "content": [
+            "18"
+          ]
+        },
+        "Человек дает названия животным.",
+        {
+          "type": "char",
+          "marker": "xt",
+          "link-href": "GEN 2:21",
+          "content": [
+            "21"
+          ]
+        },
+        "Создание женщины."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MAT 2:1"
+        },
+        "Так совершены небо и земля и все воинство их."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "3",
+      "sid": "MAT 3"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "The Preaching of John the Baptist",
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "3.0"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xta",
+              "content": [
+                "Compare with"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Mk 1.1-8; Lk 3.1-18;"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xta",
+              "content": [
+                "and"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Jn 1.19-28"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xta",
+              "content": [
+                "parallel passages."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MAT 3:1"
+        },
+        "At that time John the Baptist came to...",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "MAT 3:2"
+        },
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "1:1"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xop",
+              "content": [
+                "Гл 1. (1)"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "4 Царств. 14:25."
+              ]
+            }
+          ]
+        },
+        "И биде слово Господне към Иона, син Аматиев:",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "MAT 3:3"
+        },
+        "Our God is in heaven;"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "he does whatever he wishes."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "MAT 3:4"
+        },
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "115.4-8:"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Ps 135.15-18;"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xdc",
+              "content": [
+                "Ltj Jr 4-73;"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Rev 9.20."
+              ]
+            }
+          ]
+        },
+        "Their gods are made of silver and gold,"
+      ]
+    }
+  ]
+}

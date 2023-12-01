@@ -3,7 +3,6 @@
   <chapter number="1" style="c" sid="GEN 1" />
   <para style="s">some text</para>
   <para style="p">
-    <verse number="1" style="v" sid="GEN 1:1" />verse text <verse eid="GEN 1:1" /><verse number="2" style="v" sid="GEN 1:2" />verse text<verse eid="GEN 1:2" /></para>
-  <para style="qte" status="unknown">|eid="qt2"<unmatched marker="*" /></para>
+    <verse number="1" style="v" sid="GEN 1:1" />verse text <verse eid="GEN 1:1" /><verse number="2" style="v" sid="GEN 1:2" />verse text<ms style="qt-e" eid="qt2" /><verse eid="GEN 1:2" /></para>
   <chapter eid="GEN 1" />
 </usx>
