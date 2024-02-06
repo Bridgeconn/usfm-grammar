@@ -77,18 +77,32 @@ error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 
 class USFMParser():
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
-    def __init__(self, usfm_string:str=None, from_usj:dict=None):
+    def __init__(self, usfm_string:str=None, from_usj:dict=None, from_usx:etree.Element=None):
         # super(USFMParser, self).__init__()
-        if usfm_string is not None and from_usj is not None:
-            raise Exception("Found USFM and USJ inputs! Only one supported in one object.")
+        inputs_given = 0
+        if usfm_string is not None:
+            inputs_given += 1
+        if from_usj is not None:
+            inputs_given += 1
+        if from_usx is not None:
+            inputs_given += 1
+
+        if inputs_given > 1:
+            raise Exception("Found more than one input!"+\
+                " Only one of USFM, USJ or USX is supported in one object.")
+        if inputs_given == 0:
+            raise Exception("Missing input! Either USFM, USJ or USX is to be provided.")
+
         if usfm_string is not None:
             self.usfm = usfm_string
         elif from_usj is not None:
             usj_converter = USFMGenerator()
             usj_converter.usj_to_usfm(from_usj)
             self.usfm = usj_converter.usfm_string
-        else:
-            raise Exception("Missing input! Either USFM or USJ to be provided.")
+        elif from_usx is not None:
+            usx_converter = USFMGenerator()
+            usx_converter.usx_to_usfm(from_usx)
+            self.usfm = usx_converter.usfm_string
 
         self.usfm_bytes = None
         self.syntax_tree = None
