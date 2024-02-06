@@ -36,7 +36,7 @@ errors = my_parser.errors
 print(errors)
 ```
 
-To convert to USX
+##### To convert to USX
 ```
 from lxml import etree
 
@@ -44,7 +44,7 @@ usx_elem = my_parser.to_usx() # default filter=ALL
 print(etree.tostring(usx_elem, encoding="unicode", pretty_print=True))
 ```
 
-To convert to Dict
+##### To convert to Dict/USJ
 
 ```
 output = my_parser.to_usj() # default all markers
@@ -68,7 +68,7 @@ print(output)
 ```
 To understand more about how `exclude_markers`, `include_markers`, `combine_texts`  and `Filter` works refer the section on [filtering on USJ](#filtering-on-usj)
 
-To save as json
+##### To save as json
 ```
 import json
 dict_output = my_parser.to_usj()
@@ -76,7 +76,7 @@ with open("file_path.json", "w", encoding='utf-8') as fp:
 	json.dump(dict_output, fp)
 ```
 
-To convert to List or table like format
+##### To convert to List or table like format
 ```
 list_output = my_parser.to_list() 
 #list_output = my_parser.to_list([Filter.SCRIPTURE_TEXT])
@@ -86,7 +86,7 @@ print(table_output)
 
 ```
 
-To round trip with USJ
+##### To round trip with USJ
 ```
 from usfm_grammar import USFMParser, Filter
 
@@ -98,7 +98,7 @@ print(my_parser2.usfm)
 ```
 :warning: There will be differences between first USFM and the generated one in 1. Spaces and lines 2. Default attributes will be given their names 3. Closing markers may be newly added
 
-To remove unwanted markers from USFM
+##### To remove unwanted markers from USFM
 ```
 from usfm_grammar import USFMParser, Filter, USFMGenerator
 
@@ -108,9 +108,9 @@ usj_obj = my_parser.to_usj(include_markers=Filter.BCV+Filter.TEXT)
 my_parser2 = USFMParser(from_usj=usj_obj)
 print(my_parser2.usfm)
 ```
-USJ to USX or Table
+##### USJ to USX or Table
 ```
-rom usfm_grammar import USFMParser, Filter
+from usfm_grammar import USFMParser, Filter
 
 my_parser = USFMParser(input_usfm_str)
 usj_obj = my_parser.to_usj()
@@ -119,10 +119,27 @@ my_parser2 = USFMParser(from_usj=usj_obj)
 print(my_parser2.to_usx())
 # print(my_parser2.to_list())
 ```
+
+##### USX to USFM, USJ or Table
+```
+from usfm_grammar import USFMParser, Filter
+from lxml import etree
+
+test_xml_file = "sample_usx.xml"
+with open(test_xml_file, 'r', encoding='utf-8') as usx_file:
+    usx_str = usx_file.read()
+    usx_obj = etree.fromstring(usx_str)
+
+    my_parser = USFMParser(from_usx=usx_obj)
+    print(my_parser.usfm)
+    # print(my_parser.to_usj())
+    # print(my_parser.to_list())
+```
+
 ### From CLI
 
 ```
-usage: usfm-grammar [-h] [--in_format {usfm,usj}]
+usage: usfm-grammar [-h] [--in_format {usfm,usj,usx}]
                     [--out_format {usj,table,syntax-tree,usx,markdown,usfm}]
                     [--include_markers {book_headers,titles,...}]
                     [--exclude_markers {book_headers,titles,...}]

@@ -6,7 +6,8 @@ from lxml import etree
 from lxml.doctestcompare import LXMLOutputChecker, PARSE_XML
 
 from tests import all_usfm_files, initialise_parser, doubtful_usfms,\
-    doubtful_usxs, negative_tests, find_all_markers
+    doubtful_usxs, negative_tests, find_all_markers,\
+    generate_USFM_from_USX, parse_USFM_string
 
 lxml_object = etree.Element('Root')
 checker = LXMLOutputChecker()
@@ -115,3 +116,28 @@ def test_all_markers_are_in_output(file_path):
         #     marker.endswith("-e") or marker.startswith("z")):
         #     marker = "milestone"
         assert marker in all_styles or synonym in all_styles, marker
+
+known_issue_of_failed_xml_parsing = [
+    "../tests/usfmjsTests/inline_God/origin.xml",
+    "../tests/paratextTests/GlossaryCitationFormContainsNonWordformingPunctuation/origin.xml",
+]
+
+@pytest.mark.parametrize('file_path', test_files)
+@pytest.mark.timeout(30)
+def test_usx_round_tripping(file_path):
+    '''Convert USFM to USJ and back to USFM.
+    Compare first USFM and second USFM based on parse tree''' 
+    file_path = file_path.replace(".usfm", ".xml")
+    if file_path in known_issue_of_failed_xml_parsing:
+        return
+    with open(file_path, 'r', encoding='utf-8') as usx_file:
+        usx_str = usx_file.read()
+        if 'status="invalid"' in usx_str:
+            return
+        usx_xml = etree.fromstring(usx_str)
+
+        generated_USFM = generate_USFM_from_USX(usx_xml)
+        test_parser2 = parse_USFM_string(generated_USFM)
+        assert not test_parser2.errors, str(test_parser2.errors)+"\n"+ generated_USFM
+
+        # assert test_parser2.to_usx() == usx_xml, generated_USX not same as input USX
