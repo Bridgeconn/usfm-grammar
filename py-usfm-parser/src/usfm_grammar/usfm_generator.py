@@ -7,7 +7,7 @@ NON_ATTRIB_USJ_KEYS = ['type', 'marker', 'content', 'number', 'sid',
                         'code', 'caller', 'align',
                         'version', 'altnumber', 'pubnumber', 'category']
 NON_ATTRIB_USX_KEYS =  ['number', 'code', 'caller', 'align', "sid", "eid",
-                        "style", "closed", "vid", "status",'version', 
+                        "style", "closed", "vid", "status",'version',
                         'altnumber', 'pubnumber', 'category']
 NO_NEWLINE_USX_TYPES = ['char', 'note', "cell", "figure", "usx", "book", "optbreak"]
 CLOSING_USX_TYPES = ['char', 'note', 'figure', "ms"]
@@ -87,7 +87,7 @@ class USFMGenerator:
             else:
                 self.usfm_string += "\n"
 
-    def usx_to_usfm(self, xml_obj, nested=False) -> str: # should we call it just from_usx() instead
+    def usx_to_usfm(self, xml_obj, nested=False): # pylint: disable=too-many-statements, too-many-branches
         '''Traverses xml tree and converts nodes to usfm elements
         based on type and style fields'''
         if isinstance(xml_obj, str):
@@ -153,7 +153,7 @@ class USFMGenerator:
             self.usfm_string += "|"
             self.usfm_string += " ".join(usfm_attributes)
 
-        if (("closed" in xml_obj.attrib and xml_obj.attrib['closed']=="true") 
+        if (("closed" in xml_obj.attrib and xml_obj.attrib['closed']=="true")
             or obj_type in CLOSING_USX_TYPES
             or len(usfm_attributes)>0):
             # if not ("closed" in xml_obj.attrib and xml_obj.attrib['closed']=="false"):
@@ -161,13 +161,13 @@ class USFMGenerator:
                 self.usfm_string += "\\*"
             else:
                 self.usfm_string += f"\\{marker}*"
-        
+
 if __name__ == "__main__":
     from lxml import etree
 
-    test_xml_file = "../../../tests/basic/cross-refs/origin.xml"
+    TEST_FILE = "../../../tests/basic/cross-refs/origin.xml"
 
-    with open(test_xml_file, 'r', encoding='utf-8') as usx_file:
+    with open(TEST_FILE, 'r', encoding='utf-8') as usx_file:
         usx_str = usx_file.read()
         root = etree.fromstring(usx_str)
 
