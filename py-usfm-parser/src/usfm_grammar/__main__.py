@@ -18,9 +18,12 @@ def handle_input_file(arg_parser):
     with open(infile, 'r', encoding='utf-8') as usfm_file:
         file_content = usfm_file.read()
 
-    if input_format == Format.JSON or infile.split(".")[-1] in ['json', 'usj']:
+    if input_format == Format.JSON or infile.split(".")[-1].lower() in ['json', 'usj']:
         usj_obj = json.loads(file_content)
         my_parser = USFMParser(from_usj=usj_obj)
+    elif input_format == Format.USX or infile.split(".")[-1].lower() in ['xml', 'usx']:
+        usx_obj = etree.fromstring(file_content)
+        my_parser = USFMParser(from_usx=usx_obj)
     elif input_format == Format.USFM:
         my_parser = USFMParser(file_content)
     else:
@@ -62,7 +65,7 @@ def main(): #pylint: disable=too-many-locals
     arg_parser.add_argument('infile', type=str, help='input usfm or usj file')
 
     arg_parser.add_argument('--in_format', type=str, help='input file format',
-                            choices=[Format.USFM.value, Format.JSON.value],
+                            choices=[Format.USFM.value, Format.JSON.value, Format.USX.value],
                             default=Format.USFM.value)
     arg_parser.add_argument('--out_format', type=str, help='output format',
                             choices=[itm.value for itm in Format],
