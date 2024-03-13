@@ -51,7 +51,8 @@ class Format(str, Enum):
     USFM = "usfm"
 
 lang_file = resources.path('usfm_grammar','my-languages.so')
-USFM_LANGUAGE = Language(str(lang_file), 'usfm3')
+with lang_file as path:
+    USFM_LANGUAGE = Language(str(path), 'usfm3')
 parser = Parser()
 parser.set_language(USFM_LANGUAGE)
 
