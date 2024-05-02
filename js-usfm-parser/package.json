@@ -1,8 +1,9 @@
 {
   "name": "usfm-grammar",
-  "version": "3.0.0-alpha.1",
-  "description": "Parser using tree-sitter-usfm3, to covert USFM to other file formats",
+  "version": "3.0.0-alpha.2",
+  "description": "Parser using tree-sitter-usfm3, to convert usfm to usj format.",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "npm test"
   },
@@ -13,13 +14,16 @@
   "keywords": [
     "USFM",
     "tree-sitter",
-    "USX",
+    "USJ",
     "Parser"
   ],
-  "author": "BCS Team",
+  "author": "Samuel JD <samuelj.ernest@gmail.com> (https://github.com/samueljd)",
+  "contributors": [
+    "Kavitha Raju <kavitha.raju@bridgeconn.com> (https://github.com/kavitharaju)",
+    "Joel Mathew <joel@bridgeconn.com> (https://github.com/joelthe1)"
+  ],
   "license": "MIT",
-  "dependencies": {
-    "tree-sitter": "^0.20.0",
-    "tree-sitter-usfm3": "^3.0.0-alpha.2"
+  "devDependencies": {
+    "prettier": "^3.2.5"
   }
 }

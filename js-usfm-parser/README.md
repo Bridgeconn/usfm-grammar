@@ -1,55 +1,57 @@
-# USFM-Grammar
+# USFM Grammar
 
-The Javascript module, that uses the grammar implementation of [USFM](https://ubsicap.github.io/usfm/) language, via the [tree-sitter-USFM3](https://www.npmjs.com/package/tree-sitter-usfm3) package, to convert the USFM inputs to other formats like JSON, table, [USX](https://ubsicap.github.io/usx/) etc.
+## Description
+USFM Grammar is a JavaScript library for parsing and converting USFM (Unified Standard Format Markers) to/from USJ (Unified Standard JSON) format. This library provides functionalities to parse USFM strings into a syntax tree and convert them into a JSON-like structure (USJ), and vice versa.
 
 ## Installation
+You can install USFM Grammar via npm:
 
-`npm install usfm-grammar`
+```bash
+npm install usfm-grammar
+```
 
 ## Usage
+Here's how you can use USFM Grammar in your JavaScript/TypeScript projects:
 
-### Command-line-interface(CLI)
+```javascript
+import { USFMParser } from 'usfm-grammar';
 
-`usfm-grammar /path/to/file.usfm`
+(async () => {
+  await USFMParser.init();
+  const usfmParser = new USFMParser();
+  
+  // Convert USFM to USJ
+  const usfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the beginning..\\v 2';
+  const output = usfmParser.usfmToUsj(usfm);
+  console.log({ output });
+  
+  // Convert USJ back to USFM
+  const convertedUsfm = usfmParser.usjToUsfm(output);
+  console.log({ convertedUsfm });
+})();
+```
 
-### Javascript APIs
+## API Documentation
 
+### `USFMParser.init()`
+Initializes the USFMParser. This function must be called before creating instances of `USFMParser`.
 
-## Development instructions
+### `USFMParser.usfmToUsj(usfmString: string): Object`
+Converts a USFM string to a USJ object.
 
-Make sure a good undertsanding and familarity with the USFM format is achieved.
+- `usfmString`: The input USFM string.
 
-1. Setup the code base
+Returns: A JSON-like object representing the USJ.
 
-- Fork Base repo to your personal github account: `https://github.com/Bridgeconn/usfm-grammar`
-- Clone specific branch locally: `git clone --branch version-3 https://github.com/<your-username>/usfm-grammar`
-- Set remotes : `git remote set upstream https://github.com/Bridgeconn/usfm-grammar`
+### `USFMParser.usjToUsfm(usjObject: Object): string`
+Converts a USJ object to a USFM string.
 
-2. Install
+- `usjObject`: The input USJ object.
 
-Esnure stable version of node by
+Returns: The converted USFM string.
 
-`nvm install --lts`
+## Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request on [GitHub](https://github.com/your-username/usfm-grammar).
 
-`cd usfm-grammar/js-usfm-parser`
-
-`npm install .`
-
-3. Test while developing
-
-For the time being use the bottom portion of the script `usfm-grammar/js-usfm-parser/usfm_parser.js` to change the input usfm string, try different class methods and print the result to console.
-
-`node usfm_parser.js`
-
-4. How to implement?
-
-This JS module is supposed to copy all the fucntionalities available in the [python module](../python-usfm-parser). Refer the python script `python-usfm-parser/src/usfm_grammar/usfm_parser.py` and rewrite the functionalities in it to JS in the `usfm-grammar/js-usfm-parser/usfm_parser.js` file.s
-
-For knowing the available APIs and syntaxes of tree-sitter(`node-tree-sitter`) library, refer the [tests in their git repo](https://github.com/tree-sitter/node-tree-sitter/tree/master/test). They will have corresponding implementations for the fuctionalities we have used from their python library(`py-tree-sitter`).
-
-5. Contribute back
-
-The following development practices are recommended to be able to contribute back to the main code base
-- update from upstream `git pull --rebase upstream version3`
-- commit local changes and push to your github repo(` git push origin <branch-name>`)
-- send PR from your repo to `version-3` branch of base repo
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
