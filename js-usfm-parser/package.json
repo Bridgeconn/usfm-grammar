@@ -1,8 +1,8 @@
 {
   "name": "usfm-grammar",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.4",
   "description": "Parser using tree-sitter-usfm3, to convert usfm to usj format.",
-  "main": "index.js",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
     "test": "npm test"
