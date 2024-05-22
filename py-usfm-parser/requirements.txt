@@ -1,2 +1,2 @@
-tree-sitter==0.20.1
-lxml==4.9.1
+tree-sitter==0.21.3
+lxml==5.2.2
