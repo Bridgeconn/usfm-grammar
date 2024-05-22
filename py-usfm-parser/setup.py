@@ -7,7 +7,7 @@ class BinaryDistribution(Distribution):
 
 setup(
     name="usfm-grammar",  # Required
-    version="3.0.0-beta.5",  # Required
+    version="3.0.0-beta.6",  # Required
     python_requires=">=3.10",
     install_requires=["tree-sitter==0.21.3", "lxml==5.2.2"],  # Optional
     package_data={  # Optional
