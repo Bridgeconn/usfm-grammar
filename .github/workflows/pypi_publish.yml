@@ -12,7 +12,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-20.04, windows-2019, macos-13, macos-14]
+        os: [ubuntu-20.04, windows-2019, macos-11]
         # os: [ubuntu-20.04]
 
     steps:
@@ -28,7 +28,7 @@ jobs:
           ./node_modules/.bin/tree-sitter generate
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.17.0
+        uses: pypa/cibuildwheel@v2.9.0
         env:
           CIBW_BEFORE_BUILD: >
               python -m pip install tree-sitter==0.20.0 &&
