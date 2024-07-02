@@ -9,9 +9,8 @@ setup(
     name="usfm-grammar",  # Required
     version="3.0.0-beta.7",  # Required
     python_requires=">=3.10",
-    install_requires=["tree-sitter==0.21.3", "lxml==5.2.2"],  # Optional
-    package_data={  # Optional
-        "usfm_grammar": ["my-languages.so"],
-    },
+    install_requires=["tree-sitter==0.22.3",
+                        "tree-sitter-usfm3==3.0.0-beta.7"    
+                        "lxml==5.2.2"],  # Optional
     distclass = BinaryDistribution,
 )
