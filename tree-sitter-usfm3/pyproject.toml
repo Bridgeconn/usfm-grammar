@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "tree-sitter-usfm3"
 description = "Usfm3 grammar for tree-sitter"
-version = "3.0.0-alpha.8"
+version = "3.0.0-alpha.9"
 keywords = ["incremental", "parsing", "tree-sitter", "usfm3"]
 classifiers = [
   "Intended Audience :: Developers",
