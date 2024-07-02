@@ -14,8 +14,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
         with:
             python-version: '3.10.6' # Version range or exact version of a Python version to use, using SemVer's version range syntax
             architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
@@ -29,6 +29,22 @@ jobs:
       - name: install packages
         working-directory: ./py-usfm-parser
         run: pip install -r dev-requirements.txt
+
+      - name: Setup node and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build grammar binary
+        working-directory: ./tree-sitter-usfm3
+        run: |
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
+          ./node_modules/.bin/tree-sitter generate
+
+      - name: install tree-sitter-usfm3
+        working-directory: ./tree-sitter-usfm3
+        run: pip install .
         
       - name: Run linter
         working-directory: ./py-usfm-parser
