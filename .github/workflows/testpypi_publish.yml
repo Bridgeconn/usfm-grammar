@@ -7,18 +7,20 @@ on:
 jobs:
   build-tree-sitter-usfm3:
     runs-on: ubuntu-latest
-
+    
     steps:
-      - uses: actions/checkout@v4
-
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Setup node and npm
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.4
-      - name: Generate 
+          node-version: 20
+      - name: Run tests
         run: |
           cd tree-sitter-usfm3
-          npm install .
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
 
@@ -39,7 +41,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       - name: Build release distributions
@@ -61,7 +63,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Set up Python 3.10
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       - uses: actions/download-artifact@v3
