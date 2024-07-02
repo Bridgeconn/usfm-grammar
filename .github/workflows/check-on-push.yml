@@ -20,9 +20,9 @@ jobs:
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup node and npm
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 20
       - name: Run tests
@@ -60,6 +60,7 @@ jobs:
           cd tree-sitter-usfm3
           pip install .
           cd ../py-usfm-parser
+          sed -i '/tree-sitter-usfm3==.*/d' pyproject.toml
           pip install . -r ./dev-requirements.txt
 
       # - name: Install python module
