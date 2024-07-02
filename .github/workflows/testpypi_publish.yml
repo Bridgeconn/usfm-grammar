@@ -5,60 +5,90 @@ on:
   workflow_dispatch: # works only on default branch
 
 jobs:
-  build_wheels:
-    name: Build wheels on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-20.04, windows-2019, macos-11]
-        # os: [ubuntu-20.04]
+  build-tree-sitter-usfm3:
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
       - name: Setup node and npm
         uses: actions/setup-node@v2
         with:
           node-version: 20.4
-      - name: Build the tree-sitter parser
+          path: tree-sitter-usfm3
         run: |
           cd tree-sitter-usfm3
           npm install .
           ./node_modules/.bin/tree-sitter generate
+          ./node_modules/.bin/tree-sitter test
 
-      - name: Build wheels
-        uses: pypa/cibuildwheel@v2.9.0
-        env:
-          CIBW_BEFORE_BUILD: >
-              python -m pip install tree-sitter==0.20.0 &&
-              python py-usfm-parser/src/grammar_rebuild.py tree-sitter-usfm3 py-usfm-parser/src/usfm_grammar/my-languages.so
+      - uses: actions/setup-python@v5
         with:
-          package-dir: py-usfm-parser
-          output-dir: py-usfm-parser/dist
-          config-file: "py-usfm-parser/pyproject.toml"
+          python-version: "3.10"
 
+      - name: Build release distributions
+        with:
+          path: tree-sitter-usfm3
+        run: |
+          # NOTE: put your own distribution build steps here.
+          python -m pip install build setuptools
+          python -m build
       - uses: actions/upload-artifact@v3
         with:
-          path: py-usfm-parser/dist/*.whl
+          path: tree-sitter-usfm3/dist/*.tar.gz
+
+  build-py-usfm-parser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+      - name: Build release distributions
+        with:
+          path: py-usfm-parser
+        run: |
+          # NOTE: put your own distribution build steps here.
+          python -m pip install build setuptools
+          python -m build
+      - uses: actions/upload-artifact@v3
+        with:
+          path: py-usfm-parser/dist/*.tar.gz
+
 
   publish_to_pypi:
-    needs: [build_wheels]
+    needs: [build-tree-sitter-usfm3, build-py-usfm-parser]
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
       - name: Set up Python 3.10
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v5
         with:
           python-version: "3.10"
       - uses: actions/download-artifact@v3
         with:
           name: artifact
+          path: tree-sitter-usfm3/dist/
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: artifact
           path: py-usfm-parser/dist/
 
-      - name: Publish distribution 📦 to Test PyPI
+      - name: Publish tree-sitter-usfm3 📦 to Test PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          user: __token__
+          password: ${{ secrets.PUBLISH_ON_TEST_PYPI }}
+          repository_url: https://test.pypi.org/legacy/
+          packages_dir: tree-sitter-usfm3/dist/
+
+      - name: Publish usfm-grammar 📦 to Test PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
           password: ${{ secrets.PUBLISH_ON_TEST_PYPI }}
           repository_url: https://test.pypi.org/legacy/
           packages_dir: py-usfm-parser/dist/
+          
