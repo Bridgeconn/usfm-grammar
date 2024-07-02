@@ -26,7 +26,7 @@ jobs:
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v4
         with:
           python-version: "3.10"
 
@@ -76,7 +76,7 @@ jobs:
           name: artifact
           path: py-usfm-parser/dist/
 
-      - name: Publish tree-sitter-usfm3 📦 to Test PyPI
+      - name: Publish tree-sitter-usfm3 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
@@ -84,11 +84,11 @@ jobs:
           # repository_url: https://test.pypi.org/legacy/
           packages_dir: tree-sitter-usfm3/dist/
 
-      - name: Publish usfm-grammar 📦 to Test PyPI
+      - name: Publish usfm-grammar 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
-          password: ${{ ssecrets.pypi_token }}
+          password: ${{ secrets.pypi_token }}
           # repository_url: https://test.pypi.org/legacy/
           packages_dir: py-usfm-parser/dist/
           
