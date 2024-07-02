@@ -4,6 +4,7 @@
 name: Node.js Package
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
@@ -42,7 +43,7 @@ jobs:
           cd tree-sitter-usfm3
           npm install .
           ./node_modules/.bin/tree-sitter generate
-          npm publish . --tag alpha
+          npm publish . --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
