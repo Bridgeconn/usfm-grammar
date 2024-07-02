@@ -15,7 +15,7 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 20.4
-          path: tree-sitter-usfm3
+      - name: Generate 
         run: |
           cd tree-sitter-usfm3
           npm install .
@@ -27,10 +27,8 @@ jobs:
           python-version: "3.10"
 
       - name: Build release distributions
-        with:
-          path: tree-sitter-usfm3
         run: |
-          # NOTE: put your own distribution build steps here.
+          cd tree-sitter-usfm3
           python -m pip install build setuptools
           python -m build
       - uses: actions/upload-artifact@v3

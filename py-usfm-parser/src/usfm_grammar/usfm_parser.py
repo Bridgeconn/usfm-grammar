@@ -1,7 +1,6 @@
 '''The core logics of converting the syntax tree to other formats'''
 
 from enum import Enum
-from importlib import resources
 import re
 
 import tree_sitter_usfm3 as tsusfm
