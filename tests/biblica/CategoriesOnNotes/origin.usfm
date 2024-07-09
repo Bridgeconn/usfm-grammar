@@ -1,0 +1,8 @@
+\id MRK - Test Project
+\rem Note categories
+\c 1
+\p
+\v 1 Verse one text\f + \cat ex st ba\cat*\fr 1.1 \fq Footnote text \ft \xt C.f. \ref Mark 1:4|MRK 1:4\ref* and \ref Matt. 4:3|MAT 4:3\ref*.\xt* \f*
+\v 2 Verse two text
+\v 3 Verse three text. \fe + \cat ex\cat*\fr 1:3 \fq End note text.\ft \fe*
+\v 4 Verse four text.\x - \cat ex st\cat* \xo 1:4 \xta See \xt \ref John 5:8|JHN 5:8\ref*.\x*

@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -32,7 +32,7 @@
       "type": "para",
       "marker": "q1",
       "content": [
-        "“Someone is shouting in the desert,",
+        "“Someone is shouting in the desert, ",
         {
           "type": "ms",
           "marker": "qt-s",
@@ -55,7 +55,7 @@
           "number": "11",
           "sid": "MAT 1:11"
         },
-        "Jesus stood before the Roman governor, who questioned him.",
+        "Jesus stood before the Roman governor, who questioned him. ",
         {
           "type": "ms",
           "marker": "qt-s",
@@ -66,7 +66,7 @@
           "type": "ms",
           "marker": "qt-e"
         },
-        "he asked."
+        " he asked."
       ]
     },
     {
@@ -83,7 +83,7 @@
           "type": "ms",
           "marker": "qt-e"
         },
-        "answered Jesus.",
+        " answered Jesus. ",
         {
           "type": "verse",
           "marker": "v",
@@ -103,7 +103,7 @@
           "number": "13",
           "sid": "MAT 1:13"
         },
-        "So Pilate said to him,",
+        "So Pilate said to him, ",
         {
           "type": "ms",
           "marker": "qt-s",
@@ -126,7 +126,7 @@
           "number": "14",
           "sid": "MAT 1:14"
         },
-        "But Jesus refused to answer ...",
+        "But Jesus refused to answer ...\n  ",
         {
           "type": "ms",
           "marker": "ts"
@@ -143,7 +143,7 @@
           "number": "5",
           "sid": "MAT 1:5"
         },
-        "Now I wish to remind you, although...",
+        "Now I wish to remind you, although... ",
         {
           "type": "ms",
           "marker": "ts-s",
@@ -161,14 +161,14 @@
           "number": "5",
           "sid": "MAT 1:5"
         },
-        "Now I wish to remind you, although you know everything, that the Lord once saved a people out of the land of Egypt, but that afterward he destroyed those who did not believe.",
+        "Now I wish to remind you, although you know everything, that the Lord once saved a people out of the land of Egypt, but that afterward he destroyed those who did not believe. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "6",
           "sid": "MAT 1:6"
         },
-        "And angels who did not keep to their own principality, but left their proper dwelling place—God has kept them in everlasting chains in darkness for the judgment of the great day.",
+        "And angels who did not keep to their own principality, but left their proper dwelling place—God has kept them in everlasting chains in darkness for the judgment of the great day. ",
         {
           "type": "ms",
           "marker": "ts-e",

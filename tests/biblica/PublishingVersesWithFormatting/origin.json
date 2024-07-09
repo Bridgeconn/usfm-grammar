@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -61,7 +61,7 @@
           "number": "20",
           "sid": "XXA 1:20"
         },
-        "He replied,",
+        "He replied, ",
         {
           "type": "char",
           "marker": "wj",

@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -73,7 +73,7 @@
           "number": "19",
           "sid": "ISA 6:19"
         },
-        "Yahweh attacked some of the men of Beth Shemesh because they had looked into the ark of Yahweh. He killed 50,070 men. The people mourned, because Yahweh had given the people a great blow.",
+        "Yahweh attacked some of the men of Beth Shemesh because they had looked into the ark of Yahweh. He killed 50,070 men. The people mourned, because Yahweh had given the people a great blow. ",
         {
           "type": "note",
           "marker": "f",
@@ -83,22 +83,28 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "Instead of"
+                "Instead of "
               ]
             },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "50,070 men"
+                "50,070 men "
               ]
             },
-            ", some later copies and modern versions have,",
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                " , some later copies and modern versions have, "
+              ]
+            },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "seventy men."
+                "seventy men. "
               ]
             }
           ]
@@ -126,7 +132,7 @@
           "number": "16",
           "sid": "ISA 15:16"
         },
-        "Then Menahem attacked Tiphsah and all who were there, and the borders around Tirzah, because they did not open up the city to him. So he attacked it, and he ripped open all the pregnant women in that village.",
+        "Then Menahem attacked Tiphsah and all who were there, and the borders around Tirzah, because they did not open up the city to him. So he attacked it, and he ripped open all the pregnant women in that village. ",
         {
           "type": "note",
           "marker": "f",
@@ -136,22 +142,28 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "Instead of"
+                "Instead of "
               ]
             },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "Tiphsah"
+                "Tiphsah "
               ]
             },
-            ", one ancient version and some modern versions read,",
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                " , one ancient version and some modern versions read, "
+              ]
+            },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "Tappuah."
+                "Tappuah. "
               ]
             }
           ]

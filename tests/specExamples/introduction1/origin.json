@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -8,13 +8,6 @@
       "code": "MAT",
       "content": [
         "41MATGNT92.SFM, Good News Translation, June 2003"
-      ]
-    },
-    {
-      "type": "para",
-      "marker": "usfm",
-      "content": [
-        "3.0"
       ]
     },
     {
@@ -56,7 +49,7 @@
       "type": "para",
       "marker": "ip",
       "content": [
-        "Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca igualmente en",
+        "Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca igualmente en ",
         {
           "type": "char",
           "marker": "bk",
@@ -64,7 +57,7 @@
             "Mateo"
           ]
         },
-        "y",
+        " y ",
         {
           "type": "char",
           "marker": "bk",
@@ -92,14 +85,14 @@
             "Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water."
           ]
         },
-        "(“The Translators to the Reader,” King James Version, 1611)."
+        " (“The Translators to the Reader,” King James Version, 1611)."
       ]
     },
     {
       "type": "para",
       "marker": "im",
       "content": [
-        "The most important document in the history of the English language is the",
+        "The most important document in the history of the English language is the ",
         {
           "type": "char",
           "marker": "bk",
@@ -107,7 +100,7 @@
             "King James Version"
           ]
         },
-        "of the Bible..."
+        " of the Bible..."
       ]
     },
     {
@@ -126,7 +119,7 @@
           "number": "1",
           "sid": "MAT 1:1"
         },
-        "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...",
+        "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ... ",
         {
           "type": "verse",
           "marker": "v",

@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -24,7 +24,7 @@
           "number": "1",
           "sid": "GEN 1:1"
         },
-        "From Gen 1:",
+        "From Gen 1: ",
         {
           "type": "verse",
           "marker": "v",
@@ -173,14 +173,14 @@
             "הַ​מָּֽיִם"
           ]
         },
-        "׃",
+        "׃ ",
         {
           "type": "verse",
           "marker": "v",
           "number": "3",
           "sid": "GEN 1:3"
         },
-        "From Isa:",
+        "From Isa: ",
         {
           "type": "verse",
           "marker": "v",

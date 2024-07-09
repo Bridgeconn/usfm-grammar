@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -86,7 +86,7 @@
           "number": "2-6",
           "sid": "MAT 1:2-6"
         },
-        "From Abraham to King David, the following ancestors are listed: Abraham,...mother was",
+        "From Abraham to King David, the following ancestors are listed: Abraham,...mother was ",
         {
           "type": "char",
           "marker": "jmp",
@@ -95,7 +95,7 @@
             "Ruth"
           ]
         },
-        "), Jesse, and King David.",
+        "), Jesse, and King David. ",
         {
           "type": "char",
           "marker": "w",

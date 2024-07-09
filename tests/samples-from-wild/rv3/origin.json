@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -74,7 +74,7 @@
             "Peter"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -115,7 +115,7 @@
             "Christ"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -156,7 +156,7 @@
             "are"
           ]
         },
-        "sojourners",
+        " sojourners ",
         {
           "type": "char",
           "marker": "w",
@@ -197,7 +197,7 @@
             "Pontus"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -206,7 +206,7 @@
             "Galatia"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -215,7 +215,7 @@
             "Cappadocia"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -224,7 +224,7 @@
             "Asia"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -241,7 +241,7 @@
             "Bithynia"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
@@ -312,7 +312,7 @@
             "Father"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -353,7 +353,7 @@
             "Spirit"
           ]
         },
-        ", unto",
+        ", unto ",
         {
           "type": "char",
           "marker": "w",
@@ -370,7 +370,7 @@
             "and"
           ]
         },
-        "sprinkling",
+        " sprinkling ",
         {
           "type": "char",
           "marker": "w",
@@ -419,7 +419,7 @@
             "Christ"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -476,7 +476,7 @@
             "multiplied"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -577,7 +577,7 @@
             "Christ"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -626,7 +626,7 @@
             "mercy"
           ]
         },
-        "begat",
+        " begat ",
         {
           "type": "char",
           "marker": "w",
@@ -643,7 +643,7 @@
             "again"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -740,14 +740,14 @@
             "dead"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
           "number": "4",
           "sid": "1PE 1:4"
         },
-        "unto",
+        "unto ",
         {
           "type": "char",
           "marker": "w",
@@ -764,7 +764,7 @@
             "inheritance"
           ]
         },
-        "incorruptible,",
+        " incorruptible, ",
         {
           "type": "char",
           "marker": "w",
@@ -781,7 +781,7 @@
             "undefiled"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -798,7 +798,7 @@
             "that"
           ]
         },
-        "fadeth",
+        " fadeth ",
         {
           "type": "char",
           "marker": "w",
@@ -815,7 +815,7 @@
             "away"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -856,7 +856,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
@@ -919,7 +919,7 @@
             "are"
           ]
         },
-        "guarded",
+        " guarded ",
         {
           "type": "char",
           "marker": "w",
@@ -936,7 +936,7 @@
             "faith"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -1017,14 +1017,14 @@
             "time"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "6",
           "sid": "1PE 1:6"
         },
-        "Wherein ye",
+        "Wherein ye ",
         {
           "type": "char",
           "marker": "w",
@@ -1041,7 +1041,7 @@
             "rejoice"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1090,7 +1090,7 @@
             "while"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1099,7 +1099,7 @@
             "if"
           ]
         },
-        "need",
+        " need ",
         {
           "type": "char",
           "marker": "w",
@@ -1108,7 +1108,7 @@
             "be"
           ]
         },
-        ", ye",
+        ", ye ",
         {
           "type": "char",
           "marker": "w",
@@ -1117,7 +1117,7 @@
             "have"
           ]
         },
-        "been",
+        " been ",
         {
           "type": "char",
           "marker": "w",
@@ -1134,7 +1134,7 @@
             "to"
           ]
         },
-        "grief",
+        " grief ",
         {
           "type": "char",
           "marker": "w",
@@ -1151,7 +1151,7 @@
             "manifold"
           ]
         },
-        "temptations,",
+        " temptations, ",
         {
           "type": "verse",
           "marker": "v",
@@ -1206,7 +1206,7 @@
             "faith"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -1261,7 +1261,7 @@
             "that"
           ]
         },
-        "perisheth",
+        " perisheth ",
         {
           "type": "char",
           "marker": "w",
@@ -1310,7 +1310,7 @@
             "fire"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1335,7 +1335,7 @@
             "found"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -1368,7 +1368,7 @@
             "and"
           ]
         },
-        "honour",
+        " honour ",
         {
           "type": "char",
           "marker": "w",
@@ -1417,7 +1417,7 @@
             "Christ"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -1440,7 +1440,7 @@
             "not"
           ]
         },
-        "having",
+        " having ",
         {
           "type": "char",
           "marker": "w",
@@ -1449,7 +1449,7 @@
             "seen"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -1458,7 +1458,7 @@
             "love"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -1475,7 +1475,7 @@
             "whom"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1492,7 +1492,7 @@
             "now"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -1517,7 +1517,7 @@
             "not"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1534,7 +1534,7 @@
             "believing"
           ]
         },
-        ", ye",
+        ", ye ",
         {
           "type": "char",
           "marker": "w",
@@ -1567,7 +1567,7 @@
             "joy"
           ]
         },
-        "unspeakable",
+        " unspeakable ",
         {
           "type": "char",
           "marker": "w",
@@ -1600,7 +1600,7 @@
             "glory"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -1655,12 +1655,12 @@
             "faith"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
           "content": [
-            "even"
+            "even "
           ]
         },
         {
@@ -1709,7 +1709,7 @@
             "souls"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -1756,7 +1756,7 @@
             "prophets"
           ]
         },
-        "sought",
+        " sought ",
         {
           "type": "char",
           "marker": "w",
@@ -1773,7 +1773,7 @@
             "searched"
           ]
         },
-        "diligently,",
+        " diligently, ",
         {
           "type": "char",
           "marker": "w",
@@ -1834,10 +1834,10 @@
                 "should"
               ]
             },
-            "come"
+            " come "
           ]
         },
-        "unto",
+        "unto ",
         {
           "type": "char",
           "marker": "w",
@@ -1846,14 +1846,14 @@
             "you"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
           "number": "11",
           "sid": "1PE 1:11"
         },
-        "searching",
+        "searching ",
         {
           "type": "char",
           "marker": "w",
@@ -1892,7 +1892,7 @@
             "what"
           ]
         },
-        "manner",
+        " manner ",
         {
           "type": "char",
           "marker": "w",
@@ -1981,7 +1981,7 @@
             "did"
           ]
         },
-        "point unto,",
+        " point unto, ",
         {
           "type": "char",
           "marker": "w",
@@ -1998,7 +1998,7 @@
             "it"
           ]
         },
-        "testified beforehand",
+        " testified beforehand ",
         {
           "type": "char",
           "marker": "w",
@@ -2031,7 +2031,7 @@
             "Christ"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2072,7 +2072,7 @@
             "should"
           ]
         },
-        "follow",
+        " follow ",
         {
           "type": "char",
           "marker": "w",
@@ -2081,7 +2081,7 @@
             "them"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -2128,7 +2128,7 @@
             "revealed"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2145,7 +2145,7 @@
             "not"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -2154,7 +2154,7 @@
             "themselves"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2163,7 +2163,7 @@
             "but"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -2172,7 +2172,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2213,7 +2213,7 @@
             "things"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2254,7 +2254,7 @@
             "announced"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -2311,7 +2311,7 @@
             "gospel"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -2344,7 +2344,7 @@
             "Holy"
           ]
         },
-        "Ghost",
+        " Ghost ",
         {
           "type": "char",
           "marker": "w",
@@ -2377,7 +2377,7 @@
             "heaven"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -2434,7 +2434,7 @@
             "into"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -2449,7 +2449,7 @@
             "Wherefore"
           ]
         },
-        "girding up",
+        " girding up ",
         {
           "type": "char",
           "marker": "w",
@@ -2490,7 +2490,7 @@
             "mind"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2539,7 +2539,7 @@
             "hope"
           ]
         },
-        "perfectly",
+        " perfectly ",
         {
           "type": "char",
           "marker": "w",
@@ -2604,7 +2604,7 @@
             "brought"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -2661,7 +2661,7 @@
             "Christ"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -2700,7 +2700,7 @@
             "obedience"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2709,7 +2709,7 @@
             "not"
           ]
         },
-        "fashioning",
+        " fashioning ",
         {
           "type": "char",
           "marker": "w",
@@ -2812,7 +2812,7 @@
             "ignorance"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -2891,7 +2891,7 @@
             "holy"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2900,7 +2900,7 @@
             "be"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -2957,7 +2957,7 @@
             "of"
           ]
         },
-        "living;",
+        " living; ",
         {
           "type": "verse",
           "marker": "v",
@@ -2996,7 +2996,7 @@
             "written"
           ]
         },
-        ", Ye shall",
+        ", Ye shall ",
         {
           "type": "char",
           "marker": "w",
@@ -3013,7 +3013,7 @@
             "holy"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -3046,7 +3046,7 @@
             "holy"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -3069,7 +3069,7 @@
             "if"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -3110,7 +3110,7 @@
             "Father"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3143,7 +3143,7 @@
             "of"
           ]
         },
-        "persons judgeth",
+        " persons judgeth ",
         {
           "type": "char",
           "marker": "w",
@@ -3184,7 +3184,7 @@
             "work"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3225,7 +3225,7 @@
             "your"
           ]
         },
-        "sojourning",
+        " sojourning ",
         {
           "type": "char",
           "marker": "w",
@@ -3242,7 +3242,7 @@
             "fear"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -3265,7 +3265,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -3282,7 +3282,7 @@
             "redeemed"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3315,7 +3315,7 @@
             "things"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3348,7 +3348,7 @@
             "gold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3397,7 +3397,7 @@
             "life"
           ]
         },
-        "handed down",
+        " handed down ",
         {
           "type": "char",
           "marker": "w",
@@ -3414,7 +3414,7 @@
             "your"
           ]
         },
-        "fathers;",
+        " fathers; ",
         {
           "type": "verse",
           "marker": "v",
@@ -3453,7 +3453,7 @@
             "blood"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3518,7 +3518,7 @@
             "without"
           ]
         },
-        "spot,",
+        " spot, ",
         {
           "type": "char",
           "marker": "add",
@@ -3565,7 +3565,7 @@
             "Christ"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -3652,7 +3652,7 @@
             "world"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3749,7 +3749,7 @@
             "sake"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
@@ -3812,7 +3812,7 @@
             "God"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3861,7 +3861,7 @@
             "dead"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3894,7 +3894,7 @@
             "glory"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -3975,14 +3975,14 @@
             "God"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "22",
           "sid": "1PE 1:22"
         },
-        "Seeing ye",
+        "Seeing ye ",
         {
           "type": "char",
           "marker": "w",
@@ -4063,7 +4063,7 @@
             "truth"
           ]
         },
-        "unto unfeigned",
+        " unto unfeigned ",
         {
           "type": "char",
           "marker": "w",
@@ -4096,7 +4096,7 @@
             "brethren"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4153,14 +4153,14 @@
             "fervently"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
           "number": "23",
           "sid": "1PE 1:23"
         },
-        "having",
+        "having ",
         {
           "type": "char",
           "marker": "w",
@@ -4169,7 +4169,7 @@
             "been"
           ]
         },
-        "begotten",
+        " begotten ",
         {
           "type": "char",
           "marker": "w",
@@ -4178,7 +4178,7 @@
             "again"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4211,7 +4211,7 @@
             "seed"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4228,7 +4228,7 @@
             "of"
           ]
         },
-        "incorruptible,",
+        " incorruptible, ",
         {
           "type": "char",
           "marker": "w",
@@ -4269,7 +4269,7 @@
             "God"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4278,7 +4278,7 @@
             "which"
           ]
         },
-        "liveth",
+        " liveth ",
         {
           "type": "char",
           "marker": "w",
@@ -4287,7 +4287,7 @@
             "and"
           ]
         },
-        "abideth.",
+        " abideth. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4302,7 +4302,7 @@
             "For"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4343,7 +4343,7 @@
             "grass"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4376,7 +4376,7 @@
             "glory"
           ]
         },
-        "thereof",
+        " thereof ",
         {
           "type": "char",
           "marker": "w",
@@ -4417,7 +4417,7 @@
             "grass"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "char",
           "marker": "w",
@@ -4434,7 +4434,7 @@
             "grass"
           ]
         },
-        "withereth,",
+        " withereth, ",
         {
           "type": "char",
           "marker": "w",
@@ -4459,7 +4459,7 @@
             "flower"
           ]
         },
-        "falleth:",
+        " falleth: ",
         {
           "type": "verse",
           "marker": "v",
@@ -4514,7 +4514,7 @@
             "Lord"
           ]
         },
-        "abideth",
+        " abideth ",
         {
           "type": "char",
           "marker": "w",
@@ -4531,7 +4531,7 @@
             "ever"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "char",
           "marker": "w",
@@ -4588,7 +4588,7 @@
             "good"
           ]
         },
-        "tidings",
+        " tidings ",
         {
           "type": "char",
           "marker": "w",
@@ -4613,7 +4613,7 @@
             "preached"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -4649,7 +4649,7 @@
             "Putting"
           ]
         },
-        "away",
+        " away ",
         {
           "type": "char",
           "marker": "w",
@@ -4674,7 +4674,7 @@
             "wickedness"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4691,7 +4691,7 @@
             "all"
           ]
         },
-        "guile,",
+        " guile, ",
         {
           "type": "char",
           "marker": "w",
@@ -4700,7 +4700,7 @@
             "and"
           ]
         },
-        "hypocrisies,",
+        " hypocrisies, ",
         {
           "type": "char",
           "marker": "w",
@@ -4709,7 +4709,7 @@
             "and"
           ]
         },
-        "envies,",
+        " envies, ",
         {
           "type": "char",
           "marker": "w",
@@ -4734,7 +4734,7 @@
             "evil"
           ]
         },
-        "speakings,",
+        " speakings, ",
         {
           "type": "verse",
           "marker": "v",
@@ -4757,7 +4757,7 @@
             "newborn"
           ]
         },
-        "babes,",
+        " babes, ",
         {
           "type": "char",
           "marker": "w",
@@ -4814,7 +4814,7 @@
             "is"
           ]
         },
-        "without guile,",
+        " without guile, ",
         {
           "type": "char",
           "marker": "w",
@@ -4823,7 +4823,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -4840,7 +4840,7 @@
             "grow"
           ]
         },
-        "thereby unto",
+        " thereby unto ",
         {
           "type": "char",
           "marker": "w",
@@ -4849,7 +4849,7 @@
             "salvation"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -4864,7 +4864,7 @@
             "if"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -4913,14 +4913,14 @@
             "is"
           ]
         },
-        "gracious:",
+        " gracious: ",
         {
           "type": "verse",
           "marker": "v",
           "number": "4",
           "sid": "1PE 2:4"
         },
-        "unto",
+        "unto ",
         {
           "type": "char",
           "marker": "w",
@@ -4937,7 +4937,7 @@
             "coming"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4962,7 +4962,7 @@
             "stone"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4995,7 +4995,7 @@
             "men"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5028,7 +5028,7 @@
             "elect"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5037,14 +5037,14 @@
             "precious"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
           "number": "5",
           "sid": "1PE 2:5"
         },
-        "ye",
+        "ye ",
         {
           "type": "char",
           "marker": "w",
@@ -5053,7 +5053,7 @@
             "also"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5078,7 +5078,7 @@
             "stones"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5127,7 +5127,7 @@
             "house"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5168,7 +5168,7 @@
             "priesthood"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5209,7 +5209,7 @@
             "sacrifices"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5258,7 +5258,7 @@
             "Christ"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -5313,7 +5313,7 @@
             "scripture"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5322,7 +5322,7 @@
             "Behold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5363,7 +5363,7 @@
             "a"
           ]
         },
-        "chief",
+        " chief ",
         {
           "type": "char",
           "marker": "w",
@@ -5380,7 +5380,7 @@
             "stone"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5389,7 +5389,7 @@
             "elect"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5398,7 +5398,7 @@
             "precious"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -5423,7 +5423,7 @@
             "that"
           ]
         },
-        "believeth",
+        " believeth ",
         {
           "type": "char",
           "marker": "w",
@@ -5488,7 +5488,7 @@
             "shame"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -5551,7 +5551,7 @@
             "the"
           ]
         },
-        "preciousness:",
+        " preciousness: ",
         {
           "type": "char",
           "marker": "w",
@@ -5592,7 +5592,7 @@
             "disbelieve"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5641,7 +5641,7 @@
             "rejected"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5714,7 +5714,7 @@
             "corner"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -5729,7 +5729,7 @@
             "and"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5762,7 +5762,7 @@
             "stumbling"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5795,7 +5795,7 @@
             "of"
           ]
         },
-        "offence;",
+        " offence; ",
         {
           "type": "char",
           "marker": "w",
@@ -5844,7 +5844,7 @@
             "word"
           ]
         },
-        ", being",
+        ", being ",
         {
           "type": "char",
           "marker": "w",
@@ -5853,7 +5853,7 @@
             "disobedient"
           ]
         },
-        ": whereunto",
+        ": whereunto ",
         {
           "type": "char",
           "marker": "w",
@@ -5886,7 +5886,7 @@
             "appointed"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -5901,7 +5901,7 @@
             "But"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -5934,7 +5934,7 @@
             "race"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5959,7 +5959,7 @@
             "priesthood"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5984,7 +5984,7 @@
             "nation"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6039,7 +6039,7 @@
             "possession"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6048,7 +6048,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -6057,7 +6057,7 @@
             "may"
           ]
         },
-        "shew forth",
+        " shew forth ",
         {
           "type": "char",
           "marker": "w",
@@ -6170,7 +6170,7 @@
             "light"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -6201,7 +6201,7 @@
             "time"
           ]
         },
-        "past",
+        " past ",
         {
           "type": "char",
           "marker": "w",
@@ -6226,7 +6226,7 @@
             "people"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6283,7 +6283,7 @@
             "God"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -6308,7 +6308,7 @@
             "not"
           ]
         },
-        "obtained",
+        " obtained ",
         {
           "type": "char",
           "marker": "w",
@@ -6317,7 +6317,7 @@
             "mercy"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6342,7 +6342,7 @@
             "have"
           ]
         },
-        "obtained",
+        " obtained ",
         {
           "type": "char",
           "marker": "w",
@@ -6351,7 +6351,7 @@
             "mercy"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -6366,7 +6366,7 @@
             "Beloved"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6375,7 +6375,7 @@
             "I"
           ]
         },
-        "beseech",
+        " beseech ",
         {
           "type": "char",
           "marker": "w",
@@ -6392,7 +6392,7 @@
             "as"
           ]
         },
-        "sojourners",
+        " sojourners ",
         {
           "type": "char",
           "marker": "w",
@@ -6401,7 +6401,7 @@
             "and"
           ]
         },
-        "pilgrims,",
+        " pilgrims, ",
         {
           "type": "char",
           "marker": "w",
@@ -6442,7 +6442,7 @@
             "lusts"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6483,7 +6483,7 @@
             "soul"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -6506,7 +6506,7 @@
             "your"
           ]
         },
-        "behaviour seemly",
+        " behaviour seemly ",
         {
           "type": "char",
           "marker": "w",
@@ -6531,7 +6531,7 @@
             "Gentiles"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -6540,7 +6540,7 @@
             "that"
           ]
         },
-        ", wherein",
+        ", wherein ",
         {
           "type": "char",
           "marker": "w",
@@ -6581,7 +6581,7 @@
             "as"
           ]
         },
-        "evil-doers,",
+        " evil-doers, ",
         {
           "type": "char",
           "marker": "w",
@@ -6630,7 +6630,7 @@
             "works"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6647,7 +6647,7 @@
             "they"
           ]
         },
-        "behold,",
+        " behold, ",
         {
           "type": "char",
           "marker": "w",
@@ -6704,7 +6704,7 @@
             "visitation"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -6743,7 +6743,7 @@
             "every"
           ]
         },
-        "ordinance",
+        " ordinance ",
         {
           "type": "char",
           "marker": "w",
@@ -6792,7 +6792,7 @@
             "sake"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -6841,7 +6841,7 @@
             "king"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6858,7 +6858,7 @@
             "supreme"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -6873,7 +6873,7 @@
             "or"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -6882,7 +6882,7 @@
             "governors"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6939,7 +6939,7 @@
             "on"
           ]
         },
-        "evil-doers",
+        " evil-doers ",
         {
           "type": "char",
           "marker": "w",
@@ -6988,7 +6988,7 @@
             "that"
           ]
         },
-        "do",
+        " do ",
         {
           "type": "char",
           "marker": "w",
@@ -6997,7 +6997,7 @@
             "well"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -7060,7 +7060,7 @@
             "God"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7077,7 +7077,7 @@
             "by"
           ]
         },
-        "well-doing ye",
+        " well-doing ye ",
         {
           "type": "char",
           "marker": "w",
@@ -7086,7 +7086,7 @@
             "should"
           ]
         },
-        "put",
+        " put ",
         {
           "type": "char",
           "marker": "w",
@@ -7143,7 +7143,7 @@
             "men"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -7166,7 +7166,7 @@
             "free"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7183,7 +7183,7 @@
             "not"
           ]
         },
-        "using",
+        " using ",
         {
           "type": "char",
           "marker": "w",
@@ -7216,7 +7216,7 @@
             "a"
           ]
         },
-        "cloke",
+        " cloke ",
         {
           "type": "char",
           "marker": "w",
@@ -7233,7 +7233,7 @@
             "wickedness"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7250,7 +7250,7 @@
             "as"
           ]
         },
-        "bondservants",
+        " bondservants ",
         {
           "type": "char",
           "marker": "w",
@@ -7267,14 +7267,14 @@
             "God"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "17",
           "sid": "1PE 2:17"
         },
-        "Honour",
+        "Honour ",
         {
           "type": "char",
           "marker": "w",
@@ -7291,7 +7291,7 @@
             "men"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "char",
           "marker": "w",
@@ -7316,7 +7316,7 @@
             "brotherhood"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "char",
           "marker": "w",
@@ -7333,7 +7333,7 @@
             "God"
           ]
         },
-        ". Honour",
+        ". Honour ",
         {
           "type": "char",
           "marker": "w",
@@ -7350,14 +7350,14 @@
             "king"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "18",
           "sid": "1PE 2:18"
         },
-        "Servants,",
+        "Servants, ",
         {
           "type": "char",
           "marker": "add",
@@ -7436,7 +7436,7 @@
             "fear"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -7493,7 +7493,7 @@
             "gentle"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7526,7 +7526,7 @@
             "the"
           ]
         },
-        "froward.",
+        " froward. ",
         {
           "type": "verse",
           "marker": "v",
@@ -7557,7 +7557,7 @@
             "is"
           ]
         },
-        "acceptable,",
+        " acceptable, ",
         {
           "type": "char",
           "marker": "w",
@@ -7614,7 +7614,7 @@
             "man"
           ]
         },
-        "endureth griefs,",
+        " endureth griefs, ",
         {
           "type": "char",
           "marker": "w",
@@ -7623,7 +7623,7 @@
             "suffering"
           ]
         },
-        "wrongfully.",
+        " wrongfully. ",
         {
           "type": "verse",
           "marker": "v",
@@ -7646,7 +7646,7 @@
             "what"
           ]
         },
-        "glory",
+        " glory ",
         {
           "type": "char",
           "marker": "w",
@@ -7663,7 +7663,7 @@
             "it"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7672,7 +7672,7 @@
             "if"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7681,7 +7681,7 @@
             "when"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -7690,7 +7690,7 @@
             "sin"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7707,7 +7707,7 @@
             "are"
           ]
         },
-        "buffeted",
+        " buffeted ",
         {
           "type": "char",
           "marker": "add",
@@ -7730,7 +7730,7 @@
             }
           ]
         },
-        ", ye",
+        ", ye ",
         {
           "type": "char",
           "marker": "w",
@@ -7739,7 +7739,7 @@
             "shall"
           ]
         },
-        "take",
+        " take ",
         {
           "type": "char",
           "marker": "w",
@@ -7756,7 +7756,7 @@
             "patiently"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "char",
           "marker": "w",
@@ -7773,7 +7773,7 @@
             "if"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7782,7 +7782,7 @@
             "when"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -7799,7 +7799,7 @@
             "well"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7838,7 +7838,7 @@
             }
           ]
         },
-        ", ye",
+        ", ye ",
         {
           "type": "char",
           "marker": "w",
@@ -7847,7 +7847,7 @@
             "shall"
           ]
         },
-        "take",
+        " take ",
         {
           "type": "char",
           "marker": "w",
@@ -7864,7 +7864,7 @@
             "patiently"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7881,7 +7881,7 @@
             "is"
           ]
         },
-        "acceptable",
+        " acceptable ",
         {
           "type": "char",
           "marker": "w",
@@ -7898,7 +7898,7 @@
             "God"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -7913,7 +7913,7 @@
             "For"
           ]
         },
-        "hereunto",
+        " hereunto ",
         {
           "type": "char",
           "marker": "w",
@@ -7922,7 +7922,7 @@
             "were"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -7931,7 +7931,7 @@
             "called"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -7980,7 +7980,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8013,7 +8013,7 @@
             "example"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8022,7 +8022,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -8055,7 +8055,7 @@
             "steps"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -8094,7 +8094,7 @@
             "sin"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8111,7 +8111,7 @@
             "was"
           ]
         },
-        "guile",
+        " guile ",
         {
           "type": "char",
           "marker": "w",
@@ -8144,7 +8144,7 @@
             "mouth"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -8159,7 +8159,7 @@
             "who"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8192,7 +8192,7 @@
             "reviled"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8209,7 +8209,7 @@
             "not"
           ]
         },
-        "again;",
+        " again; ",
         {
           "type": "char",
           "marker": "w",
@@ -8234,7 +8234,7 @@
             "suffered"
           ]
         },
-        ", threatened",
+        ", threatened ",
         {
           "type": "char",
           "marker": "w",
@@ -8243,7 +8243,7 @@
             "not"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -8264,7 +8264,7 @@
           "type": "char",
           "marker": "add",
           "content": [
-            "himself"
+            "himself "
           ]
         },
         {
@@ -8291,7 +8291,7 @@
             "that"
           ]
         },
-        "judgeth",
+        " judgeth ",
         {
           "type": "char",
           "marker": "w",
@@ -8300,7 +8300,7 @@
             "righteously"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -8331,7 +8331,7 @@
             "own"
           ]
         },
-        "self bare",
+        " self bare ",
         {
           "type": "char",
           "marker": "w",
@@ -8396,7 +8396,7 @@
             "tree"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8413,7 +8413,7 @@
             "we"
           ]
         },
-        ", having died unto",
+        ", having died unto ",
         {
           "type": "char",
           "marker": "w",
@@ -8422,7 +8422,7 @@
             "sins"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8439,7 +8439,7 @@
             "live"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -8448,7 +8448,7 @@
             "righteousness"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -8465,7 +8465,7 @@
             "whose"
           ]
         },
-        "stripes ye",
+        " stripes ye ",
         {
           "type": "char",
           "marker": "w",
@@ -8482,7 +8482,7 @@
             "healed"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -8497,7 +8497,7 @@
             "For"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -8506,7 +8506,7 @@
             "were"
           ]
         },
-        "going",
+        " going ",
         {
           "type": "char",
           "marker": "w",
@@ -8531,7 +8531,7 @@
             "sheep"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -8564,7 +8564,7 @@
             "returned"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -8589,7 +8589,7 @@
             "and"
           ]
         },
-        "Bishop",
+        " Bishop ",
         {
           "type": "char",
           "marker": "w",
@@ -8657,7 +8657,7 @@
             "manner"
           ]
         },
-        ", ye",
+        ", ye ",
         {
           "type": "char",
           "marker": "w",
@@ -8666,7 +8666,7 @@
             "wives"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -8729,7 +8729,7 @@
             "husbands"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -8738,7 +8738,7 @@
             "that"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8795,7 +8795,7 @@
             "word"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8868,7 +8868,7 @@
             "the"
           ]
         },
-        "behaviour",
+        " behaviour ",
         {
           "type": "char",
           "marker": "w",
@@ -8893,14 +8893,14 @@
             "wives"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "1PE 3:2"
         },
-        "beholding",
+        "beholding ",
         {
           "type": "char",
           "marker": "w",
@@ -8917,12 +8917,12 @@
             "chaste"
           ]
         },
-        "behaviour",
+        " behaviour ",
         {
           "type": "char",
           "marker": "add",
           "content": [
-            "coupled"
+            "coupled "
           ]
         },
         {
@@ -8941,7 +8941,7 @@
             "fear"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -8960,7 +8960,7 @@
           "type": "char",
           "marker": "add",
           "content": [
-            "adorning"
+            "adorning "
           ]
         },
         {
@@ -9003,7 +9003,7 @@
             "the"
           ]
         },
-        "outward adorning",
+        " outward adorning ",
         {
           "type": "char",
           "marker": "w",
@@ -9012,7 +9012,7 @@
             "of"
           ]
         },
-        "plaiting",
+        " plaiting ",
         {
           "type": "char",
           "marker": "w",
@@ -9029,7 +9029,7 @@
             "hair"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9054,7 +9054,7 @@
             "wearing"
           ]
         },
-        "jewels",
+        " jewels ",
         {
           "type": "char",
           "marker": "w",
@@ -9071,7 +9071,7 @@
             "gold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9104,7 +9104,7 @@
             "on"
           ]
         },
-        "apparel;",
+        " apparel; ",
         {
           "type": "verse",
           "marker": "v",
@@ -9197,7 +9197,7 @@
             "heart"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9214,12 +9214,12 @@
             "the"
           ]
         },
-        "incorruptible",
+        " incorruptible ",
         {
           "type": "char",
           "marker": "add",
           "content": [
-            "apparel"
+            "apparel "
           ]
         },
         {
@@ -9238,7 +9238,7 @@
             "a"
           ]
         },
-        "meek",
+        " meek ",
         {
           "type": "char",
           "marker": "w",
@@ -9263,7 +9263,7 @@
             "spirit"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9328,7 +9328,7 @@
             "of"
           ]
         },
-        "great price.",
+        " great price. ",
         {
           "type": "verse",
           "marker": "v",
@@ -9367,7 +9367,7 @@
             "manner"
           ]
         },
-        "aforetime",
+        " aforetime ",
         {
           "type": "char",
           "marker": "w",
@@ -9400,7 +9400,7 @@
             "also"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9433,7 +9433,7 @@
             "God"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9450,7 +9450,7 @@
             "themselves"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9507,7 +9507,7 @@
             "husbands"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -9546,7 +9546,7 @@
             "Abraham"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9571,7 +9571,7 @@
             "lord"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -9588,7 +9588,7 @@
             "children"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -9605,7 +9605,7 @@
             "are"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9614,7 +9614,7 @@
             "if"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -9631,7 +9631,7 @@
             "well"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9696,14 +9696,14 @@
             "any"
           ]
         },
-        "terror.",
+        " terror. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "7",
           "sid": "1PE 3:7"
         },
-        "Ye",
+        "Ye ",
         {
           "type": "char",
           "marker": "w",
@@ -9712,7 +9712,7 @@
             "husbands"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9737,7 +9737,7 @@
             "manner"
           ]
         },
-        ", dwell",
+        ", dwell ",
         {
           "type": "char",
           "marker": "w",
@@ -9758,7 +9758,7 @@
                 "your"
               ]
             },
-            "wives"
+            " wives "
           ]
         },
         {
@@ -9785,7 +9785,7 @@
             "knowledge"
           ]
         },
-        ", giving honour unto",
+        ", giving honour unto ",
         {
           "type": "char",
           "marker": "w",
@@ -9802,7 +9802,7 @@
             "woman"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9811,7 +9811,7 @@
             "as"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -9836,7 +9836,7 @@
             "vessel"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9861,7 +9861,7 @@
             "also"
           ]
         },
-        "joint-heirs",
+        " joint-heirs ",
         {
           "type": "char",
           "marker": "w",
@@ -9902,7 +9902,7 @@
             "life"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -9975,7 +9975,7 @@
             "hindered"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -9990,7 +9990,7 @@
             "Finally"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -10005,7 +10005,7 @@
             }
           ]
         },
-        "ye",
+        "ye ",
         {
           "type": "char",
           "marker": "w",
@@ -10014,7 +10014,7 @@
             "all"
           ]
         },
-        "likeminded,",
+        " likeminded, ",
         {
           "type": "char",
           "marker": "w",
@@ -10023,7 +10023,7 @@
             "compassionate"
           ]
         },
-        ", loving",
+        ", loving ",
         {
           "type": "char",
           "marker": "w",
@@ -10032,7 +10032,7 @@
             "as"
           ]
         },
-        "brethren, tenderhearted, humbleminded:",
+        " brethren, tenderhearted, humbleminded: ",
         {
           "type": "verse",
           "marker": "v",
@@ -10047,7 +10047,7 @@
             "not"
           ]
         },
-        "rendering",
+        " rendering ",
         {
           "type": "char",
           "marker": "w",
@@ -10072,7 +10072,7 @@
             "evil"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10081,7 +10081,7 @@
             "or"
           ]
         },
-        "reviling",
+        " reviling ",
         {
           "type": "char",
           "marker": "w",
@@ -10090,7 +10090,7 @@
             "for"
           ]
         },
-        "reviling;",
+        " reviling; ",
         {
           "type": "char",
           "marker": "w",
@@ -10099,7 +10099,7 @@
             "but"
           ]
         },
-        "contrariwise",
+        " contrariwise ",
         {
           "type": "char",
           "marker": "w",
@@ -10108,7 +10108,7 @@
             "blessing"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -10117,7 +10117,7 @@
             "for"
           ]
         },
-        "hereunto",
+        " hereunto ",
         {
           "type": "char",
           "marker": "w",
@@ -10126,7 +10126,7 @@
             "were"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -10135,7 +10135,7 @@
             "called"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10144,7 +10144,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -10177,7 +10177,7 @@
             "blessing"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -10192,7 +10192,7 @@
             "For"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10233,7 +10233,7 @@
             "life"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10266,7 +10266,7 @@
             "days"
           ]
         },
-        ", Let",
+        ", Let ",
         {
           "type": "char",
           "marker": "w",
@@ -10315,7 +10315,7 @@
             "evil"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10372,7 +10372,7 @@
             "no"
           ]
         },
-        "guile:",
+        " guile: ",
         {
           "type": "verse",
           "marker": "v",
@@ -10387,7 +10387,7 @@
             "And"
           ]
         },
-        "let",
+        " let ",
         {
           "type": "char",
           "marker": "w",
@@ -10428,7 +10428,7 @@
             "evil"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10453,7 +10453,7 @@
             "good"
           ]
         },
-        "; Let",
+        "; Let ",
         {
           "type": "char",
           "marker": "w",
@@ -10478,7 +10478,7 @@
             "peace"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10503,7 +10503,7 @@
             "it"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -10590,7 +10590,7 @@
             "righteous"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10615,7 +10615,7 @@
             "ears"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -10632,7 +10632,7 @@
             "supplication"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -10729,7 +10729,7 @@
             "evil"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -10800,7 +10800,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10809,7 +10809,7 @@
             "if"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -10866,7 +10866,7 @@
             "good"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
@@ -10897,7 +10897,7 @@
             "if"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -10922,7 +10922,7 @@
             "for"
           ]
         },
-        "righteousness’",
+        " righteousness’ ",
         {
           "type": "char",
           "marker": "w",
@@ -10931,7 +10931,7 @@
             "sake"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10952,10 +10952,10 @@
                 "are"
               ]
             },
-            "ye"
+            " ye"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -10996,7 +10996,7 @@
             "fear"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11021,7 +11021,7 @@
             "troubled"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -11092,7 +11092,7 @@
             "Lord"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "add",
@@ -11131,7 +11131,7 @@
             "to"
           ]
         },
-        "give",
+        " give ",
         {
           "type": "char",
           "marker": "w",
@@ -11156,7 +11156,7 @@
             "every"
           ]
         },
-        "man",
+        " man ",
         {
           "type": "char",
           "marker": "w",
@@ -11165,7 +11165,7 @@
             "that"
           ]
         },
-        "asketh",
+        " asketh ",
         {
           "type": "char",
           "marker": "w",
@@ -11246,7 +11246,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11287,7 +11287,7 @@
             "fear"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -11326,7 +11326,7 @@
             "conscience"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -11335,7 +11335,7 @@
             "that"
           ]
         },
-        ", wherein ye",
+        ", wherein ye ",
         {
           "type": "char",
           "marker": "w",
@@ -11344,7 +11344,7 @@
             "are"
           ]
         },
-        "spoken",
+        " spoken ",
         {
           "type": "char",
           "marker": "w",
@@ -11353,7 +11353,7 @@
             "against"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11378,7 +11378,7 @@
             "be"
           ]
         },
-        "put",
+        " put ",
         {
           "type": "char",
           "marker": "w",
@@ -11467,7 +11467,7 @@
             "Christ"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -11482,7 +11482,7 @@
             "For"
           ]
         },
-        "it",
+        " it ",
         {
           "type": "char",
           "marker": "w",
@@ -11499,7 +11499,7 @@
             "better"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11564,7 +11564,7 @@
             "will"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11573,7 +11573,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -11590,7 +11590,7 @@
             "for"
           ]
         },
-        "well-doing",
+        " well-doing ",
         {
           "type": "char",
           "marker": "w",
@@ -11607,7 +11607,7 @@
             "for"
           ]
         },
-        "evil-doing.",
+        " evil-doing. ",
         {
           "type": "verse",
           "marker": "v",
@@ -11670,7 +11670,7 @@
             "once"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11711,7 +11711,7 @@
             "unrighteous"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11768,7 +11768,7 @@
             "God"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -11825,7 +11825,7 @@
             "flesh"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11834,7 +11834,7 @@
             "but"
           ]
         },
-        "quickened",
+        " quickened ",
         {
           "type": "char",
           "marker": "w",
@@ -11859,7 +11859,7 @@
             "spirit"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -11922,7 +11922,7 @@
             "preached"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -11955,7 +11955,7 @@
             "prison"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
@@ -11970,7 +11970,7 @@
             "which"
           ]
         },
-        "aforetime",
+        " aforetime ",
         {
           "type": "char",
           "marker": "w",
@@ -11987,7 +11987,7 @@
             "disobedient"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12004,7 +12004,7 @@
             "the"
           ]
         },
-        "longsuffering",
+        " longsuffering ",
         {
           "type": "char",
           "marker": "w",
@@ -12069,7 +12069,7 @@
             "Noah"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12110,7 +12110,7 @@
             "a"
           ]
         },
-        "preparing, wherein",
+        " preparing, wherein ",
         {
           "type": "char",
           "marker": "w",
@@ -12119,7 +12119,7 @@
             "few"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12136,7 +12136,7 @@
             "is"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12153,7 +12153,7 @@
             "souls"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12186,7 +12186,7 @@
             "water"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -12225,7 +12225,7 @@
             "a"
           ]
         },
-        "true likeness doth",
+        " true likeness doth ",
         {
           "type": "char",
           "marker": "w",
@@ -12250,7 +12250,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -12273,7 +12273,7 @@
             "baptism"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12290,7 +12290,7 @@
             "the"
           ]
         },
-        "putting away",
+        " putting away ",
         {
           "type": "char",
           "marker": "w",
@@ -12307,7 +12307,7 @@
             "the"
           ]
         },
-        "filth",
+        " filth ",
         {
           "type": "char",
           "marker": "w",
@@ -12332,7 +12332,7 @@
             "flesh"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12349,7 +12349,7 @@
             "the"
           ]
         },
-        "interrogation",
+        " interrogation ",
         {
           "type": "char",
           "marker": "w",
@@ -12398,7 +12398,7 @@
             "God"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12447,7 +12447,7 @@
             "Christ"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -12518,7 +12518,7 @@
             "God"
           ]
         },
-        ", having",
+        ", having ",
         {
           "type": "char",
           "marker": "w",
@@ -12543,7 +12543,7 @@
             "heaven"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -12592,7 +12592,7 @@
             "being"
           ]
         },
-        "made",
+        " made ",
         {
           "type": "char",
           "marker": "w",
@@ -12601,7 +12601,7 @@
             "subject"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -12629,7 +12629,7 @@
           "number": "1",
           "sid": "1PE 4:1"
         },
-        "Forasmuch",
+        "Forasmuch ",
         {
           "type": "char",
           "marker": "w",
@@ -12686,7 +12686,7 @@
             "flesh"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12695,7 +12695,7 @@
             "arm"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -12744,7 +12744,7 @@
             "mind"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -12769,7 +12769,7 @@
             "that"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -12802,7 +12802,7 @@
             "flesh"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -12827,7 +12827,7 @@
             "sin"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -12842,7 +12842,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -12979,7 +12979,7 @@
             "men"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13028,7 +13028,7 @@
             "God"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -13075,7 +13075,7 @@
             "may"
           ]
         },
-        "suffice",
+        " suffice ",
         {
           "type": "char",
           "marker": "w",
@@ -13092,7 +13092,7 @@
             "have"
           ]
         },
-        "wrought",
+        " wrought ",
         {
           "type": "char",
           "marker": "w",
@@ -13133,7 +13133,7 @@
             "Gentiles"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13158,7 +13158,7 @@
             "have"
           ]
         },
-        "walked",
+        " walked ",
         {
           "type": "char",
           "marker": "w",
@@ -13167,7 +13167,7 @@
             "in"
           ]
         },
-        "lasciviousness,",
+        " lasciviousness, ",
         {
           "type": "char",
           "marker": "w",
@@ -13176,7 +13176,7 @@
             "lusts"
           ]
         },
-        ", winebibbings, revellings, carousings,",
+        ", winebibbings, revellings, carousings, ",
         {
           "type": "char",
           "marker": "w",
@@ -13201,14 +13201,14 @@
             "idolatries"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
           "number": "4",
           "sid": "1PE 4:4"
         },
-        "wherein",
+        "wherein ",
         {
           "type": "char",
           "marker": "w",
@@ -13217,7 +13217,7 @@
             "they"
           ]
         },
-        "think",
+        " think ",
         {
           "type": "char",
           "marker": "w",
@@ -13242,7 +13242,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -13305,7 +13305,7 @@
             "same"
           ]
         },
-        "excess",
+        " excess ",
         {
           "type": "char",
           "marker": "w",
@@ -13314,7 +13314,7 @@
             "of"
           ]
         },
-        "riot, speaking",
+        " riot, speaking ",
         {
           "type": "char",
           "marker": "w",
@@ -13345,7 +13345,7 @@
             }
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -13448,7 +13448,7 @@
             "the"
           ]
         },
-        "quick",
+        " quick ",
         {
           "type": "char",
           "marker": "w",
@@ -13473,7 +13473,7 @@
             "dead"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -13488,7 +13488,7 @@
             "For"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -13569,7 +13569,7 @@
             "dead"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13658,7 +13658,7 @@
             "flesh"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13723,7 +13723,7 @@
             "spirit"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -13802,7 +13802,7 @@
             "hand"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -13811,7 +13811,7 @@
             "be"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -13844,7 +13844,7 @@
             "mind"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13869,7 +13869,7 @@
             "sober"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -13878,7 +13878,7 @@
             "prayer"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -13965,7 +13965,7 @@
             "yourselves"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -13982,7 +13982,7 @@
             "love"
           ]
         },
-        "covereth",
+        " covereth ",
         {
           "type": "char",
           "marker": "w",
@@ -14015,14 +14015,14 @@
             "sins"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
           "number": "9",
           "sid": "1PE 4:9"
         },
-        "using hospitality",
+        "using hospitality ",
         {
           "type": "char",
           "marker": "w",
@@ -14055,7 +14055,7 @@
             "without"
           ]
         },
-        "murmuring:",
+        " murmuring: ",
         {
           "type": "verse",
           "marker": "v",
@@ -14086,7 +14086,7 @@
             "each"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -14111,7 +14111,7 @@
             "gift"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14144,7 +14144,7 @@
             "yourselves"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14217,7 +14217,7 @@
             "God"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -14248,7 +14248,7 @@
             "man"
           ]
         },
-        "speaketh,",
+        " speaketh, ",
         {
           "type": "char",
           "marker": "add",
@@ -14311,7 +14311,7 @@
             "God"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -14336,7 +14336,7 @@
             "man"
           ]
         },
-        "ministereth,",
+        " ministereth, ",
         {
           "type": "char",
           "marker": "add",
@@ -14399,7 +14399,7 @@
             "God"
           ]
         },
-        "supplieth:",
+        " supplieth: ",
         {
           "type": "char",
           "marker": "w",
@@ -14488,7 +14488,7 @@
             "Christ"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14577,7 +14577,7 @@
             "ever"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "char",
           "marker": "w",
@@ -14586,7 +14586,7 @@
             "Amen"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14601,7 +14601,7 @@
             "Beloved"
           ]
         },
-        ", think it",
+        ", think it ",
         {
           "type": "char",
           "marker": "w",
@@ -14618,7 +14618,7 @@
             "strange"
           ]
         },
-        "concerning",
+        " concerning ",
         {
           "type": "char",
           "marker": "w",
@@ -14659,7 +14659,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14668,7 +14668,7 @@
             "which"
           ]
         },
-        "cometh",
+        " cometh ",
         {
           "type": "char",
           "marker": "w",
@@ -14709,7 +14709,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14758,7 +14758,7 @@
             "happened"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -14767,7 +14767,7 @@
             "you"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -14782,7 +14782,7 @@
             "but"
           ]
         },
-        "insomuch",
+        " insomuch ",
         {
           "type": "char",
           "marker": "w",
@@ -14791,7 +14791,7 @@
             "as"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -14800,7 +14800,7 @@
             "are"
           ]
         },
-        "partakers",
+        " partakers ",
         {
           "type": "char",
           "marker": "w",
@@ -14825,7 +14825,7 @@
             "sufferings"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14834,7 +14834,7 @@
             "rejoice"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -14899,7 +14899,7 @@
             "also"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -14924,7 +14924,7 @@
             "with"
           ]
         },
-        "exceeding",
+        " exceeding ",
         {
           "type": "char",
           "marker": "w",
@@ -14933,7 +14933,7 @@
             "joy"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14948,7 +14948,7 @@
             "If"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -15005,7 +15005,7 @@
             "Christ"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -15026,10 +15026,10 @@
                 "are"
               ]
             },
-            "ye"
+            " ye"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -15116,7 +15116,7 @@
             "God"
           ]
         },
-        "resteth",
+        " resteth ",
         {
           "type": "char",
           "marker": "w",
@@ -15133,7 +15133,7 @@
             "you"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -15212,7 +15212,7 @@
             "murderer"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -15237,7 +15237,7 @@
             "thief"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -15254,7 +15254,7 @@
             "an"
           ]
         },
-        "evil-doer,",
+        " evil-doer, ",
         {
           "type": "char",
           "marker": "w",
@@ -15303,7 +15303,7 @@
             "other"
           ]
         },
-        "men’s matters:",
+        " men’s matters: ",
         {
           "type": "verse",
           "marker": "v",
@@ -15346,7 +15346,7 @@
                 "man"
               ]
             },
-            "suffer"
+            " suffer "
           ]
         },
         {
@@ -15373,7 +15373,7 @@
             "Christian"
           ]
         },
-        ", let",
+        ", let ",
         {
           "type": "char",
           "marker": "w",
@@ -15406,7 +15406,7 @@
             "ashamed"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -15415,7 +15415,7 @@
             "but"
           ]
         },
-        "let",
+        " let ",
         {
           "type": "char",
           "marker": "w",
@@ -15464,7 +15464,7 @@
             "name"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -15507,7 +15507,7 @@
                 "is"
               ]
             },
-            "come"
+            " come "
           ]
         },
         {
@@ -15582,7 +15582,7 @@
             "God"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -15637,7 +15637,7 @@
             "at"
           ]
         },
-        "us,",
+        " us, ",
         {
           "type": "char",
           "marker": "w",
@@ -15756,7 +15756,7 @@
             "God"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
@@ -15819,7 +15819,7 @@
             "saved"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -15876,14 +15876,14 @@
             "appear"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
           "number": "19",
           "sid": "1PE 4:19"
         },
-        "Wherefore let",
+        "Wherefore let ",
         {
           "type": "char",
           "marker": "w",
@@ -15996,7 +15996,7 @@
             "in"
           ]
         },
-        "well-doing unto",
+        " well-doing unto ",
         {
           "type": "char",
           "marker": "w",
@@ -16096,7 +16096,7 @@
             "exhort"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16121,7 +16121,7 @@
             "a"
           ]
         },
-        "fellow-elder,",
+        " fellow-elder, ",
         {
           "type": "char",
           "marker": "w",
@@ -16186,7 +16186,7 @@
             "Christ"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16283,14 +16283,14 @@
             "revealed"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "1PE 5:2"
         },
-        "Tend",
+        "Tend ",
         {
           "type": "char",
           "marker": "w",
@@ -16355,7 +16355,7 @@
             "you"
           ]
         },
-        ", exercising",
+        ", exercising ",
         {
           "type": "char",
           "marker": "w",
@@ -16372,7 +16372,7 @@
             "oversight"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16389,7 +16389,7 @@
             "of"
           ]
         },
-        "constraint,",
+        " constraint, ",
         {
           "type": "char",
           "marker": "w",
@@ -16406,7 +16406,7 @@
             "willingly"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16415,7 +16415,7 @@
             "according"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -16424,7 +16424,7 @@
             "God"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -16449,7 +16449,7 @@
             "for"
           ]
         },
-        "filthy lucre,",
+        " filthy lucre, ",
         {
           "type": "char",
           "marker": "w",
@@ -16474,7 +16474,7 @@
             "a"
           ]
         },
-        "ready mind;",
+        " ready mind; ",
         {
           "type": "verse",
           "marker": "v",
@@ -16497,7 +16497,7 @@
             "as"
           ]
         },
-        "lording it over",
+        " lording it over ",
         {
           "type": "char",
           "marker": "w",
@@ -16538,7 +16538,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16547,7 +16547,7 @@
             "but"
           ]
         },
-        "making",
+        " making ",
         {
           "type": "char",
           "marker": "w",
@@ -16556,7 +16556,7 @@
             "yourselves"
           ]
         },
-        "ensamples",
+        " ensamples ",
         {
           "type": "char",
           "marker": "w",
@@ -16581,7 +16581,7 @@
             "flock"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -16652,7 +16652,7 @@
             "manifested"
           ]
         },
-        ", ye",
+        ", ye ",
         {
           "type": "char",
           "marker": "w",
@@ -16709,7 +16709,7 @@
             "that"
           ]
         },
-        "fadeth",
+        " fadeth ",
         {
           "type": "char",
           "marker": "w",
@@ -16718,7 +16718,7 @@
             "not"
           ]
         },
-        "away.",
+        " away. ",
         {
           "type": "verse",
           "marker": "v",
@@ -16733,7 +16733,7 @@
             "Likewise"
           ]
         },
-        ", ye",
+        ", ye ",
         {
           "type": "char",
           "marker": "w",
@@ -16742,7 +16742,7 @@
             "younger"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16759,7 +16759,7 @@
             "subject"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -16776,7 +16776,7 @@
             "elder"
           ]
         },
-        ". Yea,",
+        ". Yea, ",
         {
           "type": "char",
           "marker": "w",
@@ -16801,7 +16801,7 @@
             "you"
           ]
         },
-        "gird",
+        " gird ",
         {
           "type": "char",
           "marker": "w",
@@ -16826,7 +16826,7 @@
             "humility"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16835,7 +16835,7 @@
             "to"
           ]
         },
-        "serve",
+        " serve ",
         {
           "type": "char",
           "marker": "w",
@@ -16852,7 +16852,7 @@
             "another"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -16869,7 +16869,7 @@
             "God"
           ]
         },
-        "resisteth",
+        " resisteth ",
         {
           "type": "char",
           "marker": "w",
@@ -16878,7 +16878,7 @@
             "the"
           ]
         },
-        "proud,",
+        " proud, ",
         {
           "type": "char",
           "marker": "w",
@@ -16887,7 +16887,7 @@
             "but"
           ]
         },
-        "giveth",
+        " giveth ",
         {
           "type": "char",
           "marker": "w",
@@ -16920,7 +16920,7 @@
             "humble"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -16999,7 +16999,7 @@
             "God"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17048,7 +17048,7 @@
             "in"
           ]
         },
-        "due",
+        " due ",
         {
           "type": "char",
           "marker": "w",
@@ -17057,7 +17057,7 @@
             "time"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -17112,7 +17112,7 @@
             "him"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17129,7 +17129,7 @@
             "he"
           ]
         },
-        "careth",
+        " careth ",
         {
           "type": "char",
           "marker": "w",
@@ -17146,14 +17146,14 @@
             "you"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "8",
           "sid": "1PE 5:8"
         },
-        "Be",
+        "Be ",
         {
           "type": "char",
           "marker": "w",
@@ -17162,7 +17162,7 @@
             "sober"
           ]
         },
-        ", be watchful:",
+        ", be watchful: ",
         {
           "type": "char",
           "marker": "w",
@@ -17195,7 +17195,7 @@
             "devil"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17228,7 +17228,7 @@
             "lion"
           ]
         },
-        ", walketh",
+        ", walketh ",
         {
           "type": "char",
           "marker": "w",
@@ -17237,7 +17237,7 @@
             "about"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17262,7 +17262,7 @@
             "he"
           ]
         },
-        "may",
+        " may ",
         {
           "type": "char",
           "marker": "w",
@@ -17271,7 +17271,7 @@
             "devour"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -17286,7 +17286,7 @@
             "whom"
           ]
         },
-        "withstand stedfast",
+        " withstand stedfast ",
         {
           "type": "char",
           "marker": "w",
@@ -17311,7 +17311,7 @@
             "faith"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17432,7 +17432,7 @@
             "world"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -17487,7 +17487,7 @@
             "grace"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17512,7 +17512,7 @@
             "you"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -17553,7 +17553,7 @@
             "Christ"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17570,7 +17570,7 @@
             "that"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -17611,7 +17611,7 @@
             "while"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17636,7 +17636,7 @@
             "perfect"
           ]
         },
-        ", stablish,",
+        ", stablish, ",
         {
           "type": "char",
           "marker": "w",
@@ -17653,7 +17653,7 @@
             "you"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -17680,7 +17680,7 @@
           "type": "char",
           "marker": "add",
           "content": [
-            "be"
+            "be "
           ]
         },
         {
@@ -17731,7 +17731,7 @@
             "ever"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "char",
           "marker": "w",
@@ -17740,7 +17740,7 @@
             "Amen"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -17763,7 +17763,7 @@
             "Silvanus"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17788,7 +17788,7 @@
             "brother"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17827,7 +17827,7 @@
             }
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17852,7 +17852,7 @@
             "written"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -17869,7 +17869,7 @@
             "briefly"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17878,7 +17878,7 @@
             "exhorting"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17959,7 +17959,7 @@
             "God"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -17968,14 +17968,14 @@
             "stand"
           ]
         },
-        "ye fast therein.",
+        " ye fast therein. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "13",
           "sid": "1PE 5:13"
         },
-        "She",
+        "She ",
         {
           "type": "char",
           "marker": "w",
@@ -18008,7 +18008,7 @@
             "Babylon"
           ]
         },
-        ", elect",
+        ", elect ",
         {
           "type": "char",
           "marker": "w",
@@ -18039,7 +18039,7 @@
             }
           ]
         },
-        ", saluteth",
+        ", saluteth ",
         {
           "type": "char",
           "marker": "w",
@@ -18048,7 +18048,7 @@
             "you"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -18069,7 +18069,7 @@
                 "so"
               ]
             },
-            "doth"
+            " doth "
           ]
         },
         {
@@ -18096,14 +18096,14 @@
             "son"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "14",
           "sid": "1PE 5:14"
         },
-        "Salute",
+        "Salute ",
         {
           "type": "char",
           "marker": "w",
@@ -18160,7 +18160,7 @@
             "love"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "char",
           "marker": "w",
@@ -18177,7 +18177,7 @@
             "be"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",

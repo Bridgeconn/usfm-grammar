@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>Allow files or books without any chapters</description>
-        <validated>pass</validated>
-        <tags>clarify</tags>
+        <description>Don't allow empty book with only id line</description>
+        <validated>fail</validated>
 </test-metadata>

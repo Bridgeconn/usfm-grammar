@@ -1,0 +1,88 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "GEN 1:16"
+        }
+      ]
+    },
+    {
+      "type": "sidebar",
+      "marker": "esb",
+      "category": "History",
+      "content": [
+        {
+          "type": "para",
+          "marker": "ms",
+          "content": [
+            "Fish and Fishing"
+          ]
+        },
+        {
+          "type": "para",
+          "marker": "p",
+          "content": [
+            "In Jesus' time, fishing took place mostly on lake Galilee, because Jewish people could not use many of the harbors along the coast of the Mediterranean Sea, since these harbors were often controlled by unfriendly neighbors. The most common fish in the Lake of Galilee were carp and catfish. The Law of Moses allowed people to eat any fish with fins and scales, but since catfish lack scales (as do eels and sharks) they were not to be eaten (",
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Lev 11.9-12"
+              ]
+            },
+            "). Fish were also probably brought from Tyre and Sidon, where they were dried and salted. ..."
+          ]
+        },
+        {
+          "type": "para",
+          "marker": "p",
+          "content": [
+            "Among early Christians, the fish was a favorite image for Jesus, because the Greek word for fish (",
+            {
+              "type": "char",
+              "marker": "tl",
+              "content": [
+                "ichthus"
+              ]
+            },
+            ") consists of the first letters of the Greek words that tell who Jesus is: ",
+            {
+              "type": "figure",
+              "marker": "fig",
+              "content": [
+                "Christian Fish Image"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        "Passing alongside the Sea of Galilee, he saw Simon and Andrew the brother of Simon casting a net into the sea, for they were fishermen."
+      ]
+    }
+  ]
+}

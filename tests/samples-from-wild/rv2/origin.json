@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -74,7 +74,7 @@
             "How"
           ]
         },
-        "doth",
+        " doth ",
         {
           "type": "char",
           "marker": "w",
@@ -99,7 +99,7 @@
             "sit"
           ]
         },
-        "solitary,",
+        " solitary, ",
         {
           "type": "char",
           "marker": "w",
@@ -140,7 +140,7 @@
             "people"
           ]
         },
-        "!",
+        "! ",
         {
           "type": "char",
           "marker": "add",
@@ -163,7 +163,7 @@
             "is"
           ]
         },
-        "she",
+        " she ",
         {
           "type": "char",
           "marker": "w",
@@ -196,7 +196,7 @@
             "widow"
           ]
         },
-        "! she",
+        "! she ",
         {
           "type": "char",
           "marker": "w",
@@ -245,7 +245,7 @@
             "nations"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -292,7 +292,7 @@
             "provinces"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -315,7 +315,7 @@
             "is"
           ]
         },
-        "she",
+        " she ",
         {
           "type": "char",
           "marker": "w",
@@ -324,14 +324,14 @@
             "become"
           ]
         },
-        "tributary!",
+        " tributary! ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "LAM 1:2"
         },
-        "She weepeth sore",
+        "She weepeth sore ",
         {
           "type": "char",
           "marker": "w",
@@ -356,7 +356,7 @@
             "night"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -413,7 +413,7 @@
             "cheeks"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -446,7 +446,7 @@
             "lovers"
           ]
         },
-        "she hath",
+        " she hath ",
         {
           "type": "char",
           "marker": "w",
@@ -479,7 +479,7 @@
             "her"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -544,7 +544,7 @@
             "her"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -585,7 +585,7 @@
             "enemies"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -648,7 +648,7 @@
             "of"
           ]
         },
-        "affliction,",
+        " affliction, ",
         {
           "type": "char",
           "marker": "w",
@@ -689,7 +689,7 @@
             "servitude"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -698,7 +698,7 @@
             "she"
           ]
         },
-        "dwelleth",
+        " dwelleth ",
         {
           "type": "char",
           "marker": "w",
@@ -715,7 +715,7 @@
             "the"
           ]
         },
-        "heathen,",
+        " heathen, ",
         {
           "type": "char",
           "marker": "w",
@@ -724,7 +724,7 @@
             "she"
           ]
         },
-        "findeth",
+        " findeth ",
         {
           "type": "char",
           "marker": "w",
@@ -741,7 +741,7 @@
             "rest"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -798,7 +798,7 @@
             "the"
           ]
         },
-        "straits.",
+        " straits. ",
         {
           "type": "verse",
           "marker": "v",
@@ -853,7 +853,7 @@
             "mourn"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -894,7 +894,7 @@
             "the"
           ]
         },
-        "solemn",
+        " solemn ",
         {
           "type": "char",
           "marker": "w",
@@ -903,7 +903,7 @@
             "assembly"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -944,7 +944,7 @@
             "desolate"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -977,7 +977,7 @@
             "sigh"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -1010,7 +1010,7 @@
             "afflicted"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1059,7 +1059,7 @@
             "bitterness"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -1074,7 +1074,7 @@
             "Her"
           ]
         },
-        "adversaries",
+        " adversaries ",
         {
           "type": "char",
           "marker": "w",
@@ -1107,7 +1107,7 @@
             "head"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1132,7 +1132,7 @@
             "prosper"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -1157,7 +1157,7 @@
             "LORD"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -1222,7 +1222,7 @@
             "transgressions"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -1231,7 +1231,7 @@
             "her"
           ]
         },
-        "young",
+        " young ",
         {
           "type": "char",
           "marker": "w",
@@ -1288,7 +1288,7 @@
             "the"
           ]
         },
-        "adversary.",
+        " adversary. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1335,7 +1335,7 @@
             "of"
           ]
         },
-        "Zion",
+        " Zion ",
         {
           "type": "char",
           "marker": "w",
@@ -1376,7 +1376,7 @@
             "departed"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -1417,7 +1417,7 @@
             "like"
           ]
         },
-        "harts",
+        " harts ",
         {
           "type": "char",
           "marker": "w",
@@ -1450,7 +1450,7 @@
             "pasture"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1523,7 +1523,7 @@
             "pursuer"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -1538,7 +1538,7 @@
             "Jerusalem"
           ]
         },
-        "remembereth",
+        " remembereth ",
         {
           "type": "char",
           "marker": "w",
@@ -1579,7 +1579,7 @@
             "her"
           ]
         },
-        "affliction",
+        " affliction ",
         {
           "type": "char",
           "marker": "w",
@@ -1604,7 +1604,7 @@
             "her"
           ]
         },
-        "miseries",
+        " miseries ",
         {
           "type": "char",
           "marker": "w",
@@ -1621,7 +1621,7 @@
             "her"
           ]
         },
-        "pleasant",
+        " pleasant ",
         {
           "type": "char",
           "marker": "w",
@@ -1678,7 +1678,7 @@
             "of"
           ]
         },
-        "old:",
+        " old: ",
         {
           "type": "char",
           "marker": "w",
@@ -1751,7 +1751,7 @@
             "the"
           ]
         },
-        "adversary,",
+        " adversary, ",
         {
           "type": "char",
           "marker": "w",
@@ -1792,7 +1792,7 @@
             "her"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1801,7 +1801,7 @@
             "the"
           ]
         },
-        "adversaries",
+        " adversaries ",
         {
           "type": "char",
           "marker": "w",
@@ -1818,7 +1818,7 @@
             "her"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -1859,7 +1859,7 @@
             "her"
           ]
         },
-        "desolations.",
+        " desolations. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1874,7 +1874,7 @@
             "Jerusalem"
           ]
         },
-        "hath grievously",
+        " hath grievously ",
         {
           "type": "char",
           "marker": "w",
@@ -1883,7 +1883,7 @@
             "sinned"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -1948,7 +1948,7 @@
             "thing"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -1965,7 +1965,7 @@
             "that"
           ]
         },
-        "honoured",
+        " honoured ",
         {
           "type": "char",
           "marker": "w",
@@ -1974,7 +1974,7 @@
             "her"
           ]
         },
-        "despise",
+        " despise ",
         {
           "type": "char",
           "marker": "w",
@@ -1983,7 +1983,7 @@
             "her"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2032,7 +2032,7 @@
             "nakedness"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -2041,7 +2041,7 @@
             "yea"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2050,7 +2050,7 @@
             "she"
           ]
         },
-        "sigheth,",
+        " sigheth, ",
         {
           "type": "char",
           "marker": "w",
@@ -2059,7 +2059,7 @@
             "and"
           ]
         },
-        "turneth",
+        " turneth ",
         {
           "type": "char",
           "marker": "w",
@@ -2068,7 +2068,7 @@
             "backward"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -2083,7 +2083,7 @@
             "Her"
           ]
         },
-        "filthiness",
+        " filthiness ",
         {
           "type": "char",
           "marker": "w",
@@ -2116,7 +2116,7 @@
             "skirts"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -2165,7 +2165,7 @@
             "end"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -2206,7 +2206,7 @@
             "down"
           ]
         },
-        "wonderfully;",
+        " wonderfully; ",
         {
           "type": "char",
           "marker": "w",
@@ -2215,7 +2215,7 @@
             "she"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -2232,7 +2232,7 @@
             "comforter"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -2241,7 +2241,7 @@
             "behold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2258,7 +2258,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2267,7 +2267,7 @@
             "my"
           ]
         },
-        "affliction;",
+        " affliction; ",
         {
           "type": "char",
           "marker": "w",
@@ -2292,7 +2292,7 @@
             "enemy"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -2309,7 +2309,7 @@
             "himself"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -2324,7 +2324,7 @@
             "The"
           ]
         },
-        "adversary hath",
+        " adversary hath ",
         {
           "type": "char",
           "marker": "w",
@@ -2397,7 +2397,7 @@
             "things"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -2414,7 +2414,7 @@
             "she"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -2439,7 +2439,7 @@
             "the"
           ]
         },
-        "heathen",
+        " heathen ",
         {
           "type": "char",
           "marker": "w",
@@ -2480,7 +2480,7 @@
             "sanctuary"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2497,7 +2497,7 @@
             "whom"
           ]
         },
-        "thou didst",
+        " thou didst ",
         {
           "type": "char",
           "marker": "w",
@@ -2554,7 +2554,7 @@
             "into"
           ]
         },
-        "thy",
+        " thy ",
         {
           "type": "char",
           "marker": "w",
@@ -2563,7 +2563,7 @@
             "congregation"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -2602,7 +2602,7 @@
             "sigh"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2627,7 +2627,7 @@
             "bread"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -2660,7 +2660,7 @@
             "their"
           ]
         },
-        "pleasant",
+        " pleasant ",
         {
           "type": "char",
           "marker": "w",
@@ -2677,7 +2677,7 @@
             "for"
           ]
         },
-        "meat",
+        " meat ",
         {
           "type": "char",
           "marker": "w",
@@ -2686,7 +2686,7 @@
             "to"
           ]
         },
-        "refresh",
+        " refresh ",
         {
           "type": "char",
           "marker": "w",
@@ -2703,7 +2703,7 @@
             "soul"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -2712,7 +2712,7 @@
             "see"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2729,7 +2729,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2746,7 +2746,7 @@
             "behold"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -2779,7 +2779,7 @@
             "become"
           ]
         },
-        "vile.",
+        " vile. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2826,7 +2826,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2835,7 +2835,7 @@
             "all"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -2860,7 +2860,7 @@
             "by"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "char",
           "marker": "w",
@@ -2869,7 +2869,7 @@
             "behold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2934,7 +2934,7 @@
             "like"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -2951,7 +2951,7 @@
             "sorrow"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -2976,7 +2976,7 @@
             "done"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -2985,7 +2985,7 @@
             "me"
           ]
         },
-        ", wherewith",
+        ", wherewith ",
         {
           "type": "char",
           "marker": "w",
@@ -3002,7 +3002,7 @@
             "LORD"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3081,7 +3081,7 @@
             "anger"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -3112,7 +3112,7 @@
             "high"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3161,7 +3161,7 @@
             "bones"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3178,7 +3178,7 @@
             "it"
           ]
         },
-        "prevaileth",
+        " prevaileth ",
         {
           "type": "char",
           "marker": "w",
@@ -3195,7 +3195,7 @@
             "them"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -3204,7 +3204,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3253,7 +3253,7 @@
             "feet"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3262,7 +3262,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3287,7 +3287,7 @@
             "back"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -3296,7 +3296,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3361,7 +3361,7 @@
             "day"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -3448,7 +3448,7 @@
             "hand"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -3481,7 +3481,7 @@
             "together"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3538,7 +3538,7 @@
             "neck"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -3547,7 +3547,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3588,7 +3588,7 @@
             "fail"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -3605,7 +3605,7 @@
             "Lord"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3646,7 +3646,7 @@
             "hands"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -3655,7 +3655,7 @@
             "against"
           ]
         },
-        "whom",
+        " whom ",
         {
           "type": "char",
           "marker": "w",
@@ -3664,7 +3664,7 @@
             "I"
           ]
         },
-        "am",
+        " am ",
         {
           "type": "char",
           "marker": "w",
@@ -3697,7 +3697,7 @@
             "stand"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -3720,7 +3720,7 @@
             "Lord"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3737,7 +3737,7 @@
             "at"
           ]
         },
-        "nought",
+        " nought ",
         {
           "type": "char",
           "marker": "w",
@@ -3810,7 +3810,7 @@
             "me"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -3819,7 +3819,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3836,7 +3836,7 @@
             "a"
           ]
         },
-        "solemn",
+        " solemn ",
         {
           "type": "char",
           "marker": "w",
@@ -3901,7 +3901,7 @@
             "men"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -3918,7 +3918,7 @@
             "Lord"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -3951,7 +3951,7 @@
             "a"
           ]
         },
-        "winepress",
+        " winepress ",
         {
           "type": "char",
           "marker": "w",
@@ -3992,7 +3992,7 @@
             "Judah"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -4039,7 +4039,7 @@
             "weep"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -4056,7 +4056,7 @@
             "eye"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4073,7 +4073,7 @@
             "eye"
           ]
         },
-        "runneth",
+        " runneth ",
         {
           "type": "char",
           "marker": "w",
@@ -4098,7 +4098,7 @@
             "water"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -4139,7 +4139,7 @@
             "should"
           ]
         },
-        "refresh",
+        " refresh ",
         {
           "type": "char",
           "marker": "w",
@@ -4188,7 +4188,7 @@
             "me"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -4221,7 +4221,7 @@
             "desolate"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4246,7 +4246,7 @@
             "enemy"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -4255,7 +4255,7 @@
             "prevailed"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -4270,7 +4270,7 @@
             "Zion"
           ]
         },
-        "spreadeth forth",
+        " spreadeth forth ",
         {
           "type": "char",
           "marker": "w",
@@ -4287,7 +4287,7 @@
             "hands"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -4336,7 +4336,7 @@
             "her"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -4353,7 +4353,7 @@
             "LORD"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -4378,7 +4378,7 @@
             "Jacob"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4459,7 +4459,7 @@
             "his"
           ]
         },
-        "adversaries:",
+        " adversaries: ",
         {
           "type": "char",
           "marker": "w",
@@ -4524,7 +4524,7 @@
             "thing"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -4563,7 +4563,7 @@
             "righteous"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -4620,7 +4620,7 @@
             "commandment"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -4629,7 +4629,7 @@
             "hear"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4654,7 +4654,7 @@
             "you"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4663,7 +4663,7 @@
             "all"
           ]
         },
-        "ye",
+        " ye ",
         {
           "type": "char",
           "marker": "w",
@@ -4672,7 +4672,7 @@
             "peoples"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4705,7 +4705,7 @@
             "sorrow"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -4786,7 +4786,7 @@
             "captivity"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -4833,7 +4833,7 @@
             "lovers"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -4872,7 +4872,7 @@
             "me"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -4897,7 +4897,7 @@
             "and"
           ]
         },
-        "mine",
+        " mine ",
         {
           "type": "char",
           "marker": "w",
@@ -4930,7 +4930,7 @@
             "the"
           ]
         },
-        "ghost",
+        " ghost ",
         {
           "type": "char",
           "marker": "w",
@@ -4955,7 +4955,7 @@
             "city"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -4988,7 +4988,7 @@
             "them"
           ]
         },
-        "meat",
+        " meat ",
         {
           "type": "char",
           "marker": "w",
@@ -4997,7 +4997,7 @@
             "to"
           ]
         },
-        "refresh",
+        " refresh ",
         {
           "type": "char",
           "marker": "w",
@@ -5014,7 +5014,7 @@
             "souls"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -5029,7 +5029,7 @@
             "Behold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5046,7 +5046,7 @@
             "LORD"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -5087,7 +5087,7 @@
             "distress"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -5112,7 +5112,7 @@
             "are"
           ]
         },
-        "troubled; mine",
+        " troubled; mine ",
         {
           "type": "char",
           "marker": "w",
@@ -5153,7 +5153,7 @@
             "me"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -5178,7 +5178,7 @@
             "have"
           ]
         },
-        "grievously",
+        " grievously ",
         {
           "type": "char",
           "marker": "w",
@@ -5187,7 +5187,7 @@
             "rebelled"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -5212,7 +5212,7 @@
             "sword"
           ]
         },
-        "bereaveth,",
+        " bereaveth, ",
         {
           "type": "char",
           "marker": "w",
@@ -5261,7 +5261,7 @@
             "death"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -5316,7 +5316,7 @@
             "sigh"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -5365,7 +5365,7 @@
             "me"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -5374,7 +5374,7 @@
             "all"
           ]
         },
-        "mine",
+        " mine ",
         {
           "type": "char",
           "marker": "w",
@@ -5423,7 +5423,7 @@
             "trouble"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -5456,7 +5456,7 @@
             "that"
           ]
         },
-        "thou hast",
+        " thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -5473,7 +5473,7 @@
             "it"
           ]
         },
-        ": thou wilt",
+        ": thou wilt ",
         {
           "type": "char",
           "marker": "w",
@@ -5506,7 +5506,7 @@
             "that"
           ]
         },
-        "thou hast",
+        " thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -5515,7 +5515,7 @@
             "proclaimed"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5556,7 +5556,7 @@
             "like"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -5565,14 +5565,14 @@
             "me"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "22",
           "sid": "LAM 1:22"
         },
-        "Let",
+        "Let ",
         {
           "type": "char",
           "marker": "w",
@@ -5613,7 +5613,7 @@
             "before"
           ]
         },
-        "thee;",
+        " thee; ",
         {
           "type": "char",
           "marker": "w",
@@ -5630,7 +5630,7 @@
             "do"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -5639,7 +5639,7 @@
             "them"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5648,7 +5648,7 @@
             "as"
           ]
         },
-        "thou hast",
+        " thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -5657,7 +5657,7 @@
             "done"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -5698,7 +5698,7 @@
             "transgressions"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -5715,7 +5715,7 @@
             "my"
           ]
         },
-        "sighs",
+        " sighs ",
         {
           "type": "char",
           "marker": "w",
@@ -5732,7 +5732,7 @@
             "many"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -5800,7 +5800,7 @@
             "How"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -5905,7 +5905,7 @@
             "anger"
           ]
         },
-        "!",
+        "! ",
         {
           "type": "char",
           "marker": "w",
@@ -5914,7 +5914,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -5947,7 +5947,7 @@
             "heaven"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -5996,7 +5996,7 @@
             "Israel"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6005,7 +6005,7 @@
             "and"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6030,7 +6030,7 @@
             "his"
           ]
         },
-        "footstool",
+        " footstool ",
         {
           "type": "char",
           "marker": "w",
@@ -6079,7 +6079,7 @@
             "anger"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -6102,7 +6102,7 @@
             "Lord"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6159,7 +6159,7 @@
             "Jacob"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6168,7 +6168,7 @@
             "and"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6177,7 +6177,7 @@
             "not"
           ]
         },
-        "pitied;",
+        " pitied; ",
         {
           "type": "char",
           "marker": "w",
@@ -6186,7 +6186,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6235,7 +6235,7 @@
             "the"
           ]
         },
-        "strong holds",
+        " strong holds ",
         {
           "type": "char",
           "marker": "w",
@@ -6276,7 +6276,7 @@
             "Judah"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -6285,7 +6285,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6334,7 +6334,7 @@
             "ground"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -6343,7 +6343,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6392,7 +6392,7 @@
             "princes"
           ]
         },
-        "thereof.",
+        " thereof. ",
         {
           "type": "verse",
           "marker": "v",
@@ -6407,7 +6407,7 @@
             "He"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6488,7 +6488,7 @@
             "Israel"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -6497,7 +6497,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6570,7 +6570,7 @@
             "enemy"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -6587,7 +6587,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6644,7 +6644,7 @@
             "fire"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6653,7 +6653,7 @@
             "which"
           ]
         },
-        "devoureth",
+        " devoureth ",
         {
           "type": "char",
           "marker": "w",
@@ -6670,7 +6670,7 @@
             "about"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -6685,7 +6685,7 @@
             "He"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6718,7 +6718,7 @@
             "like"
           ]
         },
-        "an",
+        " an ",
         {
           "type": "char",
           "marker": "w",
@@ -6727,7 +6727,7 @@
             "enemy"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -6736,7 +6736,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6785,7 +6785,7 @@
             "as"
           ]
         },
-        "an adversary,",
+        " an adversary, ",
         {
           "type": "char",
           "marker": "w",
@@ -6794,7 +6794,7 @@
             "and"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6859,7 +6859,7 @@
             "eye"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -6932,7 +6932,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -6981,7 +6981,7 @@
             "fire"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -7044,7 +7044,7 @@
             "enemy"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7053,7 +7053,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7078,7 +7078,7 @@
             "Israel"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -7087,7 +7087,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7128,7 +7128,7 @@
             "palaces"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7137,7 +7137,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7154,7 +7154,7 @@
             "his"
           ]
         },
-        "strong holds:",
+        " strong holds: ",
         {
           "type": "char",
           "marker": "w",
@@ -7171,7 +7171,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7236,7 +7236,7 @@
             "and"
           ]
         },
-        "lamentation.",
+        " lamentation. ",
         {
           "type": "verse",
           "marker": "v",
@@ -7259,7 +7259,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7268,7 +7268,7 @@
             "violently"
           ]
         },
-        "taken away",
+        " taken away ",
         {
           "type": "char",
           "marker": "w",
@@ -7285,7 +7285,7 @@
             "tabernacle"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7294,7 +7294,7 @@
             "as"
           ]
         },
-        "if",
+        " if ",
         {
           "type": "char",
           "marker": "w",
@@ -7335,7 +7335,7 @@
             "garden"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -7344,7 +7344,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7385,7 +7385,7 @@
             "assembly"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -7402,7 +7402,7 @@
             "LORD"
           ]
         },
-        "hath caused solemn",
+        " hath caused solemn ",
         {
           "type": "char",
           "marker": "w",
@@ -7467,7 +7467,7 @@
             "Zion"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7476,7 +7476,7 @@
             "and"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7573,7 +7573,7 @@
             "priest"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -7596,7 +7596,7 @@
             "Lord"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7629,7 +7629,7 @@
             "altar"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7638,7 +7638,7 @@
             "he"
           ]
         },
-        "hath abhorred",
+        " hath abhorred ",
         {
           "type": "char",
           "marker": "w",
@@ -7655,7 +7655,7 @@
             "sanctuary"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7664,7 +7664,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -7769,7 +7769,7 @@
             "palaces"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -7858,7 +7858,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -7907,7 +7907,7 @@
             "a"
           ]
         },
-        "solemn",
+        " solemn ",
         {
           "type": "char",
           "marker": "w",
@@ -7916,7 +7916,7 @@
             "assembly"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -7939,7 +7939,7 @@
             "LORD"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -8020,7 +8020,7 @@
             "Zion"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -8029,7 +8029,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -8054,7 +8054,7 @@
             "the"
           ]
         },
-        "line,",
+        " line, ",
         {
           "type": "char",
           "marker": "w",
@@ -8063,7 +8063,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -8072,7 +8072,7 @@
             "not"
           ]
         },
-        "withdrawn",
+        " withdrawn ",
         {
           "type": "char",
           "marker": "w",
@@ -8105,7 +8105,7 @@
             "destroying"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -8122,7 +8122,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -8179,7 +8179,7 @@
             "lament"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -8204,7 +8204,7 @@
             "together"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -8267,7 +8267,7 @@
             "ground"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -8276,7 +8276,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -8317,7 +8317,7 @@
             "bars"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -8430,7 +8430,7 @@
             "not"
           ]
         },
-        "; yea,",
+        "; yea, ",
         {
           "type": "char",
           "marker": "w",
@@ -8495,7 +8495,7 @@
             "LORD"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -8590,7 +8590,7 @@
             "ground"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8599,7 +8599,7 @@
             "they"
           ]
         },
-        "keep silence;",
+        " keep silence; ",
         {
           "type": "char",
           "marker": "w",
@@ -8664,7 +8664,7 @@
             "heads"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -8713,7 +8713,7 @@
             "sackcloth"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -8746,7 +8746,7 @@
             "Jerusalem"
           ]
         },
-        "hang",
+        " hang ",
         {
           "type": "char",
           "marker": "w",
@@ -8795,14 +8795,14 @@
             "ground"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "11",
           "sid": "LAM 2:11"
         },
-        "Mine",
+        "Mine ",
         {
           "type": "char",
           "marker": "w",
@@ -8811,7 +8811,7 @@
             "eyes"
           ]
         },
-        "do",
+        " do ",
         {
           "type": "char",
           "marker": "w",
@@ -8836,7 +8836,7 @@
             "tears"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8861,7 +8861,7 @@
             "are"
           ]
         },
-        "troubled,",
+        " troubled, ",
         {
           "type": "char",
           "marker": "w",
@@ -8918,7 +8918,7 @@
             "earth"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -8991,7 +8991,7 @@
             "people"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -9008,7 +9008,7 @@
             "the"
           ]
         },
-        "young",
+        " young ",
         {
           "type": "char",
           "marker": "w",
@@ -9033,7 +9033,7 @@
             "the"
           ]
         },
-        "sucklings swoon",
+        " sucklings swoon ",
         {
           "type": "char",
           "marker": "w",
@@ -9082,7 +9082,7 @@
             "city"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -9129,7 +9129,7 @@
             "mothers"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9146,7 +9146,7 @@
             "is"
           ]
         },
-        "corn",
+        " corn ",
         {
           "type": "char",
           "marker": "w",
@@ -9163,7 +9163,7 @@
             "wine"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "char",
           "marker": "w",
@@ -9180,7 +9180,7 @@
             "they"
           ]
         },
-        "swoon",
+        " swoon ",
         {
           "type": "char",
           "marker": "w",
@@ -9253,7 +9253,7 @@
             "city"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9334,7 +9334,7 @@
             "bosom"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -9365,7 +9365,7 @@
             "I"
           ]
         },
-        "testify unto thee?",
+        " testify unto thee? ",
         {
           "type": "char",
           "marker": "w",
@@ -9406,7 +9406,7 @@
             "to"
           ]
         },
-        "thee,",
+        " thee, ",
         {
           "type": "char",
           "marker": "w",
@@ -9439,7 +9439,7 @@
             "Jerusalem"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "char",
           "marker": "w",
@@ -9480,7 +9480,7 @@
             "to"
           ]
         },
-        "thee,",
+        " thee, ",
         {
           "type": "char",
           "marker": "w",
@@ -9513,7 +9513,7 @@
             "comfort"
           ]
         },
-        "thee,",
+        " thee, ",
         {
           "type": "char",
           "marker": "w",
@@ -9554,7 +9554,7 @@
             "Zion"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "char",
           "marker": "w",
@@ -9563,7 +9563,7 @@
             "for"
           ]
         },
-        "thy breach",
+        " thy breach ",
         {
           "type": "char",
           "marker": "w",
@@ -9604,7 +9604,7 @@
             "sea"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -9629,14 +9629,14 @@
             "heal"
           ]
         },
-        "thee?",
+        " thee? ",
         {
           "type": "verse",
           "marker": "v",
           "number": "14",
           "sid": "LAM 2:14"
         },
-        "Thy",
+        "Thy ",
         {
           "type": "char",
           "marker": "w",
@@ -9677,7 +9677,7 @@
             "for"
           ]
         },
-        "thee",
+        " thee ",
         {
           "type": "char",
           "marker": "w",
@@ -9702,7 +9702,7 @@
             "and"
           ]
         },
-        "foolishness;",
+        " foolishness; ",
         {
           "type": "char",
           "marker": "w",
@@ -9735,7 +9735,7 @@
             "not"
           ]
         },
-        "discovered thine",
+        " discovered thine ",
         {
           "type": "char",
           "marker": "w",
@@ -9744,7 +9744,7 @@
             "iniquity"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -9769,7 +9769,7 @@
             "again"
           ]
         },
-        "thy",
+        " thy ",
         {
           "type": "char",
           "marker": "w",
@@ -9778,7 +9778,7 @@
             "captivity"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -9811,7 +9811,7 @@
             "for"
           ]
         },
-        "thee burdens",
+        " thee burdens ",
         {
           "type": "char",
           "marker": "w",
@@ -9836,7 +9836,7 @@
             "and"
           ]
         },
-        "causes",
+        " causes ",
         {
           "type": "char",
           "marker": "w",
@@ -9845,7 +9845,7 @@
             "of"
           ]
         },
-        "banishment.",
+        " banishment. ",
         {
           "type": "verse",
           "marker": "v",
@@ -9916,7 +9916,7 @@
             "at"
           ]
         },
-        "thee;",
+        " thee; ",
         {
           "type": "char",
           "marker": "w",
@@ -10005,7 +10005,7 @@
             "Jerusalem"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -10020,7 +10020,7 @@
             }
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -10109,7 +10109,7 @@
             "beauty"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10158,7 +10158,7 @@
             "earth"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
@@ -10173,7 +10173,7 @@
             "All"
           ]
         },
-        "thine",
+        " thine ",
         {
           "type": "char",
           "marker": "w",
@@ -10230,7 +10230,7 @@
             "against"
           ]
         },
-        "thee;",
+        " thee; ",
         {
           "type": "char",
           "marker": "w",
@@ -10279,7 +10279,7 @@
             "teeth"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -10296,7 +10296,7 @@
             "say"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10337,7 +10337,7 @@
             "up"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -10410,7 +10410,7 @@
             "for"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -10435,7 +10435,7 @@
             "found"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10468,7 +10468,7 @@
             "it"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -10491,7 +10491,7 @@
             "LORD"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -10524,7 +10524,7 @@
             "he"
           ]
         },
-        "devised;",
+        " devised; ",
         {
           "type": "char",
           "marker": "w",
@@ -10533,7 +10533,7 @@
             "he"
           ]
         },
-        "hath fulfilled",
+        " hath fulfilled ",
         {
           "type": "char",
           "marker": "w",
@@ -10606,7 +10606,7 @@
             "of"
           ]
         },
-        "old;",
+        " old; ",
         {
           "type": "char",
           "marker": "w",
@@ -10615,7 +10615,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -10632,7 +10632,7 @@
             "down"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10641,7 +10641,7 @@
             "and"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -10650,7 +10650,7 @@
             "not"
           ]
         },
-        "pitied:",
+        " pitied: ",
         {
           "type": "char",
           "marker": "w",
@@ -10667,7 +10667,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -10716,7 +10716,7 @@
             "over"
           ]
         },
-        "thee,",
+        " thee, ",
         {
           "type": "char",
           "marker": "w",
@@ -10725,7 +10725,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -10758,7 +10758,7 @@
             "of"
           ]
         },
-        "thine adversaries.",
+        " thine adversaries. ",
         {
           "type": "verse",
           "marker": "v",
@@ -10789,7 +10789,7 @@
             "cried"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -10806,7 +10806,7 @@
             "Lord"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -10863,7 +10863,7 @@
             "Zion"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -10944,7 +10944,7 @@
             "night"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -10953,7 +10953,7 @@
             "give"
           ]
         },
-        "thyself",
+        " thyself ",
         {
           "type": "char",
           "marker": "w",
@@ -10962,7 +10962,7 @@
             "no"
           ]
         },
-        "respite;",
+        " respite; ",
         {
           "type": "char",
           "marker": "w",
@@ -10987,7 +10987,7 @@
             "the"
           ]
         },
-        "apple",
+        " apple ",
         {
           "type": "char",
           "marker": "w",
@@ -10996,7 +10996,7 @@
             "of"
           ]
         },
-        "thine",
+        " thine ",
         {
           "type": "char",
           "marker": "w",
@@ -11005,7 +11005,7 @@
             "eye"
           ]
         },
-        "cease.",
+        " cease. ",
         {
           "type": "verse",
           "marker": "v",
@@ -11020,7 +11020,7 @@
             "Arise"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11061,7 +11061,7 @@
             "night"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11110,7 +11110,7 @@
             "watches"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -11127,7 +11127,7 @@
             "out"
           ]
         },
-        "thine",
+        " thine ",
         {
           "type": "char",
           "marker": "w",
@@ -11200,7 +11200,7 @@
             "Lord"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -11217,7 +11217,7 @@
             "up"
           ]
         },
-        "thy",
+        " thy ",
         {
           "type": "char",
           "marker": "w",
@@ -11274,7 +11274,7 @@
             "of"
           ]
         },
-        "thy young",
+        " thy young ",
         {
           "type": "char",
           "marker": "w",
@@ -11283,7 +11283,7 @@
             "children"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11292,7 +11292,7 @@
             "that"
           ]
         },
-        "faint",
+        " faint ",
         {
           "type": "char",
           "marker": "w",
@@ -11357,7 +11357,7 @@
             "street"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -11372,7 +11372,7 @@
             "See"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11389,7 +11389,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11406,7 +11406,7 @@
             "behold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11423,7 +11423,7 @@
             "whom"
           ]
         },
-        "thou hast done",
+        " thou hast done ",
         {
           "type": "char",
           "marker": "w",
@@ -11432,7 +11432,7 @@
             "thus"
           ]
         },
-        "!",
+        "! ",
         {
           "type": "char",
           "marker": "w",
@@ -11481,7 +11481,7 @@
             "fruit"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11514,7 +11514,7 @@
             "are"
           ]
         },
-        "dandled",
+        " dandled ",
         {
           "type": "char",
           "marker": "w",
@@ -11531,7 +11531,7 @@
             "the"
           ]
         },
-        "hands?",
+        " hands? ",
         {
           "type": "char",
           "marker": "w",
@@ -11644,7 +11644,7 @@
             "Lord"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
@@ -11755,7 +11755,7 @@
             "streets"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -11844,7 +11844,7 @@
             "sword"
           ]
         },
-        ": thou hast",
+        ": thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -11893,7 +11893,7 @@
             "of"
           ]
         },
-        "thine",
+        " thine ",
         {
           "type": "char",
           "marker": "w",
@@ -11902,7 +11902,7 @@
             "anger"
           ]
         },
-        "; thou hast",
+        "; thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -11911,7 +11911,7 @@
             "slaughtered"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -11934,14 +11934,14 @@
             "not"
           ]
         },
-        "pitied.",
+        " pitied. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "22",
           "sid": "LAM 2:22"
         },
-        "Thou hast",
+        "Thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -11950,7 +11950,7 @@
             "called"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -11999,7 +11999,7 @@
             "a"
           ]
         },
-        "solemn",
+        " solemn ",
         {
           "type": "char",
           "marker": "w",
@@ -12008,7 +12008,7 @@
             "assembly"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12049,7 +12049,7 @@
             "side"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12090,7 +12090,7 @@
             "that"
           ]
         },
-        "escaped",
+        " escaped ",
         {
           "type": "char",
           "marker": "w",
@@ -12163,7 +12163,7 @@
             "anger"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -12196,7 +12196,7 @@
             "have"
           ]
         },
-        "dandled",
+        " dandled ",
         {
           "type": "char",
           "marker": "w",
@@ -12221,7 +12221,7 @@
             "up"
           ]
         },
-        "hath mine",
+        " hath mine ",
         {
           "type": "char",
           "marker": "w",
@@ -12297,7 +12297,7 @@
             "that"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -12362,7 +12362,7 @@
             "wrath"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -12377,7 +12377,7 @@
             "He"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -12402,7 +12402,7 @@
             "and"
           ]
         },
-        "caused",
+        " caused ",
         {
           "type": "char",
           "marker": "w",
@@ -12419,7 +12419,7 @@
             "to"
           ]
         },
-        "walk",
+        " walk ",
         {
           "type": "char",
           "marker": "w",
@@ -12468,7 +12468,7 @@
             "light"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -12507,7 +12507,7 @@
             "he"
           ]
         },
-        "turneth",
+        " turneth ",
         {
           "type": "char",
           "marker": "w",
@@ -12572,7 +12572,7 @@
             "day"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -12619,7 +12619,7 @@
             "skin"
           ]
         },
-        "hath he made",
+        " hath he made ",
         {
           "type": "char",
           "marker": "w",
@@ -12628,7 +12628,7 @@
             "old"
           ]
         },
-        "; he hath",
+        "; he hath ",
         {
           "type": "char",
           "marker": "w",
@@ -12653,7 +12653,7 @@
             "bones"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -12668,7 +12668,7 @@
             "He"
           ]
         },
-        "hath builded",
+        " hath builded ",
         {
           "type": "char",
           "marker": "w",
@@ -12685,7 +12685,7 @@
             "me"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12694,7 +12694,7 @@
             "and"
           ]
         },
-        "compassed",
+        " compassed ",
         {
           "type": "char",
           "marker": "w",
@@ -12727,14 +12727,14 @@
             "and"
           ]
         },
-        "travail.",
+        " travail. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "6",
           "sid": "LAM 3:6"
         },
-        "He hath made",
+        "He hath made ",
         {
           "type": "char",
           "marker": "w",
@@ -12783,7 +12783,7 @@
             "places"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12792,7 +12792,7 @@
             "as"
           ]
         },
-        "those",
+        " those ",
         {
           "type": "char",
           "marker": "w",
@@ -12801,7 +12801,7 @@
             "that"
           ]
         },
-        "have",
+        " have ",
         {
           "type": "char",
           "marker": "w",
@@ -12826,7 +12826,7 @@
             "dead"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -12841,7 +12841,7 @@
             "He"
           ]
         },
-        "hath fenced",
+        " hath fenced ",
         {
           "type": "char",
           "marker": "w",
@@ -12858,7 +12858,7 @@
             "about"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -12899,7 +12899,7 @@
             "forth"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -12908,7 +12908,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -12941,7 +12941,7 @@
             "heavy"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -12956,7 +12956,7 @@
             "Yea"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13013,7 +13013,7 @@
             "help"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13022,7 +13022,7 @@
             "he"
           ]
         },
-        "shutteth",
+        " shutteth ",
         {
           "type": "char",
           "marker": "w",
@@ -13047,14 +13047,14 @@
             "prayer"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "9",
           "sid": "LAM 3:9"
         },
-        "He hath fenced up",
+        "He hath fenced up ",
         {
           "type": "char",
           "marker": "w",
@@ -13095,7 +13095,7 @@
             "stone"
           ]
         },
-        ", he hath made",
+        ", he hath made ",
         {
           "type": "char",
           "marker": "w",
@@ -13112,7 +13112,7 @@
             "paths"
           ]
         },
-        "crooked.",
+        " crooked. ",
         {
           "type": "verse",
           "marker": "v",
@@ -13135,7 +13135,7 @@
             "is"
           ]
         },
-        "unto me",
+        " unto me ",
         {
           "type": "char",
           "marker": "w",
@@ -13184,7 +13184,7 @@
             "wait"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13233,7 +13233,7 @@
             "places"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -13248,7 +13248,7 @@
             "He"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -13281,7 +13281,7 @@
             "ways"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13290,7 +13290,7 @@
             "and"
           ]
         },
-        "pulled",
+        " pulled ",
         {
           "type": "char",
           "marker": "w",
@@ -13315,7 +13315,7 @@
             "pieces"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -13324,7 +13324,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -13349,14 +13349,14 @@
             "desolate"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "12",
           "sid": "LAM 3:12"
         },
-        "He hath",
+        "He hath ",
         {
           "type": "char",
           "marker": "w",
@@ -13381,7 +13381,7 @@
             "bow"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13406,7 +13406,7 @@
             "me"
           ]
         },
-        "as a mark for",
+        " as a mark for ",
         {
           "type": "char",
           "marker": "w",
@@ -13423,7 +13423,7 @@
             "arrow"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -13438,7 +13438,7 @@
             "He"
           ]
         },
-        "hath caused",
+        " hath caused ",
         {
           "type": "char",
           "marker": "w",
@@ -13447,7 +13447,7 @@
             "the"
           ]
         },
-        "shafts",
+        " shafts ",
         {
           "type": "char",
           "marker": "w",
@@ -13504,7 +13504,7 @@
             "my"
           ]
         },
-        "reins.",
+        " reins. ",
         {
           "type": "verse",
           "marker": "v",
@@ -13543,7 +13543,7 @@
             "a"
           ]
         },
-        "derision",
+        " derision ",
         {
           "type": "char",
           "marker": "w",
@@ -13576,7 +13576,7 @@
             "people"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -13625,14 +13625,14 @@
             "day"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "15",
           "sid": "LAM 3:15"
         },
-        "He hath",
+        "He hath ",
         {
           "type": "char",
           "marker": "w",
@@ -13665,7 +13665,7 @@
             "bitterness"
           ]
         },
-        ", he hath sated",
+        ", he hath sated ",
         {
           "type": "char",
           "marker": "w",
@@ -13690,14 +13690,14 @@
             "wormwood"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "16",
           "sid": "LAM 3:16"
         },
-        "He hath also",
+        "He hath also ",
         {
           "type": "char",
           "marker": "w",
@@ -13738,7 +13738,7 @@
             "gravel"
           ]
         },
-        "stones, he hath covered me",
+        " stones, he hath covered me ",
         {
           "type": "char",
           "marker": "w",
@@ -13755,7 +13755,7 @@
             "ashes"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -13770,7 +13770,7 @@
             "And"
           ]
         },
-        "thou hast removed",
+        " thou hast removed ",
         {
           "type": "char",
           "marker": "w",
@@ -13787,7 +13787,7 @@
             "soul"
           ]
         },
-        "far off",
+        " far off ",
         {
           "type": "char",
           "marker": "w",
@@ -13804,7 +13804,7 @@
             "peace"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -13813,7 +13813,7 @@
             "I"
           ]
         },
-        "forgat",
+        " forgat ",
         {
           "type": "char",
           "marker": "w",
@@ -13822,7 +13822,7 @@
             "prosperity"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -13853,7 +13853,7 @@
             "said"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13886,7 +13886,7 @@
             "perished"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -13895,7 +13895,7 @@
             "and"
           ]
         },
-        "mine",
+        " mine ",
         {
           "type": "char",
           "marker": "w",
@@ -13928,7 +13928,7 @@
             "LORD"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -13943,7 +13943,7 @@
             "Remember"
           ]
         },
-        "mine affliction",
+        " mine affliction ",
         {
           "type": "char",
           "marker": "w",
@@ -13960,7 +13960,7 @@
             "my"
           ]
         },
-        "misery,",
+        " misery, ",
         {
           "type": "char",
           "marker": "w",
@@ -14001,7 +14001,7 @@
             "gall"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14024,7 +14024,7 @@
             "soul"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -14033,7 +14033,7 @@
             "them"
           ]
         },
-        "still",
+        " still ",
         {
           "type": "char",
           "marker": "w",
@@ -14050,7 +14050,7 @@
             "remembrance"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14099,7 +14099,7 @@
             "me"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14154,7 +14154,7 @@
             "mind"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14187,7 +14187,7 @@
             "hope"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14288,7 +14288,7 @@
             "consumed"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14329,7 +14329,7 @@
             "not"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14344,7 +14344,7 @@
             "They"
           ]
         },
-        "are",
+        " are ",
         {
           "type": "char",
           "marker": "w",
@@ -14369,7 +14369,7 @@
             "morning"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -14378,7 +14378,7 @@
             "great"
           ]
         },
-        "is thy",
+        " is thy ",
         {
           "type": "char",
           "marker": "w",
@@ -14387,7 +14387,7 @@
             "faithfulness"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14434,7 +14434,7 @@
             "portion"
           ]
         },
-        ", saith",
+        ", saith ",
         {
           "type": "char",
           "marker": "w",
@@ -14451,7 +14451,7 @@
             "soul"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -14500,7 +14500,7 @@
             "him"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14539,7 +14539,7 @@
             "good"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -14580,7 +14580,7 @@
             "him"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -14613,7 +14613,7 @@
             "that"
           ]
         },
-        "seeketh",
+        " seeketh ",
         {
           "type": "char",
           "marker": "w",
@@ -14622,7 +14622,7 @@
             "him"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14669,7 +14669,7 @@
             "a"
           ]
         },
-        "man",
+        " man ",
         {
           "type": "char",
           "marker": "w",
@@ -14678,7 +14678,7 @@
             "should"
           ]
         },
-        "hope",
+        " hope ",
         {
           "type": "char",
           "marker": "w",
@@ -14687,7 +14687,7 @@
             "and"
           ]
         },
-        "quietly wait",
+        " quietly wait ",
         {
           "type": "char",
           "marker": "w",
@@ -14736,7 +14736,7 @@
             "LORD"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -14855,14 +14855,14 @@
             "youth"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "28",
           "sid": "LAM 3:28"
         },
-        "Let",
+        "Let ",
         {
           "type": "char",
           "marker": "w",
@@ -14895,7 +14895,7 @@
             "and"
           ]
         },
-        "keep silence,",
+        " keep silence, ",
         {
           "type": "char",
           "marker": "w",
@@ -14912,7 +14912,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -14945,7 +14945,7 @@
             "him"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -15016,7 +15016,7 @@
             "dust"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -15073,7 +15073,7 @@
             "hope"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -15144,7 +15144,7 @@
             "that"
           ]
         },
-        "smiteth",
+        " smiteth ",
         {
           "type": "char",
           "marker": "w",
@@ -15153,7 +15153,7 @@
             "him"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -15210,7 +15210,7 @@
             "reproach"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -15257,7 +15257,7 @@
             "not"
           ]
         },
-        "cast off",
+        " cast off ",
         {
           "type": "char",
           "marker": "w",
@@ -15274,7 +15274,7 @@
             "ever"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -15305,7 +15305,7 @@
             "he"
           ]
         },
-        "cause",
+        " cause ",
         {
           "type": "char",
           "marker": "w",
@@ -15314,7 +15314,7 @@
             "grief"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -15355,7 +15355,7 @@
             "compassion"
           ]
         },
-        "according",
+        " according ",
         {
           "type": "char",
           "marker": "w",
@@ -15396,7 +15396,7 @@
             "his"
           ]
         },
-        "mercies.",
+        " mercies. ",
         {
           "type": "verse",
           "marker": "v",
@@ -15419,7 +15419,7 @@
             "he"
           ]
         },
-        "doth",
+        " doth ",
         {
           "type": "char",
           "marker": "w",
@@ -15436,7 +15436,7 @@
             "afflict"
           ]
         },
-        "willingly,",
+        " willingly, ",
         {
           "type": "char",
           "marker": "w",
@@ -15485,7 +15485,7 @@
             "men"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -15572,7 +15572,7 @@
             "earth"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
@@ -15683,7 +15683,7 @@
             "the"
           ]
         },
-        "Most",
+        " Most ",
         {
           "type": "char",
           "marker": "w",
@@ -15692,7 +15692,7 @@
             "High"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
@@ -15755,7 +15755,7 @@
             "cause"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -15772,7 +15772,7 @@
             "Lord"
           ]
         },
-        "approveth",
+        " approveth ",
         {
           "type": "char",
           "marker": "w",
@@ -15781,7 +15781,7 @@
             "not"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -15820,7 +15820,7 @@
             "that"
           ]
         },
-        "saith,",
+        " saith, ",
         {
           "type": "char",
           "marker": "w",
@@ -15837,7 +15837,7 @@
             "it"
           ]
         },
-        "cometh",
+        " cometh ",
         {
           "type": "char",
           "marker": "w",
@@ -15854,7 +15854,7 @@
             "pass"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -15879,7 +15879,7 @@
             "Lord"
           ]
         },
-        "commandeth",
+        " commandeth ",
         {
           "type": "char",
           "marker": "w",
@@ -15896,7 +15896,7 @@
             "not"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
@@ -15951,7 +15951,7 @@
             "the"
           ]
         },
-        "Most High cometh there",
+        " Most High cometh there ",
         {
           "type": "char",
           "marker": "w",
@@ -15984,14 +15984,14 @@
             "good"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
           "number": "39",
           "sid": "LAM 3:39"
         },
-        "Wherefore doth",
+        "Wherefore doth ",
         {
           "type": "char",
           "marker": "w",
@@ -16024,7 +16024,7 @@
             "complain"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16057,7 +16057,7 @@
             "the"
           ]
         },
-        "punishment",
+        " punishment ",
         {
           "type": "char",
           "marker": "w",
@@ -16082,14 +16082,14 @@
             "sins"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
           "number": "40",
           "sid": "LAM 3:40"
         },
-        "Let",
+        "Let ",
         {
           "type": "char",
           "marker": "w",
@@ -16114,7 +16114,7 @@
             "and"
           ]
         },
-        "try",
+        " try ",
         {
           "type": "char",
           "marker": "w",
@@ -16131,7 +16131,7 @@
             "ways"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16180,14 +16180,14 @@
             "LORD"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "41",
           "sid": "LAM 3:41"
         },
-        "Let",
+        "Let ",
         {
           "type": "char",
           "marker": "w",
@@ -16252,7 +16252,7 @@
             "hands"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -16285,7 +16285,7 @@
             "heavens"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -16340,7 +16340,7 @@
             "rebelled"
           ]
         },
-        "; thou hast",
+        "; thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -16357,14 +16357,14 @@
             "pardoned"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "43",
           "sid": "LAM 3:43"
         },
-        "Thou hast covered",
+        "Thou hast covered ",
         {
           "type": "char",
           "marker": "w",
@@ -16397,7 +16397,7 @@
             "pursued"
           ]
         },
-        "us; thou hast",
+        " us; thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -16406,7 +16406,7 @@
             "slain"
           ]
         },
-        ", thou hast",
+        ", thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -16415,14 +16415,14 @@
             "not"
           ]
         },
-        "pitied.",
+        " pitied. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "44",
           "sid": "LAM 3:44"
         },
-        "Thou hast covered thyself",
+        "Thou hast covered thyself ",
         {
           "type": "char",
           "marker": "w",
@@ -16431,7 +16431,7 @@
             "with"
           ]
         },
-        "a",
+        " a ",
         {
           "type": "char",
           "marker": "w",
@@ -16440,7 +16440,7 @@
             "cloud"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16453,7 +16453,7 @@
           "type": "char",
           "marker": "add",
           "content": [
-            "our"
+            "our "
           ]
         },
         {
@@ -16464,7 +16464,7 @@
             "prayer"
           ]
         },
-        "should not",
+        " should not ",
         {
           "type": "char",
           "marker": "w",
@@ -16481,14 +16481,14 @@
             "through"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "45",
           "sid": "LAM 3:45"
         },
-        "Thou hast",
+        "Thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -16527,7 +16527,7 @@
             "the"
           ]
         },
-        "offscouring",
+        " offscouring ",
         {
           "type": "char",
           "marker": "w",
@@ -16592,7 +16592,7 @@
             "peoples"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -16679,7 +16679,7 @@
             "us"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -16742,7 +16742,7 @@
             "upon"
           ]
         },
-        "us,",
+        " us, ",
         {
           "type": "char",
           "marker": "w",
@@ -16767,14 +16767,14 @@
             "destruction"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "48",
           "sid": "LAM 3:48"
         },
-        "Mine",
+        "Mine ",
         {
           "type": "char",
           "marker": "w",
@@ -16783,7 +16783,7 @@
             "eye"
           ]
         },
-        "runneth",
+        " runneth ",
         {
           "type": "char",
           "marker": "w",
@@ -16800,7 +16800,7 @@
             "with"
           ]
         },
-        "rivers",
+        " rivers ",
         {
           "type": "char",
           "marker": "w",
@@ -16817,7 +16817,7 @@
             "water"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16890,14 +16890,14 @@
             "people"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "49",
           "sid": "LAM 3:49"
         },
-        "Mine",
+        "Mine ",
         {
           "type": "char",
           "marker": "w",
@@ -16906,7 +16906,7 @@
             "eye"
           ]
         },
-        "poureth",
+        " poureth ",
         {
           "type": "char",
           "marker": "w",
@@ -16915,7 +16915,7 @@
             "down"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16924,7 +16924,7 @@
             "and"
           ]
         },
-        "ceaseth",
+        " ceaseth ",
         {
           "type": "char",
           "marker": "w",
@@ -16933,7 +16933,7 @@
             "not"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -16950,7 +16950,7 @@
             "any"
           ]
         },
-        "intermission,",
+        " intermission, ",
         {
           "type": "verse",
           "marker": "v",
@@ -16997,7 +16997,7 @@
             "down"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17030,14 +17030,14 @@
             "heaven"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "51",
           "sid": "LAM 3:51"
         },
-        "Mine",
+        "Mine ",
         {
           "type": "char",
           "marker": "w",
@@ -17046,7 +17046,7 @@
             "eye"
           ]
         },
-        "affecteth",
+        " affecteth ",
         {
           "type": "char",
           "marker": "w",
@@ -17063,7 +17063,7 @@
             "soul"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17128,7 +17128,7 @@
             "city"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -17143,7 +17143,7 @@
             "They"
           ]
         },
-        "have chased",
+        " have chased ",
         {
           "type": "char",
           "marker": "w",
@@ -17152,7 +17152,7 @@
             "me"
           ]
         },
-        "sore like",
+        " sore like ",
         {
           "type": "char",
           "marker": "w",
@@ -17169,7 +17169,7 @@
             "bird"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17186,7 +17186,7 @@
             "are"
           ]
         },
-        "mine",
+        " mine ",
         {
           "type": "char",
           "marker": "w",
@@ -17211,14 +17211,14 @@
             "cause"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "53",
           "sid": "LAM 3:53"
         },
-        "They have",
+        "They have ",
         {
           "type": "char",
           "marker": "w",
@@ -17267,7 +17267,7 @@
             "the"
           ]
         },
-        "dungeon,",
+        " dungeon, ",
         {
           "type": "char",
           "marker": "w",
@@ -17276,7 +17276,7 @@
             "and"
           ]
         },
-        "have cast",
+        " have cast ",
         {
           "type": "char",
           "marker": "w",
@@ -17293,7 +17293,7 @@
             "stone"
           ]
         },
-        "upon",
+        " upon ",
         {
           "type": "char",
           "marker": "w",
@@ -17302,7 +17302,7 @@
             "me"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -17333,7 +17333,7 @@
             "over"
           ]
         },
-        "mine",
+        " mine ",
         {
           "type": "char",
           "marker": "w",
@@ -17342,7 +17342,7 @@
             "head"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -17359,7 +17359,7 @@
             "said"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17368,7 +17368,7 @@
             "I"
           ]
         },
-        "am",
+        " am ",
         {
           "type": "char",
           "marker": "w",
@@ -17385,7 +17385,7 @@
             "off"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -17416,7 +17416,7 @@
             "upon"
           ]
         },
-        "thy",
+        " thy ",
         {
           "type": "char",
           "marker": "w",
@@ -17425,7 +17425,7 @@
             "name"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17442,7 +17442,7 @@
             "LORD"
           ]
         },
-        ", out",
+        ", out ",
         {
           "type": "char",
           "marker": "w",
@@ -17467,14 +17467,14 @@
             "lowest"
           ]
         },
-        "dungeon.",
+        " dungeon. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "56",
           "sid": "LAM 3:56"
         },
-        "Thou heardest",
+        "Thou heardest ",
         {
           "type": "char",
           "marker": "w",
@@ -17491,7 +17491,7 @@
             "voice"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -17508,7 +17508,7 @@
             "not"
           ]
         },
-        "thine",
+        " thine ",
         {
           "type": "char",
           "marker": "w",
@@ -17533,7 +17533,7 @@
             "my"
           ]
         },
-        "breathing,",
+        " breathing, ",
         {
           "type": "char",
           "marker": "w",
@@ -17558,14 +17558,14 @@
             "cry"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "57",
           "sid": "LAM 3:57"
         },
-        "Thou drewest",
+        "Thou drewest ",
         {
           "type": "char",
           "marker": "w",
@@ -17630,7 +17630,7 @@
             "upon"
           ]
         },
-        "thee: thou saidst,",
+        " thee: thou saidst, ",
         {
           "type": "char",
           "marker": "w",
@@ -17647,7 +17647,7 @@
             "not"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -17670,7 +17670,7 @@
             "Lord"
           ]
         },
-        ", thou hast",
+        ", thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -17687,7 +17687,7 @@
             "the"
           ]
         },
-        "causes",
+        " causes ",
         {
           "type": "char",
           "marker": "w",
@@ -17712,7 +17712,7 @@
             "soul"
           ]
         },
-        "; thou hast",
+        "; thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -17737,7 +17737,7 @@
             "life"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -17760,7 +17760,7 @@
             "LORD"
           ]
         },
-        ", thou hast",
+        ", thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -17777,7 +17777,7 @@
             "my"
           ]
         },
-        "wrong;",
+        " wrong; ",
         {
           "type": "char",
           "marker": "w",
@@ -17786,7 +17786,7 @@
             "judge"
           ]
         },
-        "thou",
+        " thou ",
         {
           "type": "char",
           "marker": "w",
@@ -17803,14 +17803,14 @@
             "cause"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "60",
           "sid": "LAM 3:60"
         },
-        "Thou hast",
+        "Thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -17867,7 +17867,7 @@
             "their"
           ]
         },
-        "devices",
+        " devices ",
         {
           "type": "char",
           "marker": "w",
@@ -17884,14 +17884,14 @@
             "me"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "61",
           "sid": "LAM 3:61"
         },
-        "Thou hast",
+        "Thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -17916,7 +17916,7 @@
             "reproach"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17933,7 +17933,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -17958,7 +17958,7 @@
             "their"
           ]
         },
-        "devices",
+        " devices ",
         {
           "type": "char",
           "marker": "w",
@@ -17975,7 +17975,7 @@
             "me"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -18054,7 +18054,7 @@
             "me"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -18071,7 +18071,7 @@
             "their"
           ]
         },
-        "imagination",
+        " imagination ",
         {
           "type": "char",
           "marker": "w",
@@ -18112,7 +18112,7 @@
             "day"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -18127,7 +18127,7 @@
             "Behold"
           ]
         },
-        "thou",
+        " thou ",
         {
           "type": "char",
           "marker": "w",
@@ -18152,7 +18152,7 @@
             "down"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -18185,7 +18185,7 @@
             "up"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -18218,14 +18218,14 @@
             "song"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "64",
           "sid": "LAM 3:64"
         },
-        "Thou wilt",
+        "Thou wilt ",
         {
           "type": "char",
           "marker": "w",
@@ -18234,7 +18234,7 @@
             "render"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -18251,7 +18251,7 @@
             "a"
           ]
         },
-        "recompence,",
+        " recompence, ",
         {
           "type": "char",
           "marker": "w",
@@ -18268,7 +18268,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -18325,14 +18325,14 @@
             "hands"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "65",
           "sid": "LAM 3:65"
         },
-        "Thou wilt",
+        "Thou wilt ",
         {
           "type": "char",
           "marker": "w",
@@ -18373,7 +18373,7 @@
             "heart"
           ]
         },
-        ", thy",
+        ", thy ",
         {
           "type": "char",
           "marker": "w",
@@ -18382,7 +18382,7 @@
             "curse"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -18391,14 +18391,14 @@
             "them"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "66",
           "sid": "LAM 3:66"
         },
-        "Thou wilt",
+        "Thou wilt ",
         {
           "type": "char",
           "marker": "w",
@@ -18431,7 +18431,7 @@
             "anger"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -18571,7 +18571,7 @@
             "become"
           ]
         },
-        "dim!",
+        " dim! ",
         {
           "type": "char",
           "marker": "add",
@@ -18634,7 +18634,7 @@
             "changed"
           ]
         },
-        "!",
+        "! ",
         {
           "type": "char",
           "marker": "w",
@@ -18747,7 +18747,7 @@
             "street"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -18794,7 +18794,7 @@
             "Zion"
           ]
         },
-        ", comparable",
+        ", comparable ",
         {
           "type": "char",
           "marker": "w",
@@ -18819,7 +18819,7 @@
             "gold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -18868,7 +18868,7 @@
             "earthen"
           ]
         },
-        "pitchers,",
+        " pitchers, ",
         {
           "type": "char",
           "marker": "w",
@@ -18933,7 +18933,7 @@
             "potter"
           ]
         },
-        "!",
+        "! ",
         {
           "type": "verse",
           "marker": "v",
@@ -18956,7 +18956,7 @@
             "the"
           ]
         },
-        "jackals",
+        " jackals ",
         {
           "type": "char",
           "marker": "w",
@@ -18989,7 +18989,7 @@
             "breast"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -18998,7 +18998,7 @@
             "they"
           ]
         },
-        "give",
+        " give ",
         {
           "type": "char",
           "marker": "w",
@@ -19031,7 +19031,7 @@
             "young"
           ]
         },
-        "ones:",
+        " ones: ",
         {
           "type": "char",
           "marker": "w",
@@ -19080,7 +19080,7 @@
             "is"
           ]
         },
-        "become",
+        " become ",
         {
           "type": "char",
           "marker": "w",
@@ -19089,7 +19089,7 @@
             "cruel"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -19138,7 +19138,7 @@
             "wilderness"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -19177,7 +19177,7 @@
             "the"
           ]
         },
-        "sucking",
+        " sucking ",
         {
           "type": "char",
           "marker": "w",
@@ -19186,7 +19186,7 @@
             "child"
           ]
         },
-        "cleaveth",
+        " cleaveth ",
         {
           "type": "char",
           "marker": "w",
@@ -19251,7 +19251,7 @@
             "thirst"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -19260,7 +19260,7 @@
             "the"
           ]
         },
-        "young",
+        " young ",
         {
           "type": "char",
           "marker": "w",
@@ -19285,7 +19285,7 @@
             "bread"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -19310,7 +19310,7 @@
             "man"
           ]
         },
-        "breaketh",
+        " breaketh ",
         {
           "type": "char",
           "marker": "w",
@@ -19319,7 +19319,7 @@
             "it"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -19328,7 +19328,7 @@
             "them"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -19351,7 +19351,7 @@
             "that"
           ]
         },
-        "did",
+        " did ",
         {
           "type": "char",
           "marker": "w",
@@ -19360,7 +19360,7 @@
             "feed"
           ]
         },
-        "delicately",
+        " delicately ",
         {
           "type": "char",
           "marker": "w",
@@ -19401,7 +19401,7 @@
             "streets"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -19426,7 +19426,7 @@
             "were"
           ]
         },
-        "brought",
+        " brought ",
         {
           "type": "char",
           "marker": "w",
@@ -19459,7 +19459,7 @@
             "embrace"
           ]
         },
-        "dung-hills.",
+        " dung-hills. ",
         {
           "type": "verse",
           "marker": "v",
@@ -19594,7 +19594,7 @@
             "Sodom"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -19651,7 +19651,7 @@
             "moment"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -19684,7 +19684,7 @@
             "were"
           ]
         },
-        "laid",
+        " laid ",
         {
           "type": "char",
           "marker": "w",
@@ -19701,14 +19701,14 @@
             "her"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "7",
           "sid": "LAM 4:7"
         },
-        "Her nobles",
+        "Her nobles ",
         {
           "type": "char",
           "marker": "w",
@@ -19725,7 +19725,7 @@
             "purer"
           ]
         },
-        "than",
+        " than ",
         {
           "type": "char",
           "marker": "w",
@@ -19734,7 +19734,7 @@
             "snow"
           ]
         },
-        ", they",
+        ", they ",
         {
           "type": "char",
           "marker": "w",
@@ -19751,7 +19751,7 @@
             "whiter"
           ]
         },
-        "than",
+        " than ",
         {
           "type": "char",
           "marker": "w",
@@ -19760,7 +19760,7 @@
             "milk"
           ]
         },
-        ", they",
+        ", they ",
         {
           "type": "char",
           "marker": "w",
@@ -19769,7 +19769,7 @@
             "were"
           ]
         },
-        "more",
+        " more ",
         {
           "type": "char",
           "marker": "w",
@@ -19794,7 +19794,7 @@
             "body"
           ]
         },
-        "than rubies, their",
+        " than rubies, their ",
         {
           "type": "char",
           "marker": "w",
@@ -19803,7 +19803,7 @@
             "polishing"
           ]
         },
-        "was as",
+        " was as ",
         {
           "type": "char",
           "marker": "w",
@@ -19820,7 +19820,7 @@
             "sapphire"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "verse",
           "marker": "v",
@@ -19835,7 +19835,7 @@
             "Their"
           ]
         },
-        "visage",
+        " visage ",
         {
           "type": "char",
           "marker": "w",
@@ -19868,7 +19868,7 @@
             "a"
           ]
         },
-        "coal;",
+        " coal; ",
         {
           "type": "char",
           "marker": "w",
@@ -19925,7 +19925,7 @@
             "streets"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -19942,7 +19942,7 @@
             "skin"
           ]
         },
-        "cleaveth",
+        " cleaveth ",
         {
           "type": "char",
           "marker": "w",
@@ -19967,7 +19967,7 @@
             "bones"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -19992,7 +19992,7 @@
             "withered"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -20041,7 +20041,7 @@
             "stick"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -20176,7 +20176,7 @@
             "hunger"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -20209,7 +20209,7 @@
             "away"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -20226,7 +20226,7 @@
             "through"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -20235,7 +20235,7 @@
             "for"
           ]
         },
-        "want",
+        " want ",
         {
           "type": "char",
           "marker": "w",
@@ -20284,7 +20284,7 @@
             "field"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -20323,7 +20323,7 @@
             "the"
           ]
         },
-        "pitiful",
+        " pitiful ",
         {
           "type": "char",
           "marker": "w",
@@ -20340,7 +20340,7 @@
             "have"
           ]
         },
-        "sodden",
+        " sodden ",
         {
           "type": "char",
           "marker": "w",
@@ -20365,7 +20365,7 @@
             "children"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -20390,7 +20390,7 @@
             "their"
           ]
         },
-        "meat",
+        " meat ",
         {
           "type": "char",
           "marker": "w",
@@ -20463,7 +20463,7 @@
             "people"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -20486,7 +20486,7 @@
             "LORD"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -20511,7 +20511,7 @@
             "fury"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -20520,7 +20520,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -20561,7 +20561,7 @@
             "anger"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -20578,7 +20578,7 @@
             "he"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -20619,7 +20619,7 @@
             "Zion"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -20628,7 +20628,7 @@
             "which"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -20653,7 +20653,7 @@
             "foundations"
           ]
         },
-        "thereof.",
+        " thereof. ",
         {
           "type": "verse",
           "marker": "v",
@@ -20716,7 +20716,7 @@
             "not"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -20773,7 +20773,7 @@
             "world"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -20790,7 +20790,7 @@
             "the"
           ]
         },
-        "adversary",
+        " adversary ",
         {
           "type": "char",
           "marker": "w",
@@ -20871,7 +20871,7 @@
             "Jerusalem"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -20956,7 +20956,7 @@
             "prophets"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -21011,7 +21011,7 @@
             "priests"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21116,7 +21116,7 @@
             "her"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -21187,7 +21187,7 @@
             "streets"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21204,7 +21204,7 @@
             "are"
           ]
         },
-        "polluted",
+        " polluted ",
         {
           "type": "char",
           "marker": "w",
@@ -21221,7 +21221,7 @@
             "blood"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21278,7 +21278,7 @@
             "garments"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -21293,7 +21293,7 @@
             "Depart"
           ]
         },
-        "ye,",
+        " ye, ",
         {
           "type": "char",
           "marker": "w",
@@ -21310,7 +21310,7 @@
             "cried"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -21319,7 +21319,7 @@
             "them"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21328,7 +21328,7 @@
             "Unclean"
           ]
         },
-        "!",
+        "! ",
         {
           "type": "char",
           "marker": "w",
@@ -21337,7 +21337,7 @@
             "depart"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21346,7 +21346,7 @@
             "depart"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21363,7 +21363,7 @@
             "not"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -21380,7 +21380,7 @@
             "they"
           ]
         },
-        "fled",
+        " fled ",
         {
           "type": "char",
           "marker": "w",
@@ -21405,7 +21405,7 @@
             "wandered"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21446,7 +21446,7 @@
             "nations"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21479,7 +21479,7 @@
             "more"
           ]
         },
-        "sojourn",
+        " sojourn ",
         {
           "type": "char",
           "marker": "add",
@@ -21487,7 +21487,7 @@
             "here"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -21534,7 +21534,7 @@
             "LORD"
           ]
         },
-        "hath",
+        " hath ",
         {
           "type": "char",
           "marker": "w",
@@ -21551,7 +21551,7 @@
             "them"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -21600,7 +21600,7 @@
             "them"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -21609,7 +21609,7 @@
             "they"
           ]
         },
-        "respected",
+        " respected ",
         {
           "type": "char",
           "marker": "w",
@@ -21626,7 +21626,7 @@
             "the"
           ]
         },
-        "persons",
+        " persons ",
         {
           "type": "char",
           "marker": "w",
@@ -21651,7 +21651,7 @@
             "priests"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21660,7 +21660,7 @@
             "they"
           ]
         },
-        "favoured",
+        " favoured ",
         {
           "type": "char",
           "marker": "w",
@@ -21685,7 +21685,7 @@
             "elders"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -21708,7 +21708,7 @@
             "eyes"
           ]
         },
-        "do",
+        " do ",
         {
           "type": "char",
           "marker": "w",
@@ -21737,7 +21737,7 @@
                 "in"
               ]
             },
-            "looking"
+            " looking "
           ]
         },
         {
@@ -21772,7 +21772,7 @@
             "help"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -21797,7 +21797,7 @@
             "watching"
           ]
         },
-        "we",
+        " we ",
         {
           "type": "char",
           "marker": "w",
@@ -21846,7 +21846,7 @@
             "that"
           ]
         },
-        "could",
+        " could ",
         {
           "type": "char",
           "marker": "w",
@@ -21863,7 +21863,7 @@
             "save"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -21902,7 +21902,7 @@
             "steps"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -21919,7 +21919,7 @@
             "we"
           ]
         },
-        "cannot",
+        " cannot ",
         {
           "type": "char",
           "marker": "w",
@@ -21952,7 +21952,7 @@
             "streets"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -21985,7 +21985,7 @@
             "near"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -22018,7 +22018,7 @@
             "fulfilled"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -22059,7 +22059,7 @@
             "come"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -22146,7 +22146,7 @@
             "heaven"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -22195,7 +22195,7 @@
             "mountains"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -22204,7 +22204,7 @@
             "they"
           ]
         },
-        "laid",
+        " laid ",
         {
           "type": "char",
           "marker": "w",
@@ -22253,7 +22253,7 @@
             "wilderness"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -22300,7 +22300,7 @@
             "nostrils"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -22341,7 +22341,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -22382,7 +22382,7 @@
             "pits"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -22415,7 +22415,7 @@
             "said"
           ]
         },
-        ", Under",
+        ", Under ",
         {
           "type": "char",
           "marker": "w",
@@ -22456,7 +22456,7 @@
             "live"
           ]
         },
-        "among",
+        " among ",
         {
           "type": "char",
           "marker": "w",
@@ -22473,7 +22473,7 @@
             "nations"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -22512,7 +22512,7 @@
             "glad"
           ]
         },
-        ", O",
+        ", O ",
         {
           "type": "char",
           "marker": "w",
@@ -22537,7 +22537,7 @@
             "Edom"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -22546,7 +22546,7 @@
             "that"
           ]
         },
-        "dwellest",
+        " dwellest ",
         {
           "type": "char",
           "marker": "w",
@@ -22587,7 +22587,7 @@
             "Uz"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -22628,7 +22628,7 @@
             "through"
           ]
         },
-        "unto thee",
+        " unto thee ",
         {
           "type": "char",
           "marker": "w",
@@ -22637,7 +22637,7 @@
             "also"
           ]
         },
-        "; thou shalt",
+        "; thou shalt ",
         {
           "type": "char",
           "marker": "w",
@@ -22646,7 +22646,7 @@
             "be"
           ]
         },
-        "drunken,",
+        " drunken, ",
         {
           "type": "char",
           "marker": "w",
@@ -22655,7 +22655,7 @@
             "and"
           ]
         },
-        "shalt",
+        " shalt ",
         {
           "type": "char",
           "marker": "w",
@@ -22664,7 +22664,7 @@
             "make"
           ]
         },
-        "thyself",
+        " thyself ",
         {
           "type": "char",
           "marker": "w",
@@ -22673,7 +22673,7 @@
             "naked"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -22704,7 +22704,7 @@
             "of"
           ]
         },
-        "thine",
+        " thine ",
         {
           "type": "char",
           "marker": "w",
@@ -22721,7 +22721,7 @@
             "is"
           ]
         },
-        "accomplished, O",
+        " accomplished, O ",
         {
           "type": "char",
           "marker": "w",
@@ -22746,7 +22746,7 @@
             "Zion"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -22787,7 +22787,7 @@
             "carry"
           ]
         },
-        "thee",
+        " thee ",
         {
           "type": "char",
           "marker": "w",
@@ -22812,7 +22812,7 @@
             "captivity"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -22837,7 +22837,7 @@
             "visit"
           ]
         },
-        "thine",
+        " thine ",
         {
           "type": "char",
           "marker": "w",
@@ -22846,7 +22846,7 @@
             "iniquity"
           ]
         },
-        ", O",
+        ", O ",
         {
           "type": "char",
           "marker": "w",
@@ -22871,7 +22871,7 @@
             "Edom"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -22888,7 +22888,7 @@
             "will"
           ]
         },
-        "discover thy",
+        " discover thy ",
         {
           "type": "char",
           "marker": "w",
@@ -22924,7 +22924,7 @@
             "Remember"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -22957,7 +22957,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -22982,7 +22982,7 @@
             "us"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -22991,7 +22991,7 @@
             "behold"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -23024,14 +23024,14 @@
             "reproach"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "LAM 5:2"
         },
-        "Our",
+        "Our ",
         {
           "type": "char",
           "marker": "w",
@@ -23056,7 +23056,7 @@
             "turned"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -23065,7 +23065,7 @@
             "strangers"
           ]
         },
-        ", our",
+        ", our ",
         {
           "type": "char",
           "marker": "w",
@@ -23074,7 +23074,7 @@
             "houses"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -23083,14 +23083,14 @@
             "aliens"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "3",
           "sid": "LAM 5:3"
         },
-        "We",
+        "We ",
         {
           "type": "char",
           "marker": "w",
@@ -23123,7 +23123,7 @@
             "fatherless"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -23164,14 +23164,14 @@
             "widows"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "4",
           "sid": "LAM 5:4"
         },
-        "We",
+        "We ",
         {
           "type": "char",
           "marker": "w",
@@ -23180,7 +23180,7 @@
             "have"
           ]
         },
-        "drunken",
+        " drunken ",
         {
           "type": "char",
           "marker": "w",
@@ -23213,7 +23213,7 @@
             "money"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -23238,7 +23238,7 @@
             "is"
           ]
         },
-        "sold unto",
+        " sold unto ",
         {
           "type": "char",
           "marker": "w",
@@ -23247,7 +23247,7 @@
             "us"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -23302,7 +23302,7 @@
             "necks"
           ]
         },
-        ": we",
+        ": we ",
         {
           "type": "char",
           "marker": "w",
@@ -23319,7 +23319,7 @@
             "weary"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -23352,14 +23352,14 @@
             "rest"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "6",
           "sid": "LAM 5:6"
         },
-        "We",
+        "We ",
         {
           "type": "char",
           "marker": "w",
@@ -23416,7 +23416,7 @@
             "Egyptians"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -23441,7 +23441,7 @@
             "the"
           ]
         },
-        "Assyrians,",
+        " Assyrians, ",
         {
           "type": "char",
           "marker": "w",
@@ -23482,7 +23482,7 @@
             "bread"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -23521,7 +23521,7 @@
             "sinned"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -23546,7 +23546,7 @@
             "not"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -23595,7 +23595,7 @@
             "iniquities"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -23634,7 +23634,7 @@
             "us"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -23715,7 +23715,7 @@
             "hand"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -23770,7 +23770,7 @@
             "the"
           ]
         },
-        "peril",
+        " peril ",
         {
           "type": "char",
           "marker": "w",
@@ -23851,7 +23851,7 @@
             "wilderness"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -23882,7 +23882,7 @@
             "is"
           ]
         },
-        "black",
+        " black ",
         {
           "type": "char",
           "marker": "w",
@@ -23963,14 +23963,14 @@
             "famine"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "11",
           "sid": "LAM 5:11"
         },
-        "They ravished",
+        "They ravished ",
         {
           "type": "char",
           "marker": "w",
@@ -24003,7 +24003,7 @@
             "Zion"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -24060,7 +24060,7 @@
             "Judah"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -24091,7 +24091,7 @@
             "hanged"
           ]
         },
-        "up",
+        " up ",
         {
           "type": "char",
           "marker": "w",
@@ -24116,7 +24116,7 @@
             "hand"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -24165,7 +24165,7 @@
             "not"
           ]
         },
-        "honoured.",
+        " honoured. ",
         {
           "type": "verse",
           "marker": "v",
@@ -24196,7 +24196,7 @@
             "men"
           ]
         },
-        "bare",
+        " bare ",
         {
           "type": "char",
           "marker": "w",
@@ -24205,7 +24205,7 @@
             "the"
           ]
         },
-        "mill,",
+        " mill, ",
         {
           "type": "char",
           "marker": "w",
@@ -24262,7 +24262,7 @@
             "wood"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -24293,7 +24293,7 @@
             "have"
           ]
         },
-        "ceased",
+        " ceased ",
         {
           "type": "char",
           "marker": "w",
@@ -24318,7 +24318,7 @@
             "gate"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -24367,7 +24367,7 @@
             "music"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -24398,7 +24398,7 @@
             "of"
           ]
         },
-        "our",
+        " our ",
         {
           "type": "char",
           "marker": "w",
@@ -24415,7 +24415,7 @@
             "is"
           ]
         },
-        "ceased; our",
+        " ceased; our ",
         {
           "type": "char",
           "marker": "w",
@@ -24456,7 +24456,7 @@
             "mourning"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -24519,7 +24519,7 @@
             "head"
           ]
         },
-        ":",
+        ": ",
         {
           "type": "char",
           "marker": "w",
@@ -24528,7 +24528,7 @@
             "woe"
           ]
         },
-        "unto",
+        " unto ",
         {
           "type": "char",
           "marker": "w",
@@ -24537,7 +24537,7 @@
             "us"
           ]
         },
-        "!",
+        "! ",
         {
           "type": "char",
           "marker": "w",
@@ -24570,7 +24570,7 @@
             "sinned"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
@@ -24625,7 +24625,7 @@
             "faint"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -24682,7 +24682,7 @@
             "dim"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "verse",
           "marker": "v",
@@ -24729,7 +24729,7 @@
             "Zion"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -24754,7 +24754,7 @@
             "desolate"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -24795,14 +24795,14 @@
             "it"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "19",
           "sid": "LAM 5:19"
         },
-        "Thou,",
+        "Thou, ",
         {
           "type": "char",
           "marker": "w",
@@ -24819,7 +24819,7 @@
             "LORD"
           ]
         },
-        ", abidest",
+        ", abidest ",
         {
           "type": "char",
           "marker": "w",
@@ -24836,7 +24836,7 @@
             "ever"
           ]
         },
-        "; thy",
+        "; thy ",
         {
           "type": "char",
           "marker": "w",
@@ -24885,14 +24885,14 @@
             "generation"
           ]
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",
           "number": "20",
           "sid": "LAM 5:20"
         },
-        "Wherefore dost thou",
+        "Wherefore dost thou ",
         {
           "type": "char",
           "marker": "w",
@@ -24925,7 +24925,7 @@
             "ever"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "add",
@@ -24980,7 +24980,7 @@
             "time"
           ]
         },
-        "?",
+        "? ",
         {
           "type": "verse",
           "marker": "v",
@@ -24995,7 +24995,7 @@
             "Turn"
           ]
         },
-        "thou",
+        " thou ",
         {
           "type": "char",
           "marker": "w",
@@ -25004,7 +25004,7 @@
             "us"
           ]
         },
-        "unto thee,",
+        " unto thee, ",
         {
           "type": "char",
           "marker": "w",
@@ -25021,7 +25021,7 @@
             "LORD"
           ]
         },
-        ",",
+        ", ",
         {
           "type": "char",
           "marker": "w",
@@ -25062,7 +25062,7 @@
             "turned"
           ]
         },
-        ";",
+        "; ",
         {
           "type": "char",
           "marker": "w",
@@ -25103,7 +25103,7 @@
             "of"
           ]
         },
-        "old.",
+        " old. ",
         {
           "type": "verse",
           "marker": "v",
@@ -25118,7 +25118,7 @@
             "But"
           ]
         },
-        "thou hast",
+        " thou hast ",
         {
           "type": "char",
           "marker": "w",
@@ -25143,7 +25143,7 @@
             "us"
           ]
         },
-        ", thou art",
+        ", thou art ",
         {
           "type": "char",
           "marker": "w",
@@ -25152,7 +25152,7 @@
             "very"
           ]
         },
-        "wroth",
+        " wroth ",
         {
           "type": "char",
           "marker": "w",

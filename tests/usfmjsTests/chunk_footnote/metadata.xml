@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>  handles a chunk with footnote</description>
-        <validated>fail</validated>
-        <tags>revisit</tags>
+        <description>  handles a chunk with footnote
+        NOTE: footnote doesn't have caller, so first word is considered the caller.</description>
+        <validated>pass</validated>
 </test-metadata>

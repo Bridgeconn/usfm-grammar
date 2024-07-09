@@ -1,6 +1,5 @@
 <usx version="3.0">
   <book code="MAT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
-  <para style="usfm">3.0</para>
   <para style="toc1">The Acts of the Apostles</para>
   <para style="toc2">Acts</para>
   <para style="ip">One of these brothers, Joseph, had become...</para>
@@ -19,7 +18,7 @@
   <para style="qc" vid="MAT 136:2">Amen! Amen!</para>
   <para style="qd" vid="MAT 136:2">For the director of music. On my stringed instruments.<verse eid="MAT 136:2" /></para>
   <para style="b">
-    <verse number="18" style="v" sid="MAT 136:18" status="invalid" />God's spirit took control of one of them, Amasai, who later became the commander of “The Thirty,” and he called out,</para>
+    <verse number="18" style="v" sid="MAT 136:18" />God's spirit took control of one of them, Amasai, who later became the commander of “The Thirty,” and he called out,</para>
   <para style="qm1" vid="MAT 136:18">“David son of Jesse, we are yours!</para>
   <para style="qm1" vid="MAT 136:18">Success to you and those who help you!</para>
   <para style="qm1" vid="MAT 136:18">God is on your side.”</para>

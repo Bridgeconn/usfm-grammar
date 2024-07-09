@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>NoErrorsShort. From paratext test suite</description>
+        <description>NoErrorsShort. From paratext test suite
+        Fails because minimum content requires a chapter</description>
         <validated>fail</validated>
-        <tags>clarify: Minimum content requires a chapter</tags>
 </test-metadata>

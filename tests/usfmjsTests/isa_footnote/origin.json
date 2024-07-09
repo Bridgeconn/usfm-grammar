@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -109,7 +109,7 @@
           "number": "17",
           "sid": "ISA 5:17"
         },
-        "Then the sheep will feed as in their own pasture, and in the ruins, lambs will graze as foreigners.",
+        "Then the sheep will feed as in their own pasture, and in the ruins, lambs will graze as foreigners. ",
         {
           "type": "note",
           "marker": "f",
@@ -119,17 +119,23 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "Some modern versions have"
+                "Some modern versions have "
               ]
             },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "and in the ruins of the rich, lambs will graze"
+                "and in the ruins of the rich, lambs will graze "
               ]
             },
-            "."
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                " . "
+              ]
+            }
           ]
         }
       ]

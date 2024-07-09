@@ -4,5 +4,6 @@
 \c 1
 \p \v 1 Hi Bob.
 \c 2
-\s Monkey\v 1 Soup is good!
+\s Monkey
+\p \v 1 Soup is good!
 \nb \v 2 So is the bread

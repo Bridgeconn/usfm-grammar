@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>preserves alignment in usfm - zaln not at start</description>
+        <description>preserves alignment in usfm - zaln not at start
+        Fails because \zaln does not end with \*</description>
         <validated>fail</validated>
-        <tags>revisit</tags>
 </test-metadata>

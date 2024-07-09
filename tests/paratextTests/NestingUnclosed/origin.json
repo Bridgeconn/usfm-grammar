@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -36,12 +36,12 @@
           "number": "1",
           "sid": "GEN 1:1"
         },
-        "Hi",
+        "Hi ",
         {
           "type": "char",
           "marker": "em",
           "content": [
-            "Mr.",
+            "Mr. ",
             {
               "type": "char",
               "marker": "nd",
@@ -68,7 +68,7 @@
               "type": "char",
               "marker": "fr",
               "content": [
-                "1.1"
+                "1.1 "
               ]
             },
             {
@@ -83,7 +83,7 @@
       ]
     },
     {
-      "type": "optbreak",
+      "type": "para",
       "marker": "b"
     }
   ]

@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -28,7 +28,7 @@
             "Mark's"
           ]
         },
-        "story of Jesus is told quickly and with an abundance of details that enhance its dramatic impact. Jesus appears suddenly in Judea, where he joins those who are being baptized in the Jordan by John the Baptist. Just as suddenly, he returns to Galilee, where he proclaims the message that the",
+        " story of Jesus is told quickly and with an abundance of details that enhance its dramatic impact. Jesus appears suddenly in Judea, where he joins those who are being baptized in the Jordan by John the Baptist. Just as suddenly, he returns to Galilee, where he proclaims the message that the ",
         {
           "type": "char",
           "marker": "w",
@@ -36,7 +36,7 @@
             "kingdom of god"
           ]
         },
-        "is about to arrive..."
+        " is about to arrive..."
       ]
     },
     {
