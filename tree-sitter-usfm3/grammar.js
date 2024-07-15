@@ -52,7 +52,7 @@ module.exports = grammar({
 
     // Headers
     _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock, $.tocaBlock,
-      $._comments, $.milestone, $.zNameSpace, $.esb,
+      $._comments, $.milestone, $.zNameSpace, $.esb, $.ref,
       ),
 
     versionNumber: $ => /\d+(\.\d+)?/,
@@ -62,6 +62,7 @@ module.exports = grammar({
     hBlock: $ => prec.right(0,repeat1($.h)),
     tocBlock: $ => prec.right(0,repeat1($.toc)),
     tocaBlock: $ =>prec.right(0, repeat1($.toca)),//only under some hmarkers
+    ref: $ => seq("\\ref ", $.text, optional(choice($.defaultAttribute, $._refAttributes)), "\\ref*"),
 
     h: $ => seq($.hTag, $.text),
     hTag: $ => seq("\\h",optional($.numberedLevelMax3), " "),
@@ -85,7 +86,8 @@ module.exports = grammar({
     //   ),
     _introText: $ => repeat1(choice($.text, $.iqt,
       $.xt_standalone,
-      $._characterMarker
+      $._characterMarker,
+      $.ref,
       )),
 
     iqt: $ => seq("\\iqt ", $.text, "\\iqt*"),
@@ -255,6 +257,7 @@ module.exports = grammar({
       $.milestone,
       $.zNameSpace,
       $._comments,
+      $.ref,
     ),
 
     p: $ => prec.right(0, seq("\\p", $._spaceOrLine, repeat($._paragraphContent))),
@@ -345,7 +348,8 @@ module.exports = grammar({
     _tableText: $ => choice(
       $.verseText,
       $.footnote,
-      $.crossref
+      $.crossref,
+      $.ref,
     ),
 
     tr: $ => prec.right(0, seq("\\tr", $._spaceOrLine, repeat(choice(
@@ -367,6 +371,7 @@ module.exports = grammar({
     caller: $ => /[^\s\\]+/,
     noteText: $ => prec.right(0, repeat1(choice($.text,
       $._nestedCharacterMarker,
+      $.ref,
       ))),
 
     footnote: $ => choice($.f, $.fe, $.fm, $.ef),
@@ -398,6 +403,7 @@ module.exports = grammar({
       $.fdc,
       $.fv,
       $.noteText,
+      $.xt_standalone,
       $.xtNested,
       $.fig,
       $.cat
@@ -662,6 +668,7 @@ module.exports = grammar({
       $.linkAttribute)))),
     _figAttributes: $ => prec.right(0, seq("|", repeat1(choice($.altAttribute, $.srcAttribute, $.sizeAttribute, $.locAttribute, $.copyAttribute, 
       $.refAttribute, $.customAttribute, $.linkAttribute, $.defaultAttribute)))),
+    _refAttributes: $ => prec.right(0,seq("|", $.locAttribute)),
     lemmaAttribute: $ => seq("lemma", "=", '"', optional($.attributeValue), '"'),
     strongAttribute: $ => seq("strong", "=", '"', optional($.attributeValue), '"'), 
     scrlocAttribute: $ => seq("srcloc", "=", '"', optional($.attributeValue), '"'),
