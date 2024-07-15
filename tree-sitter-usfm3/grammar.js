@@ -55,7 +55,9 @@ module.exports = grammar({
       $._comments, $.milestone, $.zNameSpace, $.esb,
       ),
 
-    usfm: $ => seq("\\usfm ", /\d+(\.\d+)?/),
+    versionNumber: $ => /\d+(\.\d+)?/,
+
+    usfm: $ => seq("\\usfm ", $.versionNumber),
     ide: $ => seq("\\ide ", $.text),
     hBlock: $ => prec.right(0,repeat1($.h)),
     tocBlock: $ => prec.right(0,repeat1($.toc)),
