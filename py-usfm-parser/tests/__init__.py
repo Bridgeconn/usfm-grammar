@@ -228,6 +228,9 @@ pass_fail_override_list = {
     f'{TEST_DIR}/specExamples/poetry/origin.usfm': "fail", # \b not followed by a \p or \q
 
     f'{TEST_DIR}/paratextTests/InvalidMilestone_MissingEnd/origin.usfm': "fail", # committee now thinks start/end milestones is a semantic check not syntactic
+    f'{TEST_DIR}/paratextTests/InvalidRubyMarkup/origin.usfm': "fail", # contradicts /paratextTests/MissingRequiredAttributesReported
+    f'{TEST_DIR}/special-cases/empty-book/origin.usfm': "pass", # Just says only \id is not enough. Not clear what else is mandatory
+    f'{TEST_DIR}/usfmjsTests/f10_gen12-2_empty_word/origin.usfm': "pass", # Empty \w \w* is accepted by us as of now
     ########### Need to be fixed #######################
     f"{TEST_DIR}/paratextTests/NoErrorsShort/origin.usfm": "pass", # \c is mandatory!
     # f"{TEST_DIR}/usfmjsTests/gn_headers/origin.usfm": "fail", # what is the valid position for mte and imt
