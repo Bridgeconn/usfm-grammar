@@ -27,7 +27,7 @@ class USXGenerator:
                  ]
     NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
     DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
-                        "xt_standalone":"link-href", "ref":"loc"}
+                        "xt_standalone":"link-href", "xtNested":"link-href", "ref":"loc"}
     TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
 
@@ -348,7 +348,7 @@ class USXGenerator:
             self.node_2_usx_para(node, parent_xml_node)
         elif node.type in self.NOTE_MARKERS:
             self.node_2_usx_notes(node, parent_xml_node)
-        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+["xt_standalone"]:
+        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+["xt_standalone", "ref"]:
             self.node_2_usx_char(node, parent_xml_node)
         elif node.type.endswith("Attribute"):
             self.node_2_usx_attrib(node, parent_xml_node)
