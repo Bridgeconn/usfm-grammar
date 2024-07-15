@@ -27,7 +27,7 @@ class USXGenerator:
                  ]
     NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
     DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
-                        "xt_standalone":"link-href"}
+                        "xt_standalone":"link-href", "ref":"loc"}
     TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
 
