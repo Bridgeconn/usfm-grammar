@@ -472,7 +472,7 @@ module.exports = grammar({
 
     ndx: $ => seq("\\ndx", $._innerText, "\\ndx*"),
     pro: $ => seq("\\pro", $._innerText, "\\pro*"),
-    rb: $ => seq("\\rb", $._innerText, optional(choice($.defaultAttribute, $._rbAttributes)), "\\rb*"),
+    rb: $ => seq("\\rb", $._innerText, choice($.defaultAttribute, $._rbAttributes), "\\rb*"),
     w: $ => seq("\\w", $._innerText, optional(choice($.defaultAttribute, $._wAttributes)), "\\w*"),
     wg: $ => seq("\\wg", $._innerText, "\\wg*"),
     wh: $ => seq("\\wh", $._innerText, "\\wh*"),
