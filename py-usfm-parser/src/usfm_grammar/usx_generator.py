@@ -37,7 +37,7 @@ class USXGenerator:
         self.usfm = usfm_bytes
         if usx_root_element is None:
             self.xml_root_node = etree.Element("usx")
-            self.xml_root_node.set("version", "3.0")
+            self.xml_root_node.set("version", "3.1")
         else:
             self.xml_root_node = usx_root_element
 
