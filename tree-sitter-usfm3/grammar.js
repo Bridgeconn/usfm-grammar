@@ -399,7 +399,8 @@ module.exports = grammar({
       $.fv,
       $.noteText,
       $.xtNested,
-      $.fig
+      $.fig,
+      $.cat
     ),
 
     //Cross-reference
