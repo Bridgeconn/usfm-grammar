@@ -436,6 +436,7 @@ module.exports = grammar({
       $.xot,
       $.xnt,
       $.xdc,
+      $.cat,
     ),
     rq: $ => seq("\\rq ", $.noteText, "\\rq*"),
 
