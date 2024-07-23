@@ -372,6 +372,7 @@ module.exports = grammar({
     noteText: $ => prec.right(0, repeat1(choice($.text,
       $._nestedCharacterMarker,
       $.ref,
+      $.fig,
       ))),
 
     footnote: $ => choice($.f, $.fe, $.fm, $.ef),
@@ -405,7 +406,6 @@ module.exports = grammar({
       $.noteText,
       $.xt_standalone,
       $.xtNested,
-      $.fig,
       $.cat
     ),
 
