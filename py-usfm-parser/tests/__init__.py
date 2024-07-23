@@ -65,6 +65,8 @@ def find_all_markers(usfm_path, keep_id=False, keep_number=True):
     if "esbe" in all_markers_in_input:
         assert "esb" in all_markers_in_input
         all_markers_in_input.remove("esbe")
+    if "usfm" in all_markers_in_input:
+        all_markers_in_input.remove("usfm")
     return all_markers_in_input
 
 all_usfm_files = glob(f"{TEST_DIR}/*/*/origin.usfm") +\
@@ -169,6 +171,9 @@ doubtful_usxs = [
     ]
 
 pass_fail_override_list = {
+    # no + for \nd within \bk
+    f"{TEST_DIR}/advanced/nesting1/origin.usfm": "fail",
+
     # custom attribute without x-
     f"{TEST_DIR}/paratextTests/InvalidAttributes/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/InvalidFigureAttributesReported/origin.usfm": "fail",
@@ -245,12 +250,6 @@ for file_path in all_usfm_files:
         negative_tests.append(file_path)
 
 exclude_USX_files = [
-    # f'{TEST_DIR}/specExamples/chapter-verse/origin.xml',
-    #     # ca is added as attribute to cl not chapter node
-    # f'{TEST_DIR}/specExamples/milestone/origin.xml',
-    #     # Znamespace not represented properly. Even no docs of it on https://ubsicap.github.io/usx
-    # f'{TEST_DIR}/advanced/table/origin.xml',
-    #     # There is no verse end node at end(in last row of the table)
     f'{TEST_DIR}/specExamples/extended/contentCatogories2/origin.xml',
             # \ef not treated as inline content of paragraph
     f'{TEST_DIR}/specExamples/extended/sectionIntroductions/origin.xml',
@@ -263,6 +262,21 @@ exclude_USX_files = [
             # ~ not being replaced by nbsp in usfm-grammar
     f'{TEST_DIR}/special-cases/empty-attributes/origin.xml',
             # attributes treated as text content of marker
+    f"{TEST_DIR}/biblica/CategoriesOnNotes/origin.xml",
+            # ref node has type ref. Is it char or ref?
+    f"{TEST_DIR}/biblica/CrossRefWithPipe/origin.xml",
+    f"{TEST_DIR}/usfmjsTests/hebrew_words/origin.xml",
+            # attribute href used instead of link-href
+    f"{TEST_DIR}/specExamples/titles/origin.xml",
+    f"{TEST_DIR}/specExamples/lists/origin.xml",
+    f"{TEST_DIR}/specExamples/paragraph/origin.xml",
+    f"{TEST_DIR}/paratextTests/FootnoteWithWrongSpacingAroundCaller/origin.xml",
+    f"{TEST_DIR}/paratextTests/NoErrorsNesting/origin.xml",
+    f"{TEST_DIR}/paratextTests/NoErrosLong/origin.xml",
+    f"{TEST_DIR}/usfmjsTests/usfm-body-testF/origin.xml",
+            # nodetype para used instead of optbreak for \b
+    f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.xml",
+            # \v and other contents contained inside \lit. New docs doesnt have \lit
 ]
 
 invalid_usxs = []

@@ -171,7 +171,7 @@ def strip_default_attrib_value(usj_dict):
 @pytest.mark.parametrize('file_path', test_files)
 @pytest.mark.timeout(30)
 def test_compare_usj_with_testsuite_samples(file_path):
-    '''Compare the generated USX with the origin.xml in test suite'''
+    '''Compare the generated USJ with the origin.xml in test suite'''
     test_parser = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usx_file_path = file_path.replace("origin.usfm", "origin.xml")
