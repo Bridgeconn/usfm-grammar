@@ -146,6 +146,17 @@ def remove_newlines_in_text(usj_dict):
                 continue
             remove_newlines_in_text(item)
 
+def strip_text_value(usj_dict):
+    '''Trailing and preceding space handling can be different between tcdocs and our logic.
+    Strip both before comparison'''
+    if "content" in usj_dict:
+        for i,item in enumerate(usj_dict["content"]):
+            if isinstance(item, str):
+                usj_dict['content'][i] = item.strip()
+                continue
+            strip_text_value(item)
+
+
 def strip_default_attrib_value(usj_dict):
     '''The USX samples in test suite have space in lemma values when given as default attribute'''
     if "content" in usj_dict:
@@ -177,6 +188,8 @@ def test_compare_usj_with_testsuite_samples(file_path):
             pass
         except AssertionError:
             strip_default_attrib_value(origin_usj)
+            strip_text_value(usj_dict)
+            strip_text_value(origin_usj)
             dict_diff = DeepDiff(usj_dict, origin_usj, ignore_order=True)
             assert dict_diff == {}, f"generated USJ:\n{usj_dict}\n"+\
                     f"USJ in testsuite:\n{origin_usj}\n syntax tree: {test_parser.to_syntax_tree()}"
