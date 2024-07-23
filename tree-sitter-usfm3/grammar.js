@@ -375,6 +375,7 @@ module.exports = grammar({
       $.fig,
       $.xt_standalone,
       $.xtNested,
+      $.fv,
       ))),
 
     crossrefText: $ => prec.right(0, repeat1(choice($.text,
@@ -397,7 +398,7 @@ module.exports = grammar({
     fp: $ => seq("\\fp ", $.footnoteText, optional("\\fp*")),
     ft: $ => seq("\\ft ", $.footnoteText, optional("\\ft*")),
     fdc: $ => seq("\\fdc ", $.footnoteText, optional("\\fdc*")),
-    fv: $ => seq("\\fv ", $.footnoteText, optional("\\fv*")),
+    fv: $ => seq("\\fv ", $.text, optional("\\fv*")),
     fm: $ => seq("\\fm ", $.footnoteText, "\\fm*"),
 
     _footnoteContents: $ => choice(
@@ -410,7 +411,6 @@ module.exports = grammar({
       $.fp,
       $.ft,
       $.fdc,
-      $.fv,
       $.footnoteText,
       $.cat
     ),
