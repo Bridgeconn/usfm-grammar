@@ -271,11 +271,12 @@ class USJGenerator:
             b_json_obj = {"type": "optbreak", "marker":"b"}
             parent_json_obj['content'].append(b_json_obj)
         elif node.type == "usfm":
-            ver_json_obj = {"type": "para", "marker":"usfm", "content":[]}
-            version = self.usfm[
-                node.start_byte:node.end_byte].decode('utf-8').replace("\\usfm","").strip()
-            ver_json_obj['content'].append(version)
-            parent_json_obj['content'].append(ver_json_obj)
+            # ver_json_obj = {"type": "para", "marker":"usfm", "content":[]}
+            # version = self.usfm[
+            #     node.start_byte:node.end_byte].decode('utf-8').replace("\\usfm","").strip()
+            # ver_json_obj['content'].append(version)
+            # parent_json_obj['content'].append(ver_json_obj)
+            pass
 
     def node_2_usj_generic(self, node, parent_json_obj):
         '''build nodes for para style markers in USX'''
