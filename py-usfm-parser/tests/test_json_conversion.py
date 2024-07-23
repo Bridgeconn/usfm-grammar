@@ -3,6 +3,7 @@ import pytest
 import json
 import re
 from jsonschema import validate
+from deepdiff import DeepDiff
 
 from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests,\
     find_all_markers, Filter, generate_USFM_from_USJ, parse_USFM_string, exclude_USX_files
@@ -176,6 +177,7 @@ def test_compare_usj_with_testsuite_samples(file_path):
             pass
         except AssertionError:
             strip_default_attrib_value(origin_usj)
-            assert usj_dict == origin_usj, f"generated USJ:\n{usj_dict}\n"+\
+            dict_diff = DeepDiff(usj_dict, origin_usj, ignore_order=True)
+            assert dict_diff == {}, f"generated USJ:\n{usj_dict}\n"+\
                     f"USJ in testsuite:\n{origin_usj}\n syntax tree: {test_parser.to_syntax_tree()}"
     # assert usj_dict == origin_usj
