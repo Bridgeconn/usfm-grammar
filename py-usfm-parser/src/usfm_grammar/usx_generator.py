@@ -23,7 +23,8 @@ class USXGenerator:
                  "lik", "liv", #structred list entries
                  "jmp",
                  "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", #footnote-content
-                 "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc" #crossref-content
+                 "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc", #crossref-content
+                 "ref"
                  ]
     NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
     DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
