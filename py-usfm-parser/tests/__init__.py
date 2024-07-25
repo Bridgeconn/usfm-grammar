@@ -84,9 +84,6 @@ pass_fail_override_list = {
     f"{TEST_DIR}/paratextTests/InvalidAttributes/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/InvalidFigureAttributesReported/origin.usfm": "fail",
 
-    # Use of default attribute for non listed marker
-    f"{TEST_DIR}/paratextTests/ValidMilestones/origin.usfm": "fail",
-
     # link attributes used without hyphen
     f"{TEST_DIR}/paratextTests/LinkAttributesAreValid/origin.usfm": "fail",
 
@@ -138,7 +135,6 @@ pass_fail_override_list = {
     f'{TEST_DIR}/special-cases/figure_with_quotes_in_desc/origin.usfm': "fail", # quote within quote
     f'{TEST_DIR}/specExamples/poetry/origin.usfm': "fail", # \b not followed by a \p or \q
 
-    f'{TEST_DIR}/paratextTests/InvalidMilestone_MissingEnd/origin.usfm': "fail", # committee now thinks start/end milestones is a semantic check not syntactic
     f'{TEST_DIR}/paratextTests/InvalidRubyMarkup/origin.usfm': "fail", # contradicts /paratextTests/MissingRequiredAttributesReported
     f'{TEST_DIR}/special-cases/empty-book/origin.usfm': "pass", # Just says only \id is not enough. Not clear what else is mandatory
     f'{TEST_DIR}/usfmjsTests/f10_gen12-2_empty_word/origin.usfm': "pass", # Empty \w \w* is accepted by us as of now
