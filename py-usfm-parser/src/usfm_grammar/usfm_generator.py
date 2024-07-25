@@ -61,7 +61,7 @@ class USFMGenerator:
                     self.usfm_string += f"{key}=\"{usj_obj[key]}\" "
 
         if usj_obj['type'] in CLOSING_USJ_TYPES:
-            self.usfm_string = self.usfm_string.strip() + "\\"
+            self.usfm_string = self.usfm_string.strip() + " \\"
             if nested and usj_obj['type'] == 'char' and usj_obj['marker'] not in ["xt", "ref", "fv"]:
                 self.usfm_string+="+"
             self.usfm_string += f"{usj_obj['marker']}* "
