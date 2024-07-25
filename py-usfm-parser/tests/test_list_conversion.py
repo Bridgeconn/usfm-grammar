@@ -2,11 +2,11 @@
 import pytest
 import re
 
-from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests
+from tests import all_usfm_files, initialise_parser, negative_tests
 from src.usfm_grammar import Filter
 
 test_files = all_usfm_files.copy()
-for file in doubtful_usfms+negative_tests:
+for file in negative_tests:
     if file in test_files:
         test_files.remove(file)
 

@@ -5,7 +5,7 @@ import re
 from jsonschema import validate
 from deepdiff import DeepDiff
 
-from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests,\
+from tests import all_usfm_files, initialise_parser, negative_tests,\
     find_all_markers, Filter, generate_USFM_from_USJ, parse_USFM_string, exclude_USX_files
 
 all_valid_markers = []
@@ -13,7 +13,7 @@ for member in Filter:
     all_valid_markers += member.value
 
 test_files = all_usfm_files.copy()
-for file in doubtful_usfms+negative_tests:
+for file in negative_tests:
     if file in test_files:
         test_files.remove(file)
 

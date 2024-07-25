@@ -169,6 +169,7 @@ exclude_USX_files = [
     f'{TEST_DIR}/special-cases/empty-attributes/origin.xml',
             # attributes treated as text content of marker
     f"{TEST_DIR}/biblica/CategoriesOnNotes/origin.xml",
+    f"{TEST_DIR}/biblica/CrossRefWithPipe/origin.xml",
             # ref node has type ref. Is it char or ref?
     f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.xml",
             # \v and other contents contained inside \lit. New docs doesnt have \lit
