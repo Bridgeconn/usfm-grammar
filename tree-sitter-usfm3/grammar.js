@@ -609,7 +609,7 @@ module.exports = grammar({
     milestoneStartTag: $ => /\\(t|ts|qt|k)(\d+)?-s/,
     milestoneEndTag: $=> /\\(t|ts|qt|k)(\d+)?-e/,
     _milestoneStart: $ => seq($.milestoneStartTag,
-      optional($._milestoneAttributes), "\\*" ),
+      optional(choice($.defaultAttribute, $._milestoneAttributes)), "\\*" ),
     _milestoneEnd: $ => seq($.milestoneEndTag,
       optional($._milestoneAttributes), "\\*" ),
 
@@ -681,7 +681,8 @@ module.exports = grammar({
     glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
     _jmpAttribute: $ => seq("|", repeat($.linkAttribute)),
     linkAttribute: $ => seq($._linkAttributeName, "=", '"', optional($.attributeValue), '"'),
-    _linkAttributeName: $ => choice("link-href", "link-title", "link-id", $._linkAttributeUserDefinedName),
+    _linkAttributeName: $ => choice("link-href", "link-title", "link-id",
+                              "href", "title", "id", $._linkAttributeUserDefinedName),
     _linkAttributeUserDefinedName: $ => seq("x-", /[\w\d_]+/),
     altAttribute: $ => seq("alt", "=", '"', optional($.attributeValue), '"'),
     srcAttribute: $ => seq("src", "=", '"', optional($.attributeValue), '"'),
