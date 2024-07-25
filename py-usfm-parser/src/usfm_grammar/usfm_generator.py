@@ -161,6 +161,8 @@ class USFMGenerator:
                 self.usfm_string += "\\*"
             else:
                 self.usfm_string += f"\\{marker}*"
+        if obj_type == "sidebar":
+            self.usfm_string += "\n\\esbe\n"
 
 if __name__ == "__main__":
     from lxml import etree
