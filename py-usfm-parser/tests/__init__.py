@@ -172,7 +172,10 @@ doubtful_usxs = [
 
 pass_fail_override_list = {
     # no + for \nd within \bk
-    f"{TEST_DIR}/advanced/nesting1/origin.usfm": "fail",
+    # f"{TEST_DIR}/advanced/nesting1/origin.usfm": "fail",
+
+    #linkhref without -
+    f"{TEST_DIR}/paratextTests/Usfm30Usage/origin.usfm": "fail",
 
     # custom attribute without x-
     f"{TEST_DIR}/paratextTests/InvalidAttributes/origin.usfm": "fail",
@@ -264,17 +267,6 @@ exclude_USX_files = [
             # attributes treated as text content of marker
     f"{TEST_DIR}/biblica/CategoriesOnNotes/origin.xml",
             # ref node has type ref. Is it char or ref?
-    f"{TEST_DIR}/biblica/CrossRefWithPipe/origin.xml",
-    f"{TEST_DIR}/usfmjsTests/hebrew_words/origin.xml",
-            # attribute href used instead of link-href
-    f"{TEST_DIR}/specExamples/titles/origin.xml",
-    f"{TEST_DIR}/specExamples/lists/origin.xml",
-    f"{TEST_DIR}/specExamples/paragraph/origin.xml",
-    f"{TEST_DIR}/paratextTests/FootnoteWithWrongSpacingAroundCaller/origin.xml",
-    f"{TEST_DIR}/paratextTests/NoErrorsNesting/origin.xml",
-    f"{TEST_DIR}/paratextTests/NoErrosLong/origin.xml",
-    f"{TEST_DIR}/usfmjsTests/usfm-body-testF/origin.xml",
-            # nodetype para used instead of optbreak for \b
     f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.xml",
             # \v and other contents contained inside \lit. New docs doesnt have \lit
 ]
