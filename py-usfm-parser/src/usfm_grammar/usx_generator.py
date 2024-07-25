@@ -6,13 +6,14 @@ class USXGenerator:
     '''A binding for all methods used in generating USX from Syntax tree'''
 
     # handled alike by the node_2_usx_generic method
-    PARA_STYLE_MARKERS = ["ide", "usfm", "h", "toc", "toca", #identification
+    PARA_STYLE_MARKERS = ["ide", "h", "toc", "toca", #identification
                 "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
                 "ili", "iot", "io", "iex", "imte", "ie", # intro
                 "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd", #titles
                 "q", "qr", "qc", "qa", "qm", "qd", #poetry
                 "lh", "li", "lf", "lim", "litl", #lists
                 "sts", "rem", "lit", "restore", #comments
+                "b",
                 ]
 
     NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"]
@@ -28,7 +29,8 @@ class USXGenerator:
                  ]
     NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
     DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"link-href", "fig":"alt",
-                        "xt_standalone":"link-href", "xtNested":"link-href", "ref":"loc"}
+                        "xt_standalone":"link-href", "xtNested":"link-href", "ref":"loc",
+                        "milestone":"who"}
     TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
 
@@ -301,8 +303,6 @@ class USXGenerator:
             fig_xml_node.set("style", 'fig')
             for child in node.children[1:-1]:
                 self.node_2_usx(child, fig_xml_node)
-        elif node.type == 'b':
-            etree.SubElement(parent_xml_node, "optbreak")
 
     def node_2_usx_generic(self, node, parent_xml_node):
         '''build nodes for para style markers in USX'''
@@ -366,7 +366,7 @@ class USXGenerator:
             self.node_2_usx_milestone(node, parent_xml_node)
         elif node.type == "zNameSpace":
             self.node_2_usx_milestone(node, parent_xml_node)
-        elif node.type in ["esb", "cat", "fig", "b"]:
+        elif node.type in ["esb", "cat", "fig"]:
             self.node_2_usx_special(node, parent_xml_node)
         elif (node.type in self.PARA_STYLE_MARKERS or
               node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):
