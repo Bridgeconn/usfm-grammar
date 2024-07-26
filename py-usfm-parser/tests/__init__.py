@@ -144,6 +144,7 @@ pass_fail_override_list = {
     f"{TEST_DIR}/usfmjsTests/acts_8-37-ugnt-footnote/origin.usfm": "fail", # no clue why it fails
 
     f"{TEST_DIR}/advanced/periph/origin.usfm": "fail", # Peripharals not implemented
+    f"{TEST_DIR}/advanced/nesting1/origin.usfm": "fail", # We dont support char within char w/o +, yet
 }
 
 negative_tests = []
@@ -169,6 +170,8 @@ exclude_USX_files = [
             # ref node has type ref. Is it char or ref?
     f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.xml",
             # \v and other contents contained inside \lit. New docs doesnt have \lit
+    f"{TEST_DIR}/usfmjsTests/usfm-body-testF/origin.usfm",
+            # does the ms go inside \s5 or after it?
 ]
 
 invalid_usxs = []
