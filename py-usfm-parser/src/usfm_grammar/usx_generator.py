@@ -349,7 +349,8 @@ class USXGenerator:
             self.node_2_usx_para(node, parent_xml_node)
         elif node.type in self.NOTE_MARKERS:
             self.node_2_usx_notes(node, parent_xml_node)
-        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+["xt_standalone", "ref"]:
+        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+\
+                                                            ["xt_standalone", "ref"]:
             self.node_2_usx_char(node, parent_xml_node)
         elif node.type.endswith("Attribute"):
             self.node_2_usx_attrib(node, parent_xml_node)

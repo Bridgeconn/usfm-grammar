@@ -27,7 +27,8 @@ class USFMGenerator:
         '''Traverses through the dict/json and uses 'type' field to form USFM elements'''
         if usj_obj['type'] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
-            if nested and usj_obj['type'] == 'char' and usj_obj['marker'] not in ["xt", "fv", "ref"]:
+            if nested and usj_obj['type'] == 'char' and\
+                usj_obj['marker'] not in ["xt", "fv", "ref"]:
                 self.usfm_string+="+"
             self.usfm_string += f"{usj_obj['marker']} "
         if 'code' in usj_obj:
@@ -62,7 +63,8 @@ class USFMGenerator:
 
         if usj_obj['type'] in CLOSING_USJ_TYPES:
             self.usfm_string = self.usfm_string.strip() + " \\"
-            if nested and usj_obj['type'] == 'char' and usj_obj['marker'] not in ["xt", "ref", "fv"]:
+            if nested and usj_obj['type'] == 'char' and\
+                usj_obj['marker'] not in ["xt", "ref", "fv"]:
                 self.usfm_string+="+"
             self.usfm_string += f"{usj_obj['marker']}* "
         if usj_obj['type'] == "ms":
