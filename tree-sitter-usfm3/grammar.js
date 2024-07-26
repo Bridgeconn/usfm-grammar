@@ -457,7 +457,7 @@ module.exports = grammar({
     _innerText: $ => prec.right(0, repeat1(choice(
       $.text,
       $._nestedCharacterMarker,
-      $._characterMarker,
+      // $._characterMarker,
       $.footnote,
       $.crossref
     ))),
