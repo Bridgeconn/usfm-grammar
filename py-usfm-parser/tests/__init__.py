@@ -170,7 +170,7 @@ exclude_USX_files = [
             # ref node has type ref. Is it char or ref?
     f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.xml",
             # \v and other contents contained inside \lit. New docs doesnt have \lit
-    f"{TEST_DIR}/usfmjsTests/usfm-body-testF/origin.usfm",
+    f"{TEST_DIR}/usfmjsTests/usfm-body-testF/origin.xml",
             # does the ms go inside \s5 or after it?
 ]
 
