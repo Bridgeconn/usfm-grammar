@@ -1,4 +1,4 @@
-export const PARA_STYLE_MARKERS = [
+exports.PARA_STYLE_MARKERS = [
   "ide",
   "usfm",
   "h",
@@ -49,8 +49,8 @@ export const PARA_STYLE_MARKERS = [
   "lit",
   "restore", //comments
 ];
-export const NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"];
-export const CHAR_STYLE_MARKERS = [
+exports.NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"];
+CHAR_STYLE_MARKERS = [
   "add",
   "bk",
   "dc",
@@ -106,15 +106,16 @@ export const CHAR_STYLE_MARKERS = [
   "xnt",
   "xdc", //crossref - content
 ];
-export const NESTED_CHAR_STYLE_MARKERS = CHAR_STYLE_MARKERS.map(
+exports.CHAR_STYLE_MARKERS = CHAR_STYLE_MARKERS;
+exports.NESTED_CHAR_STYLE_MARKERS = CHAR_STYLE_MARKERS.map(
   (item) => item + "Nested",
 );
-export const DEFAULT_ATTRIB_MAP = {
+exports.DEFAULT_ATTRIB_MAP = {
   w: "lemma",
   rb: "gloss",
   xt: "link-href",
   fig: "alt",
   xt_standalone: "link-href",
 };
-export const TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"];
-export const MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];
+exports.TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"];
+exports.MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];

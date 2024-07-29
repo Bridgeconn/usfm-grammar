@@ -1,9 +1,12 @@
 //Logics for syntax-tree to dict(USJ) conversions
-import { PARA_STYLE_MARKERS, NOTE_MARKERS, CHAR_STYLE_MARKERS, NESTED_CHAR_STYLE_MARKERS, DEFAULT_ATTRIB_MAP, TABLE_CELL_MARKERS, MISC_MARKERS } from "./utils/markers";
+const Parser = require("tree-sitter");
+const {Query} = Parser;
+
+const { PARA_STYLE_MARKERS, NOTE_MARKERS, CHAR_STYLE_MARKERS, NESTED_CHAR_STYLE_MARKERS, DEFAULT_ATTRIB_MAP, TABLE_CELL_MARKERS, MISC_MARKERS } = require("./utils/markers");
 class USJGenerator {
 
 
-  constructor(treeSitterLanguageObj, usfmString, usjRootObj = null) {
+  constructor(treeSitterLanguageObj, usfmString, usjRootObj=null) {
     this.usfmLanguage = treeSitterLanguageObj;
     this.usfm = usfmString;
     this.jsonRootObj = usjRootObj || {
@@ -36,8 +39,8 @@ class USJGenerator {
   }
 
   nodeToUSJId(node, parentJsonObj) {
-    const idCaptures = this.usfmLanguage
-      .query("(id (bookcode) @book-code (description)? @desc)")
+    const idCaptures = new Query(this.usfmLanguage, 
+      "(id (bookcode) @book-code (description)? @desc)")
       .captures(node);
     let code = null;
     let desc = null;
@@ -63,8 +66,7 @@ class USJGenerator {
   // Similar conversion methods for other node types
   nodeToUSJC(node, parentJsonObj) {
     // Build c, the chapter milestone node in usj
-    const chapCap = this.usfmLanguage
-      .query(
+    const chapCap = new Query(this.usfmLanguage,
         `(c (chapterNumber) @chap-num
                                              (ca (chapterNumber) @alt-num)?
                                              (cp (text) @pub-num)?)`,
@@ -124,8 +126,7 @@ class USJGenerator {
 
   nodeToUSJVerse(node, parentJsonObj) {
     // Build verse node in USJ
-    const verseNumCap = this.usfmLanguage
-      .query(
+    const verseNumCap = new Query(this.usfmLanguage,
         `
       (v
           (verseNumber) @vnum
@@ -176,8 +177,7 @@ class USJGenerator {
       marker: style,
     };
 
-    const altNumMatch = this.usfmLanguage
-      .query(
+    const altNumMatch = new Query(this.usfmLanguage,
         `([
         (chapterNumber)
         (verseNumber)
@@ -200,8 +200,8 @@ class USJGenerator {
         this.nodeToUSJPara(child, parentJsonObj);
       });
     } else if (node.type === "paragraph") {
-      const paraTagCap = this.usfmLanguage
-        .query("(paragraph (_) @para-marker)")
+      const paraTagCap = new Query(this.usfmLanguage,
+        "(paragraph (_) @para-marker)")
         .captures(node)[0];
       const paraMarker = paraTagCap.node.type;
 
@@ -329,8 +329,8 @@ class USJGenerator {
       attribName = "file";
     }
 
-    const attribValCap = this.usfmLanguage
-      .query("((attributeValue) @attrib-val)")
+    const attribValCap = new Query(this.usfmLanguage,
+      "((attributeValue) @attrib-val)")
       .captures(node);
 
     let attribValue = "";
@@ -349,8 +349,7 @@ class USJGenerator {
   nodeToUSJMilestone(node, parentJsonObj) {
     // Create ms node in USJ
 
-    const msNameCap = this.usfmLanguage
-      .query(
+    const msNameCap = new Query(this.usfmLanguage,
         `(
         [(milestoneTag)
          (milestoneStartTag)
@@ -390,8 +389,8 @@ class USJGenerator {
       });
       parentJsonObj.content.push(sidebarJsonObj);
     } else if (node.type === "cat") {
-      const catCap = this.usfmLanguage
-        .query("((category) @category)")
+      const catCap = new Query(this.usfmLanguage,
+        "((category) @category)")
         .captures(node)[0];
       const category = this.usfm
         .substring(catCap[0].startIndex, catCap[0].endIndex)
@@ -551,4 +550,4 @@ class USJGenerator {
   }
 }
 
-export default USJGenerator;
+exports.USJGenerator = USJGenerator;

@@ -9,4 +9,4 @@ const Format = {
   USFM: "usfm",
 };
 
-export default Format;
+exports.Format = Format;

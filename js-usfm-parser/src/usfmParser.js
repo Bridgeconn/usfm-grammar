@@ -1,32 +1,23 @@
-import Parser from "./tree-sitter-main/tree-sitter";
+const Parser = require('tree-sitter');
 
-import USFMGenerator from "./usfmGenerator";
-import USJGenerator from "./usjGenerator";
-import { includeMarkersInUsj, excludeMarkersInUsj } from "./filters";
-import usfmGrammarBase64 from './grammar/tree-sitter-usfm3.base64'
-import { base64ToUint8Array } from "./utils/base64ToUint8Array";
+const {USFMGenerator} = require("./usfmGenerator");
+const {USJGenerator} = require("./usjGenerator"); 
+const { includeMarkersInUsj, excludeMarkersInUsj } = require("./filters.js");
+const USFM3 = require('tree-sitter-usfm3');
+const { Query } = Parser;
 
 class USFMParser {
-	static async init() {
-		await Parser.init();
-		const { uint8Array: usfmGrammar } = base64ToUint8Array(usfmGrammarBase64);
-		this.language = await Parser.Language.load(usfmGrammar);
-	}
 
 	constructor() {
 		this.parser = null;
 		this.usfm = null;
 		this.usj = null;
 		this.syntaxTree = null;
+		this.initializeParser()
 	}
 	initializeParser() {
-		if (!USFMParser.language) {
-			throw new Error(
-				"USFMParser not initialized. Call USFMParser.init() before creating instances.",
-			);
-		}
 		this.parser = new Parser();
-		this.parser.setLanguage(USFMParser.language);
+		this.parser.setLanguage(USFM3);
 	}
 
 	usfmToUsj(usfmString) {
@@ -68,7 +59,7 @@ class USFMParser {
 
 
 	checkForErrors(tree) {
-		const errorQuery = this.parser.getLanguage().query("(ERROR) @errors");
+		const errorQuery = new Query(USFM3, "(ERROR) @errors");
 		const errors = errorQuery.captures(tree.rootNode);
 		if (errors.length > 0) {
 			this.errors = errors.map(
@@ -98,20 +89,14 @@ class USFMParser {
 			);
 		}
 
-		let jsonRootObj = {
-			type: "USJ",
-			version: "0.2.0",
-			content: [],
-		};
-
 		let outputUSJ;
 		try {
 			let usjGenerator = new USJGenerator(
-				USFMParser.language,
-				this.usfm,
-				jsonRootObj,
+				USFM3,
+				this.usfm
 			);
-			usjGenerator.nodeToUSJ(this.syntaxTree, jsonRootObj);
+
+			usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
 			outputUSJ = usjGenerator.jsonRootObj;
 		} catch (err) {
 			let message = "Unable to do the conversion. ";
@@ -119,7 +104,8 @@ class USFMParser {
 				let errorString = this.errors.map((err) => err.join(":")).join("\n\t");
 				message += `Could be due to an error in the USFM\n\t${errorString}`;
 			}
-			return null;
+			throw err;
+			return {error: message};
 		}
 
 		if (includeMarkers) {
@@ -133,4 +119,4 @@ class USFMParser {
 	}
 }
 
-export default USFMParser;
+exports.USFMParser = USFMParser;
