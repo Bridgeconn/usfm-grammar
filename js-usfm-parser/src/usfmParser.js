@@ -104,7 +104,9 @@ class USFMParser {
 				let errorString = this.errors.map((err) => err.join(":")).join("\n\t");
 				message += `Could be due to an error in the USFM\n\t${errorString}`;
 			}
-			throw err;
+			else {
+				message = err.message;
+			}
 			return {error: message};
 		}
 

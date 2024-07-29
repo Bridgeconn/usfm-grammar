@@ -14,10 +14,9 @@ npm install usfm-grammar
 Here's how you can use USFM Grammar in your JavaScript/TypeScript projects:
 
 ```javascript
-import { USFMParser } from 'usfm-grammar';
+const { USFMParser } = require('usfm-grammar');
 
 (async () => {
-  await USFMParser.init();
   const usfmParser = new USFMParser();
   
   // Convert USFM to USJ
@@ -33,8 +32,6 @@ import { USFMParser } from 'usfm-grammar';
 
 ## API Documentation
 
-### `USFMParser.init()`
-Initializes the USFMParser. This function must be called before creating instances of `USFMParser`.
 
 ### `USFMParser.usfmToUsj(usfmString: string): Object`
 Converts a USFM string to a USJ object.

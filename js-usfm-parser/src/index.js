@@ -1,2 +1,2 @@
-const USFMParser = require("./usfmParser");
+const {USFMParser} = require("./usfmParser");
 exports.USFMParser = USFMParser;

@@ -1,4 +1,4 @@
-const {USFMParser} = require("./src/usfmParser");
+const {USFMParser} = require("./src/index");
 
 (async () => {
   const usfmParser = new USFMParser()
