@@ -1,10 +1,13 @@
 {
   "name": "tree-sitter-usfm3",
-  "version": "3.0.0-beta.5",
+  "version": "3.0.0-beta.10",
   "description": "Grammar representation and parser for USFM language using tree-sitter",
   "main": "bindings/node",
+  "types": "bindings/node",
   "scripts": {
-    "test": "tree-sitter test"
+    "test": "tree-sitter test",
+    "install": "node-gyp-build",
+    "prebuildify": "prebuildify --napi --strip"
   },
   "repository": {
     "type": "git",
@@ -17,19 +20,40 @@
     "cfg",
     "json"
   ],
+  "files": [
+    "grammar.js",
+    "binding.gyp",
+    "prebuilds/**",
+    "bindings/node/*",
+    "queries/*",
+    "src/**"
+  ],
   "author": "BCS Team <joel@bridgeconn.com> (https://bridgeconn.com/)",
-  "contributors": ["Kavitha Raju <kavitha.raju@bridgeconn.com> (https://github.com/kavitharaju)",
-    "Joel Mathew <joel@bridgeconn.com> (https://github.com/joelthe1)"],
+  "contributors": [
+    "Kavitha Raju <kavitha.raju@bridgeconn.com> (https://github.com/kavitharaju)",
+    "Joel Mathew <joel@bridgeconn.com> (https://github.com/joelthe1)"
+  ],
   "license": "MIT License",
   "bugs": {
     "url": "https://github.com/Bridgeconn/usfm-grammar/issues"
   },
   "homepage": "https://github.com/Bridgeconn/usfm-grammar/tree-sitter-usfm#readme",
   "dependencies": {
-    "nan": "^2.15.0"
+    "tree-sitter": "^0.21.1",
+    "node-addon-api": "^7.1.0",
+    "node-gyp-build": "^4.8.0"
+  },
+  "peerDependencies": {
+    "tree-sitter": "^0.21.0"
+  },
+  "peerDependenciesMeta": {
+    "tree_sitter": {
+      "optional": true
+    }
   },
   "devDependencies": {
-    "tree-sitter-cli": "^0.20.8"
+    "tree-sitter-cli": "^0.22.6",
+    "prebuildify": "^6.0.0"
   },
   "tree-sitter": [
     {
