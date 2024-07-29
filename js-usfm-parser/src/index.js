@@ -1,2 +1,2 @@
-import USFMParser from "./usfmParser";
-export default USFMParser;
+const {USFMParser} = require("./usfmParser");
+exports.USFMParser = USFMParser;

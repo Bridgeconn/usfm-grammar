@@ -111,4 +111,5 @@ function includeMarkersInUsj(inputUsj, includeMarkers, combineTexts = true, excl
   return innerContentNeeded ? cleanedKids : [];
 }
 
-export { excludeMarkersInUsj, includeMarkersInUsj };
+exports.excludeMarkersInUsj = excludeMarkersInUsj;
+exports.includeMarkersInUsj = includeMarkersInUsj;

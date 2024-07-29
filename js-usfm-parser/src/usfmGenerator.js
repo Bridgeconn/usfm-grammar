@@ -1,4 +1,4 @@
-import { NO_USFM_USJ_TYPES, CLOSING_USJ_TYPES, NON_ATTRIB_USJ_KEYS, NO_NEWLINE_USJ_TYPES } from "./utils/types";
+const { NO_USFM_USJ_TYPES, CLOSING_USJ_TYPES, NON_ATTRIB_USJ_KEYS, NO_NEWLINE_USJ_TYPES } = require("./utils/types");
 class USFMGenerator {
   constructor() {
     this.usfmString = "";
@@ -59,4 +59,4 @@ class USFMGenerator {
   }
 }
 
-export default USFMGenerator;
+exports.USFMGenerator = USFMGenerator;

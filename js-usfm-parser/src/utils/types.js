@@ -1,7 +1,7 @@
-export const NO_USFM_USJ_TYPES = ["USJ", "table"];
-export const CLOSING_USJ_TYPES
+exports.NO_USFM_USJ_TYPES = ["USJ", "table"];
+exports.CLOSING_USJ_TYPES
   = ["char", "note", "figure"];
-export const NON_ATTRIB_USJ_KEYS = [
+exports.NON_ATTRIB_USJ_KEYS = [
   "type",
   "marker",
   "content",
@@ -15,4 +15,4 @@ export const NON_ATTRIB_USJ_KEYS = [
   "pubnumber",
   "category",
 ];
-export const NO_NEWLINE_USJ_TYPES = ["char", "note", "verse", "table:cell"];
+exports.NO_NEWLINE_USJ_TYPES = ["char", "note", "verse", "table:cell"];
