@@ -20,7 +20,7 @@ Currently, the parser is implemented in JavaScript. But it is possible to re-use
 
 ### Try it out!
 
-Try out the `usfm-grammar` based online convertor: https://usfm-grammar-revant.netlify.app/
+Try out the `usfm-grammar` based online convertor: https://usfmgrammar.vachanengine.org/
 
 ## Example
 
