@@ -5,9 +5,8 @@ import pytest
 from lxml import etree
 from lxml.doctestcompare import LXMLOutputChecker, PARSE_XML
 
-from tests import all_usfm_files, initialise_parser, doubtful_usfms,\
-    doubtful_usxs, negative_tests, find_all_markers,\
-    generate_USFM_from_USX, parse_USFM_string
+from tests import all_usfm_files, initialise_parser, negative_tests, find_all_markers,\
+    generate_USFM_from_USX, parse_USFM_string, exclude_USX_files
 
 lxml_object = etree.Element('Root')
 checker = LXMLOutputChecker()
@@ -21,7 +20,7 @@ with open("../schemas/usx.rng", encoding='utf-8') as f:
 relaxng = etree.RelaxNG(relaxng_doc)
 
 test_files = all_usfm_files.copy()
-for file in doubtful_usfms+doubtful_usxs+negative_tests:
+for file in negative_tests:
     if file in test_files:
         test_files.remove(file)
 
@@ -46,7 +45,12 @@ def test_generated_usx_with_rnc_grammar(file_path):
     relaxng.assertValid(usx_xml)
         
 
-@pytest.mark.parametrize('file_path', test_files)
+good_testsuite_usxs = test_files.copy()
+for file in [path.replace("xml", "usfm") for path in exclude_USX_files]:
+    if file in good_testsuite_usxs:
+        good_testsuite_usxs.remove(file)
+
+@pytest.mark.parametrize('file_path', good_testsuite_usxs)
 @pytest.mark.timeout(30)
 def test_compare_usx_with_testsuite_samples(file_path):
     '''Compare the generated USX with the origin.xml in test suite'''
@@ -117,21 +121,18 @@ def test_all_markers_are_in_output(file_path):
         #     marker = "milestone"
         assert marker in all_styles or synonym in all_styles, marker
 
-known_issue_of_failed_xml_parsing = [
-    "../tests/usfmjsTests/inline_God/origin.xml",
-    "../tests/paratextTests/GlossaryCitationFormContainsNonWordformingPunctuation/origin.xml",
-]
 
-@pytest.mark.parametrize('file_path', test_files)
+@pytest.mark.parametrize('file_path', good_testsuite_usxs)
 @pytest.mark.timeout(30)
 def test_usx_round_tripping(file_path):
     '''Convert USFM to USJ and back to USFM.
     Compare first USFM and second USFM based on parse tree''' 
     file_path = file_path.replace(".usfm", ".xml")
-    if file_path in known_issue_of_failed_xml_parsing:
+    if file_path in exclude_USX_files:
         return
     with open(file_path, 'r', encoding='utf-8') as usx_file:
         usx_str = usx_file.read()
+        usx_str = usx_str.replace("encoding=\"utf-8\"", "")
         if 'status="invalid"' in usx_str:
             return
         usx_xml = etree.fromstring(usx_str)

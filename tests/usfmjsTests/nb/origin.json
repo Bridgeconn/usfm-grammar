@@ -1,0 +1,133 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "The Garden of Eden"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        "When the ",
+        {
+          "type": "char",
+          "marker": "nd",
+          "content": [
+            "Lord"
+          ]
+        },
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "2.4: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fk",
+              "content": [
+                "the ",
+                {
+                  "type": "char",
+                  "marker": "nd",
+                  "content": [
+                    "Lord"
+                  ]
+                },
+                ": "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Where the Hebrew text has Yahweh, traditionally transliterated as Jehovah, this translation employs ",
+                {
+                  "type": "char",
+                  "marker": "nd",
+                  "content": [
+                    "Lord"
+                  ]
+                },
+                " with capital letters, following a usage which is widespread in English versions."
+              ]
+            }
+          ]
+        },
+        " God made the universe, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "GEN 1:5"
+        },
+        "there were no plants on the earth and no seeds had sprouted, because he had not sent any rain, and there was no one to cultivate the land; ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "GEN 1:14"
+        },
+        "That is why ",
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "The Book of the ",
+            {
+              "type": "char",
+              "marker": "nd",
+              "content": [
+                "Lord"
+              ]
+            },
+            "'s Battles"
+          ]
+        },
+        " speaks of “...the town of Waheb in the area of Suphah, and the valleys; the Arnon River, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "GEN 1:15"
+        },
+        "and the slope of the valleys that extend to the town of Ar and toward the border of Moab.”"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "MRK",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "MRK 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MRK 1:1"
+        },
+        "the first verse",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "note text",
+                {
+                  "type": "figure",
+                  "marker": "fig",
+                  "file": "file.jpg",
+                  "size": "col",
+                  "ref": "GEN 1:1",
+                  "content": [
+                    "caption"
+                  ]
+                },
+                " more text"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

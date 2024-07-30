@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>accommodate empty attribute values</description>
+        <description>accommodate empty attribute values
+        
+        Currently fails because lemma="" is not considered valid</description>
         <validated>pass</validated>
         <tags>clarify</tags>
 </test-metadata>

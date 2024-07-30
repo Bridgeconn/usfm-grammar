@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -80,7 +80,7 @@
       "type": "para",
       "marker": "q",
       "content": [
-        "This man declared to Ithiel, to Ithiel and Ucal:",
+        "This man declared to Ithiel, to Ithiel and Ucal: ",
         {
           "type": "note",
           "marker": "f",
@@ -90,14 +90,14 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "Some versions have"
+                "Some versions have "
               ]
             },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "This man declared, \"I am weary, O God, I am weary. I am unable to do anything.\""
+                "This man declared, \"I am weary, O God, I am weary. I am unable to do anything.\" "
               ]
             }
           ]

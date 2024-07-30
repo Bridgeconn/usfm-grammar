@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>CharStyleNotClosed. From paratext test suite</description>
+        <description>CharStyleNotClosed. From paratext test suite
+        
+        Paratext was impliclitly closing character styles at end of line, this is not done in USFM 3.1</description>
         <validated>fail</validated>
+		<xmlvalidated>pass</xmlvalidated>
         <tags></tags>
 </test-metadata>

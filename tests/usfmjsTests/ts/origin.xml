@@ -1,13 +1,4 @@
-<usx version="3.0">
+﻿<usx version="3.0">
   <book code="GEN" style="id" />
   <chapter number="1" style="c" sid="GEN 1" />
-  <para style="ts" status="unknown">
-    <unmatched marker="*" /></para>
-  <para style="p">
-    <verse number="5" style="v" sid="GEN 1:5" />Now I wish to remind you, although you know everything, that the Lord once saved a people out of the land of Egypt, but that afterward he destroyed those who did not believe. <verse eid="GEN 1:5" /><verse number="6" style="v" sid="GEN 1:6" />And angels who did not keep to their own principality, but left their proper dwelling place—God has kept them in everlasting chains in darkness for the judgment of the great day. <verse eid="GEN 1:6" /></para>
-  <para style="ts" status="unknown">
-    <unmatched marker="*" /> <verse number="7" style="v" sid="GEN 1:7" status="invalid" />It is just like Sodom and Gomorrah and the cities around them, which in a similar way gave themselves over to fornication and pursued unnatural desires. They were given as examples of those who suffer the punishment of eternal fire. <verse eid="GEN 1:7" /><verse number="8" style="v" sid="GEN 1:8" status="invalid" />Yet in the same way these also pollute their bodies in their dreams, and they reject authority, and they say evil things about the glorious ones. <verse eid="GEN 1:8" /></para>
-  <para style="ts" status="unknown">
-    <unmatched marker="*" /></para>
-  <chapter eid="GEN 1" />
-</usx>
+  <ms style="ts" /><para style="p"><verse number="5" style="v" sid="GEN 1:5" />Now I wish to remind you, although you know everything, that the Lord once saved a people out of the land of Egypt, but that afterward he destroyed those who did not believe. <verse eid="GEN 1:5" /><verse number="6" style="v" sid="GEN 1:6" />And angels who did not keep to their own principality, but left their proper dwelling place—God has kept them in everlasting chains in darkness for the judgment of the great day. <ms style="ts" /> <verse eid="GEN 1:6" /><verse number="7" style="v" sid="GEN 1:7" />It is just like Sodom and Gomorrah and the cities around them, which in a similar way gave themselves over to fornication and pursued unnatural desires. They were given as examples of those who suffer the punishment of eternal fire. <verse eid="GEN 1:7" /><verse number="8" style="v" sid="GEN 1:8" />Yet in the same way these also pollute their bodies in their dreams, and they reject authority, and they say evil things about the glorious ones. <ms style="ts" /><verse eid="GEN 1:8" /></para><chapter eid="GEN 1" /></usx>

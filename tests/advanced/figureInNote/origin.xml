@@ -1,0 +1,7 @@
+﻿<usx version="3.0">
+  <book code="MRK" style="id" />
+  <chapter number="1" style="c" sid="MRK 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="MRK 1:1" />the first verse<note caller="-" style="f"><char style="fr" closed="false">1 </char><char style="ft" closed="false">note text<figure style="fig" file="file.jpg" size="col" ref="GEN 1:1">caption</figure> more text</char></note><verse eid="MRK 1:1" /></para>
+  <chapter eid="MRK 1" />
+</usx>

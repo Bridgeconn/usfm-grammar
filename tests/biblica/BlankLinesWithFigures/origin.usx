@@ -1,7 +1,0 @@
-<usx version="3.0">
-  <book code="EXO" style="id">- Central Asian Russian Scriptures (CARS)</book>
-  <chapter number="25" style="c" sid="EXO 25" />
-  <para style="b">
-    <figure style="fig" alt="Священный шатёр" file="Exo25.jpg" size="span" loc="EXO 25-30" ref="Исх. 25–30">Священный шатёр</figure></para>
-  <chapter eid="EXO 25" />
-</usx>

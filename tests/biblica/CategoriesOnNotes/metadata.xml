@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>Notes should be valid if they have a category marked immediately after the caller specification
+		</description>
+        <validated>pass</validated>
+</test-metadata>

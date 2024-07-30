@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -24,14 +24,14 @@
           "number": "13",
           "sid": "GEN 1:13"
         },
-        "I had many things to write to you, but I do not wish to write them to you with pen and ink.",
+        "I had many things to write to you, but I do not wish to write them to you with pen and ink. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "14",
           "sid": "GEN 1:14"
         },
-        "But I expect to see you soon, and we will speak face to face.",
+        "But I expect to see you soon, and we will speak face to face. ",
         {
           "type": "verse",
           "marker": "v",

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>handles greek word attributes and spans</description>
+        <description>handles greek word attributes and spans
+        Fails because \k-s milestone does not end with \*</description>
         <validated>fail</validated>
-        <tags>revisit</tags>
 </test-metadata>

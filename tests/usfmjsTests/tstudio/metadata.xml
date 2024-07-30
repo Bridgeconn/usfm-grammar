@@ -3,7 +3,8 @@
         <description>process tstudio format with leading zeros
 
 		Paratext XML has zeros stripped off of references - this seems correct. Though it is inconsistent on verse ranges where actual verse string is used
+        USFM 3.1 parser doesn't accept leading 0's
 		</description>
         <validated>fail</validated>
-        <tags>revisit</tags>
+        <tags>clarify</tags>
 </test-metadata>

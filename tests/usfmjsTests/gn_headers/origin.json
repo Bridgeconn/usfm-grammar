@@ -1,0 +1,562 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "TIT",
+      "content": [
+        "41MATGNT92.SFM, Good News Translation, June 2003"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "CP-1252"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "Custom (TGUARANI.TTF)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "sts",
+      "content": [
+        "2"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "rem",
+      "content": [
+        "Assigned to <translator's name>."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "rem",
+      "content": [
+        "First draft complete, waiting for checks."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Matthew"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "The Gospel According to Matthew"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Matthew"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "Mat"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt1",
+      "content": [
+        "THE ACTS"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt2",
+      "content": [
+        "of the Apostles"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "imt1",
+      "content": [
+        "INTRODUCCIÓN"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "is1",
+      "content": [
+        "Importancia del evangelio de Marcos"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ip",
+      "content": [
+        "The following lists summarize each Christian tradition’s views of the books here designated as Deuterocanonicals/Apocrypha."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ipi",
+      "content": [
+        "Many Protestants consider the following books to be Apocrypha as defined above: Tobit, Judith, additions to Esther (as found in Greek Esther in the CEV) ..."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ipi",
+      "content": [
+        "Roman Catholics consider the following books to be Deuterocanonical and of equal status with all other books of the Old Testament: Tobit, Judith, Greek Esther ..."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "imt1",
+      "content": [
+        "Preface:"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "is1",
+      "content": [
+        "A Word about the Contemporary English Version"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "imi",
+      "content": [
+        {
+          "type": "char",
+          "marker": "em",
+          "content": [
+            "Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water."
+          ]
+        },
+        " (“The Translators to the Reader,” King James Version, 1611)."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "im",
+      "content": [
+        "The most important document in the history of the English language is the ",
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "King James Version"
+          ]
+        },
+        " of the Bible..."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ib",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "imq",
+      "content": [
+        "Before Joseph died, he told his brothers, “I won't live much longer. But God will take"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ipq",
+      "content": [
+        "Before Joseph died, he told his brothers, “I won't live much longer. But God will take care of you and lead you out of Egypt to the land he promised Abraham, Isaac, and Jacob.”"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ipr",
+      "content": [
+        "(50.24)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iot",
+      "content": [
+        "A QUICK LOOK AT THIS BOOK"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iq1",
+      "content": [
+        "God our Savior showed us"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iq2",
+      "content": [
+        "how good and kind he is."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iq1",
+      "content": [
+        "He saved us because"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iq2",
+      "content": [
+        "of his mercy,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iq1",
+      "content": [
+        "and not because"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iq2",
+      "content": [
+        "of any good things"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iq2",
+      "content": [
+        "that we have done."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ipr",
+      "content": [
+        "(3.4,5a)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ip",
+      "content": [
+        "However, he is more than a teacher, healer, or ",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "miracle"
+          ]
+        },
+        "-worker. He is also the Messiah, the Son of God, the Son of Man. These three titles express the first Christians' understanding of who Jesus is."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ili",
+      "content": [
+        "1 ",
+        {
+          "type": "char",
+          "marker": "k",
+          "content": [
+            "The Messiah"
+          ]
+        },
+        " is the one promised by God, the one who would come and free God's people. By the time ",
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "The Gospel of Mark"
+          ]
+        },
+        " appeared, the title \"Messiah\" (in Greek, \"",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "christ"
+          ]
+        },
+        "\") had become a proper name, so that the Gospel opens with \"the Good News about Jesus Christ\" (and not \"Jesus the Christ\"). Peter's confession (8.29) marks a turning-point in the ministry of Jesus. The title \"",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "son of david"
+          ]
+        },
+        " \" (10.46-48) also identifies Jesus as the Messiah, who would restore to Israel the power and glory it enjoyed under David's reign (also 12.35-37)."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ili",
+      "content": [
+        "2 ",
+        {
+          "type": "char",
+          "marker": "k",
+          "content": [
+            "The Son of God"
+          ]
+        },
+        " is the title by which the heavenly voice addresses Jesus at his baptism (1.11) and his transfiguration (9.7). And at Jesus' death the Roman officer confesses that Jesus is the Son of God (15.39)."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ili",
+      "content": [
+        "3 ",
+        {
+          "type": "char",
+          "marker": "k",
+          "content": [
+            "The Son of Man"
+          ]
+        },
+        " is the title most often used of Jesus, and it appears only on the lips of Jesus. This enigmatic title appears in ",
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "The Book of Daniel"
+          ]
+        },
+        " (Dan 7.13n), where it is applied to the exalted figure to whom God gives universal dominion. In ",
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "Mark"
+          ]
+        },
+        " the title is used of Jesus in three ways: the Son of Man acts with divine power (2.10, 28); he will be rejected, will suffer and die (8.31; 9.9, 12, 31; 10.33-34, 45; 14.21, 41); he will return in power and glory (8.38; 13.26; 14.62)."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ip",
+      "content": [
+        "The two endings to the Gospel, which are enclosed in brackets, are generally regarded as written by someone other than the author of ",
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "Mark"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "iot",
+      "content": [
+        "Outline of Contents"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "The beginning of the gospel (1.1-13)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "Jesus' public ministry in Galilee (1.14–9.50)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "From Galilee to Jerusalem (10.1-52)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "The last week in and near Jerusalem (11.1–15.47)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "The resurrection of Jesus (16.1-8)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "The appearances and ascension of the risen Lord (16.9-20)"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "The beginning of the gospel ",
+        {
+          "type": "char",
+          "marker": "ior",
+          "content": [
+            "(1.1-13)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "Jesus' public ministry in Galilee ",
+        {
+          "type": "char",
+          "marker": "ior",
+          "content": [
+            "(1.14–9.50)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "From Galilee to Jerusalem ",
+        {
+          "type": "char",
+          "marker": "ior",
+          "content": [
+            "(10.1-52)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "The last week in and near Jerusalem ",
+        {
+          "type": "char",
+          "marker": "ior",
+          "content": [
+            "(11.1–15.47)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "The resurrection of Jesus ",
+        {
+          "type": "char",
+          "marker": "ior",
+          "content": [
+            "(16.1-8)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "io1",
+      "content": [
+        "The appearances and ascension of the risen Lord ",
+        {
+          "type": "char",
+          "marker": "ior",
+          "content": [
+            "(16.9-20)"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "imte",
+      "content": [
+        "End of the Introduction to the Gospel of Mark"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ie",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        },
+        "Paul, a servant of God and an apostle of Jesus Christ, for the faith of God's chosen people and the knowledge of the truth that agrees with godliness,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mte2",
+      "content": [
+        "The End of the Gospel according to"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mte1",
+      "content": [
+        "John"
+      ]
+    }
+  ]
+}

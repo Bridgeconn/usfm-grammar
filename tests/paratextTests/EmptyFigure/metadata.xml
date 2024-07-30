@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>EmptyFigure. From paratext test suite</description>
+        <description>EmptyFigure. From paratext test suite
+        Currently fails because empty USFM2 format for figure is treated as a default attribute</description>
         <validated>fail</validated>
         <tags>clarify</tags>
 </test-metadata>

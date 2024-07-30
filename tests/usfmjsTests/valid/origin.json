@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -31,7 +31,7 @@
           "number": "1",
           "sid": "GEN 1:1"
         },
-        "The elder to beloved Gaius, whom I love in truth.",
+        "The elder to beloved Gaius, whom I love in truth. ",
         {
           "type": "verse",
           "marker": "v",

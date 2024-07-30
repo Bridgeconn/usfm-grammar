@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -24,14 +24,14 @@
           "number": "22",
           "sid": "GEN 1:22"
         },
-        "Paul stood up in front of the city council and said,",
+        "Paul stood up in front of the city council and said, ",
         {
           "type": "ms",
           "marker": "qt1-s",
           "sid": "qt1_ACT_17:22",
           "who": "Paul"
         },
-        "“I see that in every way you Athenians are very religious.",
+        "“I see that in every way you Athenians are very religious. ",
         {
           "type": "verse",
           "marker": "v",

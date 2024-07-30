@@ -1,0 +1,7 @@
+<usx version="3.0">
+  <book code="GEN" style="id"/>
+  <chapter number="2" style="c" sid="GEN 2" />
+  <para style="p">
+    <verse number="5" style="v" sid="GEN 2:5" />Now no shrub had yet appeared on the earth<note caller="+" style="f"><char style="fr" closed="false">2:5 </char><char style="ft" closed="false">Or </char><char style="fqa" closed="false">land</char><char style="ft" closed="false">; also in <char style="xt" href="GEN 2:6"><ref loc="GEN 2:6">verse 6</ref></char></char></note> and no plant had yet sprung up, for the <char style="nd">Lord</char> God had not sent rain on the earth and there was no one to work the ground, <verse eid="GEN 2:5" /></para>
+  <chapter eid="GEN 2" />
+</usx>

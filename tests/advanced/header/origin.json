@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -56,7 +56,7 @@
       "type": "para",
       "marker": "ip",
       "content": [
-        "The two endings to the Gospel, which are enclosed in brackets, are regarded as written by someone other than the author of",
+        "The two endings to the Gospel, which are enclosed in brackets, are regarded as written by someone other than the author of ",
         {
           "type": "char",
           "marker": "bk",
@@ -77,7 +77,7 @@
       "type": "para",
       "marker": "io1",
       "content": [
-        "The beginning of the gospel",
+        "The beginning of the gospel ",
         {
           "type": "char",
           "marker": "ior",
@@ -91,7 +91,7 @@
       "type": "para",
       "marker": "io1",
       "content": [
-        "Jesus' public ministry in Galilee",
+        "Jesus' public ministry in Galilee ",
         {
           "type": "char",
           "marker": "ior",
@@ -105,7 +105,7 @@
       "type": "para",
       "marker": "io1",
       "content": [
-        "From Galilee to Jerusalem",
+        "From Galilee to Jerusalem ",
         {
           "type": "char",
           "marker": "ior",
@@ -145,7 +145,7 @@
           "number": "1",
           "sid": "MRK 1:1"
         },
-        "the first verse",
+        "the first verse ",
         {
           "type": "verse",
           "marker": "v",

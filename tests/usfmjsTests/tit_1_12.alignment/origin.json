@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -8,13 +8,6 @@
       "code": "TIT",
       "content": [
         "Titus"
-      ]
-    },
-    {
-      "type": "para",
-      "marker": "usfm",
-      "content": [
-        "3.0"
       ]
     },
     {
@@ -322,7 +315,7 @@
           "type": "ms",
           "marker": "zaln-e"
         },
-        ",",
+        ", ",
         {
           "type": "ms",
           "marker": "zaln-s",
@@ -369,7 +362,7 @@
           "type": "ms",
           "marker": "zaln-e"
         },
-        ",",
+        ", ",
         {
           "type": "ms",
           "marker": "zaln-s",
