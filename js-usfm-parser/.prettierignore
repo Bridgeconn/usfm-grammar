@@ -1,0 +1,4 @@
+/node_modules
+/build
+pnpm-lock.yaml
+/tree-sitter-main
