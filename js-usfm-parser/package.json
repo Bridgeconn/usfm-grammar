@@ -3,6 +3,9 @@
   "version": "3.0.0-alpha.4",
   "description": "Parser using tree-sitter-usfm3, to convert usfm to usj format.",
   "main": "src/index.js",
+  "files": [
+    "src/"
+  ],
   "type": "module",
   "scripts": {
     "test": "npm test"
@@ -24,6 +27,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "web-tree-sitter": "^0.22.6"
   }
 }

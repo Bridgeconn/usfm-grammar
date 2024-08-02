@@ -1,4 +1,4 @@
-import { NO_USFM_USJ_TYPES, CLOSING_USJ_TYPES, NON_ATTRIB_USJ_KEYS, NO_NEWLINE_USJ_TYPES } from "./utils/types";
+import { NO_USFM_USJ_TYPES, CLOSING_USJ_TYPES, NON_ATTRIB_USJ_KEYS, NO_NEWLINE_USJ_TYPES } from "./utils/types.js";
 class USFMGenerator {
   constructor() {
     this.usfmString = "";
