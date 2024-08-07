@@ -473,7 +473,7 @@ module.exports = grammar({
     add: $ => seq("\\add", $._spaceOrLine, $._innerText, "\\add*"),
     bk: $ => seq("\\bk", $._spaceOrLine, $._innerText, "\\bk*"),
     dc: $ => seq("\\dc", $._spaceOrLine, $._innerText, "\\dc*"),
-    k: $ => seq("\\k", $._spaceOrLine, $._innerText, "\\k*"),
+    k: $ => seq("\\k", $._spaceOrLine, $._innerText, optional(choice($.defaultAttribute, $._kAttributes)), "\\k*"),
     nd: $ => seq("\\nd", $._spaceOrLine, $._innerText, "\\nd*"),
     ord: $ => seq("\\ord", $._spaceOrLine, $._innerText, "\\ord*"),
     pn: $ => seq("\\pn", $._spaceOrLine, $._innerText, "\\pn*"),
@@ -677,6 +677,8 @@ module.exports = grammar({
       attributed elements are defined here*/
 
     // _wAttributes: $ => seq("|", $.lemmaAttribute),
+    _kAttributes: $ => $.keyAttribute,
+    keyAttribute: $ => seq("key", "=", '"', optional($.attributeValue), '"'),
     _wAttributes: $ => prec.right(0, seq("|", repeat1(choice($.lemmaAttribute, $.strongAttribute,
       $.scrlocAttribute, $.linkAttribute, $.customAttribute)))),
     _rbAttributes: $ => prec.right(0, seq("|", repeat1(choice($.glossAttribute, $.customAttribute,
