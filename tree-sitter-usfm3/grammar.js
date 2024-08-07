@@ -405,7 +405,7 @@ module.exports = grammar({
     fp: $ => seq("\\fp ", $.footnoteText, optional("\\fp*")),
     ft: $ => seq("\\ft ", $.footnoteText, optional("\\ft*")),
     fdc: $ => seq("\\fdc ", $.footnoteText, optional("\\fdc*")),
-    fv: $ => seq("\\fv ", $.text, optional("\\fv*")),
+    fv: $ => seq("\\fv ", $.text, "\\fv*"),
     fm: $ => seq("\\fm ", $.footnoteText, "\\fm*"),
 
     _footnoteContents: $ => choice(
