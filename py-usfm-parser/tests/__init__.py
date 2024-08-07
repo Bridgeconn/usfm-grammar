@@ -130,8 +130,6 @@ pass_fail_override_list = {
     
     f"{TEST_DIR}/biblica/PublishingVersesWithFormatting/origin.usfm": "fail", # \c without number
 
-    f"{TEST_DIR}/specExamples/extended/contentCatogories1/origin.usfm": "fail", # cat inside footnote
-    
     f'{TEST_DIR}/special-cases/figure_with_quotes_in_desc/origin.usfm': "fail", # quote within quote
     f'{TEST_DIR}/specExamples/poetry/origin.usfm': "fail", # \b not followed by a \p or \q
 

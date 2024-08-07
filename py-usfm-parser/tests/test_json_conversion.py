@@ -142,9 +142,9 @@ def remove_newlines_in_text(usj_dict):
         for i,item in enumerate(usj_dict["content"]):
             if isinstance(item, str):
                 usj_dict['content'][i] = item.replace("\n", " ")
-                usj_dict['content'][i] = re.sub(r" +", " ", usj_dict['content'][i])
-                continue
-            remove_newlines_in_text(item)
+                usj_dict['content'][i] = re.sub(r"\s+", " ", usj_dict['content'][i])
+            else:
+                remove_newlines_in_text(item)
 
 def strip_text_value(usj_dict):
     '''Trailing and preceding space handling can be different between tcdocs and our logic.
@@ -188,6 +188,7 @@ def test_compare_usj_with_testsuite_samples(file_path):
             pass
         except AssertionError:
             strip_default_attrib_value(origin_usj)
+            remove_newlines_in_text(origin_usj)
             strip_text_value(usj_dict)
             strip_text_value(origin_usj)
             dict_diff = DeepDiff(usj_dict, origin_usj, ignore_order=True)
