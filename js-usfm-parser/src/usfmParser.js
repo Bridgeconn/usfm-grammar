@@ -5,12 +5,10 @@ import USJGenerator from "./usjGenerator.js";
 import { includeMarkersInUsj, excludeMarkersInUsj } from "./filters.js";
 
 class USFMParser {
-	static async init(grammarPath=null) {
+	static language = null;
+	static async init(grammarPath="./src/grammar/tree-sitter-usfm.wasm") {
 		await Parser.init();
-		if (grammarPath==null){
-			grammarPath = "src/grammar/tree-sitter-usfm.wasm";
-		}
-		this.language = await Parser.Language.load(grammarPath);
+		USFMParser.language = await Parser.Language.load(grammarPath);
 	}
 
 	constructor() {

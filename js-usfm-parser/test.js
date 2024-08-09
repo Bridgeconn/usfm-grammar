@@ -8,3 +8,4 @@ import USFMParser from './src/index.js';
   const usfm = usfmParser.usjToUsfm(output)
   console.log({ usfm })
 })();
+
