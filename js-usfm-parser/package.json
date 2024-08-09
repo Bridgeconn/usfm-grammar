@@ -6,7 +6,7 @@
   "files": [
     "src/",
     "tree-sitter.wasm",
-    "tree-sitter-usfm.wasm",
+    "tree-sitter-usfm.wasm"
   ],
   "type": "module",
   "scripts": {
