@@ -39,7 +39,8 @@ usfm marker
     (id
       (bookcode)
       (description)))
-  (usfm)
+  (usfm
+    (versionNumber))
   (ide
     (text)))
 
@@ -58,7 +59,8 @@ usfm marker after ide
       (description)))
   (ide
     (text))
-  (usfm))
+  (usfm
+    (versionNumber)))
 
 ================================================================================
 h marker
@@ -76,7 +78,8 @@ h marker
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)
@@ -99,7 +102,8 @@ multiple h markers
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)
@@ -128,7 +132,8 @@ toc markers under h
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)
@@ -165,7 +170,8 @@ toc markers without h
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (tocBlock
     (toc
       (tocTag
@@ -199,7 +205,8 @@ toca markers
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)
@@ -239,7 +246,8 @@ toca markers along with toc
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)

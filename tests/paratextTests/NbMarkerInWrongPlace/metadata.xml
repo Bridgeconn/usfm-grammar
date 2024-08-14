@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
         <description>NbMarkerInWrongPlace. From paratext test suite</description>
-        <validated>fail</validated>
+        
+        Currently succeeds and syntactically there isn't a reason for it to fail
+        <validated>pass</validated>
         <tags></tags>
 </test-metadata>

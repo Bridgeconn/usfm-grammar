@@ -22,7 +22,7 @@ class USJGenerator:
         if usj_root_obj is None:
             self.json_root_obj = {
                 "type": "USJ",
-                "version": "0.2.0",
+                "version": "3.1",
                 "content":[]
             }
         else:
@@ -143,7 +143,8 @@ class USJGenerator:
                 "(paragraph (_) @para-marker)").captures(node)[0]
             para_marker = para_tag_cap[0].type
             if para_marker == "b":
-                self.node_2_usj_special(para_tag_cap[0], parent_json_obj)
+                b_json_obj = {"type": "para", "marker":para_marker}
+                parent_json_obj['content'].append(b_json_obj)
             elif not para_marker.endswith("Block"):
                 para_json_obj = {"type": "para", "marker":para_marker, "content":[]}
                 for child in para_tag_cap[0].children[1:]:
@@ -267,15 +268,6 @@ class USJGenerator:
             for child in node.children[1:-1]:
                 self.node_2_usj(child, fig_json_obj)
             parent_json_obj['content'].append(fig_json_obj)
-        elif node.type == 'b':
-            b_json_obj = {"type": "optbreak", "marker":"b"}
-            parent_json_obj['content'].append(b_json_obj)
-        elif node.type == "usfm":
-            ver_json_obj = {"type": "para", "marker":"usfm", "content":[]}
-            version = self.usfm[
-                node.start_byte:node.end_byte].decode('utf-8').replace("\\usfm","").strip()
-            ver_json_obj['content'].append(version)
-            parent_json_obj['content'].append(ver_json_obj)
 
     def node_2_usj_generic(self, node, parent_json_obj):
         '''build nodes for para style markers in USX'''
@@ -326,7 +318,8 @@ class USJGenerator:
         elif node.type.endswith("Attribute"):
             self.node_2_usj_attrib(node, parent_json_obj)
         elif node.type == 'text':
-            text_val = self.usfm[node.start_byte:node.end_byte].decode('utf-8').strip()
+            text_val = self.usfm[node.start_byte:node.end_byte].decode(
+                        'utf-8').lstrip()
             if text_val != "":
                 parent_json_obj['content'].append(text_val)
         elif node.type in ["table", "tr"]+ self.TABLE_CELL_MARKERS:
@@ -335,7 +328,7 @@ class USJGenerator:
             self.node_2_usj_milestone(node, parent_json_obj)
         elif node.type == "zNameSpace":
             self.node_2_usj_milestone(node, parent_json_obj)
-        elif node.type in ["esb", "cat", "fig", "usfm"]:
+        elif node.type in ["esb", "cat", "fig"]:
             self.node_2_usj_special(node, parent_json_obj)
         elif (node.type in self.PARA_STYLE_MARKERS or
               node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):

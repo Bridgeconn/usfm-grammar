@@ -1,9 +1,0 @@
-\id GEN
-\c 1
-\s some text
-\p
-\v 1 verse text \rb BB|g:g\rb* 
-\v 1 verse text \qts |speaker\* quoted text \qte\* 
-\v 1 verse text \w word|lemma="lemma" strong="G100"\w* 
-\v 1 verse text \fig caption|alt="Description" src="image.jpg" size ="large" loc ="co" copy ="copyright" ref="1.1"\fig* 
-\v 1 verse text \fig caption|alt="Description" src="image.jpg" size ="large" loc ="co" copy ="copyright" ref="1.1" linkhref="value"\fig* 

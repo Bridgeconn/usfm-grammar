@@ -1,6 +1,6 @@
 # Tests
 
-These test data is obtained from the test suite maintained by USFM/X committee in [this repo](https://github.com/usfm-bible/tcdocs/tree/8bdd987bfbe5963ae72dcc9f75b0bf48a74ef097/tests). Latest copying done on June 7, 2023.
+These test data is obtained from the test suite maintained by USFM/X committee in [this repo](https://github.com/usfm-bible/tcdocs). Latest copying done on July 9, 2024.
 
 The unit tests run using these data are defined in [python module](../usfm-grammar/python-usfm-parser/tests) and JS module.
 
@@ -22,8 +22,8 @@ A USFM/X test directory contains the following files:
 
 - **origin.sfm**. This is the base USFM file to be processed.
 - **origin.xml**. This is the corresponding USX file.
+- **origin.json**. This is the USJ for the USFM and USX.
 - **metadata.xml**. This is the metadata file describing this test.
-- **sample.png**. A rendering sample of the USFM.
 
 ## Metadata
 

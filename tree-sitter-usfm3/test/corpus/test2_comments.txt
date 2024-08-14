@@ -30,7 +30,8 @@ rem under one h marker
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)
@@ -58,7 +59,8 @@ rem between toc markers and h
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)
@@ -111,7 +113,8 @@ sts under one h marker
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)
@@ -139,7 +142,8 @@ sts between toc markers and h
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)
@@ -178,7 +182,8 @@ sts and rem maker together in header section
       (description)))
   (ide
     (text))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)

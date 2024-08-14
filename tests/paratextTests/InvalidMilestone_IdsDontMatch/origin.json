@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -37,7 +37,7 @@
           "sid": "qt1",
           "who": "Speaker"
         },
-        "verse text",
+        "verse text ",
         {
           "type": "verse",
           "marker": "v",

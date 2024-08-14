@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -83,21 +83,21 @@
           "number": "14",
           "sid": "ISA 8:14"
         },
-        "Beriah had these sons: Ahio, Shashak, Jeremoth,",
+        "Beriah had these sons: Ahio, Shashak, Jeremoth, ",
         {
           "type": "verse",
           "marker": "v",
           "number": "15",
           "sid": "ISA 8:15"
         },
-        "Zebadiah, Arad, Eder,",
+        "Zebadiah, Arad, Eder, ",
         {
           "type": "verse",
           "marker": "v",
           "number": "16",
           "sid": "ISA 8:16"
         },
-        "Michael, Ishpah, and Joha were the sons of Beriah.",
+        "Michael, Ishpah, and Joha were the sons of Beriah. ",
         {
           "type": "verse",
           "marker": "v",

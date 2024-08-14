@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -33,7 +33,7 @@
               "type": "char",
               "marker": "fr",
               "content": [
-                "2.4:"
+                "2.4: "
               ]
             },
             {
@@ -54,7 +54,7 @@
               "type": "char",
               "marker": "fr",
               "content": [
-                "2.4:"
+                "2.4: "
               ]
             },
             {
@@ -85,7 +85,7 @@
           "type": "para",
           "marker": "p",
           "content": [
-            "The initials",
+            "The initials ",
             {
               "type": "char",
               "marker": "sc",
@@ -93,7 +93,7 @@
                 "b.c."
               ]
             },
-            "have traditionally been an abbreviation for “Before Christ.” If",
+            " have traditionally been an abbreviation for “Before Christ.” If ",
             {
               "type": "char",
               "marker": "bk",
@@ -101,7 +101,7 @@
                 "Luke"
               ]
             },
-            "'s dating is correct, then Jesus was born at least four years before the years known as",
+            "'s dating is correct, then Jesus was born at least four years before the years known as ",
             {
               "type": "char",
               "marker": "sc",
@@ -109,7 +109,7 @@
                 "a.d."
               ]
             },
-            "began. (",
+            " began. (",
             {
               "type": "char",
               "marker": "sc",
@@ -117,7 +117,7 @@
                 "a.d."
               ]
             },
-            "stands for the Latin phrase “in the year of our Lord”). Christian dating was actually not introduced until",
+            " stands for the Latin phrase “in the year of our Lord”). Christian dating was actually not introduced until ",
             {
               "type": "char",
               "marker": "sc",
@@ -125,14 +125,14 @@
                 "a.d."
               ]
             },
-            "526 by a monk named Dionysius Exiguus. He was given the job of creating a calendar for the feasts of the church. He fixed the birth of Jesus in the Roman year 754, which was selected as the first year of the Christian era beginning on January 1. Dionysius apparently misjudged Herod's reign by about five years."
+            " 526 by a monk named Dionysius Exiguus. He was given the job of creating a calendar for the feasts of the church. He fixed the birth of Jesus in the Roman year 754, which was selected as the first year of the Christian era beginning on January 1. Dionysius apparently misjudged Herod's reign by about five years."
           ]
         },
         {
           "type": "para",
           "marker": "p",
           "content": [
-            "The initials",
+            "The initials ",
             {
               "type": "char",
               "marker": "sc",
@@ -140,7 +140,7 @@
                 "b.c."
               ]
             },
-            "e. (Before the Common Era) and c.e. (in the Common Era) are sometimes used for the traditional",
+            "e. (Before the Common Era) and c.e. (in the Common Era) are sometimes used for the traditional ",
             {
               "type": "char",
               "marker": "sc",
@@ -148,7 +148,7 @@
                 "b.c."
               ]
             },
-            "and",
+            " and ",
             {
               "type": "char",
               "marker": "sc",
@@ -179,7 +179,7 @@
               "type": "char",
               "marker": "fr",
               "content": [
-                "2.5:"
+                "2.5: "
               ]
             },
             {

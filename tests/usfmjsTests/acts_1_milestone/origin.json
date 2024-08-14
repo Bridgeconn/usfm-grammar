@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -8,13 +8,6 @@
       "code": "ACT",
       "content": [
         "EN_ULT en_English_ltr Wed Oct 10 2018 11:55:23 GMT-0400 (EDT) tc"
-      ]
-    },
-    {
-      "type": "para",
-      "marker": "usfm",
-      "content": [
-        "3.0"
       ]
     },
     {
@@ -473,7 +466,7 @@
           "type": "ms",
           "marker": "zaln-e"
         },
-        ",",
+        ", ",
         {
           "type": "verse",
           "marker": "v",
@@ -879,7 +872,7 @@
           "type": "ms",
           "marker": "zaln-e"
         },
-        ".",
+        ". ",
         {
           "type": "verse",
           "marker": "v",

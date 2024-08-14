@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -24,7 +24,7 @@
           "number": "1",
           "sid": "GEN 1:1"
         },
-        "some text",
+        "some text ",
         {
           "type": "note",
           "marker": "f",
@@ -41,7 +41,7 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "some note text"
+                "some note text "
               ]
             }
           ]
@@ -62,7 +62,7 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "some note text"
+                "some note text "
               ]
             }
           ]
@@ -70,13 +70,13 @@
         {
           "type": "note",
           "marker": "f",
-          "caller": "",
+          "caller": "-",
           "content": [
             {
               "type": "char",
               "marker": "ft",
               "content": [
-                "some note text"
+                "some note text "
               ]
             }
           ]

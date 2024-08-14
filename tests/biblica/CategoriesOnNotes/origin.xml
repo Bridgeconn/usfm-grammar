@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<usx version="3.0">
+  <book code="MRK" style="id">- Test Project</book>
+  <para style="rem">Note categories</para>
+  <chapter number="1" style="c" sid="MRK 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="MRK 1:1" />Verse one text<note caller="+" style="f" category="ex st ba"><char style="fr" closed="false">1.1 </char><char style="fq" closed="false">Footnote text </char><char style="ft" closed="false"><char style="xt">C.f. <ref loc="MRK 1:4">Mark 1:4</ref> and <ref loc="MAT 4:3">Matt. 4:3</ref>.</char> </char></note> <verse eid="MRK 1:1" /><verse number="2" style="v" sid="MRK 1:2" />Verse two text <verse eid="MRK 1:2" /><verse number="3" style="v" sid="MRK 1:3" />Verse three text. <note caller="+" style="fe" category="ex"><char style="fr" closed="false">1:3 </char><char style="fq" closed="false">End note text.</char><char style="ft" closed="false" /></note> <verse eid="MRK 1:3" /><verse number="4" style="v" sid="MRK 1:4" />Verse four text.<note caller="-" style="x" category="ex st"> <char style="xo" closed="false">1:4 </char><char style="xta" closed="false">See </char><char style="xt" closed="false"><ref loc="JHN 5:8">John 5:8</ref>.</char></note><verse eid="MRK 1:4" /></para>
+  <chapter eid="MRK 1" />
+</usx>

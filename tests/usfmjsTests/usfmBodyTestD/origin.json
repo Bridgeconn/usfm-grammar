@@ -1,0 +1,1411 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "TIT",
+      "content": [
+        "41MATGNT92.SFM, Good News Translation, June 2003"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ip",
+      "content": [
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "The Acts of the Apostles"
+          ]
+        },
+        " is a continuation of ",
+        {
+          "type": "char",
+          "marker": "bk",
+          "content": [
+            "The Gospel according to Luke"
+          ]
+        },
+        " Its chief purpose is to tell how Jesus' early followers, led by the Holy Spirit, spread the Good News about him “in Jerusalem, in all of Judea and Samaria, and to the ends of the earth” (1.8)."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "The Preaching of John the Baptist",
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "3.0 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xta",
+              "content": [
+                "Compare with "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Mk 1.1-8; Lk 3.1-18; "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xta",
+              "content": [
+                "and "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Jn 1.19-28 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xta",
+              "content": [
+                "parallel passages."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        },
+        "This is the Good News about Jesus Christ, the Son of God. ",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.1: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Some manuscripts do not have "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "the Son of God."
+              ]
+            }
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 1:2"
+        },
+        "with the certain hope of everlasting life that God, who does not lie, promised before all the ages of time. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2-7",
+          "sid": "TIT 1:2-7"
+        },
+        "They presented their offerings in the following order:"
+      ]
+    },
+    {
+      "type": "table",
+      "content": [
+        {
+          "type": "table:row",
+          "marker": "tr",
+          "content": [
+            {
+              "type": "table:cell",
+              "marker": "th1",
+              "align": "start",
+              "content": [
+                "Day "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "th2",
+              "align": "start",
+              "content": [
+                "Tribe "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "th3",
+              "align": "start",
+              "content": [
+                "Leader"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table:row",
+          "marker": "tr",
+          "content": [
+            {
+              "type": "table:cell",
+              "marker": "tcr1",
+              "align": "end",
+              "content": [
+                "1st "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "tc2",
+              "align": "start",
+              "content": [
+                "Judah "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "tc3",
+              "align": "start",
+              "content": [
+                "Nahshon son of Amminadab"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table:row",
+          "marker": "tr",
+          "content": [
+            {
+              "type": "table:cell",
+              "marker": "tcr1",
+              "align": "end",
+              "content": [
+                "2nd "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "tc2",
+              "align": "start",
+              "content": [
+                "Issachar "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "tc3",
+              "align": "start",
+              "content": [
+                "Nethanel son of Zuar"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table:row",
+          "marker": "tr",
+          "content": [
+            {
+              "type": "table:cell",
+              "marker": "tc1",
+              "align": "start",
+              "content": [
+                "Judah "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "tc2",
+              "align": "start",
+              "content": [
+                "Nahshon son of Amminadab "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "tcr3",
+              "align": "end",
+              "content": [
+                "74,600"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "table:row",
+          "marker": "tr",
+          "content": [
+            {
+              "type": "table:cell",
+              "marker": "tc1",
+              "align": "start",
+              "content": [
+                "Issachar "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "tc2",
+              "align": "start",
+              "content": [
+                "Nethanel son of Zuar "
+              ]
+            },
+            {
+              "type": "table:cell",
+              "marker": "tcr3",
+              "align": "end",
+              "content": [
+                "54,400"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 1:3"
+        },
+        "At the right time, he revealed his word by the message that he trusted me to deliver, by the command of God our savior."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 1:4"
+        },
+        "To Titus, a true son in our common faith. Grace and peace from God the Father and Christ Jesus our savior."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 1:5"
+        },
+        "For this purpose I left you in Crete, that you might set in order things not yet complete and ordain elders in every city as I directed you."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 1:6"
+        },
+        "An elder must be without blame, the husband of one wife, with faithful children not accused of reckless behavior or undisciplined. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 1:7"
+        },
+        "It is necessary for the overseer, as God's household manager, to be blameless. He must not be arrogant, not be easily angered, not addicted to wine, not a brawler, and not a greedy man."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 1:8"
+        },
+        "Instead, he should be hospitable and a friend of what is good. He must be sensible, righteous, godly, and self-controlled. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 1:9"
+        },
+        "И нарек ему имя: Ной, сказав: он утешит нас в работе нашей и в трудах рук наших при ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "возделывании"
+          ]
+        },
+        " земли, которую проклял Господь."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 1:10"
+        },
+        "For there are many rebellious people, empty talkers and deceivers, especially those of the circumcision. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 1:11"
+        },
+        "It is necessary to stop them. They are upsetting whole families by teaching for shameful profit what they should not teach."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 1:12"
+        },
+        "One of their own prophets has said, \"Cretans are always liars, evil beasts, lazy gluttons.\" ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 1:13"
+        },
+        "This statement is true. Therefore, correct them severely, so that they may be sound in the faith, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 1:14"
+        },
+        "not paying any attention to Jewish myths or to the commands of people who turn away from the truth."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 1:15"
+        },
+        "Adam ",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "3.20: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fk",
+              "content": [
+                "Adam: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "This name in Hebrew means “all human beings.”"
+              ]
+            }
+          ]
+        },
+        " named his wife Eve, ",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "3.20: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fk",
+              "content": [
+                "Eve: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "This name sounds similar to the Hebrew word for “living,” which is rendered in this context as “human beings.”"
+              ]
+            }
+          ]
+        },
+        " because she was the mother of all human beings. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "TIT 1:16"
+        },
+        "And the ",
+        {
+          "type": "char",
+          "marker": "nd",
+          "content": [
+            "Lord"
+          ]
+        },
+        " God made clothes out of animal skins for Adam and his wife, and he clothed them. ",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "⸀",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "28,14 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "υπο "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fw",
+              "content": [
+                "B D 0148. 892"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "°",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "4,1 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fw",
+              "content": [
+                "B Δ 700"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "TIT 2"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1-2",
+          "sid": "TIT 2:1-2"
+        },
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "2.1,22: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xdc",
+              "content": [
+                "2Es 6.23; "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "1Th 4.15-17."
+              ]
+            }
+          ]
+        },
+        " Listen to this secret truth: we shall not all die, but when the last trumpet sounds, we shall all be changed in an instant, as quickly as the blinking of an eye. For when the trumpet sounds, the dead will be raised, never to die again, and we shall all be changed. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 2:2"
+        },
+        "Teach older men to be temperate, dignified, sensible, sound in faith, in love, and in perseverance."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 2:3"
+        },
+        "Él es el resplandor glorioso de Dios,",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "c",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.3: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fk",
+              "content": [
+                "Resplandor: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Cf. Jn 1.4-9,14"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fdc",
+              "content": [
+                "; también Sab 7.25-26, donde algo parecido se dice de la sabiduría."
+              ]
+            }
+          ]
+        },
+        " la imagen misma de lo que Dios es y el que sostiene todas las cosas con su palabra poderosa. Después de limpiarnos de nuestros pecados, se ha sentado en el cielo, a la derecha del trono de Dios, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 2:4"
+        },
+        "y ha llegado a ser superior a los ángeles, pues ha recibido en herencia un título mucho más importante que el de ellos. ",
+        {
+          "type": "note",
+          "marker": "fe",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "this is some text"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 2:5"
+        },
+        "to be sensible, pure, good housekeepers, and obedient to their own husbands, so that God's word may not be insulted."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 2:6"
+        },
+        "In the same way, encourage the younger men to use good sense. ",
+        {
+          "type": "char",
+          "marker": "xt",
+          "link-href": "MAT 6:7",
+          "content": [
+            "7"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "xt",
+          "link-href": "MAT 6:7",
+          "content": [
+            "verse 7"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "xt",
+          "link-href": "MAT 6:7",
+          "content": [
+            "v7"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 2:8"
+        },
+        "and a correct message that is above criticism, so that anyone who opposes you may be ashamed because they have nothing bad to say about us."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 2:9"
+        },
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "2.9: a "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.13; Deu 5.17; "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "b "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.14; Deu 5.18; "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "c "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.15; Deu 5.19; "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "d "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.16; Deu 5.20; "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "e "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Exo 20.12; Deu 5.16."
+              ]
+            }
+          ]
+        },
+        " You know the commandments: ‘Do not commit murder; do not commit adultery; do not steal; do not accuse anyone falsely; do not cheat; respect your father and your mother.’” ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 2:10"
+        },
+        "to not steal from them, but instead to demonstrate all good faith, so that in every way they may bring credit to the teaching about God our Savior."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 2:11"
+        },
+        "For the grace of God has appeared for the salvation of all people. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 2:12"
+        },
+        "It trains us to reject godlessness and worldly passions, and to live self-controlled, upright, and godly lives in this age, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 2:13"
+        },
+        "while we look forward to receiving our blessed hope, the appearance of the glory of our great God and Savior Jesus Christ."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 2:14"
+        },
+        "Jesus gave himself for us in order to redeem us from all lawlessness and to make pure, for himself, a special people who are eager to do good works."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 2:15"
+        },
+        "Speak of these things, encourage people to do them, and give correction with all authority. Let no one disregard you."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "3",
+      "sid": "TIT 3"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 3:1"
+        },
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "1:1 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xop",
+              "content": [
+                "Гл 1. (1)"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "4 Царств. 14:25."
+              ]
+            }
+          ]
+        },
+        "И биде слово Господне към Иона, син Аматиев: ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 3:2"
+        },
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "1:2 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xop",
+              "content": [
+                "(2)"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Бит. 10:11. Иона 3:3."
+              ]
+            }
+          ]
+        },
+        "„стани, иди в Ниневия,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 3:3"
+        },
+        "Él es el resplandor glorioso de Dios,",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "c",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.3: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fk",
+              "content": [
+                "Resplandor: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Cf. Jn 1.4-9,14",
+                {
+                  "type": "char",
+                  "marker": "dc",
+                  "content": [
+                    "; también Sab 7.25-26, donde algo parecido se dice de la sabiduría"
+                  ]
+                },
+                "."
+              ]
+            }
+          ]
+        },
+        " la imagen misma de lo que Dios es y el que sostiene todas las cosas con su palabra poderosa. Después de limpiarnos de nuestros pecados, se ha sentado en el cielo, a la derecha del trono de Dios, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 3:4"
+        },
+        {
+          "type": "note",
+          "marker": "x",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "xo",
+              "content": [
+                "115.4-8: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Ps 135.15-18; ",
+                {
+                  "type": "char",
+                  "marker": "dc",
+                  "content": [
+                    "Ltj Jr 4-73; "
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "xt",
+              "content": [
+                "Rev 9.20."
+              ]
+            }
+          ]
+        },
+        " Their gods are made of silver and gold, ",
+        {
+          "type": "char",
+          "marker": "k",
+          "content": [
+            "keyword "
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "lit",
+      "content": [
+        "Literally: ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 3:5"
+        },
+        "Tell the Israelites that I, the ",
+        {
+          "type": "char",
+          "marker": "nd",
+          "content": [
+            "Lord"
+          ]
+        },
+        ", the God of their ancestors, the God of Abraham, Isaac, and Jacob, have sent you to them. This is my name forever; this is what all future generations are to call me."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 3:6"
+        },
+        "whom God richly poured on us through our Savior Jesus Christ, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6-9",
+          "sid": "TIT 3:6-9"
+        },
+        "This is the list of the administrators of the tribes of Israel:"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li1",
+      "content": [
+        {
+          "type": "char",
+          "marker": "lik",
+          "content": [
+            "Reuben"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "liv1",
+          "content": [
+            "Eliezer son of Zichri"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li1",
+      "content": [
+        {
+          "type": "char",
+          "marker": "lik",
+          "content": [
+            "Simeon"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "liv1",
+          "content": [
+            "Shephatiah son of Maacah"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "lf",
+      "content": [
+        "This was the list of the administrators of the tribes of Israel. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 3:7"
+        },
+        "so that having been justified by his grace, we might become heirs with the certain hope of eternal life."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 3:8"
+        },
+        "whoever believes in me should drink. As the scripture says, ‘Streams of life- giving water will pour out from his side.’” ",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "7.38: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Jesus' words in verses 37-38 may be translated: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fqa",
+              "content": [
+                "“Whoever is thirsty should come to me and drink. "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fv",
+              "content": [
+                "8"
+              ]
+            },
+            " As the scripture says, ‘Streams of life-giving water will pour out from within anyone who believes in me.’”"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 3:9"
+        },
+        "But avoid foolish debates and genealogies and strife and conflict about the law. Those things are unprofitable and worthless. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 3:10"
+        },
+        "Reject anyone who is causing divisions among you, after one or two warnings, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 3:11"
+        },
+        "knowing that such a person has turned from the right way and is sinning and condemns himself."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 3:12"
+        },
+        "When I send Artemas or Tychicus to you, hurry and come to me at Nicopolis, where I have decided to spend the winter. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 3:13"
+        },
+        "Do everything you can to send on their way Zenas the lawyer and Apollos, so that they lack nothing."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 3:14"
+        },
+        "Our people must learn to engage themselves in good works that provide for urgent needs, and so not be unfruitful."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 3:15"
+        },
+        "All those who are with me greet you. Greet those who love us in faith. Grace be with all of you."
+      ]
+    }
+  ]
+}

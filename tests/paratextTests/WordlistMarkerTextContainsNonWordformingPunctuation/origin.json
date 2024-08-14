@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -38,7 +38,7 @@
             "blah"
           ]
         },
-        "definition",
+        " definition ",
         {
           "type": "verse",
           "marker": "v",
@@ -56,10 +56,10 @@
           "type": "char",
           "marker": "w",
           "content": [
-            "word. wordtwo"
+            "word. wordtwo "
           ]
         },
-        "definition",
+        " definition ",
         {
           "type": "verse",
           "marker": "v",
@@ -80,7 +80,7 @@
             "word, wordtwo"
           ]
         },
-        "definition",
+        " definition ",
         {
           "type": "verse",
           "marker": "v",
@@ -98,10 +98,10 @@
           "type": "char",
           "marker": "w",
           "content": [
-            "word (wordtwo)"
+            "word (wordtwo) "
           ]
         },
-        "definition",
+        " definition ",
         {
           "type": "verse",
           "marker": "v",
@@ -119,10 +119,10 @@
           "type": "char",
           "marker": "w",
           "content": [
-            "word; wordtwo"
+            "word; wordtwo "
           ]
         },
-        "definition"
+        " definition"
       ]
     }
   ]

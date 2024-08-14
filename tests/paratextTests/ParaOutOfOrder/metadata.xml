@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>ParaOutOfOrder. From paratext test suite</description>
+        <description>ParaOutOfOrder. From paratext test suite
+        
+        \p is before \c</description>
         <validated>fail</validated>
         <tags></tags>
 </test-metadata>

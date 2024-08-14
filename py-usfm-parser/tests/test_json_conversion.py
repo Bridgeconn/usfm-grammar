@@ -3,8 +3,9 @@ import pytest
 import json
 import re
 from jsonschema import validate
+from deepdiff import DeepDiff
 
-from tests import all_usfm_files, initialise_parser, doubtful_usfms, negative_tests,\
+from tests import all_usfm_files, initialise_parser, negative_tests,\
     find_all_markers, Filter, generate_USFM_from_USJ, parse_USFM_string, exclude_USX_files
 
 all_valid_markers = []
@@ -12,7 +13,7 @@ for member in Filter:
     all_valid_markers += member.value
 
 test_files = all_usfm_files.copy()
-for file in doubtful_usfms+negative_tests:
+for file in negative_tests:
     if file in test_files:
         test_files.remove(file)
 
@@ -141,9 +142,20 @@ def remove_newlines_in_text(usj_dict):
         for i,item in enumerate(usj_dict["content"]):
             if isinstance(item, str):
                 usj_dict['content'][i] = item.replace("\n", " ")
-                usj_dict['content'][i] = re.sub(r" +", " ", usj_dict['content'][i])
+                usj_dict['content'][i] = re.sub(r"\s+", " ", usj_dict['content'][i])
+            else:
+                remove_newlines_in_text(item)
+
+def strip_text_value(usj_dict):
+    '''Trailing and preceding space handling can be different between tcdocs and our logic.
+    Strip both before comparison'''
+    if "content" in usj_dict:
+        for i,item in enumerate(usj_dict["content"]):
+            if isinstance(item, str):
+                usj_dict['content'][i] = item.strip()
                 continue
-            remove_newlines_in_text(item)
+            strip_text_value(item)
+
 
 def strip_default_attrib_value(usj_dict):
     '''The USX samples in test suite have space in lemma values when given as default attribute'''
@@ -159,7 +171,7 @@ def strip_default_attrib_value(usj_dict):
 @pytest.mark.parametrize('file_path', test_files)
 @pytest.mark.timeout(30)
 def test_compare_usj_with_testsuite_samples(file_path):
-    '''Compare the generated USX with the origin.xml in test suite'''
+    '''Compare the generated USJ with the origin.xml in test suite'''
     test_parser = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usx_file_path = file_path.replace("origin.usfm", "origin.xml")
@@ -176,6 +188,10 @@ def test_compare_usj_with_testsuite_samples(file_path):
             pass
         except AssertionError:
             strip_default_attrib_value(origin_usj)
-            assert usj_dict == origin_usj, f"generated USJ:\n{usj_dict}\n"+\
+            remove_newlines_in_text(origin_usj)
+            strip_text_value(usj_dict)
+            strip_text_value(origin_usj)
+            dict_diff = DeepDiff(usj_dict, origin_usj, ignore_order=True)
+            assert dict_diff == {}, f"generated USJ:\n{usj_dict}\n"+\
                     f"USJ in testsuite:\n{origin_usj}\n syntax tree: {test_parser.to_syntax_tree()}"
     # assert usj_dict == origin_usj

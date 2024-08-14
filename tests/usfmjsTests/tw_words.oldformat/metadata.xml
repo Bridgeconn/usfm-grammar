@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>handles tw word attributes and spans - oldformat</description>
+        <description>handles tw word attributes and spans - oldformat
+        Fails because \k-s milestone doesn't end with \*</description>
         <validated>fail</validated>
-        <tags>revisit</tags>
 </test-metadata>

@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -118,7 +118,7 @@
           "number": "19",
           "sid": "PRO 21:19"
         },
-        "Long ago you spoke in a vision to your faithful ones",
+        "Long ago you spoke in a vision to your faithful ones ",
         {
           "type": "note",
           "marker": "f",
@@ -128,7 +128,7 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "Many mss have the singular"
+                "Many mss have the singular "
               ]
             },
             {
@@ -138,7 +138,13 @@
                 "faithful one"
               ]
             },
-            "instead of",
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                " instead of "
+              ]
+            },
             {
               "type": "char",
               "marker": "fqa",
@@ -172,30 +178,49 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "The MT has"
+                "The MT has "
               ]
             },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "I will place help upon a warrior"
+                "I will place help upon a warrior "
               ]
             },
-            ". Some translate the word for",
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                ". Some translate the word for "
+              ]
+            },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "help"
+                "help "
               ]
             },
-            "as",
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                " as "
+              ]
+            },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "crown, which is followed by the ULB here."
+                "crown"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                ", which is followed by the ULB here."
               ]
             }
           ]

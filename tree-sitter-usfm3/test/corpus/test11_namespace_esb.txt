@@ -110,7 +110,7 @@ the sons of Zebedee.
             (text))
           (crossref
             (xt_standalone
-              (noteText
+              (crossrefText
                 (text))))
           (verseText
             (text))))
@@ -193,7 +193,7 @@ the sons of Zebedee.
             (text))
           (crossref
             (xt_standalone
-              (noteText
+              (crossrefText
                 (text))))
           (verseText
             (text))))

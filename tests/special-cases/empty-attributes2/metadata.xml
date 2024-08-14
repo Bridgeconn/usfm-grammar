@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>fail empty attribute values</description>
+        <description>fail empty attribute values
+        
+        lemma attribute is missing quotes around value</description>
         <validated>fail</validated>
         <tags></tags>
 </test-metadata>

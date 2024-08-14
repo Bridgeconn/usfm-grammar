@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
         <description>  handles Gen 12:2 empty word</description>
-        <validated>pass</validated>
+        <validated>fail</validated>
         <tags></tags>
 </test-metadata>

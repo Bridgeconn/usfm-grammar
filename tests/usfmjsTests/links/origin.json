@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -24,7 +24,7 @@
           "number": "1",
           "sid": "GEN 1:1"
         },
-        "But you, speak what fits with faithful instruction. The traditional translation of verse 1, as given in",
+        "But you, speak what fits with faithful instruction. The traditional translation of verse 1, as given in ",
         {
           "type": "char",
           "marker": "jmp",
@@ -34,7 +34,7 @@
             "RSV"
           ]
         },
-        ", may be appropriate. Storehouses, as used here, refers to large buildings with walls and roof, where grain was kept until needed. (See illustration:",
+        ", may be appropriate. Storehouses, as used here, refers to large buildings with walls and roof, where grain was kept until needed. (See illustration: ",
         {
           "type": "char",
           "marker": "jmp",

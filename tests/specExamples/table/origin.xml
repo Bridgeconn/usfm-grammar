@@ -1,6 +1,5 @@
 <usx version="3.0">
   <book code="MAT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
-  <para style="usfm">3.0</para>
   <para style="toc1">The Acts of the Apostles</para>
   <para style="toc2">Acts</para>
   <para style="ip">One of these brothers, Joseph, had become...</para>
@@ -37,7 +36,8 @@
     <row style="tr">
       <cell style="tcr1" align="end">5th </cell>
       <cell style="tc2" align="start">Simeon </cell>
-      <cell style="tcr3" align="end">Shelumiel son of Zurishaddai<verse eid="MAT 136:12-83" /></cell>
+      <cell style="tcr3" align="end">Shelumiel son of Zurishaddai
+        <verse eid="MAT 136:12-83" /></cell>
     </row>
   </table>
   <chapter eid="MAT 136" />

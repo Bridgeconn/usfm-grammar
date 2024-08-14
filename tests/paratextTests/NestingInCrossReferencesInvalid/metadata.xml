@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>NestingInCrossReferencesInvalid. From paratext test suite</description>
+        <description>NestingInCrossReferencesInvalid. From paratext test suite
+        
+        This currently parses, but created USX doesn't match origin.xml. Grammar is accepting nesting of character styles
+        under \xo - this is normally just text</description>
         <validated>fail</validated>
-        <tags></tags>
+        <tags>clarify</tags>
 </test-metadata>
