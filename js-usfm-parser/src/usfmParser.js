@@ -6,7 +6,7 @@ import { includeMarkersInUsj, excludeMarkersInUsj } from "./filters.js";
 
 class USFMParser {
 	static language = null;
-	static async init(grammarPath="./src/grammar/tree-sitter-usfm.wasm") {
+	static async init(grammarPath="tree-sitter-usfm.wasm") {
 		await Parser.init();
 		USFMParser.language = await Parser.Language.load(grammarPath);
 	}
