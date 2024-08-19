@@ -1,4 +1,4 @@
-import USFMParser from './dist/esm/index.js';
+import {USFMParser} from './src/index.js';
 
 (async () => {
   await USFMParser.init();
