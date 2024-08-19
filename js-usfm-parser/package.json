@@ -1,17 +1,27 @@
 {
   "name": "usfm-grammar",
-  "version": "3.0.0-alpha.4",
+  "version": "3.0.0-alpha.7",
   "description": "Parser using tree-sitter-usfm3, to convert usfm to usj format.",
-  "main": "src/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/types/index.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "scripts": {
+    "build:cjs": "babel src --out-dir dist/cjs --env-name cjs",
+    "build:esm": "babel src --out-dir dist/esm --env-name esm",
+    "build": "npm run build:cjs && npm run build:esm"
+  },
   "files": [
-    "src/",
+    "dist/",
     "tree-sitter.wasm",
     "tree-sitter-usfm.wasm"
   ],
-  "type": "module",
-  "scripts": {
-    "test": "npm test"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Bridgeconn/usfm-grammar/js-usfm-parser"
@@ -30,6 +40,9 @@
   "license": "MIT",
   "devDependencies": {
     "prettier": "^3.2.5",
-    "web-tree-sitter": "^0.22.6"
+    "web-tree-sitter": "^0.22.6",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.0.0"
   }
 }
