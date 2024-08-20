@@ -14,10 +14,11 @@ npm install usfm-grammar
 Here's how you can use USFM Grammar in your JavaScript/TypeScript projects:
 
 ```javascript
-import USFMParser from 'usfm-grammar';
+import pkg from 'usfm-grammar';
+const USFMParser = pkg.USFMParser;
 
 (async () => {
-  await USFMParser.init("./node_modules/usfm-grammar/tree-sitter-usfm.wasm");
+  await USFMParser.init();
   const usfmParser = new USFMParser()
   const output = usfmParser.usfmToUsj('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 more text')
   console.log({ output })
@@ -28,14 +29,14 @@ import USFMParser from 'usfm-grammar';
 
 If you are using node the import part can be change as below:
 ```javascript
-const USFMParser = require('usfm-grammar').default;
+const { USFMParser}  = require('usfm-grammar');
 ```
 
 
 ## API Documentation
 
 ### `USFMParser.init()`
-Initializes the USFMParser. This function must be called before creating instances of `USFMParser`. And it should take the grammar file(in wasm format) that is included in the package passing the file.
+Initializes the USFMParser. This function must be called before creating instances of `USFMParser`. And can take the grammar and the tree-sitter  files (in wasm format) as arguments, that is included in the package.
 
 ### `USFMParser.usfmToUsj(usfmString: string): Object`
 Converts a USFM string to a USJ object.

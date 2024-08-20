@@ -1,6 +1,6 @@
 {
   "name": "usfm-grammar",
-  "version": "3.0.0-alpha.19",
+  "version": "3.0.0-alpha.4",
   "description": "Parser using tree-sitter-usfm3, to convert usfm to usj format.",
   "type": "module",
   "main": "dist/cjs/index.cjs",
@@ -10,13 +10,10 @@
   "scripts": {
     "build": "parcel build src/index.js"
   },
-  "alias": {
-    "fs": false,
-    "path": false
-  },
   "files": [
     "dist/",
-    "tree-sitter-usfm.wasm"
+    "tree-sitter-usfm.wasm",
+    "tree-sitter.wasm"
   ],
   "repository": {
     "type": "git",

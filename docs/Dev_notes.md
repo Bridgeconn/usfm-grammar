@@ -58,6 +58,8 @@ export PATH=$PATH:./node_modules/.bin
 tree-sitter generate
 cp tree-sitter-usfm.wasm ../js-usfm-parser/
 ```
+After npm install, copy the `tree-sitter.wasm` file from `node_modules/web=tree-sitter` to the `js-usfm-parser` folder to include it with the npm packaging.
+
 
 Build the code base generating both cjs and esm versions of the same code base. The configs are in `.babelrc` file. Upon running the commands two folders `dist/cjs/` and `dist/esm` would be created.
 
