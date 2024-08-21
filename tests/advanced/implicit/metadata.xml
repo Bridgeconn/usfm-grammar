@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>Naughty things you should not be able to do with implicit closure</description>
+        <description>Includes ending tag for marker that was previously implicitly closed</description>
         <validated>fail</validated>
         <tags></tags>
 </test-metadata>

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>Accept empty attribute values</description>
+        <description>Accept empty attribute values
+        
+        \w has | with no text</description>
         <validated>fail</validated>
         <tags></tags>
 </test-metadata>

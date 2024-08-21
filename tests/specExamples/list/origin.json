@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -8,13 +8,6 @@
       "code": "MAT",
       "content": [
         "41MATGNT92.SFM, Good News Translation, June 2003"
-      ]
-    },
-    {
-      "type": "para",
-      "marker": "usfm",
-      "content": [
-        "3.0"
       ]
     },
     {
@@ -101,7 +94,7 @@
       "type": "para",
       "marker": "lf",
       "content": [
-        "This was the list of the administrators of the tribes of Israel.",
+        "This was the list of the administrators of the tribes of Israel. ",
         {
           "type": "verse",
           "marker": "v",
@@ -112,7 +105,7 @@
       ]
     },
     {
-      "type": "optbreak",
+      "type": "para",
       "marker": "b"
     },
     {
@@ -123,7 +116,7 @@
       ]
     },
     {
-      "type": "optbreak",
+      "type": "para",
       "marker": "b"
     },
     {
@@ -136,7 +129,7 @@
           "number": "8",
           "sid": "MAT 136:8"
         },
-        "the descendants of Parosh -",
+        "the descendants of Parosh - ",
         {
           "type": "char",
           "marker": "litl",
@@ -156,7 +149,7 @@
           "number": "9",
           "sid": "MAT 136:9"
         },
-        "of Shephatiah -",
+        "of Shephatiah - ",
         {
           "type": "char",
           "marker": "litl",

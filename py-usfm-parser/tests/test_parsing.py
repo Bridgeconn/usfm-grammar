@@ -4,12 +4,9 @@ from lxml import etree
 
 from src.usfm_grammar import USFMParser
 from tests import all_usfm_files, initialise_parser, is_valid_usfm,\
-    doubtful_usfms, negative_tests, find_all_markers
+    negative_tests, find_all_markers
 
 test_files = all_usfm_files.copy()
-for file in doubtful_usfms:
-    if file in test_files:
-        test_files.remove(file)
 
 @pytest.mark.parametrize('file_path', test_files)
 def test_error_less_parsing(file_path):

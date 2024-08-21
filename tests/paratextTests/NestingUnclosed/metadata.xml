@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>NestingUnclosed. From paratext test suite</description>
+        <description>NestingUnclosed. From paratext test suite
+        Fails because nested style doesn't have end marker</description>
         <validated>fail</validated>
-        <tags>clarify</tags>
 </test-metadata>

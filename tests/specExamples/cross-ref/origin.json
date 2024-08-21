@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -26,7 +26,7 @@
           "number": "18",
           "sid": "MAT 6:18"
         },
-        "“Why do you call me good?” Jesus asked him. “No one is good except God alone.",
+        "“Why do you call me good?” Jesus asked him. “No one is good except God alone. ",
         {
           "type": "verse",
           "marker": "v",
@@ -42,63 +42,63 @@
               "type": "char",
               "marker": "xo",
               "content": [
-                "10.19: a"
+                "10.19: a "
               ]
             },
             {
               "type": "char",
               "marker": "xt",
               "content": [
-                "Exo 20.13; Deu 5.17;"
+                "Exo 20.13; Deu 5.17; "
               ]
             },
             {
               "type": "char",
               "marker": "xo",
               "content": [
-                "b"
+                "b "
               ]
             },
             {
               "type": "char",
               "marker": "xt",
               "content": [
-                "Exo 20.14; Deu 5.18;"
+                "Exo 20.14; Deu 5.18; "
               ]
             },
             {
               "type": "char",
               "marker": "xo",
               "content": [
-                "c"
+                "c "
               ]
             },
             {
               "type": "char",
               "marker": "xt",
               "content": [
-                "Exo 20.15; Deu 5.19;"
+                "Exo 20.15; Deu 5.19; "
               ]
             },
             {
               "type": "char",
               "marker": "xo",
               "content": [
-                "d"
+                "d "
               ]
             },
             {
               "type": "char",
               "marker": "xt",
               "content": [
-                "Exo 20.16; Deu 5.20;"
+                "Exo 20.16; Deu 5.20; "
               ]
             },
             {
               "type": "char",
               "marker": "xo",
               "content": [
-                "e"
+                "e "
               ]
             },
             {
@@ -110,7 +110,7 @@
             }
           ]
         },
-        "You know the commandments: ‘Do not commit murder..."
+        " You know the commandments: ‘Do not commit murder..."
       ]
     },
     {
@@ -126,39 +126,39 @@
         {
           "type": "char",
           "marker": "xt",
-          "link-href": "GEN 2:1",
+          "href": "GEN 2:1",
           "content": [
             "1"
           ]
         },
-        "Бог благословляет седьмой день;",
+        " Бог благословляет седьмой день; ",
         {
           "type": "char",
           "marker": "xt",
-          "link-href": "GEN 2:8",
+          "href": "GEN 2:8",
           "content": [
             "8"
           ]
         },
-        "человек в раю Едемском; четыре реки; дерево познания добра и зла.",
+        " человек в раю Едемском; четыре реки; дерево познания добра и зла. ",
         {
           "type": "char",
           "marker": "xt",
-          "link-href": "GEN 2:18",
+          "href": "GEN 2:18",
           "content": [
             "18"
           ]
         },
-        "Человек дает названия животным.",
+        " Человек дает названия животным. ",
         {
           "type": "char",
           "marker": "xt",
-          "link-href": "GEN 2:21",
+          "href": "GEN 2:21",
           "content": [
             "21"
           ]
         },
-        "Создание женщины."
+        " Создание женщины."
       ]
     },
     {
@@ -194,35 +194,35 @@
               "type": "char",
               "marker": "xo",
               "content": [
-                "3.0"
+                "3.0 "
               ]
             },
             {
               "type": "char",
               "marker": "xta",
               "content": [
-                "Compare with"
+                "Compare with "
               ]
             },
             {
               "type": "char",
               "marker": "xt",
               "content": [
-                "Mk 1.1-8; Lk 3.1-18;"
+                "Mk 1.1-8; Lk 3.1-18; "
               ]
             },
             {
               "type": "char",
               "marker": "xta",
               "content": [
-                "and"
+                "and "
               ]
             },
             {
               "type": "char",
               "marker": "xt",
               "content": [
-                "Jn 1.19-28"
+                "Jn 1.19-28 "
               ]
             },
             {
@@ -246,7 +246,7 @@
           "number": "1",
           "sid": "MAT 3:1"
         },
-        "At that time John the Baptist came to...",
+        "At that time John the Baptist came to... ",
         {
           "type": "verse",
           "marker": "v",
@@ -262,7 +262,7 @@
               "type": "char",
               "marker": "xo",
               "content": [
-                "1:1"
+                "1:1 "
               ]
             },
             {
@@ -281,7 +281,7 @@
             }
           ]
         },
-        "И биде слово Господне към Иона, син Аматиев:",
+        "И биде слово Господне към Иона, син Аматиев: ",
         {
           "type": "verse",
           "marker": "v",
@@ -317,21 +317,21 @@
               "type": "char",
               "marker": "xo",
               "content": [
-                "115.4-8:"
+                "115.4-8: "
               ]
             },
             {
               "type": "char",
               "marker": "xt",
               "content": [
-                "Ps 135.15-18;"
+                "Ps 135.15-18; "
               ]
             },
             {
               "type": "char",
               "marker": "xdc",
               "content": [
-                "Ltj Jr 4-73;"
+                "Ltj Jr 4-73; "
               ]
             },
             {
@@ -343,7 +343,7 @@
             }
           ]
         },
-        "Their gods are made of silver and gold,"
+        " Their gods are made of silver and gold,"
       ]
     }
   ]

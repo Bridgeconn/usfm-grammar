@@ -269,15 +269,15 @@ dead will be raised, never to die again, and we shall all be changed.
             (x
               (caller)
               (xo
-                (noteText
+                (crossrefText
                   (text)))
               (xt
-                (noteText
+                (crossrefText
                   (text)
                   (dcNested
                     (text))))
               (xt
-                (noteText
+                (crossrefText
                   (text)))))
           (verseText
             (text)))
@@ -294,10 +294,10 @@ dead will be raised, never to die again, and we shall all be changed.
           (x
             (caller)
             (xo
-              (noteText
+              (crossrefText
                 (text)))
             (xt
-              (noteText
+              (crossrefText
                 (dcNested
                   (text))
                 (text)))))

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>Usfm30Usage. From InvalidUsfm20Usage in paratext test suite and modified to be valid USFM 3.0 since
+        original test data demonstrated Paratext abiblity to round trip invalid data.</description>
+        <validated>pass</validated>
+</test-metadata>

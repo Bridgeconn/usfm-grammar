@@ -1,0 +1,1197 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "TIT",
+      "content": [
+        "Unlocked Literal Bible"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "The Letter of Paul to Titus"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "Tit"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        },
+        "Paul, a servant of God and an apostle of Jesus Christ, for the faith of God's chosen people and the knowledge of the truth that agrees with godliness, ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "grace",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "grace",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "grace",
+          "strong": "G5485",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "G5485",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H1234,G5485",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "G5485:a",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "strong": "H6944,H6944",
+          "content": [
+            "most holy"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "grace",
+          "srcloc": "gnt5:51.1.2.1",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "x-myattr": "metadata",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "grace",
+          "x-myattr": "metadata",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "link-href": "http://bibles.org/search/grace/eng-GNTD/all",
+          "content": [
+            "gracious"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 1:2"
+        },
+        "with the certain hope of everlasting life that God, who does not lie, promised before all the ages of time. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 1:3"
+        },
+        "At the right time, he revealed his word by the message that he trusted me to deliver, by the command of God our savior."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 1:4"
+        },
+        "To Titus, a true son in our common faith. Grace and peace from God the Father and Christ Jesus our savior."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 1:5"
+        },
+        "For this purpose I left you in Crete, that you might set in order things not yet complete and ordain elders in every city as I directed you. ",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "gg:gg",
+          "content": [
+            "BB"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "gg:gg",
+          "content": [
+            "BB"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "g1::g3:",
+          "content": [
+            "BBBB"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "あい",
+          "content": [
+            "哀"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "はなはなし",
+          "content": [
+            "話賄"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "はな:はなし",
+          "content": [
+            "話賄"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "さだ:",
+          "content": [
+            "定ま"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "かみ::こ",
+          "content": [
+            "神の子"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 1:6"
+        },
+        "まだ",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "なに",
+          "content": [
+            "何"
+          ]
+        },
+        "もなかった",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "とき",
+          "content": [
+            "時"
+          ]
+        },
+        "、",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "かみ",
+          "content": [
+            "神"
+          ]
+        },
+        "は ",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "てん",
+          "content": [
+            "天"
+          ]
+        },
+        "と",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "ち",
+          "content": [
+            "地"
+          ]
+        },
+        "を",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "つく",
+          "content": [
+            "造"
+          ]
+        },
+        "りました。 ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 1:7"
+        },
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "ち",
+          "content": [
+            "地"
+          ]
+        },
+        "は",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "かたち",
+          "content": [
+            "形"
+          ]
+        },
+        "も",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "さだ",
+          "content": [
+            "定"
+          ]
+        },
+        "まらず、",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "やみ",
+          "content": [
+            "闇"
+          ]
+        },
+        "に ",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "つつ",
+          "content": [
+            "包"
+          ]
+        },
+        "まれた",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "みず",
+          "content": [
+            "水"
+          ]
+        },
+        "の",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "うえ",
+          "content": [
+            "上"
+          ]
+        },
+        "を、さらに",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "かみ",
+          "content": [
+            "神"
+          ]
+        },
+        "の ",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "れい",
+          "content": [
+            "霊"
+          ]
+        },
+        "が",
+        {
+          "type": "char",
+          "marker": "rb",
+          "gloss": "おお",
+          "content": [
+            "覆"
+          ]
+        },
+        "っていました。"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 1:8"
+        },
+        "Instead, he should be hospitable and a friend of what is good. He must be sensible, righteous, godly, and self-controlled. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 1:9"
+        },
+        "He should hold tightly to the trustworthy message that was taught, so that he may be able to encourage others with good teaching and correct those who oppose him."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": [
+        "“Someone is shouting in the desert,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "‘Prepare a road for the Lord;"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "make a straight path for him to travel!’ ”"
+      ]
+    },
+    {
+      "type": "sidebar",
+      "marker": "esb",
+      "category": "People",
+      "content": [
+        {
+          "type": "para",
+          "marker": "ms",
+          "content": [
+            {
+              "type": "char",
+              "marker": "jmp",
+              "link-id": "article-john_the_baptist",
+              "content": []
+            },
+            "John the Baptist"
+          ]
+        },
+        {
+          "type": "para",
+          "marker": "p",
+          "content": [
+            "John is sometimes called the last “Old Testament prophet” because of the warnings he brought about God's judgment and because he announced the coming of God's “Chosen One” (Messiah)."
+          ]
+        },
+        {
+          "type": "para",
+          "marker": "s5",
+          "content": []
+        },
+        {
+          "type": "para",
+          "marker": "p",
+          "content": []
+        },
+        {
+          "type": "para",
+          "marker": "q1",
+          "content": [
+            {
+              "type": "ms",
+              "marker": "qt2-s",
+              "who": "someone"
+            },
+            "‘In him we live and move and exist.’",
+            {
+              "type": "ms",
+              "marker": "qt2-e"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "marker": "b"
+        },
+        {
+          "type": "para",
+          "marker": "m",
+          "content": [
+            "It is as some of your poets have said,"
+          ]
+        },
+        {
+          "type": "para",
+          "marker": "q1",
+          "content": [
+            {
+              "type": "ms",
+              "marker": "qt2-s",
+              "who": "some poets"
+            },
+            "‘We too are his children.’",
+            {
+              "type": "ms",
+              "marker": "qt2-e"
+            }
+          ]
+        },
+        {
+          "type": "para",
+          "marker": "b"
+        },
+        {
+          "type": "para",
+          "marker": "m",
+          "content": []
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 1:10"
+        },
+        "For there are many rebellious people, empty talkers and deceivers, especially those of the circumcision. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 1:11"
+        },
+        "Jesus stood before the Roman governor, who questioned him. ",
+        {
+          "type": "ms",
+          "marker": "qt-s",
+          "who": "Pilate"
+        },
+        "“Are you the king of the Jews?”",
+        {
+          "type": "ms",
+          "marker": "qt-e"
+        },
+        " he asked."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "ms",
+          "marker": "qt-s",
+          "who": "Jesus"
+        },
+        "“So you say,”",
+        {
+          "type": "ms",
+          "marker": "qt-e"
+        },
+        " answered Jesus. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 1:12"
+        },
+        "Paul stood up in front of the city council and said, ",
+        {
+          "type": "ms",
+          "marker": "qt1-s",
+          "sid": "qt1_ACT_17:22",
+          "who": "Paul"
+        },
+        "“I see that in every way you Athenians are very religious."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 1:13"
+        },
+        "So Pilate said to him, ",
+        {
+          "type": "ms",
+          "marker": "qt-s",
+          "who": "Pilate"
+        },
+        "“Don't you hear all these things they accuse you of?”",
+        {
+          "type": "ms",
+          "marker": "qt-e"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 1:14"
+        },
+        "not paying any attention to Jewish myths or to the commands of people who turn away from the truth."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 1:15"
+        },
+        "To those who are pure, all things are pure. But to those who are corrupt and unbelieving, nothing is pure, but both their minds and their consciences have been corrupted. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "TIT 1:16"
+        },
+        "They profess to know God, but they deny him by their actions. They are detestable, disobedient, and unfit for doing any good work."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "TIT 2"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 2:1"
+        },
+        "But you, speak what fits with faithful instruction. The traditional translation of verse 1, as given in ",
+        {
+          "type": "char",
+          "marker": "jmp",
+          "link-href": "prj:RSV52 GEN 1:1",
+          "link-title": "Revised Standard Version",
+          "content": [
+            "RSV"
+          ]
+        },
+        ", may be appropriate. Storehouses, as used here, refers to large buildings with walls and roof, where grain was kept until needed. (See illustration: ",
+        {
+          "type": "char",
+          "marker": "jmp",
+          "link-href": "figures/storehouse.png",
+          "link-title": "Ancient storehouse",
+          "content": [
+            "Storehouse"
+          ]
+        },
+        ") ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 2:2"
+        },
+        "Teach older men to be temperate, dignified, sensible, sound in faith, in love, and in perseverance."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 2:3"
+        },
+        "Teach older women likewise to be reverent in behavior, not slanderers or being slaves to much wine, but to be teachers of what is good. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 2:4"
+        },
+        "In this way they may train the younger women to love their own husbands and children,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 2:5"
+        },
+        "From Abraham to King David, the following ancestors are listed: Abraham, Isaac, Jacob, Judah and his brothers; then Perez and Zerah (their mother was Tamar*), Hezron, Ram, Amminadab, Nahshon, Salmon, Boaz (his mother was Rahab*), Obed (his mother was ",
+        {
+          "type": "char",
+          "marker": "jmp",
+          "link-href": "#article-Ruth",
+          "content": [
+            "Ruth"
+          ]
+        },
+        "), Jesse, and King David. ",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "-",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.2-6a: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fq",
+              "content": [
+                "Ruth: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "A Moabite (Ruth 1.4). Only outstanding women were normally included in Jewish genealogical lists. See article on ",
+                {
+                  "type": "char",
+                  "marker": "jmp",
+                  "link-href": "#article-Ruth",
+                  "content": [
+                    "Ruth"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": [
+        {
+          "type": "ms",
+          "marker": "ts-s",
+          "sid": "ts_JUD_5-6"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 2:6"
+        },
+        "Now I wish to remind you, although you know everything, that the Lord once saved a people out of the land of Egypt, but that afterward he destroyed those who did not believe. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 2:7"
+        },
+        "And angels who did not keep to their own principality, but left their proper dwelling place—God has kept them in everlasting chains in darkness for the judgment of the great day. ",
+        {
+          "type": "ms",
+          "marker": "ts-e",
+          "eid": "ts_JUD_5-6"
+        },
+        {
+          "type": "ms",
+          "marker": "ts-s",
+          "sid": "ts_JUD_7-8"
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 2:8"
+        },
+        "It is just like Sodom and Gomorrah and the cities around them, which in a similar way gave themselves over to fornication and pursued unnatural desires. They were given as examples of those who suffer the punishment of eternal fire. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 2:9"
+        },
+        "Yet in the same way these also pollute their bodies in their dreams, and they reject authority, and they say evil things about the glorious ones. ",
+        {
+          "type": "ms",
+          "marker": "ts-e",
+          "eid": "ts_JUD_7-8"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 2:10"
+        },
+        "to not steal from them, but instead to demonstrate all good faith, so that in every way they may bring credit to the teaching about God our Savior."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 2:11"
+        },
+        "For the grace of God has appeared for the salvation of all people. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 2:12"
+        },
+        "It trains us to reject godlessness and worldly passions, and to live self-controlled, upright, and godly lives in this age, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 2:13"
+        },
+        "while we look forward to receiving our blessed hope, the appearance of the glory of our great God and Savior Jesus Christ."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 2:14"
+        },
+        "Jesus gave himself for us in order to redeem us from all lawlessness and to make pure, for himself, a special people who are eager to do good works."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 2:15"
+        },
+        "Speak of these things, encourage people to do them, and give correction with all authority. Let no one disregard you."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "3",
+      "sid": "TIT 3"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 3:1"
+        },
+        "Remind them to submit to rulers and authorities, to obey them, to be ready for every good work, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 3:2"
+        },
+        "to revile no one, to not be eager to fight, and to be gentle, showing all humility toward everyone."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 3:3"
+        },
+        "For he has fixed a day in which he will judge the whole world with justice by means of a man he has chosen. He has given proof of this to everyone by raising that man from death!” ",
+        {
+          "type": "ms",
+          "marker": "qt1-e",
+          "eid": "qt1_ACT_17:22"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 3:4"
+        },
+        "But when the kindness of God our savior and his love for mankind appeared, ",
+        {
+          "type": "ms",
+          "marker": "ts"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 3:5"
+        },
+        "Now I wish to remind you, although you know everything, that the Lord once saved a people out of the land of Egypt, but that afterward he destroyed those who did not believe. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 3:6"
+        },
+        "And angels who did not keep to their own principality, but left their proper dwelling place—God has kept them in everlasting chains in darkness for the judgment of the great day. ",
+        {
+          "type": "ms",
+          "marker": "ts"
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 3:7"
+        },
+        "It is just like Sodom and Gomorrah and the cities around them, which in a similar way gave themselves over to fornication and pursued unnatural desires. They were given as examples of those who suffer the punishment of eternal fire. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 3:8"
+        },
+        "Yet in the same way these also pollute their bodies in their dreams, and they reject authority, and they say evil things about the glorious ones. ",
+        {
+          "type": "ms",
+          "marker": "ts"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 3:9"
+        },
+        "But avoid foolish debates and genealogies and strife and conflict about the law. Those things are unprofitable and worthless. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 3:10"
+        },
+        "Reject anyone who is causing divisions among you, after one or two warnings, ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 3:11"
+        },
+        "knowing that such a person has turned from the right way and is sinning and condemns himself."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 3:12"
+        },
+        "When I send Artemas or Tychicus to you, hurry and come to me at Nicopolis, where I have decided to spend the winter. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 3:13"
+        },
+        "Do everything you can to send on their way Zenas the lawyer and Apollos, so that they lack nothing."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 3:14"
+        },
+        "Our people must learn to engage themselves in good works that provide for urgent needs, and so not be unfruitful."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 3:15"
+        },
+        "All those who are with me greet you. Greet those who love us in faith. Grace be with all of you."
+      ]
+    }
+  ]
+}

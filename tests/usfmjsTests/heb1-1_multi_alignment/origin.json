@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -8,13 +8,6 @@
       "code": "HEB",
       "content": [
         "EN_ULB en_English_ltr Wed Feb 07 2018 19:07:07 GMT-0500 (EST) tc"
-      ]
-    },
-    {
-      "type": "para",
-      "marker": "usfm",
-      "content": [
-        "3.0"
       ]
     },
     {

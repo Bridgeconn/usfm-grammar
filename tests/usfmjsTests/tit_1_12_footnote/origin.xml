@@ -8,6 +8,6 @@
   <chapter number="1" style="c" sid="TIT 1" />
   <para style="p">
     <verse number="12" style="v" sid="TIT 1:12" />...</para>
-  <para style="q" vid="TIT 1:12">Christ Jesus. <note caller="+" style="f"><char style="ft" closed="false">Some early versions omit, </char><char style="fqa">in Ephesus, </char> but this expression is probably in Paul's original letter. </note><verse eid="TIT 1:12" /></para>
+  <para style="q" vid="TIT 1:12">Christ Jesus. <note caller="+" style="f"><char style="ft" closed="false">Some early versions omit, </char><char style="fqa">in Ephesus, </char><char style="ft"> but this expression is probably in Paul's original letter. </char></note><verse eid="TIT 1:12" /></para>
   <chapter eid="TIT 1" />
 </usx>

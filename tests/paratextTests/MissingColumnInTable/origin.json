@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -46,7 +46,7 @@
               "marker": "th1",
               "align": "start",
               "content": [
-                "header1"
+                "header1 "
               ]
             },
             {
@@ -68,7 +68,7 @@
               "marker": "tcr2",
               "align": "end",
               "content": [
-                "cell2"
+                "cell2 "
               ]
             },
             {

@@ -19,7 +19,8 @@ intro markers set 1
     (id
       (bookcode)
       (description)))
-  (usfm)
+  (usfm
+    (versionNumber))
   (hBlock
     (h
       (hTag)

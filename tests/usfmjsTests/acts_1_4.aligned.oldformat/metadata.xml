@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>  handles acts_1_4.aligned - oldformat</description>
+        <description>  handles acts_1_4.aligned - oldformat
+        Fails because \zaln-s is missing ending \*</description>
         <validated>fail</validated>
-        <tags>revisit</tags>
 </test-metadata>

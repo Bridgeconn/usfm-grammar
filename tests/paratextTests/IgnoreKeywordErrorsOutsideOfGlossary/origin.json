@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -35,7 +35,7 @@
           "type": "char",
           "marker": "k",
           "content": [
-            "ostrich"
+            "ostrich "
           ]
         },
         "bird that doesnt fly"

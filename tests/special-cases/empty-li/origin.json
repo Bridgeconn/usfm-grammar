@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -63,7 +63,7 @@
           "number": "4",
           "sid": "GEN 1:4"
         },
-        "The item three",
+        "The item three ",
         {
           "type": "verse",
           "marker": "v",
@@ -77,14 +77,14 @@
       "type": "para",
       "marker": "lh",
       "content": [
-        "The end of verse list",
+        "The end of verse list ",
         {
           "type": "verse",
           "marker": "v",
           "number": "6",
           "sid": "GEN 1:6"
         },
-        "A verse out side of the list",
+        "A verse out side of the list ",
         {
           "type": "verse",
           "marker": "v",
@@ -105,7 +105,7 @@
       "type": "para",
       "marker": "li",
       "content": [
-        "item two",
+        "item two ",
         {
           "type": "verse",
           "marker": "v",

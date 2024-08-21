@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -37,7 +37,7 @@
           "number": "2-6a",
           "sid": "GEN 1:2-6a"
         },
-        "From Abraham to King David, the following ancestors are listed: Abraham, Isaac, Jacob, Judah and his brothers; then Perez and Zerah (their mother was Tamar",
+        "From Abraham to King David, the following ancestors are listed: Abraham, Isaac, Jacob, Judah and his brothers; then Perez and Zerah (their mother was Tamar ",
         {
           "type": "note",
           "marker": "ef",
@@ -48,14 +48,14 @@
               "type": "char",
               "marker": "fr",
               "content": [
-                "1.2-6a:"
+                "1.2-6a: "
               ]
             },
             {
               "type": "char",
               "marker": "fq",
               "content": [
-                "Tamar:"
+                "Tamar: "
               ]
             },
             {
@@ -67,7 +67,7 @@
             }
           ]
         },
-        "), Hezron, Ram, Amminadab, Nahshon, Salmon, Boaz (his mother was Rahab",
+        "), Hezron, Ram, Amminadab, Nahshon, Salmon, Boaz (his mother was Rahab ",
         {
           "type": "note",
           "marker": "ef",
@@ -78,14 +78,14 @@
               "type": "char",
               "marker": "fr",
               "content": [
-                "1.2-6a:"
+                "1.2-6a: "
               ]
             },
             {
               "type": "char",
               "marker": "fq",
               "content": [
-                "Rahab:"
+                "Rahab: "
               ]
             },
             {
@@ -108,14 +108,14 @@
               "type": "char",
               "marker": "fr",
               "content": [
-                "1.2-6a:"
+                "1.2-6a: "
               ]
             },
             {
               "type": "char",
               "marker": "fq",
               "content": [
-                "Ruth:"
+                "Ruth: "
               ]
             },
             {
@@ -150,31 +150,31 @@
               "type": "char",
               "marker": "fr",
               "content": [
-                "1.6b-11:"
+                "1.6b-11: "
               ]
             },
             {
               "type": "char",
               "marker": "fq",
               "content": [
-                "exile in Babylon:"
+                "exile in Babylon: "
               ]
             },
             {
               "type": "char",
               "marker": "ft",
               "content": [
-                "In 597"
+                "In 597 ",
+                {
+                  "type": "char",
+                  "marker": "sc",
+                  "content": [
+                    "BC"
+                  ]
+                },
+                " King Nebuchadnezzar \nof Babylonia conquered Jerusalem and took many of its inhabitants as prisoners to his \ncountry (2 Kgs 24.10-16; 2 Chr 36.9-10)."
               ]
-            },
-            {
-              "type": "char",
-              "marker": "sc",
-              "content": [
-                "BC"
-              ]
-            },
-            "King Nebuchadnezzar \nof Babylonia conquered Jerusalem and took many of its inhabitants as prisoners to his \ncountry (2 Kgs 24.10-16; 2 Chr 36.9-10)."
+            }
           ]
         },
         ", the following ancestors are listed: ..."

@@ -4,6 +4,7 @@
 name: Node.js Package
 
 on:
+  workflow_dispatch:
   release:
     types: [published]
 
@@ -17,15 +18,16 @@ jobs:
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup node and npm
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 20.4
+          node-version: 20
       - name: Run tests
         run: |
           cd tree-sitter-usfm3
-          npm install .
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
 
@@ -40,38 +42,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: |
           cd tree-sitter-usfm3
-          npm install .
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
           ./node_modules/.bin/tree-sitter generate
-          npm publish . --tag alpha
+          npm publish . --tag beta
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
-  # Publish-atom-extension:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 14
-  #         registry-url: https://registry.npmjs.org/
-  #     - run: npm ci
-  #     - run: |
-  #         cd atom-extension
-  #         npm publish . --tag alpha
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
-
-  # publish-gpr:
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 12
-  #         registry-url: https://npm.pkg.github.com/
-  #     - run: npm ci
-  #     - run: npm publish
-  #       env:
-  #         NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

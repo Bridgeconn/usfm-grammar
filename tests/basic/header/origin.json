@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -15,13 +15,6 @@
       "marker": "ide",
       "content": [
         "UTF-8"
-      ]
-    },
-    {
-      "type": "para",
-      "marker": "usfm",
-      "content": [
-        "3.0"
       ]
     },
     {
@@ -63,7 +56,7 @@
             "The Gospel according to Mark"
           ]
         },
-        "begins with the statement..."
+        " begins with the statement..."
       ]
     },
     {
@@ -82,7 +75,7 @@
           "number": "1",
           "sid": "MRK 1:1"
         },
-        "the first verse",
+        "the first verse ",
         {
           "type": "verse",
           "marker": "v",

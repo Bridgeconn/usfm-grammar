@@ -1,2 +1,4 @@
-import USFMParser from "./usfmParser";
-export default USFMParser;
+import USFMParser from "./usfmParser.js";
+console.log("COmes in index.js");
+
+export { USFMParser };

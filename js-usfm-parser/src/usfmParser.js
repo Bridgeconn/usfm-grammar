@@ -1,16 +1,18 @@
-import Parser from "./tree-sitter-main/tree-sitter";
+import Parser from 'web-tree-sitter';
 
-import USFMGenerator from "./usfmGenerator";
-import USJGenerator from "./usjGenerator";
-import { includeMarkersInUsj, excludeMarkersInUsj } from "./filters";
-import usfmGrammarBase64 from './grammar/tree-sitter-usfm3.base64'
-import { base64ToUint8Array } from "./utils/base64ToUint8Array";
+import USFMGenerator from "./usfmGenerator.js";
+import USJGenerator from "./usjGenerator.js";
+import { includeMarkersInUsj, excludeMarkersInUsj } from "./filters.js";
+const locateFile = (scriptName, scriptDirectory) => {
+	return `node_modules/usfm-grammar/${scriptName}`;
+};
 
 class USFMParser {
-	static async init() {
-		await Parser.init();
-		const { uint8Array: usfmGrammar } = base64ToUint8Array(usfmGrammarBase64);
-		this.language = await Parser.Language.load(usfmGrammar);
+	static language = null;
+	static async init(grammarPath="node_modules/usfm-grammar/tree-sitter-usfm.wasm",
+					parserPath="node_modules/web-tree-sitter/tree-sitter.wasm") {
+		await Parser.init({ parserPath });
+		USFMParser.language = await Parser.Language.load(grammarPath);
 	}
 
 	constructor() {

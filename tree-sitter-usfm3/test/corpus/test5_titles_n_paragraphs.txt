@@ -32,7 +32,8 @@ headers and titles
     (id
       (bookcode)
       (description)))
-  (usfm)
+  (usfm
+    (versionNumber))
   (tocBlock
     (toc
       (tocTag
@@ -138,7 +139,8 @@ Simple p
     (id
       (bookcode)
       (description)))
-  (usfm)
+  (usfm
+    (versionNumber))
   (tocBlock
     (toc
       (tocTag

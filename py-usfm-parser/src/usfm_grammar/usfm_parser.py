@@ -1,9 +1,9 @@
 '''The core logics of converting the syntax tree to other formats'''
 
 from enum import Enum
-from importlib import resources
 import re
 
+import tree_sitter_usfm3 as tsusfm
 from tree_sitter import Language, Parser
 from lxml import etree
 
@@ -50,11 +50,8 @@ class Format(str, Enum):
     MD = "markdown"
     USFM = "usfm"
 
-lang_file = resources.path('usfm_grammar','my-languages.so')
-with lang_file as path:
-    USFM_LANGUAGE = Language(str(path), 'usfm3')
-parser = Parser()
-parser.set_language(USFM_LANGUAGE)
+USFM_LANGUAGE = Language(tsusfm.language())
+parser = Parser(USFM_LANGUAGE)
 
 
 # # Handled alike by the node_2_dict_generic method
@@ -153,7 +150,7 @@ class USFMParser():
                 "\nUse ignore_errors=True, to generate output inspite of errors")
         json_root_obj = {
                 "type": "USJ",
-                "version": "0.2.0",
+                "version": "3.1",
                 "content":[]
             }
         try:
@@ -189,7 +186,7 @@ class USFMParser():
 
         json_root_obj = {
                 "type": "USJ",
-                "version": "0.0.1-alpha.2",
+                "version": "3.1",
                 "content":[]
             }
         try:

@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -68,14 +68,14 @@
           "number": "1",
           "sid": "ROM 1:1"
         },
-        "Paul, a servant of Jesus Christ, called to be an apostle and set apart for the gospel of God,",
+        "Paul, a servant of Jesus Christ, called to be an apostle and set apart for the gospel of God, ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "ROM 1:2"
         },
-        "which he promised beforehand by his prophets in the holy scriptures,",
+        "which he promised beforehand by his prophets in the holy scriptures, ",
         {
           "type": "verse",
           "marker": "v",
@@ -100,14 +100,14 @@
           "number": "4",
           "sid": "ROM 1:4"
         },
-        "Through the Spirit of holiness he was declared with power to be the Son of God by the resurrection from the dead, Jesus Christ our Lord.",
+        "Through the Spirit of holiness he was declared with power to be the Son of God by the resurrection from the dead, Jesus Christ our Lord. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "5",
           "sid": "ROM 1:5"
         },
-        "Through him we have received grace and apostleship for obedience of faith among all the nations, for the sake of his name.",
+        "Through him we have received grace and apostleship for obedience of faith among all the nations, for the sake of his name. ",
         {
           "type": "verse",
           "marker": "v",
@@ -150,14 +150,14 @@
           "number": "8",
           "sid": "ROM 1:8"
         },
-        "First, I thank my God through Jesus Christ for all of you, because your faith is proclaimed throughout the whole world.",
+        "First, I thank my God through Jesus Christ for all of you, because your faith is proclaimed throughout the whole world. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "9",
           "sid": "ROM 1:9"
         },
-        "For God is my witness, whom I serve in my spirit in the gospel of his Son, of how continually I make mention of you.",
+        "For God is my witness, whom I serve in my spirit in the gospel of his Son, of how continually I make mention of you. ",
         {
           "type": "verse",
           "marker": "v",
@@ -182,7 +182,7 @@
           "number": "11",
           "sid": "ROM 1:11"
         },
-        "For I desire to see you, that I may give you some spiritual gift, in order to strengthen you.",
+        "For I desire to see you, that I may give you some spiritual gift, in order to strengthen you. ",
         {
           "type": "verse",
           "marker": "v",
@@ -207,14 +207,14 @@
           "number": "13",
           "sid": "ROM 1:13"
         },
-        "Now I do not want you to be uninformed, brothers, that I often intended to come to you (but I was hindered until now), in order to have some fruit among you also, just as I have had among the rest of the Gentiles.",
+        "Now I do not want you to be uninformed, brothers, that I often intended to come to you (but I was hindered until now), in order to have some fruit among you also, just as I have had among the rest of the Gentiles. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "14",
           "sid": "ROM 1:14"
         },
-        "I am a debtor both to Greeks and to foreigners, both to the wise and to the foolish.",
+        "I am a debtor both to Greeks and to foreigners, both to the wise and to the foolish. ",
         {
           "type": "verse",
           "marker": "v",
@@ -239,7 +239,7 @@
           "number": "16",
           "sid": "ROM 1:16"
         },
-        "For I am not ashamed of the gospel, for it is the power of God for salvation for everyone who believes, for the Jew first and for the Greek.",
+        "For I am not ashamed of the gospel, for it is the power of God for salvation for everyone who believes, for the Jew first and for the Greek. ",
         {
           "type": "verse",
           "marker": "v",
@@ -264,7 +264,7 @@
           "number": "18",
           "sid": "ROM 1:18"
         },
-        "For the wrath of God is revealed from heaven against all ungodliness and unrighteousness of people who through unrighteousness hold back the truth.",
+        "For the wrath of God is revealed from heaven against all ungodliness and unrighteousness of people who through unrighteousness hold back the truth. ",
         {
           "type": "verse",
           "marker": "v",
@@ -289,7 +289,7 @@
           "number": "20",
           "sid": "ROM 1:20"
         },
-        "For his invisible qualities, namely his eternal power and divine nature, have been clearly seen; ever since the creation of the world, they have been discerned in the things that have been made. So they are without excuse.",
+        "For his invisible qualities, namely his eternal power and divine nature, have been clearly seen; ever since the creation of the world, they have been discerned in the things that have been made. So they are without excuse. ",
         {
           "type": "verse",
           "marker": "v",
@@ -314,7 +314,7 @@
           "number": "22",
           "sid": "ROM 1:22"
         },
-        "They claimed to be wise, but they became foolish.",
+        "They claimed to be wise, but they became foolish. ",
         {
           "type": "verse",
           "marker": "v",
@@ -339,7 +339,7 @@
           "number": "24",
           "sid": "ROM 1:24"
         },
-        "Therefore God gave them over to the lusts of their hearts for uncleanness, for their bodies to be dishonored among themselves.",
+        "Therefore God gave them over to the lusts of their hearts for uncleanness, for their bodies to be dishonored among themselves. ",
         {
           "type": "verse",
           "marker": "v",
@@ -364,7 +364,7 @@
           "number": "26",
           "sid": "ROM 1:26"
         },
-        "Because of this, God gave them over to dishonorable passions, for their women exchanged natural relations for those that were unnatural.",
+        "Because of this, God gave them over to dishonorable passions, for their women exchanged natural relations for those that were unnatural. ",
         {
           "type": "verse",
           "marker": "v",
@@ -407,14 +407,14 @@
           "number": "29",
           "sid": "ROM 1:29"
         },
-        "They have been filled with all unrighteousness, wickedness, covetousness, and malice. They are full of envy, murder, strife, deceit, and evil intentions. They are gossips,",
+        "They have been filled with all unrighteousness, wickedness, covetousness, and malice. They are full of envy, murder, strife, deceit, and evil intentions. They are gossips, ",
         {
           "type": "verse",
           "marker": "v",
           "number": "30",
           "sid": "ROM 1:30"
         },
-        "slanderers, haters of God, insolent, arrogant, boastful, inventing ways of doing evil; they are disobedient to parents.",
+        "slanderers, haters of God, insolent, arrogant, boastful, inventing ways of doing evil; they are disobedient to parents. ",
         {
           "type": "verse",
           "marker": "v",
@@ -463,7 +463,7 @@
           "number": "1",
           "sid": "ROM 2:1"
         },
-        "Therefore you are without excuse, you person, you who judge, for what you judge in another you condemn in yourself. For you who judge practice the same things.",
+        "Therefore you are without excuse, you person, you who judge, for what you judge in another you condemn in yourself. For you who judge practice the same things. ",
         {
           "type": "verse",
           "marker": "v",
@@ -488,7 +488,7 @@
           "number": "3",
           "sid": "ROM 2:3"
         },
-        "But consider this, you person, you who judge those who practice such things although you do the same things. Will you escape from the judgment of God?",
+        "But consider this, you person, you who judge those who practice such things although you do the same things. Will you escape from the judgment of God? ",
         {
           "type": "verse",
           "marker": "v",
@@ -513,14 +513,14 @@
           "number": "5",
           "sid": "ROM 2:5"
         },
-        "But it is to the extent of your hardness and unrepentant heart that you are storing up for yourself wrath on the day of wrath, that is, the day of the revelation of God's righteous judgment.",
+        "But it is to the extent of your hardness and unrepentant heart that you are storing up for yourself wrath on the day of wrath, that is, the day of the revelation of God's righteous judgment. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "6",
           "sid": "ROM 2:6"
         },
-        "He will pay back to every person according to his actions:",
+        "He will pay back to every person according to his actions: ",
         {
           "type": "verse",
           "marker": "v",
@@ -545,7 +545,7 @@
           "number": "8",
           "sid": "ROM 2:8"
         },
-        "But to those who are self-seeking, who disobey the truth but obey unrighteousness, wrath and fierce anger will come.",
+        "But to those who are self-seeking, who disobey the truth but obey unrighteousness, wrath and fierce anger will come. ",
         {
           "type": "verse",
           "marker": "v",
@@ -570,14 +570,14 @@
           "number": "10",
           "sid": "ROM 2:10"
         },
-        "But glory, honor, and peace will come to everyone who practices good, to the Jew first, and also to the Greek.",
+        "But glory, honor, and peace will come to everyone who practices good, to the Jew first, and also to the Greek. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "11",
           "sid": "ROM 2:11"
         },
-        "For there is no partiality with God.",
+        "For there is no partiality with God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -602,7 +602,7 @@
           "number": "13",
           "sid": "ROM 2:13"
         },
-        "For it is not the hearers of the law who are righteous before God, but it is the doers of the law who will be justified.",
+        "For it is not the hearers of the law who are righteous before God, but it is the doers of the law who will be justified. ",
         {
           "type": "verse",
           "marker": "v",
@@ -627,7 +627,7 @@
           "number": "15",
           "sid": "ROM 2:15"
         },
-        "By this they show that the actions required by the law are written in their hearts. Their conscience also bears witness to them, and their own thoughts either accuse or defend them to themselves",
+        "By this they show that the actions required by the law are written in their hearts. Their conscience also bears witness to them, and their own thoughts either accuse or defend them to themselves ",
         {
           "type": "verse",
           "marker": "v",
@@ -652,21 +652,21 @@
           "number": "17",
           "sid": "ROM 2:17"
         },
-        "But if you name yourself a Jew and rest upon the law and boast in God,",
+        "But if you name yourself a Jew and rest upon the law and boast in God, ",
         {
           "type": "verse",
           "marker": "v",
           "number": "18",
           "sid": "ROM 2:18"
         },
-        "and know his will and approve of what is excellent because you have been instructed from the law;",
+        "and know his will and approve of what is excellent because you have been instructed from the law; ",
         {
           "type": "verse",
           "marker": "v",
           "number": "19",
           "sid": "ROM 2:19"
         },
-        "and if you are convinced that you yourself are a guide to the blind, a light to those who are in darkness,",
+        "and if you are convinced that you yourself are a guide to the blind, a light to those who are in darkness, ",
         {
           "type": "verse",
           "marker": "v",
@@ -691,7 +691,7 @@
           "number": "21",
           "sid": "ROM 2:21"
         },
-        "You who teach others, do you not teach yourself? You who preach against stealing, do you steal?",
+        "You who teach others, do you not teach yourself? You who preach against stealing, do you steal? ",
         {
           "type": "verse",
           "marker": "v",
@@ -716,7 +716,7 @@
           "number": "23",
           "sid": "ROM 2:23"
         },
-        "You who boast in the law, do you dishonor God by disobeying the law?",
+        "You who boast in the law, do you dishonor God by disobeying the law? ",
         {
           "type": "verse",
           "marker": "v",
@@ -741,14 +741,14 @@
           "number": "25",
           "sid": "ROM 2:25"
         },
-        "For circumcision is profitable to you if you obey the law, but if you are a transgressor of the law, your circumcision becomes uncircumcision.",
+        "For circumcision is profitable to you if you obey the law, but if you are a transgressor of the law, your circumcision becomes uncircumcision. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "26",
           "sid": "ROM 2:26"
         },
-        "If, then, the uncircumcised person keeps the requirements of the law, will not his uncircumcision be considered as circumcision?",
+        "If, then, the uncircumcised person keeps the requirements of the law, will not his uncircumcision be considered as circumcision? ",
         {
           "type": "verse",
           "marker": "v",
@@ -773,7 +773,7 @@
           "number": "28",
           "sid": "ROM 2:28"
         },
-        "For he is not a Jew who is merely one outwardly; neither is circumcision that which is merely outward in the flesh.",
+        "For he is not a Jew who is merely one outwardly; neither is circumcision that which is merely outward in the flesh. ",
         {
           "type": "verse",
           "marker": "v",
@@ -804,7 +804,7 @@
           "number": "1",
           "sid": "ROM 3:1"
         },
-        "Then what advantage does the Jew have? And what is the benefit of circumcision?",
+        "Then what advantage does the Jew have? And what is the benefit of circumcision? ",
         {
           "type": "verse",
           "marker": "v",
@@ -829,7 +829,7 @@
           "number": "3",
           "sid": "ROM 3:3"
         },
-        "For what if some Jews were without faith? Will their unbelief abolish God's faithfulness?",
+        "For what if some Jews were without faith? Will their unbelief abolish God's faithfulness? ",
         {
           "type": "verse",
           "marker": "v",
@@ -873,7 +873,7 @@
           "number": "5",
           "sid": "ROM 3:5"
         },
-        "But if our unrighteousness shows the righteousness of God, what can we say? Can we say that God is unrighteous to bring his wrath upon us? (I am using a human argument.)",
+        "But if our unrighteousness shows the righteousness of God, what can we say? Can we say that God is unrighteous to bring his wrath upon us? (I am using a human argument.) ",
         {
           "type": "verse",
           "marker": "v",
@@ -898,7 +898,7 @@
           "number": "7",
           "sid": "ROM 3:7"
         },
-        "But if the truth of God through my lie multiplies his glory, why am I still being judged as a sinner?",
+        "But if the truth of God through my lie multiplies his glory, why am I still being judged as a sinner? ",
         {
           "type": "verse",
           "marker": "v",
@@ -923,7 +923,7 @@
           "number": "9",
           "sid": "ROM 3:9"
         },
-        "What then? Are we excusing ourselves? Not at all. For we have already accused both Jews and Greeks, all of them, of being under sin.",
+        "What then? Are we excusing ourselves? Not at all. For we have already accused both Jews and Greeks, all of them, of being under sin. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1102,7 +1102,7 @@
           "number": "19",
           "sid": "ROM 3:19"
         },
-        "Now we know that whatever the law says, it speaks to the ones who are under the law. This is in order that every mouth may be shut, and the whole world held accountable to God.",
+        "Now we know that whatever the law says, it speaks to the ones who are under the law. This is in order that every mouth may be shut, and the whole world held accountable to God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1127,7 +1127,7 @@
           "number": "21",
           "sid": "ROM 3:21"
         },
-        "But now apart from the law the righteousness of God has been revealed. It was witnessed by the Law and the Prophets,",
+        "But now apart from the law the righteousness of God has been revealed. It was witnessed by the Law and the Prophets, ",
         {
           "type": "verse",
           "marker": "v",
@@ -1152,7 +1152,7 @@
           "number": "23",
           "sid": "ROM 3:23"
         },
-        "For all have sinned and come short of the glory of God,",
+        "For all have sinned and come short of the glory of God, ",
         {
           "type": "verse",
           "marker": "v",
@@ -1177,7 +1177,7 @@
           "number": "25",
           "sid": "ROM 3:25"
         },
-        "For God provided Christ Jesus as a propitiation through faith in his blood. He offered Christ as proof of his justice, because of his disregard of previous sins",
+        "For God provided Christ Jesus as a propitiation through faith in his blood. He offered Christ as proof of his justice, because of his disregard of previous sins ",
         {
           "type": "verse",
           "marker": "v",
@@ -1202,7 +1202,7 @@
           "number": "27",
           "sid": "ROM 3:27"
         },
-        "Where then is boasting? It is excluded. Through what kind of law? Of works? No, but through a law of faith.",
+        "Where then is boasting? It is excluded. Through what kind of law? Of works? No, but through a law of faith. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1227,7 +1227,7 @@
           "number": "29",
           "sid": "ROM 3:29"
         },
-        "Or is God the God of Jews only? Is he not also the God of Gentiles? Yes, of Gentiles also.",
+        "Or is God the God of Jews only? Is he not also the God of Gentiles? Yes, of Gentiles also. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1276,14 +1276,14 @@
           "number": "1",
           "sid": "ROM 4:1"
         },
-        "What then will we say that Abraham, our forefather according to the flesh, found?",
+        "What then will we say that Abraham, our forefather according to the flesh, found? ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "ROM 4:2"
         },
-        "For if Abraham had been justified by works, he would have had a reason to boast, but not before God.",
+        "For if Abraham had been justified by works, he would have had a reason to boast, but not before God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1308,7 +1308,7 @@
           "number": "4",
           "sid": "ROM 4:4"
         },
-        "Now for him who labors, his wage is not counted as a gift, but as what is owed.",
+        "Now for him who labors, his wage is not counted as a gift, but as what is owed. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1396,7 +1396,7 @@
           "number": "9",
           "sid": "ROM 4:9"
         },
-        "Then is this blessing pronounced only on those of the circumcision, or also on those of the uncircumcision? For we say, \"Faith was counted to Abraham as righteousness.\"",
+        "Then is this blessing pronounced only on those of the circumcision, or also on those of the uncircumcision? For we say, \"Faith was counted to Abraham as righteousness.\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -1421,7 +1421,7 @@
           "number": "11",
           "sid": "ROM 4:11"
         },
-        "Abraham received the sign of circumcision as a seal of the righteousness that he had by faith while he was still uncircumcised. The purpose was to make him the father of all who believe but have not been circumcised, so that righteousness would be counted to them.",
+        "Abraham received the sign of circumcision as a seal of the righteousness that he had by faith while he was still uncircumcised. The purpose was to make him the father of all who believe but have not been circumcised, so that righteousness would be counted to them. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1446,14 +1446,14 @@
           "number": "13",
           "sid": "ROM 4:13"
         },
-        "For the promise to Abraham and to his descendants that he would be heir of the world did not come through the law but through the righteousness of faith.",
+        "For the promise to Abraham and to his descendants that he would be heir of the world did not come through the law but through the righteousness of faith. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "14",
           "sid": "ROM 4:14"
         },
-        "For if those who live by the law are to be the heirs, faith is made empty, and the promise is void.",
+        "For if those who live by the law are to be the heirs, faith is made empty, and the promise is void. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1478,7 +1478,7 @@
           "number": "16",
           "sid": "ROM 4:16"
         },
-        "For this reason it is by faith, in order that the promise may rest on grace and be guaranteed to all of Abraham's descendants—not only to those who are under the law, but also to those who share the faith of Abraham. He is the father of us all,",
+        "For this reason it is by faith, in order that the promise may rest on grace and be guaranteed to all of Abraham's descendants—not only to those who are under the law, but also to those who share the faith of Abraham. He is the father of us all, ",
         {
           "type": "verse",
           "marker": "v",
@@ -1503,7 +1503,7 @@
           "number": "18",
           "sid": "ROM 4:18"
         },
-        "In hope he believed against hope, that he would become the father of many nations, according to what he had been told, \"So will your descendants be.\"",
+        "In hope he believed against hope, that he would become the father of many nations, according to what he had been told, \"So will your descendants be.\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -1528,14 +1528,14 @@
           "number": "20",
           "sid": "ROM 4:20"
         },
-        "But because of God's promise, Abraham did not hesitate in unbelief. Instead, he was strengthened in faith and gave glory to God.",
+        "But because of God's promise, Abraham did not hesitate in unbelief. Instead, he was strengthened in faith and gave glory to God. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "21",
           "sid": "ROM 4:21"
         },
-        "He was fully convinced that what God had promised, he was also able to accomplish.",
+        "He was fully convinced that what God had promised, he was also able to accomplish. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1560,14 +1560,14 @@
           "number": "23",
           "sid": "ROM 4:23"
         },
-        "But the words \"it was counted to him\" were not written for his sake alone.",
+        "But the words \"it was counted to him\" were not written for his sake alone. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "24",
           "sid": "ROM 4:24"
         },
-        "They were written also for us, and it will be counted to us who believe in him who raised Jesus our Lord from the dead.",
+        "They were written also for us, and it will be counted to us who believe in him who raised Jesus our Lord from the dead. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1598,7 +1598,7 @@
           "number": "1",
           "sid": "ROM 5:1"
         },
-        "Since we are justified by faith, we have peace with God through our Lord Jesus Christ.",
+        "Since we are justified by faith, we have peace with God through our Lord Jesus Christ. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1623,14 +1623,14 @@
           "number": "3",
           "sid": "ROM 5:3"
         },
-        "Not only this, but we also boast in our tribulations. We know that tribulation produces perseverance.",
+        "Not only this, but we also boast in our tribulations. We know that tribulation produces perseverance. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "4",
           "sid": "ROM 5:4"
         },
-        "Perseverance produces character, and character produces hope,",
+        "Perseverance produces character, and character produces hope, ",
         {
           "type": "verse",
           "marker": "v",
@@ -1655,7 +1655,7 @@
           "number": "6",
           "sid": "ROM 5:6"
         },
-        "For while we were still weak, at the right time Christ died for the ungodly.",
+        "For while we were still weak, at the right time Christ died for the ungodly. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1680,7 +1680,7 @@
           "number": "8",
           "sid": "ROM 5:8"
         },
-        "But God proves his own love toward us, because while we were still sinners, Christ died for us.",
+        "But God proves his own love toward us, because while we were still sinners, Christ died for us. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1705,7 +1705,7 @@
           "number": "10",
           "sid": "ROM 5:10"
         },
-        "For if, while we were enemies, we were reconciled to God through the death of his Son, much more, after having been reconciled, will we be saved by his life.",
+        "For if, while we were enemies, we were reconciled to God through the death of his Son, much more, after having been reconciled, will we be saved by his life. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1730,7 +1730,7 @@
           "number": "12",
           "sid": "ROM 5:12"
         },
-        "So then, as through one man sin entered into the world, in this way death entered through sin. And death spread to all people, because all sinned.",
+        "So then, as through one man sin entered into the world, in this way death entered through sin. And death spread to all people, because all sinned. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1786,7 +1786,7 @@
           "number": "16",
           "sid": "ROM 5:16"
         },
-        "For the gift is not like the outcome of that one man's sin. The judgment followed one trespass and brought condemnation, but the gift followed many trespasses and brought justification.",
+        "For the gift is not like the outcome of that one man's sin. The judgment followed one trespass and brought condemnation, but the gift followed many trespasses and brought justification. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1811,7 +1811,7 @@
           "number": "18",
           "sid": "ROM 5:18"
         },
-        "So then, as one trespass led to condemnation for all people, so also through the one act of righteousness came justification and life for all people.",
+        "So then, as one trespass led to condemnation for all people, so also through the one act of righteousness came justification and life for all people. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1836,7 +1836,7 @@
           "number": "20",
           "sid": "ROM 5:20"
         },
-        "But the law came in to increase the trespass. But where sin abounded, grace abounded even more.",
+        "But the law came in to increase the trespass. But where sin abounded, grace abounded even more. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1867,14 +1867,14 @@
           "number": "1",
           "sid": "ROM 6:1"
         },
-        "What then will we say? Should we continue in sin so that grace may abound?",
+        "What then will we say? Should we continue in sin so that grace may abound? ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "ROM 6:2"
         },
-        "May it never be. We who died to sin, how can we still live in it?",
+        "May it never be. We who died to sin, how can we still live in it? ",
         {
           "type": "verse",
           "marker": "v",
@@ -1899,7 +1899,7 @@
           "number": "4",
           "sid": "ROM 6:4"
         },
-        "We were buried, then, with him through baptism into death. This happened in order that just as Christ was raised from the dead by the glory of the Father, so also we might walk in newness of life.",
+        "We were buried, then, with him through baptism into death. This happened in order that just as Christ was raised from the dead by the glory of the Father, so also we might walk in newness of life. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1924,7 +1924,7 @@
           "number": "6",
           "sid": "ROM 6:6"
         },
-        "We know this, that our old man was crucified with him in order that the body of sin might be destroyed. This happened so that we should no longer be enslaved to sin.",
+        "We know this, that our old man was crucified with him in order that the body of sin might be destroyed. This happened so that we should no longer be enslaved to sin. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1949,7 +1949,7 @@
           "number": "8",
           "sid": "ROM 6:8"
         },
-        "But if we have died with Christ, we believe that we will also live together with him.",
+        "But if we have died with Christ, we believe that we will also live together with him. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1974,7 +1974,7 @@
           "number": "10",
           "sid": "ROM 6:10"
         },
-        "For in regard to the death that he died to sin, he died once for all. However, the life that he lives, he lives for God.",
+        "For in regard to the death that he died to sin, he died once for all. However, the life that he lives, he lives for God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -1999,14 +1999,14 @@
           "number": "12",
           "sid": "ROM 6:12"
         },
-        "Therefore do not let sin rule in your mortal body so that you obey its lusts.",
+        "Therefore do not let sin rule in your mortal body so that you obey its lusts. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "13",
           "sid": "ROM 6:13"
         },
-        "Do not present your members to sin, to be tools used for unrighteousness. But present yourselves to God as those who have been brought from death to life, and present your members to God as tools to be used for righteousness.",
+        "Do not present your members to sin, to be tools used for unrighteousness. But present yourselves to God as those who have been brought from death to life, and present your members to God as tools to be used for righteousness. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2031,7 +2031,7 @@
           "number": "15",
           "sid": "ROM 6:15"
         },
-        "What then? Shall we sin because we are not under law, but under grace? May it never be.",
+        "What then? Shall we sin because we are not under law, but under grace? May it never be. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2056,7 +2056,7 @@
           "number": "17",
           "sid": "ROM 6:17"
         },
-        "But thanks be to God! For you were slaves of sin, but you have obeyed from the heart the pattern of teaching that you were given.",
+        "But thanks be to God! For you were slaves of sin, but you have obeyed from the heart the pattern of teaching that you were given. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2081,14 +2081,14 @@
           "number": "19",
           "sid": "ROM 6:19"
         },
-        "I speak like a man because of the weakness of your flesh. For just as you presented your members as slaves to uncleanness and to lawlessness, resulting in more lawlessness, in the same way, now present your members as slaves to righteousness for sanctification.",
+        "I speak like a man because of the weakness of your flesh. For just as you presented your members as slaves to uncleanness and to lawlessness, resulting in more lawlessness, in the same way, now present your members as slaves to righteousness for sanctification. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "20",
           "sid": "ROM 6:20"
         },
-        "For when you were slaves of sin, you were free from righteousness.",
+        "For when you were slaves of sin, you were free from righteousness. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2113,7 +2113,7 @@
           "number": "22",
           "sid": "ROM 6:22"
         },
-        "But now that you have been made free from sin and are enslaved to God, you have your fruit for sanctification. The result is eternal life.",
+        "But now that you have been made free from sin and are enslaved to God, you have your fruit for sanctification. The result is eternal life. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2162,7 +2162,7 @@
           "number": "2",
           "sid": "ROM 7:2"
         },
-        "For the married woman is bound by law to the husband while he lives, but if the husband dies, she is released from the law of marriage.",
+        "For the married woman is bound by law to the husband while he lives, but if the husband dies, she is released from the law of marriage. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2187,7 +2187,7 @@
           "number": "4",
           "sid": "ROM 7:4"
         },
-        "Therefore, my brothers, you were also made dead to the law through the body of Christ. This is so that you could be joined to another, that is, to him who was raised from the dead, in order that we might produce fruit for God.",
+        "Therefore, my brothers, you were also made dead to the law through the body of Christ. This is so that you could be joined to another, that is, to him who was raised from the dead, in order that we might produce fruit for God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2230,7 +2230,7 @@
           "number": "7",
           "sid": "ROM 7:7"
         },
-        "What will we say then? Is the law itself sin? May it never be. However, I would never have known sin, if it were not through the law. For I would not have known covetousness unless the law said, \"You must not covet.\"",
+        "What will we say then? Is the law itself sin? May it never be. However, I would never have known sin, if it were not through the law. For I would not have known covetousness unless the law said, \"You must not covet.\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -2255,7 +2255,7 @@
           "number": "9",
           "sid": "ROM 7:9"
         },
-        "At one time I was alive without the law, but when the commandment came, sin regained life, and I died.",
+        "At one time I was alive without the law, but when the commandment came, sin regained life, and I died. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2280,7 +2280,7 @@
           "number": "11",
           "sid": "ROM 7:11"
         },
-        "For sin took the opportunity through the commandment and deceived me. Through the commandment it killed me.",
+        "For sin took the opportunity through the commandment and deceived me. Through the commandment it killed me. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2305,7 +2305,7 @@
           "number": "13",
           "sid": "ROM 7:13"
         },
-        "So did what is good become death to me? May it never be. But sin, in order that it might be shown to be sin, produced death in me through what was good, and through the commandment sin might become sinful beyond measure.",
+        "So did what is good become death to me? May it never be. But sin, in order that it might be shown to be sin, produced death in me through what was good, and through the commandment sin might become sinful beyond measure. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2330,7 +2330,7 @@
           "number": "15",
           "sid": "ROM 7:15"
         },
-        "For what I do, I do not really understand. For what I want to do, I do not do, and what I hate, I do.",
+        "For what I do, I do not really understand. For what I want to do, I do not do, and what I hate, I do. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2355,7 +2355,7 @@
           "number": "17",
           "sid": "ROM 7:17"
         },
-        "But now it is no longer I who do it, but the sin that lives in me.",
+        "But now it is no longer I who do it, but the sin that lives in me. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2380,14 +2380,14 @@
           "number": "19",
           "sid": "ROM 7:19"
         },
-        "For the good that I want, I do not do, but the evil that I do not want, that I do.",
+        "For the good that I want, I do not do, but the evil that I do not want, that I do. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "20",
           "sid": "ROM 7:20"
         },
-        "Now if I do what I do not want to do, then it is no longer I who am acting, but rather sin that lives in me.",
+        "Now if I do what I do not want to do, then it is no longer I who am acting, but rather sin that lives in me. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2412,7 +2412,7 @@
           "number": "22",
           "sid": "ROM 7:22"
         },
-        "For I rejoice in the law of God with my inner person.",
+        "For I rejoice in the law of God with my inner person. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2437,7 +2437,7 @@
           "number": "24",
           "sid": "ROM 7:24"
         },
-        "I am a miserable man! Who will deliver me from this body of death?",
+        "I am a miserable man! Who will deliver me from this body of death? ",
         {
           "type": "verse",
           "marker": "v",
@@ -2468,7 +2468,7 @@
           "number": "1",
           "sid": "ROM 8:1"
         },
-        "There is therefore now no condemnation for those who are in Christ Jesus.",
+        "There is therefore now no condemnation for those who are in Christ Jesus. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2493,14 +2493,14 @@
           "number": "3",
           "sid": "ROM 8:3"
         },
-        "For what the law was unable to do because it was weak through the flesh, God did. He sent his own Son in the likeness of sinful flesh to be an offering for sin, and he condemned sin in the flesh.",
+        "For what the law was unable to do because it was weak through the flesh, God did. He sent his own Son in the likeness of sinful flesh to be an offering for sin, and he condemned sin in the flesh. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "4",
           "sid": "ROM 8:4"
         },
-        "He did this in order that the requirements of the law might be fulfilled in us, we who walk not according to the flesh, but according to the Spirit.",
+        "He did this in order that the requirements of the law might be fulfilled in us, we who walk not according to the flesh, but according to the Spirit. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2525,14 +2525,14 @@
           "number": "6",
           "sid": "ROM 8:6"
         },
-        "For the mind set on the flesh is death, but the mind set on the Spirit is life and peace.",
+        "For the mind set on the flesh is death, but the mind set on the Spirit is life and peace. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "7",
           "sid": "ROM 8:7"
         },
-        "The mind set on the flesh is hostile toward God, for it does not submit to God's law, nor is it able to do so.",
+        "The mind set on the flesh is hostile toward God, for it does not submit to God's law, nor is it able to do so. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2557,7 +2557,7 @@
           "number": "9",
           "sid": "ROM 8:9"
         },
-        "However, you are not in the flesh but in the Spirit, if indeed God's Spirit lives in you. But if anyone does not have the Spirit of Christ, he does not belong to him.",
+        "However, you are not in the flesh but in the Spirit, if indeed God's Spirit lives in you. But if anyone does not have the Spirit of Christ, he does not belong to him. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2600,7 +2600,7 @@
           "number": "12",
           "sid": "ROM 8:12"
         },
-        "So then, brothers, we are debtors, but not to the flesh to live according to the flesh.",
+        "So then, brothers, we are debtors, but not to the flesh to live according to the flesh. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2625,7 +2625,7 @@
           "number": "14",
           "sid": "ROM 8:14"
         },
-        "For as many as are led by the Spirit of God, these are sons of God.",
+        "For as many as are led by the Spirit of God, these are sons of God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2650,7 +2650,7 @@
           "number": "16",
           "sid": "ROM 8:16"
         },
-        "The Spirit himself bears witness with our spirit that we are children of God.",
+        "The Spirit himself bears witness with our spirit that we are children of God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2675,7 +2675,7 @@
           "number": "18",
           "sid": "ROM 8:18"
         },
-        "For I consider that the sufferings of this present time are not worthy to be compared with the glory that will be revealed to us.",
+        "For I consider that the sufferings of this present time are not worthy to be compared with the glory that will be revealed to us. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2700,14 +2700,14 @@
           "number": "20",
           "sid": "ROM 8:20"
         },
-        "For the creation was subjected to futility, not of its own will, but because of him who subjected it, in hope",
+        "For the creation was subjected to futility, not of its own will, but because of him who subjected it, in hope ",
         {
           "type": "verse",
           "marker": "v",
           "number": "21",
           "sid": "ROM 8:21"
         },
-        "that the creation itself will be delivered from slavery to decay, and that it will be brought into the freedom of the glory of the children of God.",
+        "that the creation itself will be delivered from slavery to decay, and that it will be brought into the freedom of the glory of the children of God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2732,14 +2732,14 @@
           "number": "23",
           "sid": "ROM 8:23"
         },
-        "Not only that, but even we ourselves, who have the firstfruits of the Spirit, groan inwardly, as we wait eagerly for our adoption, the redemption of our body.",
+        "Not only that, but even we ourselves, who have the firstfruits of the Spirit, groan inwardly, as we wait eagerly for our adoption, the redemption of our body. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "24",
           "sid": "ROM 8:24"
         },
-        "For in this hope we were saved. Now hope that is seen is not hope. For who hopes for what he can see?",
+        "For in this hope we were saved. Now hope that is seen is not hope. For who hopes for what he can see? ",
         {
           "type": "verse",
           "marker": "v",
@@ -2764,7 +2764,7 @@
           "number": "26",
           "sid": "ROM 8:26"
         },
-        "In the same way, the Spirit also helps in our weakness. For we do not know how we should pray, but the Spirit himself intercedes for us with inexpressible groans.",
+        "In the same way, the Spirit also helps in our weakness. For we do not know how we should pray, but the Spirit himself intercedes for us with inexpressible groans. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2789,7 +2789,7 @@
           "number": "28",
           "sid": "ROM 8:28"
         },
-        "We know that for those who love God, he works all things together for good,",
+        "We know that for those who love God, he works all things together for good, ",
         {
           "type": "note",
           "marker": "f",
@@ -2799,35 +2799,35 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "Instead of"
+                "Instead of "
               ]
             },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "he works all things together for good"
+                "he works all things together for good "
               ]
             },
-            ", some Greek copies read,",
+            " , some Greek copies read, ",
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "all things work together for good"
+                "all things work together for good "
               ]
             },
-            "."
+            " . "
           ]
         },
-        "for those who are called according to his purpose.",
+        " for those who are called according to his purpose. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "29",
           "sid": "ROM 8:29"
         },
-        "Because those whom he foreknew he also predestined to be conformed to the image of his Son, that he might be the firstborn among many brothers.",
+        "Because those whom he foreknew he also predestined to be conformed to the image of his Son, that he might be the firstborn among many brothers. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2852,7 +2852,7 @@
           "number": "31",
           "sid": "ROM 8:31"
         },
-        "What then shall we say about these things? If God is for us, who is against us?",
+        "What then shall we say about these things? If God is for us, who is against us? ",
         {
           "type": "verse",
           "marker": "v",
@@ -2877,7 +2877,7 @@
           "number": "33",
           "sid": "ROM 8:33"
         },
-        "Who will bring any accusation against God's chosen ones? God is the one who justifies.",
+        "Who will bring any accusation against God's chosen ones? God is the one who justifies. ",
         {
           "type": "verse",
           "marker": "v",
@@ -2902,7 +2902,7 @@
           "number": "35",
           "sid": "ROM 8:35"
         },
-        "Who will separate us from the love of Christ? Tribulation, or distress, or persecution, or hunger, or nakedness, or danger, or sword?",
+        "Who will separate us from the love of Christ? Tribulation, or distress, or persecution, or hunger, or nakedness, or danger, or sword? ",
         {
           "type": "verse",
           "marker": "v",
@@ -2946,14 +2946,14 @@
           "number": "37",
           "sid": "ROM 8:37"
         },
-        "In all these things we are more than conquerors through the one who loved us.",
+        "In all these things we are more than conquerors through the one who loved us. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "38",
           "sid": "ROM 8:38"
         },
-        "For I have been convinced that neither death, nor life, nor angels, nor governments, nor things present, nor things to come, nor powers,",
+        "For I have been convinced that neither death, nor life, nor angels, nor governments, nor things present, nor things to come, nor powers, ",
         {
           "type": "verse",
           "marker": "v",
@@ -2984,7 +2984,7 @@
           "number": "1",
           "sid": "ROM 9:1"
         },
-        "I tell the truth in Christ. I do not lie, and my conscience bears witness with me in the Holy Spirit",
+        "I tell the truth in Christ. I do not lie, and my conscience bears witness with me in the Holy Spirit ",
         {
           "type": "verse",
           "marker": "v",
@@ -3009,14 +3009,14 @@
           "number": "3",
           "sid": "ROM 9:3"
         },
-        "For I could wish that I myself would be cursed and set apart from Christ for the sake of my brothers, my kinsmen according to the flesh.",
+        "For I could wish that I myself would be cursed and set apart from Christ for the sake of my brothers, my kinsmen according to the flesh. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "4",
           "sid": "ROM 9:4"
         },
-        "They are Israelites. They have adoption, the glory, the covenants, the gift of the law, the ministry in the temple, and the promises.",
+        "They are Israelites. They have adoption, the glory, the covenants, the gift of the law, the ministry in the temple, and the promises. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3041,7 +3041,7 @@
           "number": "6",
           "sid": "ROM 9:6"
         },
-        "But it is not as though the word of God has failed. For it is not everyone in Israel who truly belongs to Israel.",
+        "But it is not as though the word of God has failed. For it is not everyone in Israel who truly belongs to Israel. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3066,7 +3066,7 @@
           "number": "8",
           "sid": "ROM 9:8"
         },
-        "That is, the children of the flesh are not the children of God. But the children of the promise are regarded as descendants.",
+        "That is, the children of the flesh are not the children of God. But the children of the promise are regarded as descendants. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3091,21 +3091,21 @@
           "number": "10",
           "sid": "ROM 9:10"
         },
-        "Not only this, but after Rebekah also had conceived by one man, our father Isaac—",
+        "Not only this, but after Rebekah also had conceived by one man, our father Isaac— ",
         {
           "type": "verse",
           "marker": "v",
           "number": "11",
           "sid": "ROM 9:11"
         },
-        "for the children were not yet born and had not yet done anything good or bad, so that the purpose of God according to choice might stand, not because of actions, but because of him who calls—",
+        "for the children were not yet born and had not yet done anything good or bad, so that the purpose of God according to choice might stand, not because of actions, but because of him who calls— ",
         {
           "type": "verse",
           "marker": "v",
           "number": "12",
           "sid": "ROM 9:12"
         },
-        "it was said to her, \"The older will serve the younger.\"",
+        "it was said to her, \"The older will serve the younger.\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -3130,7 +3130,7 @@
           "number": "14",
           "sid": "ROM 9:14"
         },
-        "What then will we say? Is there unrighteousness with God? May it never be.",
+        "What then will we say? Is there unrighteousness with God? May it never be. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3168,7 +3168,7 @@
           "number": "17",
           "sid": "ROM 9:17"
         },
-        "For the scripture says to Pharaoh, \"For this very purpose I raised you up, so that I might demonstrate my power in you, and so that my name might be proclaimed in all the earth.\"",
+        "For the scripture says to Pharaoh, \"For this very purpose I raised you up, so that I might demonstrate my power in you, and so that my name might be proclaimed in all the earth.\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -3193,14 +3193,14 @@
           "number": "19",
           "sid": "ROM 9:19"
         },
-        "You will say then to me, \"Why does he still find fault? For who has ever withstood his will?\"",
+        "You will say then to me, \"Why does he still find fault? For who has ever withstood his will?\" ",
         {
           "type": "verse",
           "marker": "v",
           "number": "20",
           "sid": "ROM 9:20"
         },
-        "On the contrary, man, who are you who answers against God? Will what has been molded say to the one who molds it, \"Why did you make me this way?\"",
+        "On the contrary, man, who are you who answers against God? Will what has been molded say to the one who molds it, \"Why did you make me this way?\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -3225,14 +3225,14 @@
           "number": "22",
           "sid": "ROM 9:22"
         },
-        "What if God, who is willing to show his wrath and to make his power known, endured with much patience containers of wrath prepared for destruction?",
+        "What if God, who is willing to show his wrath and to make his power known, endured with much patience containers of wrath prepared for destruction? ",
         {
           "type": "verse",
           "marker": "v",
           "number": "23",
           "sid": "ROM 9:23"
         },
-        "What if he did this in order that he might make known the riches of his glory upon containers of mercy, which he had previously prepared for glory?",
+        "What if he did this in order that he might make known the riches of his glory upon containers of mercy, which he had previously prepared for glory? ",
         {
           "type": "verse",
           "marker": "v",
@@ -3400,7 +3400,7 @@
           "number": "30",
           "sid": "ROM 9:30"
         },
-        "What will we say then? That the Gentiles, who were not pursuing righteousness, obtained righteousness, the righteousness by faith.",
+        "What will we say then? That the Gentiles, who were not pursuing righteousness, obtained righteousness, the righteousness by faith. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3425,7 +3425,7 @@
           "number": "32",
           "sid": "ROM 9:32"
         },
-        "Why not? Because they did not pursue it by faith, but as if by works. They stumbled over the stone of stumbling,",
+        "Why not? Because they did not pursue it by faith, but as if by works. They stumbled over the stone of stumbling, ",
         {
           "type": "verse",
           "marker": "v",
@@ -3470,14 +3470,14 @@
           "number": "1",
           "sid": "ROM 10:1"
         },
-        "Brothers, my heart's desire and my plea to God is for them, for their salvation.",
+        "Brothers, my heart's desire and my plea to God is for them, for their salvation. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "ROM 10:2"
         },
-        "For I testify about them that they have a zeal for God, but not according to knowledge.",
+        "For I testify about them that they have a zeal for God, but not according to knowledge. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3502,7 +3502,7 @@
           "number": "4",
           "sid": "ROM 10:4"
         },
-        "For Christ is the fulfillment of the law for righteousness for everyone who believes.",
+        "For Christ is the fulfillment of the law for righteousness for everyone who believes. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3527,7 +3527,7 @@
           "number": "6",
           "sid": "ROM 10:6"
         },
-        "But the righteousness that comes from faith says this: \"Do not say in your heart, 'Who will ascend into heaven?' (that is, to bring Christ down);",
+        "But the righteousness that comes from faith says this: \"Do not say in your heart, 'Who will ascend into heaven?' (that is, to bring Christ down); ",
         {
           "type": "verse",
           "marker": "v",
@@ -3566,14 +3566,14 @@
       "type": "para",
       "marker": "p",
       "content": [
-        "That is the word of faith, which we proclaim.",
+        "That is the word of faith, which we proclaim. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "9",
           "sid": "ROM 10:9"
         },
-        "For if with your mouth you confess Jesus as Lord, and believe in your heart that God raised him from the dead, you will be saved.",
+        "For if with your mouth you confess Jesus as Lord, and believe in your heart that God raised him from the dead, you will be saved. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3598,14 +3598,14 @@
           "number": "11",
           "sid": "ROM 10:11"
         },
-        "For scripture says, \"Everyone who believes on him will not be put to shame.\"",
+        "For scripture says, \"Everyone who believes on him will not be put to shame.\" ",
         {
           "type": "verse",
           "marker": "v",
           "number": "12",
           "sid": "ROM 10:12"
         },
-        "For there is no difference between Jew and Greek. For the same Lord is Lord of all, and he is rich to all who call upon him.",
+        "For there is no difference between Jew and Greek. For the same Lord is Lord of all, and he is rich to all who call upon him. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3630,7 +3630,7 @@
           "number": "14",
           "sid": "ROM 10:14"
         },
-        "How then can they call on him in whom they have not believed? How can they believe in him of whom they have not heard? How can they hear without a preacher?",
+        "How then can they call on him in whom they have not believed? How can they believe in him of whom they have not heard? How can they hear without a preacher? ",
         {
           "type": "verse",
           "marker": "v",
@@ -3655,7 +3655,7 @@
           "number": "16",
           "sid": "ROM 10:16"
         },
-        "But not all of them obeyed the good news. For Isaiah says, \"Lord, who has believed our report?\"",
+        "But not all of them obeyed the good news. For Isaiah says, \"Lord, who has believed our report?\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -3810,14 +3810,14 @@
           "number": "1",
           "sid": "ROM 11:1"
         },
-        "I say then, did God reject his people? May it never be. For I also am an Israelite, a descendant of Abraham, of the tribe of Benjamin.",
+        "I say then, did God reject his people? May it never be. For I also am an Israelite, a descendant of Abraham, of the tribe of Benjamin. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "ROM 11:2"
         },
-        "God did not reject his people, whom he foreknew. Do you not know what the scripture says about Elijah, how he pleaded with God against Israel?",
+        "God did not reject his people, whom he foreknew. Do you not know what the scripture says about Elijah, how he pleaded with God against Israel? ",
         {
           "type": "verse",
           "marker": "v",
@@ -3842,7 +3842,7 @@
           "number": "4",
           "sid": "ROM 11:4"
         },
-        "But what does God's answer say to him? \"I have reserved for myself seven thousand men who have not bent the knee to Baal.\"",
+        "But what does God's answer say to him? \"I have reserved for myself seven thousand men who have not bent the knee to Baal.\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -3867,7 +3867,7 @@
           "number": "6",
           "sid": "ROM 11:6"
         },
-        "But if it is by grace, it is no longer by works. Otherwise grace would no longer be grace.",
+        "But if it is by grace, it is no longer by works. Otherwise grace would no longer be grace. ",
         {
           "type": "note",
           "marker": "f",
@@ -3877,17 +3877,17 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "Some old copies read"
+                "Some old copies read "
               ]
             },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "But if it is by works, then is it no more grace; otherwise work is no more work"
+                "But if it is by works, then is it no more grace; otherwise work is no more work "
               ]
             },
-            "."
+            " . "
           ]
         },
         {
@@ -3896,7 +3896,7 @@
           "number": "7",
           "sid": "ROM 11:7"
         },
-        "What then? The thing that Israel was seeking, it did not obtain, but the chosen obtained it, and the rest were hardened.",
+        "What then? The thing that Israel was seeking, it did not obtain, but the chosen obtained it, and the rest were hardened. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3973,7 +3973,7 @@
           "number": "11",
           "sid": "ROM 11:11"
         },
-        "I say then, \"Did they stumble so as to fall?\" May it never be. Instead, by their trespass, salvation has come to the Gentiles, in order to provoke them to jealousy.",
+        "I say then, \"Did they stumble so as to fall?\" May it never be. Instead, by their trespass, salvation has come to the Gentiles, in order to provoke them to jealousy. ",
         {
           "type": "verse",
           "marker": "v",
@@ -3998,7 +3998,7 @@
           "number": "13",
           "sid": "ROM 11:13"
         },
-        "But now I am speaking to you Gentiles, and as long as I am an apostle to the Gentiles, I take pride in my ministry.",
+        "But now I am speaking to you Gentiles, and as long as I am an apostle to the Gentiles, I take pride in my ministry. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4023,7 +4023,7 @@
           "number": "15",
           "sid": "ROM 11:15"
         },
-        "For if their rejection means the reconciliation of the world, what will their acceptance be but life from the dead?",
+        "For if their rejection means the reconciliation of the world, what will their acceptance be but life from the dead? ",
         {
           "type": "verse",
           "marker": "v",
@@ -4048,7 +4048,7 @@
           "number": "17",
           "sid": "ROM 11:17"
         },
-        "But if some of the branches were broken off, if you, a wild olive branch, were grafted in among them, and if you shared with them in the rich root of the olive tree,",
+        "But if some of the branches were broken off, if you, a wild olive branch, were grafted in among them, and if you shared with them in the rich root of the olive tree, ",
         {
           "type": "verse",
           "marker": "v",
@@ -4073,14 +4073,14 @@
           "number": "19",
           "sid": "ROM 11:19"
         },
-        "You will say then, \"Branches were broken off so that I might be grafted in.\"",
+        "You will say then, \"Branches were broken off so that I might be grafted in.\" ",
         {
           "type": "verse",
           "marker": "v",
           "number": "20",
           "sid": "ROM 11:20"
         },
-        "That is true. Because of their unbelief they were broken off, but you stand firm because of your faith. Do not think too highly of yourself, but fear.",
+        "That is true. Because of their unbelief they were broken off, but you stand firm because of your faith. Do not think too highly of yourself, but fear. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4123,7 +4123,7 @@
           "number": "23",
           "sid": "ROM 11:23"
         },
-        "And even they, if they do not continue in their unbelief, will be grafted in. For God is able to graft them in again.",
+        "And even they, if they do not continue in their unbelief, will be grafted in. For God is able to graft them in again. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4223,7 +4223,7 @@
           "number": "28",
           "sid": "ROM 11:28"
         },
-        "As far as the gospel is concerned, they are enemies for your sake. But as far as election is concerned, they are beloved because of the patriarchs.",
+        "As far as the gospel is concerned, they are enemies for your sake. But as far as election is concerned, they are beloved because of the patriarchs. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4248,14 +4248,14 @@
           "number": "30",
           "sid": "ROM 11:30"
         },
-        "For just as you were formerly disobedient to God, now you have received mercy because of their disobedience.",
+        "For just as you were formerly disobedient to God, now you have received mercy because of their disobedience. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "31",
           "sid": "ROM 11:31"
         },
-        "In the same way, now these Jews have been disobedient. The result was that by the mercy shown to you they may also now receive mercy.",
+        "In the same way, now these Jews have been disobedient. The result was that by the mercy shown to you they may also now receive mercy. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4362,7 +4362,7 @@
           "number": "1",
           "sid": "ROM 12:1"
         },
-        "I urge you therefore, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God. This is your reasonable service.",
+        "I urge you therefore, brothers, by the mercies of God, to present your bodies a living sacrifice, holy, acceptable to God. This is your reasonable service. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4405,7 +4405,7 @@
           "number": "4",
           "sid": "ROM 12:4"
         },
-        "For we have many members in one body, but not all the members have the same function.",
+        "For we have many members in one body, but not all the members have the same function. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4430,14 +4430,14 @@
           "number": "6",
           "sid": "ROM 12:6"
         },
-        "We have different gifts according to the grace that was given to us. If one's gift is prophecy, let it be done according to the proportion of his faith.",
+        "We have different gifts according to the grace that was given to us. If one's gift is prophecy, let it be done according to the proportion of his faith. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "7",
           "sid": "ROM 12:7"
         },
-        "If one's gift is service, let him serve. If one has the gift of teaching, let him teach.",
+        "If one's gift is service, let him serve. If one has the gift of teaching, let him teach. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4462,7 +4462,7 @@
           "number": "9",
           "sid": "ROM 12:9"
         },
-        "Let love be without hypocrisy. Abhor what is evil; hold on to that which is good.",
+        "Let love be without hypocrisy. Abhor what is evil; hold on to that which is good. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4487,14 +4487,14 @@
           "number": "11",
           "sid": "ROM 12:11"
         },
-        "Concerning diligence, do not be hesitant. Concerning the spirit, be eager. Concerning the Lord, serve him.",
+        "Concerning diligence, do not be hesitant. Concerning the spirit, be eager. Concerning the Lord, serve him. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "12",
           "sid": "ROM 12:12"
         },
-        "Rejoice in hope, endure tribulation, be faithful in prayer.",
+        "Rejoice in hope, endure tribulation, be faithful in prayer. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4519,14 +4519,14 @@
           "number": "14",
           "sid": "ROM 12:14"
         },
-        "Bless those who persecute you; bless and do not curse.",
+        "Bless those who persecute you; bless and do not curse. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "15",
           "sid": "ROM 12:15"
         },
-        "Rejoice with those who rejoice; weep with those who weep.",
+        "Rejoice with those who rejoice; weep with those who weep. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4551,7 +4551,7 @@
           "number": "17",
           "sid": "ROM 12:17"
         },
-        "Repay no one evil for evil. Do good things in the sight of all people.",
+        "Repay no one evil for evil. Do good things in the sight of all people. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4645,7 +4645,7 @@
           "number": "1",
           "sid": "ROM 13:1"
         },
-        "Let every soul be subject to to higher authorities, for there is no authority unless it comes from God. The authorities that exist have been appointed by God.",
+        "Let every soul be subject to to higher authorities, for there is no authority unless it comes from God. The authorities that exist have been appointed by God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4670,14 +4670,14 @@
           "number": "3",
           "sid": "ROM 13:3"
         },
-        "For rulers are not a terror to good deeds, but to evil deeds. Do you desire to have no fear of the one in authority? Do what is good, and you will receive his praise.",
+        "For rulers are not a terror to good deeds, but to evil deeds. Do you desire to have no fear of the one in authority? Do what is good, and you will receive his praise. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "4",
           "sid": "ROM 13:4"
         },
-        "For he is a servant of God to you for good. But if you do what is evil, be afraid; for he does not carry the sword for no reason. For he is a servant of God, an avenger for wrath on the one who does evil.",
+        "For he is a servant of God to you for good. But if you do what is evil, be afraid; for he does not carry the sword for no reason. For he is a servant of God, an avenger for wrath on the one who does evil. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4702,7 +4702,7 @@
           "number": "6",
           "sid": "ROM 13:6"
         },
-        "Because of this you pay taxes also. For authorities are servants of God, who attend to this very thing continually.",
+        "Because of this you pay taxes also. For authorities are servants of God, who attend to this very thing continually. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4727,14 +4727,14 @@
           "number": "8",
           "sid": "ROM 13:8"
         },
-        "Owe no one anything, except to love one another. For he who loves his neighbor has fulfilled the law.",
+        "Owe no one anything, except to love one another. For he who loves his neighbor has fulfilled the law. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "9",
           "sid": "ROM 13:9"
         },
-        "The commandments, \"Do not commit adultery, do not kill, do not steal, do not covet,\" and if there is any other commandment it is summed up in this, \"Love your neighbor as yourself.\"",
+        "The commandments, \"Do not commit adultery, do not kill, do not steal, do not covet,\" and if there is any other commandment it is summed up in this, \"Love your neighbor as yourself.\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -4759,7 +4759,7 @@
           "number": "11",
           "sid": "ROM 13:11"
         },
-        "Because of this, you know the time, that it is already the hour for you to awake out of sleep. For now our salvation is nearer than when we first believed.",
+        "Because of this, you know the time, that it is already the hour for you to awake out of sleep. For now our salvation is nearer than when we first believed. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4784,7 +4784,7 @@
           "number": "13",
           "sid": "ROM 13:13"
         },
-        "Let us walk appropriately, as in the day, not in drunken celebrations or drunkenness; and let us not walk in sexual immorality or in uncontrolled lust, and not in strife or jealousy.",
+        "Let us walk appropriately, as in the day, not in drunken celebrations or drunkenness; and let us not walk in sexual immorality or in uncontrolled lust, and not in strife or jealousy. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4815,7 +4815,7 @@
           "number": "1",
           "sid": "ROM 14:1"
         },
-        "Receive anyone who is weak in faith, without giving judgment about arguments.",
+        "Receive anyone who is weak in faith, without giving judgment about arguments. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4840,7 +4840,7 @@
           "number": "3",
           "sid": "ROM 14:3"
         },
-        "May the one who eats everything not despise the one who does not; and may the one who does not eat everything not judge the other who eats everything. For God has accepted him.",
+        "May the one who eats everything not despise the one who does not; and may the one who does not eat everything not judge the other who eats everything. For God has accepted him. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4865,7 +4865,7 @@
           "number": "5",
           "sid": "ROM 14:5"
         },
-        "One person values one day above another. Another values every day equally. Let each person be convinced in his own mind.",
+        "One person values one day above another. Another values every day equally. Let each person be convinced in his own mind. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4890,14 +4890,14 @@
           "number": "7",
           "sid": "ROM 14:7"
         },
-        "For none of us lives for himself, and none dies for himself.",
+        "For none of us lives for himself, and none dies for himself. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "8",
           "sid": "ROM 14:8"
         },
-        "For if we live, we live for the Lord, and if we die, we die for the Lord. Then whether we live or die, we are the Lord's.",
+        "For if we live, we live for the Lord, and if we die, we die for the Lord. Then whether we live or die, we are the Lord's. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4922,7 +4922,7 @@
           "number": "10",
           "sid": "ROM 14:10"
         },
-        "But you, why do you judge your brother? And you, why do you despise your brother? For we will all stand before the judgment seat of God.",
+        "But you, why do you judge your brother? And you, why do you despise your brother? For we will all stand before the judgment seat of God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -4997,7 +4997,7 @@
           "number": "14",
           "sid": "ROM 14:14"
         },
-        "I know and am persuaded in the Lord Jesus that nothing is unclean by itself. Only for him who considers anything to be unclean, for him it is unclean.",
+        "I know and am persuaded in the Lord Jesus that nothing is unclean by itself. Only for him who considers anything to be unclean, for him it is unclean. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5022,7 +5022,7 @@
           "number": "16",
           "sid": "ROM 14:16"
         },
-        "So do not allow what you consider to be good to be spoken of as evil.",
+        "So do not allow what you consider to be good to be spoken of as evil. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5047,7 +5047,7 @@
           "number": "18",
           "sid": "ROM 14:18"
         },
-        "For the one who serves Christ in this way is acceptable to God and approved by people.",
+        "For the one who serves Christ in this way is acceptable to God and approved by people. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5072,7 +5072,7 @@
           "number": "20",
           "sid": "ROM 14:20"
         },
-        "Do not destroy the work of God on account of food. All things are clean, but it is wrong for a man to eat anything that causes someone to stumble.",
+        "Do not destroy the work of God on account of food. All things are clean, but it is wrong for a man to eat anything that causes someone to stumble. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5097,7 +5097,7 @@
           "number": "22",
           "sid": "ROM 14:22"
         },
-        "The faith you have, keep between yourself and God. Blessed is the one who does not condemn himself by what he approves.",
+        "The faith you have, keep between yourself and God. Blessed is the one who does not condemn himself by what he approves. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5128,7 +5128,7 @@
           "number": "1",
           "sid": "ROM 15:1"
         },
-        "Now we who are strong ought to bear the weaknesses of the weak, and ought not to please ourselves.",
+        "Now we who are strong ought to bear the weaknesses of the weak, and ought not to please ourselves. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5153,7 +5153,7 @@
           "number": "3",
           "sid": "ROM 15:3"
         },
-        "For even Christ did not please himself. Instead, it was just as it is written, \"The insults of those who insulted you fell on me.\"",
+        "For even Christ did not please himself. Instead, it was just as it is written, \"The insults of those who insulted you fell on me.\" ",
         {
           "type": "verse",
           "marker": "v",
@@ -5178,7 +5178,7 @@
           "number": "5",
           "sid": "ROM 15:5"
         },
-        "Now may the God of patience and of encouragement grant you to be of the same mind with each other according to Christ Jesus.",
+        "Now may the God of patience and of encouragement grant you to be of the same mind with each other according to Christ Jesus. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5216,7 +5216,7 @@
           "number": "8",
           "sid": "ROM 15:8"
         },
-        "For I say that Christ has been made a servant of the circumcision on behalf of God's truth, in order to confirm the promises given to the patriarchs,",
+        "For I say that Christ has been made a servant of the circumcision on behalf of God's truth, in order to confirm the promises given to the patriarchs, ",
         {
           "type": "verse",
           "marker": "v",
@@ -5378,7 +5378,7 @@
           "number": "15",
           "sid": "ROM 15:15"
         },
-        "But I am writing more boldly to you about some things in order to remind you again, because of the grace given me by God.",
+        "But I am writing more boldly to you about some things in order to remind you again, because of the grace given me by God. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5403,14 +5403,14 @@
           "number": "17",
           "sid": "ROM 15:17"
         },
-        "In Christ Jesus I have reason to boast of my service for God.",
+        "In Christ Jesus I have reason to boast of my service for God. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "18",
           "sid": "ROM 15:18"
         },
-        "For I will not dare to speak of anything except what Christ has accomplished through me for the obedience of the Gentiles. These are things done by word and action,",
+        "For I will not dare to speak of anything except what Christ has accomplished through me for the obedience of the Gentiles. These are things done by word and action, ",
         {
           "type": "verse",
           "marker": "v",
@@ -5435,7 +5435,7 @@
           "number": "20",
           "sid": "ROM 15:20"
         },
-        "In this way, my desire has been to proclaim the gospel, but not where Christ is known by name, in order that I might not build upon another man's foundation.",
+        "In this way, my desire has been to proclaim the gospel, but not where Christ is known by name, in order that I might not build upon another man's foundation. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5474,7 +5474,7 @@
           "number": "22",
           "sid": "ROM 15:22"
         },
-        "Therefore I was also hindered many times from coming to you.",
+        "Therefore I was also hindered many times from coming to you. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5499,7 +5499,7 @@
           "number": "24",
           "sid": "ROM 15:24"
         },
-        "I hope to see you when I pass through there on my way to Spain, and to be helped by you on my journey there, once I have enjoyed your company for a while.",
+        "I hope to see you when I pass through there on my way to Spain, and to be helped by you on my journey there, once I have enjoyed your company for a while. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5524,7 +5524,7 @@
           "number": "26",
           "sid": "ROM 15:26"
         },
-        "For it was the good pleasure of Macedonia and Achaia to make a certain contribution to the poor among God's holy people who are in Jerusalem.",
+        "For it was the good pleasure of Macedonia and Achaia to make a certain contribution to the poor among God's holy people who are in Jerusalem. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5549,7 +5549,7 @@
           "number": "28",
           "sid": "ROM 15:28"
         },
-        "Therefore, when I have completed this task and have sealed this fruit to them, I will go to Spain and visit you on the way.",
+        "Therefore, when I have completed this task and have sealed this fruit to them, I will go to Spain and visit you on the way. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5574,14 +5574,14 @@
           "number": "30",
           "sid": "ROM 15:30"
         },
-        "Now I urge you, brothers, by our Lord Jesus Christ, and by the love of the Spirit, that you strive together with me in your prayers to God for me.",
+        "Now I urge you, brothers, by our Lord Jesus Christ, and by the love of the Spirit, that you strive together with me in your prayers to God for me. ",
         {
           "type": "verse",
           "marker": "v",
           "number": "31",
           "sid": "ROM 15:31"
         },
-        "Pray that I may be rescued from those who are disobedient in Judea, and that my service for Jerusalem may be acceptable to God's holy people.",
+        "Pray that I may be rescued from those who are disobedient in Judea, and that my service for Jerusalem may be acceptable to God's holy people. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5630,7 +5630,7 @@
           "number": "1",
           "sid": "ROM 16:1"
         },
-        "I commend to you Phoebe our sister, who is a servant of the church that is in Cenchrea,",
+        "I commend to you Phoebe our sister, who is a servant of the church that is in Cenchrea, ",
         {
           "type": "verse",
           "marker": "v",
@@ -5655,7 +5655,7 @@
           "number": "3",
           "sid": "ROM 16:3"
         },
-        "Greet Priscilla and Aquila, my fellow workers in Christ Jesus,",
+        "Greet Priscilla and Aquila, my fellow workers in Christ Jesus, ",
         {
           "type": "verse",
           "marker": "v",
@@ -5856,7 +5856,7 @@
           "number": "17",
           "sid": "ROM 16:17"
         },
-        "Now I urge you, brothers, to think about those who are causing the divisions and stumbling. They are going beyond the teaching that you have learned. Turn away from them.",
+        "Now I urge you, brothers, to think about those who are causing the divisions and stumbling. They are going beyond the teaching that you have learned. Turn away from them. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5881,7 +5881,7 @@
           "number": "19",
           "sid": "ROM 16:19"
         },
-        "For your example of obedience reaches everyone. I rejoice, therefore, over you, but I want you to be wise as to that which is good, and innocent to that which is evil.",
+        "For your example of obedience reaches everyone. I rejoice, therefore, over you, but I want you to be wise as to that which is good, and innocent to that which is evil. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5913,7 +5913,7 @@
           "number": "21",
           "sid": "ROM 16:21"
         },
-        "Timothy, my fellow worker, greets you, and Lucius, Jason, and Sosipater, my kinsmen.",
+        "Timothy, my fellow worker, greets you, and Lucius, Jason, and Sosipater, my kinsmen. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5938,7 +5938,7 @@
           "number": "23",
           "sid": "ROM 16:23"
         },
-        "Gaius, the host for me and for the whole church, greets you. Erastus, the treasurer of the city, greets you, with Quartus the brother.",
+        "Gaius, the host for me and for the whole church, greets you. Erastus, the treasurer of the city, greets you, with Quartus the brother. ",
         {
           "type": "verse",
           "marker": "v",
@@ -5954,17 +5954,17 @@
               "type": "char",
               "marker": "ft",
               "content": [
-                "The best ancient copies do not have this verse. (See: Romans 16:20). v. 24"
+                "The best ancient copies do not have this verse. (See: Romans 16:20). v. 24 "
               ]
             },
             {
               "type": "char",
               "marker": "fqa",
               "content": [
-                "May the grace of our Lord Jesus Christ be with you all. Amen"
+                "May the grace of our Lord Jesus Christ be with you all. Amen "
               ]
             },
-            "."
+            " . "
           ]
         }
       ]

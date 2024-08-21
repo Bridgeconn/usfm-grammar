@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -82,7 +82,7 @@
       "type": "para",
       "marker": "io1",
       "content": [
-        "The beginning of the gospel",
+        "The beginning of the gospel ",
         {
           "type": "char",
           "marker": "ior",
@@ -96,7 +96,7 @@
       "type": "para",
       "marker": "io1",
       "content": [
-        "Jesus' public ministry in Galilee",
+        "Jesus' public ministry in Galilee ",
         {
           "type": "char",
           "marker": "ior",
@@ -110,7 +110,7 @@
       "type": "para",
       "marker": "io1",
       "content": [
-        "From Galilee to Jerusalem",
+        "From Galilee to Jerusalem ",
         {
           "type": "char",
           "marker": "ior",
@@ -143,7 +143,7 @@
           "number": "1",
           "sid": "MAT 1:1"
         },
-        "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ...",
+        "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ... ",
         {
           "type": "verse",
           "marker": "v",

@@ -1,6 +1,6 @@
 {
   "type": "USJ",
-  "version": "0.2.0",
+  "version": "3.1",
   "content": [
     {
       "type": "book",
@@ -24,14 +24,14 @@
           "number": "1",
           "sid": "MAT 1:1"
         },
-        "the first verse",
+        "the first verse ",
         {
           "type": "verse",
           "marker": "v",
           "number": "2",
           "sid": "MAT 1:2"
         },
-        "the second verse",
+        "the second verse ",
         {
           "type": "verse",
           "marker": "v",
@@ -47,7 +47,7 @@
               "type": "char",
               "marker": "xo",
               "content": [
-                "2.23:"
+                "2.23: "
               ]
             },
             {
