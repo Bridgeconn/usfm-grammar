@@ -1,7 +1,7 @@
 import {USFMParser} from './src/index.js';
 
 (async () => {
-  await USFMParser.init("tree-sitter-usfm.wasm");
+  await USFMParser.init("tree-sitter-usfm.wasm", "tree-sitter.wasm");
   const usfmParser = new USFMParser();
   const output = usfmParser.usfmToUsj('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 more text');
   console.log({ output });

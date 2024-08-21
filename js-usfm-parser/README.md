@@ -14,8 +14,7 @@ npm install usfm-grammar
 Here's how you can use USFM Grammar in your JavaScript/TypeScript projects:
 
 ```javascript
-import pkg from 'usfm-grammar';
-const USFMParser = pkg.USFMParser;
+const { USFMParser}  = require('usfm-grammar');
 
 (async () => {
   await USFMParser.init();
@@ -27,11 +26,14 @@ const USFMParser = pkg.USFMParser;
 })();
 ```
 
-If you are using node the import part can be change as below:
+If the above import cause issue in an esm project use the below format:
 ```javascript
-const { USFMParser}  = require('usfm-grammar');
+import pkg from 'usfm-grammar';
+const USFMParser = pkg.USFMParser;
+
 ```
 
+If using from react, please refer the instructions for it [here](../docs/react-usage.md).
 
 ## API Documentation
 

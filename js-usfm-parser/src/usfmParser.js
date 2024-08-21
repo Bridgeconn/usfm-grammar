@@ -3,15 +3,18 @@ import Parser from './web-tree-sitter/tree-sitter.js';
 import USFMGenerator from "./usfmGenerator.js";
 import USJGenerator from "./usjGenerator.js";
 import { includeMarkersInUsj, excludeMarkersInUsj } from "./filters.js";
-const locateFile = (scriptName, scriptDirectory) => {
-	return `node_modules/usfm-grammar/${scriptName}`;
-};
+
 
 class USFMParser {
 	static language = null;
 	static async init(grammarPath="node_modules/usfm-grammar/tree-sitter-usfm.wasm",
-					parserPath="node_modules/web-tree-sitter/tree-sitter.wasm") {
-		await Parser.init({ parserPath });
+
+					parserPath="node_modules/usfm-grammar/tree-sitter.wasm") {
+		await Parser.init( {
+				  locateFile() {
+				    return parserPath;
+				  },
+				} );
 		USFMParser.language = await Parser.Language.load(grammarPath);
 	}
 
