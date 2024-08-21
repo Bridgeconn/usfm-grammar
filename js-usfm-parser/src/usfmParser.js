@@ -1,4 +1,4 @@
-import Parser from 'web-tree-sitter';
+import Parser from './web-tree-sitter/tree-sitter.js';
 
 import USFMGenerator from "./usfmGenerator.js";
 import USJGenerator from "./usjGenerator.js";

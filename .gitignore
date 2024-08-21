@@ -82,3 +82,5 @@ tree-sitter-usfm3/src/
 */src/usfm_grammar.egg-info/*
 **/my-languages.so
 **/wheelhouse/
+js-usfm-parser/src/web-tree-sitter/tree-sitter.js
+js-usfm-parser/src/web-tree-sitter/tree-sitter.wasm

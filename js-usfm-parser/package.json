@@ -5,7 +5,6 @@
   "type": "module",
   "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.mjs",
-  "browser": "dist/umd/index.umd.js",
   "source": "src/index.js",
   "scripts": {
     "build": "parcel build src/index.js"
@@ -32,10 +31,8 @@
     "Samuel JD <samuelj.ernest@gmail.com> (https://github.com/samueljd)"
   ],
   "license": "MIT",
-  "dependencies": {
-    "web-tree-sitter": "^0.22.6"
-  },
   "devDependencies": {
+    "web-tree-sitter": "^0.22.6",
     "@babel/core": "^7.25.2",
     "@babel/plugin-transform-runtime": "^7.24.7",
     "@babel/preset-env": "^7.25.3",
