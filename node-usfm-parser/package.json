@@ -1,6 +1,6 @@
 {
   "name": "usfm-grammar",
-  "version": "3.0.0-alpha.58",
+  "version": "3.0.0-alpha.8",
   "description": "Parser using tree-sitter-usfm3, to convert usfm to usj format.",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/es/index.mjs",
