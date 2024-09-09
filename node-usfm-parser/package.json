@@ -5,7 +5,8 @@
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/es/index.mjs",
   "scripts": {
-    "build": "parcel build ./src/index.js"
+    "build": "parcel build ./src/index.js",
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "tree-sitter-usfm3": "^3.0.0-beta.10"
   },
   "devDependencies": {
+    "mocha": "^10.7.3",
     "parcel": "^2.12.0"
   }
 }
