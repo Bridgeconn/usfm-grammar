@@ -8,27 +8,52 @@ const { Query } = Parser;
 
 class USFMParser {
 
-	constructor() {
+	constructor(usfmString=null, fromUsj=null, fromUsx=null) {
+		let inputsGiven = 0
+        if (usfmString !== null) {
+            inputsGiven += 1
+        }
+        if (fromUsj !== null) {
+            inputsGiven += 1
+        }
+        if (fromUsx !== null) {
+            inputsGiven += 1
+        }
+
+        if (inputsGiven > 1) {
+            throw new  Error(`Found more than one input!
+Only one of USFM, USJ or USX is supported in one object.`)
+        }
+        if (inputsGiven === 0) {
+            throw Error("Missing input! Either USFM, USJ or USX is to be provided.")
+        }
+
+        if (usfmString !== null) {
+        	if (typeof usfmString !== "string" || usfmString === null) {
+				throw new Error("Invalid input for USFM. Expected a string.");
+			}
+            this.usfm = usfmString;
+        } else if(fromUsj !== null) {
+        	this.usj = fromUsj;
+        	this.usfm = this.convertUSJToUSFM()
+        } else if (fromUsx !== null) {
+        	this.usx = fromUsx;
+        	// this.usfm = this.convertUSXToUSFM()
+        }
 		this.parser = null;
-		this.usfm = null;
-		this.usj = null;
+		this.initializeParser();
+
 		this.syntaxTree = null;
-		this.initializeParser()
+		this.errors = [];
+        this.warnings = [];
+        this.parseUSFM();
 	}
 	initializeParser() {
 		this.parser = new Parser();
 		this.parser.setLanguage(USFM3);
 	}
 
-	usfmToUsj(usfmString) {
-		if (typeof usfmString !== "string" || usfmString === null) {
-			throw new Error("Invalid input for USFM. Expected a string.");
-		}
-		if (!this.parser) {
-			this.initializeParser();
-		}
-		this.usfm = usfmString;
-		this.parseUSFM();
+	usfmToUsj() {
 		this.usj = this.convertUSFMToUSJ();
 		return this.usj;
 	}
@@ -50,10 +75,12 @@ class USFMParser {
 		try {
 			tree = this.parser.parse(this.usfm);
 		} catch (err) {
+			throw err;
+			console.log("Error in parser.parse()");
 			console.log(err.toString());
 		}
 		const error = this.checkForErrors(tree);
-		if (error) throw error;
+		// if (error) throw error;
 		this.syntaxTree = tree.rootNode;
 	}
 
@@ -82,7 +109,7 @@ class USFMParser {
 		ignoreErrors = false,
 		combineTexts = true,
 	} = {}) {
-		if (!ignoreErrors && this.errors) {
+		if (!ignoreErrors && this.errors.length > 0) {
 			let errorString = this.errors.map((err) => err.join(":")).join("\n\t");
 			throw new Error(
 				`Errors present:\n\t${errorString}\nUse ignoreErrors = true to generate output despite errors.`,
