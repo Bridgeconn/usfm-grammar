@@ -116,7 +116,7 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	   for (let n of node.children) {
 	        if (n.isMissing){
 	        		this.errors.push(
-						`At ${n.startPosition.row}:${n.startPosition.column}, Error: Missing ${n.type}`) 
+						`At ${n.startPosition.row+1}:${n.startPosition.column}, Error: Missing ${n.type}`) 
 	        } 
 	        this.checkforMissing(n);
 	    }

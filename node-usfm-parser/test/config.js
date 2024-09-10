@@ -32,7 +32,7 @@ let passFailOverrideList = {
     "/paratextTests/MarkersMissingSpace/origin.usfm": "fail",
     "/paratextTests/NestingInCrossReferences/origin.usfm": "fail",
     "/special-cases/empty-para/origin.usfm": "fail",
-    "/special-cases/sp/origin.usfm": "fail",
+    // "/special-cases/sp/origin.usfm": "fail",
     "/specExamples/extended/sidebars/origin.usfm":"fail",
 
     // No. of columns in table not validated by usfm-grammar
@@ -65,7 +65,19 @@ let passFailOverrideList = {
     "/usfmjsTests/luk_quotes/origin.usfm": "fail",
     "/biblica/BlankLinesWithFigures/origin.usfm": "fail", //\fig used without \p, only \b
 
-    
+    //no space after \s5
+    "/usfmjsTests/usfmBodyTestD/origin.usfm": "fail",
+    "/usfmjsTests/usfm-body-testF/origin.usfm": "fail",
+    "/usfmjsTests/psa_quotes/origin.usfm": "fail",
+    "/usfmjsTests/pro_footnote/origin.usfm": "fail",
+    "/usfmjsTests/pro_quotes/origin.usfm": "fail",
+    "/samples-from-wild/doo43-1/origin.usfm": "fail",
+    "/usfmjsTests/gn_headers/origin.usfm": "fail",
+    "/usfmjsTests/isa_inline_quotes/origin.usfm": "fail",
+    "/usfmjsTests/job_footnote/origin.usfm": "fail",
+    "/usfmjsTests/mat-4-6.whitespace/origin.usfm": "fail",
+    "/usfmjsTests/out_of_sequence_chapters/origin.usfm": "fail",
+
     "/biblica/PublishingVersesWithFormatting/origin.usfm": "fail", // \c without number
 
     "/special-cases/figure_with_quotes_in_desc/origin.usfm": "fail", // quote within quote
@@ -81,6 +93,7 @@ let passFailOverrideList = {
 
     "/advanced/periph/origin.usfm": "fail", // Peripharals not implemented
     "/advanced/nesting1/origin.usfm": "fail", // We dont support char within char w/o +, yet
+    "/samples-from-wild/doo43-4/origin.usfm": "fail", // ior surronded by a () leaves a stray ) at the end.
 
 };
 
