@@ -5,10 +5,6 @@ const {USFMParser} = require("../src/index");
 // require("./setup");
 
 describe("Check parsing pass or fail is correct", () => {
-  beforeEach(() => {
-    if (global.gc) { global.gc(); }
-  });
-
 
   allUsfmFiles.forEach(function(value) {
     it(`Parse ${value} to ensure validity ${isValidUsfm[value]}`, (inputUsfmPath=value) => {

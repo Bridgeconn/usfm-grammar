@@ -51,6 +51,9 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	initializeParser() {
 		this.parser = new Parser();
 		this.parser.setLanguage(USFM3);
+		this.parserOptions = Parser.Options = {
+						      bufferSize: 1024 * 1024,
+						    };
 	}
 
 	usfmToUsj() {
@@ -73,7 +76,12 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	parseUSFM() {
 		let tree = null;
 		try {
-			tree = this.parser.parse(this.usfm);
+			if (this.usfm.length > 25000) {
+				tree = this.parser.parse(this.usfm, null, this.parserOptions);
+			}
+			else {
+				tree = this.parser.parse(this.usfm);
+			}
 		} catch (err) {
 			throw err;
 			// console.log("Error in parser.parse()");
