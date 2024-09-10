@@ -93,6 +93,7 @@ Only one of USFM, USJ or USX is supported in one object.`)
 			// console.log(this.usfm);
 		}
 		this.checkForErrors(tree);
+		this.checkforMissing(tree.rootNode);
 		// if (error) throw error;
 		this.syntaxTree = tree.rootNode;
 	}
@@ -110,6 +111,17 @@ Only one of USFM, USJ or USX is supported in one object.`)
 			return new Error(`Errors found in USFM: ${this.errors.join(", ")}`);
 		}
 	}
+
+	checkforMissing(node) {
+	   for (let n of node.children) {
+	        if (n.isMissing){
+	        		this.errors.push(
+						`At ${n.startPosition.row}:${n.startPosition.column}, Error: Missing ${n.type}`) 
+	        } 
+	        this.checkforMissing(n);
+	    }
+	}
+	
 
 	convertUSJToUSFM() {
 		const outputUSFM = new USFMGenerator().usjToUsfm(this.usj); // Simulated conversion
