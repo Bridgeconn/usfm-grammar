@@ -88,13 +88,17 @@ const initialiseParser = function (inputUsfmPath){
     `Open and parse the given file`
     try {
       const data = fs.readFileSync(inputUsfmPath, 'utf8');
-      return new USFMParser(data);
+      let testParser = new USFMParser(data);
+      if (testParser === null) {
+        throw Error(`Paring failed for ${inputUsfmPath}: ${data}`)
+      }
+      return testParser;
     } catch (err) {
-      console.error(err);
+        throw err;
     }
 }
 
-const isValidUsfm = function (inputUsfmPath) {
+const checkValidUsfm = function (inputUsfmPath) {
     `Checks the metadata.xml to see is the USFM is a valid one`
     if (inputUsfmPath.replace(TEST_DIR, '') in passFailOverrideList){
         if (passFailOverrideList[inputUsfmPath.replace(TEST_DIR, '')] === "pass"){
@@ -105,41 +109,35 @@ const isValidUsfm = function (inputUsfmPath) {
     }
     let value = null;
 	let metaFilePath = inputUsfmPath.replace("origin.usfm", "metadata.xml")
+    let metadata = fs.readFileSync(metaFilePath, 'utf8')
 
-	fs.readFile(metaFilePath, 'utf8', (err, data) => {
-	  if (err) {
-	    console.error('Error reading XML file:', err);
-	    return;
-	  }
-
-	  // Parse the XML data
-	  xml2js.parseString(data, (err, result) => {
+	xml2js.parseString(metadata, (err, result) => {
 	    if (err) {
 	      console.error('Error parsing XML:', err);
 	      return;
 	    }
-
-	    value = result['validated'];
-	    // console.log(value);
-
-	  });
+	    value = result['test-metadata']['validated'][0];
 	});
-    if (value === "fail"){
-        return False
+
+	if (value === "fail"){
+        return false
     }
     else if (value === "pass") {
-    	return True
-    } 
-    return value;
+    	return true
+    } else {
+        throw Error(`Validation read as : ${value} for ${metaFilePath}`)
+
+    }
 }
 
+let isValidUsfm = {}
+
 allUsfmFiles.forEach((filepath) => {    
-    if (isValidUsfm(filepath) === false) {
-        negativeTests.push(filepath)
-    }
+    isValidUsfm[filepath] = checkValidUsfm(filepath)
 });
 // console.log(allUsfmFiles[0])
 
+// const test_parser = initialiseParser("../tests/samples-from-wild/WEB1/origin.usfm")
 
 
 module.exports = {

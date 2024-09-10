@@ -76,10 +76,11 @@ Only one of USFM, USJ or USX is supported in one object.`)
 			tree = this.parser.parse(this.usfm);
 		} catch (err) {
 			throw err;
-			console.log("Error in parser.parse()");
-			console.log(err.toString());
+			// console.log("Error in parser.parse()");
+			// console.log(err.toString());
+			// console.log(this.usfm);
 		}
-		const error = this.checkForErrors(tree);
+		this.checkForErrors(tree);
 		// if (error) throw error;
 		this.syntaxTree = tree.rootNode;
 	}
@@ -88,14 +89,14 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	checkForErrors(tree) {
 		const errorQuery = new Query(USFM3, "(ERROR) @errors");
 		const errors = errorQuery.captures(tree.rootNode);
+
 		if (errors.length > 0) {
 			this.errors = errors.map(
-				(err) =>
-					`At ${err.node.startPosition.row}:${err.node.startPosition.column}, Error: ${this.usfm.substring(err.node.startIndex, err.node.endIndex)}`,
+				(error) =>
+					`At ${error.node.startPosition.row}:${error.node.startPosition.column}, Error: ${this.usfm.substring(error.node.startIndex, error.node.endIndex)}`,
 			);
 			return new Error(`Errors found in USFM: ${this.errors.join(", ")}`);
 		}
-		return null;
 	}
 
 	convertUSJToUSFM() {
