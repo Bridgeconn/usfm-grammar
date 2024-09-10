@@ -56,6 +56,10 @@ Only one of USFM, USJ or USX is supported in one object.`)
 						    };
 	}
 
+	toSyntaxTree() {
+		return this.syntaxTree.toString();
+	}
+
 	usfmToUsj() {
 		this.usj = this.convertUSFMToUSJ();
 		return this.usj;
