@@ -54,14 +54,14 @@ let passFailOverrideList = {
     "/paratextTests/EmptyMarkers/origin.usfm": "fail",
 
     // no \p (usually after \s)
-    // "/usfmjsTests/missing_verses/origin.usfm": "fail", // has \s5
-    // "/usfmjsTests/isa_verse_span/origin.usfm": "fail", // has \s5
-    // "/usfmjsTests/isa_footnote/origin.usfm": "fail", // has \s5
-    // "/usfmjsTests/tit_extra_space_after_chapter/origin.usfm": "fail", // has \s5
-    // "/usfmjsTests/1ch_verse_span/origin.usfm": "fail", // has \s5
-    // "/usfmjsTests/usfmIntroTest/origin.usfm": "fail",
-    // "/usfmjsTests/out_of_sequence_verses/origin.usfm": "fail",
-    // "/usfmjsTests/acts_1_milestone/origin.usfm": "fail",
+    "/usfmjsTests/missing_verses/origin.usfm": "fail", // has \s5
+    "/usfmjsTests/isa_verse_span/origin.usfm": "fail", // has \s5
+    "/usfmjsTests/isa_footnote/origin.usfm": "fail", // has \s5
+    "/usfmjsTests/tit_extra_space_after_chapter/origin.usfm": "fail", // has \s5
+    "/usfmjsTests/1ch_verse_span/origin.usfm": "fail", // has \s5
+    "/usfmjsTests/usfmIntroTest/origin.usfm": "fail",
+    "/usfmjsTests/out_of_sequence_verses/origin.usfm": "fail",
+    "/usfmjsTests/acts_1_milestone/origin.usfm": "fail",
     "/usfmjsTests/luk_quotes/origin.usfm": "fail",
     "/biblica/BlankLinesWithFigures/origin.usfm": "fail", //\fig used without \p, only \b
 
@@ -82,22 +82,6 @@ let passFailOverrideList = {
     "/advanced/periph/origin.usfm": "fail", // Peripharals not implemented
     "/advanced/nesting1/origin.usfm": "fail", // We dont support char within char w/o +, yet
 
-    //zaln-s or k-s missing \*. But as milestone can be para style too, is this a syntactic error?
-    "/usfmjsTests/tw_words.oldformat/origin.usfm": "pass",
-    "/usfmjsTests/tit_1_12.alignment.zaln.not.start/origin.usfm": "pass",
-    "/usfmjsTests/greek_verse_objects/origin.usfm": "pass",
-    "/usfmjsTests/57-TIT.greek.oldformat/origin.usfm": "pass",
-    "/usfmjsTests/57-TIT.partial.oldformat/origin.usfm": "pass",
-    "/usfmjsTests/acts_1_11.aligned.oldformat/origin.usfm": "pass",
-    // "/usfmjsTests/acts-1-20.aligned.crammed.oldformat/origin.usfm": "pass", // has other issues like an empty \m
-    "/usfmjsTests/acts-1-20.aligned.oldformat/origin.usfm": "pass",
-    "/usfmjsTests/acts_1_4.aligned.oldformat/origin.usfm": "pass",
-    // "/usfmjsTests/acts_1_milestone.oldformat/origin.usfm": "pass", // other issues: missing \p after \s5
-    "/usfmjsTests/heb1-1_multi_alignment.oldformat/origin.usfm": "pass",
-    "/usfmjsTests/mat-4-6.oldformat/origin.usfm": "pass",
-    "/usfmjsTests/mat-4-6.whitespace.oldformat/origin.usfm": "pass",
-    "/usfmjsTests/tit_1_12.alignment.oldformat/origin.usfm": "pass",
-    "/usfmjsTests/tit1-1_alignment.oldformat/origin.usfm": "pass",
 };
 
 
