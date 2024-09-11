@@ -402,8 +402,15 @@ class USJGenerator {
         this.nodeToUSJ(child, figJsonObj);
       });
       parentJsonObj.content.push(figJsonObj);
-    } 
-    
+    } else if (node.type === "ref") {
+      const refJsonObj = { type: "ref", content: [] };
+      node.children.slice(1, -1).forEach((child) => {
+        this.nodeToUSJ(child, refJsonObj);
+      });
+      parentJsonObj.content.push(refJsonObj);
+    }
+  }
+
   nodeToUSJGeneric(node, parentJsonObj) {
     // Build nodes for para style markers in USJ
     const tagNode = node.children[0];
@@ -502,6 +509,7 @@ class USJGenerator {
       case "esb":
       case "cat":
       case "fig":
+      case "ref":
         this.nodeToUSJSpecial(node, parentJsonObj);
         break;
       case "usfm":

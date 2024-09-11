@@ -43,6 +43,7 @@ describe("Compare generated USJ with testsuite sample", () => {
         stripDefaultAttribValue(testsuiteUSJ)
         removeNewlinesInText(testsuiteUSJ)
         stripTextValue(testsuiteUSJ)
+        removeNewlinesInText(generatedUSJ)
         stripTextValue(generatedUSJ)
 
         assert.deepEqual(generatedUSJ, testsuiteUSJ);

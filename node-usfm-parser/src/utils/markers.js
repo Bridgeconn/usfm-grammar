@@ -117,6 +117,7 @@ exports.DEFAULT_ATTRIB_MAP = {
   xt: "link-href",
   fig: "alt",
   xt_standalone: "link-href",
+  ref: "loc",
 };
 exports.TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"];
 exports.MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];
