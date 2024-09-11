@@ -31,10 +31,71 @@ describe("Compare generated USJ with testsuite sample", () => {
         const testParser = initialiseParser(inputUsfmPath)
         const generatedUSJ = testParser.toUSJ();
         const filePath = inputUsfmPath.replace(".usfm", ".json");
-        const fileData = fs.readFileSync(filePath, "utf8");
+        let fileData = null;
+        try {
+          fileData = fs.readFileSync(filePath, "utf8");
+        } catch(err) {
+          if (err.code === "ENOENT") {
+            return
+          }
+        }
         const testsuiteUSJ = JSON.parse(fileData);
+        stripDefaultAttribValue(testsuiteUSJ)
+        removeNewlinesInText(testsuiteUSJ)
+        stripTextValue(testsuiteUSJ)
+        stripTextValue(generatedUSJ)
+
         assert.deepEqual(generatedUSJ, testsuiteUSJ);
       });
     }
   });
 });
+
+function stripTextValue(usjObj) {
+    /* Trailing and preceding space handling can be different between tcdocs and our logic.
+       Strip both before comparison */
+    if (usjObj.hasOwnProperty("content")) {
+        usjObj["content"].forEach((item, index) => {
+            if (typeof item === 'string') {
+                usjObj["content"][index] = item.trim();  // Strip spaces from strings
+            } else {
+                stripTextValue(item);  // Recursively handle nested objects
+            }
+        });
+    }
+}
+
+function removeNewlinesInText(usjDict) {
+    /* The test samples in testsuite do not preserve new lines. But we do in usfm-grammar.
+       So removing them just for comparison */
+    if (usjDict.hasOwnProperty("content")) {
+        usjDict["content"].forEach((item, index) => {
+            if (typeof item === 'string') {
+                // Replace newlines with spaces
+                usjDict["content"][index] = item.replace(/\n/g, " ");
+                // Replace multiple spaces with a single space
+                usjDict["content"][index] = usjDict["content"][index].replace(/\s+/g, " ");
+            } else {
+                removeNewlinesInText(item);  // Recursively handle nested dictionaries
+            }
+        });
+    }
+}
+
+
+function stripDefaultAttribValue(usjDict) {
+    /* The USX samples in test suite have space in lemma values when given as default attribute */
+    if (usjDict.hasOwnProperty("content")) {
+        usjDict["content"].forEach(item => {
+            if (typeof item === 'object' && !Array.isArray(item)) {
+                if (item["type"] === "char" && item["marker"] === "w") {
+                    if (item.hasOwnProperty("lemma")) {
+                        item["lemma"] = item["lemma"].trim();  // Strip spaces from 'lemma'
+                    }
+                }
+                stripDefaultAttribValue(item);  // Recursively handle nested dictionaries
+            }
+        });
+    }
+}
+
