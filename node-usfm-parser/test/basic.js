@@ -19,7 +19,7 @@ describe("Sanity Check for the testing pipeline", () => {
 
   it("Parse, toUSJ and back toUSFM", () => {
     const usfmParser = new USFMParser(simpleUSFM);
-    const output = usfmParser.usfmToUsj()
+    const output = usfmParser.toUSJ()
     assert.notStrictEqual(output, null, 'The result should not be null and no errors during conversion');
 
     const usfm = usfmParser.usjToUsfm(output)
