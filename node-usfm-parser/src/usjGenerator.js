@@ -11,7 +11,7 @@ class USJGenerator {
     this.usfm = usfmString;
     this.jsonRootObj = usjRootObj || {
       type: "USJ",
-      version: "0.3.0",
+      version: "3.1",
       content: [],
     };
   }
