@@ -204,11 +204,11 @@ class USJGenerator {
         "(paragraph (_) @para-marker)")
         .captures(node)[0];
       const paraMarker = paraTagCap.node.type;
-
+      let paraJsonObj = null;
       if (paraMarker === "b") {
-        this.nodeToUSJSpecial(paraTagCap, parentJsonObj);
+        parentJsonObj.content.push( { type: "para", marker: paraMarker} );
       } else if (!paraMarker.endsWith("Block")) {
-        const paraJsonObj = { type: "para", marker: paraMarker, content: [] };
+        paraJsonObj = { type: "para", marker: paraMarker, content: [] };
         paraTagCap.node.children.forEach((child) => {
           this.nodeToUSJ(child, paraJsonObj);
         });
@@ -219,7 +219,7 @@ class USJGenerator {
         .substring(node.children[0].startIndex, node.children[0].endIndex)
         .replace("\\", "")
         .trim();
-      const paraJsonObj = { type: "para", marker: paraMarker, content: [] };
+      paraJsonObj = { type: "para", marker: paraMarker, content: [] };
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, paraJsonObj);
       });
@@ -402,19 +402,8 @@ class USJGenerator {
         this.nodeToUSJ(child, figJsonObj);
       });
       parentJsonObj.content.push(figJsonObj);
-    } else if (node.type === "b") {
-      const bJsonObj = { type: "optbreak", marker: "b" };
-      parentJsonObj.content.push(bJsonObj);
-    } else if (node.type === "usfm") {
-      const verJsonObj = { type: "para", marker: "usfm", content: [] };
-      const version = this.usfm
-        .substring(node.startIndex, node.endIndex)
-        .replace("\\usfm", "")
-        .trim();
-      verJsonObj.content.push(version);
-      parentJsonObj.content.push(verJsonObj);
-    }
-  }
+    } 
+    
   nodeToUSJGeneric(node, parentJsonObj) {
     // Build nodes for para style markers in USJ
     const tagNode = node.children[0];
@@ -518,7 +507,10 @@ class USJGenerator {
       case "usfm":
         break
       default:
-        if (
+        if (NOTE_MARKERS.includes(node.type)) {
+          this.nodeToUSJNotes(node, parentJsonObj)
+        }
+        else if (
           CHAR_STYLE_MARKERS.includes(node.type) ||
           NESTED_CHAR_STYLE_MARKERS.includes(node.type) ||
           ["xt_standalone"].includes(node.type)
