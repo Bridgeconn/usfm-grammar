@@ -513,9 +513,10 @@ class USJGenerator {
       case "esb":
       case "cat":
       case "fig":
-      case "usfm":
         this.nodeToUSJSpecial(node, parentJsonObj);
         break;
+      case "usfm":
+        break
       default:
         if (
           CHAR_STYLE_MARKERS.includes(node.type) ||
