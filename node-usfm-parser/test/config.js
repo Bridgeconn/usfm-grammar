@@ -100,6 +100,8 @@ let passFailOverrideList = {
 
 let excludeUSJs = [
     `${TEST_DIR}/biblica/CrossRefWithPipe/origin.json`, //ref object introduced which is not in usfm
+    `${TEST_DIR}/special-cases/empty-attributes/origin.json`, //lemma not given correctly. Issue from USX
+    `${TEST_DIR}/specExamples/character/origin.json`,// lit element treated as a body paragraph enclosing a verse! Issue from USX   
 
     ]
 
