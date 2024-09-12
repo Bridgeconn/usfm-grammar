@@ -524,6 +524,8 @@ class USJGenerator {
           ["xt_standalone"].includes(node.type)
         ) {
           this.nodeToUSJChar(node, parentJsonObj);
+        } else if (TABLE_CELL_MARKERS.includes(node.type)) {
+          this.nodeToUSJTable(node, parentJsonObj)
         } else if (node.type.endsWith("Attribute")) {
           this.nodeToUSJAttrib(node, parentJsonObj);
         } else if (
