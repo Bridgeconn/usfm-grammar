@@ -208,7 +208,7 @@ class USJGenerator {
       if (paraMarker === "b") {
         parentJsonObj.content.push( { type: "para", marker: paraMarker} );
       } else if (!paraMarker.endsWith("Block")) {
-        paraJsonObj = { type: "para", marker: paraMarker, content: [] };
+        let paraJsonObj = { type: "para", marker: paraMarker, content: [] };
         paraTagCap.node.children.forEach((child) => {
           this.nodeToUSJ(child, paraJsonObj);
         });
@@ -219,7 +219,7 @@ class USJGenerator {
         .substring(node.children[0].startIndex, node.children[0].endIndex)
         .replace("\\", "")
         .trim();
-      paraJsonObj = { type: "para", marker: paraMarker, content: [] };
+      let paraJsonObj = { type: "para", marker: paraMarker, content: [] };
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, paraJsonObj);
       });
