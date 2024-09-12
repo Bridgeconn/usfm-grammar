@@ -491,9 +491,10 @@ class USJGenerator {
         this.nodeToUSJPara(node, parentJsonObj);
         break;
       case "text":
-        const textVal = this.usfm
+        let textVal = this.usfm
           .substring(node.startIndex, node.endIndex)
           .trim();
+        textVal = textVal.replace("~", " ")
         if (textVal !== "") {
           parentJsonObj.content.push(textVal);
         }
