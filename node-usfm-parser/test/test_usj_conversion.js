@@ -1,6 +1,6 @@
 const assert = require('assert');
 const fs = require('node:fs');
-const {allUsfmFiles, initialiseParser, isValidUsfm} = require('./config');
+const {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs} = require('./config');
 const {USFMParser} = require("../src/index");
 
 
@@ -26,11 +26,12 @@ describe("Check successful USFM-USJ conversion for positive samples", () => {
 describe("Compare generated USJ with testsuite sample", () => {
 
   allUsfmFiles.forEach(function(value) {
-    if (isValidUsfm[value]) {
-      it(`Compare generated USJ to ${value.replace(".usfm", ".json")}`, (inputUsfmPath=value) => {
+    const usjPath = value.replace(".usfm", ".json");
+    if (isValidUsfm[value] && ! excludeUSJs.includes(usjPath)) {
+      it(`Compare generated USJ to ${usjPath}`, (inputUsfmPath=value) => {
         const testParser = initialiseParser(inputUsfmPath)
         const generatedUSJ = testParser.toUSJ();
-        const filePath = inputUsfmPath.replace(".usfm", ".json");
+        const filePath = usjPath;
         let fileData = null;
         try {
           fileData = fs.readFileSync(filePath, "utf8");

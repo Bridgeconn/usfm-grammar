@@ -98,6 +98,11 @@ let passFailOverrideList = {
 };
 
 
+let excludeUSJs = [
+    `${TEST_DIR}/biblica/CrossRefWithPipe/origin.json`, //ref object introduced which is not in usfm
+
+    ]
+
 const initialiseParser = function (inputUsfmPath){
     `Open and parse the given file`
     try {
@@ -157,5 +162,6 @@ allUsfmFiles.forEach((filepath) => {
 module.exports = {
     allUsfmFiles: allUsfmFiles,
     initialiseParser: initialiseParser,
-    isValidUsfm: isValidUsfm
+    isValidUsfm: isValidUsfm,
+    excludeUSJs: excludeUSJs,
 };
