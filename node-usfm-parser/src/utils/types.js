@@ -1,6 +1,6 @@
 exports.NO_USFM_USJ_TYPES = ["USJ", "table"];
 exports.CLOSING_USJ_TYPES
-  = ["char", "note", "figure"];
+  = ["char", "note", "figure", "ref"];
 exports.NON_ATTRIB_USJ_KEYS = [
   "type",
   "marker",

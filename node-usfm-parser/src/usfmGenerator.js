@@ -5,13 +5,16 @@ class USFMGenerator {
   }
 
   usjToUsfm(usjObj, nested = false) {
-
+    if (usjObj.type === "ref") {
+        usjObj.marker = "ref";
+    }
     if (!NO_USFM_USJ_TYPES.includes(usjObj.type)) {
       this.usfmString += "\\";
       if (nested && usjObj.type === "char") {
         this.usfmString += "+";
       }
       this.usfmString += `${usjObj.marker} `;
+
     }
     ["code", "number", "caller"].forEach((key) => {
       if (usjObj[key]) {
