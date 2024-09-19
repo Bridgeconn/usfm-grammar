@@ -14,14 +14,14 @@ npm install usfm-grammar
 Here's how you can use USFM Grammar in your JavaScript/TypeScript projects:
 
 ```javascript
-const { USFMParser } = require('usfm-grammar');
+const USFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text'
+const usfmParser = new USFMParser(USFM);
+const USJ = usfmParser.toUSJ()
+console.log(USJ);
 
-const usfmParser = new USFMParser();
-const output = usfmParser.usfmToUsj('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text')
-console.log({ output });
-const usfm = usfmParser.usjToUsfm(output);
-console.log({ usfm });
-
+const usfmParser2 = new USFMParser(usfmString=null, fromUsj=USJ)
+const usfmGen = usfmParser2.usfm;
+console.log(usfmGen);
 ```
 
 When using in an ESModule, if `import {USFMParser} from 'usfm-grammar` doesnt work for you, you could try:
@@ -35,7 +35,7 @@ const {USFMParser} = pkg;
 ## API Documentation
 
 
-### `USFMParser.usfmToUsj(usfmString: string): Object`
+### `USFMParser.toUSJ(): Object`
 Converts a USFM string to a USJ object.
 
 - `usfmString`: The input USFM string.
