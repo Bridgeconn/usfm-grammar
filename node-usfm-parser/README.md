@@ -14,8 +14,9 @@ npm install usfm-grammar
 Here's how you can use USFM Grammar in your JavaScript/TypeScript projects:
 
 ```javascript
-const USFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text'
 const usfmParser = new USFMParser(USFM);
+
+const USFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text'
 const USJ = usfmParser.toUSJ()
 console.log(USJ);
 
