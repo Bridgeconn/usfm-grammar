@@ -26,7 +26,7 @@ class USFMGenerator {
         if (typeof item === "string") {
           this.usfmString += item;
         } else {
-          this.usjToUsfm(item, usjObj.type === "char");
+          this.usjToUsfm(item, usjObj.type === "char" && item.marker !== "fv");
         }
       });
     }
