@@ -151,6 +151,42 @@ const checkValidUsfm = function (inputUsfmPath) {
     }
 }
 
+const findAllMarkers = function (usfmStr, keepId = false, keepNumber = true) {
+  // Regex pattern to find all markers in the USFM string
+  let allMarkersInInput = [...usfmStr.matchAll(/\\\+?(([A-Za-z]+)\d*(-[se])?)/g)];
+
+  // Processing based on `keepNumber` flag
+  if (keepNumber) {
+    allMarkersInInput = allMarkersInInput.map(match => match[1]);
+  } else {
+    allMarkersInInput = allMarkersInInput.map(match => match[1] + match[2]);
+  }
+
+  // Remove duplicates
+  allMarkersInInput = [...new Set(allMarkersInInput)];
+
+  // Remove 'id' marker if `keepId` is false
+  if (!keepId) {
+    const idIndex = allMarkersInInput.indexOf('id');
+    if (idIndex !== -1) allMarkersInInput.splice(idIndex, 1);
+  }
+
+  // Handle 'esbe' and 'usfm' markers
+  const esbeIndex = allMarkersInInput.indexOf('esbe');
+  if (esbeIndex !== -1) {
+    const esbIndex = allMarkersInInput.indexOf('esb');
+    if (esbIndex === -1) throw new Error("'esb' must be present if 'esbe' is found");
+    allMarkersInInput.splice(esbeIndex, 1);
+  }
+
+  const usfmIndex = allMarkersInInput.indexOf('usfm');
+  if (usfmIndex !== -1) {
+    allMarkersInInput.splice(usfmIndex, 1);
+  }
+
+  return allMarkersInInput;
+}
+
 let isValidUsfm = {}
 
 allUsfmFiles.forEach((filepath) => {    
@@ -166,4 +202,5 @@ module.exports = {
     initialiseParser: initialiseParser,
     isValidUsfm: isValidUsfm,
     excludeUSJs: excludeUSJs,
+    findAllMarkers: findAllMarkers
 };

@@ -1,6 +1,6 @@
 const assert = require('assert');
 const fs = require('node:fs');
-const {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs} = require('./config');
+const {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers} = require('./config');
 const {USFMParser} = require("../src/index");
 
 
@@ -52,6 +52,34 @@ describe("Compare generated USJ with testsuite sample", () => {
     }
   });
 });
+
+
+describe("Test USFM-USJ-USFM roundtripping", () => {
+  allUsfmFiles.forEach(function(value) {
+    if (isValidUsfm[value]) {
+      it(`Roundtrip ${value} via USJ`, (inputUsfmPath=value) => {
+        const testParser = initialiseParser(inputUsfmPath)
+        assert(testParser instanceof USFMParser)
+        const usj = testParser.toUSJ();
+        assert(usj instanceof Object);
+
+        const testParser2 = new USFMParser(usfmString=null, fromUsj=usj);
+        const generatedUSFM = testParser2.usfm;
+        assert.strictEqual(typeof generatedUSFM, 'string');
+        assert(generatedUSFM.startsWith("\\id"));
+
+        const inputMarkers = findAllMarkers(testParser.usfm)
+        const finalMarkers = findAllMarkers(generatedUSFM)
+        assert.deepStrictEqual(inputMarkers, finalMarkers, `Markers in input and generated USFMs differ`)
+
+
+
+      });
+    }
+  });
+
+});
+
 
 function stripTextValue(usjObj) {
     /* Trailing and preceding space handling can be different between tcdocs and our logic.
