@@ -5,13 +5,16 @@ class USFMGenerator {
   }
 
   usjToUsfm(usjObj, nested = false) {
-
+    if (usjObj.type === "ref") {
+        usjObj.marker = "ref";
+    }
     if (!NO_USFM_USJ_TYPES.includes(usjObj.type)) {
       this.usfmString += "\\";
       if (nested && usjObj.type === "char") {
         this.usfmString += "+";
       }
       this.usfmString += `${usjObj.marker} `;
+
     }
     ["code", "number", "caller"].forEach((key) => {
       if (usjObj[key]) {
@@ -21,12 +24,29 @@ class USFMGenerator {
     if (usjObj.category) {
       this.usfmString += `\\cat ${usjObj.category}\\cat*\n`;
     }
+    if (usjObj.altnumber) {
+      if (usjObj.marker === "c") {
+        this.usfmString += `\\ca ${usjObj.altnumber} \\ca*\n`
+      }else if (usjObj.marker === "v") {
+        this.usfmString += `\\va ${usjObj.altnumber} \\va* `
+      }
+    }
+    if (usjObj.pubnumber) {
+      if (usjObj.marker === "c") {
+        this.usfmString += `\\cp ${usjObj.pubnumber}\n`
+      }else if (usjObj.marker === "v") {
+        this.usfmString += `\\vp ${usjObj.pubnumber} \\vp* `
+      }
+    }
+    if (usjObj.category) {
+      this.usfmString += `\\cat ${usjObj.category}\\cat*\n`;
+    }
     if (Array.isArray(usjObj.content)) {
       usjObj.content.forEach((item) => {
         if (typeof item === "string") {
           this.usfmString += item;
         } else {
-          this.usjToUsfm(item, usjObj.type === "char");
+          this.usjToUsfm(item, usjObj.type === "char" && item.marker !== "fv");
         }
       });
     }

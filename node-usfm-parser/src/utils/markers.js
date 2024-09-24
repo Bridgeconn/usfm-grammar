@@ -114,9 +114,13 @@ exports.NESTED_CHAR_STYLE_MARKERS = CHAR_STYLE_MARKERS.map(
 exports.DEFAULT_ATTRIB_MAP = {
   w: "lemma",
   rb: "gloss",
-  xt: "link-href",
+  xt: "href",
   fig: "alt",
-  xt_standalone: "link-href",
+  xt_standalone: "href",
+  xtNested: "href",
+  ref: "loc",
+  "milestone": "who",
+  "k":"key"
 };
 exports.TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"];
 exports.MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];
