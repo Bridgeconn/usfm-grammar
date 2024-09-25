@@ -18,12 +18,47 @@ class USFMParser {
 		USFMParser.language = await Parser.Language.load(grammarPath);
 	}
 
-	constructor() {
+	constructor(usfmString=null, fromUsj=null, fromUsx=null) {
+		let inputsGiven = 0
+        if (usfmString !== null) {
+            inputsGiven += 1
+        }
+        if (fromUsj !== null) {
+            inputsGiven += 1
+        }
+        if (fromUsx !== null) {
+            inputsGiven += 1
+        }
+
+        if (inputsGiven > 1) {
+            throw new  Error(`Found more than one input!
+Only one of USFM, USJ or USX is supported in one object.`)
+        }
+        if (inputsGiven === 0) {
+            throw Error("Missing input! Either USFM, USJ or USX is to be provided.")
+        }
+
+        if (usfmString !== null) {
+        	if (typeof usfmString !== "string" || usfmString === null) {
+				throw new Error("Invalid input for USFM. Expected a string.");
+			}
+            this.usfm = usfmString;
+        } else if(fromUsj !== null) {
+        	this.usj = fromUsj;
+        	this.usfm = this.convertUSJToUSFM()
+        } else if (fromUsx !== null) {
+        	this.usx = fromUsx;
+        	// this.usfm = this.convertUSXToUSFM()
+        }
 		this.parser = null;
-		this.usfm = null;
-		this.usj = null;
+		this.initializeParser();
+
 		this.syntaxTree = null;
+		this.errors = [];
+        this.warnings = [];
+        this.parseUSFM();
 	}
+
 	initializeParser() {
 		if (!USFMParser.language) {
 			throw new Error(
@@ -32,18 +67,23 @@ class USFMParser {
 		}
 		this.parser = new Parser();
 		this.parser.setLanguage(USFMParser.language);
+		this.parserOptions = Parser.Options = {
+						      bufferSize: 1024 * 1024,
+						    };
 	}
 
-	usfmToUsj(usfmString) {
-		if (typeof usfmString !== "string" || usfmString === null) {
-			throw new Error("Invalid input for USFM. Expected a string.");
-		}
-		if (!this.parser) {
-			this.initializeParser();
-		}
-		this.usfm = usfmString;
-		this.parseUSFM();
-		this.usj = this.convertUSFMToUSJ();
+	toSyntaxTree() {
+		return this.syntaxTree.toString();
+	}
+
+	toUSJ(excludeMarkers = null,
+		includeMarkers = null,
+		ignoreErrors = false,
+		combineTexts = true,) {
+		this.usj = this.convertUSFMToUSJ(excludeMarkers = excludeMarkers,
+								includeMarkers = includeMarkers,
+								ignoreErrors = ignoreErrors,
+								combineTexts = combineTexts,);
 		return this.usj;
 	}
 
@@ -62,12 +102,21 @@ class USFMParser {
 	parseUSFM() {
 		let tree = null;
 		try {
-			tree = this.parser.parse(this.usfm);
+			if (this.usfm.length > 25000) {
+				tree = this.parser.parse(this.usfm, null, this.parserOptions);
+			}
+			else {
+				tree = this.parser.parse(this.usfm);
+			}
 		} catch (err) {
-			console.log(err.toString());
+			throw err;
+			// console.log("Error in parser.parse()");
+			// console.log(err.toString());
+			// console.log(this.usfm);
 		}
-		const error = this.checkForErrors(tree);
-		if (error) throw error;
+		this.checkForErrors(tree);
+		this.checkforMissing(tree.rootNode);
+		// if (error) throw error;
 		this.syntaxTree = tree.rootNode;
 	}
 
@@ -85,46 +134,52 @@ class USFMParser {
 		return null;
 	}
 
+	checkforMissing(node) {
+	   for (let n of node.children) {
+	        if (n.isMissing){
+	        		this.errors.push(
+						`At ${n.startPosition.row+1}:${n.startPosition.column}, Error: Missing ${n.type}`) 
+	        } 
+	        this.checkforMissing(n);
+	    }
+	}
+
 	convertUSJToUSFM() {
 		const outputUSFM = new USFMGenerator().usjToUsfm(this.usj); // Simulated conversion
 		return outputUSFM;
 	}
 
-	convertUSFMToUSJ({
+	convertUSFMToUSJ(
 		excludeMarkers = null,
 		includeMarkers = null,
 		ignoreErrors = false,
 		combineTexts = true,
-	} = {}) {
-		if (!ignoreErrors && this.errors) {
-			let errorString = this.errors.map((err) => err.join(":")).join("\n\t");
+		) {
+		if (!ignoreErrors && this.errors.length > 0) {
+			let errorString = this.errors.join("\n\t");
 			throw new Error(
 				`Errors present:\n\t${errorString}\nUse ignoreErrors = true to generate output despite errors.`,
 			);
 		}
 
-		let jsonRootObj = {
-			type: "USJ",
-			version: "0.2.0",
-			content: [],
-		};
-
 		let outputUSJ;
 		try {
 			let usjGenerator = new USJGenerator(
 				USFMParser.language,
-				this.usfm,
-				jsonRootObj,
+				this.usfm
 			);
-			usjGenerator.nodeToUSJ(this.syntaxTree, jsonRootObj);
+			usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
 			outputUSJ = usjGenerator.jsonRootObj;
 		} catch (err) {
 			let message = "Unable to do the conversion. ";
 			if (this.errors) {
-				let errorString = this.errors.map((err) => err.join(":")).join("\n\t");
+				let errorString = this.errors.join("\n\t");
 				message += `Could be due to an error in the USFM\n\t${errorString}`;
 			}
-			return null;
+			else {
+				message = err.message;
+			}
+			return {error: message};
 		}
 
 		if (includeMarkers) {
