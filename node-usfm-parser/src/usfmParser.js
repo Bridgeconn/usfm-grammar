@@ -60,8 +60,14 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		return this.syntaxTree.toString();
 	}
 
-	toUSJ() {
-		this.usj = this.convertUSFMToUSJ();
+	toUSJ(excludeMarkers = null,
+		includeMarkers = null,
+		ignoreErrors = false,
+		combineTexts = true,) {
+		this.usj = this.convertUSFMToUSJ(excludeMarkers = excludeMarkers,
+								includeMarkers = includeMarkers,
+								ignoreErrors = ignoreErrors,
+								combineTexts = combineTexts,);
 		return this.usj;
 	}
 
@@ -128,14 +134,13 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		return outputUSFM;
 	}
 
-	convertUSFMToUSJ({
+	convertUSFMToUSJ(
 		excludeMarkers = null,
 		includeMarkers = null,
 		ignoreErrors = false,
-		combineTexts = true,
-	} = {}) {
+		combineTexts = true,) {
 		if (!ignoreErrors && this.errors.length > 0) {
-			let errorString = this.errors.map((err) => err.join(":")).join("\n\t");
+			let errorString = this.errors.join("\n\t");
 			throw new Error(
 				`Errors present:\n\t${errorString}\nUse ignoreErrors = true to generate output despite errors.`,
 			);
@@ -153,7 +158,7 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		} catch (err) {
 			let message = "Unable to do the conversion. ";
 			if (this.errors) {
-				let errorString = this.errors.map((err) => err.join(":")).join("\n\t");
+				let errorString = this.errors.join("\n\t");
 				message += `Could be due to an error in the USFM\n\t${errorString}`;
 			}
 			else {
