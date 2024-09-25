@@ -30,10 +30,12 @@ function App() {
   }, []);
 
   const calculateValue = async () => {
-    const usfmParser = new USFMParser();
-    const output = await usfmParser.usfmToUsj('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 more text');
+    const usfmParser = new USFMParser('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 more text');
+    const output = usfmParser.toUSJ();
     setResult(JSON.stringify(output));
-    const usfm = usfmParser.usjToUsfm(output);
+
+    const usfmParser2 = new USFMParser(null, output) //initialse from USJ
+    const usfm = usfmParser2.usfm;
     setResult2(usfm);
   };
 
@@ -60,10 +62,12 @@ It can be used directly in the HTML script tag too.
   (async () => {
   await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.0.0-alpha.2/tree-sitter-usfm.wasm",
                             "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.0.0-alpha.2/tree-sitter.wasm");
-  const usfmParser = new USFMParser()
-  const output = usfmParser.usfmToUsj('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 more text')
+  const usfmParser = new USFMParser('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 more text')
+  const output = usfmParser.toUSJ()
   console.log({ output })
-  const usfm = usfmParser.usjToUsfm(output)
+
+  const usfmParser2 = new USFMParser(null, output);
+  const usfm = usfmParser2.usfm;
   console.log({ usfm })
   })();
 </script>
@@ -77,19 +81,19 @@ If using from react, please refer the instructions for it [here](../docs/react-u
 ### `USFMParser.init()`
 Initializes the USFMParser. This function must be called before creating instances of `USFMParser`. And can take the grammar and the tree-sitter  files (in wasm format) as arguments, that is included in the package.
 
-### `USFMParser.usfmToUsj(usfmString: string): Object`
+### `USFMParser.toUSJ(usfmString: string): Object`
 Converts a USFM string to a USJ object.
 
 - `usfmString`: The input USFM string.
 
 Returns: A JSON-like object representing the USJ.
 
-### `USFMParser.usjToUsfm(usjObject: Object): string`
-Converts a USJ object to a USFM string.
+### `new USFMParser(null, usjObject: Object)`
+Initialize a parser object from USJ and also converts it to USFM.
 
 - `usjObject`: The input USJ object.
 
-Returns: The converted USFM string.
+Returns: The parser object. To obtain the USFM generated from USJ use `parserObject.usfm`.
 
 ## Contributing
 Contributions are welcome! If you find any issues or have suggestions for improvements, feel free to open an issue or create a pull request on [GitHub](https://github.com/your-username/usfm-grammar).

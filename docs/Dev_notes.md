@@ -56,6 +56,7 @@ First compile the grammar and get the wasm file
 cd tree-sitter-usfm3
 export PATH=$PATH:./node_modules/.bin
 tree-sitter generate
+tree-sitter build --wasm
 cp tree-sitter-usfm.wasm ../js-usfm-parser/
 cd ..
 ```
