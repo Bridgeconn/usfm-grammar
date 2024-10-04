@@ -206,7 +206,7 @@ class USJGenerator {
       const paraMarker = paraTagCap.node.type;
 
       if (paraMarker === "b") {
-        this.nodeToUSJSpecial(paraTagCap, parentJsonObj);
+        parentJsonObj.content.push( { type: "para", marker: paraMarker} );
       } else if (!paraMarker.endsWith("Block")) {
         const paraJsonObj = { type: "para", marker: paraMarker, content: [] };
         paraTagCap.node.children.forEach((child) => {
@@ -403,9 +403,6 @@ class USJGenerator {
         this.nodeToUSJ(child, figJsonObj);
       });
       parentJsonObj.content.push(figJsonObj);
-    } else if (node.type === "b") {
-      const bJsonObj = { type: "optbreak", marker: "b" };
-      parentJsonObj.content.push(bJsonObj);
     } 
   }
   nodeToUSJGeneric(node, parentJsonObj) {
