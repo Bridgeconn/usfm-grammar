@@ -89,15 +89,15 @@ class USJGenerator {
       sid: chapRef,
     };
 
-    chapCap.forEach((tuple) => {
-      if (tuple[1] === "alt-num") {
+    chapCap.forEach((cap) => {
+      if (cap.name === "alt-num") {
         chapJsonObj.altnumber = this.usfm
-          .substring(tuple[0].startIndex, tuple[0].endIndex)
+          .substring(cap.node.startIndex, cap.node.endIndex)
           .trim();
       }
-      if (tuple[1] === "pub-num") {
+      if (cap.name === "pub-num") {
         chapJsonObj.pubnumber = this.usfm
-          .substring(tuple[0].startIndex, tuple[0].endIndex)
+          .substring(cap.node.startIndex, cap.node.endIndex)
           .trim();
       }
     });
