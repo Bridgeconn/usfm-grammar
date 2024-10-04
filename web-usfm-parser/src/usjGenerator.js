@@ -518,7 +518,10 @@ class USJGenerator {
         this.nodeToUSJSpecial(node, parentJsonObj);
         break;
       default:
-        if (
+        if (NOTE_MARKERS.includes(node.type)) {
+          this.nodeToUSJNotes(node, parentJsonObj)
+        }
+        else if (
           CHAR_STYLE_MARKERS.includes(node.type) ||
           NESTED_CHAR_STYLE_MARKERS.includes(node.type) ||
           ["xt_standalone"].includes(node.type)
