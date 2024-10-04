@@ -1,6 +1,6 @@
 {
   "name": "usfm-grammar-web",
-  "version": "3.0.0-alpha.9",
+  "version": "3.0.0-alpha.2",
   "description": "Parser using tree-sitter-usfm3, to convert usfm to usj format.",
   "type": "module",
   "module": "dist/bundle.mjs",
@@ -11,7 +11,8 @@
   },
   "source": "src/index.js",
   "scripts": {
-    "build": "parcel build src/index.js"
+    "build": "parcel build src/index.js",
+    "test": "mocha --timeout 40000"
   },
   "files": [
     "dist/",
@@ -40,6 +41,9 @@
     "parcel": "latest",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
-    "web-tree-sitter": "^0.22.6"
+    "web-tree-sitter": "^0.22.6",
+    "glob": "^11.0.0",
+    "mocha": "^10.7.3",
+    "xml2js": "^0.6.2"
   }
 }
