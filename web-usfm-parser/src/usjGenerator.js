@@ -406,15 +406,7 @@ class USJGenerator {
     } else if (node.type === "b") {
       const bJsonObj = { type: "optbreak", marker: "b" };
       parentJsonObj.content.push(bJsonObj);
-    } else if (node.type === "usfm") {
-      const verJsonObj = { type: "para", marker: "usfm", content: [] };
-      const version = this.usfm
-        .substring(node.startIndex, node.endIndex)
-        .replace("\\usfm", "")
-        .trim();
-      verJsonObj.content.push(version);
-      parentJsonObj.content.push(verJsonObj);
-    }
+    } 
   }
   nodeToUSJGeneric(node, parentJsonObj) {
     // Build nodes for para style markers in USJ
@@ -515,7 +507,6 @@ class USJGenerator {
       case "cat":
       case "fig":
       case "usfm":
-        this.nodeToUSJSpecial(node, parentJsonObj);
         break;
       default:
         if (NOTE_MARKERS.includes(node.type)) {
