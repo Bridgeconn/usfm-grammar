@@ -12,7 +12,7 @@
   "source": "src/index.js",
   "scripts": {
     "build": "parcel build src/index.js",
-    "test": "mocha --timeout 40000"
+    "test": "mocha --parallel --timeout 40000"
   },
   "files": [
     "dist/",
