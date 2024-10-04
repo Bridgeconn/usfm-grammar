@@ -394,7 +394,7 @@ class USJGenerator {
         .query("((category) @category)")
         .captures(node)[0];
       const category = this.usfm
-        .substring(catCap[0].startIndex, catCap[0].endIndex)
+        .substring(catCap.node.startIndex, catCap.node.endIndex)
         .trim();
       parentJsonObj.category = category;
     } else if (node.type === "fig") {
