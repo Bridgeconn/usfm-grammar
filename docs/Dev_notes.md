@@ -49,13 +49,14 @@ pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc
 
 ```
 
-## How to build and publish JS module for local Development
+## How to build and publish JS web module for local Development
 
 First compile the grammar and get the wasm file
 ```bash
 cd tree-sitter-usfm3
 export PATH=$PATH:./node_modules/.bin
 tree-sitter generate
+tree-sitter build --wasm
 cp tree-sitter-usfm.wasm ../js-usfm-parser/
 cd ..
 ```
@@ -69,7 +70,9 @@ cp node_modules/web-tree-sitter/tree-sitter.wasm ./
 
 ```
 
-Build the code base generating both cjs and esm versions of the same code base. This used parcel and its configs are in package.json(main, module, source, etc). Upon running the commands two folders `dist/cjs/` and `dist/esm` would be created.
+### To publish the node and web modules
+
+Build the code base generating both cjs and esm versions of the same code base. This used parcel and its configs are in package.json(main, module, source, etc). These steps can be followed in both the node module directory and web module directory.
 
 ```bash
 rm -fr ./dist
