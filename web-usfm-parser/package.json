@@ -1,6 +1,6 @@
 {
   "name": "usfm-grammar-web",
-  "version": "3.0.0-alpha.2",
+  "version": "3.0.0-alpha.9",
   "description": "Parser using tree-sitter-usfm3, to convert usfm to usj format.",
   "type": "module",
   "module": "dist/bundle.mjs",
