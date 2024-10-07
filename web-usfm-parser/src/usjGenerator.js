@@ -8,7 +8,7 @@ class USJGenerator {
     this.usfm = usfmString;
     this.jsonRootObj = usjRootObj || {
       type: "USJ",
-      version: "0.3.0",
+      version: "3.1",
       content: [],
     };
   }
@@ -89,15 +89,15 @@ class USJGenerator {
       sid: chapRef,
     };
 
-    chapCap.forEach((tuple) => {
-      if (tuple[1] === "alt-num") {
+    chapCap.forEach((cap) => {
+      if (cap.name === "alt-num") {
         chapJsonObj.altnumber = this.usfm
-          .substring(tuple[0].startIndex, tuple[0].endIndex)
+          .substring(cap.node.startIndex, cap.node.endIndex)
           .trim();
       }
-      if (tuple[1] === "pub-num") {
+      if (cap.name === "pub-num") {
         chapJsonObj.pubnumber = this.usfm
-          .substring(tuple[0].startIndex, tuple[0].endIndex)
+          .substring(cap.node.startIndex, cap.node.endIndex)
           .trim();
       }
     });
@@ -206,7 +206,7 @@ class USJGenerator {
       const paraMarker = paraTagCap.node.type;
 
       if (paraMarker === "b") {
-        this.nodeToUSJSpecial(paraTagCap, parentJsonObj);
+        parentJsonObj.content.push( { type: "para", marker: paraMarker} );
       } else if (!paraMarker.endsWith("Block")) {
         const paraJsonObj = { type: "para", marker: paraMarker, content: [] };
         paraTagCap.node.children.forEach((child) => {
@@ -394,7 +394,7 @@ class USJGenerator {
         .query("((category) @category)")
         .captures(node)[0];
       const category = this.usfm
-        .substring(catCap[0].startIndex, catCap[0].endIndex)
+        .substring(catCap.node.startIndex, catCap.node.endIndex)
         .trim();
       parentJsonObj.category = category;
     } else if (node.type === "fig") {
@@ -403,17 +403,12 @@ class USJGenerator {
         this.nodeToUSJ(child, figJsonObj);
       });
       parentJsonObj.content.push(figJsonObj);
-    } else if (node.type === "b") {
-      const bJsonObj = { type: "optbreak", marker: "b" };
-      parentJsonObj.content.push(bJsonObj);
-    } else if (node.type === "usfm") {
-      const verJsonObj = { type: "para", marker: "usfm", content: [] };
-      const version = this.usfm
-        .substring(node.startIndex, node.endIndex)
-        .replace("\\usfm", "")
-        .trim();
-      verJsonObj.content.push(version);
-      parentJsonObj.content.push(verJsonObj);
+    } else if (node.type === "ref") {
+      const refJsonObj = { type: "ref", content: [] };
+      node.children.slice(1, -1).forEach((child) => {
+        this.nodeToUSJ(child, refJsonObj);
+      });
+      parentJsonObj.content.push(refJsonObj);
     }
   }
   nodeToUSJGeneric(node, parentJsonObj) {
@@ -496,9 +491,10 @@ class USJGenerator {
         this.nodeToUSJPara(node, parentJsonObj);
         break;
       case "text":
-        const textVal = this.usfm
+        let textVal = this.usfm
           .substring(node.startIndex, node.endIndex)
           .trim();
+        textVal = textVal.replace("~", " ")
         if (textVal !== "") {
           parentJsonObj.content.push(textVal);
         }
@@ -514,17 +510,24 @@ class USJGenerator {
       case "esb":
       case "cat":
       case "fig":
-      case "usfm":
+      case "ref":
         this.nodeToUSJSpecial(node, parentJsonObj);
         break;
+      case "usfm":
+        break;
       default:
-        if (
+        if (NOTE_MARKERS.includes(node.type)) {
+          this.nodeToUSJNotes(node, parentJsonObj)
+        }
+        else if (
           CHAR_STYLE_MARKERS.includes(node.type) ||
           NESTED_CHAR_STYLE_MARKERS.includes(node.type) ||
           ["xt_standalone"].includes(node.type)
         ) {
           this.nodeToUSJChar(node, parentJsonObj);
-        } else if (node.type.endsWith("Attribute")) {
+        } else if (TABLE_CELL_MARKERS.includes(node.type)) {
+          this.nodeToUSJTable(node, parentJsonObj)
+        }else if (node.type.endsWith("Attribute")) {
           this.nodeToUSJAttrib(node, parentJsonObj);
         } else if (
           PARA_STYLE_MARKERS.includes(node.type) ||

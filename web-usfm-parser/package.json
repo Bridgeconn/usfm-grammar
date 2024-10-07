@@ -11,7 +11,8 @@
   },
   "source": "src/index.js",
   "scripts": {
-    "build": "parcel build src/index.js"
+    "build": "parcel build src/index.js",
+    "test": "mocha --parallel --timeout 40000"
   },
   "files": [
     "dist/",
@@ -40,6 +41,9 @@
     "parcel": "latest",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
-    "web-tree-sitter": "^0.22.6"
+    "web-tree-sitter": "^0.22.6",
+    "glob": "^11.0.0",
+    "mocha": "^10.7.3",
+    "xml2js": "^0.6.2"
   }
 }

@@ -14,7 +14,6 @@ class USFMGenerator {
         this.usfmString += "+";
       }
       this.usfmString += `${usjObj.marker} `;
-
     }
     ["code", "number", "caller"].forEach((key) => {
       if (usjObj[key]) {
@@ -37,9 +36,6 @@ class USFMGenerator {
       }else if (usjObj.marker === "v") {
         this.usfmString += `\\vp ${usjObj.pubnumber} \\vp* `
       }
-    }
-    if (usjObj.category) {
-      this.usfmString += `\\cat ${usjObj.category}\\cat*\n`;
     }
     if (Array.isArray(usjObj.content)) {
       usjObj.content.forEach((item) => {
