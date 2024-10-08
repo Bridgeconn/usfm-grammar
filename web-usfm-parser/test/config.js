@@ -104,10 +104,11 @@ let excludeUSJs = [
     `${TEST_DIR}/specExamples/character/origin.json`,// lit element treated as a body paragraph enclosing a verse! Issue from USX   
 
     ]
+    
+await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
 
 const initialiseParser = async function (inputUsfmPath){
     `Open and parse the given file`
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
     try {
       const data = fs.readFileSync(inputUsfmPath, 'utf8');
       let testParser = new USFMParser(data);
