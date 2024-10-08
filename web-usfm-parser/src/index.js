@@ -1,3 +1,3 @@
-import USFMParser from "./usfmParser.js";
+import {USFMParser, Filter} from "./usfmParser.js";
 
-export { USFMParser };
+export { USFMParser, Filter };
