@@ -119,7 +119,7 @@ jobs:
           npm install .
           cp node_modules/web-tree-sitter/tree-sitter.js src/web-tree-sitter/
           cp node_modules/web-tree-sitter/tree-sitter.wasm ./
-          cp ../tree-sitter-usfm3/tree-sitter-usfm.wasm ./
+          cp ../tree-sitter-usfm3/tree-sitter-usfm3.wasm ./tree-sitter-usfm.wasm
 
           node_modules/mocha/bin/mocha.js --timeout=4000 --grep "Include|Exclude|wild|Compare" --invert
 
