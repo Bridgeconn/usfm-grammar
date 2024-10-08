@@ -2,10 +2,13 @@ import assert from 'assert';
 import fs from 'node:fs';
 import Ajv from 'ajv';
 import {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers} from './config.js';
-import {USFMParser} from '../src/index.js';
+import {USFMParser, Filter} from '../src/index.js';
+
+beforeEach(() => {
+    if (global.gc) { global.gc(); }
+  });
 
 describe("Check successful USFM-USJ conversion for positive samples", () => {
-
   allUsfmFiles.forEach(function(value) {
     if (isValidUsfm[value]) {
       it(`Convert ${value} to USJ`, async (inputUsfmPath=value) => {
@@ -24,7 +27,6 @@ describe("Check successful USFM-USJ conversion for positive samples", () => {
 
 
 describe("Compare generated USJ with testsuite sample", () => {
-
   allUsfmFiles.forEach(function(value) {
     const usjPath = value.replace(".usfm", ".json");
     if (isValidUsfm[value] && ! excludeUSJs.includes(usjPath)) {
@@ -58,7 +60,6 @@ describe("Test USFM-USJ-USFM roundtripping", () => {
   allUsfmFiles.forEach(function(value) {
     if (isValidUsfm[value]) {
       it(`Roundtrip ${value} via USJ`, async (inputUsfmPath=value) => {
-        await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
         const testParser = await initialiseParser(inputUsfmPath)
         assert(testParser instanceof USFMParser)
         const usj = testParser.toUSJ();
@@ -87,7 +88,6 @@ describe("Ensure all markers are in USJ", () => {
   allUsfmFiles.forEach(function(value) {
     if (isValidUsfm[value]) {
       it(`Check for markers of ${value} in USJ`, async (inputUsfmPath=value) => {
-        await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
         const testParser = await initialiseParser(inputUsfmPath)
         assert(testParser instanceof USFMParser)
         const usj = testParser.toUSJ();
@@ -113,7 +113,6 @@ describe("Validate USJ against schema", () => {
   allUsfmFiles.forEach(function(value) {
     if (isValidUsfm[value]) {
       it(`Validate USJ generated from ${value}`, async (inputUsfmPath=value) => {
-        await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
         const testParser = await initialiseParser(inputUsfmPath)
         assert(testParser instanceof USFMParser)
         const usj = testParser.toUSJ();
@@ -126,6 +125,57 @@ describe("Validate USJ against schema", () => {
   });
 
 });
+
+describe("Test Exclude Marker option", () => {
+    // Test Exclude Maker option by checking markers in the USJ
+      const excludeTests = [
+            ['v', 'c'],
+            Filter.PARAGRAPHS,
+            [...Filter.TITLES, ...Filter.BOOK_HEADERS ]
+        ]
+    excludeTests.forEach(function(exList) {
+        allUsfmFiles.forEach(function(value) {
+          if (isValidUsfm[value]) {
+            it(`Exclude ${exList.slice(0, 5)} from ${value}`, async (inputUsfmPath=value) => {
+                const testParser = await initialiseParser(inputUsfmPath)
+                assert(testParser instanceof USFMParser)
+                const usj = testParser.toUSJ(exList);
+                assert(usj instanceof Object);
+
+                const allUSJTypes = getTypes(usj)
+                let types = new Set(allUSJTypes);
+                let intersection = exList.filter(value => types.has(value));
+                assert.deepStrictEqual(intersection, [])
+            });
+          }
+        })
+    })
+});
+
+describe("Test Include Marker option", () => {
+    // Test Include Maker option by checking markers in the USJ
+      const includeTests = [
+            ['v', 'c'],
+            Filter.PARAGRAPHS,
+            [...Filter.TITLES, ...Filter.BOOK_HEADERS ]
+        ]
+    includeTests.forEach(function(inList) {
+        allUsfmFiles.forEach(function(value) {
+          if (isValidUsfm[value]) {
+            it(`Include ${inList.slice(0, 5)} in ${value}`, async (inputUsfmPath=value) => {
+                const testParser = await initialiseParser(inputUsfmPath)
+                assert(testParser instanceof USFMParser)
+                const usj = testParser.toUSJ(null, inList);
+                assert(usj instanceof Object);
+
+                let allUSJTypes = getTypes(usj, false)
+                assert( allUSJTypes.every(element => inList.includes(element)), allUSJTypes)
+            });
+          }
+        })
+    })
+});
+
 
 function stripTextValue(usjObj) {
     /* Trailing and preceding space handling can be different between tcdocs and our logic.
@@ -175,7 +225,7 @@ function stripDefaultAttribValue(usjDict) {
     }
 }
 
-function getTypes(element) {
+function getTypes(element, keepNumber=true) {
     // Recursive function to find all keys in the dict output
     let types = [];
     if (typeof element === 'string') {
@@ -211,5 +261,8 @@ function getTypes(element) {
         }
     }
     let uniqueTypes = [...new Set(types)];
+    if (! keepNumber) {
+        uniqueTypes = uniqueTypes.map(item => item.replace(/\d+$/, ''));
+    }    
     return uniqueTypes;
 }
