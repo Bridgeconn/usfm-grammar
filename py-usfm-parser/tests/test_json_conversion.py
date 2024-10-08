@@ -165,7 +165,7 @@ def strip_default_attrib_value(usj_dict):
                 if item['type'] == "char" and item['marker'] == "w":
                     if "lemma" in item:
                         item['lemma'] = item['lemma'].strip()
-            strip_default_attrib_value(item)
+                strip_default_attrib_value(item)
 
 
 @pytest.mark.parametrize('file_path', test_files)

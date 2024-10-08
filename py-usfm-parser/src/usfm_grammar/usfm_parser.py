@@ -104,7 +104,7 @@ class USFMParser():
 
         self.usfm_bytes = None
         self.syntax_tree = None
-        self.errors = None
+        self.errors = []
         self.warnings = []
 
         # Some basic sanity checks
@@ -125,6 +125,15 @@ class USFMParser():
             self.errors = [(f"At {err[0].start_point}", self.usfm_bytes[err[0].start_byte:
                                     err[0].end_byte].decode('utf-8'))
                                     for err in errors]
+        self.check_for_missing(self.syntax_tree)
+
+    def check_for_missing(self, node):
+        '''Identify and report the MISSING nodes also as errors'''
+        for child in node.children:
+            if child.is_missing :
+                self.errors.append((f"At {child.start_point}", f"Missing {child.type}"))
+            else:
+                self.check_for_missing(child)
 
 
     def to_syntax_tree(self, ignore_errors=False):

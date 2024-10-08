@@ -2,7 +2,7 @@ import Parser from './web-tree-sitter/tree-sitter.js';
 
 import USFMGenerator from "./usfmGenerator.js";
 import USJGenerator from "./usjGenerator.js";
-import { includeMarkersInUsj, excludeMarkersInUsj } from "./filters.js";
+import { Filter } from "./filters.js";
 
 
 class USFMParser {
@@ -183,14 +183,14 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		}
 
 		if (includeMarkers) {
-			outputUSJ = includeMarkersInUsj(outputUSJ, [...includeMarkers, 'USJ'], combineTexts);
+			outputUSJ = Filter.keepOnly(outputUSJ, [...includeMarkers, 'USJ'], combineTexts);
 		}
 		if (excludeMarkers) {
-			outputUSJ = excludeMarkersInUsj(outputUSJ, excludeMarkers, combineTexts);
+			outputUSJ = Filter.remove(outputUSJ, excludeMarkers, combineTexts);
 		}
 
 		return outputUSJ;
 	}
 }
 
-export default USFMParser;
+export {USFMParser, Filter};

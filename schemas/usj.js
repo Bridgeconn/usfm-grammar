@@ -1,6 +1,6 @@
 {
-  "$schema": "USJ-0.0.1",
-  "$id": "https://usfm-committee/usj.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "https://github.com/usfm-bible/tcdocs/blob/main/grammar/usj.js",
   "title": "Unified Scripture JSON",
   "description": "The JSON varient of USFM and USX data models",
   "type": "object",

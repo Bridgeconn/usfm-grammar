@@ -57,13 +57,13 @@ cd tree-sitter-usfm3
 export PATH=$PATH:./node_modules/.bin
 tree-sitter generate
 tree-sitter build --wasm
-cp tree-sitter-usfm.wasm ../js-usfm-parser/
+cp tree-sitter-usfm.wasm ../web-usfm-parser/
 cd ..
 ```
 After npm install, copy the `tree-sitter.js` file from `node_modules/web-tree-sitter` to the `js-usfm-parser/src/web-tree-sitter` folder to include it in the bundle. Also copy the `tree-sitter.wasm` file to `js-usfm-parser/` to be included in the npm packaging.
 
 ```bash
-cd js-usfm-parser/
+cd web-usfm-parser/
 npm install .
 cp node_modules/web-tree-sitter/tree-sitter.js src/web-tree-sitter/
 cp node_modules/web-tree-sitter/tree-sitter.wasm ./

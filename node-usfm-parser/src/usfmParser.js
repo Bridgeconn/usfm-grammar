@@ -2,7 +2,7 @@ const Parser = require('tree-sitter');
 
 const {USFMGenerator} = require("./usfmGenerator");
 const {USJGenerator} = require("./usjGenerator"); 
-const { includeMarkersInUsj, excludeMarkersInUsj } = require("./filters.js");
+const { includeMarkersInUsj, excludeMarkersInUsj, Filter } = require("./filters.js");
 const USFM3 = require('tree-sitter-usfm3');
 const { Query } = Parser;
 
@@ -168,14 +168,28 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		}
 
 		if (includeMarkers) {
-			outputUSJ = includeMarkersInUsj(outputUSJ, [...includeMarkers, 'USJ'], combineTexts);
+			outputUSJ = Filter.keepOnly(outputUSJ, [...includeMarkers, 'USJ'], combineTexts);
 		}
 		if (excludeMarkers) {
-			outputUSJ = excludeMarkersInUsj(outputUSJ, excludeMarkers, combineTexts);
+			outputUSJ = Filter.remove(outputUSJ, excludeMarkers, combineTexts);
 		}
 
 		return outputUSJ;
 	}
 }
 
+
+
+class Format {
+  // Defines the valid values for input and output formats
+  static JSON = "usj";
+  static CSV = "table";
+  static ST = "syntax-tree";
+  static USX = "usx";
+  static MD = "markdown";
+  static USFM = "usfm";
+}
+
 exports.USFMParser = USFMParser;
+exports.Filter = Filter;
+exports.Format = Format;
