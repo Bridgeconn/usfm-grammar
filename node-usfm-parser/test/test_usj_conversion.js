@@ -3,12 +3,12 @@ const fs = require('node:fs');
 const {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers} = require('./config');
 const {USFMParser} = require("../src/index");
 
-
 describe("Check successful USFM-USJ conversion for positive samples", () => {
 
   allUsfmFiles.forEach(function(value) {
     if (isValidUsfm[value]) {
       it(`Convert ${value} to USJ`, (inputUsfmPath=value) => {
+        //Tests if input parses without errors
         const testParser = initialiseParser(inputUsfmPath)
         assert(testParser instanceof USFMParser)
         const usj = testParser.toUSJ();
@@ -80,6 +80,33 @@ describe("Test USFM-USJ-USFM roundtripping", () => {
 
 });
 
+describe("Ensure all markers are in USJ", () => {
+  // Tests if all markers in USFM are present in output also
+  allUsfmFiles.forEach(function(value) {
+    if (isValidUsfm[value]) {
+      it(`Check for markers of ${value} in USJ`, (inputUsfmPath=value) => {
+        const testParser = initialiseParser(inputUsfmPath)
+        assert(testParser instanceof USFMParser)
+        const usj = testParser.toUSJ();
+        assert(usj instanceof Object);
+
+        const inputMarkers = [... new Set(findAllMarkers(testParser.usfm, keepId=true))]
+        const allUSJTypes = getTypes(usj);
+
+        assert.deepStrictEqual(inputMarkers, allUSJTypes, `Markers in input and generated USJ differ`)
+      });
+    }
+  });
+
+});
+
+
+
+
+
+
+
+
 
 function stripTextValue(usjObj) {
     /* Trailing and preceding space handling can be different between tcdocs and our logic.
@@ -129,3 +156,42 @@ function stripDefaultAttribValue(usjDict) {
     }
 }
 
+
+function getTypes(element) {
+    // Recursive function to find all keys in the dict output
+    let types = [];
+    if (typeof element === 'string') {
+        return types; // Return empty array if element is a string
+    } else {
+        if ('marker' in element) {
+            types.push(element.marker);
+        }
+        if (element.type === 'ref') {
+            types.push("ref");
+        }
+        if ('altnumber' in element) {
+            if (element.marker === 'c') {
+                types.push('ca');
+            } else {
+                types.push('va');
+            }
+        }
+        if ('pubnumber' in element) {
+            if (element.marker === 'c') {
+                types.push('cp');
+            } else {
+                types.push('vp');
+            }
+        }
+        if ('category' in element) {
+            types.push('cat');
+        }
+        if ('content' in element) {
+            element.content.forEach(item => {
+                types = types.concat(getTypes(item)); // Recursively get types from content
+            });
+        }
+    }
+    let uniqueTypes = [...new Set(types)];
+    return uniqueTypes;
+}
