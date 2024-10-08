@@ -1,5 +1,6 @@
 import assert from 'assert';
 import fs from 'node:fs';
+import Ajv from 'ajv';
 import {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers} from './config.js';
 import {USFMParser} from '../src/index.js';
 
@@ -96,6 +97,30 @@ describe("Ensure all markers are in USJ", () => {
         const allUSJTypes = getTypes(usj);
 
         assert.deepStrictEqual(inputMarkers, allUSJTypes, `Markers in input and generated USJ differ`)
+      });
+    }
+  });
+
+});
+
+describe("Validate USJ against schema", () => {
+  // Test generated USJ against USJ schema
+  const ajv = new Ajv();
+  const schemaStr = fs.readFileSync("../schemas/usj.js", 'utf8');
+  const schema = JSON.parse(schemaStr);
+  const validate = ajv.compile(schema);
+
+  allUsfmFiles.forEach(function(value) {
+    if (isValidUsfm[value]) {
+      it(`Validate USJ generated from ${value}`, async (inputUsfmPath=value) => {
+        await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+        const testParser = await initialiseParser(inputUsfmPath)
+        assert(testParser instanceof USFMParser)
+        const usj = testParser.toUSJ();
+        assert(usj instanceof Object);
+
+        assert(validate(usj));  
+
       });
     }
   });
