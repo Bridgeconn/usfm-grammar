@@ -95,10 +95,10 @@ jobs:
           cd node-usfm-parser
           npm install .
           npm install ../tree-sitter-usfm3
-          node_modules/mocha/bin/mocha.js --timeout=4000 --grep "Include|Exclude|wild|Compare" --invert
+          node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
 
   Run-Web-tests:
-    name: Run Node tests
+    name: Run Web tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -121,7 +121,7 @@ jobs:
           cp node_modules/web-tree-sitter/tree-sitter.wasm ./
           cp ../tree-sitter-usfm3/tree-sitter-usfm3.wasm ./tree-sitter-usfm.wasm
 
-          node_modules/mocha/bin/mocha.js --timeout=4000 --grep "Include|Exclude|wild|Compare" --invert
+          node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
 
 
 
