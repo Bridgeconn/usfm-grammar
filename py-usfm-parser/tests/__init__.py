@@ -94,7 +94,7 @@ pass_fail_override_list = {
     f"{TEST_DIR}/paratextTests/MarkersMissingSpace/origin.usfm": "fail",
     f"{TEST_DIR}/paratextTests/NestingInCrossReferences/origin.usfm": "fail",
     f"{TEST_DIR}/special-cases/empty-para/origin.usfm": "fail",
-    f"{TEST_DIR}/special-cases/sp/origin.usfm": "fail",
+    # f"{TEST_DIR}/special-cases/sp/origin.usfm": "fail",
     f"{TEST_DIR}/specExamples/extended/sidebars/origin.usfm":"fail",
 
     # No. of columns in table not validated by usfm-grammar
@@ -127,6 +127,18 @@ pass_fail_override_list = {
     f"{TEST_DIR}/usfmjsTests/luk_quotes/origin.usfm": "fail",
     f"{TEST_DIR}/biblica/BlankLinesWithFigures/origin.usfm": "fail", #\fig used without \p, only \b
 
+    # no space after \s5
+    f"{TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/usfm-body-testF/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/psa_quotes/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/pro_footnote/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/pro_quotes/origin.usfm": "fail",
+    f"{TEST_DIR}/samples-from-wild/doo43-1/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/gn_headers/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/isa_inline_quotes/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/job_footnote/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/mat-4-6.whitespace/origin.usfm": "fail",
+    f"{TEST_DIR}/usfmjsTests/out_of_sequence_chapters/origin.usfm": "fail",
     
     f"{TEST_DIR}/biblica/PublishingVersesWithFormatting/origin.usfm": "fail", # \c without number
 
@@ -143,6 +155,7 @@ pass_fail_override_list = {
 
     f"{TEST_DIR}/advanced/periph/origin.usfm": "fail", # Peripharals not implemented
     f"{TEST_DIR}/advanced/nesting1/origin.usfm": "fail", # We dont support char within char w/o +, yet
+    f"{TEST_DIR}/samples-from-wild/doo43-4/origin.usfm": "fail", # ior surronded by a () leaves a stray ) at the end.
 }
 
 negative_tests = []
