@@ -133,7 +133,7 @@ class USFMParser():
             if child.is_missing :
                 self.errors.append((f"At {child.start_point}", f"Missing {child.type}"))
             else:
-                self.check_for_missing(child) 
+                self.check_for_missing(child)
 
 
     def to_syntax_tree(self, ignore_errors=False):
