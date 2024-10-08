@@ -30,6 +30,7 @@
     "tree-sitter-usfm3": "file:../tree-sitter-usfm3"
   },
   "devDependencies": {
+    "ajv": "^8.17.1",
     "glob": "^11.0.0",
     "mocha": "^10.7.3",
     "parcel": "^2.12.0",

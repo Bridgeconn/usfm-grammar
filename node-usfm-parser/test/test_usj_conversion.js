@@ -1,5 +1,6 @@
 const assert = require('assert');
 const fs = require('node:fs');
+const Ajv = require('ajv');
 const {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers} = require('./config');
 const {USFMParser} = require("../src/index");
 
@@ -101,11 +102,28 @@ describe("Ensure all markers are in USJ", () => {
 });
 
 
+describe("Validate USJ against schema", () => {
+  // Test generated USJ against USJ schema
+  const ajv = new Ajv();
+  const schemaStr = fs.readFileSync("../schemas/usj.js", 'utf8');
+  const schema = JSON.parse(schemaStr);
+  const validate = ajv.compile(schema);
 
+  allUsfmFiles.forEach(function(value) {
+    if (isValidUsfm[value]) {
+      it(`Validate USJ generated from ${value}`, (inputUsfmPath=value) => {
+        const testParser = initialiseParser(inputUsfmPath)
+        assert(testParser instanceof USFMParser)
+        const usj = testParser.toUSJ();
+        assert(usj instanceof Object);
 
+        assert(validate(usj));  
 
+      });
+    }
+  });
 
-
+});
 
 
 function stripTextValue(usjObj) {
