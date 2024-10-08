@@ -113,6 +113,8 @@ jobs:
           npm install --save nan
           npm install --save-dev tree-sitter-cli
           ./node_modules/.bin/tree-sitter generate
+          ./node_modules/.bin/tree-sitter build --wasm
+
       - name: Install dependencies
         run: |
           cd web-usfm-parser
