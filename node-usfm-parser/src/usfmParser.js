@@ -213,17 +213,6 @@ Only one of USFM, USJ or USX is supported in one object.`)
 }
 
 
-
-class Format {
-  // Defines the valid values for input and output formats
-  static JSON = "usj";
-  static CSV = "table";
-  static ST = "syntax-tree";
-  static USX = "usx";
-  static MD = "markdown";
-  static USFM = "usfm";
-}
-
 exports.USFMParser = USFMParser;
 exports.Filter = Filter;
-exports.Format = Format;
+// exports.Format = Format;
