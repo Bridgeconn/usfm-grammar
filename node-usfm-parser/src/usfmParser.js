@@ -2,6 +2,7 @@ const Parser = require('tree-sitter');
 
 const {USFMGenerator} = require("./usfmGenerator");
 const {USJGenerator} = require("./usjGenerator"); 
+const {ListGenerator} = require("./listGenerator");
 const { includeMarkersInUsj, excludeMarkersInUsj, Filter } = require("./filters.js");
 const USFM3 = require('tree-sitter-usfm3');
 const { Query } = Parser;
@@ -176,20 +177,42 @@ Only one of USFM, USJ or USX is supported in one object.`)
 
 		return outputUSJ;
 	}
+
+	toList(
+	    excludeMarkers = null,
+	    includeMarkers = null,
+	    ignoreErrors = false,
+	    combineTexts = true
+	) {
+	    /* Uses the toJSON function and converts JSON to CSV
+	       To be re-implemented to work with the flat JSON schema */
+
+	    if (!ignoreErrors && this.errors && this.errors.length > 0) {
+	        const errStr = this.errors.map(err => err.join(":")).join("\n\t");
+	        throw new Error(`Errors present:\n\t${errStr}\nUse ignoreErrors=true to generate output despite errors`);
+	    }
+
+	    try {
+	        const usjDict = this.toUSJ(excludeMarkers, includeMarkers, ignoreErrors, combineTexts);
+
+	        const listGenerator = new ListGenerator();
+	        listGenerator.usjToList(usjDict);
+	    	return listGenerator.list;
+
+	    } catch (exe) {
+	        let message = "Unable to do the conversion. ";
+	        if (this.errors && this.errors.length > 0) {
+	            const errStr = this.errors.map(err => err.join(":")).join("\n\t");
+	            message += `Could be due to an error in the USFM\n\t${errStr}`;
+	        }
+	        throw new Error(message, { cause: exe });
+	    }
+
+	}
+
 }
 
-
-
-class Format {
-  // Defines the valid values for input and output formats
-  static JSON = "usj";
-  static CSV = "table";
-  static ST = "syntax-tree";
-  static USX = "usx";
-  static MD = "markdown";
-  static USFM = "usfm";
-}
 
 exports.USFMParser = USFMParser;
 exports.Filter = Filter;
-exports.Format = Format;
+// exports.Format = Format;

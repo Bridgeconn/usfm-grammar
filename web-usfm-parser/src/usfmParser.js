@@ -2,6 +2,7 @@ import Parser from './web-tree-sitter/tree-sitter.js';
 
 import USFMGenerator from "./usfmGenerator.js";
 import USJGenerator from "./usjGenerator.js";
+import ListGenerator from "./listGenerator.js"
 import { Filter } from "./filters.js";
 
 
@@ -191,6 +192,39 @@ Only one of USFM, USJ or USX is supported in one object.`)
 
 		return outputUSJ;
 	}
+
+	toList(
+	    excludeMarkers = null,
+	    includeMarkers = null,
+	    ignoreErrors = false,
+	    combineTexts = true
+	) {
+	    /* Uses the toJSON function and converts JSON to CSV
+	       To be re-implemented to work with the flat JSON schema */
+
+	    if (!ignoreErrors && this.errors && this.errors.length > 0) {
+	        const errStr = this.errors.map(err => err.join(":")).join("\n\t");
+	        throw new Error(`Errors present:\n\t${errStr}\nUse ignoreErrors=true to generate output despite errors`);
+	    }
+
+	    try {
+	        const usjDict = this.toUSJ(excludeMarkers, includeMarkers, ignoreErrors, combineTexts);
+
+	        const listGenerator = new ListGenerator();
+	        listGenerator.usjToList(usjDict);
+	    	return listGenerator.list;
+
+	    } catch (exe) {
+	        let message = "Unable to do the conversion. ";
+	        if (this.errors && this.errors.length > 0) {
+	            const errStr = this.errors.map(err => err.join(":")).join("\n\t");
+	            message += `Could be due to an error in the USFM\n\t${errStr}`;
+	        }
+	        throw new Error(message, { cause: exe });
+	    }
+
+	}
+
 }
 
 export {USFMParser, Filter};
