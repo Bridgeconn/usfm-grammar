@@ -1,11 +1,14 @@
 const Parser = require('tree-sitter');
+const { DOMImplementation, XMLSerializer } = require('xmldom');
 
 const {USFMGenerator} = require("./usfmGenerator");
 const {USJGenerator} = require("./usjGenerator"); 
 const {ListGenerator} = require("./listGenerator");
+const {USXGenerator} = require("./usxGenerator")
 const { includeMarkersInUsj, excludeMarkersInUsj, Filter } = require("./filters.js");
 const USFM3 = require('tree-sitter-usfm3');
 const { Query } = Parser;
+const usxSerializer = new XMLSerializer();
 
 class USFMParser {
 
@@ -48,6 +51,7 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		this.errors = [];
         this.warnings = [];
         this.parseUSFM();
+
 	}
 	initializeParser() {
 		this.parser = new Parser();
@@ -209,6 +213,39 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	    }
 
 	}
+
+	toUSX(ignoreErrors = false) {
+	    /* Convert the syntax_tree to the XML format (USX) */
+
+	    if (!ignoreErrors && this.errors && this.errors.length > 0) {
+	        const errStr = this.errors.map(err => err.join(":")).join("\n\t");
+	        throw new Error(`Errors present:\n\t${errStr}\nUse ignoreErrors=true to generate output despite errors`);
+	    }
+	    let xmlContent = null;
+
+	    try {
+	        // Initialize the USX generator (assuming the constructor is already implemented in JS)
+	        const usxGenerator = new USXGenerator(USFM3,
+													this.usfm);
+	        
+	        // Process the syntax tree and convert to USX format
+	        usxGenerator.node2Usx(this.syntaxTree, usxGenerator.xmlRootNode);
+
+	        xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
+
+	    } catch (exe) {
+	        let message = "Unable to do the conversion. ";
+	        if (this.errors && this.errors.length > 0) {
+	            const errStr = this.errors.map(err => err.join(":")).join("\n\t");
+	            message += `Could be due to an error in the USFM\n\t${errStr}`;
+	        }
+	        throw new Error(message, { cause: exe });
+	    }
+
+	    // Return the generated XML structure (in JSON format)
+	    return xmlContent;
+	}
+
 
 }
 

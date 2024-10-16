@@ -27,13 +27,14 @@
   ],
   "dependencies": {
     "tree-sitter": "0.21.1",
-    "tree-sitter-usfm3": "file:../tree-sitter-usfm3"
+    "tree-sitter-usfm3": "file:../tree-sitter-usfm3",
+    "xmldom": "^0.6.0",
+    "xpath": "^0.0.34"
   },
   "devDependencies": {
     "ajv": "^8.17.1",
     "glob": "^11.0.0",
     "mocha": "^10.7.3",
-    "parcel": "^2.12.0",
-    "xml2js": "^0.6.2"
+    "parcel": "^2.12.0"
   }
 }
