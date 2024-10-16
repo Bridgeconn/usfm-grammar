@@ -242,6 +242,44 @@ class USXGenerator {
 	    parentXmlNode.appendChild(charXmlNode);
 	}
 
+	node2UsxPara(node, parentXmlNode) {
+	    // Build paragraph nodes in USX
+	    if (node.children[0].type.endsWith('Block')) {
+	        for (const child of node.children[0].children) {
+	            this.node2UsxPara(child, parentXmlNode);
+	        }
+	    } else if (node.type === 'paragraph') {
+	        const paraTagCap = new Query(this.usfmLanguage,
+			        "(paragraph (_) @para-marker)").captures(node)[0];
+		    const paraMarker = paraTagCap.node.type;
+
+	        if (!paraMarker.endsWith("Block")) {
+	            const paraXmlNode = parentXmlNode.ownerDocument.createElement("para");
+	            paraXmlNode.setAttribute("style", paraMarker);
+
+	            for (const child of paraTagCap.node.children.slice(1)) {
+	                this.node2Usx(child, paraXmlNode);
+	            }
+
+	            parentXmlNode.appendChild(paraXmlNode);
+	        }
+	    } else if (['pi', 'ph'].includes(node.type)) {
+	        const paraMarker = this.usfm.slice(node.children[0].startByte, node.children[0].endByte)
+	            .toString('utf-8')
+	            .replace("\\", "")
+	            .trim();
+
+	        const paraXmlNode = parentXmlNode.ownerDocument.createElement("para");
+	        paraXmlNode.setAttribute("style", paraMarker);
+
+	        for (const child of node.children.slice(1)) {
+	            this.node2Usx(child, paraXmlNode);
+	        }
+
+	        parentXmlNode.appendChild(paraXmlNode);
+	    }
+	}
+
     node2UsxGeneric(node, parentXmlNode) {
         const tagNode = node.children[0];
         let style = this.usfm.slice(tagNode.startIndex, tagNode.startIndex);
@@ -313,8 +351,8 @@ class USXGenerator {
             node.children.forEach(child => {
                 this.node2Usx(child, parentXmlNode);
             });
-        // } else if (["paragraph", "pi", "ph"].includes(node.type)) {
-        //     this.node2UsxPara(node, parentXmlNode);
+        } else if (["paragraph", "pi", "ph"].includes(node.type)) {
+            this.node2UsxPara(node, parentXmlNode);
         // } else if (this.NOTE_MARKERS.includes(node.type)) {
         //     this.node2UsxNotes(node, parentXmlNode);
         // } else if (
