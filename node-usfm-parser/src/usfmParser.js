@@ -189,9 +189,9 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	    /* Uses the toJSON function and converts JSON to CSV
 	       To be re-implemented to work with the flat JSON schema */
 
-	    if (!ignoreErrors && this.errors && this.errors.length > 0) {
-	        const errStr = this.errors.map(err => err.join(":")).join("\n\t");
-	        throw new Error(`Errors present:\n\t${errStr}\nUse ignoreErrors=true to generate output despite errors`);
+	    if (!ignoreErrors && this.errors.length > 0) {
+			let errorString = this.errors.join("\n\t");
+	        throw new Error(`Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`);
 	    }
 
 	    try {
@@ -203,9 +203,9 @@ Only one of USFM, USJ or USX is supported in one object.`)
 
 	    } catch (exe) {
 	        let message = "Unable to do the conversion. ";
-	        if (this.errors && this.errors.length > 0) {
-	            const errStr = this.errors.map(err => err.join(":")).join("\n\t");
-	            message += `Could be due to an error in the USFM\n\t${errStr}`;
+	        if (this.errors.length > 0) {
+				let errorString = this.errors.join("\n\t");
+	            message += `Could be due to an error in the USFM\n\t${errorString}`;
 	        }
 	        throw new Error(message, { cause: exe });
 	    }
@@ -215,9 +215,9 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	toUSX(ignoreErrors = false) {
 	    /* Convert the syntax_tree to the XML format (USX) */
 
-	    if (!ignoreErrors && this.errors && this.errors.length > 0) {
-	        const errStr = this.errors.map(err => err.join(":")).join("\n\t");
-	        throw new Error(`Errors present:\n\t${errStr}\nUse ignoreErrors=true to generate output despite errors`);
+	    if (!ignoreErrors && this.errors.length > 0) {
+			let errorString = this.errors.join("\n\t");
+	        throw new Error(`Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`);
 	    }
 	    let xmlContent = null;
 
@@ -233,9 +233,9 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	        xmlContent = usxGenerator.xmlRootNode;
 	    } catch (exe) {
 	        let message = "Unable to do the conversion. ";
-	        if (this.errors && this.errors.length > 0) {
-	            const errStr = this.errors.map(err => err.join(":")).join("\n\t");
-	            message += `Could be due to an error in the USFM\n\t${errStr}`;
+	        if (this.errors.length > 0) {
+				let errorString = this.errors.join("\n\t");
+	            message += `Could be due to an error in the USFM\n\t${errorString}`;
 	        }
 	        throw new Error(message, { cause: exe });
 	    }
