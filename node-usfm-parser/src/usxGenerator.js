@@ -360,6 +360,40 @@ class USXGenerator {
         parentXmlNode.setAttribute(attribName, attribValue);
     }
 
+    node2UsxSpecial(node, parentXmlNode) {
+        // Build nodes for esb, cat, fig, optbreak in USJ
+
+        if (node.type === "esb") {
+          const sidebarXmlNode = parentXmlNode.ownerDocument.createElement('sidebar');
+          sidebarXmlNode.setAttribute('marker', "esb");
+          node.children.slice(1, -1).forEach((child) => {
+            this.node2Usx(child, sidebarXmlNode);
+          });
+          parentXmlNode.appendChild(sidebarXmlNode);
+        } else if (node.type === "cat") {
+          const catCap = new Query(this.usfmLanguage,
+            "((category) @category)")
+            .captures(node)[0];
+          const category = this.usfm
+            .substring(catCap.node.startIndex, catCap.node.endIndex)
+            .trim();
+          parentXmlNode.setAttribute("category", category);
+        } else if (node.type === "fig") {
+          const figXmlNode = parentXmlNode.ownerDocument.createElement('figure');
+          figXmlNode.setAttribute("marker", "fig");
+          node.children.slice(1, -1).forEach((child) => {
+            this.node2Usx(child, figXmlNode);
+          });
+          parentXmlNode.appendChild(figXmlNode);
+        } else if (node.type === "ref") {
+          const refXmlNode = parentXmlNode.ownerDocument.createElement('ref');
+          node.children.slice(1, -1).forEach((child) => {
+            this.node2Usx(child, refJsonObj);
+          });
+          parentXmlNode.appendChild(refXmlNode);
+        }
+    }
+
     node2UsxGeneric(node, parentXmlNode) {
         const tagNode = node.children[0];
         let style = this.usfm.slice(tagNode.startIndex, tagNode.startIndex);
@@ -455,13 +489,13 @@ class USXGenerator {
         //     this.node2UsxTable(node, parentXmlNode);
         // } else if (node.type === "milestone" || node.type === "zNameSpace") {
         //     this.node2UsxMilestone(node, parentXmlNode);
-        // } else if (["esb", "cat", "fig"].includes(node.type)) {
-        //     this.node2UsxSpecial(node, parentXmlNode);
-        // } else if (
-        //     this.PARA_STYLE_MARKERS.includes(node.type) ||
-        //     this.PARA_STYLE_MARKERS.includes(node.type.replace("\\", "").trim())
-        // ) {
-        //     this.node2UsxGeneric(node, parentXmlNode);
+        } else if (["esb", "cat", "fig"].includes(node.type)) {
+            this.node2UsxSpecial(node, parentXmlNode);
+        } else if (
+            PARA_STYLE_MARKERS.includes(node.type) ||
+            PARA_STYLE_MARKERS.includes(node.type.replace("\\", "").trim())
+        ) {
+            this.node2UsxGeneric(node, parentXmlNode);
         } else if (["", "|"].includes(node.type.trim())) {
             // Skip whitespace nodes
         } else if (node.children.length > 0) {
