@@ -119,6 +119,23 @@ class USXGenerator {
 		    this.node2Usx(child, parentXmlNode);
 		  }
 		});
+
+        const prevVerses = xpath.select("//verse", this.xmlRootNode);
+        if (prevVerses.length > 0 && prevVerses[prevVerses.length - 1].hasAttribute('sid')) {
+            const vEndXmlNode = parentXmlNode.ownerDocument.createElement('verse');
+            vEndXmlNode.setAttribute('eid', prevVerses[prevVerses.length - 1].getAttribute('sid'));
+            const sibblingCount = parentXmlNode.childNodes.length;
+            const lastSibbling = parentXmlNode.childNodes[sibblingCount-1];
+            if (lastSibbling.tagName === "para") {
+                lastSibbling.appendChild(vEndXmlNode);
+            } else if (prevUncle.tagName === "table") {
+                const rows = lastSibbling.getElementsByTagName('row');
+                rows[rows.length - 1].appendChild(vEndXmlNode);
+            } else {
+                parentXmlNode.appendChild(vEndXmlNode);
+            }
+        }
+
 	}
 
 	findPrevUncle(parentXmlNode) {
@@ -163,7 +180,7 @@ class USXGenerator {
                     vEndXmlNode = prevUncle.ownerDocument.createElement('verse');
                     prevUncle.appendChild(vEndXmlNode);
                 } else if (prevUncle.tagName === "table") {
-                    const rows = prevUncle.getElementsByTagName('table:row');
+                    const rows = prevUncle.getElementsByTagName('row');
                     vEndXmlNode = prevUncle.ownerDocument.createElement('verse');
                     rows[rows.length - 1].appendChild(vEndXmlNode);
                 } else {
