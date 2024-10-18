@@ -231,8 +231,8 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	        // Process the syntax tree and convert to USX format
 	        usxGenerator.node2Usx(this.syntaxTree, usxGenerator.xmlRootNode);
 
-	        xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
-
+	        // xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
+	        xmlContent = usxGenerator.xmlRootNode;
 	    } catch (exe) {
 	        let message = "Unable to do the conversion. ";
 	        if (this.errors && this.errors.length > 0) {

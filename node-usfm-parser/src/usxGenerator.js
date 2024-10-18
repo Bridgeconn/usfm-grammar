@@ -421,10 +421,10 @@ class USXGenerator {
         if (node.type === "esb") {
           const sidebarXmlNode = parentXmlNode.ownerDocument.createElement('sidebar');
           sidebarXmlNode.setAttribute('marker', "esb");
+          parentXmlNode.appendChild(sidebarXmlNode);
           node.children.slice(1, -1).forEach((child) => {
             this.node2Usx(child, sidebarXmlNode);
           });
-          parentXmlNode.appendChild(sidebarXmlNode);
         } else if (node.type === "cat") {
           const catCap = new Query(this.usfmLanguage,
             "((category) @category)")
@@ -436,16 +436,16 @@ class USXGenerator {
         } else if (node.type === "fig") {
           const figXmlNode = parentXmlNode.ownerDocument.createElement('figure');
           figXmlNode.setAttribute("marker", "fig");
+          parentXmlNode.appendChild(figXmlNode);
           node.children.slice(1, -1).forEach((child) => {
             this.node2Usx(child, figXmlNode);
           });
-          parentXmlNode.appendChild(figXmlNode);
         } else if (node.type === "ref") {
           const refXmlNode = parentXmlNode.ownerDocument.createElement('ref');
+          parentXmlNode.appendChild(refXmlNode);
           node.children.slice(1, -1).forEach((child) => {
             this.node2Usx(child, refJsonObj);
           });
-          parentXmlNode.appendChild(refXmlNode);
         }
     }
 
@@ -474,6 +474,7 @@ class USXGenerator {
         // Create a 'para' element and set its style attribute
         const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
         paraXmlNode.setAttribute('style', style);
+        parentXmlNode.appendChild(paraXmlNode);
 
         // Loop through the child nodes and recursively process them
         for (let i = childrenRangeStart; i < node.children.length; i++) {
@@ -501,7 +502,6 @@ class USXGenerator {
         }
 
         // Append the created para node to the parent XML node
-        parentXmlNode.appendChild(paraXmlNode);
     }
 
     node2Usx(node, parentXmlNode) {
