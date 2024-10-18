@@ -220,5 +220,6 @@ module.exports = {
     initialiseParser: initialiseParser,
     isValidUsfm: isValidUsfm,
     excludeUSJs: excludeUSJs,
+    excludeUSXs: excludeUSXs,
     findAllMarkers: findAllMarkers
 };
