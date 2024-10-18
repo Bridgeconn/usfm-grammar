@@ -92,7 +92,7 @@ class USXGenerator {
 		    chapXmlNode.setAttribute('altnumber', altNum);
 		  }
 		  if (cap.name === "pub-num") {
-		    const punNum = this.usfm
+		    const pubNum = this.usfm
 		      .substring(cap.node.startIndex, cap.node.endIndex)
 		      .trim();
 			chapXmlNode.setAttribute('pubnumber', pubNum);
@@ -128,7 +128,7 @@ class USXGenerator {
             const lastSibbling = parentXmlNode.childNodes[sibblingCount-1];
             if (lastSibbling.tagName === "para") {
                 lastSibbling.appendChild(vEndXmlNode);
-            } else if (prevUncle.tagName === "table") {
+            } else if (lastSibbling.tagName === "table") {
                 const rows = lastSibbling.getElementsByTagName('row');
                 rows[rows.length - 1].appendChild(vEndXmlNode);
             } else {
