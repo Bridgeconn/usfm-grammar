@@ -468,13 +468,13 @@ class USXGenerator {
 
     node2UsxGeneric(node, parentXmlNode) {
         const tagNode = node.children[0];
-        let style = this.usfm.slice(tagNode.startIndex, tagNode.startIndex);
+        let style = this.usfm.slice(tagNode.startIndex, tagNode.endIndex).trim();
 
         // Strip leading backslashes from the style or use node type
         if (style.startsWith('\\')) {
-            style = style.replace('\\', '').trim();
-        } else {
-            style = node.type;
+            style = style.replace('\\', '');
+        // } else {
+        //     style = node.type;
         }
 
         if (style === "usfm") {
@@ -482,15 +482,6 @@ class USXGenerator {
         }
 
 		let childrenRangeStart = 1;
-	    if (
-	      node.children.length > 1 &&
-	      node.children[1].type.startsWith("numbered")
-	    ) {
-	      const numNode = node.children[1];
-	      const num = this.usfm.substring(numNode.startIndex, numNode.endIndex);
-	      style += num;
-	      childrenRangeStart = 2;
-	    }
 
         // Create a 'para' element and set its style attribute
         const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
