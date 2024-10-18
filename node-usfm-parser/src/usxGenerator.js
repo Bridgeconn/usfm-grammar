@@ -437,7 +437,7 @@ class USXGenerator {
 
         if (node.type === "esb") {
           const sidebarXmlNode = parentXmlNode.ownerDocument.createElement('sidebar');
-          sidebarXmlNode.setAttribute('marker', "esb");
+          sidebarXmlNode.setAttribute('style', "esb");
           parentXmlNode.appendChild(sidebarXmlNode);
           node.children.slice(1, -1).forEach((child) => {
             this.node2Usx(child, sidebarXmlNode);
@@ -452,7 +452,7 @@ class USXGenerator {
           parentXmlNode.setAttribute("category", category);
         } else if (node.type === "fig") {
           const figXmlNode = parentXmlNode.ownerDocument.createElement('figure');
-          figXmlNode.setAttribute("marker", "fig");
+          figXmlNode.setAttribute("style", "fig");
           parentXmlNode.appendChild(figXmlNode);
           node.children.slice(1, -1).forEach((child) => {
             this.node2Usx(child, figXmlNode);
