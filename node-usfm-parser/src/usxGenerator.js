@@ -302,6 +302,64 @@ class USXGenerator {
         parentXmlNode.appendChild(noteXmlNode);
     }
 
+    node2UsxChar(node, parentXmlNode) {
+        // Build USJ nodes for character markups, both regular and nested
+        const tagNode = node.children[0];
+        let childrenRange = node.children.length;
+        if (node.children[node.children.length - 1].type.startsWith("\\")) {
+          childrenRange -= 1; // Exclude the last node if it starts with '\', treating it as a closing node
+        }
+        const charXmlNode = parentXmlNode.ownerDocument.createElement('char');
+        const style = this.usfm
+          .substring(tagNode.startIndex, tagNode.endIndex)
+          .replace("\\", "")
+          .replace("+", "")
+          .trim();
+        charXmlNode.setAttribute('style', style);
+
+        // Assume a flag for closed markup, toggle this if your conditions and data structure require
+        // charJsonObj.closed = node.children[node.children.length - 1].type.startsWith('\\');
+
+        for (let i = 1; i < childrenRange; i++) {
+          this.node2Usx(node.children[i], charXmlNode);
+        }
+
+        parentXmlNode.appendChild(charXmlNode);
+    }
+
+    node2UsxAttrib(node, parentXmlNode) {
+        // Add attribute values to USJ elements
+        const attribNameNode = node.children[0];
+        let attribName = this.usfm
+          .slice(attribNameNode.startIndex, attribNameNode.endIndex)
+          .trim();
+
+        // Handling special cases for attribute names
+        if (attribName === "|") {
+          attribName = DEFAULT_ATTRIB_MAP[node.parent.type];
+        }
+        if (attribName === "src") {
+          // for \fig
+          attribName = "file";
+        }
+
+        const attribValCap = new Query(this.usfmLanguage,
+          "((attributeValue) @attrib-val)")
+          .captures(node);
+
+        let attribValue = "";
+        if (attribValCap.length > 0) {
+          attribValue = this.usfm
+            .substring(
+              attribValCap[0].node.startIndex,
+              attribValCap[0].node.endIndex,
+            )
+            .trim();
+        }
+
+        parentXmlNode.setAttribute(attribName, attribValue);
+    }
+
     node2UsxGeneric(node, parentXmlNode) {
         const tagNode = node.children[0];
         let style = this.usfm.slice(tagNode.startIndex, tagNode.startIndex);
@@ -377,12 +435,12 @@ class USXGenerator {
             this.node2UsxPara(node, parentXmlNode);
         } else if (NOTE_MARKERS.includes(node.type)) {
             this.node2UsxNotes(node, parentXmlNode);
-        // } else if (
-        //     this.CHAR_STYLE_MARKERS.concat(this.NESTED_CHAR_STYLE_MARKERS, ["xt_standalone", "ref"]).includes(node.type)
-        // ) {
-        //     this.node2UsxChar(node, parentXmlNode);
-        // } else if (node.type.endsWith("Attribute")) {
-        //     this.node2UsxAttrib(node, parentXmlNode);
+        } else if (
+            CHAR_STYLE_MARKERS.concat(NESTED_CHAR_STYLE_MARKERS, ["xt_standalone", "ref"]).includes(node.type)
+        ) {
+            this.node2UsxChar(node, parentXmlNode);
+        } else if (node.type.endsWith("Attribute")) {
+            this.node2UsxAttrib(node, parentXmlNode);
         } else if (node.type === "text") {
             let textVal = this.usfm.slice(node.startIndex, node.endIndex).trim();
             const textNode = parentXmlNode.ownerDocument.createTextNode(textVal);
