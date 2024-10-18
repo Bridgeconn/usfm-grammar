@@ -366,8 +366,8 @@ class USXGenerator {
             this.node2Usx(child, tableXmlNode);
           });
         } else if (node.type === "tr") {
-          const rowXmlNode = parentXmlNode.ownerDocument.createElement('table:row');
-          rowXmlNode.setAttribute("marker", "tr");
+          const rowXmlNode = parentXmlNode.ownerDocument.createElement('row');
+          rowXmlNode.setAttribute("style", "tr");
           parentXmlNode.appendChild(rowXmlNode);
           node.children.slice(1).forEach((child) => {
             this.node2Usx(child, rowXmlNode);
@@ -378,8 +378,8 @@ class USXGenerator {
             .substring(tagNode.startIndex, tagNode.endIndex)
             .replace("\\", "")
             .trim();
-          const cellXmlNode = parentXmlNode.ownerDocument.createElement("table:cell");
-          cellXmlNode.setAttribute("marker", style);
+          const cellXmlNode = parentXmlNode.ownerDocument.createElement("cell");
+          cellXmlNode.setAttribute("style", style);
           cellXmlNode.setAttribute("align", style.includes("r") ? "end" : "start");
           parentXmlNode.appendChild(cellXmlNode);
           node.children.slice(1).forEach((child) => {
@@ -406,7 +406,7 @@ class USXGenerator {
           .replace("\\", "")
           .trim();
         const msXmlNode = parentXmlNode.ownerDocument.createElement("ms");
-        msXmlNode.setAttribute("marker", style);
+        msXmlNode.setAttribute("style", style);
         parentXmlNode.appendChild(msXmlNode);
         node.children.forEach((child) => {
           if (child.type.endsWith("Attribute")) {
