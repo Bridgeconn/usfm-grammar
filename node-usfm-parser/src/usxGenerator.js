@@ -163,7 +163,7 @@ class USXGenerator {
                     vEndXmlNode = prevUncle.ownerDocument.createElement('verse');
                     prevUncle.appendChild(vEndXmlNode);
                 } else if (prevUncle.tagName === "table") {
-                    const rows = prevUncle.getElementsByTagName('tr');
+                    const rows = prevUncle.getElementsByTagName('table:row');
                     vEndXmlNode = prevUncle.ownerDocument.createElement('verse');
                     rows[rows.length - 1].appendChild(vEndXmlNode);
                 } else {
@@ -256,12 +256,12 @@ class USXGenerator {
 	        if (!paraMarker.endsWith("Block")) {
 	            const paraXmlNode = parentXmlNode.ownerDocument.createElement("para");
 	            paraXmlNode.setAttribute("style", paraMarker);
+	            parentXmlNode.appendChild(paraXmlNode);
 
 	            for (const child of paraTagCap.node.children.slice(1)) {
 	                this.node2Usx(child, paraXmlNode);
 	            }
 
-	            parentXmlNode.appendChild(paraXmlNode);
 	        }
 	    } else if (['pi', 'ph'].includes(node.type)) {
 	        const paraMarker = this.usfm.slice(node.children[0].startByte, node.children[0].endByte)
@@ -271,12 +271,12 @@ class USXGenerator {
 
 	        const paraXmlNode = parentXmlNode.ownerDocument.createElement("para");
 	        paraXmlNode.setAttribute("style", paraMarker);
+	        parentXmlNode.appendChild(paraXmlNode);
 
 	        for (const child of node.children.slice(1)) {
 	            this.node2Usx(child, paraXmlNode);
 	        }
 
-	        parentXmlNode.appendChild(paraXmlNode);
 	    }
 	}
 
@@ -295,11 +295,11 @@ class USXGenerator {
           .substring(callerNode.startIndex, callerNode.endIndex)
           .trim();
         noteXmlNode.setAttribute('caller', caller);
+        parentXmlNode.appendChild(noteXmlNode);
         for (let i = 2; i < node.children.length - 1; i++) {
           this.node2Usx(node.children[i], noteXmlNode);
         }
 
-        parentXmlNode.appendChild(noteXmlNode);
     }
 
     node2UsxChar(node, parentXmlNode) {
@@ -316,15 +316,12 @@ class USXGenerator {
           .replace("+", "")
           .trim();
         charXmlNode.setAttribute('style', style);
-
-        // Assume a flag for closed markup, toggle this if your conditions and data structure require
-        // charJsonObj.closed = node.children[node.children.length - 1].type.startsWith('\\');
+        parentXmlNode.appendChild(charXmlNode);
 
         for (let i = 1; i < childrenRange; i++) {
           this.node2Usx(node.children[i], charXmlNode);
         }
 
-        parentXmlNode.appendChild(charXmlNode);
     }
 
     node2UsxAttrib(node, parentXmlNode) {
@@ -358,6 +355,64 @@ class USXGenerator {
         }
 
         parentXmlNode.setAttribute(attribName, attribValue);
+    }
+
+    node2UsxTable(node, parentXmlNode) {
+       // Handle table related components and convert to USJ
+        if (node.type === "table") {
+          const tableXmlNode = parentXmlNode.ownerDocument.createElement('table');
+          parentXmlNode.appendChild(tableXmlNode);
+          node.children.forEach((child) => {
+            this.node2Usx(child, tableXmlNode);
+          });
+        } else if (node.type === "tr") {
+          const rowXmlNode = parentXmlNode.ownerDocument.createElement('table:row');
+          rowXmlNode.setAttribute("marker", "tr");
+          parentXmlNode.appendChild(rowXmlNode);
+          node.children.slice(1).forEach((child) => {
+            this.node2Usx(child, rowXmlNode);
+          });
+        } else if (TABLE_CELL_MARKERS.includes(node.type)) {
+          const tagNode = node.children[0];
+          const style = this.usfm
+            .substring(tagNode.startIndex, tagNode.endIndex)
+            .replace("\\", "")
+            .trim();
+          const cellXmlNode = parentXmlNode.ownerDocument.createElement("table:cell");
+          cellXmlNode.setAttribute("marker", style);
+          cellXmlNode.setAttribute("align", style.includes("r") ? "end" : "start");
+          parentXmlNode.appendChild(cellXmlNode);
+          node.children.slice(1).forEach((child) => {
+            this.node2Usx(child, cellXmlNode);
+          });
+        }
+    }
+
+    node2UsxMilestone(node, parentXmlNode) {
+        // Create ms node in USJ
+
+        const msNameCap = new Query(this.usfmLanguage,
+            `(
+            [(milestoneTag)
+             (milestoneStartTag)
+             (milestoneEndTag)
+             (zSpaceTag)
+             ] @ms-name)`,
+          )
+          .captures(node)[0];
+
+        const style = this.usfm
+          .slice(msNameCap.node.startIndex, msNameCap.node.endIndex)
+          .replace("\\", "")
+          .trim();
+        const msXmlNode = parentXmlNode.ownerDocument.createElement("ms");
+        msXmlNode.setAttribute("marker", style);
+        parentXmlNode.appendChild(msXmlNode);
+        node.children.forEach((child) => {
+          if (child.type.endsWith("Attribute")) {
+            this.node2Usx(child, msXmlNode);
+          }
+        });
     }
 
     node2UsxSpecial(node, parentXmlNode) {
@@ -485,8 +540,8 @@ class USXGenerator {
             } else {
                 parentXmlNode.appendChild(textNode);
             }
-        // } else if (["table", "tr"].concat(this.TABLE_CELL_MARKERS).includes(node.type)) {
-        //     this.node2UsxTable(node, parentXmlNode);
+        } else if (["table", "tr"].concat(TABLE_CELL_MARKERS).includes(node.type)) {
+            this.node2UsxTable(node, parentXmlNode);
         // } else if (node.type === "milestone" || node.type === "zNameSpace") {
         //     this.node2UsxMilestone(node, parentXmlNode);
         } else if (["esb", "cat", "fig"].includes(node.type)) {
