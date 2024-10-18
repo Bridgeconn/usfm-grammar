@@ -1,5 +1,6 @@
 //Logics for syntax-tree to xml(USX) conversions
-const { DOMImplementation, XMLSerializer } = require('@xmldom/xmldom');
+// const { DOMImplementation, XMLSerializer } = require('@xmldom/xmldom');
+const { DOMImplementation, XMLSerializer } = require('xmldom');
 const xpath = require('xpath');
 const Parser = require("tree-sitter");
 const {Query} = Parser;
