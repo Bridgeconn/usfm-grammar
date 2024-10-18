@@ -535,7 +535,7 @@ class USXGenerator {
         } else if (NOTE_MARKERS.includes(node.type)) {
             this.node2UsxNotes(node, parentXmlNode);
         } else if (
-            CHAR_STYLE_MARKERS.concat(NESTED_CHAR_STYLE_MARKERS, ["xt_standalone", "ref"]).includes(node.type)
+            CHAR_STYLE_MARKERS.concat(NESTED_CHAR_STYLE_MARKERS, ["xt_standalone"]).includes(node.type)
         ) {
             this.node2UsxChar(node, parentXmlNode);
         } else if (node.type.endsWith("Attribute")) {
@@ -549,7 +549,7 @@ class USXGenerator {
             this.node2UsxTable(node, parentXmlNode);
         } else if (node.type === "milestone" || node.type === "zNameSpace") {
             this.node2UsxMilestone(node, parentXmlNode);
-        } else if (["esb", "cat", "fig"].includes(node.type)) {
+        } else if (["esb", "cat", "fig", "ref"].includes(node.type)) {
             this.node2UsxSpecial(node, parentXmlNode);
         } else if (
             PARA_STYLE_MARKERS.includes(node.type) ||
