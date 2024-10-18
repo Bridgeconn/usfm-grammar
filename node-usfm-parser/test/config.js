@@ -1,6 +1,6 @@
 const {glob} = require('glob');
 const fs = require('node:fs');
-const xml2js = require('xml2js');
+const { DOMParser } = require('xmldom')
 const {USFMParser} = require("../src/index");
 
 let allUsfmFiles = [];
@@ -105,6 +105,28 @@ let excludeUSJs = [
 
     ]
 
+let excludeUSXs = [
+    `${TEST_DIR}/specExamples/extended/contentCatogories2/origin.xml`,
+            // \ef not treated as inline content of paragraph
+    `${TEST_DIR}/specExamples/extended/sectionIntroductions/origin.xml`,
+            // verse number="+"!!!
+    `${TEST_DIR}/specExamples/character/origin.xml`,
+            // lit element treated as a body paragraph enclosing a verse!   
+    `${TEST_DIR}/usfmjsTests/esb/origin.xml`,
+            // last verse text given outside of paragraph. 
+    `${TEST_DIR}/special-cases/nbsp/origin.xml`,
+            // ~ not being replaced by nbsp in usfm-grammar
+    `${TEST_DIR}/special-cases/empty-attributes/origin.xml`,
+            // attributes treated as text content of marker
+    `${TEST_DIR}/biblica/CategoriesOnNotes/origin.xml`,
+    `${TEST_DIR}/biblica/CrossRefWithPipe/origin.xml`,
+            // ref node has type ref. Is it char or ref?
+    `${TEST_DIR}/usfmjsTests/usfmBodyTestD/origin.xml`,
+            // \v and other contents contained inside \lit. New docs doesnt have \lit
+    `${TEST_DIR}/usfmjsTests/usfm-body-testF/origin.xml`,
+            // does the ms go inside \s5 or after it?
+]
+
 const initialiseParser = function (inputUsfmPath){
     `Open and parse the given file`
     try {
@@ -132,13 +154,9 @@ const checkValidUsfm = function (inputUsfmPath) {
 	let metaFilePath = inputUsfmPath.replace("origin.usfm", "metadata.xml")
     let metadata = fs.readFileSync(metaFilePath, 'utf8')
 
-	xml2js.parseString(metadata, (err, result) => {
-	    if (err) {
-	      console.error('Error parsing XML:', err);
-	      return;
-	    }
-	    value = result['test-metadata']['validated'][0];
-	});
+    const doc = new DOMParser().parseFromString(metadata, 'text/xml');
+
+    value = doc.getElementsByTagName("validated")[0].textContent;
 
 	if (value === "fail"){
         return false
@@ -202,5 +220,6 @@ module.exports = {
     initialiseParser: initialiseParser,
     isValidUsfm: isValidUsfm,
     excludeUSJs: excludeUSJs,
+    excludeUSXs: excludeUSXs,
     findAllMarkers: findAllMarkers
 };

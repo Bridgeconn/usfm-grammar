@@ -3,6 +3,7 @@ import Parser from './web-tree-sitter/tree-sitter.js';
 import USFMGenerator from "./usfmGenerator.js";
 import USJGenerator from "./usjGenerator.js";
 import ListGenerator from "./listGenerator.js"
+import USXGenerator from "./usxGenerator.js";
 import { Filter } from "./filters.js";
 
 
@@ -202,9 +203,9 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	    /* Uses the toJSON function and converts JSON to CSV
 	       To be re-implemented to work with the flat JSON schema */
 
-	    if (!ignoreErrors && this.errors && this.errors.length > 0) {
-	        const errStr = this.errors.map(err => err.join(":")).join("\n\t");
-	        throw new Error(`Errors present:\n\t${errStr}\nUse ignoreErrors=true to generate output despite errors`);
+	    if (!ignoreErrors && this.errors.length > 0) {
+			let errorString = this.errors.join("\n\t");
+	        throw new Error(`Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`);
 	    }
 
 	    try {
@@ -216,13 +217,45 @@ Only one of USFM, USJ or USX is supported in one object.`)
 
 	    } catch (exe) {
 	        let message = "Unable to do the conversion. ";
-	        if (this.errors && this.errors.length > 0) {
-	            const errStr = this.errors.map(err => err.join(":")).join("\n\t");
-	            message += `Could be due to an error in the USFM\n\t${errStr}`;
+	        if (this.errors.length > 0) {
+				let errorString = this.errors.join("\n\t");
+	            message += `Could be due to an error in the USFM\n\t${errorString}`;
 	        }
 	        throw new Error(message, { cause: exe });
 	    }
 
+	}
+
+	toUSX(ignoreErrors = false) {
+	    /* Convert the syntax_tree to the XML format (USX) */
+
+	    if (!ignoreErrors && this.errors.length > 0) {
+			let errorString = this.errors.join("\n\t");
+	        throw new Error(`Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`);
+	    }
+	    let xmlContent = null;
+
+	    try {
+	        // Initialize the USX generator (assuming the constructor is already implemented in JS)
+	        const usxGenerator = new USXGenerator(USFMParser.language,
+													this.usfm);
+	        
+	        // Process the syntax tree and convert to USX format
+	        usxGenerator.node2Usx(this.syntaxTree, usxGenerator.xmlRootNode);
+
+	        // xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
+	        xmlContent = usxGenerator.xmlRootNode;
+	    } catch (exe) {
+	        let message = "Unable to do the conversion. ";
+	        if (this.errors.length > 0) {
+				let errorString = this.errors.join("\n\t");
+	            message += `Could be due to an error in the USFM\n\t${errorString}`;
+	        }
+	        throw new Error(message, { cause: exe });
+	    }
+
+	    // Return the generated XML structure (in JSON format)
+	    return xmlContent;
 	}
 
 }

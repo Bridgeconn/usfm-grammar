@@ -418,21 +418,21 @@ class USJGenerator {
     let style = this.usfm.substring(tagNode.startIndex, tagNode.endIndex);
     if (style.startsWith("\\")) {
       style = style.replace("\\", "").trim();
-    } else {
-      style = node.type;
+    // } else {
+    //   style = node.type;
     }
 
     // console.log(node.children.length, node.children[0].type, node.children[1].type)
     let childrenRangeStart = 1;
-    if (
-      node.children.length > 1 &&
-      node.children[1].type.startsWith("numbered")
-    ) {
-      const numNode = node.children[1];
-      const num = this.usfm.substring(numNode.startIndex, numNode.endIndex);
-      style += num;
-      childrenRangeStart = 2;
-    }
+    // if (
+    //   node.children.length > 1 &&
+    //   node.children[1].type.startsWith("numbered")
+    // ) {
+    //   const numNode = node.children[1];
+    //   const num = this.usfm.substring(numNode.startIndex, numNode.endIndex);
+    //   style += num;
+    //   childrenRangeStart = 2;
+    // }
     const paraJsonObj = { type: "para", marker: style, content: [] };
     parentJsonObj.content.push(paraJsonObj);
 
