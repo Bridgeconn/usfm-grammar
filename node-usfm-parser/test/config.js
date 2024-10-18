@@ -1,6 +1,6 @@
 const {glob} = require('glob');
 const fs = require('node:fs');
-const xml2js = require('xml2js');
+const { DOMParser } = require('@xmldom/xmldom')
 const {USFMParser} = require("../src/index");
 
 let allUsfmFiles = [];
@@ -132,13 +132,9 @@ const checkValidUsfm = function (inputUsfmPath) {
 	let metaFilePath = inputUsfmPath.replace("origin.usfm", "metadata.xml")
     let metadata = fs.readFileSync(metaFilePath, 'utf8')
 
-	xml2js.parseString(metadata, (err, result) => {
-	    if (err) {
-	      console.error('Error parsing XML:', err);
-	      return;
-	    }
-	    value = result['test-metadata']['validated'][0];
-	});
+    const doc = new DOMParser().parseFromString(metadata, 'text/xml');
+
+    value = doc.getElementsByTagName("validated")[0].textContent;
 
 	if (value === "fail"){
         return false

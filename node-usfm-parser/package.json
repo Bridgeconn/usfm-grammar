@@ -26,9 +26,9 @@
     "Samuel JD <samuelj.ernest@gmail.com> (https://github.com/samueljd)"
   ],
   "dependencies": {
+    "@xmldom/xmldom": "^0.9.4",
     "tree-sitter": "0.21.1",
     "tree-sitter-usfm3": "file:../tree-sitter-usfm3",
-    "xmldom": "^0.6.0",
     "xpath": "^0.0.34"
   },
   "devDependencies": {

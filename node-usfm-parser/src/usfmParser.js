@@ -1,5 +1,4 @@
 const Parser = require('tree-sitter');
-const { DOMImplementation, XMLSerializer } = require('xmldom');
 
 const {USFMGenerator} = require("./usfmGenerator");
 const {USJGenerator} = require("./usjGenerator"); 
@@ -8,7 +7,6 @@ const {USXGenerator} = require("./usxGenerator")
 const { includeMarkersInUsj, excludeMarkersInUsj, Filter } = require("./filters.js");
 const USFM3 = require('tree-sitter-usfm3');
 const { Query } = Parser;
-const usxSerializer = new XMLSerializer();
 
 class USFMParser {
 
