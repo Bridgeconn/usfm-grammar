@@ -280,6 +280,28 @@ class USXGenerator {
 	    }
 	}
 
+
+    node2UsxNotes(node, parentXmlNode) {
+        // Build USJ nodes for footnotes and cross-references
+        const tagNode = node.children[0];
+        const callerNode = node.children[1];
+        const style = this.usfm
+          .substring(tagNode.startIndex, tagNode.endIndex)
+          .replace("\\", "")
+          .trim();
+        const noteXmlNode = parentXmlNode.ownerDocument.createElement('note');
+        noteXmlNode.setAttribute('style', style);
+        const caller = this.usfm
+          .substring(callerNode.startIndex, callerNode.endIndex)
+          .trim();
+        noteXmlNode.setAttribute('caller', caller);
+        for (let i = 2; i < node.children.length - 1; i++) {
+          this.node2Usx(node.children[i], noteXmlNode);
+        }
+
+        parentXmlNode.appendChild(noteXmlNode);
+    }
+
     node2UsxGeneric(node, parentXmlNode) {
         const tagNode = node.children[0];
         let style = this.usfm.slice(tagNode.startIndex, tagNode.startIndex);
@@ -353,8 +375,8 @@ class USXGenerator {
             });
         } else if (["paragraph", "pi", "ph"].includes(node.type)) {
             this.node2UsxPara(node, parentXmlNode);
-        // } else if (this.NOTE_MARKERS.includes(node.type)) {
-        //     this.node2UsxNotes(node, parentXmlNode);
+        } else if (NOTE_MARKERS.includes(node.type)) {
+            this.node2UsxNotes(node, parentXmlNode);
         // } else if (
         //     this.CHAR_STYLE_MARKERS.concat(this.NESTED_CHAR_STYLE_MARKERS, ["xt_standalone", "ref"]).includes(node.type)
         // ) {
