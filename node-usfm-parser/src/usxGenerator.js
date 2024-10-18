@@ -459,7 +459,7 @@ class USXGenerator {
           const refXmlNode = parentXmlNode.ownerDocument.createElement('ref');
           parentXmlNode.appendChild(refXmlNode);
           node.children.slice(1, -1).forEach((child) => {
-            this.node2Usx(child, refJsonObj);
+            this.node2Usx(child, refXmlNode);
           });
         }
     }
