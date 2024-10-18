@@ -281,11 +281,9 @@ class USXGenerator {
 
 	        }
 	    } else if (['pi', 'ph'].includes(node.type)) {
-	        const paraMarker = this.usfm.slice(node.children[0].startByte, node.children[0].endByte)
-	            .toString('utf-8')
+	        const paraMarker = this.usfm.slice(node.children[0].startIndex, node.children[0].endIndex)
 	            .replace("\\", "")
 	            .trim();
-
 	        const paraXmlNode = parentXmlNode.ownerDocument.createElement("para");
 	        paraXmlNode.setAttribute("style", paraMarker);
 	        parentXmlNode.appendChild(paraXmlNode);
