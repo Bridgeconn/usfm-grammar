@@ -532,18 +532,13 @@ class USXGenerator {
             this.node2UsxAttrib(node, parentXmlNode);
         } else if (node.type === "text") {
             let textVal = this.usfm.slice(node.startIndex, node.endIndex).trim();
+            textVal = textVal.replace("~", " ")
             const textNode = parentXmlNode.ownerDocument.createTextNode(textVal);
-            let siblings = xpath.select('./*', parentXmlNode);
-
-            if (siblings.length > 0) {
-                siblings[siblings.length - 1].appendChild(textNode);
-            } else {
-                parentXmlNode.appendChild(textNode);
-            }
+            parentXmlNode.appendChild(textNode);
         } else if (["table", "tr"].concat(TABLE_CELL_MARKERS).includes(node.type)) {
             this.node2UsxTable(node, parentXmlNode);
-        // } else if (node.type === "milestone" || node.type === "zNameSpace") {
-        //     this.node2UsxMilestone(node, parentXmlNode);
+        } else if (node.type === "milestone" || node.type === "zNameSpace") {
+            this.node2UsxMilestone(node, parentXmlNode);
         } else if (["esb", "cat", "fig"].includes(node.type)) {
             this.node2UsxSpecial(node, parentXmlNode);
         } else if (
