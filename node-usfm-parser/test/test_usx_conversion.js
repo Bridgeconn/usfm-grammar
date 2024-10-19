@@ -46,6 +46,30 @@ describe("Ensure all markers are in USX", () => {
 
 });
 
+describe("Test USFM-USX-USFM roundtripping", () => {
+  allUsfmFiles.forEach(function(value) {
+    if (isValidUsfm[value]) {
+      it(`Roundtrip ${value} via USX`, (inputUsfmPath=value) => {
+        const testParser = initialiseParser(inputUsfmPath)
+        assert(testParser instanceof USFMParser)
+        const usx = testParser.toUSX();
+        assert(usx.nodeType === 1);
+
+        const testParser2 = new USFMParser(usfmString=null, fromUsj=null, fromUsx=usx);
+        const generatedUSFM = testParser2.usfm.trim();
+        assert.strictEqual(typeof generatedUSFM, 'string');
+        assert(generatedUSFM.startsWith("\\id"));
+
+        const inputMarkers = findAllMarkers(testParser.usfm)
+        const finalMarkers = findAllMarkers(generatedUSFM)
+        assert.deepStrictEqual(inputMarkers, finalMarkers, `Markers in input and generated USFMs differ`)
+
+      });
+    }
+  });
+
+});
+
 
 // describe("Compare generated USX with testsuite sample", () => {
 
