@@ -1,3 +1,4 @@
+import assert from 'assert';
 import Parser from './web-tree-sitter/tree-sitter.js';
 
 import USFMGenerator from "./usfmGenerator.js";
@@ -50,7 +51,7 @@ Only one of USFM, USJ or USX is supported in one object.`)
         	this.usfm = this.convertUSJToUSFM()
         } else if (fromUsx !== null) {
         	this.usx = fromUsx;
-        	// this.usfm = this.convertUSXToUSFM()
+        	this.usfm = this.convertUSXToUSFM()
         }
 		this.parser = null;
 		this.initializeParser();
@@ -100,6 +101,34 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		this.usfm = this.convertUSJToUSFM();
 		return this.usfm;
 	}
+
+	convertUSXToUSFM() {
+		try {
+			assert(1 <= this.usx.nodeType && this.usx.nodeType <= 12 ,
+		        'Input must be an instance of xmldom Document or Element'
+		    );
+			if (this.usx.tagName !== "usx") {
+				assert(this.usx.getElementsByTagName('usx').length === 1,
+					'Expects a <usx> node. Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml');
+
+				this.usx = this.usx.getElementsByTagName('usx')[0]
+			}
+			// assert(this.usx.childNodes[0].tagName === 'book', "<book> expected as first element in <usx>")
+
+		} catch(err) {
+			throw new Error("USX not in expected format. "+err.message)
+		}
+		try {
+			const usfmGen = new USFMGenerator()
+			usfmGen.usxToUsfm(this.usx);
+			// console.log(usfmGen.usfmString)
+			return usfmGen.usfmString;
+		} catch(err) {
+	        let message = "Unable to do the conversion from USX to USFM. ";
+	        throw new Error(message, { cause: err });
+		}
+	}
+
 
 	parseUSFM() {
 		let tree = null;
