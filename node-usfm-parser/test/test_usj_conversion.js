@@ -187,6 +187,7 @@ function stripTextValue(usjObj) {
             } else {
                 stripTextValue(item);  // Recursively handle nested objects
             }
+        usjObj['content'] = usjObj['content'].filter(item => item === "")
         });
     }
 }

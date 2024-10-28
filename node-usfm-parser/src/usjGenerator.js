@@ -493,7 +493,6 @@ class USJGenerator {
       case "text":
         let textVal = this.usfm
           .substring(node.startIndex, node.endIndex);
-          // .trimStart();
         textVal = textVal.replace("~", " ")
         if (textVal !== "") {
           parentJsonObj.content.push(textVal);
