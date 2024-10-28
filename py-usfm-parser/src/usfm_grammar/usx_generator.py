@@ -355,12 +355,13 @@ class USXGenerator:
         elif node.type.endswith("Attribute"):
             self.node_2_usx_attrib(node, parent_xml_node)
         elif node.type == 'text':
-            text_val = self.usfm[node.start_byte:node.end_byte].decode('utf-8').strip()
-            siblings = parent_xml_node.findall("./*")
-            if len(siblings) > 0:
-                siblings[-1].tail = text_val
-            else:
-                parent_xml_node.text = text_val
+            text_val = self.usfm[node.start_byte:node.end_byte].decode('utf-8')
+            if text_val != "":
+                siblings = parent_xml_node.findall("./*")
+                if len(siblings) > 0:
+                    siblings[-1].tail = text_val
+                else:
+                    parent_xml_node.text = text_val
         elif node.type in ["table", "tr"]+ self.TABLE_CELL_MARKERS:
             self.node_2_usx_table(node, parent_xml_node)
         elif  node.type == "milestone":

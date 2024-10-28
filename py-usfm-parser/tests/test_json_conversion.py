@@ -155,6 +155,7 @@ def strip_text_value(usj_dict):
                 usj_dict['content'][i] = item.strip()
                 continue
             strip_text_value(item)
+        usj_dict['content'] = list(filter(lambda x: x == '', usj_dict['content']))
 
 
 def strip_default_attrib_value(usj_dict):
