@@ -355,7 +355,7 @@ class USXGenerator:
         elif node.type.endswith("Attribute"):
             self.node_2_usx_attrib(node, parent_xml_node)
         elif node.type == 'text':
-            text_val = self.usfm[node.start_byte:node.end_byte].decode('utf-8').strip()
+            text_val = self.usfm[node.start_byte:node.end_byte].decode('utf-8')
             siblings = parent_xml_node.findall("./*")
             if len(siblings) > 0:
                 siblings[-1].tail = text_val

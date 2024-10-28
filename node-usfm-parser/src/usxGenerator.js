@@ -541,7 +541,7 @@ class USXGenerator {
         } else if (node.type.endsWith("Attribute")) {
             this.node2UsxAttrib(node, parentXmlNode);
         } else if (node.type === "text") {
-            let textVal = this.usfm.slice(node.startIndex, node.endIndex).trim();
+            let textVal = this.usfm.slice(node.startIndex, node.endIndex);
             textVal = textVal.replace("~", " ")
             const textNode = parentXmlNode.ownerDocument.createTextNode(textVal);
             parentXmlNode.appendChild(textNode);
