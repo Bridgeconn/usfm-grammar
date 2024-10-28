@@ -546,8 +546,10 @@ class USXGenerator {
         } else if (node.type === "text") {
             let textVal = this.usfm.slice(node.startIndex, node.endIndex);
             textVal = textVal.replace("~", " ")
-            const textNode = parentXmlNode.ownerDocument.createTextNode(textVal);
-            parentXmlNode.appendChild(textNode);
+            if (textVal !== "") {
+                const textNode = parentXmlNode.ownerDocument.createTextNode(textVal);
+                parentXmlNode.appendChild(textNode);
+            }
         } else if (["table", "tr"].concat(TABLE_CELL_MARKERS).includes(node.type)) {
             this.node2UsxTable(node, parentXmlNode);
         } else if (node.type === "milestone" || node.type === "zNameSpace") {
