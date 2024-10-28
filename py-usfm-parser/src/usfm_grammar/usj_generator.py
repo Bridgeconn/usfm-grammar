@@ -319,7 +319,7 @@ class USJGenerator:
             self.node_2_usj_attrib(node, parent_json_obj)
         elif node.type == 'text':
             text_val = self.usfm[node.start_byte:node.end_byte].decode(
-                        'utf-8').lstrip()
+                        'utf-8') #.lstrip()
             if text_val != "":
                 parent_json_obj['content'].append(text_val)
         elif node.type in ["table", "tr"]+ self.TABLE_CELL_MARKERS:
