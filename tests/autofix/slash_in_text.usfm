@@ -1,0 +1,11 @@
+\id GEN genesis Some desc
+\c 1
+\p
+\v 1 test verse
+\s3 test
+\p
+\v 2 more verse and \ a slash
+\c 2
+\p
+\v 1 text and \slash without space
+\v 2 more text

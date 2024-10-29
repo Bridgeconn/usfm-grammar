@@ -1,0 +1,14 @@
+\id GEN genesis Some desc
+\c 1
+\p
+\v 1 test verse
+\s3 test
+\p
+\v 2 more verse 
+\c 2 3
+\p
+\v 1 text
+\v 2 more text
+\v 3 4 text of 34
+\p
+\v 35 rest
