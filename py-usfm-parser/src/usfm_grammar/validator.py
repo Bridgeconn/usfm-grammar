@@ -8,8 +8,6 @@ import tree_sitter_usfm3 as tsusfm
 from tree_sitter import Language, Parser
 
 from usfm_grammar.usfm_parser import error_query
-from usfm_grammar.usx_generator import USXGenerator
-
 
 class Validator:
     def __init__(self, tree_sitter_usfm=tsusfm, usj_schema_path='../schemas/usj.js'):
@@ -46,9 +44,6 @@ class Validator:
         self.USFM_errors = []
         self.message = ""
         if len(errors) > 0:
-            self.USFM_errors = [(f"At {err[0].start_point}", self.usfm_bytes[err[0].start_byte:
-                                    err[0].end_byte].decode('utf-8'))
-                                    for err in errors]
             self.USFM_errors = [err[0] for err in errors]
         self.check_for_missing(tree.root_node)
 
@@ -91,9 +86,9 @@ class Validator:
 
 
 
-    def auto_fix_usfm(self, usfm):
+    def auto_fix_usfm(self, usfm, fixed=False):
         if self.is_valid_usfm(usfm):
-            self.message = "No Errors in USFM"
+            self.message = "Fixed Errors in USFM" if fixed else "No Errors in USFM"
             return usfm
         self.modified_usfm = usfm
         changed = False
@@ -175,7 +170,11 @@ class Validator:
             # empty attribute   
             elif error_text.strip() == "|":
                 print("Match 10")
-                self.modified_usfm = self.modified_usfm.replace(error_text, "")
+                start = max(0, error.start_byte-5)
+                end = min(len(self.usfm_bytes), error.end_byte+5)
+                to_replace = self.usfm_bytes[start:end].decode('utf-8')
+                repalcement = to_replace.replace(error_text, "")
+                self.modified_usfm = self.modified_usfm.replace(to_replace, repalcement)
                 changed=True
             # Stray content in the chapter line
             elif error.parent.type == "chapter" and \
@@ -191,7 +190,7 @@ class Validator:
             err_str = self.format_errors()
             self.message = f"Cannot fix these errors:\n\t{err_str}"
             return usfm
-        returned_usfm = self.auto_fix_usfm(self.modified_usfm)
+        returned_usfm = self.auto_fix_usfm(self.modified_usfm, fixed=True)
         return returned_usfm
 
 
