@@ -55,7 +55,9 @@ class Validator {
         if (this.USJValidator(usj) === true) {
         	return true;
         } else {
-            this.message = error.toString();
+            for (let err of this.USJValidator.errors) {
+                this.message += `Error at ${err.instancePath}: ${err.message}\n`;
+            }
             return false;
         }
     }
@@ -128,26 +130,26 @@ class Validator {
             // No \P after \s5
             if (error.isError && errorText.startsWith("\\s5") &&
                 !error.children.some(ch => ch.type === "paragraph")) {
-                console.log("Match 1");
+                // console.log("Match 1");
                 modifiedUSFM = modifiedUSFM.replace(/\\s5[\s\n\r]*/g, '\\s5 \n\\p\n');
                 changed = true;
             }
             // Missing space after \s5
             else if (error.isMissing && error.parent.type === "sTag" && error.toString() === '(MISSING " ")') {
-                console.log("Match 2");
+                // console.log("Match 2");
                 modifiedUSFM = modifiedUSFM.replace(/\\s5\n/g, '\\s5 \n');
                 changed = true;
             }
             // Book code is missing (empty id marker)
             else if (bookCodeMissingPattern.test(modifiedUSFM)) {
-                console.log("Match 3");
+                // console.log("Match 3");
                 modifiedUSFM = modifiedUSFM.replace(/\\id[\s\n\r]*\\/g, '\\id XXX xxx\n\\');
                 changed = true;
             }
             // \p not given after section heading
             else if (error.isError && errorText.startsWith("\\v") && error.parent.type === "s" &&
                 !error.children.some(ch => ch.type === "paragraph")) {
-                console.log("Match 4");
+                // console.log("Match 4");
                 const start = error.parent.startIndex;
                 const end = error.startIndex;
                 const toReplace = modifiedUSFM.slice(start, end);
@@ -156,20 +158,20 @@ class Validator {
             }
             // Space missing between \v and number
             else if (vWithoutSpacePattern.test(errorText)) {
-                console.log("Match 5");
+                // console.log("Match 5");
                 modifiedUSFM = modifiedUSFM.replace(vWithoutSpacePattern, "$1 $2");
                 changed = true;
             }
             // Space missing between \c and number
             else if (cWithoutSpacePattern.test(errorText)) {
-                console.log("Match 6");
+                // console.log("Match 6");
                 modifiedUSFM = modifiedUSFM.replace(cWithoutSpacePattern, "$1 $2");
                 changed = true;
             }
             // \p not given at chapter start
             else if (error.isError && errorText.startsWith("\\v") && error.previousSibling.type === "chapter" &&
                 !error.children.some(ch => ch.type === "paragraph")) {
-                console.log("Match 7");
+                // console.log("Match 7");
                 const start = error.previousSibling.startIndex;
                 const end = error.startIndex;
                 const toReplace = modifiedUSFM.slice(start, end);
@@ -178,13 +180,13 @@ class Validator {
             }
             // Stray slash not with a valid marker
             else if (errorText.startsWith("\\") && !validMarkersPattern.test(errorText)) {
-                console.log("Match 8");
+                // console.log("Match 8");
                 modifiedUSFM = modifiedUSFM.replace(errorText, errorText.slice(1));
                 changed = true;
             }
             // Just a single problematic marker (could be w/o text)
             else if (errorText.startsWith("\\") && validMarkersPattern.test(errorText)) {
-                console.log("Match 9");
+                // console.log("Match 9");
                 const start = Math.max(0, error.startIndex - 5);
                 const end = Math.min(modifiedUSFM.length, error.endIndex + 5);
                 const toReplace = modifiedUSFM.slice(start, end);
@@ -194,8 +196,7 @@ class Validator {
             }
             // Empty attribute
             else if (errorText.trim() === "|") {
-                console.log("Match 10");
-                // console.log(errorText);
+                // console.log("Match 10");
                 const start = Math.max(0, error.startIndex - 5);
                 const end = Math.min(modifiedUSFM.length, error.endIndex + 5);
                 const toReplace = modifiedUSFM.slice(start, end);
@@ -205,7 +206,7 @@ class Validator {
             }
             // Stray content in the chapter line
             else if (error.parent.type === "chapter" && error.previousSibling.type === "c" && !errorText.includes("\\")) {
-                console.log("Match 11");
+                // console.log("Match 11");
                 modifiedUSFM = modifiedUSFM.replace(errorText, "");
                 changed = true;
             }

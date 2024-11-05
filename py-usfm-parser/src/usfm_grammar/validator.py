@@ -98,19 +98,19 @@ class Validator:
             if error.is_error and \
                error_text.startswith("\\s5") and \
                "paragraph" not in [ch.type for ch in error.children]:
-                print("match 1")
+                # print("match 1")
                 self.modified_usfm = re.sub(r'\\s5[\s\n\r]*', r'\\s5 \n\\p\n', self.modified_usfm)
                 changed = True
             # Missing space after \s5
             elif error.is_missing and \
                  error.parent.type == "sTag" and \
                  error.sexp() == '(MISSING " ")':
-                print("match 2")
+                # print("match 2")
                 self.modified_usfm = re.sub(r'\\s5\n', r'\\s5 \n', self.modified_usfm)
                 changed = True
             # book code is missing(empty id marker)
             elif re.match(book_code_missing_pattern, error_text):
-                print("match 3")
+                # print("match 3")
                 self.modified_usfm = re.sub(r"\\id", r"\\id XXX", self.modified_usfm)
                 changed = True
             # \p not given after section heading
@@ -118,7 +118,7 @@ class Validator:
                error_text.startswith("\\v") and \
                error.parent.type == "s" and \
                "paragraph" not in [ch.type for ch in error.children]:
-                print("match 4")
+                # print("match 4")
                 start = error.parent.start_byte
                 end = error.start_byte
                 to_replace = self.usfm_bytes[start:end].decode('utf-8')
@@ -128,12 +128,12 @@ class Validator:
                 changed = True
             # space missing between \v and number
             elif re.match(v_without_space_pattern, error_text):
-                print("match 5")
+                # print("match 5")
                 self.modified_usfm = re.sub(v_without_space_pattern, r"\1 \2", self.modified_usfm)
                 changed=True
             # space missing between \c and number
             elif re.match(c_without_space_pattern, error_text):
-                print("match 6")
+                # print("match 6")
                 self.modified_usfm = re.sub(c_without_space_pattern, r"\1 \2", self.modified_usfm)
                 changed=True
             # \p not given at chapter start
@@ -141,7 +141,7 @@ class Validator:
                error_text.startswith("\\v") and \
                error.prev_sibling.type == "chapter" and \
                "paragraph" not in [ch.type for ch in error.children]:
-                print("match 7")
+                # print("match 7")
                 start = error.prev_sibling.start_byte
                 end = error.start_byte
                 to_replace = self.usfm_bytes[start:end].decode('utf-8')
@@ -152,14 +152,14 @@ class Validator:
             # Stray slash not with a valid marker
             elif error_text.startswith("\\") and \
                  (not re.match(valid_markers_pattern, error_text)):
-                print("Match 8")
+                # print("Match 8")
                 to_replace = error_text
                 self.modified_usfm = self.modified_usfm.replace(to_replace, to_replace[1:])
                 changed=True
             # Just a single problematic marker (could be w/o text)
             elif error_text.startswith("\\") and \
                  re.match(valid_markers_pattern, error_text):
-                print("Match 9")
+                # print("Match 9")
                 start = max(0, error.start_byte-5)
                 end = min(len(self.usfm_bytes), error.end_byte+5)
                 to_replace = self.usfm_bytes[start:end].decode('utf-8')
@@ -169,7 +169,7 @@ class Validator:
                 changed=True
             # empty attribute   
             elif error_text.strip() == "|":
-                print("Match 10")
+                # print("Match 10")
                 start = max(0, error.start_byte-5)
                 end = min(len(self.usfm_bytes), error.end_byte+5)
                 to_replace = self.usfm_bytes[start:end].decode('utf-8')
@@ -180,7 +180,7 @@ class Validator:
             elif error.parent.type == "chapter" and \
                  error.prev_sibling.type == "c" and \
                  "\\" not in error_text:
-                print("Match 10")
+                # print("Match 10")
                 self.modified_usfm = self.modified_usfm.replace(error_text, "")
                 changed=True
                  
