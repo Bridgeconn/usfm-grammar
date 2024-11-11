@@ -4,6 +4,8 @@ import json
 import re
 from jsonschema import validate
 from deepdiff import DeepDiff
+from src.usfm_grammar import USFMParser, Filter
+
 
 from tests import all_usfm_files, initialise_parser, negative_tests,\
     find_all_markers, Filter, generate_USFM_from_USJ, parse_USFM_string, exclude_USX_files
@@ -196,3 +198,15 @@ def test_compare_usj_with_testsuite_samples(file_path):
             assert dict_diff == {}, f"generated USJ:\n{usj_dict}\n"+\
                     f"USJ in testsuite:\n{origin_usj}\n syntax tree: {test_parser.to_syntax_tree()}"
     # assert usj_dict == origin_usj
+
+def test_try_invalid_usj():
+    '''Ensure error is raised for incorrect USJ'''
+    usj = {"some key": ["test"], "content": [["test"]]}
+    error= False
+    try:
+        test_parser = USFMParser(from_usj=usj)
+    except Exception as exce:
+        assert "Ensure USJ is valid" in str(exce)
+        error=True
+    assert error
+

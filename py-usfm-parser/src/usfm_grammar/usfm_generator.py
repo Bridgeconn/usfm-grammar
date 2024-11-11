@@ -25,6 +25,8 @@ class USFMGenerator:
 
     def usj_to_usfm(self, usj_obj: dict, nested=False) -> None: # pylint: disable=too-many-statements, too-many-branches
         '''Traverses through the dict/json and uses 'type' field to form USFM elements'''
+        if not isinstance(usj_obj, dict) or "type" not in usj_obj:
+            raise Exception("Unable to do the conversion. Ensure USJ is valid!")
         if usj_obj['type'] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if nested and usj_obj['type'] == 'char' and\
