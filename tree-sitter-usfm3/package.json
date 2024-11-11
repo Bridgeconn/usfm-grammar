@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-usfm3",
-  "version": "3.0.0-beta.11",
+  "version": "3.0.0-beta.12",
   "description": "Grammar representation and parser for USFM language using tree-sitter",
   "main": "bindings/node",
   "types": "bindings/node",
