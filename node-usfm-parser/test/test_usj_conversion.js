@@ -176,6 +176,35 @@ describe("Test Include Marker option", () => {
     })
 });
 
+describe("Try invlaid USJ", () => {
+    it("without type", () => {
+        const usj = {"some key":"qwerty", "content": []};
+        try {
+            const testParser = new USFMParser(null, usj);
+        } catch(err) {
+            assert.strictEqual("Invalid input for USJ. Expected USJ json object.", err.message)
+        }
+    });
+
+    it("interger", () => {
+        const usj = {"type":"para", "content": [1, 2, 3]};
+        try {
+            const testParser = new USFMParser(null, usj);
+        } catch(err) {
+            assert.strictEqual("Invalid input for USJ. Expected USJ json object.", err.message)
+        }
+    });
+
+    it("content with array", () => {
+        const usj = {"some key":"qwerty", "content": [["test", "test", "test"]]};
+        try {
+            const testParser = new USFMParser(null, usj);
+        } catch(err) {
+            assert.strictEqual("Invalid input for USJ. Expected USJ json object.", err.message)
+        }
+    });
+
+});
 
 function stripTextValue(usjObj) {
     /* Trailing and preceding space handling can be different between tcdocs and our logic.
