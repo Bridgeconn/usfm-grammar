@@ -76,8 +76,8 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	}
 
 	usjToUsfm(usjObject) {
-		if (typeof usjObject !== "object" || usjObject === null) {
-			throw new Error("Invalid input for USJ. Expected an object.");
+		if (typeof usjObject !== "object" || usjObject === null || (!usjObject.hasOwnProperty('type'))) {
+			throw new Error("Invalid input for USJ. Expected USJ json object.");
 		}
 		if (!this.parser) {
 			this.initializeParser();
