@@ -173,7 +173,7 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		if (!ignoreErrors && this.errors.length > 0) {
 			let errorString = this.errors.join("\n\t");
 			throw new Error(
-				`Errors present:\n\t${errorString}\nUse ignoreErrors = true to generate output despite errors.`,
+				`Errors present:\n\t${errorString}\nUse ignoreErrors = true, as third parameter of toUSJ(), to generate output despite errors.`,
 			);
 		}
 
