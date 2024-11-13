@@ -19,7 +19,7 @@ It is recommended that you update `pip`, `setuptools` and `wheel`.
 
 ### By importing library in Python code
 
-```
+```python
 from usfm_grammar import USFMParser, Filter
 
 # input_usfm_str = open("sample.usfm","r", encoding='utf8').read()
@@ -37,7 +37,7 @@ print(errors)
 ```
 
 ##### To convert to USX
-```
+```python
 from lxml import etree
 
 usx_elem = my_parser.to_usx() # default filter=ALL
@@ -46,7 +46,7 @@ print(etree.tostring(usx_elem, encoding="unicode", pretty_print=True))
 
 ##### To convert to Dict/USJ
 
-```
+```python
 output = my_parser.to_usj() # default all markers
 
 # filters out specified markers from output
@@ -69,7 +69,7 @@ print(output)
 To understand more about how `exclude_markers`, `include_markers`, `combine_texts`  and `Filter` works refer the section on [filtering on USJ](#filtering-on-usj)
 
 ##### To save as json
-```
+```python
 import json
 dict_output = my_parser.to_usj()
 with open("file_path.json", "w", encoding='utf-8') as fp:
@@ -77,7 +77,7 @@ with open("file_path.json", "w", encoding='utf-8') as fp:
 ```
 
 ##### To convert to List or table like format
-```
+```python
 list_output = my_parser.to_list() 
 #list_output = my_parser.to_list([Filter.SCRIPTURE_TEXT])
 
@@ -87,7 +87,7 @@ print(table_output)
 ```
 
 ##### To round trip with USJ
-```
+```python
 from usfm_grammar import USFMParser, Filter
 
 my_parser = USFMParser(input_usfm_str)
@@ -99,7 +99,7 @@ print(my_parser2.usfm)
 :warning: There will be differences between first USFM and the generated one in 1. Spaces and lines 2. Default attributes will be given their names 3. Closing markers may be newly added
 
 ##### To remove unwanted markers from USFM
-```
+```python
 from usfm_grammar import USFMParser, Filter, USFMGenerator
 
 my_parser = USFMParser(input_usfm_str)
@@ -109,7 +109,7 @@ my_parser2 = USFMParser(from_usj=usj_obj)
 print(my_parser2.usfm)
 ```
 ##### USJ to USX or Table
-```
+```python
 from usfm_grammar import USFMParser, Filter
 
 my_parser = USFMParser(input_usfm_str)
@@ -121,7 +121,7 @@ print(my_parser2.to_usx())
 ```
 
 ##### USX to USFM, USJ or Table
-```
+```python
 from usfm_grammar import USFMParser, Filter
 from lxml import etree
 
@@ -175,7 +175,7 @@ options:
                         snippets, from different components, or not
 ```
 Example
-```
+```bash
 >>> python3 -m usfm_grammar sample.usfm --out_format usx
 
 >>> usfm-grammar sample.usfm
@@ -213,12 +213,12 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     PARAGRAPHS : paragraph markers like \p, poetry markers, list table markers
     CHARACTERS : all character level markups like \em, \w, \wj etc and their nested versions with +
     NOTES : foot note, cross-reference and their content markers
-    STUDY_BIBLE : \esb and `cat
+    STUDY_BIBLE : \esb and \cat
     BCV : \id, \c and \v
     TEXT : 'text-in-excluded-parent'
     ```
     To inspect which are the markers in each of these options, it could be just printed out, `print(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
-    ```
+    ```python
     output = my_parser.to_usj(include_markers=Filter.BCV)
     output = my_parser.to_usj(include_markers=Filter.BCV+Filter.TEXT)
     output = my_parser.to_usj(exclude_markers=Filter.PARAGRAPHS+Filter.CHARACTERS)
