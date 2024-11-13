@@ -1,4 +1,4 @@
-import assert from 'assert';
+
 import Parser from './web-tree-sitter/tree-sitter.js';
 
 import USFMGenerator from "./usfmGenerator.js";
@@ -104,12 +104,13 @@ Only one of USFM, USJ or USX is supported in one object.`)
 
 	convertUSXToUSFM() {
 		try {
-			assert(1 <= this.usx.nodeType && this.usx.nodeType <= 12 ,
-		        'Input must be an instance of xmldom Document or Element'
-		    );
+			if(!(1 <= this.usx.nodeType && this.usx.nodeType <= 12)) {
+				throw new Error('Input must be an instance of xmldom Document or Element');
+			} 
 			if (this.usx.tagName !== "usx") {
-				assert(this.usx.getElementsByTagName('usx').length === 1,
-					'Expects a <usx> node. Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml');
+				if(!(this.usx.getElementsByTagName('usx').length === 1)) {
+					throw new Error('Expects a <usx> node. Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml');
+				}
 
 				this.usx = this.usx.getElementsByTagName('usx')[0]
 			}
@@ -189,7 +190,7 @@ Only one of USFM, USJ or USX is supported in one object.`)
 		if (!ignoreErrors && this.errors.length > 0) {
 			let errorString = this.errors.join("\n\t");
 			throw new Error(
-				`Errors present:\n\t${errorString}\nUse ignoreErrors = true to generate output despite errors.`,
+				`Errors present:\n\t${errorString}\nUse ignoreErrors = true, as third parameter of toUSJ(), to generate output despite errors.`,
 			);
 		}
 
