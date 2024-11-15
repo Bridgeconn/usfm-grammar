@@ -1,6 +1,6 @@
 {
   "name": "usfm-grammar",
-  "version": "3.0.0-alpha.10",
+  "version": "3.0.0-beta.14",
   "description": "Uses the tree-sitter-usfm3 parser to convert USFM files to other formats such as USJ, USX, and CSV, and converts them back to USFM",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/es/index.mjs",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Bridgeconn/usfm-grammar/js-usfm-parser"
+    "url": "https://github.com/Bridgeconn/usfm-grammar"
   },
   "keywords": [
     "USFM",
