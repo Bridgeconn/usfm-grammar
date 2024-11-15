@@ -84,7 +84,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Run tests
+      - name: Build grammar
         run: |
           cd tree-sitter-usfm3
           npm install --save nan
@@ -96,7 +96,8 @@ jobs:
           sed -i '/"tree-sitter-usfm3":.*/d' package.json
           npm install .
           npm install ../tree-sitter-usfm3
-          node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
+      - name: Run tests
+        run: node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
 
   Run-Web-tests:
     name: Run Web tests
@@ -108,7 +109,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Run tests
+      - name: Build grammar
         run: |
           cd tree-sitter-usfm3
           npm install --save nan
@@ -123,8 +124,8 @@ jobs:
           cp node_modules/web-tree-sitter/tree-sitter.js src/web-tree-sitter/
           cp node_modules/web-tree-sitter/tree-sitter.wasm ./
           cp ../tree-sitter-usfm3/tree-sitter-usfm3.wasm ./tree-sitter-usfm.wasm
-
-          node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
+      - name: Run tests
+        run: node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
 
 
 
