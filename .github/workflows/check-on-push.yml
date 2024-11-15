@@ -93,6 +93,7 @@ jobs:
       - name: Install dependencies
         run: |
           cd node-usfm-parser
+          sed -i '/"tree-sitter-usfm3":.*/d' package.json
           npm install .
           npm install ../tree-sitter-usfm3
           node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
