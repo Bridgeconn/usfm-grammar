@@ -49,3 +49,51 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
+  Publish-node-usfm-grammar:
+    needs: Test-grammar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 20.4
+          registry-url: https://registry.npmjs.org/
+      - run: |
+          cd node-usfm-parser
+          sed -i '/"tree-sitter-usfm3":.*/d' package.json
+          npm install .
+          npm run build
+          npm publish . 
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+
+  Publish-web-usfm-grammar:
+    needs: Test-grammar
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 20.4
+          registry-url: https://registry.npmjs.org/
+      - name: Build Grammar
+        run: |
+          cd tree-sitter-usfm3
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
+          ./node_modules/.bin/tree-sitter generate
+          ./node_modules/.bin/tree-sitter build --wasm
+          cp tree-sitter-usfm3.wasm ../web-usfm-parser/tree-sitter-usfm.wasm
+      - name: Install dependencies
+        run: |
+          cd web-usfm-parser/
+          npm install .
+          cp ./node_modules/web-tree-sitter/tree-sitter.js src/web-tree-sitter/
+          cp ./node_modules/web-tree-sitter/tree-sitter.wasm ./
+      - name: Build and publish
+        run: |
+          cd web-usfm-parser/
+          npm run build
+          npm publish .
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}

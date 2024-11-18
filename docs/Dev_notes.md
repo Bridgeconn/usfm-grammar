@@ -49,6 +49,29 @@ pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc
 
 ```
 
+In node module:
+
+```bash
+cd node-usfm-parser
+npm run test
+
+# to run selectively
+node_modules/mocha/bin/mocha.js --timeout 40000 --grep "Compare" --bail
+node_modules/mocha/bin/mocha.js --timeout 40000 test/basic.js
+```
+
+In web module:
+
+```bash
+cd web-usfm-parser
+npm run test
+
+# to run selectively
+node_modules/mocha/bin/mocha.js --timeout 40000 --grep "Compare" --bail
+node_modules/mocha/bin/mocha.js --timeout 40000 test/basic.js
+```
+
+
 ## How to build and publish JS web module for local Development
 
 First compile the grammar and get the wasm file
@@ -57,7 +80,7 @@ cd tree-sitter-usfm3
 export PATH=$PATH:./node_modules/.bin
 tree-sitter generate
 tree-sitter build --wasm
-cp tree-sitter-usfm.wasm ../web-usfm-parser/
+cp tree-sitter-usfm3.wasm ../web-usfm-parser/tree-sitter-usfm.wasm
 cd ..
 ```
 After npm install, copy the `tree-sitter.js` file from `node_modules/web-tree-sitter` to the `js-usfm-parser/src/web-tree-sitter` folder to include it in the bundle. Also copy the `tree-sitter.wasm` file to `js-usfm-parser/` to be included in the npm packaging.
@@ -86,6 +109,8 @@ npm install -g verdaccio # need not do again if done once
 verdaccio # runs a server at localhost:4873
 touch .npmrc
 echo "registry=http://localhost:4873 # OR http://0.0.0.0:4873" > .npmrc
+rm -r .parcel-cache
+npm run build
 npm publish .
 ```
 

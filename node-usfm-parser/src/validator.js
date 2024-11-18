@@ -4,10 +4,12 @@ const USFM3 = require('tree-sitter-usfm3');
 const fs = require('node:fs');
 const Ajv = require('ajv');
 
+const {USJ_SCHEMA} = require("./utils/usjSchema")
+
 const { Query } = Parser;
 
 class Validator {
-    constructor(usjSchemaPath = '../schemas/usj.js') {
+    constructor(usjSchemaPath = null) {
         this.USFMParser = new Parser();
 		this.USFMParser.setLanguage(USFM3);
 		this.parserOptions = Parser.Options = {
@@ -20,9 +22,13 @@ class Validator {
         this.USJValidator = null;
         try {
               const ajv = new Ajv();
-			const schemaStr = fs.readFileSync("../schemas/usj.js", 'utf8');
-			const schema = JSON.parse(schemaStr);
-			this.USJValidator = ajv.compile(schema);
+            if (usjSchemaPath === null) {
+                this.USJValidator = ajv.compile(USJ_SCHEMA);
+            } else {
+    			const schemaStr = fs.readFileSync(usjSchemaPath, 'utf8');
+    			const schema = JSON.parse(schemaStr);
+    			this.USJValidator = ajv.compile(schema);
+            }
         } catch (error) {
             console.error("Error loading schema:", error);
         }
