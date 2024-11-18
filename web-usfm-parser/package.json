@@ -1,6 +1,6 @@
 {
   "name": "usfm-grammar-web",
-  "version": "3.0.0-beta.15",
+  "version": "3.0.0-beta.16",
   "description": "Uses the tree-sitter-usfm3 parser to convert USFM files to other formats such as USJ, USX, and CS, and converts them back to USFM.",
   "type": "module",
   "module": "dist/bundle.mjs",
