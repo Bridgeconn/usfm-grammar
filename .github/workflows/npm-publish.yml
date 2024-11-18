@@ -62,6 +62,7 @@ jobs:
           cd node-usfm-parser
           sed -i '/"tree-sitter-usfm3":.*/d' package.json
           npm install .
+          git checkout -- package.json
           npm run build
           npm publish . 
         env:
