@@ -2,21 +2,21 @@
 
 An elegant [USFM](https://github.com/ubsicap/usfm) parser (or validator) that uses a Context Free Grammar to model USFM. The grammar is written using [tree sitter](https://github.com/tree-sitter/tree-sitter). **Supports USFM 3.x**. 
 
-The parsed USFM is an intuitive and easy to manipulate JSON structure that allows for painless extraction of scripture and other content from the markup. USFM Grammar is also capable of reconverting the generated JSON back to USFM.
-
-Currently, the parser is implemented in JavaScript. But it is possible to re-use the grammar and port this library into other programming languages too. Contributions are welcome!
+The parsed USFM is syntax tree, which is futher converted to intuitive and easy to manipulate file formats that allows for painless extraction of scripture and other content from the markup. USFM Grammar is also capable of reconverting the generated formats back to USFM.
 
 ## Features
-- USFM validation and error detection
-- USFM to JSON convertor
-- JSON to USFM convertor
-- CSV/TSV converter for both USFM and JSON
-- Command Line Interface (CLI)
+- Parses scripture in USFM, USX(xml) and USJ(json) formats.
+- Converts scripture data to USJ, USX, USFM and CSV/TSV formats.
+- Available as [python](https://pypi.org/project/usfm-grammar/), [node](https://www.npmjs.com/package/usfm-grammar) and [web](https://www.npmjs.com/package/usfm-grammar-web) packages.
+- Command Line Interface (CLI) for the python package.
+- Filtering the content, by including or excluding selected markers.
+- USFM validation and error detection.
+- Experimental auto fix for errors in USFM.
 
 
 ## Example
 
-<table><tr><th>Input USFM</th><th>Parsed JSON Output</th><th>Parsed JSON with only filtered Scripture Content</th></tr><td>
+### Input USFM</th></tr><td>
 
 ```
 \id hab 45HABGNT92.usfm, Good News Translation, June 2003
@@ -33,67 +33,110 @@ Currently, the parser is implemented in JavaScript. But it is possible to re-use
 \q1 Be merciful, even when you are angry.
 ```
   
-</td><td>
+### JSON Output(USJ)
 
 ```
-{ "book": {  
-    "bookCode": "HAB",
-    "fileDescription": "45HABGNT92.usfm, Good News Translation, June 2003",
-    "chapters": [
-        {"chapterNumber": "3",
-        "contents": [
-            {"s1": "A Prayer of Habakkuk"},
-            {"p": [
-                {"verseNumber": "1"},
-                {"verseText": "This is a prayer of the prophet Habakkuk:"}
-            ]},
-            {"poetry": [
-                {"q1": [
-                    {"verseNumber": "2"},
-                    [{"verseText": "O"},
-                     {"nd": "Lord", "closing": "\\nd*"},
-                     {"verseText": ", I have heard of what you have done,"}]
-                ]},
-                {"q2": {"verseText": "and I am filled with awe."}},
-                {"q1": {"verseText": "Now do again in our times"}},
-                {"q2": {"verseText": "the great deeds you used to do."}},
-                {"q1": {"verseText": "Be merciful, even when you are angry."}}
-            ]}
-        ]}
-    ]}
+{   "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {   "type": "book",
+            "marker": "id",
+            "content": ["45HABGNT92.usfm, Good News Translation, June 2003"],
+            "code": "HAB" },
+        {   "type": "chapter",
+            "marker": "c",
+            "number": "3",
+            "sid": "HAB 3" },
+        {   "type": "para",
+            "marker": "s1",
+            "content": ["A Prayer of Habakkuk\n"] },
+        {   "type": "para",
+            "marker": "p",
+            "content": [
+                {   "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "HAB 3:1" },
+                "This is a prayer of the prophet Habakkuk:\n"
+            ] },
+        {   "type": "para",
+            "marker": "b" },
+        {   "type": "para",
+            "marker": "q1",
+            "content": [
+                {   "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "HAB 3:2" },
+                "O ",
+                {   "type": "char",
+                    "marker": "nd",
+                    "content": [ "Lord" ] },
+                ", I have heard of what you have done,\n"
+            ] },
+        {   "type": "para",
+            "marker": "q2",
+            "content": [ "and I am filled with awe.\n" ] },
+        {   "type": "para",
+            "marker": "q1",
+            "content": [ "Now do again in our times\n" ] },
+        {   "type": "para",
+            "marker": "q2",
+            "content": [ "the great deeds you used to do.\n" ] },
+        {   "type": "para",
+            "marker": "q1",
+            "content": [ "Be merciful, even when you are angry." ] }
+    ]
 }
+
 ```
 
-</td><td>
+The converted JSON structure adheres to the [USJ](https://docs.usfm.bible/usfm/3.1/index.html) JSON Schema defined [here](https://github.com/usfm-bible/tcdocs/blob/main/grammar/usj.js).
+
+### XML output(USX)
+
+```
+<usx version="3.1">
+  <book code="HAB" style="id">45HABGNT92.usfm, Good News Translation, June 2003</book>
+  <chapter number="3" style="c" sid="HAB 3"/>
+  <para style="s1">A Prayer of Habakkuk
+</para>
+  <para style="p"><verse number="1" style="v" sid="HAB 3:1"/>This is a prayer of the prophet Habakkuk:
+</para>
+  <para style="b">
+    <verse eid="HAB 3:1"/>
+  </para>
+  <para style="q1"><verse number="2" style="v" sid="HAB 3:2"/>O <char style="nd" closed="true">Lord</char>, I have heard of what you have done,
+</para>
+  <para style="q2">and I am filled with awe.
+</para>
+  <para style="q1">Now do again in our times
+</para>
+  <para style="q2">the great deeds you used to do.
+</para>
+  <para style="q1">Be merciful, even when you are angry.<verse eid="HAB 3:2"/></para>
+  <chapter eid="HAB 3"/>
+</usx>
+```
+
+
+### TSV output
   
 ```
-{"book": {
-    "bookCode": "HAB",
-    "fileDescription": "45HABGNT92.usfm, Good News Translation, June 2003",
-    "chapters": [
-        {"chapterNumber": "3",
-        "contents": [
-            {"verseNumber": "1"},
-            {"verseText": "This is a prayer of the prophet Habakkuk:"},
-            {"verseNumber": "2"},
-            {"verseText": "O"},
-            {"nd": "Lord",
-                "closing": "\\nd*"},
-            {"verseText": ", I have heard of what you have done,"},
-            {"verseText": "and I am filled with awe."},
-            {"verseText": "Now do again in our times"},
-            {"verseText": "the great deeds you used to do."},
-            {"verseText": "Be merciful, even when you are angry."}
-        ]}
-    ]}
-}
+Book    Chapter Verse   Text                                                Type    Marker
+HAB                     45HABGNT92.usfm, Good News Translation, June 2003   book    id
+HAB     3               "A Prayer of Habakkuk\n"                            para    s1
+HAB     3       1       "This is a prayer of the prophet Habakkuk:\n"       para    p
+HAB     3       2       O                                                   para    q1
+HAB     3       2       Lord                                                char    nd
+HAB     3       2       ", I have heard of what you have done,\n"           para    q1
+HAB     3       2       "and I am filled with awe.\n"                       para    q2
+HAB     3       2       "Now do again in our times\n"                       para    q1
+HAB     3       2       "the great deeds you used to do.\n"                 para    q2
+HAB     3       2       Be merciful, even when you are angry.               para    q1
+
 ```
 
-</td>
-</tr></table>
 
-The converted JSON structure adheres to the JSON Schema defined [here](./schemas/file.js).
 
-The converted JSON uses USFM marker names as its property names along with the following additional names:  
-`book`, `bookCode`, `description`, `meta`, `chapters`, `contents`, `verseNumber`, `verseText`, `attributes`, `defaultAttribute`, `closing`, `footnote`, `endnote`, `extended-footnote`, `cross-ref`, `extended-cross-ref`, `caller` (used within notes), `list`, `table`, `header` (used within `table`), `milestone` and `namespace`.
 
