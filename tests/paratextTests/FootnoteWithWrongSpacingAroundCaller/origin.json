@@ -1,0 +1,83 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "ib",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "ip",
+      "content": [
+        "Hi mom."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "Hi ",
+        {
+          "type": "char",
+          "marker": "nd",
+          "content": [
+            "Bob"
+          ]
+        },
+        "."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        "And",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "1.1 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "stuff"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "b"
+    }
+  ]
+}

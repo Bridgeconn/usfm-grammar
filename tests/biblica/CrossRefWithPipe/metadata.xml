@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>Tests when a cross-reference contains an explicit target</description>
+        <validated>pass</validated>
+</test-metadata>

@@ -1,0 +1,5 @@
+\id GEN
+\c 1
+\s some text
+\p
+\v 1 verse text \fig caption|src="file" size="small" ref="1.1" rotate="90"\fig*"

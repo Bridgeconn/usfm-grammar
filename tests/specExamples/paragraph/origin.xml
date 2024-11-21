@@ -1,0 +1,36 @@
+<usx version="3.0">
+  <book code="MAT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
+  <para style="toc1">The Acts of the Apostles</para>
+  <para style="toc2">Acts</para>
+  <para style="ip">One of these brothers, Joseph, had become...</para>
+  <para style="ipr">(50.24)</para>
+  <chapter number="1" style="c" sid="MAT 1" />
+  <para style="po">
+    <verse number="1" style="v" sid="MAT 1:1" />This is the Good News ...</para>
+  <para style="pr" vid="MAT 1:1">“And all the people will answer, ‘Amen!’ <verse eid="MAT 1:1" /><verse number="2" style="v" sid="MAT 1:2" />It began as ..</para>
+  <para style="q1" vid="MAT 1:2">“God said, ‘I will send ...</para>
+  <para style="q2" vid="MAT 1:2">to open the way for you.’<verse eid="MAT 1:2" /></para>
+  <para style="q1">
+    <verse number="3" style="v" sid="MAT 1:3" />Someone is shouting in the desert,</para>
+  <para style="q2" vid="MAT 1:3">‘Get the road ready for the Lord;</para>
+  <para style="q2" vid="MAT 1:3">make a straight path for him to travel!’”<verse eid="MAT 1:3" /></para>
+  <para style="b" />
+  <para style="m">
+    <verse number="4" style="v" sid="MAT 1:4" />So John appeared in the desert, ...</para>
+  <para style="pmo" vid="MAT 1:4">We apostles and leaders send friendly<verse eid="MAT 1:4" /></para>
+  <para style="pm">
+    <verse number="24" style="v" sid="MAT 1:24" />We have heard that some ... <verse eid="MAT 1:24" /><verse number="25" style="v" sid="MAT 1:25" />So we met together and decided ..<verse eid="MAT 1:25" /></para>
+  <chapter eid="MAT 1" />
+  <chapter number="8" style="c" sid="MAT 8" />
+  <para style="nb">
+    <verse number="26" style="v" sid="MAT 8:26" />These men have risked their lives ..</para>
+  <para style="pc" vid="MAT 8:26">I AM THE GREAT CITY OF BABYLON, ... <verse eid="MAT 8:26" /><verse number="27" style="v" sid="MAT 8:27" />We are also sending Judas and Silas, ..<verse eid="MAT 8:27" /></para>
+  <para style="pm">
+    <verse number="37" style="v" sid="MAT 8:37" />Jesus answered:</para>
+  <para style="pi" vid="MAT 8:37">The one who scattered the good ..<verse eid="MAT 8:37" /></para>
+  <para style="mi">
+    <verse number="28" style="v" sid="MAT 8:28" />The Holy Spirit has shown...</para>
+  <para style="pmc" vid="MAT 8:28">We send our best wishes.</para>
+  <para style="cls" vid="MAT 8:28">May God's grace be with you.<verse eid="MAT 8:28" /></para>
+  <chapter eid="MAT 8" />
+</usx>

@@ -1,0 +1,17 @@
+\id GEN
+\c 1
+\p
+\v 1 The list of verses follows this
+\li
+\v 2 The item one of list 
+\li
+\v 3 The item two of list 
+\li
+\v 4 The item three 
+\v 5 and four of the list
+\lh The end of verse list
+\v 6 A verse out side of the list
+\v 7 The verse with a list within it
+\li item one
+\li item two
+\v 8 The last verse

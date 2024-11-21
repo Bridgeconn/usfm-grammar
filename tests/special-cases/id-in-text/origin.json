@@ -1,0 +1,38 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "verse one ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GEN 1:2"
+        },
+        "verse two did have an id EXO in it."
+      ]
+    }
+  ]
+}

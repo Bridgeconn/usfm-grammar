@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tree-sitter-usfm3"
+description = "Usfm3 grammar for tree-sitter"
+version = "3.0.0-beta.16"
+keywords = ["incremental", "parsing", "tree-sitter", "usfm3"]
+classifiers = [
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Software Development :: Compilers",
+  "Topic :: Text Processing :: Linguistic",
+  "Typing :: Typed"
+]
+requires-python = ">=3.8"
+license.text = "MIT"
+readme = "python-Readme.md"
+authors = [{ name = "BCS Team", email = "joel@bridgeconn.com" }]
+maintainers = [{ name = "Kavitha Raju", email = "kavitha.raju@bridgeconn.com" }, 
+            { name= "Joel Mathew", email = 'joel@bridgeconn.com'}]
+
+[project.urls]
+Homepage = "https://github.com/Bridgeconn/usfm-grammar/tree/version-3/tree-sitter-usfm3/python-Readme.md"
+
+
+
+[project.optional-dependencies]
+core = ["tree-sitter~=0.21"]
+
+[tool.cibuildwheel]
+build = "cp38-*"
+build-frontend = "build"

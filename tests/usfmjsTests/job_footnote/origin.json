@@ -1,0 +1,122 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "JOB",
+      "content": [
+        "Unlocked Literal Bible"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Job"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "The Book of Job"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Job"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "Job"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt",
+      "content": [
+        "Job"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "23",
+      "sid": "JOB 23"
+    },
+    {
+      "type": "para",
+      "marker": "s5",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "JOB 23:1"
+        },
+        "Then Job answered and said,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "JOB 23:2"
+        },
+        "\"Even today my complaint is bitter;"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q",
+      "content": [
+        "my hand ",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Some copies have: "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fqa",
+              "content": [
+                "... his hand ... "
+              ]
+            }
+          ]
+        },
+        " is heavy because of my groaning."
+      ]
+    }
+  ]
+}

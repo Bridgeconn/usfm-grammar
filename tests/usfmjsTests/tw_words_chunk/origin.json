@@ -1,0 +1,148 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀπόστολος",
+          "strong": "G06520",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/apostle",
+          "content": [
+            "ἀπόστολος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/jesus"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ἰησοῦς",
+          "strong": "G24240",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "content": [
+            "Ἰησοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χριστός",
+          "strong": "G55470",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/christ",
+          "content": [
+            "Χριστοῦ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατὰ"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "GEN 1:4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀπό",
+          "strong": "G05750",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "ἀπὸ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/godthefather"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πατήρ",
+          "strong": "G39620",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "content": [
+            "Πατρὸς"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        }
+      ]
+    }
+  ]
+}

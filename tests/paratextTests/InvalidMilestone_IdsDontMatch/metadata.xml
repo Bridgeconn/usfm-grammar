@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>InvalidMilestone_IdsDontMatch. From paratext -  test suite
+		
+		Passes since id check would be a semantic check</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

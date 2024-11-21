@@ -1,0 +1,12 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />
+    <verse eid="GEN 1:1" />
+  </para>
+  <para style="k-s" status="unknown">| x-tw="rc:<optbreak />*/tw/dict/bible/kt/jesus" <char style="w" lemma="Ἰησοῦς" strong="G24240" x-morph="Gr,N,,,,,GMS," status="invalid">Ἰησοῦ</char> <char style="w" lemma="χριστός" strong="G55470" x-morph="Gr,N,,,,,GMS," x-tw="rc://*/tw/dict/bible/kt/christ" status="invalid">Χριστοῦ</char> </para>
+  <para style="k-e" status="unknown">
+    <unmatched marker="*" />,</para>
+  <chapter eid="GEN 1" />
+</usx>

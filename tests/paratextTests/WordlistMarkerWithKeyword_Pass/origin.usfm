@@ -1,0 +1,6 @@
+\id GLO
+\c 1
+\p \v 1 something \p  \k keywordkeyw\k* definition
+\c 1
+\p \v 1 something \p  \w word|keyword\w* definition
+\v 1 something \p  \w word|lemma="keyword"\w* definition

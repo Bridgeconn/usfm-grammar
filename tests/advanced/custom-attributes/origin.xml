@@ -1,0 +1,13 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />the first verse <verse eid="GEN 1:1" /><verse number="2" style="v" sid="GEN 1:2" />the second verse <char style="w" x-myattr="metadata">gracious</char></para>
+  <para style="q1" vid="GEN 1:2">“Someone is shouting in the desert,</para>
+  <para style="q2" vid="GEN 1:2">‘Prepare a road for the Lord;</para>
+  <para style="q2" vid="GEN 1:2">make a straight path for him to travel!’ ”</para>
+  <para style="s" vid="GEN 1:2">
+    <char style="jmp" link-id="article-john_the_baptist" />John the Baptist</para>
+  <para style="p" vid="GEN 1:2">John is sometimes called...<verse eid="GEN 1:2" /></para>
+  <chapter eid="GEN 1" />
+</usx>

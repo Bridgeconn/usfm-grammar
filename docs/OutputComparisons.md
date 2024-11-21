@@ -1,10 +1,12 @@
-# Difference in JSON Outputs of 1.x and 2.x
+# Difference in JSON Outputs of 2.x and 3.x
 
-The main changes brought in JSON strcuture of 2.x versions are shown below 
+> :warning:  The output of 3.0.0-alpha.5 python module has been added here and is still under finalization process.
+
+The main changes brought in JSON strcuture of 3.x versions are shown below 
 #### The Basic USFM Components
 
 1. The minimal set of markers
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>
     <pre>
     \id GEN
     \c 1
@@ -12,37 +14,11 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \v 1 verse one
     \v 2 verse two
     </pre></td><td><pre>      
-      {"metadata": 
-        {"id": {"book": "GEN"}},
-       "chapters": [
-          {  "header": {"title": "1"},
-             "metadata": [
-                {"styling": [{"marker": "p"}]}
-              ],
-             "verses": [
-                {"number": "1 ",
-                 "text objects": [
-                        {"text": "verse one",
-                         "index": 0}
-                    ],
-                 "text": "verse one "},
-                {"number": "2 ",
-                 "text objects": [
-                        {"text": "verse two",
-                         "index": 0}
-                    ],
-                 "text": "verse two "}
-            ]
-          }
-        ],
-        "messages": {"warnings": []}
-      }
-    </pre></td><td><pre>      
     {"book":{"bookCode":"GEN"},
       "chapters":[
       {"chapterNumber":"1",
           "contents":[
-          {"p":null},
+            {"p":null},
             {"verseNumber":"1",
               "verseText":"verse one",
               "contents":[
@@ -56,12 +32,34 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
             ]}
         ],
       "_messages":{"_warnings":[]}}
-    </pre></tr></table>
+    </pre>
+  </td><td><pre>
+{"book": {
+    "bookCode": "GEN",
+    "chapters": [
+      {
+        "chapterNumber": "1",
+        "contents": [
+          {
+            "p": [
+              {"verseNumber": "1"},
+              {"verseText": "verse one"},
+              {"verseNumber": "2"},
+              {"verseText": "verse two"}
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+  </pre></td>
+  </tr></table>
 
 
 2. Multiple chapters
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -71,58 +69,7 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \p
     \v 1 the third verse
     \v 2 the fourth verse
-    </pre></td><td><pre>
-      { "metadata": 
-          {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [
-                {"styling": [{"marker": "p"}]}
-              ],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        {"text": "the first verse",
-                         "index": 0}
-                    ],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}
-                    ],
-                  "text": "the second verse "
-                }
-            ]
-          },
-          {
-            "header": {"title": "2"},
-            "metadata": [
-                {"styling": [{"marker": "p"}]}
-              ],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        {"text": "the third verse",
-                         "index": 0}
-                      ],
-                  "text": "the third verse "
-                },
-                {
-                    "number": "2 ",
-                    "text objects": [
-                        { "text": "the fourth verse",
-                          "index": 0}
-                      ],
-                    "text": "the fourth verse "
-                }
-              ]
-          }
-         ],
-        "messages": {"warnings": []}
-      }
-  </pre></td><td><pre>      
+    </pre></td><td><pre>      
     {"book":{"bookCode":"GEN"},
       "chapters":[
       {"chapterNumber":"1",
@@ -155,12 +102,48 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
             ]}
         ],
       "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+     <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     }
+    ]
+   },
+   {
+    "chapterNumber": "2",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the third verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the fourth verse"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
+  </pre></td>
+   </tr></table>
 
 
 3. Section headings
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -170,56 +153,7 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \p
     \v 3 the third verse
     \v 4 the fourth verse
-    </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          {
-            "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}
-                      ],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "metadata": [
-                        { "section": {"text": "A new section",
-                                      "marker": "s"},
-                          "index": 1},
-                        { "styling": [
-                                {"marker": "p",
-                                 "index": 2}]}
-                      ],
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}
-                      ],
-                  "text": "the second verse "
-                },
-                { "number": "3 ",
-                  "text objects": [
-                        { "text": "the third verse",
-                          "index": 0}
-                      ],
-                  "text": "the third verse "
-                },
-                { "number": "4 ",
-                  "text objects": [
-                        { "text": "the fourth verse",
-                          "index": 0}
-                      ],
-                  "text": "the fourth verse "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>      
+    </pre></td><td><pre>      
       {"book":{"bookCode":"GEN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -254,12 +188,47 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       { "verseNumber": "1"},
+       { "verseText": "the first verse"},
+       { "verseNumber": "2"},
+       { "verseText": "the second verse"}
+      ]
+     },
+     {
+      "s": "A new section"
+     },
+     {
+      "p": [
+       { "verseNumber": "3"},
+       { "verseText": "the third verse"},
+       { "verseNumber": "4"},
+       { "verseText": "the fourth verse"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
+    
+  </pre></td>
+  </tr></table>
 
 
 4. Header section markers
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id MRK The Gospel of Mark
     \ide UTF-8
     \usfm 3.0
@@ -273,54 +242,7 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \p
     \v 1 the first verse
     \v 2 the second verse
-    </pre></td><td><pre>
-      { "metadata": {
-          "id": {
-                        "book": "MRK",
-                        "details": " The Gospel of Mark"},
-          "headers": [
-              {"ide": "UTF-8"},
-              {"usfm": "3.0"},
-              {"h": "Mark"},
-              [ {"mt": [{"text": "The Gospel according to"}],
-                 "number": "2"},
-                {"mt": [{"text": "MARK"}],
-                 "number": "1"}
-              ]
-            ],
-          "introduction": [
-              {"is": [{"text": "Introduction"}]},
-              {"ip": [{ "bk": [{"text": "The Gospel according to Mark"}],
-                        "text": "The Gospel according to Mark",
-                        "closed": true,
-                        "inline": true},
-                      {"text": "begins with the statement..."}]
-              }
-            ]
-          },
-        "chapters": [
-          {
-            "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                }
-              ]
-          }
-          ],
-        "messages": {"warnings": ["Empty lines present. "]}
-      }
-     </pre></td><td><pre>      
+    </pre></td><td><pre>      
       {"book":{"bookCode":"MRK",
           "description":"The Gospel of Mark",
           "meta":[
@@ -363,12 +285,47 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "MRK",
+  "fileDescription": "The Gospel of Mark",
+  "headers": [
+   {"ide": "UTF-8"},
+   {"usfm": []},
+   {"h": "Mark"},
+   [
+    {"mt2": "The Gospel according to"},
+    {"mt1": "MARK"}
+   ],
+   {"is": "Introduction"},
+   {"ip": "begins with the statement..."
+   }
+  ],
+  "chapters": [
+   {"chapterNumber": "1","contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
+    
+  </pre></td>
+  </tr></table>
 
 
 5. Footnotes
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id MAT
     \c 1
     \p
@@ -378,61 +335,7 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     Christ, the Son of God. \f + \fr 1.1: 
     \ft Some manuscripts do not have \fq 
     the Son of God.\f*
-    </pre></td><td><pre>
-      { 
-        "metadata": {"id": {"book": "MAT"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                },
-                { "number": "3 ",
-                  "metadata": [
-                        { "footnote": [
-                                { "text": "+ ",
-                                  "index": 1},
-                                { "marker": "fr",
-                                  "inline": true,
-                                  "index": 2},
-                                { "text": "1.1: ",
-                                  "index": 3},
-                                { "marker": "ft",
-                                  "inline": true,
-                                  "index": 4},
-                                { "text": "Some manuscripts do not have ",
-                                  "index": 5},
-                                { "marker": "fq",
-                                  "inline": true,
-                                  "index": 6},
-                                { "text": "the Son of God.",
-                                  "index": 7}],
-                            "marker": "f",
-                            "closed": true,
-                            "inline": true,
-                            "index": 1
-                        }],
-                  "text objects": [
-                        { "text": "This is the Good News about Jesus Christ, the Son of God. ",
-                          "index": 0}],
-                  "text": "This is the Good News about Jesus Christ, the Son of God.  "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>      
+    </pre></td><td><pre>      
       {"book":{"bookCode":"MAT"},
         "chapters":[
         {"chapterNumber":"1",
@@ -465,12 +368,44 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "MAT",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       { "verseNumber": "1"},
+       { "verseText": "the first verse"},
+       { "verseNumber": "2"},
+       { "verseText": "the second verse"},
+       { "verseNumber": "3"},
+       { "verseText": "This is the Good News about Jesus \n Christ, the Son of God."},
+       { "f": [
+         {"caller": "+"},
+         {"fr": "1.1:"},
+         {"ft": "Some manuscripts do not have"},
+         {"fq": "the Son of God."}
+        ], "closing": "\\f*"},
+       { "verseText": ""}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
+  </pre></td>
+  </tr></table>
 
 
 6. Cross-refs
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id MAT
     \c 1
     \p
@@ -479,55 +414,7 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \v 3 \x - \xo 2.23: \xt Mrk 1.24; 
     Luk 2.39; Jhn 1.45.\x* and made his 
     home in a town named Nazareth.
-    </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "MAT"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                },
-                { "number": "3 ",
-                  "metadata": [
-                        { "cross-ref": [
-                                { "text": "- ",
-                                  "index": 1},
-                                { "marker": "xo",
-                                  "inline": true,
-                                  "index": 2},
-                                { "text": "2.23: ",
-                                  "index": 3},
-                                { "marker": "xt",
-                                  "inline": true,
-                                  "index": 4},
-                                { "text": "Mrk 1.24; Luk 2.39; Jhn 1.45.",
-                                  "index": 5}],
-                            "marker": "x",
-                            "closed": true,
-                            "inline": true,
-                            "index": 0}],
-                    "text objects": [
-                        { "text": "and made his home in a town named Nazareth.",
-                          "index": 1}],
-                    "text": "and made his home in a town named Nazareth. "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-   </pre></td><td><pre>      
+    </pre></td><td><pre>      
     {"book":{"bookCode":"MAT"},
       "chapters":[
       {"chapterNumber":"1",
@@ -557,12 +444,45 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
             ]}
         ],
       "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "MAT",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"},
+       {"verseNumber": "3"},
+       {
+        "x": [
+         {"caller": "-"},
+         {"xo": "2.23:"},
+         {"xt": "Mrk 1.24; \n Luk 2.39; Jhn 1.45."}
+        ],
+        "closing": "\\x*"
+       },
+       {"verseText": "and made his \n home in a town named Nazareth."}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
+  </pre></td>
+  </tr></table>
 
 
 7. Multiple para markers
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id JHN
     \c 1
     \s1 The Preaching of John the 
@@ -590,77 +510,7 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     “Turn away from your sins and 
     be baptized,” he told the people, 
     “and God will forgive your sins.”
-    </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "JHN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [
-                { "section": {
-                      "text": "The Preaching of John the Baptist",
-                      "marker": "s1"},
-                  "sectionPostheader": [
-                      {"r": [{"text": "(Matthew 3.1-12; Luke 3.1-18; John 1.19-28)"}]}]},
-                { "styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "This is the Good News about Jesus Christ, the Son of God.",
-                          "index": 0}],
-                  "text": "This is the Good News about Jesus Christ, the Son of God. "
-                },
-                { "number": "2 ",
-                  "metadata": [{"styling": [
-                        { "marker": "q1",
-                          "index": 1},
-                        { "marker": "q2",
-                          "index": 3},
-                        { "marker": "q1",
-                          "index": 5}]}],
-                  "text objects": [
-                        { "text": "It began as the prophet Isaiah had written:",
-                          "index": 0},
-                        { "text": "“God said, ‘I will send my messenger ahead of you",
-                          "index": 2},
-                        { "text": "to open the way for you.’",
-                          "index": 4}],
-                    "text": "It began as the prophet Isaiah had written: “God said, 
-                      ‘I will send my messenger ahead of you to open the way for you.’ "
-                },
-                { "number": "3 ",
-                  "metadata": [{"styling": [
-                        { "marker": "q2",
-                          "index": 1},
-                        { "marker": "q2",
-                          "index": 3},
-                        { "marker": "p",
-                          "index": 5}]}],
-                  "text objects": [
-                        { "text": "Someone is shouting in the desert,",
-                          "index": 0},
-                        { "text": "‘Get the road ready for the Lord;",
-                          "index": 2},
-                        { "text": "make a straight path for him to travel!’”",
-                          "index": 4}],
-                  "text": "Someone is shouting in the desert, ‘Get the road ready for the Lord; 
-                    make a straight path for him to travel!’” "
-                },
-                { "number": "4 ",
-                  "text objects": [
-                        { "text": "So John appeared in the desert, baptizing and preaching. 
-                            “Turn away from your sins and be baptized,” e told the people, 
-                            “and God will forgive your sins.”",
-                          "index": 0}],
-                  "text": "So John appeared in the desert, baptizing and preaching. 
-                    “Turn away from your sins and be baptized,” e told the people, 
-                    “and God will forgive your sins.” "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>      
+    </pre></td><td><pre>      
       {"book":{"bookCode":"JHN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -719,12 +569,67 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "JHN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "s1": "The Preaching of John the \n Baptist"
+     },
+     {
+      "p": [
+       { "verseNumber": "1"},
+       { "verseText": "This is the Good News about \n Jesus Christ, the Son of God."},
+       { "verseNumber": "2"},
+       { "verseText": "It began as the prophet \n Isaiah had written:"}
+      ]
+     },
+     {
+      "poetry": [
+       {
+        "q1": { "verseText": "“God said, ‘I will send my \n messenger ahead of you"}
+       },
+       {
+        "q2": { "verseText": "to open the way for you.’"}
+       },
+       {
+        "q1": [
+         {"verseNumber": "3"},
+         {"verseText": "Someone is shouting in \n the desert,"}
+        ]
+       },
+       {
+        "q2": { "verseText": "‘Get the road ready for \n the Lord;"}
+       },
+       {
+        "q2": { "verseText": "make a straight path for \n him to travel!’”"}
+       }
+      ]
+     },
+     {
+      "p": [
+       { "verseNumber": "4"},
+       { "verseText": "So John appeared in the \n desert, baptizing and preaching. \n “Turn away from your sins and \n be baptized,” he told the people, \n “and God will forgive your sins.”"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
+    
+  </pre></td>
+  </tr></table>
   
 
 8. Character markers
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -734,44 +639,7 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     the \nd Lord\nd*, the God of their 
     ancestors, the God of Abraham, Isaac, 
     and Jacob,
-    </pre></td><td><pre>
-      { "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                },
-                { "number": "15 ",
-                  "text objects": [
-                        { "text": "Tell the Israelites that I, the ",
-                          "index": 0},
-                        { "nd": [{"text": "Lord"}],
-                          "text": "Lord",
-                          "closed": true,
-                          "inline": true,
-                          "index": 1},
-                        { "text": ", the God of their ancestors, the God of Abraham, Isaac, and Jacob,",
-                          "index": 2}],
-                    "text": "Tell the Israelites that I, the  Lord , the God of their ancestors, 
-                      the God of Abraham, Isaac, and Jacob, "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>      
+    </pre></td><td><pre>      
       {"book":{"bookCode":"GEN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -812,50 +680,48 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"},
+       {"verseNumber": "15"},
+       [
+        {"verseText": "Tell the Israelites that I, \n the"},
+        {"nd": "Lord",
+         "closing": "\\nd*"},
+        {"verseText": ", the God of their \n ancestors, the God of Abraham, Isaac, \n and Jacob,"}
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}  
+  </pre></td>
+  </tr></table>
 
   
 9. Markers with attributes
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse \w gracious|lemma="grace"\w*
-    </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse ",
-                          "index": 0},
-                        { "w": [{"text": "gracious"}],
-                          "text": "gracious",
-                          "attributes": [{
-                              "name": "lemma",
-                              "value": "\"grace\""}],
-                          "closed": true,
-                          "inline": true,
-                          "index": 1}],
-                  "text": "the second verse  gracious "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>      
+    </pre></td><td><pre>      
       {"book":{"bookCode":"GEN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -881,14 +747,45 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       [
+        {"verseText": "the second verse"},
+        {"w": "gracious",
+         "attributes": [
+          {"lemma": "grace"}
+         ],
+         "closing": "\\w*"},
+        {"verseText": ""}
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
+  </pre></td>
+  </tr></table>
 
  
 #### More Complex Components
 
 1. Lists
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -908,81 +805,6 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \lf This was the list of the 
     administrators of the tribes of Israel.
     </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                }]
-          },
-          { "header": {"title": "2"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the third verse",
-                          "index": 0}],
-                  "text": "the third verse "
-                },
-                { "number": "2 ",
-                  "metadata": [
-                        { "section": {
-                                "text": "Administration of the Tribes of Israel",
-                                "marker": "s1"},
-                          "index": 1},
-                        { "styling": [
-                                { "marker": "lh",
-                                  "index": 2}]}],
-                  "text objects": [
-                        { "text": "the fourth verse",
-                          "index": 0}],
-                  "text": "the fourth verse "
-                },
-                { "number": "16-22 ",
-                  "metadata": [{"styling": [
-                        { "marker": "lf",
-                          "index": 2}]}],
-                  "text objects": [
-                        { "text": "This is the list of the administrators 
-                                  of the tribes of Israel:",
-                          "index": 0},
-                        { "list": [
-                                { "li": [{"text": "Reuben - Eliezer son of Zichri"}],
-                                  "number": "1"},
-                                { "li": [{"text": "Simeon - Shephatiah son of Maacah"}],
-                                  "number": "1"},
-                                { "li": [{"text": "Levi - Hashabiah son of Kemuel"}],
-                                  "number": "1"}],
-                          "text": "Reuben - Eliezer son of Zichri | Simeon - 
-                                    Shephatiah son of Maacah | Levi - Hashabiah 
-                                    son of Kemuel | ",
-                          "index": 1},
-                        { "text": "This was the list of the administrators of the tribes of Israel.",
-                          "index": 3}],
-                    "text": "This is the list of the administrators of the tribes of 
-                              Israel: Reuben - Eliezer son of Zichri | Simeon - 
-                              Shephatiah son of Maacah | Levi - Hashabiah 
-                              son of Kemuel |  This was the list of the administrators 
-                              of the tribes of Israel. "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>
       {"book":{"bookCode":"GEN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -1042,12 +864,55 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     }
+    ]
+   },
+   {
+    "chapterNumber": "2",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the third verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the fourth verse"}
+      ]
+     },
+     {"s1": "Administration of the Tribes of Israel"},
+     {
+      "list": [
+       {"verseNumber": "16-22"},
+       {"verseText": "This is the list of the \n administrators of the tribes of Israel:"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
+  </pre></td>
+  </tr></table>
 
 
 2. Header section with more markers
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id MRK 41MRKGNT92.SFM, Good News Translation, June 2003
     \h John
     \toc1 The Gospel according to John
@@ -1074,89 +939,6 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \v 1 the first verse
     \v 2 the second verse
     </pre></td><td><pre>
-      {
-        "metadata": {"id": {
-            "book": "MRK",
-            "details": " 41MRKGNT92.SFM, Good News Translation, June 2003"},
-          "headers": [
-            { "h": "John"},
-            { "toc1": [{"text": "The Gospel according to John"}]},
-            { "toc2": [{"text": "John"}]},
-            [ { "mt": [{"text": "The Gospel"}],
-                "number": "2"},
-              { "mt": [{"text": "according to"}],
-                "number": "3"},
-              { "mt": [{"text": "JOHN"}],
-                "number": "1"}]
-            ],
-          "introduction": [
-            { "ip": [{  "text": "The two endings to the Gospel, which are 
-                          enclosed in brackets, are generally regarded as 
-                          written by someone other than the author of "},
-                    { "bk": [{"text": "Mark"}],
-                      "text": "Mark",
-                      "closed": true,
-                      "inline": true}]},
-            { "iot": [{"text": "Outline of Contents"}]},
-            [   { "io": [
-                        {
-                            "text": "The beginning of the gospel "
-                        },
-                        {
-                            "ior": [
-                                {
-                                    "text": "(1.1-13)"
-                                }
-                            ],
-                            "text": "(1.1-13)",
-                            "closed": true,
-                            "inline": true
-                        }
-                    ],
-                  "number": "1"
-                },
-                { "io": [ { "text": "Jesus' public ministry in Galilee "},
-                          { "ior": [{"text": "(1.14–9.50)"}],
-                            "text": "(1.14–9.50)",
-                            "closed": true,
-                            "inline": true}],
-                  "number": "1"},
-                { "io": [ { "text": "From Galilee to Jerusalem "},
-                          { "ior": [{"text": "(10.1-52)"}],
-                            "text": "(10.1-52)",
-                            "closed": true,
-                            "inline": true}],
-                  "number": "1"}]
-          ]
-          },
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [
-                {"section": 
-                      {"ms": {"text": "BOOK ONE"}},
-                  "sectionPostheader": [
-                      {"mr": {"text": "(Psalms 1–41)"}}]
-                },
-                {"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                }
-            ]
-          }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>
 
       {"book":{"bookCode":"MRK",
           "description":"41MRKGNT92.SFM,
@@ -1238,12 +1020,55 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "MRK",
+  "fileDescription": "41MRKGNT92.SFM, Good News Translation, June 2003",
+  "headers": [
+   {"h": "John"},
+   [
+    {"toc1": "The Gospel according to John"},
+    {"toc2": "John"}
+   ],
+   [
+    {"mt2": "The Gospel"},
+    {"mt3": "according to"},
+    {"mt1": "JOHN"}
+   ],
+   {"ip": ""},
+   {"iot": "Outline of Contents"},
+   {"io1": "The beginning of the \n gospel"},
+   {"io1": "Jesus' public ministry in \n Galilee"},
+   {"io1": "From Galilee to \n Jerusalem"}
+  ],
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {"ms": "BOOK ONE"},
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
+    
+  </pre></td>
+  </tr></table>
 
 
 3. Character marker nesting
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1254,49 +1079,6 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     speaks of “...the town of Waheb in 
     the area of Suphah
     </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{ "styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                },
-                { "number": "14 ",
-                  "text objects": [
-                        { "text": "That is why ",
-                          "index": 0},
-                        { "bk": [ {"text": "The Book of the "},
-                                  {"+nd": [{"text": "Lord"}],
-                                    "text": "Lord",
-                                    "closed": true,
-                                    "inline": true},
-                                  { "text": "'s Battles"}],
-                          "text": "The Book of the Lord's Battles",
-                          "closed": true,
-                          "inline": true,
-                          "index": 1},
-                        { "text": "speaks of “...the town of Waheb in the area of Suphah",
-                          "index": 2}],
-                    "text": "That is why  The Book of the Lord's Battles speaks of 
-                          “...the town of Waheb in the area of Suphah "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>
       {"book":{"bookCode":"GEN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -1330,50 +1112,49 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"},
+       {"verseNumber": "14"},
+       [
+        {"verseText": "That is why"},
+        {
+         "bk": "'s Battles",
+         "closing": "\\bk*"},
+        {"verseText": "speaks of “...the town of Waheb in \n the area of Suphah"}
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
+  </pre></td>
+  </tr></table>
 
 
 4. Markers with default attributes
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
     \v 1 the first verse
     \v 2 the second verse \w gracious|grace\w*
     </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{ "styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse ",
-                          "index": 0},
-                        { "w": [{"text": "gracious"}],
-                          "text": "gracious",
-                          "attributes": [
-                                { "name": "default attribute",
-                                  "value": "grace"}],
-                          "closed": true,
-                          "inline": true,
-                          "index": 1}],
-                  "text": "the second verse  gracious "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>
     {"book":{"bookCode":"GEN"},
       "chapters":[
       {"chapterNumber":"1",
@@ -1399,12 +1180,43 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
             ]}
         ],
       "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       [
+        {"verseText": "the second verse"},
+        {"w": "gracious",
+         "attributes": [
+          {"lemma": "grace"}
+         ],
+         "closing": "\\w*"},
+        {"verseText": ""}
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
+  </pre></td>
+  </tr></table>
 
 
 5. Link-attributes and custom attributes
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1418,72 +1230,6 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     John the Baptist
     \p John is sometimes called...
     </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "metadata": [{"styling": [
-                          { "marker": "q1",
-                            "index": 2},
-                          { "marker": "q2",
-                            "index": 4},
-                          { "marker": "q2",
-                            "index": 6},
-                          { "marker": "m",
-                            "index": 8},
-                          { "marker": "p",
-                            "index": 12}]}],
-                  "text objects": [
-                        { "text": "the second verse ",
-                          "index": 0},
-                        { "w": [{"text": "gracious"}],
-                          "text": "gracious",
-                          "attributes": [
-                                { "name": "x-myattr",
-                                  "value": "\"metadata\""}],
-                          "closed": true,
-                          "inline": true,
-                          "index": 1},
-                        { "text": "“Someone is shouting in the desert,",
-                          "index": 3},
-                        { "text": "‘Prepare a road for the Lord;",
-                          "index": 5},
-                        { "text": "make a straight path for him to travel!’ ”",
-                          "index": 7},
-                        { "text": "s ",
-                          "index": 9},
-                        { "jmp": [],
-                          "text": "",
-                          "attributes": [
-                                { "name": "link-id",
-                                  "value": "\"article-john_the_baptist\""}],
-                          "closed": true,
-                          "inline": true,
-                          "index": 10},
-                        { "text": "John the Baptist",
-                          "index": 11},
-                        { "text": "John is sometimes called...",
-                          "index": 13}],
-                  "text": "the second verse  gracious “Someone is shouting 
-                        in the desert, ‘Prepare a road for the Lord; make a 
-                        straight path for him to travel!’ ” s   John the Baptist 
-                        John is sometimes called... "
-                }
-             ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>
       {"book":{"bookCode":"GEN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -1528,12 +1274,64 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       [
+        {"verseText": "the second \n verse"},
+        {"w": "gracious",
+         "attributes": [
+          {"x-myattr": "metadata"}
+         ],
+         "closing": "\\w*"},
+        {"verseText": ""}
+       ]
+      ]
+     },
+     {
+      "poetry": [
+       {
+        "q1": {"verseText": "“Someone is shouting in the desert,"}
+       },
+       {
+        "q2": {"verseText": "‘Prepare a road for the Lord;"}
+       },
+       {
+        "q2": {"verseText": "make a straight path for him to travel!’ ”"}
+       }
+      ]
+     },
+     {
+      "ms": "John the Baptist"
+     },
+     {
+      "p": [
+       {"verseText": "John is sometimes called..."}
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}    
+  </pre></td>
+  </tr></table>
 
 
 6. Table 
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1550,91 +1348,6 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \tr \tcr1 3rd \tc2 Zebulun \tc3 Eliab 
     son of Helon
     </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "metadata": [{"styling": [
-                            { "marker": "p",
-                              "index": 1}]}],
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                },
-                { "number": "12-83 ",
-                  "text objects": [
-                        { "text": "They presented their offerings in the following order:",
-                          "index": 0},
-                        { "table": {
-                            "header": [
-                                { "th": "Day ",
-                                  "number": "1",
-                                  "inline": true},
-                                { "th": "Tribe ",
-                                  "number": "2",
-                                  "inline": true},
-                                { "th": "Leader",
-                                  "number": "3",
-                                  "inline": true}
-                                ],
-                            "rows": [
-                                [ { "tcr": "1st ",
-                                    "number": "1",
-                                    "inline": true},
-                                  { "tc": "Judah ",
-                                    "number": "2",
-                                    "inline": true},
-                                  { "tc": "Nahshon son of Amminadab",
-                                    "number": "3",
-                                    "inline": true}],
-                                [ { "tcr": "2nd ",
-                                    "number": "1",
-                                    "inline": true},
-                                  { "tc": "Issachar ",
-                                    "number": "2",
-                                    "inline": true},
-                                  { "tc": "Nethanel son of Zuar",
-                                    "number": "3",
-                                    "inline": true}],
-                                [ { "tcr": "3rd ",
-                                    "number": "1",
-                                    "inline": true},
-                                  { "tc": "Zebulun ",
-                                    "number": "2",
-                                    "inline": true},
-                                  { "tc": "Eliab son of Helon",
-                                    "number": "3",
-                                    "inline": true}]
-                                ]},
-                            "text": "Day  | Tribe  | Leader | \n
-                            1st  |  Judah  |Nahshon son of Amminadab |  \n
-                            2nd  |  Issachar  |  Nethanel son of Zuar |  \n
-                            3rd  |  Zebulun  |  Eliab son of Helon |  \n",
-                            "index": 1
-                        }
-                    ],
-                    "text": "They presented their offerings in the following order: 
-                    Day  | Tribe  | Leader | \n
-                    1st  |  Judah  |  Nahshon son of Amminadab |  \n
-                    2nd  |  Issachar  |  Nethanel son of Zuar |  \n
-                    3rd  |  Zebulun  |  Eliab son of Helon |  \n "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>
       {"book":{"bookCode":"GEN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -1682,12 +1395,74 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+ "book": {
+  "bookCode": "GEN",
+  "chapters": [
+   {
+    "chapterNumber": "1",
+    "contents": [
+     {
+      "p": [
+       {"verseNumber": "1"},
+       {"verseText": "the first verse"},
+       {"verseNumber": "2"},
+       {"verseText": "the second verse"}
+      ]
+     },
+     {
+      "p": [
+       {"verseNumber": "12-83"},
+       {"verseText": "They presented their \n offerings in the following order:"}
+      ]
+     },
+     {
+      "table": [
+       {
+        "tr": [
+         {"th1": {"verseText": "Day"}},
+         {"th2": {"verseText": "Tribe"}},
+         {"th3": {"verseText": "Leader"}}
+        ]
+       },
+       {
+        "tr": [
+         {"tcr1": {"verseText": "1st"}},
+         {"tc2": {"verseText": "Judah"}},
+         {"tc3": {"verseText": "Nahshon \n son of Amminadab"}}
+        ]
+       },
+       {
+        "tr": [
+         {"tcr1": {"verseText": "2nd"}},
+         {"tc2": {"verseText": "Issachar"}},
+         {"tc3": {"verseText": "Nethanel\n  son of Zuar"}}
+        ]
+       },
+       {
+        "tr": [
+         {"tcr1": {"verseText": "3rd"}},
+         {"tc2": {"verseText": "Zebulun"}},
+         {"tc3": {"verseText": "Eliab \n son of Helon"}}
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
+    
+  </pre></td>
+  </tr></table>
 
 
 7. Milestones
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id GEN
     \c 1
     \p
@@ -1695,55 +1470,6 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \v 2 the second verse
     \v 3 \qt-s |sid="qt_123" who="Pilate"\*“Are you the king of the Jews?”\qt-e |eid="qt_123"\*
     </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "GEN"}},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "text objects": [
-                        { "text": "the first verse",
-                          "index": 0}],
-                  "text": "the first verse "
-                },
-                { "number": "2 ",
-                  "text objects": [
-                        { "text": "the second verse",
-                          "index": 0}],
-                  "text": "the second verse "
-                },
-                { "number": "3 ",
-                  "metadata": [
-                        { "milestone": "qt",
-                          "start/end": "-s",
-                          "marker": "qt-s",
-                          "closed": true,
-                          "attributes": [
-                                { "name": "sid",
-                                  "value": "\"qt_123\""},
-                                { "name": "who",
-                                  "value": "\"Pilate\""}],
-                          "index": 0},
-                        { "milestone": "qt",
-                          "start/end": "-e",
-                          "marker": "qt-e",
-                          "closed": true,
-                          "attributes": [
-                                { "name": "eid",
-                                  "value": "\"qt_123\""}],
-                          "index": 2}],
-                    "text objects": [
-                        { "text": "“Are you the king of the Jews?”",
-                          "index": 1}],
-                    "text": "“Are you the king of the Jews?” "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": []}
-      }
-     </pre></td><td><pre>
       {"book":{"bookCode":"GEN"},
         "chapters":[
         {"chapterNumber":"1",
@@ -1780,13 +1506,52 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[]}}
-
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+{
+    "book": {
+        "bookCode": "GEN",
+        "chapters": [
+            {
+                "chapterNumber": "1",
+                "contents": [
+                    {
+                        "p": [
+                            {"verseNumber": "1"},
+                            {"verseText": "the first verse"},
+                            {"verseNumber": "2"},
+                            {"verseText": "the second verse"},
+                            {"verseNumber": "3"},
+                            {
+                                "milestone": "qt-s",
+                                "attributes": [
+                                    {"sid": "qt_123"},
+                                    {"who": "Pilate"}
+                                ]
+                            },
+                            {"verseText": "“Are you the king of the Jews?”"},
+                            {
+                                "milestone": "qt-e",
+                                "attributes": [
+                                    {"eid": "qt_123"}
+                                ]
+                            },
+                            {"verseText": ""}
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
+    
+  </pre></td>
+  </tr></table>
 
 
 8. Alignment files
 
-    <table><tr><th>Input</th><th>usfm-grammar 1.x</th><th>usfm-grammar 2.x</th></tr><td>     <pre>
+    <table><tr><th>Input</th><th>usfm-grammar 2.x</th><th>usfm-grammar 3.x</th></tr><td>     <pre>
     \id ACT
     \h प्रेरितों के काम
     \toc1 प्रेरितों के काम
@@ -1812,252 +1577,6 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
     \v 30 और पौलुस पूरे दो वर्ष अपने किराये के घर में रहा,
     \v 31 और जो उसके पास आते थे, उन सबसे मिलता रहा और बिना रोक-टोक बहुत निडर होकर परमेश्‍वर के राज्य का     प्रचार करता और प्रभु यीशु मसीह की बातें सिखाता रहा।
     </pre></td><td><pre>
-      {
-        "metadata": {"id": {"book": "ACT"},
-        "headers": [
-            { "h": "प्रेरितों के काम"},
-            { "toc1": [{"text": "प्रेरितों के काम"}]},
-            { "toc2": [{"text": "प्रेरितों के काम"}]},
-            [ {"mt": [{"text": "प्रेरितों के काम"}]}]
-          ]},
-        "chapters": [
-          { "header": {"title": "1"},
-            "metadata": [{"styling": [{"marker": "p"}]}],
-            "verses": [
-                { "number": "1 ",
-                  "metadata": [
-                        { "milestone": "zaln",
-                          "start/end": "-s",
-                          "marker": "zaln-s",
-                          "closed": true,
-                          "attributes": [
-                                { "name": "x-verified",
-                                  "value": "\"true\""},
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""},
-                                { "name": "x-content",
-                                  "value": "\"Θεόφιλε\""}],
-                          "index": 1},
-                        { "milestone": "zaln",
-                          "start/end": "-e",
-                          "marker": "zaln-e",
-                          "closed": true,
-                          "index": 3},
-                        { "milestone": "zaln",
-                          "start/end": "-s",
-                          "marker": "zaln-s",
-                          "closed": true,
-                          "attributes": [
-                                { "name": "x-verified",
-                                  "value": "\"true\""},
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""},
-                                { "name": "x-content",
-                                  "value": "\"πρῶτον\""}],
-                          "index": 5},
-                        { "milestone": "zaln",
-                          "start/end": "-e",
-                          "marker": "zaln-e",
-                          "closed": true,
-                          "index": 7},
-                        { "milestone": "zaln",
-                          "start/end": "-s",
-                          "marker": "zaln-s",
-                          "closed": true,
-                          "attributes": [
-                                { "name": "x-verified",
-                                  "value": "\"true\""},
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""},
-                                { "name": "x-content",
-                                  "value": "\"λόγον\""}],
-                          "index": 11},
-                        { "milestone": "zaln",
-                          "start/end": "-e",
-                          "marker": "zaln-e",
-                          "closed": true,
-                          "index": 13},
-                        { "milestone": "zaln",
-                          "start/end": "-s",
-                          "marker": "zaln-s",
-                          "closed": true,
-                          "attributes": [
-                                { "name": "x-verified",
-                                  "value": "\"true\""},
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""},
-                                { "name": "x-content",
-                                  "value": "\"ἀνελήμφθη\""}],
-                          "index": 14},
-                        { "milestone": "zaln",
-                          "start/end": "-e",
-                          "marker": "zaln-e",
-                          "closed": true,
-                          "index": 17},
-                        { "milestone": "zaln",
-                          "start/end": "-s",
-                          "marker": "zaln-s",
-                          "closed": true,
-                          "attributes": [
-                                { "name": "x-verified",
-                                  "value": "\"true\""},
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""},
-                                { "name": "x-content",
-                                  "value": "\"ἄχρι\""}],
-                          "index": 18},
-                        { "milestone": "zaln",
-                          "start/end": "-e",
-                          "marker": "zaln-e",
-                          "closed": true,
-                          "index": 20}],
-                  "text objects": [
-                        { "w": [{ "text": "हे"}],
-                          "text": "हे",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "inline": true,
-                          "index": 0},
-                        { "w": [{"text": "थियुफिलुस"}],
-                          "text": "थियुफिलुस",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "index": 2},
-                        { "w": [{"text": "मैंने"}],
-                          "text": "मैंने",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "index": 4},
-                        { "w": [{"text": "पहली"}],
-                          "text": "पहली",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "index": 6},
-                        { "w": [{"text": "पुस्तिका"}],
-                          "text": "पुस्तिका",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "index": 8},
-                        { "w": [{"text": "उन"}],
-                          "text": "उन",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "inline": true,
-                          "index": 9},
-                        { "w": [{"text": "सब"}],
-                          "text": "सब",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "inline": true,
-                          "index": 10},
-                        { "w": [{"text": "बातों"}],
-                          "text": "बातों",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "index": 12},
-                        { "w": [{"text": "ऊपर"}],
-                          "text": "ऊपर",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "index": 15},
-                        { "w": [{"text": "उठाया"}],
-                          "text": "उठाया",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "inline": true,
-                          "index": 16},
-                        { "w": [{"text": "न"}],
-                          "text": "न",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "index": 19},
-                        { "w": [{"text": "गया"}],
-                          "text": "गया",
-                          "attributes": [
-                                { "name": "x-occurrence",
-                                  "value": "\"1\""},
-                                { "name": "x-occurrences",
-                                  "value": "\"1\""}],
-                          "closed": true,
-                          "index": 21}
-                    ],
-                  "text": "हे थियुफिलुस मैंने पहली पुस्तिका उन सब बातों ऊपर उठाया न गया "
-                },
-                { "number": "30 ",
-                  "text objects": [
-                        { "text": "और पौलुस पूरे दो वर्ष अपने किराये के घर में रहा,",
-                          "index": 0}],
-                  "text": "और पौलुस पूरे दो वर्ष अपने किराये के घर में रहा, "
-                },
-                { "number": "31 ",
-                  "text objects": [
-                        { "text": "और जो उसके पास आते थे, उन सबसे मिलता रहा और 
-                            बिना रोक-टोक बहुत निडर होकर परमेश्‍वर के राज्य का प्रचार करता और
-                            प्रभु यीशु मसीह की बातें सिखाता रहा।",
-                          "index": 0}],
-                  "text": "और जो उसके पास आते थे, उन सबसे मिलता रहा और बिना रोक-टोक बहुत 
-                      निडर होकर परमेश्‍वर के राज्य का प्रचार करता और प्रभु यीशु मसीह की बातें सिखाता रहा। "
-                }
-              ]
-            }
-          ],
-        "messages": {"warnings": ["Empty lines present. "]}
-      }
-     </pre></td><td><pre>
       {"book":{"bookCode":"ACT",
           "meta":[
           {"h":"प्रेरितों के काम"},
@@ -2254,12 +1773,16 @@ The main changes brought in JSON strcuture of 2.x versions are shown below
               ]}
           ],
         "_messages":{"_warnings":[      ]}}
-     </pre></tr></table>
+     </pre></td>
+   <td><pre>
+    
+  </pre></td>
+  </tr></table>
 
 
 
 
-# The USFM Grammar Outputs 
+# The USFM Grammar Outputs V2
 
 The comparison of JSON outputs obtained from usfm-grammar with varying parameters.
 

@@ -1,0 +1,13 @@
+<usx version="3.0">
+  <book code="TIT" style="id">Titus</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Titus</para>
+  <para style="toc2">Titus</para>
+  <para style="toc3">Tit</para>
+  <para style="mt">Titus</para>
+  <chapter number="1" style="c" sid="TIT 1" />
+  <para style="p">
+    <verse number="12" style="v" sid="TIT 1:12" />...</para>
+  <para style="q" vid="TIT 1:12">Christ Jesus. <note caller="+" style="f"><char style="ft" closed="false">Some early versions omit, </char><char style="fqa">in Ephesus, </char><char style="ft"> but this expression is probably in Paul's original letter. </char></note><verse eid="TIT 1:12" /></para>
+  <chapter eid="TIT 1" />
+</usx>

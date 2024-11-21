@@ -1,0 +1,7511 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "TIT",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "ide",
+      "content": [
+        "UTF-8"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "Tit"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt",
+      "content": [
+        "Titus"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "TIT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 1:1"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Παῦλος",
+          "strong": "G39720",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/names/paul",
+          "content": [
+            "Παῦλος"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δοῦλος",
+          "strong": "G14010",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/servant",
+          "content": [
+            "δοῦλος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀπόστολος",
+          "strong": "G06520",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/apostle",
+          "content": [
+            "ἀπόστολος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/jesus"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ἰησοῦς",
+          "strong": "G24240",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "content": [
+            "Ἰησοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χριστός",
+          "strong": "G55470",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/christ",
+          "content": [
+            "Χριστοῦ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πίστις",
+          "strong": "G41020",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faith",
+          "content": [
+            "πίστιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκλεκτός",
+          "strong": "G15880",
+          "x-morph": "Gr,NS,,,,GMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/elect",
+          "content": [
+            "ἐκλεκτῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπίγνωσις",
+          "strong": "G19220",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/know",
+          "content": [
+            "ἐπίγνωσιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀλήθεια",
+          "strong": "G02250",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/true",
+          "content": [
+            "ἀληθείας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RR,,,,GFS,",
+          "content": [
+            "τῆς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατ’"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εὐσέβεια",
+          "strong": "G21500",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/godly",
+          "content": [
+            "εὐσέβειαν"
+          ]
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 1:2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπί",
+          "strong": "G19090",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐπ’"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐλπίς",
+          "strong": "G16800",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/hope",
+          "content": [
+            "ἐλπίδι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ζωή",
+          "strong": "G22220",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/life",
+          "content": [
+            "ζωῆς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αἰώνιος",
+          "strong": "G01660",
+          "x-morph": "Gr,AA,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/eternity",
+          "content": [
+            "αἰωνίου"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RR,,,,AFS,",
+          "content": [
+            "ἣν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπαγγέλλω",
+          "strong": "G18610",
+          "x-morph": "Gr,V,IAM3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/promise",
+          "content": [
+            "ἐπηγγείλατο"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NMS,",
+          "content": [
+            "ὁ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀψευδής",
+          "strong": "G08930",
+          "x-morph": "Gr,AA,,,,NMS,",
+          "content": [
+            "ἀψευδὴς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεὸς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρό",
+          "strong": "G42530",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "πρὸ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χρόνος",
+          "strong": "G55500",
+          "x-morph": "Gr,N,,,,,GMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/time",
+          "content": [
+            "χρόνων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αἰώνιος",
+          "strong": "G01660",
+          "x-morph": "Gr,AA,,,,GMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/eternity",
+          "content": [
+            "αἰωνίων"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 1:3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φανερόω",
+          "strong": "G53190",
+          "x-morph": "Gr,V,IAA3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/reveal",
+          "content": [
+            "ἐφανέρωσεν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καιρός",
+          "strong": "G25400",
+          "x-morph": "Gr,N,,,,,DMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/time",
+          "content": [
+            "καιροῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἴδιος",
+          "strong": "G23980",
+          "x-morph": "Gr,EF,,,,DMP,",
+          "content": [
+            "ἰδίοις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AMS,",
+          "content": [
+            "τὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λόγος",
+          "strong": "G30560",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/wordofgod",
+          "content": [
+            "λόγον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτός",
+          "strong": "G08460",
+          "x-morph": "Gr,RP,,,3GMS,",
+          "content": [
+            "αὐτοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κήρυγμα",
+          "strong": "G27820",
+          "x-morph": "Gr,N,,,,,DNS,",
+          "x-tw": "rc://*/tw/dict/bible/other/preach",
+          "content": [
+            "κηρύγματι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RR,,,,ANS,",
+          "content": [
+            "ὃ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πιστεύω",
+          "strong": "G41000",
+          "x-morph": "Gr,V,IAP1,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/trust",
+          "content": [
+            "ἐπιστεύθην"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1N,S,",
+          "content": [
+            "ἐγὼ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατ’"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιταγή",
+          "strong": "G20030",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/command",
+          "content": [
+            "ἐπιταγὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωτήρ",
+          "strong": "G49900",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/savior",
+          "content": [
+            "Σωτῆρος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,P,",
+          "content": [
+            "ἡμῶν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        "; ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 1:4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Τίτος",
+          "strong": "G51030",
+          "x-morph": "Gr,N,,,,,DMS,",
+          "x-tw": "rc://*/tw/dict/bible/names/titus",
+          "content": [
+            "Τίτῳ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γνήσιος",
+          "strong": "G11030",
+          "x-morph": "Gr,AA,,,,DNS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/true",
+          "content": [
+            "γνησίῳ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "τέκνον",
+          "strong": "G50430",
+          "x-morph": "Gr,N,,,,,DNS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/son",
+          "content": [
+            "τέκνῳ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κοινός",
+          "strong": "G28390",
+          "x-morph": "Gr,AA,,,,AFS,",
+          "content": [
+            "κοινὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πίστις",
+          "strong": "G41020",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faith",
+          "content": [
+            "πίστιν"
+          ]
+        },
+        ": ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χάρις",
+          "strong": "G54850",
+          "x-morph": "Gr,N,,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/grace",
+          "content": [
+            "χάρις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰρήνη",
+          "strong": "G15150",
+          "x-morph": "Gr,N,,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/peace",
+          "content": [
+            "εἰρήνη"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀπό",
+          "strong": "G05750",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "ἀπὸ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/godthefather"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πατήρ",
+          "strong": "G39620",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "content": [
+            "Πατρὸς"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/jesus"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χριστός",
+          "strong": "G55470",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/christ",
+          "content": [
+            "Χριστοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ἰησοῦς",
+          "strong": "G24240",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "content": [
+            "Ἰησοῦ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωτήρ",
+          "strong": "G49900",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/savior",
+          "content": [
+            "Σωτῆρος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,P,",
+          "content": [
+            "ἡμῶν"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 1:5"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οὗτος",
+          "strong": "G37780",
+          "x-morph": "Gr,RD,,,,GNS,",
+          "content": [
+            "τούτου"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χάριν",
+          "strong": "G54840",
+          "x-morph": "Gr,PI,,,,G,,,",
+          "content": [
+            "χάριν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀπολίπω",
+          "strong": "G06200",
+          "x-morph": "Gr,V,IAA1,,S,",
+          "content": [
+            "ἀπέλιπόν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2A,S,",
+          "content": [
+            "σε"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Κρήτη",
+          "strong": "G29140",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/names/crete",
+          "content": [
+            "Κρήτῃ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,ANP,",
+          "content": [
+            "τὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λείπω",
+          "strong": "G30070",
+          "x-morph": "Gr,V,PPA,ANP,",
+          "content": [
+            "λείποντα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιδιορθόω",
+          "strong": "G19300",
+          "x-morph": "Gr,V,SAM2,,S,",
+          "content": [
+            "ἐπιδιορθώσῃ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καθίστημι",
+          "strong": "G25250",
+          "x-morph": "Gr,V,SAA2,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/ordain",
+          "content": [
+            "καταστήσῃς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πόλις",
+          "strong": "G41720",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "content": [
+            "πόλιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρεσβύτερος",
+          "strong": "G42450",
+          "x-morph": "Gr,NS,,,,AMPC",
+          "x-tw": "rc://*/tw/dict/bible/other/elder",
+          "content": [
+            "πρεσβυτέρους"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὡς",
+          "strong": "G56130",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/like",
+          "content": [
+            "ὡς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1N,S,",
+          "content": [
+            "ἐγώ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2D,S,",
+          "content": [
+            "σοι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διατάσσω",
+          "strong": "G12990",
+          "x-morph": "Gr,V,IAM1,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/ordain",
+          "content": [
+            "διεταξάμην"
+          ]
+        },
+        "; ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 1:6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰ",
+          "strong": "G14870",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "εἴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "τις",
+          "strong": "G51000",
+          "x-morph": "Gr,RI,,,,NMS,",
+          "content": [
+            "τίς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "ἐστιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνέγκλητος",
+          "strong": "G04100",
+          "x-morph": "Gr,NP,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/blameless",
+          "content": [
+            "ἀνέγκλητος"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἷς",
+          "strong": "G15200",
+          "x-morph": "Gr,EN,,,,GFS,",
+          "content": [
+            "μιᾶς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γυνή",
+          "strong": "G11350",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "content": [
+            "γυναικὸς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνήρ",
+          "strong": "G04350",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "content": [
+            "ἀνήρ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "τέκνον",
+          "strong": "G50430",
+          "x-morph": "Gr,N,,,,,ANP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/children",
+          "content": [
+            "τέκνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔχω",
+          "strong": "G21920",
+          "x-morph": "Gr,V,PPA,NMS,",
+          "content": [
+            "ἔχων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πιστός",
+          "strong": "G41030",
+          "x-morph": "Gr,NS,,,,ANP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faithful",
+          "content": [
+            "πιστά"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατηγορία",
+          "strong": "G27240",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/accuse",
+          "content": [
+            "κατηγορίᾳ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀσωτία",
+          "strong": "G08100",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "content": [
+            "ἀσωτίας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἤ",
+          "strong": "G22280",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "ἢ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνυπότακτος",
+          "strong": "G05060",
+          "x-morph": "Gr,NP,,,,ANP,",
+          "x-tw": "rc://*/tw/dict/bible/other/rebel",
+          "content": [
+            "ἀνυπότακτα"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 1:7"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέω",
+          "strong": "G12100",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "δεῖ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γάρ",
+          "strong": "G10630",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "γὰρ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AMS,",
+          "content": [
+            "τὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπίσκοπος",
+          "strong": "G19850",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/overseer",
+          "content": [
+            "ἐπίσκοπον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνέγκλητος",
+          "strong": "G04100",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/blameless",
+          "content": [
+            "ἀνέγκλητον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "content": [
+            "εἶναι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὡς",
+          "strong": "G56130",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/like",
+          "content": [
+            "ὡς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οἰκονόμος",
+          "strong": "G36230",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/manager",
+          "content": [
+            "οἰκονόμον"
+          ]
+        },
+        "; ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐθάδης",
+          "strong": "G08290",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "content": [
+            "αὐθάδη"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὀργίλος",
+          "strong": "G37110",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/angry",
+          "content": [
+            "ὀργίλον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πάροινος",
+          "strong": "G39430",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/wine",
+          "content": [
+            "πάροινον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πλήκτης",
+          "strong": "G41310",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "content": [
+            "πλήκτην"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αἰσχροκερδής",
+          "strong": "G01460",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "content": [
+            "αἰσχροκερδῆ"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 1:8"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀλλά",
+          "strong": "G02350",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "ἀλλὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φιλόξενος",
+          "strong": "G53820",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "content": [
+            "φιλόξενον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φιλάγαθος",
+          "strong": "G53580",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "φιλάγαθον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σώφρων",
+          "strong": "G49980",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/selfcontrol",
+          "content": [
+            "σώφρονα"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δίκαιος",
+          "strong": "G13420",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/righteous",
+          "content": [
+            "δίκαιον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅσιος",
+          "strong": "G37410",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/holy",
+          "content": [
+            "ὅσιον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγκρατής",
+          "strong": "G14680",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/discipline",
+          "content": [
+            "ἐgκρατῆ"
+          ]
+        },
+        "; ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 1:9"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀντέχω",
+          "strong": "G04720",
+          "x-morph": "Gr,V,PPM,AMS,",
+          "content": [
+            "ἀντεχόμενον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AFS,",
+          "content": [
+            "τὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διδαχή",
+          "strong": "G13220",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/teach",
+          "content": [
+            "διδαχὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πιστός",
+          "strong": "G41030",
+          "x-morph": "Gr,AA,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faithful",
+          "content": [
+            "πιστοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λόγος",
+          "strong": "G30560",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/word",
+          "content": [
+            "λόγου"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δυνατός",
+          "strong": "G14150",
+          "x-morph": "Gr,NS,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/power",
+          "content": [
+            "δυνατὸς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,SPA3,,S,",
+          "content": [
+            "ᾖ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,DO,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "παρακαλέω",
+          "strong": "G38700",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/courage",
+          "content": [
+            "παρακαλεῖν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διδασκαλία",
+          "strong": "G13190",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/doctrine",
+          "content": [
+            "διδασκαλίᾳ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑγιαίνω",
+          "strong": "G51980",
+          "x-morph": "Gr,V,PPA,DFS,",
+          "content": [
+            "ὑγιαινούσῃ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CO,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,AMP,",
+          "content": [
+            "τοὺς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀντιλέγω",
+          "strong": "G04830",
+          "x-morph": "Gr,V,PPA,AMP,",
+          "content": [
+            "ἀντιλέγοντας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐλέγχω",
+          "strong": "G16510",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/rebuke",
+          "content": [
+            "ἐλέγχειν"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 1:10"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,IPA3,,P,",
+          "content": [
+            "εἰσὶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γάρ",
+          "strong": "G10630",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "γὰρ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πολλός",
+          "strong": "G41830",
+          "x-morph": "Gr,RI,,,,NMP,",
+          "content": [
+            "πολλοὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνυπότακτος",
+          "strong": "G05060",
+          "x-morph": "Gr,NS,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/rebel",
+          "content": [
+            "ἀνυπότακτοι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ματαιολόγος",
+          "strong": "G31510",
+          "x-morph": "Gr,NS,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/vain",
+          "content": [
+            "ματαιολόγοι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φρεναπάτης",
+          "strong": "G54230",
+          "x-morph": "Gr,N,,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/deceive",
+          "content": [
+            "φρεναπάται"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μάλιστα",
+          "strong": "G31220",
+          "x-morph": "Gr,D,,,,,,,,S",
+          "content": [
+            "μάλιστα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,NMP,",
+          "content": [
+            "οἱ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκ",
+          "strong": "G15370",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "ἐκ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GFS,",
+          "content": [
+            "τῆς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "περιτομή",
+          "strong": "G40610",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/circumcise",
+          "content": [
+            "περιτομῆς"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 1:11"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RR,,,,AMP,",
+          "content": [
+            "οὓς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέω",
+          "strong": "G12100",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "δεῖ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιστομίζω",
+          "strong": "G19930",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "content": [
+            "ἐπιστομίζειν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅστις",
+          "strong": "G37480",
+          "x-morph": "Gr,RR,,,,NMP,",
+          "content": [
+            "οἵτινες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅλος",
+          "strong": "G36500",
+          "x-morph": "Gr,EQ,,,,AMP,",
+          "content": [
+            "ὅλους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οἶκος",
+          "strong": "G36240",
+          "x-morph": "Gr,N,,,,,AMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/household",
+          "content": [
+            "οἴκους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνατρέπω",
+          "strong": "G03960",
+          "x-morph": "Gr,V,IPA3,,P,",
+          "content": [
+            "ἀνατρέπουσιν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διδάσκω",
+          "strong": "G13210",
+          "x-morph": "Gr,V,PPA,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/teach",
+          "content": [
+            "διδάσκοντες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RD,,,,ANP,",
+          "content": [
+            "ἃ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέω",
+          "strong": "G12100",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "δεῖ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αἰσχρός",
+          "strong": "G01500",
+          "x-morph": "Gr,AA,,,,GNS,",
+          "x-tw": "rc://*/tw/dict/bible/other/shame",
+          "content": [
+            "αἰσχροῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κέρδος",
+          "strong": "G27710",
+          "x-morph": "Gr,N,,,,,GNS,",
+          "x-tw": "rc://*/tw/dict/bible/other/profit",
+          "content": [
+            "κέρδους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χάριν",
+          "strong": "G54840",
+          "x-morph": "Gr,PI,,,,G,,,",
+          "content": [
+            "χάριν"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 1:12"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λέγω",
+          "strong": "G30040",
+          "x-morph": "Gr,V,IAA3,,S,",
+          "content": [
+            "εἶπέν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "τις",
+          "strong": "G51000",
+          "x-morph": "Gr,RI,,,,NMS,",
+          "content": [
+            "τις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκ",
+          "strong": "G15370",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "ἐξ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτός",
+          "strong": "G08460",
+          "x-morph": "Gr,RP,,,3GMP,",
+          "content": [
+            "αὐτῶν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἴδιος",
+          "strong": "G23980",
+          "x-morph": "Gr,RD,,,,NMS,",
+          "content": [
+            "ἴδιος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτός",
+          "strong": "G08460",
+          "x-morph": "Gr,RP,,,3GMP,",
+          "content": [
+            "αὐτῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "προφήτης",
+          "strong": "G43960",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/prophet",
+          "content": [
+            "προφήτης"
+          ]
+        },
+        ", “",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Κρής",
+          "strong": "G29120",
+          "x-morph": "Gr,N,,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/names/crete",
+          "content": [
+            "Κρῆτες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀεί",
+          "strong": "G01040",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "ἀεὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ψεύστης",
+          "strong": "G55830",
+          "x-morph": "Gr,N,,,,,NMP,",
+          "content": [
+            "ψεῦσται"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κακός",
+          "strong": "G25560",
+          "x-morph": "Gr,AA,,,,NNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/evil",
+          "content": [
+            "κακὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θηρίον",
+          "strong": "G23420",
+          "x-morph": "Gr,N,,,,,NNP,",
+          "x-tw": "rc://*/tw/dict/bible/other/beast",
+          "content": [
+            "θηρία"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γαστήρ",
+          "strong": "G10640",
+          "x-morph": "Gr,N,,,,,NFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/womb",
+          "content": [
+            "γαστέρες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀργός",
+          "strong": "G06920",
+          "x-morph": "Gr,AA,,,,NFP,",
+          "content": [
+            "ἀργαί"
+          ]
+        },
+        ".” ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 1:13"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NFS,",
+          "content": [
+            "ἡ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μαρτυρία",
+          "strong": "G31410",
+          "x-morph": "Gr,N,,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/testimony",
+          "content": [
+            "μαρτυρία"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οὗτος",
+          "strong": "G37780",
+          "x-morph": "Gr,ED,,,,NFS,",
+          "content": [
+            "αὕτη"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "ἐστὶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀληθής",
+          "strong": "G02270",
+          "x-morph": "Gr,NP,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/true",
+          "content": [
+            "ἀληθής"
+          ]
+        },
+        ". ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διά",
+          "strong": "G12230",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "δι’"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,ER,,,,AFS,",
+          "content": [
+            "ἣν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αἰτία",
+          "strong": "G01560",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "content": [
+            "αἰτίαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐλέγχω",
+          "strong": "G16510",
+          "x-morph": "Gr,V,MPA2,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/rebuke",
+          "content": [
+            "ἔλεγχε"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτός",
+          "strong": "G08460",
+          "x-morph": "Gr,RP,,,3AMP,",
+          "content": [
+            "αὐτοὺς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀποτόμως",
+          "strong": "G06640",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "ἀποτόμως"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑγιαίνω",
+          "strong": "G51980",
+          "x-morph": "Gr,V,SPA3,,P,",
+          "content": [
+            "ὑγιαίνωσιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πίστις",
+          "strong": "G41020",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faith",
+          "content": [
+            "πίστει"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 1:14"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "προσέχω",
+          "strong": "G43370",
+          "x-morph": "Gr,V,PPA,NMP,",
+          "content": [
+            "προσέχοντες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ἰουδαϊκός",
+          "strong": "G24510",
+          "x-morph": "Gr,AA,,,,DMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/jew",
+          "content": [
+            "Ἰουδαϊκοῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μῦθος",
+          "strong": "G34540",
+          "x-morph": "Gr,N,,,,,DMP,",
+          "content": [
+            "μύθοις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐντολή",
+          "strong": "G17850",
+          "x-morph": "Gr,N,,,,,DFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/command",
+          "content": [
+            "ἐντολαῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἄνθρωπος",
+          "strong": "G04440",
+          "x-morph": "Gr,N,,,,,GMP,",
+          "content": [
+            "ἀνθρώπων"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀποστρέφω",
+          "strong": "G06540",
+          "x-morph": "Gr,V,PPM,GMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/turn",
+          "content": [
+            "ἀποστρεφομένων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AFS,",
+          "content": [
+            "τὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀλήθεια",
+          "strong": "G02250",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/true",
+          "content": [
+            "ἀλήθειαν"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 1:15"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,RI,,,,NNP,",
+          "content": [
+            "πάντα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καθαρός",
+          "strong": "G25130",
+          "x-morph": "Gr,NP,,,,NNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/purify",
+          "content": [
+            "καθαρὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DMP,",
+          "content": [
+            "τοῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καθαρός",
+          "strong": "G25130",
+          "x-morph": "Gr,NS,,,,DMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/purify",
+          "content": [
+            "καθαροῖς"
+          ]
+        },
+        "; ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,DMP,",
+          "content": [
+            "τοῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μιαίνω",
+          "strong": "G33920",
+          "x-morph": "Gr,V,PEP,DMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/defile",
+          "content": [
+            "μεμιαμμένοις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἄπιστος",
+          "strong": "G05710",
+          "x-morph": "Gr,NS,,,,DMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/believe",
+          "content": [
+            "ἀπίστοις"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οὐδείς",
+          "strong": "G37620",
+          "x-morph": "Gr,RI,,,,NNS,",
+          "content": [
+            "οὐδὲν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καθαρός",
+          "strong": "G25130",
+          "x-morph": "Gr,NP,,,,NNS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/purify",
+          "content": [
+            "καθαρόν"
+          ]
+        },
+        "; ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀλλά",
+          "strong": "G02350",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "ἀλλὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μιαίνω",
+          "strong": "G33920",
+          "x-morph": "Gr,V,IEP3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/defile",
+          "content": [
+            "μεμίανται"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτός",
+          "strong": "G08460",
+          "x-morph": "Gr,RP,,,3GMP,",
+          "content": [
+            "αὐτῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,DO,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NMS,",
+          "content": [
+            "ὁ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νοῦς",
+          "strong": "G35630",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/mind",
+          "content": [
+            "νοῦς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CO,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NFS,",
+          "content": [
+            "ἡ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "συνείδησις",
+          "strong": "G48930",
+          "x-morph": "Gr,N,,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/conscience",
+          "content": [
+            "συνείδησις"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "TIT 1:16"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁμολογέω",
+          "strong": "G36700",
+          "x-morph": "Gr,V,IPA3,,P,",
+          "x-tw": "rc://*/tw/dict/bible/kt/confess",
+          "content": [
+            "ὁμολογοῦσιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἴδω",
+          "strong": "G14920",
+          "x-morph": "Gr,V,NEA,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/know",
+          "content": [
+            "εἰδέναι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EP,,,,DNP,",
+          "content": [
+            "τοῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔργον",
+          "strong": "G20410",
+          "x-morph": "Gr,N,,,,,DNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/works",
+          "content": [
+            "ἔργοις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀρνέομαι",
+          "strong": "G07200",
+          "x-morph": "Gr,V,IPM3,,P,",
+          "content": [
+            "ἀρνοῦνται"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "βδελυκτός",
+          "strong": "G09470",
+          "x-morph": "Gr,NS,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/detestable",
+          "content": [
+            "βδελυκτοὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,PPA,NMP,",
+          "content": [
+            "ὄντες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀπειθής",
+          "strong": "G05450",
+          "x-morph": "Gr,NS,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/disobey",
+          "content": [
+            "ἀπειθεῖς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρός",
+          "strong": "G43140",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "πρὸς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,EQ,,,,ANS,",
+          "content": [
+            "πᾶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔργον",
+          "strong": "G20410",
+          "x-morph": "Gr,N,,,,,ANS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/works",
+          "content": [
+            "ἔργον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀγαθός",
+          "strong": "G00180",
+          "x-morph": "Gr,AA,,,,ANS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "ἀγαθὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀδόκιμος",
+          "strong": "G00960",
+          "x-morph": "Gr,NS,,,,NMP,",
+          "content": [
+            "ἀδόκιμοι"
+          ]
+        },
+        "."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "TIT 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 2:1"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2N,S,",
+          "content": [
+            "σὺ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λαλέω",
+          "strong": "G29800",
+          "x-morph": "Gr,V,MPA2,,S,",
+          "content": [
+            "λάλει"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RD,,,,ANP,",
+          "content": [
+            "ἃ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρέπω",
+          "strong": "G42410",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "πρέπει"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑγιαίνω",
+          "strong": "G51980",
+          "x-morph": "Gr,V,PPA,DFS,",
+          "content": [
+            "ὑγιαινούσῃ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διδασκαλία",
+          "strong": "G13190",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/doctrine",
+          "content": [
+            "διδασκαλίᾳ"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 2:2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρεσβύτης",
+          "strong": "G42460",
+          "x-morph": "Gr,N,,,,,AMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/elder",
+          "content": [
+            "πρεσβύτας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νηφάλιος",
+          "strong": "G35240",
+          "x-morph": "Gr,NS,,,,AMP,",
+          "content": [
+            "νηφαλίους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "content": [
+            "εἶναι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σεμνός",
+          "strong": "G45860",
+          "x-morph": "Gr,NP,,,,AMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/honor",
+          "content": [
+            "σεμνούς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σώφρων",
+          "strong": "G49980",
+          "x-morph": "Gr,NS,,,,AMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/selfcontrol",
+          "content": [
+            "σώφρονας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑγιαίνω",
+          "strong": "G51980",
+          "x-morph": "Gr,V,PPA,AMP,",
+          "content": [
+            "ὑγιαίνοντας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πίστις",
+          "strong": "G41020",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faith",
+          "content": [
+            "πίστει"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀγάπη",
+          "strong": "G00260",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/love",
+          "content": [
+            "ἀγάπῃ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑπομονή",
+          "strong": "G52810",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/perseverance",
+          "content": [
+            "ὑπομονῇ"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 2:3"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρεσβῦτις",
+          "strong": "G42470",
+          "x-morph": "Gr,N,,,,,AFP,",
+          "content": [
+            "πρεσβύτιδας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὡσαύτως",
+          "strong": "G56150",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/like",
+          "content": [
+            "ὡσαύτως"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατάστημα",
+          "strong": "G26880",
+          "x-morph": "Gr,N,,,,,DNS,",
+          "content": [
+            "καταστήματι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἱεροπρεπής",
+          "strong": "G24120",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/reverence",
+          "content": [
+            "ἱεροπρεπεῖς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διάβολος",
+          "strong": "G12280",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/slander",
+          "content": [
+            "διαβόλους"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μηδέ",
+          "strong": "G33660",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μηδὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οἶνος",
+          "strong": "G36310",
+          "x-morph": "Gr,N,,,,,DMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/wine",
+          "content": [
+            "οἴνῳ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πολλός",
+          "strong": "G41830",
+          "x-morph": "Gr,EQ,,,,DMS,",
+          "content": [
+            "πολλῷ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δουλόω",
+          "strong": "G14020",
+          "x-morph": "Gr,V,PEP,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/enslave",
+          "content": [
+            "δεδουλωμένας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καλοδιδάσκαλος",
+          "strong": "G25670",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "content": [
+            "καλοδιδασκάλους"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 2:4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωφρονίζω",
+          "strong": "G49940",
+          "x-morph": "Gr,V,SPA3,,P,",
+          "content": [
+            "σωφρονίζωσι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AFP,",
+          "content": [
+            "τὰς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νέος",
+          "strong": "G35010",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "content": [
+            "νέας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φίλανδρος",
+          "strong": "G53620",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/love",
+          "content": [
+            "φιλάνδρους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "content": [
+            "εἶναι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φιλότεκνος",
+          "strong": "G53880",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/love",
+          "content": [
+            "φιλοτέκνους"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 2:5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σώφρων",
+          "strong": "G49980",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/selfcontrol",
+          "content": [
+            "σώφρονας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἁγνός",
+          "strong": "G00530",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/purify",
+          "content": [
+            "ἁγνάς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οἰκουργός",
+          "strong": "G36260",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/household",
+          "content": [
+            "οἰκουργούς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀγαθός",
+          "strong": "G00180",
+          "x-morph": "Gr,NS,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "ἀγαθάς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑποτάσσω",
+          "strong": "G52930",
+          "x-morph": "Gr,V,PPP,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/subject",
+          "content": [
+            "ὑποτασσομένας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EP,,,,DMP,",
+          "content": [
+            "τοῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἴδιος",
+          "strong": "G23980",
+          "x-morph": "Gr,EF,,,,DMP,",
+          "content": [
+            "ἰδίοις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνήρ",
+          "strong": "G04350",
+          "x-morph": "Gr,N,,,,,DMP,",
+          "content": [
+            "ἀνδράσιν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NMS,",
+          "content": [
+            "ὁ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/wordofgod"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λόγος",
+          "strong": "G30560",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "content": [
+            "λόγος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "βλασφημέω",
+          "strong": "G09870",
+          "x-morph": "Gr,V,SPP3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/blasphemy",
+          "content": [
+            "βλασφημῆται"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 2:6"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AMP,",
+          "content": [
+            "τοὺς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νεώτερος",
+          "strong": "G35125",
+          "x-morph": "Gr,AA,,,,AMPC",
+          "content": [
+            "νεωτέρους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὡσαύτως",
+          "strong": "G56150",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/like",
+          "content": [
+            "ὡσαύτως"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "παρακαλέω",
+          "strong": "G38700",
+          "x-morph": "Gr,V,MPA2,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/exhort",
+          "content": [
+            "παρακάλει"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωφρονέω",
+          "strong": "G49930",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/selfcontrol",
+          "content": [
+            "σωφρονεῖν"
+          ]
+        },
+        "; ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 2:7"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "περί",
+          "strong": "G40120",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "περὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,RI,,,,ANP,",
+          "content": [
+            "πάντα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σεαυτοῦ",
+          "strong": "G45720",
+          "x-morph": "Gr,RE,,,2AMS,",
+          "content": [
+            "σεαυτὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "παρέχω",
+          "strong": "G39300",
+          "x-morph": "Gr,V,PPM,NMS,",
+          "content": [
+            "παρεχόμενος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "τύπος",
+          "strong": "G51790",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "content": [
+            "τύπον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καλός",
+          "strong": "G25700",
+          "x-morph": "Gr,AA,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "καλῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔργον",
+          "strong": "G20410",
+          "x-morph": "Gr,N,,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/works",
+          "content": [
+            "ἔργων"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EP,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διδασκαλία",
+          "strong": "G13190",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/doctrine",
+          "content": [
+            "διδασκαλίᾳ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀφθορία",
+          "strong": "G08627",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/integrity",
+          "content": [
+            "ἀφθορίαν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σεμνότης",
+          "strong": "G45870",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "content": [
+            "σεμνότητα"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 2:8"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λόγος",
+          "strong": "G30560",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/word",
+          "content": [
+            "λόγον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑγιής",
+          "strong": "G51990",
+          "x-morph": "Gr,AA,,,,AMS,",
+          "content": [
+            "ὑγιῆ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀκατάγνωστος",
+          "strong": "G01760",
+          "x-morph": "Gr,NS,,,,AMS,",
+          "content": [
+            "ἀκατάγνωστον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,NMS,",
+          "content": [
+            "ὁ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκ",
+          "strong": "G15370",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "ἐξ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐναντίος",
+          "strong": "G17270",
+          "x-morph": "Gr,NS,,,,GFS,",
+          "content": [
+            "ἐναντίας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐντρέπω",
+          "strong": "G17880",
+          "x-morph": "Gr,V,SAP3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/shame",
+          "content": [
+            "ἐντραπῇ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μηδείς",
+          "strong": "G33670",
+          "x-morph": "Gr,RI,,,,ANS,",
+          "content": [
+            "μηδὲν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔχω",
+          "strong": "G21920",
+          "x-morph": "Gr,V,PPA,NMS,",
+          "content": [
+            "ἔχων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λέγω",
+          "strong": "G30040",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "content": [
+            "λέγειν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "περί",
+          "strong": "G40120",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "περὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,P,",
+          "content": [
+            "ἡμῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φαῦλος",
+          "strong": "G53370",
+          "x-morph": "Gr,NS,,,,ANS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/evil",
+          "content": [
+            "φαῦλον"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 2:9"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δοῦλος",
+          "strong": "G14010",
+          "x-morph": "Gr,N,,,,,AMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/servant",
+          "content": [
+            "δούλους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἴδιος",
+          "strong": "G23980",
+          "x-morph": "Gr,EF,,,,DMP,",
+          "content": [
+            "ἰδίοις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δεσπότης",
+          "strong": "G12030",
+          "x-morph": "Gr,N,,,,,DMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/lord",
+          "content": [
+            "δεσπόταις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑποτάσσω",
+          "strong": "G52930",
+          "x-morph": "Gr,V,NPM,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/subject",
+          "content": [
+            "ὑποτάσσεσθαι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,RI,,,,DNP,",
+          "content": [
+            "πᾶσιν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εὐάρεστος",
+          "strong": "G21010",
+          "x-morph": "Gr,NP,,,,AMP,",
+          "content": [
+            "εὐαρέστους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "content": [
+            "εἶναι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀντιλέγω",
+          "strong": "G04830",
+          "x-morph": "Gr,V,PPA,AMP,",
+          "content": [
+            "ἀντιλέγοντας"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 2:10"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νοσφίζω",
+          "strong": "G35570",
+          "x-morph": "Gr,V,PPM,AMP,",
+          "content": [
+            "νοσφιζομένους"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀλλά",
+          "strong": "G02350",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "ἀλλὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,EQ,,,,AFS,",
+          "content": [
+            "πᾶσαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πίστις",
+          "strong": "G41020",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faith",
+          "content": [
+            "πίστιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐνδείκνυμι",
+          "strong": "G17310",
+          "x-morph": "Gr,V,PPM,AMP,",
+          "content": [
+            "ἐνδεικνυμένους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀγαθός",
+          "strong": "G00180",
+          "x-morph": "Gr,NS,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "ἀγαθήν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AFS,",
+          "content": [
+            "τὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διδασκαλία",
+          "strong": "G13190",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/doctrine",
+          "content": [
+            "διδασκαλίαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,AFS,",
+          "content": [
+            "τὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωτήρ",
+          "strong": "G49900",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/savior",
+          "content": [
+            "Σωτῆρος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,P,",
+          "content": [
+            "ἡμῶν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κοσμέω",
+          "strong": "G28850",
+          "x-morph": "Gr,V,SPA3,,P,",
+          "content": [
+            "κοσμῶσιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,RI,,,,DNP,",
+          "content": [
+            "πᾶσιν"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 2:11"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιφαίνω",
+          "strong": "G20140",
+          "x-morph": "Gr,V,IAP3,,S,",
+          "content": [
+            "ἐπεφάνη"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γάρ",
+          "strong": "G10630",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "γὰρ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NFS,",
+          "content": [
+            "ἡ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χάρις",
+          "strong": "G54850",
+          "x-morph": "Gr,N,,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/grace",
+          "content": [
+            "χάρις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωτήριος",
+          "strong": "G49920",
+          "x-morph": "Gr,NS,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/save",
+          "content": [
+            "σωτήριος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,EQ,,,,DMP,",
+          "content": [
+            "πᾶσιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἄνθρωπος",
+          "strong": "G04440",
+          "x-morph": "Gr,N,,,,,DMP,",
+          "content": [
+            "ἀνθρώποις"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 2:12"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "παιδεύω",
+          "strong": "G38110",
+          "x-morph": "Gr,V,PPA,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/discipline",
+          "content": [
+            "παιδεύουσα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1A,P,",
+          "content": [
+            "ἡμᾶς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀρνέομαι",
+          "strong": "G07200",
+          "x-morph": "Gr,V,PAM,NMP,",
+          "content": [
+            "ἀρνησάμενοι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AFS,",
+          "content": [
+            "τὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀσέβεια",
+          "strong": "G07630",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/godly",
+          "content": [
+            "ἀσέβειαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AFP,",
+          "content": [
+            "τὰς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κοσμικός",
+          "strong": "G28860",
+          "x-morph": "Gr,AA,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/world",
+          "content": [
+            "κοσμικὰς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιθυμία",
+          "strong": "G19390",
+          "x-morph": "Gr,N,,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/lust",
+          "content": [
+            "ἐπιθυμίας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωφρόνως",
+          "strong": "G49960",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "σωφρόνως"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δικαίως",
+          "strong": "G13460",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/kt/righteous",
+          "content": [
+            "δικαίως"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εὐσεβῶς",
+          "strong": "G21530",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/kt/godly",
+          "content": [
+            "εὐσεβῶς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ζάω",
+          "strong": "G21980",
+          "x-morph": "Gr,V,SAA1,,P,",
+          "x-tw": "rc://*/tw/dict/bible/kt/life",
+          "content": [
+            "ζήσωμεν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DMS,",
+          "content": [
+            "τῷ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νῦν",
+          "strong": "G35680",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "νῦν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αἰών",
+          "strong": "G01650",
+          "x-morph": "Gr,N,,,,,DMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/age",
+          "content": [
+            "αἰῶνι"
+          ]
+        },
+        "; ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 2:13"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "προσδέχομαι",
+          "strong": "G43270",
+          "x-morph": "Gr,V,PPM,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/receive",
+          "content": [
+            "προσδεχόμενοι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AFS,",
+          "content": [
+            "τὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μακάριος",
+          "strong": "G31070",
+          "x-morph": "Gr,AA,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/bless",
+          "content": [
+            "μακαρίαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐλπίς",
+          "strong": "G16800",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/hope",
+          "content": [
+            "ἐλπίδα"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιφάνεια",
+          "strong": "G20150",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "content": [
+            "ἐπιφάνειαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GFS,",
+          "content": [
+            "τῆς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δόξα",
+          "strong": "G13910",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/glory",
+          "content": [
+            "δόξης"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μέγας",
+          "strong": "G31730",
+          "x-morph": "Gr,AA,,,,GMS,",
+          "content": [
+            "μεγάλου"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωτήρ",
+          "strong": "G49900",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/savior",
+          "content": [
+            "Σωτῆρος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,P,",
+          "content": [
+            "ἡμῶν"
+          ]
+        },
+        ",",
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/jesus"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ἰησοῦς",
+          "strong": "G24240",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "content": [
+            "Ἰησοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χριστός",
+          "strong": "G55470",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/christ",
+          "content": [
+            "Χριστοῦ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        "; ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 2:14"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RR,,,,NMS,",
+          "content": [
+            "ὃς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δίδωμι",
+          "strong": "G13250",
+          "x-morph": "Gr,V,IAA3,,S,",
+          "content": [
+            "ἔδωκεν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἑαυτοῦ",
+          "strong": "G14380",
+          "x-morph": "Gr,RE,,,3AMS,",
+          "content": [
+            "ἑαυτὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑπέρ",
+          "strong": "G52280",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "ὑπὲρ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,P,",
+          "content": [
+            "ἡμῶν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λυτρόω",
+          "strong": "G30840",
+          "x-morph": "Gr,V,SAM3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/redeem",
+          "content": [
+            "λυτρώσηται"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1A,P,",
+          "content": [
+            "ἡμᾶς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀπό",
+          "strong": "G05750",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "ἀπὸ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,EQ,,,,GFS,",
+          "content": [
+            "πάσης"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνομία",
+          "strong": "G04580",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/lawful",
+          "content": [
+            "ἀνομίας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καθαρίζω",
+          "strong": "G25110",
+          "x-morph": "Gr,V,SAA3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/clean",
+          "content": [
+            "καθαρίσῃ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἑαυτοῦ",
+          "strong": "G14380",
+          "x-morph": "Gr,RE,,,3DMS,",
+          "content": [
+            "ἑαυτῷ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λαός",
+          "strong": "G29920",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/peoplegroup",
+          "content": [
+            "λαὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "περιούσιος",
+          "strong": "G40410",
+          "x-morph": "Gr,AA,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/possess",
+          "content": [
+            "περιούσιον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ζηλωτής",
+          "strong": "G22070",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/zealous",
+          "content": [
+            "ζηλωτὴν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καλός",
+          "strong": "G25700",
+          "x-morph": "Gr,AA,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "καλῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔργον",
+          "strong": "G20410",
+          "x-morph": "Gr,N,,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/works",
+          "content": [
+            "ἔργων"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 2:15"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οὗτος",
+          "strong": "G37780",
+          "x-morph": "Gr,RD,,,,ANP,",
+          "content": [
+            "ταῦτα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λαλέω",
+          "strong": "G29800",
+          "x-morph": "Gr,V,MPA2,,S,",
+          "content": [
+            "λάλει"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "παρακαλέω",
+          "strong": "G38700",
+          "x-morph": "Gr,V,MPA2,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/exhort",
+          "content": [
+            "παρακάλει"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐλέγχω",
+          "strong": "G16510",
+          "x-morph": "Gr,V,MPA2,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/rebuke",
+          "content": [
+            "ἔλεγχε"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μετά",
+          "strong": "G33260",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "μετὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,EQ,,,,GFS,",
+          "content": [
+            "πάσης"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιταγή",
+          "strong": "G20030",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/authority",
+          "content": [
+            "ἐπιταγῆς"
+          ]
+        },
+        ". ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μηδείς",
+          "strong": "G33670",
+          "x-morph": "Gr,RI,,,,NMS,",
+          "content": [
+            "μηδείς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2G,S,",
+          "content": [
+            "σου"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "περιφρονέω",
+          "strong": "G40650",
+          "x-morph": "Gr,V,MPA3,,S,",
+          "content": [
+            "περιφρονείτω"
+          ]
+        },
+        "."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "3",
+      "sid": "TIT 3"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "TIT 3:1"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑπομιμνῄσκω",
+          "strong": "G52790",
+          "x-morph": "Gr,V,MPA2,,S,",
+          "content": [
+            "ὑπομίμνῃσκε"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτός",
+          "strong": "G08460",
+          "x-morph": "Gr,RP,,,3AMP,",
+          "content": [
+            "αὐτοὺς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀρχή",
+          "strong": "G07460",
+          "x-morph": "Gr,N,,,,,DFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/ruler",
+          "content": [
+            "ἀρχαῖς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐξουσία",
+          "strong": "G18490",
+          "x-morph": "Gr,N,,,,,DFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/authority",
+          "content": [
+            "ἐξουσίαις"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὑποτάσσω",
+          "strong": "G52930",
+          "x-morph": "Gr,V,NPM,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/subject",
+          "content": [
+            "ὑποτάσσεσθαι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πειθαρχέω",
+          "strong": "G39800",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/obey",
+          "content": [
+            "πειθαρχεῖν"
+          ]
+        },
+        "; ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρός",
+          "strong": "G43140",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "πρὸς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,EQ,,,,ANS,",
+          "content": [
+            "πᾶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔργον",
+          "strong": "G20410",
+          "x-morph": "Gr,N,,,,,ANS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/works",
+          "content": [
+            "ἔργον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀγαθός",
+          "strong": "G00180",
+          "x-morph": "Gr,AA,,,,ANS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "ἀγαθὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἕτοιμος",
+          "strong": "G20920",
+          "x-morph": "Gr,NP,,,,AMP,",
+          "content": [
+            "ἑτοίμους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "content": [
+            "εἶναι"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "TIT 3:2"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μηδείς",
+          "strong": "G33670",
+          "x-morph": "Gr,RI,,,,AMS,",
+          "content": [
+            "μηδένα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "βλασφημέω",
+          "strong": "G09870",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/kt/blasphemy",
+          "content": [
+            "βλασφημεῖν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἄμαχος",
+          "strong": "G02690",
+          "x-morph": "Gr,NP,,,,AMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/peace",
+          "content": [
+            "ἀμάχους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,NPA,,,,,",
+          "content": [
+            "εἶναι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιεικής",
+          "strong": "G19330",
+          "x-morph": "Gr,NP,,,,AMP,",
+          "content": [
+            "ἐπιεικεῖς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,EQ,,,,AFS,",
+          "content": [
+            "πᾶσαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐνδείκνυμι",
+          "strong": "G17310",
+          "x-morph": "Gr,V,PPM,AMP,",
+          "content": [
+            "ἐνδεικνυμένους"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πραΰτης",
+          "strong": "G42400",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/humble",
+          "content": [
+            "πραΰτητα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρός",
+          "strong": "G43140",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "πρὸς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,EQ,,,,AMP,",
+          "content": [
+            "πάντας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἄνθρωπος",
+          "strong": "G04440",
+          "x-morph": "Gr,N,,,,,AMP,",
+          "content": [
+            "ἀνθρώπους"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "TIT 3:3"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,IIA1,,P,",
+          "content": [
+            "ἦμεν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γάρ",
+          "strong": "G10630",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "γάρ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ποτέ",
+          "strong": "G42180",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "ποτε"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1N,P,",
+          "content": [
+            "ἡμεῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνόητος",
+          "strong": "G04530",
+          "x-morph": "Gr,NS,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/foolish",
+          "content": [
+            "ἀνόητοι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀπειθής",
+          "strong": "G05450",
+          "x-morph": "Gr,NS,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/disobey",
+          "content": [
+            "ἀπειθεῖς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πλανάω",
+          "strong": "G41050",
+          "x-morph": "Gr,V,PPP,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/astray",
+          "content": [
+            "πλανώμενοι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δουλεύω",
+          "strong": "G13980",
+          "x-morph": "Gr,V,PPA,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/enslave",
+          "content": [
+            "δουλεύοντες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιθυμία",
+          "strong": "G19390",
+          "x-morph": "Gr,N,,,,,DFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/lust",
+          "content": [
+            "ἐπιθυμίαις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἡδονή",
+          "strong": "G22370",
+          "x-morph": "Gr,N,,,,,DFP,",
+          "content": [
+            "ἡδοναῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ποικίλος",
+          "strong": "G41640",
+          "x-morph": "Gr,AA,,,,DFP,",
+          "content": [
+            "ποικίλαις"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κακία",
+          "strong": "G25490",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/evil",
+          "content": [
+            "κακίᾳ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φθόνος",
+          "strong": "G53550",
+          "x-morph": "Gr,N,,,,,DMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/envy",
+          "content": [
+            "φθόνῳ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διάγω",
+          "strong": "G12360",
+          "x-morph": "Gr,V,PPA,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/live",
+          "content": [
+            "διάγοντες"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "στυγητός",
+          "strong": "G47670",
+          "x-morph": "Gr,NS,,,,NMP,",
+          "content": [
+            "στυγητοί"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μισέω",
+          "strong": "G34040",
+          "x-morph": "Gr,V,PPA,NMP,",
+          "content": [
+            "μισοῦντες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀλλήλων",
+          "strong": "G02400",
+          "x-morph": "Gr,RC,,,,AMP,",
+          "content": [
+            "ἀλλήλους"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "TIT 3:4"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅτε",
+          "strong": "G37530",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ὅτε"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NFS,",
+          "content": [
+            "ἡ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χρηστότης",
+          "strong": "G55440",
+          "x-morph": "Gr,N,,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/kind",
+          "content": [
+            "χρηστότης"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NFS,",
+          "content": [
+            "ἡ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φιλανθρωπία",
+          "strong": "G53630",
+          "x-morph": "Gr,N,,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/love",
+          "content": [
+            "φιλανθρωπία"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπιφαίνω",
+          "strong": "G20140",
+          "x-morph": "Gr,V,IAP3,,S,",
+          "content": [
+            "ἐπεφάνη"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωτήρ",
+          "strong": "G49900",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/savior",
+          "content": [
+            "Σωτῆρος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,P,",
+          "content": [
+            "ἡμῶν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεοῦ"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "TIT 3:5"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οὐ",
+          "strong": "G37560",
+          "x-morph": "Gr,DO,,,,,,,,",
+          "content": [
+            "οὐκ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκ",
+          "strong": "G15370",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "ἐξ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔργον",
+          "strong": "G20410",
+          "x-morph": "Gr,N,,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/works",
+          "content": [
+            "ἔργων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,GNP,",
+          "content": [
+            "τῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δικαιοσύνη",
+          "strong": "G13430",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/righteous",
+          "content": [
+            "δικαιοσύνῃ"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RD,,,,ANP,",
+          "content": [
+            "ἃ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ποιέω",
+          "strong": "G41600",
+          "x-morph": "Gr,V,IAA1,,P,",
+          "content": [
+            "ἐποιήσαμεν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1N,P,",
+          "content": [
+            "ἡμεῖς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀλλά",
+          "strong": "G02350",
+          "x-morph": "Gr,CO,,,,,,,,",
+          "content": [
+            "ἀλλὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,ANS,",
+          "content": [
+            "τὸ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτός",
+          "strong": "G08460",
+          "x-morph": "Gr,RP,,,3GMS,",
+          "content": [
+            "αὐτοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔλεος",
+          "strong": "G16560",
+          "x-morph": "Gr,N,,,,,ANS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/mercy",
+          "content": [
+            "ἔλεος"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σῴζω",
+          "strong": "G49820",
+          "x-morph": "Gr,V,IAA3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/save",
+          "content": [
+            "ἔσωσεν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1A,P,",
+          "content": [
+            "ἡμᾶς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διά",
+          "strong": "G12230",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "διὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λουτρόν",
+          "strong": "G30670",
+          "x-morph": "Gr,N,,,,,GNS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/clean",
+          "content": [
+            "λουτροῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "παλινγενεσία",
+          "strong": "G38240",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/bornagain",
+          "content": [
+            "παλινγενεσίας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνακαίνωσις",
+          "strong": "G03420",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "content": [
+            "ἀνακαινώσεως"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/holyspirit"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πνεῦμα",
+          "strong": "G41510",
+          "x-morph": "Gr,N,,,,,GNS,",
+          "content": [
+            "Πνεύματος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἅγιος",
+          "strong": "G00400",
+          "x-morph": "Gr,AA,,,,GNS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/holy",
+          "content": [
+            "Ἁγίου"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "TIT 3:6"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅς",
+          "strong": "G37390",
+          "x-morph": "Gr,RR,,,,GNS,",
+          "content": [
+            "οὗ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκχέω",
+          "strong": "G16320",
+          "x-morph": "Gr,V,IAA3,,S,",
+          "content": [
+            "ἐξέχεεν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐπί",
+          "strong": "G19090",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "ἐφ’"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1A,P,",
+          "content": [
+            "ἡμᾶς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πλουσίως",
+          "strong": "G41460",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "πλουσίως"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διά",
+          "strong": "G12230",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "διὰ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-s",
+          "x-tw": "rc://*/tw/dict/bible/kt/jesus"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ἰησοῦς",
+          "strong": "G24240",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "content": [
+            "Ἰησοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χριστός",
+          "strong": "G55470",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/christ",
+          "content": [
+            "Χριστοῦ"
+          ]
+        },
+        {
+          "type": "ms",
+          "marker": "k-e"
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,GMS,",
+          "content": [
+            "τοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σωτήρ",
+          "strong": "G49900",
+          "x-morph": "Gr,N,,,,,GMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/savior",
+          "content": [
+            "Σωτῆρος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,P,",
+          "content": [
+            "ἡμῶν"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "TIT 3:7"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δικαιόω",
+          "strong": "G13440",
+          "x-morph": "Gr,V,PAP,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/justice",
+          "content": [
+            "δικαιωθέντες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DFS,",
+          "content": [
+            "τῇ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκεῖνος",
+          "strong": "G15650",
+          "x-morph": "Gr,RD,,,,GMS,",
+          "content": [
+            "ἐκείνου"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χάρις",
+          "strong": "G54850",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/grace",
+          "content": [
+            "χάριτι"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κληρονόμος",
+          "strong": "G28180",
+          "x-morph": "Gr,N,,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/heir",
+          "content": [
+            "κληρονόμοι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γίνομαι",
+          "strong": "G10960",
+          "x-morph": "Gr,V,SAP1,,P,",
+          "content": [
+            "γενηθῶμεν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κατά",
+          "strong": "G25960",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "κατ’"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐλπίς",
+          "strong": "G16800",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/hope",
+          "content": [
+            "ἐλπίδα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ζωή",
+          "strong": "G22220",
+          "x-morph": "Gr,N,,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/life",
+          "content": [
+            "ζωῆς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αἰώνιος",
+          "strong": "G01660",
+          "x-morph": "Gr,AA,,,,GFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/eternity",
+          "content": [
+            "αἰωνίου"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "TIT 3:8"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πιστός",
+          "strong": "G41030",
+          "x-morph": "Gr,NP,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faithful",
+          "content": [
+            "πιστὸς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NMS,",
+          "content": [
+            "ὁ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λόγος",
+          "strong": "G30560",
+          "x-morph": "Gr,N,,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/word",
+          "content": [
+            "λόγος"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "περί",
+          "strong": "G40120",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "περὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οὗτος",
+          "strong": "G37780",
+          "x-morph": "Gr,RD,,,,GNP,",
+          "content": [
+            "τούτων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "βούλομαι",
+          "strong": "G10140",
+          "x-morph": "Gr,V,IPM1,,S,",
+          "content": [
+            "βούλομαί"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2A,S,",
+          "content": [
+            "σε"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "διαβεβαιόομαι",
+          "strong": "G12260",
+          "x-morph": "Gr,V,NPM,,,,,",
+          "content": [
+            "διαβεβαιοῦσθαι"
+          ]
+        },
+        ", “",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φροντίζω",
+          "strong": "G54310",
+          "x-morph": "Gr,V,SPA3,,P,",
+          "content": [
+            "φροντίζωσιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καλός",
+          "strong": "G25700",
+          "x-morph": "Gr,AA,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "καλῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔργον",
+          "strong": "G20410",
+          "x-morph": "Gr,N,,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/works",
+          "content": [
+            "ἔργων"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "προΐστημι",
+          "strong": "G42910",
+          "x-morph": "Gr,V,NPM,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/manager",
+          "content": [
+            "προΐστασθαι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,NMP,",
+          "content": [
+            "οἱ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πιστεύω",
+          "strong": "G41000",
+          "x-morph": "Gr,V,PEA,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/believe",
+          "content": [
+            "πεπιστευκότες"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "θεός",
+          "strong": "G23160",
+          "x-morph": "Gr,N,,,,,DMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/god",
+          "content": [
+            "Θεῷ"
+          ]
+        },
+        ".” ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "οὗτος",
+          "strong": "G37780",
+          "x-morph": "Gr,RD,,,,NNP,",
+          "content": [
+            "ταῦτά"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "ἐστιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καλός",
+          "strong": "G25700",
+          "x-morph": "Gr,NP,,,,NNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "καλὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὠφέλιμος",
+          "strong": "G56240",
+          "x-morph": "Gr,NP,,,,NNP,",
+          "x-tw": "rc://*/tw/dict/bible/other/profit",
+          "content": [
+            "ὠφέλιμα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,DMP,",
+          "content": [
+            "τοῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἄνθρωπος",
+          "strong": "G04440",
+          "x-morph": "Gr,N,,,,,DMP,",
+          "content": [
+            "ἀνθρώποις"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "TIT 3:9"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μωρός",
+          "strong": "G34740",
+          "x-morph": "Gr,AA,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/foolish",
+          "content": [
+            "μωρὰς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ζήτησις",
+          "strong": "G22140",
+          "x-morph": "Gr,N,,,,,AFP,",
+          "content": [
+            "ζητήσεις"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γενεαλογία",
+          "strong": "G10760",
+          "x-morph": "Gr,N,,,,,AFP,",
+          "content": [
+            "γενεαλογίας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔρις",
+          "strong": "G20540",
+          "x-morph": "Gr,N,,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/strife",
+          "content": [
+            "ἔρεις"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μάχη",
+          "strong": "G31630",
+          "x-morph": "Gr,N,,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/strife",
+          "content": [
+            "μάχας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νομικός",
+          "strong": "G35440",
+          "x-morph": "Gr,AA,,,,AFP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/lawofmoses",
+          "content": [
+            "νομικὰς"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "περιΐστημι",
+          "strong": "G40260",
+          "x-morph": "Gr,V,MPM2,,S,",
+          "content": [
+            "περιΐστασο"
+          ]
+        },
+        "; ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,IPA3,,P,",
+          "content": [
+            "εἰσὶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γάρ",
+          "strong": "G10630",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "γὰρ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀνωφελής",
+          "strong": "G05120",
+          "x-morph": "Gr,NS,,,,NFP,",
+          "content": [
+            "ἀνωφελεῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μάταιος",
+          "strong": "G31520",
+          "x-morph": "Gr,NS,,,,NFP,",
+          "x-tw": "rc://*/tw/dict/bible/other/vain",
+          "content": [
+            "μάταιοι"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "TIT 3:10"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αἱρετικός",
+          "strong": "G01410",
+          "x-morph": "Gr,AA,,,,AMS,",
+          "content": [
+            "αἱρετικὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἄνθρωπος",
+          "strong": "G04440",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "content": [
+            "ἄνθρωπον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μετά",
+          "strong": "G33260",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "μετὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἷς",
+          "strong": "G15200",
+          "x-morph": "Gr,EN,,,,AFS,",
+          "content": [
+            "μίαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δεύτερος",
+          "strong": "G12080",
+          "x-morph": "Gr,EO,,,,AFS,",
+          "content": [
+            "δευτέραν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νουθεσία",
+          "strong": "G35590",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "x-tw": "rc://*/tw/dict/bible/other/admonish",
+          "content": [
+            "νουθεσίαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "παραιτέομαι",
+          "strong": "G38680",
+          "x-morph": "Gr,V,MPM2,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/reject",
+          "content": [
+            "παραιτοῦ"
+          ]
+        },
+        ", ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "TIT 3:11"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἴδω",
+          "strong": "G14920",
+          "x-morph": "Gr,V,PEA,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/know",
+          "content": [
+            "εἰδὼς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅτι",
+          "strong": "G37540",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ὅτι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκστρέφω",
+          "strong": "G16120",
+          "x-morph": "Gr,V,IEP3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/perverse",
+          "content": [
+            "ἐξέστραπται"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NMS,",
+          "content": [
+            "ὁ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "τοιοῦτος",
+          "strong": "G51080",
+          "x-morph": "Gr,RD,,,,NMS,",
+          "content": [
+            "τοιοῦτος"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἁμαρτάνω",
+          "strong": "G02640",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "x-tw": "rc://*/tw/dict/bible/kt/sin",
+          "content": [
+            "ἁμαρτάνει"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,PPA,NMS,",
+          "content": [
+            "ὢν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτοκατάκριτος",
+          "strong": "G08430",
+          "x-morph": "Gr,NP,,,,NMS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/condemn",
+          "content": [
+            "αὐτοκατάκριτος"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "TIT 3:12"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὅταν",
+          "strong": "G37520",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ὅταν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πέμπω",
+          "strong": "G39920",
+          "x-morph": "Gr,V,SAA1,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/send",
+          "content": [
+            "πέμψω"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ἀρτεμᾶς",
+          "strong": "G07340",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "content": [
+            "Ἀρτεμᾶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρός",
+          "strong": "G43140",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "πρὸς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2A,S,",
+          "content": [
+            "σὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἤ",
+          "strong": "G22280",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "ἢ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Τυχικός",
+          "strong": "G51900",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/names/tychicus",
+          "content": [
+            "Τυχικόν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σπουδάζω",
+          "strong": "G47040",
+          "x-morph": "Gr,V,MAA2,,S,",
+          "content": [
+            "σπούδασον"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔρχομαι",
+          "strong": "G20640",
+          "x-morph": "Gr,V,NAA,,,,,",
+          "content": [
+            "ἐλθεῖν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πρός",
+          "strong": "G43140",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "πρός"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1A,S,",
+          "content": [
+            "με"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰς",
+          "strong": "G15190",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "εἰς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Νικόπολις",
+          "strong": "G35330",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "content": [
+            "Νικόπολιν"
+          ]
+        },
+        "; ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐκεῖ",
+          "strong": "G15630",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "ἐκεῖ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "γάρ",
+          "strong": "G10630",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "γὰρ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "κρίνω",
+          "strong": "G29190",
+          "x-morph": "Gr,V,IEA1,,S,",
+          "content": [
+            "κέκρικα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "παραχειμάζω",
+          "strong": "G39140",
+          "x-morph": "Gr,V,NAA,,,,,",
+          "content": [
+            "παραχειμάσαι"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "TIT 3:13"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ζηνᾶς",
+          "strong": "G22110",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "content": [
+            "Ζηνᾶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AMS,",
+          "content": [
+            "τὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "νομικός",
+          "strong": "G35440",
+          "x-morph": "Gr,AR,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/other/law",
+          "content": [
+            "νομικὸν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "Ἀπολλῶς",
+          "strong": "G06250",
+          "x-morph": "Gr,N,,,,,AMS,",
+          "x-tw": "rc://*/tw/dict/bible/names/apollos",
+          "content": [
+            "Ἀπολλῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σπουδαίως",
+          "strong": "G47090",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "σπουδαίως"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "προπέμπω",
+          "strong": "G43110",
+          "x-morph": "Gr,V,MAA2,,S,",
+          "x-tw": "rc://*/tw/dict/bible/other/send",
+          "content": [
+            "πρόπεμψον"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μηδείς",
+          "strong": "G33670",
+          "x-morph": "Gr,RI,,,,NNS,",
+          "content": [
+            "μηδὲν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "αὐτός",
+          "strong": "G08460",
+          "x-morph": "Gr,RP,,,3DMP,",
+          "content": [
+            "αὐτοῖς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "λείπω",
+          "strong": "G30070",
+          "x-morph": "Gr,V,SPA3,,S,",
+          "content": [
+            "λείπῃ"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "TIT 3:14"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μανθάνω",
+          "strong": "G31290",
+          "x-morph": "Gr,V,MPA3,,P,",
+          "content": [
+            "μανθανέτωσαν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καί",
+          "strong": "G25320",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "καὶ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NMP,",
+          "content": [
+            "οἱ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἡμέτερος",
+          "strong": "G22510",
+          "x-morph": "Gr,RP,,,1NMP,",
+          "content": [
+            "ἡμέτεροι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "καλός",
+          "strong": "G25700",
+          "x-morph": "Gr,AA,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/good",
+          "content": [
+            "καλῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔργον",
+          "strong": "G20410",
+          "x-morph": "Gr,N,,,,,GNP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/works",
+          "content": [
+            "ἔργων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "προΐστημι",
+          "strong": "G42910",
+          "x-morph": "Gr,V,NPM,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/manager",
+          "content": [
+            "προΐστασθαι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰς",
+          "strong": "G15190",
+          "x-morph": "Gr,P,,,,,A,,,",
+          "content": [
+            "εἰς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,AFP,",
+          "content": [
+            "τὰς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀναγκαῖος",
+          "strong": "G03160",
+          "x-morph": "Gr,AA,,,,AFP,",
+          "content": [
+            "ἀναγκαίας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χρεία",
+          "strong": "G55320",
+          "x-morph": "Gr,N,,,,,AFP,",
+          "content": [
+            "χρείας"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "εἰμί",
+          "strong": "G15100",
+          "x-morph": "Gr,V,SPA3,,P,",
+          "content": [
+            "ὦσιν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἄκαρπος",
+          "strong": "G01750",
+          "x-morph": "Gr,NP,,,,NMP,",
+          "x-tw": "rc://*/tw/dict/bible/other/fruit",
+          "content": [
+            "ἄκαρποι"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "TIT 3:15"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀσπάζομαι",
+          "strong": "G07820",
+          "x-morph": "Gr,V,IPM3,,P,",
+          "content": [
+            "ἀσπάζονταί"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2A,S,",
+          "content": [
+            "σε"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,NMP,",
+          "content": [
+            "οἱ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μετά",
+          "strong": "G33260",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "μετ’"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1G,S,",
+          "content": [
+            "ἐμοῦ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,RI,,,,NMP,",
+          "content": [
+            "πάντες"
+          ]
+        },
+        ". ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἀσπάζομαι",
+          "strong": "G07820",
+          "x-morph": "Gr,V,MAM2,,S,",
+          "content": [
+            "ἄσπασαι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,AMP,",
+          "content": [
+            "τοὺς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "φιλέω",
+          "strong": "G53680",
+          "x-morph": "Gr,V,PPA,AMP,",
+          "x-tw": "rc://*/tw/dict/bible/kt/love",
+          "content": [
+            "φιλοῦντας"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐγώ",
+          "strong": "G14730",
+          "x-morph": "Gr,RP,,,1A,P,",
+          "content": [
+            "ἡμᾶς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἐν",
+          "strong": "G17220",
+          "x-morph": "Gr,P,,,,,D,,,",
+          "content": [
+            "ἐν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πίστις",
+          "strong": "G41020",
+          "x-morph": "Gr,N,,,,,DFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/faith",
+          "content": [
+            "πίστει"
+          ]
+        },
+        ". ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,EA,,,,NFS,",
+          "content": [
+            "ἡ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "χάρις",
+          "strong": "G54850",
+          "x-morph": "Gr,N,,,,,NFS,",
+          "x-tw": "rc://*/tw/dict/bible/kt/grace",
+          "content": [
+            "χάρις"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μετά",
+          "strong": "G33260",
+          "x-morph": "Gr,P,,,,,G,,,",
+          "content": [
+            "μετὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "πᾶς",
+          "strong": "G39560",
+          "x-morph": "Gr,RI,,,,GMP,",
+          "content": [
+            "πάντων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σύ",
+          "strong": "G47710",
+          "x-morph": "Gr,RP,,,2G,P,",
+          "content": [
+            "ὑμῶν"
+          ]
+        },
+        "."
+      ]
+    }
+  ]
+}

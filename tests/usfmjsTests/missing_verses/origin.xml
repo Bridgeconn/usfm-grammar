@@ -1,0 +1,25 @@
+﻿<usx version="3.0">
+  <book code="PHP" style="id" />
+  <para style="ide">UTF-8</para>
+  <para style="h">Philippians</para>
+  <para style="toc1">The Epistle of Paul the Apostle to the Philippians</para>
+  <para style="toc2">Philippians</para>
+  <para style="toc3">Php</para>
+  <para style="mt">The Epistle of Paul the Apostle to the Philippians</para>
+  <chapter number="1" style="c" sid="PHP 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="PHP 1:1" />Paul and Timothy, servants of Christ Jesus, to all the ones set apart in Christ Jesus who are at Philippi, with the overseers and deacons. <verse eid="PHP 1:1" /><verse number="2" style="v" sid="PHP 1:2" />Grace to you and peace from God our Father and the Lord Jesus Christ.<verse eid="PHP 1:2" /></para>
+  <para style="b" />
+  <para style="s5" />
+  <para style="p">
+    <verse number="5" style="v" sid="PHP 1:5" />I give thanks for your fellowship in the gospel from the first day until now. <verse eid="PHP 1:5" /><verse number="6" style="v" sid="PHP 1:6" />I am confident of this very thing, that he who began a good work in you will complete it until the day of Jesus Christ.<verse eid="PHP 1:6" /></para>
+  <para style="s5" />
+  <chapter eid="PHP 1" />
+  <chapter number="2" style="c" sid="PHP 2" />
+  <para style="p">
+    <verse number="1" style="v" sid="PHP 2:1" />If there is therefore any encouragement in Christ, if any comfort from his love, if any fellowship of the Spirit, if any tender mercies and compassions,<verse eid="PHP 2:1" /></para>
+  <para style="s5" />
+  <para style="p">
+    <verse number="3" style="v" sid="PHP 2:3" />Do nothing through selfishness or empty pride, but instead in lowliness of mind count others better than yourself. <verse eid="PHP 2:3" /><verse number="4" style="v" sid="PHP 2:4" />Do not look out for each of your own needs, but also look out for the needs of others.<verse eid="PHP 2:4" /></para>
+  <chapter eid="PHP 2" />
+</usx>

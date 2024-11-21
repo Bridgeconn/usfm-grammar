@@ -1,0 +1,11 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="26" style="v" sid="GEN 1:26" />
+    <note caller="-" style="x">
+      <char style="xo" closed="false">3.26 </char>
+      <char style="xt" closed="false">ယစံး</char>
+    </note> ဒ်သိးအကဒုးနဲၣ်အတၢ်တီတၢ် လိၤအကတီၢ်ဖဲအံၤ,<verse eid="GEN 1:26" /></para>
+  <chapter eid="GEN 1" />
+</usx>

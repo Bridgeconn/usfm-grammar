@@ -1,0 +1,8 @@
+\id GEN
+\c 1
+\s some text
+\p
+\v 1 \qt-s |Speaker\*verse text 
+\v 2 verse 
+\v 1 \qt-s |Speaker\*verse text 
+\v 2 verse \qt-s |Speaker2\*text\qt-e\*

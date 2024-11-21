@@ -1,0 +1,19 @@
+<usx version="3.0">
+  <book code="MAT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
+  <para style="h">SAN MARCOS</para>
+  <para style="mt2">Evangelio según</para>
+  <para style="mt1">SAN MARCOS</para>
+  <para style="imt1">INTRODUCCIÓN</para>
+  <para style="is1">Importancia del evangelio de Marcos</para>
+  <para style="ip">Este evangelio, segundo de los libros del NT, contiene poco material que no aparezca igualmente en <char style="bk">Mateo</char> y <char style="bk">Lucas.</char></para>
+  <para style="ipi">Many Protestants consider the following books to be Apocrypha as defined above: Tobit, Judith, additions to Esther (as found in Greek Esther in the CEV) ...</para>
+  <para style="imi">
+    <char style="em">Translation it is that opens the window, to let in the light; that breaks the shell, that we may eat the kernel; that puts aside the curtain, that we may look into the most holy place; that removes the cover of the well, that we may come by the water.</char> (“The Translators to the Reader,” King James Version, 1611).</para>
+  <para style="im">The most important document in the history of the English language is the <char style="bk">King James Version</char> of the Bible...</para>
+  <chapter number="1" style="c" sid="MAT 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="MAT 1:1" />ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ... <verse eid="MAT 1:1" /><verse number="2" style="v" sid="MAT 1:2" />നമ്മുടെ പിതാവായ ...<verse eid="MAT 1:2" /></para>
+  <para style="p">
+    <verse number="3" style="v" sid="MAT 1:3" />കർത്താവായ യേശുവിനോടും ...<verse eid="MAT 1:3" /></para>
+  <chapter eid="MAT 1" />
+</usx>

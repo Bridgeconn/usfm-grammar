@@ -1,0 +1,7 @@
+\id GEN
+\c 1
+\s some text
+\p
+\v 1 verse text
+\tr \th1 header1 \th3 header3
+\tr \tcr2 cell2 \tcr3 cell3

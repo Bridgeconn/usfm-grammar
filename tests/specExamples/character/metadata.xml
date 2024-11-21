@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>Word and Character Markers. From examples in USFM documentation.
+		
+		Currently failing because of location of verse end for MAT 6:9</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

@@ -1,0 +1,72 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "ms",
+      "marker": "ts-s",
+      "sid": "ts_JUD_5-6"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "GEN 1:5"
+        },
+        "Now I wish to remind you, although you know everything, that the Lord once saved a people out of the land of Egypt, but that afterward he destroyed those who did not believe. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "GEN 1:6"
+        },
+        "And angels who did not keep to their own principality, but left their proper dwelling place—God has kept them in everlasting chains in darkness for the judgment of the great day. ",
+        {
+          "type": "ms",
+          "marker": "ts-e",
+          "eid": "ts_JUD_5-6"
+        },
+        {
+          "type": "ms",
+          "marker": "ts-s",
+          "sid": "ts_JUD_7-8"
+        },
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "GEN 1:7"
+        },
+        "It is just like Sodom and Gomorrah and the cities around them, which in a similar way gave themselves over to fornication and pursued unnatural desires. They were given as examples of those who suffer the punishment of eternal fire. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "GEN 1:8"
+        },
+        "Yet in the same way these also pollute their bodies in their dreams, and they reject authority, and they say evil things about the glorious ones. ",
+        {
+          "type": "ms",
+          "marker": "ts-e",
+          "eid": "ts_JUD_7-8"
+        }
+      ]
+    }
+  ]
+}

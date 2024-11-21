@@ -1,0 +1,7 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <char style="xq" status="invalid">quote </char> <note caller="+" style="x"><char style="xo" closed="false">1.1 </char><char style="em">stuff</char></note> <verse number="1" style="v" sid="GEN 1:1" />something<verse eid="GEN 1:1" /></para>
+  <chapter eid="GEN 1" />
+</usx>

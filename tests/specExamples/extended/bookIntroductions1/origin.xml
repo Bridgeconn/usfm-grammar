@@ -1,0 +1,17 @@
+<usx version="3.0">
+  <book code="MRK" style="id">- Good News Study Bible - Notes Material</book>
+  <para style="iot">Outline of Contents</para>
+  <para style="io1">The beginning of the gospel 1.1-13</para>
+  <para style="io1">Jesus' public ministry in Galilee 1.14-9.50</para>
+  <para style="io1">From Galilee to Jerusalem 10.1-52</para>
+  <para style="io1">The last week in and near Jerusalem 11.1-15.47</para>
+  <para style="io1">The resurrection of Jesus 16.1-8</para>
+  <para style="io1">[An Old Ending to the Gospel 16.9-20]</para>
+  <para style="io1">[Another Old Ending 16.9-10]</para>
+  <para style="ip">The opening words of <char style="bk">The Gospel according to Mark</char> tell its readers that the subject of this book is the Good News about Jesus Christ. With the coming of Jesus Christ, it announces, the time set by God to bring salvation to humankind has arrived (1.15). Though the book concentrates on his deeds and words, it is not a biography of Jesus of Nazareth. Only one year, or a little more, of Jesus' life appears to be recorded (chapters 1--10), and over one-third of the book (chapters 11--16) is taken up with the last week of Jesus in and near <char style="w">Jerusalem</char>. Nothing is said about his birth, childhood, home, or parents. When he first appears, unknown and unannounced, Jesus is a full-grown adult who comes to John the Baptist to be <char style="w">baptized</char> by him.</para>
+  <para style="ip">The author's primary interest in writing is religious. The Gospel is written "from <char style="w">faith</char> to faith". ...</para>
+  <chapter number="1" style="c" sid="MRK 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="MRK 1:1" />sample verse<verse eid="MRK 1:1" /></para>
+  <chapter eid="MRK 1" />
+</usx>

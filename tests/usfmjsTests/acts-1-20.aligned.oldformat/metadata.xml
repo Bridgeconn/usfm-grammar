@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>handles acts-1-20.aligned.oldformat
+        Fails because \zaln-s doesn't have ending \*</description>
+        <validated>fail</validated>
+</test-metadata>

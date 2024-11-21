@@ -1,0 +1,1352 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "SNG",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "h",
+      "content": [
+        "Song of Songs"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc1",
+      "content": [
+        "SONG OF SONGS"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc2",
+      "content": [
+        "Song of Songs"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "toc3",
+      "content": [
+        "SNG"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "mt1",
+      "content": [
+        "SONG OF SONGS"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "SNG 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 1:1"
+        },
+        "The Song of songs, which is Solomon's. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 1:2"
+        },
+        "Let him kiss me with the kisses of his mouth: for thy breasts are better than wine. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "SNG 1:3"
+        },
+        "And the smell of thine ointments is better than all spices: thy name is ointment poured forth; therefore do the young maidens love thee. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "SNG 1:4"
+        },
+        "They have drawn thee: we will run after thee, for the smell of thine ointments: the king has brought me into closet: let us rejoice and be glad in thee; we will love thy breasts more than wine: righteousness loves thee. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "SNG 1:5"
+        },
+        "I am black, but beautiful, ye daughters of Jerusalem, as the tents of Kedar, as the curtains of Solomon. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "SNG 1:6"
+        },
+        "Look not upon me, because I am dark, because the sun has looked unfavourably upon me: my mother's sons strove with me; they made me keeper in the vineyards; I have not kept my own vineyard. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "SNG 1:7"
+        },
+        "Tell me, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "thou"
+          ]
+        },
+        " whom my soul loves, where thou tendest thy flock, where thou causest ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "them"
+          ]
+        },
+        " to rest at noon, lest I become as one that is veiled by the flocks of thy companions. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "SNG 1:8"
+        },
+        "If thou know not thyself, thou fair one among women, go thou forth by the footsteps of the flocks, and feed thy kids by the shepherd's tents. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "SNG 1:9"
+        },
+        "I have likened thee, my companion, to my horses in the chariots of Pharao. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "SNG 1:10"
+        },
+        "How are thy cheeks beautiful as ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "those"
+          ]
+        },
+        " of a dove, thy neck as chains! ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "SNG 1:11"
+        },
+        "We will make thee figures of gold with studs of silver. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "SNG 1:12"
+        },
+        "So long as the king was at table, my spikenard gave forth its smell. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "SNG 1:13"
+        },
+        "My kinsman is to me a bundle of myrrh; he shall lie between my breasts. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "SNG 1:14"
+        },
+        "My kinsman is to me a cluster of camphor in the vineyards of Engaddi. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "SNG 1:15"
+        },
+        "Behold, thou art fair, my companion; behold, thou art fair; thine eyes are doves. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "SNG 1:16"
+        },
+        "Behold, thou art fair, my kinsman, yea, beautiful, overshadowing our bed. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "SNG 1:17"
+        },
+        "The beams of our house are cedars, our ceilings are of cypress."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "SNG 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 2:1"
+        },
+        "I am a flower of the plain, a lily of the valleys. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 2:2"
+        },
+        "As a lily among thorns, so is my companion among the daughters. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "SNG 2:3"
+        },
+        "As the apple among the trees of the wood, so is my kinsman among the sons. I desired his shadow, and sat down, and his fruit was sweet in my throat. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "SNG 2:4"
+        },
+        "Bring me into the wine house; set love before me. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "SNG 2:5"
+        },
+        "Strengthen me with perfumes, stay me with apples: for I ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "am"
+          ]
+        },
+        " wounded with love. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "SNG 2:6"
+        },
+        "His left ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "hand shall be"
+          ]
+        },
+        " under my head, and his right hand shall embrace me. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "SNG 2:7"
+        },
+        "I have charged you, ye daughters of Jerusalem, by the powers and by the virtues of the field, that ye do not rouse or wake ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        " love, until he please. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "SNG 2:8"
+        },
+        "The voice of my kinsman! behold, he comes leaping over the mountains, bounding over the hills. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "SNG 2:9"
+        },
+        "My kinsman is like a roe or a young hart on the mountains of Baethel: behold, he is behind our wall, looking through the windows, peeping through the lattices. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "SNG 2:10"
+        },
+        "My kinsman answers, and says to me, Rise up, come, my companion, my fair one, my dove. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "SNG 2:11"
+        },
+        "For, behold, the winter is past, the rain is gone, it has departed. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "SNG 2:12"
+        },
+        "The flowers are seen in the land; the time of pruning has arrived; the voice of the turtle-dove has been heard in our land. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "SNG 2:13"
+        },
+        "The fig-tree has put forth its young figs, the vines put forth the tender grape, they yield a smell: arise, come, my companion, my fair one, my dove; yea, come. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "SNG 2:14"
+        },
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "Thou art"
+          ]
+        },
+        " my dove, in the shelter of the rock, near the wall: shew me thy face, and cause me to hear thy voice; for thy voice is sweet, and thy countenance is beautiful. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "SNG 2:15"
+        },
+        "Take us the little foxes that spoil the vines: for our vines put forth tender grapes. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "SNG 2:16"
+        },
+        "My kinsman is mine, and I am his: he feeds ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "his flock"
+          ]
+        },
+        " among the lilies. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "SNG 2:17"
+        },
+        "Until the day dawn, and the shadows depart, turn, my kinsman, be thou like to a roe or young hart on the mountains of the ravines."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "3",
+      "sid": "SNG 3"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 3:1"
+        },
+        "By night on my bed I sought him whom my soul loves: I sought him, but found him not; I called him, but he hearkened not to me. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 3:2"
+        },
+        "I will rise now, and go about in the city, in the market-places, and in the streets, and I will seek him whom my soul loves: I sought him, but I found him not. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "SNG 3:3"
+        },
+        "The watchmen who go their rounds in the city found me. ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "I said"
+          ]
+        },
+        ", Have ye seen him whom my soul loves? ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "SNG 3:4"
+        },
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "It was"
+          ]
+        },
+        " as a little ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "while"
+          ]
+        },
+        " after I parted from them, that I found him whom my soul loves: I held him, and did not let him go, until I brought him into my mother's house, and into the chamber of her that conceived me. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "SNG 3:5"
+        },
+        "I have charged you, O daughters of Jerusalem, by the powers and by the virtues of the field, that ye rouse not nor awake ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        " love, until he please. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "SNG 3:6"
+        },
+        "Who is this that comes up from the wilderness as pillars of smoke, perfumed with myrrh and frankincense, with all powders of the perfumer? ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "SNG 3:7"
+        },
+        "Behold Solomon's bed; sixty mighty men of the mighty ones of Israel are round about it. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "SNG 3:8"
+        },
+        "They all hold a sword, being expert in war: every man ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "has"
+          ]
+        },
+        " his sword upon his thigh because of fear by night. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "SNG 3:9"
+        },
+        "King Solomon made himself a litter of woods of Lebanon. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "SNG 3:10"
+        },
+        "He made the pillars of it silver, the bottom of it gold, the covering of it scarlet, in the midst of it a pavement of love, for the daughters of Jerusalem. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "SNG 3:11"
+        },
+        "Go forth, ye daughters of Sion, and behold king Solomon, with the crown wherewith his mother crowned him, in the day of his espousals, and in the day of the gladness of his heart."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "4",
+      "sid": "SNG 4"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 4:1"
+        },
+        "Behold, thou art fair, my companion; behold, thou art fair; thine eyes are doves, beside thy veil: thy hair is as flocks of goats, that have appeared from Galaad. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 4:2"
+        },
+        "Thy teeth are as flocks of shorn ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "sheep"
+          ]
+        },
+        ", that have gone up from the washing; all of them bearing twins, and there is not a barren one among them. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "SNG 4:3"
+        },
+        "Thy lips are as a thread of scarlet, and thy speech is comely: like the rind of a pomegranate is thy cheek without thy veil. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "SNG 4:4"
+        },
+        "Thy neck is as the tower of David, that was built for an armoury: a thousand shields hang upon it, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "and"
+          ]
+        },
+        " all darts of mighty men. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "SNG 4:5"
+        },
+        "Thy two breasts are as two twin fawns, that feed among the lilies. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "SNG 4:6"
+        },
+        "Until the day dawn, and the shadows depart, I will betake me to the mountain of myrrh, and to the hill of frankincense. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "SNG 4:7"
+        },
+        "Thou art all fair, my companion, and there is no spot in thee. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "SNG 4:8"
+        },
+        "Come from Libanus, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        " bride, come from Libanus: thou shalt come and pass from the top of Faith, from the top of Sanir and Hermon, from the lions' dens, from the mountains of the leopards. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "SNG 4:9"
+        },
+        "My sister, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        " spouse, thou hast ravished my heart; thou hast ravished my heart with one of thine eyes, with one chain of thy neck. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "SNG 4:10"
+        },
+        "How beautiful are thy breasts, my sister, my spouse! how much more beautiful are thy breasts than wine, and the smell of thy garments than all spices! ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "SNG 4:11"
+        },
+        "Thy lips drop honeycomb, my spouse: honey and milk are under thy tongue; and the smell of thy garments is as the smell of Libanus. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "SNG 4:12"
+        },
+        "My sister, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        " spouse is a garden enclosed; a garden enclosed, a fountain sealed. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "SNG 4:13"
+        },
+        "Thy shoots are a garden of pomegranates, with the fruit of choice berries; camphor, with spikenard: ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "SNG 4:14"
+        },
+        "spikenard and saffron, calamus and cinnamon; with all woods of Libanus, myrrh, aloes, with all chief spices: ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "SNG 4:15"
+        },
+        "a fountain of a garden, and a well of water springing and gurgling from Libanus. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "SNG 4:16"
+        },
+        "Awake, O north wind; and come, O south; and blow through my garden, and let my spices flow out."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "5",
+      "sid": "SNG 5"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 5:1"
+        },
+        "Let my kinsman come down into his garden, and eat the fruit of his choice berries. I am come into my garden, my sister, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        " spouse: I have gathered my myrrh with my spices; I have eaten my bread with my honey; I have drunk my wine with my milk. Eat, O friends, and drink; yea, brethren, drink abundantly. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 5:2"
+        },
+        "I sleep, but my heart is awake: the voice of my kinsman knocks at the door, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "saying"
+          ]
+        },
+        ", Open, open to me, my companion, my sister, my dove, my perfect one: for my head is filled with dew, and my locks with the drops of the night. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "SNG 5:3"
+        },
+        "I have put off my coat; how shall I put it on? I have washed my feet, how shall I defile them? ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "SNG 5:4"
+        },
+        "My kinsman put forth his hand by the hole ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "of the door"
+          ]
+        },
+        ", and my belly moved for him. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "SNG 5:5"
+        },
+        "I rose up to open to my kinsman; my hands dropped myrrh, my fingers choice myrrh, on the handles of the lock. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "SNG 5:6"
+        },
+        "I opened to my kinsman; my kinsman was gone: my soul failed at his speech: I sought him, but found him not; I called him, but he answered me not. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "SNG 5:7"
+        },
+        "The watchman that go their rounds in the city found me, they smote me, they wounded me; the keepers of the walls took away my veil from me. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "SNG 5:8"
+        },
+        "I have charged you, O daughters of Jerusalem, by the powers and the virtues of the field: if ye should find my kinsman, what are ye to say to him? That I am wounded with love. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "SNG 5:9"
+        },
+        "What is thy kinsman ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "more"
+          ]
+        },
+        " than ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "another"
+          ]
+        },
+        " kinsman, O thou beautiful among women? what is thy kinsman ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "more"
+          ]
+        },
+        " than ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "another"
+          ]
+        },
+        " kinsman, that thou hast so charged us? ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "SNG 5:10"
+        },
+        "My kinsman is white and ruddy, chosen out from myriads. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "SNG 5:11"
+        },
+        "His head is ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "as"
+          ]
+        },
+        " very fine gold, his locks are flowing, black as a raven. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "SNG 5:12"
+        },
+        "His eyes are as doves, by the pools of waters, washed with milk, sitting by the pools. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "SNG 5:13"
+        },
+        "His cheeks are as bowls of spices pouring forth perfumes: his lips are lilies, dropping choice myrrh. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "SNG 5:14"
+        },
+        "His hands are as turned gold set with beryl: his belly is an ivory tablet on a sapphire stone. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "15",
+          "sid": "SNG 5:15"
+        },
+        "His legs are marble pillars set on golden sockets: his form is as Libanus, choice as the cedars. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16",
+          "sid": "SNG 5:16"
+        },
+        "His throat is most sweet, and altogether desirable. This is my kinsman, and this is my companion, O daughters of Jerusalem. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "17",
+          "sid": "SNG 5:17"
+        },
+        "Whither is thy kinsman gone, thou beautiful among women? whither has thy kinsman turned aside? ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "tell us"
+          ]
+        },
+        ", and we will seek him with thee."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "6",
+      "sid": "SNG 6"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 6:1"
+        },
+        "My kinsman is gone down to his garden, to the beds of spice, to feed ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "his flock"
+          ]
+        },
+        " in the gardens, and to gather lilies. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 6:2"
+        },
+        "I am my kinsman's, and my kinsman is mine, who feeds among the lilies. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "SNG 6:3"
+        },
+        "Thou art fair, my companion, as Pleasure, beautiful as Jerusalem, terrible as ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "armies"
+          ]
+        },
+        " set in array. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "SNG 6:4"
+        },
+        "Turn away thine eyes from before me, for they have ravished me: thy hair is as flocks of goats which have appeared from Galaad. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "SNG 6:5"
+        },
+        "Thy teeth are as flocks of shorn ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "sheep"
+          ]
+        },
+        ", that have gone up from the washing, all of them bearing twins, and there is none barren among them: thy lips are as a thread of scarlet, and thy speech is comely. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "SNG 6:6"
+        },
+        "Thy cheek is like the rind of a pomegranate, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "being seen"
+          ]
+        },
+        " without thy veil. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "SNG 6:7"
+        },
+        "There are sixty queens, and eighty concubines, and maidens without number. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "SNG 6:8"
+        },
+        "My dove, my perfect one is one; she is the ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "only"
+          ]
+        },
+        " one of her mother; she is the choice of her that bore her. The daughters saw her, and the queens will pronounce her blessed, yea, and the concubines, and they will praise her. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "SNG 6:9"
+        },
+        "Who is this that looks forth as the morning, fair as the moon, choice as the sun, terrible as ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "armies"
+          ]
+        },
+        " set in array? ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "SNG 6:10"
+        },
+        "I went down to the garden of nuts, to look at the fruits of the valley, to see if the vine flowered, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "if"
+          ]
+        },
+        " the pomegranates blossomed. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "SNG 6:11"
+        },
+        "There I will give thee my breasts: my soul knew ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "it"
+          ]
+        },
+        " not: it made me as the chariots of Aminadab. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "SNG 6:12"
+        },
+        "Return, return, O Sunamite; return, return, and we will look at thee. What will ye see in the Sunamite? She comes as bands of armies."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "7",
+      "sid": "SNG 7"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 7:1"
+        },
+        "Thy steps are beautiful in shoes, O daughter of the prince: the joints of ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "thy"
+          ]
+        },
+        " thighs are like chains, the work of the craftsman. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 7:2"
+        },
+        "Thy navel is ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "as"
+          ]
+        },
+        " a turned bowl, not wanting liquor; thy belly is ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "as"
+          ]
+        },
+        " a heap of wheat set about with lilies. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "SNG 7:3"
+        },
+        "Thy two breasts are as two twin fawns. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "SNG 7:4"
+        },
+        "Thy neck is as an ivory tower; thine eyes are as pools in Esebon, by the gates of the daughter of many: thy nose is as the tower of Libanus, looking toward Damascus. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "SNG 7:5"
+        },
+        "Thy head upon thee is as Carmel, and the curls of thy hair like scarlet; the king is bound in the galleries. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "SNG 7:6"
+        },
+        "How beautiful art thou, and how sweet art thou, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        " love! ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "SNG 7:7"
+        },
+        "This is thy greatness in thy delights: thou wast made like a palm tree, and thy breasts to cluster. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "SNG 7:8"
+        },
+        "I said, I will go up to the palm tree, I will take hold of its high boughs: and now shall thy breasts be as clusters of the vine, and the smell of thy nose of apples; ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "SNG 7:9"
+        },
+        "and thy throat as good wine, going well with my kinsman, suiting my lips and teeth. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "SNG 7:10"
+        },
+        "I am my kinsman's, and his desire is toward me. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "SNG 7:11"
+        },
+        "Come, my kinsman, let us go forth into the field; let us lodge in the villages. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "SNG 7:12"
+        },
+        "Let us go early into the vineyards; let us see if the vine has flowered, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "if"
+          ]
+        },
+        " the blossoms have appeared, if the pomegranates have blossomed; there will I give thee my breasts. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "SNG 7:13"
+        },
+        "The mandrakes have given a smell, and at our doors ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "are"
+          ]
+        },
+        " all kinds of choice fruits, new and old. O my kinsman, I have kept ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "them"
+          ]
+        },
+        " for thee."
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "8",
+      "sid": "SNG 8"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "SNG 8:1"
+        },
+        "I would that thou, O my kinsman, wert he that sucked the breasts of my mother; when I found thee without, I would kiss thee; yea, they should not despise me. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "SNG 8:2"
+        },
+        "I would take thee, I would bring thee into my mother's house, and into the chamber of her that conceived me; I would make thee to drink of spiced wine, of the juice of my pomegranates. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "SNG 8:3"
+        },
+        "His left hand ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "should be"
+          ]
+        },
+        " under my head, and his right hand should embrace me. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "SNG 8:4"
+        },
+        "I have charged you, ye daughters of Jerusalem, by the virtues of the field, that ye stir not up, nor awake ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "my"
+          ]
+        },
+        " love, until he please. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "SNG 8:5"
+        },
+        "Who is this that comes up all white, leaning on her kinsman? I raised thee up under an apple-tree; there thy mother brought thee forth; there she that bore thee brought thee forth. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "SNG 8:6"
+        },
+        "Set me as a seal upon thy heart, as a seal upon thine arm; for love is strong as death; jealousy is cruel as the grave, her shafts are shafts of fire, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "even"
+          ]
+        },
+        " the flames thereof. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "SNG 8:7"
+        },
+        "Much water will not be able to quench love, and rivers shall not drown it; if a man would give all his substance for love, ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "men"
+          ]
+        },
+        " would utterly despise it. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "SNG 8:8"
+        },
+        "Our sister is little, and has no breasts; what shall we do for our sister, in the day wherein she shall be spoken for? ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "9",
+          "sid": "SNG 8:9"
+        },
+        "If she is a wall, let us build upon her silver bulwarks; and if she is a door, let us carve for her cedar panels. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "10",
+          "sid": "SNG 8:10"
+        },
+        "I am a wall, and my breasts are as towers; I was in their eyes as one that found peace. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "SNG 8:11"
+        },
+        "Solomon had a vineyard in Beelamon; he let his vineyard to keepers; every one was to bring for its fruit a thousand ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "pieces"
+          ]
+        },
+        " of silver. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "SNG 8:12"
+        },
+        "My vineyard, even mine, is before me; Solomon ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "shall have"
+          ]
+        },
+        " a thousand, and they that keep its fruit two hundred. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "SNG 8:13"
+        },
+        "Thou that dwellest in the gardens, the companions hearken to thy voice: make me hear ",
+        {
+          "type": "char",
+          "marker": "add",
+          "content": [
+            "it"
+          ]
+        },
+        ". ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "SNG 8:14"
+        },
+        "Away, my kinsman, and be like a doe or a fawn on the mountains of spices."
+      ]
+    }
+  ]
+}

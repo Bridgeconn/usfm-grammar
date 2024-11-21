@@ -1,0 +1,19 @@
+﻿<usx version="3.0">
+  <book code="ISA" style="id">Unlocked Literal Bible</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Isaiah</para>
+  <para style="toc1">The Book of Isaiah</para>
+  <para style="toc2">Isaiah</para>
+  <para style="toc3">Isa</para>
+  <para style="mt">The Book of the Prophet Isaiah</para>
+  <chapter number="8" style="c" sid="ISA 8" />
+  <para style="s5" />
+  <para style="p" />
+  <para style="s5" />
+  <para style="p">
+    <verse number="14" style="v" sid="ISA 8:14" />Beriah had these sons: Ahio, Shashak, Jeremoth, <verse eid="ISA 8:14" /><verse number="15" style="v" sid="ISA 8:15" />Zebadiah, Arad, Eder, <verse eid="ISA 8:15" /><verse number="16" style="v" sid="ISA 8:16" />Michael, Ishpah, and Joha were the sons of Beriah. <verse eid="ISA 8:16" /><verse number="17-18" style="v" sid="ISA 8:17-18" />Elpaal had these sons: Zebadiah, Meshullam, Hizki, Heber, Ishmerai, Izliah, and Jobab.<verse eid="ISA 8:17-18" /></para>
+  <para style="s5" />
+  <para style="p">
+    <verse number="19-21" style="v" sid="ISA 8:19-21" />Shimei had these sons: Jakim, Zikri, Zabdi, Elienai, Zillethai, Eliel, Adaiah, Beraiah, and Shimrath.<verse eid="ISA 8:19-21" /></para>
+  <chapter eid="ISA 8" />
+</usx>

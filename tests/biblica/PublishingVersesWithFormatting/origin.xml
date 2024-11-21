@@ -1,0 +1,12 @@
+<usx version="3.0">
+  <book code="XXA" style="id">- New International Version® NIV® 2011, updated 2016</book>
+  <para style="rem">Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.</para>
+  <para style="h1">Matthew</para>
+  <para style="mt1">Alternate Texts</para>
+  <para style="rem">[a] footnote ommitted</para>
+  <chapter style="c" number="1" sid="XXA 1" />
+  <para style="s1">Matthew 17:21</para>
+  <para style="p">
+    <verse number="20" style="v" sid="XXA 1:20" />He replied, <char style="wj">“Because you have so little faith. Truly I tell you, if you have faith as small as a mustard seed, you can say to this mountain, ‘Move from here to there,’ and it will move. Nothing will be impossible for you.</char> <verse eid="XXA 1:20" /><verse number="21" style="v" sid="XXA 1:21" /><char style="vp"><char style="it"><char style="wj">21</char></char> </char><char style="it"><char style="wj">But this kind does not go out except by prayer and fasting.</char></char>[a]<char style="wj">”</char><verse eid="XXA 1:21" /></para>
+  <chapter eid="XXA 1" />
+</usx>

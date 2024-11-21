@@ -1,0 +1,7 @@
+\id GEN
+\c 1
+\p
+\v 1 should have error\p\nd testing \nd*
+\c 2
+\p
+\v 2 \em end/beg markers \em*\nd with no space are OK\nd*

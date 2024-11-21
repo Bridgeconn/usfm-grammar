@@ -1,0 +1,7 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />the first verse <verse eid="GEN 1:1" /><verse number="2" style="v" sid="GEN 1:2" />the second verse <char style="w" lemma="grace">gracious</char><verse eid="GEN 1:2" /></para>
+  <chapter eid="GEN 1" />
+</usx>

@@ -1,0 +1,89 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "GEN 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "GEN 2:5"
+        },
+        "Now no shrub had yet appeared on the earth",
+        {
+          "type": "note",
+          "marker": "f",
+          "caller": "+",
+          "content": [
+            {
+              "type": "char",
+              "marker": "fr",
+              "content": [
+                "2:5 "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "Or "
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "fqa",
+              "content": [
+                "land"
+              ]
+            },
+            {
+              "type": "char",
+              "marker": "ft",
+              "content": [
+                "; also in ",
+                {
+                  "type": "char",
+                  "marker": "xt",
+                  "href": "GEN 2:6",
+                  "content": [
+                    {
+                      "type": "ref",
+                      "loc": "GEN 2:6",
+                      "content": [
+                        "verse 6"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        " and no plant had yet sprung up, for the ",
+        {
+          "type": "char",
+          "marker": "nd",
+          "content": [
+            "Lord"
+          ]
+        },
+        " God had not sent rain on the earth and there was no one to work the ground, "
+      ]
+    }
+  ]
+}

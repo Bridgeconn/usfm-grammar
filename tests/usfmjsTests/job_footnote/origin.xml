@@ -1,0 +1,17 @@
+<usx version="3.0">
+  <book code="JOB" style="id">Unlocked Literal Bible</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Job</para>
+  <para style="toc1">The Book of Job</para>
+  <para style="toc2">Job</para>
+  <para style="toc3">Job</para>
+  <para style="mt">Job</para>
+  <chapter number="23" style="c" sid="JOB 23" />
+  <para style="s5" />
+  <para style="p">
+    <verse number="1" style="v" sid="JOB 23:1" />Then Job answered and said,<verse eid="JOB 23:1" /></para>
+  <para style="q">
+    <verse number="2" style="v" sid="JOB 23:2" />"Even today my complaint is bitter;</para>
+  <para style="q" vid="JOB 23:2">my hand <note caller="+" style="f"><char style="ft" closed="false">Some copies have: </char><char style="fqa">... his hand ... </char> </note> is heavy because of my groaning.<verse eid="JOB 23:2" /></para>
+  <chapter eid="JOB 23" />
+</usx>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>Do Publishing Verses \vp ...\vp* need to be closed? The current documentation displays: Syntax \vp text...\vp* However  Paratext creates and PTX Print typesets Publishing Verses without an explicit closer should this behavior be allowed? Can a publishing verse say anything about a regular verse \v that it is supposed to replace, like a publishing chapter does? 
+
+        USFM is "\vp 21\wj" and Paratext considers \vp implicility closed, USFM 3.1 requires ending markers for character spans
+		</description>
+        <validated>fail</validated>
+</test-metadata>

@@ -1,0 +1,45 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "22",
+          "sid": "GEN 1:22"
+        },
+        "Paul stood up in front of the city council and said, ",
+        {
+          "type": "ms",
+          "marker": "qt1-s",
+          "sid": "qt1_ACT_17:22",
+          "who": "Paul"
+        },
+        "“I see that in every way you Athenians are very religious. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "23",
+          "sid": "GEN 1:23"
+        },
+        "For as I walked through your city and looked at the places where you worship,"
+      ]
+    }
+  ]
+}

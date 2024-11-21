@@ -1,0 +1,51 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "But you, speak what fits with faithful instruction. The traditional translation of verse 1, as given in ",
+        {
+          "type": "char",
+          "marker": "jmp",
+          "link-href": "prj:RSV52 GEN 1:1",
+          "link-title": "Revised Standard Version",
+          "content": [
+            "RSV"
+          ]
+        },
+        ", may be appropriate. Storehouses, as used here, refers to large buildings with walls and roof, where grain was kept until needed. (See illustration: ",
+        {
+          "type": "char",
+          "marker": "jmp",
+          "link-href": "figures/storehouse.png",
+          "link-title": "Ancient storehouse",
+          "content": [
+            "Storehouse"
+          ]
+        },
+        ")"
+      ]
+    }
+  ]
+}

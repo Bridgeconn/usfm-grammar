@@ -1,0 +1,28 @@
+﻿<usx version="3.0">
+  <book code="TIT" style="id">Unlocked Literal Bible</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Titus</para>
+  <para style="toc1">The Letter of Paul to Titus</para>
+  <para style="toc2">Titus</para>
+  <para style="toc3">Tit</para>
+  <para style="mt">Titus</para>
+  <chapter number="1" style="c" sid="TIT 1" />
+  <para style="s5" />
+  <para style="p">
+    <verse number="1" style="v" sid="TIT 1:1" />Paul, a servant of God and an apostle of Jesus Christ, for the faith of God's chosen people and the knowledge of the truth that agrees with godliness, <verse eid="TIT 1:1" /><verse number="2" style="v" sid="TIT 1:2" />with the certain hope of everlasting life that God, who does not lie, promised before all the ages of time. <verse eid="TIT 1:2" /><verse number="3" style="v" sid="TIT 1:3" />At the right time, he revealed his word by the message that he trusted me to deliver, by the command of God our savior.<verse eid="TIT 1:3" /></para>
+  <para style="s5" />
+  <para style="p">
+    <verse number="4" style="v" sid="TIT 1:4" />To Titus, a true son in our common faith. Grace and peace from God the Father and Christ Jesus our savior.<verse eid="TIT 1:4" /></para>
+  <para style="p">
+    <verse number="5" style="v" sid="TIT 1:5" />For this purpose I left you in Crete, that you might set in order things not yet complete and ordain elders in every city as I directed you.<verse eid="TIT 1:5" /></para>
+  <para style="s5" />
+  <para style="p">
+    <verse number="6" style="v" sid="TIT 1:6" />An elder must be without blame, the husband of one wife, with faithful children not accused of reckless behavior or undisciplined. <verse eid="TIT 1:6" /><verse number="7" style="v" sid="TIT 1:7" />It is necessary for the overseer, as God's household manager, to be blameless. He must not be arrogant, not be easily angered, not addicted to wine, not a brawler, and not a greedy man.<verse eid="TIT 1:7" /></para>
+  <para style="s5" />
+  <para style="p">
+    <verse number="8" style="v" sid="TIT 1:8" />Instead, he should be hospitable and a friend of what is good. He must be sensible, righteous, godly, and self-controlled. <verse eid="TIT 1:8" /><verse number="9" style="v" sid="TIT 1:9" />He should hold tightly to the trustworthy message that was taught, so that he may be able to encourage others with good teaching and correct those who oppose him.<verse eid="TIT 1:9" /></para>
+  <para style="s5" />
+  <para style="p">
+    <verse number="10" style="v" sid="TIT 1:10" />For there are many rebellious people, empty talkers and deceivers, especially those of the circumcision. <verse eid="TIT 1:10" /><verse number="11" style="v" sid="TIT 1:11" />It is necessary to stop them. They are upsetting whole families by teaching for shameful profit what they should not teach.<verse eid="TIT 1:11" /></para>
+  <chapter eid="TIT 1" />
+</usx>

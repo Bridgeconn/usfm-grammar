@@ -1,0 +1,186 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "27",
+          "sid": "GEN 1:27"
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,NNS,",
+          "content": [
+            "τὸ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δέ",
+          "strong": "G11610",
+          "x-morph": "Gr,CC,,,,,,,,",
+          "content": [
+            "δὲ"
+          ]
+        },
+        ", “",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἔτι",
+          "strong": "G20890",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "ἔτι"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἅπαξ",
+          "strong": "G05300",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "ἅπαξ"
+          ]
+        },
+        "”, ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "δηλόω",
+          "strong": "G12130",
+          "x-morph": "Gr,V,IPA3,,S,",
+          "content": [
+            "δηλοῖ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,GNP,",
+          "content": [
+            "τῶν"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σαλεύω",
+          "strong": "G45310",
+          "x-morph": "Gr,V,PPP,GNP,",
+          "content": [
+            "σαλευομένων"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μετάθεσις",
+          "strong": "G33310",
+          "x-morph": "Gr,N,,,,,AFS,",
+          "content": [
+            "μετάθεσιν"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὡς",
+          "strong": "G56130",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "x-tw": "rc://*/tw/dict/bible/other/like",
+          "content": [
+            "ὡς"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ποιέω",
+          "strong": "G41600",
+          "x-morph": "Gr,V,PEP,GNP,",
+          "content": [
+            "πεποιημένων"
+          ]
+        },
+        ", ",
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ἵνα",
+          "strong": "G24430",
+          "x-morph": "Gr,CS,,,,,,,,",
+          "content": [
+            "ἵνα"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μένω",
+          "strong": "G33060",
+          "x-morph": "Gr,V,SAA3,,S,",
+          "content": [
+            "μείνῃ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "ὁ",
+          "strong": "G35880",
+          "x-morph": "Gr,RD,,,,NNP,",
+          "content": [
+            "τὰ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "μή",
+          "strong": "G33610",
+          "x-morph": "Gr,D,,,,,,,,,",
+          "content": [
+            "μὴ"
+          ]
+        },
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "σαλεύω",
+          "strong": "G45310",
+          "x-morph": "Gr,V,PPP,NNP,",
+          "content": [
+            "σαλευόμενα"
+          ]
+        },
+        "."
+      ]
+    }
+  ]
+}

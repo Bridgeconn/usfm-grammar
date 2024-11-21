@@ -1,0 +1,112 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "the first verse ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GEN 1:2"
+        },
+        "the second verse"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "2",
+      "sid": "GEN 2"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 2:1"
+        },
+        "the third verse ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GEN 2:2"
+        },
+        "the fourth verse"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s1",
+      "content": [
+        "Administration of the Tribes of Israel"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "lh",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "16-22",
+          "sid": "GEN 2:16-22"
+        },
+        "This is the list of the administrators of the tribes of Israel:"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li1",
+      "content": [
+        "Reuben - Eliezer son of Zichri"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li1",
+      "content": [
+        "Simeon - Shephatiah son of Maacah"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li1",
+      "content": [
+        "Levi - Hashabiah son of Kemuel"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "lf",
+      "content": [
+        "This was the list of the administrators of the tribes of Israel."
+      ]
+    }
+  ]
+}

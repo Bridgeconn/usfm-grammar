@@ -1,0 +1,39 @@
+
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel", "tree-sitter"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "usfm-grammar"
+version = "3.0.0-beta.16"
+description = "Python parser for USFM files, based on tree-sitter-usfm3"
+readme = "README.md"
+authors = [{ name = "BCS Team", email = "joel@bridgeconn.com" }]
+maintainers = [{ name = "Kavitha Raju", email = "kavitha.raju@bridgeconn.com" }, 
+            { name= "Joel Mathew", email = 'joel@bridgeconn.com'}]
+license = {text = "MIT License"}
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Compilers",
+    "Topic :: Text Processing :: Markup",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Religion"
+]
+keywords = ["usfm", "parser", "grammar", "tree-sitter"]
+dependencies = [
+    'tree-sitter==0.22.3; python_version >= "3.9"',
+    'tree-sitter-usfm3==3.0.0-beta.16; python_version >="3.8"',
+    'lxml==5.2.2; python_version >= "3.5"',
+    'jsonschema==4.23.0; python_version>= "3.8"'
+]
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = ["rnc2rng", "jupyterlab", "pytest"]
+
+[project.urls]
+Homepage = "https://github.com/Bridgeconn/usfm-grammar/py-usfm-grammar#readme"
+
+[project.scripts]
+usfm-grammar = "usfm_grammar.__main__:main"

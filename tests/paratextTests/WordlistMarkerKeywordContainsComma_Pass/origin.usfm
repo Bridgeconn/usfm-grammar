@@ -1,0 +1,4 @@
+\id GLO
+\c 1
+\p \v 1 something \p  \k kw, kw, kw\k* definition
+\v 2 something \p  \w word|kw, kw, kw \w* definition

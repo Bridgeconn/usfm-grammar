@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>InvalidRubyMarkup. From paratext test suite to test semantically invalid data (base length doesn't match gloss length).
+        Changed one line that was to show Paratext could round trip invalid data (pipe with no data)</description>
+        <validated>pass</validated>
+</test-metadata>

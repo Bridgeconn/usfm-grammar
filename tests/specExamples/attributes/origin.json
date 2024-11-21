@@ -1,0 +1,110 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "MAT",
+      "content": [
+        "41MATGNT92.SFM, Good News Translation, June 2003"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "MAT 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "MAT 1:1"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": [
+        "“Someone is shouting in the desert,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "‘Prepare a road for the Lord;"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "make a straight path for him to travel!’ ”"
+      ]
+    },
+    {
+      "type": "sidebar",
+      "marker": "esb",
+      "category": "People",
+      "content": [
+        {
+          "type": "para",
+          "marker": "ms",
+          "content": [
+            {
+              "type": "char",
+              "marker": "jmp",
+              "link-id": "article-john_the_baptist",
+              "content": []
+            },
+            "John the Baptist"
+          ]
+        },
+        {
+          "type": "para",
+          "marker": "p",
+          "content": [
+            "John is sometimes called the last “Old Testament prophet” because of the warnings he brought about God's judgment and because he announced the coming of God's “Chosen One” (Messiah)."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2-6",
+          "sid": "MAT 1:2-6"
+        },
+        "From Abraham to King David, the following ancestors are listed: Abraham,...mother was ",
+        {
+          "type": "char",
+          "marker": "jmp",
+          "link-href": "#article-Ruth",
+          "content": [
+            "Ruth"
+          ]
+        },
+        "), Jesse, and King David. ",
+        {
+          "type": "char",
+          "marker": "w",
+          "link-href": "http://bibles.org/search/grace/eng-GNTD/all",
+          "content": [
+            "gracious"
+          ]
+        }
+      ]
+    }
+  ]
+}

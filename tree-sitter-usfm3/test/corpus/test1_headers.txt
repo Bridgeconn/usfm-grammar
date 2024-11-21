@@ -1,0 +1,278 @@
+================================================================================
+id marker
+================================================================================
+\id MAT some other info of file
+
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description))))
+
+================================================================================
+ide marker
+================================================================================
+\id GEN
+\ide URF-8
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text)))
+
+================================================================================
+usfm marker
+================================================================================
+\id GEN
+\usfm 3.0
+\ide utf-8
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (usfm
+    (versionNumber))
+  (ide
+    (text)))
+
+================================================================================
+usfm marker after ide
+================================================================================
+\id GEN
+\ide utf-8
+\usfm 3.0
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
+  (usfm
+    (versionNumber)))
+
+================================================================================
+h marker
+================================================================================
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
+  (usfm
+    (versionNumber))
+  (hBlock
+    (h
+      (hTag)
+      (text))))
+
+================================================================================
+multiple h markers
+================================================================================
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\h2 Part1
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
+  (usfm
+    (versionNumber))
+  (hBlock
+    (h
+      (hTag)
+      (text))
+    (h
+      (hTag
+        (numberedLevelMax3))
+      (text))))
+
+================================================================================
+toc markers under h
+================================================================================
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\toc1 genesis
+\toc2 gen
+\toc3 the book of genesis
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
+  (usfm
+    (versionNumber))
+  (hBlock
+    (h
+      (hTag)
+      (text)))
+  (tocBlock
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))))
+
+================================================================================
+toc markers without h
+================================================================================
+\id GEN
+\ide utf-8
+\usfm 3.0
+\toc1 genesis
+\toc2 gen
+\toc3 the book of genesis
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
+  (usfm
+    (versionNumber))
+  (tocBlock
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))))
+
+================================================================================
+toca markers
+================================================================================
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\toca the book of genesis
+\toca2 genesis
+\toca3 gen
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
+  (usfm
+    (versionNumber))
+  (hBlock
+    (h
+      (hTag)
+      (text)))
+  (tocaBlock
+    (toca
+      (tocaTag)
+      (text))
+    (toca
+      (tocaTag
+        (numberedLevelMax3))
+      (text))
+    (toca
+      (tocaTag
+        (numberedLevelMax3))
+      (text))))
+
+================================================================================
+toca markers along with toc
+================================================================================
+\id GEN
+\ide utf-8
+\usfm 3.0
+\h Genesis
+\toc the book of genesis
+\toc2 genesis
+\toc3 gen
+\toca the book of genesis
+\toca2 genesis
+\toca3 gen
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ide
+    (text))
+  (usfm
+    (versionNumber))
+  (hBlock
+    (h
+      (hTag)
+      (text)))
+  (tocBlock
+    (toc
+      (tocTag)
+      (text))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text))
+    (toc
+      (tocTag
+        (numberedLevelMax3))
+      (text)))
+  (tocaBlock
+    (toca
+      (tocaTag)
+      (text))
+    (toca
+      (tocaTag
+        (numberedLevelMax3))
+      (text))
+    (toca
+      (tocaTag
+        (numberedLevelMax3))
+      (text))))

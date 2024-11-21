@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>WordlistMarkerNestedShouldNotIncludeKeyword. From paratext test suite
+        
+        Currently failing because of difference between how Paratext and grammar handled default attribute when no default is defined</description>
+        <validated>fail</validated>
+        <tags></tags>
+</test-metadata>

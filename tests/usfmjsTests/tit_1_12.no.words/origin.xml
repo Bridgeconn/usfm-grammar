@@ -1,0 +1,12 @@
+<usx version="3.0">
+  <book code="TIT" style="id">Titus</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Titus</para>
+  <para style="toc2">Titus</para>
+  <para style="toc3">Tit</para>
+  <para style="mt">Titus</para>
+  <chapter number="1" style="c" sid="TIT 1" />
+  <para style="p">
+    <verse number="12" style="v" sid="TIT 1:12" />One of their own prophets has said, "Cretans are always liars, evil beasts, lazy gluttons."<verse eid="TIT 1:12" /></para>
+  <chapter eid="TIT 1" />
+</usx>

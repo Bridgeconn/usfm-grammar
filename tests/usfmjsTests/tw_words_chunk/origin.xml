@@ -1,0 +1,8 @@
+﻿<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1" />
+    <char style="w" lemma="ἀπόστολος" strong="G06520" x-morph="Gr,N,,,,,NMS," x-tw="rc://*/tw/dict/bible/kt/apostle">ἀπόστολος</char> <char style="w" lemma="δέ" strong="G11610" x-morph="Gr,CC,,,,,,,,">δὲ</char><ms style="k-s" x-tw="rc://*/tw/dict/bible/kt/jesus" /><char style="w" lemma="Ἰησοῦς" strong="G24240" x-morph="Gr,N,,,,,GMS,">Ἰησοῦ</char> <char style="w" lemma="χριστός" strong="G55470" x-morph="Gr,N,,,,,GMS," x-tw="rc://*/tw/dict/bible/kt/christ">Χριστοῦ</char><ms style="k-e" />, <char style="w" lemma="κατά" strong="G25960" x-morph="Gr,P,,,,,A,,,">κατὰ</char> <verse eid="GEN 1:1" /><verse number="4" style="v" sid="GEN 1:4" /><char style="w" lemma="ἀπό" strong="G05750" x-morph="Gr,P,,,,,G,,,">ἀπὸ</char><ms style="k-s" x-tw="rc://*/tw/dict/bible/kt/godthefather" /><char style="w" lemma="θεός" strong="G23160" x-morph="Gr,N,,,,,GMS," x-tw="rc://*/tw/dict/bible/kt/god">Θεοῦ</char> <char style="w" lemma="πατήρ" strong="G39620" x-morph="Gr,N,,,,,GMS,">Πατρὸς</char><ms style="k-e" /> <char style="w" lemma="καί" strong="G25320" x-morph="Gr,CC,,,,,,,,">καὶ</char><verse eid="GEN 1:4" /></para>
+  <chapter eid="GEN 1" />
+</usx>

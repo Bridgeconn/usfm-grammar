@@ -1,36 +1,136 @@
-name: Check-on-push
+name: Test-on-push
 
 # Run this workflow every time a new commit pushed to your repository
-on: 
-  push:
-  pull_request:
-    branches: 
-      - master
-      - dev
+on: [push, pull_request ]
+  # push:
+  # pull_request:
+  #   branches: 
+  #     - master
+  #     - version-3
 
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
-  Run-linter-and-tests:
+  Run-Grammar-tests:
     # Name the Job
-    name: Lint n test
+    name: Run Grammar tests
     # Set the type of machine to run on
     runs-on: ubuntu-latest
 
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Setup node and npm
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: 14
-      - name: install packages
-        run: npm install .
-      # Runs the Linter action
-      - name: Run Linter
-        run: npm run lint
-      # Run testcases
+          node-version: 20
       - name: Run tests
-        run: npm run test-on-github
-        
+        run: |
+          cd tree-sitter-usfm3
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
+          ./node_modules/.bin/tree-sitter generate
+          ./node_modules/.bin/tree-sitter test
+
+  Run-Python-tests:
+    name: Run Python tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v4
+        with:
+            python-version: '3.10.6'
+
+      - name: Setup node and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build grammar binary
+        run: |
+          cd tree-sitter-usfm3
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
+          ./node_modules/.bin/tree-sitter generate
+
+      - name: Install dependencies
+        run: |
+          cd tree-sitter-usfm3
+          pip install .
+          cd ../py-usfm-parser
+          sed -i '/tree-sitter-usfm3==.*/d' pyproject.toml
+          pip install . -r ./dev-requirements.txt
+
+      # - name: Install python module
+      #   run: |
+      #     cd py-usfm-parser
+      #     pip install .
+
+      - name: Run tests for parsing errors
+        working-directory: ./py-usfm-parser
+        run:
+          # pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not samples-from-wild and not 57-TIT.partial" -n auto
+          python -m pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc_grammar and not generated_usx_with_rnc_grammar and not samples-from-wild" -n auto
+
+  Run-Node-tests:
+    name: Run Node tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup node and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build grammar
+        run: |
+          cd tree-sitter-usfm3
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
+          ./node_modules/.bin/tree-sitter generate
+      - name: Install dependencies
+        run: |
+          cd node-usfm-parser
+          sed -i '/"tree-sitter-usfm3":.*/d' package.json
+          npm install .
+          npm install ../tree-sitter-usfm3
+      - name: Run tests
+        run: |
+          cd node-usfm-parser
+          node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
+
+  Run-Web-tests:
+    name: Run Web tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup node and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build grammar
+        run: |
+          cd tree-sitter-usfm3
+          npm install --save nan
+          npm install --save-dev tree-sitter-cli
+          ./node_modules/.bin/tree-sitter generate
+          ./node_modules/.bin/tree-sitter build --wasm
+
+      - name: Install dependencies
+        run: |
+          cd web-usfm-parser
+          npm install .
+          cp node_modules/web-tree-sitter/tree-sitter.js src/web-tree-sitter/
+          cp node_modules/web-tree-sitter/tree-sitter.wasm ./
+          cp ../tree-sitter-usfm3/tree-sitter-usfm3.wasm ./tree-sitter-usfm.wasm
+      - name: Run tests
+        run: |
+          cd web-usfm-parser
+          node_modules/mocha/bin/mocha.js --timeout=40000 --grep "Include|Exclude|wild|Compare" --invert
+
+
+
+

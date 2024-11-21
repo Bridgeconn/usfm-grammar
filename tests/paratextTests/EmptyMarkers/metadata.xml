@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>EmptyMarkers. From paratext MarkerCheck test suite. The marker check will find errors, but syntactically the data should pass. Paratext is doing some extra checking that won't be enforced in the grammar</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

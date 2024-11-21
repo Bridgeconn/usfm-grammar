@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>MissingRequiredAttributesReported. From paratext test suite
+        Should fail because required gloss attribute for \rb is missing</description>
+        <validated>fail</validated>
+</test-metadata>

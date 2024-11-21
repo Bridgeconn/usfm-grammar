@@ -1,0 +1,119 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "The list of verses follows this"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GEN 1:2"
+        },
+        "The item one of list"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": "GEN 1:3"
+        },
+        "The item two of list"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "4",
+          "sid": "GEN 1:4"
+        },
+        "The item three ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "5",
+          "sid": "GEN 1:5"
+        },
+        "and four of the list"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "lh",
+      "content": [
+        "The end of verse list ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "6",
+          "sid": "GEN 1:6"
+        },
+        "A verse out side of the list ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "7",
+          "sid": "GEN 1:7"
+        },
+        "The verse with a list within it"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li",
+      "content": [
+        "item one"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "li",
+      "content": [
+        "item two ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "8",
+          "sid": "GEN 1:8"
+        },
+        "The last verse"
+      ]
+    }
+  ]
+}

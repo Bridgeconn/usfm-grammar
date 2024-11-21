@@ -1,0 +1,102 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "11",
+          "sid": "GEN 1:11"
+        },
+        "Jesus stood before the Roman governor, who questioned him. ",
+        {
+          "type": "ms",
+          "marker": "qt-s",
+          "who": "Pilate"
+        },
+        "“Are you the king of the Jews?”",
+        {
+          "type": "ms",
+          "marker": "qt-e"
+        },
+        " he asked."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "ms",
+          "marker": "qt-s",
+          "who": "Jesus"
+        },
+        "“So you say,”",
+        {
+          "type": "ms",
+          "marker": "qt-e"
+        },
+        " answered Jesus. ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "12",
+          "sid": "GEN 1:12"
+        },
+        "But he said nothing in response to the accusations of the chief priests and elders."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "13",
+          "sid": "GEN 1:13"
+        },
+        "So Pilate said to him, ",
+        {
+          "type": "ms",
+          "marker": "qt-s",
+          "who": "Pilate"
+        },
+        "“Don't you hear all these things they accuse you of?”",
+        {
+          "type": "ms",
+          "marker": "qt-e"
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "14",
+          "sid": "GEN 1:14"
+        },
+        "But Jesus refused to answer a single word, with the result that the Governor was greatly surprised."
+      ]
+    }
+  ]
+}

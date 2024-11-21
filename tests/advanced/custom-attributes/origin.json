@@ -1,0 +1,87 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "the first verse ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GEN 1:2"
+        },
+        "the second verse ",
+        {
+          "type": "char",
+          "marker": "w",
+          "x-myattr": "metadata",
+          "content": [
+            "gracious"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q1",
+      "content": [
+        "“Someone is shouting in the desert,"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "‘Prepare a road for the Lord;"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "q2",
+      "content": [
+        "make a straight path for him to travel!’ ”"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "s",
+      "content": [
+        {
+          "type": "char",
+          "marker": "jmp",
+          "link-id": "article-john_the_baptist",
+          "content": []
+        },
+        "John the Baptist"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        "John is sometimes called..."
+      ]
+    }
+  ]
+}

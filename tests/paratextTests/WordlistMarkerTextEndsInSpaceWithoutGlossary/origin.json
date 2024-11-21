@@ -1,0 +1,68 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GLO",
+      "content": []
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GLO 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GLO 1:1"
+        },
+        "something"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "keyword",
+          "content": [
+            "word "
+          ]
+        },
+        " definition ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": "GLO 1:2"
+        },
+        "something"
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "char",
+          "marker": "w",
+          "lemma": "keyword",
+          "content": [
+            "word "
+          ]
+        },
+        " definition"
+      ]
+    }
+  ]
+}

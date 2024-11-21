@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>WordlistMarkerMissingFromGlossaryCitationForms. From paratext test suite
+        Paratext does more than syntax checking for the glossary. This is valid syntactically</description>
+        <validated>pass</validated>
+</test-metadata>

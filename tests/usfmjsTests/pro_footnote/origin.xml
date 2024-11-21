@@ -1,0 +1,21 @@
+<usx version="3.0">
+  <book code="PRO" style="id">Unlocked Literal Bible</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Proverbs</para>
+  <para style="toc1">The Book of Proverbs</para>
+  <para style="toc2">Proverbs</para>
+  <para style="toc3">Pro</para>
+  <para style="mt">Proverbs</para>
+  <chapter number="30" style="c" sid="PRO 30" />
+  <para style="s5" />
+  <para style="p">
+    <verse number="1" style="v" sid="PRO 30:1" />The words of Agur son of Jakeh—the utterance:</para>
+  <para style="q" vid="PRO 30:1">This man declared to Ithiel, to Ithiel and Ucal: <note caller="+" style="f"><char style="ft" closed="false">Some versions have </char><char style="fqa">This man declared, "I am weary, O God, I am weary. I am unable to do anything." </char> </note><verse eid="PRO 30:1" /></para>
+  <para style="q">
+    <verse number="2" style="v" sid="PRO 30:2" />Surely I am more like an animal than any human</para>
+  <para style="q" vid="PRO 30:2">and I do not have the understanding of a human being.<verse eid="PRO 30:2" /></para>
+  <para style="q">
+    <verse number="3" style="v" sid="PRO 30:3" />I have not learned wisdom,</para>
+  <para style="q" vid="PRO 30:3">nor do I have knowledge of the Holy One.<verse eid="PRO 30:3" /></para>
+  <chapter eid="PRO 30" />
+</usx>

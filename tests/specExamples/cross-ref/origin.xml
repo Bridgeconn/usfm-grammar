@@ -1,0 +1,27 @@
+<usx version="3.0">
+  <book code="MAT" style="id">41MATGNT92.SFM, Good News Translation, June 2003</book>
+  <chapter number="6" style="c" sid="MAT 6" />
+  <para style="p">
+    <verse number="18" style="v" sid="MAT 6:18" />“Why do you call me good?” Jesus asked him. “No one is good except God alone. <verse eid="MAT 6:18" /><verse number="19" style="v" sid="MAT 6:19" /><note caller="-" style="x"><char style="xo" closed="false">10.19: a </char><char style="xt" closed="false">Exo 20.13; Deu 5.17; </char><char style="xo" closed="false">b </char><char style="xt" closed="false">Exo 20.14; Deu 5.18; </char><char style="xo" closed="false">c </char><char style="xt" closed="false">Exo 20.15; Deu 5.19; </char><char style="xo" closed="false">d </char><char style="xt" closed="false">Exo 20.16; Deu 5.20; </char><char style="xo" closed="false">e </char><char style="xt" closed="false">Exo 20.12; Deu 5.16.</char></note> You know the commandments: ‘Do not commit murder...<verse eid="MAT 6:19" /></para>
+  <chapter eid="MAT 6" />
+  <chapter number="2" style="c" sid="MAT 2" />
+  <para style="cd">
+    <char style="xt" href="GEN 2:1">1</char> Бог благословляет седьмой день; <char style="xt" closed="false" href="GEN 2:8">8</char> человек в раю Едемском; четыре реки; дерево познания добра и зла. <char style="xt" closed="false" href="GEN 2:18">18</char> Человек дает названия животным. <char style="xt" href="GEN 2:21">21</char> Создание женщины.</para>
+  <para style="p">
+    <verse number="1" style="v" sid="MAT 2:1" />Так совершены небо и земля и все воинство их.<verse eid="MAT 2:1" /></para>
+  <chapter eid="MAT 2" />
+  <chapter number="3" style="c" sid="MAT 3" />
+  <para style="s1">The Preaching of John the Baptist<note caller="-" style="x"><char style="xo" closed="false">3.0 </char><char style="xta" closed="false">Compare with </char><char style="xt" closed="false">Mk 1.1-8; Lk 3.1-18; </char><char style="xta" closed="false">and </char><char style="xt" closed="false">Jn 1.19-28 </char><char style="xta" closed="false">parallel passages.</char></note></para>
+  <para style="p">
+    <verse number="1" style="v" sid="MAT 3:1" />At that time John the Baptist came to... <verse eid="MAT 3:1" /><verse number="2" style="v" sid="MAT 3:2" /><note caller="-" style="x"><char style="xo" closed="false">1:1 </char><char style="xop">Гл 1. (1)</char> <char style="xt" closed="false">4 Царств. 14:25.</char></note>И биде слово Господне към Иона, син Аматиев: <verse eid="MAT 3:2" /><verse number="3" style="v" sid="MAT 3:3" />Our God is in heaven;</para>
+  <para style="q2" vid="MAT 3:3">he does whatever he wishes.<verse eid="MAT 3:3" /></para>
+  <para style="q1">
+    <verse number="4" style="v" sid="MAT 3:4" />
+    <note caller="-" style="x">
+      <char style="xo" closed="false">115.4-8: </char>
+      <char style="xt" closed="false">Ps 135.15-18; </char>
+      <char style="xdc" closed="false">Ltj Jr 4-73; </char>
+      <char style="xt" closed="false">Rev 9.20.</char>
+    </note> Their gods are made of silver and gold,<verse eid="MAT 3:4" /></para>
+  <chapter eid="MAT 3" />
+</usx>

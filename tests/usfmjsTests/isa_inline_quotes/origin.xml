@@ -1,0 +1,29 @@
+<usx version="3.0">
+  <book code="ISA" style="id">Unlocked Literal Bible</book>
+  <para style="ide">UTF-8</para>
+  <para style="h">Isaiah</para>
+  <para style="toc1">The Book of Isaiah</para>
+  <para style="toc2">Isaiah</para>
+  <para style="toc3">Isa</para>
+  <para style="mt">Isaiah</para>
+  <chapter number="6" style="c" sid="ISA 6" />
+  <para style="s5" />
+  <para style="p">
+    <verse number="19" style="v" sid="ISA 6:19" />Yahweh attacked some of the men of Beth Shemesh because they had looked into the ark of Yahweh. He killed 50,070 men. The people mourned, because Yahweh had given the people a great blow. <note caller="+" style="f"><char style="ft" closed="false">Instead of </char><char style="fqa">50,070 men </char><char style="ft"> , some later copies and modern versions have, </char><char style="fqa">seventy men. </char> </note><verse eid="ISA 6:19" /></para>
+  <chapter eid="ISA 6" />
+  <chapter number="15" style="c" sid="ISA 15" />
+  <para style="s5" />
+  <para style="p">
+    <verse number="16" style="v" sid="ISA 15:16" />Then Menahem attacked Tiphsah and all who were there, and the borders around Tirzah, because they did not open up the city to him. So he attacked it, and he ripped open all the pregnant women in that village. <note caller="+" style="f"><char style="ft" closed="false">Instead of </char><char style="fqa">Tiphsah </char><char style="ft"> , one ancient version and some modern versions read, </char><char style="fqa" closed="false">Tappuah. </char></note> <verse eid="ISA 15:16" /><verse number="19-21" style="v" sid="ISA 15:19-21" />Shimei had these sons: Jakim, Zikri, Zabdi, Elienai, Zillethai, Eliel, Adaiah, Beraiah, and Shimrath.<verse eid="ISA 15:19-21" /></para>
+  <chapter eid="ISA 15" />
+  <chapter number="60" style="c" sid="ISA 60" />
+  <para style="s5" />
+  <para style="q1">
+    <verse number="6" style="v" sid="ISA 60:6" />Camel caravans will cover you, the dromedaries of Midian and Ephah;</para>
+  <para style="q1" vid="ISA 60:6">all of them will come from Sheba;</para>
+  <para style="q1" vid="ISA 60:6">they will bring gold and frankincense, and will sing the praises of Yahweh.<verse eid="ISA 60:6" /></para>
+  <para style="q1">
+    <verse number="7" style="v" sid="ISA 60:7" />All the flocks of Kedar will be gathered together to you, the rams of Nebaioth will serve your needs;</para>
+  <para style="q1" vid="ISA 60:7">they will be acceptable offerings on my altar; and I will glorify my glorious house.<verse eid="ISA 60:7" /></para>
+  <chapter eid="ISA 60" />
+</usx>

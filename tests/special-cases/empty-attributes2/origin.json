@@ -1,0 +1,46 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "GEN",
+      "content": []
+    },
+    {
+      "type": "para",
+      "marker": "mt1",
+      "content": [
+        "ഉല്പത്തി പുസ്തകം"
+      ]
+    },
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": "GEN 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": "GEN 1:1"
+        },
+        "ആദിയിൽ ദൈവം ",
+        {
+          "type": "char",
+          "marker": "w",
+          "content": [
+            "ആകാശവും |lemma=ആകാശം strong=\"l\" x-morph=\"He,R:Sp1cs\""
+          ]
+        },
+        " ഭൂമിയും സൃഷ്ടിച്ചു."
+      ]
+    }
+  ]
+}

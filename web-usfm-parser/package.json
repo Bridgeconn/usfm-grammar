@@ -1,0 +1,54 @@
+{
+  "name": "usfm-grammar-web",
+  "version": "3.0.0-beta.16",
+  "description": "Uses the tree-sitter-usfm3 parser to convert USFM files to other formats such as USJ, USX, and CS, and converts them back to USFM.",
+  "type": "module",
+  "module": "dist/bundle.mjs",
+  "alias": {
+    "fs": false,
+    "process": false,
+    "path": false
+  },
+  "source": "src/index.js",
+  "scripts": {
+    "build": "parcel build src/index.js",
+    "test": "mocha --parallel --timeout 40000"
+  },
+  "files": [
+    "dist/",
+    "tree-sitter-usfm.wasm",
+    "tree-sitter.wasm"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bridgeconn/usfm-grammar"
+  },
+  "keywords": [
+    "USFM",
+    "tree-sitter",
+    "USJ",
+    "Parser"
+  ],
+  "author": "BCS Team",
+  "contributors": [
+    "Kavitha Raju <kavitha.raju@bridgeconn.com> (https://github.com/kavitharaju)",
+    "Joel Mathew <joel@bridgeconn.com> (https://github.com/joelthe1)",
+    "Samuel JD <samuelj.ernest@gmail.com> (https://github.com/samueljd)"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "glob": "^11.0.0",
+    "mocha": "^10.7.3",
+    "parcel": "latest",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "web-tree-sitter": "^0.22.6",
+    "xml2js": "^0.6.2"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "xmldom": "^0.6.0",
+    "xpath": "^0.0.34"
+  }
+}

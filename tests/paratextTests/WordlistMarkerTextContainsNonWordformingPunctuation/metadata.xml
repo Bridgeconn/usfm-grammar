@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>WordlistMarkerTextContainsNonWordformingPunctuation. From paratext test suite. Grammar won't check the text, so this is fine that it passes.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

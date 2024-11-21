@@ -1,0 +1,8 @@
+<usx version="3.0">
+  <book code="GEN" style="id" />
+  <chapter number="1" style="c" sid="GEN 1" />
+  <para style="p">
+    <verse number="27" style="v" sid="GEN 1:27" />
+    <char style="w" lemma="ὁ" strong="G35880" x-morph="Gr,RD,,,,NNS,">τὸ</char> <char style="w" lemma="δέ" strong="G11610" x-morph="Gr,CC,,,,,,,,">δὲ</char>, “<char style="w" lemma="ἔτι" strong="G20890" x-morph="Gr,D,,,,,,,,,">ἔτι</char> <char style="w" lemma="ἅπαξ" strong="G05300" x-morph="Gr,D,,,,,,,,,">ἅπαξ</char>”, <char style="w" lemma="δηλόω" strong="G12130" x-morph="Gr,V,IPA3,,S,">δηλοῖ</char> <char style="w" lemma="ὁ" strong="G35880" x-morph="Gr,RD,,,,GNP,">τῶν</char> <char style="w" lemma="σαλεύω" strong="G45310" x-morph="Gr,V,PPP,GNP,">σαλευομένων</char> <char style="w" lemma="μετάθεσις" strong="G33310" x-morph="Gr,N,,,,,AFS,">μετάθεσιν</char>, <char style="w" lemma="ὡς" strong="G56130" x-morph="Gr,CS,,,,,,,," x-tw="rc://*/tw/dict/bible/other/like">ὡς</char> <char style="w" lemma="ποιέω" strong="G41600" x-morph="Gr,V,PEP,GNP,">πεποιημένων</char>, <char style="w" lemma="ἵνα" strong="G24430" x-morph="Gr,CS,,,,,,,,">ἵνα</char> <char style="w" lemma="μένω" strong="G33060" x-morph="Gr,V,SAA3,,S,">μείνῃ</char> <char style="w" lemma="ὁ" strong="G35880" x-morph="Gr,RD,,,,NNP,">τὰ</char> <char style="w" lemma="μή" strong="G33610" x-morph="Gr,D,,,,,,,,,">μὴ</char> <char style="w" lemma="σαλεύω" strong="G45310" x-morph="Gr,V,PPP,NNP,">σαλευόμενα</char>.<verse eid="GEN 1:27" /></para>
+  <chapter eid="GEN 1" />
+</usx>

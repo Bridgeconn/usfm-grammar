@@ -1,0 +1,45 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "chapter",
+      "marker": "c",
+      "number": "1",
+      "sid": " 1"
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": ""
+        },
+        "ക്രിസ്തുയേശുവിന്റെ ബദ്ധനായ ... ",
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "2",
+          "sid": ""
+        },
+        "നമ്മുടെ പിതാവായ ..."
+      ]
+    },
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "3",
+          "sid": ""
+        },
+        "കർത്താവായ യേശുവിനോടും ..."
+      ]
+    }
+  ]
+}

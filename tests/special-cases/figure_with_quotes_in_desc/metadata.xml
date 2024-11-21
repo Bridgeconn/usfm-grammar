@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>figure with quotes in description
+		
+		Added backslash to handle quotes, but XML doesn't match - is backslash valid in attribute?
+		</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

@@ -1,0 +1,19 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "para",
+      "marker": "p",
+      "content": [
+        {
+          "type": "verse",
+          "marker": "v",
+          "number": "1",
+          "sid": ""
+        },
+        "stuff"
+      ]
+    }
+  ]
+}

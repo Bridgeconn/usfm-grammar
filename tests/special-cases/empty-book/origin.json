@@ -1,0 +1,12 @@
+{
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "marker": "id",
+      "code": "SNG",
+      "content": []
+    }
+  ]
+}
