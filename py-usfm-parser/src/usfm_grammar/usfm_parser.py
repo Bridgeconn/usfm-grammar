@@ -233,7 +233,7 @@ class USFMParser():
 
 
         usx_root = etree.Element("usx")
-        usx_root.set("version", "3.0")
+        usx_root.set("version", "3.1")
         try:
             usx_generator = USXGenerator(USFM_LANGUAGE, self.usfm_bytes, usx_root)
             usx_generator.node_2_usx(self.syntax_tree, usx_root)

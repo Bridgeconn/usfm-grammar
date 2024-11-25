@@ -30,7 +30,7 @@ bumpversion --new-version 3.0.0-alpha.28 num
 The github action is configured to automatically build and publish to PyPI and NPM upon a github code release. Make sure to use same version number in the python module bump command, and github release.
 
 ## Run tests
-To check Syntax trees in Grammar module
+### To check Syntax trees in Grammar module
 ```bash
 cd tree-sitter-usfm3
 export PATH=$PATH:./node_modules/.bin
@@ -38,7 +38,29 @@ tree-sitter generate
 tree-sitter test
 ```
 
-In python module alone
+Ensure the other modules have this newer grammar.
+
+Python:
+```bash
+cd py-usfm-parser
+pip install ../tree-sitter-usfm3/
+```
+
+Node:
+```bash
+cd node-usfm-parser
+npm install ../tree-sitter-usfm3/ --no-save
+```
+
+Web:
+```bash
+cd tree-sitter-usfm3
+tree-sitter build --wasm
+cp tree-sitter-usfm3.wasm ../web-usfm-parser/tree-sitter-usfm.wasm
+```
+
+
+### In python module alone
 
 ```bash
 cd py-usfm-parser
@@ -49,7 +71,7 @@ pytest -k "not compare_usx_with_testsuite_samples and not testsuite_usx_with_rnc
 
 ```
 
-In node module:
+### In node module:
 
 ```bash
 cd node-usfm-parser
@@ -60,7 +82,7 @@ node_modules/mocha/bin/mocha.js --timeout 40000 --grep "Compare" --bail
 node_modules/mocha/bin/mocha.js --timeout 40000 test/basic.js
 ```
 
-In web module:
+### In web module:
 
 ```bash
 cd web-usfm-parser

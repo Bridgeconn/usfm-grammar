@@ -178,6 +178,15 @@ class Validator {
                 modifiedUSFM = modifiedUSFM.replace(toReplace, `${toReplace}\\p\n`);
                 changed = true;
             }
+            else if (error.isError && !errorText.startsWith("\\") && error.previousSibling.type === "chapter" &&
+                !error.children.some(ch => ch.type === "paragraph")) {
+                // console.log("Match 7.1");
+                const start = error.previousSibling.startIndex;
+                const end = error.startIndex;
+                const toReplace = modifiedUSFM.slice(start, end);
+                modifiedUSFM = modifiedUSFM.replace(toReplace, `${toReplace}\\p\n`);
+                changed = true;
+            }
             // Stray slash not with a valid marker
             else if (errorText.startsWith("\\") && !validMarkersPattern.test(errorText)) {
                 // console.log("Match 8");
