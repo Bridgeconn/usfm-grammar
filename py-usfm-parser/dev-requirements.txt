@@ -1,5 +1,5 @@
 tree-sitter==0.22.3
-jupyterlab==3.4.4
+jupyterlab==3.6.8
 rnc2rng==2.6.6
 lxml==5.2.2
 pylint==2.15.3
