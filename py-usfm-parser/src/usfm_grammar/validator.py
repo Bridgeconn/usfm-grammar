@@ -158,6 +158,18 @@ class Validator:
                 # self.modified_usfm = re.sub(to_replace, repalcement, self.modified_usfm)
                 self.modified_usfm = self.modified_usfm.replace(to_replace, repalcement)
                 changed = True
+            elif error.is_error and \
+               (not error_text.startswith("\\")) and \
+               error.prev_sibling.type == "chapter" and \
+               "paragraph" not in [ch.type for ch in error.children]:
+                # print("match 7.1")
+                start = error.prev_sibling.start_byte
+                end = error.start_byte
+                to_replace = self.usfm_bytes[start:end].decode('utf-8')
+                repalcement = to_replace+"\\p\n"
+                # self.modified_usfm = re.sub(to_replace, repalcement, self.modified_usfm)
+                self.modified_usfm = self.modified_usfm.replace(to_replace, repalcement)
+                changed = True
             # Stray slash not with a valid marker
             elif error_text.startswith("\\") and \
                  (not re.match(valid_markers_pattern, error_text)):
