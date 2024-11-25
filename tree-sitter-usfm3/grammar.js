@@ -228,7 +228,11 @@ module.exports = grammar({
     r: $ => seq("\\r ", $.text), // ocurs under c too
 
     sp: $ => seq("\\sp ", $.text),
-    d: $ => seq("\\d ", $.text),
+    d: $ => prec.right(0, seq("\\d ", repeat1(choice($.text,
+      $.footnote, $.crossref,
+      $._characterMarker,
+      $.fig,
+      )))),
     sdBlock: $ => prec.right(0, repeat1($.sd)),
     sd: $ => seq($.sdTag),
     sdTag: $ => seq("\\sd", optional($.numberedLevelMax4), $._spaceOrLine),
