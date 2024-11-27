@@ -220,7 +220,7 @@ class USFMParser():
         return list_generator.list
 
     def to_bible_nlp_format(self, ignore_errors=False):
-        '''uses the toUSJ function with BCV and TEXT filters, 
+        '''uses the toUSJ function with BCV and TEXT filters,
         and converts the JSON to lists of texts and vrefs.'''
         if not ignore_errors and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])

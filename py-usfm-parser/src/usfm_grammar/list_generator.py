@@ -57,14 +57,14 @@ class ListGenerator:
         elif obj['type'] == "verse":
             self.usj_to_list_v(obj)
         marker_type = obj['type']
-        marker_name = obj['marker'] if "marker" in obj else ''
         if marker_type == "USJ":
             # This would occur if the JSON got flatttened after removing paragraph markers
             marker_type = ""
         if marker_type != "book" and 'content' in obj:
             for item in obj['content']:
                 if isinstance(item, str):
-                    if self.current_chapter == self.prev_chapter and self.current_verse==self.prev_verse:
+                    if self.current_chapter == self.prev_chapter and \
+                        self.current_verse==self.prev_verse:
                         self.bible_nlp_format["text"][-1] += " "+item.replace("\n", " ").strip()
                     else:
                         vref = f"{self.book} {self.current_chapter}:{self.current_verse}"
@@ -74,4 +74,3 @@ class ListGenerator:
                         self.prev_verse = self.current_verse
                 else:
                     self.usj_to_bible_nlp_format(item)
-
