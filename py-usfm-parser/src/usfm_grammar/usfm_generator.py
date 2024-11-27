@@ -2,7 +2,7 @@
 
 NO_USFM_USJ_TYPES = ['USJ', 'table']
 NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell']
-CLOSING_USJ_TYPES = ['char', 'note', 'figure']
+CLOSING_USJ_TYPES = ['char', 'note', 'figure', 'ref']
 NON_ATTRIB_USJ_KEYS = ['type', 'marker', 'content', 'number', 'sid',
                         'code', 'caller', 'align',
                         'version', 'altnumber', 'pubnumber', 'category']
@@ -27,6 +27,8 @@ class USFMGenerator:
         '''Traverses through the dict/json and uses 'type' field to form USFM elements'''
         if not isinstance(usj_obj, dict) or "type" not in usj_obj:
             raise Exception("Unable to do the conversion. Ensure USJ is valid!")
+        if usj_obj['type'] == "ref":
+            usj_obj['marker'] = "ref"
         if usj_obj['type'] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if nested and usj_obj['type'] == 'char' and\
