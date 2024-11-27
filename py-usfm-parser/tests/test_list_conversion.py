@@ -1,9 +1,10 @@
 '''Test the to_dict or json conversion API'''
+import json, os
 import pytest
 import re
 
 from tests import all_usfm_files, initialise_parser, negative_tests
-from src.usfm_grammar import Filter
+from src.usfm_grammar import Filter, USFMParser
 
 test_files = all_usfm_files.copy()
 for file in negative_tests:
@@ -45,4 +46,31 @@ def test_list_converions_with_include_markers(file_path, include_markers):
         marker = row[5]
         marker = re.sub(trailing_num_pattern, "", marker)
         assert marker in include_markers
-            
+
+@pytest.mark.parametrize('file_path', test_files)
+@pytest.mark.timeout(30)
+def test_usfm_to_bible_nlp_conversion(file_path):
+    '''Tests if input parses without errors'''
+    test_parser = initialise_parser(file_path)
+    assert not test_parser.errors, test_parser.errors
+    bible_nlp_dict = test_parser.to_bible_nlp_format()
+    assert isinstance(bible_nlp_dict, dict)
+    assert "text" in bible_nlp_dict
+    assert "vref" in bible_nlp_dict
+    assert len(bible_nlp_dict['text']) == len(bible_nlp_dict['vref'])
+
+@pytest.mark.parametrize('file_path', test_files)
+@pytest.mark.timeout(30)
+def test_usj_to_bible_nlp_conversion(file_path):
+    '''Tests if input parses without errors'''
+    usj_path = file_path.replace("usfm", "json")
+    if os.path.isfile(usj_path) and "special-cases/empty-attributes/origin.json" not in usj_path:
+        with open(usj_path, 'r', encoding='utf-8') as usj_fp:
+            usj = json.load(usj_fp)
+            test_parser = USFMParser(from_usj=usj)
+            assert not test_parser.errors, test_parser.errors
+            bible_nlp_dict = test_parser.to_bible_nlp_format()
+            assert isinstance(bible_nlp_dict, dict)
+            assert "text" in bible_nlp_dict
+            assert "vref" in bible_nlp_dict
+            assert len(bible_nlp_dict['text']) == len(bible_nlp_dict['vref'])
