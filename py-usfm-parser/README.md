@@ -86,6 +86,21 @@ print(table_output)
 
 ```
 
+##### To convert to Bible NLP format
+Bible NLP format consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references.
+
+```python
+dict_output = my_parser.to_bible_nlp_format() 
+#dict_output = my_parser.to_list(ignore_errors=True)
+
+with open("bible_nlp.txt", "w", encoding='utf-8') as out_file1:
+  out_file1.writelines(f"{verse}\n" for verse in dict_output['text'])
+
+with open("vref.txt", "w", encoding='utf-8') as out_file2:
+  out_file2.writelines(f"{ref}\n" for ref in dict_output['ref'])
+
+```
+
 ##### To round trip with USJ
 ```python
 from usfm_grammar import USFMParser, Filter
@@ -139,40 +154,34 @@ with open(test_xml_file, 'r', encoding='utf-8') as usx_file:
 ### From CLI
 
 ```
-usage: usfm-grammar [-h] [--in_format {usfm,usj,usx}]
-                    [--out_format {usj,table,syntax-tree,usx,markdown,usfm}]
-                    [--include_markers {book_headers,titles,...}]
-                    [--exclude_markers {book_headers,titles,...}]
-                    [--csv_col_sep CSV_COL_SEP] [--csv_row_sep CSV_ROW_SEP]
-                    [--ignore_errors] [--combine_text]
+usage: usfm-grammar [-h] [--in_format {usfm,usj,usx}] [--out_format {usj,table,syntax-tree,usx,markdown,usfm,bible-nlp}]
+                    [--include_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}]
+                    [--exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}]
+                    [--csv_col_sep CSV_COL_SEP] [--csv_row_sep CSV_ROW_SEP] [--ignore_errors] [--combine_text]
                     infile
 
-Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree,
-JSON, CSV, USX etc.
+Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree, JSON, CSV, USX etc.
 
 positional arguments:
   infile                input usfm or usj file
 
 options:
   -h, --help            show this help message and exit
-  --in_format {usfm,usj}
+  --in_format {usfm,usj,usx}
                         input file format
-  --out_format {usj,table,syntax-tree,usx,markdown,usfm}
+  --out_format {usj,table,syntax-tree,usx,markdown,usfm,bible-nlp}
                         output format
   --include_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}
                         the list of of contents to be included
   --exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}
                         the list of of contents to be included
   --csv_col_sep CSV_COL_SEP
-                        column separator or delimiter. Only useful with
-                        format=table.
+                        column separator or delimiter. Only useful with format=table.
   --csv_row_sep CSV_ROW_SEP
-                        row separator or delimiter. Only useful with
-                        format=table.
+                        row separator or delimiter. Only useful with format=table.
   --ignore_errors       to get some output from successfully parsed portions
-  --combine_text        to be used along with exclude_markers or
-                        include_markers, to concatinate the consecutive text
-                        snippets, from different components, or not
+  --combine_text        to be used along with exclude_markers or include_markers, to concatinate the consecutive text snippets, from different components, or not
+
 ```
 Example
 ```bash
@@ -185,6 +194,11 @@ Example
 >>> usfm-grammar sample.usfm --include_markers bcv --include_markers text --include_markers s
 
 >>> usfm-grammar sample-usj.json --out_format usfm
+```
+
+For the bible-nlp option, two files will be generated: `<name>_bible_nlp.txt` and `<name>_bible_nlp_vref.txt`. For all other `out_format` options, the output is displayed directly in the console (standard output). If needed, it can be redirected to a file using the following approach:
+```bash
+>>> usfm-grammar sample.usfm --out_format usx > converted_usx.xml
 ```
 
 ### Filtering on USJ
