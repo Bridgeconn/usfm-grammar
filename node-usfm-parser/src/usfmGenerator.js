@@ -8,6 +8,13 @@ class USFMGenerator {
   }
 
   usjToUsfm(usjObj, nested = false) {
+    if (usjObj.type === 'optbreak') {
+        if (this.usfmString !== '' && !['\n', '\r', ' ', '\t'].includes(this.usfmString.slice(-1))) {
+                this.usfmString += ' ';
+            }
+        this.usfmString += '// ';
+        return
+    }
     if (usjObj.type === "ref") {
         usjObj.marker = "ref";
     }
