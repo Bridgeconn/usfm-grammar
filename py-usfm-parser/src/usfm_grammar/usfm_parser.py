@@ -49,6 +49,7 @@ class Format(str, Enum):
     USX = "usx"
     MD = "markdown"
     USFM = "usfm"
+    BIBLENLP = "bible-nlp"
 
 USFM_LANGUAGE = Language(tsusfm.language())
 parser = Parser(USFM_LANGUAGE)
@@ -217,6 +218,36 @@ class USFMParser():
                 message += f"Could be due to an error in the USFM\n\t{err_str}"
             raise Exception(message)  from exe
         return list_generator.list
+
+    def to_bible_nlp_format(self, ignore_errors=False):
+        '''uses the toUSJ function with BCV and TEXT filters, 
+        and converts the JSON to lists of texts and vrefs.'''
+        if not ignore_errors and self.errors:
+            err_str = "\n\t".join([":".join(err) for err in self.errors])
+            raise Exception("Errors present:"+\
+                f'\n\t{err_str}'+\
+                "\nUse ignore_errors=True, to generate output inspite of errors")
+
+        json_root_obj = {
+                "type": "USJ",
+                "version": "3.1",
+                "content":[]
+            }
+        try:
+            usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
+            usj_generator.node_2_usj(self.syntax_tree, json_root_obj)
+            usj_dict = usj_generator.json_root_obj
+            usj_dict = include_markers_in_usj(usj_dict, Filter.BCV+Filter.TEXT, True)
+
+            list_generator = ListGenerator()
+            list_generator.usj_to_bible_nlp_format(usj_dict)
+        except Exception as exe:
+            message = "Unable to do the conversion. "
+            if self.errors:
+                err_str = "\n\t".join([":".join(err) for err in self.errors])
+                message += f"Could be due to an error in the USFM\n\t{err_str}"
+            raise Exception(message)  from exe
+        return list_generator.bible_nlp_format
 
     def to_markdown(self):
         '''query for chapter, paragraph, text structure'''
