@@ -61,7 +61,7 @@ describe("Test include Marker option in List conversion", () => {
                 const list = testParser.toList(null, inList);
                 assert(list instanceof Array);
 
-                const allTypes = list.slice(1).map(row => row[5]);
+                const allTypes = list.slice(1).map(row => row[5].replace(/\d+$/, ''));
                 assert( allTypes.every(element => inList.includes(element)), allTypes)
 
             });
