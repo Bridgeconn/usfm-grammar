@@ -140,8 +140,8 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     To inspect which are the markers in each of these options, it could be just printed out, `print(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
     ```javascript
     output = usfmParser.toUSJ(null, include_markers=Filter.BCV)
-    output = usfmParser.toUSJ(null, include_markers=Filter.BCV+Filter.TEXT)
-    output = usfmParser.toUSJ(exclude_markers=Filter.PARAGRAPHS+Filter.CHARACTERS)
+    output = usfmParser.toUSJ(null, include_markers=[...Filter.BCV, ...Filter.TEXT])
+    output = usfmParser.toUSJ(exclude_markers=[...Filter.PARAGRAPHS, ...Filter.CHARACTERS])
     ``` 
 - Inner contents of excluded markers
 
