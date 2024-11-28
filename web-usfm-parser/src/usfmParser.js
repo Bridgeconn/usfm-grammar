@@ -256,6 +256,32 @@ Only one of USFM, USJ or USX is supported in one object.`)
 
 	}
 
+	toBibleNlpFormat(ignoreErrors = false) {
+	    /* Uses the toUSJ function with only BVC and text.
+	       Then the JSOn is converted to list of verse texts and vrefs*/
+
+	    if (!ignoreErrors && this.errors.length > 0) {
+			let errorString = this.errors.join("\n\t");
+	        throw new Error(`Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`);
+	    }
+
+	    try {
+	        const usjDict = this.toUSJ(null, [...Filter.BCV, ...Filter.TEXT], ignoreErrors, true);
+	        const listGenerator = new ListGenerator();
+	        listGenerator.usjToBibleNlpFormat(usjDict);
+	    	return listGenerator.bibleNlpFormat;
+
+	    } catch (exe) {
+	        let message = "Unable to do the conversion. ";
+	        if (this.errors.length > 0) {
+				let errorString = this.errors.join("\n\t");
+	            message += `Could be due to an error in the USFM\n\t${errorString}`;
+	        }
+	        throw new Error(message, { cause: exe });
+	    }
+
+	}
+
 	toUSX(ignoreErrors = false) {
 	    /* Convert the syntax_tree to the XML format (USX) */
 

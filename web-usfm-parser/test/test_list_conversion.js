@@ -50,7 +50,7 @@ describe("Test Exclude Marker option in List conversion", () => {
 describe("Test include Marker option in List conversion", () => {
     // Test include Maker option by checking markers in the List
     const includeTests = [
-            ['id', 'c', 'v']+Filter.TEXT+Filter.PARAGRAPHS
+            ['id', 'c', 'v', ...Filter.TEXT, ...Filter.PARAGRAPHS]
             ]
     includeTests.forEach(function(inList) {
         allUsfmFiles.forEach(function(value) {
@@ -61,11 +61,52 @@ describe("Test include Marker option in List conversion", () => {
                 const list = testParser.toList(null, inList);
                 assert(list instanceof Array);
 
-                const allTypes = list.slice(1).map(row => row[5]);
+                const allTypes = list.slice(1).map(row => row[5].replace(/\d+$/, ''));
                 assert( allTypes.every(element => inList.includes(element)), allTypes)
 
             });
           }
         })
     })
+});
+
+describe("Test USFM to BibleNLP format conversion", () => {
+  allUsfmFiles.forEach(function(value) {
+    if (isValidUsfm[value]) {
+      it(`Convert ${value} to BibleNLP`, async (inputUsfmPath=value) => {
+        //Tests if input parses without errors
+        const testParser = await initialiseParser(inputUsfmPath)
+        assert(testParser instanceof USFMParser)
+        const json = testParser.toBibleNlpFormat();
+        assert("text" in json);
+        assert("vref" in json);
+        assert.strictEqual(json.text.length, json.vref.length);
+
+      });
+    }
+  });
+
+});
+
+describe("Test USJ to BibleNLP format conversion", () => {
+  allUsfmFiles.forEach(function(value) {
+    let filePath = value.replace(".usfm", ".json");
+    if (isValidUsfm[value] &&
+        fs.existsSync(filePath) && 
+        !filePath.endsWith("special-cases/empty-attributes/origin.json" )) {
+      it(`Convert ${filePath} to BibleNLP`, async (inputUsjPath=filePath) => {
+        //Tests if input parses without errors
+        const rawData = fs.readFileSync(filePath, 'utf8');
+        const usj = JSON.parse(rawData)
+        const testParser = new USFMParser(null, usj);
+        assert(testParser instanceof USFMParser)
+        const json = testParser.toBibleNlpFormat();
+        assert("text" in json);
+        assert("vref" in json);
+        assert.strictEqual(json.text.length, json.vref.length);
+
+      });
+    }
+  });
+
 });
