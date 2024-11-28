@@ -51,7 +51,7 @@ class USFMGenerator {
         if (typeof item === "string") {
           this.usfmString += item;
         } else {
-          this.usjToUsfm(item, usjObj.type === "char");
+          this.usjToUsfm(item, usjObj.type === "char"  && item.marker !== "fv");
         }
       });
     }
@@ -59,7 +59,9 @@ class USFMGenerator {
     let attributes = [];
     Object.keys(usjObj).forEach((key) => {
       if (!NON_ATTRIB_USJ_KEYS.includes(key)) {
-        attributes.push(`${key}="${usjObj[key]}"`);
+        let lhs = key;
+        if (key === "file") { lhs = "src" }
+        attributes.push(`${lhs}="${usjObj[key]}"`);
       }
     });
 
@@ -73,6 +75,18 @@ class USFMGenerator {
         this.usfmString += "+";
       }
       this.usfmString += `${usjObj.marker}* `;
+    }
+    if (usjObj.type === "ms") {
+        if ("sid" in usjObj) {
+            if (attributes.length == 0 ) {
+                this.usfmString += '|';
+            }
+            this.usfmString += `sid="${usjObj.sid}" `;
+        }
+        this.usfmString = this.usfmString.trim() + "\\*";
+    }
+    if (usjObj.type === "sidebar" ) {
+        this.usfmString += "\\esbe";
     }
     if (
       !NO_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
