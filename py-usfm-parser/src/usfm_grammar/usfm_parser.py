@@ -49,7 +49,7 @@ class Format(str, Enum):
     USX = "usx"
     MD = "markdown"
     USFM = "usfm"
-    BIBLENLP = "bible-nlp"
+    BIBLENLP = "biblenlp"
 
 USFM_LANGUAGE = Language(tsusfm.language())
 parser = Parser(USFM_LANGUAGE)
@@ -219,7 +219,7 @@ class USFMParser():
             raise Exception(message)  from exe
         return list_generator.list
 
-    def to_bible_nlp_format(self, ignore_errors=False):
+    def to_biblenlp_format(self, ignore_errors=False):
         '''uses the toUSJ function with BCV and TEXT filters,
         and converts the JSON to lists of texts and vrefs.'''
         if not ignore_errors and self.errors:
@@ -240,7 +240,7 @@ class USFMParser():
             usj_dict = include_markers_in_usj(usj_dict, Filter.BCV+Filter.TEXT, True)
 
             list_generator = ListGenerator()
-            list_generator.usj_to_bible_nlp_format(usj_dict)
+            list_generator.usj_to_biblenlp_format(usj_dict)
         except Exception as exe:
             message = "Unable to do the conversion. "
             if self.errors:

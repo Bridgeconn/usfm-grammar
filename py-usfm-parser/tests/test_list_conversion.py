@@ -49,11 +49,11 @@ def test_list_converions_with_include_markers(file_path, include_markers):
 
 @pytest.mark.parametrize('file_path', test_files)
 @pytest.mark.timeout(30)
-def test_usfm_to_bible_nlp_conversion(file_path):
+def test_usfm_to_biblenlp_conversion(file_path):
     '''Tests if input parses without errors'''
     test_parser = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
-    bible_nlp_dict = test_parser.to_bible_nlp_format()
+    bible_nlp_dict = test_parser.to_biblenlp_format()
     assert isinstance(bible_nlp_dict, dict)
     assert "text" in bible_nlp_dict
     assert "vref" in bible_nlp_dict
@@ -61,7 +61,7 @@ def test_usfm_to_bible_nlp_conversion(file_path):
 
 @pytest.mark.parametrize('file_path', test_files)
 @pytest.mark.timeout(30)
-def test_usj_to_bible_nlp_conversion(file_path):
+def test_usj_to_biblenlp_conversion(file_path):
     '''Tests if input parses without errors'''
     usj_path = file_path.replace("usfm", "json")
     if os.path.isfile(usj_path) and "special-cases/empty-attributes/origin.json" not in usj_path:
@@ -69,7 +69,7 @@ def test_usj_to_bible_nlp_conversion(file_path):
             usj = json.load(usj_fp)
             test_parser = USFMParser(from_usj=usj)
             assert not test_parser.errors, test_parser.errors
-            bible_nlp_dict = test_parser.to_bible_nlp_format()
+            bible_nlp_dict = test_parser.to_biblenlp_format()
             assert isinstance(bible_nlp_dict, dict)
             assert "text" in bible_nlp_dict
             assert "vref" in bible_nlp_dict

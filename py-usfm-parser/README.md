@@ -86,12 +86,12 @@ print(table_output)
 
 ```
 
-##### To convert to Bible NLP format
+##### To convert to BibleNLP format
 Bible NLP format consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references.
 
 ```python
-dict_output = my_parser.to_bible_nlp_format() 
-#dict_output = my_parser.to_list(ignore_errors=True)
+dict_output = my_parser.to_biblenlp_format() 
+#dict_output = my_parser.to_biblenlp_format(ignore_errors=True)
 
 with open("bible_nlp.txt", "w", encoding='utf-8') as out_file1:
   out_file1.writelines(f"{verse}\n" for verse in dict_output['text'])
@@ -196,7 +196,7 @@ Example
 >>> usfm-grammar sample-usj.json --out_format usfm
 ```
 
-For the bible-nlp option, two files will be generated: `<name>_bible_nlp.txt` and `<name>_bible_nlp_vref.txt`. For all other `out_format` options, the output is displayed directly in the console (standard output). If needed, it can be redirected to a file using the following approach:
+For the `biblenlp` option, two files will be generated: `<name>_biblenlp.txt` and `<name>_biblenlp_vref.txt`. For all other `out_format` options, the output is displayed directly in the console (standard output). If needed, it can be redirected to a file using the following approach:
 ```bash
 >>> usfm-grammar sample.usfm --out_format usx > converted_usx.xml
 ```

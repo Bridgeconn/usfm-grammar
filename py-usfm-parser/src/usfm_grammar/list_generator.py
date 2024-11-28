@@ -48,7 +48,7 @@ class ListGenerator:
                     self.usj_to_list(item)
 
 
-    def usj_to_bible_nlp_format(self, obj):
+    def usj_to_biblenlp_format(self, obj):
         '''Traverse the USJ dict and build a dict for bible nlp format, in self.bible_nlp_format'''
         if obj['type'] == "book":
             self.usj_to_list_id(obj)
@@ -73,4 +73,4 @@ class ListGenerator:
                         self.prev_chapter = self.current_chapter
                         self.prev_verse = self.current_verse
                 else:
-                    self.usj_to_bible_nlp_format(item)
+                    self.usj_to_biblenlp_format(item)
