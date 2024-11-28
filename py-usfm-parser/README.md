@@ -93,11 +93,11 @@ Bible NLP format consists of two `txt` files: the first, with verse texts, one p
 dict_output = my_parser.to_biblenlp_format() 
 #dict_output = my_parser.to_biblenlp_format(ignore_errors=True)
 
-with open("bible_nlp.txt", "w", encoding='utf-8') as out_file1:
+with open("bibleNLP.txt", "w", encoding='utf-8') as out_file1:
   out_file1.writelines(f"{verse}\n" for verse in dict_output['text'])
 
 with open("vref.txt", "w", encoding='utf-8') as out_file2:
-  out_file2.writelines(f"{ref}\n" for ref in dict_output['ref'])
+  out_file2.writelines(f"{ref}\n" for ref in dict_output['vref'])
 
 ```
 

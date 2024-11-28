@@ -61,6 +61,36 @@ const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
 ```
 
+### BibleNLP format
+Bible NLP format consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references. The API generates a JSON with two fields, `text` and `vref`, each containing an array of strings.
+
+```javascript
+
+const output = usfmParser.toBibleNlpFormat() 
+//const output = my_parser.toBibleNlpFormat(true) //ignore_errors
+
+const textLines = output.text.join('\n');
+fs.writeFileSync('bibleNLP.txt', textLines, { encoding: 'utf-8' });
+
+const refLines = output.vref.join('\n');
+fs.writeFileSync('vref.txt', refLines, { encoding: 'utf-8' });
+```
+
+### Table/List format
+
+```javascript
+const listOutput = usfmParser.toList();
+/* const listOutput = usfmParser.toList(
+                      Filter.NOTES,  //exclude
+                      ["id", "c", "v"] //include
+                      true,  //ignore errors
+                      true  //combine texts
+                      )*/
+const tableOutput = listOutput.map(row => row.join('\t')).join('\n');
+console.log(tableOutput);
+```
+
+
 ### Autofix and Validation
 Experimental Validation and Autofix feature for USFM:
 ```javascript
