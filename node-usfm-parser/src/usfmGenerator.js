@@ -1,6 +1,5 @@
 const { NO_USFM_USJ_TYPES, CLOSING_USJ_TYPES, NON_ATTRIB_USJ_KEYS, NO_NEWLINE_USJ_TYPES } = require("./utils/types");
 const { NON_ATTRIB_USX_KEYS, NO_NEWLINE_USX_TYPES } = require("./utils/types");
-const { DOMParser } = require('xmldom');
 
 class USFMGenerator {
   constructor() {
@@ -8,6 +7,13 @@ class USFMGenerator {
   }
 
   usjToUsfm(usjObj, nested = false) {
+    if (usjObj.type === 'optbreak') {
+        if (this.usfmString !== '' && !['\n', '\r', ' ', '\t'].includes(this.usfmString.slice(-1))) {
+                this.usfmString += ' ';
+            }
+        this.usfmString += '// ';
+        return
+    }
     if (usjObj.type === "ref") {
         usjObj.marker = "ref";
     }
@@ -53,7 +59,9 @@ class USFMGenerator {
     let attributes = [];
     Object.keys(usjObj).forEach((key) => {
       if (!NON_ATTRIB_USJ_KEYS.includes(key)) {
-        attributes.push(`${key}="${usjObj[key]}"`);
+        let lhs = key;
+        if (key === "file") { lhs = "src" }
+        attributes.push(`${lhs}="${usjObj[key]}"`);
       }
     });
 
@@ -67,6 +75,18 @@ class USFMGenerator {
         this.usfmString += "+";
       }
       this.usfmString += `${usjObj.marker}* `;
+    }
+    if (usjObj.type === "ms") {
+        if ("sid" in usjObj) {
+            if (attributes.length == 0 ) {
+                this.usfmString += '|';
+            }
+            this.usfmString += `sid="${usjObj.sid}" `;
+        }
+        this.usfmString = this.usfmString.trim() + "\\*";
+    }
+    if (usjObj.type === "sidebar" ) {
+        this.usfmString += "\\esbe";
     }
     if (
       !NO_NEWLINE_USJ_TYPES.includes(usjObj.type) &&

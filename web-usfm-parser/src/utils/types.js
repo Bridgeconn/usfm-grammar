@@ -1,6 +1,6 @@
 export const NO_USFM_USJ_TYPES = ["USJ", "table"];
 export const CLOSING_USJ_TYPES
-  = ["char", "note", "figure"];
+  = ["char", "note", "figure", "ref"];
 export const NON_ATTRIB_USJ_KEYS = [
   "type",
   "marker",

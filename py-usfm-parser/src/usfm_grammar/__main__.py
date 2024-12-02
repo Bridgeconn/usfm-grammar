@@ -105,33 +105,45 @@ def main(): #pylint: disable=too-many-locals
 
     output_format = arg_parser.parse_args().out_format
 
+    ignore_errors = arg_parser.parse_args().ignore_errors
+
     match output_format:
         case Format.JSON:
             dict_output = my_parser.to_usj(
                 exclude_markers=exclude_markers,
                 include_markers=include_markers,
-                ignore_errors=True)
+                ignore_errors=ignore_errors)
             print(json.dumps(dict_output, indent=4, ensure_ascii=False))
         case Format.CSV:
             table_output = my_parser.to_list(
                 exclude_markers=exclude_markers,
                 include_markers=include_markers,
-                ignore_errors=True)
+                ignore_errors=ignore_errors)
             outfile = sys.stdout
             writer = csv.writer(outfile,
                 delimiter=arg_parser.parse_args().csv_col_sep,
                 lineterminator=arg_parser.parse_args().csv_row_sep)
             writer.writerows(table_output)
         case Format.USX:
-            xmlstr = etree.tostring(my_parser.to_usx(ignore_errors=True),
+            xmlstr = etree.tostring(my_parser.to_usx(ignore_errors=ignore_errors),
                 encoding='unicode', pretty_print=True)
             print(xmlstr)
         case Format.MD:
             print(my_parser.to_markdown())
         case Format.ST:
-            print(my_parser.to_syntax_tree(ignore_errors=True))
+            print(my_parser.to_syntax_tree(ignore_errors=ignore_errors))
         case Format.USFM:
             print(my_parser.usfm)
+        case Format.BIBLENLP:
+            infile = arg_parser.parse_args().infile
+            outfile_name = "".join(infile.split(".")[:-1]) + "_biblenlp.txt"
+            outfile_name2 = outfile_name.replace("_biblenlp.txt", "_biblenlp_vref.txt")
+            bible_nlp_dict = my_parser.to_biblenlp_format(ignore_errors=ignore_errors)
+            with open(outfile_name, 'w', encoding='utf-8') as out1:
+                out1.writelines(f"{line}\n" for line in bible_nlp_dict['text'])
+            with open(outfile_name2, 'w', encoding="utf-8") as out2:
+                out2.writelines(f"{line}\n" for line in bible_nlp_dict['vref'])
+            print(f"Outputs written to {outfile_name} and {outfile_name2}.")
         case _:
             raise Exception(f"Un-recognized output format:{output_format}!")
 
