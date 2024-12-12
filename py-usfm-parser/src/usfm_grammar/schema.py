@@ -1,3 +1,5 @@
+'''JSON schema definition included within the package code'''
+
 usj_schema = {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "https://github.com/usfm-bible/tcdocs/blob/main/grammar/usj.js",
@@ -8,11 +10,12 @@ usj_schema = {
   	"markerObject": {
       "type": "object",
       "properties": {
-        "type": { 
-        	"description": "The kind/category of node or element this is, corresponding the USFM marker and USX node",
+        "type": {
+        	"description": "The kind/category of node or element this is,"+\
+          "corresponding the USFM marker and USX node",
         	"type": "string"
         },
-        "marker": { 
+        "marker": {
           "description": "The corresponding marker in USFM or style in USX",
           "type": "string"
         },

@@ -1,7 +1,6 @@
 '''Check the formats of USFM and USJ. Also tries to fixe common errors in USFM'''
 
 import re
-import json
 import jsonschema
 
 import tree_sitter_usfm3 as tsusfm
