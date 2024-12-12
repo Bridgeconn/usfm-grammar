@@ -8,18 +8,16 @@ import tree_sitter_usfm3 as tsusfm
 from tree_sitter import Language, Parser
 
 from usfm_grammar.usfm_parser import error_query
+from usfm_grammar.schema import usj_schema
 
 class Validator:
     '''Check validity of USJ and USFM. Also auto fix USFM'''
-    def __init__(self, tree_sitter_usfm=tsusfm, usj_schema_path='../schemas/usj.js'):
+    def __init__(self, tree_sitter_usfm=tsusfm):
         '''contrsuctor'''
         usfm_language = Language(tree_sitter_usfm.language())
         self.usfm_parser = Parser(usfm_language)
         self.usfm_errors = []
 
-        usj_schema = None
-        with open(usj_schema_path, 'r', encoding='utf-8') as json_file:
-            usj_schema = json.load(json_file)
         self.usj_validator = jsonschema.validators.Draft7Validator(schema=usj_schema)
 
         self.message = ""
