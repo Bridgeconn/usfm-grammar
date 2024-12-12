@@ -132,11 +132,13 @@ Bible NLP format consists of two `txt` files: the first, with verse texts, one p
 const output = usfmParser.toBibleNlpFormat() 
 //const output = my_parser.toBibleNlpFormat(true) //ignore_errors
 
-const textLines = output.text.join('\n');
-fs.writeFileSync('bibleNLP.txt', textLines, { encoding: 'utf-8' });
+output.text.forEach(txt => {
+  console.log(txt);
+});
 
-const refLines = output.vref.join('\n');
-fs.writeFileSync('vref.txt', refLines, { encoding: 'utf-8' });
+output.vref.forEach(ref => {
+  console.log(ref);
+});
 ```
 
 ### Table/List format
