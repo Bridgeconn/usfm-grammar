@@ -15,7 +15,7 @@ npm install usfm-grammar
 ### Importing, parsing USFM, checking errors
 
 ```javascript
-const {USFMParser} = require('usfm-grammar');
+const {USFMParser, Filter} = require('usfm-grammar');
 
 const USFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text'
 const usfmParser = new USFMParser(USFM);
@@ -65,6 +65,7 @@ console.log(usfmGen);
 Bible NLP format consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references. The API generates a JSON with two fields, `text` and `vref`, each containing an array of strings.
 
 ```javascript
+const fs = require('fs');
 
 const output = usfmParser.toBibleNlpFormat() 
 //const output = my_parser.toBibleNlpFormat(true) //ignore_errors
@@ -82,7 +83,7 @@ fs.writeFileSync('vref.txt', refLines, { encoding: 'utf-8' });
 const listOutput = usfmParser.toList();
 /* const listOutput = usfmParser.toList(
                       Filter.NOTES,  //exclude
-                      ["id", "c", "v"] //include
+                      ["id", "c", "v"], //include
                       true,  //ignore errors
                       true  //combine texts
                       )*/

@@ -115,7 +115,7 @@ print(my_parser2.usfm)
 
 ##### To remove unwanted markers from USFM
 ```python
-from usfm_grammar import USFMParser, Filter, USFMGenerator
+from usfm_grammar import USFMParser, Filter
 
 my_parser = USFMParser(input_usfm_str)
 usj_obj = my_parser.to_usj(include_markers=Filter.BCV+Filter.TEXT)
@@ -150,6 +150,22 @@ with open(test_xml_file, 'r', encoding='utf-8') as usx_file:
     # print(my_parser.to_usj())
     # print(my_parser.to_list())
 ```
+
+#### Experimental Validation and Autofix
+
+For USJ:
+```python
+from usfm_grammar import Validator
+
+wrong_USFM="\\id GEN\n\\c 1\n\\v 1 test verse"
+checker = Validator();
+resp = checker.is_valid_usfm(wrong_USFM); # true or false
+print(checker.message) # List of errors if present
+
+edited_USFM = checker.auto_fix_usfm(wrong_USFM);
+print(checker.message); # Report on autofix attempt 
+```
+
 
 ### From CLI
 
