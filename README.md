@@ -1,20 +1,19 @@
 # USFM Grammar
 
-An elegant [USFM](https://github.com/ubsicap/usfm) parser (or validator) that uses a Context Free Grammar to model USFM. The grammar is written using [tree sitter](https://github.com/tree-sitter/tree-sitter). **Supports USFM 3.x**. 
+An elegant [USFM](https://docs.usfm.bible) parser (or validator) that uses a Context Free Grammar to model USFM. The grammar is written using [tree sitter](https://tree-sitter.github.io/tree-sitter/). **Supports USFM 3.x** onward. 
 
-The parsed USFM is syntax tree, which is futher converted to intuitive and easy to manipulate file formats that allows for painless extraction of scripture and other content from the markup. USFM Grammar is also capable of reconverting the generated formats back to USFM.
+The USFM is parsed into a syntax tree, which may then be futher converted to more easy-to-manipulate file formats that allow for painless extraction of scriptural and other content from the markup. USFM Grammar is also capable of reconverting the generated formats back into USFM.
 
 ## Features
-- Parses scripture in USFM, USX(xml) and USJ(json) formats.
-- Converts scripture data to USJ, USX, USFM and CSV/TSV formats.
-- Available as [python](https://pypi.org/project/usfm-grammar/), [node](https://www.npmjs.com/package/usfm-grammar) and [web](https://www.npmjs.com/package/usfm-grammar-web) packages.
-- Command Line Interface (CLI) for the python package.
-- Filtering the content, by including or excluding selected markers.
+- Parses scripture in USFM, USX (as XML) and USJ (as JSON) formats. See [specification docs](https://docs.usfm.bible/usfm/latest/syntax.html) for more information.
+- And then can convert to any of USJ, USX, USFM, CSV/TSV or [BibleNLP](https://github.com/BibleNLP/ebible?tab=readme-ov-file#data-format) formats.
+- Bindings available for [Python](https://pypi.org/project/usfm-grammar/), [NodeJS](https://www.npmjs.com/package/usfm-grammar) and the [Web](https://www.npmjs.com/package/usfm-grammar-web).
+- Command Line Interface (CLI) via the Python package.
+- Ability to selectively include or exclude markers in the converted output.
 - USFM validation and error detection.
-- Experimental auto fix for errors in USFM.
+- Auto-fix errors in USFM (experimental).
 
-
-## Example
+## Example Input/Output
 
 ### Input USFM</th></tr><td>
 
@@ -33,7 +32,7 @@ The parsed USFM is syntax tree, which is futher converted to intuitive and easy 
 \q1 Be merciful, even when you are angry.
 ```
   
-### JSON Output(USJ)
+### JSON (USJ) Output
 
 ```
 {   "type": "USJ",
@@ -91,9 +90,9 @@ The parsed USFM is syntax tree, which is futher converted to intuitive and easy 
 
 ```
 
-The converted JSON structure adheres to the [USJ](https://docs.usfm.bible/usfm/3.1/index.html) JSON Schema defined [here](https://github.com/usfm-bible/tcdocs/blob/main/grammar/usj.js).
+The converted JSON structure adheres to the JSON Schema specification defined by the USFM/USX/USJ Committee [here](https://github.com/usfm-bible/tcdocs/blob/main/grammar/usj.js).
 
-### XML output(USX)
+### XML (USX) output
 
 ```
 <usx version="3.1">
