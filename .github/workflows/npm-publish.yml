@@ -45,7 +45,7 @@ jobs:
           npm install --save nan
           npm install --save-dev tree-sitter-cli
           ./node_modules/.bin/tree-sitter generate
-          npm publish . --tag beta
+          npm publish .
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
