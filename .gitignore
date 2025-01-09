@@ -72,7 +72,6 @@ typings/
 */bindings/
 tree-sitter-usfm3/src/
 */binding.gyp
-*/Cargo.toml
 */*.wasm
 
 */.ipynb_checkpoints/
