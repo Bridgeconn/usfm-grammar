@@ -11,7 +11,6 @@ Built with rustc 1.80.1 and cargo 1.84.0
 Installation
 
 
-
 Usage
 
 
@@ -24,7 +23,6 @@ edition = "2021"
 
 [build-dependencies]
 cc="*"
-
 
 [dependencies]
 tree-sitter-usfm3 = "3.0.0-alpha.1"
