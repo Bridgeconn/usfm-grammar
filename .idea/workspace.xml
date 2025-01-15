@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62e2f19f-b555-4703-b6c7-c589344d27d4" name="Changes" comment="readme" />
+    <list default="true" id="62e2f19f-b555-4703-b6c7-c589344d27d4" name="Changes" comment="rust init" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -42,6 +42,7 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/unix/Documents/internship/usfm-grammar",
     "settings.editor.selected.configurable": "preferences.pluginManager"
@@ -101,13 +102,61 @@
       <option name="project" value="LOCAL" />
       <updated>1736961854815</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="readme">
+      <option name="closed" value="true" />
+      <created>1736962664903</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1736962664903</updated>
+    </task>
+    <task id="LOCAL-00006" summary="rust init">
+      <option name="closed" value="true" />
+      <created>1736962681091</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1736962681091</updated>
+    </task>
+    <task id="LOCAL-00007" summary="rust init">
+      <option name="closed" value="true" />
+      <created>1736962960578</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1736962960578</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rust project folder init" />
     <MESSAGE value="read me" />
     <MESSAGE value="readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="readme" />
+    <MESSAGE value="rust init" />
+    <option name="LAST_COMMIT_MESSAGE" value="rust init" />
   </component>
 </project>
