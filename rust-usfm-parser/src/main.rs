@@ -1,11 +1,13 @@
 
 mod parser;
 mod validator;
+mod schema;
 
 use parser::USFMParser;
 use crate::validator::Validator;
 use std::fs::File;
 use std::io::{self, Read};
+use crate::schema::usj_schema;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
 
@@ -17,12 +19,47 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 
     let usj_sample = r#"{
-        "type": "USJ",
-        "version": "3.1",
-        "content": [
-            {"id": "GEN", "chapters": [{"number": 1, "verses": [{"number": 1, "text": "In the beginning, God created the heavens and the earth."}]}]}
-        ]
-    }"#;
+  "type": "USJ",
+  "version": "3.1",
+  "content": [
+    {
+      "type": "book",
+      "bookCode": "GEN",
+      "title": "Genesis",
+      "content": [
+        {
+          "type": "chapter",
+          "chapterNumber": 1,
+          "content": [
+            {
+              "type": "verse",
+              "verseNumber": 1,
+              "text": "In the beginning God created the heavens and the earth."
+            },
+            {
+              "type": "verse",
+              "verseNumber": 2,
+              "text": "Now the earth was formless and void, and darkness was over the surface of the deep, and the Spirit of God was hovering over the waters."
+            }
+          ]
+        },
+        {
+          "type": "chapter",
+          "chapterNumber": 2,
+          "content": [
+            {
+              "type": "verse",
+              "verseNumber": 1,
+              "text": "Thus the heavens and the earth were completed in all their vast array."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+"#;
 
     // Initialize the parser
     let mut parser = USFMParser::new()?;
@@ -31,19 +68,19 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Err(e) => eprintln!("Parsing Error: {}", e),
     }
 
-    // Initialize the validator with a sample schema
-    let schema = r#"{
-        "type": "object",
-        "properties": {
-            "type": {"const": "USJ"},
-            "version": {"type": "string"},
-            "content": {"type": "array"}
-        },
-        "required": ["type", "version", "content"]
-    }"#;
+    // // Initialize the validator with a sample schema
+    // let schema = r#"{
+    //     "type": "object",
+    //     "properties": {
+    //         "type": {"const": "USJ"},
+    //         "version": {"type": "string"},
+    //         "content": {"type": "array"}
+    //     },
+    //     "required": ["type", "version", "content"]
+    // }"#;
 
    
-    let mut validator = Validator::new(schema)?;
+    let mut validator = Validator::new(usj_schema)?;
     match validator.is_valid_usfm(&usfm_sample) {
             //remove the "&" from ^ usfm_sample
         Ok(valid) => println!("USFM is valid: {}", valid),

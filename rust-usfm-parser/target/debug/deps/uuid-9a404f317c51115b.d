@@ -1,0 +1,13 @@
+/home/kali/Desktop/project/originalUsfm/usfm-grammar/rust-usfm-parser/target/debug/deps/libuuid-9a404f317c51115b.rmeta: /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/lib.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/builder.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/error.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/non_nil.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/parser.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/fmt.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/timestamp.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/external.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/macros.rs
+
+/home/kali/Desktop/project/originalUsfm/usfm-grammar/rust-usfm-parser/target/debug/deps/uuid-9a404f317c51115b.d: /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/lib.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/builder.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/error.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/non_nil.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/parser.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/fmt.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/timestamp.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/external.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/macros.rs
+
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/lib.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/builder.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/error.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/non_nil.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/parser.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/fmt.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/timestamp.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/external.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/uuid-1.12.0/src/macros.rs:

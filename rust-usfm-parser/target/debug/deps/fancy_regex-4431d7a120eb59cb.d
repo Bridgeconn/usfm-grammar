@@ -1,0 +1,12 @@
+/home/kali/Desktop/project/originalUsfm/usfm-grammar/rust-usfm-parser/target/debug/deps/libfancy_regex-4431d7a120eb59cb.rmeta: /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/lib.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/analyze.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/compile.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/error.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/expand.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/parse.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/replacer.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/vm.rs
+
+/home/kali/Desktop/project/originalUsfm/usfm-grammar/rust-usfm-parser/target/debug/deps/fancy_regex-4431d7a120eb59cb.d: /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/lib.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/analyze.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/compile.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/error.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/expand.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/parse.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/replacer.rs /home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/vm.rs
+
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/lib.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/analyze.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/compile.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/error.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/expand.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/parse.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/replacer.rs:
+/home/kali/.cargo/registry/src/index.crates.io-6f17d22bba15001f/fancy-regex-0.10.0/src/vm.rs:
