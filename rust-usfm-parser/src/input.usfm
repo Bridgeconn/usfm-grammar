@@ -1,4 +1,9 @@
-\id GEN
+\id GEN some text
+
 \c 1
-\p hello 
-\v 1 In the beginning
+\p
+\v 1 one one
+\v 2 one two
+\c 2
+\p
+\v 1 two one

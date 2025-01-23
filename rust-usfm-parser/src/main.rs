@@ -10,7 +10,7 @@ use std::io::{self, Read};
 use crate::schema::usj_schema;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-
+  let mut parser = USFMParser::new()?;
 
     // Example USFM and USJ inputs
     let usfm_sample = read_usfm_file("input.usfm")?;
@@ -25,9 +25,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     {
       "type": "book",
       "bookCode": "GEN",
-      "title": "Genesis",
+      
       "content": [
-        {
+        {"title": "Genesis",
           "type": "chapter",
           "chapterNumber": 1,
           "content": [
@@ -61,13 +61,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
 "#;
 
-    // Initialize the parser
-    let mut parser = USFMParser::new()?;
-    match parser.parse_usfm(&usfm_sample) {
-        Ok(parse_tree) => println!("Parse Tree: {}", parse_tree),
-        Err(e) => eprintln!("Parsing Error: {}", e),
-    }
-
+  //   // Initialize the parser
+  //   let mut parser = USFMParser::new()?;
+  //   match parser.parse_usfm(&usfm_sample) {
+  //     Ok(parse_tree) => {
+  //         // Print the S-expression representation of the tree
+  //         println!("Parse Tree: {}", parse_tree.root_node().to_sexp());
+  //     },
+  //     Err(e) => eprintln!("Parsing Error: {}", e),
+  // }
+  
     // // Initialize the validator with a sample schema
     // let schema = r#"{
     //     "type": "object",
@@ -83,7 +86,15 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut validator = Validator::new(usj_schema)?;
     match validator.is_valid_usfm(&usfm_sample) {
             //remove the "&" from ^ usfm_sample
-        Ok(valid) => println!("USFM is valid: {}", valid),
+            Ok(valid) => {
+              if valid {
+                  // Only print parse tree if USFM is valid
+                  if let Ok(parse_tree) = parser.parse_usfm(&usfm_sample) {
+                      println!("Parse Tree: {}", parse_tree.root_node().to_sexp());
+                  }
+                  println!("USFM is valid: {}", valid);
+              }
+          },
         Err(e) => eprintln!("USFM Validation Error: {}", e),
     }
 
