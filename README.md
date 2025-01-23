@@ -13,6 +13,10 @@ The USFM is parsed into a syntax tree, which may then be futher converted to mor
 - USFM validation and error detection.
 - Auto-fix errors in USFM (experimental).
 
+## Try it out 
+
+Checkout the demo application at https://usfmgrammar.vachanengine.org/.
+
 ## Example Input/Output
 
 ### Input USFM</th></tr><td>
