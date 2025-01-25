@@ -94,7 +94,7 @@ class USJGenerator:
         for child in node.children:
             if child.type == "c":
                 self.node_2_usj_c(child,parent_json_obj)
-            else:
+
                 self.node_2_usj(child, parent_json_obj)
 
     def node_2_usj_verse(self, node, parent_json_obj):

@@ -1,22 +1,30 @@
 use std::collections::HashMap;
-use tree_sitter::Parser;
+use tree_sitter::{Parser, Query, QueryCursor};
 use tree_sitter_usfm3;
-use serde_json;
+use serde_json::{self, json};
 
 fn main() {
     // Sample USFM input
-    let usfm_input = r#"
-        \id BookName
-        \toc1 Title of the Book
-        \toc2 Subtitle of the Book
-        \toc3 Section Title
-      
+    let usfm_input = r#"\id hab 45HABGNT92.usfm, Good News Translation, June 2003
+\c 3
+ \s1 A Prayer of Habakkuk
+ \p
+ \v 1 This is a prayer of the prophet Habakkuk:
+ \b
+ \q1
+ \v 2 O \nd Lord\nd*, I have heard of what you have done,
+ \q2 and I am filled with awe.
+ \q1 Now do again in our times
+ \q2 the great deeds you used to do.
+ \q1 Be merciful, even when you are angry.
     "#;
+    println!("USFM Input: {}", usfm_input);
 
     // Convert USFM to JSON
     let json_output = usfm_to_json(usfm_input);
     
     // Print the JSON output
+    
     println!("content: {}", json_output);
 }
 
@@ -26,238 +34,225 @@ fn usfm_to_json(usfm: &str) -> String {
 
     let tree = parser.parse(usfm, None).expect("Failed to parse USFM");
     let root_node = tree.root_node();
-
-    let mut json_object: HashMap<String, Vec<String>> = HashMap::new();
-
-    // Traverse the tree and build the JSON object
-    traverse_node(&root_node, &mut json_object, usfm);
     
-    // Convert HashMap to JSON
-    serde_json::to_string(&json_object).unwrap_or_else(|e| {
+    // Change the type of json_object to HashMap<String, serde_json::Value>
+    let mut json_object: HashMap<String, serde_json::Value> = HashMap::new();
+    json_object.insert("type".to_string(), json!("USJ")); // Use json! macro for consistency
+    json_object.insert("version".to_string(), json!("3.1")); // Use json! macro for consistency
+    
+    let mut content = Vec::new();
+    
+    // Traverse the tree and build the JSON object
+    traverse_node(&root_node, &mut content, usfm,&parser); // Pass an empty string for chapter_number initially
+    
+    // Insert the content as a serde_json::Value
+    json_object.insert("content".to_string(), serde_json::to_value(content).unwrap());
+
+    // Convert HashMap to pretty-printed JSON
+    serde_json::to_string_pretty(&json_object).unwrap_or_else(|e| {
         eprintln!("Failed to convert to JSON: {}", e);
         String::new() // Return an empty string or handle the error as needed
     })
 }
 
-fn traverse_node(node: &tree_sitter::Node, json_object: &mut HashMap<String, Vec<String>>, usfm: &str) {
+fn traverse_node(node: &tree_sitter::Node, content: &mut Vec<serde_json::Value>, usfm: &str,parser: &Parser) {
     let node_type = node.kind();
     let node_text = node.utf8_text(usfm.as_bytes()).expect("Failed to get node text").to_string();
+    println!("Node Type: {}, Node Text: {}", node_type, node_text);
 
-    // Debugging output
-   // println!("Node type: {}, Node text: {}", node_type, node_text);
-    let mut markers: [&str; 4] = [
-        "File","tocBlock","toc","text",
-        ];
-        // Add more markers as needed
-   
-    // Handle markers explicitly
-    for marker in markers.iter()
-     {
-        let mut marker_with_slash = String::from(r#"\"#);
+    match node_type {
+        "File" => {
+            let query_source = r#"
+            (id
+                (bookcode) @book-code
+                (description)? @desc
+            )
+            "#;
+
+            let query = Query::new(parser.language().unwrap(), query_source).expect("Failed to create query");
+            let mut cursor = QueryCursor::new();
+            let captures = cursor.captures(&query, *node, usfm.as_bytes());
+
+            for (capture, _match) in captures {
+                let book_code = capture[0].node.utf8_text(usfm.as_bytes()).unwrap().to_string();
+                let desc = if capture.len() > 1 {
+                    Some(capture[1].node.utf8_text(usfm.as_bytes()).unwrap().to_string())
+                } else {
+                    None
+                };
+            return Some((book_code, desc));
+        }
+    
         
-        marker_with_slash.push_str(marker);
-     //println!("marker is {}",node_type);
-        if node_type.starts_with(marker) {
-            let key = node_text.trim_start_matches('\\').to_string();
-            json_object.insert(key.clone(), Vec::new());
-           // println!("json oblect : {:?}", json_object);
-        } else if node_type == "text" {
-            // Check if the last key exists and add text to it
-            if let Some(last_key) = json_object.keys().last().cloned() {
-                if let Some(entries) = json_object.get_mut(&last_key) {
-                    entries.push(node_text.clone());
-       //             println!("json oblect : {:?}", json_object);
+    
+
+    
+
+           // Extract book code and description
+           let id_captures: Vec<&str> = node_text.trim_start_matches('\\').split(',').collect();
+           let mut code = None;
+           let mut desc = None;
+
+           if let Some(book_code) = id_captures.get(0) {
+               code = Some(book_code.trim());
+           }
+           if id_captures.len() > 1 {
+               desc = Some(id_captures[1..].join(",").trim().to_string());
+           }
+
+           let mut book_json_obj = json!({
+               "type": "book",
+               "marker": "id",
+               "content": [],
+           });
+
+           if let Some(code) = code {
+               book_json_obj["code"] = json!(code);
+           }
+           if let Some(desc) = desc {
+               if !desc.is_empty() {
+                   book_json_obj["content"].as_array_mut().unwrap().push(json!(desc));
+               }
+           }
+
+           content.push(book_json_obj);
+        }
+        "id" => {
+            // Extract book code and description
+            let id_captures: Vec<&str> = node_text.trim_start_matches('\\').split(',').collect();
+            let mut code = None;
+            let mut desc = None;
+
+            if let Some(book_code) = id_captures.get(0) {
+                code = Some(book_code.trim());
+            }
+            if id_captures.len() > 1 {
+                desc = Some(id_captures[1..].join(",").trim().to_string());
+            }
+
+            let mut book_json_obj = json!({
+                "type": "book",
+                "marker": "id",
+                "content": [],
+            });
+
+            if let Some(code) = code {
+                book_json_obj["code"] = json!(code);
+            }
+            if let Some(desc) = desc {
+                if !desc.is_empty() {
+                    book_json_obj["content"].as_array_mut().unwrap().push(json!(desc));
                 }
             }
-        } else if node_type == "p" {
-            // Handle the 'p' marker as a special case
-            let key = "p".to_string();
-            json_object.insert(key.clone(), Vec::new());
-         //   println!("json oblect : {:?}", json_object);
-        } else if node_type == "ERROR" {
-            // Log the ERROR node but continue processing
-            eprintln!("Encountered ERROR node: {}", node_text);
-            return; // Skip processing this node
-           // println!("json oblect : {:?}", json_object);
+
+            content.push(book_json_obj);
         }
-    
-
-       // println!("Marker: {}", marker);
-    }
-    
-    // Create a TreeCursor to iterate through the children
-    let mut cursor = node.walk();
-    cursor.goto_first_child(); // Move to the first child
-
-    // Traverse all children
-    while cursor.goto_next_sibling() {
-        let child = cursor.node();
-        traverse_node(&child, json_object, usfm); // Pass a reference to child
-    }
-}
-
-
-
-
-
-/*use serde::Serialize;
-use serde_json::json;
-use std::collections::HashMap;
-
-#[derive(Serialize)]
-struct UsfmJson {
-    content: HashMap<String, String>,
-}
-
-fn usfm_to_json(usfm: &str) -> UsfmJson {
-    let mut content = HashMap::new();
-    let mut current_key = String::new();
-    let mut current_value = String::new();
-
-    for line in usfm.lines() {
-        let trimmed_line = line.trim();
-        if trimmed_line.is_empty() {
-            continue; // Skip empty lines
+        
+        "chapter" => {
+            let chapter_number = node_text.trim_start_matches('\\').to_string();
+            content.push(json!({
+                "type": "c",
+                "marker": "c",
+                "number": chapter_number,
+                "sid": format!("HAB {}", chapter_number),
+            }));
         }
+        "cl" | "cp" | "cd" | "vp" => {
+            let chapter_number = node_text.trim_start_matches('\\').to_string();
+            content.push(json!({
+                "type": "c",
+                "marker": "c",
+                "number": chapter_number,
+                "sid": format!("HAB {}", chapter_number),
+            }));
+        }
+        
+        "s1" => {
+            content.push(json!({
+                "type": "para",
+                "marker": "s1",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "p" => {
+            let mut para_content = Vec::new();
+            let mut cursor = node.walk();
+            cursor.goto_first_child(); // Move to the first child
 
-        if trimmed_line.starts_with("\\") {
-            // If we encounter a new marker, save the previous one
-            if !current_key.is_empty() {
-                content.insert(current_key.clone(), current_value.clone());
-                current_value.clear();
+            while cursor.goto_next_sibling() {
+                let child = cursor.node();
+                let child_type = child.kind();
+                let child_text = child.utf8_text(usfm.as_bytes()).unwrap_or_default();
+
+                if child_type == "v" {
+                    let verse_number = child_text.trim_start_matches('\\').to_string();
+                    para_content.push(json!({
+                        "type": "verse",
+                        "marker": "v",
+                        "number": verse_number,
+                        "sid": "sid",
+                        //format!("HAB {}:{}", chapter_number, verse_number),
+                    }));
+                } else if child_type == "text" {
+                    para_content.push(json!(child_text)); // Use json! macro to convert to JSON
+                } else if child_type == "b" {
+                    para_content.push(json!({
+                        "type": "para",
+                        "marker": "b",
+                    }));
+                } else if child_type == "nd" {
+                    para_content.push(json!({
+                        "type": "char",
+                        "marker": "nd",
+                        "content": [child_text.trim_start_matches('\\')],
+                    }));
+                }
             }
-            // Extract the marker
-            let marker: Vec<&str> = trimmed_line.split_whitespace().collect();
-            current_key = marker[0].to_string();
-            // If there's additional content, append it to the current value
-            if marker.len() > 1 {
-                current_value.push_str(&marker[1..].join(" "));
-            }
-        } else {
-            // Append line to the current value
-            if !current_value.is_empty() {
-                current_value.push(' '); // Add space before appending
-            }
-            current_value.push_str(trimmed_line);
+            content.push(json!({
+                "type": "para",
+                "marker": "p",
+                "content": para_content,
+            }));
         }
-    }
+        "q1" | "q2" => {
+            let mut q_content = Vec::new();
+            let mut cursor = node.walk();
+            cursor.goto_first_child(); // Move to the first child
 
-    // Insert the last key-value pair
-    if !current_key.is_empty() {
-        content.insert(current_key, current_value);
-    }
-
-    UsfmJson { content }
-}
-
-fn main() {
-    let usfm_input = r#"
-        \id GEN
-        \toc1 Genesis
-        \toc2 Genesis
-        \toc3 Genesis
-        \p
-        \v 1 In the beginning God created the heaven and the earth.
-        \v 2 And the earth was without form, and void; and darkness was upon the face of the deep.
-    "#;
-
-    let usfm_json = usfm_to_json(usfm_input);
-    let json_output = serde_json::to_string_pretty(&usfm_json).unwrap();
-    println!("{}", json_output);
-}
-
-
-use std::collections::HashMap;
-
-use tree_sitter::Parser;
-use tree_sitter_usfm3;
-
-fn main() {
-    // Sample USFM input
-    let usfm_input = r#"
-        \id BookName
-        \toc1 Title of the Book
-        \toc2 Subtitle of the Book
-        \toc3 Section Title
-        \p
-        This is a paragraph.
-        \p
-        This is another paragraph.
-    "#;
-
-    // Convert USFM to JSON
-    let json_output = usfm_to_json(usfm_input);
-    
-    // Print the JSON output
-    println!("content:{}", json_output);
-}
-
-fn usfm_to_json(usfm: &str) -> String {
-    let mut parser = Parser::new();
-    parser.set_language(&tree_sitter_usfm3::language()).expect("Error loading USFM language");
-
-    let tree = parser.parse(usfm, None).expect("Failed to parse USFM");
-    let root_node = tree.root_node();
-
-    let mut json_object: HashMap<String, Vec<String>> = HashMap::new();
-
-    // Traverse the tree and build the JSON object
-    traverse_node(&root_node, &mut json_object, usfm);
-
-    // Print the JSON object for debugging
-    println!("Final JSON object: {:?}", json_object);
-
-    // Convert HashMap to JSON
-    match serde_json::to_string(&json_object) {
-        Ok(json) => json,
-        Err(e) => {
-            eprintln!("Failed to convert to JSON: {}", e);
-            String::new() // Return an empty string or handle the error as needed
-        }
-    }
-}
-
-
-
-fn traverse_node(node: &tree_sitter::Node, json_object: &mut HashMap<String, Vec<String>>, usfm: &str) {
-    let node_type = node.kind();
-    let node_text = node.utf8_text(usfm.as_bytes()).unwrap_or("").to_string();
-
-    // Debugging output
-    println!("Node type: {}, Node text: {}", node_type, node_text);
-
-    // Handle markers explicitly
-    if node_type.starts_with("marker") {
-        let key = node_text.trim_start_matches('\\').to_string();
-        json_object.insert(key.clone(), Vec::new());
-        println!("Added marker: {}", key); // Debugging output
-    } else if node_type == "text" {
-        if let Some(last_key) = json_object.keys().last().cloned() {
-            if let Some(entries) = json_object.get_mut(&last_key) {
-                entries.push(node_text.clone()); // Clone the node_text before pushing
-                println!("Added text to {}: {}", last_key, node_text); // Debugging output
+            while cursor.goto_next_sibling() {
+                let child = cursor.node();
+                let child_text = child.utf8_text(usfm.as_bytes()).unwrap_or_default();
+                if child.kind() == "text" {
+                    q_content.push(json!(child_text));
+                } else if child.kind() == "v" {
+                    let verse_number = child_text.trim_start_matches('\\').to_string();
+                    q_content.push(json!({
+                        "type": "verse",
+                        "marker": "v",
+                        "number": verse_number,
+                        "sid": "sid", //format!("HAB {}:{}", chapter_number, verse_number),
+                    }));
+                }
             }
+            content.push(json!({
+                "type": "para",
+                "marker": node_type,
+                "content": q_content,
+            }));
         }
-    } else if node_type == "p" {
-        // Handle the 'p' marker as a special case
-        let key = "p".to_string();
-        json_object.insert(key.clone(), Vec::new());
-        println!("Added marker: {}", key); // Debugging output
-    } else if node_type == "ERROR" {
-        // Log the ERROR node but continue processing
-        println!("Encountered ERROR node: {}", node_text);
-        return; // Skip processing this node
+        _ => {}
     }
 
     // Create a TreeCursor to iterate through the children
     let mut cursor = node.walk();
     cursor.goto_first_child(); // Move to the first child
-
+    let child_count = node.named_child_count();
+    println!("Node has {} children", child_count);
     // Traverse all children
     while cursor.goto_next_sibling() {
         let child = cursor.node();
-        traverse_node(&child, json_object, usfm); // Pass a reference to child
+        traverse_node(&child, content, usfm); // Recursively process child nodes
     }
 }
 
-*/
+
