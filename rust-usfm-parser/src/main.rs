@@ -20,45 +20,23 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let usj_sample = r#"{
   "type": "USJ",
-  "version": "3.1",
+  "version": "1.0",
   "content": [
     {
       "type": "book",
-      "bookCode": "GEN",
-      
-      "content": [
-        {"title": "Genesis",
-          "type": "chapter",
-          "chapterNumber": 1,
-          "content": [
-            {
-              "type": "verse",
-              "verseNumber": 1,
-              "text": "In the beginning God created the heavens and the earth."
-            },
-            {
-              "type": "verse",
-              "verseNumber": 2,
-              "text": "Now the earth was formless and void, and darkness was over the surface of the deep, and the Spirit of God was hovering over the waters."
-            }
-          ]
-        },
-        {
-          "type": "chapter",
-          "chapterNumber": 2,
-          "content": [
-            {
-              "type": "verse",
-              "verseNumber": 1,
-              "text": "Thus the heavens and the earth were completed in all their vast array."
-            }
-          ]
-        }
-      ]
+      "marker": "id",
+      "code": "GEN",
+      "content": ["Genesis"]
+    },
+    
+    {
+      "type": "para",
+      "marker": "p",
+      "sid": "GEN 1:1",
+      "content": ["In the beginning..."]
     }
   ]
 }
-
 "#;
 
   //   // Initialize the parser

@@ -22,7 +22,7 @@ pub const usj_schema: &str = r#"
           "items": {
             "anyOf": [
               { "type": "string" },
-              { "$ref ": "/$defs/markerObject " }
+              { "$ref ": " #/$defs/markerObject " }
             ]
           }
         },
@@ -78,7 +78,7 @@ pub const usj_schema: &str = r#"
       "items": {
         "anyOf": [
           { "type": "string" },
-          { "$ref ": "/$defs/markerObject " }
+          { "$ref ": " #/$defs/markerObject " }
         ]
       }
     }

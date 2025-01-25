@@ -1,4 +1,4 @@
-use tree_sitter::{InputEdit, Language, Parser, Point};
+use tree_sitter::Parser;
 
 
 pub struct USFMParser {
@@ -20,7 +20,7 @@ impl USFMParser {
 
 
 
-
+    //parsing function
     pub fn parse_usfm(&mut self, usfm: &str) -> Result<tree_sitter::Tree, String> {
         self.usfm = Some(usfm.to_string());
         self.errors.clear();
@@ -30,7 +30,7 @@ impl USFMParser {
             
             if root_node.has_error() {
                 let mut error_messages = Vec::new();
-                let  cursor = root_node.walk();
+                //let  _cursor = root_node.walk();
                 
                 self.visit_nodes(&root_node, &mut |node| {
                     if node.is_error() || node.is_missing() {
@@ -66,7 +66,7 @@ impl USFMParser {
             self.visit_nodes(&child, visit);
         }
     }
-    
+}
     // pub fn parse_usfm(&mut self, usfm: &str) -> Result<String, String> {
 
     //     self.usfm = Some(usfm.to_string()); // Store the input USFM string
@@ -95,4 +95,3 @@ impl USFMParser {
     //         Err(error)
     //     }
     // }
-}
