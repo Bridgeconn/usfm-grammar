@@ -1,5 +1,5 @@
 use std::collections::HashMap;
-use tree_sitter::{Parser, Query, QueryCursor};
+use tree_sitter::{Language, Parser, Query, QueryCursor,TextProvider};
 use tree_sitter_usfm3;
 use serde_json::{self, json};
 
@@ -18,14 +18,14 @@ fn main() {
  \q2 the great deeds you used to do.
  \q1 Be merciful, even when you are angry.
     "#;
-    println!("USFM Input: {}", usfm_input);
+   // println!("USFM Input: {}", usfm_input);
 
     // Convert USFM to JSON
     let json_output = usfm_to_json(usfm_input);
     
     // Print the JSON output
     
-    println!("content: {}", json_output);
+   println!("content: {}", json_output);
 }
 
 fn usfm_to_json(usfm: &str) -> String {
@@ -43,8 +43,7 @@ fn usfm_to_json(usfm: &str) -> String {
     let mut content = Vec::new();
     
     // Traverse the tree and build the JSON object
-    traverse_node(&root_node, &mut content, usfm,&parser); // Pass an empty string for chapter_number initially
-    
+    traverse_node(&root_node, &mut content, usfm,&parser); 
     // Insert the content as a serde_json::Value
     json_object.insert("content".to_string(), serde_json::to_value(content).unwrap());
 
@@ -58,70 +57,58 @@ fn usfm_to_json(usfm: &str) -> String {
 fn traverse_node(node: &tree_sitter::Node, content: &mut Vec<serde_json::Value>, usfm: &str,parser: &Parser) {
     let node_type = node.kind();
     let node_text = node.utf8_text(usfm.as_bytes()).expect("Failed to get node text").to_string();
-    println!("Node Type: {}, Node Text: {}", node_type, node_text);
+   // println!("Node Type: {}, Node Text: {}", node_type, node_text);
 
     match node_type {
         "File" => {
-            let query_source = r#"
+        let query_source = r#"
             (id
                 (bookcode) @book-code
                 (description)? @desc
             )
             "#;
-
-            let query = Query::new(parser.language().unwrap(), query_source).expect("Failed to create query");
+            let query = Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
             let mut cursor = QueryCursor::new();
-            let captures = cursor.captures(&query, *node, usfm.as_bytes());
+            let captures = cursor.matches(&query, *node, usfm.as_bytes());
 
-            for (capture, _match) in captures {
-                let book_code = capture[0].node.utf8_text(usfm.as_bytes()).unwrap().to_string();
-                let desc = if capture.len() > 1 {
-                    Some(capture[1].node.utf8_text(usfm.as_bytes()).unwrap().to_string())
-                } else {
-                    None
-                };
-            return Some((book_code, desc));
-        }
-    
-        
-    
-
-    
-
-           // Extract book code and description
-           let id_captures: Vec<&str> = node_text.trim_start_matches('\\').split(',').collect();
-           let mut code = None;
-           let mut desc = None;
-
-           if let Some(book_code) = id_captures.get(0) {
-               code = Some(book_code.trim());
-           }
-           if id_captures.len() > 1 {
-               desc = Some(id_captures[1..].join(",").trim().to_string());
-           }
-
-           let mut book_json_obj = json!({
-               "type": "book",
-               "marker": "id",
-               "content": [],
-           });
-
-           if let Some(code) = code {
-               book_json_obj["code"] = json!(code);
-           }
-           if let Some(desc) = desc {
-               if !desc.is_empty() {
-                   book_json_obj["content"].as_array_mut().unwrap().push(json!(desc));
-               }
-           }
-
-           content.push(book_json_obj);
-        }
-        "id" => {
-            // Extract book code and description
             let id_captures: Vec<&str> = node_text.trim_start_matches('\\').split(',').collect();
             let mut code = None;
             let mut desc = None;
+
+           
+            if let Some(book_code) = id_captures.get(0) {
+                code = Some(book_code.trim().split(' ').nth(1).unwrap_or("").to_string());
+            }
+            if id_captures.len() > 1 {
+                desc = Some(id_captures.get(1).map(|s| s.trim().to_string()));
+            }
+//println!("{:?}",desc);
+           
+        let mut book_json_obj = json!({
+            "type": "book",
+            "marker": "id",
+            "code": code.clone().unwrap_or_default(),
+            "content": []
+        });
+
+            
+            if let Some(desc) = desc {
+                if !desc.clone().expect("").is_empty() {
+                    book_json_obj["content"].as_array_mut().unwrap().push(json!(&desc));
+                } 
+            }
+            if let Some(code) = code {
+                book_json_obj["code"] = json!(code);
+            }
+
+            content.push(book_json_obj);
+        }
+        
+          "id" => {
+            // Extract book code and description
+            let id_captures: Vec<&str> = node_text.trim_start_matches('\\').split(',').collect();
+            let mut code = None;
+            let mut desc = None; 
 
             if let Some(book_code) = id_captures.get(0) {
                 code = Some(book_code.trim());
@@ -166,7 +153,81 @@ fn traverse_node(node: &tree_sitter::Node, content: &mut Vec<serde_json::Value>,
                 "sid": format!("HAB {}", chapter_number),
             }));
         }
-        
+        "ca" | "va" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "v" => {
+            content.push(json!({
+                "type": "",
+                "marker": "v",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "verseText" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "paragraph" | "pi" | "ph" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "Attribute" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "table" | "tr" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "milestone" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "zNameSpace" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "esb" | "cat" | "fig" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "\\" | "" => {
+            content.push(json!({
+                "type": "",
+                "marker": "va",
+                "content": [node_text.trim_start_matches('\\')],
+            }));
+        }
+        "" | "|" => {
+            content.push(json!({
+               
+            }));
+        }
         "s1" => {
             content.push(json!({
                 "type": "para",
@@ -240,6 +301,7 @@ fn traverse_node(node: &tree_sitter::Node, content: &mut Vec<serde_json::Value>,
                 "content": q_content,
             }));
         }
+       
         _ => {}
     }
 
@@ -247,11 +309,11 @@ fn traverse_node(node: &tree_sitter::Node, content: &mut Vec<serde_json::Value>,
     let mut cursor = node.walk();
     cursor.goto_first_child(); // Move to the first child
     let child_count = node.named_child_count();
-    println!("Node has {} children", child_count);
+    //println!("Node has {} children", child_count);
     // Traverse all children
     while cursor.goto_next_sibling() {
         let child = cursor.node();
-        traverse_node(&child, content, usfm); // Recursively process child nodes
+        traverse_node(&child, content, usfm,&parser); // Recursively process child nodes
     }
 }
 

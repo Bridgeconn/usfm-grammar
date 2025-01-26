@@ -4,75 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="62e2f19f-b555-4703-b6c7-c589344d27d4" name="Changes" comment="rust init">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py-usfm-parser/src/usfm_grammar/usj_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/py-usfm-parser/src/usfm_grammar/usj_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/rust-usfm-parser/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/.fingerprint/rust-usfm-parser-2a411d0569265a1b/output-test-bin-rust-usfm-parser" beforeDir="false" afterPath="$PROJECT_DIR$/rust-usfm-parser/target/debug/.fingerprint/rust-usfm-parser-2a411d0569265a1b/output-test-bin-rust-usfm-parser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/.fingerprint/rust-usfm-parser-74fc8080fe4a59c5/output-bin-rust-usfm-parser" beforeDir="false" afterPath="$PROJECT_DIR$/rust-usfm-parser/target/debug/.fingerprint/rust-usfm-parser-74fc8080fe4a59c5/output-bin-rust-usfm-parser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/.fingerprint/rust-usfm-parser-a932904515a1b53b/output-bin-rust-usfm-parser" beforeDir="false" afterPath="$PROJECT_DIR$/rust-usfm-parser/target/debug/.fingerprint/rust-usfm-parser-a932904515a1b53b/output-bin-rust-usfm-parser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/deps/rust_usfm_parser-74fc8080fe4a59c5" beforeDir="false" afterPath="$PROJECT_DIR$/rust-usfm-parser/target/debug/deps/rust_usfm_parser-74fc8080fe4a59c5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-0o7g4go2ltqdt/s-h3wrma36er-18i2nu7-832d4q68vunvv1mwnurv3gkun/dep-graph.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-0o7g4go2ltqdt/s-h3wrma36er-18i2nu7-832d4q68vunvv1mwnurv3gkun/query-cache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-0o7g4go2ltqdt/s-h3wrma36er-18i2nu7-832d4q68vunvv1mwnurv3gkun/work-products.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-0o7g4go2ltqdt/s-h3wrma36er-18i2nu7.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/0npbw8iefa9bgnrcskr7j9cee.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/0ufg5mnp5qs5r3ecg5onj5kod.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/105adroikkv3xaptdvgt3hn7i.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/2eihteoy7vbm4a109gwzh86vc.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/2ov64zpomv0ejp3qvnsoszhcq.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/2p8dfl9m49ux6qlnwfksk9wir.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/2pf4aj9ie045qyq4i4g5hk2gd.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/31keiyy3ieufaeuavihhabslt.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/360dhec5ys9szmhmrfl5rriqu.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/36kqqo6v8lwm4c37ecsho4bux.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/3bz2f9d8q70ue2zhkxqhww68o.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/3dbq5nbs7itwbf20oy4fps9k1.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/3ungxen34j7e6d8kukt2rlean.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/43gtn6t0xtgzpzcmbylto2qd3.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/5hkabkrjgtk7lc6g14kp3nr4l.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/5jeypkczxwogu8t8wetppuh5m.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/5s6zpptm967fvqimgd5azhetl.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/60mpp6jssquozt175qqtmq81i.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/69yv4w41hha964y8y0c9s8kee.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/774666v4qygcnhzezv722xnu4.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/7jwp0gyk88ikssehqz31cm1q0.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/7ow8c1w8slx3qppv97wpvtrcx.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/7tylbluroetx7ha7tayt9hv6j.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/8m5qwv3cq1ygt88usym3bymzs.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/8mnw3hwjpof1fyp0dc4u988nt.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/985y3juard9b1ll4ik1puk621.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/9vrnsk2wjrz1n33ulchw02z7w.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/ahzn85xk4hksaurbtrp3fvhee.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/ar0y70b40vs9bb3742mvyrbjt.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/aynky1c1fasqzt8slf1bkwb6o.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/b48dx4f2w9z9jup79zjpk91tm.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/bgg285u29qp5wurbvqk98nay9.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/bkh6w1ey423lyb1ad8vb05v6r.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/blf0hvel6h7efkbszxlacleu9.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/bod3xep3n47y308j7niv0kxt8.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/bsitr0mo1yzkksmzc6tuejk04.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/bv4n6wlvgtew3qob20itz39nu.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/c3ne5px0cz3cge4mr07nghy1q.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/ckctq58zr84q4toche1aeg8wa.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/db6512v3m2x6bx5t52ke1fllu.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/dep-graph.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/dp7k68q2cdm5dmhvazywubv25.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/dqhzw5jw5sldoup581h4tl8kj.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/drae78xg1yswp0ig5sjfzsm93.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/edh2h1scvqrt75p9bztgbba0z.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/eigopdgqwkxqjs57zjvp3gpom.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/eqef32qk89t3jx4ido5tu5z7c.o" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/query-cache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto-7t7helwfmhq58mjr3cvdw39g3/work-products.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-149nliaw7a3ta/s-h3wrma7c73-1ag8kto.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-2e4bflhen5ohu/s-h3wrma38vj-0qk9055-6oebd7imgbhyubvfwt0w8qm5v/dep-graph.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-2e4bflhen5ohu/s-h3wrma38vj-0qk9055-6oebd7imgbhyubvfwt0w8qm5v/query-cache.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-2e4bflhen5ohu/s-h3wrma38vj-0qk9055-6oebd7imgbhyubvfwt0w8qm5v/work-products.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/incremental/rust_usfm_parser-2e4bflhen5ohu/s-h3wrma38vj-0qk9055.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rust-usfm-parser/target/debug/rust-usfm-parser" beforeDir="false" afterPath="$PROJECT_DIR$/rust-usfm-parser/target/debug/rust-usfm-parser" afterDir="false" />
-    </list>
+    <list default="true" id="62e2f19f-b555-4703-b6c7-c589344d27d4" name="Changes" comment="usjGenerator" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +44,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "rust",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/unix/AI ML/fruiteSpector YOLOv11",
+    "last_opened_file_path": "/home/unix/Documents/internship/usfm-grammar",
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
@@ -181,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736962960578</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="usjGenerator">
+      <option name="closed" value="true" />
+      <created>1737829633442</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1737829633442</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -213,6 +153,7 @@
     <MESSAGE value="readme" />
     <MESSAGE value="rust init" />
     <MESSAGE value="node to json" />
-    <option name="LAST_COMMIT_MESSAGE" value="node to json" />
+    <MESSAGE value="usjGenerator" />
+    <option name="LAST_COMMIT_MESSAGE" value="usjGenerator" />
   </component>
 </project>
