@@ -86,6 +86,7 @@ dependencies = [
  "cc",
  "serde",
  "serde_json",
+ "streaming-iterator",
  "tree-sitter",
  "tree-sitter-rust",
  "tree-sitter-usfm3",
