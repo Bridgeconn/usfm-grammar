@@ -2,6 +2,7 @@
 mod parser;
 mod validator;
 mod schema;
+mod usj_generator;
 
 use parser::USFMParser;
 use crate::validator::Validator;
@@ -16,7 +17,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let usfm_sample = read_file("input.usfm")?;
     //if want to give a sample usfm in code write the code between r#" code here"# 
     //another change in line 47
-
+    match usj_generator::usj_generator(&usfm_sample) {
+      Ok(usj_output) => {
+          println!("Generated USJ:\n{}", usj_output);
+      },
+      Err(e) => eprintln!("Error generating USJ: {}", e),
+  }
 
     let usj_sample = r#"{
   "type": "USJ",
