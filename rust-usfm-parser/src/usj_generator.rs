@@ -1,3 +1,6 @@
+use crate::globals::GLOBAL_TREE;
+
+use std::sync::MutexGuard;
 use serde_json::{self, json};
 use std::collections::HashMap;
 use streaming_iterator::StreamingIterator;
@@ -18,41 +21,14 @@ const TABLE_CELL_MARKERS: [&str; 4] = ["tc", "th", "tcr", "thr"];
 
 
 const COMBINED_MARKERS: Vec<&str> = CHAR_STYLE_MARKERS.iter().chain(NESTED_CHAR_STYLE_MARKERS.iter()).chain(vec!["xt_standalone", "ref"].iter()).cloned().collect();*/
-pub fn usj_generator(usfm_input: &str) -> Result<String, Box<dyn std::error::Error>> {
-    // Sample USFM input
-   /*  let usfm_input = r#"\id hab 45HABGNT92.usfm, Good News Translation, June 2003
-\c 3
- \s1 A Prayer of Habakkuk
- \p
- \v 1 This is a prayer of the prophet Habakkuk:
- \b
- \q1
- \v 2 O \nd Lord\nd*, I have heard of what you have done,
- \q2 and I am filled with awe.
- \q1 Now do again in our times
- \q2 the great deeds you used to do.
- \q1 Be merciful, even when you are angry.
-    "#;
-    // println!("USFM Input: {}", usfm_input);
-*/
-    // Convert USFM to JSON
-    let json_output = usfm_to_json(usfm_input);
-
-    // Print the JSON output
-    //println!("content: {}", json_output);
+pub fn usj_generator( 
+    usfm: &str,
+    parser: &Parser) -> Result<String, Box<dyn std::error::Error>> {
+        let global_tree: MutexGuard<Option<tree_sitter::Tree>> = GLOBAL_TREE.lock().unwrap();
+        let tree = global_tree.as_ref().ok_or("Tree is not initialized")?;
     
+        let root_node = tree.root_node();
 
-    Ok(json_output) 
-}
-
-fn usfm_to_json(usfm: &str) -> String {
-    let mut parser = Parser::new();
-    parser
-        .set_language(&tree_sitter_usfm3::language())
-        .expect("Error loading USFM language");
-
-    let tree = parser.parse(usfm, None).expect("Failed to parse USFM");
-    let root_node = tree.root_node();
 
     // Change the type of json_object to HashMap<String, serde_json::Value>
     let mut json_object: HashMap<String, serde_json::Value> = HashMap::new();
@@ -64,16 +40,17 @@ fn usfm_to_json(usfm: &str) -> String {
     // Traverse the tree and build the JSON object
     traverse_node(&root_node, &mut content, usfm, &parser);
     // Insert the content as a serde_json::Value
-    json_object.insert(
+     json_object.insert(
         "content".to_string(),
         serde_json::to_value(content).unwrap(),
     );
 
     // Convert HashMap to pretty-printed JSON
-    serde_json::to_string_pretty(&json_object).unwrap_or_else(|e| {
+  let json_output=serde_json::to_string_pretty(&json_object).unwrap_or_else(|e| {
         eprintln!("Failed to convert to JSON: {}", e);
         String::new() // Return an empty string or handle the error as needed
-    })
+    });
+    Ok(json_output) 
 }
 fn traverse_node(
     node: &tree_sitter::Node,

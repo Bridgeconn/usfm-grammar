@@ -1,8 +1,10 @@
+use crate::globals::GLOBAL_TREE;
+
 use tree_sitter::Parser;
 
 
 pub struct USFMParser {
-    parser: Parser,
+    pub parser: Parser,
     usfm: Option<String>, // Optional to account for no input initially
     errors: Vec<String>,  // Collects errors during parsing
 }
@@ -27,7 +29,8 @@ impl USFMParser {
     
         if let Some(tree) = self.parser.parse(usfm, None) {
             let root_node = tree.root_node();
-            
+            let mut global_tree = GLOBAL_TREE.lock().unwrap();
+            *global_tree = Some(tree.clone());
             if root_node.has_error() {
                 let mut error_messages = Vec::new();
                 //let  _cursor = root_node.walk();
