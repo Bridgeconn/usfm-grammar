@@ -1099,6 +1099,7 @@ dependencies = [
  "regex",
  "serde",
  "serde_json",
+ "streaming-iterator",
  "structopt",
  "tree-sitter",
  "tree-sitter-rust",

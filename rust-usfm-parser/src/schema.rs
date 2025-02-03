@@ -1,5 +1,5 @@
-use serde_json::Value;
 use once_cell::sync::Lazy;
+use serde_json::Value;
 
 pub static USJ_SCHEMA: Lazy<Value> = Lazy::new(|| {
     serde_json::json!({
