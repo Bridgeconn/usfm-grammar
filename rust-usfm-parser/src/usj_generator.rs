@@ -68,7 +68,7 @@ fn node_2_usj(
         .utf8_text(usfm.as_bytes())
         .expect("Failed to get node text")
         .to_string();
-    //println!("Node Type: {}", node_type);
+    println!("Node Type: {}", node_type);
     match node_type {
         "File" => {
             node_2_usj_id(&node, content, usfm, parser);
@@ -94,6 +94,17 @@ fn node_2_usj(
         "verseText" => {
             //node_2_usj_id(&node, content, usfm, parser);
             // println!("Reached here");
+            let mut node_text = node
+                .utf8_text(usfm.as_bytes())
+                .expect("Failed to get node text")
+                .replace('\n', "") 
+                .to_string();
+           if(node_text != ""){
+          //  println!("Reached here");
+            content.push(json!({
+                "content": node_text,
+            }));
+        }
             let mut cursor = node.walk();
             cursor.goto_first_child(); // Move to the first child
             let child_count = node.named_child_count();
@@ -103,7 +114,9 @@ fn node_2_usj(
                 let child = cursor.node();
                 node_2_usj(&child, content, usfm, &parser); // Recursively process child nodes
             }
+           
         }
+        
         "paragraph" | "pi" | "ph" => {
             node_2_usj_para(&node, content, usfm, parser);
         }
@@ -126,11 +139,11 @@ fn node_2_usj(
                 .utf8_text(usfm.as_bytes())
                 .expect("Failed to get node text")
                 .to_string();
+           if(node_text != ""){
             content.push(json!({
-                "type": "text",
-                "marker": "",
                 "content": [node_text],
             }));
+        }
         }
 
         "table" | "tr" => {
@@ -179,7 +192,7 @@ fn node_2_usj_id(
         .utf8_text(usfm.as_bytes())
         .expect("Failed to get node text")
         .to_string();
-    println!("nodeTYPE={}", node_text);
+    //println!("nodeTYPE={}", node_text);
 
     let query =
         Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
@@ -327,10 +340,7 @@ fn node_2_usj_ca_va(
     let tag_node = node
         .named_child(0)
         .expect("Expected a child node for style");
-    let style = node
-        .utf8_text(usfm.as_bytes())
-        .expect("Failed to get node text")
-        .to_string();
+    let style = node.kind();
 
     // Clean up the style string
     let style = if style.starts_with('\\') {
@@ -432,7 +442,7 @@ fn node_2_usj_verse(
     let mut alt_number = None;
     let mut publication_number = None;
     let mut verse_text = String::new();
-    let mut verses_with_text = Vec::new();
+    
     // Iterate over the captures returned by the query
     while let Some(capture) = captures.next() {
         // Capture the verse number
@@ -464,6 +474,8 @@ fn node_2_usj_verse(
                             }
         }
     }
+    
+        
     // Create the verse JSON object
     let ref_sid = format!(
         "{}:{}", 
@@ -476,9 +488,7 @@ fn node_2_usj_verse(
         "number": verse_number.clone().unwrap_or_default(),
         "sid": ref_sid
     });
-   
-    verses_with_text.push(verse_json_obj.clone());
-    verses_with_text.push(verse_text.trim().into());
+    
     // Add alternative and publication numbers if they exist
     if let Some(alt) = alt_number {
         verse_json_obj["altnumber"] = json!(alt);
@@ -487,10 +497,10 @@ fn node_2_usj_verse(
         verse_json_obj["pubnumber"] = json!(pub_num);
     }
   
-  for item in verses_with_text {
-    content.push(item);
+  
+    content.push(verse_json_obj);
 }
-}
+
 
 
 /*fn node_2_usj(
