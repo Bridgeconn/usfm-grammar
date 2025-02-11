@@ -17,7 +17,40 @@ const CHAR_STYLE_MARKERS: [&str; 55] = [
     "wh", "wa", "wg", "lik", "liv", "jmp", "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv",
     "fdc", "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc", "ref",
 ];
+const PARA_STYLE_MARKERS: [&str; 49] =[
+                "ide", "h", "toc", "toca", //identification
+                "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
+                "ili", "iot", "io", "iex", "imte", "ie", // intro
+                "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd", //titles
+                "q", "qr", "qc", "qa", "qm", "qd", //poetry
+                "lh", "li", "lf", "lim", "litl", //lists
+                "sts", "rem", "lit", "restore", //comments
+                "b"
+            ];
 const TABLE_CELL_MARKERS: [&str; 4] = ["tc", "th", "tcr", "thr"];
+const DEFAULT_ATTRIB_MAP: [(&str, &str); 9] = [
+    ("w", "lemma"),
+    ("rb", "gloss"),
+    ("xt", "href"),
+    ("fig", "alt"),
+    ("xt_standalone", "href"),
+    ("xtNested", "href"),
+    ("ref", "loc"),
+    ("milestone", "who"),
+    ("k", "key"),
+];
+const NESTED_CHAR_STYLE_MARKERS: [&str; 55] = [
+    "addNested", "bkNested", "dcNested", "iorNested", "iqtNested", "kNested", "litlNested", "ndNested", "ordNested", "pnNested",
+    "pngNested", "qacNested", "qsNested", "qtNested", "rqNested", "sigNested", "slsNested", "tlNested", "wjNested",
+    "emNested", "bdNested", "bditNested", "itNested", "noNested", "scNested", "supNested", "rbNested", "proNested",
+    "wNested", "whNested", "waNested", "wgNested", "likNested", "livNested", "jmpNested", "frNested", "ftNested",
+    "fkNested", "fqNested", "fqaNested", "flNested", "fwNested", "fpNested", "fvNested", "fdcNested", "xoNested",
+    "xopNested", "xtNested", "xtaNested", "xkNested", "xqNested", "xotNested", "xntNested", "xdcNested", "refNested",
+];
+
+
+const MISC_MARKERS: [&str; 6] = ["fig", "cat", "esb", "b", "ph", "pi"];
+
 lazy_static! {
     static ref CHAPTER_NUMBER: Mutex<Option<String>> = Mutex::new(None);
 }
@@ -64,7 +97,7 @@ pub fn node_2_usj(
     parser: &Parser,
 ) {
     let node_type = node.kind();
-    let node_text = node
+    let _node_text = node
         .utf8_text(usfm.as_bytes())
         .expect("Failed to get node text")
         .to_string();
@@ -78,10 +111,10 @@ pub fn node_2_usj(
     } else if ["ca", "va"].contains(&node_type) {
         node_2_usj_ca_va(&node, content, usfm, parser);
     } else if node_type == "v" {
-        let mut global_chapter_number = CHAPTER_NUMBER.lock().unwrap();
+        let global_chapter_number = CHAPTER_NUMBER.lock().unwrap();
         node_2_usj_verse(&node, content, usfm, parser, &global_chapter_number);
     } else if node_type == "verseText" {
-        let mut node_text = node
+        let node_text = node
             .utf8_text(usfm.as_bytes())
             .expect("Failed to get node text")
             .replace('\n', "")
@@ -101,7 +134,9 @@ pub fn node_2_usj(
         node_2_usj_para(&node, content, usfm, parser);
     } else if NOTE_MARKERS.contains(&node_type) {
         node_2_usj_notes(&node, content, usfm, parser);
-    } else if node_type == "Attribute" {
+    } else if CHAR_STYLE_MARKERS.contains(&node_type) {
+        node_2_usj_char(node,content, usfm, parser);
+    }else if node_type == "Attribute" {
         node_2_usj_attrib(&node, content, usfm, parser);
     } else if node_type == "text" {
         let node_text = node
@@ -119,7 +154,11 @@ pub fn node_2_usj(
         node_2_usj_milestone(&node, content, usfm, parser);
     } else if ["esb", "cat", "fig"].contains(&node_type) {
         node_2_usj_special(&node, content, usfm, parser);
-    } else if node_type == "" || node_type == "|" {
+    }
+    else if PARA_STYLE_MARKERS.contains(&node_type){
+        node_2_usj_generic(node, content, usfm, parser);
+    }
+     else if node_type == "" || node_type == "|" {
         // skip white space nodes
     } else {
         // Handle any other cases if necessary
@@ -128,7 +167,7 @@ pub fn node_2_usj(
     // Create a TreeCursor to iterate through the children
     let mut cursor = node.walk();
     cursor.goto_first_child(); // Move to the first child
-    let child_count = node.named_child_count();
+    //let child_count = node.named_child_count();
     //println!("Node has {} children", child_count);
     // Traverse all children
     while cursor.goto_next_sibling() {
@@ -148,7 +187,7 @@ pub fn node_2_usj_id(
                 (description)? @desc
             )
             "#;
-    let node_type = node.kind();
+    //let node_type = node.kind();
     let node_text = node
         .utf8_text(usfm.as_bytes())
         .expect("Failed to get node text")
@@ -179,7 +218,7 @@ pub fn node_2_usj_id(
         }
     }
 
-    let mut book_json_obj = json!({
+    let book_json_obj = json!({
         "type": "book",
         "marker": "id",
         "code": code.clone().unwrap_or_default(),
@@ -611,7 +650,7 @@ pub fn node_2_usj_notes(
 }
 pub fn node_2_usj_char(
     node: &tree_sitter::Node,
-    parent_json_obj: &mut serde_json::Value,
+    content: &mut Vec<serde_json::Value>,
     usfm: &str,
     parser: &Parser,
 ) {
@@ -660,10 +699,10 @@ pub fn node_2_usj_char(
     }
 
     // Append the character JSON object to the parent JSON object
-    if let Some(content) = parent_json_obj.get_mut("content") {
+    if let Some(content) = content.get_mut("content") {
         content.as_array_mut().unwrap().push(char_json_obj);
     } else {
-        parent_json_obj["content"] = json!([char_json_obj]);
+        content["content"] = json!([char_json_obj]);
     }
 }
 
