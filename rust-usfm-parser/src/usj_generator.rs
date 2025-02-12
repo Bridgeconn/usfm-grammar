@@ -650,7 +650,7 @@ pub fn node_2_usj_notes(
 }
 pub fn node_2_usj_char(
     node: &tree_sitter::Node,
-    content: &mut Vec<serde_json::Value>,
+    content: &mut Vec<serde_json::Value>, // Change back to Vec<Value>
     usfm: &str,
     parser: &Parser,
 ) {
@@ -699,11 +699,7 @@ pub fn node_2_usj_char(
     }
 
     // Append the character JSON object to the parent JSON object
-    if let Some(content) = content.get_mut("content") {
-        content.as_array_mut().unwrap().push(char_json_obj);
-    } else {
-        content["content"] = json!([char_json_obj]);
-    }
+    content.push(char_json_obj); // Push the character JSON object directly to the Vec
 }
 
 pub fn node_2_usj_attrib(
