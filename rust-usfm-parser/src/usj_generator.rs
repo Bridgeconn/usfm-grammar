@@ -4,12 +4,14 @@ extern crate lazy_static;
 
 use lazy_static::lazy_static;
 use serde_json::{self, json};
+use streaming_iterator::IntoStreamingIterator;
 use std::collections::HashMap;
 use std::sync::Mutex;
 use std::sync::MutexGuard;
 use streaming_iterator::StreamingIterator;
 use tree_sitter::{Parser, Query, QueryCursor, TextProvider};
 use tree_sitter_usfm3;
+use std::collections::HashSet;
 const NOTE_MARKERS: [&str; 6] = ["f", "fe", "ef", "efe", "x", "ex"];
 const CHAR_STYLE_MARKERS: [&str; 55] = [
     "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn", "png", "qac", "qs", "qt",
@@ -102,7 +104,11 @@ pub fn node_2_usj(
         .expect("Failed to get node text")
         .to_string();
     println!("Node Type: {}", node_type);
-    if node_type == "File" {
+    let mut combined_markers: HashSet<&str> = HashSet::new();
+    combined_markers.extend(CHAR_STYLE_MARKERS.iter().map(|&s| s)); // Dereference here
+    combined_markers.extend(NESTED_CHAR_STYLE_MARKERS.iter().map(|&s| s)); 
+    combined_markers.insert("xt_standalone");
+     if node_type == "File" {
         node_2_usj_id(&node, content, usfm, parser);
     } else if node_type == "chapter" {
         node_2_usj_chapter(&node, content, usfm, parser);
@@ -134,7 +140,9 @@ pub fn node_2_usj(
         node_2_usj_para(&node, content, usfm, parser);
     } else if NOTE_MARKERS.contains(&node_type) {
         node_2_usj_notes(&node, content, usfm, parser);
-    } else if CHAR_STYLE_MARKERS.contains(&node_type) {
+    } 
+    
+    else if combined_markers.contains(&node_type) {
         node_2_usj_char(node,content, usfm, parser);
     }else if node_type == "Attribute" {
         node_2_usj_attrib(&node, content, usfm, parser);
@@ -340,8 +348,8 @@ pub fn node_2_usj_ca_va(
     let tag_node = node
         .named_child(0)
         .expect("Expected a child node for style");
-    let style = node.kind();
-
+    let style = tag_node.kind();
+println!("STYLE IS........{}",style);
     // Clean up the style string
     let style = if style.starts_with('\\') {
         style.replace('\\', "").trim().to_string()
