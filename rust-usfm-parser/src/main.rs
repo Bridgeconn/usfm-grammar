@@ -1,10 +1,8 @@
 mod globals;
-mod parser;
+pub mod parser;
 mod schema;
 mod usj_generator;
 mod validator;
-
-
 
 extern crate lazy_static;
 use crate::validator::Validator;
@@ -21,8 +19,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     let _parser = USFMParser::new()?;
 
-    let usfm_input = read_file("input.usfm")?;
-    
+   let usfm_input = read_file("../tests/specExamples/attributes/origin.usfm")?;
+    //let usfm_input = read_file("input.usfm")?;
+   
     let usj_sample = r#"{
   "type": "USJ",
   "version": "1.0",
@@ -98,3 +97,4 @@ fn read_file(file_path: &str) -> Result<String, io::Error> {
     file.read_to_string(&mut content)?; // Read the file content into the string
     Ok(content)
 }
+
