@@ -108,18 +108,32 @@ pub fn node_2_usj(
     combined_markers.extend(CHAR_STYLE_MARKERS.iter().map(|&s| s)); // Dereference here
     combined_markers.extend(NESTED_CHAR_STYLE_MARKERS.iter().map(|&s| s)); 
     combined_markers.insert("xt_standalone");
+   // println!("{:#?}",combined_markers);
+   let mut tree_cursor = node.walk();
      if node_type == "File" {
         node_2_usj_id(&node, content, usfm, parser);
     } else if node_type == "chapter" {
         node_2_usj_chapter(&node, content, usfm, parser);
-    } else if ["cl", "cp", "cd", "vp", "\\", ""].contains(&node_type) {
+    } else if ["cl", "cp", "cd", "vp"].contains(&node_type) {
         node_2_usj_generic(&node, content, usfm, parser);
     } else if ["ca", "va"].contains(&node_type) {
         node_2_usj_ca_va(&node, content, usfm, parser);
     } else if node_type == "v" {
         let global_chapter_number = CHAPTER_NUMBER.lock().unwrap();
         node_2_usj_verse(&node, content, usfm, parser, &global_chapter_number);
-    } else if node_type == "verseText" {
+    } else if node_type == "verseText"{
+        for child in node.children(&mut node.walk()) {
+            node_2_usj(&child, content, usfm, &parser);
+        }
+    }else if ["paragraph", "pi", "ph"].contains(&node_type) {
+        node_2_usj_para(&node, content, usfm, parser);
+    }else if NOTE_MARKERS.contains(&node_type) {
+        node_2_usj_notes(&node, content, usfm, parser);
+    }else if combined_markers.contains(&node_type) {
+        node_2_usj_char(node,content, usfm, parser);
+    }else if node_type.ends_with("Attribute") {
+        node_2_usj_attrib(&node, content, usfm, parser);
+    }else if node_type == "text" {
         let node_text = node
             .utf8_text(usfm.as_bytes())
             .expect("Failed to get node text")
@@ -130,45 +144,34 @@ pub fn node_2_usj(
                 "content": node_text,
             }));
         }
-        let mut cursor = node.walk();
+       /*  let mut cursor = node.walk();
         cursor.goto_first_child(); // Move to the first child
         while cursor.goto_next_sibling() {
             let child = cursor.node();
             node_2_usj(&child, content, usfm, &parser); // Recursively process child nodes
         }
-    } else if ["paragraph", "pi", "ph"].contains(&node_type) {
-        node_2_usj_para(&node, content, usfm, parser);
-    } else if NOTE_MARKERS.contains(&node_type) {
-        node_2_usj_notes(&node, content, usfm, parser);
-    } 
-    
-    else if combined_markers.contains(&node_type) {
-        node_2_usj_char(node,content, usfm, parser);
-    }else if node_type == "Attribute" {
-        node_2_usj_attrib(&node, content, usfm, parser);
-    } else if node_type == "text" {
-        let node_text = node
-            .utf8_text(usfm.as_bytes())
-            .expect("Failed to get node text")
-            .to_string();
-        if node_text != "" {
-            content.push(json!({
-                "content": [node_text],
-            }));
-        }
-    } else if ["table", "tr"].contains(&node_type) {
+    } */
+    } else if ["table", "tr"].contains(&node_type) {  //+ self.TABLE_CELL_MARKERS:
         node_2_usj_table(&node, content, usfm, parser);
-    } else if ["zNameSpace", "milestone"].contains(&node_type) {
+    } else if ["zNameSpace" , "milestone"].contains(&node_type) {
         node_2_usj_milestone(&node, content, usfm, parser);
     } else if ["esb", "cat", "fig"].contains(&node_type) {
         node_2_usj_special(&node, content, usfm, parser);
     }
     else if PARA_STYLE_MARKERS.contains(&node_type){
+        //node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):
+          //  self.node_2_usj_generic(node, parent_json_obj)
         node_2_usj_generic(node, content, usfm, parser);
     }
      else if node_type == "" || node_type == "|" {
+        return;
         // skip white space nodes
-    } else {
+    }
+    else if node.children(&mut node.walk()).len()>0 {
+    for child in node.children(&mut node.walk()){
+        node_2_usj(&node, content, usfm, parser);
+}}
+    else {
         // Handle any other cases if necessary
     }
 
@@ -189,6 +192,8 @@ pub fn node_2_usj_id(
     usfm: &str,
     parser: &Parser,
 ) {
+
+
     let query_source = r#"
             (id
                 (bookcode) @book-code
@@ -437,7 +442,8 @@ pub fn node_2_usj_verse(
         (vp (text) @vp)?
     )
     "#;
-
+let chapter=node.parent();
+println!("{:?}",chapter);
     let query =
         Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
     let mut cursor = QueryCursor::new();
@@ -578,7 +584,7 @@ pub fn node_2_usj_para(
             "content": [],
         });
 
-        // Create a TreeCursor to iterate through the children
+        //Create a TreeCursor to iterate through the children
         let mut child_cursor = node.walk();
         child_cursor.goto_first_child(); // Move to the first child
 
@@ -663,15 +669,16 @@ pub fn node_2_usj_char(
     parser: &Parser,
 ) {
     // Ensure the node has children
-    if node.child_count() == 0 {
-        return;
-    }
+    // if node.child_count() == 0 {
+    //     return;
+    // }
 
     // Get the tag node (first child)
     let tag_node = node.child(0).expect("Expected a tag node");
-
+    //println!("tag node.............{}",tag_node);
     // Determine the range of children to process
     let mut children_range = node.child_count();
+    println!("count child node.............{}",children_range);
     if let Some(last_child) = node.child(children_range - 1) {
         if last_child.kind().starts_with('\\') {
             children_range -= 1; // Exclude the closing node if it starts with '\'
@@ -700,14 +707,29 @@ pub fn node_2_usj_char(
         .expect("Expected content to be an array");
 
     // Process child nodes (excluding the first and possibly the last)
-    for i in 1..children_range {
+    for i in 0..children_range {
         if let Some(child) = node.child(i) {
             node_2_usj(&child, content_array, usfm, parser); // Pass the mutable reference to the content array
         }
     }
+    let mut child_cursor = node.walk();
+        child_cursor.goto_first_child(); // Move to the first child
+
+        // Process the remaining children
+        while child_cursor.goto_next_sibling() {
+            let child = child_cursor.node();
+            node_2_usj(
+                &child,
+                &mut char_json_obj["content"].as_array_mut().unwrap(),
+                usfm,
+                parser,
+            );
+        }
+
 
     // Append the character JSON object to the parent JSON object
     content.push(char_json_obj); // Push the character JSON object directly to the Vec
+   
 }
 
 pub fn node_2_usj_attrib(
@@ -716,73 +738,57 @@ pub fn node_2_usj_attrib(
     usfm: &str,
     parser: &Parser,
 ) {
+    let attrib_name_node = node.child(0).expect("Node should have at least one child");
+    let attrib_name = attrib_name_node.utf8_text(usfm.as_bytes()).unwrap().trim().to_string();
+
+    let attrib_name = if attrib_name == "|" {
+        DEFAULT_ATTRIB_MAP.iter()
+            .find(|&&(key, _)| key == node.parent().unwrap().kind())
+            .map(|&(_, value)| value)
+            .unwrap_or(attrib_name.as_str())
+            .to_string()
+    } else if attrib_name == "src" {
+        "file".to_string()
+    } else {
+        attrib_name
+    };
+
+    // Adjust the query to match the correct node types
     let query_source = r#"
-    (attribute
-        (attributeName) @attrib-name
-        (attributeValue)? @attrib-val
-    )
+    ((attributeValue) @attrib-val)
     "#;
-    let query =
-        Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
+
+    let query = Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
     let mut cursor = QueryCursor::new();
 
     // Execute the query against the current node
     let mut captures = cursor.matches(&query, *node, usfm.as_bytes());
 
-    let mut attrib_name = None;
-    let mut attrib_value = None;
-    // Iterate over the captures returned by the query
-    while let Some(capture) = captures.next() {
-        // Capture the attrib name
-        if let Some(attrib_name_capture) = capture.captures.get(0) {
-            if let Ok(name) = attrib_name_capture.node.utf8_text(usfm.as_bytes()) {
-                attrib_name = Some(name.trim().to_string());
-            }
+    let attrib_value = if let Some(capture) = captures.next() {
+        if let Some(attrib_value_capture) = capture.captures.get(0) {
+            let value = attrib_value_capture.node.utf8_text(usfm.as_bytes()).unwrap().trim();
+            value.to_string()
+        } else {
+            "".to_string()
         }
+    } else {
+        "".to_string()
+    };
 
-        // Capture the attrib value
-        if let Some(attrib_value_capture) = capture.captures.get(1) {
-            if let Ok(value) = attrib_value_capture.node.utf8_text(usfm.as_bytes()) {
-                attrib_value = Some(value.trim().to_string());
-            }
-        }
-    }
-
-    let mut attribute_json_obj = json!({
-    "type": "attribute",
-    "marker": "attribute",
-    "name": attrib_name,
-    "value": attrib_value,
-     });
-
-    if let Some(ref name) = attrib_name {
-        attribute_json_obj["attrib_name"] = json!(name);
-    }
-    if let Some(ref value) = attrib_value {
-        // Updated variable name
-        attribute_json_obj["attrib_value"] = json!(value);
-    }
-
-    // Append the chapter JSON object to the parent content
-    content.push(attribute_json_obj.clone());
-    //   println!("**********attrib_name: {:?}",attrib_name);
-    //println!("***********attrib_value: {:?}",attrib_value);
-
-    /* // Create a TreeCursor to iterate through the children
-    let mut cursor = node.walk();
-    cursor.goto_first_child(); // Move to the first child
-
-    // Traverse all children
-    while cursor.goto_next_sibling() {
-        let child = cursor.node();
-        if child.kind() == "cl" || child.kind() == "cd" {
-            node_2_usj(&child, content, usfm, parser); // Pass a reference to the child node
-        }
-    }*/
-
-    // Push the attribute JSON object to the content array
+    // let mut attribute_json_obj = json!({
+    //     "type": "attribute",
+    //     "marker": "attribute",
+    //     "name": attrib_name,
+    //     "value": attrib_value,
+    // });
+    let attribute_json_obj = json!({
+        attrib_name: attrib_value
+    
+});
     content.push(attribute_json_obj);
+
 }
+
 pub fn node_2_usj_table(
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
