@@ -4,8 +4,6 @@ mod schema;
 mod usj_generator;
 mod validator;
 
-
-
 extern crate lazy_static;
 use crate::validator::Validator;
 use lazy_static::lazy_static;
@@ -22,7 +20,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let _parser = USFMParser::new()?;
 
     let usfm_input = read_file("input.usfm")?;
-    
+
     let usj_sample = r#"{
   "type": "USJ",
   "version": "1.0",
