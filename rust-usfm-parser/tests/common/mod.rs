@@ -15,7 +15,7 @@ use strum::IntoEnumIterator;
 
 
 // Constants and static configurations
-pub const TEST_DIR: &str = "../tests/mandatory"; //usfm-grammar/tests/advanced/custom-attributes
+pub const TEST_DIR: &str = "../tests"; //usfm-grammar/tests/advanced/custom-attributes
 lazy_static! {
     static ref PASS_FAIL_OVERRIDE_LIST: HashMap<&'static str, bool> = {
         let mut m = HashMap::new();
