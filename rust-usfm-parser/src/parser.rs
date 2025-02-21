@@ -1,11 +1,79 @@
 use crate::globals::GLOBAL_TREE;
 
+use strum_macros::EnumIter;
 use tree_sitter::Parser;
 
 pub struct USFMParser {
     pub parser: Parser,
-    usfm: Option<String>, // Optional to account for no input initially
-    errors: Vec<String>,  // Collects errors during parsing
+    pub usfm: Option<String>, // Optional to account for no input initially
+    pub errors: Vec<String>,  // Collects errors during parsing
+}
+
+#[derive(Debug, Clone, EnumIter)]
+pub enum Filter {
+    /// Identification and book headers
+    BookHeaders,
+    /// Title related markers
+    Titles,
+    /// Comment markers
+    Comments,
+    /// Paragraph related markers
+    Paragraphs,
+    /// Character style markers
+    Characters,
+    /// Note markers (footnotes and cross-references)
+    Notes,
+    /// Study Bible markers
+    StudyBible,
+    /// Book, Chapter, Verse markers
+    BCV,
+    /// Text in excluded parent
+    Text,
+}
+
+impl Filter {
+    pub fn value(&self) -> Vec<&'static str> {
+        match self {
+            Filter::BookHeaders => vec![
+                "ide", "usfm", "h", "toc", "toca", // identification
+                "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib", "ili",
+                "iot", "io", "iex", "imte", "ie", // intro
+            ],
+
+            Filter::Titles => vec![
+                "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",
+            ],
+
+            Filter::Comments => vec!["sts", "rem", "lit", "restore"],
+
+            Filter::Paragraphs => vec![
+                "p", "m", "po", "pr", "cls", "pmo", "pm", "pmc", "pmr", "pi", "mi", "nb", "pc",
+                "ph", "q", "qr", "qc", "qa", "qm", "qd", "lh", "li", "lf", "lim", "litl", "tr",
+                "tc", "th", "tcr", "thr", "table", "b",
+            ],
+
+            Filter::Characters => vec![
+                // Special-text
+                "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn", "png", "qac", "qs",
+                "qt", "rq", "sig", "sls", "tl", "wj", // character styling
+                "em", "bd", "bdit", "it", "no", "sc", "sup", // special-features
+                "rb", "pro", "w", "wh", "wa", "wg", // structured list entries
+                "lik", "liv", "jmp",
+            ],
+
+            Filter::Notes => vec![
+                // footnotes and crossrefs
+                "f", "fe", "ef", "efe", "x", "ex", "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp",
+                "fv", "fdc", "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",
+            ],
+
+            Filter::StudyBible => vec!["esb", "cat"],
+
+            Filter::BCV => vec!["id", "c", "v"],
+
+            Filter::Text => vec!["text-in-excluded-parent"],
+        }
+    }
 }
 
 impl USFMParser {
