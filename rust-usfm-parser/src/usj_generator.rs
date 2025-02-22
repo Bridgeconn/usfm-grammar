@@ -4,6 +4,7 @@ extern crate lazy_static;
 
 use lazy_static::lazy_static;
 use serde_json::{self, json};
+use tree_sitter::TreeCursor;
 use std::collections::HashMap;
 use std::collections::HashSet;
 use std::sync::Mutex;
@@ -147,17 +148,18 @@ pub fn node_2_usj(
     parser: &Parser,
 ) {
     let node_type = node.kind();
-    let _node_text = node
-        .utf8_text(usfm.as_bytes())
-        .expect("Failed to get node text")
-        .to_string();
-    println!("Node Type: {}", node_type);
+    // let _node_text = node
+    //     .utf8_text(usfm.as_bytes())
+    //     .expect("Failed to get node text")
+    //     .to_string();
+   
     let mut combined_markers: HashSet<&str> = HashSet::new();
     combined_markers.extend(CHAR_STYLE_MARKERS.iter().map(|&s| s)); // Dereference here
     combined_markers.extend(NESTED_CHAR_STYLE_MARKERS.iter().map(|&s| s));
     combined_markers.insert("xt_standalone");
     // println!("{:#?}",combined_markers);
-    let mut tree_cursor = node.walk();
+   // let mut tree_cursor = node.walk();
+    println!("Node Type: {}", node_type);
     if node_type == "File" {
         node_2_usj_id(&node, content, usfm, parser);
     } else if node_type == "chapter" {
@@ -211,28 +213,34 @@ pub fn node_2_usj(
         //  self.node_2_usj_generic(node, parent_json_obj)
         node_2_usj_generic(node, content, usfm, parser);
     } else if node_type == "" || node_type == "|" {
-        return;
+       
         // skip white space nodes
-    } else if node.children(&mut node.walk()).len() > 0 {
+     } 
+    if *&node.child_count() > 0 {
+        println!("count:{}",node.child_count());
         for child in node.children(&mut node.walk()) {
-            node_2_usj(&node, content, usfm, parser);
+            println!("child:{}",child);
+            node_2_usj(&child, content, usfm, parser);
         }
-    } else {
-       return; 
-       // Handle any other cases if necessary
     }
-
-    // // Create a TreeCursor to iterate through the children
+     
+       // Create a TreeCursor to iterate through the children
     // let mut cursor = node.walk();
+
     // cursor.goto_first_child(); // Move to the first child
     //                            //let child_count = node.named_child_count();
     //                            //println!("Node has {} children", child_count);
     //                            // Traverse all children
     // while cursor.goto_next_sibling() {
     //     let child = cursor.node();
+    //     println!("child node::::::{}",child);
     //     node_2_usj(&child, content, usfm, &parser); // Recursively process child nodes
     // }
-}
+
+
+    
+} 
+
 pub fn node_2_usj_id(
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
@@ -276,13 +284,20 @@ pub fn node_2_usj_id(
         }
     }
 
-    let book_json_obj = json!({
+    let mut book_json_obj = json!({
         "type": "book",
         "marker": "id",
         "code": code.clone().unwrap_or_default(),
         "content": desc.map_or_else(Vec::new, |d| vec![d]), // Wrap desc in a Vec
     });
-    content.push(book_json_obj);
+    content.push(book_json_obj.clone());
+    // let mut cursor = node.walk();
+    // let mut cursor = node.walk();
+    // let child = cursor.node(); 
+    // let node_type=child.kind();
+    // println!("Node Type: {}", node_type);
+   // node_2_usj(&child, content, usfm, parser);
+
 }
 
 pub fn node_2_usj_chapter(
