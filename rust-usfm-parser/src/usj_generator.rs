@@ -3,6 +3,7 @@ use crate::globals::GLOBAL_TREE;
 extern crate lazy_static;
 
 use lazy_static::lazy_static;
+use serde::de::value;
 use serde_json::{self, json};
 use tree_sitter::TreeCursor;
 use std::collections::HashMap;
@@ -309,30 +310,37 @@ pub fn node_2_usj_chapter(
 
     for child in node.children(&mut node.walk()) {
         if child.kind() == "c"{
-            node_2_usj_ca_va(&child, content, usfm, parser);
+            node_2_usj_c(&child, content, usfm, parser);
         }
         else {
             node_2_usj(&child, content, usfm, parser);
         }
     }
-  /*  let query_source = r#"
-    (c
-        (chapterNumber) @chap-num
-        (ca (chapterNumber) @alt-num)?
-        (cp (text) @pub-num)?
-    )
-"#;
-    let query =
-        Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
+}
+
+pub fn node_2_usj_c(
+    node: &tree_sitter::Node,
+    content: &mut Vec<serde_json::Value>,
+    usfm: &str,
+    parser: &Parser,
+) {
+    let query_source = r#"
+        (c
+            (chapterNumber) @chap-num
+            (ca (chapterNumber) @alt-num)?
+            (cp (text) @pub-num)?
+        )
+    "#;
+    let query = Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
     let mut cursor = QueryCursor::new();
 
     // Execute the query against the current node
     let mut captures = cursor.matches(&query, *node, usfm.as_bytes());
 
     let mut chapter_number: Option<String> = None;
-    let mut alt_number = None;
-    let mut publication_number = None; // Renamed from pub_number to publication_number
-    let mut chap_ref = None;
+    let mut alt_number: Option<String> = None;
+    let mut publication_number: Option<String> = None;
+    let mut chap_ref: Option<String> = None;
     let mut global_chapter_number = CHAPTER_NUMBER.lock().unwrap();
     // Iterate over the captures returned by the query
     while let Some(capture) = captures.next() {
@@ -340,8 +348,6 @@ pub fn node_2_usj_chapter(
         if let Some(chap_num_capture) = capture.captures.get(0) {
             if let Ok(num) = chap_num_capture.node.utf8_text(usfm.as_bytes()) {
                 chapter_number = Some(num.trim().to_string());
-
-                
             }
         }
 
@@ -355,7 +361,7 @@ pub fn node_2_usj_chapter(
         // Capture the publication number if it exists
         if let Some(pub_num_capture) = capture.captures.get(2) {
             if let Ok(pub_num) = pub_num_capture.node.utf8_text(usfm.as_bytes()) {
-                publication_number = Some(pub_num.trim().to_string()); // Updated variable name
+                publication_number = Some(pub_num.trim().to_string());
             }
         }
     }
@@ -364,17 +370,12 @@ pub fn node_2_usj_chapter(
     for child in &*content {
         if child["type"] == "book" {
             if let Some(code) = child.get("code") {
-                // Use the code directly without quotes
-                chap_ref = Some(format!(
-                    "{} {}",
-                    code.as_str().unwrap_or(""),
-                    chapter_number.clone().unwrap_or_default()
-                ));
+                chap_ref = Some(format!("{} {}", code.as_str().unwrap_or(""), chapter_number.clone().unwrap_or_default()));
             }
             break;
         }
     }
-    *global_chapter_number = chap_ref.clone();
+
     // Create the chapter JSON object
     let mut chap_json_obj = json!({
         "type": "chapter",
@@ -382,22 +383,27 @@ pub fn node_2_usj_chapter(
         "number": chapter_number.clone().unwrap_or_default(),
         "sid": chap_ref.clone().unwrap_or_default(),
     });
-
+    *global_chapter_number = chap_ref.clone();
     // Add alternative and publication numbers if they exist
     if let Some(alt) = alt_number {
         chap_json_obj["altnumber"] = json!(alt);
     }
     if let Some(pub_num) = publication_number {
-        // Updated variable name
         chap_json_obj["pubnumber"] = json!(pub_num);
     }
 
     // Append the chapter JSON object to the parent content
     content.push(chap_json_obj);
 
-   */
-  
+    // Process child nodes of the current node
+    for child in node.children(&mut node.walk()) {
+        if let "cl" | "cd" = child.kind() {
+            node_2_usj(&child, content, usfm, parser);
+        }
+    }
 }
+
+
 pub fn node_2_usj_ca_va(
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
@@ -795,24 +801,24 @@ pub fn node_2_usj_attrib(
     parser: &Parser,
 ) {
     let attrib_name_node = node.child(0).expect("Node should have at least one child");
-    let attrib_name = attrib_name_node
+    let mut attrib_name = attrib_name_node
         .utf8_text(usfm.as_bytes())
         .unwrap()
         .trim()
         .to_string();
 
-    let attrib_name = if attrib_name == "|" {
-        DEFAULT_ATTRIB_MAP
+    if attrib_name == "|" {
+        attrib_name=DEFAULT_ATTRIB_MAP
             .iter()
             .find(|&&(key, _)| key == node.parent().unwrap().kind())
             .map(|&(_, value)| value)
             .unwrap_or(attrib_name.as_str())
             .to_string()
-    } else if attrib_name == "src" {
-        "file".to_string()
-    } else {
-        attrib_name
-    };
+    } 
+    if attrib_name == "src" {
+        attrib_name="file".to_string();
+    } 
+    
 
     // Adjust the query to match the correct node types
     let query_source = r#"
@@ -826,21 +832,22 @@ pub fn node_2_usj_attrib(
     // Execute the query against the current node
     let mut captures = cursor.matches(&query, *node, usfm.as_bytes());
 
-    let attrib_value = if let Some(capture) = captures.next() {
+    let attrib_value:&str;
+    if let Some(capture) = captures.next() {
         if let Some(attrib_value_capture) = capture.captures.get(0) {
             let value = attrib_value_capture
                 .node
                 .utf8_text(usfm.as_bytes())
                 .unwrap()
                 .trim();
-            value.to_string()
-        } else {
-            "".to_string()
         }
-    } else {
-        "".to_string()
-    };
-
+     } 
+     if value > 0 {
+        attrib_value = value;
+     }
+     else {
+            attrib_value="".to_string();
+    } 
     // let mut attribute_json_obj = json!({
     //     "type": "attribute",
     //     "marker": "attribute",
