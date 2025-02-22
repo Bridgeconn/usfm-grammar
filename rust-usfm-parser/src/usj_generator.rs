@@ -306,7 +306,16 @@ pub fn node_2_usj_chapter(
     usfm: &str,
     parser: &Parser,
 ) {
-    let query_source = r#"
+
+    for child in node.children(&mut node.walk()) {
+        if child.kind() == "c"{
+            node_2_usj_ca_va(&child, content, usfm, parser);
+        }
+        else {
+            node_2_usj(&child, content, usfm, parser);
+        }
+    }
+  /*  let query_source = r#"
     (c
         (chapterNumber) @chap-num
         (ca (chapterNumber) @alt-num)?
@@ -386,22 +395,8 @@ pub fn node_2_usj_chapter(
     // Append the chapter JSON object to the parent content
     content.push(chap_json_obj);
 
-    // Create a TreeCursor to iterate through the children
-    // let mut cursor = node.walk();
-    // cursor.goto_first_child(); // Move to the first child
-
-    // // Traverse all children
-    // while cursor.goto_next_sibling() {
-    //     let child = cursor.node();
-    //     if child.kind() == "v" {
-    //         node_2_usj_verse(&child, content, usfm, parser, &global_chapter_number);
-    //         // Pass chapter_number here
-    //     }
-
-    //     if child.kind() == "cl" || child.kind() == "cd" {
-    //         node_2_usj(&child, content, usfm, parser); // Pass a reference to the child node
-    //     }
-    // }
+   */
+  
 }
 pub fn node_2_usj_ca_va(
     node: &tree_sitter::Node,
