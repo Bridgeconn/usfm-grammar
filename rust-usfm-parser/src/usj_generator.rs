@@ -160,7 +160,7 @@ pub fn node_2_usj(  //verified
     combined_markers.insert("xt_standalone");
     // //println!("{:#?}",combined_markers);
    // let mut tree_cursor = node.walk();
-    println!("Node Type: {}", node_type);
+    //println!("Node Type: {}", node_type);
     if node_type == "File" {
         node_2_usj_id(&node, content, usfm, parser);
     } else if node_type == "chapter" {
@@ -180,8 +180,8 @@ pub fn node_2_usj(  //verified
         node_2_usj_para(&node, content, usfm, parser);
     } else if NOTE_MARKERS.contains(&node_type) {
         node_2_usj_notes(&node, content, usfm, parser);
-    } else if combined_markers.contains(&node_type) {
-        node_2_usj_char(node, content, usfm, parser);
+    // } else if combined_markers.contains(&node_type) {
+    //     node_2_usj_char(node, content, usfm, parser);
     } else if node_type.ends_with("Attribute") {
         node_2_usj_attrib(&node, content, usfm, parser);
     } else if node_type == "text" {
@@ -486,7 +486,7 @@ pub fn node_2_usj_ca_va(
         }
     }
 }
-pub fn node_2_usj_verse(
+pub fn node_2_usj_verse( //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
@@ -503,7 +503,7 @@ pub fn node_2_usj_verse(
         (vp (text) @vp)?
     )
     "#;
-    let chapter = node.parent();
+    
     ////println!("{:?}", chapter);
     let query =
         Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
@@ -524,6 +524,7 @@ pub fn node_2_usj_verse(
             if let Ok(num) = vnum_capture.node.utf8_text(usfm.as_bytes()) {
                 verse_number = Some(num.trim().to_string());
             }
+
         }
 
         // Capture the alternative verse number if it exists
@@ -540,12 +541,7 @@ pub fn node_2_usj_verse(
             }
         }
 
-        // Capture the verse text if it exists
-        if let Some(vp_capture) = capture.captures.get(3) {
-            if let Ok(vp) = vp_capture.node.utf8_text(usfm.as_bytes()) {
-                verse_text.push_str(vp);
-            }
-        }
+        
     }
 
     // Create the verse JSON object
@@ -573,7 +569,7 @@ pub fn node_2_usj_verse(
 }
 
 
-pub fn node_2_usj_para(
+pub fn node_2_usj_para(   //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
@@ -746,6 +742,7 @@ pub fn node_2_usj_char(
     if let Some(last_child) = node.child(children_range - 1) {
         if last_child.kind().starts_with('\\') {
             children_range -= 1; // Exclude the closing node if it starts with '\'
+            println!("Exclude the closing node if it starts with '\'");
         }
     }
 
@@ -794,7 +791,7 @@ pub fn node_2_usj_char(
     content.push(char_json_obj); // Push the character JSON object directly to the Vec
 }
 
-pub fn node_2_usj_attrib(
+pub fn node_2_usj_attrib( //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
