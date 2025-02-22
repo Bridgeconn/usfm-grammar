@@ -332,7 +332,7 @@ pub fn node_2_usj_chapter(
             if let Ok(num) = chap_num_capture.node.utf8_text(usfm.as_bytes()) {
                 chapter_number = Some(num.trim().to_string());
 
-                *global_chapter_number = chapter_number.clone();
+                
             }
         }
 
@@ -365,7 +365,7 @@ pub fn node_2_usj_chapter(
             break;
         }
     }
-
+    *global_chapter_number = chap_ref.clone();
     // Create the chapter JSON object
     let mut chap_json_obj = json!({
         "type": "chapter",
@@ -387,21 +387,21 @@ pub fn node_2_usj_chapter(
     content.push(chap_json_obj);
 
     // Create a TreeCursor to iterate through the children
-    let mut cursor = node.walk();
-    cursor.goto_first_child(); // Move to the first child
+    // let mut cursor = node.walk();
+    // cursor.goto_first_child(); // Move to the first child
 
-    // Traverse all children
-    while cursor.goto_next_sibling() {
-        let child = cursor.node();
-        if child.kind() == "v" {
-            node_2_usj_verse(&child, content, usfm, parser, &global_chapter_number);
-            // Pass chapter_number here
-        }
+    // // Traverse all children
+    // while cursor.goto_next_sibling() {
+    //     let child = cursor.node();
+    //     if child.kind() == "v" {
+    //         node_2_usj_verse(&child, content, usfm, parser, &global_chapter_number);
+    //         // Pass chapter_number here
+    //     }
 
-        if child.kind() == "cl" || child.kind() == "cd" {
-            node_2_usj(&child, content, usfm, parser); // Pass a reference to the child node
-        }
-    }
+    //     if child.kind() == "cl" || child.kind() == "cd" {
+    //         node_2_usj(&child, content, usfm, parser); // Pass a reference to the child node
+    //     }
+    // }
 }
 pub fn node_2_usj_ca_va(
     node: &tree_sitter::Node,
@@ -503,7 +503,7 @@ pub fn node_2_usj_verse(
     )
     "#;
     let chapter = node.parent();
-    println!("{:?}", chapter);
+    //println!("{:?}", chapter);
     let query =
         Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
     let mut cursor = QueryCursor::new();
@@ -571,14 +571,7 @@ pub fn node_2_usj_verse(
     content.push(verse_json_obj);
 }
 
-/*fn node_2_usj(
-    node: &tree_sitter::Node,
-    content: &mut Vec<serde_json::Value>,
-    usfm: &str,
-    parser: &Parser,
-) {
-}
-*/
+
 pub fn node_2_usj_para(
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
@@ -594,7 +587,7 @@ pub fn node_2_usj_para(
         cursor.goto_first_child(); // Move to the first child of the block
         while cursor.goto_next_sibling() {
             let child = cursor.node();
-            node_2_usj(&child, content, usfm, parser); // Recursively process child nodes
+            node_2_usj_para(&child, content, usfm, parser); // Recursively process child nodes
         }
     } else if node.kind() == "paragraph" {
         // Extract the paragraph marker using a query
@@ -607,29 +600,40 @@ pub fn node_2_usj_para(
         // Process the captures to get the paragraph marker
         if let Some(capture) = captures.next() {
             let para_marker = capture.captures[0].node.kind(); // Get the marker type
-            let mut para_json_obj = json!({
-                "type": "para",
-                "marker": para_marker,
-                "content": [],
-            });
 
-            // Create a TreeCursor to iterate through the children of the capture
-            let mut child_cursor = capture.captures[0].node.walk();
-            child_cursor.goto_first_child(); // Move to the first child
+            if para_marker == "b" {
+                // If the marker is "b", create a JSON object with just the marker
+                let b_json_obj = json!({
+                    "type": "para",
+                    "marker": para_marker,
+                });
+                content.push(b_json_obj); // Append to the parent content
+            } else if !para_marker.ends_with("Block") {
+                // If the marker does not end with "Block", create a JSON object with content
+                let mut para_json_obj = json!({
+                    "type": "para",
+                    "marker": para_marker,
+                    "content": [],
+                });
 
-            // Process the children of the paragraph
-            while child_cursor.goto_next_sibling() {
-                let child = child_cursor.node();
-                node_2_usj(
-                    &child,
-                    para_json_obj["content"].as_array_mut().unwrap(),
-                    usfm,
-                    parser,
-                );
+                // Create a TreeCursor to iterate through the children of the capture
+                let mut child_cursor = capture.captures[0].node.walk();
+                child_cursor.goto_first_child(); // Move to the first child
+
+                // Process the children of the paragraph
+                while child_cursor.goto_next_sibling() {
+                    let child = child_cursor.node();
+                    node_2_usj(
+                        &child,
+                        para_json_obj["content"].as_array_mut().unwrap(),
+                        usfm,
+                        parser,
+                    );
+                }
+
+                // Append the paragraph JSON object to the parent content
+                content.push(para_json_obj);
             }
-
-            // Append the paragraph JSON object to the parent content
-            content.push(para_json_obj);
         }
     } else if node.kind() == "pi" || node.kind() == "ph" {
         // Extract the marker for pi or ph
@@ -644,7 +648,7 @@ pub fn node_2_usj_para(
             "content": [],
         });
 
-        //Create a TreeCursor to iterate through the children
+        // Create a TreeCursor to iterate through the children
         let mut child_cursor = node.walk();
         child_cursor.goto_first_child(); // Move to the first child
 
@@ -663,7 +667,6 @@ pub fn node_2_usj_para(
         content.push(para_json_obj);
     }
 }
-
 pub fn node_2_usj_notes(
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
