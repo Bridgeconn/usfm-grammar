@@ -142,7 +142,7 @@ pub fn usj_generator(usfm: &str, parser: &Parser) -> Result<String, Box<dyn std:
     });
     Ok(json_output)
 }
-pub fn node_2_usj(
+pub fn node_2_usj(  //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
@@ -158,7 +158,7 @@ pub fn node_2_usj(
     combined_markers.extend(CHAR_STYLE_MARKERS.iter().map(|&s| s)); // Dereference here
     combined_markers.extend(NESTED_CHAR_STYLE_MARKERS.iter().map(|&s| s));
     combined_markers.insert("xt_standalone");
-    // println!("{:#?}",combined_markers);
+    // //println!("{:#?}",combined_markers);
    // let mut tree_cursor = node.walk();
     println!("Node Type: {}", node_type);
     if node_type == "File" {
@@ -218,9 +218,9 @@ pub fn node_2_usj(
         // skip white space nodes
      } 
     if *&node.child_count() > 0 {
-        println!("count:{}",node.child_count());
+        //println!("count:{}",node.child_count());
         for child in node.children(&mut node.walk()) {
-            println!("child:{}",child);
+            //println!("child:{}",child);
             node_2_usj(&child, content, usfm, parser);
         }
     }
@@ -230,11 +230,11 @@ pub fn node_2_usj(
 
     // cursor.goto_first_child(); // Move to the first child
     //                            //let child_count = node.named_child_count();
-    //                            //println!("Node has {} children", child_count);
+    //                            ////println!("Node has {} children", child_count);
     //                            // Traverse all children
     // while cursor.goto_next_sibling() {
     //     let child = cursor.node();
-    //     println!("child node::::::{}",child);
+    //     //println!("child node::::::{}",child);
     //     node_2_usj(&child, content, usfm, &parser); // Recursively process child nodes
     // }
 
@@ -242,7 +242,7 @@ pub fn node_2_usj(
     
 } 
 
-pub fn node_2_usj_id(
+pub fn node_2_usj_id(   //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
@@ -259,7 +259,7 @@ pub fn node_2_usj_id(
         .utf8_text(usfm.as_bytes())
         .expect("Failed to get node text")
         .to_string();
-    //println!("nodeTYPE={}", node_text);
+    ////println!("nodeTYPE={}", node_text);
 
     let query =
         Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
@@ -296,12 +296,12 @@ pub fn node_2_usj_id(
     // let mut cursor = node.walk();
     // let child = cursor.node(); 
     // let node_type=child.kind();
-    // println!("Node Type: {}", node_type);
+    // //println!("Node Type: {}", node_type);
    // node_2_usj(&child, content, usfm, parser);
 
 }
 
-pub fn node_2_usj_chapter(
+pub fn node_2_usj_chapter( //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
@@ -318,7 +318,7 @@ pub fn node_2_usj_chapter(
     }
 }
 
-pub fn node_2_usj_c(
+pub fn node_2_usj_c( //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
@@ -415,7 +415,7 @@ pub fn node_2_usj_ca_va(
         .named_child(0)
         .expect("Expected a child node for style");
     let style = tag_node.kind();
-    println!("STYLE IS........{}", style);
+    //println!("STYLE IS........{}", style);
     // Clean up the style string
     let style = if style.starts_with('\\') {
         style.replace('\\', "").trim().to_string()
@@ -504,7 +504,7 @@ pub fn node_2_usj_verse(
     )
     "#;
     let chapter = node.parent();
-    //println!("{:?}", chapter);
+    ////println!("{:?}", chapter);
     let query =
         Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
     let mut cursor = QueryCursor::new();
@@ -739,10 +739,10 @@ pub fn node_2_usj_char(
 
     // Get the tag node (first child)
     let tag_node = node.child(0).expect("Expected a tag node");
-    //println!("tag node.............{}",tag_node);
+    //////println!("tag node.............{}",tag_node);
     // Determine the range of children to process
     let mut children_range = node.child_count();
-    println!("count child node.............{}", children_range);
+    //println!("count child node.............{}", children_range);
     if let Some(last_child) = node.child(children_range - 1) {
         if last_child.kind().starts_with('\\') {
             children_range -= 1; // Exclude the closing node if it starts with '\'
@@ -800,6 +800,7 @@ pub fn node_2_usj_attrib(
     usfm: &str,
     parser: &Parser,
 ) {
+    // Get the attribute name node
     let attrib_name_node = node.child(0).expect("Node should have at least one child");
     let mut attrib_name = attrib_name_node
         .utf8_text(usfm.as_bytes())
@@ -807,59 +808,61 @@ pub fn node_2_usj_attrib(
         .trim()
         .to_string();
 
+    // Handle special cases for attribute names
     if attrib_name == "|" {
-        attrib_name=DEFAULT_ATTRIB_MAP
+        attrib_name = DEFAULT_ATTRIB_MAP
             .iter()
             .find(|&&(key, _)| key == node.parent().unwrap().kind())
-            .map(|&(_, value)| value)
-            .unwrap_or(attrib_name.as_str())
-            .to_string()
-    } 
+            .map(|&(_, value)| value.to_string())
+            .unwrap_or(attrib_name);
+    }
     if attrib_name == "src" {
-        attrib_name="file".to_string();
-    } 
-    
+        attrib_name = "file".to_string();
+    }
 
-    // Adjust the query to match the correct node types
+    // Query to capture attribute values
     let query_source = r#"
     ((attributeValue) @attrib-val)
     "#;
 
-    let query =
-        Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
+    let query = Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
     let mut cursor = QueryCursor::new();
 
     // Execute the query against the current node
     let mut captures = cursor.matches(&query, *node, usfm.as_bytes());
 
-    let attrib_value:&str;
+    // Initialize attrib_value
+    let attrib_value: String;
+
+    // Capture the attribute value
+    let mut value="";    
     if let Some(capture) = captures.next() {
         if let Some(attrib_value_capture) = capture.captures.get(0) {
-            let value = attrib_value_capture
+            value = attrib_value_capture
                 .node
                 .utf8_text(usfm.as_bytes())
                 .unwrap()
                 .trim();
         }
-     } 
-     if value > 0 {
-        attrib_value = value;
-     }
-     else {
-            attrib_value="".to_string();
-    } 
-    // let mut attribute_json_obj = json!({
-    //     "type": "attribute",
-    //     "marker": "attribute",
-    //     "name": attrib_name,
-    //     "value": attrib_value,
-    // });
-    let attribute_json_obj = json!({
-            attrib_name: attrib_value
-
+    
+    }    
+            if value.len() > 0 {
+                    attrib_value = value.to_string(); // Assign the string value
+                } else {
+                    attrib_value = "".to_string(); // Reset if the number is not greater than 0
+                }
+             
+    
+    
+    // Create the JSON object
+    let mut attribute_json_obj = json!({
+        attrib_name: attrib_value
     });
+    //println!("ATTRIB ::::{}",attrib_value);
+    // Append the JSON object to the content
     content.push(attribute_json_obj);
 }
+
 
 pub fn node_2_usj_table(
     node: &tree_sitter::Node,
@@ -1224,7 +1227,7 @@ pub fn node_2_usj_generic(
 pub fn print_node(node: &tree_sitter::Node, usfm: &str, depth: usize) {
     let indent = "  ".repeat(depth);
     let node_text = node.utf8_text(usfm.as_bytes()).unwrap_or_default();
-    println!("{}Node: {}, Text: {}", indent, node.kind(), node_text);
+    //println!("{}Node: {}, Text: {}", indent, node.kind(), node_text);
 
     for child in node.children(&mut node.walk()) {
         print_node(&child, usfm, depth + 1);
