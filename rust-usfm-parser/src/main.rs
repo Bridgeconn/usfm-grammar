@@ -1,5 +1,5 @@
 mod globals;
-pub mod parser;
+mod parser;
 mod schema;
 mod usj_generator;
 mod validator;
@@ -19,7 +19,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     let _parser = USFMParser::new()?;
 
-    //let usfm_input = read_file("../tests/basic/attributes/origin.usfm")?;
     let usfm_input = read_file("input.usfm")?;
 
     let usj_sample = r#"{
