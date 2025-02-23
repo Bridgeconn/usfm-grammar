@@ -160,7 +160,7 @@ pub fn node_2_usj(  //verified
     combined_markers.insert("xt_standalone");
     // //println!("{:#?}",combined_markers);
    // let mut tree_cursor = node.walk();
-    //println!("Node Type: {}", node_type);
+    println!("Node Type: {}", node_type);
     if node_type == "File" {
         node_2_usj_id(&node, content, usfm, parser);
     } else if node_type == "chapter" {
@@ -217,8 +217,9 @@ pub fn node_2_usj(  //verified
        
         // skip white space nodes
      } 
-    if *&node.child_count() > 0 {
-        //println!("count:{}",node.child_count());
+     
+    if node.children(&mut node.walk()).len() > 0 {
+        println!("count:{}",node.child_count());
         for child in node.children(&mut node.walk()) {
             //println!("child:{}",child);
             node_2_usj(&child, content, usfm, parser);
@@ -226,7 +227,7 @@ pub fn node_2_usj(  //verified
     }
      
        // Create a TreeCursor to iterate through the children
-    // let mut cursor = node.walk();
+    //
 
     // cursor.goto_first_child(); // Move to the first child
     //                            //let child_count = node.named_child_count();
@@ -596,8 +597,8 @@ pub fn node_2_usj_para(   //verified
 
         // Process the captures to get the paragraph marker
         if let Some(capture) = captures.next() {
-            let para_marker = capture.captures[0].node.kind(); // Get the marker type
-
+            let mut para_marker = node.kind(); // Get the marker type
+            para_marker = para_marker.split_whitespace().next().unwrap_or("");        
             if para_marker == "b" {
                 // If the marker is "b", create a JSON object with just the marker
                 let b_json_obj = json!({
