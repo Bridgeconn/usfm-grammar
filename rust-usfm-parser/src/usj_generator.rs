@@ -903,9 +903,7 @@ pub fn node_2_usj_table(
             if style.contains("r") {
                 cell_json_obj["align"] = json!("end");
             } else {
-                cell_json_obet tag_node = node
-                .named_child(0)
-                .expect("Expected a child nodj["align"] = json!("start");
+                cell_json_obj["align"] = json!("start");
             }
 
             // Create a TreeCursor to iterate through the children

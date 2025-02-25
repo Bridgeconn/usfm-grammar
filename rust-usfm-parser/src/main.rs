@@ -19,8 +19,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     let _parser = USFMParser::new()?;
 
-    let usfm_input = read_file("input.usfm")?;
-    //let usfm_input = read_file("../tests/basic/character/origin.usfm")?;
+    //let usfm_input = read_file("input.usfm")?;
+    let usfm_input = read_file("../tests/basic/character/origin.usfm")?;
 
     let usj_sample = r#"{
   "type": "USJ",
