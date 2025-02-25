@@ -2,4 +2,9 @@
 \c 1
 \p
 \v 1 the first verse
-\v 2 the second verse \w gracious|lemma="grace" \w*
+\v 2 the second verse \w gracious|x-myattr="metadata" \w*
+\q1 “Someone is shouting in the desert,
+\q2 ‘Prepare a road for the Lord;
+\q2 make a straight path for him to travel!’ ”
+\s \jmp |link-id="article-john_the_baptist" \jmp*John the Baptist
+\p John is sometimes called...
