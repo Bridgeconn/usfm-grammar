@@ -63,7 +63,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Ok(valid) => {
             if valid {
                 println!("USFM is valid: {}", valid);
-                match usj_generator::usj_generator(&usfm_input, &validator.parser.parser) {
+                match usj_generator::usj_generator(&usfm_input) {
                     Ok(usj_output) => {
                         println!("Generated USJ:\n{}", usj_output);
                     }

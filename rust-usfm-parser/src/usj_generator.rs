@@ -155,11 +155,13 @@ pub fn node_2_usj(
     //     .expect("Failed to get node text")
     //     .to_string();
 
-    let mut combined_markers: HashSet<&str> = HashSet::new();
-    combined_markers.extend(CHAR_STYLE_MARKERS.iter().map(|&s| s)); // Dereference here
-    combined_markers.extend(NESTED_CHAR_STYLE_MARKERS.iter().map(|&s| s));
-    combined_markers.insert("xt_standalone");
-    // //println!("{:#?}",combined_markers);
+    // let mut combined_markers: HashSet<&str> = HashSet::new();
+    // combined_markers.extend(CHAR_STYLE_MARKERS.iter().map(|&s| s)); // Dereference here
+    // combined_markers.extend(NESTED_CHAR_STYLE_MARKERS.iter().map(|&s| s));
+    // combined_markers.insert("xt_standalone");
+    // for markers in &combined_markers{
+    //     println!("{:#?}",markers);
+    // }
     // let mut tree_cursor = node.walk();
     println!("Node Type: {}", node_type);
     if node_type == "File" {
@@ -181,7 +183,9 @@ pub fn node_2_usj(
         node_2_usj_para(&node, content, usfm);
     } else if NOTE_MARKERS.contains(&node_type) {
         node_2_usj_notes(&node, content, usfm);
-    } else if combined_markers.contains(&node_type) {
+    } else if CHAR_STYLE_MARKERS.contains(&node_type) || 
+    NESTED_CHAR_STYLE_MARKERS.contains(&node_type) || 
+    node_type == "xt_standalone" {
         node_2_usj_char(node, content, usfm);
     } else if node_type.ends_with("Attribute") {
         node_2_usj_attrib(&node, content, usfm);
@@ -210,17 +214,17 @@ pub fn node_2_usj(
         node_2_usj_milestone(&node, content, usfm);
     } else if ["esb", "cat", "fig"].contains(&node_type) {
         node_2_usj_special(&node, content, usfm);
-    } else if PARA_STYLE_MARKERS.contains(&node_type) {
+    } else if PARA_STYLE_MARKERS.contains(&node_type) || PARA_STYLE_MARKERS.contains(&node_type.replace("\\","").trim()) {
         //node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):
         //  self.node_2_usj_generic(node, parent_json_obj)
         node_2_usj_generic(node, content, usfm);
-    } else if node_type == "" || node_type == "|" {
+    } else if ["","|"].contains(&node_type.trim())/*  node_type == "" || node_type == "|"*/ {
 
         // skip white space nodes
     }
-    
 
-    else if node.children(&mut node.walk()).len() > 0 {
+
+    if node.children(&mut node.walk()).len() > 0 {
         //println!("count:{}",node.child_count());
         for child in node.children(&mut node.walk()) {
             //println!("child:{}",child);
@@ -315,7 +319,7 @@ pub fn node_2_usj_chapter(
     }
 }
 
-pub fn node_2_usj_c(
+pub fn node_2_usj_c(  //verified
     //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
@@ -328,8 +332,7 @@ pub fn node_2_usj_c(
             (cp (text) @pub-num)?
         )
     "#;
-    let query =
-        Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
+    let query = Query::new(&tree_sitter_usfm3::language(), query_source).expect("Failed to create query");
     let mut cursor = QueryCursor::new();
 
     // Execute the query against the current node
@@ -900,7 +903,9 @@ pub fn node_2_usj_table(
             if style.contains("r") {
                 cell_json_obj["align"] = json!("end");
             } else {
-                cell_json_obj["align"] = json!("start");
+                cell_json_obet tag_node = node
+                .named_child(0)
+                .expect("Expected a child nodj["align"] = json!("start");
             }
 
             // Create a TreeCursor to iterate through the children
