@@ -1,4 +1,4 @@
-c'''Logics for syntax-tree to dict(USJ) conversions'''
+'''Logics for syntax-tree to dict(USJ) conversions'''
 from usfm_grammar.usx_generator import USXGenerator
 
 #pylint: disable=duplicate-code
