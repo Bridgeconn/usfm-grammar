@@ -108,13 +108,6 @@ lazy_static! {
     static ref CHAPTER_NUMBER: Mutex<Option<String>> = Mutex::new(None);
 }
 
-/*const NESTED_CHAR_STYLE_MARKERS: Vec<String> = CHAR_STYLE_MARKERS
-    .iter()
-    .map(|item| format!("{}Nested", item)) // Append "Nested" to each item
-    .collect();
-
-
-const COMBINED_MARKERS: Vec<&str> = CHAR_STYLE_MARKERS.iter().chain(NESTED_CHAR_STYLE_MARKERS.iter()).chain(vec!["xt_standalone", "ref"].iter()).cloned().collect();*/
 pub fn usj_generator(usfm: &str) -> Result<String, Box<dyn std::error::Error>> {
     let global_tree: MutexGuard<Option<tree_sitter::Tree>> = GLOBAL_TREE.lock().unwrap();
     let tree = global_tree.as_ref().ok_or("Tree is not initialized")?;
@@ -212,10 +205,8 @@ pub fn node_2_usj(
         //  self.node_2_usj_generic(node, parent_json_obj)
         node_2_usj_generic(node, content, usfm);
     } else if ["", "|"].contains(&node_type.trim())
-    /*  node_type == "" || node_type == "|"*/
     {
-
-        // skip white space nodes
+         // skip white space nodes
     }
 
     if node.children(&mut node.walk()).len() > 0 {
@@ -226,18 +217,7 @@ pub fn node_2_usj(
         }
     }
 
-    // Create a TreeCursor to iterate through the children
-    //
-
-    // cursor.goto_first_child(); // Move to the first child
-    //                            //let child_count = node.named_child_count();
-    //                            ////println!("Node has {} children", child_count);
-    //                            // Traverse all children
-    // while cursor.goto_next_sibling() {
-    //     let child = cursor.node();
-    //     //println!("child node::::::{}",child);
-    //     node_2_usj(&child, content, usfm, &parser); // Recursively process child nodes
-    // }
+  
 }
 
 pub fn node_2_usj_id(
