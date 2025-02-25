@@ -150,19 +150,7 @@ pub fn node_2_usj(
     usfm: &str,
 ) {
     let node_type = node.kind();
-    // let _node_text = node
-    //     .utf8_text(usfm.as_bytes())
-    //     .expect("Failed to get node text")
-    //     .to_string();
-
-    // let mut combined_markers: HashSet<&str> = HashSet::new();
-    // combined_markers.extend(CHAR_STYLE_MARKERS.iter().map(|&s| s)); // Dereference here
-    // combined_markers.extend(NESTED_CHAR_STYLE_MARKERS.iter().map(|&s| s));
-    // combined_markers.insert("xt_standalone");
-    // for markers in &combined_markers{
-    //     println!("{:#?}",markers);
-    // }
-    // let mut tree_cursor = node.walk();
+   
     println!("Node Type: {}", node_type);
     if node_type == "File" {
         node_2_usj_id(&node, content, usfm);
