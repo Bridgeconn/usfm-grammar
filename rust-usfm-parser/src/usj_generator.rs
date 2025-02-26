@@ -185,12 +185,6 @@ pub fn node_2_usj(
             // cursor.goto_first_child();
             node_2_usj_para(&child, content, usfm);
         }
-        //  let mut cursor = node.walk();
-        // cursor.goto_first_child(); // Move to the first child
-        // while cursor.goto_next_sibling() {
-        //     let child = cursor.node();
-        //     node_2_usj(&child, content, usfm, &parser); // Recursively process child nodes
-        // }
     } else if ["table", "tr"].contains(&node_type) {
         //+ self.TABLE_CELL_MARKERS:
         node_2_usj_table(&node, content, usfm);
@@ -383,80 +377,49 @@ pub fn node_2_usj_ca_va(
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
 ) {
-    // Get the first child node to determine the style
-    let tag_node = node
-        .named_child(0)
-        .expect("Expected a child node for style");
-    let style = tag_node.kind();
-    //println!("STYLE IS........{}", style);
-    // Clean up the style string
-    let style = if style.starts_with('\\') {
-        style.replace('\\', "").trim().to_string()
-    } else {
-        node.kind().to_string()
-    };
+    // Create a query to capture alternative numbers (chapterNumber and verseNumber)
+    let query_source = r#"
+    ('''([
+                                            (chapterNumber)
+                                            (verseNumber)
+                                            ] @alt-num)''')
+    "#;
 
-    let mut children_range_start = 1;
+    let query = Query::new(&tree_sitter_usfm3::language(), query_source)
+        .expect("Failed to create query");
+    let mut cursor = QueryCursor::new();
 
-    // Check if the second child is a numbered style
-    if node.named_child_count() > 1
-        && node
-            .named_child(1)
-            .expect("Expected a numbered child")
-            .kind()
-            .starts_with("numbered")
-    {
-        let num_node = node.named_child(1).expect("Expected a numbered child");
-        let num = num_node
-            .utf8_text(usfm.as_bytes())
-            .expect("Failed to get number text")
-            .to_string();
-        let style = format!("{}{}", style, num);
-        children_range_start = 2; // Start from the third child
-    }
+    // Execute the query against the current node
+    let mut captures = cursor.matches(&query, *node, usfm.as_bytes());
 
-    // Create the paragraph JSON object
-    let mut para_json_obj = json!({
-        "type": "char",
-        "marker": style,
-        "content": [],
-    });
+    let mut alt_number = None;
 
-    // Append the paragraph object to the parent content
-    content.push(para_json_obj.clone());
-
-    // Create a TreeCursor to iterate through the children
-    let mut cursor = node.walk();
-    cursor.goto_first_child(); // Move to the first child
-
-    // Skip to the starting index for children
-    for _ in 0..children_range_start {
-        cursor.goto_next_sibling(); // Move to the next sibling
-    }
-
-    // Process the remaining children
-    while cursor.goto_next_sibling() {
-        let child = cursor.node();
-        let child_type = child.kind();
-        if child_type == "text"
-            || child_type == "footnote"
-            || child_type == "crossref"
-            || child_type == "verseText"
-            || child_type == "v"
-            || child_type == "b"
-            || child_type == "milestone"
-            || child_type == "zNameSpace"
-        {
-            // Only nest these types inside the upper para style node
-            node_2_usj(
-                &child,
-                para_json_obj["content"].as_array_mut().unwrap(),
-                usfm,
-            );
-        } else {
-            node_2_usj(&child, content, usfm);
+    // Iterate over the captures returned by the query
+    while let Some(capture) = captures.next() {
+        if let Some(alt_capture) = capture.captures.get(0) {
+            if let Ok(num) = alt_capture.node.utf8_text(usfm.as_bytes()) {
+                alt_number = Some(num.trim().to_string());
+            }
         }
     }
+
+    // Get the style from the node type
+    let style = node.kind().to_string();
+
+    // Create the character JSON object
+    let mut char_json_obj = json!({
+        "type": "char",
+        "marker": style,
+
+    });
+
+    // Add alternative number if it exists
+    if let Some(alt) = alt_number {
+        char_json_obj["altnumber"] = json!(alt);
+    }
+ 
+
+    content.push(char_json_obj);
 }
 pub fn node_2_usj_verse(
     //verified
@@ -957,9 +920,16 @@ pub fn node_2_usj_special(
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
 ) {
+    let query_source = r#"
+                                ('''(
+                                 [(milestoneTag)
+                                 (milestoneStartTag)
+                                 (milestoneEndTag)
+                                 (zSpaceTag)
+                                 ] @ms-name)''')
+                                "#;
     let node_type = node.kind();
-    match node_type {
-        "esb" => {
+   if node_type=="esb" {
             // Create a JSON object for the sidebar
             let mut sidebar_json_obj = json!({
                 "type": "sidebar",
@@ -992,11 +962,11 @@ pub fn node_2_usj_special(
             content.push(sidebar_json_obj);
         }
 
-        "cat" => {
+        else if node_type=="cat"{
             // Create a query to capture the category
             let query_source = r#"
-    (category) @category
-    "#;
+                                        (category) @category
+                                    "#;
             let query = Query::new(&tree_sitter_usfm3::language(), query_source)
                 .expect("Failed to create query");
             let mut cursor = QueryCursor::new();
@@ -1023,7 +993,7 @@ pub fn node_2_usj_special(
             }
         }
 
-        "fig" => {
+        else if node_type=="fig" {
             // Create a JSON object for the figure
             let mut fig_json_obj = json!({
                 "type": "figure",
@@ -1056,9 +1026,8 @@ pub fn node_2_usj_special(
             content.push(fig_json_obj);
         }
 
-        _ => {}
     }
-}
+
 pub fn node_2_usj_generic(
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
