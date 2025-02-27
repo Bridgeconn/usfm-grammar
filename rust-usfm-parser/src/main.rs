@@ -19,7 +19,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     }
     let _parser = USFMParser::new()?;
 
-    let usfm_input = read_file("input.usfm")?;
+    //let usfm_input = read_file("input.usfm")?;
+    let usfm_input = read_file("../tests/basic/character/origin.usfm")?;
 
     let usj_sample = r#"{
   "type": "USJ",
@@ -62,7 +63,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Ok(valid) => {
             if valid {
                 println!("USFM is valid: {}", valid);
-                match usj_generator::usj_generator(&usfm_input, &validator.parser.parser) {
+                match usj_generator::usj_generator(&usfm_input) {
                     Ok(usj_output) => {
                         println!("Generated USJ:\n{}", usj_output);
                     }
