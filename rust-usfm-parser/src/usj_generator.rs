@@ -149,48 +149,35 @@ pub fn node_2_usj(
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
 ) {
-    let node_type = node.kind();
-    // let _node_text = node
-    //     .utf8_text(usfm.as_bytes())
-    //     .expect("Failed to get node text")
-    //     .to_string();
-
-    // let mut combined_markers: HashSet<&str> = HashSet::new();
-    // combined_markers.extend(CHAR_STYLE_MARKERS.iter().map(|&s| s)); // Dereference here
-    // combined_markers.extend(NESTED_CHAR_STYLE_MARKERS.iter().map(|&s| s));
-    // combined_markers.insert("xt_standalone");
-    // for markers in &combined_markers{
-    //     println!("{:#?}",markers);
-    // }
-    // let mut tree_cursor = node.walk();
-    println!("Node Type: {}", node_type);
-    if node_type == "File" {
+    //let node_type = node.kind();
+    println!("Node Type: {}", node.kind());
+    if node.kind() == "File" {
         node_2_usj_id(&node, content, usfm);
-    } else if node_type == "chapter" {
+    } else if node.kind() == "chapter" {
         node_2_usj_chapter(&node, content, usfm);
-    } else if ["cl", "cp", "cd", "vp"].contains(&node_type) {
+    } else if ["cl", "cp", "cd", "vp"].contains(&node.kind()) {
         node_2_usj_generic(&node, content, usfm);
-    } else if ["ca", "va"].contains(&node_type) {
+    } else if ["ca", "va"].contains(&node.kind()) {
         node_2_usj_ca_va(&node, content, usfm);
-    } else if node_type == "v" {
+    } else if node.kind() == "v" {
         let global_chapter_number = CHAPTER_NUMBER.lock().unwrap();
         node_2_usj_verse(&node, content, usfm, &global_chapter_number);
-    } else if node_type == "verseText" {
+    } else if node.kind() == "verseText" {
         for child in node.children(&mut node.walk()) {
             node_2_usj(&child, content, usfm);
         }
-    } else if ["paragraph", "pi", "ph"].contains(&node_type) {
+    } else if ["paragraph", "pi", "ph"].contains(&node.kind()) {
         node_2_usj_para(&node, content, usfm);
-    } else if NOTE_MARKERS.contains(&node_type) {
+    } else if NOTE_MARKERS.contains(&node.kind()) {
         node_2_usj_notes(&node, content, usfm);
-    } else if CHAR_STYLE_MARKERS.contains(&node_type)
-        || NESTED_CHAR_STYLE_MARKERS.contains(&node_type)
-        || node_type == "xt_standalone"
+    } else if CHAR_STYLE_MARKERS.contains(&node.kind())
+        || NESTED_CHAR_STYLE_MARKERS.contains(&node.kind())
+        || node.kind() == "xt_standalone"
     {
         node_2_usj_char(node, content, usfm);
-    } else if node_type.ends_with("Attribute") {
+    } else if node.kind().ends_with("Attribute") {
         node_2_usj_attrib(&node, content, usfm);
-    } else if node_type == "text" {
+    } else if node.kind() == "text" {
         let node_text = node
             .utf8_text(usfm.as_bytes())
             .expect("Failed to get node text")
@@ -210,20 +197,20 @@ pub fn node_2_usj(
         //     let child = cursor.node();
         //     node_2_usj(&child, content, usfm, &parser); // Recursively process child nodes
         // }
-    } else if ["table", "tr"].contains(&node_type) {
+    } else if ["table", "tr"].contains(&node.kind()) {
         //+ self.TABLE_CELL_MARKERS:
         node_2_usj_table(&node, content, usfm);
-    } else if ["zNameSpace", "milestone"].contains(&node_type) {
+    } else if ["zNameSpace", "milestone"].contains(&node.kind()) {
         node_2_usj_milestone(&node, content, usfm);
-    } else if ["esb", "cat", "fig"].contains(&node_type) {
+    } else if ["esb", "cat", "fig"].contains(&node.kind()) {
         node_2_usj_special(&node, content, usfm);
-    } else if PARA_STYLE_MARKERS.contains(&node_type)
-        || PARA_STYLE_MARKERS.contains(&node_type.replace("\\", "").trim())
+    } else if PARA_STYLE_MARKERS.contains(&node.kind())
+        || PARA_STYLE_MARKERS.contains(&node.kind().replace("\\", "").trim())
     {
         //node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):
         //  self.node_2_usj_generic(node, parent_json_obj)
         node_2_usj_generic(node, content, usfm);
-    } else if ["", "|"].contains(&node_type.trim())
+    } else if ["", "|"].contains(&node.kind().trim())
     /*  node_type == "" || node_type == "|"*/
     {
 
