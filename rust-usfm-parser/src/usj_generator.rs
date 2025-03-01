@@ -126,14 +126,14 @@ pub fn usj_generator(usfm: &str) -> Result<String, Box<dyn std::error::Error>> {
     json_object.insert("type".to_string(), json!("USJ")); // Use json! macro for consistency
     json_object.insert("version".to_string(), json!("3.1")); // Use json! macro for consistency
 
-    let mut content = Vec::new();
+    let mut parent_json_obj = Vec::new();
 
     // Traverse the tree and build the JSON object
-    node_2_usj(&root_node, &mut content, usfm);
+    node_2_usj(&root_node, &mut parent_json_obj, usfm);
     // Insert the content as a serde_json::Value
     json_object.insert(
         "content".to_string(),
-        serde_json::to_value(content).unwrap(),
+        serde_json::to_value(parent_json_obj).unwrap(),
     );
 
     // Convert HashMap to pretty-printed JSON
@@ -146,37 +146,37 @@ pub fn usj_generator(usfm: &str) -> Result<String, Box<dyn std::error::Error>> {
 pub fn node_2_usj(
     //verified
     node: &tree_sitter::Node,
-    content: &mut Vec<serde_json::Value>,
+    parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
 ) {
     //let node_type = node.kind();
     println!("Node Type: {}", node.kind());
-    if node.kind() == "File" {
-        node_2_usj_id(&node, content, usfm);
+    if node.kind() == "id" {
+        node_2_usj_id(&node, parent_json_obj, usfm);
     } else if node.kind() == "chapter" {
-        node_2_usj_chapter(&node, content, usfm);
+        node_2_usj_chapter(&node, parent_json_obj, usfm);
     } else if ["cl", "cp", "cd", "vp"].contains(&node.kind()) {
-        node_2_usj_generic(&node, content, usfm);
+        node_2_usj_generic(&node, parent_json_obj, usfm);
     } else if ["ca", "va"].contains(&node.kind()) {
-        node_2_usj_ca_va(&node, content, usfm);
+        node_2_usj_ca_va(&node, parent_json_obj, usfm);
     } else if node.kind() == "v" {
         let global_chapter_number = CHAPTER_NUMBER.lock().unwrap();
-        node_2_usj_verse(&node, content, usfm, &global_chapter_number);
+        node_2_usj_verse(&node, parent_json_obj, usfm, &global_chapter_number);
     } else if node.kind() == "verseText" {
         for child in node.children(&mut node.walk()) {
-            node_2_usj(&child, content, usfm);
+            node_2_usj(&child, parent_json_obj, usfm);
         }
     } else if ["paragraph", "pi", "ph"].contains(&node.kind()) {
-        node_2_usj_para(&node, content, usfm);
+        node_2_usj_para(&node, parent_json_obj, usfm);
     } else if NOTE_MARKERS.contains(&node.kind()) {
-        node_2_usj_notes(&node, content, usfm);
+        node_2_usj_notes(&node, parent_json_obj, usfm);
     } else if CHAR_STYLE_MARKERS.contains(&node.kind())
         || NESTED_CHAR_STYLE_MARKERS.contains(&node.kind())
         || node.kind() == "xt_standalone"
     {
-        node_2_usj_char(node, content, usfm);
+        node_2_usj_char(node, parent_json_obj, usfm);
     } else if node.kind().ends_with("Attribute") {
-        node_2_usj_attrib(&node, content, usfm);
+        node_2_usj_attrib(&node, parent_json_obj, usfm);
     } else if node.kind() == "text" {
         let node_text = node
             .utf8_text(usfm.as_bytes())
@@ -184,36 +184,26 @@ pub fn node_2_usj(
             .replace('\n', "")
             .to_string();
         if node_text != "" {
-            content.push(serde_json::Value::String(node_text));
+            parent_json_obj.push(serde_json::Value::String(node_text));
         }
         let mut cursor = node.walk();
         for child in node.children(&mut node.walk()) {
             // cursor.goto_first_child();
-            node_2_usj_para(&child, content, usfm);
+            node_2_usj_para(&child, parent_json_obj, usfm);
         }
-        //  let mut cursor = node.walk();
-        // cursor.goto_first_child(); // Move to the first child
-        // while cursor.goto_next_sibling() {
-        //     let child = cursor.node();
-        //     node_2_usj(&child, content, usfm, &parser); // Recursively process child nodes
-        // }
     } else if ["table", "tr"].contains(&node.kind()) {
         //+ self.TABLE_CELL_MARKERS:
-        node_2_usj_table(&node, content, usfm);
+        node_2_usj_table(&node, parent_json_obj, usfm);
     } else if ["zNameSpace", "milestone"].contains(&node.kind()) {
-        node_2_usj_milestone(&node, content, usfm);
+        node_2_usj_milestone(&node, parent_json_obj, usfm);
     } else if ["esb", "cat", "fig"].contains(&node.kind()) {
-        node_2_usj_special(&node, content, usfm);
+        node_2_usj_special(&node, parent_json_obj, usfm);
     } else if PARA_STYLE_MARKERS.contains(&node.kind())
         || PARA_STYLE_MARKERS.contains(&node.kind().replace("\\", "").trim())
     {
-        //node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):
-        //  self.node_2_usj_generic(node, parent_json_obj)
-        node_2_usj_generic(node, content, usfm);
+        node_2_usj_generic(node, parent_json_obj, usfm);
     } else if ["", "|"].contains(&node.kind().trim())
-    /*  node_type == "" || node_type == "|"*/
     {
-
         // skip white space nodes
     }
 
@@ -221,7 +211,7 @@ pub fn node_2_usj(
         //println!("count:{}",node.child_count());
         for child in node.children(&mut node.walk()) {
             //println!("child:{}",child);
-            node_2_usj(&child, content, usfm);
+            node_2_usj(&child, parent_json_obj, usfm);
         }
     }
 
