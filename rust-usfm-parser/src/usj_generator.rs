@@ -262,21 +262,6 @@ pub fn node_2_usj_id(
     content.push(book_json_obj.clone());
 }
 
-pub fn node_2_usj_chapter(
-    //verified
-    node: &tree_sitter::Node,
-    content: &mut Vec<serde_json::Value>,
-    usfm: &str,
-) {
-    for child in node.children(&mut node.walk()) {
-        if child.kind() == "c" {
-            node_2_usj_c(&child, content, usfm);
-        } else {
-            node_2_usj(&child, content, usfm);
-        }
-    }
-}
-
 pub fn node_2_usj_c(
     //verified
     //verified
@@ -368,86 +353,21 @@ pub fn node_2_usj_c(
     }
 }
 
-pub fn node_2_usj_ca_va(
+pub fn node_2_usj_chapter(
+    //verified
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
 ) {
-    // Get the first child node to determine the style
-    let tag_node = node
-        .named_child(0)
-        .expect("Expected a child node for style");
-    let style = tag_node.kind();
-    //println!("STYLE IS........{}", style);
-    // Clean up the style string
-    let style = if style.starts_with('\\') {
-        style.replace('\\', "").trim().to_string()
-    } else {
-        node.kind().to_string()
-    };
-
-    let mut children_range_start = 1;
-
-    // Check if the second child is a numbered style
-    if node.named_child_count() > 1
-        && node
-            .named_child(1)
-            .expect("Expected a numbered child")
-            .kind()
-            .starts_with("numbered")
-    {
-        let num_node = node.named_child(1).expect("Expected a numbered child");
-        let num = num_node
-            .utf8_text(usfm.as_bytes())
-            .expect("Failed to get number text")
-            .to_string();
-        let style = format!("{}{}", style, num);
-        children_range_start = 2; // Start from the third child
-    }
-
-    // Create the paragraph JSON object
-    let mut para_json_obj = json!({
-        "type": "char",
-        "marker": style,
-        "content": [],
-    });
-
-    // Append the paragraph object to the parent content
-    content.push(para_json_obj.clone());
-
-    // Create a TreeCursor to iterate through the children
-    let mut cursor = node.walk();
-    cursor.goto_first_child(); // Move to the first child
-
-    // Skip to the starting index for children
-    for _ in 0..children_range_start {
-        cursor.goto_next_sibling(); // Move to the next sibling
-    }
-
-    // Process the remaining children
-    while cursor.goto_next_sibling() {
-        let child = cursor.node();
-        let child_type = child.kind();
-        if child_type == "text"
-            || child_type == "footnote"
-            || child_type == "crossref"
-            || child_type == "verseText"
-            || child_type == "v"
-            || child_type == "b"
-            || child_type == "milestone"
-            || child_type == "zNameSpace"
-        {
-            // Only nest these types inside the upper para style node
-            node_2_usj(
-                &child,
-                para_json_obj["content"].as_array_mut().unwrap(),
-                usfm,
-            );
+    for child in node.children(&mut node.walk()) {
+        if child.kind() == "c" {
+            node_2_usj_c(&child, content, usfm);
         } else {
             node_2_usj(&child, content, usfm);
         }
     }
 }
+
 pub fn node_2_usj_verse(
     //verified
     node: &tree_sitter::Node,
@@ -528,8 +448,91 @@ pub fn node_2_usj_verse(
     content.push(verse_json_obj);
 }
 
+
+
+
+pub fn node_2_usj_ca_va( //neede to fix
+    node: &tree_sitter::Node,
+    content: &mut Vec<serde_json::Value>,
+    usfm: &str,
+) {
+    // Get the first child node to determine the style
+    let tag_node = node
+        .named_child(0)
+        .expect("Expected a child node for style");
+    let style = tag_node.kind();
+    //println!("STYLE IS........{}", style);
+    // Clean up the style string
+    let style = if style.starts_with('\\') {
+        style.replace('\\', "").trim().to_string()
+    } else {
+        node.kind().to_string()
+    };
+
+    let mut children_range_start = 1;
+
+    // Check if the second child is a numbered style
+    if node.named_child_count() > 1
+        && node
+            .named_child(1)
+            .expect("Expected a numbered child")
+            .kind()
+            .starts_with("numbered")
+    {
+        let num_node = node.named_child(1).expect("Expected a numbered child");
+        let num = num_node
+            .utf8_text(usfm.as_bytes())
+            .expect("Failed to get number text")
+            .to_string();
+        let style = format!("{}{}", style, num);
+        children_range_start = 2; // Start from the third child
+    }
+
+    // Create the paragraph JSON object
+    let mut para_json_obj = json!({
+        "type": "char",
+        "marker": style,
+        "content": [],
+    });
+
+    // Append the paragraph object to the parent content
+    content.push(para_json_obj.clone());
+
+    // // Create a TreeCursor to iterate through the children
+    // let mut cursor = node.walk();
+    // cursor.goto_first_child(); // Move to the first child
+
+    // // Skip to the starting index for children
+    // for _ in 0..children_range_start {
+    //     cursor.goto_next_sibling(); // Move to the next sibling
+    // }
+
+    // // Process the remaining children
+    // while cursor.goto_next_sibling() {
+    //     let child = cursor.node();
+    //     let child_type = child.kind();
+    //     if child_type == "text"
+    //         || child_type == "footnote"
+    //         || child_type == "crossref"
+    //         || child_type == "verseText"
+    //         || child_type == "v"
+    //         || child_type == "b"
+    //         || child_type == "milestone"
+    //         || child_type == "zNameSpace"
+    //     {
+    //         // Only nest these types inside the upper para style node
+    //         node_2_usj(
+    //             &child,
+    //             para_json_obj["content"].as_array_mut().unwrap(),
+    //             usfm,
+    //         );
+    //     } else {
+    //         node_2_usj(&child, content, usfm);
+    //     }
+    // }
+}
 pub fn node_2_usj_para(
-    //verified
+    //not correct should be corrected
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
@@ -579,7 +582,7 @@ pub fn node_2_usj_para(
 
                     for child in node.children(&mut node.walk()) {
                         // cursor.goto_first_child();
-                        node_2_usj_para(
+                        node_2_usj(
                             &child,
                             &mut para_json_obj["content"].as_array_mut().unwrap(),
                             usfm,
@@ -603,7 +606,7 @@ pub fn node_2_usj_para(
 
         for child in node.children(&mut node.walk()) {
             // cursor.goto_first_child();
-            node_2_usj_para(
+            node_2_usj(
                 &child,
                 &mut para_json_obj["content"].as_array_mut().unwrap(),
                 usfm,
@@ -709,18 +712,18 @@ pub fn node_2_usj_char(
             node_2_usj(&child, content_array, usfm); // Pass the mutable reference to the content array
         }
     }
-    let mut child_cursor = node.walk();
-    child_cursor.goto_first_child(); // Move to the first child
+    // let mut child_cursor = node.walk();
+    // child_cursor.goto_first_child(); // Move to the first child
 
     // Process the remaining children
-    while child_cursor.goto_next_sibling() {
-        let child = child_cursor.node();
-        node_2_usj(
-            &child,
-            &mut char_json_obj["content"].as_array_mut().unwrap(),
-            usfm,
-        );
-    }
+    // while child_cursor.goto_next_sibling() {
+    //     let child = child_cursor.node();
+    //     node_2_usj(
+    //         &child,
+    //         &mut char_json_obj["content"].as_array_mut().unwrap(),
+    //         usfm,
+    //     );
+    // }
 
     // Append the character JSON object to the parent JSON object
     content.push(char_json_obj); // Push the character JSON object directly to the Vec
