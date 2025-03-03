@@ -59,7 +59,7 @@ lazy_static! {
         m.insert("test/usfmjsTests/out_of_sequence_verses/origin.usfm",false);
         m.insert("test/usfmjsTests/acts_1_milestone/origin.usfm",false);
         m.insert("test/usfmjsTests/luk_quotes/origin.usfm",false);
-        m.insert("test/biblica/BlankLinesWithFigures/origin.usfm",false);       // \fig used without \p, only \b
+        m.insert("test/biblica/BlankLinesWithFigures/origin.usfm",false);       //          \fig used without \p, only \b
 
 
         //  no space after \s5
@@ -181,7 +181,7 @@ pub fn find_all_markers<P: AsRef<Path>>(
     //         "esb marker not found when esbe is present"
     //     );
     //     markers.remove("esbe");
-    // }
+    // }            
     // markers.remove("usfm");
 
     // Convert HashSet to Vec and return
