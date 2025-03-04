@@ -9,4 +9,4 @@ USFMParser = usfm_parser.USFMParser
 
 Validator = validator.Validator
 
-__version__ = "3.0.0"
+__version__ = "3.0.1-alpha.1"

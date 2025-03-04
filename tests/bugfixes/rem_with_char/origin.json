@@ -1,0 +1,145 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "para",
+            "marker": "rem",
+            "content": [
+                "comment ",
+                {
+                    "type": "char",
+                    "marker": "nd",
+                    "content": [
+                        "Jesus "
+                    ]
+                },
+                " to ",
+                {
+                    "type": "char",
+                    "marker": "em",
+                    "content": [
+                        "test "
+                    ]
+                },
+                ".\n"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "rem",
+            "content": [
+                "comment ",
+                {
+                    "type": "char",
+                    "marker": "nd",
+                    "content": [
+                        "Jesus "
+                    ]
+                },
+                " to ",
+                {
+                    "type": "char",
+                    "marker": "em",
+                    "content": [
+                        "test "
+                    ]
+                },
+                ".\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "para",
+                    "marker": "rem",
+                    "content": [
+                        "comment ",
+                        {
+                            "type": "char",
+                            "marker": "nd",
+                            "content": [
+                                "Jesus "
+                            ]
+                        },
+                        " to ",
+                        {
+                            "type": "char",
+                            "marker": "em",
+                            "content": [
+                                "test "
+                            ]
+                        },
+                        ".\n"
+                    ]
+                },
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "the first verse\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "the second verse\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "15",
+                    "sid": "GEN 1:15"
+                },
+                "Tell the Israelites that I, the ",
+                {
+                    "type": "char",
+                    "marker": "nd",
+                    "content": [
+                        "Lord"
+                    ]
+                },
+                ", the God of their ancestors, the God of Abraham, Isaac, and Jacob,\n",
+                {
+                    "type": "para",
+                    "marker": "rem",
+                    "content": [
+                        "comment ",
+                        {
+                            "type": "char",
+                            "marker": "nd",
+                            "content": [
+                                "Jesus "
+                            ]
+                        },
+                        " to ",
+                        {
+                            "type": "char",
+                            "marker": "em",
+                            "content": [
+                                "test "
+                            ]
+                        },
+                        ".\n"
+                    ]
+                }
+            ]
+        }
+    ]
+}
