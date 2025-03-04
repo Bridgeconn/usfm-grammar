@@ -76,7 +76,7 @@ module.exports = grammar({
     _comments: $ => choice($.rem, $.sts, $.restore, $.lit),
 
     sts: $ => seq("\\sts ", $.text), // can be present at any position in file, and divides the file into sections from one sts to another.
-    rem: $ => seq("\\rem ", $.text), // can be present at any position in file.
+    rem: $ => prec.right(0, seq("\\rem ", repeat1(choice($.text, $._characterMarker)))), // can be present at any position in file.
     restore: $ => seq("\\restore ", $.text), //can't find this marker in docs
     lit: $ => seq("\\lit ", $.text), 
 
