@@ -169,6 +169,49 @@ fn strip_default_attrib_value(usj_dict: &mut Value) {
     }
 }
 
+fn format_test_error(
+    message: &str,
+    file_path: &std::path::Path,
+    extra_context: Option<&str>,
+) -> String {
+    let mut error = format!("Test failed for file '{}': {}", file_path.display(), message);
+    if let Some(context) = extra_context {
+        error.push_str("\nAdditional context:\n");
+        error.push_str(context);
+    }
+    error
+}
+
+// New helper function to compute a simple diff between two JSON values
+fn simple_json_diff(left: &Value, right: &Value) -> String {
+    let mut diff = String::new();
+    match (left, right) {
+        (Value::Object(left_obj), Value::Object(right_obj)) => {
+            for (key, left_val) in left_obj {
+                if let Some(right_val) = right_obj.get(key) {
+                    if left_val != right_val {
+                        diff.push_str(&format!(
+                            "Key '{}':\n  Generated: {}\n  Expected: {}\n",
+                            key,
+                            serde_json::to_string(left_val).unwrap_or_default(),
+                            serde_json::to_string(right_val).unwrap_or_default()
+                        ));
+                    }
+                } else {
+                    diff.push_str(&format!("Key '{}' missing in expected\n", key));
+                }
+            }
+            for key in right_obj.keys() {
+                if !left_obj.contains_key(key) {
+                    diff.push_str(&format!("Key '{}' missing in generated\n", key));
+                }
+            }
+        }
+        _ => diff.push_str("Structures differ at root level\n"),
+    }
+    diff
+}
+
 // Test functions
 #[cfg(test)]
 mod tests {
@@ -192,16 +235,23 @@ mod tests {
             let usfm_parser = initialise_parser(&file_path)?;
             assert!(
                 usfm_parser.errors.is_empty(),
-                "Parser errors: {:?}",
-                usfm_parser.errors
+                "{}",
+                format_test_error(
+                    &format!("Parser errors: {:?}", usfm_parser.errors),
+                    &file_path,
+                    None
+                )
             );
 
+            
             // Get all markers from input file
             let all_markers_in_input = find_all_markers(&file_path, false, true)?;
             println!("{:?}", all_markers_in_input);     //Added for debug
 
             // Generate USJ and get all types
+
             let usj_string = usj_generator(&usfm_content)?;
+
             let usj_value: Value = serde_json::from_str(&usj_string)?;
             let all_json_types = get_types(&usj_value);
 
@@ -209,10 +259,15 @@ mod tests {
             for marker in all_markers_in_input {
                 assert!(
                     all_json_types.contains(&marker),
-                    "file '{}'Marker '{}' not found in types {:?}\n",
-                    file_path.display(),
-                    marker,
-                    all_json_types,
+                    "{}",
+                    format_test_error(
+                        &format!("Marker '{}' not found in types {:?}", marker, all_json_types),
+                        &file_path,
+                        Some(&format!(
+                            "Generated USJ:\n{}",
+                            serde_json::to_string_pretty(&usj_value)?
+                        ))
+                    )
                 );
             }
         }
@@ -239,13 +294,18 @@ mod tests {
             let parser = initialise_parser(file_path)?;
             assert!(
                 parser.errors.is_empty(),
-                "Parser errors: {:?}",
-                parser.errors
+                "{}",
+                format_test_error(
+                    &format!("Parser errors: {:?}", parser.errors),
+                    file_path,
+                    None
+                )
             );
-
             // Generate USJ
             let usfm_content = std::fs::read_to_string(file_path)?;
+
             let usj_string = usj_generator(&usfm_content)?;
+
 
             // Parse USJ output to Value for validation
             let usj_value = serde_json::from_str(&usj_string)?;
@@ -253,12 +313,27 @@ mod tests {
             // Validate and get detailed errors if any
             let validation_result = compiled_schema.validate(&usj_value);
             if let Err(errors) = validation_result {
-                println!("Validation errors for {}:", file_path.display());
-                for error in errors {
-                    println!("  - {}", error);
-                    println!("    at path: {}", error.schema_path);
-                }
-                panic!("USJ validation failed for file: {}", file_path.display());      //Added for debug
+                // println!("Validation errors for {}:", file_path.display());
+                // for error in errors {
+                //     println!("  - {}", error);
+                //     println!("    at path: {}", error.schema_path);
+                // }
+                // panic!("USJ validation failed for file: {}", file_path.display());      //Added for debug
+                let error_details: Vec<String> = errors
+                    .map(|e| format!("- {} (at path: {})", e, e.schema_path))
+                    .collect();
+                panic!(
+                    "{}",
+                    format_test_error(
+                        "USJ validation failed",
+                        file_path,
+                        Some(&format!(
+                            "Validation errors:\n{}\nGenerated USJ:\n{}",
+                            error_details.join("\n"),
+                            serde_json::to_string_pretty(&usj_value)?
+                        ))
+                    )
+                );
             }
 
             // // Validate against schema
@@ -293,13 +368,19 @@ mod tests {
             let parser = initialise_parser(file_path)?;
             assert!(
                 parser.errors.is_empty(),
-                "Parser errors: {:?}",
-                parser.errors
+                "{}",
+                format_test_error(
+                    &format!("Parser errors: {:?}", parser.errors),
+                    file_path,
+                    None
+                )
             );
-
             // Generate USJ
             let usfm_content = std::fs::read_to_string(file_path)?;
+
             let usj_string = usj_generator(&usfm_content)?;
+
+
             let mut usj_dict: Value = serde_json::from_str(&usj_string)?;
 
             // Process the generated USJ
@@ -323,13 +404,28 @@ mod tests {
                     strip_text_value(&mut origin_usj);
 
                     // Compare the processed values
+                    // assert_eq!(
+                    //     usj_dict,
+                    //     origin_usj,
+                    //     "USJ mismatch for {}\nGenerated:\n{}\nExpected:\n{}\n",
+                    //     file_path.display(),
+                    //     serde_json::to_string_pretty(&usj_dict)?,
+                    //     serde_json::to_string_pretty(&origin_usj)?,
+                    // );
                     assert_eq!(
                         usj_dict,
                         origin_usj,
-                        "USJ mismatch for {}\nGenerated:\n{}\nExpected:\n{}\n",
-                        file_path.display(),
-                        serde_json::to_string_pretty(&usj_dict)?,
-                        serde_json::to_string_pretty(&origin_usj)?,
+                        "{}",
+                        format_test_error(
+                            "USJ mismatch",
+                            file_path,
+                            Some(&format!(
+                                "Differences:\n{}\nGenerated USJ:\n{}\nExpected USJ:\n{}",
+                                simple_json_diff(&usj_dict, &origin_usj),
+                                serde_json::to_string_pretty(&usj_dict)?,
+                                serde_json::to_string_pretty(&origin_usj)?
+                            ))
+                        )
                     );
                 }
             }
