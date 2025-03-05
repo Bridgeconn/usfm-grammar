@@ -239,7 +239,9 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	    }
 
 	    try {
-	    	includeMarkers = [...includeMarkers, ...Filter.BCV]
+	    	if (includeMarkers) {
+	    		includeMarkers = [...includeMarkers, ...Filter.BCV]
+	    	}
 	        const usjDict = this.toUSJ(excludeMarkers, includeMarkers, ignoreErrors, combineTexts);
 
 	        const listGenerator = new ListGenerator();
