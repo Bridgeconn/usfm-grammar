@@ -17,7 +17,6 @@ class USFMGenerator:
     '''Combines the different methods that generate USFM from other formats in one class'''
     def __init__(self):
         self.usfm_string = ''
-
     # def is_valid_usfm(self, usfm_string: str = None) -> bool:
     #     '''Check the generated or passed USFM's correctness using the grammar'''
     #     if usfm_string is None:
@@ -176,22 +175,23 @@ class USFMGenerator:
         if obj_type == "sidebar":
             self.usfm_string += "\n\\esbe\n"
 
-    def biblenlp_to_usfm(self, biblenlp: dict) -> None: 
+    def biblenlp_to_usfm(self, biblenlp: dict) -> None:
         '''Traverses through the verse texts and vrefs to generate a minimal USFM from it'''
         curr_book = None
         curr_chapter = None
-        curr_verse = None
         vref_pattern = re.compile(r'(\w\w\w) (\d+):(.*)')
 
         if 'text' not in biblenlp or 'vref' not in biblenlp or \
             not isinstance(biblenlp['vref'], list) or not isinstance(biblenlp['text'], list) or \
             len(biblenlp['vref']) != len(biblenlp['text']):
-            raise Exception("BibleNlp format should contain a dict with 'vref' and 'text' fields. Each should be list of strings with same length.")
+            raise Exception("BibleNlp format should contain a dict with 'vref' and 'text' fields."+\
+                "Each should be list of strings with same length.")
 
         for vref, versetext in zip(biblenlp['vref'], biblenlp['text']):
             ref_match = re.match(vref_pattern, vref)
             if ref_match is None:
-                raise Exception(f"Incorrect format: {vref}.\nIn BibleNlp, vref should have three letter book code, chapter and verse in the following format: gen 1:1")
+                raise Exception(f"Incorrect format: {vref}.\nIn BibleNlp, vref should have "+\
+                    "three letter book code, chapter and verse in the following format: GEN 1:1")
             book = ref_match.group(1)
             book = book.upper()
             chap = ref_match.group(2)

@@ -76,7 +76,8 @@ def main(): #pylint: disable=too-many-locals
     arg_parser.add_argument('infile', type=str, help='input usfm or usj file')
 
     arg_parser.add_argument('--in_format', type=str, help='input file format',
-                            choices=[Format.USFM.value, Format.JSON.value, Format.USX.value, Format.BIBLENLP.value],
+                            choices=[Format.USFM.value, Format.JSON.value, Format.USX.value,
+                            Format.BIBLENLP.value],
                             default=Format.USFM.value)
     arg_parser.add_argument('--out_format', type=str, help='output format',
                             choices=[itm.value for itm in Format],
@@ -104,8 +105,8 @@ def main(): #pylint: disable=too-many-locals
                             'from different components, or not',
                             action='store_true')
     arg_parser.add_argument('--vref',
-                            help='path to the vref file containing line by line verse reference '+\
-                            'for biblenlp input file',
+                            help='path to the vref file containing line by line verse reference'+\
+                            ' for biblenlp input file',
                             default=None)
 
 
