@@ -1,4 +1,5 @@
 '''Convert other formats back into USFM'''
+import re
 
 NO_USFM_USJ_TYPES = ['USJ', 'table']
 NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell']
@@ -174,6 +175,41 @@ class USFMGenerator:
                 self.usfm_string += f"\\{marker}*"
         if obj_type == "sidebar":
             self.usfm_string += "\n\\esbe\n"
+
+    def biblenlp_to_usfm(self, biblenlp: dict) -> None: 
+        '''Traverses through the verse texts and vrefs to generate a minimal USFM from it'''
+        curr_book = None
+        curr_chapter = None
+        curr_verse = None
+        vref_pattern = re.compile(r'(\w\w\w) (\d+):(.*)')
+
+        if 'text' not in biblenlp or 'vref' not in biblenlp or \
+            not isinstance(biblenlp['vref'], list) or not isinstance(biblenlp['text'], list) or \
+            len(biblenlp['vref']) != len(biblenlp['text']):
+            raise Exception("BibleNlp format should contain a dict with 'vref' and 'text' fields. Each should be list of strings with same length.")
+
+        for vref, versetext in zip(biblenlp['vref'], biblenlp['text']):
+            ref_match = re.match(vref_pattern, vref)
+            if ref_match is None:
+                raise Exception(f"Incorrect format: {vref}.\nIn BibleNlp, vref should have three letter book code, chapter and verse in the following format: gen 1:1")
+            book = ref_match.group(1)
+            book = book.upper()
+            chap = ref_match.group(2)
+            verse = ref_match.group(3)
+            if book != curr_book:
+                if curr_book is not None:
+                    self.usfm_string += "\n\n"
+                self.usfm_string += f"\\id {book}"
+                curr_book = book
+            if chap != curr_chapter:
+                self.usfm_string += f"\n\\c {chap}\n\\p\n"
+                curr_chapter = chap
+            if not self.usfm_string.endswith("\n"):
+                self.usfm_string += ' '
+            self.usfm_string += f"\\v {verse} {versetext}"
+
+
+
 
 if __name__ == "__main__":
     from lxml import etree
