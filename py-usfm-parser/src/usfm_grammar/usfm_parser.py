@@ -76,7 +76,11 @@ error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 
 class USFMParser():
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
-    def __init__(self, usfm_string:str=None, from_usj:dict=None, from_usx:etree.Element=None, from_biblenlp:dict=None):
+    def __init__(self,
+                usfm_string:str=None,
+                from_usj:dict=None,
+                from_usx:etree.Element=None,
+                from_biblenlp:dict=None):
         # super(USFMParser, self).__init__()
         inputs_given = 0
         if usfm_string is not None:
@@ -105,9 +109,9 @@ class USFMParser():
             usx_converter.usx_to_usfm(from_usx)
             self.usfm = usx_converter.usfm_string
         elif from_biblenlp is not None:
-            bibleNlp_converter = USFMGenerator()
-            bibleNlp_converter.biblenlp_to_usfm(from_biblenlp)
-            self.usfm = bibleNlp_converter.usfm_string
+            biblenlp_converter = USFMGenerator()
+            biblenlp_converter.biblenlp_to_usfm(from_biblenlp)
+            self.usfm = biblenlp_converter.usfm_string
 
         self.usfm_bytes = None
         self.syntax_tree = None

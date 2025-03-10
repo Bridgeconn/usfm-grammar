@@ -1,5 +1,6 @@
 '''Original versification used in BibleNLP format by default'''
 
+# pylint: disable=too-many-lines
 original_vref = ["GEN 1:1",
 "GEN 1:2",
 "GEN 1:3",
