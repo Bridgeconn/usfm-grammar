@@ -101,6 +101,18 @@ with open("vref.txt", "w", encoding='utf-8') as out_file2:
 
 ```
 
+Biblenlp format data can also be used to initialize the parser and generate other formats like USFM, USX, USJ, List etc from. 
+```python
+from usfm_grammar import USFMParser, original_vref
+
+bible_nlp_obj = {'vref': ["GEN 1:1", "GEN 1:2"], 'text':["In the begining ...", "The earth was formless ..."]}
+# bible_nlp_obj = {'vref':original_vref[:2], 'text':["In the begining ...", "The earth was formless ..."]}
+
+my_parser = USFMParser(from_biblenlp=bible_nlp_obj)
+print(my_parser.usfm)
+```
+> :warning: USFM and its sister formats are designed to contain only one book per file. In contrast, the BibleNLP format can store an entire Bible with multiple books in a single file. When converting BibleNLP to USFM, if multiple books are present, the resulting USFM file will contain multiple books. This deviates from the expected structure of a valid USFM file, causing further conversions to other formats to fail. To ensure successful parsing, the generated USFM file must be split into separate files, each containing a single book.
+
 ##### To round trip with USJ
 ```python
 from usfm_grammar import USFMParser, Filter
@@ -131,8 +143,10 @@ my_parser = USFMParser(input_usfm_str)
 usj_obj = my_parser.to_usj()
 
 my_parser2 = USFMParser(from_usj=usj_obj)
+# print(my_parser2.usfm)
 print(my_parser2.to_usx())
 # print(my_parser2.to_list())
+# print(my_parser2.to_biblenlp_format())
 ```
 
 ##### USX to USFM, USJ or Table
@@ -149,6 +163,7 @@ with open(test_xml_file, 'r', encoding='utf-8') as usx_file:
     print(my_parser.usfm)
     # print(my_parser.to_usj())
     # print(my_parser.to_list())
+    # print(my_parser.to_biblenlp_format())
 ```
 
 #### Experimental Validation and Autofix
@@ -183,7 +198,7 @@ positional arguments:
 
 options:
   -h, --help            show this help message and exit
-  --in_format {usfm,usj,usx}
+  --in_format {usfm,usj,usx,biblenlp}
                         input file format
   --out_format {usj,table,syntax-tree,usx,markdown,usfm,bible-nlp}
                         output format
@@ -197,6 +212,7 @@ options:
                         row separator or delimiter. Only useful with format=table.
   --ignore_errors       to get some output from successfully parsed portions
   --combine_text        to be used along with exclude_markers or include_markers, to concatinate the consecutive text snippets, from different components, or not
+  --vref VREF           path to the vref file containing line by line verse reference for biblenlp input file
 
 ```
 Example
@@ -212,7 +228,7 @@ Example
 >>> usfm-grammar sample-usj.json --out_format usfm
 ```
 
-For the `biblenlp` option, two files will be generated: `<name>_biblenlp.txt` and `<name>_biblenlp_vref.txt`. For all other `out_format` options, the output is displayed directly in the console (standard output). If needed, it can be redirected to a file using the following approach:
+For the `biblenlp` out_format option, two files will be generated: `<name>_biblenlp.txt` and `<name>_biblenlp_vref.txt`. For all other `out_format` options, the output is displayed directly in the console (standard output). If needed, it can be redirected to a file using the following approach:
 ```bash
 >>> usfm-grammar sample.usfm --out_format usx > converted_usx.xml
 ```
