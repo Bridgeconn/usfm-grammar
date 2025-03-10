@@ -23,6 +23,11 @@ def generate_USFM_from_USX(input_usx):
     usx_parser = USFMParser(from_usx=input_usx)
     return usx_parser.usfm
 
+def generate_USFM_from_BibleNlp(input_biblenlp):
+    '''Create a generator, and use biblenlp_to_usfm convertion API'''
+    usx_parser = USFMParser(from_biblenlp=input_biblenlp)
+    return usx_parser.usfm
+
 
 def parse_USFM_string(usfm_string):
     '''Set up a parser obj with given string input'''
