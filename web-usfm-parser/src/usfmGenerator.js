@@ -217,6 +217,45 @@ class USFMGenerator {
         }    
   }
 
+  bibleNlptoUsfm(bibleNlpObj) {
+    const vrefPattern = /([a-zA-Z0-9]{3}) (\d+):(.*)/;
+    let currBook = null;
+    let currChapter = null;
+    for (let i = 0; i < bibleNlpObj.vref.length; i++) {
+        const vref = bibleNlpObj.vref[i];
+        const verseText = bibleNlpObj.text[i];
+        const refMatch = vref.match(vrefPattern);
+        
+        if (!refMatch) {
+            throw new Error(`Incorrect format: ${vref}.\nIn BibleNlp, vref should have ` +
+                `three-letter book code, chapter, and verse in the following format: GEN 1:1`);
+        }
+
+        const book = refMatch[1].toUpperCase();
+        const chap = refMatch[2];
+        const verse = refMatch[3];
+        
+        if (book !== currBook) {
+            if (currBook !== null) {
+                this.usfmString += "\n\n";
+            }
+            this.usfmString += `\\id ${book}`;
+            currBook = book;
+        }
+        
+        if (chap !== currChapter) {
+            this.usfmString += `\n\\c ${chap}\n\\p\n`;
+            currChapter = chap;
+        }
+        
+        if (!this.usfmString.endsWith("\n")) {
+            this.usfmString += ' ';
+        }
+        
+        this.usfmString += `\\v ${verse} ${verseText}`;
+    }
+  }
+
 
 
 }
