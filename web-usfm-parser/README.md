@@ -148,8 +148,8 @@ import {ORIGINAL_VREF} from 'usfm-grammar-web';
 bibleNlpObj = {'vref': ["GEN 1:1", "GEN 1:2"], 'text':["In the begining ...", "The earth was formless ..."]}
 // bibleNlpObj = {'vref':ORIGINAL_VREF[:2], 'text':["In the begining ...", "The earth was formless ..."]}
 
-const myParser = new USFMParser(null, null, null, bible_nlp_obj);
-console.log(my_parser.usfm);
+const myParser = new USFMParser(null, null, null, bibleNlpObj);
+console.log(myParser.usfm);
 ```
 > :warning: USFM and its sister formats are designed to contain only one book per file. In contrast, the BibleNLP format can store an entire Bible with multiple books in a single file. When converting BibleNLP to USFM, if multiple books are present, the resulting USFM file will contain multiple books. This deviates from the expected structure of a valid USFM file, causing further conversions to other formats to fail. To ensure successful parsing, the generated USFM file must be split into separate files, each containing a single book.
 
