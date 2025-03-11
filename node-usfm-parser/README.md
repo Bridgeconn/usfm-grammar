@@ -78,10 +78,10 @@ fs.writeFileSync('vref.txt', refLines, { encoding: 'utf-8' });
 ```
 Biblenlp format data can also be used to initialize the parser and generate other formats like USFM, USX, USJ, List etc from. 
 ```javascript
-import {ORIGINAL_VREF} from 'usfm-grammar-web';
+import {ORIGINAL_VREF} from 'usfm-grammar';
 
 bibleNlpObj = {'vref': ["GEN 1:1", "GEN 1:2"], 'text':["In the begining ...", "The earth was formless ..."]}
-// bibleNlpObj = {'vref':original_vref[:2], 'text':["In the begining ...", "The earth was formless ..."]}
+// bibleNlpObj = {'vref':ORIGINAL_VREF[:2], 'text':["In the begining ...", "The earth was formless ..."]}
 
 const myParser = new USFMParser(null, null, null, bible_nlp_obj);
 console.log(my_parser.usfm);
