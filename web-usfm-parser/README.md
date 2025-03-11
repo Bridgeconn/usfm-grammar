@@ -120,7 +120,7 @@ const usx = usxSerializer.serializeToString(usxElem);
 
 console.log(usx);
 
-const usfmParser2 = new USFMParser(usfmString=null, fromUsj=null, fromUsx=usxElem) // USX to USFM
+const usfmParser2 = new USFMParser(null, null, usxElem) // USX to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
 ```
@@ -140,6 +140,18 @@ output.vref.forEach(ref => {
   console.log(ref);
 });
 ```
+
+Biblenlp format data can also be used to initialize the parser and generate other formats like USFM, USX, USJ, List etc from. 
+```javascript
+import {ORIGINAL_VREF} from 'usfm-grammar-web';
+
+bibleNlpObj = {'vref': ["GEN 1:1", "GEN 1:2"], 'text':["In the begining ...", "The earth was formless ..."]}
+// bibleNlpObj = {'vref':original_vref[:2], 'text':["In the begining ...", "The earth was formless ..."]}
+
+const myParser = new USFMParser(null, null, null, bible_nlp_obj);
+console.log(my_parser.usfm);
+```
+> :warning: USFM and its sister formats are designed to contain only one book per file. In contrast, the BibleNLP format can store an entire Bible with multiple books in a single file. When converting BibleNLP to USFM, if multiple books are present, the resulting USFM file will contain multiple books. This deviates from the expected structure of a valid USFM file, causing further conversions to other formats to fail. To ensure successful parsing, the generated USFM file must be split into separate files, each containing a single book.
 
 ### Table/List format
 
