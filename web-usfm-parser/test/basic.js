@@ -54,7 +54,7 @@ describe("USFMParser Object initialization", () => {
       const usfmParser = new USFMParser()
 
     } catch(err) {
-      assert.strictEqual(err.message, "Missing input! Either USFM, USJ or USX is to be provided.")
+      assert.strictEqual(err.message, "Missing input! Either USFM, USJ, USX or BibleNLP is to be provided.")
     }
     assert.strictEqual(usfmParser, null);
   });
@@ -67,7 +67,7 @@ describe("USFMParser Object initialization", () => {
 
     } catch(err) {
       assert.strictEqual(err.message, `Found more than one input!
-Only one of USFM, USJ or USX is supported in one object.` )
+Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
    }
     assert.strictEqual(usfmParser, null);
   });
