@@ -98,7 +98,7 @@ function combineConsecutiveTextContents(contentsList) {
 function excludeMarkersInUsj(inputUsj, excludeMarkers, combineTexts = true, excludedParent = false) {
   let cleanedKids = [];
   if (typeof inputUsj === 'string') {
-    if (excludedParent || excludeMarkers.includes('text-in-excluded-parent')) {
+    if (excludedParent && excludeMarkers.includes('text-in-excluded-parent')) {
       return [];
     }
     return [inputUsj];
@@ -140,17 +140,20 @@ function excludeMarkersInUsj(inputUsj, excludeMarkers, combineTexts = true, excl
     inputUsj.content = cleanedKids;
     return inputUsj;
   }
-  return cleanedKids;
+  if (innerContentNeeded){
+    return cleanedKids;
+  }
+  return [];
 }
 
 function includeMarkersInUsj(inputUsj, includeMarkers, combineTexts = true, excludedParent = false) {
   let cleanedKids = [];
   
   if (typeof inputUsj === 'string') {
-    if (includeMarkers.includes(Filter.TEXT[0])) {
-      return [inputUsj]
+    if (excludedParent && !includeMarkers.includes("text-in-excluded-parent")) {
+      return [];
     } 
-    return []
+    return [inputUsj];
   }
   let thisMarker = '';
   if ('marker' in inputUsj) {
@@ -193,7 +196,10 @@ function includeMarkersInUsj(inputUsj, includeMarkers, combineTexts = true, excl
     inputUsj.content = cleanedKids;
     return inputUsj;
   }
-  return cleanedKids;
+  if (innerContentNeeded){
+    return cleanedKids;
+  }
+  return [];
 }
  
 export { Filter };
