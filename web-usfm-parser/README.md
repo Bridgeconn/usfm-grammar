@@ -151,7 +151,7 @@ const myParser = new USFMParser(null, null, null, bibleNlpObj);
 console.log(myParser.usfm);
 
 // To use the default versification in BibleNLP
-const bibleNlpObj2 = {'vref':ORIGINAL_VREF, 'text':["In the begining ...", "The earth was formless ...", ...]} //Full text of a book or the whole Bible as per BibleNLP format 
+const bibleNlpObj2 = {'vref':ORIGINAL_VREF, 'text':["In the begining ...", "The earth was formless ...", ...]} //Full text of a book or the whole Bible as per BibleNLP format (23213, 31170 or 41899 lines)
 const myParser2 = new USFMParser(null, null, null, bibleNlpObj2, "GEN");
 console.log(myParser2.usfm);
 console.log(myParser2.warnings)

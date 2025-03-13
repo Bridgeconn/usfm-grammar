@@ -187,12 +187,14 @@ class USFMGenerator:
             not isinstance(biblenlp['vref'], list) or not isinstance(biblenlp['text'], list):
             raise Exception("Incorrect format: "+\
                         "BibleNlp object should contain a dict with 'vref' and 'text' lists.")
+        vrefs = biblenlp['vref']
+        if len(biblenlp['text']) in [31170, 23213] and len(vrefs) == 41899:
+            vrefs = vrefs[:len(biblenlp['text'])]
+            biblenlp['vref'] = vrefs
         if book_code:
             book_code = book_code.strip().upper()
             vrefs = [ref.strip().upper() for ref in biblenlp['vref']
                     if ref.strip().upper().startswith(book_code)]
-        else:
-            vrefs = biblenlp['vref']
         if len(vrefs) != len(biblenlp['text']):
             if len(biblenlp['vref']) == len(biblenlp['text']) and book_code:
                 texts = [txt for txt,ref in zip(biblenlp['text'], biblenlp['vref'])

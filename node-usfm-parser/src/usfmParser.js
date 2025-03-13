@@ -13,6 +13,10 @@ const { Query } = Parser;
 class USFMParser {
 
 	constructor(usfmString=null, fromUsj=null, fromUsx=null, fromBibleNlp=null, bookCode=null) {
+		this.syntaxTree = null;
+		this.errors = [];
+        this.warnings = [];
+
 		let inputsGiven = 0
         if (usfmString !== null) {
             inputsGiven += 1
@@ -53,9 +57,6 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
 		this.parser = null;
 		this.initializeParser();
 
-		this.syntaxTree = null;
-		this.errors = [];
-        this.warnings = [];
         this.parseUSFM();
 
 	}
@@ -183,6 +184,10 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
 			assert(Array.isArray(this.bibleNlp['text']),
 				"'text' should contain an array of strings.")
 			let vrefs = this.bibleNlp.vref;
+			if ([31170, 23213].includes(this.bibleNlp.text.length) && vrefs.length === 41899) {
+			    vrefs = vrefs.slice(0, this.bibleNlp.text.length);
+			    this.bibleNlp.vref =vrefs;
+			}
 			if (bookCode !== null) {
 				bookCode = bookCode.trim().toUpperCase();
 			    vrefs = this.bibleNlp.vref.filter(ref => ref.trim().toUpperCase().startsWith(bookCode));

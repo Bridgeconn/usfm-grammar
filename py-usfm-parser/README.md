@@ -111,7 +111,7 @@ my_parser = USFMParser(from_biblenlp=bible_nlp_obj)
 print(my_parser.usfm)
 
 # To use the default versification supported by BibleNLP
-bible_nlp_obj = {'vref':ORIGINAL_VREF, 'text':["In the begining ...", "The earth was formless ...", ...]}
+bible_nlp_obj = {'vref':ORIGINAL_VREF, 'text':["In the begining ...", "The earth was formless ...", ...]} # Full text of a book or the whole Bible as per BibleNLP format (23213, 31170 or 41899 lines)
 my_parser2 = USFMParser(from_biblenlp=bible_nlp_obj, book_code="GEN")
 print(my_parser2.warnings)
 print(my_parser2.usfm)

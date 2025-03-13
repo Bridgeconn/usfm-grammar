@@ -239,7 +239,7 @@ class USFMGenerator {
         if (book !== currBook) {
             if (currBook !== null) {
                 this.warnings.push(`USFM can contain only one book per file. `+
-                        `Only ${currBook} is processed. Specify book_code for other books.`)
+                        `Only ${currBook} is processed. Specify bookCode for other books.`)
                 break;
             }
             this.usfmString += `\\id ${book}`;
