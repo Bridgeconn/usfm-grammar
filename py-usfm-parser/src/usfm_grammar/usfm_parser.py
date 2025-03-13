@@ -80,8 +80,14 @@ class USFMParser():
                 usfm_string:str=None,
                 from_usj:dict=None,
                 from_usx:etree.Element=None,
-                from_biblenlp:dict=None):
+                from_biblenlp:dict=None,
+                book_code:str=None):
         # super(USFMParser, self).__init__()
+        self.usfm_bytes = None
+        self.syntax_tree = None
+        self.errors = []
+        self.warnings = []
+
         inputs_given = 0
         if usfm_string is not None:
             inputs_given += 1
@@ -110,13 +116,10 @@ class USFMParser():
             self.usfm = usx_converter.usfm_string
         elif from_biblenlp is not None:
             biblenlp_converter = USFMGenerator()
-            biblenlp_converter.biblenlp_to_usfm(from_biblenlp)
+            biblenlp_converter.biblenlp_to_usfm(from_biblenlp, book_code)
             self.usfm = biblenlp_converter.usfm_string
+            self.warnings.extend(biblenlp_converter.warnings)
 
-        self.usfm_bytes = None
-        self.syntax_tree = None
-        self.errors = []
-        self.warnings = []
 
         # Some basic sanity checks
         lower_case_book_code = re.compile(r'^\\id ([a-z0-9][a-z][a-z])')

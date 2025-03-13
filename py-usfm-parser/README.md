@@ -87,7 +87,7 @@ print(table_output)
 ```
 
 ##### To convert to BibleNLP format
-Bible NLP format consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references.
+[The BibleNLP format](https://github.com/BibleNLP/ebible?tab=readme-ov-file#data-format) consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references.
 
 ```python
 dict_output = my_parser.to_biblenlp_format() 
@@ -101,15 +101,20 @@ with open("vref.txt", "w", encoding='utf-8') as out_file2:
 
 ```
 
-Biblenlp format data can also be used to initialize the parser and generate other formats like USFM, USX, USJ, List etc from. 
+Biblenlp format data can also be used to initialize the parser and generate other formats like USFM, USX, USJ, List etc from it. 
 ```python
-from usfm_grammar import USFMParser, original_vref
+from usfm_grammar import USFMParser, ORIGINAL_VREF
 
 bible_nlp_obj = {'vref': ["GEN 1:1", "GEN 1:2"], 'text':["In the begining ...", "The earth was formless ..."]}
-# bible_nlp_obj = {'vref':original_vref[:2], 'text':["In the begining ...", "The earth was formless ..."]}
 
 my_parser = USFMParser(from_biblenlp=bible_nlp_obj)
 print(my_parser.usfm)
+
+# To use the default versification supported by BibleNLP
+bible_nlp_obj = {'vref':ORIGINAL_VREF, 'text':["In the begining ...", "The earth was formless ...", ...]}
+my_parser2 = USFMParser(from_biblenlp=bible_nlp_obj, book_code="GEN")
+print(my_parser2.warnings)
+print(my_parser2.usfm)
 ```
 > :warning: USFM and its sister formats are designed to contain only one book per file. In contrast, the BibleNLP format can store an entire Bible with multiple books in a single file. When converting BibleNLP to USFM, if multiple books are present, the resulting USFM file will contain multiple books. This deviates from the expected structure of a valid USFM file, causing further conversions to other formats to fail. To ensure successful parsing, the generated USFM file must be split into separate files, each containing a single book.
 
