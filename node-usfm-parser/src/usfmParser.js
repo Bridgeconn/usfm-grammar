@@ -184,20 +184,20 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
 				"'text' should contain an array of strings.")
 			let vrefs = this.bibleNlp.vref;
 			if (bookCode !== null) {
-				book_code = book_code.trim().toUpperCase();
-			    vrefs = this.bibleNlp.vref.filter(ref => ref.trim().toUpperCase().startsWith(book_code));
+				bookCode = bookCode.trim().toUpperCase();
+			    vrefs = this.bibleNlp.vref.filter(ref => ref.trim().toUpperCase().startsWith(bookCode));
 			}
 
 			if (vrefs.length !== this.bibleNlp.text.length) {
-			    if (this.bibleNlp.vref.length === this.bibleNlp.text.length && book_code !== null) {
+			    if (this.bibleNlp.vref.length === this.bibleNlp.text.length && bookCode !== null) {
 			        let texts = this.bibleNlp.text.filter((txt, index) => 
-			            this.bibleNlp.vref[index].trim().toUpperCase().startsWith(book_code)
+			            this.bibleNlp.vref[index].trim().toUpperCase().startsWith(bookCode)
 			        );
 			        this.bibleNlp.text = texts;
 			    }
 			    if (vrefs.length !== this.bibleNlp.text.length) {
 			        throw new Error(`Mismatch in lengths of vref and text lists. ` +
-			                        `Specify a book_code or check for versification differences. ` +
+			                        `Specify a bookCode or check for versification differences. ` +
 			                        `${vrefs.length} != ${this.bibleNlp.text.length}`);
 			    }
 			}
