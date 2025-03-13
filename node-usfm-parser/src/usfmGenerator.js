@@ -4,6 +4,7 @@ const { NON_ATTRIB_USX_KEYS, NO_NEWLINE_USX_TYPES } = require("./utils/types");
 class USFMGenerator {
   constructor() {
     this.usfmString = "";
+    this.warnings = [];
   }
 
   usjToUsfm(usjObj, nested = false) {
@@ -237,7 +238,9 @@ class USFMGenerator {
         
         if (book !== currBook) {
             if (currBook !== null) {
-                this.usfmString += "\n\n";
+                this.warnings.push(`USFM can contain only one book per file. `+
+                        `Only ${curr_book} is processed. Specify book_code for other books.`)
+                break;
             }
             this.usfmString += `\\id ${book}`;
             currBook = book;
