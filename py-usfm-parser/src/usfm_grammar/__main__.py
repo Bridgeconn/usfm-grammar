@@ -31,7 +31,6 @@ def handle_input_file(arg_parser):
         vref_file = arg_parser.parse_args().vref
         bookcode = arg_parser.parse_args().bookcode
         if vref_file is None:
-            line_nums = len(texts)
             refs = ORIGINAL_VREF
         else:
             with open(vref_file, 'r', encoding='utf-8') as vrf:
