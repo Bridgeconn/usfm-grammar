@@ -23,7 +23,7 @@ class USFMParser {
 		USFMParser.language = await Parser.Language.load(grammarPath);
 	}
 
-	constructor(usfmString=null, fromUsj=null, fromUsx=null, fromBibleNlp=null) {
+	constructor(usfmString=null, fromUsj=null, fromUsx=null, fromBibleNlp=null, bookCode=null) {
 		let inputsGiven = 0
         if (usfmString !== null) {
             inputsGiven += 1
@@ -59,7 +59,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
         	this.usfm = this.convertUSXToUSFM()
         } else if (fromBibleNlp !== null) {
         	this.bibleNlp = fromBibleNlp;
-        	this.usfm = this.convertBibleNLPtoUSFM()
+        	this.usfm = this.convertBibleNLPtoUSFM(bookCode)
         }
 		this.parser = null;
 		this.initializeParser();
@@ -189,7 +189,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
 		return outputUSFM;
 	}
 
-	convertBibleNLPtoUSFM() {
+	convertBibleNLPtoUSFM(bookCode) {
 		try {
 			assert(this.bibleNlp['vref'],
 				"Should have 'vref' key");
@@ -199,14 +199,33 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
 				"'vref' should contain an array of references.");
 			assert(Array.isArray(this.bibleNlp['text']),
 				"'text' should contain an array of strings.")
-			assert(this.bibleNlp['vref'].length === this.bibleNlp['text'].length,
-				"Lengths of vref and text arrays should be equal.")
+			let vrefs = this.bibleNlp.vref;
+			if (bookCode !== null) {
+				bookCode = bookCode.trim().toUpperCase();
+			    vrefs = this.bibleNlp.vref.filter(ref => ref.trim().toUpperCase().startsWith(bookCode));
+			}
+
+			if (vrefs.length !== this.bibleNlp.text.length) {
+			    if (this.bibleNlp.vref.length === this.bibleNlp.text.length && bookCode !== null) {
+			        let texts = this.bibleNlp.text.filter((txt, index) => 
+			            this.bibleNlp.vref[index].trim().toUpperCase().startsWith(bookCode)
+			        );
+			        this.bibleNlp.text = texts;
+			    }
+			    if (vrefs.length !== this.bibleNlp.text.length) {
+			        throw new Error(`Mismatch in lengths of vref and text lists. ` +
+			                        `Specify a bookCode or check for versification differences. ` +
+			                        `${vrefs.length} != ${this.bibleNlp.text.length}`);
+			    }
+			}
+			this.bibleNlp.vref = vrefs;
 		} catch(err) {
 			throw new Error("BibleNLP object not in expected format. "+err.message)
 		}
 		try {
 			const usfmGen = new USFMGenerator();
 			usfmGen.bibleNlptoUsfm(this.bibleNlp);
+			this.warnings = usfmGen.warnings;
 			return usfmGen.usfmString;
 		} catch(err) {
 			let message = "Unable to do the conversion from BibleNLP to USFM. ";
