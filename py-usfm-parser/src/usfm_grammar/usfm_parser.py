@@ -81,7 +81,7 @@ class USFMParser():
                 from_usj:dict=None,
                 from_usx:etree.Element=None,
                 from_biblenlp:dict=None,
-                book_code:str=None):
+                book_code:str=None): # pylint: disable=too-many-arguments
         # super(USFMParser, self).__init__()
         self.usfm_bytes = None
         self.syntax_tree = None
