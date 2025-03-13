@@ -76,12 +76,12 @@ error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 
 class USFMParser():
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
-    def __init__(self,
+    def __init__(self,              # pylint: disable=too-many-arguments
                 usfm_string:str=None,
                 from_usj:dict=None,
                 from_usx:etree.Element=None,
                 from_biblenlp:dict=None,
-                book_code:str=None): # pylint: disable=too-many-arguments
+                book_code:str=None):
         # super(USFMParser, self).__init__()
         self.usfm_bytes = None
         self.syntax_tree = None
