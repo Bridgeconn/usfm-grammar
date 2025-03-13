@@ -6,7 +6,7 @@ import sys
 import csv
 from lxml import etree
 
-from usfm_grammar import USFMParser, Filter, Format, original_vref
+from usfm_grammar import USFMParser, Filter, Format, ORIGINAL_VREF
 all_markers = []
 for member in Filter:
     all_markers += member.value
@@ -29,14 +29,15 @@ def handle_input_file(arg_parser):
     elif input_format ==  Format.BIBLENLP:
         texts = file_content.rstrip().split("\n")
         vref_file = arg_parser.parse_args().vref
+        bookcode = arg_parser.parse_args().bookcode
         if vref_file is None:
             line_nums = len(texts)
-            refs = original_vref[:line_nums]
+            refs = ORIGINAL_VREF
         else:
             with open(vref_file, 'r', encoding='utf-8') as vrf:
                 refs = vrf.read().rstrip().split("\n")
         obj = {'vref':refs, 'text':texts}
-        my_parser = USFMParser(from_biblenlp=obj)
+        my_parser = USFMParser(from_biblenlp=obj, book_code=bookcode)
     else:
         raise Exception("Un-recognized input_format!")
     return my_parser
@@ -107,6 +108,9 @@ def main(): #pylint: disable=too-many-locals
     arg_parser.add_argument('--vref',
                             help='path to the vref file containing line by line verse reference'+\
                             ' for biblenlp input file',
+                            default=None)
+    arg_parser.add_argument('--bookcode',
+                            help='book to be exported from biblenlp to usfm format',
                             default=None)
 
 
