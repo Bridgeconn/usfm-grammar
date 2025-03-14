@@ -6,7 +6,7 @@ import sys
 import csv
 from lxml import etree
 
-from usfm_grammar import USFMParser, Filter, Format
+from usfm_grammar import USFMParser, Filter, Format, ORIGINAL_VREF
 all_markers = []
 for member in Filter:
     all_markers += member.value
@@ -26,6 +26,17 @@ def handle_input_file(arg_parser):
         my_parser = USFMParser(from_usx=usx_obj)
     elif input_format == Format.USFM:
         my_parser = USFMParser(file_content)
+    elif input_format ==  Format.BIBLENLP:
+        texts = file_content.rstrip().split("\n")
+        vref_file = arg_parser.parse_args().vref
+        bookcode = arg_parser.parse_args().bookcode
+        if vref_file is None:
+            refs = ORIGINAL_VREF
+        else:
+            with open(vref_file, 'r', encoding='utf-8') as vrf:
+                refs = vrf.read().rstrip().split("\n")
+        obj = {'vref':refs, 'text':texts}
+        my_parser = USFMParser(from_biblenlp=obj, book_code=bookcode)
     else:
         raise Exception("Un-recognized input_format!")
     return my_parser
@@ -65,7 +76,8 @@ def main(): #pylint: disable=too-many-locals
     arg_parser.add_argument('infile', type=str, help='input usfm or usj file')
 
     arg_parser.add_argument('--in_format', type=str, help='input file format',
-                            choices=[Format.USFM.value, Format.JSON.value, Format.USX.value],
+                            choices=[Format.USFM.value, Format.JSON.value, Format.USX.value,
+                            Format.BIBLENLP.value],
                             default=Format.USFM.value)
     arg_parser.add_argument('--out_format', type=str, help='output format',
                             choices=[itm.value for itm in Format],
@@ -92,6 +104,13 @@ def main(): #pylint: disable=too-many-locals
                             'to concatinate the consecutive text snippets, '+\
                             'from different components, or not',
                             action='store_true')
+    arg_parser.add_argument('--vref',
+                            help='path to the vref file containing line by line verse reference'+\
+                            ' for biblenlp input file',
+                            default=None)
+    arg_parser.add_argument('--bookcode',
+                            help='book to be exported from biblenlp to usfm format',
+                            default=None)
 
 
     my_parser = handle_input_file(arg_parser)

@@ -1,4 +1,5 @@
 '''Convert other formats back into USFM'''
+import re
 
 NO_USFM_USJ_TYPES = ['USJ', 'table']
 NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell']
@@ -16,6 +17,7 @@ class USFMGenerator:
     '''Combines the different methods that generate USFM from other formats in one class'''
     def __init__(self):
         self.usfm_string = ''
+        self.warnings = []
 
     # def is_valid_usfm(self, usfm_string: str = None) -> bool:
     #     '''Check the generated or passed USFM's correctness using the grammar'''
@@ -174,6 +176,60 @@ class USFMGenerator:
                 self.usfm_string += f"\\{marker}*"
         if obj_type == "sidebar":
             self.usfm_string += "\n\\esbe\n"
+
+    def biblenlp_to_usfm(self, biblenlp: dict, book_code:str = None) -> None:
+        '''Traverses through the verse texts and vrefs to generate a minimal USFM from it'''
+        curr_book = None
+        curr_chapter = None
+        vref_pattern = re.compile(r'(\w\w\w) (\d+):(.*)')
+
+        if 'text' not in biblenlp or 'vref' not in biblenlp or \
+            not isinstance(biblenlp['vref'], list) or not isinstance(biblenlp['text'], list):
+            raise Exception("Incorrect format: "+\
+                        "BibleNlp object should contain a dict with 'vref' and 'text' lists.")
+        vrefs = biblenlp['vref']
+        if len(biblenlp['text']) in [31170, 23213] and len(vrefs) == 41899:
+            vrefs = vrefs[:len(biblenlp['text'])]
+            biblenlp['vref'] = vrefs
+        if book_code:
+            book_code = book_code.strip().upper()
+            vrefs = [ref.strip().upper() for ref in biblenlp['vref']
+                    if ref.strip().upper().startswith(book_code)]
+        if len(vrefs) != len(biblenlp['text']):
+            if len(biblenlp['vref']) == len(biblenlp['text']) and book_code:
+                texts = [txt for txt,ref in zip(biblenlp['text'], biblenlp['vref'])
+                            if ref.strip().upper().startswith(book_code)]
+                biblenlp['text'] = texts
+            if len(vrefs) != len(biblenlp['text']):
+                raise Exception("Incorrect format: Missmatch in lengths of vref and text lists."+\
+                    "Specify a book_code or check for versification differences. "+\
+                    f"{len(vrefs)} != {len(biblenlp['text'])}")
+
+        for vref, versetext in zip(vrefs, biblenlp['text']):
+            ref_match = re.match(vref_pattern, vref)
+            if ref_match is None:
+                raise Exception(f"Incorrect format: {vref}.\nIn BibleNlp, vref should have "+\
+                    "three letter book code, chapter and verse in the following format: GEN 1:1")
+            book = ref_match.group(1)
+            book = book.upper()
+            chap = ref_match.group(2)
+            verse = ref_match.group(3)
+            if book != curr_book:
+                if curr_book is not None:
+                    self.warnings.append("USFM can contain only one book per file. "+\
+                        f"Only {curr_book} is processed. Specify book_code for other books.")
+                    break
+                self.usfm_string += f"\\id {book}"
+                curr_book = book
+            if chap != curr_chapter:
+                self.usfm_string += f"\n\\c {chap}\n\\p\n"
+                curr_chapter = chap
+            if not self.usfm_string.endswith("\n"):
+                self.usfm_string += ' '
+            self.usfm_string += f"\\v {verse} {versetext}"
+
+
+
 
 if __name__ == "__main__":
     from lxml import etree

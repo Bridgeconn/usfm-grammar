@@ -1,10 +1,12 @@
 
+import assert from 'assert';
 import Parser from './web-tree-sitter/tree-sitter.js';
 
 import USFMGenerator from "./usfmGenerator.js";
 import USJGenerator from "./usjGenerator.js";
 import ListGenerator from "./listGenerator.js"
 import USXGenerator from "./usxGenerator.js";
+import {ORIGINAL_VREF} from "./utils/vrefs.js";
 import { Filter } from "./filters.js";
 
 
@@ -21,7 +23,11 @@ class USFMParser {
 		USFMParser.language = await Parser.Language.load(grammarPath);
 	}
 
-	constructor(usfmString=null, fromUsj=null, fromUsx=null) {
+	constructor(usfmString=null, fromUsj=null, fromUsx=null, fromBibleNlp=null, bookCode=null) {
+		this.syntaxTree = null;
+		this.errors = [];
+        this.warnings = [];
+        
 		let inputsGiven = 0
         if (usfmString !== null) {
             inputsGiven += 1
@@ -32,13 +38,16 @@ class USFMParser {
         if (fromUsx !== null) {
             inputsGiven += 1
         }
+        if (fromBibleNlp !== null) {
+            inputsGiven += 1;
+        }
 
         if (inputsGiven > 1) {
             throw new  Error(`Found more than one input!
-Only one of USFM, USJ or USX is supported in one object.`)
+Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
         }
         if (inputsGiven === 0) {
-            throw Error("Missing input! Either USFM, USJ or USX is to be provided.")
+            throw Error("Missing input! Either USFM, USJ, USX or BibleNLP is to be provided.")
         }
 
         if (usfmString !== null) {
@@ -52,13 +61,13 @@ Only one of USFM, USJ or USX is supported in one object.`)
         } else if (fromUsx !== null) {
         	this.usx = fromUsx;
         	this.usfm = this.convertUSXToUSFM()
+        } else if (fromBibleNlp !== null) {
+        	this.bibleNlp = fromBibleNlp;
+        	this.usfm = this.convertBibleNLPtoUSFM(bookCode)
         }
 		this.parser = null;
 		this.initializeParser();
 
-		this.syntaxTree = null;
-		this.errors = [];
-        this.warnings = [];
         this.parseUSFM();
 	}
 
@@ -179,6 +188,54 @@ Only one of USFM, USJ or USX is supported in one object.`)
 	convertUSJToUSFM() {
 		const outputUSFM = new USFMGenerator().usjToUsfm(this.usj); // Simulated conversion
 		return outputUSFM;
+	}
+
+	convertBibleNLPtoUSFM(bookCode) {
+		try {
+			assert(this.bibleNlp['vref'],
+				"Should have 'vref' key");
+			assert(this.bibleNlp['text'],
+				"Should have 'text' key");
+			assert(Array.isArray(this.bibleNlp['vref']),
+				"'vref' should contain an array of references.");
+			assert(Array.isArray(this.bibleNlp['text']),
+				"'text' should contain an array of strings.")
+			let vrefs = this.bibleNlp.vref;
+			if ([31170, 23213].includes(this.bibleNlp.text.length) && vrefs.length === 41899) {
+			    vrefs = vrefs.slice(0, this.bibleNlp.text.length);
+			    this.bibleNlp.vref =vrefs;			}
+
+			if (bookCode !== null) {
+				bookCode = bookCode.trim().toUpperCase();
+			    vrefs = this.bibleNlp.vref.filter(ref => ref.trim().toUpperCase().startsWith(bookCode));
+			}
+
+			if (vrefs.length !== this.bibleNlp.text.length) {
+			    if (this.bibleNlp.vref.length === this.bibleNlp.text.length && bookCode !== null) {
+			        let texts = this.bibleNlp.text.filter((txt, index) => 
+			            this.bibleNlp.vref[index].trim().toUpperCase().startsWith(bookCode)
+			        );
+			        this.bibleNlp.text = texts;
+			    }
+			    if (vrefs.length !== this.bibleNlp.text.length) {
+			        throw new Error(`Mismatch in lengths of vref and text lists. ` +
+			                        `Specify a bookCode or check for versification differences. ` +
+			                        `${vrefs.length} != ${this.bibleNlp.text.length}`);
+			    }
+			}
+			this.bibleNlp.vref = vrefs;
+		} catch(err) {
+			throw new Error("BibleNLP object not in expected format. "+err.message)
+		}
+		try {
+			const usfmGen = new USFMGenerator();
+			usfmGen.bibleNlptoUsfm(this.bibleNlp);
+			this.warnings = usfmGen.warnings;
+			return usfmGen.usfmString;
+		} catch(err) {
+			let message = "Unable to do the conversion from BibleNLP to USFM. ";
+			throw new Error(message, {cause: err});
+		}
 	}
 
 	convertUSFMToUSJ(
@@ -319,4 +376,4 @@ Only one of USFM, USJ or USX is supported in one object.`)
 
 }
 
-export {USFMParser, Filter};
+export {USFMParser, Filter, ORIGINAL_VREF};

@@ -110,3 +110,24 @@ describe("Test USJ to BibleNLP format conversion", () => {
   });
 
 });
+
+describe("Test generating USFM from BibleNLP format", async () => {
+  await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+  allUsfmFiles.forEach(function(value) {
+    if (isValidUsfm[value]) {
+      it(`Generate USFM from BibleNLP: ${value}`, async (inputUsfmPath=value) => {
+        const testParser = await initialiseParser(inputUsfmPath);
+        const bibleNlpObj = testParser.toBibleNlpFormat();
+        if (bibleNlpObj['vref'].length > 0) {
+          const bnlpParser = new USFMParser(null, null, null, bibleNlpObj);
+          const newusfm = bnlpParser.usfm;
+          assert(bnlpParser.errors.length === 0);
+          assert(newusfm.includes("\\id"));
+          assert(newusfm.includes("\\c"));
+          assert(newusfm.includes("\\v"));
+        }
+      });
+
+    }
+  });
+});
