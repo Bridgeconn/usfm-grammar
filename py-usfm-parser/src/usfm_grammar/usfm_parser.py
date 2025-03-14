@@ -76,8 +76,18 @@ error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 
 class USFMParser():
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
-    def __init__(self, usfm_string:str=None, from_usj:dict=None, from_usx:etree.Element=None):
+    def __init__(self,              # pylint: disable=too-many-arguments
+                usfm_string:str=None,
+                from_usj:dict=None,
+                from_usx:etree.Element=None,
+                from_biblenlp:dict=None,
+                book_code:str=None):
         # super(USFMParser, self).__init__()
+        self.usfm_bytes = None
+        self.syntax_tree = None
+        self.errors = []
+        self.warnings = []
+
         inputs_given = 0
         if usfm_string is not None:
             inputs_given += 1
@@ -85,12 +95,14 @@ class USFMParser():
             inputs_given += 1
         if from_usx is not None:
             inputs_given += 1
+        if from_biblenlp is not None:
+            inputs_given += 1
 
         if inputs_given > 1:
             raise Exception("Found more than one input!"+\
-                " Only one of USFM, USJ or USX is supported in one object.")
+                " Only one of USFM, USJ, USX or BibleNlp is supported in one object.")
         if inputs_given == 0:
-            raise Exception("Missing input! Either USFM, USJ or USX is to be provided.")
+            raise Exception("Missing input! Either USFM, USJ, USX or BibleNlp is to be provided.")
 
         if usfm_string is not None:
             self.usfm = usfm_string
@@ -102,11 +114,12 @@ class USFMParser():
             usx_converter = USFMGenerator()
             usx_converter.usx_to_usfm(from_usx)
             self.usfm = usx_converter.usfm_string
+        elif from_biblenlp is not None:
+            biblenlp_converter = USFMGenerator()
+            biblenlp_converter.biblenlp_to_usfm(from_biblenlp, book_code)
+            self.usfm = biblenlp_converter.usfm_string
+            self.warnings.extend(biblenlp_converter.warnings)
 
-        self.usfm_bytes = None
-        self.syntax_tree = None
-        self.errors = []
-        self.warnings = []
 
         # Some basic sanity checks
         lower_case_book_code = re.compile(r'^\\id ([a-z0-9][a-z][a-z])')

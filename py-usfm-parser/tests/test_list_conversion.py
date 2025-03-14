@@ -4,6 +4,7 @@ import pytest
 import re
 
 from tests import all_usfm_files, initialise_parser, negative_tests
+from tests import parse_USFM_string, generate_USFM_from_BibleNlp
 from src.usfm_grammar import Filter, USFMParser
 
 test_files = all_usfm_files.copy()
@@ -74,3 +75,16 @@ def test_usj_to_biblenlp_conversion(file_path):
             assert "text" in bible_nlp_dict
             assert "vref" in bible_nlp_dict
             assert len(bible_nlp_dict['text']) == len(bible_nlp_dict['vref'])
+
+
+@pytest.mark.parametrize('file_path', test_files)
+@pytest.mark.timeout(30)
+def test_biblenlp_to_usfm(file_path):
+    '''Test USFM to BibleNLP, then BibleNLP to USFM'''
+    test_parser = initialise_parser(file_path)
+    bible_nlp_dict = test_parser.to_biblenlp_format()
+
+    generated_usfm = generate_USFM_from_BibleNlp(bible_nlp_dict)
+
+    test_parser2 = parse_USFM_string(generated_usfm)
+    assert test_parser2.errors == []

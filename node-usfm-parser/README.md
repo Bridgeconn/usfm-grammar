@@ -62,7 +62,7 @@ console.log(usfmGen);
 ```
 
 ### BibleNLP format
-Bible NLP format consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references. The API generates a JSON with two fields, `text` and `vref`, each containing an array of strings.
+[The Bible NLP format](https://github.com/BibleNLP/ebible?tab=readme-ov-file#data-format) consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references. The API generates a JSON with two fields, `text` and `vref`, each containing an array of strings.
 
 ```javascript
 const fs = require('fs');
@@ -76,6 +76,22 @@ fs.writeFileSync('bibleNLP.txt', textLines, { encoding: 'utf-8' });
 const refLines = output.vref.join('\n');
 fs.writeFileSync('vref.txt', refLines, { encoding: 'utf-8' });
 ```
+Biblenlp format data can also be used to initialize the parser and generate other formats like USFM, USX, USJ, List etc from. 
+```javascript
+import {ORIGINAL_VREF} from 'usfm-grammar';
+
+const bibleNlpObj = {'vref': ["GEN 1:1", "GEN 1:2"], 'text':["In the begining ...", "The earth was formless ..."]}
+
+const myParser = new USFMParser(null, null, null, bibleNlpObj);
+console.log(myParser.usfm);
+
+// To use the default versification in BibleNLP
+const bibleNlpObj2 = {'vref':ORIGINAL_VREF, 'text':["In the begining ...", "The earth was formless ...", ...]} //Full text of a book or the whole Bible as per BibleNLP format (23213, 31170 or 41899 lines)
+const myParser2 = new USFMParser(null, null, null, bibleNlpObj2, "GEN");
+console.log(myParser2.usfm);
+console.log(myParser2.warnings)
+```
+> :warning: USFM and its sister formats are designed to contain only one book per file. In contrast, the BibleNLP format can store an entire Bible with multiple books in a single file. When converting BibleNLP to USFM, if multiple books are present, the resulting USFM file will contain multiple books. This deviates from the expected structure of a valid USFM file, causing further conversions to other formats to fail. To ensure successful parsing, the generated USFM file must be split into separate files, each containing a single book.
 
 ### Table/List format
 
