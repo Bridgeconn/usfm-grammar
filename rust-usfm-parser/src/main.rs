@@ -12,15 +12,25 @@ use std::fs::File;
 use std::io::{self, Read};
 use std::sync::Mutex;
 use tree_sitter::Tree;
+use log::{debug, info, error};
+
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    lazy_static! {
-        static ref GLOBAL_TREE: Mutex<Option<Tree>> = Mutex::new(None);
-    }
-    let _parser = USFMParser::new()?;
+  env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("debug")).init();
+  info!("Main function started");
 
-    let usfm_input = read_file("input.usfm")?;
-
+  // Scope to limit GLOBAL_TREE lock
+  let usfm_input;
+  {
+      let mut global_tree = globals::GLOBAL_TREE.lock().unwrap();
+      debug!("Acquired GLOBAL_TREE lock");
+      let _parser = USFMParser::new()?;
+      debug!("Parser initialized");
+      usfm_input = read_file("input.usfm")?;
+      debug!("USFM input read: {} bytes", usfm_input.len());
+      // Lock is released when this scope ends
+  }
+  debug!("Released GLOBAL_TREE lock");
     let usj_sample = r#"{
   "type": "USJ",
   "version": "1.0",
@@ -62,7 +72,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Ok(valid) => {
             if valid {
                 println!("USFM is valid: {}", valid);
-                match usj_generator::usj_generator(&usfm_input, &validator.parser.parser) {
+                match usj_generator::usj_generator(&usfm_input) {
                     Ok(usj_output) => {
                         println!("Generated USJ:\n{}", usj_output);
                     }
