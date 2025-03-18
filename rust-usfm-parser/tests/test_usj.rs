@@ -249,7 +249,9 @@ mod tests {
             println!("{:?}", all_markers_in_input);     //Added for debug
 
             // Generate USJ and get all types
+
             let usj_string = usj_generator(&usfm_content)?;
+
             let usj_value: Value = serde_json::from_str(&usj_string)?;
             let all_json_types = get_types(&usj_value);
 
@@ -301,6 +303,7 @@ mod tests {
             );
             // Generate USJ
             let usfm_content = std::fs::read_to_string(file_path)?;
+
             let usj_string = usj_generator(&usfm_content)?;
 
             // Parse USJ output to Value for validation
@@ -373,6 +376,7 @@ mod tests {
             );
             // Generate USJ
             let usfm_content = std::fs::read_to_string(file_path)?;
+
             let usj_string = usj_generator(&usfm_content)?;
             let mut usj_dict: Value = serde_json::from_str(&usj_string)?;
 
