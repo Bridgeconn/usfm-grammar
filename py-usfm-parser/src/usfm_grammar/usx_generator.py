@@ -234,7 +234,10 @@ class USXGenerator:
         attrib_name = self.usfm[attrib_name_node.start_byte:attrib_name_node.end_byte] \
             .decode('utf-8').strip()
         if attrib_name == "|":
-            attrib_name = self.DEFAULT_ATTRIB_MAP[node.parent.type]
+            parent_type = node.parent.type
+            if "Nested" in parent_type:
+                parent_type = parent_type.replace("Nested", "")
+            attrib_name = self.DEFAULT_ATTRIB_MAP[parent_type]
         if attrib_name == "src": # for \fig
             attrib_name = "file"
 
