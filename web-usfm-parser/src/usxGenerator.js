@@ -350,7 +350,11 @@ class USXGenerator {
 
         // Handling special cases for attribute names
         if (attribName === "|") {
-          attribName = DEFAULT_ATTRIB_MAP[node.parent.type];
+          let parentType = node.parent.type;
+          if (parentType.includes("Nested")) {
+            parentType = parentType.replace("Nested", "")
+          }
+          attribName = DEFAULT_ATTRIB_MAP[parentType];
         }
         if (attribName === "src") {
           // for \fig
