@@ -3,3 +3,6 @@
 \p
 \v 1 some text and then \f + \fr 1.1 \ft \w rabbi\w*  \f*
 \v 2 then the second one \f + \fr 1.2 \ft \+w tenté|Tenter\+w*.\f*
+\f + \fr 1.13 \fq mis à l'épreuve \ft \fqa \+w tenté|Tenter\+w*.\f*
+...
+\f + \fr 10.51 \fq Rabbouni \ft \fq \+w rabbi\+w*\ft \fqa maître\ft \f*
