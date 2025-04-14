@@ -1,0 +1,99 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "content": [],
+            "code": "JHN"
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "JHN 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "JHN 1:1"
+                },
+                "some text and then ",
+                {
+                    "type": "note",
+                    "marker": "f",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "1.1 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                {
+                                    "type": "char",
+                                    "marker": "w",
+                                    "content": [
+                                        "rabbi"
+                                    ]
+                                },
+                                "  "
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "JHN 1:2"
+                },
+                "then the second one ",
+                {
+                    "type": "note",
+                    "marker": "f",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "1.2 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                {
+                                    "type": "char",
+                                    "marker": "w",
+                                    "content": [
+                                        "tenté"
+                                    ],
+                                    "lemma": "Tenter"
+                                },
+                                "."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "\n"
+            ]
+        }
+    ]
+}
