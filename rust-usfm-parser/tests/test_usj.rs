@@ -6,16 +6,7 @@ use regex::Regex;
 use serde_json::Value;
 use std::fs;
 
-
-
-use common::{
-    find_all_markers,
-    get_test_files,
-    initialise_parser,
-    EXCLUDE_USX_FILES,
-    TEST_FILES,
-};
-
+use common::{find_all_markers, get_test_files, initialise_parser, EXCLUDE_USX_FILES, TEST_FILES};
 
 fn get_types(element: &Value) -> Vec<String> {
     let mut types = Vec::new();
@@ -42,7 +33,7 @@ fn get_types(element: &Value) -> Vec<String> {
                     Some(Value::String(_)) => types.push("va".to_string()),
                     _ => (),
                 }
-                print!("'{:?}'", types)  //Added for debug
+                print!("'{:?}'", types) //Added for debug
             }
 
             // Check for pubnumber
@@ -52,7 +43,7 @@ fn get_types(element: &Value) -> Vec<String> {
                     Some(Value::String(_)) => types.push("vp".to_string()),
                     _ => (),
                 }
-                print!("'{:?}'", types)     //Added for debug
+                print!("'{:?}'", types) //Added for debug
             }
 
             // Check for category
@@ -174,7 +165,11 @@ fn format_test_error(
     file_path: &std::path::Path,
     extra_context: Option<&str>,
 ) -> String {
-    let mut error = format!("Test failed for file '{}': {}", file_path.display(), message);
+    let mut error = format!(
+        "Test failed for file '{}': {}",
+        file_path.display(),
+        message
+    );
     if let Some(context) = extra_context {
         error.push_str("\nAdditional context:\n");
         error.push_str(context);
@@ -243,10 +238,9 @@ mod tests {
                 )
             );
 
-            
             // Get all markers from input file
             let all_markers_in_input = find_all_markers(&file_path, false, true)?;
-            println!("{:?}", all_markers_in_input);     //Added for debug
+            println!("{:?}", all_markers_in_input); //Added for debug
 
             // Generate USJ and get all types
 
@@ -261,7 +255,10 @@ mod tests {
                     all_json_types.contains(&marker),
                     "{}",
                     format_test_error(
-                        &format!("Marker '{}' not found in types {:?}", marker, all_json_types),
+                        &format!(
+                            "Marker '{}' not found in types {:?}",
+                            marker, all_json_types
+                        ),
                         &file_path,
                         Some(&format!(
                             "Generated USJ:\n{}",
@@ -305,7 +302,6 @@ mod tests {
             let usfm_content = std::fs::read_to_string(file_path)?;
 
             let usj_string = usj_generator(&usfm_content)?;
-
 
             // Parse USJ output to Value for validation
             let usj_value = serde_json::from_str(&usj_string)?;
@@ -379,7 +375,6 @@ mod tests {
             let usfm_content = std::fs::read_to_string(file_path)?;
 
             let usj_string = usj_generator(&usfm_content)?;
-
 
             let mut usj_dict: Value = serde_json::from_str(&usj_string)?;
 

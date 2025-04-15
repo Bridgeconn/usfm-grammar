@@ -1,3 +1,9 @@
 \id GEN
 \c 1
-\p \v 1 \em word\em* \em wordtwo\em* word3 \em word4 \em* \v 2 \em word5 \em* \v 3 \w glossaryone\w* \w glossarytwo\w*r
+\p
+\v 1 the first verse
+\v 2 the second verse \w gracious|lemma="grace" \w*
+\c 2
+\p
+\v 3 the first second  verse
+\v 4 the second second  verse \w gracious|lemma="grace" \w*

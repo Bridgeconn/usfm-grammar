@@ -1,18 +1,16 @@
+pub use glob::glob;
+pub use lazy_static::lazy_static;
 pub use regex::Regex;
 pub use rust_usfm::parser::{Filter, USFMParser};
-pub use std::fs;
-pub use std::path::Path;
-pub use glob::glob;
 pub use serde_json::Value;
 pub use std::collections::{HashMap, HashSet};
+pub use std::fs;
+pub use std::path::Path;
 pub use std::path::PathBuf;
-pub use lazy_static::lazy_static;
-
 
 use roxmltree;
 use std::sync::Mutex;
 use strum::IntoEnumIterator;
-
 
 // Constants and static configurations
 pub const TEST_DIR: &str = "../tests"; //usfm-grammar/tests/advanced/custom-attributes
