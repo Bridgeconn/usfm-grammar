@@ -7,6 +7,7 @@ import csv
 from lxml import etree
 
 from usfm_grammar import USFMParser, Filter, Format, ORIGINAL_VREF
+from usfm_grammar import __version__
 all_markers = []
 for member in Filter:
     all_markers += member.value
@@ -111,6 +112,7 @@ def main(): #pylint: disable=too-many-locals
     arg_parser.add_argument('--bookcode',
                             help='book to be exported from biblenlp to usfm format',
                             default=None)
+    arg_parser.add_argument('--version', action='version', version=f'%(prog)s {__version__}')
 
 
     my_parser = handle_input_file(arg_parser)
