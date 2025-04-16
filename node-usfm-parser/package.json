@@ -1,6 +1,6 @@
 {
   "name": "usfm-grammar",
-  "version": "3.0.1-alpha.3",
+  "version": "3.0.1-alpha.4",
   "description": "Uses the tree-sitter-usfm3 parser to convert USFM files to other formats such as USJ, USX, and CSV, and converts them back to USFM",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/es/index.mjs",
@@ -28,7 +28,7 @@
   "dependencies": {
     "ajv": "^8.17.1",
     "tree-sitter": "0.21.1",
-    "tree-sitter-usfm3": "3.0.1-alpha.3",
+    "tree-sitter-usfm3": "3.0.1-alpha.4",
     "xmldom": "^0.6.0",
     "xpath": "^0.0.34"
   },
