@@ -26,7 +26,7 @@ class ListGenerator:
         '''Update current verse'''
         self.current_verse = obj['number']
 
-    def usj_to_list(self, obj, exclude_markers=None, include_markers=None):
+    def usj_to_list(self, obj, exclude_markers=None, include_markers=None): #pylint: disable=too-many-branches
         '''Traverse the USJ dict and build the table in self.list'''
         if obj['type'] == "book":
             self.usj_to_list_id(obj)
@@ -53,8 +53,11 @@ class ListGenerator:
                 else:
                     self.usj_to_list(item, exclude_markers, include_markers)
         if ("content" not in obj or len(obj['content']) == 0):
-            if (not exclude_markers and not include_markers) or \
-               (exclude_markers and marker_name not in exclude_markers) or \
+            if (not exclude_markers and not include_markers):
+                self.list.append(
+                        [self.book, self.current_chapter, self.current_verse,
+                            '', marker_type, marker_name])
+            elif (exclude_markers and marker_name not in exclude_markers) or \
                (include_markers and marker_name in include_markers):
                 self.list.append(
                         [self.book, self.current_chapter, self.current_verse,

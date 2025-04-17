@@ -76,7 +76,7 @@ error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 
 class USFMParser():
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
-    def __init__(self,              # pylint: disable=too-many-arguments
+    def __init__(self, # pylint: disable=too-many-arguments, too-many-branches
                 usfm_string:str=None,
                 from_usj:dict=None,
                 from_usx:etree.Element=None,
@@ -106,7 +106,7 @@ class USFMParser():
 
         if usfm_string is not None:
             if not usfm_string.strip().startswith("\\"):
-                raise Exception(f"Invalid input for USFM. Expected a string with \\ markups. got: {usfm_string}")
+                raise Exception("Invalid input for USFM. Expected a string with \\ markups.")
             self.usfm = usfm_string
         elif from_usj is not None:
             usj_converter = USFMGenerator()
@@ -209,11 +209,6 @@ class USFMParser():
                 f'\n\t{err_str}'+\
                 "\nUse ignore_errors=True, to generate output inspite of errors")
 
-        json_root_obj = {
-                "type": "USJ",
-                "version": "3.1",
-                "content":[]
-            }
         try:
             include_list = None
             exclude_list = None
@@ -221,7 +216,7 @@ class USFMParser():
                 include_list = include_markers+['USJ']+Filter.BCV
             if exclude_markers:
                 exclude_list = [mrkr for mrkr in exclude_markers if mrkr not in Filter.BCV]
-            
+
             usj_dict = self.to_usj(exclude_markers=exclude_list,
                                     include_markers=include_list,
                                     ignore_errors=ignore_errors,
