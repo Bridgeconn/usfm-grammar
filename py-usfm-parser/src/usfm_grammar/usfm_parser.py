@@ -105,6 +105,8 @@ class USFMParser():
             raise Exception("Missing input! Either USFM, USJ, USX or BibleNlp is to be provided.")
 
         if usfm_string is not None:
+            if not usfm_string.strip().startswith("\\"):
+                raise Exception(f"Invalid input for USFM. Expected a string with \\ markups. got: {usfm_string}")
             self.usfm = usfm_string
         elif from_usj is not None:
             usj_converter = USFMGenerator()

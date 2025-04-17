@@ -40,8 +40,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
         }
 
         if (usfmString !== null) {
-        	if (typeof usfmString !== "string" || usfmString === null) {
-				throw new Error("Invalid input for USFM. Expected a string.");
+        	if (typeof usfmString !== "string" || !usfmString.trim().startsWith("\\")) {
+				throw new Error("Invalid input for USFM. Expected a string with \\ markups.");
 			}
             this.usfm = usfmString;
         } else if(fromUsj !== null) {
