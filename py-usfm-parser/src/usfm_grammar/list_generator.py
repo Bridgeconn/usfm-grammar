@@ -20,15 +20,19 @@ class ListGenerator:
     def usj_to_list_c(self, obj):
         '''Update current chapter'''
         self.current_chapter = obj['number']
+        self.current_verse = ""
 
     def usj_to_list_v(self, obj):
         '''Update current verse'''
         self.current_verse = obj['number']
 
-    def usj_to_list(self, obj):
+    def usj_to_list(self, obj, exclude_markers=None, include_markers=None):
         '''Traverse the USJ dict and build the table in self.list'''
         if obj['type'] == "book":
             self.usj_to_list_id(obj)
+            if ((exclude_markers and "id" in exclude_markers) or \
+                (include_markers and "id" not in include_markers)):
+                return
         elif obj['type'] == "chapter":
             self.usj_to_list_c(obj)
         elif obj['type'] == "verse":
@@ -41,11 +45,20 @@ class ListGenerator:
         if 'content' in obj:
             for item in obj['content']:
                 if isinstance(item, str):
+                    if (exclude_markers and "text" in exclude_markers):
+                        item = ""
                     self.list.append(
                         [self.book, self.current_chapter, self.current_verse,
                             item, marker_type, marker_name])
                 else:
-                    self.usj_to_list(item)
+                    self.usj_to_list(item, exclude_markers, include_markers)
+        if ("content" not in obj or len(obj['content']) == 0):
+            if (not exclude_markers and not include_markers) or \
+               (exclude_markers and marker_name not in exclude_markers) or \
+               (include_markers and marker_name in include_markers):
+                self.list.append(
+                        [self.book, self.current_chapter, self.current_verse,
+                            '', marker_type, marker_name])
 
 
     def usj_to_biblenlp_format(self, obj):
