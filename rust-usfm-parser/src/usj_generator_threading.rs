@@ -6,19 +6,19 @@ use regex::Regex;
 extern crate lazy_static;
 
 use lazy_static::lazy_static;
+// use log::debug;
+// use log::info;
+// use log::trace;
 use serde_json::{self, json};
-use tree_sitter::Tree;
 use std::collections::HashMap;
 use std::sync::Arc;
 use std::sync::Mutex;
 use std::sync::MutexGuard;
+use std::thread;
 use streaming_iterator::StreamingIterator;
+use tree_sitter::Tree;
 use tree_sitter::{Query, QueryCursor, TextProvider};
 use tree_sitter_usfm3;
-use std::thread;
-use log::debug;
-use log::info;
-use log::trace;
 const NOTE_MARKERS: [&str; 6] = ["f", "fe", "ef", "efe", "x", "ex"];
 const CHAR_STYLE_MARKERS: [&str; 55] = [
     "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn", "png", "qac", "qs", "qt",
@@ -105,24 +105,14 @@ const DEFAULT_ATTRIB_MAP: [(&str, &str); 9] = [
     ("k", "key"),
 ];
 const TABLE_CELL_MARKERS: [&str; 4] = ["tc", "th", "tcr", "thr"];
-lazy_static! {
-    static ref CHAPTER_NUMBER: Mutex<Option<String>> = Mutex::new(None);
-}
 
-/*const NESTED_CHAR_STYLE_MARKERS: Vec<String> = CHAR_STYLE_MARKERS
-    .iter()
-    .map(|item| format!("{}Nested", item)) // Append "Nested" to each item
-    .collect();
-
-
-const COMBINED_MARKERS: Vec<&str> = CHAR_STYLE_MARKERS.iter().chain(NESTED_CHAR_STYLE_MARKERS.iter()).chain(vec!["xt_standalone", "ref"].iter()).cloned().collect();*/
 pub fn usj_generator(usfm: &str) -> Result<String, Box<dyn std::error::Error>> {
-    info!("Starting USJ generation");
+    //info!("Starting USJ generation");
 
     let tree: Tree;
     {
         let mut global_tree = GLOBAL_TREE.lock().unwrap();
-        debug!("Acquired GLOBAL_TREE lock in usj_generator");
+        //debug!("Acquired GLOBAL_TREE lock in usj_generator");
 
         // Rely on the tree already being parsed by validator
         tree = global_tree
@@ -130,7 +120,10 @@ pub fn usj_generator(usfm: &str) -> Result<String, Box<dyn std::error::Error>> {
             .ok_or("Tree is not initialized in GLOBAL_TREE")?
             .clone();
         drop(global_tree); // Release the lock early
-        debug!("Using pre-parsed tree, root node kind: {}",tree.root_node().kind());
+        // debug!(
+        //     "Using pre-parsed tree, root node kind: {}",
+        //     tree.root_node().kind()
+        // );
     }
     let root_node = tree.root_node();
 
@@ -141,10 +134,13 @@ pub fn usj_generator(usfm: &str) -> Result<String, Box<dyn std::error::Error>> {
 
     let mut content = Vec::new();
     //logg
-    info!("starting USJ generation for root node: {:?} ",root_node.kind());
+    // info!(
+    //     "starting USJ generation for root node: {:?} ",
+    //     root_node.kind()
+    // );
     // Traverse the tree and build the JSON object
-    node_2_usj(&root_node, &mut content, usfm, &tree,None); // Pass the cloned tree
-    // Insert the content as a serde_json::Value
+    node_2_usj(&root_node, &mut content, usfm, &tree, None); // Pass the cloned tree
+                                                             // Insert the content as a serde_json::Value
     json_object.insert(
         "content".to_string(),
         serde_json::to_value(content).unwrap(),
@@ -155,96 +151,79 @@ pub fn usj_generator(usfm: &str) -> Result<String, Box<dyn std::error::Error>> {
         eprintln!("Failed to convert to JSON: {}", e);
         String::new() // Return an empty string or handle the error as needed
     });
-    info!("USJ generation completed");
+    //info!("USJ generation completed");
     Ok(json_output)
 }
-fn node_2_usj(node: &tree_sitter::Node, parent_json_obj: &mut Vec<serde_json::Value>, usfm: &str,tree: &tree_sitter::Tree,chapter_ref: Option<&str> ) {
-    println!("Node Type: {}", node.kind());
+fn node_2_usj(
+    node: &tree_sitter::Node,
+    parent_json_obj: &mut Vec<serde_json::Value>,
+    usfm: &str,
+    tree: &tree_sitter::Tree,
+    chapter_ref: Option<&str>,
+) {
     let thread_id = thread::current().id();
-    debug!("Thread {:?}: Entering node '{}': '{}'",thread_id, node.kind(), node.utf8_text(usfm.as_bytes()).expect("Failed to get node text").to_string());
-    
-    // Vector to store thread handles for chapter nodes
-    //let mut chapter_threads: Vec<thread::JoinHandle<Vec<serde_json::Value>>> = Vec  ::new();
-    println!("Node Type: {}", node.kind());
-    
-    if node.kind() == "id" {
-        trace!("Thread {:?}: Processing File node", thread_id);
-        node_2_usj_id(&node, parent_json_obj, usfm);
-    } else if node.kind() == "chapter" {
-    //     // Precompute book code for chapter sid
-    //     let book_code = parent_json_obj
-    //     .iter()
-    //     .find(|item| item["type"] == "book")
-    //     .and_then(|item| item.get("code"))
-    //     .and_then(|code| code.as_str())
-    //     .map(|s| s.to_string())
-    //     .unwrap_or_default();
-    // let tree_arc = Arc::new(tree.clone());
-    // let chapter_nodes: Vec<_> = node
-    //     .children(&mut node.walk())
-    //     .filter(|child| child.kind() == "chapter")
-    //     .map(|child| (child.start_byte(), child.end_byte(), child.utf8_text(usfm.as_bytes()).unwrap_or("").to_string()))
-    //     .collect();
-    // let chapter_contents: Vec<Vec<serde_json::Value>> = chapter_nodes
-    //             .into_par_iter()
-    //             .map(|(start_byte, end_byte, _child_text)| {
-    //                 let usfm_clone = usfm.to_string();
-    //                 let tree_ref = Arc::clone(&tree_arc);
-    //                 let chapter_node = tree_ref
-    //                     .root_node()
-    //                     .descendant_for_byte_range(start_byte, end_byte)
-    //                     .expect("Failed to re-fetch chapter node");
-    //         let mut chapter_content = Vec::new();
-    //                 node_2_usj_chapter(
-    //                     &chapter_node,
-    //                     &mut chapter_content,
-    //                     &usfm_clone,
-    //                     &tree_ref,
-    //                     &book_code,
-    //                 );
-    //                 chapter_content
-    //             })
-    //             .collect();
-    //         for chapter_content in chapter_contents {
-    //             parent_json_obj.extend(chapter_content);
-    //         }
+    //debug!("Thread {:?}: Entering node '{}'", thread_id, node.kind());
 
-        node_2_usj_chapter(node, parent_json_obj, usfm, tree);
+    let mut chapter_threads: Vec<thread::JoinHandle<Vec<serde_json::Value>>> = Vec::new();
+    let tree_arc = Arc::new(tree.clone());
+
+    println!("Node Type: {}", node.kind());
+    if node.kind() == "id" {
+        //trace!("Thread {:?}: Processing File node", thread_id);
+        node_2_usj_id(&node, parent_json_obj, usfm,chapter_ref);
+    } else if node.kind() == "chapter" {
+        // trace!("Thread {:?}: Processing chapter node", thread_id);
+        // info!(
+        //     "Thread {:?}: Spawning thread for chapter node: '{}'",
+        //     thread_id,
+        //     node.utf8_text(usfm.as_bytes()).unwrap_or("")
+
+        // );
+        
     } else if ["cl", "cp", "cd", "vp"].contains(&node.kind()) {
-        trace!(
-            "Thread {:?}: Processing generic node '{}'",
-            thread_id,
-            node.kind()
-        );
-        node_2_usj_generic(&node, parent_json_obj, usfm,tree);
+        // trace!(
+        //     "Thread {:?}: Processing generic node '{}'",
+        //     thread_id,
+        //     node.kind()
+        // );
+        node_2_usj_generic(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if ["ca", "va"].contains(&node.kind()) {
-        node_2_usj_ca_va(&node, parent_json_obj, usfm,tree);
+        node_2_usj_ca_va(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if node.kind() == "v" {
-        debug!(
-            "Thread {:?}: Matched 'v' node, calling node_2_usj_verse",
-            thread_id
+        // debug!(
+        //     "Thread {:?}: Matched 'v' node, calling node_2_usj_verse",
+        //     thread_id
+        // );
+    
+        //debug!("Thread {:?}:inside verse {:?}",thread_id,chapter_ref);
+
+        node_2_usj_verse(
+            &node,
+            parent_json_obj,
+            usfm,
+            chapter_ref.unwrap_or("0"),
+            tree,
         );
-       
-        node_2_usj_verse(&node, parent_json_obj, usfm,chapter_ref.unwrap_or("0"), tree);    } else if node.kind() == "verseText" {
+    } else if node.kind() == "verseText" {
         for child in node.children(&mut node.walk()) {
-            node_2_usj(&child, parent_json_obj, usfm,tree,chapter_ref);
+            node_2_usj(&child, parent_json_obj, usfm, tree, chapter_ref);
         }
     } else if ["paragraph", "pi", "ph"].contains(&node.kind()) {
-        trace!(
-            "Thread {:?}: Processing paragraph node '{}'",
-            thread_id,
-            node.kind()
-                );
-        node_2_usj_para(&node, parent_json_obj, usfm,tree);
+        // trace!(
+        //     "Thread {:?}: Processing paragraph node '{}'",
+        //     thread_id,
+        //     node.kind()
+        // );
+        node_2_usj_para(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if NOTE_MARKERS.contains(&node.kind()) {
-        node_2_usj_notes(&node, parent_json_obj, usfm,tree);
+        node_2_usj_notes(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if CHAR_STYLE_MARKERS.contains(&node.kind())
         || NESTED_CHAR_STYLE_MARKERS.contains(&node.kind())
         || node.kind() == "xt_standalone"
     {
-        node_2_usj_char(&node, parent_json_obj, usfm,tree);
+        node_2_usj_char(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if node.kind().ends_with("Attribute") {
-        node_2_usj_attrib(&node, parent_json_obj, usfm,tree);
+        node_2_usj_attrib(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if node.kind() == "text" {
         let node_text = node
             .utf8_text(usfm.as_bytes())
@@ -254,18 +233,18 @@ fn node_2_usj(node: &tree_sitter::Node, parent_json_obj: &mut Vec<serde_json::Va
         if node_text != "" {
             parent_json_obj.push(json!(node_text));
         }
-    }else if ["table", "tr"].contains(&node.kind()) {
-        node_2_usj_table(&node, parent_json_obj, usfm,tree);
+    } else if ["table", "tr"].contains(&node.kind()) {
+        node_2_usj_table(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if "zNameSpace".contains(&node.kind()) {
-        node_2_usj_milestone(&node, parent_json_obj, usfm,tree);
-    }else if "milestone".contains(&node.kind()) {
-        node_2_usj_milestone(&node, parent_json_obj, usfm,tree);
+        node_2_usj_milestone(&node, parent_json_obj, usfm, tree,chapter_ref);
+    } else if "milestone".contains(&node.kind()) {
+        node_2_usj_milestone(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if ["esb", "cat", "fig"].contains(&node.kind()) {
-        node_2_usj_special(&node, parent_json_obj, usfm,tree);
+        node_2_usj_special(&node, parent_json_obj, usfm, tree,chapter_ref);
     } else if PARA_STYLE_MARKERS.contains(&node.kind())
         || PARA_STYLE_MARKERS.contains(&node.kind().replace("\\", "").trim())
     {
-        node_2_usj_generic(node, parent_json_obj, usfm,tree);
+        node_2_usj_generic(node, parent_json_obj, usfm, tree,chapter_ref);
     } else if ["", "|"].contains(&node.kind().trim()) {
         // skip white space nodes
     } else if node.named_child_count() > 0 {
@@ -273,23 +252,87 @@ fn node_2_usj(node: &tree_sitter::Node, parent_json_obj: &mut Vec<serde_json::Va
         if cursor.goto_first_child() {
             loop {
                 let child = cursor.node();
-                node_2_usj(&child, parent_json_obj, usfm,tree,None);
+                if child.kind() != "chapter" {
+                    node_2_usj(&child, parent_json_obj, usfm, tree, chapter_ref);
+                } else {
+                    // info!(
+                    //     "Thread {:?}: Spawning thread for child chapter node: '{}'",
+                    //     thread_id,
+                    //     child.utf8_text(usfm.as_bytes()).unwrap_or("")
+                    // );
+                   // debug!("Thread {:?}:inside chapter {:?}",thread_id,chapter_ref);
+                    let book_code = parent_json_obj
+                        .iter()
+                        .find(|item| item["type"] == "book")
+                        .and_then(|item| item.get("code"))
+                        .and_then(|code| code.as_str())
+                        .map(|s| s.to_string())
+                        .unwrap_or_default();
+                    let usfm_clone = usfm.to_string();
+                    let tree_ref = Arc::clone(&tree_arc);
+                    // let book_code_clone = book_code.clone();
+                    let start_byte = child.start_byte();
+                    let end_byte = child.end_byte();
+                    let handle = thread::spawn(move || {
+                        let chapter_node = tree_ref
+                            .root_node()
+                            .descendant_for_byte_range(start_byte, end_byte)
+                            .expect("Failed to re-fetch chapter node");
+                        let mut chapter_content = Vec::new();
+                        node_2_usj_chapter(
+                            &chapter_node,
+                            &mut chapter_content,
+                            &usfm_clone,
+                            &tree_ref,
+                            &book_code,
+                        );
+                        chapter_content
+                    });
+                    chapter_threads.push(handle);
+                }
                 if !cursor.goto_next_sibling() {
                     break;
                 }
             }
         }
+        // let mut cursor = node.walk();
+        // if cursor.goto_first_child() {
+        //     loop {
+        //         let child = cursor.node();
+        //         node_2_usj(&child, parent_json_obj, usfm,tree,chapter_ref);
+        //         if !cursor.goto_next_sibling() {
+        //             break;
+        //         }
+        //     }
+        // }
     }
-    else {
-    // Do nothing for all other cases
+    if(chapter_threads.len()>0){
+    //     debug!(
+    //     "Thread {:?}: Joining {} chapter threads",
+    //     thread_id,
+    //     chapter_threads.len()
+    // );
     }
-    debug!("Thread {:?}: Exiting node '{}'", thread_id, node.kind());
+    
+    for handle in chapter_threads {
+        let chapter_content = handle.join().unwrap();
+        // info!(
+        //     "Thread {:?}: Joined chapter thread, collected {} items",
+        //     thread_id,
+        //     chapter_content.len()
+        // );
+        parent_json_obj.extend(chapter_content);
+    }
+
+    //debug!("Thread {:?}: Exiting node '{}'", thread_id, node.kind());
+    
 }
 pub fn node_2_usj_id(
     //verified
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
+    chapter_ref: Option<&str>,
 ) {
     let query_source = r#"
             (id
@@ -346,21 +389,13 @@ pub fn node_2_usj_id(
     parent_json_obj.push(book_json_obj.clone());
 }
 
-
 pub fn node_2_usj_c(
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
     tree: &tree_sitter::Tree,
     book_code: &str, // Precomputed book code for sid
-) {
-    //logging details. -> need to be removed
-    let thread_id = thread::current().id();
-    let node_text = node.utf8_text(usfm.as_bytes()).unwrap_or("").to_string();
-    debug!(
-        "Thread {:?}: Starting chapter processing: '{}'",
-        thread_id, node_text
-    );
+) -> String {
     let query_source = r#"
         (c
             (chapterNumber) @chap-num
@@ -377,9 +412,6 @@ pub fn node_2_usj_c(
     let mut chapter_number: Option<String> = None;
     let mut alt_number: Option<String> = None;
     let mut publication_number: Option<String> = None;
-    // let mut chap_ref: Option<String> = None;
-    // let mut global_chapter = CHAPTER_NUMBER.lock().unwrap();
-    trace!("Thread {:?}: Querying chapter metadata", thread_id);
 
     while let Some(capture) = captures.next() {
         if let Some(chap_num_capture) = capture.captures.get(0) {
@@ -387,45 +419,33 @@ pub fn node_2_usj_c(
                 chapter_number = Some(num.trim().to_string());
             }
         }
-
         if let Some(alt_num_capture) = capture.captures.get(1) {
             if let Ok(alt) = alt_num_capture.node.utf8_text(usfm.as_bytes()) {
                 alt_number = Some(alt.trim().to_string());
             }
         }
-
         if let Some(pub_num_capture) = capture.captures.get(2) {
             if let Ok(pub_num) = pub_num_capture.node.utf8_text(usfm.as_bytes()) {
                 publication_number = Some(pub_num.trim().to_string());
             }
         }
     }
-    trace!("Thread {:?}: Constructing chapter reference", thread_id);
-    let chap_ref = format!(
-        "{} {}",
-        book_code,
-        chapter_number.clone().unwrap_or_default()
-    );
-    // for child in &*parent_json_obj {
-    //     if child["type"] == "book" {
-    //         if let Some(code) = child.get("code") {
-    //             chap_ref = Some(format!(
-    //                 "{} {}",
-    //                 code.as_str().unwrap_or(""),
-    //                 chapter_number.clone().unwrap_or_default()
-    //             ));
-    //         }
-    //         break;
-    //     }
-    // }
-    // *global_chapter = chap_ref.clone();
 
+    let chap_ref = format!(
+        "{}:{}",
+        book_code,
+        chapter_number.as_ref().map(|s| s.as_str()).unwrap_or(""),
+    );
+    let thread_id = thread::current().id();
+    
+    //debug!("Thread {:?}:before inserting into structure {:?}",thread_id,chap_ref);
     let mut chap_json_obj = json!({
         "type": "chapter",
         "marker": "c",
-        "number": chapter_number.clone().unwrap_or_default(),
-        "sid": chap_ref.clone(),
+        "number": chapter_number,
+        "sid": chap_ref
     });
+    //debug!("Thread {:?}:AFTER inserting into structure {:?}",thread_id,chap_ref);
 
     if let Some(alt) = alt_number {
         chap_json_obj["altnumber"] = json!(alt);
@@ -435,128 +455,55 @@ pub fn node_2_usj_c(
     }
 
     parent_json_obj.push(chap_json_obj);
-
+//
     for child in node.children(&mut node.walk()) {
         if child.kind() == "c" {
-            node_2_usj_ca_va(&child, parent_json_obj, usfm,tree);
+            node_2_usj_ca_va(&child, parent_json_obj, usfm, tree,Some(&chap_ref));
         } else {
-            node_2_usj(&child, parent_json_obj, usfm,tree,None);
+            node_2_usj(&child, parent_json_obj, usfm, tree, Some(&chap_ref));
         }
     }
-    info!(
-        "Thread {:?}: Finished chapter processing, produced {} items",
-        thread_id,
-        parent_json_obj.len()
-    );
+
+    chap_ref
 }
 fn node_2_usj_chapter(
-        node: &tree_sitter::Node,
-        parent_json_obj: &mut Vec<serde_json::Value>,
-        usfm: &str,
-        tree: &tree_sitter::Tree,
-        // book_code: &str, // Precomputed book code for sid
+    node: &tree_sitter::Node,
+    parent_json_obj: &mut Vec<serde_json::Value>,
+    usfm: &str,
+    tree: &tree_sitter::Tree,
+    book_code: &str, // Precomputed book code for sid
 ) {
-    //     // Precompute book code for chapter sid
-    //     let book_code = parent_json_obj
-    //     .iter()
-    //     .find(|item| item["type"] == "book")
-    //     .and_then(|item| item.get("code"))
-    //     .and_then(|code| code.as_str())
-    //     .map(|s| s.to_string())
-    //     .unwrap_or_default();
-    // let tree_arc = Arc::new(tree.clone());
-    // let chapter_nodes: Vec<_> = node
-    //     .children(&mut node.walk())
-    //     .filter(|child| child.kind() == "chapter")
-    //     .map(|child| (child.start_byte(), child.end_byte(), child.utf8_text(usfm.as_bytes()).unwrap_or("").to_string()))
-    //     .collect();
-    // let chapter_contents: Vec<Vec<serde_json::Value>> = chapter_nodes
-    //             .into_par_iter()
-    //             .map(|(start_byte, end_byte, _child_text)| {
-    //                 let usfm_clone = usfm.to_string();
-    //                 let tree_ref = Arc::clone(&tree_arc);
-    //                 let chapter_node = tree_ref
-    //                     .root_node()
-    //                     .descendant_for_byte_range(start_byte, end_byte)
-    //                     .expect("Failed to re-fetch chapter node");
-    //         let mut chapter_content = Vec::new();
-    //                 node_2_usj_chapter(
-    //                     &chapter_node,
-    //                     &mut chapter_content,
-    //                     &usfm_clone,
-    //                     &tree_ref,
-    //                     &book_code,
-    //                 );
-    //                 chapter_content
-    //             })
-    //             .collect();
-    //         for chapter_content in chapter_contents {
-    //             parent_json_obj.extend(chapter_content);
-    //         }
-    let mut chapter_threads: Vec<thread::JoinHandle<Vec<serde_json::Value>>> = Vec  ::new();
-    let tree_arc = Arc::new(tree.clone()); // Clone tree once to create owned data for Arc
-    let book_code = parent_json_obj
-        .iter()
-        .find(|item| item["type"] == "book")
-        .and_then(|item| item.get("code"))
-        .and_then(|code| code.as_str())
-        .map(|s| s.to_string())
-        .unwrap_or_default();
+    let thread_id = thread::current().id();
+    // debug!(
+    //     "Thread {:?}: Starting chapter processing: '{}'",
+    //     thread_id,
+    //     node.utf8_text(usfm.as_bytes()).unwrap_or("")
+    // );
+    let mut chap_ref: Option<String> = None; // Track chapter reference
     for child in node.children(&mut node.walk()) {
         if child.kind() == "c" {
-            let thread_id = thread::current().id();
-            // node_2_usj_c(&child, parent_json_obj, usfm,tree);
-            info!(
-                "Thread {:?}: Spawning thread for child chapter node: '{}'",
-                thread_id, child.utf8_text(usfm.as_bytes()).unwrap_or("").to_string()
-            );
-            let usfm_clone = usfm.to_string();
-            let tree_ref = Arc::clone(&tree_arc);
-            let book_code_clone = book_code.clone();
-            let start_byte = child.start_byte();
-            let end_byte = child.end_byte();
-            let handle:thread::JoinHandle<Vec<serde_json::Value>> =thread::spawn(move || {
-                // Re-fetch chapter node in thread
-                let chapter_node = tree_ref
-                    .root_node()
-                    .descendant_for_byte_range(start_byte, end_byte)
-                    .expect("Failed to re-fetch chapter node");
-                let mut chapter_content = Vec::new();
-                node_2_usj_c(
-                    &chapter_node,
-                    &mut chapter_content,
-                    &usfm_clone,
-                    &tree_ref,
-                    &book_code_clone,
-                );chapter_content
-                
-            });chapter_threads.push(handle);
+            let chap_ref_str = node_2_usj_c(&child, parent_json_obj, usfm, tree, book_code);
+            chap_ref = Some(chap_ref_str.clone()); // Store chap_ref
+
+            // Child nodes already processed in node_2_usj_c with chap_ref
+            //debug!("thread {:?}chapter ref {:?}",thread_id,chap_ref);
         } else {
-            node_2_usj(&child, parent_json_obj, usfm,tree,None);
+            //debug!("Thread {:?}:inside the verse {:?}",thread_id,chap_ref.as_deref());
+            node_2_usj(&child, parent_json_obj, usfm, tree, chap_ref.as_deref());
         }
     }
-    debug!(
-        "Thread {:?}: Joining {} chapter threads",
-        thread::current().id(),
-        chapter_threads.len()
-    );
-    for handle in chapter_threads {
-        let chapter_content = handle.join().unwrap();
-        info!(
-            "Thread {:?}: Joined chapter thread, collected {} items",
-            thread::current().id(),
-            chapter_content.len()
-        );
-        parent_json_obj.extend(chapter_content);
-    }
 
-    debug!("Thread {:?}: Exiting node '{}'", thread::current().id(), node.kind());
+    // info!(
+    //     "Thread {:?}: Finished chapter processing, produced {} items",
+    //     thread_id,
+    //     parent_json_obj.len()
+    // );
 }
 pub fn node_2_usj_ca_va(
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
-    tree: &tree_sitter::Tree,
+    tree: &tree_sitter::Tree,chapter_ref: Option<&str>,
 ) {
     // Get the first child node to determine the style
     let tag_node = node
@@ -626,10 +573,12 @@ pub fn node_2_usj_ca_va(
             node_2_usj(
                 &child,
                 para_json_obj["content"].as_array_mut().unwrap(),
-                usfm,tree,None
+                usfm,
+                tree,
+                chapter_ref,
             );
         } else {
-            node_2_usj(&child, parent_json_obj, usfm,tree,None);
+            node_2_usj(&child, parent_json_obj, usfm, tree, chapter_ref);
         }
     }
 }
@@ -643,7 +592,7 @@ pub fn node_2_usj_verse(
     tree: &tree_sitter::Tree,
 ) {
     let thread_id = thread::current().id();
-    debug!("Thread {:?}: Starting verse processing", thread_id);
+    //debug!("Thread {:?}: Starting verse processing", thread_id);
     // Create a query to capture verse information
 
     //    print_node(node, usfm, 0);
@@ -666,7 +615,6 @@ pub fn node_2_usj_verse(
     let mut verse_number = None;
     let mut alt_number = None;
     let mut publication_number = None;
-    let mut verse_text = String::new();
 
     // Iterate over the captures returned by the query
     while let Some(capture) = captures.next() {
@@ -720,7 +668,7 @@ fn node_2_usj_para(
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
-    tree: &tree_sitter::Tree,
+    tree: &tree_sitter::Tree,chapter_ref: Option<&str>,
 ) {
     // if node.child_count() == 0 {
     //     return;
@@ -741,7 +689,7 @@ fn node_2_usj_para(
         // cursor.goto_first_child(); // Move to the first child of the block
         cursor.goto_next_sibling();
         let child = cursor.node();
-        node_2_usj(&child, parent_json_obj, usfm,tree,None); // Recursively process child nodes
+        node_2_usj(&child, parent_json_obj, usfm, tree, chapter_ref); // Recursively process child nodes
     } else if node.kind() == "paragraph" {
         // Extract the paragraph marker using a query
         let query_source = r#"(paragraph (_) @para-marker)"#;
@@ -771,7 +719,7 @@ fn node_2_usj_para(
                     para_json_obj["content"].as_array_mut().unwrap(),
                     usfm,
                     tree,
-                    None
+                    chapter_ref,
                 );
             }
 
@@ -801,7 +749,9 @@ fn node_2_usj_para(
             node_2_usj(
                 &child,
                 para_json_obj["parent_json_obj"].as_array_mut().unwrap(),
-                usfm,tree,None
+                usfm,
+                tree,
+                chapter_ref,
             );
         }
 
@@ -815,7 +765,7 @@ pub fn node_2_usj_notes(
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
-    tree: &tree_sitter::Tree,
+    tree: &tree_sitter::Tree,chapter_ref: Option<&str>,
 ) {
     // Collect the children into a vector
     let children: Vec<_> = node.children(&mut node.walk()).collect();
@@ -848,7 +798,9 @@ pub fn node_2_usj_notes(
         node_2_usj(
             child,
             note_json_obj["content"].as_array_mut().unwrap(),
-            usfm,tree,None
+            usfm,
+            tree,
+            chapter_ref,
         );
     }
 
@@ -859,7 +811,7 @@ pub fn node_2_usj_char(
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>, // Change back to Vec<Value>
     usfm: &str,
-    tree: &tree_sitter::Tree,
+    tree: &tree_sitter::Tree,chapter_ref: Option<&str>,
 ) {
     // Ensure the node has children
     if node.child_count() < 1 {
@@ -930,7 +882,7 @@ pub fn node_2_usj_char(
 
     // // Process the remaining children
     for child in &children[1..children_range] {
-        node_2_usj(child, content_array, usfm,tree,None);
+        node_2_usj(child, content_array, usfm, tree, chapter_ref);
     }
     // while child_cursor.goto_next_sibling() {
     //     let child = child_cursor.node();
@@ -958,7 +910,7 @@ pub fn node_2_usj_attrib(
     node: &tree_sitter::Node,
     content: &mut Vec<serde_json::Value>,
     usfm: &str,
-    tree: &tree_sitter::Tree,
+    tree: &tree_sitter::Tree,chapter_ref: Option<&str>,
 ) {
     // Get the attribute name node
     let attrib_name_node = node.child(0).expect("Node should have at least one child");
@@ -1016,7 +968,7 @@ pub fn node_2_usj_attrib(
     let mut attribute_json_obj = json!({
         attrib_name: attrib_value
     });
-   // println!("ATTRIB ::::{}",attrib_value);
+    // println!("ATTRIB ::::{}",attrib_value);
     // Append the JSON object to the content
     content.push(attribute_json_obj);
 }
@@ -1024,7 +976,7 @@ pub fn node_2_usj_table(
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
-    tree: &tree_sitter::Tree,
+    tree: &tree_sitter::Tree,chapter_ref: Option<&str>,
 ) {
     //let node.kind() = node.kind();
     match node.kind() {
@@ -1040,7 +992,9 @@ pub fn node_2_usj_table(
                 node_2_usj(
                     &child,
                     table_json_obj["content"].as_array_mut().unwrap(),
-                    usfm,tree,None
+                    usfm,
+                    tree,
+                    chapter_ref,
                 );
             }
 
@@ -1061,7 +1015,9 @@ pub fn node_2_usj_table(
                 node_2_usj(
                     &child,
                     row_json_obj["content"].as_array_mut().unwrap(),
-                    usfm,tree,None
+                    usfm,
+                    tree,
+                    chapter_ref,
                 );
             }
 
@@ -1098,7 +1054,9 @@ pub fn node_2_usj_table(
                 node_2_usj(
                     &child,
                     cell_json_obj["content"].as_array_mut().unwrap(),
-                    usfm,tree,None
+                    usfm,
+                    tree,
+                    chapter_ref,
                 );
             }
 
@@ -1114,7 +1072,7 @@ fn node_2_usj_milestone(
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
-    tree: &tree_sitter::Tree,
+    tree: &tree_sitter::Tree,chapter_ref: Option<&str>,
 ) {
     // Create a query to capture the milestone or zNameSpace name
     let query_source = r#"
@@ -1165,7 +1123,13 @@ fn node_2_usj_milestone(
     while cursor.goto_next_sibling() {
         let child = cursor.node();
         if child.kind().ends_with("Attribute") {
-            node_2_usj(&child, ms_json_obj["content"].as_array_mut().unwrap(), usfm,tree,None);
+            node_2_usj(
+                &child,
+                ms_json_obj["content"].as_array_mut().unwrap(),
+                usfm,
+                tree,
+                chapter_ref,
+            );
         }
     }
 
@@ -1182,7 +1146,7 @@ pub fn node_2_usj_special(
     node: &tree_sitter::Node,
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
-    tree: &tree_sitter::Tree,
+    tree: &tree_sitter::Tree,chapter_ref: Option<&str>,
 ) {
     // let node.kind() = node.kind();
     match node.kind() {
@@ -1210,7 +1174,9 @@ pub fn node_2_usj_special(
                     node_2_usj(
                         &child,
                         sidebar_json_obj["content"].as_array_mut().unwrap(),
-                        usfm,tree,None
+                        usfm,
+                        tree,
+                        chapter_ref,
                     );
                 }
             }
@@ -1274,7 +1240,9 @@ pub fn node_2_usj_special(
                     node_2_usj(
                         &child,
                         fig_json_obj["content"].as_array_mut().unwrap(),
-                        usfm,tree,None
+                        usfm,
+                        tree,
+                        chapter_ref,
                     );
                 }
             }
@@ -1291,6 +1259,7 @@ pub fn node_2_usj_generic(
     parent_json_obj: &mut Vec<serde_json::Value>,
     usfm: &str,
     tree: &tree_sitter::Tree,
+    chapter_ref: Option<&str>,
 ) {
     // Get the first child node to determine the style
     //let tag_node = node.child(0).expect("Expected a tag node");
@@ -1393,10 +1362,12 @@ pub fn node_2_usj_generic(
             node_2_usj(
                 &child,
                 para_json_obj["content"].as_array_mut().unwrap(),
-                usfm,tree,None
+                usfm,
+                tree,
+                chapter_ref,
             );
         } else {
-            node_2_usj(&child, parent_json_obj, usfm,tree,None);
+            node_2_usj(&child, parent_json_obj, usfm, tree, chapter_ref);
         }
     }
 }

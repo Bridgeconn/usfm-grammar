@@ -1,7 +1,9 @@
 mod globals;
 mod parser;
 mod schema;
+mod usj_generator;
 mod usj_generator_threading;
+use usj_generator_threading as Usj_Generator;
 mod validator;
 
 extern crate lazy_static;
@@ -20,16 +22,16 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         static ref GLOBAL_TREE: Mutex<Option<Tree>> = Mutex::new(None);
     }
     env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("debug")).init();
-    info!("Main function started");
+    //info!("Main function started");
     // Scope to limit GLOBAL_TREE lock
     let usfm_input;
     {
         let mut global_tree = globals::GLOBAL_TREE.lock().unwrap();
-        debug!("Acquired GLOBAL_TREE lock");
+        //debug!("Acquired GLOBAL_TREE lock");
         let _parser = USFMParser::new()?;
-        debug!("Parser initialized");
+        //debug!("Parser initialized");
         usfm_input = read_file("input.usfm")?;
-        debug!("USFM input read: {} bytes", usfm_input.len());
+        //debug!("USFM input read: {} bytes", usfm_input.len());
         // Lock is released when this scope ends
     }
     let usj_sample = r#"{
@@ -74,7 +76,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             if valid {
                 println!("USFM is valid: {}", valid);
                 let start = Instant::now();
-                match usj_generator_threading::usj_generator(&usfm_input) {
+                match Usj_Generator::usj_generator(&usfm_input) {
                     Ok(usj_output) => {
                         println!("Generated USJ:\n{}", usj_output);
                         let duration = start.elapsed();
