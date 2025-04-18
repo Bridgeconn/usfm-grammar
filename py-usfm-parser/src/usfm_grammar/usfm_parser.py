@@ -38,7 +38,7 @@ class Filter(list, Enum):
             ]
     STUDY_BIBLE = ['esb', 'cat']  # "sidebars-extended-contents"
     BCV = ['id','c','v']
-    TEXT = ['text-in-excluded-parent']
+    TEXT = ['text-in-excluded-parent', 'text']
     # INNER_CONTENT = ['content-in-excluded-parent']
 
 class Format(str, Enum):
@@ -76,7 +76,7 @@ error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 
 class USFMParser():
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
-    def __init__(self,              # pylint: disable=too-many-arguments
+    def __init__(self, # pylint: disable=too-many-arguments, too-many-branches
                 usfm_string:str=None,
                 from_usj:dict=None,
                 from_usx:etree.Element=None,
@@ -105,6 +105,8 @@ class USFMParser():
             raise Exception("Missing input! Either USFM, USJ, USX or BibleNlp is to be provided.")
 
         if usfm_string is not None:
+            if not usfm_string.strip().startswith("\\"):
+                raise Exception("Invalid input for USFM. Expected a string with \\ markups.")
             self.usfm = usfm_string
         elif from_usj is not None:
             usj_converter = USFMGenerator()
@@ -207,23 +209,21 @@ class USFMParser():
                 f'\n\t{err_str}'+\
                 "\nUse ignore_errors=True, to generate output inspite of errors")
 
-        json_root_obj = {
-                "type": "USJ",
-                "version": "3.1",
-                "content":[]
-            }
         try:
-            usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
-            usj_generator.node_2_usj(self.syntax_tree, json_root_obj)
-            usj_dict = usj_generator.json_root_obj
+            include_list = None
+            exclude_list = None
             if include_markers:
-                usj_dict = include_markers_in_usj(usj_dict,
-                            include_markers+['USJ']+Filter.BCV, combine_texts)
+                include_list = include_markers+['USJ']+Filter.BCV
             if exclude_markers:
-                usj_dict = exclude_markers_in_usj(usj_dict, exclude_markers, combine_texts)
+                exclude_list = [mrkr for mrkr in exclude_markers if mrkr not in Filter.BCV]
+
+            usj_dict = self.to_usj(exclude_markers=exclude_list,
+                                    include_markers=include_list,
+                                    ignore_errors=ignore_errors,
+                                    combine_texts=combine_texts)
 
             list_generator = ListGenerator()
-            list_generator.usj_to_list(usj_dict)
+            list_generator.usj_to_list(usj_dict, exclude_markers, include_markers)
         except Exception as exe:
             message = "Unable to do the conversion. "
             if self.errors:
