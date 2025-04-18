@@ -171,15 +171,6 @@ fn node_2_usj(
     if node.kind() == "id" {
         //trace!("Thread {:?}: Processing File node", thread_id);
         node_2_usj_id(&node, parent_json_obj, usfm,chapter_ref);
-    } else if node.kind() == "chapter" {
-        // trace!("Thread {:?}: Processing chapter node", thread_id);
-        // info!(
-        //     "Thread {:?}: Spawning thread for chapter node: '{}'",
-        //     thread_id,
-        //     node.utf8_text(usfm.as_bytes()).unwrap_or("")
-
-        // );
-        
     } else if ["cl", "cp", "cd", "vp"].contains(&node.kind()) {
         // trace!(
         //     "Thread {:?}: Processing generic node '{}'",
