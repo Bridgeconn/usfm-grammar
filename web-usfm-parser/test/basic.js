@@ -79,7 +79,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
       const usfmParser = new USFMParser(simpleUSJ)
 
     } catch(err) {
-      assert.strictEqual(err.message, "Invalid input for USFM. Expected a string.")
+      assert.strictEqual(err.message, "Invalid input for USFM. Expected a string with \\ markups.")
     }
     assert.strictEqual(usfmParser, null);
   });
@@ -103,7 +103,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
       const usfmParser = new USFMParser(simpleUSJ)
 
     } catch(err) {
-      assert.strictEqual(err.message, "Invalid input for USFM. Expected a string.")
+      assert.strictEqual(err.message, "Invalid input for USFM. Expected a string with \\ markups.")
     }
     assert.strictEqual(usfmParser, null);
   });

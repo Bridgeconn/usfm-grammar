@@ -6,9 +6,9 @@ class ListGenerator {
         this.currentChapter = "";
         this.currentVerse = "";
         this.list = [["Book", "Chapter", "Verse", "Text", "Type", "Marker"]];
-        this.bibleNlpFormat = { "text" : [], "vref":[] }
-        this.prevChapter = ""
-        this.prevVerse = ""
+        this.bibleNlpFormat = { "text" : [], "vref":[] };
+        this.prevChapter = "";
+        this.prevVerse = "";
     }
 
     usjToListId(obj) {
@@ -19,6 +19,7 @@ class ListGenerator {
     usjToListC(obj) {
         /* Update current chapter */
         this.currentChapter = obj.number;
+        this.currentVerse = "";
     }
 
     usjToListV(obj) {
@@ -26,10 +27,14 @@ class ListGenerator {
         this.currentVerse = obj.number;
     }
 
-    usjToList(obj) {
+    usjToList(obj, excludeMarkers=null, includeMarkers=null) {
         /* Traverse the USJ dict and build the table in this.list */
         if (obj.type === "book") {
             this.usjToListId(obj);
+            if ((excludeMarkers && excludeMarkers.includes("id")) ||
+                (includeMarkers && !includeMarkers.includes("id"))) {
+                return
+            }
         } else if (obj.type === "chapter") {
             this.usjToListC(obj);
         } else if (obj.type === "verse") {
@@ -47,10 +52,19 @@ class ListGenerator {
         if (obj.content) {
             for (let item of obj.content) {
                 if (typeof item === "string") {
+                    if (excludeMarkers && excludeMarkers.includes("text")){
+                        item = "";
+                    }
                     this.list.push([this.book, this.currentChapter, this.currentVerse, item, markerType, markerName]);
                 } else {
-                    this.usjToList(item);
+                    this.usjToList(item, excludeMarkers, includeMarkers);
                 }
+            }
+        } else {
+            if ((!excludeMarkers && !includeMarkers) ||
+                (excludeMarkers && !excludeMarkers.includes(markerName)) ||
+                (includeMarkers && includeMarkers.includes(markerName))) {
+                this.list.push([this.book, this.currentChapter, this.currentVerse, "", markerType, markerName])
             }
         }
     }

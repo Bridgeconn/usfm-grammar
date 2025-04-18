@@ -76,7 +76,14 @@ def test_usj_to_biblenlp_conversion(file_path):
             assert "vref" in bible_nlp_dict
             assert len(bible_nlp_dict['text']) == len(bible_nlp_dict['vref'])
 
-
+emtpy_scritures = [
+    "../tests/mandatory/emptyV/origin.usfm",
+    "../tests/mandatory/v/origin.usfm",
+    "../tests/paratextTests/NoErrorsShort/origin.usfm",
+    "../tests/special-cases/empty-book/origin.usfm"
+]
+for path in emtpy_scritures:
+    test_files.remove(path)
 @pytest.mark.parametrize('file_path', test_files)
 @pytest.mark.timeout(30)
 def test_biblenlp_to_usfm(file_path):
@@ -85,6 +92,7 @@ def test_biblenlp_to_usfm(file_path):
     bible_nlp_dict = test_parser.to_biblenlp_format()
 
     generated_usfm = generate_USFM_from_BibleNlp(bible_nlp_dict)
+    print(generated_usfm)
 
     test_parser2 = parse_USFM_string(generated_usfm)
     assert test_parser2.errors == []

@@ -40,8 +40,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
         }
 
         if (usfmString !== null) {
-        	if (typeof usfmString !== "string" || usfmString === null) {
-				throw new Error("Invalid input for USFM. Expected a string.");
+        	if (typeof usfmString !== "string" || !usfmString.trim().startsWith("\\")) {
+				throw new Error("Invalid input for USFM. Expected a string with \\ markups.");
 			}
             this.usfm = usfmString;
         } else if(fromUsj !== null) {
@@ -280,13 +280,19 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`)
 	    }
 
 	    try {
+	        let excludeList = null;
+	        let includeList = null;
 	    	if (includeMarkers) { 
-	    		includeMarkers = [...includeMarkers, ...Filter.BCV]
+	    		includeList = [...includeMarkers, ...Filter.BCV];
 	    	}
-	        const usjDict = this.toUSJ(excludeMarkers, includeMarkers, ignoreErrors, combineTexts);
+	    	if (excludeMarkers) {
+	    		excludeList = excludeMarkers.filter(item => !Filter.BCV.includes(item));
+
+	    	}
+    		const usjDict = this.toUSJ(excludeList, includeList, ignoreErrors, combineTexts);
 
 	        const listGenerator = new ListGenerator();
-	        listGenerator.usjToList(usjDict);
+	        listGenerator.usjToList(usjDict, excludeMarkers, includeMarkers);
 	    	return listGenerator.list;
 
 	    } catch (exe) {
