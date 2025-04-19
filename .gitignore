@@ -85,5 +85,4 @@ tree-sitter-usfm3/src/
 js-usfm-parser/src/web-tree-sitter/tree-sitter.js
 js-usfm-parser/src/web-tree-sitter/tree-sitter.wasm
 rust-usfm-parser/target
-**target
 */src/input.usfm/*

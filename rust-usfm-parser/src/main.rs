@@ -2,26 +2,38 @@ mod globals;
 mod parser;
 mod schema;
 mod usj_generator;
+mod usj_generator_threading;
+use usj_generator_threading as Usj_Generator;
 mod validator;
 
 extern crate lazy_static;
 use crate::validator::Validator;
 use lazy_static::lazy_static;
+use log::{debug, info};
 use parser::USFMParser;
 use std::fs::File;
 use std::io::{self, Read};
 use std::sync::Mutex;
+use std::time::Instant;
 use tree_sitter::Tree;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     lazy_static! {
         static ref GLOBAL_TREE: Mutex<Option<Tree>> = Mutex::new(None);
     }
-    let _parser = USFMParser::new()?;
-
-    //let usfm_input = read_file("input.usfm")?;
-    let usfm_input = read_file("../tests/basic/attributes/origin.usfm")?;
-
+    env_logger::Builder::from_env(env_logger::Env::default().default_filter_or("debug")).init();
+    //info!("Main function started");
+    // Scope to limit GLOBAL_TREE lock
+    let usfm_input;
+    {
+        let mut global_tree = globals::GLOBAL_TREE.lock().unwrap();
+        //debug!("Acquired GLOBAL_TREE lock");
+        let _parser = USFMParser::new()?;
+        //debug!("Parser initialized");
+        usfm_input = read_file("input.usfm")?;
+        //debug!("USFM input read: {} bytes", usfm_input.len());
+        // Lock is released when this scope ends
+    }
     let usj_sample = r#"{
   "type": "USJ",
   "version": "1.0",
@@ -63,9 +75,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Ok(valid) => {
             if valid {
                 println!("USFM is valid: {}", valid);
-                match usj_generator::usj_generator(&usfm_input) {
+                let start = Instant::now();
+                match Usj_Generator::usj_generator(&usfm_input) {
                     Ok(usj_output) => {
                         println!("Generated USJ:\n{}", usj_output);
+                        let duration = start.elapsed();
+                        info!("USJ generation took {:?}", duration);
                     }
                     Err(e) => eprintln!("Error generating USJ: {}", e),
                 }
