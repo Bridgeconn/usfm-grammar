@@ -37,27 +37,27 @@ jobs:
           python -m build
       - uses: actions/upload-artifact@v4
         with:
-          path: py-tree-sitter-usfm3/dist/*.tar.gz
+          path: tree-sitter-usfm3/dist/*.tar.gz
 
-  build-py-usfm-parser:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-      - name: Build release distributions
-        run: |
-          cd py-usfm-parser
-          python -m pip install build setuptools
-          python -m build
-      - uses: actions/upload-artifact@v4
-        with:
-          path: py-usfm-parser/dist/*.tar.gz
+  # build-py-usfm-parser:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-python@v4
+  #       with:
+  #         python-version: "3.10"
+  #     - name: Build release distributions
+  #       run: |
+  #         cd py-usfm-parser
+  #         python -m pip install build setuptools
+  #         python -m build
+  #     - uses: actions/upload-artifact@v4
+  #       with:
+  #         path: py-usfm-parser/dist/*.tar.gz
 
 
   publish_to_pypi:
-    needs: [build-tree-sitter-usfm3, build-py-usfm-parser]
+    needs: [build-tree-sitter-usfm3]
     runs-on: ubuntu-latest
 
     steps:
@@ -69,12 +69,12 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: artifact
-          path: py-tree-sitter-usfm3/dist/
+          path: tree-sitter-usfm3/dist/
 
-      - uses: actions/download-artifact@v4
-        with:
-          name: artifact
-          path: py-usfm-parser/dist/
+      # - uses: actions/download-artifact@v4
+      #   with:
+      #     name: artifact
+      #     path: py-usfm-parser/dist/
 
       - name: Publish tree-sitter-usfm3 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -84,11 +84,11 @@ jobs:
           # repository_url: https://test.pypi.org/legacy/
           packages_dir: py-tree-sitter-usfm3/dist/
 
-      - name: Publish usfm-grammar 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{ secrets.pypi_token }}
-          # repository_url: https://test.pypi.org/legacy/
-          packages_dir: py-usfm-parser/dist/
+      # - name: Publish usfm-grammar 📦 to PyPI
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   with:
+      #     user: __token__
+      #     password: ${{ secrets.pypi_token }}
+      #     # repository_url: https://test.pypi.org/legacy/
+      #     packages_dir: py-usfm-parser/dist/
           
