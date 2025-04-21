@@ -82,7 +82,7 @@ jobs:
           user: __token__
           password: ${{ secrets.pypi_token }}
           # repository_url: https://test.pypi.org/legacy/
-          packages_dir: py-tree-sitter-usfm3/dist/
+          packages_dir: tree-sitter-usfm3/dist/
 
       # - name: Publish usfm-grammar 📦 to PyPI
       #   uses: pypa/gh-action-pypi-publish@release/v1
