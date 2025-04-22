@@ -38,6 +38,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: tree-sitter-usfm3/dist/*.tar.gz
+          overwrite: true
 
   build-py-usfm-parser:
     runs-on: ubuntu-latest
@@ -54,6 +55,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           path: py-usfm-parser/dist/*.tar.gz
+          overwrite: true
 
 
   publish_to_pypi:
