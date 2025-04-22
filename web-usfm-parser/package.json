@@ -50,5 +50,8 @@
     "ajv": "^8.17.1",
     "xmldom": "^0.6.0",
     "xpath": "^0.0.34"
+  },
+  "peerDependencies": {
+    "xmldom": "^0.6.0"
   }
 }
