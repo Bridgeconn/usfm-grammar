@@ -49,7 +49,7 @@ class ListGenerator {
             markerType = "";
         }
 
-        if (obj.content) {
+        if (obj.content && obj.content.length>0) {
             for (let item of obj.content) {
                 if (typeof item === "string") {
                     if (excludeMarkers && excludeMarkers.includes("text")){

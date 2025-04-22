@@ -37,7 +37,7 @@ class Filter {
 
   static BCV = ['id', 'c', 'v'];
 
-  static TEXT = ['text-in-excluded-parent'];
+  static TEXT = ['text-in-excluded-parent', 'text'];
 
   static keepOnly(inputUsj, includeMarkers, combineTexts=true) {
     // let flattenedList = [].concat(...includeMarkers);
