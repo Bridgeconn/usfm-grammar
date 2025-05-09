@@ -31,6 +31,10 @@ import {run, bench, boxplot, summary} from "mitata";
     const txt = await readFile(path, "utf-8"); // Specify encoding
     const len = txt.length;
     const parser = new USFMParser(txt);
+    // See how expensive just traversing tree is; (not very)
+    bench(`walkTree-${fileName}-len-${len}`, () => parser.walkTheTree()).gc(
+      "inner"
+    );
     boxplot(() => {
       summary(() => {
         bench(`CURRENT-${fileName}-len-${len}`, () =>
@@ -44,7 +48,7 @@ import {run, bench, boxplot, summary} from "mitata";
   }
 
   await run({
-    format: "markdown",
+    format: "json",
   });
 })();
 /* 

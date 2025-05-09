@@ -8,6 +8,7 @@ import ListGenerator from "./listGenerator.js";
 import USXGenerator from "./usxGenerator.js";
 import {ORIGINAL_VREF} from "./utils/vrefs.js";
 import {Filter} from "./filters.js";
+import {walkTheTree} from "./testingTreeWalker.js";
 
 class USFMParser {
   static language = null;
@@ -129,6 +130,9 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       (combineTexts = combineTexts)
     );
     return this.usj;
+  }
+  walkTheTree() {
+    return walkTheTree(this.syntaxTree);
   }
 
   usjToUsfm(usjObject) {

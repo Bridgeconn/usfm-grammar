@@ -16,16 +16,36 @@ class USJGenerator {
       version: "3.1",
       content: [],
     };
-    // Cache the query objects
-    this.queries = {
-      chapter: getChapQuery(treeSitterLanguageObj),
-      usjCaVa: usjCaVaquery(treeSitterLanguageObj),
-      attribVal: attribValQuery(treeSitterLanguageObj),
-      para: paraQuery(treeSitterLanguageObj),
-      id: getIdQuery(treeSitterLanguageObj),
-      milestone: mileStoneQuery(treeSitterLanguageObj),
-      category: categoryQuery(treeSitterLanguageObj),
-      verseNumCap: verseNumCapQuery(treeSitterLanguageObj),
+    // Cache for the query objects
+    this.queries = {};
+    // this would be nicer with TS types and not stringly typed, but this pattern creates queries as needed. And creating tree-sitter queries is nearly all the overhead (not single time travee traversal, and not node gerneration and allocation).  So only create queries if they are actually neeeded.
+    this.getQuery = (name) => {
+      if (!this.queries[name]) {
+        this.queries[name] = this.createQuery(name);
+      }
+      return this.queries[name];
+    };
+    this.createQuery = (name) => {
+      switch (name) {
+        case "chapter":
+          return getChapQuery(this.usfmLanguage);
+        case "usjCaVa":
+          return usjCaVaquery(this.usfmLanguage);
+        case "attribVal":
+          return attribValQuery(this.usfmLanguage);
+        case "para":
+          return paraQuery(this.usfmLanguage);
+        case "id":
+          return getIdQuery(this.usfmLanguage);
+        case "milestone":
+          return mileStoneQuery(this.usfmLanguage);
+        case "category":
+          return categoryQuery(this.usfmLanguage);
+        case "verseNumCap":
+          return verseNumCapQuery(this.usfmLanguage);
+        default:
+          break;
+      }
     };
     // Make o(1) sets for marker lookups
     this.markerSets = {
@@ -54,7 +74,8 @@ class USJGenerator {
   }
 
   nodeToUSJId(node, parentJsonObj) {
-    const idCaptures = this.queries.id.captures(node);
+    const idCaptures = this.getQuery("id").captures(node);
+    // const idCaptures = this.queries.id.captures(node);
     let code = null;
     let desc = null;
     idCaptures.forEach((capture) => {
@@ -80,7 +101,8 @@ class USJGenerator {
   // Similar conversion methods for other node types
   nodeToUSJC(node, parentJsonObj) {
     // Build c, the chapter milestone node in usj
-    const chapCap = this.queries.chapter.captures(node);
+    const chapCap = this.getQuery("chapter").captures(node);
+    // const chapCap = this.queries.chapter.captures(node);
     const chapNum = this.usfm.slice(
       chapCap[0].node.startIndex,
       chapCap[0].node.endIndex
@@ -129,7 +151,8 @@ class USJGenerator {
 
   nodeToUSJVerse(node, parentJsonObj) {
     // Build verse node in USJ
-    const verseNumCap = this.queries.verseNumCap.captures(node);
+    const verseNumCap = this.getQuery("verseNumCap").captures(node);
+    // const verseNumCap = this.queries.verseNumCap.captures(node);
 
     const verseNum = this.usfm.substring(
       verseNumCap[0].node.startIndex,
@@ -172,7 +195,8 @@ class USJGenerator {
       marker: style,
     };
 
-    const altNumMatch = this.queries.usjCaVa.captures(node);
+    const altNumMatch = this.getQuery("usjCaVa").captures(node);
+    // const altNumMatch = this.queries.usjCaVa.captures(node);
 
     const altNum = this.usfm
       .slice(altNumMatch[0].node.startIndex, altNumMatch[0].node.endIndex)
@@ -189,7 +213,8 @@ class USJGenerator {
         this.nodeToUSJPara(child, parentJsonObj);
       });
     } else if (node.type === "paragraph") {
-      const paraTagCap = this.queries.para.captures(node)[0];
+      const paraTagCap = this.getQuery("para").captures(node)[0];
+      // const paraTagCap = this.queries.para.captures(node)[0];
       const paraMarker = paraTagCap.node.type;
 
       if (paraMarker === "b") {
@@ -320,7 +345,8 @@ class USJGenerator {
       attribName = "file";
     }
 
-    const attribValCap = this.queries.attribVal.captures(node);
+    const attribValCap = this.getQuery("attribVal").captures(node);
+    // const attribValCap = this.queries.attribVal.captures(node);
     let attribValue = "";
     if (attribValCap.length > 0) {
       attribValue = this.usfm
@@ -337,7 +363,8 @@ class USJGenerator {
   nodeToUSJMilestone(node, parentJsonObj) {
     // Create ms node in USJ
 
-    const msNameCap = this.queries.milestone.captures(node)[0];
+    const msNameCap = this.getQuery("milestone").captures(node)[0]; // this.queries.milestone.captures(node)[0];
+    // const msNameCap = this.queries.milestone.captures(node)[0];
 
     // slice, not substring.  Hence not using util fxn extractAndCleanMarker
     const style = this.usfm
@@ -370,7 +397,8 @@ class USJGenerator {
       });
       parentJsonObj.content.push(sidebarJsonObj);
     } else if (node.type === "cat") {
-      const catCap = this.queries.category.captures(node)[0];
+      const catCap = this.getQuery("category").captures(node)[0];
+      // const catCap = this.queries.category.captures(node)[0];
       const category = this.usfm
         .substring(catCap.node.startIndex, catCap.node.endIndex)
         .trim();
@@ -507,7 +535,21 @@ class USJGenerator {
     }
   }
 }
-
+// function initQueries(treeSitterLanguageObj) {
+//   console.time("initQueries");
+//   let init = {
+//     chapter: getChapQuery(treeSitterLanguageObj),
+//     usjCaVa: usjCaVaquery(treeSitterLanguageObj),
+//     attribVal: attribValQuery(treeSitterLanguageObj),
+//     para: paraQuery(treeSitterLanguageObj),
+//     id: getIdQuery(treeSitterLanguageObj),
+//     milestone: mileStoneQuery(treeSitterLanguageObj),
+//     category: categoryQuery(treeSitterLanguageObj),
+//     verseNumCap: verseNumCapQuery(treeSitterLanguageObj),
+//   };
+//   console.timeEnd("initQueries");
+//   return init;
+// }
 function getIdQuery(lang) {
   return lang.query("(id (bookcode) @book-code (description)? @desc)");
 }
