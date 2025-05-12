@@ -39,6 +39,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "glob": "^11.0.0",
+    "mitata": "^1.0.34",
     "mocha": "^10.7.3",
     "parcel": "latest",
     "path-browserify": "^1.0.1",
