@@ -12,7 +12,8 @@
   "source": "src/index.js",
   "scripts": {
     "build": "parcel build src/index.js",
-    "test": "mocha --parallel --timeout 40000"
+    "test": "mocha --parallel --timeout 40000",
+    "flame": "0x -o"
   },
   "files": [
     "dist/",
@@ -37,6 +38,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
+    "0x": "^5.8.0",
     "@babel/core": "^7.25.2",
     "glob": "^11.0.0",
     "mitata": "^1.0.34",

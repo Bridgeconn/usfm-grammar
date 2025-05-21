@@ -17,7 +17,7 @@ const parsedCache = new Map();
 before(async function () {
   // Increase timeout to handle the parsing of many files
   this.timeout(90_000); // 90 seconds timeout
-  console.log("Initializing test cache...");
+  console.log("Initializing USJ test cache...");
   const schemaStr = fs.readFileSync("../schemas/usj.js", "utf8");
   const schema = JSON.parse(schemaStr);
   parsedCache.set("ajvSchema", schema);
@@ -25,7 +25,7 @@ before(async function () {
     if (isValidUsfm[filepath]) {
       try {
         const parser = await initialiseParser(filepath);
-        const usj = parser.toUSJ2();
+        const usj = parser.toUSJ();
         parsedCache.set(filepath, {
           parser,
           usj,
@@ -184,7 +184,7 @@ describe("Test Exclude Marker option", () => {
 
           // For exclude tests, we need to regenerate the USJ with specific options
           const parser = cached.parser;
-          const usj = parser.toUSJ2(exList);
+          const usj = parser.toUSJ(exList);
 
           const allUSJTypes = getTypes(usj);
           let types = new Set(allUSJTypes);
@@ -212,7 +212,7 @@ describe("Test Include Marker option", () => {
 
           // For include tests, we need to regenerate the USJ with specific options
           const parser = cached.parser;
-          const usj = parser.toUSJ2(null, inList);
+          const usj = parser.toUSJ(null, inList);
 
           let allUSJTypes = getTypes(usj, false);
           assert(

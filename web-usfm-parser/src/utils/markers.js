@@ -107,7 +107,7 @@ export const CHAR_STYLE_MARKERS = [
   "xdc", //crossref - content
 ];
 export const NESTED_CHAR_STYLE_MARKERS = CHAR_STYLE_MARKERS.map(
-  (item) => item + "Nested",
+  (item) => item + "Nested"
 );
 export const DEFAULT_ATTRIB_MAP = {
   w: "lemma",
@@ -117,8 +117,26 @@ export const DEFAULT_ATTRIB_MAP = {
   xt_standalone: "href",
   xtNested: "href",
   ref: "loc",
-  "milestone": "who",
-  "k":"key"
+  milestone: "who",
+  k: "key",
 };
 export const TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"];
 export const MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];
+
+export const MARKER_SETS = {
+  TABLE_CELL_MARKERS: new Set(TABLE_CELL_MARKERS),
+  CHAR_STYLE_MARKERS: new Set(CHAR_STYLE_MARKERS),
+  NESTED_CHAR_STYLE_MARKERS: new Set(NESTED_CHAR_STYLE_MARKERS),
+  OTHER_PARA_NESTABLES: new Set([
+    "text",
+    "footnote",
+    "crossref",
+    "verseText",
+    "v",
+    "b",
+    "milestone",
+    "zNameSpace",
+  ]),
+  NOTE_MARKERS: new Set(NOTE_MARKERS),
+  PARA_STYLE_MARKERS: new Set(PARA_STYLE_MARKERS),
+};

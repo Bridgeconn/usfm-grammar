@@ -31,24 +31,20 @@ import {run, bench, boxplot, summary} from "mitata";
     const txt = await readFile(path, "utf-8"); // Specify encoding
     const len = txt.length;
     const parser = new USFMParser(txt);
-    // See how expensive just traversing tree is; (not very)
-    bench(`walkTree-${fileName}-len-${len}`, () => parser.walkTheTree()).gc(
-      "inner"
-    );
     boxplot(() => {
       summary(() => {
-        bench(`CURRENT-${fileName}-len-${len}`, () =>
+        bench(`USJ-${fileName}-len-${len}`, () =>
           parser.toUSJ(null, null, true)
         ).gc("inner");
-        bench(`NEW-${fileName}-len-${len}`, () =>
-          parser.toUSJ2(null, null, true)
-        ).gc("inner");
+        bench(`USX-${fileName}-len-${len}`, () => parser.toUSX(true)).gc(
+          "inner"
+        );
       });
     });
   }
 
   await run({
-    format: "json",
+    format: "mitata",
   });
 })();
 /* 
