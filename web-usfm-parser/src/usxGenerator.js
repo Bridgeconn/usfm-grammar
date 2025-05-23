@@ -25,6 +25,11 @@ class USXGenerator {
         } else {
             this.xmlRootNode = usxRootElement;
         }
+
+        this.parseState = {
+            prevVerseSid: null,
+            prevVerseParent: null
+        }
     }
 
     /**
@@ -137,56 +142,14 @@ class USXGenerator {
 
 	}
 
-	findPrevUncle(parentXmlNode) {
-        // Get the grandparent node
-        const grandParent = parentXmlNode.parentNode;
-        let uncleIndex = grandParent.childNodes.length - 2; // Start from the previous sibling
-
-        while (uncleIndex >= 0) {
-            const uncle = grandParent.childNodes[uncleIndex];
-
-            // Skip 'sidebar' and 'ms' elements
-            if (uncle.tagName === "sidebar" || uncle.tagName === "ms") {
-                uncleIndex--;
-            }
-            // Skip elements with 'ca' or 'cp' in the style attribute
-            else if (uncle.getAttribute('style') === 'ca' || uncle.getAttribute('style') === 'cp') {
-                uncleIndex--;
-            }
-            // Return the found uncle element
-            else {
-                return uncle;
-            }
-        }
-        return null;  // No suitable uncle found
-    }
-
     node2UsxVerse(node, parentXmlNode) {
-        // Find all previous 'verse' elements
-        const prevVerses = xpath.select("//verse", this.xmlRootNode);
 
-        // Check if there are previous verses and if the last one has a 'sid' attribute
-        if (prevVerses.length > 0 && prevVerses[prevVerses.length - 1].hasAttribute('sid')) {
-            let vEndXmlNode;
-            if (parentXmlNode.textContent.trim() !== "") {
-                // If there is verse text in the current parent
-                vEndXmlNode = parentXmlNode.ownerDocument.createElement('verse');
-                parentXmlNode.appendChild(vEndXmlNode);
-            } else {
-                // If no text, find the previous uncle and attach the end verse
-                const prevUncle = this.findPrevUncle(parentXmlNode);
-                if (prevUncle.tagName === "para") {
-                    vEndXmlNode = prevUncle.ownerDocument.createElement('verse');
-                    prevUncle.appendChild(vEndXmlNode);
-                } else if (prevUncle.tagName === "table") {
-                    const rows = prevUncle.getElementsByTagName('row');
-                    vEndXmlNode = prevUncle.ownerDocument.createElement('verse');
-                    rows[rows.length - 1].appendChild(vEndXmlNode);
-                } else {
-                    throw new Error(`prev_uncle is ${String(prevUncle)}`);
-                }
-            }
-            vEndXmlNode.setAttribute('eid', prevVerses[prevVerses.length - 1].getAttribute('sid'));
+        // Check if there are previous verses to close
+        if (this.parseState.prevVerseSid !== null) {
+            let prevPara = this.parseState.prevVerseParent;
+            let vEndXmlNode = prevPara.ownerDocument.createElement('verse');
+            vEndXmlNode.setAttribute("eid", this.parseState.prevVerseSid);
+            prevPara.appendChild(vEndXmlNode);
         }
 
         // Query to capture verse-related elements
@@ -227,6 +190,7 @@ class USXGenerator {
         vXmlNode.setAttribute('number', verseNum.trim());
         vXmlNode.setAttribute('style', 'v');
         vXmlNode.setAttribute('sid', ref.trim());
+        this.parseState.prevVerseSid = ref.trim();
     }
 
     node2UsxCaVa(node, parentXmlNode) {
@@ -537,6 +501,7 @@ class USXGenerator {
             node.children.forEach(child => {
                 this.node2Usx(child, parentXmlNode);
             });
+            this.parseState.prevVerseParent = parentXmlNode;
         } else if (["paragraph", "pi", "ph"].includes(node.type)) {
             this.node2UsxPara(node, parentXmlNode);
         } else if (NOTE_MARKERS.includes(node.type)) {
