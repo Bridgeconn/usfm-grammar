@@ -11,4 +11,4 @@ USFMParser = usfm_parser.USFMParser
 Validator = validator.Validator
 ORIGINAL_VREF = vrefs.original_vref
 
-__version__ = "3.1.1"
+__version__ = "3.1.2"
