@@ -116,7 +116,7 @@ class USXGenerator:
         '''build verse node in USX'''
         eid = self.parse_state["prev_verse_sid"]
         if eid is not None:
-            prev_para = self.prev_verse_parent
+            prev_para = self.parse_state["prev_verse_parent"]
             v_end_xml_node = etree.SubElement(prev_para, "verse")
             v_end_xml_node.set('eid', eid)
         verse_num_cap = self.usfm_language.query('''
@@ -330,7 +330,7 @@ class USXGenerator:
         elif node.type == "verseText":
             for child in node.children:
                 self.node_2_usx(child, parent_xml_node)
-            self.prev_verse_parent = parent_xml_node
+            self.parse_state["prev_verse_parent"] = parent_xml_node
         elif node.type in ['paragraph', 'pi', "ph"]:
             self.node_2_usx_para(node, parent_xml_node)
         elif node.type in self.NOTE_MARKERS:
