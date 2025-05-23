@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>Table cells are seen left empty. Also the \v usage was not supported in table cells before in USFM-Grammar. https://github.com/Bridgeconn/usfm-grammar/issues/326 </description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>
