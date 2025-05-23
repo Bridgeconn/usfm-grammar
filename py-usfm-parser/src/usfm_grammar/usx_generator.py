@@ -113,9 +113,13 @@ class USXGenerator:
         grand_parent = parent_xml_node.getparent()
         uncle_index = -2
         while True:
+            while len(grand_parent.getchildren()) < abs(uncle_index):
+                grand_uncle = self.find_prev_uncle(grand_parent)
+                grand_parent = grand_uncle
+                uncle_index = -1
             if grand_parent[uncle_index].tag in ["sidebar", "ms"]:
                 uncle_index -= 1
-            elif grand_parent[uncle_index].get('style') in ['ca', 'cp']:
+            elif grand_parent[uncle_index].get('style') in ['ca', 'cp', 'b']:
                 uncle_index -= 1
             else:
                 prev_uncle = grand_parent[uncle_index]
@@ -131,13 +135,14 @@ class USXGenerator:
                 v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
             else:
                 prev_uncle = self.find_prev_uncle(parent_xml_node)
-                if prev_uncle.tag == "para":
+                if prev_uncle.tag in ["para", "cell"]:
                     v_end_xml_node = etree.SubElement(prev_uncle, "verse")
                 elif prev_uncle.tag == "table":
-                    rows = list(prev_uncle)
-                    v_end_xml_node = etree.SubElement(rows[-1], "verse")
+                    rows = prev_uncle.getchildren()
+                    last_cell = rows[-1].getchildren()[-1]
+                    v_end_xml_node = etree.SubElement(last_cell, "verse")
                 else:
-                    raise Exception(" prev_uncle is "+str(prev_uncle))
+                    raise Exception(" prev_uncle is "+prev_uncle.tag)
             v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
         verse_num_cap = self.usfm_language.query('''
                                 (v
