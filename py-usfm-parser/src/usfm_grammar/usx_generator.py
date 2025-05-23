@@ -140,7 +140,7 @@ class USXGenerator:
         v_xml_node.set('number', verse_num.strip())
         v_xml_node.set('style', "v")
         v_xml_node.set('sid', ref.strip())
-        self.parse_state["prev_verse_sid"] = 
+        self.parse_state["prev_verse_sid"] = sid
 
     def node_2_usx_ca_va(self, node, parent_xml_node):
         '''Build elements for independant ca and va away from c and v'''
