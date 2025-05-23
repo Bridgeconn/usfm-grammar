@@ -355,6 +355,8 @@ module.exports = grammar({
     //Table
     table: $ => prec.right(0, repeat1($.tr)),
     _tableText: $ => choice(
+      $.v,
+      $._verseMeta,
       $.verseText,
       $.footnote,
       $.crossref,
@@ -371,10 +373,10 @@ module.exports = grammar({
     thrTag: $=> /\\thr([12345](-[12345])?)?/,
     tcTag: $=> /\\tc([12345](-[12345])?)?/,
     tcrTag: $=> /\\tcr([12345](-[12345])?)?/,
-    th: $=> seq($.thTag, $._spaceOrLine, $._tableText),
-    thr: $=> seq($.thrTag, $._spaceOrLine, $._tableText),
-    tc: $=> seq($.tcTag, $._spaceOrLine, $._tableText),
-    tcr: $=> seq($.tcrTag, $._spaceOrLine, $._tableText),
+    th: $=> prec.right(0, seq($.thTag, $._spaceOrLine, repeat($._tableText))),
+    thr: $=> prec.right(0, seq($.thrTag, $._spaceOrLine, repeat($._tableText))),
+    tc: $=> prec.right(0, seq($.tcTag, $._spaceOrLine, repeat($._tableText))),
+    tcr: $=> prec.right(0, seq($.tcrTag, $._spaceOrLine, repeat($._tableText))),
 
     //Footnote
     caller: $ => /[^\s\\]+/,
