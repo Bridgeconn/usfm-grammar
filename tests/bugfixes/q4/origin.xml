@@ -1,0 +1,11 @@
+<usx version="3.1">
+  <book code="GEN" style="id"/>
+  <chapter number="1" style="c" sid="GEN 1"/>
+  <para style="p"><verse number="33" style="v" sid="GEN 1:33"/>verse content for this verse
+<verse eid="GEN 1:33"/></para>
+  <para style="q2"/>
+  <para style="q4"/>
+  <para style="q1"><verse number="34" style="v" sid="GEN 1:34"/>verse content for this verse<verse eid="GEN 1:34"/></para>
+  <chapter eid="GEN 1"/>
+</usx>
+
