@@ -251,7 +251,7 @@ class USXGenerator:
             if "r" in style:
                 cell_xml_node.set("align", "end")
             elif "tcc" in style:
-                cell_xml_node.set("align", "center") 
+                cell_xml_node.set("align", "center")
             else:
                 cell_xml_node.set("align", "start")
             for child in node.children[1:]:
