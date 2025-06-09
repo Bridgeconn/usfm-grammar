@@ -367,7 +367,6 @@ class USXGenerator {
           node.children.slice(1).forEach((child) => {
             this.node2Usx(child, cellXmlNode);
           });
-          if style
         }
     }
 
