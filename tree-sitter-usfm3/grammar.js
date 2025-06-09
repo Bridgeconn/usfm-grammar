@@ -310,7 +310,7 @@ module.exports = grammar({
 
     qBlock: $ => prec.right(0, repeat1($.q)),
     q: $ => prec.right(0, seq($.qTag, repeat($._poetryContent))),
-    qTag: $ => seq("\\q", optional($.numberedLevelMax3), $._spaceOrLine),
+    qTag: $ => seq("\\q", optional($.numberedLevelMax4), $._spaceOrLine),
     qr: $ => prec.right(0, seq("\\qr", $._spaceOrLine, repeat($._poetryContent))),
     qc: $ => prec.right(0, seq("\\qc",$._spaceOrLine, repeat($._poetryContent))),
     qs: $ => seq("\\qs", $._spaceOrLine, repeat($._poetryContent), "\\qs*"),
