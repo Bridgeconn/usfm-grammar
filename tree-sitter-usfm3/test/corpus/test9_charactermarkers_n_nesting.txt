@@ -80,21 +80,21 @@ sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
       (qBlock
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (qt
               (text))
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (qt
               (text))
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
@@ -103,14 +103,14 @@ sabachthani?”\tl* which means, “My God, my God, why did you abandon me?”
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (qt
               (text))
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (qt
               (text))
@@ -250,19 +250,19 @@ dead will be raised, never to die again, and we shall all be changed.
       (qBlock
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (crossref
@@ -283,7 +283,7 @@ dead will be raised, never to die again, and we shall all be changed.
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (text)))))
     (paragraph
