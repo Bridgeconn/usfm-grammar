@@ -67,7 +67,7 @@ module.exports = grammar({
     ref: $ => seq("\\ref ", $.text, optional(choice($.defaultAttribute, $._refAttributes)), "\\ref*"),
 
     h: $ => seq($.hTag, $.text),
-    hTag: $ => seq("\\h",optional($.numberedLevelMax3), " "),
+    hTag: $ => seq("\\h",optional($.numberedLevelMaxAny), " "),
     toc: $ => seq($.tocTag, $.text),
     tocTag: $ => seq("\\toc",optional($.numberedLevelMax3), " "),
     toca: $ => seq($.tocaTag, $.text),
