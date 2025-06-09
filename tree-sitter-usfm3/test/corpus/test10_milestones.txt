@@ -142,7 +142,7 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
       (qBlock
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (milestone
             (milestoneStartTag)
             (msAttribute
@@ -164,7 +164,7 @@ a man he has chosen. He has given proof of this to everyone by raising that man 
       (qBlock
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (milestone
             (milestoneStartTag)
             (msAttribute
