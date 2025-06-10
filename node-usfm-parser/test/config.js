@@ -171,13 +171,13 @@ const checkValidUsfm = function (inputUsfmPath) {
 
 const findAllMarkers = function (usfmStr, keepId = false, keepNumber = true) {
   // Regex pattern to find all markers in the USFM string
-  let allMarkersInInput = [...usfmStr.matchAll(/\\\+?(([A-Za-z]+)\d*(-[se])?)/g)];
+  let allMarkersInInput = [...usfmStr.matchAll(/\\\+?(([A-Za-z]+)\d*(-\d+)?(-[se])?)/g)];
 
   // Processing based on `keepNumber` flag
   if (keepNumber) {
     allMarkersInInput = allMarkersInInput.map(match => match[1]);
   } else {
-    allMarkersInInput = allMarkersInInput.map(match => match[1] + match[2]);
+    allMarkersInInput = allMarkersInInput.map(match => match[1] + match[3]);
   }
 
   // Remove duplicates

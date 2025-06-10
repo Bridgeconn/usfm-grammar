@@ -1,0 +1,178 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "content": [],
+            "code": "NUM"
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "2",
+            "sid": "NUM 2"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "3-9",
+                    "sid": "NUM 2:3-9"
+                },
+                "On the east side, those under the banner of the division of Judah\nshall camp in their groups, under their leaders, as follows:\n"
+            ]
+        },
+        {
+            "type": "table",
+            "content": [
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "th1",
+                            "content": [
+                                "Tribe "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "th2",
+                            "content": [
+                                "Leader "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "thr3",
+                            "content": [
+                                "Number\n"
+                            ],
+                            "align": "end"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [
+                                "Judah "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tc2",
+                            "content": [
+                                "Nahshon son of Amminadab "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcc3",
+                            "content": [
+                                "74,600\n"
+                            ],
+                            "align": "center"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [
+                                "Issachar "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tc2",
+                            "content": [
+                                "Nethanel son of Zuar "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcc3",
+                            "content": [
+                                "54,400\n"
+                            ],
+                            "align": "center"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [
+                                "Zebulun "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tc2",
+                            "content": [
+                                "Eliab son of Helon "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcc3",
+                            "content": [
+                                "57,400\n"
+                            ],
+                            "align": "center"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tcr1-2",
+                            "content": [
+                                "Total: "
+                            ],
+                            "align": "end"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcc3",
+                            "content": [
+                                "186,400"
+                            ],
+                            "align": "center"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

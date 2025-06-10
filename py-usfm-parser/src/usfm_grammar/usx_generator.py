@@ -31,7 +31,7 @@ class USXGenerator:
     DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"href", "fig":"alt",
                         "xt_standalone":"href", "xtNested":"href", "ref":"loc",
                         "milestone":"who", "k":"key"}
-    TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
+    TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
 
     def __init__(self, tree_sitter_language_obj, usfm_bytes, usx_root_element=None):
@@ -250,6 +250,8 @@ class USXGenerator:
             cell_xml_node.set("style", style)
             if "r" in style:
                 cell_xml_node.set("align", "end")
+            elif "tcc" in style:
+                cell_xml_node.set("align", "center")
             else:
                 cell_xml_node.set("align", "start")
             for child in node.children[1:]:

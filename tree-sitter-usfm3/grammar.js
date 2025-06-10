@@ -368,16 +368,19 @@ module.exports = grammar({
       $.th,
       $.thr,
       $.tc,
-      $.tcr))
+      $.tcr,
+      $.tcc))
     )),
     thTag: $=> /\\th(\d+(-\d+)?)?/,
     thrTag: $=> /\\thr(\d+(-\d+)?)?/,
     tcTag: $=> /\\tc(\d+(-\d+)?)?/,
     tcrTag: $=> /\\tcr(\d+(-\d+)?)?/,
+    tccTag: $=> /\\tcc(\d+(-\d+)?)?/,
     th: $=> prec.right(0, seq($.thTag, $._spaceOrLine, repeat($._tableText))),
     thr: $=> prec.right(0, seq($.thrTag, $._spaceOrLine, repeat($._tableText))),
     tc: $=> prec.right(0, seq($.tcTag, $._spaceOrLine, repeat($._tableText))),
     tcr: $=> prec.right(0, seq($.tcrTag, $._spaceOrLine, repeat($._tableText))),
+    tcc: $=> prec.right(0, seq($.tccTag, $._spaceOrLine, repeat($._tableText))),
 
     //Footnote
     caller: $ => /[^\s\\]+/,

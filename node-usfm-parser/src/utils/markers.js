@@ -122,5 +122,5 @@ exports.DEFAULT_ATTRIB_MAP = {
   "milestone": "who",
   "k":"key"
 };
-exports.TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"];
+exports.TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc"];
 exports.MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];

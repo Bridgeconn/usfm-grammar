@@ -365,7 +365,7 @@ class USXGenerator {
             .trim();
           const cellXmlNode = parentXmlNode.ownerDocument.createElement("cell");
           cellXmlNode.setAttribute("style", style);
-          cellXmlNode.setAttribute("align", style.includes("r") ? "end" : "start");
+          cellXmlNode.setAttribute("align", style.includes("tcc") ? "center" : style.includes("r") ? "end" : "start");
           parentXmlNode.appendChild(cellXmlNode);
           node.children.slice(1).forEach((child) => {
             this.node2Usx(child, cellXmlNode);

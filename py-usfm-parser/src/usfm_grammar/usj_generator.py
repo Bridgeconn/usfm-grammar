@@ -230,6 +230,8 @@ class USJGenerator:
             cell_json_obj = {"type": "table:cell", "marker":style, "content":[]}
             if "r" in style:
                 cell_json_obj["align"] = "end"
+            elif "tcc" in style:
+                cell_json_obj["align"] = "center"
             else:
                 cell_json_obj["align"] = "start"
             for child in node.children[1:]:
