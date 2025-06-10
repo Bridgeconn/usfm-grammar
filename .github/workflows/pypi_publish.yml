@@ -35,6 +35,8 @@ jobs:
           cd tree-sitter-usfm3
           python -m pip install build setuptools
           python -m build
+          ls tree-sitter-usfm3/dist/
+          ls tree-sitter-usfm3/dist/ | grep .whl
           rm tree-sitter-usfm3/dist/*.whl
 
       - name: Publish tree-sitter-usfm3 📦 to PyPI
