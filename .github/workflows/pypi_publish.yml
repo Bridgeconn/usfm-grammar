@@ -34,10 +34,7 @@ jobs:
         run: |
           cd tree-sitter-usfm3
           python -m pip install build setuptools
-          python -m build
-          ls tree-sitter-usfm3/dist/
-          ls tree-sitter-usfm3/dist/ | grep .whl
-          rm tree-sitter-usfm3/dist/*.whl
+          python -m build --sdist
 
       - name: Publish tree-sitter-usfm3 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -45,7 +42,7 @@ jobs:
           user: __token__
           password: ${{ secrets.pypi_token }}
           # repository_url: https://test.pypi.org/legacy/
-          packages_dir: tree-sitter-usfm3/dist/
+          packages-dir: tree-sitter-usfm3/dist/
 
   publish-py-usfm-parser:
     runs-on: ubuntu-latest
@@ -58,8 +55,7 @@ jobs:
         run: |
           cd py-usfm-parser
           python -m pip install build setuptools
-          python -m build
-          rm py-usfm-parser/dist/*.whl
+          python -m build --sdist
 
       - name: Publish usfm-grammar 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
@@ -67,7 +63,7 @@ jobs:
           user: __token__
           password: ${{ secrets.pypi_token }}
           # repository_url: https://test.pypi.org/legacy/
-          packages_dir: py-usfm-parser/dist/
+          packages-dir: py-usfm-parser/dist/
 
 
 
