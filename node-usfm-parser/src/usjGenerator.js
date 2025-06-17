@@ -304,7 +304,7 @@ class USJGenerator {
         type: "table:cell",
         marker: style,
         content: [],
-        align: style.includes("r") ? "end" : "start",
+        align: style.includes("tcc") ? "center" : style.includes("r") ? "end" : "start",
       };
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, cellJsonObj);

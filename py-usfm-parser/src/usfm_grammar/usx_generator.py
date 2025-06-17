@@ -31,7 +31,7 @@ class USXGenerator:
     DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"href", "fig":"alt",
                         "xt_standalone":"href", "xtNested":"href", "ref":"loc",
                         "milestone":"who", "k":"key"}
-    TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"]
+    TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
 
     def __init__(self, tree_sitter_language_obj, usfm_bytes, usx_root_element=None):
@@ -43,6 +43,10 @@ class USXGenerator:
             self.xml_root_node.set("version", "3.1")
         else:
             self.xml_root_node = usx_root_element
+        self.parse_state = {
+            "prev_verse_parent": None,
+            "prev_verse_sid": None,
+        }
 
     def node_2_usx_id(self, node, parent_xml_node):
         '''build id node in USX'''
@@ -108,37 +112,13 @@ class USXGenerator:
         chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
         chap_end_xml_node.set("eid", chap_ref)
 
-    def find_prev_uncle(self, parent_xml_node):
-        '''To find the ealier sibling of the current parent to attach the verse end node'''
-        grand_parent = parent_xml_node.getparent()
-        uncle_index = -2
-        while True:
-            if grand_parent[uncle_index].tag in ["sidebar", "ms"]:
-                uncle_index -= 1
-            elif grand_parent[uncle_index].get('style') in ['ca', 'cp']:
-                uncle_index -= 1
-            else:
-                prev_uncle = grand_parent[uncle_index]
-                return prev_uncle
-        return None
-
     def node_2_usx_verse(self, node, parent_xml_node):
         '''build verse node in USX'''
-        prev_verses = self.xml_root_node.findall(".//verse")
-        if len(prev_verses)>0 and "sid" in prev_verses[-1].attrib:
-            if ''.join(parent_xml_node.itertext()) != "":
-                # if there is verse text in this parent
-                v_end_xml_node = etree.SubElement(parent_xml_node, "verse")
-            else:
-                prev_uncle = self.find_prev_uncle(parent_xml_node)
-                if prev_uncle.tag == "para":
-                    v_end_xml_node = etree.SubElement(prev_uncle, "verse")
-                elif prev_uncle.tag == "table":
-                    rows = list(prev_uncle)
-                    v_end_xml_node = etree.SubElement(rows[-1], "verse")
-                else:
-                    raise Exception(" prev_uncle is "+str(prev_uncle))
-            v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+        eid = self.parse_state["prev_verse_sid"]
+        if eid is not None:
+            prev_para = self.parse_state["prev_verse_parent"]
+            v_end_xml_node = etree.SubElement(prev_para, "verse")
+            v_end_xml_node.set('eid', eid)
         verse_num_cap = self.usfm_language.query('''
                                 (v
                                     (verseNumber) @vnum
@@ -156,9 +136,11 @@ class USXGenerator:
                 vp_text = self.usfm[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
                 v_xml_node.set('pubnumber', vp_text.strip())
         ref = self.xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
+        sid = ref.strip()
         v_xml_node.set('number', verse_num.strip())
         v_xml_node.set('style', "v")
         v_xml_node.set('sid', ref.strip())
+        self.parse_state["prev_verse_sid"] = sid
 
     def node_2_usx_ca_va(self, node, parent_xml_node):
         '''Build elements for independant ca and va away from c and v'''
@@ -268,6 +250,8 @@ class USXGenerator:
             cell_xml_node.set("style", style)
             if "r" in style:
                 cell_xml_node.set("align", "end")
+            elif "tcc" in style:
+                cell_xml_node.set("align", "center")
             else:
                 cell_xml_node.set("align", "start")
             for child in node.children[1:]:
@@ -348,6 +332,7 @@ class USXGenerator:
         elif node.type == "verseText":
             for child in node.children:
                 self.node_2_usx(child, parent_xml_node)
+            self.parse_state["prev_verse_parent"] = parent_xml_node
         elif node.type in ['paragraph', 'pi', "ph"]:
             self.node_2_usx_para(node, parent_xml_node)
         elif node.type in self.NOTE_MARKERS:

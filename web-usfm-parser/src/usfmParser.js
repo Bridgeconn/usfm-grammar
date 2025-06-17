@@ -294,24 +294,18 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
 
     let outputUSJ;
     try {
-      let usjGenerator = new USJGenerator(
-        USFMParser.language,
-        this.usfm,
-        null,
-        this.syntaxTree
-      );
-      usjGenerator.getUsj(this.syntaxTree, usjGenerator.jsonRootObj);
+      let usjGenerator = new USJGenerator(USFMParser.language, this.usfm);
+      usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
       outputUSJ = usjGenerator.jsonRootObj;
-    } catch (e) {
-      console.log(e);
-      // let message = "Unable to do the conversion. ";
-      // if (this.errors) {
-      //   let errorString = this.errors.join("\n\t");
-      //   message += `Could be due to an error in the USFM\n\t${errorString}`;
-      // } else {
-      //   message = err.message;
-      // }
-      // return {error: message};
+    } catch (err) {
+      let message = "Unable to do the conversion. ";
+      if (this.errors) {
+        let errorString = this.errors.join("\n\t");
+        message += `Could be due to an error in the USFM\n\t${errorString}`;
+      } else {
+        message = err.message;
+      }
+      return {error: message};
     }
 
     if (includeMarkers) {
@@ -327,6 +321,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
 
     return outputUSJ;
   }
+
   toList(
     excludeMarkers = null,
     includeMarkers = null,

@@ -157,7 +157,10 @@ def main(): #pylint: disable=too-many-locals
             print(my_parser.usfm)
         case Format.BIBLENLP:
             infile = arg_parser.parse_args().infile
-            outfile_name = "".join(infile.split(".")[:-1]) + "_biblenlp.txt"
+            file_parts = infile.split(".")
+            file_parts[-1] = "txt"
+            file_parts[-2] += "_biblenlp"
+            outfile_name = ".".join(file_parts)
             outfile_name2 = outfile_name.replace("_biblenlp.txt", "_biblenlp_vref.txt")
             bible_nlp_dict = my_parser.to_biblenlp_format(ignore_errors=ignore_errors)
             with open(outfile_name, 'w', encoding='utf-8') as out1:

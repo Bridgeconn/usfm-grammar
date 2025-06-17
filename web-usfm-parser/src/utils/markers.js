@@ -120,7 +120,7 @@ export const DEFAULT_ATTRIB_MAP = {
   milestone: "who",
   k: "key",
 };
-export const TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"];
+export const TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc"];
 export const MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];
 
 export const MARKER_SETS = {

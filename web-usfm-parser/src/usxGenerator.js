@@ -166,6 +166,7 @@ class USXGenerator {
   }
   handleVerseText(node, parentXmlNode) {
     node.children.forEach((child) => this.node2Usx(child, parentXmlNode));
+    this.parseState.prevVerseParent = parentXmlNode;
   }
 
   node2UsxChapter(node, parentXmlNode) {
@@ -235,27 +236,12 @@ class USXGenerator {
     // const prevVerses = xpath.select("//verse", this.xmlRootNode);
 
     // Check if there are previous verses and if the last one has a 'sid' attribute
+    // Check if there are previous verses to close
     if (this.parseState.prevVerseSid) {
-      let vEndXmlNode;
-      if (parentXmlNode.textContent.trim() !== "") {
-        // If there is verse text in the current parent
-        vEndXmlNode = parentXmlNode.ownerDocument.createElement("verse");
-        parentXmlNode.appendChild(vEndXmlNode);
-      } else {
-        // If no text, find the previous uncle and attach the end verse
-        const prevUncle = this.findPrevUncle(parentXmlNode);
-        if (prevUncle.tagName === "para") {
-          vEndXmlNode = prevUncle.ownerDocument.createElement("verse");
-          prevUncle.appendChild(vEndXmlNode);
-        } else if (prevUncle.tagName === "table") {
-          const rows = prevUncle.getElementsByTagName("row");
-          vEndXmlNode = prevUncle.ownerDocument.createElement("verse");
-          rows[rows.length - 1].appendChild(vEndXmlNode);
-        } else {
-          throw new Error(`prev_uncle is ${String(prevUncle)}`);
-        }
-      }
+      let prevPara = this.parseState.prevVerseParent;
+      let vEndXmlNode = prevPara.ownerDocument.createElement("verse");
       vEndXmlNode.setAttribute("eid", this.parseState.prevVerseSid);
+      prevPara.appendChild(vEndXmlNode);
     }
 
     // Query to capture verse-related elements
@@ -292,8 +278,6 @@ class USXGenerator {
     vXmlNode.setAttribute("number", verseNum.trim());
     vXmlNode.setAttribute("style", "v");
     vXmlNode.setAttribute("sid", ref.trim());
-
-    // Set the previous verse sid
     this.parseState.prevVerseSid = ref.trim();
   }
 
@@ -454,7 +438,10 @@ class USXGenerator {
         .trim();
       const cellXmlNode = parentXmlNode.ownerDocument.createElement("cell");
       cellXmlNode.setAttribute("style", style);
-      cellXmlNode.setAttribute("align", style.includes("r") ? "end" : "start");
+      cellXmlNode.setAttribute(
+        "align",
+        style.includes("tcc") ? "center" : style.includes("r") ? "end" : "start"
+      );
       parentXmlNode.appendChild(cellXmlNode);
       node.children.slice(1).forEach((child) => {
         this.node2Usx(child, cellXmlNode);
