@@ -27,7 +27,4 @@ import {DOMImplementation, XMLSerializer, DOMParser} from "xmldom";
   console.timeEnd("toUSX");
   const asXmlString = new XMLSerializer().serializeToString(usx);
   console.log(asXmlString);
-  // for (let i = 0; i < 10; i++) {
-  // }
-  // console.log(usj);
 })();

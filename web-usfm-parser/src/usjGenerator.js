@@ -26,7 +26,6 @@ class USJGenerator {
         this.queries[name] = this.createQuery(name);
       }
       return this.queries[name];
-      s;
     };
     this.createQuery = (name) => createQueriesAsNeeded(name, this.usfmLanguage);
     // Make o(1) sets for marker lookups
