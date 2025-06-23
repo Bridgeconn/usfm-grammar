@@ -181,7 +181,6 @@ class USJGenerator {
       const paraTagCap = this.getQuery("para").captures(node)[0];
       // const paraTagCap = this.queries.para.captures(node)[0];
       const paraMarker = paraTagCap.node.type;
-
       if (paraMarker === "b") {
         parentJsonObj.content.push({type: "para", marker: paraMarker});
       } else if (!paraMarker.endsWith("Block")) {
@@ -454,7 +453,7 @@ class USJGenerator {
     // nooop
     thisMap.set("usfm", () => {});
     addHandlers(["paragraph", "q", "w"], this.nodeToUSJPara);
-    addHandlers(["cl", "cl", "cp", "vp"], this.nodeToUSJGeneric);
+    addHandlers(["cl", "cp", "vp"], this.nodeToUSJGeneric);
     addHandlers(["ca", "va"], this.nodeToUSJCaVa);
     addHandlers(["table", "tr"], this.nodeToUSJTable);
     addHandlers(["milestone", "zNameSpace"], this.nodeToUSJMilestone);

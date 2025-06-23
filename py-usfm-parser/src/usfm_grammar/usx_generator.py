@@ -1,5 +1,6 @@
 '''Logics for syntax-tree to xml(USX) conversions'''
 from lxml import etree
+from usfm_grammar.queries import create_queries_as_needed
 
 
 class USXGenerator:
@@ -25,7 +26,6 @@ class USXGenerator:
                  "jmp",
                  "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", #footnote-content
                  "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc", #crossref-content
-                 "ref"
                  ]
     NESTED_CHAR_STYLE_MARKERS = [item+"Nested" for item in CHAR_STYLE_MARKERS]
     DEFAULT_ATTRIB_MAP = {"w":"lemma", "rb":"gloss", "xt":"href", "fig":"alt",
@@ -33,6 +33,25 @@ class USXGenerator:
                         "milestone":"who", "k":"key"}
     TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
+    OTHER_PARA_NESTABLES = ["text", "footnote", "crossref", "verseText", "v", "b", "milestone", "zNameSpace"]
+    MARKER_LISTS = {
+        'para_style': PARA_STYLE_MARKERS,
+        'note': NOTE_MARKERS,
+        'char_style': CHAR_STYLE_MARKERS,
+        'nested_char_style': NESTED_CHAR_STYLE_MARKERS,
+        'table_cell': TABLE_CELL_MARKERS,
+        'misc': MISC_MARKERS,
+        'other_para_nestables': OTHER_PARA_NESTABLES,
+    }
+    MARKER_SETS = {
+        'table_cell': set(TABLE_CELL_MARKERS),
+        'char_style': set(CHAR_STYLE_MARKERS),
+        'nested_char_style': set(NESTED_CHAR_STYLE_MARKERS),
+        'other_para_nestables': set(OTHER_PARA_NESTABLES),
+        'note_markers': set(NOTE_MARKERS),
+        'para_style': set(PARA_STYLE_MARKERS),
+        'misc': set(MISC_MARKERS),
+    }
 
     def __init__(self, tree_sitter_language_obj, usfm_bytes, usx_root_element=None):
         '''Initialize the class with usfm language and an empty output'''
@@ -44,14 +63,30 @@ class USXGenerator:
         else:
             self.xml_root_node = usx_root_element
         self.parse_state = {
+            "book_slug": None,
+            "current_chapter": None,
             "prev_verse_parent": None,
-            "prev_verse_sid": None,
+            "prev_verse_sid_to_close": None,
+            "prev_chapter_sid": None,
+            "prev_verse": None
         }
+        self.dispatch_map = self.populate_dispatch_map()
+        self.queries = {}
 
+
+    def get_query(self, name):
+        """Get or create a query by name"""
+        if name not in self.queries:
+            self.queries[name] = self.create_query(name)
+        return self.queries[name]
+
+    def create_query(self, name):
+        """Create a query by name"""
+        return create_queries_as_needed(name, self.usfm_language)
+    
     def node_2_usx_id(self, node, parent_xml_node):
         '''build id node in USX'''
-        id_captures = self.usfm_language.query('''(id (bookcode) @book-code
-                                                    (description)? @desc)''').captures(node)
+        id_captures = self.get_query('id').captures(node)
         code = None
         desc = None
         for tupl in id_captures:
@@ -62,21 +97,21 @@ class USXGenerator:
         book_xml_node = etree.SubElement(parent_xml_node, "book")
         book_xml_node.set("code", code)
         book_xml_node.set("style", "id")
+        self.parse_state['book_slug'] = code
         if desc is not None and desc.strip() != "":
             book_xml_node.text = desc.strip()
 
     def node_2_usx_c(self, node, parent_xml_node):
         '''Build c, the chapter milestone node in usx'''
-        chap_cap = self.usfm_language.query('''(c (chapterNumber) @chap-num
-                                            (ca (chapterNumber) @alt-num)?
-                                            (cp (text) @pub-num)?)
-                                        ''').captures(node)
+        chap_cap = self.get_query('chapter').captures(node)
         chap_num = self.usfm[chap_cap[0][0].start_byte:chap_cap[0][0].end_byte].decode('utf-8')
-        chap_ref = parent_xml_node.find("book").attrib['code']+" "+chap_num
+        chap_ref = self.parse_state['book_slug']+" "+chap_num
+        self.parse_state['prev_chapter_sid'] = chap_ref
         chap_xml_node = etree.SubElement(parent_xml_node, "chapter")
         chap_xml_node.set("number", chap_num)
         chap_xml_node.set("style", "c")
         chap_xml_node.set("sid", chap_ref)
+        self.parse_state['current_chapter'] = chap_num
         for tupl in chap_cap:
             if tupl[1] == "alt-num":
                 chap_xml_node.set('altnumber',
@@ -97,10 +132,13 @@ class USXGenerator:
             else:
                 self.node_2_usx(child, parent_xml_node)
 
-        prev_verses = self.xml_root_node.findall(".//verse")
-        if len(prev_verses)>0 and prev_verses[-1].get("eid") is None:
+        # if (self.parse_state['prev_verse_sid_to_close'] is not None and self.parse_state['prev_chapter_sid'] is not None):
+        last_verse = self.parse_state['prev_verse']
+        if last_verse is not None and last_verse.get("eid") is None:
             v_end_xml_node = etree.Element("verse")
-            v_end_xml_node.set('eid', prev_verses[-1].get('sid'))
+            v_end_xml_node.set('eid', last_verse.get('sid'))
+            self.parse_state['prev_verse'] = None
+            self.parse_state['prev_verse_sid_to_close'] = None
             last_sibbling = parent_xml_node[-1]
             if last_sibbling.tag == "para":
                 last_sibbling.append(v_end_xml_node)
@@ -111,23 +149,21 @@ class USXGenerator:
                 parent_xml_node.append(v_end_xml_node)
         chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
         chap_end_xml_node.set("eid", chap_ref)
+        self.parse_state['prev_chapter_sid'] = None
 
     def node_2_usx_verse(self, node, parent_xml_node):
         '''build verse node in USX'''
-        eid = self.parse_state["prev_verse_sid"]
+        eid = self.parse_state["prev_verse_sid_to_close"]
         if eid is not None:
             prev_para = self.parse_state["prev_verse_parent"]
             v_end_xml_node = etree.SubElement(prev_para, "verse")
             v_end_xml_node.set('eid', eid)
-        verse_num_cap = self.usfm_language.query('''
-                                (v
-                                    (verseNumber) @vnum
-                                    (va (verseNumber) @alt)?
-                                    (vp (text) @vp)?
-                                )''').captures(node)
+            self.parse_state['prev_verse_sid_to_close'] = None
+        verse_num_cap = self.get_query('verseNumCap').captures(node)
         verse_num = self.usfm[verse_num_cap[0][0].start_byte:
             verse_num_cap[0][0].end_byte].decode('utf-8')
         v_xml_node = etree.SubElement(parent_xml_node, "verse")
+        self.parse_state['prev_verse'] = v_xml_node
         for tupl in verse_num_cap:
             if tupl[1] == 'alt':
                 alt_num = self.usfm[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
@@ -135,22 +171,20 @@ class USXGenerator:
             elif tupl[1] == 'vp':
                 vp_text = self.usfm[tupl[0].start_byte:tupl[0].end_byte].decode('utf-8')
                 v_xml_node.set('pubnumber', vp_text.strip())
-        ref = self.xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
+        ref = self.parse_state['book_slug']+" "+self.parse_state['current_chapter']+":"+verse_num.strip()
+        # ref = self.xml_root_node.findall('.//chapter')[-1].get('sid')+ ":"+ verse_num
         sid = ref.strip()
         v_xml_node.set('number', verse_num.strip())
         v_xml_node.set('style', "v")
         v_xml_node.set('sid', ref.strip())
-        self.parse_state["prev_verse_sid"] = sid
+        self.parse_state["prev_verse_sid_to_close"] = sid
 
     def node_2_usx_ca_va(self, node, parent_xml_node):
         '''Build elements for independant ca and va away from c and v'''
         style = node.type
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set("style", style)
-        alt_num_match = self.usfm_language.query('''([
-                                            (chapterNumber)
-                                            (verseNumber)
-                                            ] @alt-num)''').captures(node)[0]
+        alt_num_match = self.get_query('usjCaVa').captures(node)[0]
         alt_num = self.usfm[alt_num_match[0].start_byte:alt_num_match[0].end_byte] \
             .decode('utf-8').strip()
         char_xml_node.set("altnumber", alt_num)
@@ -162,8 +196,7 @@ class USXGenerator:
             for child in node.children[0].children:
                 self.node_2_usx_para(child, parent_xml_node)
         elif node.type == 'paragraph':
-            para_tag_cap = self.usfm_language.query(
-                "(paragraph (_) @para-marker)").captures(node)[0]
+            para_tag_cap = self.get_query('para').captures(node)[0]
             para_marker = para_tag_cap[0].type
             if not para_marker.endswith("Block"):
                 para_xml_node = etree.SubElement(parent_xml_node, "para")
@@ -223,7 +256,7 @@ class USXGenerator:
         if attrib_name == "src": # for \fig
             attrib_name = "file"
 
-        attrib_val_cap = self.usfm_language.query("((attributeValue) @attrib-val)").captures(node)
+        attrib_val_cap = self.get_query('attribVal').captures(node)
         if len(attrib_val_cap) > 0:
             attrib_value = self.usfm[attrib_val_cap[0][0].start_byte:\
                 attrib_val_cap[0][0].end_byte].decode('utf-8').strip()
@@ -259,12 +292,7 @@ class USXGenerator:
 
     def node_2_usx_milestone(self, node, parent_xml_node):
         '''create ms node in USX'''
-        ms_name_cap = self.usfm_language.query('''(
-            [(milestoneTag)
-             (milestoneStartTag)
-             (milestoneEndTag)
-             (zSpaceTag)
-             ] @ms-name)''').captures(node)[0]
+        ms_name_cap = self.get_query('milestone').captures(node)[0]
         style = self.usfm[ms_name_cap[0].start_byte:ms_name_cap[0].end_byte].decode('utf-8')\
         .replace("\\","").strip()
         ms_xml_node = etree.SubElement(parent_xml_node, "ms")
@@ -282,7 +310,7 @@ class USXGenerator:
             for child in node.children[1:-1]:
                 self.node_2_usx(child, sidebar_xml_node)
         elif node.type == "cat":
-            cat_cap = self.usfm_language.query('((category) @category)').captures(node)[0]
+            cat_cap = self.get_query('category').captures(node)[0]
             category = self.usfm[cat_cap[0].start_byte:cat_cap[0].end_byte].decode('utf-8').strip()
             parent_xml_node.set('category', category)
         elif node.type == 'fig':
@@ -309,61 +337,92 @@ class USXGenerator:
         para_xml_node.set("style", style)
         for child in node.children[children_range_start:]:
             # self.node_2_usx(child, para_xml_node)
-            if child.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+\
-            ["text", "footnote", "crossref", "verseText", "v", "b", "milestone", "zNameSpace"]:
-            # only nest these types inside the upper para style node
+            if any(child.type in marker_set for marker_set in [
+                self.CHAR_STYLE_MARKERS,
+                self.NESTED_CHAR_STYLE_MARKERS,
+                self.OTHER_PARA_NESTABLES
+            ]):
                 self.node_2_usx(child, para_xml_node)
             else:
                 self.node_2_usx(child, parent_xml_node)
 
+    def populate_dispatch_map(self):
+        """Create a dispatch map for node type to handler functions"""
+        dispatch_map = {}
+        
+        def add_handlers(markers, handler):
+            for marker in markers:
+                if isinstance(marker, (list, set)):
+                    for m in marker:
+                        dispatch_map[m] = getattr(self, handler.__name__)
+                else:
+                    dispatch_map[marker] = getattr(self, handler.__name__)
+        
+        # Add basic handlers
+        dispatch_map['text'] = self.push_text_node
+        dispatch_map['verseText'] = self.handle_verse_text
+        dispatch_map['v'] = self.node_2_usx_verse
+        dispatch_map['id'] = self.node_2_usx_id
+        dispatch_map['chapter'] = self.node_2_usx_chapter
+        dispatch_map['usfm'] = lambda *_: None  # noop
+        
+        # Add handlers for different marker types
+        add_handlers(['paragraph', 'q', 'w'], self.node_2_usx_para)
+        add_handlers(['cl', 'cp', 'vp'], self.node_2_usx_generic)
+        add_handlers(['ca', 'va'], self.node_2_usx_ca_va)
+        add_handlers(['table', 'tr'], self.node_2_usx_table)
+        add_handlers(['milestone', 'zNameSpace'], self.node_2_usx_milestone)
+        add_handlers(['esb', 'cat', 'fig', 'ref'], self.node_2_usx_special)
+        add_handlers(self.NOTE_MARKERS, self.node_2_usx_notes)
+        add_handlers(self.CHAR_STYLE_MARKERS + self.NESTED_CHAR_STYLE_MARKERS + ['xt_standalone'], self.node_2_usx_char)
+        add_handlers(self.TABLE_CELL_MARKERS, self.node_2_usx_table)
+        
+        # Add paragraph style markers
+        for marker in self.PARA_STYLE_MARKERS:
+            if marker != 'usfm':
+                dispatch_map[marker] = self.node_2_usx_generic
+        
+        return dispatch_map
+    
+    
+    def handle_verse_text(self, node, parent_xml_node):
+        """Handle verse text content"""
+        for child in node.children:
+            self.node_2_usx(child, parent_xml_node)
+        self.parse_state['prev_verse_parent'] = parent_xml_node
+    
+    def push_text_node(self, node, parent_xml_node):
+        """Add text node to parent's content"""
+        text_val = self.usfm[node.start_byte:node.end_byte].decode('utf-8').replace('~', ' ')
+        if text_val:
+            if len(parent_xml_node) > 0:
+                # If there are already children, append text to the tail of the last child
+                last_child = parent_xml_node[-1]
+                if last_child.tail is None:
+                    last_child.tail = text_val
+                else:
+                    last_child.tail += text_val
+            else:
+                # If no children, set the text of the parent directly
+                if parent_xml_node.text is None:
+                    parent_xml_node.text = text_val
+                else:
+                    parent_xml_node.text += text_val
+    
     def node_2_usx(self, node, parent_xml_node): # pylint: disable= too-many-branches
         '''check each node and based on the type convert to corresponding xml element'''
         # print("working with node: ", node, "\n")
-        if node.type == "id":
-            self.node_2_usx_id(node, parent_xml_node)
-        elif node.type == "chapter":
-            self.node_2_usx_chapter(node,parent_xml_node)
-        elif node.type in ["cl", "cp", "cd", "vp"]:
-            self.node_2_usx_generic(node, parent_xml_node)
-        elif node.type in ["ca", "va"]:
-            self.node_2_usx_ca_va(node, parent_xml_node)
-        elif node.type == "v":
-            self.node_2_usx_verse(node, parent_xml_node)
-        elif node.type == "verseText":
-            for child in node.children:
-                self.node_2_usx(child, parent_xml_node)
-            self.parse_state["prev_verse_parent"] = parent_xml_node
-        elif node.type in ['paragraph', 'pi', "ph"]:
-            self.node_2_usx_para(node, parent_xml_node)
-        elif node.type in self.NOTE_MARKERS:
-            self.node_2_usx_notes(node, parent_xml_node)
-        elif node.type in self.CHAR_STYLE_MARKERS+self.NESTED_CHAR_STYLE_MARKERS+\
-                                                            ["xt_standalone", "ref"]:
-            self.node_2_usx_char(node, parent_xml_node)
-        elif node.type.endswith("Attribute"):
+        if not hasattr(node, 'type'):
+            return
+        node_type = node.type.replace('\\', '') if node.type else ''
+        handler = self.dispatch_map.get(node_type)
+        if handler:
+            handler(node, parent_xml_node)
+        elif node_type.endswith('Attribute'):
             self.node_2_usx_attrib(node, parent_xml_node)
-        elif node.type == 'text':
-            text_val = self.usfm[node.start_byte:node.end_byte].decode('utf-8')
-            if text_val != "":
-                siblings = parent_xml_node.findall("./*")
-                if len(siblings) > 0:
-                    siblings[-1].tail = text_val
-                else:
-                    parent_xml_node.text = text_val
-        elif node.type in ["table", "tr"]+ self.TABLE_CELL_MARKERS:
-            self.node_2_usx_table(node, parent_xml_node)
-        elif  node.type == "milestone":
-            self.node_2_usx_milestone(node, parent_xml_node)
-        elif node.type == "zNameSpace":
-            self.node_2_usx_milestone(node, parent_xml_node)
-        elif node.type in ["esb", "cat", "fig"]:
-            self.node_2_usx_special(node, parent_xml_node)
-        elif (node.type in self.PARA_STYLE_MARKERS or
-              node.type.replace("\\","").strip() in self.PARA_STYLE_MARKERS):
-            self.node_2_usx_generic(node, parent_xml_node)
-        elif node.type.strip() in ["","|"]:
+        elif node_type.strip() in ['', '|']:
             pass # skip white space nodes
-        elif len(node.children)>0:
+        elif hasattr(node, 'children') and len(node.children)>0:
             for child in node.children:
                 self.node_2_usx(child, parent_xml_node)
         # else:

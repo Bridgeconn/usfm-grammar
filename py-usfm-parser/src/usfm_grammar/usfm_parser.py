@@ -2,7 +2,7 @@
 
 from enum import Enum
 import re
-
+import traceback
 import tree_sitter_usfm3 as tsusfm
 from tree_sitter import Language, Parser
 from lxml import etree
@@ -159,7 +159,7 @@ class USFMParser():
             raise Exception("Errors present:"+\
                 f'\n\t{err_str}'+\
                 "\nUse ignore_errors=True, to generate output inspite of errors")
-        return self.syntax_tree.sexp()
+        return str(self.syntax_tree)  # Changed from .sexp() to str()
 
     def to_usj(self,
             exclude_markers=None,
@@ -180,8 +180,9 @@ class USFMParser():
             }
         try:
             usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
-            usj_generator.node_2_usj(self.syntax_tree, json_root_obj)
+            usj_generator.get_usj(self.syntax_tree, json_root_obj)
         except Exception as exe:
+            traceback.print_exc() 
             message = "Unable to do the conversion. "
             if self.errors:
                 err_str = "\n\t".join([":".join(err) for err in self.errors])

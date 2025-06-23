@@ -69,11 +69,14 @@ def test_usj_converions_with_include_markers(file_path, include_markers):
 def get_types(element):
     '''Recursive function to find all keys in the dict output'''
     types = []
+    # print(element)
     if isinstance(element, str):
         pass
     else:
         if 'marker' in element:
             types.append(element['marker'])
+        if element['type'] == "ref":
+            types.append("ref")
         if "altnumber" in element:
             if element['marker'] == "c":
                 types.append("ca")
@@ -107,7 +110,8 @@ def test_usj_all_markers_are_in_output(file_path):
         #     marker.endswith("-e") or marker.startswith("z")):
         #     marker = "milestone"
         assert marker in all_json_types, \
-            f"{marker} not in {all_json_types}\nAST:{test_parser.to_syntax_tree()}\nUSJ:{usj_dict}"
+            print(f"{marker} not in {all_json_types} with all input of {all_markers_in_input}")
+            # f"{marker} not in {all_json_types}\nAST:{test_parser.to_syntax_tree()}\nUSJ:{usj_dict}"
 
 USJ_SCHEMA = None
 with open('../schemas/usj.js', 'r', encoding='utf-8') as json_file:

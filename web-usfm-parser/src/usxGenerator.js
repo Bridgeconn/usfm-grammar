@@ -47,6 +47,7 @@ class USXGenerator {
       currentChapter: null,
       prevVerseSid: null, //each xml verse node:
       prevChapterSid: null,
+      prevVerse: null,
     };
     // maps and id to a fn;
     this.dispatchMap = this.populateDispatchMap();
@@ -181,27 +182,28 @@ class USXGenerator {
 
     // const prevVerses = xpath.select("//verse", this.xmlRootNode);
     // chapter means we need both closing verse and closing chapter eids
-    if (this.parseState.prevVerseSid && this.parseState.prevChapterSid) {
+    const lastVerse = this.parseState.prevVerse;
+    if (lastVerse && !lastVerse.getAttribute("eid")) {
       const vEndXmlNode = parentXmlNode.ownerDocument.createElement("verse");
-      const cEndXmlNode = parentXmlNode.ownerDocument.createElement("chapter");
       vEndXmlNode.setAttribute("eid", this.parseState.prevVerseSid);
-      cEndXmlNode.setAttribute("eid", this.parseState.prevChapterSid);
       this.parseState.prevVerseSid = null;
-      this.parseState.prevChapterSid = null;
+      this.parseState.prevVerse = null;
       const sibblingCount = parentXmlNode.childNodes.length;
       const lastSibbling = parentXmlNode.childNodes[sibblingCount - 1];
       if (lastSibbling.tagName === "para") {
         lastSibbling.appendChild(vEndXmlNode);
-        lastSibbling.appendChild(cEndXmlNode);
       } else if (lastSibbling.tagName === "table") {
         const rows = lastSibbling.getElementsByTagName("row");
         rows[rows.length - 1].appendChild(vEndXmlNode);
-        rows[rows.length - 1].appendChild(cEndXmlNode);
       } else {
         parentXmlNode.appendChild(vEndXmlNode);
-        parentXmlNode.appendChild(cEndXmlNode);
       }
     }
+
+    const cEndXmlNode = parentXmlNode.ownerDocument.createElement("chapter");
+    cEndXmlNode.setAttribute("eid", this.parseState.prevChapterSid);
+    this.parseState.prevChapterSid = null;
+    parentXmlNode.appendChild(cEndXmlNode);
   }
 
   findPrevUncle(parentXmlNode) {
@@ -252,6 +254,7 @@ class USXGenerator {
       verseNumCap[0].node.endIndex
     );
     const vXmlNode = parentXmlNode.ownerDocument.createElement("verse");
+    this.parseState.prevVerse = vXmlNode;
     parentXmlNode.appendChild(vXmlNode);
 
     // Loop through the captured elements and set the attributes
