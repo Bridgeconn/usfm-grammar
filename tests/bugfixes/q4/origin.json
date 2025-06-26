@@ -1,0 +1,54 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "33",
+                    "sid": "GEN 1:33"
+                },
+                "verse content for this verse\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "q2",
+            "content": []
+        },
+        {
+            "type": "para",
+            "marker": "q4",
+            "content": []
+        },
+        {
+            "type": "para",
+            "marker": "q1",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "34",
+                    "sid": "GEN 1:34"
+                },
+                "verse content for this verse"
+            ]
+        }
+    ]
+}

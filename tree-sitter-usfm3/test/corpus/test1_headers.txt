@@ -110,7 +110,7 @@ multiple h markers
       (text))
     (h
       (hTag
-        (numberedLevelMax3))
+        (numberedLevelMaxAny))
       (text))))
 
 ================================================================================

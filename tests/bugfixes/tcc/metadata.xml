@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>A new marker \tcc is introduced. https://docs.usfm.bible/usfm/3.1/char/tables/tcc.html</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

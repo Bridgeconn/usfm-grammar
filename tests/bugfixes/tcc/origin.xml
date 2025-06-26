@@ -1,0 +1,40 @@
+<usx version="3.1">
+  <book code="NUM" style="id"/>
+  <chapter number="2" style="c" sid="NUM 2"/>
+  <para style="p"><verse number="3-9" style="v" sid="NUM 2:3-9"/>On the east side, those under the banner of the division of Judah
+shall camp in their groups, under their leaders, as follows:
+</para>
+  <table>
+    <row style="tr">
+      <cell style="th1" align="start">Tribe </cell>
+      <cell style="th2" align="start">Leader </cell>
+      <cell style="thr3" align="end">Number
+</cell>
+    </row>
+    <row style="tr">
+      <cell style="tc1" align="start">Judah </cell>
+      <cell style="tc2" align="start">Nahshon son of Amminadab </cell>
+      <cell style="tcc3" align="center">74,600
+</cell>
+    </row>
+    <row style="tr">
+      <cell style="tc1" align="start">Issachar </cell>
+      <cell style="tc2" align="start">Nethanel son of Zuar </cell>
+      <cell style="tcc3" align="center">54,400
+</cell>
+    </row>
+    <row style="tr">
+      <cell style="tc1" align="start">Zebulun </cell>
+      <cell style="tc2" align="start">Eliab son of Helon </cell>
+      <cell style="tcc3" align="center">57,400
+</cell>
+    </row>
+    <row style="tr">
+      <cell style="tcr1-2" align="end">Total: </cell>
+      <cell style="tcc3" align="center">186,400</cell>
+      <verse eid="NUM 2:3-9"/>
+    </row>
+  </table>
+  <chapter eid="NUM 2"/>
+</usx>
+
