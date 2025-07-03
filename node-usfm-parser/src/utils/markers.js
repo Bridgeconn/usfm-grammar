@@ -102,7 +102,6 @@ const PARA_STYLE_MARKERS = [
   "li",
   "lf",
   "lim",
-  "litl", //lists
   "sts",
   "rem",
   "lit",
