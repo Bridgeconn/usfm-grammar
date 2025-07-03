@@ -1,3 +1,6 @@
+"""
+Tree sitter queries for Python USFM parser
+"""
 def create_queries_as_needed(name, lang):
     """Create and return a query based on the given name and language.
 
@@ -8,23 +11,18 @@ def create_queries_as_needed(name, lang):
     Returns:
         The created query or None if name doesn't match any query
     """
-    if name == "chapter":
-        return get_chap_query(lang)
-    elif name == "usjCaVa":
-        return usj_ca_va_query(lang)
-    elif name == "attribVal":
-        return attrib_val_query(lang)
-    elif name == "para":
-        return para_query(lang)
-    elif name == "id":
-        return get_id_query(lang)
-    elif name == "milestone":
-        return milestone_query(lang)
-    elif name == "category":
-        return category_query(lang)
-    elif name == "verseNumCap":
-        return verse_num_cap_query(lang)
-    return None
+    query_creators = {
+        "chapter": get_chap_query,
+        "usjCaVa": usj_ca_va_query,
+        "attribVal": attrib_val_query,
+        "para": para_query,
+        "id": get_id_query,
+        "milestone": milestone_query,
+        "category": category_query,
+        "verseNumCap": verse_num_cap_query
+    }    
+    creator = query_creators.get(name)
+    return creator(lang) if creator else None
 
 
 def get_id_query(lang):

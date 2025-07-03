@@ -6,13 +6,11 @@ import traceback
 import tree_sitter_usfm3 as tsusfm
 from tree_sitter import Language, Parser
 from lxml import etree
-
 from usfm_grammar.usx_generator import USXGenerator
 from usfm_grammar.usj_generator import USJGenerator
 from usfm_grammar.list_generator import ListGenerator
 from usfm_grammar.usfm_generator import USFMGenerator
 from usfm_grammar.filters import exclude_markers_in_usj, include_markers_in_usj
-
 
 class Filter(list, Enum):
     """Defines the values of filter options"""

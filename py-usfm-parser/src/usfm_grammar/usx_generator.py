@@ -247,7 +247,6 @@ class USXGenerator:
             else:
                 self.node_2_usx(child, parent_xml_node)
 
-        # if (self.parse_state['prev_verse_sid_to_close'] is not None and self.parse_state['prev_chapter_sid'] is not None):
         last_verse = self.parse_state["prev_verse"]
         if last_verse is not None and last_verse.get("eid") is None:
             v_end_xml_node = etree.Element("verse")

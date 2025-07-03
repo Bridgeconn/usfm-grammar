@@ -26,7 +26,10 @@ usj_schema = {
                     },
                 },
                 "sid": {
-                    "description": "Indicates the Book-chapter-verse value in the paragraph based structure",
+                    "description": (
+                        "Indicates the Book-chapter-verse value in the "
+                        "paragraph based structure"
+                    ),
                     "type": "string",
                 },
                 "number": {
