@@ -54,8 +54,10 @@ const CHAR_STYLE_MARKERS = [
   "xnt",
   "xdc", //crossref - content
 ];
-
-exports.PARA_STYLE_MARKERS = [
+const NESTED_CHAR_STYLE_MARKERS = CHAR_STYLE_MARKERS.map(
+  (item) => item + "Nested"
+);
+const PARA_STYLE_MARKERS = [
   "ide",
   "usfm",
   "h",
@@ -100,18 +102,17 @@ exports.PARA_STYLE_MARKERS = [
   "li",
   "lf",
   "lim",
-  "litl", //lists
   "sts",
   "rem",
   "lit",
   "restore", //comments
 ];
-exports.NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"];
+exports.PARA_STYLE_MARKERS = PARA_STYLE_MARKERS;
+const NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"];
+exports.NOTE_MARKERS = NOTE_MARKERS;
 exports.CHAR_STYLE_MARKERS = CHAR_STYLE_MARKERS;
-exports.NESTED_CHAR_STYLE_MARKERS = CHAR_STYLE_MARKERS.map(
-  (item) => item + "Nested",
-);
-exports.DEFAULT_ATTRIB_MAP = {
+exports.NESTED_CHAR_STYLE_MARKERS = NESTED_CHAR_STYLE_MARKERS;
+const DEFAULT_ATTRIB_MAP = {
   w: "lemma",
   rb: "gloss",
   xt: "href",
@@ -119,8 +120,29 @@ exports.DEFAULT_ATTRIB_MAP = {
   xt_standalone: "href",
   xtNested: "href",
   ref: "loc",
-  "milestone": "who",
-  "k":"key"
+  milestone: "who",
+  k: "key",
 };
-exports.TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr"];
-exports.MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];
+exports.DEFAULT_ATTRIB_MAP = DEFAULT_ATTRIB_MAP;
+const TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc"];
+exports.TABLE_CELL_MARKERS = TABLE_CELL_MARKERS;
+const MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"];
+exports.MISC_MARKERS = MISC_MARKERS;
+const MARKER_SETS = {
+  TABLE_CELL_MARKERS: new Set(TABLE_CELL_MARKERS),
+  CHAR_STYLE_MARKERS: new Set(CHAR_STYLE_MARKERS),
+  NESTED_CHAR_STYLE_MARKERS: new Set(NESTED_CHAR_STYLE_MARKERS),
+  OTHER_PARA_NESTABLES: new Set([
+    "text",
+    "footnote",
+    "crossref",
+    "verseText",
+    "v",
+    "b",
+    "milestone",
+    "zNameSpace",
+  ]),
+  NOTE_MARKERS: new Set(NOTE_MARKERS),
+  PARA_STYLE_MARKERS: new Set(PARA_STYLE_MARKERS),
+};
+exports.MARKER_SETS = MARKER_SETS;

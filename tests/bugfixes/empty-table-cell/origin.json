@@ -1,0 +1,186 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "content": [],
+            "code": "GEN"
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "8",
+                    "sid": "GEN 1:8"
+                },
+                "Sairos king a Porzha sen fi dem wid Michredat di chrezha man, an im kount dem op an gi dem tu Sheshbazaar, di liida fi Juuda.\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "9",
+                    "sid": "GEN 1:9"
+                },
+                "Dis a aal a we dem did fi inchaaj a: 30 guol boul, 1,000 silva boul, 29 silva pan,\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "b"
+        },
+        {
+            "type": "table",
+            "content": [
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcr2",
+                            "content": [],
+                            "align": "end"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcr2",
+                            "content": [],
+                            "align": "end"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcr2",
+                            "content": [],
+                            "align": "end"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [
+                                {
+                                    "type": "verse",
+                                    "marker": "v",
+                                    "number": "10",
+                                    "sid": "GEN 1:10"
+                                },
+                                "guol boul 30, silva boul 410 an di res a tingz dem, 1,000, "
+                            ],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcr2",
+                            "content": [],
+                            "align": "end"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcr2",
+                            "content": [],
+                            "align": "end"
+                        }
+                    ]
+                },
+                {
+                    "type": "table:row",
+                    "marker": "tr",
+                    "content": [
+                        {
+                            "type": "table:cell",
+                            "marker": "tc1",
+                            "content": [],
+                            "align": "start"
+                        },
+                        {
+                            "type": "table:cell",
+                            "marker": "tcr2",
+                            "content": [],
+                            "align": "end"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "b"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "11",
+                    "sid": "GEN 1:11"
+                },
+                "In aal, yu did av 5,400 guol an silva juulri an tingz. Sheshbazaar did bring aal a dem ya wid im wen di piipl dem we a get kyapcha kom bak a Jeruusilem fram Babilan.\n"
+            ]
+        }
+    ]
+}

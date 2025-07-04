@@ -50,6 +50,7 @@ module.exports = grammar({
     numberedLevelMax3: $ => token.immediate(/[123]/),
     numberedLevelMax4: $ => token.immediate(/[1234]/),
     numberedLevelMax5: $ => token.immediate(/[12345]/),
+    numberedLevelMaxAny : $ => token.immediate(/\d+/),
 
     // Headers
     _bookHeader: $ => choice($.usfm, $.ide, $.hBlock, $.tocBlock, $.tocaBlock,
@@ -66,7 +67,7 @@ module.exports = grammar({
     ref: $ => seq("\\ref ", $.text, optional(choice($.defaultAttribute, $._refAttributes)), "\\ref*"),
 
     h: $ => seq($.hTag, $.text),
-    hTag: $ => seq("\\h",optional($.numberedLevelMax3), " "),
+    hTag: $ => seq("\\h",optional($.numberedLevelMaxAny), " "),
     toc: $ => seq($.tocTag, $.text),
     tocTag: $ => seq("\\toc",optional($.numberedLevelMax3), " "),
     toca: $ => seq($.tocaTag, $.text),
@@ -310,7 +311,7 @@ module.exports = grammar({
 
     qBlock: $ => prec.right(0, repeat1($.q)),
     q: $ => prec.right(0, seq($.qTag, repeat($._poetryContent))),
-    qTag: $ => seq("\\q", optional($.numberedLevelMax3), $._spaceOrLine),
+    qTag: $ => seq("\\q", optional($.numberedLevelMax4), $._spaceOrLine),
     qr: $ => prec.right(0, seq("\\qr", $._spaceOrLine, repeat($._poetryContent))),
     qc: $ => prec.right(0, seq("\\qc",$._spaceOrLine, repeat($._poetryContent))),
     qs: $ => seq("\\qs", $._spaceOrLine, repeat($._poetryContent), "\\qs*"),
@@ -342,7 +343,7 @@ module.exports = grammar({
     limTag: $ => seq("\\lim",optional($.numberedLevelMax4), $._spaceOrLine),
     liv: $ => prec.right(0, seq($.livTag, $._spaceOrLine, repeat(choice($.verseText,
       )), $.livTag, token.immediate("*") )),
-    livTag: $ => prec.right(0,seq("\\liv",optional($.numberedLevelMax5))),
+    livTag: $ => prec.right(0,seq("\\liv",optional($.numberedLevelMaxAny))),
     lik: $ => seq("\\lik ", $.verseText, "\\lik*"),
     litl: $ => seq("\\litl ", $.verseText, "\\litl*"),
 
@@ -355,6 +356,8 @@ module.exports = grammar({
     //Table
     table: $ => prec.right(0, repeat1($.tr)),
     _tableText: $ => choice(
+      $.v,
+      $._verseMeta,
       $.verseText,
       $.footnote,
       $.crossref,
@@ -365,16 +368,19 @@ module.exports = grammar({
       $.th,
       $.thr,
       $.tc,
-      $.tcr))
+      $.tcr,
+      $.tcc))
     )),
-    thTag: $=> /\\th([12345](-[12345])?)?/,
-    thrTag: $=> /\\thr([12345](-[12345])?)?/,
-    tcTag: $=> /\\tc([12345](-[12345])?)?/,
-    tcrTag: $=> /\\tcr([12345](-[12345])?)?/,
-    th: $=> seq($.thTag, $._spaceOrLine, $._tableText),
-    thr: $=> seq($.thrTag, $._spaceOrLine, $._tableText),
-    tc: $=> seq($.tcTag, $._spaceOrLine, $._tableText),
-    tcr: $=> seq($.tcrTag, $._spaceOrLine, $._tableText),
+    thTag: $=> /\\th(\d+(-\d+)?)?/,
+    thrTag: $=> /\\thr(\d+(-\d+)?)?/,
+    tcTag: $=> /\\tc(\d+(-\d+)?)?/,
+    tcrTag: $=> /\\tcr(\d+(-\d+)?)?/,
+    tccTag: $=> /\\tcc(\d+(-\d+)?)?/,
+    th: $=> prec.right(0, seq($.thTag, $._spaceOrLine, repeat($._tableText))),
+    thr: $=> prec.right(0, seq($.thrTag, $._spaceOrLine, repeat($._tableText))),
+    tc: $=> prec.right(0, seq($.tcTag, $._spaceOrLine, repeat($._tableText))),
+    tcr: $=> prec.right(0, seq($.tcrTag, $._spaceOrLine, repeat($._tableText))),
+    tcc: $=> prec.right(0, seq($.tccTag, $._spaceOrLine, repeat($._tableText))),
 
     //Footnote
     caller: $ => /[^\s\\]+/,

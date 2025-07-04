@@ -26,7 +26,6 @@ class USJGenerator {
         this.queries[name] = this.createQuery(name);
       }
       return this.queries[name];
-      s;
     };
     this.createQuery = (name) => createQueriesAsNeeded(name, this.usfmLanguage);
     // Make o(1) sets for marker lookups
@@ -182,7 +181,6 @@ class USJGenerator {
       const paraTagCap = this.getQuery("para").captures(node)[0];
       // const paraTagCap = this.queries.para.captures(node)[0];
       const paraMarker = paraTagCap.node.type;
-
       if (paraMarker === "b") {
         parentJsonObj.content.push({type: "para", marker: paraMarker});
       } else if (!paraMarker.endsWith("Block")) {
@@ -282,7 +280,11 @@ class USJGenerator {
         type: "table:cell",
         marker: style,
         content: [],
-        align: style.includes("r") ? "end" : "start",
+        align: style.includes("tcc")
+          ? "center"
+          : style.includes("r")
+          ? "end"
+          : "start",
       };
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, cellJsonObj);
@@ -451,7 +453,7 @@ class USJGenerator {
     // nooop
     thisMap.set("usfm", () => {});
     addHandlers(["paragraph", "q", "w"], this.nodeToUSJPara);
-    addHandlers(["cl", "cl", "cp", "vp"], this.nodeToUSJGeneric);
+    addHandlers(["cl", "cp", "vp"], this.nodeToUSJGeneric);
     addHandlers(["ca", "va"], this.nodeToUSJCaVa);
     addHandlers(["table", "tr"], this.nodeToUSJTable);
     addHandlers(["milestone", "zNameSpace"], this.nodeToUSJMilestone);

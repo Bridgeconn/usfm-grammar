@@ -1,4 +1,4 @@
-'''Entry point of the package with its public values'''
+"""Entry point of the package with its public values"""
 
 from usfm_grammar import usfm_parser
 from usfm_grammar import validator
@@ -11,4 +11,4 @@ USFMParser = usfm_parser.USFMParser
 Validator = validator.Validator
 ORIGINAL_VREF = vrefs.original_vref
 
-__version__ = "3.1.1"
+__version__ = "3.1.2"

@@ -585,19 +585,19 @@ dead will be raised, never to die again, and we shall all be changed.
       (qBlock
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (verseText
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (v
             (verseNumber))
           (crossref
@@ -619,7 +619,7 @@ dead will be raised, never to die again, and we shall all be changed.
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (text)))))
     (paragraph
@@ -682,12 +682,12 @@ than theirs.
       (qBlock
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (text))
           (crossref
@@ -705,12 +705,12 @@ than theirs.
       (qBlock
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (text)))
         (q
           (qTag
-            (numberedLevelMax3))
+            (numberedLevelMax4))
           (verseText
             (text))
           (crossref
