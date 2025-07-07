@@ -1,3 +1,6 @@
+import {Query} from "./web-tree-sitter/tree-sitter.js";
+
+
 export function createQueriesAsNeeded(name, lang) {
   switch (name) {
     case "chapter":
@@ -21,10 +24,10 @@ export function createQueriesAsNeeded(name, lang) {
   }
 }
 export function getIdQuery(lang) {
-  return lang.query("(id (bookcode) @book-code (description)? @desc)");
+  return new Query(lang, "(id (bookcode) @book-code (description)? @desc)");
 }
 export function usjCaVaquery(lang) {
-  return lang.query(
+  return new Query(lang,
     `([
     (chapterNumber)
     (verseNumber)
@@ -32,20 +35,20 @@ export function usjCaVaquery(lang) {
   );
 }
 export function attribValQuery(lang) {
-  return lang.query("((attributeValue) @attrib-val)");
+  return new Query(lang, "((attributeValue) @attrib-val)");
 }
 export function getChapQuery(lang) {
-  return lang.query(
+  return new Query(lang,
     `(c (chapterNumber) @chap-num
                                          (ca (chapterNumber) @alt-num)?
                                          (cp (text) @pub-num)?)`
   );
 }
 export function paraQuery(lang) {
-  return lang.query("(paragraph (_) @para-marker)");
+  return new Query(lang, "(paragraph (_) @para-marker)");
 }
 export function mileStoneQuery(lang) {
-  return lang.query(
+  return new Query(lang,
     `([
     (milestoneTag)
     (milestoneStartTag)
@@ -56,10 +59,10 @@ export function mileStoneQuery(lang) {
 }
 
 export function categoryQuery(lang) {
-  return lang.query("((category) @category)");
+  return new Query(lang, "((category) @category)");
 }
 export function verseNumCapQuery(lang) {
-  return lang.query(
+  return new Query(lang,
     `(v
         (verseNumber) @vnum
         (va (verseNumber) @alt)?

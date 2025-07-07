@@ -38,15 +38,15 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "0x": "^5.8.0",
-    "@babel/core": "^7.25.2",
-    "glob": "^11.0.0",
+    "@babel/core": "^7.28.0",
+    "0x": "^6.0.0",
+    "glob": "^11.0.3",
     "mitata": "^1.0.34",
-    "mocha": "^10.7.3",
+    "mocha": "^11.7.1",
     "parcel": "latest",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
-    "web-tree-sitter": "^0.22.6",
+    "web-tree-sitter": "^0.25.6",
     "xml2js": "^0.6.2"
   },
   "dependencies": {

@@ -1,4 +1,4 @@
-import Parser from './web-tree-sitter/tree-sitter.js';
+import {Parser} from './web-tree-sitter/tree-sitter.js';
 import {USJ_SCHEMA} from "./utils/usjSchema.js";
 import Ajv from "ajv";
 
