@@ -1,5 +1,16 @@
 # Developer Notes
 
+## Setting up the grammar module
+(One time steps)
+```bash
+cd tree-sitter-usfm3
+npm install tree-sitter-cli
+export PATH=$PATH:./node_modules/.bin
+tree-sitter init
+tree-sitter generate
+tree-sitter test
+```
+
 ## How to build the binary for python module?
 
 First compile the grammar
