@@ -2,15 +2,15 @@
   "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
   "grammars": [
     {
-      "name": "usfm",
-      "camelcase": "Usfm",
+      "name": "usfm3",
+      "camelcase": "Usfm3",
       "title": "USFM",
       "scope": "source.usfm",
       "file-types": [
         "usfm", "sfm"
      ],
-      "injection-regex": "^usfm$",
-      "class-name": "TreeSitterUsfm"
+      "injection-regex": "^usfm3$",
+      "class-name": "TreeSitterUsfm3"
     }
   ],
   "metadata": {
