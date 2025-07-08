@@ -38,8 +38,8 @@ jobs:
       - name: Build grammar binary
         working-directory: ./tree-sitter-usfm3
         run: |
-          npm install --save nan
-          npm install --save-dev tree-sitter-cli
+          npm install tree-sitter-cli
+          ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
 
       - name: install tree-sitter-usfm3
