@@ -3,9 +3,13 @@
 from usfm_grammar.queries import create_queries_as_needed
 from usfm_grammar.usx_generator import USXGenerator
 
+#pylint: disable=duplicate-code
 
 class USJGenerator:
     """A binding for all methods used in generating USJ from Syntax tree"""
+    MARKER_SETS = USXGenerator.MARKER_SETS
+    MARKER_LISTS = USXGenerator.MARKER_LISTS
+    DEFAULT_ATTRIB_MAP = USXGenerator.DEFAULT_ATTRIB_MAP
 
     def __init__(self, tree_sitter_language_obj, usfm_string, usj_root_obj=None):
         """Initialize the USJ generator with USFM and root object"""
@@ -19,9 +23,6 @@ class USJGenerator:
         # Cache for the query objects
         self.queries = {}
         # Make o(1) sets for marker lookups
-        self.marker_sets = USXGenerator.MARKER_SETS
-        self.marker_lists = USXGenerator.MARKER_LISTS
-        self.default_attrib_map = USXGenerator.DEFAULT_ATTRIB_MAP
         self.parse_state = {"book_slug": None, "current_chapter": None}
         # maps and id to a fn;
         self.dispatch_map = self.populate_dispatch_map()
@@ -246,7 +247,7 @@ class USJGenerator:
             for child in node.children[1:]:
                 self.node_2_usj(child, row_json_obj)
             parent_json_obj["content"].append(row_json_obj)
-        elif node.type in self.marker_sets["table_cell"]:
+        elif node.type in USJGenerator.MARKER_SETS["table_cell"]:
             tag_node = node.children[0]
             style = (
                 self.usfm[tag_node.start_byte : tag_node.end_byte]
@@ -285,7 +286,7 @@ class USJGenerator:
             parent_type = node.parent.type
             if "Nested" in parent_type:
                 parent_type = parent_type.replace("Nested", "")
-            attrib_name = self.default_attrib_map.get(parent_type, attrib_name)
+            attrib_name = USJGenerator.DEFAULT_ATTRIB_MAP.get(parent_type, attrib_name)
 
         if attrib_name == "src":
             attrib_name = "file"
@@ -383,9 +384,9 @@ class USJGenerator:
             if any(
                 child.type in marker_set
                 for marker_set in [
-                    self.marker_sets["char_style"],
-                    self.marker_sets["nested_char_style"],
-                    self.marker_sets["other_para_nestables"],
+                    USJGenerator.MARKER_SETS["char_style"],
+                    USJGenerator.MARKER_SETS["nested_char_style"],
+                    USJGenerator.MARKER_SETS["other_para_nestables"],
                 ]
             ):
                 self.node_2_usj(child, para_json_obj)
@@ -412,8 +413,8 @@ class USJGenerator:
         def add_handlers(markers, handler):
             for marker in markers:
                 if isinstance(marker, (list, set)):
-                    for m in marker:
-                        dispatch_map[m] = getattr(self, handler.__name__)
+                    for mrkr in marker:
+                        dispatch_map[mrkr] = getattr(self, handler.__name__)
                 else:
                     dispatch_map[marker] = getattr(self, handler.__name__)
 
@@ -432,17 +433,17 @@ class USJGenerator:
         add_handlers(["table", "tr"], self.node_2_usj_table)
         add_handlers(["milestone", "zNameSpace"], self.node_2_usj_milestone)
         add_handlers(["esb", "cat", "fig", "ref"], self.node_2_usj_special)
-        add_handlers(self.marker_lists["note"], self.node_2_usj_notes)
+        add_handlers(USJGenerator.MARKER_LISTS["note"], self.node_2_usj_notes)
         add_handlers(
-            self.marker_lists["char_style"]
-            + self.marker_lists["nested_char_style"]
+            USJGenerator.MARKER_LISTS["char_style"]
+            + USJGenerator.MARKER_LISTS["nested_char_style"]
             + ["xt_standalone"],
             self.node_2_usj_char,
         )
-        add_handlers(self.marker_lists["table_cell"], self.node_2_usj_table)
+        add_handlers(USJGenerator.MARKER_LISTS["table_cell"], self.node_2_usj_table)
 
         # Add paragraph style markers
-        for marker in self.marker_lists["para_style"]:
+        for marker in USJGenerator.MARKER_LISTS["para_style"]:
             if marker != "usfm":
                 dispatch_map[marker] = self.node_2_usj_generic
 

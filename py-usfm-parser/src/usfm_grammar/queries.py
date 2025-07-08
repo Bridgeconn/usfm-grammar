@@ -20,7 +20,7 @@ def create_queries_as_needed(name, lang):
         "milestone": milestone_query,
         "category": category_query,
         "verseNumCap": verse_num_cap_query
-    }    
+    }
     creator = query_creators.get(name)
     return creator(lang) if creator else None
 

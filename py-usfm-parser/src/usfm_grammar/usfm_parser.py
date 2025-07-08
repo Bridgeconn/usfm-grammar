@@ -16,141 +16,31 @@ class Filter(list, Enum):
     """Defines the values of filter options"""
 
     BOOK_HEADERS = [
-        "ide",
-        "usfm",
-        "h",
-        "toc",
-        "toca",  # identification
-        "imt",
-        "is",
-        "ip",
-        "ipi",
-        "im",
-        "imi",
-        "ipq",
-        "imq",
-        "ipr",
-        "iq",
-        "ib",
-        "ili",
-        "iot",
-        "io",
-        "iex",
-        "imte",
-        "ie",
-    ]  # intro
+        "ide", "usfm", "h", "toc", "toca",  # identification
+        "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr",
+        "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
+    ]
     TITLES = [
-        "mt",
-        "mte",
-        "cl",
-        "cd",
-        "ms",
-        "mr",
-        "s",
-        "sr",
-        "r",
-        "d",
-        "sp",
-        "sd",
+        "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",
     ]  # "headings"
     COMMENTS = ["sts", "rem", "lit", "restore"]  # comment markers
     PARAGRAPHS = [
-        "p",
-        "m",
-        "po",
-        "pr",
-        "cls",
-        "pmo",
-        "pm",
-        "pmc",  #'paragraphs-quotes-lists-tables'
-        "pmr",
-        "pi",
-        "mi",
-        "nb",
-        "pc",
-        "ph",
-        "q",
-        "qr",
-        "qc",
-        "qa",
-        "qm",
-        "qd",
-        "lh",
-        "li",
-        "lf",
-        "lim",
-        "litl",
-        "tr",
-        "tc",
-        "th",
-        "tcr",
-        "thr",
-        "table",
-        "b",
+        "p", "m", "po", "pr", "cls", "pmo", "pm", "pmc",  #'paragraphs-quotes-lists-tables'
+        "pmr", "pi", "mi", "nb", "pc", "ph", "q", "qr", "qc", "qa", "qm", "qd",
+        "lh", "li", "lf", "lim", "litl", "tr", "tc", "th", "tcr", "thr", "table", "b",
     ]
     CHARACTERS = [
-        "add",
-        "bk",
-        "dc",
-        "ior",
-        "iqt",
-        "k",
-        "litl",
-        "nd",
-        "ord",
-        "pn",
-        "png",
-        "qac",
-        "qs",
-        "qt",
-        "rq",
-        "sig",
-        "sls",
-        "tl",
-        "wj",  # Special-text
-        "em",
-        "bd",
-        "bdit",
-        "it",
-        "no",
-        "sc",
-        "sup",  # character styling
-        "rb",
-        "pro",
-        "w",
-        "wh",
-        "wa",
-        "wg",  # special-features
-        "lik",
-        "liv",  # structred list entries
+        "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn", "png",
+        "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj",  # Special-text
+        "em", "bd", "bdit", "it", "no", "sc", "sup",  # character styling
+        "rb", "pro", "w", "wh", "wa", "wg",  # special-features
+        "lik", "liv",  # structred list entries
         "jmp",
     ]
     NOTES = [
-        "f",
-        "fe",
-        "ef",
-        "efe",
-        "x",
-        "ex",  # "footnotes-and-crossrefs"
-        "fr",
-        "ft",
-        "fk",
-        "fq",
-        "fqa",
-        "fl",
-        "fw",
-        "fp",
-        "fv",
-        "fdc",
-        "xo",
-        "xop",
-        "xt",
-        "xta",
-        "xk",
-        "xq",
-        "xot",
-        "xnt",
-        "xdc",
+        "f", "fe", "ef", "efe", "x", "ex",  # "footnotes-and-crossrefs"
+        "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "xo",
+        "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",
     ]
     STUDY_BIBLE = ["esb", "cat"]  # "sidebars-extended-contents"
     BCV = ["id", "c", "v"]
@@ -199,8 +89,8 @@ error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
 class USFMParser:
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
 
-    def __init__(
-        self,  # pylint: disable=too-many-arguments, too-many-branches
+    def __init__(  # pylint: disable=too-many-arguments, too-many-branches
+        self,
         usfm_string: str = None,
         from_usj: dict = None,
         from_usx: etree.Element = None,

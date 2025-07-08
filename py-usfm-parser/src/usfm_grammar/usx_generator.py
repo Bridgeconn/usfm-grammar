@@ -9,112 +9,25 @@ class USXGenerator:
 
     # handled alike by the node_2_usx_generic method
     PARA_STYLE_MARKERS = [
-        "ide",
-        "h",
-        "toc",
-        "toca",  # identification
-        "imt",
-        "is",
-        "ip",
-        "ipi",
-        "im",
-        "imi",
-        "ipq",
-        "imq",
-        "ipr",
-        "iq",
-        "ib",
-        "ili",
-        "iot",
-        "io",
-        "iex",
-        "imte",
-        "ie",  # intro
-        "mt",
-        "mte",
-        "cl",
-        "cd",
-        "ms",
-        "mr",
-        "s",
-        "sr",
-        "r",
-        "d",
-        "sp",
-        "sd",  # titles
-        "q",
-        "qr",
-        "qc",
-        "qa",
-        "qm",
-        "qd",  # poetry
-        "lh",
-        "li",
-        "lf",
-        "lim",  # lists
-        "sts",
-        "rem",
-        "lit",
-        "restore",  # comments
+        "ide", "h", "toc", "toca",  # identification
+        "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq",
+        "ipr", "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
+        "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",  # titles
+        "q", "qr", "qc", "qa", "qm", "qd",  # poetry
+        "lh", "li", "lf", "lim",  # lists
+        "sts", "rem", "lit", "restore",  # comments
         "b",
     ]
 
     NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"]
     CHAR_STYLE_MARKERS = [
-        "add",
-        "bk",
-        "dc",
-        "ior",
-        "iqt",
-        "k",
-        "litl",
-        "nd",
-        "ord",
-        "pn",
-        "png",
-        "qac",
-        "qs",
-        "qt",
-        "rq",
-        "sig",
-        "sls",
-        "tl",
-        "wj",  # Special-text
-        "em",
-        "bd",
-        "bdit",
-        "it",
-        "no",
-        "sc",
-        "sup",  # character styling
-        "rb",
-        "pro",
-        "w",
-        "wh",
-        "wa",
-        "wg",  # special-features
-        "lik",
-        "liv",  # structred list entries
-        "jmp",
-        "fr",
-        "ft",
-        "fk",
-        "fq",
-        "fqa",
-        "fl",
-        "fw",
-        "fp",
-        "fv",
-        "fdc",  # footnote-content
-        "xo",
-        "xop",
-        "xt",
-        "xta",
-        "xk",
-        "xq",
-        "xot",
-        "xnt",
-        "xdc",  # crossref-content
+        "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord",
+        "pn", "png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj",  # Special-text
+        "em", "bd", "bdit", "it", "no", "sc", "sup",  # character styling
+        "rb", "pro", "w", "wh", "wa", "wg",  # special-features
+        "lik", "liv",  # structred list entries
+        "jmp", "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",  # footnote-content
+        "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",  # crossref-content
     ]
     NESTED_CHAR_STYLE_MARKERS = [item + "Nested" for item in CHAR_STYLE_MARKERS]
     DEFAULT_ATTRIB_MAP = {
