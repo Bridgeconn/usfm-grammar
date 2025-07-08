@@ -1,4 +1,4 @@
-import {Parser} from './web-tree-sitter/tree-sitter.js';
+import {Parser, Language, Query} from './web-tree-sitter/tree-sitter.js';
 import {USJ_SCHEMA} from "./utils/usjSchema.js";
 import Ajv from "ajv";
 
@@ -12,7 +12,7 @@ class Validator {
                     return parserPath;
                   },
                 } );
-        Validator.language = await Parser.Language.load(grammarPath);
+        Validator.language = await Language.load(grammarPath);
     }
 
 
@@ -72,7 +72,7 @@ class Validator {
 		else {
 			tree = this.USFMParser.parse(usfm);
 		}
-        const errorQuery = this.USFMParser.getLanguage().query("(ERROR) @errors");
+        const errorQuery = new Query(Validator.language, "(ERROR) @errors");
         const errors = errorQuery.captures(tree.rootNode);
 
 		for (let error of errors) {
