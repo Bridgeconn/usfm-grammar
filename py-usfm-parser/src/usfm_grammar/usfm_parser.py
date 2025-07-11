@@ -4,7 +4,7 @@ from enum import Enum
 import re
 import traceback
 import tree_sitter_usfm3 as tsusfm
-from tree_sitter import Language, Parser
+from tree_sitter import Language, Parser, Query, QueryCursor
 from lxml import etree
 from usfm_grammar.usx_generator import USXGenerator
 from usfm_grammar.usj_generator import USJGenerator
@@ -70,20 +70,20 @@ parser = Parser(USFM_LANGUAGE)
 # MISC_MARKERS
 
 
-id_query = USFM_LANGUAGE.query(
+id_query = Query(USFM_LANGUAGE,
     """(book (id (bookcode) @book-code (description) @desc))"""
 )
 
-chapter_data_query = USFM_LANGUAGE.query("""(c (chapterNumber) @chapter-number)
+chapter_data_query = Query(USFM_LANGUAGE, """(c (chapterNumber) @chapter-number)
                                             (cl (text) @cl-text)
                                             (cp (text) @cp-text)
                                             (ca (chapterNumber) @ca-number)
                                             (cd) @cd-node""")
 
-verse_data_query = USFM_LANGUAGE.query("""(v (verseNumber) @verse-number)
+verse_data_query = Query(USFM_LANGUAGE, """(v (verseNumber) @verse-number)
                                             (vp (text) @vp-text)
                                             (va (verseNumber) @va-number)""")
-error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
+error_query = Query(USFM_LANGUAGE, """(ERROR) @errors""")
 
 
 class USFMParser:
@@ -156,16 +156,17 @@ class USFMParser:
         self.syntax_tree = tree.root_node
 
         # check for errors in the parse tree and raise them
-        errors = error_query.captures(self.syntax_tree)
-        if len(errors) > 0:
+        err_cursor = QueryCursor(error_query)
+        error_caps = err_cursor.captures(self.syntax_tree)
+        if 'errors' in error_caps and len(error_caps['errors']) > 0:
             self.errors = [
                 (
-                    f"At {err[0].start_point}",
-                    self.usfm_bytes[err[0].start_byte : err[0].end_byte].decode(
+                    f"At {err.start_point}",
+                    self.usfm_bytes[err.start_byte : err.end_byte].decode(
                         "utf-8"
                     ),
                 )
-                for err in errors
+                for err in error_caps["errors"]
             ]
         self.check_for_missing(self.syntax_tree)
 

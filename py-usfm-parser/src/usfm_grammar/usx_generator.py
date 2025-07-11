@@ -1,6 +1,6 @@
 """Logics for syntax-tree to xml(USX) conversions"""
-
 from lxml import etree
+from tree_sitter import QueryCursor
 from usfm_grammar.queries import create_queries_as_needed
 
 
@@ -104,14 +104,15 @@ class USXGenerator:
 
     def node_2_usx_id(self, node, parent_xml_node):
         """build id node in USX"""
-        id_captures = self.get_query("id").captures(node)
-        code = None
-        desc = None
-        for tupl in id_captures:
-            if tupl[1] == "book-code":
-                code = self.usfm[tupl[0].start_byte : tupl[0].end_byte].decode("utf-8")
-            elif tupl[1] == "desc":
-                desc = self.usfm[tupl[0].start_byte : tupl[0].end_byte].decode("utf-8")
+        id_cursor = QueryCursor(self.get_query("id"))
+        id_captures = id_cursor.captures(node)
+        code = self.usfm[id_captures['book-code'][0].start_byte :
+                         id_captures['book-code'][0].end_byte].decode("utf-8")\
+            if 'book-code' in id_captures else None
+        desc = self.usfm[id_captures['desc'][0].start_byte :
+                         id_captures['desc'][0].end_byte].decode("utf-8")\
+            if 'desc' in id_captures else None
+ 
         book_xml_node = etree.SubElement(parent_xml_node, "book")
         book_xml_node.set("code", code)
         book_xml_node.set("style", "id")
@@ -121,9 +122,10 @@ class USXGenerator:
 
     def node_2_usx_c(self, node, parent_xml_node):
         """Build c, the chapter milestone node in usx"""
-        chap_cap = self.get_query("chapter").captures(node)
+        chap_cursor = QueryCursor(self.get_query("chapter"))
+        chap_cap = chap_cursor.captures(node)
         chap_num = self.usfm[
-            chap_cap[0][0].start_byte : chap_cap[0][0].end_byte
+            chap_cap['chap-num'][0].start_byte : chap_cap['chap-num'][0].end_byte
         ].decode("utf-8")
         chap_ref = self.parse_state["book_slug"] + " " + chap_num
         self.parse_state["prev_chapter_sid"] = chap_ref
@@ -132,21 +134,16 @@ class USXGenerator:
         chap_xml_node.set("style", "c")
         chap_xml_node.set("sid", chap_ref)
         self.parse_state["current_chapter"] = chap_num
-        for tupl in chap_cap:
-            if tupl[1] == "alt-num":
-                chap_xml_node.set(
-                    "altnumber",
-                    self.usfm[tupl[0].start_byte : tupl[0].end_byte]
-                    .decode("utf-8")
-                    .strip(),
-                )
-            if tupl[1] == "pub-num":
-                chap_xml_node.set(
-                    "pubnumber",
-                    self.usfm[tupl[0].start_byte : tupl[0].end_byte]
-                    .decode("utf-8")
-                    .strip(),
-                )
+        alt_num = self.usfm[chap_cap['alt-num'][0].start_byte :
+                             chap_cap['alt-num'][0].end_byte].decode("utf-8")\
+            if 'alt-num' in chap_cap else None
+        pub_num = self.usfm[chap_cap['pub-num'][0].start_byte :
+                            chap_cap['pub-num'][0].end_byte].decode("utf-8")\
+            if 'pub-num' in chap_cap else None
+        if alt_num is not None:
+            chap_xml_node.set("altnumber", alt_num.strip())
+        if pub_num is not None:
+            chap_xml_node.set("pubnumber", pub_num.strip())
         for child in node.children:
             if child.type in ["cl", "cd"]:
                 self.node_2_usx(child, parent_xml_node)
@@ -186,23 +183,23 @@ class USXGenerator:
             v_end_xml_node = etree.SubElement(prev_para, "verse")
             v_end_xml_node.set("eid", eid)
             self.parse_state["prev_verse_sid_to_close"] = None
-        verse_num_cap = self.get_query("verseNumCap").captures(node)
+        verse_cursor = QueryCursor(self.get_query("verseNumCap"))
+        verse_num_cap = verse_cursor.captures(node)
         verse_num = self.usfm[
-            verse_num_cap[0][0].start_byte : verse_num_cap[0][0].end_byte
+            verse_num_cap['vnum'][0].start_byte : verse_num_cap['vnum'][0].end_byte
         ].decode("utf-8")
         v_xml_node = etree.SubElement(parent_xml_node, "verse")
         self.parse_state["prev_verse"] = v_xml_node
-        for tupl in verse_num_cap:
-            if tupl[1] == "alt":
-                alt_num = self.usfm[tupl[0].start_byte : tupl[0].end_byte].decode(
-                    "utf-8"
-                )
-                v_xml_node.set("altnumber", alt_num)
-            elif tupl[1] == "vp":
-                vp_text = self.usfm[tupl[0].start_byte : tupl[0].end_byte].decode(
-                    "utf-8"
-                )
-                v_xml_node.set("pubnumber", vp_text.strip())
+        alt_num = self.usfm[verse_num_cap['alt'][0].start_byte :
+                            verse_num_cap['alt'][0].end_byte].decode("utf-8")\
+            if 'alt' in verse_num_cap else None
+        pub_num = self.usfm[verse_num_cap['vp'][0].start_byte :
+                            verse_num_cap['vp'][0].end_byte].decode("utf-8")\
+            if 'vp' in verse_num_cap else None
+        if alt_num is not None:
+            v_xml_node.set("altnumber", alt_num.strip())
+        if pub_num is not None:
+            v_xml_node.set("pubnumber", pub_num.strip())
         ref = (
             self.parse_state["book_slug"]
             + " "
@@ -222,12 +219,10 @@ class USXGenerator:
         style = node.type
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set("style", style)
-        alt_num_match = self.get_query("usjCaVa").captures(node)[0]
-        alt_num = (
-            self.usfm[alt_num_match[0].start_byte : alt_num_match[0].end_byte]
-            .decode("utf-8")
-            .strip()
-        )
+        alt_num_cursor = QueryCursor(self.get_query("usjCaVa"))
+        alt_num_match = alt_num_cursor.captures(node)[0]
+        alt_num = self.usfm[alt_num_match['alt-num'][0].start_byte :
+                      alt_num_match['alt-num'][0].end_byte].decode("utf-8").strip()
         char_xml_node.set("altnumber", alt_num)
         char_xml_node.set("closed", "true")
 
@@ -237,12 +232,13 @@ class USXGenerator:
             for child in node.children[0].children:
                 self.node_2_usx_para(child, parent_xml_node)
         elif node.type == "paragraph":
-            para_tag_cap = self.get_query("para").captures(node)[0]
-            para_marker = para_tag_cap[0].type
+            para_tag_cursor = QueryCursor(self.get_query("para"))
+            para_tag_cap = para_tag_cursor.captures(node)
+            para_marker = para_tag_cap['para-marker'][0].type
             if not para_marker.endswith("Block"):
                 para_xml_node = etree.SubElement(parent_xml_node, "para")
                 para_xml_node.set("style", para_marker)
-                for child in para_tag_cap[0].children[1:]:
+                for child in para_tag_cap['para-marker'][0].children[1:]:
                     self.node_2_usx(child, para_xml_node)
         elif node.type in ["pi", "ph"]:
             para_marker = (
@@ -317,14 +313,14 @@ class USXGenerator:
         if attrib_name == "src":  # for \fig
             attrib_name = "file"
 
-        attrib_val_cap = self.get_query("attribVal").captures(node)
-        if len(attrib_val_cap) > 0:
+        attrib_cursor = QueryCursor(self.get_query("attribVal"))
+        attrib_val_cap = attrib_cursor.captures(node)
+        if 'attrib-val' in attrib_val_cap and len(attrib_val_cap['attrib-val']) > 0:
             attrib_value = (
                 self.usfm[
-                    attrib_val_cap[0][0].start_byte : attrib_val_cap[0][0].end_byte
-                ]
-                .decode("utf-8")
-                .strip()
+                    attrib_val_cap['attrib-val'][0].start_byte :
+                    attrib_val_cap['attrib-val'][0].end_byte
+                ].decode("utf-8").strip()
             )
         else:
             attrib_value = ""
@@ -362,7 +358,8 @@ class USXGenerator:
 
     def node_2_usx_milestone(self, node, parent_xml_node):
         """create ms node in USX"""
-        ms_name_cap = self.get_query("milestone").captures(node)[0]
+        ms_name_cursor = QueryCursor(self.get_query("milestone"))
+        ms_name_cap = ms_name_cursor.captures(node)['ms-name']
         style = (
             self.usfm[ms_name_cap[0].start_byte : ms_name_cap[0].end_byte]
             .decode("utf-8")
@@ -384,7 +381,8 @@ class USXGenerator:
             for child in node.children[1:-1]:
                 self.node_2_usx(child, sidebar_xml_node)
         elif node.type == "cat":
-            cat_cap = self.get_query("category").captures(node)[0]
+            cat_cursor = QueryCursor(self.get_query("category"))
+            cat_cap = cat_cursor.captures(node)['category']
             category = (
                 self.usfm[cat_cap[0].start_byte : cat_cap[0].end_byte]
                 .decode("utf-8")

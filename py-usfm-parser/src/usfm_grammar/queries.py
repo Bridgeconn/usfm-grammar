@@ -1,6 +1,8 @@
 """
 Tree sitter queries for Python USFM parser
 """
+from tree_sitter import Query
+
 def create_queries_as_needed(name, lang):
     """Create and return a query based on the given name and language.
 
@@ -27,12 +29,12 @@ def create_queries_as_needed(name, lang):
 
 def get_id_query(lang):
     """Create and return a query for book ID information."""
-    return lang.query("(id (bookcode) @book-code (description)? @desc)")
+    return Query(lang, "(id (bookcode) @book-code (description)? @desc)")
 
 
 def usj_ca_va_query(lang):
     """Create and return a query for chapter and verse alternate numbers."""
-    return lang.query(
+    return Query(lang,
         """
     ([
         (chapterNumber)
@@ -44,12 +46,12 @@ def usj_ca_va_query(lang):
 
 def attrib_val_query(lang):
     """Create and return a query for attribute values."""
-    return lang.query("((attributeValue) @attrib-val)")
+    return Query(lang, "((attributeValue) @attrib-val)")
 
 
 def get_chap_query(lang):
     """Create and return a query for chapter information."""
-    return lang.query(
+    return Query(lang,
         """
     (c (chapterNumber) @chap-num
       (ca (chapterNumber) @alt-num)?
@@ -60,12 +62,12 @@ def get_chap_query(lang):
 
 def para_query(lang):
     """Create and return a query for paragraph markers."""
-    return lang.query("(paragraph (_) @para-marker)")
+    return Query(lang, "(paragraph (_) @para-marker)")
 
 
 def milestone_query(lang):
     """Create and return a query for milestone tags."""
-    return lang.query(
+    return Query(lang,
         """
     ([
         (milestoneTag)
@@ -79,12 +81,12 @@ def milestone_query(lang):
 
 def category_query(lang):
     """Create and return a query for categories."""
-    return lang.query("((category) @category)")
+    return Query(lang, "((category) @category)")
 
 
 def verse_num_cap_query(lang):
     """Create and return a query for verse number information."""
-    return lang.query(
+    return Query(lang,
         """
     (v
         (verseNumber) @vnum
