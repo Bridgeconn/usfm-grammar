@@ -1,5 +1,16 @@
 # Developer Notes
 
+## Setting up the grammar module
+(One time steps)
+```bash
+cd tree-sitter-usfm3
+npm install tree-sitter-cli
+export PATH=$PATH:./node_modules/.bin
+tree-sitter init
+tree-sitter generate
+tree-sitter test
+```
+
 ## How to build the binary for python module?
 
 First compile the grammar
@@ -105,7 +116,7 @@ tree-sitter build --wasm
 cp tree-sitter-usfm3.wasm ../web-usfm-parser/tree-sitter-usfm.wasm
 cd ..
 ```
-After npm install, copy the `tree-sitter.js` file from `node_modules/web-tree-sitter` to the `js-usfm-parser/src/web-tree-sitter` folder to include it in the bundle. Also copy the `tree-sitter.wasm` file to `js-usfm-parser/` to be included in the npm packaging.
+After npm install, copy the `tree-sitter.js` file from `node_modules/web-tree-sitter` to the `web-usfm-parser/src/web-tree-sitter` folder to include it in the bundle. Also copy the `tree-sitter.wasm` file to `web-usfm-parser/` to be included in the npm packaging.
 
 ```bash
 cd web-usfm-parser/

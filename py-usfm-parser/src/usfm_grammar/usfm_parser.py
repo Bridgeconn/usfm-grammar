@@ -4,7 +4,7 @@ from enum import Enum
 import re
 import traceback
 import tree_sitter_usfm3 as tsusfm
-from tree_sitter import Language, Parser
+from tree_sitter import Language, Parser, Query, QueryCursor
 from lxml import etree
 from usfm_grammar.usx_generator import USXGenerator
 from usfm_grammar.usj_generator import USJGenerator
@@ -16,141 +16,31 @@ class Filter(list, Enum):
     """Defines the values of filter options"""
 
     BOOK_HEADERS = [
-        "ide",
-        "usfm",
-        "h",
-        "toc",
-        "toca",  # identification
-        "imt",
-        "is",
-        "ip",
-        "ipi",
-        "im",
-        "imi",
-        "ipq",
-        "imq",
-        "ipr",
-        "iq",
-        "ib",
-        "ili",
-        "iot",
-        "io",
-        "iex",
-        "imte",
-        "ie",
-    ]  # intro
+        "ide", "usfm", "h", "toc", "toca",  # identification
+        "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr",
+        "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
+    ]
     TITLES = [
-        "mt",
-        "mte",
-        "cl",
-        "cd",
-        "ms",
-        "mr",
-        "s",
-        "sr",
-        "r",
-        "d",
-        "sp",
-        "sd",
+        "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",
     ]  # "headings"
     COMMENTS = ["sts", "rem", "lit", "restore"]  # comment markers
     PARAGRAPHS = [
-        "p",
-        "m",
-        "po",
-        "pr",
-        "cls",
-        "pmo",
-        "pm",
-        "pmc",  #'paragraphs-quotes-lists-tables'
-        "pmr",
-        "pi",
-        "mi",
-        "nb",
-        "pc",
-        "ph",
-        "q",
-        "qr",
-        "qc",
-        "qa",
-        "qm",
-        "qd",
-        "lh",
-        "li",
-        "lf",
-        "lim",
-        "litl",
-        "tr",
-        "tc",
-        "th",
-        "tcr",
-        "thr",
-        "table",
-        "b",
+        "p", "m", "po", "pr", "cls", "pmo", "pm", "pmc",  #'paragraphs-quotes-lists-tables'
+        "pmr", "pi", "mi", "nb", "pc", "ph", "q", "qr", "qc", "qa", "qm", "qd",
+        "lh", "li", "lf", "lim", "litl", "tr", "tc", "th", "tcr", "thr", "table", "b",
     ]
     CHARACTERS = [
-        "add",
-        "bk",
-        "dc",
-        "ior",
-        "iqt",
-        "k",
-        "litl",
-        "nd",
-        "ord",
-        "pn",
-        "png",
-        "qac",
-        "qs",
-        "qt",
-        "rq",
-        "sig",
-        "sls",
-        "tl",
-        "wj",  # Special-text
-        "em",
-        "bd",
-        "bdit",
-        "it",
-        "no",
-        "sc",
-        "sup",  # character styling
-        "rb",
-        "pro",
-        "w",
-        "wh",
-        "wa",
-        "wg",  # special-features
-        "lik",
-        "liv",  # structred list entries
+        "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn", "png",
+        "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj",  # Special-text
+        "em", "bd", "bdit", "it", "no", "sc", "sup",  # character styling
+        "rb", "pro", "w", "wh", "wa", "wg",  # special-features
+        "lik", "liv",  # structred list entries
         "jmp",
     ]
     NOTES = [
-        "f",
-        "fe",
-        "ef",
-        "efe",
-        "x",
-        "ex",  # "footnotes-and-crossrefs"
-        "fr",
-        "ft",
-        "fk",
-        "fq",
-        "fqa",
-        "fl",
-        "fw",
-        "fp",
-        "fv",
-        "fdc",
-        "xo",
-        "xop",
-        "xt",
-        "xta",
-        "xk",
-        "xq",
-        "xot",
-        "xnt",
-        "xdc",
+        "f", "fe", "ef", "efe", "x", "ex",  # "footnotes-and-crossrefs"
+        "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "xo",
+        "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",
     ]
     STUDY_BIBLE = ["esb", "cat"]  # "sidebars-extended-contents"
     BCV = ["id", "c", "v"]
@@ -180,27 +70,27 @@ parser = Parser(USFM_LANGUAGE)
 # MISC_MARKERS
 
 
-id_query = USFM_LANGUAGE.query(
+id_query = Query(USFM_LANGUAGE,
     """(book (id (bookcode) @book-code (description) @desc))"""
 )
 
-chapter_data_query = USFM_LANGUAGE.query("""(c (chapterNumber) @chapter-number)
+chapter_data_query = Query(USFM_LANGUAGE, """(c (chapterNumber) @chapter-number)
                                             (cl (text) @cl-text)
                                             (cp (text) @cp-text)
                                             (ca (chapterNumber) @ca-number)
                                             (cd) @cd-node""")
 
-verse_data_query = USFM_LANGUAGE.query("""(v (verseNumber) @verse-number)
+verse_data_query = Query(USFM_LANGUAGE, """(v (verseNumber) @verse-number)
                                             (vp (text) @vp-text)
                                             (va (verseNumber) @va-number)""")
-error_query = USFM_LANGUAGE.query("""(ERROR) @errors""")
+error_query = Query(USFM_LANGUAGE, """(ERROR) @errors""")
 
 
 class USFMParser:
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
 
-    def __init__(
-        self,  # pylint: disable=too-many-arguments, too-many-branches
+    def __init__(  # pylint: disable=too-many-arguments, too-many-branches
+        self,
         usfm_string: str = None,
         from_usj: dict = None,
         from_usx: etree.Element = None,
@@ -262,20 +152,20 @@ class USFMParser:
             self.usfm = self.usfm.replace(found_book_code, upper_book_code, 1)
 
         self.usfm_bytes = bytes(self.usfm, "utf8")
-        tree = parser.parse(self.usfm_bytes)
-        self.syntax_tree = tree.root_node
+        self.syntax_tree = parser.parse(self.usfm_bytes).root_node
 
         # check for errors in the parse tree and raise them
-        errors = error_query.captures(self.syntax_tree)
-        if len(errors) > 0:
+        err_cursor = QueryCursor(error_query)
+        error_caps = err_cursor.captures(self.syntax_tree)
+        if 'errors' in error_caps and len(error_caps['errors']) > 0:
             self.errors = [
                 (
-                    f"At {err[0].start_point}",
-                    self.usfm_bytes[err[0].start_byte : err[0].end_byte].decode(
+                    f"At {err.start_point}",
+                    self.usfm_bytes[err.start_byte : err.end_byte].decode(
                         "utf-8"
                     ),
                 )
-                for err in errors
+                for err in error_caps["errors"]
             ]
         self.check_for_missing(self.syntax_tree)
 

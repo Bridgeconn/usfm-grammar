@@ -1,11 +1,16 @@
 """Logics for syntax-tree to dict(USJ) conversions"""
+from tree_sitter import QueryCursor
 
 from usfm_grammar.queries import create_queries_as_needed
 from usfm_grammar.usx_generator import USXGenerator
 
+#pylint: disable=duplicate-code
 
 class USJGenerator:
     """A binding for all methods used in generating USJ from Syntax tree"""
+    MARKER_SETS = USXGenerator.MARKER_SETS
+    MARKER_LISTS = USXGenerator.MARKER_LISTS
+    DEFAULT_ATTRIB_MAP = USXGenerator.DEFAULT_ATTRIB_MAP
 
     def __init__(self, tree_sitter_language_obj, usfm_string, usj_root_obj=None):
         """Initialize the USJ generator with USFM and root object"""
@@ -19,9 +24,6 @@ class USJGenerator:
         # Cache for the query objects
         self.queries = {}
         # Make o(1) sets for marker lookups
-        self.marker_sets = USXGenerator.MARKER_SETS
-        self.marker_lists = USXGenerator.MARKER_LISTS
-        self.default_attrib_map = USXGenerator.DEFAULT_ATTRIB_MAP
         self.parse_state = {"book_slug": None, "current_chapter": None}
         # maps and id to a fn;
         self.dispatch_map = self.populate_dispatch_map()
@@ -38,20 +40,14 @@ class USJGenerator:
 
     def node_2_usj_id(self, node, parent_json_obj):
         """Convert ID node to USJ format"""
-        id_captures = self.get_query("id").captures(node)
-        code = None
-        desc = None
-
-        for capture in id_captures:
-            node_obj, capture_name = capture
-            if capture_name == "book-code":
-                code = self.usfm[node_obj.start_byte : node_obj.end_byte].decode(
-                    "utf-8"
-                )
-            elif capture_name == "desc":
-                desc = self.usfm[node_obj.start_byte : node_obj.end_byte].decode(
-                    "utf-8"
-                )
+        id_cursor = QueryCursor(self.get_query("id"))
+        id_captures = id_cursor.captures(node)
+        code = self.usfm[id_captures['book-code'][0].start_byte :
+                         id_captures['book-code'][0].end_byte].decode("utf-8")\
+                    if 'book-code' in id_captures else None
+        desc = self.usfm[id_captures['desc'][0].start_byte :
+                         id_captures['desc'][0].end_byte].decode("utf-8")\
+                    if 'desc' in id_captures else None
 
         book_json_obj = {"type": "book", "marker": "id", "code": code, "content": []}
 
@@ -62,10 +58,12 @@ class USJGenerator:
 
     def node_2_usj_c(self, node, parent_json_obj):
         """Convert chapter node to USJ format"""
-        chap_cap = self.get_query("chapter").captures(node)
-        # Unpack the first capture (node, capture_name)
-        chap_node, _ = chap_cap[0]
-        chap_num = self.usfm[chap_node.start_byte : chap_node.end_byte].decode("utf-8")
+        chap_cursor = QueryCursor(self.get_query("chapter"))
+        chap_cap = chap_cursor.captures(node)
+
+        chap_num = self.usfm[chap_cap['chap-num'][0].start_byte :
+                             chap_cap['chap-num'][0].end_byte].decode("utf-8")\
+            if 'chap-num' in chap_cap else None
         chap_ref = f"{self.parse_state['book_slug']} {chap_num}"
 
         chap_json_obj = {
@@ -77,20 +75,18 @@ class USJGenerator:
 
         self.parse_state["current_chapter"] = chap_num
 
-        for cap in chap_cap:
-            node_obj, capture_name = cap
-            if capture_name == "alt-num":
-                chap_json_obj["altnumber"] = (
-                    self.usfm[node_obj.start_byte : node_obj.end_byte]
-                    .decode("utf-8")
-                    .strip()
-                )
-            if capture_name == "pub-num":
-                chap_json_obj["pubnumber"] = (
-                    self.usfm[node_obj.start_byte : node_obj.end_byte]
-                    .decode("utf-8")
-                    .strip()
-                )
+        alt_num = self.usfm[chap_cap['alt-num'][0].start_byte :
+                             chap_cap['alt-num'][0].end_byte].decode("utf-8")\
+            if 'alt-num' in chap_cap else None
+        pub_num = self.usfm[chap_cap['pub-num'][0].start_byte :
+                             chap_cap['pub-num'][0].end_byte].decode("utf-8")\
+            if 'pub-num' in chap_cap else None
+
+        if alt_num and alt_num.strip():
+            chap_json_obj["altnumber"] = alt_num.strip()
+        if pub_num and pub_num.strip():
+            chap_json_obj["pubnumber"] = pub_num.strip()
+
         parent_json_obj["content"].append(chap_json_obj)
 
         for child in node.children:
@@ -107,12 +103,12 @@ class USJGenerator:
 
     def node_2_usj_verse(self, node, parent_json_obj):
         """Convert verse node to USJ format"""
-        verse_num_cap = self.get_query("verseNumCap").captures(node)
-        if not verse_num_cap:
+        verse_cursor = QueryCursor(self.get_query("verseNumCap"))
+        verse_num_cap = verse_cursor.captures(node)
+        if 'vnum' not in verse_num_cap:
             return
 
-        # Unpack the first capture (node, capture_name)
-        verse_node, _ = verse_num_cap[0]
+        verse_node = verse_num_cap['vnum'][0]
         verse_num = (
             self.usfm[verse_node.start_byte : verse_node.end_byte]
             .decode("utf-8")
@@ -121,17 +117,20 @@ class USJGenerator:
 
         v_json_obj = {"type": "verse", "marker": "v", "number": verse_num}
         # Process additional verse attributes if present
-        for cap in verse_num_cap:
-            node_obj, capture_name = cap
-            text = (
-                self.usfm[node_obj.start_byte : node_obj.end_byte]
+        if 'alt' in verse_num_cap:
+            alt_node = verse_num_cap['alt'][0]
+            v_json_obj["altnumber"] = (
+                self.usfm[alt_node.start_byte : alt_node.end_byte]
                 .decode("utf-8")
                 .strip()
             )
-            if capture_name == "alt":
-                v_json_obj["altnumber"] = text
-            elif capture_name == "vp":
-                v_json_obj["pubnumber"] = text
+        if 'vp' in verse_num_cap:
+            vp_node = verse_num_cap['vp'][0]
+            v_json_obj["pubnumber"] = (
+                self.usfm[vp_node.start_byte : vp_node.end_byte]
+                .decode("utf-8")
+                .strip()
+            )
 
         # Add sid (scripture ID) using current book and chapter
         if self.parse_state.get("book_slug") and self.parse_state.get(
@@ -147,9 +146,11 @@ class USJGenerator:
         style = node.type
         char_json_obj = {"type": "char", "marker": style.strip()}
 
-        alt_num_match = self.get_query("usjCaVa").captures(node)
+        alt_num_cursor = QueryCursor(self.get_query("usjCaVa"))
+        alt_num_match = alt_num_cursor.captures(node)
+
         alt_num = self.usfm[
-            alt_num_match[0]["node"].start_byte : alt_num_match[0]["node"].end_byte
+            alt_num_match["alt-num"][0].start_byte : alt_num_match["alt-num"][0].end_byte
         ].strip()
 
         char_json_obj["altnumber"] = alt_num
@@ -161,11 +162,12 @@ class USJGenerator:
             for child in node.children[0].children:
                 self.node_2_usj_para(child, parent_json_obj)
         elif node.type == "paragraph":
-            para_tag_cap = self.get_query("para").captures(node)
-            if para_tag_cap is None:
+            para_tag_cursor = QueryCursor(self.get_query("para"))
+            para_tag_cap = para_tag_cursor.captures(node)
+            if 'para-marker' not in para_tag_cap:
                 return
             # Unpack the capture tuple
-            para_node, _ = para_tag_cap[0]
+            para_node = para_tag_cap['para-marker'][0]
             para_marker = para_node.type
             if para_marker == "b":
                 parent_json_obj["content"].append(
@@ -246,7 +248,7 @@ class USJGenerator:
             for child in node.children[1:]:
                 self.node_2_usj(child, row_json_obj)
             parent_json_obj["content"].append(row_json_obj)
-        elif node.type in self.marker_sets["table_cell"]:
+        elif node.type in USJGenerator.MARKER_SETS["table_cell"]:
             tag_node = node.children[0]
             style = (
                 self.usfm[tag_node.start_byte : tag_node.end_byte]
@@ -285,16 +287,19 @@ class USJGenerator:
             parent_type = node.parent.type
             if "Nested" in parent_type:
                 parent_type = parent_type.replace("Nested", "")
-            attrib_name = self.default_attrib_map.get(parent_type, attrib_name)
+            attrib_name = USJGenerator.DEFAULT_ATTRIB_MAP.get(parent_type, attrib_name)
 
         if attrib_name == "src":
             attrib_name = "file"
 
-        attrib_val_cap = self.get_query("attribVal").captures(node)
-        attrib_value = ""
+        attrib_cursor = QueryCursor(self.get_query("attribVal"))
+        attrib_val_cap = attrib_cursor.captures(node)
+        attrib_value = self.usfm[attrib_val_cap['attrib-val'][0].start_byte :
+                attrib_val_cap['attrib-val'][0].end_byte].decode('utf-8')\
+            if "attrib-val" in attrib_val_cap else ""
 
         if attrib_val_cap:
-            node_obj, _ = attrib_val_cap[0]
+            node_obj= attrib_val_cap['attrib-val'][0]
             attrib_value = (
                 self.usfm[node_obj.start_byte : node_obj.end_byte]
                 .decode("utf-8")
@@ -305,12 +310,13 @@ class USJGenerator:
 
     def node_2_usj_milestone(self, node, parent_json_obj):
         """Convert milestone nodes to USJ format"""
-        ms_name_cap = self.get_query("milestone").captures(node)
-        if not ms_name_cap:
+        ms_name_cursor = QueryCursor(self.get_query("milestone"))
+        ms_name_cap = ms_name_cursor.captures(node)
+        if 'ms-name' not in ms_name_cap:
             return
 
         # Unpack the first capture (node, capture_name)
-        ms_node, _ = ms_name_cap[0]
+        ms_node = ms_name_cap['ms-name'][0]
         style = (
             self.usfm[ms_node.start_byte : ms_node.end_byte]
             .decode("utf-8")
@@ -336,12 +342,13 @@ class USJGenerator:
                 self.node_2_usj(child, sidebar_json_obj)
             parent_json_obj["content"].append(sidebar_json_obj)
         elif node.type == "cat":
-            cat_cap = self.get_query("category").captures(node)
-            if not cat_cap:
+            cat_cursor = QueryCursor(self.get_query("category"))
+            cat_cap = cat_cursor.captures(node)
+            if 'category' not in cat_cap:
                 return
 
             # Unpack the first capture (node, capture_name)
-            cat_node, _ = cat_cap[0]
+            cat_node = cat_cap['category'][0]
             category = (
                 self.usfm[cat_node.start_byte : cat_node.end_byte]
                 .decode("utf-8")
@@ -383,9 +390,9 @@ class USJGenerator:
             if any(
                 child.type in marker_set
                 for marker_set in [
-                    self.marker_sets["char_style"],
-                    self.marker_sets["nested_char_style"],
-                    self.marker_sets["other_para_nestables"],
+                    USJGenerator.MARKER_SETS["char_style"],
+                    USJGenerator.MARKER_SETS["nested_char_style"],
+                    USJGenerator.MARKER_SETS["other_para_nestables"],
                 ]
             ):
                 self.node_2_usj(child, para_json_obj)
@@ -412,8 +419,8 @@ class USJGenerator:
         def add_handlers(markers, handler):
             for marker in markers:
                 if isinstance(marker, (list, set)):
-                    for m in marker:
-                        dispatch_map[m] = getattr(self, handler.__name__)
+                    for mrkr in marker:
+                        dispatch_map[mrkr] = getattr(self, handler.__name__)
                 else:
                     dispatch_map[marker] = getattr(self, handler.__name__)
 
@@ -432,17 +439,17 @@ class USJGenerator:
         add_handlers(["table", "tr"], self.node_2_usj_table)
         add_handlers(["milestone", "zNameSpace"], self.node_2_usj_milestone)
         add_handlers(["esb", "cat", "fig", "ref"], self.node_2_usj_special)
-        add_handlers(self.marker_lists["note"], self.node_2_usj_notes)
+        add_handlers(USJGenerator.MARKER_LISTS["note"], self.node_2_usj_notes)
         add_handlers(
-            self.marker_lists["char_style"]
-            + self.marker_lists["nested_char_style"]
+            USJGenerator.MARKER_LISTS["char_style"]
+            + USJGenerator.MARKER_LISTS["nested_char_style"]
             + ["xt_standalone"],
             self.node_2_usj_char,
         )
-        add_handlers(self.marker_lists["table_cell"], self.node_2_usj_table)
+        add_handlers(USJGenerator.MARKER_LISTS["table_cell"], self.node_2_usj_table)
 
         # Add paragraph style markers
-        for marker in self.marker_lists["para_style"]:
+        for marker in USJGenerator.MARKER_LISTS["para_style"]:
             if marker != "usfm":
                 dispatch_map[marker] = self.node_2_usj_generic
 

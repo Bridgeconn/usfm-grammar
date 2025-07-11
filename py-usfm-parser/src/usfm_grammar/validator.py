@@ -4,7 +4,7 @@ import re
 import jsonschema
 
 import tree_sitter_usfm3 as tsusfm
-from tree_sitter import Language, Parser
+from tree_sitter import Language, Parser, QueryCursor
 
 from usfm_grammar.usfm_parser import error_query
 from usfm_grammar.schema import usj_schema
@@ -42,11 +42,12 @@ class Validator:
         tree = self.usfm_parser.parse(self.usfm_bytes)
 
         # check for errors in the parse tree and raise them
-        errors = error_query.captures(tree.root_node)
+        err_cursor = QueryCursor(error_query)
+        errors_cap = err_cursor.captures(tree.root_node)
         self.usfm_errors = []
         self.message = ""
-        if len(errors) > 0:
-            self.usfm_errors = [err[0] for err in errors]
+        if 'errors' in errors_cap and len(errors_cap['errors']) > 0:
+            self.usfm_errors = errors_cap['errors']
         self.check_for_missing(tree.root_node)
 
         if len(self.usfm_errors) > 0:
@@ -122,7 +123,7 @@ class Validator:
             elif (
                 error.is_missing
                 and error.parent.type == "sTag"
-                and error.sexp() == '(MISSING " ")'
+                and str(error) == '(MISSING " ")'
             ):
                 # print("match 2")
                 self.modified_usfm = re.sub(r"\\s5\n", r"\\s5 \n", self.modified_usfm)

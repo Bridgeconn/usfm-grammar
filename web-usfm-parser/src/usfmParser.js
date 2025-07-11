@@ -1,5 +1,5 @@
 import assert from "assert";
-import Parser from "./web-tree-sitter/tree-sitter.js";
+import {Parser, Language, Query} from "./web-tree-sitter/tree-sitter.js";
 import USFMGenerator from "./usfmGenerator.js";
 import USJGenerator from "./usjGenerator.js";
 import ListGenerator from "./listGenerator.js";
@@ -11,15 +11,14 @@ class USFMParser {
   static language = null;
   static async init(
     grammarPath = "node_modules/usfm-grammar/tree-sitter-usfm.wasm",
-
     parserPath = "node_modules/usfm-grammar/tree-sitter.wasm"
   ) {
     await Parser.init({
-      locateFile() {
+      locateFile() { 
         return parserPath;
-      },
+      }   
     });
-    USFMParser.language = await Parser.Language.load(grammarPath);
+    USFMParser.language = await Language.load(grammarPath);
   }
 
   constructor(
@@ -183,7 +182,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
   }
 
   checkForErrors(tree) {
-    const errorQuery = this.parser.getLanguage().query("(ERROR) @errors");
+    const errorQuery = new Query(USFMParser.language, "(ERROR) @errors");
     const errors = errorQuery.captures(tree.rootNode);
     if (errors.length > 0) {
       this.errors = errors.map(
