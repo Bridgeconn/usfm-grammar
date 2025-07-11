@@ -152,8 +152,7 @@ class USFMParser:
             self.usfm = self.usfm.replace(found_book_code, upper_book_code, 1)
 
         self.usfm_bytes = bytes(self.usfm, "utf8")
-        tree = parser.parse(self.usfm_bytes)
-        self.syntax_tree = tree.root_node
+        self.syntax_tree = parser.parse(self.usfm_bytes).root_node
 
         # check for errors in the parse tree and raise them
         err_cursor = QueryCursor(error_query)

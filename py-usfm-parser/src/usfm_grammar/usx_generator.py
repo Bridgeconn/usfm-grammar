@@ -112,7 +112,7 @@ class USXGenerator:
         desc = self.usfm[id_captures['desc'][0].start_byte :
                          id_captures['desc'][0].end_byte].decode("utf-8")\
             if 'desc' in id_captures else None
- 
+
         book_xml_node = etree.SubElement(parent_xml_node, "book")
         book_xml_node.set("code", code)
         book_xml_node.set("style", "id")

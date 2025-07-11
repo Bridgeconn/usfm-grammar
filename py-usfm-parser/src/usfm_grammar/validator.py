@@ -47,7 +47,7 @@ class Validator:
         self.usfm_errors = []
         self.message = ""
         if 'errors' in errors_cap and len(errors_cap['errors']) > 0:
-            self.usfm_errors = [err for err in errors_cap['errors']]
+            self.usfm_errors = errors_cap['errors']
         self.check_for_missing(tree.root_node)
 
         if len(self.usfm_errors) > 0:
