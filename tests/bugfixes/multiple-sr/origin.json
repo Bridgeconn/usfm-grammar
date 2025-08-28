@@ -1,0 +1,52 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "content": [],
+            "code": "TST"
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "TST 1"
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                "Some title\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "sr",
+            "content": [
+                "Some ref\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "sr",
+            "content": [
+                "Duplicate ref\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "TST 1:1"
+                },
+                "Verse text"
+            ]
+        }
+    ]
+}

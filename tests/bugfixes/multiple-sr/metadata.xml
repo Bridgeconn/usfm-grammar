@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>There can be any number of \sr marker under a \s# now. https://github.com/Bridgeconn/usfm-grammar/issues/341 </description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>
