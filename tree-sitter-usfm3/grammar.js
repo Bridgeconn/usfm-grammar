@@ -223,7 +223,7 @@ module.exports = grammar({
       $.footnote, $.crossref, 
       $._characterMarker,
       $.fig,
-      )), optional($.sr), optional($.r))),
+      )), repeat(choice($.sr, $.r)) )),
     sTag: $ => seq("\\s",optional($.numberedLevelMax5), " "),
     sr: $ => seq("\\sr ", $.text),
     r: $ => seq("\\r ", $.text), // ocurs under c too

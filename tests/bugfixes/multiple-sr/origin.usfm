@@ -1,0 +1,7 @@
+\id TST
+\c 1
+\s1 Some title
+\sr Some ref
+\sr Duplicate ref
+\p
+\v 1 Verse text
