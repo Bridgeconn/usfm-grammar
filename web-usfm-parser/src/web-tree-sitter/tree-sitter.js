@@ -227,17 +227,21 @@ var TreeCursor = class _TreeCursor {
     __name(this, "TreeCursor");
   }
   /** @internal */
+  // @ts-expect-error: never read
   [0] = 0;
-  // Internal handle for WASM
+  // Internal handle for Wasm
   /** @internal */
+  // @ts-expect-error: never read
   [1] = 0;
-  // Internal handle for WASM
+  // Internal handle for Wasm
   /** @internal */
+  // @ts-expect-error: never read
   [2] = 0;
-  // Internal handle for WASM
+  // Internal handle for Wasm
   /** @internal */
+  // @ts-expect-error: never read
   [3] = 0;
-  // Internal handle for WASM
+  // Internal handle for Wasm
   /** @internal */
   tree;
   /** @internal */
@@ -510,8 +514,9 @@ var Node = class {
     __name(this, "Node");
   }
   /** @internal */
+  // @ts-expect-error: never read
   [0] = 0;
-  // Internal handle for WASM
+  // Internal handle for Wasm
   /** @internal */
   _children;
   /** @internal */
@@ -1172,13 +1177,10 @@ function marshalEdit(edit, address = TRANSFER_BUFFER) {
 }
 __name(marshalEdit, "marshalEdit");
 function unmarshalLanguageMetadata(address) {
-  const result = {};
-  result.major_version = C.getValue(address, "i32");
-  address += SIZE_OF_INT;
-  result.minor_version = C.getValue(address, "i32");
-  address += SIZE_OF_INT;
-  result.field_count = C.getValue(address, "i32");
-  return result;
+  const major_version = C.getValue(address, "i32");
+  const minor_version = C.getValue(address += SIZE_OF_INT, "i32");
+  const patch_version = C.getValue(address += SIZE_OF_INT, "i32");
+  return { major_version, minor_version, patch_version };
 }
 __name(unmarshalLanguageMetadata, "unmarshalLanguageMetadata");
 
