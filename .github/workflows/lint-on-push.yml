@@ -49,3 +49,56 @@ jobs:
       - name: Run linter
         working-directory: ./py-usfm-parser
         run: pylint --extension-pkg-allow-list=lxml src/usfm_grammar/*.py
+
+  node-build-n-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup node and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build grammar binary
+        working-directory: ./tree-sitter-usfm3
+        run: |
+          npm install tree-sitter-cli
+          ./node_modules/.bin/tree-sitter init
+          ./node_modules/.bin/tree-sitter generate
+      - name: install dependencies
+        working-directory: ./node-usfm-parser
+        run: |
+          cd node-usfm-parser
+          sed -i '/"tree-sitter-usfm3":.*/d' package.json
+          npm install .
+          npm install ../tree-sitter-usfm3
+      - name: Run linter
+        working-directory: ./node-usfm-parser
+        run: npm run lint
+  web-build-n-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup node and npm
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Build grammar
+        run: |
+          cd tree-sitter-usfm3
+          npm install tree-sitter-cli
+          ./node_modules/.bin/tree-sitter init
+          ./node_modules/.bin/tree-sitter generate
+          ./node_modules/.bin/tree-sitter build --wasm
+
+      - name: Install dependencies
+        run: |
+          cd web-usfm-parser
+          npm install .
+          cp node_modules/web-tree-sitter/tree-sitter.js src/web-tree-sitter/
+          cp node_modules/web-tree-sitter/tree-sitter.wasm ./
+          cp ../tree-sitter-usfm3/tree-sitter-usfm3.wasm ./tree-sitter-usfm.wasm
+      - name: Run linter
+        working-directory: ./web-usfm-parser
+        run: npm run lint
+        
