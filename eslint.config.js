@@ -1,6 +1,6 @@
 export default {
   languageOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2022,
     sourceType: 'commonjs',
     globals: {
       // Browser globals
