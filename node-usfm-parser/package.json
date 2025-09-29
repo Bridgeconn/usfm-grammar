@@ -7,7 +7,7 @@
   "scripts": {
     "build": "parcel build ./src/index.js",
     "test": "mocha --timeout 40000 --parallel",
-    "lint": "eslint src --ext .js,.mjs,.cjs --config ../eslint.config.js"
+    "lint": "eslint src --ext .js,.mjs,.cjs --config eslint.config.js"
   },
   "repository": {
     "type": "git",

@@ -7,15 +7,15 @@ import {
   DEFAULT_ATTRIB_MAP,
   TABLE_CELL_MARKERS,
   MARKER_SETS,
-} from "./utils/markers.js";
-import {createQueriesAsNeeded} from "./queries.js";
+} from './utils/markers.js';
+import { createQueriesAsNeeded } from './queries.js';
 class USJGenerator {
   constructor(treeSitterLanguageObj, usfmString, usjRootObj = null) {
     this.usfmLanguage = treeSitterLanguageObj;
     this.usfm = usfmString;
     this.jsonRootObj = usjRootObj || {
-      type: "USJ",
-      version: "3.1",
+      type: 'USJ',
+      version: '3.1',
       content: [],
     };
     // Cache for the query objects
@@ -39,25 +39,25 @@ class USJGenerator {
   }
 
   nodeToUSJId(node, parentJsonObj) {
-    const idCaptures = this.getQuery("id").captures(node);
+    const idCaptures = this.getQuery('id').captures(node);
     // const idCaptures = this.queries.id.captures(node);
     let code = null;
     let desc = null;
     idCaptures.forEach((capture) => {
-      if (capture.name === "book-code") {
+      if (capture.name === 'book-code') {
         code = this.usfm.slice(capture.node.startIndex, capture.node.endIndex);
-      } else if (capture.name === "desc") {
+      } else if (capture.name === 'desc') {
         desc = this.usfm.slice(capture.node.startIndex, capture.node.endIndex);
       }
     });
     const bookJsonObj = {
-      type: "book",
-      marker: "id",
+      type: 'book',
+      marker: 'id',
       code: code,
       content: [],
     };
     this.parseState.bookSlug = code;
-    if (desc && desc.trim() !== "") {
+    if (desc && desc.trim() !== '') {
       bookJsonObj.content.push(desc.trim());
     }
     parentJsonObj.content.push(bookJsonObj);
@@ -66,28 +66,28 @@ class USJGenerator {
   // Similar conversion methods for other node types
   nodeToUSJC(node, parentJsonObj) {
     // Build c, the chapter milestone node in usj
-    const chapCap = this.getQuery("chapter").captures(node);
+    const chapCap = this.getQuery('chapter').captures(node);
     // const chapCap = this.queries.chapter.captures(node);
     const chapNum = this.usfm.slice(
       chapCap[0].node.startIndex,
-      chapCap[0].node.endIndex
+      chapCap[0].node.endIndex,
     );
-    let chapRef = `${this.parseState.bookSlug} ${chapNum}`;
+    const chapRef = `${this.parseState.bookSlug} ${chapNum}`;
 
     const chapJsonObj = {
-      type: "chapter",
-      marker: "c",
+      type: 'chapter',
+      marker: 'c',
       number: chapNum,
       sid: chapRef,
     };
     this.parseState.currentChapter = chapNum;
     chapCap.forEach((cap) => {
-      if (cap.name === "alt-num") {
+      if (cap.name === 'alt-num') {
         chapJsonObj.altnumber = this.usfm
           .substring(cap.node.startIndex, cap.node.endIndex)
           .trim();
       }
-      if (cap.name === "pub-num") {
+      if (cap.name === 'pub-num') {
         chapJsonObj.pubnumber = this.usfm
           .substring(cap.node.startIndex, cap.node.endIndex)
           .trim();
@@ -97,7 +97,7 @@ class USJGenerator {
     parentJsonObj.content.push(chapJsonObj);
 
     node.children.forEach((child) => {
-      if (["cl", "cd"].includes(child.type)) {
+      if (['cl', 'cd'].includes(child.type)) {
         this.nodeToUSJ(child, parentJsonObj);
       }
     });
@@ -106,7 +106,7 @@ class USJGenerator {
   nodeToUSJChapter(node, parentJsonObj) {
     // Build chapter node in USJ
     node.children.forEach((child) => {
-      if (child.type === "c") {
+      if (child.type === 'c') {
         this.nodeToUSJC(child, parentJsonObj);
       } else {
         this.nodeToUSJ(child, parentJsonObj);
@@ -116,31 +116,31 @@ class USJGenerator {
 
   nodeToUSJVerse(node, parentJsonObj) {
     // Build verse node in USJ
-    const verseNumCap = this.getQuery("verseNumCap").captures(node);
+    const verseNumCap = this.getQuery('verseNumCap').captures(node);
     // const verseNumCap = this.queries.verseNumCap.captures(node);
 
     const verseNum = this.usfm.substring(
       verseNumCap[0].node.startIndex,
-      verseNumCap[0].node.endIndex
+      verseNumCap[0].node.endIndex,
     );
 
     const vJsonObj = {
-      type: "verse",
-      marker: "v",
+      type: 'verse',
+      marker: 'v',
       number: verseNum.trim(),
     };
 
     verseNumCap.forEach((capture) => {
-      if (capture.name === "alt") {
+      if (capture.name === 'alt') {
         const altNum = this.usfm.slice(
           capture.node.startIndex,
-          capture.node.endIndex
+          capture.node.endIndex,
         );
         vJsonObj.altnumber = altNum;
-      } else if (capture.name === "vp") {
+      } else if (capture.name === 'vp') {
         const vpText = this.usfm.substring(
           capture.node.startIndex,
-          capture.node.endIndex
+          capture.node.endIndex,
         );
         vJsonObj.pubnumber = vpText;
       }
@@ -156,11 +156,11 @@ class USJGenerator {
     // Build elements for independent ca and va away from c and v
     const style = node.type;
     const charJsonObj = {
-      type: "char",
+      type: 'char',
       marker: style,
     };
 
-    const altNumMatch = this.getQuery("usjCaVa").captures(node);
+    const altNumMatch = this.getQuery('usjCaVa').captures(node);
     // const altNumMatch = this.queries.usjCaVa.captures(node);
 
     const altNum = this.usfm
@@ -173,29 +173,29 @@ class USJGenerator {
 
   nodeToUSJPara(node, parentJsonObj) {
     // Build paragraph nodes in USJ
-    if (node.children[0].type.endsWith("Block")) {
+    if (node.children[0].type.endsWith('Block')) {
       node.children[0].children.forEach((child) => {
         this.nodeToUSJPara(child, parentJsonObj);
       });
-    } else if (node.type === "paragraph") {
-      const paraTagCap = this.getQuery("para").captures(node)[0];
+    } else if (node.type === 'paragraph') {
+      const paraTagCap = this.getQuery('para').captures(node)[0];
       // const paraTagCap = this.queries.para.captures(node)[0];
       const paraMarker = paraTagCap.node.type;
-      if (paraMarker === "b") {
-        parentJsonObj.content.push({type: "para", marker: paraMarker});
-      } else if (!paraMarker.endsWith("Block")) {
-        const paraJsonObj = {type: "para", marker: paraMarker, content: []};
+      if (paraMarker === 'b') {
+        parentJsonObj.content.push({ type: 'para', marker: paraMarker });
+      } else if (!paraMarker.endsWith('Block')) {
+        const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
         paraTagCap.node.children.forEach((child) => {
           this.nodeToUSJ(child, paraJsonObj);
         });
         parentJsonObj.content.push(paraJsonObj);
       }
-    } else if (["pi", "ph"].includes(node.type)) {
+    } else if (['pi', 'ph'].includes(node.type)) {
       const paraMarker = this.usfm
         .substring(node.children[0].startIndex, node.children[0].endIndex)
-        .replace("\\", "")
+        .replace('\\', '')
         .trim();
-      const paraJsonObj = {type: "para", marker: paraMarker, content: []};
+      const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, paraJsonObj);
       });
@@ -209,10 +209,10 @@ class USJGenerator {
     const callerNode = node.children[1];
     const style = this.usfm
       .substring(tagNode.startIndex, tagNode.endIndex)
-      .replace("\\", "")
+      .replace('\\', '')
       .trim();
     const noteJsonObj = {
-      type: "note",
+      type: 'note',
       marker: style,
       content: [],
     };
@@ -232,16 +232,16 @@ class USJGenerator {
     // Build USJ nodes for character markups, both regular and nested
     const tagNode = node.children[0];
     let childrenRange = node.children.length;
-    if (node.children[node.children.length - 1].type.startsWith("\\")) {
+    if (node.children[node.children.length - 1].type.startsWith('\\')) {
       childrenRange -= 1; // Exclude the last node if it starts with '\', treating it as a closing node
     }
     const style = this.usfm
       .substring(tagNode.startIndex, tagNode.endIndex)
-      .replace("\\", "")
-      .replace("+", "")
+      .replace('\\', '')
+      .replace('+', '')
       .trim();
     const charJsonObj = {
-      type: "char",
+      type: 'char',
       marker: style,
       content: [],
     };
@@ -258,14 +258,14 @@ class USJGenerator {
 
   nodeToUSJTable(node, parentJsonObj) {
     // Handle table related components and convert to USJ
-    if (node.type === "table") {
-      const tableJsonObj = {type: "table", content: []};
+    if (node.type === 'table') {
+      const tableJsonObj = { type: 'table', content: [] };
       node.children.forEach((child) => {
         this.nodeToUSJ(child, tableJsonObj);
       });
       parentJsonObj.content.push(tableJsonObj);
-    } else if (node.type === "tr") {
-      const rowJsonObj = {type: "table:row", marker: "tr", content: []};
+    } else if (node.type === 'tr') {
+      const rowJsonObj = { type: 'table:row', marker: 'tr', content: [] };
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, rowJsonObj);
       });
@@ -274,17 +274,17 @@ class USJGenerator {
       const tagNode = node.children[0];
       const style = this.usfm
         .substring(tagNode.startIndex, tagNode.endIndex)
-        .replace("\\", "")
+        .replace('\\', '')
         .trim();
       const cellJsonObj = {
-        type: "table:cell",
+        type: 'table:cell',
         marker: style,
         content: [],
-        align: style.includes("tcc")
-          ? "center"
-          : style.includes("r")
-          ? "end"
-          : "start",
+        align: style.includes('tcc')
+          ? 'center'
+          : style.includes('r')
+            ? 'end'
+            : 'start',
       };
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, cellJsonObj);
@@ -301,26 +301,26 @@ class USJGenerator {
       .trim();
 
     // Handling special cases for attribute names
-    if (attribName === "|") {
+    if (attribName === '|') {
       let parentType = node.parent.type;
-      if (parentType.includes("Nested")) {
-        parentType = parentType.replace("Nested", "");
+      if (parentType.includes('Nested')) {
+        parentType = parentType.replace('Nested', '');
       }
       attribName = DEFAULT_ATTRIB_MAP[parentType];
     }
-    if (attribName === "src") {
+    if (attribName === 'src') {
       // for \fig
-      attribName = "file";
+      attribName = 'file';
     }
 
-    const attribValCap = this.getQuery("attribVal").captures(node);
+    const attribValCap = this.getQuery('attribVal').captures(node);
     // const attribValCap = this.queries.attribVal.captures(node);
-    let attribValue = "";
+    let attribValue = '';
     if (attribValCap.length > 0) {
       attribValue = this.usfm
         .substring(
           attribValCap[0].node.startIndex,
-          attribValCap[0].node.endIndex
+          attribValCap[0].node.endIndex,
         )
         .trim();
     }
@@ -331,18 +331,18 @@ class USJGenerator {
   nodeToUSJMilestone(node, parentJsonObj) {
     // Create ms node in USJ
 
-    const msNameCap = this.getQuery("milestone").captures(node)[0]; // this.queries.milestone.captures(node)[0];
+    const msNameCap = this.getQuery('milestone').captures(node)[0]; // this.queries.milestone.captures(node)[0];
     // const msNameCap = this.queries.milestone.captures(node)[0];
 
     // slice, not substring.  Hence not using util fxn extractAndCleanMarker
     const style = this.usfm
       .slice(msNameCap.node.startIndex, msNameCap.node.endIndex)
-      .replace("\\", "")
+      .replace('\\', '')
       .trim();
-    const msJsonObj = {type: "ms", marker: style, content: []};
+    const msJsonObj = { type: 'ms', marker: style, content: [] };
 
     node.children.forEach((child) => {
-      if (child.type.endsWith("Attribute")) {
+      if (child.type.endsWith('Attribute')) {
         this.nodeToUSJ(child, msJsonObj);
       }
     });
@@ -358,27 +358,27 @@ class USJGenerator {
   nodeToUSJSpecial(node, parentJsonObj) {
     // Build nodes for esb, cat, fig, optbreak in USJ
 
-    if (node.type === "esb") {
-      const sidebarJsonObj = {type: "sidebar", marker: "esb", content: []};
+    if (node.type === 'esb') {
+      const sidebarJsonObj = { type: 'sidebar', marker: 'esb', content: [] };
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, sidebarJsonObj);
       });
       parentJsonObj.content.push(sidebarJsonObj);
-    } else if (node.type === "cat") {
-      const catCap = this.getQuery("category").captures(node)[0];
+    } else if (node.type === 'cat') {
+      const catCap = this.getQuery('category').captures(node)[0];
       // const catCap = this.queries.category.captures(node)[0];
       const category = this.usfm
         .substring(catCap.node.startIndex, catCap.node.endIndex)
         .trim();
       parentJsonObj.category = category;
-    } else if (node.type === "fig") {
-      const figJsonObj = {type: "figure", marker: "fig", content: []};
+    } else if (node.type === 'fig') {
+      const figJsonObj = { type: 'figure', marker: 'fig', content: [] };
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, figJsonObj);
       });
       parentJsonObj.content.push(figJsonObj);
-    } else if (node.type === "ref") {
-      const refJsonObj = {type: "ref", content: []};
+    } else if (node.type === 'ref') {
+      const refJsonObj = { type: 'ref', content: [] };
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, refJsonObj);
       });
@@ -390,8 +390,8 @@ class USJGenerator {
     const tagNode = node.children[0];
 
     let style = this.usfm.substring(tagNode.startIndex, tagNode.endIndex);
-    if (style.startsWith("\\")) {
-      style = style.replace("\\", "").trim();
+    if (style.startsWith('\\')) {
+      style = style.replace('\\', '').trim();
     } else {
       style = node.type;
     }
@@ -399,14 +399,14 @@ class USJGenerator {
     let childrenRangeStart = 1;
     if (
       node.children.length > 1 &&
-      node.children[1].type.startsWith("numbered")
+      node.children[1].type.startsWith('numbered')
     ) {
       const numNode = node.children[1];
       const num = this.usfm.substring(numNode.startIndex, numNode.endIndex);
       style += num;
       childrenRangeStart = 2;
     }
-    const paraJsonObj = {type: "para", marker: style, content: []};
+    const paraJsonObj = { type: 'para', marker: style, content: [] };
     parentJsonObj.content.push(paraJsonObj);
 
     for (let i = childrenRangeStart; i < node.children.length; i++) {
@@ -426,10 +426,10 @@ class USJGenerator {
     }
   }
   pushTextNode(node, parentJsonObj) {
-    let textVal = this.usfm
+    const textVal = this.usfm
       .substring(node.startIndex, node.endIndex)
-      .replace("~", " ");
-    if (textVal !== "") {
+      .replace('~', ' ');
+    if (textVal !== '') {
       parentJsonObj.content.push(textVal);
     }
   }
@@ -445,23 +445,23 @@ class USJGenerator {
       markers.forEach((marker) => thisMap.set(marker, handler.bind(thisClass)));
     };
     // Instead of at worst O(n) lookup time in switch statement, we can map marker to a handler and then at most O(1) lookup time with room for fallback on stuff like type ends with ATtributes: returned functions take the args of the handler
-    thisMap.set("text", bindToClass(this.pushTextNode));
-    thisMap.set("verseText", bindToClass(this.handleVerseText));
-    thisMap.set("v", bindToClass(this.nodeToUSJVerse));
-    thisMap.set("id", this.nodeToUSJId.bind(this));
-    thisMap.set("chapter", this.nodeToUSJChapter.bind(this));
+    thisMap.set('text', bindToClass(this.pushTextNode));
+    thisMap.set('verseText', bindToClass(this.handleVerseText));
+    thisMap.set('v', bindToClass(this.nodeToUSJVerse));
+    thisMap.set('id', this.nodeToUSJId.bind(this));
+    thisMap.set('chapter', this.nodeToUSJChapter.bind(this));
     // nooop
-    thisMap.set("usfm", () => {});
-    addHandlers(["paragraph", "q", "w"], this.nodeToUSJPara);
-    addHandlers(["cl", "cp", "vp"], this.nodeToUSJGeneric);
-    addHandlers(["ca", "va"], this.nodeToUSJCaVa);
-    addHandlers(["table", "tr"], this.nodeToUSJTable);
-    addHandlers(["milestone", "zNameSpace"], this.nodeToUSJMilestone);
-    addHandlers(["esb", "cat", "fig", "ref"], this.nodeToUSJSpecial);
+    thisMap.set('usfm', () => {});
+    addHandlers(['paragraph', 'q', 'w'], this.nodeToUSJPara);
+    addHandlers(['cl', 'cp', 'vp'], this.nodeToUSJGeneric);
+    addHandlers(['ca', 'va'], this.nodeToUSJCaVa);
+    addHandlers(['table', 'tr'], this.nodeToUSJTable);
+    addHandlers(['milestone', 'zNameSpace'], this.nodeToUSJMilestone);
+    addHandlers(['esb', 'cat', 'fig', 'ref'], this.nodeToUSJSpecial);
     addHandlers(NOTE_MARKERS, this.nodeToUSJNotes);
     addHandlers(
-      [CHAR_STYLE_MARKERS, NESTED_CHAR_STYLE_MARKERS, "xt_standalone"].flat(),
-      this.nodeToUSJChar
+      [CHAR_STYLE_MARKERS, NESTED_CHAR_STYLE_MARKERS, 'xt_standalone'].flat(),
+      this.nodeToUSJChar,
     );
     // addHandlers(NESTED_CHAR_STYLE_MARKERS, this.nodeToUSJChar);
     // thisMap.set("xt_standalone", this.nodeToUSJChar.bind(this));
@@ -469,8 +469,8 @@ class USJGenerator {
     addHandlers(TABLE_CELL_MARKERS, this.nodeToUSJTable);
 
     addHandlers(
-      PARA_STYLE_MARKERS.filter((m) => m != "usfm"),
-      this.nodeToUSJGeneric
+      PARA_STYLE_MARKERS.filter((m) => m !== 'usfm'),
+      this.nodeToUSJGeneric,
     );
     return thisMap;
   }
@@ -481,18 +481,18 @@ class USJGenerator {
   }
 
   nodeToUSJ(node, parentJsonObj) {
-    const nodeType = node.type?.replace("\\", "");
+    const nodeType = node.type?.replace('\\', '');
     const handler = this.dispatchMap.get(nodeType);
     if (handler) {
       handler(node, parentJsonObj);
       return;
     } else {
-      if (!nodeType) return;
+      if (!nodeType) { return; }
       // some edge cases where we can't cleanly map to a marker:
-      if (nodeType.endsWith("Attribute")) {
+      if (nodeType.endsWith('Attribute')) {
         return this.nodeToUSJAttrib(node, parentJsonObj);
       }
-      if (["", "|"].includes(node.type.trim())) {
+      if (['', '|'].includes(node.type.trim())) {
         // known noop;
         return;
       }
@@ -518,52 +518,5 @@ class USJGenerator {
 //   console.timeEnd("initQueries");
 //   return init;
 // }
-function getIdQuery(lang) {
-  return lang.query("(id (bookcode) @book-code (description)? @desc)");
-}
-function usjCaVaquery(lang) {
-  return lang.query(
-    `([
-    (chapterNumber)
-    (verseNumber)
-] @alt-num)`
-  );
-}
-function attribValQuery(lang) {
-  return lang.query("((attributeValue) @attrib-val)");
-}
-function getChapQuery(lang) {
-  return lang.query(
-    `(c (chapterNumber) @chap-num
-                                         (ca (chapterNumber) @alt-num)?
-                                         (cp (text) @pub-num)?)`
-  );
-}
-function paraQuery(lang) {
-  return lang.query("(paragraph (_) @para-marker)");
-}
-function mileStoneQuery(lang) {
-  return lang.query(
-    `([
-    (milestoneTag)
-    (milestoneStartTag)
-    (milestoneEndTag)
-    (zSpaceTag)
-] @ms-name)`
-  );
-}
-
-function categoryQuery(lang) {
-  return lang.query("((category) @category)");
-}
-function verseNumCapQuery(lang) {
-  return lang.query(
-    `(v
-        (verseNumber) @vnum
-        (va (verseNumber) @alt)?
-        (vp (text) @vp)?
-    )`
-  );
-}
 
 export default USJGenerator;
