@@ -1,4 +1,5 @@
-git+https://github.com/tree-sitter/py-tree-sitter.git@c1bd563b330b2c2fe9894beb652bc58ae8613b0c#egg=tree-sitter
-tree-sitter-usfm3==3.1.2
+tree-sitter==0.24.0
+tree-sitter-usfm3==3.1.3
 lxml==6.0.0
 jsonschema==4.24.0
+tree-sitter==0.22.3
