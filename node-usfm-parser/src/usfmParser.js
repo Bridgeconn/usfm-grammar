@@ -1,18 +1,18 @@
-const Parser = require("tree-sitter");
-const assert = require("assert");
+const Parser = require('tree-sitter');
+const assert = require('assert');
 
-const {USFMGenerator} = require("./usfmGenerator");
-const {USJGenerator} = require("./usjGenerator");
-const {ListGenerator} = require("./listGenerator");
-const {USXGenerator} = require("./usxGenerator");
+const { USFMGenerator } = require('./usfmGenerator');
+const { USJGenerator } = require('./usjGenerator');
+const { ListGenerator } = require('./listGenerator');
+const { USXGenerator } = require('./usxGenerator');
 const {
   includeMarkersInUsj,
   excludeMarkersInUsj,
   Filter,
-} = require("./filters.js");
-const {ORIGINAL_VREF} = require("./utils/vrefs");
-const USFM3 = require("tree-sitter-usfm3");
-const {Query} = Parser;
+} = require('./filters.js');
+const { ORIGINAL_VREF } = require('./utils/vrefs');
+const USFM3 = require('tree-sitter-usfm3');
+const { Query } = Parser;
 
 class USFMParser {
   constructor(
@@ -20,7 +20,7 @@ class USFMParser {
     fromUsj = null,
     fromUsx = null,
     fromBibleNlp = null,
-    bookCode = null
+    bookCode = null,
   ) {
     this.syntaxTree = null;
     this.errors = [];
@@ -46,17 +46,17 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     }
     if (inputsGiven === 0) {
       throw Error(
-        "Missing input! Either USFM, USJ, USX or BibleNLP is to be provided."
+        'Missing input! Either USFM, USJ, USX or BibleNLP is to be provided.',
       );
     }
 
     if (usfmString !== null) {
       if (
-        typeof usfmString !== "string" ||
-        !usfmString.trim().startsWith("\\")
+        typeof usfmString !== 'string' ||
+        !usfmString.trim().startsWith('\\')
       ) {
         throw new Error(
-          "Invalid input for USFM. Expected a string with \\ markups."
+          'Invalid input for USFM. Expected a string with \\ markups.',
         );
       }
       this.usfm = usfmString;
@@ -91,13 +91,13 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     excludeMarkers = null,
     includeMarkers = null,
     ignoreErrors = false,
-    combineTexts = true
+    combineTexts = true,
   ) {
     this.usj = this.convertUSFMToUSJ(
       (excludeMarkers = excludeMarkers),
       (includeMarkers = includeMarkers),
       (ignoreErrors = ignoreErrors),
-      (combineTexts = combineTexts)
+      (combineTexts = combineTexts),
     );
     return this.usj;
   }
@@ -105,24 +105,24 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     excludeMarkers = null,
     includeMarkers = null,
     ignoreErrors = false,
-    combineTexts = true
+    combineTexts = true,
   ) {
     this.usj = this.convertUSFMToUSJ2(
       (excludeMarkers = excludeMarkers),
       (includeMarkers = includeMarkers),
       (ignoreErrors = ignoreErrors),
-      (combineTexts = combineTexts)
+      (combineTexts = combineTexts),
     );
     return this.usj;
   }
 
   usjToUsfm(usjObject) {
     if (
-      typeof usjObject !== "object" ||
+      typeof usjObject !== 'object' ||
       usjObject === null ||
-      !usjObject.hasOwnProperty("type")
+      !usjObject.hasOwnProperty('type')
     ) {
-      throw new Error("Invalid input for USJ. Expected USJ json object.");
+      throw new Error('Invalid input for USJ. Expected USJ json object.');
     }
     if (!this.parser) {
       this.initializeParser();
@@ -153,7 +153,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
   }
 
   checkForErrors(tree) {
-    const errorQuery = new Query(USFM3, "(ERROR) @errors");
+    const errorQuery = new Query(USFM3, '(ERROR) @errors');
     const errors = errorQuery.captures(tree.rootNode);
 
     if (errors.length > 0) {
@@ -163,20 +163,20 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
             error.node.startPosition.column
           }, Error: ${this.usfm.substring(
             error.node.startIndex,
-            error.node.endIndex
-          )}`
+            error.node.endIndex,
+          )}`,
       );
-      return new Error(`Errors found in USFM: ${this.errors.join(", ")}`);
+      return new Error(`Errors found in USFM: ${this.errors.join(', ')}`);
     }
   }
 
   checkforMissing(node) {
-    for (let n of node.children) {
+    for (const n of node.children) {
       if (n.isMissing) {
         this.errors.push(
           `At ${n.startPosition.row + 1}:${
             n.startPosition.column
-          }, Error: Missing ${n.type}`
+          }, Error: Missing ${n.type}`,
         );
       }
       this.checkforMissing(n);
@@ -192,19 +192,19 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     try {
       assert(
         1 <= this.usx.nodeType && this.usx.nodeType <= 12,
-        "Input must be an instance of xmldom Document or Element"
+        'Input must be an instance of xmldom Document or Element',
       );
-      if (this.usx.tagName !== "usx") {
+      if (this.usx.tagName !== 'usx') {
         assert(
-          this.usx.getElementsByTagName("usx").length === 1,
-          "Expects a <usx> node. Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml"
+          this.usx.getElementsByTagName('usx').length === 1,
+          'Expects a <usx> node. Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml',
         );
 
-        this.usx = this.usx.getElementsByTagName("usx")[0];
+        this.usx = this.usx.getElementsByTagName('usx')[0];
       }
       // assert(this.usx.childNodes[0].tagName === 'book', "<book> expected as first element in <usx>")
     } catch (err) {
-      throw new Error("USX not in expected format. " + err.message);
+      throw new Error(`USX not in expected format. ${ err.message}`);
     }
     try {
       const usfmGen = new USFMGenerator();
@@ -212,22 +212,22 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       // console.log(usfmGen.usfmString)
       return usfmGen.usfmString;
     } catch (err) {
-      let message = "Unable to do the conversion from USX to USFM. ";
-      throw new Error(message, {cause: err});
+      const message = 'Unable to do the conversion from USX to USFM. ';
+      throw new Error(message, { cause: err });
     }
   }
 
   convertBibleNLPtoUSFM(bookCode) {
     try {
-      assert(this.bibleNlp["vref"], "Should have 'vref' key");
-      assert(this.bibleNlp["text"], "Should have 'text' key");
+      assert(this.bibleNlp.vref, "Should have 'vref' key");
+      assert(this.bibleNlp.text, "Should have 'text' key");
       assert(
-        Array.isArray(this.bibleNlp["vref"]),
-        "'vref' should contain an array of references."
+        Array.isArray(this.bibleNlp.vref),
+        "'vref' should contain an array of references.",
       );
       assert(
-        Array.isArray(this.bibleNlp["text"]),
-        "'text' should contain an array of strings."
+        Array.isArray(this.bibleNlp.text),
+        "'text' should contain an array of strings.",
       );
       let vrefs = this.bibleNlp.vref;
       if (
@@ -240,7 +240,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       if (bookCode !== null) {
         bookCode = bookCode.trim().toUpperCase();
         vrefs = this.bibleNlp.vref.filter((ref) =>
-          ref.trim().toUpperCase().startsWith(bookCode)
+          ref.trim().toUpperCase().startsWith(bookCode),
         );
       }
 
@@ -249,22 +249,22 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
           this.bibleNlp.vref.length === this.bibleNlp.text.length &&
           bookCode !== null
         ) {
-          let texts = this.bibleNlp.text.filter((txt, index) =>
-            this.bibleNlp.vref[index].trim().toUpperCase().startsWith(bookCode)
+          const texts = this.bibleNlp.text.filter((txt, index) =>
+            this.bibleNlp.vref[index].trim().toUpperCase().startsWith(bookCode),
           );
           this.bibleNlp.text = texts;
         }
         if (vrefs.length !== this.bibleNlp.text.length) {
           throw new Error(
-            `Mismatch in lengths of vref and text lists. ` +
-              `Specify a bookCode or check for versification differences. ` +
-              `${vrefs.length} != ${this.bibleNlp.text.length}`
+            'Mismatch in lengths of vref and text lists. ' +
+              'Specify a bookCode or check for versification differences. ' +
+              `${vrefs.length} != ${this.bibleNlp.text.length}`,
           );
         }
       }
       this.bibleNlp.vref = vrefs;
     } catch (err) {
-      throw new Error("BibleNLP object not in expected format. " + err.message);
+      throw new Error(`BibleNLP object not in expected format. ${ err.message}`);
     }
     try {
       const usfmGen = new USFMGenerator();
@@ -272,8 +272,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       this.warnings = usfmGen.warnings;
       return usfmGen.usfmString;
     } catch (err) {
-      let message = "Unable to do the conversion from BibleNLP to USFM. ";
-      throw new Error(message, {cause: err});
+      const message = 'Unable to do the conversion from BibleNLP to USFM. ';
+      throw new Error(message, { cause: err });
     }
   }
 
@@ -281,37 +281,37 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     excludeMarkers = null,
     includeMarkers = null,
     ignoreErrors = false,
-    combineTexts = true
+    combineTexts = true,
   ) {
     if (!ignoreErrors && this.errors.length > 0) {
-      let errorString = this.errors.join("\n\t");
+      const errorString = this.errors.join('\n\t');
       throw new Error(
-        `Errors present:\n\t${errorString}\nUse ignoreErrors = true, as third parameter of toUSJ(), to generate output despite errors.`
+        `Errors present:\n\t${errorString}\nUse ignoreErrors = true, as third parameter of toUSJ(), to generate output despite errors.`,
       );
     }
 
     let outputUSJ;
     try {
-      let usjGenerator = new USJGenerator(USFM3, this.usfm);
+      const usjGenerator = new USJGenerator(USFM3, this.usfm);
 
       usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
       outputUSJ = usjGenerator.jsonRootObj;
     } catch (err) {
-      let message = "Unable to do the conversion. ";
+      let message = 'Unable to do the conversion. ';
       if (this.errors) {
-        let errorString = this.errors.join("\n\t");
+        const errorString = this.errors.join('\n\t');
         message += `Could be due to an error in the USFM\n\t${errorString}`;
       } else {
         message = err.message;
       }
-      return {error: message};
+      return { error: message };
     }
 
     if (includeMarkers) {
       outputUSJ = Filter.keepOnly(
         outputUSJ,
-        [...includeMarkers, "USJ"],
-        combineTexts
+        [...includeMarkers, 'USJ'],
+        combineTexts,
       );
     }
     if (excludeMarkers) {
@@ -325,15 +325,15 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     excludeMarkers = null,
     includeMarkers = null,
     ignoreErrors = false,
-    combineTexts = true
+    combineTexts = true,
   ) {
     /* Uses the toJSON function and converts JSON to CSV
 	       To be re-implemented to work with the flat JSON schema */
 
     if (!ignoreErrors && this.errors.length > 0) {
-      let errorString = this.errors.join("\n\t");
+      const errorString = this.errors.join('\n\t');
       throw new Error(
-        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`
+        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`,
       );
     }
 
@@ -345,26 +345,26 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       }
       if (excludeMarkers) {
         excludeList = excludeMarkers.filter(
-          (item) => !Filter.BCV.includes(item)
+          (item) => !Filter.BCV.includes(item),
         );
       }
       const usjDict = this.toUSJ(
         excludeList,
         includeList,
         ignoreErrors,
-        combineTexts
+        combineTexts,
       );
 
       const listGenerator = new ListGenerator();
       listGenerator.usjToList(usjDict, excludeMarkers, includeMarkers);
       return listGenerator.list;
     } catch (exe) {
-      let message = "Unable to do the conversion. ";
+      let message = 'Unable to do the conversion. ';
       if (this.errors.length > 0) {
-        let errorString = this.errors.join("\n\t");
+        const errorString = this.errors.join('\n\t');
         message += `Could be due to an error in the USFM\n\t${errorString}`;
       }
-      throw new Error(message, {cause: exe});
+      throw new Error(message, { cause: exe });
     }
   }
 
@@ -373,9 +373,9 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
 	       Then the JSOn is converted to list of verse texts and vrefs*/
 
     if (!ignoreErrors && this.errors.length > 0) {
-      let errorString = this.errors.join("\n\t");
+      const errorString = this.errors.join('\n\t');
       throw new Error(
-        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`
+        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`,
       );
     }
 
@@ -384,18 +384,18 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
         null,
         [...Filter.BCV, ...Filter.TEXT],
         ignoreErrors,
-        true
+        true,
       );
       const listGenerator = new ListGenerator();
       listGenerator.usjToBibleNlpFormat(usjDict);
       return listGenerator.bibleNlpFormat;
     } catch (exe) {
-      let message = "Unable to do the conversion. ";
+      let message = 'Unable to do the conversion. ';
       if (this.errors.length > 0) {
-        let errorString = this.errors.join("\n\t");
+        const errorString = this.errors.join('\n\t');
         message += `Could be due to an error in the USFM\n\t${errorString}`;
       }
-      throw new Error(message, {cause: exe});
+      throw new Error(message, { cause: exe });
     }
   }
 
@@ -403,9 +403,9 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     /* Convert the syntax_tree to the XML format (USX) */
 
     if (!ignoreErrors && this.errors.length > 0) {
-      let errorString = this.errors.join("\n\t");
+      const errorString = this.errors.join('\n\t');
       throw new Error(
-        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`
+        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`,
       );
     }
     let xmlContent = null;
@@ -420,12 +420,12 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       // xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
       xmlContent = usxGenerator.xmlRootNode;
     } catch (exe) {
-      let message = "Unable to do the conversion. ";
+      let message = 'Unable to do the conversion. ';
       if (this.errors.length > 0) {
-        let errorString = this.errors.join("\n\t");
+        const errorString = this.errors.join('\n\t');
         message += `Could be due to an error in the USFM\n\t${errorString}`;
       }
-      throw new Error(message, {cause: exe});
+      throw new Error(message, { cause: exe });
     }
 
     // Return the generated XML structure (in JSON format)

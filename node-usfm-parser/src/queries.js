@@ -1,30 +1,30 @@
-const Parser = require("tree-sitter");
-const {Query} = Parser;
+const Parser = require('tree-sitter');
+const { Query } = Parser;
 
 function createQueriesAsNeeded(name, lang) {
   switch (name) {
-    case "chapter":
-      return getChapQuery(lang);
-    case "usjCaVa":
-      return usjCaVaquery(lang);
-    case "attribVal":
-      return attribValQuery(lang);
-    case "para":
-      return paraQuery(lang);
-    case "id":
-      return getIdQuery(lang);
-    case "milestone":
-      return mileStoneQuery(lang);
-    case "category":
-      return categoryQuery(lang);
-    case "verseNumCap":
-      return verseNumCapQuery(lang);
-    default:
-      break;
+  case 'chapter':
+    return getChapQuery(lang);
+  case 'usjCaVa':
+    return usjCaVaquery(lang);
+  case 'attribVal':
+    return attribValQuery(lang);
+  case 'para':
+    return paraQuery(lang);
+  case 'id':
+    return getIdQuery(lang);
+  case 'milestone':
+    return mileStoneQuery(lang);
+  case 'category':
+    return categoryQuery(lang);
+  case 'verseNumCap':
+    return verseNumCapQuery(lang);
+  default:
+    break;
   }
 }
 function getIdQuery(lang) {
-  return new Query(lang, "(id (bookcode) @book-code (description)? @desc)");
+  return new Query(lang, '(id (bookcode) @book-code (description)? @desc)');
 }
 function usjCaVaquery(lang) {
   return new Query(
@@ -32,22 +32,22 @@ function usjCaVaquery(lang) {
     `([
     (chapterNumber)
     (verseNumber)
-] @alt-num)`
+] @alt-num)`,
   );
 }
 function attribValQuery(lang) {
-  return new Query(lang, "((attributeValue) @attrib-val)");
+  return new Query(lang, '((attributeValue) @attrib-val)');
 }
 function getChapQuery(lang) {
   return new Query(
     lang,
     `(c (chapterNumber) @chap-num
                                          (ca (chapterNumber) @alt-num)?
-                                         (cp (text) @pub-num)?)`
+                                         (cp (text) @pub-num)?)`,
   );
 }
 function paraQuery(lang) {
-  return new Query(lang, "(paragraph (_) @para-marker)");
+  return new Query(lang, '(paragraph (_) @para-marker)');
 }
 function mileStoneQuery(lang) {
   return new Query(
@@ -57,12 +57,12 @@ function mileStoneQuery(lang) {
     (milestoneStartTag)
     (milestoneEndTag)
     (zSpaceTag)
-] @ms-name)`
+] @ms-name)`,
   );
 }
 
 function categoryQuery(lang) {
-  return new Query(lang, "((category) @category)");
+  return new Query(lang, '((category) @category)');
 }
 function verseNumCapQuery(lang) {
   return new Query(
@@ -71,8 +71,8 @@ function verseNumCapQuery(lang) {
         (verseNumber) @vnum
         (va (verseNumber) @alt)?
         (vp (text) @vp)?
-    )`
+    )`,
   );
 }
-module.exports = {createQueriesAsNeeded};
+module.exports = { createQueriesAsNeeded };
 // exports.createQueriesAsNeeded = createQueriesAsNeeded;
