@@ -1,28 +1,6 @@
 const Parser = require('tree-sitter');
 const { Query } = Parser;
 
-function createQueriesAsNeeded(name, lang) {
-  switch (name) {
-  case 'chapter':
-    return getChapQuery(lang);
-  case 'usjCaVa':
-    return usjCaVaquery(lang);
-  case 'attribVal':
-    return attribValQuery(lang);
-  case 'para':
-    return paraQuery(lang);
-  case 'id':
-    return getIdQuery(lang);
-  case 'milestone':
-    return mileStoneQuery(lang);
-  case 'category':
-    return categoryQuery(lang);
-  case 'verseNumCap':
-    return verseNumCapQuery(lang);
-  default:
-    break;
-  }
-}
 function getIdQuery(lang) {
   return new Query(lang, '(id (bookcode) @book-code (description)? @desc)');
 }
@@ -74,5 +52,29 @@ function verseNumCapQuery(lang) {
     )`,
   );
 }
+
+function createQueriesAsNeeded(name, lang) {
+  switch (name) {
+  case 'chapter':
+    return getChapQuery(lang);
+  case 'usjCaVa':
+    return usjCaVaquery(lang);
+  case 'attribVal':
+    return attribValQuery(lang);
+  case 'para':
+    return paraQuery(lang);
+  case 'id':
+    return getIdQuery(lang);
+  case 'milestone':
+    return mileStoneQuery(lang);
+  case 'category':
+    return categoryQuery(lang);
+  case 'verseNumCap':
+    return verseNumCapQuery(lang);
+  default:
+    break;
+  }
+}
+
 module.exports = { createQueriesAsNeeded };
 // exports.createQueriesAsNeeded = createQueriesAsNeeded;

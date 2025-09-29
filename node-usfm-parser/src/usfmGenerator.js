@@ -1,4 +1,5 @@
-const { NO_USFM_USJ_TYPES, CLOSING_USJ_TYPES, NON_ATTRIB_USJ_KEYS, NO_NEWLINE_USJ_TYPES } = require('./utils/types');
+const { NO_USFM_USJ_TYPES,
+  CLOSING_USJ_TYPES, NON_ATTRIB_USJ_KEYS, NO_NEWLINE_USJ_TYPES } = require('./utils/types');
 const { NON_ATTRIB_USX_KEYS, NO_NEWLINE_USX_TYPES } = require('./utils/types');
 
 class USFMGenerator {
@@ -79,7 +80,7 @@ class USFMGenerator {
     }
     if (usjObj.type === 'ms') {
       if ('sid' in usjObj) {
-        if (attributes.length == 0 ) {
+        if (attributes.length === 0 ) {
           this.usfmString += '|';
         }
         this.usfmString += `sid="${usjObj.sid}" `;
@@ -177,7 +178,8 @@ class USFMGenerator {
         }
       }
       if (child.nodeType === 3 && child.nodeValue.trim()) { // Check if child is a text node with content
-        if (this.usfmString !== '' && !['\n', '\r', ' ', '\t'].includes(this.usfmString.slice(-1))) {
+        if (this.usfmString !== '' &&
+          !['\n', '\r', ' ', '\t'].includes(this.usfmString.slice(-1))) {
           this.usfmString += ' ';
         }
         this.usfmString += child.nodeValue.trim();

@@ -8,13 +8,33 @@ const { USJ_SCHEMA } = require('./utils/usjSchema');
 
 const { Query } = Parser;
 
+const bookCodeMissingPattern = /\\id[\s\n\r]*\\/;
+const vWithoutSpacePattern = /(\\v)(\d+)/;
+const cWithoutSpacePattern = /(\\c)(\d+)/;
+const validMarkersPattern = new RegExp(
+  '(\\\\id|\\\\usfm|\\\\ide|\\\\ref|\\\\h|\\\\toc|\\\\toca|\\\\sts|\\\\rem|\\\\restore|' +
+  '\\\\lit|\\\\iqt|\\\\imt|\\\\imte|\\\\is|\\\\io|\\\\ior|\\\\iot|\\\\ip|\\\\im|\\\\ipi|' +
+  '\\\\imi|\\\\ili|\\\\ipq|\\\\imq|\\\\ipr|\\\\ib|\\\\iq|\\\\ie|\\\\iex|\\\\v|\\\\va|\\\\vp|' +
+  '\\\\c|\\\\cl|\\\\ca|\\\\cp|\\\\cd|\\\\mt|\\\\mte|\\\\ms|\\\\mr|\\\\s|\\\\sr|\\\\r|\\\\sp|' +
+  '\\\\d|\\\\sd|\\\\p|\\\\m|\\\\po|\\\\pr|\\\\cls|\\\\pmo|\\\\pm|\\\\pmc|\\\\pmr|\\\\pi|\\\\mi|' +
+  '\\\\nb|\\\\pc|\\\\ph|\\\\phi|\\\\b|\\\\q|\\\\qr|\\\\qc|\\\\qs|\\\\qa|\\\\qac|\\\\qm|\\\\qd|' +
+  '\\\\lh|\\\\lf|\\\\li|\\\\lim|\\\\liv|\\\\lik|\\\\litl|\\\\tr|\\\\th|\\\\thr|\\\\tc|\\\\tcr|' +
+  '\\\\f|\\\\fe|\\\\ef|\\\\fr|\\\\fq|\\\\fqa|\\\\fk|\\\\fl|\\\\fw|\\\\fp|\\\\ft|\\\\fdc|\\\\fv|' +
+  '\\\\fm|\\\\x|\\\\xo|\\\\xk|\\\\xq|\\\\xt|\\\\xta|\\\\xop|\\\\xot|\\\\xnt|\\\\xdc|\\\\rq|' +
+  '\\\\add|\\\\bk|\\\\dc|\\\\k|\\\\nd|\\\\ord|\\\\pn|\\\\png|\\\\addpn|\\\\qt|\\\\sig|\\\\sls|' +
+  '\\\\tl|\\\\wj|\\\\em|\\\\bd|\\\\it|\\\\bdit|\\\\no|\\\\sc|\\\\sup|\\\\ndx|\\\\pro|\\\\rb|' +
+  '\\\\w|\\\\wg|\\\\wh|\\\\wa|\\\\fig|\\\\jmp|\\\\pb|\\\\z|\\\\esb|\\\\esbe|\\\\cat)' +
+  '(\\d|\\s|\\n|\\r|$)',
+);
+
+
 class Validator {
   constructor(usjSchemaPath = null) {
     this.USFMParser = new Parser();
     this.USFMParser.setLanguage(USFM3);
     this.parserOptions = Parser.Options = {
-						      bufferSize: 1024 * 1024,
-						    };
+      bufferSize: 1024 * 1024,
+    };
 
     this.USFMErrors = [];
 
@@ -25,12 +45,12 @@ class Validator {
       if (usjSchemaPath === null) {
         this.USJValidator = ajv.compile(USJ_SCHEMA);
       } else {
-    			const schemaStr = fs.readFileSync(usjSchemaPath, 'utf8');
-    			const schema = JSON.parse(schemaStr);
-    			this.USJValidator = ajv.compile(schema);
+        const schemaStr = fs.readFileSync(usjSchemaPath, 'utf8');
+        const schema = JSON.parse(schemaStr);
+        this.USJValidator = ajv.compile(schema);
       }
     } catch (error) {
-      console.error('Error loading schema:', error);
+      throw new Error(`Error loading schema: ${error}`);
     }
 
     this.message = '';
@@ -42,7 +62,7 @@ class Validator {
     this.message = '';
 
     if (this.USJValidator(usj) === true) {
-        	return true;
+      return true;
     } else {
       for (const err of this.USJValidator.errors) {
         this.message += `Error at ${err.instancePath}: ${err.message}\n`;
@@ -52,9 +72,9 @@ class Validator {
   }
 
   isValidUSFM(usfm) {
-    	this.usfm = usfm;
-    	this.USFMErrors = [];
-    	let tree = null;
+    this.usfm = usfm;
+    this.USFMErrors = [];
+    let tree = null;
     if (usfm.length > 25000) {
       tree = this.USFMParser.parse(usfm, null, this.parserOptions);
     }
@@ -80,13 +100,13 @@ class Validator {
 
   checkForMissing(node) {
     for (const n of node.children) {
-	        if (n.isMissing) {
-	        		this.USFMErrors.push(n);
-	        } else {
-		        this.checkForMissing(n);
-	        }
+      if (n.isMissing) {
+        this.USFMErrors.push(n);
+      } else {
+        this.checkForMissing(n);
+      }
 
-	    }
+    }
   }
 
   formatErrors() {
@@ -96,7 +116,8 @@ class Validator {
         const end = Math.min(this.usfm.length, err.startIndex + 10);
         return `At ${err.startIndex}:Missing something  here:${this.usfm.slice(start, end)}`;
       } else {
-        return `At ${err.startPosition.row}:${err.startPosition.column}, Error: ${this.usfm.substring(err.startIndex, err.endIndex)}`;
+        return `At ${err.startPosition.row}:${err.startPosition.column},
+Error: ${this.usfm.substring(err.startIndex, err.endIndex)}`;
       }
     });
     return `Errors present:\n\t${errLines.join('\n\t')}`;
@@ -104,11 +125,11 @@ class Validator {
 
   autoFixUSFM(usfm, fixed = false) {
     if (this.isValidUSFM(usfm)) {
-        	if (fixed) {
-        		this.message = 'Fixed Errors in USFM';
-        	} else {
-	            this.message = 'No Errors in USFM';
-        	}
+      if (fixed) {
+        this.message = 'Fixed Errors in USFM';
+      } else {
+        this.message = 'No Errors in USFM';
+      }
       return usfm;
     }
     let modifiedUSFM = usfm;
@@ -124,7 +145,8 @@ class Validator {
         changed = true;
       }
       // Missing space after \s5
-      else if (error.isMissing && error.parent.type === 'sTag' && error.toString() === '(MISSING " ")') {
+      else if (
+        error.isMissing && error.parent.type === 'sTag' && error.toString() === '(MISSING " ")') {
         // console.log("Match 2");
         modifiedUSFM = modifiedUSFM.replace(/\\s5\n/g, '\\s5 \n');
         changed = true;
@@ -158,7 +180,8 @@ class Validator {
         changed = true;
       }
       // \p not given at chapter start
-      else if (error.isError && errorText.startsWith('\\v') && error.previousSibling.type === 'chapter' &&
+      else if (
+        error.isError && errorText.startsWith('\\v') && error.previousSibling.type === 'chapter' &&
                 !error.children.some(ch => ch.type === 'paragraph')) {
         // console.log("Match 7");
         const start = error.previousSibling.startIndex;
@@ -167,7 +190,8 @@ class Validator {
         modifiedUSFM = modifiedUSFM.replace(toReplace, `${toReplace}\\p\n`);
         changed = true;
       }
-      else if (error.isError && !errorText.startsWith('\\') && error.previousSibling.type === 'chapter' &&
+      else if (
+        error.isError && !errorText.startsWith('\\') && error.previousSibling.type === 'chapter' &&
                 !error.children.some(ch => ch.type === 'paragraph')) {
         // console.log("Match 7.1");
         const start = error.previousSibling.startIndex;
@@ -204,7 +228,9 @@ class Validator {
         changed = true;
       }
       // Stray content in the chapter line
-      else if (error.parent.type === 'chapter' && error.previousSibling.type === 'c' && !errorText.includes('\\')) {
+      else if (
+        error.parent.type === 'chapter' &&
+        error.previousSibling.type === 'c' && !errorText.includes('\\')) {
         // console.log("Match 11");
         modifiedUSFM = modifiedUSFM.replace(errorText, '');
         changed = true;
@@ -221,10 +247,5 @@ class Validator {
     return this.autoFixUSFM(modifiedUSFM, true);
   }
 }
-
-const bookCodeMissingPattern = /\\id[\s\n\r]*\\/;
-const vWithoutSpacePattern = /(\\v)(\d+)/;
-const cWithoutSpacePattern = /(\\c)(\d+)/;
-const validMarkersPattern = /(\\id|\\usfm|\\ide|\\ref|\\h|\\toc|\\toca|\\sts|\\rem|\\restore|\\lit|\\iqt|\\imt|\\imte|\\is|\\io|\\ior|\\iot|\\ip|\\im|\\ipi|\\imi|\\ili|\\ipq|\\imq|\\ipr|\\ib|\\iq|\\ie|\\iex|\\v|\\va|\\vp|\\c|\\cl|\\ca|\\cp|\\cd|\\mt|\\mte|\\ms|\\mr|\\s|\\sr|\\r|\\sp|\\d|\\sd|\\p|\\m|\\po|\\pr|\\cls|\\pmo|\\pm|\\pmc|\\pmr|\\pi|\\mi|\\nb|\\pc|\\ph|\\phi|\\b|\\q|\\qr|\\qc|\\qs|\\qa|\\qac|\\qm|\\qd|\\lh|\\lf|\\li|\\lim|\\liv|\\lik|\\litl|\\tr|\\th|\\thr|\\tc|\\tcr|\\f|\\fe|\\ef|\\fr|\\fq|\\fqa|\\fk|\\fl|\\fw|\\fp|\\ft|\\fdc|\\fv|\\fm|\\x|\\xo|\\xk|\\xq|\\xt|\\xta|\\xop|\\xot|\\xnt|\\xdc|\\rq|\\add|\\bk|\\dc|\\k|\\nd|\\ord|\\pn|\\png|\\addpn|\\qt|\\sig|\\sls|\\tl|\\wj|\\em|\\bd|\\it|\\bdit|\\no|\\sc|\\sup|\\ndx|\\pro|\\rb|\\w|\\wg|\\wh|\\wa|\\fig|\\jmp|\\pb|\\z|\\esb|\\esbe|\\cat)(\d|\s|\n|\r|$)/;
 
 exports.Validator = Validator;

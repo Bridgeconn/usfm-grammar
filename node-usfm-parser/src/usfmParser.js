@@ -5,11 +5,7 @@ const { USFMGenerator } = require('./usfmGenerator');
 const { USJGenerator } = require('./usjGenerator');
 const { ListGenerator } = require('./listGenerator');
 const { USXGenerator } = require('./usxGenerator');
-const {
-  includeMarkersInUsj,
-  excludeMarkersInUsj,
-  Filter,
-} = require('./filters.js');
+const { Filter } = require('./filters.js');
 const { ORIGINAL_VREF } = require('./utils/vrefs');
 const USFM3 = require('tree-sitter-usfm3');
 const { Query } = Parser;
@@ -197,7 +193,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       if (this.usx.tagName !== 'usx') {
         assert(
           this.usx.getElementsByTagName('usx').length === 1,
-          'Expects a <usx> node. Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml',
+          `Expects a <usx> node.
+Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
         );
 
         this.usx = this.usx.getElementsByTagName('usx')[0];
@@ -286,7 +283,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     if (!ignoreErrors && this.errors.length > 0) {
       const errorString = this.errors.join('\n\t');
       throw new Error(
-        `Errors present:\n\t${errorString}\nUse ignoreErrors = true, as third parameter of toUSJ(), to generate output despite errors.`,
+        `Errors present:\n\t${errorString}
+Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despite errors.`,
       );
     }
 
@@ -333,7 +331,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     if (!ignoreErrors && this.errors.length > 0) {
       const errorString = this.errors.join('\n\t');
       throw new Error(
-        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`,
+        `Errors present:\n\t${errorString}
+Use ignoreErrors=true to generate output despite errors`,
       );
     }
 
@@ -375,7 +374,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     if (!ignoreErrors && this.errors.length > 0) {
       const errorString = this.errors.join('\n\t');
       throw new Error(
-        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`,
+        `Errors present:\n\t${errorString}
+Use ignoreErrors=true to generate output despite errors`,
       );
     }
 
@@ -405,7 +405,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     if (!ignoreErrors && this.errors.length > 0) {
       const errorString = this.errors.join('\n\t');
       throw new Error(
-        `Errors present:\n\t${errorString}\nUse ignoreErrors=true to generate output despite errors`,
+        `Errors present:\n\t${errorString}
+Use ignoreErrors=true to generate output despite errors`,
       );
     }
     let xmlContent = null;

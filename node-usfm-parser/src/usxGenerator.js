@@ -1,7 +1,5 @@
 //Logics for syntax-tree to xml(USX) conversions
-const { DOMImplementation, XMLSerializer } = require('xmldom');
-const Parser = require('tree-sitter');
-const { Query } = Parser;
+const { DOMImplementation } = require('xmldom');
 const {
   PARA_STYLE_MARKERS,
   NOTE_MARKERS,
@@ -9,7 +7,6 @@ const {
   NESTED_CHAR_STYLE_MARKERS,
   DEFAULT_ATTRIB_MAP,
   TABLE_CELL_MARKERS,
-  MISC_MARKERS,
   MARKER_SETS,
 } = require('./utils/markers.js');
 const { createQueriesAsNeeded } = require('./queries.js');
@@ -87,7 +84,7 @@ class USXGenerator {
     addHandlers(TABLE_CELL_MARKERS, this.node2UsxTable);
 
     addHandlers(
-      PARA_STYLE_MARKERS.filter((m) => m != 'usfm'),
+      PARA_STYLE_MARKERS.filter((m) => m !== 'usfm'),
       this.node2UsxGeneric,
     );
     return thisMap;

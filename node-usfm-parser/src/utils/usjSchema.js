@@ -5,12 +5,13 @@ exports.USJ_SCHEMA = {
   'description': 'The JSON varient of USFM and USX data models',
   'type': 'object',
   '$defs': {
-  	'markerObject': {
+    'markerObject': {
       'type': 'object',
       'properties': {
         'type': { 
-        	'description': 'The kind/category of node or element this is, corresponding the USFM marker and USX node',
-        	'type': 'string',
+          'description': `The kind/category of node or element this is,
+corresponding the USFM marker and USX node`,
+          'type': 'string',
         },
         'marker': { 
           'description': 'The corresponding marker in USFM or style in USX',

@@ -55,7 +55,8 @@ class ListGenerator {
           if (excludeMarkers && excludeMarkers.includes('text')) {
             item = '';
           }
-          this.list.push([this.book, this.currentChapter, this.currentVerse, item, markerType, markerName]);
+          this.list.push(
+            [this.book, this.currentChapter, this.currentVerse, item, markerType, markerName]);
         } else {
           this.usjToList(item, excludeMarkers, includeMarkers);
         }
@@ -64,7 +65,8 @@ class ListGenerator {
       if ((!excludeMarkers && !includeMarkers) ||
                 (excludeMarkers && !excludeMarkers.includes(markerName)) ||
                 (includeMarkers && includeMarkers.includes(markerName))) {
-        this.list.push([this.book, this.currentChapter, this.currentVerse, '', markerType, markerName]);
+        this.list.push(
+          [this.book, this.currentChapter, this.currentVerse, '', markerType, markerName]);
       }
     }
   }

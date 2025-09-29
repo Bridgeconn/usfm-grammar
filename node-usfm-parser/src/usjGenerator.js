@@ -471,7 +471,7 @@ class USJGenerator {
     addHandlers(TABLE_CELL_MARKERS, this.nodeToUSJTable);
 
     addHandlers(
-      PARA_STYLE_MARKERS.filter((m) => m != 'usfm'),
+      PARA_STYLE_MARKERS.filter((m) => m !== 'usfm'),
       this.nodeToUSJGeneric,
     );
     return thisMap;
