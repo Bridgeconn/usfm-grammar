@@ -67,7 +67,6 @@ jobs:
       - name: install dependencies
         working-directory: ./node-usfm-parser
         run: |
-          cd node-usfm-parser
           sed -i '/"tree-sitter-usfm3":.*/d' package.json
           npm install .
           npm install ../tree-sitter-usfm3
@@ -101,4 +100,3 @@ jobs:
       - name: Run linter
         working-directory: ./web-usfm-parser
         run: npm run lint
-        
