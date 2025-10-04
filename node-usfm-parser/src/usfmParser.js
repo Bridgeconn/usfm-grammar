@@ -97,20 +97,6 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     );
     return this.usj;
   }
-  toUSJ2(
-    excludeMarkers = null,
-    includeMarkers = null,
-    ignoreErrors = false,
-    combineTexts = true,
-  ) {
-    this.usj = this.convertUSFMToUSJ2(
-      (excludeMarkers = excludeMarkers),
-      (includeMarkers = includeMarkers),
-      (ignoreErrors = ignoreErrors),
-      (combineTexts = combineTexts),
-    );
-    return this.usj;
-  }
 
   usjToUsfm(usjObject) {
     if (
@@ -126,62 +112,6 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     this.usj = usjObject;
     this.usfm = this.convertUSJToUSFM();
     return this.usfm;
-  }
-
-  parseUSFM() {
-    let tree = null;
-    try {
-      if (this.usfm.length > 25000) {
-        tree = this.parser.parse(this.usfm, null, this.parserOptions);
-      } else {
-        tree = this.parser.parse(this.usfm);
-      }
-    } catch (err) {
-      throw err;
-      // console.log("Error in parser.parse()");
-      // console.log(err.toString());
-      // console.log(this.usfm);
-    }
-    this.checkForErrors(tree);
-    this.checkforMissing(tree.rootNode);
-    // if (error) throw error;
-    this.syntaxTree = tree.rootNode;
-  }
-
-  checkForErrors(tree) {
-    const errorQuery = new Query(USFM3, '(ERROR) @errors');
-    const errors = errorQuery.captures(tree.rootNode);
-
-    if (errors.length > 0) {
-      this.errors = errors.map(
-        (error) =>
-          `At ${error.node.startPosition.row}:${
-            error.node.startPosition.column
-          }, Error: ${this.usfm.substring(
-            error.node.startIndex,
-            error.node.endIndex,
-          )}`,
-      );
-      return new Error(`Errors found in USFM: ${this.errors.join(', ')}`);
-    }
-  }
-
-  checkforMissing(node) {
-    for (const n of node.children) {
-      if (n.isMissing) {
-        this.errors.push(
-          `At ${n.startPosition.row + 1}:${
-            n.startPosition.column
-          }, Error: Missing ${n.type}`,
-        );
-      }
-      this.checkforMissing(n);
-    }
-  }
-
-  convertUSJToUSFM() {
-    const outputUSFM = new USFMGenerator().usjToUsfm(this.usj); // Simulated conversion
-    return outputUSFM;
   }
 
   convertUSXToUSFM() {
@@ -212,6 +142,62 @@ Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
       const message = 'Unable to do the conversion from USX to USFM. ';
       throw new Error(message, { cause: err });
     }
+  }
+
+  parseUSFM() {
+    let tree = null;
+    try {
+      if (this.usfm.length > 25000) {
+        tree = this.parser.parse(this.usfm, null, this.parserOptions);
+      } else {
+        tree = this.parser.parse(this.usfm);
+      }
+    } catch (err) {
+      throw err;
+      // console.log("Error in parser.parse()");
+      // console.log(err.toString());
+      // console.log(this.usfm);
+    }
+    this.checkForErrors(tree);
+    this.checkforMissing(tree.rootNode);
+    // if (error) throw error;
+    this.syntaxTree = tree.rootNode;
+  }
+
+  checkForErrors(tree) {
+    const errorQuery = new Query(USFM3, '(ERROR) @errors');
+    const errors = errorQuery.captures(tree.rootNode);
+
+    if (errors.length > 0) {
+      this.errors = errors.map(
+        (err) =>
+          `At ${err.node.startPosition.row}:${
+            err.node.startPosition.column
+          }, Error: ${this.usfm.substring(
+            err.node.startIndex,
+            err.node.endIndex,
+          )}`,
+      );
+      return new Error(`Errors found in USFM: ${this.errors.join(', ')}`);
+    }
+  }
+
+  checkforMissing(node) {
+    for (const n of node.children) {
+      if (n.isMissing) {
+        this.errors.push(
+          `At ${n.startPosition.row + 1}:${
+            n.startPosition.column
+          }, Error: Missing ${n.type}`,
+        );
+      }
+      this.checkforMissing(n);
+    }
+  }
+
+  convertUSJToUSFM() {
+    const outputUSFM = new USFMGenerator().usjToUsfm(this.usj); // Simulated conversion
+    return outputUSFM;
   }
 
   convertBibleNLPtoUSFM(bookCode) {

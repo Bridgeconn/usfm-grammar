@@ -475,11 +475,6 @@ class USJGenerator {
     return thisMap;
   }
 
-  getUsj(node, parentJsonObj) {
-    this.nodeToUSJ(node, parentJsonObj);
-    return parentJsonObj;
-  }
-
   nodeToUSJ(node, parentJsonObj) {
     const nodeType = node.type?.replace('\\', '');
     const handler = this.dispatchMap.get(nodeType);

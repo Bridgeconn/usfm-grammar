@@ -120,7 +120,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       usjObject === null ||
       !usjObject.hasOwnProperty('type')
     ) {
-      throw new Error('Invalid input for USJ. Expected an object.');
+      throw new Error('Invalid input for USJ. Expected USJ json object.');
     }
     if (!this.parser) {
       this.initializeParser();
@@ -132,25 +132,23 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
 
   convertUSXToUSFM() {
     try {
-      if (!(1 <= this.usx.nodeType && this.usx.nodeType <= 12)) {
-        throw new Error(
-          'Input must be an instance of xmldom Document or Element',
-        );
-      }
-      if (this.usx.tagName !== 'usx') {
-        if (!(this.usx.getElementsByTagName('usx').length === 1)) {
-          throw new Error(
-            `Expects a <usx> node.
-Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
-          );
-        }
-
-        this.usx = this.usx.getElementsByTagName('usx')[0];
-      }
-      // assert(this.usx.childNodes[0].tagName === 'book', "<book> expected as first element in <usx>")
-    } catch (err) {
-      throw new Error(`USX not in expected format. ${ err.message}`);
-    }
+       assert(
+         1 <= this.usx.nodeType && this.usx.nodeType <= 12,
+         'Input must be an instance of xmldom Document or Element',
+       );
+       if (this.usx.tagName !== 'usx') {
+         assert(
+           this.usx.getElementsByTagName('usx').length === 1,
+           `Expects a <usx> node.
+ Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
+         );
+ 
+         this.usx = this.usx.getElementsByTagName('usx')[0];
+       }
+       // assert(this.usx.childNodes[0].tagName === 'book', "<book> expected as first element in <usx>")
+     } catch (err) {
+       throw new Error(`USX not in expected format. ${ err.message}`);
+     }
     try {
       const usfmGen = new USFMGenerator();
       usfmGen.usxToUsfm(this.usx);
@@ -238,7 +236,6 @@ Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
         vrefs = vrefs.slice(0, this.bibleNlp.text.length);
         this.bibleNlp.vref = vrefs;
       }
-
       if (bookCode !== null) {
         bookCode = bookCode.trim().toUpperCase();
         vrefs = this.bibleNlp.vref.filter((ref) =>
@@ -295,24 +292,19 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
 
     let outputUSJ;
     try {
-      const usjGenerator = new USJGenerator(
-        USFMParser.language,
-        this.usfm,
-        null,
-        this.syntaxTree,
-      );
-      usjGenerator.getUsj(this.syntaxTree, usjGenerator.jsonRootObj);
+      const usjGenerator = new USJGenerator(USFMParser.language, this.usfm);
+
+      usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
       outputUSJ = usjGenerator.jsonRootObj;
-    } catch (e) {
-      console.log(e);
-      // let message = "Unable to do the conversion. ";
-      // if (this.errors) {
-      //   let errorString = this.errors.join("\n\t");
-      //   message += `Could be due to an error in the USFM\n\t${errorString}`;
-      // } else {
-      //   message = err.message;
-      // }
-      // return {error: message};
+    } catch (err) {
+      let message = "Unable to do the conversion. ";
+      if (this.errors) {
+        let errorString = this.errors.join("\n\t");
+        message += `Could be due to an error in the USFM\n\t${errorString}`;
+      } else {
+        message = err.message;
+      }
+      return {error: message};
     }
 
     if (includeMarkers) {
@@ -328,6 +320,7 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
 
     return outputUSJ;
   }
+
   toList(
     excludeMarkers = null,
     includeMarkers = null,
