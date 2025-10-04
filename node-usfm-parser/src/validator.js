@@ -219,7 +219,6 @@ Error: ${this.usfm.substring(err.startIndex, err.endIndex)}`;
       // Empty attribute
       else if (errorText.trim() === '|') {
         // console.log("Match 10");
-        // console.log(errorText);
         const start = Math.max(0, error.startIndex - 5);
         const end = Math.min(modifiedUSFM.length, error.endIndex + 5);
         const toReplace = modifiedUSFM.slice(start, end);

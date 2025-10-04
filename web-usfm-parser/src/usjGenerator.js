@@ -498,20 +498,5 @@ class USJGenerator {
     }
   }
 }
-// function initQueries(treeSitterLanguageObj) {
-//   console.time("initQueries");
-//   let init = {
-//     chapter: getChapQuery(treeSitterLanguageObj),
-//     usjCaVa: usjCaVaquery(treeSitterLanguageObj),
-//     attribVal: attribValQuery(treeSitterLanguageObj),
-//     para: paraQuery(treeSitterLanguageObj),
-//     id: getIdQuery(treeSitterLanguageObj),
-//     milestone: mileStoneQuery(treeSitterLanguageObj),
-//     category: categoryQuery(treeSitterLanguageObj),
-//     verseNumCap: verseNumCapQuery(treeSitterLanguageObj),
-//   };
-//   console.timeEnd("initQueries");
-//   return init;
-// }
 
 export default USJGenerator;

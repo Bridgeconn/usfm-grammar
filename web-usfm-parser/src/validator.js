@@ -47,7 +47,7 @@ class Validator {
       const ajv = new Ajv();
       this.USJValidator = ajv.compile(USJ_SCHEMA);
     } catch (error) {
-      throw new error('Error loading schema:', error);
+      throw new error(`Error loading schema: ${error}`);
     }
 
     this.message = '';
