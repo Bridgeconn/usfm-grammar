@@ -132,23 +132,23 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
 
   convertUSXToUSFM() {
     try {
-       assert(
-         1 <= this.usx.nodeType && this.usx.nodeType <= 12,
-         'Input must be an instance of xmldom Document or Element',
-       );
-       if (this.usx.tagName !== 'usx') {
-         assert(
-           this.usx.getElementsByTagName('usx').length === 1,
-           `Expects a <usx> node.
- Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
-         );
- 
-         this.usx = this.usx.getElementsByTagName('usx')[0];
-       }
-       // assert(this.usx.childNodes[0].tagName === 'book', "<book> expected as first element in <usx>")
-     } catch (err) {
-       throw new Error(`USX not in expected format. ${ err.message}`);
-     }
+      assert(
+        1 <= this.usx.nodeType && this.usx.nodeType <= 12,
+        'Input must be an instance of xmldom Document or Element',
+      );
+      if (this.usx.tagName !== 'usx') {
+        assert(
+          this.usx.getElementsByTagName('usx').length === 1,
+          `Expects a <usx> node.
+Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
+        );
+
+        this.usx = this.usx.getElementsByTagName('usx')[0];
+      }
+      // assert(this.usx.childNodes[0].tagName === 'book', "<book> expected as first element in <usx>")
+    } catch (err) {
+      throw new Error(`USX not in expected format. ${ err.message}`);
+    }
     try {
       const usfmGen = new USFMGenerator();
       usfmGen.usxToUsfm(this.usx);
@@ -297,14 +297,14 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
       usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
       outputUSJ = usjGenerator.jsonRootObj;
     } catch (err) {
-      let message = "Unable to do the conversion. ";
+      let message = 'Unable to do the conversion.';
       if (this.errors) {
-        let errorString = this.errors.join("\n\t");
+        const errorString = this.errors.join('\n\t');
         message += `Could be due to an error in the USFM\n\t${errorString}`;
       } else {
         message = err.message;
       }
-      return {error: message};
+      return { error: message };
     }
 
     if (includeMarkers) {
