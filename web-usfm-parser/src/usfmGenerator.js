@@ -260,7 +260,6 @@ class USFMGenerator {
     }
   }
 
-
 }
 
 export default USFMGenerator;

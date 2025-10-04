@@ -93,7 +93,7 @@ function includeMarkersInUsj(
   let cleanedKids = [];
   
   if (typeof inputUsj === 'string') {
-    if (excludedParent && !includeMarkers.includes('text-in-excluded-parent') ) {
+    if (excludedParent && !includeMarkers.includes('text-in-excluded-parent')) {
       return [];
     }
     return [inputUsj];
