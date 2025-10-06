@@ -12,7 +12,9 @@
   "source": "src/index.js",
   "scripts": {
     "build": "parcel build src/index.js",
-    "test": "mocha --parallel --timeout 40000"
+    "test": "mocha --parallel --timeout 40000",
+    "lint": "eslint src --ext .js,.mjs,.cjs --config eslint.config.js",
+    "flame": "0x -o"
   },
   "files": [
     "dist/",
@@ -37,13 +39,16 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.25.2",
-    "glob": "^11.0.0",
-    "mocha": "^10.7.3",
+    "@babel/core": "^7.28.0",
+    "0x": "^6.0.0",
+    "eslint": "^9.36.0",
+    "glob": "^11.0.3",
+    "mitata": "^1.0.34",
+    "mocha": "^11.7.1",
     "parcel": "latest",
     "path-browserify": "^1.0.1",
     "process": "^0.11.10",
-    "web-tree-sitter": "^0.22.6",
+    "web-tree-sitter": "^0.25.10",
     "xml2js": "^0.6.2"
   },
   "dependencies": {

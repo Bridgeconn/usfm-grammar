@@ -1,7 +1,8 @@
-tree-sitter==0.22.3
+tree-sitter==0.25.2
 jupyterlab==4.4.8
 rnc2rng==2.6.6
-lxml==5.2.2
+lxml==6.0.0
+jsonschema==4.24.0
 pylint==2.15.3
 pytest==7.1.3
 pytest-timeout==2.1.0
