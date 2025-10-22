@@ -132,16 +132,13 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
 
   convertUSXToUSFM() {
     try {
-      assert(
-        1 <= this.usx.nodeType && this.usx.nodeType <= 12,
-        'Input must be an instance of xmldom Document or Element',
-      );
-      if (this.usx.tagName !== 'usx') {
-        assert(
-          this.usx.getElementsByTagName('usx').length === 1,
-          `Expects a <usx> node.
-Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
-        );
+      if(!(1 <= this.usx.nodeType && this.usx.nodeType <= 12)) {
+				throw new Error('Input must be an instance of xmldom Document or Element');
+			} 
+			if (this.usx.tagName !== "usx") {
+				if(!(this.usx.getElementsByTagName('usx').length === 1)) {
+					throw new Error('Expects a <usx> node. Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml');
+				}
 
         this.usx = this.usx.getElementsByTagName('usx')[0];
       }
