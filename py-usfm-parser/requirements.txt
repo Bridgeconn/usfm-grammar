@@ -1,5 +1,5 @@
 tree-sitter==0.25.2
-tree-sitter-usfm3==3.2.0-beta.1
+tree-sitter-usfm3==3.2.0-beta.2
 lxml==6.0.0
 jsonschema==4.24.0
 tree-sitter==0.22.3
