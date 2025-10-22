@@ -17,7 +17,7 @@ The USFM is parsed into a syntax tree, which may then be futher converted to mor
 
 Checkout the demo application at https://usfmgrammar.vachanengine.org/.
 
-For guidance on using the libraries, refer to the example usages and documentation: [Pthyon Docs](./py-usfm-parser/README.md), [Node Docs](./node-usfm-parser/README.md) and [Web Docs](./web-usfm-parser/README.md).
+For guidance on using the libraries, refer to the example usages and documentation: [Python Docs](./py-usfm-parser/README.md), [Node Docs](./node-usfm-parser/README.md) and [Web Docs](./web-usfm-parser/README.md).
 
 ## Example Input/Output
 
