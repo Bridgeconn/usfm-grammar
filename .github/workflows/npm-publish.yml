@@ -31,42 +31,42 @@ jobs:
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
 
-  Publish-grammar:
-    needs: Test-grammar
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 20.4
-          registry-url: https://registry.npmjs.org/
-      - run: |
-          cd tree-sitter-usfm3
-          npm install tree-sitter-cli
-          ./node_modules/.bin/tree-sitter init
-          ./node_modules/.bin/tree-sitter generate
-          npm publish .
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+  # Publish-grammar:
+  #   needs: Test-grammar
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 20.4
+  #         registry-url: https://registry.npmjs.org/
+  #     - run: |
+  #         cd tree-sitter-usfm3
+  #         npm install tree-sitter-cli
+  #         ./node_modules/.bin/tree-sitter init
+  #         ./node_modules/.bin/tree-sitter generate
+  #         npm publish .
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
-  Publish-node-usfm-grammar:
-    needs: Test-grammar
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 20.4
-          registry-url: https://registry.npmjs.org/
-      - run: |
-          cd node-usfm-parser
-          sed -i '/"tree-sitter-usfm3":.*/d' package.json
-          npm install .
-          git checkout -- package.json
-          npm run build
-          npm publish . 
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+  # Publish-node-usfm-grammar:
+  #   needs: Test-grammar
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v1
+  #       with:
+  #         node-version: 20.4
+  #         registry-url: https://registry.npmjs.org/
+  #     - run: |
+  #         cd node-usfm-parser
+  #         sed -i '/"tree-sitter-usfm3":.*/d' package.json
+  #         npm install .
+  #         git checkout -- package.json
+  #         npm run build
+  #         npm publish . 
+  #       env:
+  #         NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   Publish-web-usfm-grammar:
     needs: Test-grammar
