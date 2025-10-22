@@ -1,4 +1,3 @@
-import assert from 'assert';
 import { Parser, Language, Query } from './web-tree-sitter/tree-sitter.js';
 import USFMGenerator from './usfmGenerator.js';
 import USJGenerator from './usjGenerator.js';
@@ -216,16 +215,17 @@ Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`);
 
   convertBibleNLPtoUSFM(bookCode) {
     try {
-      assert(this.bibleNlp.vref, "Should have 'vref' key");
-      assert(this.bibleNlp.text, "Should have 'text' key");
-      assert(
-        Array.isArray(this.bibleNlp.vref),
-        "'vref' should contain an array of references.",
-      );
-      assert(
-        Array.isArray(this.bibleNlp.text),
-        "'text' should contain an array of strings.",
-      );
+      if (typeof this.bibleNlp !== 'object' || this.bibleNlp === null) {
+        throw new Error('Input must be a non-null object');
+      }
+      if (!this.bibleNlp.hasOwnProperty('vref') || !this.bibleNlp.hasOwnProperty('text') ) {
+        throw new Error("Input object must have 'vref' and 'text' properties");
+      }
+      if (!Array.isArray(this.bibleNlp.vref) || !Array.isArray(this.bibleNlp.text) ||
+        this.bibleNlp.vref.length === 0 || this.bibleNlp.text.length === 0 ) {
+        throw new Error("'vref' and 'text' properties must be non empty arrays!");
+      }
+
       let vrefs = this.bibleNlp.vref;
       if (
         [31170, 23213].includes(this.bibleNlp.text.length) &&
