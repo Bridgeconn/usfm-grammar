@@ -1,0 +1,37 @@
+<usx version="3.1">
+  <book code="1CH" style="id"/>
+  <chapter number="27" style="c" sid="1CH 27"/>
+  <para style="s1">Administration of the Tribes of Israel
+</para>
+  <para style="lh"><verse number="16-22" style="v" sid="1CH 27:16-22"/>This is the list of the administrators of the tribes of Israel:
+</para>
+  <para style="li1"><char style="lik" closed="false">Reuben</char> <char style="liv1" closed="false">Eliezer son of Zichri</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Simeon</char> <char style="liv1" closed="false">Shephatiah son of Maacah</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Levi</char> <char style="liv1" closed="false">Hashabiah son of Kemuel</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Aaron</char> <char style="liv1" closed="false">Zadok</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Judah</char> <char style="liv1" closed="false">Elihu, one of King David's brothers</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Issachar</char> <char style="liv1" closed="false">Omri son of Michael</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Zebulun</char> <char style="liv1" closed="false">Ishmaiah son of Obadiah</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Naphtali</char> <char style="liv1" closed="false">Jeremoth son of Azriel</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Ephraim</char> <char style="liv1" closed="false">Hoshea son of Azaziah</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">West Manasseh</char> <char style="liv1" closed="false">Joel son of Pedaiah</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">East Manasseh</char> <char style="liv1" closed="false">Iddo son of Zechariah</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Benjamin</char> <char style="liv1" closed="false">Jaasiel son of Abner</char>
+</para>
+  <para style="li1"><char style="lik" closed="false">Dan</char> <char style="liv1" closed="false">Azarel son of Jeroham</char>
+</para>
+  <para style="lf">This was the list of the administrators of the tribes of Israel.<verse eid="1CH 27:16-22"/></para>
+  <chapter eid="1CH 27"/>
+</usx>
+
