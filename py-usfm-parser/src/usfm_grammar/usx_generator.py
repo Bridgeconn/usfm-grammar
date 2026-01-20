@@ -278,9 +278,11 @@ class USXGenerator:
         tag_node = node.children[0]
         closing_node = None
         children_range = len(node.children)
-        if node.children[-1].type.startswith("\\"):
-            closing_node = node.children[-1]
-            children_range = children_range - 1
+        for i in range(len(node.children)-1, 0, -1):
+            if node.children[i].type.startswith("\\") or\
+                node.children[i].type == "*" or\
+                node.children[i].type.endswith("Tag"):
+                children_range -= 1
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set(
             "style",
