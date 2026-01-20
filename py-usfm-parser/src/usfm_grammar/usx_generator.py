@@ -41,7 +41,7 @@ class USXGenerator:
         "milestone": "who",
         "k": "key",
     }
-    TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc"]
+    TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc", "thc"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
     OTHER_PARA_NESTABLES = [
         "text",
@@ -278,9 +278,11 @@ class USXGenerator:
         tag_node = node.children[0]
         closing_node = None
         children_range = len(node.children)
-        if node.children[-1].type.startswith("\\"):
-            closing_node = node.children[-1]
-            children_range = children_range - 1
+        for i in range(len(node.children)-1, 0, -1):
+            if node.children[i].type.startswith("\\") or\
+                node.children[i].type == "*" or\
+                node.children[i].type.endswith("Tag"):
+                children_range -= 1
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set(
             "style",
@@ -349,7 +351,7 @@ class USXGenerator:
             cell_xml_node.set("style", style)
             if "r" in style:
                 cell_xml_node.set("align", "end")
-            elif "tcc" in style:
+            elif "tcc" in style or "thc" in style:
                 cell_xml_node.set("align", "center")
             else:
                 cell_xml_node.set("align", "start")

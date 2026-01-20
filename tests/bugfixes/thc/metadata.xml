@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>A new marker \thc is introduced. https://docs.usfm.bible/usfm/3.1.1/char/tables/thc.html</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

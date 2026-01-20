@@ -1,0 +1,331 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "1CH",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "27",
+            "sid": "1CH 27"
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                "Administration of the Tribes of Israel\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "lh",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "16-22",
+                    "sid": "1CH 27:16-22"
+                },
+                "This is the list of the administrators of the tribes of Israel:\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Reuben"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Eliezer son of Zichri"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Simeon"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Shephatiah son of Maacah"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Levi"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Hashabiah son of Kemuel"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Aaron"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Zadok"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Judah"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Elihu, one of King David's brothers"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Issachar"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Omri son of Michael"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Zebulun"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Ishmaiah son of Obadiah"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Naphtali"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Jeremoth son of Azriel"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Ephraim"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Hoshea son of Azaziah"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "West Manasseh"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Joel son of Pedaiah"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "East Manasseh"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Iddo son of Zechariah"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Benjamin"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Jaasiel son of Abner"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "lik",
+                    "content": [
+                        "Dan"
+                    ]
+                },
+                " ",
+                {
+                    "type": "char",
+                    "marker": "liv1",
+                    "content": [
+                        "Azarel son of Jeroham"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "lf",
+            "content": [
+                "This was the list of the administrators of the tribes of Israel."
+            ]
+        }
+    ]
+}

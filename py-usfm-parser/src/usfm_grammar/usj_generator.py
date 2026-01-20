@@ -219,8 +219,11 @@ class USJGenerator:
         tag_node = node.children[0]
         children_range = len(node.children)
 
-        if node.children[-1].type.startswith("\\"):
-            children_range -= 1
+        for i in range(len(node.children)-1, 0, -1):
+            if node.children[i].type.startswith("\\") or\
+                node.children[i].type == "*" or\
+                node.children[i].type.endswith("Tag"):
+                children_range -= 1
 
         style = (
             self.usfm[tag_node.start_byte : tag_node.end_byte]
@@ -262,7 +265,7 @@ class USJGenerator:
                 "content": [],
             }
 
-            if "tcc" in style:
+            if "tcc" in style or "thc" in style:
                 cell_json_obj["align"] = "center"
             elif style.endswith("r"):
                 cell_json_obj["align"] = "end"
