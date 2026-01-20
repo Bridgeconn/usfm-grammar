@@ -262,7 +262,7 @@ class USJGenerator:
                 "content": [],
             }
 
-            if "tcc" in style:
+            if "tcc" in style or "thc" in style:
                 cell_json_obj["align"] = "center"
             elif style.endswith("r"):
                 cell_json_obj["align"] = "end"

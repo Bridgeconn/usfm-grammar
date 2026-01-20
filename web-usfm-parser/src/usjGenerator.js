@@ -280,7 +280,7 @@ class USJGenerator {
         type: 'table:cell',
         marker: style,
         content: [],
-        align: style.includes('tcc')
+        align: style.includes('tcc') || style.includes('thc')
           ? 'center'
           : style.includes('r')
             ? 'end'

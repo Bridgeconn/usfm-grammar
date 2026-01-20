@@ -124,7 +124,7 @@ const DEFAULT_ATTRIB_MAP = {
   k: 'key',
 };
 exports.DEFAULT_ATTRIB_MAP = DEFAULT_ATTRIB_MAP;
-const TABLE_CELL_MARKERS = ['tc', 'th', 'tcr', 'thr', 'tcc'];
+const TABLE_CELL_MARKERS = ['tc', 'th', 'tcr', 'thr', 'tcc', 'thc'];
 exports.TABLE_CELL_MARKERS = TABLE_CELL_MARKERS;
 const MISC_MARKERS = ['fig', 'cat', 'esb', 'b', 'ph', 'pi'];
 exports.MISC_MARKERS = MISC_MARKERS;

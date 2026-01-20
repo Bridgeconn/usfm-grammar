@@ -41,7 +41,7 @@ class USXGenerator:
         "milestone": "who",
         "k": "key",
     }
-    TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc"]
+    TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc", "thc"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
     OTHER_PARA_NESTABLES = [
         "text",
@@ -349,7 +349,7 @@ class USXGenerator:
             cell_xml_node.set("style", style)
             if "r" in style:
                 cell_xml_node.set("align", "end")
-            elif "tcc" in style:
+            elif "tcc" in style or "thc" in style:
                 cell_xml_node.set("align", "center")
             else:
                 cell_xml_node.set("align", "start")
