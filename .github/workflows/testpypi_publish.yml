@@ -1,4 +1,4 @@
-name: PyPI Publish
+name: Test PyPI Publish
 
 on:
   # push:
@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+      contents: read
 
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine
@@ -48,6 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
