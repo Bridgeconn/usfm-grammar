@@ -38,7 +38,7 @@ jobs:
         run: |
           cd tree-sitter-usfm3
           python -m pip install build setuptools
-          python -m build
+          python -m build --sdist
 
       - name: Publish tree-sitter-usfm3 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@v1.13.0
@@ -63,7 +63,7 @@ jobs:
         run: |
           cd py-usfm-parser
           python -m pip install build setuptools
-          python -m build
+          python -m build --sdist
 
       - name: Publish usfm-grammar 📦 to PyPI
         uses: pypa/gh-action-pypi-publish@v1.13.0
