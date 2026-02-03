@@ -39,7 +39,7 @@ jobs:
           python -m build
 
       - name: Publish tree-sitter-usfm3 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f
         with:
           repository_url: https://test.pypi.org/legacy/
           packages-dir: tree-sitter-usfm3/dist/
@@ -60,7 +60,7 @@ jobs:
           python -m build
 
       - name: Publish usfm-grammar 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d1e2f
         with:
           repository_url: https://test.pypi.org/legacy/
           packages-dir: py-usfm-parser/dist/
