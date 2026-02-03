@@ -3,8 +3,8 @@ name: PyPI Publish
 on:
   # push:
   workflow_dispatch:
-  release:
-    types: [published]
+  # release:
+  #   types: [published]
 
 jobs:
   build-n-publish-tree-sitter-usfm3:
