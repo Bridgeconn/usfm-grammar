@@ -8,7 +8,6 @@ on:
 
 jobs:
   build-n-publish-tree-sitter-usfm3:
-    # if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     permissions:
       id-token: write
@@ -49,7 +48,6 @@ jobs:
 
           
   build-n-publish-py-usfm-parser:
-    # if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
     permissions:
       id-token: write
