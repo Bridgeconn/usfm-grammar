@@ -25,7 +25,7 @@ jobs:
       - name: Setup node and npm
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
       - name: Run tests
         run: |
           cd tree-sitter-usfm3
@@ -41,7 +41,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 20.4
+          node-version: 24
           registry-url: https://registry.npmjs.org/
       - run: |
           cd tree-sitter-usfm3
@@ -57,7 +57,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 20.4
+          node-version: 24
           registry-url: https://registry.npmjs.org/
       - run: |
           cd node-usfm-parser
@@ -74,7 +74,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
         with:
-          node-version: 20.4
+          node-version: 24
           registry-url: https://registry.npmjs.org/
       - name: Build Grammar
         run: |
