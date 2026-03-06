@@ -42,13 +42,13 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.4
-          registry-url: https://registry.npmjs.org/
+          registry-url: 'https://registry.npmjs.org/'
       - run: |
           cd tree-sitter-usfm3
           npm install tree-sitter-cli
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
-          npm publish
+      - run: npm publish
 
   Publish-node-usfm-grammar:
     needs: Test-grammar
@@ -58,14 +58,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.4
-          registry-url: https://registry.npmjs.org/
+          registry-url: 'https://registry.npmjs.org/'
       - run: |
           cd node-usfm-parser
           sed -i '/"tree-sitter-usfm3":.*/d' package.json
           npm install .
           git checkout -- package.json
           npm run build
-          npm publish
+      - run: npm publish
 
   Publish-web-usfm-grammar:
     needs: Test-grammar
@@ -75,7 +75,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20.4
-          registry-url: https://registry.npmjs.org/
+          registry-url: 'https://registry.npmjs.org/'
       - name: Build Grammar
         run: |
           cd tree-sitter-usfm3
@@ -94,4 +94,4 @@ jobs:
         run: |
           cd web-usfm-parser/
           npm run build
-          npm publish
+      - run: npm publish
