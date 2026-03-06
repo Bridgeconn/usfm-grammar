@@ -48,7 +48,7 @@ jobs:
           npm install tree-sitter-cli
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
-          npm publish . --provenance --access public
+          npm publish
 
   Publish-node-usfm-grammar:
     needs: Test-grammar
@@ -65,7 +65,7 @@ jobs:
           npm install .
           git checkout -- package.json
           npm run build
-          npm publish . --provenance --access public
+          npm publish
 
   Publish-web-usfm-grammar:
     needs: Test-grammar
@@ -94,4 +94,4 @@ jobs:
         run: |
           cd web-usfm-parser/
           npm run build
-          npm publish . --provenance --access public
+          npm publish
