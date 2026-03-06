@@ -34,6 +34,10 @@ jobs:
   Publish-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -46,12 +50,13 @@ jobs:
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
           npm publish .
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   Publish-node-usfm-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -65,12 +70,13 @@ jobs:
           git checkout -- package.json
           npm run build
           npm publish . 
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
 
   Publish-web-usfm-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -96,5 +102,3 @@ jobs:
           cd web-usfm-parser/
           npm run build
           npm publish .
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.npm_token}}

@@ -1,15 +1,18 @@
-name: PyPI Publish
+name: Test PyPI Publish
 
 on:
   # push:
   workflow_dispatch:
-  release:
-    types: [published]
+  # release:
+  #   types: [published]
 
 jobs:
   build-n-publish-tree-sitter-usfm3:
     runs-on: ubuntu-latest
-    
+    permissions:
+      id-token: write
+      contents: read
+
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine
       - name: Checkout code
@@ -34,18 +37,21 @@ jobs:
         run: |
           cd tree-sitter-usfm3
           python -m pip install build setuptools
-          python -m build
+          python -m build --sdist
 
       - name: Publish tree-sitter-usfm3 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
-          user: __token__
-          password: ${{ secrets.PUBLISH_ON_TEST_PYPI }}
-          repository_url: https://test.pypi.org/legacy/
+          repository-url: https://test.pypi.org/legacy/
           packages-dir: tree-sitter-usfm3/dist/
+          verbose: true
+
           
   build-n-publish-py-usfm-parser:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -55,12 +61,12 @@ jobs:
         run: |
           cd py-usfm-parser
           python -m pip install build setuptools
-          python -m build
+          python -m build --sdist
 
       - name: Publish usfm-grammar 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
-          user: __token__
-          password: ${{ secrets.PUBLISH_ON_TEST_PYPI }}
-          repository_url: https://test.pypi.org/legacy/
+          repository-url: https://test.pypi.org/legacy/
           packages-dir: py-usfm-parser/dist/
+          verbose: true
+
