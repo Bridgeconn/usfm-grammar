@@ -9,6 +9,9 @@ on:
 jobs:
   publish-tree-sitter-usfm3:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     
     steps:
       # Checks out a copy of your repository on the ubuntu-latest machine
@@ -37,15 +40,15 @@ jobs:
           python -m build --sdist
 
       - name: Publish tree-sitter-usfm3 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
-          user: __token__
-          password: ${{ secrets.pypi_token }}
-          # repository_url: https://test.pypi.org/legacy/
           packages-dir: tree-sitter-usfm3/dist/
 
   publish-py-usfm-parser:
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v4
@@ -58,11 +61,8 @@ jobs:
           python -m build --sdist
 
       - name: Publish usfm-grammar 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
-          user: __token__
-          password: ${{ secrets.pypi_token }}
-          # repository_url: https://test.pypi.org/legacy/
           packages-dir: py-usfm-parser/dist/
 
 
