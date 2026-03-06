@@ -37,6 +37,9 @@ jobs:
   Publish-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -48,11 +51,14 @@ jobs:
           npm install tree-sitter-cli
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
-          npm publish
+          npm publish --provenance=false
 
   Publish-node-usfm-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -65,11 +71,14 @@ jobs:
           npm install .
           git checkout -- package.json
           npm run build
-          npm publish
+          npm publish --provenance=false
 
   Publish-web-usfm-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -94,4 +103,4 @@ jobs:
         run: |
           cd web-usfm-parser/
           npm run build
-          npm publish
+          npm publish --provenance=false
