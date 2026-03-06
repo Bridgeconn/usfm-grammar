@@ -7,7 +7,10 @@ on:
   workflow_dispatch:
   release:
     types: [published]
-
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
@@ -34,10 +37,6 @@ jobs:
   Publish-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -54,9 +53,6 @@ jobs:
   Publish-node-usfm-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -74,9 +70,6 @@ jobs:
   Publish-web-usfm-grammar:
     needs: Test-grammar
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
