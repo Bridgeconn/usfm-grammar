@@ -20,7 +20,7 @@ jobs:
       - name: Setup node and npm
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 24
       - name: Run tests
         run: |
           cd tree-sitter-usfm3
@@ -28,6 +28,8 @@ jobs:
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
+        env:
+          CXXFLAGS: '-std=c++20'
 
       - uses: actions/setup-python@v4
         with:
