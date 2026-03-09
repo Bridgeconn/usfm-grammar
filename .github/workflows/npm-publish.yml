@@ -53,7 +53,7 @@ jobs:
           npm install tree-sitter-cli
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
-          npm publish --log-level verbose
+          npm publish .
         env:
           CXXFLAGS: '-std=c++20'
   
@@ -75,7 +75,7 @@ jobs:
           npm install .
           git checkout -- package.json
           npm run build
-          npm publish --log-level verbose
+          npm publish .
         env:
           CXXFLAGS: '-std=c++20'
 
@@ -109,6 +109,6 @@ jobs:
         run: |
           cd web-usfm-parser/
           npm run build
-          npm publish  --log-level verbose
+          npm publish .
         env:
           CXXFLAGS: '-std=c++20'
