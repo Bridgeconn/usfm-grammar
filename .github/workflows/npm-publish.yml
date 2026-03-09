@@ -48,12 +48,15 @@ jobs:
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org/'
+      - name: Read package.json
+        id: pkg
+        run: echo "json=$(cat package.json)" >> $GITHUB_OUTPUT
       - run: |
           cd tree-sitter-usfm3
           npm install tree-sitter-cli
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
-          npm publish . --tag beta
+          npm publish . ${{ contains(fromJson(steps.pkg.outputs.json).version, 'beta') && '--tag beta' || '' }}
         env:
           CXXFLAGS: '-std=c++20'
   
@@ -69,13 +72,16 @@ jobs:
         with:
           node-version: 24
           registry-url: 'https://registry.npmjs.org/'
+      - name: Read package.json
+        id: pkg
+        run: echo "json=$(cat package.json)" >> $GITHUB_OUTPUT
       - run: |
           cd node-usfm-parser
           sed -i '/"tree-sitter-usfm3":.*/d' package.json
           npm install .
           git checkout -- package.json
           npm run build
-          npm publish .  --tag beta
+          npm publish . ${{ contains(fromJson(steps.pkg.outputs.json).version, 'beta') && '--tag beta' || '' }}
         env:
           CXXFLAGS: '-std=c++20'
 
@@ -107,10 +113,13 @@ jobs:
           npm install .
           cp ./node_modules/web-tree-sitter/tree-sitter.js src/web-tree-sitter/
           cp ./node_modules/web-tree-sitter/tree-sitter.wasm ./
+      - name: Read package.json
+        id: pkg
+        run: echo "json=$(cat package.json)" >> $GITHUB_OUTPUT
       - name: Build and publish
         run: |
           cd web-usfm-parser/
           npm run build
-          npm publish .  --tag beta
+          npm publish . ${{ contains(fromJson(steps.pkg.outputs.json).version, 'beta') && '--tag beta' || '' }}
         env:
           CXXFLAGS: '-std=c++20'
