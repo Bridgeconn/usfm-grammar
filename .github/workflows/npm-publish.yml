@@ -54,6 +54,8 @@ jobs:
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
           npm publish --log-level verbose
+        env:
+          CXXFLAGS: '-std=c++20'
   
   Publish-node-usfm-grammar:
     needs: Test-grammar
@@ -74,6 +76,8 @@ jobs:
           git checkout -- package.json
           npm run build
           npm publish --log-level verbose
+        env:
+          CXXFLAGS: '-std=c++20'
 
   Publish-web-usfm-grammar:
     needs: Test-grammar
@@ -105,4 +109,7 @@ jobs:
         run: |
           cd web-usfm-parser/
           npm run build
+        env:
+          CXXFLAGS: '-std=c++20'
+
           npm publish  --log-level verbose
