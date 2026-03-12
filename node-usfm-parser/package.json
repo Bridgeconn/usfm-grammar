@@ -27,10 +27,10 @@
     "Samuel JD <samuelj.ernest@gmail.com> (https://github.com/samueljd)"
   ],
   "dependencies": {
+    "@xmldom/xmldom": "^0.8.11",
     "ajv": "^8.17.1",
     "tree-sitter": "0.25.0",
     "tree-sitter-usfm3": "3.2.0-beta.3",
-    "xmldom": "^0.6.0",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
@@ -38,8 +38,5 @@
     "glob": "^11.0.3",
     "mocha": "^11.7.1",
     "parcel": "^2.15.4"
-  },
-  "peerDependencies": {
-    "xmldom": "^0.6.0"
   }
 }
