@@ -1,5 +1,5 @@
 import assert from "assert";
-import {DOMImplementation, XMLSerializer, DOMParser} from "xmldom";
+import {DOMImplementation, XMLSerializer, DOMParser} from "@xmldom/xmldom";
 import {
   allUsfmFiles,
   initialiseParser,
