@@ -1,5 +1,5 @@
 tree-sitter==0.25.2
-rnc2rng==2.6.6
+rnc2rng==2.7.0
 lxml==6.0.2
 jsonschema==4.26.0
 pylint==4.0.5
