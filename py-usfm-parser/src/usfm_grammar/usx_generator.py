@@ -147,13 +147,12 @@ class USXGenerator:
         for child in node.children:
             if child.type in ["cl", "cd"]:
                 self.node_2_usx(child, parent_xml_node)
-        return chap_ref
 
     def node_2_usx_chapter(self, node, parent_xml_node):
         """build chapter node in USX"""
         for child in node.children:
             if child.type == "c":
-                chap_ref = self.node_2_usx_c(child, parent_xml_node)
+                self.node_2_usx_c(child, parent_xml_node)
             else:
                 self.node_2_usx(child, parent_xml_node)
 
@@ -172,6 +171,7 @@ class USXGenerator:
             else:
                 parent_xml_node.append(v_end_xml_node)
         chap_end_xml_node = etree.SubElement(parent_xml_node, "chapter")
+        chap_ref = self.parse_state["book_slug"] + " " + self.parse_state["current_chapter"]
         chap_end_xml_node.set("eid", chap_ref)
         self.parse_state["prev_chapter_sid"] = None
 
