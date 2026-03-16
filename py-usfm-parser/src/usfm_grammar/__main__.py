@@ -8,6 +8,7 @@ from lxml import etree
 
 from usfm_grammar import USFMParser, Filter, Format, ORIGINAL_VREF
 from usfm_grammar import __version__
+from usfm_grammar.errors import ParameterError
 
 all_markers = []
 for member in Filter:
@@ -41,7 +42,7 @@ def handle_input_file(arg_parser):
         obj = {"vref": refs, "text": texts}
         my_parser = USFMParser(from_biblenlp=obj, book_code=bookcode)
     else:
-        raise Exception("Un-recognized input_format!")
+        raise ParameterError("Un-recognized input_format!")
     return my_parser
 
 
@@ -213,7 +214,7 @@ def main():  # pylint: disable=too-many-locals
                 out2.writelines(f"{line}\n" for line in bible_nlp_dict["vref"])
             print(f"Outputs written to {outfile_name} and {outfile_name2}.")
         case _:
-            raise Exception(f"Un-recognized output format:{output_format}!")
+            raise ParameterError(f"Un-recognized output format:{output_format}!")
 
 
 if __name__ == "__main__":

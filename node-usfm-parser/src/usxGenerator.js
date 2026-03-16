@@ -1,5 +1,5 @@
 //Logics for syntax-tree to xml(USX) conversions
-const { DOMImplementation } = require('xmldom');
+const { DOMImplementation } = require('@xmldom/xmldom');
 const {
   PARA_STYLE_MARKERS,
   NOTE_MARKERS,

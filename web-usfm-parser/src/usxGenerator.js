@@ -1,5 +1,5 @@
 //Logics for syntax-tree to xml(USX) conversions
-import { DOMImplementation } from 'xmldom';
+import { DOMImplementation } from '@xmldom/xmldom';
 import {
   PARA_STYLE_MARKERS,
   NOTE_MARKERS,
