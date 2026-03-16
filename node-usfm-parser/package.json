@@ -34,7 +34,7 @@
     "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "eslint": "^9.36.0",
+    "eslint": "^10.0.3",
     "glob": "^13.0.6",
     "mocha": "^11.7.5",
     "parcel": "^2.16.4"
