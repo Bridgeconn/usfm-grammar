@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "eslint": "^9.36.0",
-    "glob": "^11.0.3",
+    "glob": "^13.0.6",
     "mocha": "^11.7.1",
     "parcel": "^2.15.4"
   }
