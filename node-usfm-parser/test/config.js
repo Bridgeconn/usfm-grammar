@@ -1,6 +1,6 @@
 const {glob} = require('glob');
 const fs = require('node:fs');
-const { DOMParser } = require('xmldom')
+const { DOMParser } = require('@xmldom/xmldom')
 const {USFMParser} = require("../src/index");
 
 let allUsfmFiles = [];

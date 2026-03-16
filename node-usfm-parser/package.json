@@ -1,6 +1,6 @@
 {
   "name": "usfm-grammar",
-  "version": "3.2.0-beta.3",
+  "version": "3.2.0-beta.4",
   "description": "Uses the tree-sitter-usfm3 parser to convert USFM files to other formats such as USJ, USX, and CSV, and converts them back to USFM",
   "main": "./dist/cjs/index.cjs",
   "module": "./dist/es/index.mjs",
@@ -27,19 +27,16 @@
     "Samuel JD <samuelj.ernest@gmail.com> (https://github.com/samueljd)"
   ],
   "dependencies": {
-    "ajv": "^8.17.1",
+    "@xmldom/xmldom": "^0.8.11",
+    "ajv": "^8.18.0",
     "tree-sitter": "0.25.0",
-    "tree-sitter-usfm3": "3.2.0-beta.3",
-    "xmldom": "^0.6.0",
+    "tree-sitter-usfm3": "3.2.0-beta.4",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
-    "eslint": "^9.36.0",
-    "glob": "^11.0.3",
-    "mocha": "^11.7.1",
-    "parcel": "^2.15.4"
-  },
-  "peerDependencies": {
-    "xmldom": "^0.6.0"
+    "eslint": "^10.0.3",
+    "glob": "^13.0.6",
+    "mocha": "^11.7.5",
+    "parcel": "^2.16.4"
   }
 }

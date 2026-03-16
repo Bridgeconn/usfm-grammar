@@ -1,6 +1,7 @@
 """Convert other formats back into USFM"""
 
 import re
+from usfm_grammar.errors import ParsingError, USFMGrammarError
 
 NO_USFM_USJ_TYPES = ["USJ", "table"]
 NO_NEWLINE_USJ_TYPES = ["char", "note", "verse", "table:cell"]
@@ -55,7 +56,7 @@ class USFMGenerator:
     def usj_to_usfm(self, usj_obj: dict, nested=False) -> None:  # pylint: disable=too-many-statements, too-many-branches
         """Traverses through the dict/json and uses 'type' field to form USFM elements"""
         if not isinstance(usj_obj, dict) or "type" not in usj_obj:
-            raise Exception("Unable to do the conversion. Ensure USJ is valid!")
+            raise USFMGrammarError("Unable to do the conversion. Ensure USJ is valid!")
         if usj_obj["type"] == "optbreak":
             if self.usfm_string != "" and self.usfm_string[-1] not in [
                 "\n",
@@ -243,7 +244,7 @@ class USFMGenerator:
             or not isinstance(biblenlp["vref"], list)
             or not isinstance(biblenlp["text"], list)
         ):
-            raise Exception(
+            raise ParsingError(
                 "Incorrect format: "
                 + "BibleNlp object should contain a dict with 'vref' and 'text' lists."
             )
@@ -267,7 +268,7 @@ class USFMGenerator:
                 ]
                 biblenlp["text"] = texts
             if len(vrefs) != len(biblenlp["text"]):
-                raise Exception(
+                raise ParsingError(
                     "Incorrect format: Missmatch in lengths of vref and text lists."
                     + "Specify a book_code or check for versification differences. "
                     + f"{len(vrefs)} != {len(biblenlp['text'])}"
@@ -276,7 +277,7 @@ class USFMGenerator:
         for vref, versetext in zip(vrefs, biblenlp["text"]):
             ref_match = re.match(vref_pattern, vref)
             if ref_match is None:
-                raise Exception(
+                raise ParsingError(
                     f"Incorrect format: {vref}.\nIn BibleNlp, vref should have "
                     + "three letter book code, chapter and verse in the following format: GEN 1:1"
                 )

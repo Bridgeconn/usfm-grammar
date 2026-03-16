@@ -1,6 +1,6 @@
 const assert = require("assert");
 const fs = require("node:fs");
-const {DOMImplementation, XMLSerializer, DOMParser} = require("xmldom");
+const {DOMImplementation, XMLSerializer, DOMParser} = require("@xmldom/xmldom");
 const {
   allUsfmFiles,
   initialiseParser,
