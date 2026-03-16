@@ -11,6 +11,7 @@ from usfm_grammar.usj_generator import USJGenerator
 from usfm_grammar.list_generator import ListGenerator
 from usfm_grammar.usfm_generator import USFMGenerator
 from usfm_grammar.filters import exclude_markers_in_usj, include_markers_in_usj
+from usfm_grammar.errors import USFMGrammarError, ParsingError, ParameterError
 
 class Filter(list, Enum):
     """Defines the values of filter options"""
@@ -114,18 +115,18 @@ class USFMParser:
             inputs_given += 1
 
         if inputs_given > 1:
-            raise Exception(
+            raise ParameterError(
                 "Found more than one input!"
                 + " Only one of USFM, USJ, USX or BibleNlp is supported in one object."
             )
         if inputs_given == 0:
-            raise Exception(
+            raise ParameterError(
                 "Missing input! Either USFM, USJ, USX or BibleNlp is to be provided."
             )
 
         if usfm_string is not None:
             if not usfm_string.strip().startswith("\\"):
-                raise Exception(
+                raise ParameterError(
                     "Invalid input for USFM. Expected a string with \\ markups."
                 )
             self.usfm = usfm_string
@@ -181,7 +182,7 @@ class USFMParser:
         """gives the syntax tree from class, as a string"""
         if not ignore_errors and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
-            raise Exception(
+            raise ParsingError(
                 "Errors present:"
                 + f"\n\t{err_str}"
                 + "\nUse ignore_errors=True, to generate output inspite of errors"
@@ -199,7 +200,7 @@ class USFMParser:
         Filtering of desired contents using exclude markers option"""
         if not ignore_errors and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
-            raise Exception(
+            raise ParsingError(
                 "Errors present:"
                 + f"\n\t{err_str}"
                 + "\nUse ignore_errors=True, to generate output inspite of errors"
@@ -214,7 +215,7 @@ class USFMParser:
             if self.errors:
                 err_str = "\n\t".join([":".join(err) for err in self.errors])
                 message += f"Could be due to an error in the USFM\n\t{err_str}"
-            raise Exception(message) from exe
+            raise USFMGrammarError(message) from exe
         output_usj = usj_generator.json_root_obj
         if include_markers:
             output_usj = include_markers_in_usj(
@@ -237,7 +238,7 @@ class USFMParser:
         To be re-implemented to work with the flat JSON schema"""
         if not ignore_errors and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
-            raise Exception(
+            raise ParsingError(
                 "Errors present:"
                 + f"\n\t{err_str}"
                 + "\nUse ignore_errors=True, to generate output inspite of errors"
@@ -267,7 +268,7 @@ class USFMParser:
             if self.errors:
                 err_str = "\n\t".join([":".join(err) for err in self.errors])
                 message += f"Could be due to an error in the USFM\n\t{err_str}"
-            raise Exception(message) from exe
+            raise USFMGrammarError(message) from exe
         return list_generator.list
 
     def to_biblenlp_format(self, ignore_errors=False):
@@ -275,7 +276,7 @@ class USFMParser:
         and converts the JSON to lists of texts and vrefs."""
         if not ignore_errors and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
-            raise Exception(
+            raise ParsingError(
                 "Errors present:"
                 + f"\n\t{err_str}"
                 + "\nUse ignore_errors=True, to generate output inspite of errors"
@@ -295,7 +296,7 @@ class USFMParser:
             if self.errors:
                 err_str = "\n\t".join([":".join(err) for err in self.errors])
                 message += f"Could be due to an error in the USFM\n\t{err_str}"
-            raise Exception(message) from exe
+            raise USFMGrammarError(message) from exe
         return list_generator.bible_nlp_format
 
     def to_markdown(self):
@@ -306,7 +307,7 @@ class USFMParser:
         """convert the syntax_tree to the XML format USX"""
         if not ignore_errors and self.errors:
             err_str = "\n\t".join([":".join(err) for err in self.errors])
-            raise Exception(
+            raise ParsingError(
                 "Errors present:"
                 + f"\n\t{err_str}"
                 + "\nUse ignore_errors=True, to generate output inspite of errors"
@@ -322,5 +323,5 @@ class USFMParser:
             if self.errors:
                 err_str = "\n\t".join([":".join(err) for err in self.errors])
                 message += f"Could be due to an error in the USFM\n\t{err_str}"
-            raise Exception(message) from exe
+            raise USFMGrammarError(message) from exe
         return usx_generator.xml_root_node
