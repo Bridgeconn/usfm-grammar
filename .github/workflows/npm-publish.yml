@@ -54,7 +54,7 @@ jobs:
           ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
       
-          VERSION=$(jq -r '.version' ../package.json)
+          VERSION=$(jq -r '.version' package.json)
           if [[ "$VERSION" == *alpha* ]]; then
             npm publish . --tag alpha
           elif [[ "$VERSION" == *beta* ]]; then
@@ -83,7 +83,7 @@ jobs:
           npm install .
           git checkout -- package.json
           npm run build
-          VERSION=$(jq -r '.version' ../package.json)
+          VERSION=$(jq -r '.version' package.json)
           if [[ "$VERSION" == *alpha* ]]; then
             npm publish . --tag alpha
           elif [[ "$VERSION" == *beta* ]]; then
@@ -126,7 +126,7 @@ jobs:
         run: |
           cd web-usfm-parser/
           npm run build
-          VERSION=$(jq -r '.version' ../package.json)
+          VERSION=$(jq -r '.version' package.json)
           if [[ "$VERSION" == *alpha* ]]; then
             npm publish . --tag alpha
           elif [[ "$VERSION" == *beta* ]]; then
