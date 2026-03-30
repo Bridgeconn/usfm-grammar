@@ -1,6 +1,6 @@
-const {USFMParser, Filter } = require("./usfmParser");
-const {Validator} = require("./validator");
-const {ORIGINAL_VREF} = require("./utils/vrefs");
+const { USFMParser, Filter } = require('./usfmParser');
+const { Validator } = require('./validator');
+const { ORIGINAL_VREF } = require('./utils/vrefs');
 
 exports.USFMParser = USFMParser;
 exports.Filter = Filter;

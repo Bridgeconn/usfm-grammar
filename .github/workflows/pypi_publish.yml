@@ -21,8 +21,8 @@ jobs:
       - name: Run tests
         run: |
           cd tree-sitter-usfm3
-          npm install --save nan
-          npm install --save-dev tree-sitter-cli
+          npm install tree-sitter-cli
+          ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
 

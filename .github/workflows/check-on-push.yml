@@ -28,8 +28,8 @@ jobs:
       - name: Run tests
         run: |
           cd tree-sitter-usfm3
-          npm install --save nan
           npm install --save-dev tree-sitter-cli
+          ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter test
 
@@ -51,8 +51,8 @@ jobs:
       - name: Build grammar binary
         run: |
           cd tree-sitter-usfm3
-          npm install --save nan
-          npm install --save-dev tree-sitter-cli
+          npm install tree-sitter-cli
+          ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
 
       - name: Install dependencies
@@ -87,8 +87,8 @@ jobs:
       - name: Build grammar
         run: |
           cd tree-sitter-usfm3
-          npm install --save nan
-          npm install --save-dev tree-sitter-cli
+          npm install tree-sitter-cli
+          ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
       - name: Install dependencies
         run: |
@@ -114,8 +114,8 @@ jobs:
       - name: Build grammar
         run: |
           cd tree-sitter-usfm3
-          npm install --save nan
-          npm install --save-dev tree-sitter-cli
+          npm install tree-sitter-cli
+          ./node_modules/.bin/tree-sitter init
           ./node_modules/.bin/tree-sitter generate
           ./node_modules/.bin/tree-sitter build --wasm
 
