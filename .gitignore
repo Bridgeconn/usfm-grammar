@@ -87,11 +87,7 @@ tree-sitter-usfm3/go.mod
 */src/usfm_grammar.egg-info/*
 **/my-languages.so
 **/wheelhouse/
-<<<<<<< HEAD
 js-usfm-parser/src/web-tree-sitter/tree-sitter.js
 js-usfm-parser/src/web-tree-sitter/tree-sitter.wasm
 rust-usfm-parser/target
 */src/input.usfm/*
-=======
-
->>>>>>> f9df581 (Refactor/speed boost (#348))
