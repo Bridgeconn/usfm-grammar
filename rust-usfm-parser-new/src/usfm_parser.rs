@@ -292,9 +292,9 @@ impl USFMParser {
     // -----------------------------------------------------------------------
 
     /// Return the syntax tree as a human-readable string.
-    pub fn to_syntax_tree(&self, ignore_errors: bool) -> Result<String, ParsingError> {
+    pub fn to_syntax_tree<'a>(&'a self, ignore_errors: bool) -> Result<Node<'a>, ParsingError> {
         self.guard_errors(ignore_errors)?;
-        Ok(format!("{:?}", self.syntax_tree.root_node()))
+        Ok(self.syntax_tree.root_node())
     }
 
     /// Convert to USJ (JSON) format.

@@ -37,12 +37,16 @@ fn test_error_less_parsing() {
             }
         } else {
             // Negative test — errors OR MISSING required
-            let tree_str = parser
-                .to_syntax_tree(true)
-                .unwrap_or_default();
-            if parser.errors.is_empty() && !tree_str.contains("MISSING") {
+            let tree_str = match (parser.to_syntax_tree(true)) {
+                Ok(node) => node.to_sexp(),
+                Err(e) => {
+                    println!("Expected error in {label}: {:?}", e);
+                    continue; // error is expected, so this is a pass
+                }
+            };
+            if !tree_str.contains("MISSING") {
                 failures.push(format!(
-                    "EXPECTED ERROR missing in {label}"
+                    "Expected error or MISSING in syntax tree for {label}, but got none"
                 ));
             }
         }
@@ -79,9 +83,17 @@ fn test_all_markers_are_in_syntax_tree() {
         }
 
         let markers = find_all_markers(path, false, false);
-        let tree_str = parser
-            .to_syntax_tree(false)
-            .unwrap_or_default();
+        let tree_str = match parser.to_syntax_tree(false) {
+            Ok(node) => node.to_sexp(), // S-expression is more compact than debug
+            Err(e) => {
+                failures.push(format!(
+                    "Failed to get syntax tree for {}: {:?}",
+                    path.display(),
+                    e
+                ));
+                continue;
+            }
+        };
 
         for raw_marker in &markers {
             // Apply the same synonym map as Python

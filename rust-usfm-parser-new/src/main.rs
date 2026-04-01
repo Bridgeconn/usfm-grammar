@@ -33,7 +33,17 @@ fn main() {
         vref: nlp_format.vref.clone(),
     };
 
-    let mut parser = USFMParser::from_biblenlp(&mut nlp_input, None).unwrap();
-    println!("=== BibleNLP =====\n{}\n====== USFM ===\n{}", nlp_input.text.join("\n"), parser.usfm);
+    // let mut parser = USFMParser::from_biblenlp(&mut nlp_input, None).unwrap();
+    // println!("=== BibleNLP =====\n{}\n====== USFM ===\n{}", nlp_input.text.join("\n"), parser.usfm);
+
+
+    let tree_str = match parser.to_syntax_tree(false) {
+        Ok(node) => node.to_sexp(),
+        Err(e) => {
+            println!("Error generating syntax tree: {:?}", e);
+            return;
+        }
+    };
+    println!("=== Syntax Tree ===\n{}\n", tree_str);
 
 }
