@@ -37,18 +37,12 @@ fn test_error_less_parsing() {
             }
         } else {
             // Negative test — errors OR MISSING required
-            let tree_str = match (parser.to_syntax_tree(true)) {
-                Ok(node) => node.to_sexp(),
-                Err(e) => {
-                    println!("Expected error in {label}: {:?}", e);
-                    continue; // error is expected, so this is a pass
-                }
-            };
-            if !tree_str.contains("MISSING") {
-                failures.push(format!(
-                    "Expected error or MISSING in syntax tree for {label}, but got none"
-                ));
+            if !parser.errors.is_empty() {
+                continue; // expected errors, test passed
             }
+            failures.push(format!(
+                "Expected errors for invalid file {label}, but none found.")
+            );
         }
     }
 
