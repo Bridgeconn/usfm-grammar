@@ -13,10 +13,19 @@ fn main() {
     // USFMParser::new panics on bad input, matching Python's __init__ behaviour.
     let parser = USFMParser::from_usfm(usfm_input).unwrap();
     let usj = parser.to_usj(None, None, false, true).unwrap();
+    println!("==== USJ =====\n{}", usj);
+
+    println!("=== Syntax Tree ===\n{}\n", parser.to_syntax_tree(false).unwrap().to_sexp());
 
     // --- Round-trip: USFM → USJ → USFM ---
     let parser = USFMParser::from_usj(&usj).unwrap();
-    let usj = parser.to_usj(None, None, false, true).unwrap();
+    let usj = match parser.to_usj(None, None, false, true) {
+        Ok(usj) => usj,
+        Err(e) => {
+            println!("Error converting back to USJ: {:?}", e);
+            return;
+        }
+    };
     println!("=== USFM===\n{}\n==== USJ ====={}", parser.usfm, usj);
 
     // --- Round-trip: USFM → USX → USFM ---

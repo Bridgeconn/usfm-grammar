@@ -791,7 +791,7 @@ impl<'a> USJGenerator<'a> {
             "v"       => self.node_2_usj_verse(node, parent),
 
             // --- paragraph-level ---
-            "paragraph" | "q" | "w" => self.node_2_usj_para(node, parent),
+            "paragraph" => self.node_2_usj_para(node, parent),
             "pi" | "ph"             => self.node_2_usj_para(node, parent),
 
             // --- generic para-style ---

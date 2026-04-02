@@ -130,6 +130,7 @@ fn test_usj_conversions_with_exclude_markers() {
     for path in positive_files() {
         let parser = initialise_parser(&path);
         if !parser.errors.is_empty() {
+            failures.push(format!("Parsed with errors - {}: {:?}", path.display(), parser.errors));
             continue;
         }
 
@@ -177,6 +178,7 @@ fn test_usj_conversions_with_include_markers() {
     for path in positive_files() {
         let parser = initialise_parser(&path);
         if !parser.errors.is_empty() {
+            failures.push(format!("Parsed with errors - {}: {:?}", path.display(), parser.errors));
             continue;
         }
 
