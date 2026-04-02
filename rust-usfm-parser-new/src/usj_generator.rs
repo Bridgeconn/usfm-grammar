@@ -725,6 +725,7 @@ impl<'a> USJGenerator<'a> {
             "marker":  style.trim(),
             "content": []
         });
+        let mut node_added = false;
 
         let count = node.child_count();
         for i in children_range_start..count {
@@ -737,12 +738,17 @@ impl<'a> USJGenerator<'a> {
                 if nestable {
                     self.node_2_usj(child, &mut para_obj);
                 } else {
+                    if !node_added {
+                        Self::push_obj(parent, para_obj.clone());
+                        node_added = true;
+                    } 
                     self.node_2_usj(child, parent);
                 }
             }
         }
-
-        Self::push_obj(parent, para_obj);
+        if !node_added {
+            Self::push_obj(parent, para_obj);
+        }
     }
 
     // -----------------------------------------------------------------------
