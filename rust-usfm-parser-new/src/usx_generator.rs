@@ -465,7 +465,7 @@ impl<'a> USXGenerator<'a> {
         write_start(w, "note", &[("style", &style), ("caller", &caller)]);
         let count = node.child_count();
         for i in 2..count.saturating_sub(1) {
-            if let Some(child) = node.child(i) {
+            if let Some(child) = node.child(i.try_into().unwrap()) {
                 self.node_2_usx(child, w);
             }
         }
@@ -482,7 +482,7 @@ impl<'a> USXGenerator<'a> {
         let mut children_range = node.child_count();
         let mut has_closing = false;
         for i in (1..node.child_count()).rev() {
-            if let Some(c) = node.child(i) {
+            if let Some(c) = node.child(i.try_into().unwrap()) {
                 let t = c.kind();
                 if t.starts_with('\\') || t == "*" || t.ends_with("Tag") {
                     children_range -= 1;
@@ -506,7 +506,7 @@ impl<'a> USXGenerator<'a> {
 
         write_start(w, "char", &attr_pairs);
         for i in 1..children_range {
-            if let Some(child) = node.child(i) {
+            if let Some(child) = node.child(i.try_into().unwrap()) {
                 if !child.kind().ends_with("Attribute") {
                     self.node_2_usx(child, w);
                 }
@@ -596,7 +596,7 @@ impl<'a> USXGenerator<'a> {
                 write_start(w, "sidebar", &[("style", "esb")]);
                 let count = node.child_count();
                 for i in 1..count.saturating_sub(1) {
-                    if let Some(child) = node.child(i) {
+                    if let Some(child) = node.child(i.try_into().unwrap()) {
                         self.node_2_usx(child, w);
                     }
                 }
@@ -622,7 +622,7 @@ impl<'a> USXGenerator<'a> {
                 write_start(w, "figure", &attrs);
                 let count = node.child_count();
                 for i in 1..count.saturating_sub(1) {
-                    if let Some(child) = node.child(i) {
+                    if let Some(child) = node.child(i.try_into().unwrap()) {
                         if !child.kind().ends_with("Attribute") {
                             self.node_2_usx(child, w);
                         }
@@ -639,7 +639,7 @@ impl<'a> USXGenerator<'a> {
                 write_start(w, "ref", &attrs);
                 let count = node.child_count();
                 for i in 1..count.saturating_sub(1) {
-                    if let Some(child) = node.child(i) {
+                    if let Some(child) = node.child(i.try_into().unwrap()) {
                         if !child.kind().ends_with("Attribute") {
                             self.node_2_usx(child, w);
                         }
@@ -678,7 +678,7 @@ impl<'a> USXGenerator<'a> {
         let count = node.child_count();
         let mut closed = false;
         for i in children_range_start..count {
-            if let Some(child) = node.child(i) {
+            if let Some(child) = node.child(i.try_into().unwrap()) {
                 let ct = child.kind();
                 let nestable = in_set(ct, CHAR_STYLE_MARKERS)
                     || is_nested_char(ct)

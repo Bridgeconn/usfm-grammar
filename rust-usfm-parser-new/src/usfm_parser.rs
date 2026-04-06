@@ -251,7 +251,7 @@ impl USFMParser {
     /// Recursively report MISSING nodes. Mirrors Python's `check_for_missing`.
     fn collect_missing_errors(node: Node<'_>, errors: &mut Vec<(String, String)>) {
         for i in 0..node.child_count() {
-            if let Some(child) = node.child(i) {
+            if let Some(child) = node.child(i.try_into().unwrap()) {
                 if child.is_missing() {
                     errors.push((
                         format!("At {:?}", child.start_position()),

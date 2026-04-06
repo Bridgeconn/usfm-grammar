@@ -455,7 +455,7 @@ impl<'a> USJGenerator<'a> {
 
         let child_count = node.child_count();
         for i in 2..child_count.saturating_sub(1) {
-            if let Some(child) = node.child(i) {
+            if let Some(child) = node.child(i.try_into().unwrap()) {
                 self.node_2_usj(child, &mut note_obj);
             }
         }
@@ -473,7 +473,7 @@ impl<'a> USJGenerator<'a> {
         // Trim closing tag nodes from the range
         let mut children_range = node.child_count();
         for i in (1..node.child_count()).rev() {
-            if let Some(c) = node.child(i) {
+            if let Some(c) = node.child(i.try_into().unwrap()) {
                 let t = c.kind();
                 if t.starts_with('\\') || t == "*" || t.ends_with("Tag") {
                     children_range -= 1;
@@ -496,7 +496,7 @@ impl<'a> USJGenerator<'a> {
         });
 
         for i in 1..children_range {
-            if let Some(child) = node.child(i) {
+            if let Some(child) = node.child(i.try_into().unwrap()) {
                 self.node_2_usj(child, &mut char_obj);
             }
         }
@@ -653,7 +653,7 @@ impl<'a> USJGenerator<'a> {
                 });
                 let count = node.child_count();
                 for i in 1..count.saturating_sub(1) {
-                    if let Some(child) = node.child(i) {
+                    if let Some(child) = node.child(i.try_into().unwrap()) {
                         self.node_2_usj(child, &mut sidebar_obj);
                     }
                 }
@@ -678,7 +678,7 @@ impl<'a> USJGenerator<'a> {
                 });
                 let count = node.child_count();
                 for i in 1..count.saturating_sub(1) {
-                    if let Some(child) = node.child(i) {
+                    if let Some(child) = node.child(i.try_into().unwrap()) {
                         self.node_2_usj(child, &mut fig_obj);
                     }
                 }
@@ -688,7 +688,7 @@ impl<'a> USJGenerator<'a> {
                 let mut ref_obj = json!({ "type": "ref", "content": [] });
                 let count = node.child_count();
                 for i in 1..count.saturating_sub(1) {
-                    if let Some(child) = node.child(i) {
+                    if let Some(child) = node.child(i.try_into().unwrap()) {
                         self.node_2_usj(child, &mut ref_obj);
                     }
                 }
@@ -729,7 +729,7 @@ impl<'a> USJGenerator<'a> {
 
         let count = node.child_count();
         for i in children_range_start..count {
-            if let Some(child) = node.child(i) {
+            if let Some(child) = node.child(i.try_into().unwrap()) {
                 let ct = child.kind();
                 let nestable = in_set(ct, CHAR_STYLE_MARKERS)
                     || is_nested_char(ct)
