@@ -684,14 +684,12 @@ impl<'a> USXGenerator<'a> {
                     || is_nested_char(ct)
                     || in_set(ct, OTHER_PARA_NESTABLES);
 
-                if nestable {
-                    self.node_2_usx(child, w);
-                } else {
+                if !nestable &&  !closed {
                     write_end(w, "para");
                     closed = true;
-                    self.node_2_usx(child, w);
-                    break;
                 }
+                self.node_2_usx(child, w);
+                
             }
         }
         if !closed {
