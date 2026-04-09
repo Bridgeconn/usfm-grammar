@@ -7,6 +7,7 @@ use crate::list_generator::{BibleNlpFormat, ListGenerator, ListOptions, ListRow}
 use crate::usfm_generator::{BibleNlpInput, USFMGenerator};
 use crate::usj_generator::USJGenerator;
 use crate::usx_generator::USXGenerator;
+use crate::filter::{include_markers_in_usj, exclude_markers_in_usj};
 
 // ---------------------------------------------------------------------------
 // Custom error types
@@ -317,10 +318,10 @@ impl USFMParser {
         if let Some(inc) = include_markers {
             let mut markers = inc.to_vec();
             markers.push("USJ");
-            output = include_markers_in_usj(output, &markers, combine_texts);
+            output = include_markers_in_usj(&output, &markers, combine_texts);
         }
         if let Some(exc) = exclude_markers {
-            output = exclude_markers_in_usj(output, exc, combine_texts);
+            output = exclude_markers_in_usj(&output, exc, combine_texts);
         }
 
         Ok(output)
@@ -394,7 +395,7 @@ impl USFMParser {
         // Keep only BCV + TEXT markers
         let mut keep: Vec<&str> = Filter::Bcv.markers();
         keep.extend_from_slice(&Filter::Text.markers());
-        let filtered = include_markers_in_usj(usj_root, &keep, true);
+        let filtered = include_markers_in_usj(&usj_root, &keep, true);
 
         let mut list_gen = ListGenerator::new();
         list_gen.usj_to_biblenlp_format(&filtered);  // mutates in-place, returns ()
@@ -419,74 +420,3 @@ impl USFMParser {
     }
 }
 
-// ---------------------------------------------------------------------------
-// Filter helper functions
-// (inline here since there is no separate `filters` module)
-// ---------------------------------------------------------------------------
-
-/// Keep only the specified markers in a USJ tree.
-/// Mirrors Python's `include_markers_in_usj`.
-pub fn include_markers_in_usj(
-    mut usj: Value,
-    include_markers: &[&str],
-    combine_texts: bool,
-) -> Value {
-    filter_usj_content(&mut usj, include_markers, true, combine_texts);
-    usj
-}
-
-/// Remove the specified markers from a USJ tree.
-/// Mirrors Python's `exclude_markers_in_usj`.
-pub fn exclude_markers_in_usj(
-    mut usj: Value,
-    exclude_markers: &[&str],
-    combine_texts: bool,
-) -> Value {
-    filter_usj_content(&mut usj, exclude_markers, false, combine_texts);
-    usj
-}
-
-/// Recursive walk that retains or removes content items by marker.
-fn filter_usj_content(
-    node: &mut Value,
-    markers: &[&str],
-    is_include: bool,
-    combine_texts: bool,
-) {
-    if let Some(content) = node.get_mut("content").and_then(Value::as_array_mut) {
-        content.retain_mut(|item| {
-            // Plain text strings are always kept
-            if item.is_string() {
-                return true;
-            }
-            if let Some(obj) = item.as_object() {
-                let type_val   = obj.get("type").and_then(Value::as_str).unwrap_or("");
-                let marker_val = obj.get("marker").and_then(Value::as_str).unwrap_or(type_val);
-                let matched    = markers.contains(&marker_val) || markers.contains(&type_val);
-                let keep       = if is_include { matched } else { !matched };
-                if keep {
-                    filter_usj_content(item, markers, is_include, combine_texts);
-                }
-                keep
-            } else {
-                true
-            }
-        });
-
-        // Optionally merge adjacent text strings
-        if combine_texts {
-            let mut i = 0;
-            while i + 1 < content.len() {
-                if content[i].is_string() && content[i + 1].is_string() {
-                    let next = content.remove(i + 1).as_str().unwrap_or("").to_string();
-                    if let Some(s) = content[i].as_str() {
-                        let merged = format!("{}{}", s, next);
-                        content[i] = Value::String(merged);
-                    }
-                } else {
-                    i += 1;
-                }
-            }
-        }
-    }
-}
