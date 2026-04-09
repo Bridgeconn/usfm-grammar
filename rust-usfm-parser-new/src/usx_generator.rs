@@ -741,7 +741,7 @@ impl<'a> USXGenerator<'a> {
             "chapter" => self.node_2_usx_chapter(node, w),
             "v"       => self.node_2_usx_verse(node, w),
 
-            "paragraph" | "q" | "w" => self.node_2_usx_para(node, w),
+            "paragraph" => self.node_2_usx_para(node, w),
             "pi" | "ph"             => self.node_2_usx_para(node, w),
 
             "cl" | "cp" | "vp" => self.node_2_usx_generic(node, w),
