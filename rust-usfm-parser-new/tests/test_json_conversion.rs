@@ -4,8 +4,10 @@ mod common;
 
 use std::collections::HashSet;
 use std::fs;
+use std::sync::OnceLock;
 
 use serde_json::Value;
+use regex::Regex;
 
 use common::{
     all_usfm_files, find_all_markers, initialise_parser, negative_tests, exclude_usx_files,
@@ -293,9 +295,44 @@ fn test_usj_round_tripping() {
 // test_compare_usj_with_testsuite_samples
 // ---------------------------------------------------------------------------
 
+static multiple_pattern : OnceLock<Regex> = OnceLock::new();
+
+pub fn normalize_json(value: &mut Value) {
+    match value {
+        Value::Object(map) => {
+            for v in map.values_mut() {
+                normalize_json(v);
+            }
+        }
+
+        Value::Array(arr) => {
+            // First normalize all elements
+            for v in arr.iter_mut() {
+                normalize_json(v);
+            }
+
+            // Then remove empty strings
+            arr.retain(|v| {
+                match v {
+                    Value::String(s) => !s.trim().is_empty(),
+                    _ => true,
+                }
+            });
+        }
+
+        Value::String(s) => {
+            let re = multiple_pattern.get_or_init(|| {
+                Regex::new(r"[\n\s\r]+").unwrap()
+            });
+            *s = re.replace_all(s, " ").trim().to_string();
+        }
+        _ => {}
+    }
+}
+
 /// Mirrors `test_compare_usj_with_testsuite_samples`.
 /// Compares our generated USJ against `origin.json` files in the test suite.
-// #[test]
+#[test]
 fn test_compare_usj_with_testsuite_samples() {
     let excluded_usx = exclude_usx_files();
     let mut failures = Vec::new();
@@ -313,7 +350,7 @@ fn test_compare_usj_with_testsuite_samples() {
         }
 
         let usj_path = path.with_file_name("origin.json");
-        let origin_usj: Value = match fs::read_to_string(&usj_path) {
+        let mut origin_usj: Value = match fs::read_to_string(&usj_path) {
             Ok(text) => match serde_json::from_str(&text) {
                 Ok(v) => v,
                 Err(_) => continue,
@@ -321,22 +358,25 @@ fn test_compare_usj_with_testsuite_samples() {
             Err(_) => continue, // no reference file — skip
         };
 
-        let generated = match parser.to_usj(None, None, false, true) {
+        let mut generated = match parser.to_usj(None, None, false, true) {
             Ok(v) => v,
             Err(e) => {
                 failures.push(format!("{}: {e}", path.display()));
                 continue;
             }
         };
+        normalize_json(&mut generated);
+        normalize_json(&mut origin_usj);
 
-        if generated != origin_usj {
+
+        if generated != origin_usj  {
             failures.push(format!(
                 "{}: generated USJ differs from testsuite origin.json",
                 path.display()
             ));
         }
     }
-    assert!(failures.is_empty(), "failures:\n{}", failures.join("\n"));
+    assert!(failures.is_empty(), "failures:\n{}\n\nTotal failed{}/{}", failures.join("\n"), failures.len(), positive_files().len());
 }
 
 // ---------------------------------------------------------------------------
