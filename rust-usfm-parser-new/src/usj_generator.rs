@@ -541,7 +541,7 @@ impl<'a> USJGenerator<'a> {
 
                 let align = if style.contains("tcc") || style.contains("thc") {
                     "center"
-                } else if style.ends_with('r') {
+                } else if style.contains('r') {
                     "end"
                 } else {
                     "start"
