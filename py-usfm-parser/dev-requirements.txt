@@ -3,7 +3,7 @@ rnc2rng==2.7.0
 lxml==6.0.2
 jsonschema==4.26.0
 pylint==4.0.5
-pytest==9.0.2
+pytest==9.0.3
 pytest-timeout==2.4.0
 pytest-xdist==3.8.0
 bump2version==1.0.1
