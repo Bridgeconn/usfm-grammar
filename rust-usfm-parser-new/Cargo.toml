@@ -11,6 +11,7 @@ quick-xml          = "0.36"
 elementtree        = "1.2"
 regex              = "1" 
 streaming-iterator = "0.1"
+clap = { version = "4", features = ["derive"] }
 
 [dev-dependencies]
 glob     = "0.3"
