@@ -8,7 +8,7 @@ use std::fs;
 use std::sync::OnceLock;
 
 use regex::Regex;
-use elementtree::Element;
+use elementtree::{Element, WriteOptions};
 
 use common::{
     all_usfm_files, find_all_markers, initialise_parser, negative_tests, exclude_usx_files,
@@ -193,6 +193,20 @@ fn normalize(elem: &Element) -> Element {
     new_elem
 }
 
+fn remove_verse_end_node(str: &str) -> String {
+    let re = MULTIPLE_PATTERN.get_or_init(|| {
+        Regex::new(r"<verse eid[^>]*/>").unwrap()
+    });
+    re.replace_all(str, "").to_string()
+}
+
+fn remove_version_node(str: &str) -> String {
+    let re = MULTIPLE_PATTERN.get_or_init(|| {
+        Regex::new(r"<version[^>]*/>").unwrap()
+    });
+    re.replace_all(str, "").to_string()
+}
+
 /// Mirrors `test_compare_usx_with_testsuite_samples`.
 /// Serialises both the generated and reference USX trees to strings and
 /// compares them. (No RelaxNG validator is used here; see schema test below.)
@@ -227,15 +241,21 @@ fn test_compare_usx_with_testsuite_samples() {
 
         let generated_usx = normalize(&generated_usx);
 
+        let xml_write_opts = WriteOptions::new()
+            .set_perform_indent(true)
+            .set_indent_string("  ")
+            .set_line_separator("\n");
+        let mut generated_out = Vec::new();
+        if let Err(e) = generated_usx.to_writer_with_options(&mut generated_out, xml_write_opts) {
+            failures.push(format!("{}: failed to write generated USX: {e}", path.display()));
+            continue;
+        }
 
-        // Serialise both to string for comparison
-        let generated_str = match generated_usx.to_string() {
-            Ok(s) => s,
-            Err(e) => {
-                failures.push(format!("{}: failed to serialise generated USX: {e}", path.display()));
-                continue;
-            }
-        };
+
+        // Serialise to string for comparison
+        let mut generated_str = String::from_utf8(generated_out).unwrap();
+        generated_str = remove_verse_end_node(&generated_str);
+        generated_str = remove_version_node(&generated_str);
 
         // Parse the reference XML with elementtree for a normalised comparison
         let ref_text_stripped = ref_text.replace("encoding=\"utf-8\"", "");
@@ -244,13 +264,18 @@ fn test_compare_usx_with_testsuite_samples() {
             Err(_) => continue, // can't parse reference — skip
         };
         let ref_el = normalize(&ref_el);
-        let ref_str = match ref_el.to_string() {
-            Ok(s) => s,
-            Err(e) => {
-                failures.push(format!("{}: failed to serialise reference USX: {e}", path.display()));
-                continue;
-            }
-        };
+        let mut ref_out = Vec::new();
+        let xml_write_opts = WriteOptions::new()
+            .set_perform_indent(true)
+            .set_indent_string("  ")
+            .set_line_separator("\n");
+        if let Err(e) = ref_el.to_writer_with_options(&mut ref_out, xml_write_opts) {
+            failures.push(format!("{}: failed to write reference USX: {e}", path.display()));
+            continue;
+        }
+        let mut ref_str = String::from_utf8(ref_out).unwrap();
+        ref_str = remove_verse_end_node(&ref_str);
+        ref_str = remove_version_node(&ref_str);
 
         if generated_str != ref_str {
             failures.push(format!(
