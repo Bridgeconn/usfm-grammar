@@ -24,7 +24,7 @@ keywords = ["usfm", "parser", "grammar", "tree-sitter"]
 dependencies = [
     'tree-sitter>=0.25.2; python_version >= "3.9"',
     'tree-sitter-usfm3==3.2.0; python_version >="3.8"',
-    'lxml==6.0.2; python_version >= "3.5"',
+    'lxml==6.1.0; python_version >= "3.5"',
     'jsonschema==4.26.0; python_version>= "3.8"'
 ]
 requires-python = ">=3.10"
