@@ -6,8 +6,6 @@ use std::fs;
 use std::path::{Path, PathBuf};
 
 use glob::glob;
-use quick_xml::events::Event;
-use quick_xml::Reader;
 
 use usfm_grammar::USFMParser;
 
