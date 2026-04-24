@@ -138,8 +138,7 @@ let parser = USFMParser::new(usfm);
 let rows = parser.to_list(None, None, false, true).unwrap();
 
 for row in &rows {
-    println!("{}", row.join("\t"));
-}
+    println!("{}\t{}\t{}\t{}\t{}", row.book, row.chapter, row.verse, row.marker, row.text)
 ```
 
 ---
