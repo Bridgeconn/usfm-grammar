@@ -77,7 +77,7 @@ module.exports = grammar({
 
     h: $ => prec.right(0,seq($.hTag, $._headingText)),
     hTag: $ => seq("\\h",optional($.numberedLevelMaxAny), " "),
-    toc: $ => seq($.tocTag, $._headingText),
+    toc: $ => prec.right(0,seq($.tocTag, $._headingText)),
     tocTag: $ => seq("\\toc",optional($.numberedLevelMax3), " "),
     toca: $ => prec.right(0,seq($.tocaTag, $._headingText)),
     tocaTag: $ => seq("\\toca",optional($.numberedLevelMax3), " "),
