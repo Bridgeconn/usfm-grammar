@@ -364,29 +364,33 @@ xt in cd
     (c
       (chapterNumber)
       (cd
-        (xt_standalone
-          (crossrefText
-            (text))
-          (defaultAttribute
-            (attributeValue)))
+        (crossref
+          (xt_standalone
+            (crossrefText
+              (text))
+            (defaultAttribute
+              (attributeValue))))
         (text)
-        (xt_standalone
-          (crossrefText
-            (text))
-          (defaultAttribute
-            (attributeValue)))
+        (crossref
+          (xt_standalone
+            (crossrefText
+              (text))
+            (defaultAttribute
+              (attributeValue))))
         (text)
-        (xt_standalone
-          (crossrefText
-            (text))
-          (defaultAttribute
-            (attributeValue)))
+        (crossref
+          (xt_standalone
+            (crossrefText
+              (text))
+            (defaultAttribute
+              (attributeValue))))
         (text)
-        (xt_standalone
-          (crossrefText
-            (text))
-          (defaultAttribute
-            (attributeValue)))
+        (crossref
+          (xt_standalone
+            (crossrefText
+              (text))
+            (defaultAttribute
+              (attributeValue))))
         (text)))
     (paragraph
       (p
