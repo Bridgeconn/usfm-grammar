@@ -86,7 +86,7 @@
                             "content": [
                                 "Leader \n"
                             ],
-                            "align": "start"
+                            "align": "end"
                         }
                     ]
                 },
@@ -116,7 +116,7 @@
                             "content": [
                                 "Nahshon son of Amminadab\n"
                             ],
-                            "align": "start"
+                            "align": "end"
                         }
                     ]
                 },
@@ -146,7 +146,7 @@
                             "content": [
                                 "Nethanel son of Zuar\n"
                             ],
-                            "align": "start"
+                            "align": "end"
                         }
                     ]
                 },
@@ -176,7 +176,7 @@
                             "content": [
                                 "Eliab son of Helon\n"
                             ],
-                            "align": "start"
+                            "align": "end"
                         }
                     ]
                 },
@@ -206,7 +206,7 @@
                             "content": [
                                 "Elizur son of Shedeur\n"
                             ],
-                            "align": "start"
+                            "align": "end"
                         }
                     ]
                 },
@@ -236,7 +236,7 @@
                             "content": [
                                 "Shelumiel son of Zurishaddai"
                             ],
-                            "align": "start"
+                            "align": "end"
                         }
                     ]
                 }

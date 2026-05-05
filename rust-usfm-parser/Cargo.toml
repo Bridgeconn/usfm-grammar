@@ -1,0 +1,27 @@
+[package]
+name        = "usfm-grammar"
+version     = "3.0.0-beta.1"
+edition     = "2024"
+ 
+description  = "Parse, validate and convert USFM Bible files to USX, USJ, table and BibleNLP formats, built on tree-sitter-usfm3"
+license      = "MIT"
+repository   = "https://github.com/Bridgeconn/usfm-grammar"
+homepage     = "https://github.com/Bridgeconn/usfm-grammar"
+readme       = "Readme.md"
+keywords     = ["usfm", "bible", "usx", "parser", "tree-sitter"]  # max 5
+categories   = ["parsing", "encoding"]                             # must match https://crates.io/category_slugs
+authors      = ["BCS Team <joel@bridgeconn.com>"]                     # ← update
+exclude      = ["tests/", "target/"]
+
+
+[dependencies]
+tree-sitter        = "0.26.8"
+tree-sitter-usfm3  = "3.0.0-alpha.2"
+serde_json         = "1"
+elementtree        = "1.2"
+regex              = "1" 
+streaming-iterator = "0.1"
+clap = { version = "4", features = ["derive"] }
+
+[dev-dependencies]
+glob     = "0.3"
