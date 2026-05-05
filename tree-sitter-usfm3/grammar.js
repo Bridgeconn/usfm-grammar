@@ -75,20 +75,20 @@ module.exports = grammar({
     tocaBlock: $ =>prec.right(0, repeat1($.toca)),//only under some hmarkers
     ref: $ => seq("\\ref ", $.text, optional(choice($.defaultAttribute, $._refAttributes)), "\\ref*"),
 
-    h: $ => seq($.hTag, $._headingText),
+    h: $ => prec.right(0,seq($.hTag, $._headingText)),
     hTag: $ => seq("\\h",optional($.numberedLevelMaxAny), " "),
     toc: $ => seq($.tocTag, $._headingText),
     tocTag: $ => seq("\\toc",optional($.numberedLevelMax3), " "),
-    toca: $ => seq($.tocaTag, $._headingText),
+    toca: $ => prec.right(0,seq($.tocaTag, $._headingText)),
     tocaTag: $ => seq("\\toca",optional($.numberedLevelMax3), " "),
 
     // Remarks and Comments
     _comments: $ => choice($.rem, $.sts, $.restore, $.lit),
 
-    sts: $ => seq("\\sts ", repeat1(choice($.text, $._characterMarker))), // can be present at any position in file, and divides the file into sections from one sts to another.
+    sts: $ => prec.right(0,seq("\\sts ", repeat1(choice($.text, $._characterMarker)))), // can be present at any position in file, and divides the file into sections from one sts to another.
     rem: $ => prec.right(0, seq("\\rem ", repeat1(choice($.text, $._characterMarker)))), // can be present at any position in file.
-    restore: $ => seq("\\restore ", repeat1(choice($.text, $._characterMarker))), //can't find this marker in docs
-    lit: $ => seq("\\lit ", repeat1(choice($.text, $._characterMarker))), 
+    restore: $ => prec.right(0,seq("\\restore ", repeat1(choice($.text, $._characterMarker)))), //can't find this marker in docs
+    lit: $ => prec.right(0,seq("\\lit ", repeat1(choice($.text, $._characterMarker)))), 
 
     // Introduction
     // _introduction: $ => prec.right(0,seq(
@@ -185,9 +185,9 @@ module.exports = grammar({
       $.cd,
       $.cl
     ),
-    cl: $ => seq("\\cl ", repeat1(choice($.text, $._characterMarker))),
+    cl: $ => prec.right(0,seq("\\cl ", repeat1(choice($.text, $._characterMarker)))),
     ca: $ => seq("\\ca ", $.chapterNumber, "\\ca*"),
-    cp: $ => seq("\\cp ", repeat1(choice($.text, $._characterMarker))),
+    cp: $ => prec.right(0,seq("\\cp ", $._headingText)),
     cd: $ => prec.right(0,seq("\\cd ", $._headingText)),
 
     // Titles & Headings
@@ -203,7 +203,7 @@ module.exports = grammar({
     ),
 
     mtBlock: $ => prec.right(0,repeat1($.mt)),
-    mt: $ => seq($.mtTag, $._headingText),
+    mt: $ => prec.right(0,seq($.mtTag, $._headingText)),
     mtTag: $ => seq("\\mt",optional($.numberedLevelMax4), " "),
 
     mteBlock: $ => prec.right(0,repeat1($.mte)),
@@ -218,10 +218,10 @@ module.exports = grammar({
     sBlock: $ => prec.right(0, repeat1($.s)),
     s: $ => prec.right(0, seq($.sTag, $._headingText, repeat(choice($.sr, $.r)) )),
     sTag: $ => seq("\\s",optional($.numberedLevelMax5), " "),
-    sr: $ => seq("\\sr ", $._headingText),
-    r: $ => seq("\\r ", $._headingText), // ocurs under c too
+    sr: $ => prec.right(0,seq("\\sr ", $._headingText)),
+    r: $ => prec.right(0, seq("\\r ", $._headingText)), // ocurs under c too
 
-    sp: $ => seq("\\sp ", $._headingText),
+    sp: $ => prec.right(0, seq("\\sp ", $._headingText)),
     d: $ => prec.right(0, seq("\\d ", $._headingText)),
     sdBlock: $ => prec.right(0, repeat1($.sd)),
     sd: $ => seq($.sdTag),
