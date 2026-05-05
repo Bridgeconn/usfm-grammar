@@ -213,7 +213,7 @@ module.exports = grammar({
     msBlock: $ => prec.right(0, repeat1($.ms)),
     ms: $ => prec.right(0, seq($.msTag, $._headingText, optional($.mr))),
     msTag: $ => seq("\\ms",optional($.numberedLevelMax3), " "),
-    mr: $ => seq("\\mr ", $._headingText),
+    mr: $ => prec.right(0,seq("\\mr ", $._headingText)),
 
     sBlock: $ => prec.right(0, repeat1($.s)),
     s: $ => prec.right(0, seq($.sTag, $._headingText, repeat(choice($.sr, $.r)) )),
