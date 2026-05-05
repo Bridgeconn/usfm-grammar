@@ -60,7 +60,6 @@ module.exports = grammar({
     versionNumber: $ => /\d+(\.\d+)?/,
 
     _headingText: $ => repeat1(choice($.text,
-      $.xt_standalone,
       $._characterMarker,
       $.ref,
       $.footnote,
