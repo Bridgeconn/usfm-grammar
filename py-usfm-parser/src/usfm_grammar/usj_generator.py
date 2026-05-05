@@ -468,7 +468,7 @@ class USJGenerator:
 
     def node_2_usj(self, node, parent_json_obj):
         """Main dispatch method for converting nodes to USJ format"""
-        if not hasattr(node, "type"):
+        if not hasattr(node, "type") or node.type == "ERROR":
             return
         node_type = node.type.replace("\\", "") if node.type else ""
         handler = self.dispatch_map.get(node_type)
@@ -478,7 +478,7 @@ class USJGenerator:
             # Handle special cases
             if node_type.endswith("Attribute"):
                 self.node_2_usj_attrib(node, parent_json_obj)
-            elif node_type.strip() in ["", "|"]:
+            elif node_type.strip() in ["", "|", "ERROR"]:
                 # Known noop
                 return
             # Process children for nodes without specific handlers

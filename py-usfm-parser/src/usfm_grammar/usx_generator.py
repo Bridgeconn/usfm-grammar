@@ -504,7 +504,7 @@ class USXGenerator:
     def node_2_usx(self, node, parent_xml_node):  # pylint: disable= too-many-branches
         """check each node and based on the type convert to corresponding xml element"""
         # print("working with node: ", node, "\n")
-        if not hasattr(node, "type"):
+        if not hasattr(node, "type") or node.type == "ERROR":
             return
         node_type = node.type.replace("\\", "") if node.type else ""
         handler = self.dispatch_map.get(node_type)
