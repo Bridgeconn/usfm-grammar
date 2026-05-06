@@ -81,6 +81,7 @@ export const CHAR_STYLE_MARKERS = [
   'w',
   'wh',
   'wa',
+  'wl',
   'wg', //special - features
   'lik',
   'liv', //structred list entries
@@ -118,6 +119,7 @@ export const DEFAULT_ATTRIB_MAP = {
   ref: 'loc',
   milestone: 'who',
   k: 'key',
+  wl: 'lang',
 };
 export const TABLE_CELL_MARKERS = ['tc', 'th', 'tcr', 'thr', 'tcc', 'thc'];
 export const MISC_MARKERS = ['fig', 'cat', 'esb', 'b', 'ph', 'pi'];

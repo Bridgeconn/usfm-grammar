@@ -1,0 +1,71 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "MAT",
+            "content": [
+                "41MATGNT92.SFM, Good News Translation, June 2003"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "MAT 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "21",
+                    "sid": "MAT 1:21"
+                },
+                "A week later, when the time came for the baby to be\ncircumcised",
+                {
+                    "type": "note",
+                    "marker": "f",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "1:1 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "fk",
+                            "content": [
+                                "Circumcised "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "A sign of the Abrahamic covenant.\nRomanian: ",
+                                {
+                                    "type": "char",
+                                    "marker": "wl",
+                                    "content": [
+                                        "tăiat împrejur"
+                                    ],
+                                    "lang": "ro"
+                                }
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                ", he was named Jesus, the name which\nthe angel had given him before he had been conceived."
+            ]
+        }
+    ]
+}

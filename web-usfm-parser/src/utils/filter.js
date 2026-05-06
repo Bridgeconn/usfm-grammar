@@ -106,6 +106,7 @@ const Filter = {
     'w',
     'wh',
     'wa',
+    'wl',
     'wg',
     'lik',
     'liv',

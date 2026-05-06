@@ -502,6 +502,7 @@ module.exports = grammar({
     wg: $ => seq("\\wg", $._spaceOrLine, $._innerText, "\\wg*"),
     wh: $ => seq("\\wh", $._spaceOrLine, $._innerText, "\\wh*"),
     wa: $ => seq("\\wa", $._spaceOrLine, $._innerText, "\\wa*"),
+    wl: $ => seq("\\wl", $._spaceOrLine, $._innerText, optional(choice($.defaultAttribute, $._wlAttributes)), "\\wl*"),
 
     _characterMarker: $ => choice(
       $.add,
@@ -532,6 +533,7 @@ module.exports = grammar({
       $.wg,
       $.wh,
       $.wa,
+      $.wl,
       $.jmp,
 //      $.fig,
       // $.zNameSpace, makes all zNameSpaces part of paragraph content, like milestones
@@ -569,6 +571,8 @@ module.exports = grammar({
     wgNested: $ => seq("\\+wg", $._spaceOrLine, $._innerText, "\\+wg*"),
     whNested: $ => seq("\\+wh", $._spaceOrLine, $._innerText, "\\+wh*"),
     waNested: $ => seq("\\+wa", $._spaceOrLine, $._innerText, "\\+wa*"),
+    wlNested: $ => seq("\\+wl", $._spaceOrLine, $._innerText, optional(
+      choice($.defaultAttribute, $._wlAttributes)), "\\+wl*"),
 
     _nestedCharacterMarker: $ => choice(
       $.addNested,
@@ -599,6 +603,7 @@ module.exports = grammar({
       $.wgNested,
       $.whNested,
       $.waNested,
+      $.wlNested,
       $.jmpNested,
     ),
 
@@ -683,6 +688,7 @@ module.exports = grammar({
     keyAttribute: $ => seq("key", "=", '"', optional($.attributeValue), '"'),
     _wAttributes: $ => prec.right(0, seq("|", repeat1(choice($.lemmaAttribute, $.strongAttribute,
       $.scrlocAttribute, $.linkAttribute, $.customAttribute)))),
+    _wlAttributes: $ => prec.right(0, seq("|", repeat1(choice($.langAttribute, $.customAttribute)))),
     _rbAttributes: $ => prec.right(0, seq("|", repeat1(choice($.glossAttribute, $.customAttribute,
       $.linkAttribute)))),
     _figAttributes: $ => prec.right(0, seq("|", repeat1(choice($.altAttribute, $.srcAttribute, $.sizeAttribute, $.locAttribute, $.copyAttribute, 
@@ -692,6 +698,7 @@ module.exports = grammar({
     strongAttribute: $ => seq("strong", "=", '"', optional($.attributeValue), '"'), 
     scrlocAttribute: $ => seq("srcloc", "=", '"', optional($.attributeValue), '"'),
     glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
+    langAttribute: $ => seq("lang", "=", '"', optional($.attributeValue), '"'),
     _jmpAttribute: $ => seq("|", repeat($.linkAttribute)),
     linkAttribute: $ => seq($._linkAttributeName, "=", '"', optional($.attributeValue), '"'),
     _linkAttributeName: $ => choice("link-href", "link-title", "link-id",

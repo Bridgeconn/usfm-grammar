@@ -24,7 +24,7 @@ class USXGenerator:
         "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord",
         "pn", "png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj",  # Special-text
         "em", "bd", "bdit", "it", "no", "sc", "sup",  # character styling
-        "rb", "pro", "w", "wh", "wa", "wg",  # special-features
+        "rb", "pro", "w", "wh", "wa", "wg","wl",  # special-features
         "lik", "liv",  # structred list entries
         "jmp", "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",  # footnote-content
         "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",  # crossref-content
@@ -32,6 +32,7 @@ class USXGenerator:
     NESTED_CHAR_STYLE_MARKERS = [item + "Nested" for item in CHAR_STYLE_MARKERS]
     DEFAULT_ATTRIB_MAP = {
         "w": "lemma",
+        "wl": "lang",
         "rb": "gloss",
         "xt": "href",
         "fig": "alt",
@@ -283,6 +284,9 @@ class USXGenerator:
                 node.children[i].type == "*" or\
                 node.children[i].type.endswith("Tag"):
                 children_range -= 1
+                closing_node = node.children[i]
+            else:
+                break
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set(
             "style",
