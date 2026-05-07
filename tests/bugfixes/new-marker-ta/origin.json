@@ -1,0 +1,41 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "JER",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "13",
+            "sid": "JER 13"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                "...\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "23",
+                    "sid": "JER 13:23"
+                },
+                "Can people change the ",
+                {
+                    "type": "char",
+                    "marker": "ta",
+                    "content": [
+                        "color"
+                    ],
+                    "a-uk": "colour"
+                },
+                " of their skin, or a leopard\nremove its spots? If they could, then you that do nothing but evil could learn\nto do what is right.\n"
+            ]
+        }
+    ]
+}

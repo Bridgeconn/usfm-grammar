@@ -22,7 +22,7 @@ class USXGenerator:
     NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"]
     CHAR_STYLE_MARKERS = [
         "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord",
-        "pn", "png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj",  # Special-text
+        "pn", "png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj", "ta",  # Special-text
         "em", "bd", "bdit", "it", "no", "sc", "sup",  # character styling
         "rb", "pro", "w", "wh", "wa", "wg","wl",  # special-features
         "lik", "liv",  # structred list entries

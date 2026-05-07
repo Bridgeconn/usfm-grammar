@@ -31,6 +31,7 @@ const CHAR_STYLE_MARKERS = [
   'wh',
   'wa',
   'wl',
+  'ta',
   'wg', //special - features
   'lik',
   'liv', //structred list entries

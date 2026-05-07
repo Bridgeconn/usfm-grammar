@@ -503,6 +503,7 @@ module.exports = grammar({
     wh: $ => seq("\\wh", $._spaceOrLine, $._innerText, "\\wh*"),
     wa: $ => seq("\\wa", $._spaceOrLine, $._innerText, "\\wa*"),
     wl: $ => seq("\\wl", $._spaceOrLine, $._innerText, optional(choice($.defaultAttribute, $._wlAttributes)), "\\wl*"),
+    ta: $ => seq("\\ta", $._spaceOrLine, $._innerText, "|", repeat1($.aAttribute), "\\ta*"),
 
     _characterMarker: $ => choice(
       $.add,
@@ -535,6 +536,7 @@ module.exports = grammar({
       $.wa,
       $.wl,
       $.jmp,
+      $.ta,
 //      $.fig,
       // $.zNameSpace, makes all zNameSpaces part of paragraph content, like milestones
     ),
@@ -573,6 +575,7 @@ module.exports = grammar({
     waNested: $ => seq("\\+wa", $._spaceOrLine, $._innerText, "\\+wa*"),
     wlNested: $ => seq("\\+wl", $._spaceOrLine, $._innerText, optional(
       choice($.defaultAttribute, $._wlAttributes)), "\\+wl*"),
+    taNested: $ => seq("\\+ta", $._spaceOrLine, $._innerText, "|", repeat1($.aAttribute), "\\+ta*"),
 
     _nestedCharacterMarker: $ => choice(
       $.addNested,
@@ -589,6 +592,7 @@ module.exports = grammar({
       $.slsNested,
       $.tlNested,
       $.wjNested,
+      $.taNested,
       $.emNested,
       $.bdNested,
       $.itNested,
@@ -714,6 +718,9 @@ module.exports = grammar({
       choice($.msAttribute, $.customAttribute, $.linkAttribute)))),
     msAttribute: $ => seq($.milestoneAttributeName, "=", '"', optional($.attributeValue), '"'),
     milestoneAttributeName: $ => choice("sid", "eid", "who"),
+    aAttribute: $ => seq($.aIdentifier, "=", '"', optional($.attributeValue), '"'),
+
+    aIdentifier: $ => /a-[^\s=]+/,
 
     _attributesInCrossref: $ => prec.right(0,seq("|", repeat1(choice(
       $.linkAttribute, $.customAttribute, $.defaultAttribute))))
