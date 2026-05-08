@@ -105,6 +105,7 @@ class ListGenerator:
                     if (
                         self.current_chapter == self.prev_chapter
                         and self.current_verse == self.prev_verse
+                        and len(self.bible_nlp_format["text"]) > 0
                     ):
                         self.bible_nlp_format["text"][-1] += (
                             " " + item.replace("\n", " ").strip()

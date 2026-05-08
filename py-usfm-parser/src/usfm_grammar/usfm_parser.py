@@ -18,7 +18,7 @@ class Filter(list, Enum):
 
     BOOK_HEADERS = [
         "ide", "usfm", "h", "toc", "toca",  # identification
-        "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr",
+        "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "ipc",
         "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
     ]
     TITLES = [

@@ -74,6 +74,7 @@ const PARA_STYLE_MARKERS = [
   'ipq',
   'imq',
   'ipr',
+  'ipc',
   'iq',
   'ib',
   'ili',

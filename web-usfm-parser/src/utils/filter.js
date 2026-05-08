@@ -16,6 +16,7 @@ const Filter = {
     'ipq',
     'imq',
     'ipr',
+    'ipc',
     'iq',
     'ib',
     'ili',

@@ -7,7 +7,7 @@ import re
 
 MARKERS_WITH_DISCARDABLE_CONTENTS = [
     "ide", "usfm", "h", "toc", "toca",  # identification
-    "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
+    "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "ipc", "iq", "ib",
     "ili", "iot", "io", "iex", "imte", "ie",  # intro
     "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",  # titles
     "sts", "rem", "lit", "restore",  # comments

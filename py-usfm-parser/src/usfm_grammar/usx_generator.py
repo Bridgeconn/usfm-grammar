@@ -11,7 +11,7 @@ class USXGenerator:
     PARA_STYLE_MARKERS = [
         "ide", "h", "toc", "toca",  # identification
         "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq",
-        "ipr", "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
+        "ipr", "ipc", "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
         "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",  # titles
         "q", "qr", "qc", "qa", "qm", "qd",  # poetry
         "lh", "li", "lf", "lim",  # lists
