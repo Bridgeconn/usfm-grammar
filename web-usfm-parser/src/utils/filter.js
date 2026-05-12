@@ -108,6 +108,7 @@ const Filter = {
     'wh',
     'wa',
     'wl',
+    'ta',
     'wg',
     'lik',
     'liv',

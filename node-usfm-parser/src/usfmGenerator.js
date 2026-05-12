@@ -259,7 +259,7 @@ class USFMGenerator {
       if (verse.trim() !== '') {
         this.usfmString += `\\v ${verse} ${verseText}`;
       } else {
-        this.usfmString += ` ${verseText}`;
+        this.usfmString += `${verseText}`;
       }
     }
   }
