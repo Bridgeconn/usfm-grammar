@@ -110,7 +110,7 @@ module.exports = grammar({
     imte: $ => prec.right(0, seq($.imteTag, $._introText)),
     imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
     _midIntroMarker: $ => choice($.imtBlock, $.isBlock, $.io, $.iot, $.ip, $.im,
-      $.ipi, $.imi, $.iliBlock, $.ipq, $.imq, $.ipr, $.ib,
+      $.ipi, $.imi, $.iliBlock, $.ipq, $.imq, $.ipr, $.ipc, $.ib,
       $.iqBlock, $.iex, $._comments, $.milestone, $.zNameSpace, $.esb),
     isBlock: $ => prec.right(0,repeat1($.is)),
     is: $ => prec.right(0, seq($.isTag, $._introText)),
@@ -130,6 +130,7 @@ module.exports = grammar({
     ipq: $ => prec.right(0, seq("\\ipq ", $._introText)),
     imq: $ => prec.right(0, seq("\\imq ", $._introText)),
     ipr: $ => prec.right(0, seq("\\ipr ", $._introText)),
+    ipc: $ => prec.right(0, seq("\\ipc ", $._introText)),
     ib: $ => seq("\\ib"),
     iqBlock: $ => prec.right(0,repeat1($.iq)),
     iq: $ => prec.right(0, seq($.iqTag, $._introText)),
@@ -502,6 +503,8 @@ module.exports = grammar({
     wg: $ => seq("\\wg", $._spaceOrLine, $._innerText, "\\wg*"),
     wh: $ => seq("\\wh", $._spaceOrLine, $._innerText, "\\wh*"),
     wa: $ => seq("\\wa", $._spaceOrLine, $._innerText, "\\wa*"),
+    wl: $ => seq("\\wl", $._spaceOrLine, $._innerText, optional(choice($.defaultAttribute, $._wlAttributes)), "\\wl*"),
+    ta: $ => seq("\\ta", $._spaceOrLine, $._innerText, "|", repeat1($.aAttribute), "\\ta*"),
 
     _characterMarker: $ => choice(
       $.add,
@@ -532,7 +535,9 @@ module.exports = grammar({
       $.wg,
       $.wh,
       $.wa,
+      $.wl,
       $.jmp,
+      $.ta,
 //      $.fig,
       // $.zNameSpace, makes all zNameSpaces part of paragraph content, like milestones
     ),
@@ -569,6 +574,9 @@ module.exports = grammar({
     wgNested: $ => seq("\\+wg", $._spaceOrLine, $._innerText, "\\+wg*"),
     whNested: $ => seq("\\+wh", $._spaceOrLine, $._innerText, "\\+wh*"),
     waNested: $ => seq("\\+wa", $._spaceOrLine, $._innerText, "\\+wa*"),
+    wlNested: $ => seq("\\+wl", $._spaceOrLine, $._innerText, optional(
+      choice($.defaultAttribute, $._wlAttributes)), "\\+wl*"),
+    taNested: $ => seq("\\+ta", $._spaceOrLine, $._innerText, "|", repeat1($.aAttribute), "\\+ta*"),
 
     _nestedCharacterMarker: $ => choice(
       $.addNested,
@@ -585,6 +593,7 @@ module.exports = grammar({
       $.slsNested,
       $.tlNested,
       $.wjNested,
+      $.taNested,
       $.emNested,
       $.bdNested,
       $.itNested,
@@ -599,6 +608,7 @@ module.exports = grammar({
       $.wgNested,
       $.whNested,
       $.waNested,
+      $.wlNested,
       $.jmpNested,
     ),
 
@@ -683,6 +693,7 @@ module.exports = grammar({
     keyAttribute: $ => seq("key", "=", '"', optional($.attributeValue), '"'),
     _wAttributes: $ => prec.right(0, seq("|", repeat1(choice($.lemmaAttribute, $.strongAttribute,
       $.scrlocAttribute, $.linkAttribute, $.customAttribute)))),
+    _wlAttributes: $ => prec.right(0, seq("|", repeat1(choice($.langAttribute, $.customAttribute)))),
     _rbAttributes: $ => prec.right(0, seq("|", repeat1(choice($.glossAttribute, $.customAttribute,
       $.linkAttribute)))),
     _figAttributes: $ => prec.right(0, seq("|", repeat1(choice($.altAttribute, $.srcAttribute, $.sizeAttribute, $.locAttribute, $.copyAttribute, 
@@ -692,6 +703,7 @@ module.exports = grammar({
     strongAttribute: $ => seq("strong", "=", '"', optional($.attributeValue), '"'), 
     scrlocAttribute: $ => seq("srcloc", "=", '"', optional($.attributeValue), '"'),
     glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
+    langAttribute: $ => seq("lang", "=", '"', optional($.attributeValue), '"'),
     _jmpAttribute: $ => seq("|", repeat($.linkAttribute)),
     linkAttribute: $ => seq($._linkAttributeName, "=", '"', optional($.attributeValue), '"'),
     _linkAttributeName: $ => choice("link-href", "link-title", "link-id",
@@ -707,6 +719,9 @@ module.exports = grammar({
       choice($.msAttribute, $.customAttribute, $.linkAttribute)))),
     msAttribute: $ => seq($.milestoneAttributeName, "=", '"', optional($.attributeValue), '"'),
     milestoneAttributeName: $ => choice("sid", "eid", "who"),
+    aAttribute: $ => seq($.aIdentifier, "=", '"', optional($.attributeValue), '"'),
+
+    aIdentifier: $ => /a-[^\s=]+/,
 
     _attributesInCrossref: $ => prec.right(0,seq("|", repeat1(choice(
       $.linkAttribute, $.customAttribute, $.defaultAttribute))))

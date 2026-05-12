@@ -1,0 +1,11 @@
+<usx version="3.1">
+  <book code="JER" style="id"/>
+  <chapter number="13" style="c" sid="JER 13"/>
+  <para style="p">...
+<verse number="23" style="v" sid="JER 13:23"/>Can people change the <char style="ta" closed="true" a-uk="colour">color</char> of their skin, or a leopard
+remove its spots? If they could, then you that do nothing but evil could learn
+to do what is right.
+<verse eid="JER 13:23"/></para>
+  <chapter eid="JER 13"/>
+</usx>
+

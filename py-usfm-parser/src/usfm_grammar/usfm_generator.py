@@ -299,7 +299,8 @@ class USFMGenerator:
                 curr_chapter = chap
             if not self.usfm_string.endswith("\n"):
                 self.usfm_string += " "
-            self.usfm_string += f"\\v {verse} {versetext}"
+            self.usfm_string += f"\\v {verse} {versetext}"\
+                if verse.strip() != "" else f" {versetext}"
 
 
 if __name__ == "__main__":

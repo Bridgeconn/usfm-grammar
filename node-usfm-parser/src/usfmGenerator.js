@@ -256,8 +256,11 @@ class USFMGenerator {
       if (!this.usfmString.endsWith('\n')) {
         this.usfmString += ' ';
       }
-        
-      this.usfmString += `\\v ${verse} ${verseText}`;
+      if (verse.trim() !== '') {
+        this.usfmString += `\\v ${verse} ${verseText}`;
+      } else {
+        this.usfmString += `${verseText}`;
+      }
     }
   }
 

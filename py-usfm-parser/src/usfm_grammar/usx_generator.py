@@ -11,7 +11,7 @@ class USXGenerator:
     PARA_STYLE_MARKERS = [
         "ide", "h", "toc", "toca",  # identification
         "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq",
-        "ipr", "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
+        "ipr", "ipc", "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
         "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",  # titles
         "q", "qr", "qc", "qa", "qm", "qd",  # poetry
         "lh", "li", "lf", "lim",  # lists
@@ -22,9 +22,9 @@ class USXGenerator:
     NOTE_MARKERS = ["f", "fe", "ef", "efe", "x", "ex"]
     CHAR_STYLE_MARKERS = [
         "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord",
-        "pn", "png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj",  # Special-text
+        "pn", "png", "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj", "ta",  # Special-text
         "em", "bd", "bdit", "it", "no", "sc", "sup",  # character styling
-        "rb", "pro", "w", "wh", "wa", "wg",  # special-features
+        "rb", "pro", "w", "wh", "wa", "wg","wl",  # special-features
         "lik", "liv",  # structred list entries
         "jmp", "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",  # footnote-content
         "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",  # crossref-content
@@ -32,6 +32,7 @@ class USXGenerator:
     NESTED_CHAR_STYLE_MARKERS = [item + "Nested" for item in CHAR_STYLE_MARKERS]
     DEFAULT_ATTRIB_MAP = {
         "w": "lemma",
+        "wl": "lang",
         "rb": "gloss",
         "xt": "href",
         "fig": "alt",
@@ -283,6 +284,9 @@ class USXGenerator:
                 node.children[i].type == "*" or\
                 node.children[i].type.endswith("Tag"):
                 children_range -= 1
+                closing_node = node.children[i]
+            else:
+                break
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set(
             "style",

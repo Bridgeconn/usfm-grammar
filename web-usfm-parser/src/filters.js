@@ -1,7 +1,7 @@
 
 const MARKERS_WITH_DISCARDABLE_CONTENTS = [
   'ide', 'usfm', 'h', 'toc', 'toca', 'imt', 'is', 'ip', 'ipi', 'im', 'imi',
-  'ipq', 'imq', 'ipr', 'iq', 'ib', 'ili', 'iot', 'io', 'iex', 'imte', 'ie',
+  'ipq', 'imq', 'ipr', 'ipc', 'iq', 'ib', 'ili', 'iot', 'io', 'iex', 'imte', 'ie',
   'mt', 'mte', 'cl', 'cd', 'ms', 'mr', 's', 'sr', 'r', 'd', 'sp', 'sd',
   'sts', 'rem', 'lit', 'restore', 'f', 'fe', 'ef', 'efe', 'x', 'ex',
   'fr', 'ft', 'fk', 'fq', 'fqa', 'fl', 'fw', 'fp', 'fv', 'fdc',
@@ -150,7 +150,7 @@ class Filter {
   // Defines the values of filter options
   static BOOK_HEADERS = [
     'ide', 'usfm', 'h', 'toc', 'toca', // identification
-    'imt', 'is', 'ip', 'ipi', 'im', 'imi', 'ipq', 'imq', 'ipr', 'iq', 'ib',
+    'imt', 'is', 'ip', 'ipi', 'im', 'imi', 'ipq', 'imq', 'ipr', 'ipc', 'iq', 'ib',
     'ili', 'iot', 'io', 'iex', 'imte', 'ie', // intro
   ];
 
@@ -168,7 +168,7 @@ class Filter {
 
   static CHARACTERS = [
     'add', 'bk', 'dc', 'ior', 'iqt', 'k', 'litl', 'nd', 'ord', 'pn',
-    'png', 'qac', 'qs', 'qt', 'rq', 'sig', 'sls', 'tl', 'wj', // Special-text
+    'png', 'qac', 'qs', 'qt', 'rq', 'sig', 'sls', 'tl', 'wj', 'ta', 'wl', // Special-text
     'em', 'bd', 'bdit', 'it', 'no', 'sc', 'sup', // character styling
     'rb', 'pro', 'w', 'wh', 'wa', 'wg', // special-features
     'lik', 'liv', // structured list entries

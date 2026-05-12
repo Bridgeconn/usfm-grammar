@@ -365,6 +365,7 @@ class USXGenerator {
     // Build USJ nodes for character markups, both regular and nested
     const tagNode = node.children[0];
     let childrenRange = node.children.length;
+    let closingNode = null;
     for (let i = node.children.length - 1; i > 0; i--) {
       if (
         node.children[i].type.startsWith('\\') ||
@@ -372,6 +373,9 @@ class USXGenerator {
         node.children[i].type.endsWith('Tag')
       ) {
         childrenRange -= 1;
+        closingNode = node.children[i];
+      } else {
+        break;
       }
     }
     const charXmlNode = parentXmlNode.ownerDocument.createElement('char');
@@ -381,6 +385,11 @@ class USXGenerator {
       .replace('+', '')
       .trim();
     charXmlNode.setAttribute('style', style);
+    if (closingNode) {
+      charXmlNode.setAttribute('closed', 'true');
+    } else {
+      charXmlNode.setAttribute('closed', 'false');
+    }
     parentXmlNode.appendChild(charXmlNode);
 
     for (let i = 1; i < childrenRange; i++) {
