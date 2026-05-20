@@ -126,6 +126,7 @@ const DEFAULT_ATTRIB_MAP = {
   milestone: 'who',
   k: 'key',
   wl: 'lang',
+  tl: 'lang',
 };
 exports.DEFAULT_ATTRIB_MAP = DEFAULT_ATTRIB_MAP;
 const TABLE_CELL_MARKERS = ['tc', 'th', 'tcr', 'thr', 'tcc', 'thc'];

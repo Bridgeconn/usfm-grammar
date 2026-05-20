@@ -485,7 +485,7 @@ module.exports = grammar({
     qt: $ => seq("\\qt", $._spaceOrLine, $._innerText, "\\qt*"),
     sig: $ => seq("\\sig", $._spaceOrLine, $._innerText, "\\sig*"),
     sls: $ => seq("\\sls", $._spaceOrLine, $._innerText, "\\sls*"),
-    tl: $ => seq("\\tl", $._spaceOrLine, $._innerText, "\\tl*"),
+    tl: $ => seq("\\tl", $._spaceOrLine, $._innerText, optional(choice($.defaultAttribute, $._tlAttributes)), "\\tl*"),
     wj: $ => seq("\\wj", $._spaceOrLine, $._innerText, "\\wj*"),
 
     em: $ => seq("\\em", $._spaceOrLine, $._innerText, "\\em*"),
@@ -704,6 +704,7 @@ module.exports = grammar({
     scrlocAttribute: $ => seq("srcloc", "=", '"', optional($.attributeValue), '"'),
     glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
     langAttribute: $ => seq("lang", "=", '"', optional($.attributeValue), '"'),
+    _tlAttributes: $ => seq("|", $.langAttribute),
     _jmpAttribute: $ => seq("|", repeat($.linkAttribute)),
     linkAttribute: $ => seq($._linkAttributeName, "=", '"', optional($.attributeValue), '"'),
     _linkAttributeName: $ => choice("link-href", "link-title", "link-id",

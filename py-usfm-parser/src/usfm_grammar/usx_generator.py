@@ -41,6 +41,7 @@ class USXGenerator:
         "ref": "loc",
         "milestone": "who",
         "k": "key",
+        "tl": "lang",
     }
     TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc", "thc"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
