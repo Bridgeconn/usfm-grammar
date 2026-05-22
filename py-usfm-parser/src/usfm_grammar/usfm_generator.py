@@ -238,7 +238,7 @@ class USFMGenerator:
         if obj_type == "sidebar":
             self.usfm_string += "\n\\esbe\n"
         if obj_type == "list":
-            self.usfm_string += f"\n\\list-e\\*\n"
+            self.usfm_string += "\n\\list-e\\*\n"
 
     def biblenlp_to_usfm(self, biblenlp: dict, book_code: str = None) -> None:
         """Traverses through the verse texts and vrefs to generate a minimal USFM from it"""
