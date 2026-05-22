@@ -153,6 +153,8 @@ function getNodes(element, keepNumber = true) {
     }
     if (element.tagName === "ref") {
       types.push("ref");
+    } else if (element.tagName === "list") {
+      types.push("list-s");
     }
     if (element.getAttribute("altnumber")) {
       if (element.tagName === "chapter") {
@@ -176,6 +178,9 @@ function getNodes(element, keepNumber = true) {
         types = types.concat(getNodes(child)); // Recursively get types from content
       });
     }
+  }
+  if (element.tagName === "list") {
+    types.push("list-e");
   }
   let uniqueTypes = [...new Set(types)];
   if (!keepNumber) {

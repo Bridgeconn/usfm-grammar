@@ -277,6 +277,19 @@ class USJGenerator:
 
             parent_json_obj["content"].append(cell_json_obj)
 
+    def node_2_usj_list(self, node, parent_json_obj):
+        """Convert list nodes to USJ format"""
+        first_child = node.children[0] if node.children else None
+        if first_child and first_child.type == "list_s":
+            # This is a list with milestones, so we add a list object
+            list_json_obj = {"type": "list", "content": []}
+            for child in node.children[1:-1]:  # Skip the list_s and list_e markers
+                self.node_2_usj(child, list_json_obj)
+            parent_json_obj["content"].append(list_json_obj)
+        else:
+            for child in node.children:
+                self.node_2_usj(child, parent_json_obj) # add list items directly to parent if no milestones
+
     def node_2_usj_attrib(self, node, parent_json_obj):
         """Add attribute values to USJ elements"""
         attrib_name_node = node.children[0]
@@ -433,6 +446,7 @@ class USJGenerator:
         dispatch_map["v"] = self.node_2_usj_verse
         dispatch_map["id"] = self.node_2_usj_id
         dispatch_map["chapter"] = self.node_2_usj_chapter
+        dispatch_map["list"] = self.node_2_usj_list
         dispatch_map["usfm"] = lambda *_: None  # noop
 
         # Add handlers for different marker types

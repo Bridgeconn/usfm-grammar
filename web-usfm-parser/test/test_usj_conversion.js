@@ -140,7 +140,7 @@ describe("Ensure all markers are in USJ", () => {
         assert.deepStrictEqual(
           inputMarkers,
           allUSJTypes,
-          `Markers in input and generated USJ differ`
+          `Markers in input and generated USJ differ. In: ${inputMarkers}, USJ: ${allUSJTypes}\nUSJ content: ${JSON.stringify(usj)}`,
         );
       });
     }
@@ -326,6 +326,8 @@ function getTypes(element, keepNumber = true) {
     }
     if (element.type === "ref") {
       types.push("ref");
+    } else if (element.type === "list") {
+      types.push("list-s");
     }
     if ("altnumber" in element) {
       if (element.marker === "c") {
@@ -349,6 +351,9 @@ function getTypes(element, keepNumber = true) {
         types = types.concat(getTypes(item)); // Recursively get types from content
       });
     }
+  }
+  if (element.type === "list") {
+    types.push("list-e");
   }
   let uniqueTypes = [...new Set(types)];
   if (!keepNumber) {

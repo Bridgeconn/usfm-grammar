@@ -43,6 +43,7 @@ class Filter(list, Enum):
         "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "xo",
         "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",
     ]
+    LISTS = ["list-s", "list-e", "lh", "li", "lf", "lim", "lik", "liv"]  # "lists"
     STUDY_BIBLE = ["esb", "cat"]  # "sidebars-extended-contents"
     BCV = ["id", "c", "v"]
     TEXT = ["text-in-excluded-parent", "text"]

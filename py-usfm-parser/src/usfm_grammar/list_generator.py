@@ -39,6 +39,19 @@ class ListGenerator:
             self.usj_to_list_c(obj)
         elif obj["type"] == "verse":
             self.usj_to_list_v(obj)
+        elif obj["type"] == "list":
+            marker_name = "list-s"
+            marker_type = "list"
+            self.list.append(
+                [
+                    self.book,
+                    self.current_chapter,
+                    self.current_verse,
+                    "",
+                    marker_type,
+                    marker_name,
+                ]
+            )
         marker_type = obj["type"]
         marker_name = obj["marker"] if "marker" in obj else ""
         if marker_type == "USJ":
@@ -86,6 +99,32 @@ class ListGenerator:
                         marker_name,
                     ]
                 )
+        if obj["type"] == "list":
+            marker_name = "list-e"
+            marker_type = "list"
+            self.list.append(
+                [
+                    self.book,
+                    self.current_chapter,
+                    self.current_verse,
+                    "",
+                    marker_type,
+                    marker_name,
+                ]
+            )
+        if obj["type"] == "sidebar":
+            marker_name = "esbe"
+            marker_type = "sidebar"
+            self.list.append(
+                [
+                    self.book,
+                    self.current_chapter,
+                    self.current_verse,
+                    "",
+                    marker_type,
+                    marker_name,
+                ]
+            )
 
     def usj_to_biblenlp_format(self, obj):
         """Traverse the USJ dict and build a dict for bible nlp format, in self.bible_nlp_format"""

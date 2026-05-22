@@ -69,6 +69,8 @@ class USFMGenerator:
             return
         if usj_obj["type"] == "ref":
             usj_obj["marker"] = "ref"
+        if usj_obj["type"] == "list":
+            usj_obj["marker"] = "list-s\\*\n"
         if usj_obj["type"] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if (
@@ -126,6 +128,8 @@ class USFMGenerator:
             self.usfm_string = self.usfm_string.strip() + "\\*"
         if usj_obj["type"] == "sidebar":
             self.usfm_string += "\\esbe"
+        if usj_obj["type"] == "list":
+            self.usfm_string += "\\list-e\\*"
         if usj_obj["type"] not in NO_NEWLINE_USJ_TYPES and self.usfm_string[-1] != "\n":
             self.usfm_string += "\n"
         if "altnumber" in usj_obj:
@@ -160,6 +164,8 @@ class USFMGenerator:
             ]:
                 self.usfm_string += " "
             self.usfm_string += "// "
+        if obj_type == "list":
+            self.usfm_string += "\\list-s\\*\n"
         if "style" in xml_obj.attrib:
             marker = xml_obj.attrib["style"]
             if nested and obj_type == "char" and marker not in ["xt", "fv", "ref"]:
@@ -231,6 +237,8 @@ class USFMGenerator:
                 self.usfm_string += f"\\{marker}*"
         if obj_type == "sidebar":
             self.usfm_string += "\n\\esbe\n"
+        if obj_type == "list":
+            self.usfm_string += f"\n\\list-e\\*\n"
 
     def biblenlp_to_usfm(self, biblenlp: dict, book_code: str = None) -> None:
         """Traverses through the verse texts and vrefs to generate a minimal USFM from it"""

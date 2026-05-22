@@ -58,6 +58,8 @@ def test_all_markers_are_in_output(file_path):
     for marker in all_markers_in_input:
         if marker.startswith("z"):
             marker = "zNameSpace"
+        elif marker in ["list-s", "list-e"]:
+            marker = marker.replace("-", "_")
         elif (
             marker in ["qte", "qts", "ts"]
             or marker.endswith("-e")

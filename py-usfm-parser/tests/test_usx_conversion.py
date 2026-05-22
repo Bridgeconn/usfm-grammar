@@ -96,6 +96,9 @@ def get_styles(element):
         styles.append(element.attrib["style"])
     if element.tag in ["figure", "optbreak"]:
         styles.append(element.tag)
+    if element.tag == "list":
+        styles.append("list-s")
+        styles.append("list-e")
     if "altnumber" in element.attrib:
         styles.append("altnumber")
     if "pubnumber" in element.attrib:

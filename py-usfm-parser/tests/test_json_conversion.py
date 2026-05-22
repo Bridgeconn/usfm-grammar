@@ -88,6 +88,9 @@ def get_types(element):
             types.append(element["marker"])
         if element["type"] == "ref":
             types.append("ref")
+        if element["type"] == "list":
+            types.append("list-s")
+            types.append("list-e")
         if "altnumber" in element:
             if element["marker"] == "c":
                 types.append("ca")

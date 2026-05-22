@@ -313,8 +313,16 @@ module.exports = grammar({
     qd: $ => prec.right(0, seq("\\qd",$._spaceOrLine, repeat($._poetryContent))),
 
     //List
-    list: $ => prec.right(0, seq(optional($.lh), repeat1($._listMarker), optional($.lf))),
+    list: $ => choice(
+      $._listWithoutMilestones,
+      $._listWithMilestones
+    ),  
+    _listWithoutMilestones: $ => prec.right(0, seq(optional($.lh), repeat1($._listMarker), optional($.lf))),
 
+    _listWithMilestones: $ => seq($.list_s, $._listWithoutMilestones, $.list_e),
+
+    list_s: $ => "\\list-s\\*",
+    list_e: $ => "\\list-e\\*",
     lh: $ => prec.right(0, seq("\\lh", $._spaceOrLine, repeat($._paragraphContent))),
     lf: $ => prec.right(0, seq("\\lf", $._spaceOrLine, repeat($._paragraphContent))),
     _listMarker: $ => choice( $.liBlock, $.limBlock ), 

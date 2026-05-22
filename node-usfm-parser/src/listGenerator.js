@@ -39,8 +39,11 @@ class ListGenerator {
       this.usjToListC(obj);
     } else if (obj.type === 'verse') {
       this.usjToListV(obj);
+    } else if (obj.type === 'list') {
+      this.list.push(
+        [this.book, this.currentChapter, this.currentVerse, '', 'list', 'list-s']);
+      // return;
     }
-
     let markerType = obj.type;
     const markerName = obj.marker ? obj.marker : '';
         
@@ -68,6 +71,13 @@ class ListGenerator {
         this.list.push(
           [this.book, this.currentChapter, this.currentVerse, '', markerType, markerName]);
       }
+    }
+    if (obj.type === 'list') {
+      this.list.push(
+        [this.book, this.currentChapter, this.currentVerse, '', 'list', 'list-e']);
+    } else if (obj.type === 'esb') {
+      this.list.push(
+        [this.book, this.currentChapter, this.currentVerse, '', 'sidebar', 'esbe']);
     }
   }
 
