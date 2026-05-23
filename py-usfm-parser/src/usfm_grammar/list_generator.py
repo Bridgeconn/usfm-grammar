@@ -39,7 +39,8 @@ class ListGenerator:
             self.usj_to_list_c(obj)
         elif obj["type"] == "verse":
             self.usj_to_list_v(obj)
-        elif obj["type"] == "list":
+        elif obj["type"] == "list" and (exclude_markers and "list-s/e" not in exclude_markers) or (
+            include_markers and "list-s/e" in include_markers):
             marker_name = "list-s"
             marker_type = "list"
             self.list.append(
@@ -99,7 +100,8 @@ class ListGenerator:
                         marker_name,
                     ]
                 )
-        if obj["type"] == "list":
+        if obj["type"] == "list" and (exclude_markers and "list-s/e" not in exclude_markers) or (
+            include_markers and "list-s/e" in include_markers):
             marker_name = "list-e"
             marker_type = "list"
             self.list.append(
@@ -112,7 +114,8 @@ class ListGenerator:
                     marker_name,
                 ]
             )
-        if obj["type"] == "sidebar":
+        if obj["type"] == "sidebar" and (exclude_markers and "esbe" not in exclude_markers) or (
+            include_markers and "esbe" in include_markers):
             marker_name = "esbe"
             marker_type = "sidebar"
             self.list.append(
