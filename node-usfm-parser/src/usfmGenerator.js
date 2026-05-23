@@ -23,6 +23,8 @@ class USFMGenerator {
       marker = 'ref';
     } else if (usjObj.type === 'list') {
       marker = 'list-s\\*\n';
+    } else {
+      marker = usjObj.type;
     }
     if (!NO_USFM_USJ_TYPES.includes(usjObj.type)) {
       this.usfmString += '\\';
@@ -132,9 +134,7 @@ class USFMGenerator {
       this.usfmString += '// ';
     } else if (objType === 'list') {
       this.usfmString += '\\list-s\\*\n';
-    }
-
-    if (xmlObj.hasAttribute('style')) {
+    } else if (xmlObj.hasAttribute('style')) {
       marker = xmlObj.getAttribute('style');
       if (nested && objType === 'char' && !['xt', 'fv', 'ref'].includes(marker)) {
         marker = `+${marker}`;

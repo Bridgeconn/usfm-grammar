@@ -37,7 +37,7 @@ NON_ATTRIB_USX_KEYS = [
     "category",
 ]
 NO_NEWLINE_USX_TYPES = ["char", "note", "cell", "figure", "usx", "book", "optbreak"]
-CLOSING_USX_TYPES = ["char", "note", "figure", "ms"]
+CLOSING_USX_TYPES = ["char", "note", "figure", "ms", "ref"]
 
 
 class USFMGenerator:
@@ -67,19 +67,22 @@ class USFMGenerator:
                 self.usfm_string += " "
             self.usfm_string += "// "
             return
+        marker = usj_obj["marker"] if "marker" in usj_obj else ""
         if usj_obj["type"] == "ref":
-            usj_obj["marker"] = "ref"
-        if usj_obj["type"] == "list":
-            usj_obj["marker"] = "list-s\\*\n"
+            marker = "ref"
+        elif usj_obj["type"] == "list":
+            marker = "list-s\\*\n"
+        elif marker == "":
+            marker = usj_obj["type"]
         if usj_obj["type"] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if (
                 nested
                 and usj_obj["type"] == "char"
-                and usj_obj["marker"] not in ["xt", "fv", "ref"]
+                and marker not in ["xt", "fv", "ref"]
             ):
                 self.usfm_string += "+"
-            self.usfm_string += f"{usj_obj['marker']} "
+            self.usfm_string += f"{marker} "
         if "code" in usj_obj:
             self.usfm_string += f"{usj_obj['code']} "
         if "number" in usj_obj:
@@ -115,10 +118,10 @@ class USFMGenerator:
             if (
                 nested
                 and usj_obj["type"] == "char"
-                and usj_obj["marker"] not in ["xt", "ref", "fv"]
+                and marker not in ["xt", "ref", "fv"]
             ):
                 self.usfm_string += "+"
-            self.usfm_string += f"{usj_obj['marker']}* "
+            self.usfm_string += f"{marker}* "
         if usj_obj["type"] == "ms":
             if "sid" in usj_obj:
                 if not attributes:
@@ -133,12 +136,12 @@ class USFMGenerator:
         if usj_obj["type"] not in NO_NEWLINE_USJ_TYPES and self.usfm_string[-1] != "\n":
             self.usfm_string += "\n"
         if "altnumber" in usj_obj:
-            self.usfm_string += f"\\{usj_obj['marker']}a {usj_obj['altnumber']}"
-            self.usfm_string += f"\\{usj_obj['marker']}a* "
+            self.usfm_string += f"\\{marker}a {usj_obj['altnumber']}"
+            self.usfm_string += f"\\{marker}a* "
         if "pubnumber" in usj_obj:
-            self.usfm_string += f"\\{usj_obj['marker']}p {usj_obj['pubnumber']}"
-            if usj_obj["marker"] == "v":
-                self.usfm_string += f"\\{usj_obj['marker']}p* "
+            self.usfm_string += f"\\{marker}p {usj_obj['pubnumber']}"
+            if marker == "v":
+                self.usfm_string += f"\\{marker}p* "
             else:
                 self.usfm_string += "\n"
 
@@ -164,9 +167,12 @@ class USFMGenerator:
             ]:
                 self.usfm_string += " "
             self.usfm_string += "// "
-        if obj_type == "list":
+        elif obj_type == "list":
             self.usfm_string += "\\list-s\\*\n"
-        if "style" in xml_obj.attrib:
+        elif obj_type == "ref":
+            marker = "ref"
+            self.usfm_string += f"\\{marker} "
+        elif "style" in xml_obj.attrib:
             marker = xml_obj.attrib["style"]
             if nested and obj_type == "char" and marker not in ["xt", "fv", "ref"]:
                 marker = "+" + marker
