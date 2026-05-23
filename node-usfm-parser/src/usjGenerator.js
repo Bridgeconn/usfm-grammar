@@ -301,8 +301,8 @@ class USJGenerator {
   }
 
   nodeToUSJList(node, parentJsonObj) {
-    const firstChild = node.children[0];
-    if (firstChild.type === 'list_s') {
+    const firstChild = (node.children.length > 0) ? node.children[0] : null;
+    if (firstChild && firstChild.type === 'list_s') {
       const listJsonObj = { type: 'list', content: [] };
       for (let i = 1; i < node.children.length - 1; i++) {
         this.nodeToUSJ(node.children[i], listJsonObj);

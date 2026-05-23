@@ -471,8 +471,8 @@ class USXGenerator {
   }
 
   node2UsxList(node, parentXmlNode) {
-    const firstChild = node.children[0];
-    if (firstChild.type === 'list_s') {
+    const firstChild = (node.children.length > 0) ? node.children[0] : null;
+    if (firstChild && firstChild.type === 'list_s') {
       const listXmlNode = parentXmlNode.ownerDocument.createElement('list');
       for (let i = 1; i < node.children.length - 1; i++) {
         this.node2Usx(node.children[i], listXmlNode);

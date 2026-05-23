@@ -365,8 +365,8 @@ class USXGenerator:
 
     def node_2_usx_list(self, node, parent_xml_node):
         """Handle list related components and convert to usx"""
-        first_child = node.children[0]
-        if first_child.type == "list_s":
+        first_child = node.children[0] if len(node.children) > 0 else None
+        if first_child and first_child.type == "list_s":
             list_xml_node = etree.SubElement(parent_xml_node, "list")
             for child in node.children[1:-1]:
                 self.node_2_usx(child, list_xml_node)
