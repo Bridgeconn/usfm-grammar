@@ -75,7 +75,7 @@ class ListGenerator {
     if (obj.type === 'list') {
       this.list.push(
         [this.book, this.currentChapter, this.currentVerse, '', 'list', 'list-e']);
-    } else if (obj.type === 'esb') {
+    } else if (obj.type === 'sidebar') {
       this.list.push(
         [this.book, this.currentChapter, this.currentVerse, '', 'sidebar', 'esbe']);
     }
