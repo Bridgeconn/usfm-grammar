@@ -292,6 +292,10 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
     }
 
     if (includeMarkers) {
+      if (includeMarkers.includes('list-s') || includeMarkers.includes('list-e')) {
+        includeMarkers.push('list-s/e');
+      }
+
       outputUSJ = Filter.keepOnly(
         outputUSJ,
         [...includeMarkers, 'USJ'],
@@ -299,6 +303,9 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
       );
     }
     if (excludeMarkers) {
+      if (excludeMarkers.includes('list-s') || excludeMarkers.includes('list-e')) {
+        excludeMarkers.push('list-s/e');
+      }
       outputUSJ = Filter.remove(outputUSJ, excludeMarkers, combineTexts);
     }
 

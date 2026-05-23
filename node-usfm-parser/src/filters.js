@@ -46,9 +46,6 @@ function excludeMarkersInUsj(
     }
     return [inputUsj];
   }
-  if (excludeMarkers.includes('list-s') || excludeMarkers.includes('list-e')) {
-    excludeMarkers.push('list-s/e');
-  }
 
   let thisMarker = '';
   if (inputUsj.type === 'list') {
@@ -103,9 +100,6 @@ function includeMarkersInUsj(
       return [];
     }
     return [inputUsj];
-  }
-  if (includeMarkers.includes('list-s') || includeMarkers.includes('list-e')) {
-    includeMarkers.push('list-s/e');
   }
   let thisMarker = '';
   if (inputUsj.type === 'list') {
