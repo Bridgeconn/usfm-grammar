@@ -1,0 +1,18 @@
+<usx version="3.1">
+  <book code="MAT" style="id"/>
+  <chapter number="27" style="c" sid="MAT 27"/>
+  <para style="s1">The Death of Jesus
+</para>
+  <para style="r">(Mark 15.33-41; Luke 23.44-49; John 19.28-30)
+</para>
+  <para style="p"><verse number="45" style="v" sid="MAT 27:45"/>At noon the whole country was covered with darkness, which lasted for
+three hours.
+<verse eid="MAT 27:45"/><verse number="46" style="v" sid="MAT 27:46"/>At about three o'clock Jesus cried out with a loud shout, <char style="tl" closed="true">“Eli, Eli,
+lema sabachthani?”</char> which means, “My God, my God, why did you abandon me?”
+<verse eid="MAT 27:46"/><verse number="46" style="v" sid="MAT 27:46"/>At about three o'clock Jesus cried out with a loud shout, <char style="tl" closed="true" lang="Aramic">“Eli, Eli,
+lema sabachthani?”</char> which means, “My God, my God, why did you abandon me?”
+<verse eid="MAT 27:46"/><verse number="46" style="v" sid="MAT 27:46"/>At about three o'clock Jesus cried out with a loud shout, <char style="tl" closed="true" lang="Aramic">“Eli, Eli,
+lema sabachthani?”</char> which means, “My God, my God, why did you abandon me?”<verse eid="MAT 27:46"/></para>
+  <chapter eid="MAT 27"/>
+</usx>
+

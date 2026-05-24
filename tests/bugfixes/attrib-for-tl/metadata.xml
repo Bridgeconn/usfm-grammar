@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>New default attribute lang introduced in \\tl in USFM 3.1.2.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

@@ -300,6 +300,22 @@ class USJGenerator {
     }
   }
 
+  nodeToUSJList(node, parentJsonObj) {
+    const firstChild = (node.children.length > 0) ? node.children[0] : null;
+    if (firstChild && firstChild.type === 'list_s') {
+      const listJsonObj = { type: 'list', content: [] };
+      for (let i = 1; i < node.children.length - 1; i++) {
+        this.nodeToUSJ(node.children[i], listJsonObj);
+      }
+      parentJsonObj.content.push(listJsonObj);
+    } else {
+      node.children.forEach((child) => {
+        this.nodeToUSJ(child, parentJsonObj);
+      });
+    }
+
+  }
+
   nodeToUSJAttrib(node, parentJsonObj) {
     // Add attribute values to USJ elements
     const attribNameNode = node.children[0];
@@ -457,6 +473,7 @@ class USJGenerator {
     thisMap.set('v', bindToClass(this.nodeToUSJVerse));
     thisMap.set('id', this.nodeToUSJId.bind(this));
     thisMap.set('chapter', this.nodeToUSJChapter.bind(this));
+    thisMap.set('list', this.nodeToUSJList.bind(this));
     // nooop
     thisMap.set('usfm', () => {});
     addHandlers(['paragraph', 'q', 'w'], this.nodeToUSJPara);

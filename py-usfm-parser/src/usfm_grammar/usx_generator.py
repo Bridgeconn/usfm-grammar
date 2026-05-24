@@ -14,7 +14,7 @@ class USXGenerator:
         "ipr", "ipc", "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
         "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",  # titles
         "q", "qr", "qc", "qa", "qm", "qd",  # poetry
-        "lh", "li", "lf", "lim",  # lists
+        "lh", "li", "lf", "lim", # lists
         "sts", "rem", "lit", "restore",  # comments
         "b",
     ]
@@ -41,6 +41,7 @@ class USXGenerator:
         "ref": "loc",
         "milestone": "who",
         "k": "key",
+        "tl": "lang",
     }
     TABLE_CELL_MARKERS = ["tc", "th", "tcr", "thr", "tcc", "thc"]
     MISC_MARKERS = ["fig", "cat", "esb", "b", "ph", "pi"]
@@ -362,6 +363,17 @@ class USXGenerator:
             for child in node.children[1:]:
                 self.node_2_usx(child, cell_xml_node)
 
+    def node_2_usx_list(self, node, parent_xml_node):
+        """Handle list related components and convert to usx"""
+        first_child = node.children[0] if len(node.children) > 0 else None
+        if first_child and first_child.type == "list_s":
+            list_xml_node = etree.SubElement(parent_xml_node, "list")
+            for child in node.children[1:-1]:
+                self.node_2_usx(child, list_xml_node)
+        else:
+            for child in node.children:
+                self.node_2_usx(child, parent_xml_node)
+
     def node_2_usx_milestone(self, node, parent_xml_node):
         """create ms node in USX"""
         ms_name_cursor = QueryCursor(self.get_query("milestone"))
@@ -454,6 +466,7 @@ class USXGenerator:
         dispatch_map["v"] = self.node_2_usx_verse
         dispatch_map["id"] = self.node_2_usx_id
         dispatch_map["chapter"] = self.node_2_usx_chapter
+        dispatch_map["list"] = self.node_2_usx_list
         dispatch_map["usfm"] = lambda *_: None  # noop
 
         # Add handlers for different marker types

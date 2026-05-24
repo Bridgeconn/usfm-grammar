@@ -61,6 +61,7 @@ def exclude_markers_in_usj(
         re.sub(trailing_num_pattern, "", item) for item in exclude_markers
     ]
     this_marker = input_usj["marker"] if "marker" in input_usj else ""
+    this_marker = "list-s/e" if input_usj["type"] == "list" else this_marker
     this_marker = re.sub(trailing_num_pattern, "", this_marker)
     this_marker_needed = True
     excluded_parent = (
@@ -105,6 +106,7 @@ def include_markers_in_usj(
         re.sub(trailing_num_pattern, "", item) for item in include_markers
     ]
     this_marker = input_usj["marker"] if "marker" in input_usj else ""
+    this_marker = "list-s/e" if input_usj["type"] == "list" else  this_marker
     this_marker = re.sub(trailing_num_pattern, "", this_marker)
     this_marker_needed = True
     excluded_parent = (

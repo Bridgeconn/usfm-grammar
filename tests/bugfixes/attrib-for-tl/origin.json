@@ -1,0 +1,92 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "MAT",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "27",
+            "sid": "MAT 27"
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                "The Death of Jesus\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "r",
+            "content": [
+                "(Mark 15.33-41; Luke 23.44-49; John 19.28-30)\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "45",
+                    "sid": "MAT 27:45"
+                },
+                "At noon the whole country was covered with darkness, which lasted for\nthree hours.\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "46",
+                    "sid": "MAT 27:46"
+                },
+                "At about three o'clock Jesus cried out with a loud shout, ",
+                {
+                    "type": "char",
+                    "marker": "tl",
+                    "content": [
+                        "“Eli, Eli,\nlema sabachthani?”"
+                    ]
+                },
+                " which means, “My God, my God, why did you abandon me?”\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "46",
+                    "sid": "MAT 27:46"
+                },
+                "At about three o'clock Jesus cried out with a loud shout, ",
+                {
+                    "type": "char",
+                    "marker": "tl",
+                    "content": [
+                        "“Eli, Eli,\nlema sabachthani?”"
+                    ],
+                    "lang": "Aramic"
+                },
+                " which means, “My God, my God, why did you abandon me?”\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "46",
+                    "sid": "MAT 27:46"
+                },
+                "At about three o'clock Jesus cried out with a loud shout, ",
+                {
+                    "type": "char",
+                    "marker": "tl",
+                    "content": [
+                        "“Eli, Eli,\nlema sabachthani?”"
+                    ],
+                    "lang": "Aramic"
+                },
+                " which means, “My God, my God, why did you abandon me?”"
+            ]
+        }
+    ]
+}

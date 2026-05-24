@@ -81,7 +81,7 @@ describe("Ensure all markers are in USX", () => {
         assert.deepStrictEqual(
           inputMarkers,
           allUSXNodes,
-          `Markers in input and generated USX differ`
+          `Markers in input and generated USX differ. input: ${inputMarkers}, usx: ${allUSXNodes}\nUSX content: ${new XMLSerializer().serializeToString(usx)}`
         );
       });
     }
@@ -108,7 +108,7 @@ describe("Test USFM-USX-USFM roundtripping", () => {
         assert.deepStrictEqual(
           inputMarkers,
           finalMarkers,
-          `Markers in input and generated USFMs differ`
+          `Markers in input and generated USFMs differ. in: ${inputMarkers}, new: ${finalMarkers}`,
         );
       });
     }
@@ -152,6 +152,8 @@ function getNodes(element, keepNumber = true) {
     }
     if (element.tagName === "ref") {
       types.push("ref");
+    } else if (element.tagName === "list") {
+      types.push("list-s");
     }
     if (element.getAttribute("altnumber")) {
       if (element.tagName === "chapter") {
@@ -175,6 +177,9 @@ function getNodes(element, keepNumber = true) {
         types = types.concat(getNodes(child)); // Recursively get types from content
       });
     }
+  }
+  if (element.tagName === "list") {
+    types.push("list-e");
   }
   let uniqueTypes = [...new Set(types)];
   if (!keepNumber) {

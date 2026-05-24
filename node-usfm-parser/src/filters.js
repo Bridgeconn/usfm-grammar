@@ -48,6 +48,9 @@ function excludeMarkersInUsj(
   }
 
   let thisMarker = '';
+  if (inputUsj.type === 'list') {
+    thisMarker = 'list-s/e';
+  }
   if ('marker' in inputUsj) {
     thisMarker = inputUsj.marker.replace(trailingNumPattern, '');
   } else if (inputUsj.type === 'ref') {
@@ -99,6 +102,9 @@ function includeMarkersInUsj(
     return [inputUsj];
   }
   let thisMarker = '';
+  if (inputUsj.type === 'list') {
+    thisMarker = 'list-s/e';
+  }
   if ('marker' in inputUsj) {
     thisMarker = inputUsj.marker.replace(trailingNumPattern, '');
   } else if (inputUsj.type === 'ref') {
@@ -183,6 +189,8 @@ class Filter {
   static STUDY_BIBLE = ['esb', 'cat']; // sidebars-extended-contents
 
   static BCV = ['id', 'c', 'v'];
+
+  static LISTS = ['list-s', 'list-e', 'lh', 'li', 'lf', 'lim', 'lik', 'liv']; // lists
 
   static TEXT = ['text-in-excluded-parent', 'text'];
 

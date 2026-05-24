@@ -43,6 +43,7 @@ class Filter(list, Enum):
         "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "xo",
         "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",
     ]
+    LISTS = ["list-s", "list-e", "lh", "li", "lf", "lim", "lik", "liv"]  # "lists"
     STUDY_BIBLE = ["esb", "cat"]  # "sidebars-extended-contents"
     BCV = ["id", "c", "v"]
     TEXT = ["text-in-excluded-parent", "text"]
@@ -218,10 +219,14 @@ class USFMParser:
             raise USFMGrammarError(message) from exe
         output_usj = usj_generator.json_root_obj
         if include_markers:
+            if "list-s" in include_markers or "list-e" in include_markers:
+                include_markers.append("list-s/e")
             output_usj = include_markers_in_usj(
                 output_usj, include_markers + ["USJ"], combine_texts
             )
         if exclude_markers:
+            if "list-s" in exclude_markers or "list-e" in exclude_markers:
+                exclude_markers.append("list-s/e")
             output_usj = exclude_markers_in_usj(
                 output_usj, exclude_markers, combine_texts
             )

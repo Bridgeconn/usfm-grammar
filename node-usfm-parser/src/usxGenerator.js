@@ -65,6 +65,7 @@ class USXGenerator {
     thisMap.set('v', bindToClass(this.node2UsxVerse));
     thisMap.set('id', this.node2UsxId.bind(this));
     thisMap.set('chapter', this.node2UsxChapter.bind(this));
+    thisMap.set('list', this.node2UsxList.bind(this));
     // nooop
     thisMap.set('usfm', () => {});
     addHandlers(['paragraph', 'q', 'w'], this.node2UsxPara);
@@ -469,6 +470,21 @@ class USXGenerator {
     }
   }
 
+  node2UsxList(node, parentXmlNode) {
+    const firstChild = (node.children.length > 0) ? node.children[0] : null;
+    if (firstChild && firstChild.type === 'list_s') {
+      const listXmlNode = parentXmlNode.ownerDocument.createElement('list');
+      for (let i = 1; i < node.children.length - 1; i++) {
+        this.node2Usx(node.children[i], listXmlNode);
+      }
+      parentXmlNode.appendChild(listXmlNode);
+    } else {
+      for (const child of node.children) {
+        this.node2Usx(child, parentXmlNode);
+      }
+    }
+  }
+  
   node2UsxMilestone(node, parentXmlNode) {
     // Create ms node in USJ
 
