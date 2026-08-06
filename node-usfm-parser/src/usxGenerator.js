@@ -8,6 +8,7 @@ const {
   DEFAULT_ATTRIB_MAP,
   TABLE_CELL_MARKERS,
   MARKER_SETS,
+  REF_PATTERN,
 } = require('./utils/markers.js');
 const { createQueriesAsNeeded } = require('./queries.js');
 
@@ -47,6 +48,8 @@ class USXGenerator {
       prevVerseSid: null, //each xml verse node:
       prevChapterSid: null,
       prevVerse: null,
+      vidH: null,
+      vidRef: null,
     };
     // maps and id to a fn;
     this.dispatchMap = this.populateDispatchMap();
@@ -66,6 +69,7 @@ class USXGenerator {
     thisMap.set('id', this.node2UsxId.bind(this));
     thisMap.set('chapter', this.node2UsxChapter.bind(this));
     thisMap.set('list', this.node2UsxList.bind(this));
+    thisMap.set('vid', this.node2UsxVid.bind(this));
     // nooop
     thisMap.set('usfm', () => {});
     addHandlers(['paragraph', 'q', 'w'], this.node2UsxPara);
@@ -308,6 +312,47 @@ class USXGenerator {
     parentXmlNode.appendChild(charXmlNode);
   }
 
+  node2UsxVid(node, parentXmlNode) {
+    // Build elements for vid and h attributes
+    for (const child of node.children) {
+      let attribValue = null;
+      for (const innerChild of child.children) {
+        if (innerChild.type === 'attributeValue') {
+          attribValue = this.usfm
+            .slice(innerChild.startIndex, innerChild.endIndex)
+            .trim();
+          break;
+        }
+      }
+      if (child.type === 'hAttribute') {
+        this.parseState.vidH = attribValue;
+      } else if (child.type === 'refAttribute') {
+        this.parseState.vidRef = attribValue;
+      } else if (child.type === 'defaultAttribute') {
+        this.parseState.vidRef = attribValue;
+      }
+    }
+    if (this.parseState.vidRef) {
+      const refMatch = this.parseState.vidRef.match(REF_PATTERN);
+      if (refMatch) {
+        this.parseState.bookSlug = refMatch[1];
+        this.parseState.currentChapter = refMatch[2];
+      }
+    }
+  } 
+
+  addVidAttributesToNode(parentXmlNode) {
+    //Add vid attributes to the given xml node if they exist in parse state
+    if (this.parseState.vidH) {
+      parentXmlNode.setAttribute('h', this.parseState.vidH);
+      this.parseState.vidH = null; // Reset after use
+    }
+    if (this.parseState.vidRef) {
+      parentXmlNode.setAttribute('vid', this.parseState.vidRef);
+      this.parseState.vidRef = null; // Reset after use
+    }
+  }
+
   node2UsxPara(node, parentXmlNode) {
     // Build paragraph nodes in USX
     if (node.children[0].type.endsWith('Block')) {
@@ -321,7 +366,7 @@ class USXGenerator {
       if (!paraMarker.endsWith('Block')) {
         const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
         paraXmlNode.setAttribute('style', paraMarker);
-
+        this.addVidAttributesToNode(paraXmlNode);
         parentXmlNode.appendChild(paraXmlNode);
         for (const child of paraTagCap.node.children.slice(1)) {
           this.node2Usx(child, paraXmlNode);
@@ -334,7 +379,7 @@ class USXGenerator {
         .trim();
       const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
       paraXmlNode.setAttribute('style', paraMarker);
-
+      this.addVidAttributesToNode(paraXmlNode);
       parentXmlNode.appendChild(paraXmlNode);
       for (const child of node.children.slice(1)) {
         this.node2Usx(child, paraXmlNode);
@@ -356,6 +401,7 @@ class USXGenerator {
       .substring(callerNode.startIndex, callerNode.endIndex)
       .trim();
     noteXmlNode.setAttribute('caller', caller);
+    this.addVidAttributesToNode(noteXmlNode);
     parentXmlNode.appendChild(noteXmlNode);
     for (let i = 2; i < node.children.length - 1; i++) {
       this.node2Usx(node.children[i], noteXmlNode);
@@ -444,6 +490,7 @@ class USXGenerator {
     } else if (node.type === 'tr') {
       const rowXmlNode = parentXmlNode.ownerDocument.createElement('row');
       rowXmlNode.setAttribute('style', 'tr');
+      this.addVidAttributesToNode(rowXmlNode);
       parentXmlNode.appendChild(rowXmlNode);
       node.children.slice(1).forEach((child) => {
         this.node2Usx(child, rowXmlNode);
@@ -476,7 +523,9 @@ class USXGenerator {
       const listXmlNode = parentXmlNode.ownerDocument.createElement('list');
       for (let i = 1; i < node.children.length - 1; i++) {
         this.node2Usx(node.children[i], listXmlNode);
+
       }
+      this.addVidAttributesToNode(listXmlNode);
       parentXmlNode.appendChild(listXmlNode);
     } else {
       for (const child of node.children) {
@@ -495,6 +544,7 @@ class USXGenerator {
       .trim();
     const msXmlNode = parentXmlNode.ownerDocument.createElement('ms');
     msXmlNode.setAttribute('style', style);
+    this.addVidAttributesToNode(msXmlNode);
     parentXmlNode.appendChild(msXmlNode);
     node.children.forEach((child) => {
       if (child.type.endsWith('Attribute')) {
@@ -510,6 +560,7 @@ class USXGenerator {
       const sidebarXmlNode =
         parentXmlNode.ownerDocument.createElement('sidebar');
       sidebarXmlNode.setAttribute('style', 'esb');
+      this.addVidAttributesToNode(sidebarXmlNode);
       parentXmlNode.appendChild(sidebarXmlNode);
       node.children.slice(1, -1).forEach((child) => {
         this.node2Usx(child, sidebarXmlNode);
@@ -523,6 +574,7 @@ class USXGenerator {
     } else if (node.type === 'fig') {
       const figXmlNode = parentXmlNode.ownerDocument.createElement('figure');
       figXmlNode.setAttribute('style', 'fig');
+      this.addVidAttributesToNode(figXmlNode);
       parentXmlNode.appendChild(figXmlNode);
       node.children.slice(1, -1).forEach((child) => {
         this.node2Usx(child, figXmlNode);
@@ -556,6 +608,7 @@ class USXGenerator {
     // Create a 'para' element and set its style attribute
     const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
     paraXmlNode.setAttribute('style', style);
+    this.addVidAttributesToNode(paraXmlNode);
     parentXmlNode.appendChild(paraXmlNode);
 
     // Loop through the child nodes and recursively process them

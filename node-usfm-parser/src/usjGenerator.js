@@ -7,6 +7,7 @@ const {
   DEFAULT_ATTRIB_MAP,
   TABLE_CELL_MARKERS,
   MARKER_SETS,
+  REF_PATTERN,
 } = require('./utils/markers.js');
 const { createQueriesAsNeeded } = require('./queries.js');
 
@@ -34,6 +35,8 @@ class USJGenerator {
     this.parseState = {
       bookSlug: null,
       currentChapter: null,
+      vidH: null,
+      vidRef: null,
     };
     // maps and id to a fn;
     this.dispatchMap = this.populateDispatchMap();
@@ -172,6 +175,47 @@ class USJGenerator {
     parentJsonObj.content.push(charJsonObj);
   }
 
+  node2UsxVid(node, parentJsonObj) {
+    // Build elements for vid and h attributes
+    for (const child of node.children) {
+      let attribValue = null;
+      for (const innerChild of child.children) {
+        if (innerChild.type === 'attributeValue') {
+          attribValue = this.usfm
+            .slice(innerChild.startIndex, innerChild.endIndex)
+            .trim();
+          break;
+        }
+      }
+      if (child.type === 'hAttribute') {
+        this.parseState.vidH = attribValue;
+      } else if (child.type === 'refAttribute') {
+        this.parseState.vidRef = attribValue;
+      } else if (child.type === 'defaultAttribute') {
+        this.parseState.vidRef = attribValue;
+      }
+    }
+    if (this.parseState.vidRef) {
+      const refMatch = this.parseState.vidRef.match(REF_PATTERN);
+      if (refMatch) {
+        this.parseState.bookSlug = refMatch[1];
+        this.parseState.currentChapter = refMatch[2];
+      }
+    }
+  } 
+
+  addVidAttributesToNode(parentJsonObj) {
+    //Add vid attributes to the given xml node if they exist in parse state
+    if (this.parseState.vidH) {
+      parentJsonObj.h = this.parseState.vidH;
+      this.parseState.vidH = null; // Reset after use
+    }
+    if (this.parseState.vidRef) {
+      parentJsonObj.vid = this.parseState.vidRef;
+      this.parseState.vidRef = null; // Reset after use
+    }
+  }
+
   nodeToUSJPara(node, parentJsonObj) {
     // Build paragraph nodes in USJ
     if (node.children[0].type.endsWith('Block')) {
@@ -184,11 +228,13 @@ class USJGenerator {
       const paraMarker = paraTagCap.node.type;
       if (paraMarker === 'b') {
         parentJsonObj.content.push({ type: 'para', marker: paraMarker });
+        this.addVidAttributesToNode(parentJsonObj.content[parentJsonObj.content.length - 1]);
       } else if (!paraMarker.endsWith('Block')) {
         const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
         paraTagCap.node.children.forEach((child) => {
           this.nodeToUSJ(child, paraJsonObj);
         });
+        this.addVidAttributesToNode(paraJsonObj);
         parentJsonObj.content.push(paraJsonObj);
       }
     } else if (['pi', 'ph'].includes(node.type)) {
@@ -200,6 +246,7 @@ class USJGenerator {
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, paraJsonObj);
       });
+      this.addVidAttributesToNode(paraJsonObj);
       parentJsonObj.content.push(paraJsonObj);
     }
   }
@@ -225,7 +272,7 @@ class USJGenerator {
     for (let i = 2; i < node.children.length - 1; i++) {
       this.nodeToUSJ(node.children[i], noteJsonObj);
     }
-
+    this.addVidAttributesToNode(noteJsonObj);
     parentJsonObj.content.push(noteJsonObj);
   }
 
@@ -276,6 +323,7 @@ class USJGenerator {
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, rowJsonObj);
       });
+      this.addVidAttributesToNode(rowJsonObj);
       parentJsonObj.content.push(rowJsonObj);
     } else if (this.markerSets.TABLE_CELL_MARKERS.has(node.type)) {
       const tagNode = node.children[0];
@@ -307,6 +355,7 @@ class USJGenerator {
       for (let i = 1; i < node.children.length - 1; i++) {
         this.nodeToUSJ(node.children[i], listJsonObj);
       }
+      this.addVidAttributesToNode(listJsonObj);
       parentJsonObj.content.push(listJsonObj);
     } else {
       node.children.forEach((child) => {
@@ -374,7 +423,7 @@ class USJGenerator {
     if (!msJsonObj.content.length) {
       delete msJsonObj.content; // Remove empty content array if not used
     }
-
+    this.addVidAttributesToNode(msJsonObj);
     parentJsonObj.content.push(msJsonObj);
   }
 
@@ -386,6 +435,7 @@ class USJGenerator {
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, sidebarJsonObj);
       });
+      this.addVidAttributesToNode(sidebarJsonObj);
       parentJsonObj.content.push(sidebarJsonObj);
     } else if (node.type === 'cat') {
       const catCap = this.getQuery('category').captures(node)[0];
@@ -399,6 +449,7 @@ class USJGenerator {
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, figJsonObj);
       });
+      this.addVidAttributesToNode(figJsonObj);
       parentJsonObj.content.push(figJsonObj);
     } else if (node.type === 'ref') {
       const refJsonObj = { type: 'ref', content: [] };
@@ -430,6 +481,7 @@ class USJGenerator {
       childrenRangeStart = 2;
     }
     const paraJsonObj = { type: 'para', marker: style, content: [] };
+    this.addVidAttributesToNode(paraJsonObj);
     parentJsonObj.content.push(paraJsonObj);
 
     for (let i = childrenRangeStart; i < node.children.length; i++) {
@@ -474,6 +526,7 @@ class USJGenerator {
     thisMap.set('id', this.nodeToUSJId.bind(this));
     thisMap.set('chapter', this.nodeToUSJChapter.bind(this));
     thisMap.set('list', this.nodeToUSJList.bind(this));
+    thisMap.set('vid', this.node2UsxVid.bind(this));
     // nooop
     thisMap.set('usfm', () => {});
     addHandlers(['paragraph', 'q', 'w'], this.nodeToUSJPara);

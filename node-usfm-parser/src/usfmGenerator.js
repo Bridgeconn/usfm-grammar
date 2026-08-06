@@ -6,6 +6,9 @@ class USFMGenerator {
   constructor() {
     this.usfmString = '';
     this.warnings = [];
+    this.currentBook = null;
+    this.currentChapter = null;
+    this.currentVerse = null;
   }
 
   usjToUsfm(usjObj, nested = false) {
@@ -26,6 +29,28 @@ class USFMGenerator {
     } else {
       marker = usjObj.type;
     }
+
+    if (usjObj.code) {
+      this.currentBook = usjObj.code;
+    } else if (marker === 'c') {
+      this.currentChapter = usjObj.number;
+    } else if (marker === 'v') {
+      this.currentVerse = usjObj.number;
+    }
+    if (usjObj.vid) {
+      const currentRef = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
+      if (currentRef !== usjObj.vid) {
+        this.usfmString += `\\vid|ref=\"${usjObj.vid}\" `;
+        if (usjObj.h) {
+          this.usfmString += `h="${usjObj.h}" `;
+          delete usjObj.h;
+        }
+        this.usfmString += '\\*\n';
+      }
+      delete usjObj.vid;
+
+    }
+
     if (!NO_USFM_USJ_TYPES.includes(usjObj.type)) {
       this.usfmString += '\\';
       if (nested && usjObj.type === 'char') {
@@ -121,6 +146,27 @@ class USFMGenerator {
 
     if (['verse', 'chapter'].includes(objType) && xmlObj.hasAttribute('eid')) {
       return;
+    }
+
+    if (xmlObj.hasAttribute('code')) {
+      this.currentBook = xmlObj.getAttribute('code');
+    } else if (marker === 'c') {
+      this.currentChapter = xmlObj.getAttribute('number');
+    } else if (marker === 'v') {
+      this.currentVerse = xmlObj.getAttribute('number');
+    }
+
+    if (xmlObj.hasAttribute('vid')) {
+      const currentReference = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
+      if (currentReference !== xmlObj.getAttribute('vid')) {
+        this.usfmString += `\\vid|ref="${xmlObj.getAttribute('vid')}" `;
+        if (xmlObj.hasAttribute('h')) {
+          this.usfmString += `h="${xmlObj.getAttribute('h')}" `;
+          xmlObj.removeAttribute('h');
+        }
+        this.usfmString += '\\*\n';
+      }
+      xmlObj.removeAttribute('vid');
     }
 
     if (!NO_NEWLINE_USX_TYPES.includes(objType)) {
