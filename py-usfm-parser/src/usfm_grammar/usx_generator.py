@@ -284,7 +284,7 @@ class USXGenerator:
                 para_xml_node.set("style", para_marker)
                 for child in para_tag_cap['para-marker'][0].children[1:]:
                     self.node_2_usx(child, para_xml_node)
-            self.add_vid_attributes(para_xml_node)
+                self.add_vid_attributes(para_xml_node)
         elif node.type in ["pi", "ph"]:
             para_marker = (
                 self.usfm[node.children[0].start_byte : node.children[0].end_byte]
@@ -382,12 +382,12 @@ class USXGenerator:
         """Handle table related components and convert to usx"""
         if node.type == "table":
             table_xml_node = etree.SubElement(parent_xml_node, "table")
-            self.add_vid_attributes(table_xml_node)
             for child in node.children:
                 self.node_2_usx(child, table_xml_node)
         elif node.type == "tr":
             row_xml_node = etree.SubElement(parent_xml_node, "row")
             row_xml_node.set("style", "tr")
+            self.add_vid_attributes(row_xml_node)
             for child in node.children[1:]:
                 self.node_2_usx(child, row_xml_node)
         elif node.type in self.TABLE_CELL_MARKERS:
