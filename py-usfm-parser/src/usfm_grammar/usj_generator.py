@@ -215,6 +215,7 @@ class USJGenerator:
                 parent_json_obj["content"].append(
                     {"type": "para", "marker": para_marker}
                 )
+                self._add_vid_attributes(parent_json_obj["content"][-1])
             elif not para_marker.endswith("Block"):
                 para_json_obj = {"type": "para", "marker": para_marker, "content": []}
                 for child in para_node.children:

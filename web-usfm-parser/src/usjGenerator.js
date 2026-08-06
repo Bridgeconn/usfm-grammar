@@ -206,11 +206,11 @@ class USJGenerator {
   addVidAttributesToNode(parentJsonObj) {
     //Add vid attributes to the given xml node if they exist in parse state
     if (this.parseState.vidH) {
-      parentJsonObj['h'] = this.parseState.vidH;
+      parentJsonObj.h = this.parseState.vidH;
       this.parseState.vidH = null; // Reset after use
     }
     if (this.parseState.vidRef) {
-      parentJsonObj['vid'] = this.parseState.vidRef;
+      parentJsonObj.vid = this.parseState.vidRef;
       this.parseState.vidRef = null; // Reset after use
     }
   }
@@ -227,6 +227,7 @@ class USJGenerator {
       const paraMarker = paraTagCap.node.type;
       if (paraMarker === 'b') {
         parentJsonObj.content.push({ type: 'para', marker: paraMarker });
+        this.addVidAttributesToNode(parentJsonObj.content[parentJsonObj.content.length - 1]);
       } else if (!paraMarker.endsWith('Block')) {
         const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
         paraTagCap.node.children.forEach((child) => {
