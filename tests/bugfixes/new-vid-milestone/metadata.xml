@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>New marker vid introduced in USFM 3.2, which becomes attributes in usx and usj.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>
