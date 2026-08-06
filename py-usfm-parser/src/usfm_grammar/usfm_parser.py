@@ -291,6 +291,8 @@ class USFMParser:
         try:
             usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
             usj_generator.node_2_usj(self.syntax_tree, json_root_obj)
+            if len(usj_generator.warnings) > 0:
+                self.warnings.extend(usj_generator.warnings)
             usj_dict = usj_generator.json_root_obj
             usj_dict = include_markers_in_usj(usj_dict, Filter.BCV + Filter.TEXT, True)
 
@@ -323,6 +325,8 @@ class USFMParser:
         try:
             usx_generator = USXGenerator(USFM_LANGUAGE, self.usfm_bytes, usx_root)
             usx_generator.node_2_usx(self.syntax_tree, usx_root)
+            if len(usx_generator.warnings) > 0:
+                self.warnings.extend(usx_generator.warnings)
         except Exception as exe:
             message = "Unable to do the conversion. "
             if self.errors:
