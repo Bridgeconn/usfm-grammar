@@ -147,9 +147,6 @@ class USFMGenerator {
       return;
     }
 
-    if (!NO_NEWLINE_USX_TYPES.includes(objType)) {
-      this.usfmString += '\n';
-    }
     if (xmlObj.hasAttribute('code')) {
       this.currentBook = xmlObj.getAttribute('code');
     } else if (marker === 'c') {
@@ -169,6 +166,9 @@ class USFMGenerator {
         this.usfmString += '\\*\n';
       }
       xmlObj.removeAttribute('vid');
+    }
+    if (!NO_NEWLINE_USX_TYPES.includes(objType)) {
+      this.usfmString += '\n';
     }
 
     if (objType === 'optbreak') {
