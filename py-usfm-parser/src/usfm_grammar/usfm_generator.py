@@ -35,6 +35,8 @@ NON_ATTRIB_USX_KEYS = [
     "altnumber",
     "pubnumber",
     "category",
+    "vid",
+    "h",
 ]
 NO_NEWLINE_USX_TYPES = ["char", "note", "cell", "figure", "usx", "book", "optbreak"]
 CLOSING_USX_TYPES = ["char", "note", "figure", "ms", "ref"]
@@ -46,6 +48,9 @@ class USFMGenerator:
     def __init__(self):
         self.usfm_string = ""
         self.warnings = []
+        self.current_book = None
+        self.current_chapter = None
+        self.current_verse = None
 
     # def is_valid_usfm(self, usfm_string: str = None) -> bool:
     #     '''Check the generated or passed USFM's correctness using the grammar'''
@@ -74,6 +79,24 @@ class USFMGenerator:
             marker = "list-s\\*\n"
         elif marker == "":
             marker = usj_obj["type"]
+
+        # Keep track of the current book, chapter, and verse for generating \vid markers
+        if self.current_book is None and "code" in usj_obj:
+            self.current_book = usj_obj["code"]
+        elif marker == "c" and "number" in usj_obj:
+            self.current_chapter = usj_obj["number"]
+        elif marker == "v" and "number" in usj_obj:
+            self.current_verse = usj_obj["number"]
+
+        if "vid" in usj_obj:
+            current_ref = f"{self.current_book} {self.current_chapter}:{self.current_verse}"
+            if usj_obj["vid"] != current_ref:
+                self.usfm_string += f"\\vid|ref=\"{usj_obj['vid']}\" "
+                if "h" in usj_obj:
+                    self.usfm_string += f"h=\"{usj_obj['h']}\" "
+                    del usj_obj["h"]
+                self.usfm_string += "\\*\n"
+                del usj_obj["vid"]
         if usj_obj["type"] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if (
@@ -158,6 +181,24 @@ class USFMGenerator:
             return
         if obj_type not in NO_NEWLINE_USX_TYPES:
             self.usfm_string += "\n"
+
+        # Keep track of the current book, chapter, and verse for generating \vid markers
+        if self.current_book is None and "code" in xml_obj.attrib:
+            self.current_book = xml_obj.attrib["code"]
+        elif obj_type == "chapter" and "number" in xml_obj.attrib:
+            self.current_chapter = xml_obj.attrib["number"]
+        elif obj_type == "verse" and "number" in xml_obj.attrib:
+            self.current_verse = xml_obj.attrib["number"]
+
+        if "vid" in xml_obj.attrib:
+            current_ref = f"{self.current_book} {self.current_chapter}:{self.current_verse}"
+            if xml_obj.attrib["vid"] != current_ref:
+                self.usfm_string += f"\\vid|ref=\"{xml_obj.attrib['vid']}\" "
+                if "h" in xml_obj.attrib:
+                    self.usfm_string += f"h=\"{xml_obj.attrib['h']}\" "
+                    del xml_obj.attrib["h"]
+                self.usfm_string += "\\*\n"
+            del xml_obj.attrib["vid"]
         if obj_type == "optbreak":
             if self.usfm_string != "" and self.usfm_string[-1] not in [
                 "\n",
