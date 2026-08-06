@@ -207,6 +207,11 @@ const findAllMarkers = function (usfmStr, keepId = false, keepNumber = true) {
     allMarkersInInput.splice(usfmIndex, 1);
   }
 
+  const vidIndex = allMarkersInInput.indexOf("vid");
+  if (vidIndex !== -1) {
+    allMarkersInInput.splice(vidIndex, 1);
+  }
+
   return allMarkersInInput;
 };
 
