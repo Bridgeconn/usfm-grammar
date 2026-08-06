@@ -1,8 +1,9 @@
 """Logics for syntax-tree to dict(USJ) conversions"""
 from tree_sitter import QueryCursor
+import re
 
 from usfm_grammar.queries import create_queries_as_needed
-from usfm_grammar.usx_generator import USXGenerator
+from usfm_grammar.usx_generator import USXGenerator, REF_PATTERN
 
 #pylint: disable=duplicate-code
 
@@ -16,6 +17,7 @@ class USJGenerator:
         """Initialize the USJ generator with USFM and root object"""
         self.usfm_language = tree_sitter_language_obj
         self.usfm = usfm_string
+        self.warnings = []
         self.json_root_obj = usj_root_obj or {
             "type": "USJ",
             "version": "3.1",
@@ -24,7 +26,10 @@ class USJGenerator:
         # Cache for the query objects
         self.queries = {}
         # Make o(1) sets for marker lookups
-        self.parse_state = {"book_slug": None, "current_chapter": None}
+        self.parse_state = {"book_slug": None,
+                            "current_chapter": None,
+                            "vid-ref": None,
+                            "vid-h": None}
         # maps and id to a fn;
         self.dispatch_map = self._populate_dispatch_map()
 
@@ -156,6 +161,43 @@ class USJGenerator:
         char_json_obj["altnumber"] = alt_num
         parent_json_obj["content"].append(char_json_obj)
 
+    def _node_2_usj_vid(self, node, parent_json_obj):
+        """Build elements for vid and its attributes"""
+        for child in node.children:
+            attrib_value = None
+            for inner_child in child.children:
+                if inner_child.type == "attributeValue":
+                    attrib_value = self.usfm[inner_child.start_byte : inner_child.end_byte].decode("utf-8").strip()
+                    break
+            match child.type:
+                case "hAttribute":
+                    self.parse_state["vid-h"] = attrib_value
+                case "refAttribute":
+                    self.parse_state["vid-ref"] = attrib_value
+                case "defaultAttribute":
+                    self.parse_state["vid-ref"] = attrib_value
+                # case _:
+                #     self.warnings.append(f"Unknown child type in vid: {child.type}")
+        if self.parse_state["vid-ref"] is not None:
+            ref_match = re.match(REF_PATTERN, self.parse_state["vid-ref"])
+            if not ref_match:
+                self.warnings.append(f"vid-ref attribute value does not match expected pattern: {self.parse_state['vid-ref']}")
+            else:
+                self.parse_state["book_slug"] = ref_match.group(1)
+                self.parse_state["current_chapter"] = ref_match.group(2)
+                # self.parse_state["current_verse"] = ref_match.group(3)
+
+
+    def _add_vid_attributes(self, usj_node):
+        """Add vid attributes to the given xml node if they exist in parse state"""
+        if self.parse_state["vid-h"] is not None:
+            usj_node["h"] = self.parse_state["vid-h"]
+            self.parse_state["vid-h"] = None
+        if self.parse_state["vid-ref"] is not None:
+            usj_node["vid"] = self.parse_state["vid-ref"]
+            self.parse_state["vid-ref"] = None
+
+
     def _node_2_usj_para(self, node, parent_json_obj):
         """Convert paragraph nodes to USJ format"""
         if node.children and node.children[0].type.endswith("Block"):
@@ -177,6 +219,7 @@ class USJGenerator:
                 para_json_obj = {"type": "para", "marker": para_marker, "content": []}
                 for child in para_node.children:
                     self.node_2_usj(child, para_json_obj)
+                self._add_vid_attributes(para_json_obj)
                 parent_json_obj["content"].append(para_json_obj)
         elif node.type in ["pi", "ph"]:
             para_marker = (
@@ -188,6 +231,7 @@ class USJGenerator:
             para_json_obj = {"type": "para", "marker": para_marker, "content": []}
             for child in node.children[1:]:
                 self.node_2_usj(child, para_json_obj)
+            self._add_vid_attributes(para_json_obj)
             parent_json_obj["content"].append(para_json_obj)
 
     def _node_2_usj_notes(self, node, parent_json_obj):
@@ -208,7 +252,7 @@ class USJGenerator:
             .decode("utf-8")
             .strip()
         )
-
+        self._add_vid_attributes(note_json_obj)
         for i in range(2, len(node.children) - 1):
             self.node_2_usj(node.children[i], note_json_obj)
 
@@ -245,6 +289,7 @@ class USJGenerator:
             table_json_obj = {"type": "table", "content": []}
             for child in node.children:
                 self.node_2_usj(child, table_json_obj)
+            self._add_vid_attributes(table_json_obj)
             parent_json_obj["content"].append(table_json_obj)
         elif node.type == "tr":
             row_json_obj = {"type": "table:row", "marker": "tr", "content": []}
@@ -283,6 +328,7 @@ class USJGenerator:
         if first_child and first_child.type == "list_s":
             # This is a list with milestones, so we add a list object
             list_json_obj = {"type": "list", "content": []}
+            self._add_vid_attributes(list_json_obj)
             for child in node.children[1:-1]:  # Skip the list_s and list_e markers
                 self.node_2_usj(child, list_json_obj)
             parent_json_obj["content"].append(list_json_obj)
@@ -341,7 +387,7 @@ class USJGenerator:
             .strip()
         )
         ms_json_obj = {"type": "ms", "marker": style.strip(), "content": []}
-
+        self._add_vid_attributes(ms_json_obj)
         for child in node.children:
             if child.type.endswith("Attribute"):
                 self.node_2_usj(child, ms_json_obj)
@@ -357,6 +403,7 @@ class USJGenerator:
             sidebar_json_obj = {"type": "sidebar", "marker": "esb", "content": []}
             for child in node.children[1:-1]:
                 self.node_2_usj(child, sidebar_json_obj)
+            self._add_vid_attributes(sidebar_json_obj)
             parent_json_obj["content"].append(sidebar_json_obj)
         elif node.type == "cat":
             cat_cursor = QueryCursor(self._get_query("category"))
@@ -376,6 +423,7 @@ class USJGenerator:
             fig_json_obj = {"type": "figure", "marker": "fig", "content": []}
             for child in node.children[1:-1]:
                 self.node_2_usj(child, fig_json_obj)
+            self._add_vid_attributes(fig_json_obj)
             parent_json_obj["content"].append(fig_json_obj)
         elif node.type == "ref":
             ref_json_obj = {"type": "ref", "content": []}
@@ -400,6 +448,7 @@ class USJGenerator:
             children_range_start = 2
 
         para_json_obj = {"type": "para", "marker": style.strip(), "content": []}
+        self._add_vid_attributes(para_json_obj)
         parent_json_obj["content"].append(para_json_obj)
 
         for i in range(children_range_start, len(node.children)):
@@ -448,6 +497,7 @@ class USJGenerator:
         dispatch_map["id"] = self._node_2_usj_id
         dispatch_map["chapter"] = self._node_2_usj_chapter
         dispatch_map["list"] = self._node_2_usj_list
+        dispatch_map["vid"] = self._node_2_usj_vid
         dispatch_map["usfm"] = lambda *_: None  # noop
 
         # Add handlers for different marker types
