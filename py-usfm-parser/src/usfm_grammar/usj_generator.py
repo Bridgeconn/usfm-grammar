@@ -1,6 +1,6 @@
 """Logics for syntax-tree to dict(USJ) conversions"""
-from tree_sitter import QueryCursor
 import re
+from tree_sitter import QueryCursor
 
 from usfm_grammar.queries import create_queries_as_needed
 from usfm_grammar.usx_generator import USXGenerator, REF_PATTERN
@@ -161,13 +161,14 @@ class USJGenerator:
         char_json_obj["altnumber"] = alt_num
         parent_json_obj["content"].append(char_json_obj)
 
-    def _node_2_usj_vid(self, node, parent_json_obj):
+    def _node_2_usj_vid(self, node, _):
         """Build elements for vid and its attributes"""
         for child in node.children:
             attrib_value = None
             for inner_child in child.children:
                 if inner_child.type == "attributeValue":
-                    attrib_value = self.usfm[inner_child.start_byte : inner_child.end_byte].decode("utf-8").strip()
+                    attrib_value = self.usfm[inner_child.start_byte : inner_child.end_byte]\
+                        .decode("utf-8").strip()
                     break
             match child.type:
                 case "hAttribute":
@@ -181,7 +182,8 @@ class USJGenerator:
         if self.parse_state["vid-ref"] is not None:
             ref_match = re.match(REF_PATTERN, self.parse_state["vid-ref"])
             if not ref_match:
-                self.warnings.append(f"vid-ref attribute value does not match expected pattern: {self.parse_state['vid-ref']}")
+                self.warnings.append("vid-ref attribute value does not match expected pattern:"+\
+                                     f" {self.parse_state['vid-ref']}")
             else:
                 self.parse_state["book_slug"] = ref_match.group(1)
                 self.parse_state["current_chapter"] = ref_match.group(2)

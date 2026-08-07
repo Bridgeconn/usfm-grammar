@@ -1,7 +1,7 @@
 """Logics for syntax-tree to xml(USX) conversions"""
+import re
 from lxml import etree
 from tree_sitter import QueryCursor
-import re
 from usfm_grammar.queries import create_queries_as_needed
 
 REF_PATTERN = re.compile(r"(\w+) (\d+):([\d\w]+(-[\d\w]+)?)")
@@ -97,22 +97,22 @@ class USXGenerator:
             "vid-h": None,
             "vid-ref": None,
         }
-        self.dispatch_map = self.populate_dispatch_map()
+        self.dispatch_map = self._populate_dispatch_map()
         self.queries = {}
 
-    def get_query(self, name):
+    def _get_query(self, name):
         """Get or create a query by name"""
         if name not in self.queries:
-            self.queries[name] = self.create_query(name)
+            self.queries[name] = self._create_query(name)
         return self.queries[name]
 
-    def create_query(self, name):
+    def _create_query(self, name):
         """Create a query by name"""
         return create_queries_as_needed(name, self.usfm_language)
 
-    def node_2_usx_id(self, node, parent_xml_node):
+    def _node_2_usx_id(self, node, parent_xml_node):
         """build id node in USX"""
-        id_cursor = QueryCursor(self.get_query("id"))
+        id_cursor = QueryCursor(self._get_query("id"))
         id_captures = id_cursor.captures(node)
         code = self.usfm[id_captures['book-code'][0].start_byte :
                          id_captures['book-code'][0].end_byte].decode("utf-8")\
@@ -128,9 +128,9 @@ class USXGenerator:
         if desc is not None and desc.strip() != "":
             book_xml_node.text = desc.strip()
 
-    def node_2_usx_c(self, node, parent_xml_node):
+    def _node_2_usx_c(self, node, parent_xml_node):
         """Build c, the chapter milestone node in usx"""
-        chap_cursor = QueryCursor(self.get_query("chapter"))
+        chap_cursor = QueryCursor(self._get_query("chapter"))
         chap_cap = chap_cursor.captures(node)
         chap_num = self.usfm[
             chap_cap['chap-num'][0].start_byte : chap_cap['chap-num'][0].end_byte
@@ -156,11 +156,11 @@ class USXGenerator:
             if child.type in ["cl", "cd"]:
                 self.node_2_usx(child, parent_xml_node)
 
-    def node_2_usx_chapter(self, node, parent_xml_node):
+    def _node_2_usx_chapter(self, node, parent_xml_node):
         """build chapter node in USX"""
         for child in node.children:
             if child.type == "c":
-                self.node_2_usx_c(child, parent_xml_node)
+                self._node_2_usx_c(child, parent_xml_node)
             else:
                 self.node_2_usx(child, parent_xml_node)
 
@@ -183,7 +183,7 @@ class USXGenerator:
         chap_end_xml_node.set("eid", chap_ref)
         self.parse_state["prev_chapter_sid"] = None
 
-    def node_2_usx_verse(self, node, parent_xml_node):
+    def _node_2_usx_verse(self, node, parent_xml_node):
         """build verse node in USX"""
         eid = self.parse_state["prev_verse_sid_to_close"]
         if eid is not None:
@@ -191,7 +191,7 @@ class USXGenerator:
             v_end_xml_node = etree.SubElement(prev_para, "verse")
             v_end_xml_node.set("eid", eid)
             self.parse_state["prev_verse_sid_to_close"] = None
-        verse_cursor = QueryCursor(self.get_query("verseNumCap"))
+        verse_cursor = QueryCursor(self._get_query("verseNumCap"))
         verse_num_cap = verse_cursor.captures(node)
         verse_num = self.usfm[
             verse_num_cap['vnum'][0].start_byte : verse_num_cap['vnum'][0].end_byte
@@ -222,25 +222,26 @@ class USXGenerator:
         v_xml_node.set("sid", ref.strip())
         self.parse_state["prev_verse_sid_to_close"] = sid
 
-    def node_2_usx_ca_va(self, node, parent_xml_node):
+    def _node_2_usx_ca_va(self, node, parent_xml_node):
         """Build elements for independant ca and va away from c and v"""
         style = node.type
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set("style", style)
-        alt_num_cursor = QueryCursor(self.get_query("usjCaVa"))
+        alt_num_cursor = QueryCursor(self._get_query("usjCaVa"))
         alt_num_match = alt_num_cursor.captures(node)[0]
         alt_num = self.usfm[alt_num_match['alt-num'][0].start_byte :
                       alt_num_match['alt-num'][0].end_byte].decode("utf-8").strip()
         char_xml_node.set("altnumber", alt_num)
         char_xml_node.set("closed", "true")
 
-    def node_2_usx_vid(self, node, parent_xml_node):
+    def _node_2_usx_vid(self, node, _):
         """Build elements for vid and its attributes"""
         for child in node.children:
             attrib_value = None
             for inner_child in child.children:
                 if inner_child.type == "attributeValue":
-                    attrib_value = self.usfm[inner_child.start_byte : inner_child.end_byte].decode("utf-8").strip()
+                    attrib_value = self.usfm[inner_child.start_byte : inner_child.end_byte]\
+                        .decode("utf-8").strip()
                     break
             match child.type:
                 case "hAttribute":
@@ -254,14 +255,15 @@ class USXGenerator:
         if self.parse_state["vid-ref"] is not None:
             ref_match = re.match(REF_PATTERN, self.parse_state["vid-ref"])
             if not ref_match:
-                self.warnings.append(f"vid-ref attribute value does not match expected pattern: {self.parse_state['vid-ref']}")
+                self.warnings.append("vid-ref attribute value does not match expected pattern:"+\
+                                     f" {self.parse_state['vid-ref']}")
             else:
                 self.parse_state["book_slug"] = ref_match.group(1)
                 self.parse_state["current_chapter"] = ref_match.group(2)
                 # self.parse_state["current_verse"] = ref_match.group(3)
 
 
-    def add_vid_attributes(self, xml_node):
+    def _add_vid_attributes(self, xml_node):
         """Add vid attributes to the given xml node if they exist in parse state"""
         if self.parse_state["vid-h"] is not None:
             xml_node.set("h", self.parse_state["vid-h"])
@@ -270,13 +272,13 @@ class USXGenerator:
             xml_node.set("vid", self.parse_state["vid-ref"])
             self.parse_state["vid-ref"] = None
 
-    def node_2_usx_para(self, node, parent_xml_node):
+    def _node_2_usx_para(self, node, parent_xml_node):
         """build paragraph nodes in USX"""
         if node.children[0].type.endswith("Block"):
             for child in node.children[0].children:
-                self.node_2_usx_para(child, parent_xml_node)
+                self._node_2_usx_para(child, parent_xml_node)
         elif node.type == "paragraph":
-            para_tag_cursor = QueryCursor(self.get_query("para"))
+            para_tag_cursor = QueryCursor(self._get_query("para"))
             para_tag_cap = para_tag_cursor.captures(node)
             para_marker = para_tag_cap['para-marker'][0].type
             if not para_marker.endswith("Block"):
@@ -284,7 +286,7 @@ class USXGenerator:
                 para_xml_node.set("style", para_marker)
                 for child in para_tag_cap['para-marker'][0].children[1:]:
                     self.node_2_usx(child, para_xml_node)
-                self.add_vid_attributes(para_xml_node)
+                self._add_vid_attributes(para_xml_node)
         elif node.type in ["pi", "ph"]:
             para_marker = (
                 self.usfm[node.children[0].start_byte : node.children[0].end_byte]
@@ -296,9 +298,9 @@ class USXGenerator:
             para_xml_node.set("style", para_marker)
             for child in node.children[1:]:
                 self.node_2_usx(child, para_xml_node)
-            self.add_vid_attributes(para_xml_node)
-            
-    def node_2_usx_notes(self, node, parent_xml_node):
+            self._add_vid_attributes(para_xml_node)
+
+    def _node_2_usx_notes(self, node, parent_xml_node):
         """build USX nodes for footnotes and corss-refs"""
         tag_node = node.children[0]
         caller_node = node.children[1]
@@ -316,11 +318,11 @@ class USXGenerator:
             .decode("utf-8")
             .strip(),
         )
-        self.add_vid_attributes(note_xml_node)
+        self._add_vid_attributes(note_xml_node)
         for child in node.children[2:-1]:
             self.node_2_usx(child, note_xml_node)
 
-    def node_2_usx_char(self, node, parent_xml_node):
+    def _node_2_usx_char(self, node, parent_xml_node):
         """build USX nodes for character markups, both regular and nested"""
         tag_node = node.children[0]
         closing_node = None
@@ -349,7 +351,7 @@ class USXGenerator:
         for child in node.children[1:children_range]:
             self.node_2_usx(child, char_xml_node)
 
-    def node_2_usx_attrib(self, node, parent_xml_node):
+    def _node_2_usx_attrib(self, node, parent_xml_node):
         """add attribute values to USX elements"""
         attrib_name_node = node.children[0]
         attrib_name = (
@@ -365,7 +367,7 @@ class USXGenerator:
         if attrib_name == "src":  # for \fig
             attrib_name = "file"
 
-        attrib_cursor = QueryCursor(self.get_query("attribVal"))
+        attrib_cursor = QueryCursor(self._get_query("attribVal"))
         attrib_val_cap = attrib_cursor.captures(node)
         if 'attrib-val' in attrib_val_cap and len(attrib_val_cap['attrib-val']) > 0:
             attrib_value = (
@@ -378,7 +380,7 @@ class USXGenerator:
             attrib_value = ""
         parent_xml_node.set(attrib_name, attrib_value)
 
-    def node_2_usx_table(self, node, parent_xml_node):
+    def _node_2_usx_table(self, node, parent_xml_node):
         """Handle table related components and convert to usx"""
         if node.type == "table":
             table_xml_node = etree.SubElement(parent_xml_node, "table")
@@ -387,7 +389,7 @@ class USXGenerator:
         elif node.type == "tr":
             row_xml_node = etree.SubElement(parent_xml_node, "row")
             row_xml_node.set("style", "tr")
-            self.add_vid_attributes(row_xml_node)
+            self._add_vid_attributes(row_xml_node)
             for child in node.children[1:]:
                 self.node_2_usx(child, row_xml_node)
         elif node.type in self.TABLE_CELL_MARKERS:
@@ -409,21 +411,21 @@ class USXGenerator:
             for child in node.children[1:]:
                 self.node_2_usx(child, cell_xml_node)
 
-    def node_2_usx_list(self, node, parent_xml_node):
+    def _node_2_usx_list(self, node, parent_xml_node):
         """Handle list related components and convert to usx"""
         first_child = node.children[0] if len(node.children) > 0 else None
         if first_child and first_child.type == "list_s":
             list_xml_node = etree.SubElement(parent_xml_node, "list")
-            self.add_vid_attributes(list_xml_node)
+            self._add_vid_attributes(list_xml_node)
             for child in node.children[1:-1]:
                 self.node_2_usx(child, list_xml_node)
         else:
             for child in node.children:
                 self.node_2_usx(child, parent_xml_node)
 
-    def node_2_usx_milestone(self, node, parent_xml_node):
+    def _node_2_usx_milestone(self, node, parent_xml_node):
         """create ms node in USX"""
-        ms_name_cursor = QueryCursor(self.get_query("milestone"))
+        ms_name_cursor = QueryCursor(self._get_query("milestone"))
         ms_name_cap = ms_name_cursor.captures(node)['ms-name']
         style = (
             self.usfm[ms_name_cap[0].start_byte : ms_name_cap[0].end_byte]
@@ -433,22 +435,22 @@ class USXGenerator:
         )
         ms_xml_node = etree.SubElement(parent_xml_node, "ms")
         ms_xml_node.set("style", style)
-        self.add_vid_attributes(ms_xml_node)
+        self._add_vid_attributes(ms_xml_node)
         for child in node.children:
             if child.type.endswith("Attribute"):
                 self.node_2_usx(child, ms_xml_node)
 
-    def node_2_usx_special(self, node, parent_xml_node):
+    def _node_2_usx_special(self, node, parent_xml_node):
         """Build nodes for esb, cat, fig, optbreak in USX"""
         if node.type == "esb":
             style = "esb"
             sidebar_xml_node = etree.SubElement(parent_xml_node, "sidebar")
             sidebar_xml_node.set("style", style)
-            self.add_vid_attributes(sidebar_xml_node)
+            self._add_vid_attributes(sidebar_xml_node)
             for child in node.children[1:-1]:
                 self.node_2_usx(child, sidebar_xml_node)
         elif node.type == "cat":
-            cat_cursor = QueryCursor(self.get_query("category"))
+            cat_cursor = QueryCursor(self._get_query("category"))
             cat_cap = cat_cursor.captures(node)['category']
             category = (
                 self.usfm[cat_cap[0].start_byte : cat_cap[0].end_byte]
@@ -459,7 +461,7 @@ class USXGenerator:
         elif node.type == "fig":
             fig_xml_node = etree.SubElement(parent_xml_node, "figure")
             fig_xml_node.set("style", "fig")
-            self.add_vid_attributes(fig_xml_node)
+            self._add_vid_attributes(fig_xml_node)
             for child in node.children[1:-1]:
                 self.node_2_usx(child, fig_xml_node)
         elif node.type == "ref":
@@ -468,7 +470,7 @@ class USXGenerator:
             for child in node.children[1:-1]:
                 self.node_2_usx(child, ref_xml_node)
 
-    def node_2_usx_generic(self, node, parent_xml_node):
+    def _node_2_usx_generic(self, node, parent_xml_node):
         """build nodes for para style markers in USX"""
         tag_node = node.children[0]
         style = self.usfm[tag_node.start_byte : tag_node.end_byte].decode("utf-8")
@@ -484,7 +486,7 @@ class USXGenerator:
             children_range_start = 2
         para_xml_node = etree.SubElement(parent_xml_node, "para")
         para_xml_node.set("style", style)
-        self.add_vid_attributes(para_xml_node)
+        self._add_vid_attributes(para_xml_node)
         for child in node.children[children_range_start:]:
             # self.node_2_usx(child, para_xml_node)
             if any(
@@ -499,7 +501,7 @@ class USXGenerator:
             else:
                 self.node_2_usx(child, parent_xml_node)
 
-    def populate_dispatch_map(self):
+    def _populate_dispatch_map(self):
         """Create a dispatch map for node type to handler functions"""
         dispatch_map = {}
 
@@ -512,45 +514,45 @@ class USXGenerator:
                     dispatch_map[marker] = getattr(self, handler.__name__)
 
         # Add basic handlers
-        dispatch_map["text"] = self.push_text_node
-        dispatch_map["verseText"] = self.handle_verse_text
-        dispatch_map["v"] = self.node_2_usx_verse
-        dispatch_map["id"] = self.node_2_usx_id
-        dispatch_map["chapter"] = self.node_2_usx_chapter
-        dispatch_map["list"] = self.node_2_usx_list
-        dispatch_map["vid"] = self.node_2_usx_vid
+        dispatch_map["text"] = self._push_text_node
+        dispatch_map["verseText"] = self._handle_verse_text
+        dispatch_map["v"] = self._node_2_usx_verse
+        dispatch_map["id"] = self._node_2_usx_id
+        dispatch_map["chapter"] = self._node_2_usx_chapter
+        dispatch_map["list"] = self._node_2_usx_list
+        dispatch_map["vid"] = self._node_2_usx_vid
         dispatch_map["usfm"] = lambda *_: None  # noop
 
         # Add handlers for different marker types
-        add_handlers(["paragraph", "q", "w"], self.node_2_usx_para)
-        add_handlers(["cl", "cp", "vp"], self.node_2_usx_generic)
-        add_handlers(["ca", "va"], self.node_2_usx_ca_va)
-        add_handlers(["table", "tr"], self.node_2_usx_table)
-        add_handlers(["milestone", "zNameSpace"], self.node_2_usx_milestone)
-        add_handlers(["esb", "cat", "fig", "ref"], self.node_2_usx_special)
-        add_handlers(self.NOTE_MARKERS, self.node_2_usx_notes)
+        add_handlers(["paragraph", "q", "w"], self._node_2_usx_para)
+        add_handlers(["cl", "cp", "vp"], self._node_2_usx_generic)
+        add_handlers(["ca", "va"], self._node_2_usx_ca_va)
+        add_handlers(["table", "tr"], self._node_2_usx_table)
+        add_handlers(["milestone", "zNameSpace"], self._node_2_usx_milestone)
+        add_handlers(["esb", "cat", "fig", "ref"], self._node_2_usx_special)
+        add_handlers(self.NOTE_MARKERS, self._node_2_usx_notes)
         add_handlers(
             self.CHAR_STYLE_MARKERS
             + self.NESTED_CHAR_STYLE_MARKERS
             + ["xt_standalone"],
-            self.node_2_usx_char,
+            self._node_2_usx_char,
         )
-        add_handlers(self.TABLE_CELL_MARKERS, self.node_2_usx_table)
+        add_handlers(self.TABLE_CELL_MARKERS, self._node_2_usx_table)
 
         # Add paragraph style markers
         for marker in self.PARA_STYLE_MARKERS:
             if marker != "usfm":
-                dispatch_map[marker] = self.node_2_usx_generic
+                dispatch_map[marker] = self._node_2_usx_generic
 
         return dispatch_map
 
-    def handle_verse_text(self, node, parent_xml_node):
+    def _handle_verse_text(self, node, parent_xml_node):
         """Handle verse text content"""
         for child in node.children:
             self.node_2_usx(child, parent_xml_node)
         self.parse_state["prev_verse_parent"] = parent_xml_node
 
-    def push_text_node(self, node, parent_xml_node):
+    def _push_text_node(self, node, parent_xml_node):
         """Add text node to parent's content"""
         text_val = (
             self.usfm[node.start_byte : node.end_byte].decode("utf-8").replace("~", " ")
@@ -570,6 +572,14 @@ class USXGenerator:
                 else:
                     parent_xml_node.text += text_val
 
+    def get_usx(self, node, parent_xml_node=None):
+        """Convert the syntax tree to USX format"""
+        if parent_xml_node is None:
+            parent_xml_node = self.xml_root_node
+
+        self.node_2_usx(node, parent_xml_node)
+        return parent_xml_node
+
     def node_2_usx(self, node, parent_xml_node):  # pylint: disable= too-many-branches
         """check each node and based on the type convert to corresponding xml element"""
         # print("working with node: ", node, "\n")
@@ -580,7 +590,7 @@ class USXGenerator:
         if handler:
             handler(node, parent_xml_node)
         elif node_type.endswith("Attribute"):
-            self.node_2_usx_attrib(node, parent_xml_node)
+            self._node_2_usx_attrib(node, parent_xml_node)
         elif node_type.strip() in ["", "|"]:
             pass  # skip white space nodes
         elif hasattr(node, "children") and len(node.children) > 0:
@@ -589,5 +599,3 @@ class USXGenerator:
         else:
         #     raise Exception("Encountered unknown element ", str(node))
             self.warnings.append("Encountered unknown element ", str(node))
-
-
