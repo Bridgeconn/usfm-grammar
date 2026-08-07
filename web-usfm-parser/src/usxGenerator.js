@@ -313,7 +313,7 @@ class USXGenerator {
     parentXmlNode.appendChild(charXmlNode);
   }
 
-  node2UsxVid(node, parentXmlNode) {
+  node2UsxVid(node, _parentXmlNode) {
     // Build elements for vid and h attributes
     for (const child of node.children) {
       let attribValue = null;

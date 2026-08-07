@@ -175,7 +175,7 @@ class USJGenerator {
     parentJsonObj.content.push(charJsonObj);
   }
 
-  node2UsxVid(node, parentJsonObj) {
+  node2UsxVid(node, _parentJsonObj) {
     // Build elements for vid and h attributes
     for (const child of node.children) {
       let attribValue = null;
