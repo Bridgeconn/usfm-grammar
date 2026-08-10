@@ -488,7 +488,7 @@ class USXGenerator:
 
     def _node_2_usx_generic(self, node, parent_xml_node):
         """build nodes for para style markers in USX"""
-        tag_node = node.children[0]
+        tag_node = node.children[0] if len(node.children) > 0 else node
         style = self.usfm[tag_node.start_byte : tag_node.end_byte].decode("utf-8")
         if style.startswith("\\"):
             style = style.replace("\\", "").strip()

@@ -602,7 +602,7 @@ class USXGenerator {
   }
 
   node2UsxGeneric(node, parentXmlNode) {
-    const tagNode = node.children[0];
+    const tagNode = node.children[0] ? node.children[0] : node;
     let style = this.usfm.slice(tagNode.startIndex, tagNode.endIndex).trim();
 
     // Strip leading backslashes from the style or use node type

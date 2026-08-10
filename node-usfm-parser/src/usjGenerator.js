@@ -477,7 +477,7 @@ class USJGenerator {
   }
   nodeToUSJGeneric(node, parentJsonObj) {
     // Build nodes for para style markers in USJ
-    const tagNode = node.children[0];
+    const tagNode = node.children[0] ? node.children[0] : node;
 
     let style = this.usfm.substring(tagNode.startIndex, tagNode.endIndex);
     if (style.startsWith('\\')) {
