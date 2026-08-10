@@ -85,6 +85,7 @@ class USFMGenerator:
             self.current_book = usj_obj["code"]
         elif marker == "c" and "number" in usj_obj:
             self.current_chapter = usj_obj["number"]
+            self.current_verse = None  # Reset current verse when a new chapter starts
         elif marker == "v" and "number" in usj_obj:
             self.current_verse = usj_obj["number"]
 
@@ -96,7 +97,7 @@ class USFMGenerator:
                     self.usfm_string += f"h=\"{usj_obj['h']}\" "
                     del usj_obj["h"]
                 self.usfm_string += "\\*\n"
-                del usj_obj["vid"]
+            del usj_obj["vid"]
         if usj_obj["type"] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if (
@@ -187,6 +188,7 @@ class USFMGenerator:
             self.current_book = xml_obj.attrib["code"]
         elif obj_type == "chapter" and "number" in xml_obj.attrib:
             self.current_chapter = xml_obj.attrib["number"]
+            self.current_verse = None  # Reset current verse when a new chapter starts
         elif obj_type == "verse" and "number" in xml_obj.attrib:
             self.current_verse = xml_obj.attrib["number"]
 
