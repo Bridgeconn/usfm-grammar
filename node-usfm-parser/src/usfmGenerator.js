@@ -34,6 +34,7 @@ class USFMGenerator {
       this.currentBook = usjObj.code;
     } else if (marker === 'c') {
       this.currentChapter = usjObj.number;
+      this.currentVerse = null; // Reset currentVerse when a new chapter starts
     } else if (marker === 'v') {
       this.currentVerse = usjObj.number;
     }
@@ -150,16 +151,17 @@ class USFMGenerator {
 
     if (xmlObj.hasAttribute('code')) {
       this.currentBook = xmlObj.getAttribute('code');
-    } else if (marker === 'c') {
+    } else if (xmlObj.getAttribute('style') === 'c') {
       this.currentChapter = xmlObj.getAttribute('number');
-    } else if (marker === 'v') {
+      this.currentVerse = null; // Reset currentVerse when a new chapter starts
+    } else if (xmlObj.getAttribute('style') === 'v') {
       this.currentVerse = xmlObj.getAttribute('number');
     }
 
     if (xmlObj.hasAttribute('vid')) {
       const currentReference = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
       if (currentReference !== xmlObj.getAttribute('vid')) {
-        this.usfmString += `\\vid|ref="${xmlObj.getAttribute('vid')}" `;
+        this.usfmString += `\n\\vid|ref="${xmlObj.getAttribute('vid')}" `;
         if (xmlObj.hasAttribute('h')) {
           this.usfmString += `h="${xmlObj.getAttribute('h')}" `;
           xmlObj.removeAttribute('h');
