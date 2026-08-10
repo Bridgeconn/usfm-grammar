@@ -34,6 +34,7 @@ class USJGenerator {
     this.parseState = {
       bookSlug: null,
       currentChapter: null,
+      prevVerseSid: null,
       vidH: null,
       vidRef: null,
     };
@@ -84,6 +85,7 @@ class USJGenerator {
       sid: chapRef,
     };
     this.parseState.currentChapter = chapNum;
+    this.parseState.prevVerseSid = null; // Reset prevVerseSid when a new chapter starts
     chapCap.forEach((cap) => {
       if (cap.name === 'alt-num') {
         chapJsonObj.altnumber = this.usfm
@@ -151,6 +153,7 @@ class USJGenerator {
 
     const ref = `${this.parseState.bookSlug} ${this.parseState.currentChapter}:${verseNum}`;
     vJsonObj.sid = ref.trim();
+    this.parseState.prevVerseSid = vJsonObj.sid; // Update prevVerseSid for vid attribute handling
 
     parentJsonObj.content.push(vJsonObj);
   }
@@ -215,6 +218,16 @@ class USJGenerator {
     }
   }
 
+  addVidAttributeSecondAttempt(parentJsonObj, firstChild) {
+    // Add vid attributes to the given json node if firstChild is not a verse tag
+    if (!parentJsonObj.vid &&
+        this.parseState.prevVerseSid &&
+        firstChild &&
+        firstChild.type !== 'v') {
+      parentJsonObj.vid = this.parseState.prevVerseSid;
+    }
+  }
+
   nodeToUSJPara(node, parentJsonObj) {
     // Build paragraph nodes in USJ
     if (node.children[0].type.endsWith('Block')) {
@@ -234,6 +247,7 @@ class USJGenerator {
           this.nodeToUSJ(child, paraJsonObj);
         });
         this.addVidAttributesToNode(paraJsonObj);
+        this.addVidAttributeSecondAttempt(paraJsonObj, paraTagCap.node.children[1]);
         parentJsonObj.content.push(paraJsonObj);
       }
     } else if (['pi', 'ph'].includes(node.type)) {
@@ -246,6 +260,7 @@ class USJGenerator {
         this.nodeToUSJ(child, paraJsonObj);
       });
       this.addVidAttributesToNode(paraJsonObj);
+      this.addVidAttributeSecondAttempt(paraJsonObj, node.children[1]);
       parentJsonObj.content.push(paraJsonObj);
     }
   }
@@ -323,6 +338,7 @@ class USJGenerator {
         this.nodeToUSJ(child, rowJsonObj);
       });
       this.addVidAttributesToNode(rowJsonObj);
+      this.addVidAttributeSecondAttempt(rowJsonObj, node.children[1]);
       parentJsonObj.content.push(rowJsonObj);
     } else if (this.markerSets.TABLE_CELL_MARKERS.has(node.type)) {
       const tagNode = node.children[0];
@@ -481,6 +497,7 @@ class USJGenerator {
     }
     const paraJsonObj = { type: 'para', marker: style, content: [] };
     this.addVidAttributesToNode(paraJsonObj);
+    this.addVidAttributeSecondAttempt(paraJsonObj, node.children[childrenRangeStart]);
     parentJsonObj.content.push(paraJsonObj);
 
     for (let i = childrenRangeStart; i < node.children.length; i++) {
