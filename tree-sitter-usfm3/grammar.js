@@ -131,11 +131,11 @@ module.exports = grammar({
     imq: $ => prec.right(0, seq("\\imq ", $._introText)),
     ipr: $ => prec.right(0, seq("\\ipr ", $._introText)),
     ipc: $ => prec.right(0, seq("\\ipc ", $._introText)),
-    ib: $ => seq("\\ib"),
+    ib: $ => "\\ib",
     iqBlock: $ => prec.right(0,repeat1($.iq)),
     iq: $ => prec.right(0, seq($.iqTag, $._introText)),
     iqTag: $ => seq("\\iq",optional($.numberedLevelMax3), " "),
-    ie: $ => seq("\\ie"),
+    ie: $ => "\\ie",
     iex: $ => prec.right(0, seq("\\iex ", $._introText)), // can occur in introduction or inside chapter
 
 
