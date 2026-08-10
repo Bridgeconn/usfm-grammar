@@ -272,6 +272,15 @@ class USXGenerator:
             xml_node.set("vid", self.parse_state["vid-ref"])
             self.parse_state["vid-ref"] = None
 
+    def _add_vid_attribute_second_attempt(self, xml_node, first_child):
+        """Add vid if first is not a verse tag"""
+        if not xml_node.get("vid") and\
+            self.parse_state['prev_verse_sid_to_close'] is not None and\
+                first_child is not None and\
+                    first_child.type != "v":
+            xml_node.set("vid", self.parse_state['prev_verse_sid_to_close'])
+
+
     def _node_2_usx_para(self, node, parent_xml_node):
         """build paragraph nodes in USX"""
         if node.children[0].type.endswith("Block"):
@@ -284,9 +293,11 @@ class USXGenerator:
             if not para_marker.endswith("Block"):
                 para_xml_node = etree.SubElement(parent_xml_node, "para")
                 para_xml_node.set("style", para_marker)
+                self._add_vid_attributes(para_xml_node)
+                first_child = para_tag_cap['para-marker'][0].children[1] if len(para_tag_cap['para-marker'][0].children) > 1 else None
+                self._add_vid_attribute_second_attempt(para_xml_node, first_child)
                 for child in para_tag_cap['para-marker'][0].children[1:]:
                     self.node_2_usx(child, para_xml_node)
-                self._add_vid_attributes(para_xml_node)
         elif node.type in ["pi", "ph"]:
             para_marker = (
                 self.usfm[node.children[0].start_byte : node.children[0].end_byte]
@@ -296,9 +307,11 @@ class USXGenerator:
             )
             para_xml_node = etree.SubElement(parent_xml_node, "para")
             para_xml_node.set("style", para_marker)
+            self._add_vid_attributes(para_xml_node)
+            first_child = node.children[1] if len(node.children) > 1 else None
+            self._add_vid_attribute_second_attempt(para_xml_node, first_child)
             for child in node.children[1:]:
                 self.node_2_usx(child, para_xml_node)
-            self._add_vid_attributes(para_xml_node)
 
     def _node_2_usx_notes(self, node, parent_xml_node):
         """build USX nodes for footnotes and corss-refs"""
@@ -390,6 +403,8 @@ class USXGenerator:
             row_xml_node = etree.SubElement(parent_xml_node, "row")
             row_xml_node.set("style", "tr")
             self._add_vid_attributes(row_xml_node)
+            first_child = node.children[1] if len(node.children) > 1 else None
+            self._add_vid_attribute_second_attempt(row_xml_node, first_child)
             for child in node.children[1:]:
                 self.node_2_usx(child, row_xml_node)
         elif node.type in self.TABLE_CELL_MARKERS:
@@ -487,6 +502,8 @@ class USXGenerator:
         para_xml_node = etree.SubElement(parent_xml_node, "para")
         para_xml_node.set("style", style)
         self._add_vid_attributes(para_xml_node)
+        first_child = node.children[children_range_start] if len(node.children) > children_range_start else None
+        self._add_vid_attribute_second_attempt(para_xml_node, first_child)
         for child in node.children[children_range_start:]:
             # self.node_2_usx(child, para_xml_node)
             if any(
