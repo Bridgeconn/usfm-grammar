@@ -8,12 +8,12 @@ import {findAllMarkers} from "./test/config.js";
   // const filePath = "../tests/advanced/figureInNote/origin.usfm";
   // const filePath = "../tests/usfmjsTests/tw_words_chunk/origin.usfm";
   // const filePath = "../tests/advanced/default-attributes/origin.usfm";
-  const filePath = "../tests/bugfixes/new-vid-milestone/origin.usfm"; 
+  const filePath = "../tests/specExamples/table/origin.usfm"; 
   // const filePath = "../tests/basic/multiple-chapters/origin.usfm";
   const content = await readFile(filePath, "utf-8"); // Specify encoding
   console.log("*************************");
   const usfmParser = new USFMParser(content);
-  console.log(usfmParser.toSyntaxTree());
+  // console.log(usfmParser.toSyntaxTree());
   // const usx = usfmParser.toUSX();
   const usj = usfmParser.toUSJ();
   console.log(usj);
