@@ -470,7 +470,8 @@ class USJGenerator:
 
         para_json_obj = {"type": "para", "marker": style.strip(), "content": []}
         self._add_vid_attributes(para_json_obj)
-        first_child = node.children[children_range_start] if len(node.children) > children_range_start else None
+        first_child = node.children[children_range_start] \
+            if len(node.children) > children_range_start else None
         self._add_vid_attribute_second_attempt(para_json_obj, first_child)
         parent_json_obj["content"].append(para_json_obj)
 

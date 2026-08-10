@@ -294,7 +294,8 @@ class USXGenerator:
                 para_xml_node = etree.SubElement(parent_xml_node, "para")
                 para_xml_node.set("style", para_marker)
                 self._add_vid_attributes(para_xml_node)
-                first_child = para_tag_cap['para-marker'][0].children[1] if len(para_tag_cap['para-marker'][0].children) > 1 else None
+                first_child = para_tag_cap['para-marker'][0].children[1] \
+                    if len(para_tag_cap['para-marker'][0].children) > 1 else None
                 self._add_vid_attribute_second_attempt(para_xml_node, first_child)
                 for child in para_tag_cap['para-marker'][0].children[1:]:
                     self.node_2_usx(child, para_xml_node)
@@ -502,7 +503,8 @@ class USXGenerator:
         para_xml_node = etree.SubElement(parent_xml_node, "para")
         para_xml_node.set("style", style)
         self._add_vid_attributes(para_xml_node)
-        first_child = node.children[children_range_start] if len(node.children) > children_range_start else None
+        first_child = node.children[children_range_start] \
+            if len(node.children) > children_range_start else None
         self._add_vid_attribute_second_attempt(para_xml_node, first_child)
         for child in node.children[children_range_start:]:
             # self.node_2_usx(child, para_xml_node)
