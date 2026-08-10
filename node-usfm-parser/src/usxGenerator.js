@@ -353,6 +353,16 @@ class USXGenerator {
     }
   }
 
+  addVidAttributesSecondAttempt(xmlNode, firstChild) {
+    // Add vid attributes to the given xml node if firstChild is not a verse tag
+    if (!xmlNode.hasAttribute('vid') &&
+        this.parseState.prevVerseSid &&
+        firstChild &&
+        firstChild.type !== 'v') {
+      xmlNode.setAttribute('vid', this.parseState.prevVerseSid);
+    }
+  }
+
   node2UsxPara(node, parentXmlNode) {
     // Build paragraph nodes in USX
     if (node.children[0].type.endsWith('Block')) {
@@ -367,6 +377,7 @@ class USXGenerator {
         const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
         paraXmlNode.setAttribute('style', paraMarker);
         this.addVidAttributesToNode(paraXmlNode);
+        this.addVidAttributesSecondAttempt(paraXmlNode, paraTagCap.node.children[1]);
         parentXmlNode.appendChild(paraXmlNode);
         for (const child of paraTagCap.node.children.slice(1)) {
           this.node2Usx(child, paraXmlNode);
@@ -380,6 +391,7 @@ class USXGenerator {
       const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
       paraXmlNode.setAttribute('style', paraMarker);
       this.addVidAttributesToNode(paraXmlNode);
+      this.addVidAttributesSecondAttempt(paraXmlNode, node.children[1]);
       parentXmlNode.appendChild(paraXmlNode);
       for (const child of node.children.slice(1)) {
         this.node2Usx(child, paraXmlNode);
@@ -491,6 +503,7 @@ class USXGenerator {
       const rowXmlNode = parentXmlNode.ownerDocument.createElement('row');
       rowXmlNode.setAttribute('style', 'tr');
       this.addVidAttributesToNode(rowXmlNode);
+      this.addVidAttributesSecondAttempt(rowXmlNode, node.children[1]);
       parentXmlNode.appendChild(rowXmlNode);
       node.children.slice(1).forEach((child) => {
         this.node2Usx(child, rowXmlNode);
@@ -609,6 +622,7 @@ class USXGenerator {
     const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
     paraXmlNode.setAttribute('style', style);
     this.addVidAttributesToNode(paraXmlNode);
+    this.addVidAttributesSecondAttempt(paraXmlNode, node.children[childrenRangeStart]);
     parentXmlNode.appendChild(paraXmlNode);
 
     // Loop through the child nodes and recursively process them
