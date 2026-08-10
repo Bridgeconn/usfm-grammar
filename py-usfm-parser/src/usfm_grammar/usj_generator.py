@@ -28,6 +28,7 @@ class USJGenerator:
         # Make o(1) sets for marker lookups
         self.parse_state = {"book_slug": None,
                             "current_chapter": None,
+                            "verse_sid": None,
                             "vid-ref": None,
                             "vid-h": None}
         # maps and id to a fn;
@@ -79,6 +80,7 @@ class USJGenerator:
         }
 
         self.parse_state["current_chapter"] = chap_num
+        self.parse_state["verse_sid"] = None  # Reset verse_sid for new chapter
 
         alt_num = self.usfm[chap_cap['alt-num'][0].start_byte :
                              chap_cap['alt-num'][0].end_byte].decode("utf-8")\
@@ -144,6 +146,7 @@ class USJGenerator:
             v_json_obj["sid"] = (
                 f"{self.parse_state['book_slug']} {self.parse_state['current_chapter']}:{verse_num}"
             )
+            self.parse_state["verse_sid"] = v_json_obj["sid"]
         parent_json_obj["content"].append(v_json_obj)
 
     def _node_2_usj_ca_va(self, node, parent_json_obj):
@@ -199,6 +202,14 @@ class USJGenerator:
             usj_node["vid"] = self.parse_state["vid-ref"]
             self.parse_state["vid-ref"] = None
 
+    def _add_vid_attribute_second_attempt(self, usj_node, first_child):
+        """Add vid if first child is not a verse tag"""
+        if not usj_node.get("vid") and\
+            self.parse_state['verse_sid'] is not None and\
+                first_child is not None and\
+                    first_child.type != "v":
+            usj_node["vid"] = self.parse_state['verse_sid']
+
 
     def _node_2_usj_para(self, node, parent_json_obj):
         """Convert paragraph nodes to USJ format"""
@@ -223,6 +234,8 @@ class USJGenerator:
                 for child in para_node.children:
                     self.node_2_usj(child, para_json_obj)
                 self._add_vid_attributes(para_json_obj)
+                first_child = para_node.children[1] if len(para_node.children) > 1 else None
+                self._add_vid_attribute_second_attempt(para_json_obj, first_child)
                 parent_json_obj["content"].append(para_json_obj)
         elif node.type in ["pi", "ph"]:
             para_marker = (
@@ -235,6 +248,8 @@ class USJGenerator:
             for child in node.children[1:]:
                 self.node_2_usj(child, para_json_obj)
             self._add_vid_attributes(para_json_obj)
+            first_child = node.children[1] if len(node.children) > 1 else None
+            self._add_vid_attribute_second_attempt(para_json_obj, first_child)
             parent_json_obj["content"].append(para_json_obj)
 
     def _node_2_usj_notes(self, node, parent_json_obj):
@@ -296,6 +311,9 @@ class USJGenerator:
             parent_json_obj["content"].append(table_json_obj)
         elif node.type == "tr":
             row_json_obj = {"type": "table:row", "marker": "tr", "content": []}
+            self._add_vid_attributes(row_json_obj)
+            first_child = node.children[1] if len(node.children) > 1 else None
+            self._add_vid_attribute_second_attempt(row_json_obj, first_child)
             for child in node.children[1:]:
                 self.node_2_usj(child, row_json_obj)
             parent_json_obj["content"].append(row_json_obj)
@@ -452,6 +470,8 @@ class USJGenerator:
 
         para_json_obj = {"type": "para", "marker": style.strip(), "content": []}
         self._add_vid_attributes(para_json_obj)
+        first_child = node.children[children_range_start] if len(node.children) > children_range_start else None
+        self._add_vid_attribute_second_attempt(para_json_obj, first_child)
         parent_json_obj["content"].append(para_json_obj)
 
         for i in range(children_range_start, len(node.children)):
