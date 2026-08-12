@@ -14,6 +14,8 @@ class USJGenerator {
   constructor(treeSitterLanguageObj, usfmString, usjRootObj = null) {
     this.usfmLanguage = treeSitterLanguageObj;
     this.usfm = usfmString;
+    this.warnings = []; // Initialize warnings array to store any warnings during processing
+
     this.jsonRootObj = usjRootObj || {
       type: 'USJ',
       version: '3.1',
@@ -202,6 +204,11 @@ class USJGenerator {
       if (refMatch) {
         this.parseState.bookSlug = refMatch[1];
         this.parseState.currentChapter = refMatch[2];
+      } else {
+        this.warnings.push(
+          `vid-ref attribute value does not match expected pattern: ${this.parseState.vidRef}`,
+        );
+        this.parseState.vidRef = null; // Reset vidRef if it doesn't match the expected pattern
       }
     }
   } 

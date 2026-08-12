@@ -257,6 +257,7 @@ class USXGenerator:
             if not ref_match:
                 self.warnings.append("vid-ref attribute value does not match expected pattern:"+\
                                      f" {self.parse_state['vid-ref']}")
+                self.parse_state["vid-ref"] = None
             else:
                 self.parse_state["book_slug"] = ref_match.group(1)
                 self.parse_state["current_chapter"] = ref_match.group(2)
