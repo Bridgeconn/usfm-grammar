@@ -1,5 +1,6 @@
 """Convert other formats back into USFM"""
 
+import copy
 import re
 from usfm_grammar.errors import ParsingError, USFMGrammarError
 
@@ -97,7 +98,7 @@ class USFMGenerator:
                     self.usfm_string += f"h=\"{usj_obj['h']}\" "
                     del usj_obj["h"]
                 self.usfm_string += "\\*\n"
-            del usj_obj["vid"]
+            usj_obj = {k: v for k, v in usj_obj.items() if k != "vid"}
         if usj_obj["type"] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if (
@@ -200,6 +201,7 @@ class USFMGenerator:
                     self.usfm_string += f"h=\"{xml_obj.attrib['h']}\" "
                     del xml_obj.attrib["h"]
                 self.usfm_string += "\\*\n"
+            xml_obj = copy.deepcopy(xml_obj)
             del xml_obj.attrib["vid"]
         if obj_type == "optbreak":
             if self.usfm_string != "" and self.usfm_string[-1] not in [

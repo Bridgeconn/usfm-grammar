@@ -48,7 +48,9 @@ class USFMGenerator {
         }
         this.usfmString += '\\*\n';
       }
-      delete usjObj.vid;
+      const usjObjTemp = { ...usjObj };
+      delete usjObjTemp.vid;
+      usjObj = usjObjTemp;
 
     }
 
@@ -168,7 +170,9 @@ class USFMGenerator {
         }
         this.usfmString += '\\*\n';
       }
-      xmlObj.removeAttribute('vid');
+      const xmlObjTemp = xmlObj.cloneNode(true);
+      xmlObjTemp.removeAttribute('vid');
+      xmlObj = xmlObjTemp;
     }
 
     if (!NO_NEWLINE_USX_TYPES.includes(objType)) {
