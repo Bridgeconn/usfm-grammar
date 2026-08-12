@@ -618,4 +618,4 @@ class USXGenerator:
                 self.node_2_usx(child, parent_xml_node)
         else:
         #     raise Exception("Encountered unknown element ", str(node))
-            self.warnings.append("Encountered unknown element ", str(node))
+            self.warnings.append(f"Encountered unknown element {node}")
