@@ -19,12 +19,16 @@ exports.NON_ATTRIB_USJ_KEYS = [
 ];
 
 exports.NON_ATTRIB_USX_KEYS = [
-  'style',
   'number',
-  'sid',
   'code',
   'caller',
   'align',
+  'sid',
+  'eid',
+  'style',
+  'closed',
+  'vid',
+  'status',
   'version',
   'altnumber',
   'pubnumber',
