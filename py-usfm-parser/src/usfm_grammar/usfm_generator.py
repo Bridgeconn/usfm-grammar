@@ -1,6 +1,5 @@
 """Convert other formats back into USFM"""
 
-import copy
 import re
 from usfm_grammar.errors import ParsingError, USFMGrammarError
 
