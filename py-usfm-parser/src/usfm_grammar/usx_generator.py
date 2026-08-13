@@ -228,7 +228,7 @@ class USXGenerator:
         char_xml_node = etree.SubElement(parent_xml_node, "char")
         char_xml_node.set("style", style)
         alt_num_cursor = QueryCursor(self._get_query("usjCaVa"))
-        alt_num_match = alt_num_cursor.captures(node)[0]
+        alt_num_match = alt_num_cursor.captures(node)
         alt_num = self.usfm[alt_num_match['alt-num'][0].start_byte :
                       alt_num_match['alt-num'][0].end_byte].decode("utf-8").strip()
         char_xml_node.set("altnumber", alt_num)
