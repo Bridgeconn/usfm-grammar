@@ -316,6 +316,8 @@ class USXGenerator {
 
   node2UsxVid(node, _parentXmlNode) {
     // Build elements for vid and h attributes
+    this.parseState.vidH = null;
+    
     for (const child of node.children) {
       let attribValue = null;
       for (const innerChild of child.children) {

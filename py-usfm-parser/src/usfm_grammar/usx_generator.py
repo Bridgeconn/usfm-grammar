@@ -236,6 +236,8 @@ class USXGenerator:
 
     def _node_2_usx_vid(self, node, _):
         """Build elements for vid and its attributes"""
+        self.parse_state["vid-h"] = None
+        self.parse_state["vid-ref"] = None
         for child in node.children:
             attrib_value = None
             for inner_child in child.children:
