@@ -232,11 +232,11 @@ class USJGenerator:
                 self._add_vid_attributes(parent_json_obj["content"][-1])
             elif not para_marker.endswith("Block"):
                 para_json_obj = {"type": "para", "marker": para_marker, "content": []}
-                for child in para_node.children:
-                    self.node_2_usj(child, para_json_obj)
                 self._add_vid_attributes(para_json_obj)
                 first_child = para_node.children[1] if len(para_node.children) > 1 else None
                 self._add_vid_attribute_second_attempt(para_json_obj, first_child)
+                for child in para_node.children:
+                    self.node_2_usj(child, para_json_obj)
                 parent_json_obj["content"].append(para_json_obj)
         elif node.type in ["pi", "ph"]:
             para_marker = (
@@ -246,11 +246,11 @@ class USJGenerator:
                 .strip()
             )
             para_json_obj = {"type": "para", "marker": para_marker, "content": []}
-            for child in node.children[1:]:
-                self.node_2_usj(child, para_json_obj)
             self._add_vid_attributes(para_json_obj)
             first_child = node.children[1] if len(node.children) > 1 else None
             self._add_vid_attribute_second_attempt(para_json_obj, first_child)
+            for child in node.children[1:]:
+                self.node_2_usj(child, para_json_obj)
             parent_json_obj["content"].append(para_json_obj)
 
     def _node_2_usj_notes(self, node, parent_json_obj):
@@ -306,9 +306,9 @@ class USJGenerator:
         """Convert table-related nodes to USJ format"""
         if node.type == "table":
             table_json_obj = {"type": "table", "content": []}
+            self._add_vid_attributes(table_json_obj)
             for child in node.children:
                 self.node_2_usj(child, table_json_obj)
-            self._add_vid_attributes(table_json_obj)
             parent_json_obj["content"].append(table_json_obj)
         elif node.type == "tr":
             row_json_obj = {"type": "table:row", "marker": "tr", "content": []}
@@ -423,9 +423,9 @@ class USJGenerator:
         """Convert special nodes (esb, cat, fig, ref) to USJ format"""
         if node.type == "esb":
             sidebar_json_obj = {"type": "sidebar", "marker": "esb", "content": []}
+            self._add_vid_attributes(sidebar_json_obj)
             for child in node.children[1:-1]:
                 self.node_2_usj(child, sidebar_json_obj)
-            self._add_vid_attributes(sidebar_json_obj)
             parent_json_obj["content"].append(sidebar_json_obj)
         elif node.type == "cat":
             cat_cursor = QueryCursor(self._get_query("category"))
@@ -443,9 +443,9 @@ class USJGenerator:
             parent_json_obj["category"] = category
         elif node.type == "fig":
             fig_json_obj = {"type": "figure", "marker": "fig", "content": []}
+            self._add_vid_attributes(fig_json_obj)
             for child in node.children[1:-1]:
                 self.node_2_usj(child, fig_json_obj)
-            self._add_vid_attributes(fig_json_obj)
             parent_json_obj["content"].append(fig_json_obj)
         elif node.type == "ref":
             ref_json_obj = {"type": "ref", "content": []}

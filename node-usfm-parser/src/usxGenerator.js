@@ -539,11 +539,11 @@ class USXGenerator {
     const firstChild = (node.children.length > 0) ? node.children[0] : null;
     if (firstChild && firstChild.type === 'list_s') {
       const listXmlNode = parentXmlNode.ownerDocument.createElement('list');
+      this.addVidAttributesToNode(listXmlNode);
       for (let i = 1; i < node.children.length - 1; i++) {
         this.node2Usx(node.children[i], listXmlNode);
 
       }
-      this.addVidAttributesToNode(listXmlNode);
       parentXmlNode.appendChild(listXmlNode);
     } else {
       for (const child of node.children) {

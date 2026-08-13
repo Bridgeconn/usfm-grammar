@@ -397,13 +397,13 @@ class USXGenerator {
         .trim();
       const paraXmlNode = parentXmlNode.ownerDocument.createElement('para');
       paraXmlNode.setAttribute('style', paraMarker);
+      this.addVidAttributesToNode(paraXmlNode);
+      this.addVidAttributesSecondAttempt(paraXmlNode, node.children[1]);
 
       parentXmlNode.appendChild(paraXmlNode);
       for (const child of node.children.slice(1)) {
         this.node2Usx(child, paraXmlNode);
       }
-      this.addVidAttributesToNode(paraXmlNode);
-      this.addVidAttributesSecondAttempt(paraXmlNode, node.children[1]);
     }
   }
 
@@ -421,11 +421,11 @@ class USXGenerator {
       .substring(callerNode.startIndex, callerNode.endIndex)
       .trim();
     noteXmlNode.setAttribute('caller', caller);
+    this.addVidAttributesToNode(noteXmlNode);
     parentXmlNode.appendChild(noteXmlNode);
     for (let i = 2; i < node.children.length - 1; i++) {
       this.node2Usx(node.children[i], noteXmlNode);
     }
-    this.addVidAttributesToNode(noteXmlNode);
   }
 
   node2UsxChar(node, parentXmlNode) {
@@ -511,11 +511,11 @@ class USXGenerator {
       const rowXmlNode = parentXmlNode.ownerDocument.createElement('row');
       rowXmlNode.setAttribute('style', 'tr');
       parentXmlNode.appendChild(rowXmlNode);
+      this.addVidAttributesToNode(rowXmlNode);
+      this.addVidAttributesSecondAttempt(rowXmlNode, node.children[1]);
       node.children.slice(1).forEach((child) => {
         this.node2Usx(child, rowXmlNode);
       });
-      this.addVidAttributesToNode(rowXmlNode);
-      this.addVidAttributesSecondAttempt(rowXmlNode, node.children[1]);
     } else if (this.markerSets.TABLE_CELL_MARKERS.has(node.type)) {
       const tagNode = node.children[0];
       const style = this.usfm
@@ -542,10 +542,10 @@ class USXGenerator {
     const firstChild = (node.children.length > 0) ? node.children[0] : null;
     if (firstChild && firstChild.type === 'list_s') {
       const listXmlNode = parentXmlNode.ownerDocument.createElement('list');
+      this.addVidAttributesToNode(listXmlNode);
       for (let i = 1; i < node.children.length - 1; i++) {
         this.node2Usx(node.children[i], listXmlNode);
       }
-      this.addVidAttributesToNode(listXmlNode);
       parentXmlNode.appendChild(listXmlNode);
     } else {
       for (const child of node.children) {

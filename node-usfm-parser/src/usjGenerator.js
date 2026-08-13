@@ -250,11 +250,11 @@ class USJGenerator {
         this.addVidAttributesToNode(parentJsonObj.content[parentJsonObj.content.length - 1]);
       } else if (!paraMarker.endsWith('Block')) {
         const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
+        this.addVidAttributesToNode(paraJsonObj);
+        this.addVidAttributeSecondAttempt(paraJsonObj, paraTagCap.node.children[1]);
         paraTagCap.node.children.forEach((child) => {
           this.nodeToUSJ(child, paraJsonObj);
         });
-        this.addVidAttributesToNode(paraJsonObj);
-        this.addVidAttributeSecondAttempt(paraJsonObj, paraTagCap.node.children[1]);
         parentJsonObj.content.push(paraJsonObj);
       }
     } else if (['pi', 'ph'].includes(node.type)) {
@@ -263,11 +263,11 @@ class USJGenerator {
         .replace('\\', '')
         .trim();
       const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
+      this.addVidAttributesToNode(paraJsonObj);
+      this.addVidAttributeSecondAttempt(paraJsonObj, node.children[1]);
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, paraJsonObj);
       });
-      this.addVidAttributesToNode(paraJsonObj);
-      this.addVidAttributeSecondAttempt(paraJsonObj, node.children[1]);
       parentJsonObj.content.push(paraJsonObj);
     }
   }
@@ -289,11 +289,11 @@ class USJGenerator {
     noteJsonObj.caller = this.usfm
       .substring(callerNode.startIndex, callerNode.endIndex)
       .trim();
+    this.addVidAttributesToNode(noteJsonObj);
 
     for (let i = 2; i < node.children.length - 1; i++) {
       this.nodeToUSJ(node.children[i], noteJsonObj);
     }
-    this.addVidAttributesToNode(noteJsonObj);
     parentJsonObj.content.push(noteJsonObj);
   }
 
@@ -341,11 +341,11 @@ class USJGenerator {
       parentJsonObj.content.push(tableJsonObj);
     } else if (node.type === 'tr') {
       const rowJsonObj = { type: 'table:row', marker: 'tr', content: [] };
+      this.addVidAttributesToNode(rowJsonObj);
+      this.addVidAttributeSecondAttempt(rowJsonObj, node.children[1]);
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, rowJsonObj);
       });
-      this.addVidAttributesToNode(rowJsonObj);
-      this.addVidAttributeSecondAttempt(rowJsonObj, node.children[1]);
       parentJsonObj.content.push(rowJsonObj);
     } else if (this.markerSets.TABLE_CELL_MARKERS.has(node.type)) {
       const tagNode = node.children[0];
@@ -374,10 +374,10 @@ class USJGenerator {
     const firstChild = (node.children.length > 0) ? node.children[0] : null;
     if (firstChild && firstChild.type === 'list_s') {
       const listJsonObj = { type: 'list', content: [] };
+      this.addVidAttributesToNode(listJsonObj);
       for (let i = 1; i < node.children.length - 1; i++) {
         this.nodeToUSJ(node.children[i], listJsonObj);
       }
-      this.addVidAttributesToNode(listJsonObj);
       parentJsonObj.content.push(listJsonObj);
     } else {
       node.children.forEach((child) => {
@@ -434,6 +434,7 @@ class USJGenerator {
       .replace('\\', '')
       .trim();
     const msJsonObj = { type: 'ms', marker: style, content: [] };
+    this.addVidAttributesToNode(msJsonObj);
 
     node.children.forEach((child) => {
       if (child.type.endsWith('Attribute')) {
@@ -445,7 +446,6 @@ class USJGenerator {
     if (!msJsonObj.content.length) {
       delete msJsonObj.content; // Remove empty content array if not used
     }
-    this.addVidAttributesToNode(msJsonObj);
     parentJsonObj.content.push(msJsonObj);
   }
 
@@ -454,10 +454,10 @@ class USJGenerator {
 
     if (node.type === 'esb') {
       const sidebarJsonObj = { type: 'sidebar', marker: 'esb', content: [] };
+      this.addVidAttributesToNode(sidebarJsonObj);
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, sidebarJsonObj);
       });
-      this.addVidAttributesToNode(sidebarJsonObj);
       parentJsonObj.content.push(sidebarJsonObj);
     } else if (node.type === 'cat') {
       const catCap = this.getQuery('category').captures(node)[0];
@@ -468,10 +468,10 @@ class USJGenerator {
       parentJsonObj.category = category;
     } else if (node.type === 'fig') {
       const figJsonObj = { type: 'figure', marker: 'fig', content: [] };
+      this.addVidAttributesToNode(figJsonObj);
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, figJsonObj);
       });
-      this.addVidAttributesToNode(figJsonObj);
       parentJsonObj.content.push(figJsonObj);
     } else if (node.type === 'ref') {
       const refJsonObj = { type: 'ref', content: [] };
