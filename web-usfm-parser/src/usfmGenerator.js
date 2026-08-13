@@ -39,16 +39,13 @@ class USFMGenerator {
     }
     if (usjObj.vid) {
       const currentRef = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
-      usjObj = { ...usjObj }; // Create a shallow copy of usjObj to avoid mutating the original object
       if (currentRef !== usjObj.vid) {
         this.usfmString += `\\vid|ref=\"${usjObj.vid}\" `;
         if (usjObj.h) {
           this.usfmString += `h="${usjObj.h}" `;
-          delete usjObj.h;
         }
         this.usfmString += '\\*\n';
       }
-      delete usjObj.vid;
 
     }
 
@@ -160,16 +157,13 @@ class USFMGenerator {
 
     if (xmlObj.hasAttribute('vid')) {
       const currentReference = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
-      xmlObj = xmlObj.cloneNode(true); // Create a shallow copy of xmlObj to avoid mutating the original object
       if (currentReference !== xmlObj.getAttribute('vid')) {
         this.usfmString += `\n\\vid|ref="${xmlObj.getAttribute('vid')}" `;
         if (xmlObj.hasAttribute('h')) {
           this.usfmString += `h="${xmlObj.getAttribute('h')}" `;
-          xmlObj.removeAttribute('h');
         }
         this.usfmString += '\\*\n';
       }
-      xmlObj.removeAttribute('vid');
     }
     if (!NO_NEWLINE_USX_TYPES.includes(objType)) {
       this.usfmString += '\n';

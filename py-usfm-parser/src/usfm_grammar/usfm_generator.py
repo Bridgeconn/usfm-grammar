@@ -20,6 +20,8 @@ NON_ATTRIB_USJ_KEYS = [
     "altnumber",
     "pubnumber",
     "category",
+    "vid",
+    "h",
 ]
 NON_ATTRIB_USX_KEYS = [
     "number",
@@ -96,9 +98,7 @@ class USFMGenerator:
                 self.usfm_string += f"\\vid|ref=\"{usj_obj['vid']}\" "
                 if "h" in usj_obj:
                     self.usfm_string += f"h=\"{usj_obj['h']}\" "
-                    usj_obj = {k: v for k, v in usj_obj.items() if k != "h"}
                 self.usfm_string += "\\*\n"
-            usj_obj = {k: v for k, v in usj_obj.items() if k != "vid"}
         if usj_obj["type"] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if (
@@ -195,14 +195,11 @@ class USFMGenerator:
 
         if "vid" in xml_obj.attrib:
             current_ref = f"{self.current_book} {self.current_chapter}:{self.current_verse}"
-            xml_obj = copy.deepcopy(xml_obj)
             if xml_obj.attrib["vid"] != current_ref:
                 self.usfm_string += f"\\vid|ref=\"{xml_obj.attrib['vid']}\" "
                 if "h" in xml_obj.attrib:
                     self.usfm_string += f"h=\"{xml_obj.attrib['h']}\" "
-                    del xml_obj.attrib["h"]
                 self.usfm_string += "\\*\n"
-            del xml_obj.attrib["vid"]
         if obj_type == "optbreak":
             if self.usfm_string != "" and self.usfm_string[-1] not in [
                 "\n",
