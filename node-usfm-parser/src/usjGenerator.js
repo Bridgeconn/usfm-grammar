@@ -7,6 +7,7 @@ const {
   DEFAULT_ATTRIB_MAP,
   TABLE_CELL_MARKERS,
   MARKER_SETS,
+  REF_PATTERN,
 } = require('./utils/markers.js');
 const { createQueriesAsNeeded } = require('./queries.js');
 
@@ -14,6 +15,8 @@ class USJGenerator {
   constructor(treeSitterLanguageObj, usfmString, usjRootObj = null) {
     this.usfmLanguage = treeSitterLanguageObj;
     this.usfm = usfmString;
+    this.warnings = [];
+    
     this.jsonRootObj = usjRootObj || {
       type: 'USJ',
       version: '3.1',
@@ -34,6 +37,9 @@ class USJGenerator {
     this.parseState = {
       bookSlug: null,
       currentChapter: null,
+      prevVerseSid: null,
+      vidH: null,
+      vidRef: null,
     };
     // maps and id to a fn;
     this.dispatchMap = this.populateDispatchMap();
@@ -82,6 +88,7 @@ class USJGenerator {
       sid: chapRef,
     };
     this.parseState.currentChapter = chapNum;
+    this.parseState.prevVerseSid = null; // Reset prevVerseSid
     chapCap.forEach((cap) => {
       if (cap.name === 'alt-num') {
         chapJsonObj.altnumber = this.usfm
@@ -149,6 +156,7 @@ class USJGenerator {
 
     const ref = `${this.parseState.bookSlug} ${this.parseState.currentChapter}:${verseNum}`;
     vJsonObj.sid = ref.trim();
+    this.parseState.prevVerseSid = vJsonObj.sid; // Update prevVerseSid for vid attribs in para elements
 
     parentJsonObj.content.push(vJsonObj);
   }
@@ -172,6 +180,63 @@ class USJGenerator {
     parentJsonObj.content.push(charJsonObj);
   }
 
+  node2UsxVid(node, _parentJsonObj) {
+    // Build elements for vid and h attributes
+    this.parseState.vidH = null;
+    this.parseState.vidRef = null;
+    for (const child of node.children) {
+      let attribValue = null;
+      for (const innerChild of child.children) {
+        if (innerChild.type === 'attributeValue') {
+          attribValue = this.usfm
+            .slice(innerChild.startIndex, innerChild.endIndex)
+            .trim();
+          break;
+        }
+      }
+      if (child.type === 'hAttribute') {
+        this.parseState.vidH = attribValue;
+      } else if (child.type === 'refAttribute') {
+        this.parseState.vidRef = attribValue;
+      } else if (child.type === 'defaultAttribute') {
+        this.parseState.vidRef = attribValue;
+      }
+    }
+    if (this.parseState.vidRef) {
+      const refMatch = this.parseState.vidRef.match(REF_PATTERN);
+      if (refMatch) {
+        this.parseState.bookSlug = refMatch[1];
+        this.parseState.currentChapter = refMatch[2];
+      } else {
+        this.warnings.push(
+          `vid-ref attribute value does not match expected pattern: ${this.parseState.vidRef}`);
+        this.parseState.vidRef = null; // Reset vidRef if it doesn't match the expected pattern
+      }
+    }
+  } 
+
+  addVidAttributesToNode(parentJsonObj) {
+    //Add vid attributes to the given xml node if they exist in parse state
+    if (this.parseState.vidH) {
+      parentJsonObj.h = this.parseState.vidH;
+      this.parseState.vidH = null; // Reset after use
+    }
+    if (this.parseState.vidRef) {
+      parentJsonObj.vid = this.parseState.vidRef;
+      this.parseState.vidRef = null; // Reset after use
+    }
+  }
+
+  addVidAttributeSecondAttempt(parentJsonObj, firstChild) {
+    // Add vid attributes to the given json node if firstChild is not a verse tag
+    if (!parentJsonObj.vid &&
+        this.parseState.prevVerseSid &&
+        firstChild &&
+        firstChild.type !== 'v') {
+      parentJsonObj.vid = this.parseState.prevVerseSid;
+    }
+  }
+
   nodeToUSJPara(node, parentJsonObj) {
     // Build paragraph nodes in USJ
     if (node.children[0].type.endsWith('Block')) {
@@ -184,8 +249,11 @@ class USJGenerator {
       const paraMarker = paraTagCap.node.type;
       if (paraMarker === 'b') {
         parentJsonObj.content.push({ type: 'para', marker: paraMarker });
+        this.addVidAttributesToNode(parentJsonObj.content[parentJsonObj.content.length - 1]);
       } else if (!paraMarker.endsWith('Block')) {
         const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
+        this.addVidAttributesToNode(paraJsonObj);
+        this.addVidAttributeSecondAttempt(paraJsonObj, paraTagCap.node.children[1]);
         paraTagCap.node.children.forEach((child) => {
           this.nodeToUSJ(child, paraJsonObj);
         });
@@ -197,6 +265,8 @@ class USJGenerator {
         .replace('\\', '')
         .trim();
       const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
+      this.addVidAttributesToNode(paraJsonObj);
+      this.addVidAttributeSecondAttempt(paraJsonObj, node.children[1]);
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, paraJsonObj);
       });
@@ -221,11 +291,11 @@ class USJGenerator {
     noteJsonObj.caller = this.usfm
       .substring(callerNode.startIndex, callerNode.endIndex)
       .trim();
+    this.addVidAttributesToNode(noteJsonObj);
 
     for (let i = 2; i < node.children.length - 1; i++) {
       this.nodeToUSJ(node.children[i], noteJsonObj);
     }
-
     parentJsonObj.content.push(noteJsonObj);
   }
 
@@ -273,6 +343,8 @@ class USJGenerator {
       parentJsonObj.content.push(tableJsonObj);
     } else if (node.type === 'tr') {
       const rowJsonObj = { type: 'table:row', marker: 'tr', content: [] };
+      this.addVidAttributesToNode(rowJsonObj);
+      this.addVidAttributeSecondAttempt(rowJsonObj, node.children[1]);
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, rowJsonObj);
       });
@@ -304,6 +376,7 @@ class USJGenerator {
     const firstChild = (node.children.length > 0) ? node.children[0] : null;
     if (firstChild && firstChild.type === 'list_s') {
       const listJsonObj = { type: 'list', content: [] };
+      this.addVidAttributesToNode(listJsonObj);
       for (let i = 1; i < node.children.length - 1; i++) {
         this.nodeToUSJ(node.children[i], listJsonObj);
       }
@@ -363,6 +436,7 @@ class USJGenerator {
       .replace('\\', '')
       .trim();
     const msJsonObj = { type: 'ms', marker: style, content: [] };
+    this.addVidAttributesToNode(msJsonObj);
 
     node.children.forEach((child) => {
       if (child.type.endsWith('Attribute')) {
@@ -374,7 +448,6 @@ class USJGenerator {
     if (!msJsonObj.content.length) {
       delete msJsonObj.content; // Remove empty content array if not used
     }
-
     parentJsonObj.content.push(msJsonObj);
   }
 
@@ -383,6 +456,7 @@ class USJGenerator {
 
     if (node.type === 'esb') {
       const sidebarJsonObj = { type: 'sidebar', marker: 'esb', content: [] };
+      this.addVidAttributesToNode(sidebarJsonObj);
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, sidebarJsonObj);
       });
@@ -396,6 +470,7 @@ class USJGenerator {
       parentJsonObj.category = category;
     } else if (node.type === 'fig') {
       const figJsonObj = { type: 'figure', marker: 'fig', content: [] };
+      this.addVidAttributesToNode(figJsonObj);
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, figJsonObj);
       });
@@ -410,7 +485,7 @@ class USJGenerator {
   }
   nodeToUSJGeneric(node, parentJsonObj) {
     // Build nodes for para style markers in USJ
-    const tagNode = node.children[0];
+    const tagNode = node.children[0] ? node.children[0] : node;
 
     let style = this.usfm.substring(tagNode.startIndex, tagNode.endIndex);
     if (style.startsWith('\\')) {
@@ -430,6 +505,8 @@ class USJGenerator {
       childrenRangeStart = 2;
     }
     const paraJsonObj = { type: 'para', marker: style, content: [] };
+    this.addVidAttributesToNode(paraJsonObj);
+    this.addVidAttributeSecondAttempt(paraJsonObj, node.children[childrenRangeStart]);
     parentJsonObj.content.push(paraJsonObj);
 
     for (let i = childrenRangeStart; i < node.children.length; i++) {
@@ -474,6 +551,7 @@ class USJGenerator {
     thisMap.set('id', this.nodeToUSJId.bind(this));
     thisMap.set('chapter', this.nodeToUSJChapter.bind(this));
     thisMap.set('list', this.nodeToUSJList.bind(this));
+    thisMap.set('vid', this.node2UsxVid.bind(this));
     // nooop
     thisMap.set('usfm', () => {});
     addHandlers(['paragraph', 'q', 'w'], this.nodeToUSJPara);

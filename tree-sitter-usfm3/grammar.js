@@ -131,11 +131,11 @@ module.exports = grammar({
     imq: $ => prec.right(0, seq("\\imq ", $._introText)),
     ipr: $ => prec.right(0, seq("\\ipr ", $._introText)),
     ipc: $ => prec.right(0, seq("\\ipc ", $._introText)),
-    ib: $ => seq("\\ib"),
+    ib: $ => "\\ib",
     iqBlock: $ => prec.right(0,repeat1($.iq)),
     iq: $ => prec.right(0, seq($.iqTag, $._introText)),
     iqTag: $ => seq("\\iq",optional($.numberedLevelMax3), " "),
-    ie: $ => seq("\\ie"),
+    ie: $ => "\\ie",
     iex: $ => prec.right(0, seq("\\iex ", $._introText)), // can occur in introduction or inside chapter
 
 
@@ -162,6 +162,9 @@ module.exports = grammar({
     c: $ => prec.right(0,seq("\\c ", $.chapterNumber, repeat($._chapterMeta))),
     chapterNumber: $ => /\d+/,
 
+    // When vid is independent marker and not attribute in USFM
+    vid: $ => seq("\\vid", (choice($.defaultAttribute, $._vidAttributes)), "\\*"),
+
     _chapterContent: $ => choice(
       $._chapterMeta,
       $.title,
@@ -177,6 +180,7 @@ module.exports = grammar({
       $.milestone,
       $.zNameSpace,
       $.esb,
+      $.vid,
     ),
 
     //chapter meta
@@ -729,6 +733,8 @@ module.exports = grammar({
     msAttribute: $ => seq($.milestoneAttributeName, "=", '"', optional($.attributeValue), '"'),
     milestoneAttributeName: $ => choice("sid", "eid", "who"),
     aAttribute: $ => seq($.aIdentifier, "=", '"', optional($.attributeValue), '"'),
+    hAttribute: $ => seq("h", "=", '"', optional($.attributeValue), '"'),
+    _vidAttributes: $ => prec.right(0, seq("|", repeat1(choice($.hAttribute, $.refAttribute)))),
 
     aIdentifier: $ => /a-[^\s=]+/,
 

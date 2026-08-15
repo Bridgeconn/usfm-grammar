@@ -81,6 +81,8 @@ def find_all_markers(usfm_path, keep_id=False, keep_number=True):
         all_markers_in_input.remove("esbe")
     if "usfm" in all_markers_in_input:
         all_markers_in_input.remove("usfm")
+    if "vid" in all_markers_in_input:
+        all_markers_in_input.remove("vid")
     return all_markers_in_input
 
 

@@ -280,6 +280,7 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
 
       usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
       outputUSJ = usjGenerator.jsonRootObj;
+      this.warnings.push(...usjGenerator.warnings);
     } catch (err) {
       let message = 'Unable to do the conversion. ';
       if (this.errors) {
@@ -413,6 +414,7 @@ Use ignoreErrors=true to generate output despite errors`,
 
       // xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
       xmlContent = usxGenerator.xmlRootNode;
+      this.warnings.push(...usxGenerator.warnings);
     } catch (exe) {
       let message = 'Unable to do the conversion. ';
       if (this.errors.length > 0) {

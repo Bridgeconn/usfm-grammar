@@ -123,6 +123,7 @@ export const DEFAULT_ATTRIB_MAP = {
   k: 'key',
   wl: 'lang',
   tl: 'lang',
+  vid: 'ref',
 };
 export const TABLE_CELL_MARKERS = ['tc', 'th', 'tcr', 'thr', 'tcc', 'thc'];
 export const MISC_MARKERS = ['fig', 'cat', 'esb', 'b', 'ph', 'pi'];
@@ -144,3 +145,5 @@ export const MARKER_SETS = {
   NOTE_MARKERS: new Set(NOTE_MARKERS),
   PARA_STYLE_MARKERS: new Set(PARA_STYLE_MARKERS),
 };
+
+export const REF_PATTERN = /(\w+) (\d+):([\d\w]+(?:-[\d\w]+)?)/;

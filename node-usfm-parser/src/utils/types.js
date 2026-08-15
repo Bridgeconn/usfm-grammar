@@ -7,6 +7,9 @@ exports.NON_ATTRIB_USJ_KEYS = [
   'content',
   'number',
   'sid',
+  'eid',
+  'closed',
+  'status',
   'code',
   'caller',
   'align',
@@ -14,19 +17,26 @@ exports.NON_ATTRIB_USJ_KEYS = [
   'altnumber',
   'pubnumber',
   'category',
+  'vid',
+  'h',
 ];
 
 exports.NON_ATTRIB_USX_KEYS = [
-  'style',
   'number',
-  'sid',
   'code',
   'caller',
   'align',
+  'sid',
+  'eid',
+  'style',
+  'closed',
+  'status',
   'version',
   'altnumber',
   'pubnumber',
   'category',
+  'vid',
+  'h',
 ];
 exports.NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell'];
 exports.NO_NEWLINE_USX_TYPES = ['char', 'note', 'verse', 'cell'];
