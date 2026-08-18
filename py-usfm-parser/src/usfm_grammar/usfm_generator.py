@@ -12,6 +12,9 @@ NON_ATTRIB_USJ_KEYS = [
     "content",
     "number",
     "sid",
+    "eid",
+    "closed",
+    "status",
     "code",
     "caller",
     "align",
@@ -19,6 +22,8 @@ NON_ATTRIB_USJ_KEYS = [
     "altnumber",
     "pubnumber",
     "category",
+    "vid",
+    "h",
 ]
 NON_ATTRIB_USX_KEYS = [
     "number",
@@ -29,15 +34,16 @@ NON_ATTRIB_USX_KEYS = [
     "eid",
     "style",
     "closed",
-    "vid",
     "status",
     "version",
     "altnumber",
     "pubnumber",
     "category",
+    "vid",
+    "h",
 ]
 NO_NEWLINE_USX_TYPES = ["char", "note", "cell", "figure", "usx", "book", "optbreak"]
-CLOSING_USX_TYPES = ["char", "note", "figure", "ms"]
+CLOSING_USX_TYPES = ["char", "note", "figure", "ms", "ref"]
 
 
 class USFMGenerator:
@@ -46,6 +52,9 @@ class USFMGenerator:
     def __init__(self):
         self.usfm_string = ""
         self.warnings = []
+        self.current_book = None
+        self.current_chapter = None
+        self.current_verse = None
 
     # def is_valid_usfm(self, usfm_string: str = None) -> bool:
     #     '''Check the generated or passed USFM's correctness using the grammar'''
@@ -67,17 +76,39 @@ class USFMGenerator:
                 self.usfm_string += " "
             self.usfm_string += "// "
             return
+        marker = usj_obj["marker"] if "marker" in usj_obj else ""
         if usj_obj["type"] == "ref":
-            usj_obj["marker"] = "ref"
+            marker = "ref"
+        elif usj_obj["type"] == "list":
+            marker = "list-s\\*\n"
+        elif marker == "":
+            marker = usj_obj["type"]
+
+        # Keep track of the current book, chapter, and verse for generating \vid markers
+        if self.current_book is None and "code" in usj_obj:
+            self.current_book = usj_obj["code"]
+        elif marker == "c" and "number" in usj_obj:
+            self.current_chapter = usj_obj["number"]
+            self.current_verse = None  # Reset current verse when a new chapter starts
+        elif marker == "v" and "number" in usj_obj:
+            self.current_verse = usj_obj["number"]
+
+        if "vid" in usj_obj:
+            current_ref = f"{self.current_book} {self.current_chapter}:{self.current_verse}"
+            if usj_obj["vid"] != current_ref:
+                self.usfm_string += f"\\vid|ref=\"{usj_obj['vid']}\" "
+                if "h" in usj_obj:
+                    self.usfm_string += f"h=\"{usj_obj['h']}\" "
+                self.usfm_string += "\\*\n"
         if usj_obj["type"] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if (
                 nested
                 and usj_obj["type"] == "char"
-                and usj_obj["marker"] not in ["xt", "fv", "ref"]
+                and marker not in ["xt", "fv", "ref"]
             ):
                 self.usfm_string += "+"
-            self.usfm_string += f"{usj_obj['marker']} "
+            self.usfm_string += f"{marker} "
         if "code" in usj_obj:
             self.usfm_string += f"{usj_obj['code']} "
         if "number" in usj_obj:
@@ -113,10 +144,10 @@ class USFMGenerator:
             if (
                 nested
                 and usj_obj["type"] == "char"
-                and usj_obj["marker"] not in ["xt", "ref", "fv"]
+                and marker not in ["xt", "ref", "fv"]
             ):
                 self.usfm_string += "+"
-            self.usfm_string += f"{usj_obj['marker']}* "
+            self.usfm_string += f"{marker}* "
         if usj_obj["type"] == "ms":
             if "sid" in usj_obj:
                 if not attributes:
@@ -126,15 +157,17 @@ class USFMGenerator:
             self.usfm_string = self.usfm_string.strip() + "\\*"
         if usj_obj["type"] == "sidebar":
             self.usfm_string += "\\esbe"
+        if usj_obj["type"] == "list":
+            self.usfm_string += "\\list-e\\*"
         if usj_obj["type"] not in NO_NEWLINE_USJ_TYPES and self.usfm_string[-1] != "\n":
             self.usfm_string += "\n"
         if "altnumber" in usj_obj:
-            self.usfm_string += f"\\{usj_obj['marker']}a {usj_obj['altnumber']}"
-            self.usfm_string += f"\\{usj_obj['marker']}a* "
+            self.usfm_string += f"\\{marker}a {usj_obj['altnumber']}"
+            self.usfm_string += f"\\{marker}a* "
         if "pubnumber" in usj_obj:
-            self.usfm_string += f"\\{usj_obj['marker']}p {usj_obj['pubnumber']}"
-            if usj_obj["marker"] == "v":
-                self.usfm_string += f"\\{usj_obj['marker']}p* "
+            self.usfm_string += f"\\{marker}p {usj_obj['pubnumber']}"
+            if marker == "v":
+                self.usfm_string += f"\\{marker}p* "
             else:
                 self.usfm_string += "\n"
 
@@ -151,6 +184,23 @@ class USFMGenerator:
             return
         if obj_type not in NO_NEWLINE_USX_TYPES:
             self.usfm_string += "\n"
+
+        # Keep track of the current book, chapter, and verse for generating \vid markers
+        if self.current_book is None and "code" in xml_obj.attrib:
+            self.current_book = xml_obj.attrib["code"]
+        elif obj_type == "chapter" and "number" in xml_obj.attrib:
+            self.current_chapter = xml_obj.attrib["number"]
+            self.current_verse = None  # Reset current verse when a new chapter starts
+        elif obj_type == "verse" and "number" in xml_obj.attrib:
+            self.current_verse = xml_obj.attrib["number"]
+
+        if "vid" in xml_obj.attrib:
+            current_ref = f"{self.current_book} {self.current_chapter}:{self.current_verse}"
+            if xml_obj.attrib["vid"] != current_ref:
+                self.usfm_string += f"\\vid|ref=\"{xml_obj.attrib['vid']}\" "
+                if "h" in xml_obj.attrib:
+                    self.usfm_string += f"h=\"{xml_obj.attrib['h']}\" "
+                self.usfm_string += "\\*\n"
         if obj_type == "optbreak":
             if self.usfm_string != "" and self.usfm_string[-1] not in [
                 "\n",
@@ -160,7 +210,12 @@ class USFMGenerator:
             ]:
                 self.usfm_string += " "
             self.usfm_string += "// "
-        if "style" in xml_obj.attrib:
+        elif obj_type == "list":
+            self.usfm_string += "\\list-s\\*\n"
+        elif obj_type == "ref":
+            marker = "ref"
+            self.usfm_string += f"\\{marker} "
+        elif "style" in xml_obj.attrib:
             marker = xml_obj.attrib["style"]
             if nested and obj_type == "char" and marker not in ["xt", "fv", "ref"]:
                 marker = "+" + marker
@@ -231,6 +286,8 @@ class USFMGenerator:
                 self.usfm_string += f"\\{marker}*"
         if obj_type == "sidebar":
             self.usfm_string += "\n\\esbe\n"
+        if obj_type == "list":
+            self.usfm_string += "\n\\list-e\\*\n"
 
     def biblenlp_to_usfm(self, biblenlp: dict, book_code: str = None) -> None:
         """Traverses through the verse texts and vrefs to generate a minimal USFM from it"""
@@ -299,7 +356,8 @@ class USFMGenerator:
                 curr_chapter = chap
             if not self.usfm_string.endswith("\n"):
                 self.usfm_string += " "
-            self.usfm_string += f"\\v {verse} {versetext}"
+            self.usfm_string += f"\\v {verse} {versetext}"\
+                if verse.strip() != "" else f" {versetext}"
 
 
 if __name__ == "__main__":

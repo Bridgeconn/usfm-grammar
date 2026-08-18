@@ -1,29 +1,32 @@
 import {USFMParser} from "./src/index.js";
 import {readFile} from "fs/promises";
-import {DOMImplementation, XMLSerializer, DOMParser} from "xmldom";
+import {DOMImplementation, XMLSerializer, DOMParser} from "@xmldom/xmldom";
 import {findAllMarkers} from "./test/config.js";
 (async () => {
   await USFMParser.init("tree-sitter-usfm.wasm", "tree-sitter.wasm");
   // const filePath = "../tests/samples-from-wild/t4t3/origin.usfm";
   // const filePath = "../tests/advanced/figureInNote/origin.usfm";
   // const filePath = "../tests/usfmjsTests/tw_words_chunk/origin.usfm";
-  const filePath = "../tests/advanced/default-attributes/origin.usfm";
+  // const filePath = "../tests/advanced/default-attributes/origin.usfm";
+  const filePath = "../tests/specExamples/table/origin.usfm"; 
   // const filePath = "../tests/basic/multiple-chapters/origin.usfm";
   const content = await readFile(filePath, "utf-8"); // Specify encoding
   console.log("*************************");
   const usfmParser = new USFMParser(content);
+  // console.log(usfmParser.toSyntaxTree());
   // const usx = usfmParser.toUSX();
-  // const usj = usfmParser.toUSJ();
-  // console.log(usx);
+  const usj = usfmParser.toUSJ();
+  console.log(usj);
+  console.log("*************************");
   // for (let i = 0; i < 100; i++) {
   //   console.time("toUSJ");
   //   const usj = usfmParser.toUSJ();
   //   console.timeEnd("toUSJ");
   // }
   // const usj = usfmParser.toUSJ();
-  // const testParser2 = new USFMParser(null, usj);
-  // const generatedUSFM = testParser2.usfm;
-  // console.log(generatedUSFM);
+  const testParser2 = new USFMParser(null, usj);
+  const generatedUSFM = testParser2.usfm;
+  console.log(generatedUSFM);
   // const allTypes = new Set(getTypes(usj));
   // const allMarkers = new Set(findAllMarkers(content));
   // console.log({allMarkers}, {allTypes});
@@ -39,6 +42,10 @@ import {findAllMarkers} from "./test/config.js";
   // console.timeEnd("toUSX");
   const asXmlString = new XMLSerializer().serializeToString(usx);
   console.log(asXmlString);
+
+  const testParser3 = new USFMParser(null, null, usx);
+  const generatedUSFM2 = testParser3.usfm;
+  console.log(generatedUSFM2);
 })();
 
 function getTypes(element, keepNumber = true) {

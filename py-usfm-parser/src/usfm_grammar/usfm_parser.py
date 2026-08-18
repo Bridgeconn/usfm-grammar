@@ -18,7 +18,7 @@ class Filter(list, Enum):
 
     BOOK_HEADERS = [
         "ide", "usfm", "h", "toc", "toca",  # identification
-        "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr",
+        "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "ipc",
         "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
     ]
     TITLES = [
@@ -32,9 +32,9 @@ class Filter(list, Enum):
     ]
     CHARACTERS = [
         "add", "bk", "dc", "ior", "iqt", "k", "litl", "nd", "ord", "pn", "png",
-        "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj",  # Special-text
+        "qac", "qs", "qt", "rq", "sig", "sls", "tl", "wj", "ta", # Special-text
         "em", "bd", "bdit", "it", "no", "sc", "sup",  # character styling
-        "rb", "pro", "w", "wh", "wa", "wg",  # special-features
+        "rb", "pro", "w", "wh", "wa", "wg", "wl",  # special-features
         "lik", "liv",  # structred list entries
         "jmp",
     ]
@@ -43,6 +43,7 @@ class Filter(list, Enum):
         "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "xo",
         "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",
     ]
+    LISTS = ["list-s", "list-e", "lh", "li", "lf", "lim", "lik", "liv"]  # "lists"
     STUDY_BIBLE = ["esb", "cat"]  # "sidebars-extended-contents"
     BCV = ["id", "c", "v"]
     TEXT = ["text-in-excluded-parent", "text"]
@@ -218,10 +219,14 @@ class USFMParser:
             raise USFMGrammarError(message) from exe
         output_usj = usj_generator.json_root_obj
         if include_markers:
+            if "list-s" in include_markers or "list-e" in include_markers:
+                include_markers.append("list-s/e")
             output_usj = include_markers_in_usj(
                 output_usj, include_markers + ["USJ"], combine_texts
             )
         if exclude_markers:
+            if "list-s" in exclude_markers or "list-e" in exclude_markers:
+                exclude_markers.append("list-s/e")
             output_usj = exclude_markers_in_usj(
                 output_usj, exclude_markers, combine_texts
             )
@@ -286,6 +291,8 @@ class USFMParser:
         try:
             usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
             usj_generator.node_2_usj(self.syntax_tree, json_root_obj)
+            if len(usj_generator.warnings) > 0:
+                self.warnings.extend(usj_generator.warnings)
             usj_dict = usj_generator.json_root_obj
             usj_dict = include_markers_in_usj(usj_dict, Filter.BCV + Filter.TEXT, True)
 
@@ -318,6 +325,8 @@ class USFMParser:
         try:
             usx_generator = USXGenerator(USFM_LANGUAGE, self.usfm_bytes, usx_root)
             usx_generator.node_2_usx(self.syntax_tree, usx_root)
+            if len(usx_generator.warnings) > 0:
+                self.warnings.extend(usx_generator.warnings)
         except Exception as exe:
             message = "Unable to do the conversion. "
             if self.errors:

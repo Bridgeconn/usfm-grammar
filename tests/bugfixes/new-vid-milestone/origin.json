@@ -1,0 +1,91 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "MRK",
+            "content": [
+                "Fragment MRK 4:26-28"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "4",
+            "sid": "MRK 4"
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                "The Seed Growing Secretly\n"
+            ],
+            "h": "Mark",
+            "vid": "MRK 4:26"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "26",
+                    "sid": "MRK 4:26"
+                },
+                "Jesus also said, “The kingdom of God is like a man who scatters seed on\nthe ground.\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "27",
+                    "sid": "MRK 4:27"
+                },
+                "Night and day he sleeps and wakes, and the seed sprouts and grows, though\nhe knows not how.\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "28",
+                    "sid": "MRK 4:28"
+                },
+                "All by itself the earth produces a crop—first the stalk, then the head,\nthen grain that ripens within.\n\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                "The Seed Growing Secretly\n"
+            ],
+            "vid": "MRK 5:1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "MRK 5:1"
+                },
+                "Jesus also said, “The kingdom of God is like a man who scatters seed on\nthe ground.\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "MRK 5:2"
+                },
+                "Night and day he sleeps and wakes, and the seed sprouts and grows, though\nhe knows not how.\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "3",
+                    "sid": "MRK 5:3"
+                },
+                "All by itself the earth produces a crop—first the stalk, then the head,\nthen grain that ripens within.\n"
+            ]
+        }
+    ]
+}

@@ -6,6 +6,9 @@ class USFMGenerator {
   constructor() {
     this.usfmString = '';
     this.warnings = [];
+    this.currentBook = null;
+    this.currentChapter = null;
+    this.currentVerse = null;
   }
 
   usjToUsfm(usjObj, nested = false) {
@@ -16,15 +19,42 @@ class USFMGenerator {
       this.usfmString += '// ';
       return;
     }
-    if (usjObj.type === 'ref') {
-      usjObj.marker = 'ref';
+    let marker = null;
+    if (usjObj.marker) {
+      marker = usjObj.marker;
+    } else if (usjObj.type === 'ref') {
+      marker = 'ref';
+    } else if (usjObj.type === 'list') {
+      marker = 'list-s\\*\n';
+    } else {
+      marker = usjObj.type;
     }
+
+    if (usjObj.code) {
+      this.currentBook = usjObj.code;
+    } else if (marker === 'c') {
+      this.currentChapter = usjObj.number;
+      this.currentVerse = null; // Reset currentVerse when a new chapter starts
+    } else if (marker === 'v') {
+      this.currentVerse = usjObj.number;
+    }
+    if (usjObj.vid) {
+      const currentRef = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
+      if (currentRef !== usjObj.vid) {
+        this.usfmString += `\\vid|ref=\"${usjObj.vid}\" `;
+        if (usjObj.h) {
+          this.usfmString += `h="${usjObj.h}" `;
+        }
+        this.usfmString += '\\*\n';
+      }
+    }
+
     if (!NO_USFM_USJ_TYPES.includes(usjObj.type)) {
       this.usfmString += '\\';
       if (nested && usjObj.type === 'char') {
         this.usfmString += '+';
       }
-      this.usfmString += `${usjObj.marker} `;
+      this.usfmString += `${marker} `;
     }
     ['code', 'number', 'caller'].forEach((key) => {
       if (usjObj[key]) {
@@ -35,16 +65,16 @@ class USFMGenerator {
       this.usfmString += `\\cat ${usjObj.category}\\cat*\n`;
     }
     if (usjObj.altnumber) {
-      if (usjObj.marker === 'c') {
+      if (marker === 'c') {
         this.usfmString += `\\ca ${usjObj.altnumber} \\ca*\n`;
-      } else if (usjObj.marker === 'v') {
+      } else if (marker === 'v') {
         this.usfmString += `\\va ${usjObj.altnumber} \\va* `;
       }
     }
     if (usjObj.pubnumber) {
-      if (usjObj.marker === 'c') {
+      if (marker === 'c') {
         this.usfmString += `\\cp ${usjObj.pubnumber}\n`;
-      } else if (usjObj.marker === 'v') {
+      } else if (marker === 'v') {
         this.usfmString += `\\vp ${usjObj.pubnumber} \\vp* `;
       }
     }
@@ -76,7 +106,7 @@ class USFMGenerator {
       if (nested && usjObj.type === 'char') {
         this.usfmString += '+';
       }
-      this.usfmString += `${usjObj.marker}* `;
+      this.usfmString += `${marker}* `;
     }
     if (usjObj.type === 'ms') {
       if ('sid' in usjObj) {
@@ -89,6 +119,8 @@ class USFMGenerator {
     }
     if (usjObj.type === 'sidebar' ) {
       this.usfmString += '\\esbe';
+    } else if (usjObj.type === 'list') {
+      this.usfmString += '\\list-e\\*';
     }
     if (
       !NO_NEWLINE_USJ_TYPES.includes(usjObj.type) &&
@@ -114,6 +146,26 @@ class USFMGenerator {
       return;
     }
 
+    if (xmlObj.hasAttribute('code')) {
+      this.currentBook = xmlObj.getAttribute('code');
+    } else if (xmlObj.getAttribute('style') === 'c') {
+      this.currentChapter = xmlObj.getAttribute('number');
+      this.currentVerse = null; // Reset currentVerse when a new chapter starts
+    } else if (xmlObj.getAttribute('style') === 'v') {
+      this.currentVerse = xmlObj.getAttribute('number');
+    }
+
+    if (xmlObj.hasAttribute('vid')) {
+      const currentReference = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
+      if (currentReference !== xmlObj.getAttribute('vid')) {
+        this.usfmString += `\n\\vid|ref="${xmlObj.getAttribute('vid')}" `;
+        if (xmlObj.hasAttribute('h')) {
+          this.usfmString += `h="${xmlObj.getAttribute('h')}" `;
+        }
+        this.usfmString += '\\*\n';
+      }
+    }
+
     if (!NO_NEWLINE_USX_TYPES.includes(objType)) {
       this.usfmString += '\n';
     }
@@ -123,9 +175,9 @@ class USFMGenerator {
         this.usfmString += ' ';
       }
       this.usfmString += '// ';
-    }
-
-    if (xmlObj.hasAttribute('style')) {
+    } else if (objType === 'list') {
+      this.usfmString += '\\list-s\\*\n';
+    } else if (xmlObj.hasAttribute('style')) {
       marker = xmlObj.getAttribute('style');
       if (nested && objType === 'char' && !['xt', 'fv', 'ref'].includes(marker)) {
         marker = `+${marker}`;
@@ -217,6 +269,8 @@ class USFMGenerator {
 
     if (objType === 'sidebar') {
       this.usfmString += '\n\\esbe\n';
+    } else if (objType === 'list') {
+      this.usfmString += '\n\\list-e\\*\n';
     }    
   }
 
@@ -256,8 +310,11 @@ class USFMGenerator {
       if (!this.usfmString.endsWith('\n')) {
         this.usfmString += ' ';
       }
-        
-      this.usfmString += `\\v ${verse} ${verseText}`;
+      if (verse.trim() !== '') {
+        this.usfmString += `\\v ${verse} ${verseText}`;
+      } else {
+        this.usfmString += `${verseText}`;
+      }
     }
   }
 

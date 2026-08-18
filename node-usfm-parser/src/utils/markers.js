@@ -30,6 +30,8 @@ const CHAR_STYLE_MARKERS = [
   'w',
   'wh',
   'wa',
+  'wl',
+  'ta',
   'wg', //special - features
   'lik',
   'liv', //structred list entries
@@ -72,6 +74,7 @@ const PARA_STYLE_MARKERS = [
   'ipq',
   'imq',
   'ipr',
+  'ipc',
   'iq',
   'ib',
   'ili',
@@ -122,6 +125,9 @@ const DEFAULT_ATTRIB_MAP = {
   ref: 'loc',
   milestone: 'who',
   k: 'key',
+  wl: 'lang',
+  tl: 'lang',
+  vid: 'ref',
 };
 exports.DEFAULT_ATTRIB_MAP = DEFAULT_ATTRIB_MAP;
 const TABLE_CELL_MARKERS = ['tc', 'th', 'tcr', 'thr', 'tcc', 'thc'];
@@ -146,3 +152,5 @@ const MARKER_SETS = {
   PARA_STYLE_MARKERS: new Set(PARA_STYLE_MARKERS),
 };
 exports.MARKER_SETS = MARKER_SETS;
+const REF_PATTERN = /(\w+) (\d+):([\d\w]+(?:-[\d\w]+)?)/;
+exports.REF_PATTERN = REF_PATTERN;

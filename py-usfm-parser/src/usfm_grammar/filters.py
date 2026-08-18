@@ -7,7 +7,7 @@ import re
 
 MARKERS_WITH_DISCARDABLE_CONTENTS = [
     "ide", "usfm", "h", "toc", "toca",  # identification
-    "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "iq", "ib",
+    "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "ipc", "iq", "ib",
     "ili", "iot", "io", "iex", "imte", "ie",  # intro
     "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",  # titles
     "sts", "rem", "lit", "restore",  # comments
@@ -61,6 +61,7 @@ def exclude_markers_in_usj(
         re.sub(trailing_num_pattern, "", item) for item in exclude_markers
     ]
     this_marker = input_usj["marker"] if "marker" in input_usj else ""
+    this_marker = "list-s/e" if input_usj["type"] == "list" else this_marker
     this_marker = re.sub(trailing_num_pattern, "", this_marker)
     this_marker_needed = True
     excluded_parent = (
@@ -105,6 +106,7 @@ def include_markers_in_usj(
         re.sub(trailing_num_pattern, "", item) for item in include_markers
     ]
     this_marker = input_usj["marker"] if "marker" in input_usj else ""
+    this_marker = "list-s/e" if input_usj["type"] == "list" else  this_marker
     this_marker = re.sub(trailing_num_pattern, "", this_marker)
     this_marker_needed = True
     excluded_parent = (

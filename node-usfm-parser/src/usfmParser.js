@@ -280,6 +280,7 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
 
       usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
       outputUSJ = usjGenerator.jsonRootObj;
+      this.warnings.push(...usjGenerator.warnings);
     } catch (err) {
       let message = 'Unable to do the conversion. ';
       if (this.errors) {
@@ -292,6 +293,10 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
     }
 
     if (includeMarkers) {
+      if (includeMarkers.includes('list-s') || includeMarkers.includes('list-e')) {
+        includeMarkers.push('list-s/e');
+      }
+
       outputUSJ = Filter.keepOnly(
         outputUSJ,
         [...includeMarkers, 'USJ'],
@@ -299,6 +304,9 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
       );
     }
     if (excludeMarkers) {
+      if (excludeMarkers.includes('list-s') || excludeMarkers.includes('list-e')) {
+        excludeMarkers.push('list-s/e');
+      }
       outputUSJ = Filter.remove(outputUSJ, excludeMarkers, combineTexts);
     }
 
@@ -406,6 +414,7 @@ Use ignoreErrors=true to generate output despite errors`,
 
       // xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
       xmlContent = usxGenerator.xmlRootNode;
+      this.warnings.push(...usxGenerator.warnings);
     } catch (exe) {
       let message = 'Unable to do the conversion. ';
       if (this.errors.length > 0) {

@@ -59,6 +59,15 @@ module.exports = grammar({
 
     versionNumber: $ => /\d+(\.\d+)?/,
 
+    _headingText: $ => repeat1(choice($.text,
+      $._characterMarker,
+      $.ref,
+      $.footnote,
+      $.crossref,
+      $.fig,
+      )),
+
+
     usfm: $ => seq("\\usfm ", $.versionNumber),
     ide: $ => seq("\\ide ", $.text),
     hBlock: $ => prec.right(0,repeat1($.h)),
@@ -66,20 +75,20 @@ module.exports = grammar({
     tocaBlock: $ =>prec.right(0, repeat1($.toca)),//only under some hmarkers
     ref: $ => seq("\\ref ", $.text, optional(choice($.defaultAttribute, $._refAttributes)), "\\ref*"),
 
-    h: $ => seq($.hTag, $.text),
+    h: $ => prec.right(0,seq($.hTag, $._headingText)),
     hTag: $ => seq("\\h",optional($.numberedLevelMaxAny), " "),
-    toc: $ => seq($.tocTag, $.text),
+    toc: $ => prec.right(0,seq($.tocTag, $._headingText)),
     tocTag: $ => seq("\\toc",optional($.numberedLevelMax3), " "),
-    toca: $ => seq($.tocaTag, $.text),
+    toca: $ => prec.right(0,seq($.tocaTag, $._headingText)),
     tocaTag: $ => seq("\\toca",optional($.numberedLevelMax3), " "),
 
     // Remarks and Comments
     _comments: $ => choice($.rem, $.sts, $.restore, $.lit),
 
-    sts: $ => seq("\\sts ", $.text), // can be present at any position in file, and divides the file into sections from one sts to another.
+    sts: $ => prec.right(0,seq("\\sts ", repeat1(choice($.text, $._characterMarker)))), // can be present at any position in file, and divides the file into sections from one sts to another.
     rem: $ => prec.right(0, seq("\\rem ", repeat1(choice($.text, $._characterMarker)))), // can be present at any position in file.
-    restore: $ => seq("\\restore ", $.text), //can't find this marker in docs
-    lit: $ => seq("\\lit ", $.text), 
+    restore: $ => prec.right(0,seq("\\restore ", repeat1(choice($.text, $._characterMarker)))), //can't find this marker in docs
+    lit: $ => prec.right(0,seq("\\lit ", repeat1(choice($.text, $._characterMarker)))), 
 
     // Introduction
     // _introduction: $ => prec.right(0,seq(
@@ -101,7 +110,7 @@ module.exports = grammar({
     imte: $ => prec.right(0, seq($.imteTag, $._introText)),
     imteTag: $ => seq("\\imte",optional(token.immediate(/[12]/)), " "),
     _midIntroMarker: $ => choice($.imtBlock, $.isBlock, $.io, $.iot, $.ip, $.im,
-      $.ipi, $.imi, $.iliBlock, $.ipq, $.imq, $.ipr, $.ib,
+      $.ipi, $.imi, $.iliBlock, $.ipq, $.imq, $.ipr, $.ipc, $.ib,
       $.iqBlock, $.iex, $._comments, $.milestone, $.zNameSpace, $.esb),
     isBlock: $ => prec.right(0,repeat1($.is)),
     is: $ => prec.right(0, seq($.isTag, $._introText)),
@@ -121,11 +130,12 @@ module.exports = grammar({
     ipq: $ => prec.right(0, seq("\\ipq ", $._introText)),
     imq: $ => prec.right(0, seq("\\imq ", $._introText)),
     ipr: $ => prec.right(0, seq("\\ipr ", $._introText)),
-    ib: $ => seq("\\ib"),
+    ipc: $ => prec.right(0, seq("\\ipc ", $._introText)),
+    ib: $ => "\\ib",
     iqBlock: $ => prec.right(0,repeat1($.iq)),
     iq: $ => prec.right(0, seq($.iqTag, $._introText)),
     iqTag: $ => seq("\\iq",optional($.numberedLevelMax3), " "),
-    ie: $ => seq("\\ie"),
+    ie: $ => "\\ie",
     iex: $ => prec.right(0, seq("\\iex ", $._introText)), // can occur in introduction or inside chapter
 
 
@@ -152,6 +162,9 @@ module.exports = grammar({
     c: $ => prec.right(0,seq("\\c ", $.chapterNumber, repeat($._chapterMeta))),
     chapterNumber: $ => /\d+/,
 
+    // When vid is independent marker and not attribute in USFM
+    vid: $ => seq("\\vid", (choice($.defaultAttribute, $._vidAttributes)), "\\*"),
+
     _chapterContent: $ => choice(
       $._chapterMeta,
       $.title,
@@ -167,6 +180,7 @@ module.exports = grammar({
       $.milestone,
       $.zNameSpace,
       $.esb,
+      $.vid,
     ),
 
     //chapter meta
@@ -176,14 +190,10 @@ module.exports = grammar({
       $.cd,
       $.cl
     ),
-    cl: $ => seq("\\cl ", $.text),
+    cl: $ => prec.right(0,seq("\\cl ", repeat1(choice($.text, $._characterMarker)))),
     ca: $ => seq("\\ca ", $.chapterNumber, "\\ca*"),
-    cp: $ => seq("\\cp ", $.text),
-    cd: $ => prec.right(0,seq("\\cd ", repeat1(choice($.text,
-      $._characterMarker,
-      $.fig,
-      $.xt_standalone
-      )))),
+    cp: $ => prec.right(0,seq("\\cp ", $._headingText)),
+    cd: $ => prec.right(0,seq("\\cd ", $._headingText)),
 
     // Titles & Headings
     title: $ => choice(
@@ -198,42 +208,26 @@ module.exports = grammar({
     ),
 
     mtBlock: $ => prec.right(0,repeat1($.mt)),
-    mt: $ => seq($.mtTag, repeat1(choice($.text,
-      $.footnote, $.crossref
-      ))),
+    mt: $ => prec.right(0,seq($.mtTag, $._headingText)),
     mtTag: $ => seq("\\mt",optional($.numberedLevelMax4), " "),
 
     mteBlock: $ => prec.right(0,repeat1($.mte)),
-    mte: $ => prec.right(0, seq($.mteTag, repeat1(choice($.text,
-      $.footnote, $.crossref
-      )))),
+    mte: $ => prec.right(0, seq($.mteTag, $._headingText)),
     mteTag: $ => seq("\\mte",optional(token.immediate(/[12]/)), " "),
 
     msBlock: $ => prec.right(0, repeat1($.ms)),
-    ms: $ => prec.right(0, seq($.msTag, repeat1(choice($.text,
-      $.footnote, $.crossref,
-      $._characterMarker,
-      $.fig,
-      )), optional($.mr))),
+    ms: $ => prec.right(0, seq($.msTag, $._headingText, optional($.mr))),
     msTag: $ => seq("\\ms",optional($.numberedLevelMax3), " "),
-    mr: $ => seq("\\mr ", $.text),
+    mr: $ => prec.right(0,seq("\\mr ", $._headingText)),
 
     sBlock: $ => prec.right(0, repeat1($.s)),
-    s: $ => prec.right(0, seq($.sTag, repeat(choice($.text,
-      $.footnote, $.crossref, 
-      $._characterMarker,
-      $.fig,
-      )), repeat(choice($.sr, $.r)) )),
+    s: $ => prec.right(0, seq($.sTag, $._headingText, repeat(choice($.sr, $.r)) )),
     sTag: $ => seq("\\s",optional($.numberedLevelMax5), " "),
-    sr: $ => seq("\\sr ", $.text),
-    r: $ => seq("\\r ", $.text), // ocurs under c too
+    sr: $ => prec.right(0,seq("\\sr ", $._headingText)),
+    r: $ => prec.right(0, seq("\\r ", $._headingText)), // ocurs under c too
 
-    sp: $ => seq("\\sp ", $.text),
-    d: $ => prec.right(0, seq("\\d ", repeat1(choice($.text,
-      $.footnote, $.crossref,
-      $._characterMarker,
-      $.fig,
-      )))),
+    sp: $ => prec.right(0, seq("\\sp ", $._headingText)),
+    d: $ => prec.right(0, seq("\\d ", $._headingText)),
     sdBlock: $ => prec.right(0, repeat1($.sd)),
     sd: $ => seq($.sdTag),
     sdTag: $ => seq("\\sd", optional($.numberedLevelMax4), $._spaceOrLine),
@@ -323,8 +317,16 @@ module.exports = grammar({
     qd: $ => prec.right(0, seq("\\qd",$._spaceOrLine, repeat($._poetryContent))),
 
     //List
-    list: $ => prec.right(0, seq(optional($.lh), repeat1($._listMarker), optional($.lf))),
+    list: $ => choice(
+      $._listWithoutMilestones,
+      $._listWithMilestones
+    ),  
+    _listWithoutMilestones: $ => prec.right(0, seq(optional($.lh), repeat1($._listMarker), optional($.lf))),
 
+    _listWithMilestones: $ => seq($.list_s, $._listWithoutMilestones, $.list_e),
+
+    list_s: $ => "\\list-s\\*",
+    list_e: $ => "\\list-e\\*",
     lh: $ => prec.right(0, seq("\\lh", $._spaceOrLine, repeat($._paragraphContent))),
     lf: $ => prec.right(0, seq("\\lf", $._spaceOrLine, repeat($._paragraphContent))),
     _listMarker: $ => choice( $.liBlock, $.limBlock ), 
@@ -495,7 +497,7 @@ module.exports = grammar({
     qt: $ => seq("\\qt", $._spaceOrLine, $._innerText, "\\qt*"),
     sig: $ => seq("\\sig", $._spaceOrLine, $._innerText, "\\sig*"),
     sls: $ => seq("\\sls", $._spaceOrLine, $._innerText, "\\sls*"),
-    tl: $ => seq("\\tl", $._spaceOrLine, $._innerText, "\\tl*"),
+    tl: $ => seq("\\tl", $._spaceOrLine, $._innerText, optional(choice($.defaultAttribute, $._tlAttributes)), "\\tl*"),
     wj: $ => seq("\\wj", $._spaceOrLine, $._innerText, "\\wj*"),
 
     em: $ => seq("\\em", $._spaceOrLine, $._innerText, "\\em*"),
@@ -513,6 +515,8 @@ module.exports = grammar({
     wg: $ => seq("\\wg", $._spaceOrLine, $._innerText, "\\wg*"),
     wh: $ => seq("\\wh", $._spaceOrLine, $._innerText, "\\wh*"),
     wa: $ => seq("\\wa", $._spaceOrLine, $._innerText, "\\wa*"),
+    wl: $ => seq("\\wl", $._spaceOrLine, $._innerText, optional(choice($.defaultAttribute, $._wlAttributes)), "\\wl*"),
+    ta: $ => seq("\\ta", $._spaceOrLine, $._innerText, "|", repeat1($.aAttribute), "\\ta*"),
 
     _characterMarker: $ => choice(
       $.add,
@@ -543,7 +547,9 @@ module.exports = grammar({
       $.wg,
       $.wh,
       $.wa,
+      $.wl,
       $.jmp,
+      $.ta,
 //      $.fig,
       // $.zNameSpace, makes all zNameSpaces part of paragraph content, like milestones
     ),
@@ -580,6 +586,9 @@ module.exports = grammar({
     wgNested: $ => seq("\\+wg", $._spaceOrLine, $._innerText, "\\+wg*"),
     whNested: $ => seq("\\+wh", $._spaceOrLine, $._innerText, "\\+wh*"),
     waNested: $ => seq("\\+wa", $._spaceOrLine, $._innerText, "\\+wa*"),
+    wlNested: $ => seq("\\+wl", $._spaceOrLine, $._innerText, optional(
+      choice($.defaultAttribute, $._wlAttributes)), "\\+wl*"),
+    taNested: $ => seq("\\+ta", $._spaceOrLine, $._innerText, "|", repeat1($.aAttribute), "\\+ta*"),
 
     _nestedCharacterMarker: $ => choice(
       $.addNested,
@@ -596,6 +605,7 @@ module.exports = grammar({
       $.slsNested,
       $.tlNested,
       $.wjNested,
+      $.taNested,
       $.emNested,
       $.bdNested,
       $.itNested,
@@ -610,6 +620,7 @@ module.exports = grammar({
       $.wgNested,
       $.whNested,
       $.waNested,
+      $.wlNested,
       $.jmpNested,
     ),
 
@@ -694,6 +705,7 @@ module.exports = grammar({
     keyAttribute: $ => seq("key", "=", '"', optional($.attributeValue), '"'),
     _wAttributes: $ => prec.right(0, seq("|", repeat1(choice($.lemmaAttribute, $.strongAttribute,
       $.scrlocAttribute, $.linkAttribute, $.customAttribute)))),
+    _wlAttributes: $ => prec.right(0, seq("|", repeat1(choice($.langAttribute, $.customAttribute)))),
     _rbAttributes: $ => prec.right(0, seq("|", repeat1(choice($.glossAttribute, $.customAttribute,
       $.linkAttribute)))),
     _figAttributes: $ => prec.right(0, seq("|", repeat1(choice($.altAttribute, $.srcAttribute, $.sizeAttribute, $.locAttribute, $.copyAttribute, 
@@ -703,6 +715,8 @@ module.exports = grammar({
     strongAttribute: $ => seq("strong", "=", '"', optional($.attributeValue), '"'), 
     scrlocAttribute: $ => seq("srcloc", "=", '"', optional($.attributeValue), '"'),
     glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
+    langAttribute: $ => seq("lang", "=", '"', optional($.attributeValue), '"'),
+    _tlAttributes: $ => seq("|", $.langAttribute),
     _jmpAttribute: $ => seq("|", repeat($.linkAttribute)),
     linkAttribute: $ => seq($._linkAttributeName, "=", '"', optional($.attributeValue), '"'),
     _linkAttributeName: $ => choice("link-href", "link-title", "link-id",
@@ -718,6 +732,11 @@ module.exports = grammar({
       choice($.msAttribute, $.customAttribute, $.linkAttribute)))),
     msAttribute: $ => seq($.milestoneAttributeName, "=", '"', optional($.attributeValue), '"'),
     milestoneAttributeName: $ => choice("sid", "eid", "who"),
+    aAttribute: $ => seq($.aIdentifier, "=", '"', optional($.attributeValue), '"'),
+    hAttribute: $ => seq("h", "=", '"', optional($.attributeValue), '"'),
+    _vidAttributes: $ => prec.right(0, seq("|", repeat1(choice($.hAttribute, $.refAttribute)))),
+
+    aIdentifier: $ => /a-[^\s=]+/,
 
     _attributesInCrossref: $ => prec.right(0,seq("|", repeat1(choice(
       $.linkAttribute, $.customAttribute, $.defaultAttribute))))

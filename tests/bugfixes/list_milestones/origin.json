@@ -1,0 +1,184 @@
+{
+    "type": "USJ",
+    "version": "3.1",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "GEN",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "the first verse\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "the second verse\n"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "2",
+            "sid": "GEN 2"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 2:1"
+                },
+                "the third verse\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 2:2"
+                },
+                "the fourth verse\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                "Administration of the Tribes of Israel\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "lh",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "16-22",
+                    "sid": "GEN 2:16-22"
+                },
+                "This is the list of the administrators of the tribes of Israel:\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                "Reuben - Eliezer son of Zichri\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                "Simeon - Shephatiah son of Maacah\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "li1",
+            "content": [
+                "Levi - Hashabiah son of Kemuel\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "lf",
+            "content": [
+                "This was the list of the administrators of the tribes of Israel.\n"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "3",
+            "sid": "GEN 3"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 3:1"
+                },
+                "Now the newly introduced list markers\n"
+            ]
+        },
+        {
+            "type": "list",
+            "content": [
+                {
+                    "type": "para",
+                    "marker": "lh",
+                    "content": [
+                        "optional list header\n"
+                    ]
+                },
+                {
+                    "type": "para",
+                    "marker": "li1",
+                    "content": [
+                        "list entry 1\n"
+                    ]
+                },
+                {
+                    "type": "para",
+                    "marker": "li1",
+                    "content": [
+                        "list entry 2\n"
+                    ]
+                },
+                {
+                    "type": "para",
+                    "marker": "li3",
+                    "content": [
+                        "list entry 3\n"
+                    ]
+                },
+                {
+                    "type": "para",
+                    "marker": "lf",
+                    "content": [
+                        "optional list footer\n"
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 3:2"
+                },
+                "This was introduced in 3.2 version of usfm spec."
+            ]
+        }
+    ]
+}

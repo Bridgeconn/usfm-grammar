@@ -7,6 +7,9 @@ export const NON_ATTRIB_USJ_KEYS = [
   'content',
   'number',
   'sid',
+  'eid',
+  'closed',
+  'status',
   'code',
   'caller',
   'align',
@@ -14,19 +17,26 @@ export const NON_ATTRIB_USJ_KEYS = [
   'altnumber',
   'pubnumber',
   'category',
+  'vid',
+  'h',
 ];
 
 export const NON_ATTRIB_USX_KEYS = [
-  'style',
   'number',
-  'sid',
   'code',
   'caller',
   'align',
+  'sid',
+  'eid',
+  'style',
+  'closed',
+  'status',
   'version',
   'altnumber',
   'pubnumber',
   'category',
+  'vid',
+  'h',
 ];
 export const NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell'];
 export const NO_NEWLINE_USX_TYPES = ['char', 'note', 'verse', 'cell'];

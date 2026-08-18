@@ -16,6 +16,7 @@ const Filter = {
     'ipq',
     'imq',
     'ipr',
+    'ipc',
     'iq',
     'ib',
     'ili',
@@ -106,6 +107,8 @@ const Filter = {
     'w',
     'wh',
     'wa',
+    'wl',
+    'ta',
     'wg',
     'lik',
     'liv',
@@ -140,6 +143,7 @@ const Filter = {
   ],
   STUDY_BIBLE: ['esb', 'cat'],
   BCV: ['id', 'c', 'v'],
+  LISTS: ['list-s', 'list-e', 'lh', 'li', 'lf', 'lim', 'lik', 'liv'],
   TEXT: ['text-in-excluded-parent'],
   // INNER_CONTENT: ["content-in-excluded-parent"]
 };

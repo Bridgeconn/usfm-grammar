@@ -39,6 +39,12 @@ class ListGenerator {
       this.usjToListC(obj);
     } else if (obj.type === 'verse') {
       this.usjToListV(obj);
+    } else if (obj.type === 'list' && (
+      excludeMarkers && !excludeMarkers.includes('list-s/e')) || (
+      includeMarkers && includeMarkers.includes('list-s/e'))) {
+      this.list.push(
+        [this.book, this.currentChapter, this.currentVerse, '', 'list', 'list-s']);
+      // return;
     }
 
     let markerType = obj.type;
@@ -68,6 +74,15 @@ class ListGenerator {
         this.list.push(
           [this.book, this.currentChapter, this.currentVerse, '', markerType, markerName]);
       }
+    }
+    if (obj.type === 'list' && (excludeMarkers && !excludeMarkers.includes('list-s/e')) || (
+      includeMarkers && includeMarkers.includes('list-s/e'))) {
+      this.list.push(
+        [this.book, this.currentChapter, this.currentVerse, '', 'list', 'list-e']);
+    } else if (obj.type === 'sidebar' && (excludeMarkers && !excludeMarkers.includes('esbe')) || (
+      includeMarkers && includeMarkers.includes('esbe'))) {
+      this.list.push(
+        [this.book, this.currentChapter, this.currentVerse, '', 'sidebar', 'esbe']);
     }
   }
 

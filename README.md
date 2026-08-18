@@ -1,6 +1,5 @@
 # USFM Grammar
-
-An elegant [USFM](https://docs.usfm.bible) parser (or validator) that uses a Context Free Grammar to model USFM. The grammar is written using [tree sitter](https://tree-sitter.github.io/tree-sitter/). **Supports USFM 3.x** onward. 
+An elegant [USFM](https://docs.usfm.bible) parser and validator built with [tree sitter](https://tree-sitter.github.io/tree-sitter/), which uses a Generalized LR (GLR) parsing algorithm. **Supports USFM 3.x** onward. 
 
 The USFM is parsed into a syntax tree, which may then be futher converted to more easy-to-manipulate file formats that allow for painless extraction of scriptural and other content from the markup. USFM Grammar is also capable of reconverting the generated formats back into USFM.
 
