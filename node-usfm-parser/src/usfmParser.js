@@ -124,7 +124,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
         assert(
           this.usx.getElementsByTagName('usx').length === 1,
           `Expects a <usx> node.
-Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`,
+Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
         );
 
         this.usx = this.usx.getElementsByTagName('usx')[0];

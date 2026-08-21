@@ -8,6 +8,7 @@ const {
   TABLE_CELL_MARKERS,
   MARKER_SETS,
   REF_PATTERN,
+  USFM_VERSION,
 } = require('./utils/markers.js');
 const { createQueriesAsNeeded } = require('./queries.js');
 
@@ -19,7 +20,7 @@ class USJGenerator {
     
     this.jsonRootObj = usjRootObj || {
       type: 'USJ',
-      version: '3.1',
+      version: USFM_VERSION,
       content: [],
     };
     // Cache for the query objects

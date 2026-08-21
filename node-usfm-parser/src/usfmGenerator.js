@@ -1,3 +1,4 @@
+const { USFM_VERSION } = require('./utils/markers');
 const { NO_USFM_USJ_TYPES,
   CLOSING_USJ_TYPES, NON_ATTRIB_USJ_KEYS, NO_NEWLINE_USJ_TYPES } = require('./utils/types');
 const { NON_ATTRIB_USX_KEYS, NO_NEWLINE_USX_TYPES } = require('./utils/types');
@@ -127,6 +128,12 @@ class USFMGenerator {
       this.usfmString[this.usfmString.length - 1] !== '\n'
     ) {
       this.usfmString += '\n';
+    }
+    if (marker === 'id') {
+      if (!this.usfmString.endsWith('\n')) {
+        this.usfmString += '\n';
+      }
+      this.usfmString += `\\usfm ${USFM_VERSION}`;
     }
     return this.usfmString;
   }
@@ -271,6 +278,12 @@ class USFMGenerator {
       this.usfmString += '\n\\esbe\n';
     } else if (objType === 'list') {
       this.usfmString += '\n\\list-e\\*\n';
+    }
+    if (marker === 'id') {
+      if (!this.usfmString.endsWith('\n')) {
+        this.usfmString += '\n';
+      }
+      this.usfmString += `\\usfm ${USFM_VERSION}`;
     }    
   }
 
