@@ -53,7 +53,7 @@ describe("Check successful USFM-USX conversion for positive samples", () => {
         const usx = cached.usx;
         // assert(usx instanceof DOMImplementation.Document);
         assert(usx.tagName === "usx");
-        assert(usx.getAttribute("version") === "3.1");
+        assert(usx.getAttribute("version") === "3.1.2");
         assert(usx.childNodes[0].tagName === "book");
         assert(usx.childNodes[0].getAttribute("style") === "id");
       });

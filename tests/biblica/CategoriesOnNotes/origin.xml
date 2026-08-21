@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<usx version="3.0">
+<usx version="3.1.2">
   <book code="MRK" style="id">- Test Project</book>
   <para style="rem">Note categories</para>
   <chapter number="1" style="c" sid="MRK 1" />

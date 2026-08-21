@@ -93,6 +93,17 @@ node_modules/mocha/bin/mocha.js --timeout 40000 --grep "Compare" --bail
 node_modules/mocha/bin/mocha.js --timeout 40000 test/basic.js
 ```
 
+> In case the node test do not reflect recent grammar changes
+> ```
+> cd ../tree-sitter-usfm3
+> rm -r bindings/ build/
+> tree-sitter init
+> tree-sitter generate
+> cd ../node-usfm-parser
+> npm uninstall tree-sitter-usfm3
+> npm install tree-sitter-usfm3
+>```
+
 ### In web module:
 
 ```bash

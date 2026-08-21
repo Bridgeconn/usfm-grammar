@@ -5,6 +5,7 @@ from tree_sitter import QueryCursor
 from usfm_grammar.queries import create_queries_as_needed
 
 REF_PATTERN = re.compile(r"(\w+) (\d+):([\d\w]+(-[\d\w]+)?)")
+USFM_VERSION = "3.1.2"
 
 class USXGenerator:
     """A binding for all methods used in generating USX from Syntax tree"""
@@ -84,7 +85,7 @@ class USXGenerator:
         self.warnings = []
         if usx_root_element is None:
             self.xml_root_node = etree.Element("usx")
-            self.xml_root_node.set("version", "3.1")
+            self.xml_root_node.set("version", USFM_VERSION)
         else:
             self.xml_root_node = usx_root_element
         self.parse_state = {

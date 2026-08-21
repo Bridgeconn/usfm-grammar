@@ -154,3 +154,6 @@ const MARKER_SETS = {
 exports.MARKER_SETS = MARKER_SETS;
 const REF_PATTERN = /(\w+) (\d+):([\d\w]+(?:-[\d\w]+)?)/;
 exports.REF_PATTERN = REF_PATTERN;
+
+const USFM_VERSION = '3.1.2';
+exports.USFM_VERSION = USFM_VERSION;

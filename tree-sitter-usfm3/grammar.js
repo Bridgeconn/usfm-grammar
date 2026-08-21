@@ -57,7 +57,7 @@ module.exports = grammar({
       $._comments, $.milestone, $.zNameSpace, $.esb, $.ref,
       ),
 
-    versionNumber: $ => /\d+(\.\d+)?/,
+    versionNumber: $ => /\d+(\.\d+)?(\.\d+)?/,
 
     _headingText: $ => repeat1(choice($.text,
       $._characterMarker,
