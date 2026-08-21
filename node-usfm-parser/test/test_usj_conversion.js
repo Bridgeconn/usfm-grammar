@@ -55,7 +55,7 @@ describe("Check successful USFM-USJ conversion for positive samples", () => {
         const usj = cached.usj;
         assert(usj instanceof Object);
         assert.strictEqual(usj["type"], "USJ");
-        assert.strictEqual(usj["version"], "3.1");
+        assert.strictEqual(usj["version"], "3.1.2");
         assert.strictEqual(usj.content[0].type, "book");
         assert.strictEqual(usj.content[0].marker, "id");
       });
