@@ -8,6 +8,7 @@ import {
   TABLE_CELL_MARKERS,
   MARKER_SETS,
   REF_PATTERN,
+  USFM_VERSION,
 } from './utils/markers.js';
 import { createQueriesAsNeeded } from './queries.js';
 class USJGenerator {
@@ -18,7 +19,7 @@ class USJGenerator {
 
     this.jsonRootObj = usjRootObj || {
       type: 'USJ',
-      version: '3.1',
+      version: USFM_VERSION,
       content: [],
     };
     // Cache for the query objects

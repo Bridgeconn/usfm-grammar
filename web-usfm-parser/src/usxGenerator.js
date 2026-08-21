@@ -9,6 +9,7 @@ import {
   TABLE_CELL_MARKERS,
   MARKER_SETS,
   REF_PATTERN,
+  USFM_VERSION,
 } from './utils/markers.js';
 import { createQueriesAsNeeded } from './queries.js';
 
@@ -30,7 +31,7 @@ class USXGenerator {
 
     if (usxRootElement === null) {
       this.xmlRootNode = doc.documentElement;
-      this.xmlRootNode.setAttribute('version', '3.1');
+      this.xmlRootNode.setAttribute('version', USFM_VERSION);
     } else {
       this.xmlRootNode = usxRootElement;
     }

@@ -137,7 +137,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       if (this.usx.tagName !== 'usx') {
         if (!(this.usx.getElementsByTagName('usx').length === 1)) {
           throw new Error(`Expects a <usx> node.
-Refer docs: https://docs.usfm.bible/usfm/3.1/syntax.html#_usx_usfm_xml`);
+Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`);
         }
 
         this.usx = this.usx.getElementsByTagName('usx')[0];
