@@ -2,6 +2,7 @@
 
 import re
 from usfm_grammar.errors import ParsingError, USFMGrammarError
+from usfm_grammar.usx_generator import USFM_VERSION
 
 NO_USFM_USJ_TYPES = ["USJ", "table"]
 NO_NEWLINE_USJ_TYPES = ["char", "note", "verse", "table:cell"]
@@ -170,6 +171,9 @@ class USFMGenerator:
                 self.usfm_string += f"\\{marker}p* "
             else:
                 self.usfm_string += "\n"
+        if marker == "id":
+            self.usfm_string += f"\\usfm {USFM_VERSION}\n"
+
 
     def usx_to_usfm(self, xml_obj, nested=False):  # pylint: disable=too-many-statements, too-many-branches
         """Traverses xml tree and converts nodes to usfm elements
@@ -288,6 +292,10 @@ class USFMGenerator:
             self.usfm_string += "\n\\esbe\n"
         if obj_type == "list":
             self.usfm_string += "\n\\list-e\\*\n"
+        if marker == "id":
+            if self.usfm_string[-1] != "\n":
+                self.usfm_string += "\n"
+            self.usfm_string += f"\\usfm {USFM_VERSION}\n"
 
     def biblenlp_to_usfm(self, biblenlp: dict, book_code: str = None) -> None:
         """Traverses through the verse texts and vrefs to generate a minimal USFM from it"""

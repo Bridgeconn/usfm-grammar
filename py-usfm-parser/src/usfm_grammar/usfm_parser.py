@@ -6,7 +6,7 @@ import traceback
 import tree_sitter_usfm3 as tsusfm
 from tree_sitter import Language, Parser, Query, QueryCursor
 from lxml import etree
-from usfm_grammar.usx_generator import USXGenerator
+from usfm_grammar.usx_generator import USXGenerator, USFM_VERSION
 from usfm_grammar.usj_generator import USJGenerator
 from usfm_grammar.list_generator import ListGenerator
 from usfm_grammar.usfm_generator import USFMGenerator
@@ -206,7 +206,7 @@ class USFMParser:
                 + f"\n\t{err_str}"
                 + "\nUse ignore_errors=True, to generate output inspite of errors"
             )
-        json_root_obj = {"type": "USJ", "version": "3.1", "content": []}
+        json_root_obj = {"type": "USJ", "version": USFM_VERSION, "content": []}
         try:
             usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
             usj_generator.get_usj(self.syntax_tree, json_root_obj)
@@ -287,7 +287,7 @@ class USFMParser:
                 + "\nUse ignore_errors=True, to generate output inspite of errors"
             )
 
-        json_root_obj = {"type": "USJ", "version": "3.1", "content": []}
+        json_root_obj = {"type": "USJ", "version": USFM_VERSION, "content": []}
         try:
             usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
             usj_generator.node_2_usj(self.syntax_tree, json_root_obj)
@@ -321,7 +321,7 @@ class USFMParser:
             )
 
         usx_root = etree.Element("usx")
-        usx_root.set("version", "3.1")
+        usx_root.set("version", USFM_VERSION)
         try:
             usx_generator = USXGenerator(USFM_LANGUAGE, self.usfm_bytes, usx_root)
             usx_generator.node_2_usx(self.syntax_tree, usx_root)

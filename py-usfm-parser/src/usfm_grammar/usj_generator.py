@@ -3,7 +3,7 @@ import re
 from tree_sitter import QueryCursor
 
 from usfm_grammar.queries import create_queries_as_needed
-from usfm_grammar.usx_generator import USXGenerator, REF_PATTERN
+from usfm_grammar.usx_generator import USXGenerator, REF_PATTERN, USFM_VERSION
 
 #pylint: disable=duplicate-code
 
@@ -20,7 +20,7 @@ class USJGenerator:
         self.warnings = []
         self.json_root_obj = usj_root_obj or {
             "type": "USJ",
-            "version": "3.1",
+            "version": USFM_VERSION,
             "content": [],
         }
         # Cache for the query objects
