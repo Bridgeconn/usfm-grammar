@@ -1,0 +1,9 @@
+\id GEN
+\c 1
+\p
+\v 1 \w gracious|lemma="grace" x-source-lang="hbo"\w*
+\v 2 \w gracious|x-a-b-c="1"\w*
+\v 3 \w gracious|x-sourcelang="hbo"\w*
+\v 4 \fig caption|src="avnt.png" size="col" ref="1:1" x-source-lang="hbo"\fig*
+\v 5 See \xt Matt 1:1|x-source-lang="hbo"\xt* here
+\v 6 \rb BB|gloss="a:b" x-source-lang="hbo"\rb*

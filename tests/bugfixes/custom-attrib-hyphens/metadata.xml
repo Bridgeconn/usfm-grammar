@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>Custom attribute names may contain hyphens after the `x-` prefix, as in `x-source-lang`. The ATTRIBNAME terminal in usx.rnc is `/[a-zA-Z_][a-zA-Z0-9\-_]*?/`, which permits hyphens in the trailing character class. Previously only a single hyphen (the one in the `x-` prefix) parsed.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

@@ -539,3 +539,80 @@ With Attributes
             (text)
             (strongAttribute
               (attributeValue))))))))
+
+================================================================================
+Custom attributes with hyphens in the name
+================================================================================
+\id GEN
+\c 1
+\p
+\v 1 \w gracious|lemma="grace" x-source-lang="hbo"\w*
+\w gracious|x-a-b-c="1"\w*
+\w gracious|x-sourcelang="hbo"\w*
+\fig caption|src="a.png" size="col" x-source-lang="hbo"\fig*
+\v 2 word\f a \fr 1:1 \fr* \xt T|x-source-lang="hbo"\xt*\f*
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (w
+            (text)
+            (lemmaAttribute
+              (attributeValue))
+            (customAttribute
+              (customAttributeName)
+              (attributeValue)))
+          (text)
+          (w
+            (text)
+            (customAttribute
+              (customAttributeName)
+              (attributeValue)))
+          (text)
+          (w
+            (text)
+            (customAttribute
+              (customAttributeName)
+              (attributeValue)))
+          (text)
+          (fig
+            (text)
+            (srcAttribute
+              (attributeValue))
+            (sizeAttribute
+              (attributeValue))
+            (customAttribute
+              (customAttributeName)
+              (attributeValue)))
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
+            (footnoteText
+              (text))
+            (fr
+              (footnoteText
+                (text)))
+            (footnoteText
+              (text)
+              (xt_standalone
+                (crossrefText
+                  (text))
+                (customAttribute
+                  (customAttributeName)
+                  (attributeValue))))))))))
