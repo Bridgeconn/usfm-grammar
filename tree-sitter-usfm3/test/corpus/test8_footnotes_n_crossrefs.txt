@@ -720,3 +720,51 @@ than theirs.
           (crossref
             (rq
               (text))))))))
+
+================================================================================
+Extended cross reference
+================================================================================
+\id GEN
+\c 1
+\p
+\v 1 word\ex + \xo 1:1 \xo* \xt Matt 1:1\xt*\ex*
+\v 2 word\ex + \cat People\cat* \xt Gen 1:1\xt*\ex*
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (crossref
+          (ex
+            (caller)
+            (xo
+              (crossrefText
+                (text)))
+            (xt
+              (crossrefText
+                (text)))))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (crossref
+          (ex
+            (caller)
+            (cat
+              (category))
+            (xt
+              (crossrefText
+                (text)))))))))

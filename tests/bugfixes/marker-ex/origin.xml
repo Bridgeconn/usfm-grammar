@@ -1,0 +1,18 @@
+<usx version="3.1.2">
+  <book code="GEN" style="id"/>
+  <chapter number="1" style="c" sid="GEN 1"/>
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1"/>word<note style="ex" caller="+">
+      <char style="xo" closed="true">1:1 </char>
+      <char style="xt" closed="true">Matt 1:1</char>
+    </note>
+    <verse eid="GEN 1:1"/>
+    <verse number="2" style="v" sid="GEN 1:2"/>word<note style="ex" caller="-">
+      <char style="xo" closed="true">2:3 </char>
+      <char style="xt" closed="true">John 3:16</char>
+      <char style="xta" closed="true">and</char>
+    </note>
+    <verse eid="GEN 1:2"/>
+  </para>
+  <chapter eid="GEN 1"/>
+</usx>

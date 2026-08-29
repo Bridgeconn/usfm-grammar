@@ -440,11 +440,12 @@ module.exports = grammar({
     //Cross-reference
     crossref: $ => choice($.x, 
       $.xt_standalone, //using this marker in introtext or cd will not mark it as a crossreference in parse tree
-      // $.ex, 
+      $.ex,
       $.rq,
       ),
 
     x: $ => seq("\\x ", $.caller, repeat($._crossrefContents), "\\x*"),
+    ex: $ => seq("\\ex ", $.caller, repeat($._crossrefContents), "\\ex*"),
     xo: $ => seq("\\xo ", optional($.crossrefText), optional("\\xo*")),
     xk: $ => seq("\\xk ", optional($.crossrefText), optional("\\xk*")),
     xq: $ => seq("\\xq ", optional($.crossrefText), optional("\\xq*")),

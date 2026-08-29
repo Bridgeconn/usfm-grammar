@@ -1,0 +1,89 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "GEN",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "word",
+                {
+                    "type": "note",
+                    "marker": "ex",
+                    "content": [
+                        {
+                            "type": "char",
+                            "marker": "xo",
+                            "content": [
+                                "1:1 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "xt",
+                            "content": [
+                                "Matt 1:1"
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "word",
+                {
+                    "type": "note",
+                    "marker": "ex",
+                    "content": [
+                        {
+                            "type": "char",
+                            "marker": "xo",
+                            "content": [
+                                "2:3 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "xt",
+                            "content": [
+                                "John 3:16"
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "xta",
+                            "content": [
+                                "and"
+                            ]
+                        }
+                    ],
+                    "caller": "-"
+                },
+                "\n"
+            ]
+        }
+    ]
+}

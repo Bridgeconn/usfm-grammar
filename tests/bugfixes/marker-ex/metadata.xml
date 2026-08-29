@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>The \ex marker (extended cross reference) was not implemented in the grammar. It is defined in grammar/usfm3_1.sty and appears in CrossReference.style.enum in grammar/usx.rnc alongside \x, with the same content model.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>
