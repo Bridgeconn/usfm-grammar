@@ -616,7 +616,8 @@ class USXGenerator:
         )
         add_handlers(self.TABLE_CELL_MARKERS, self._node_2_usx_table)
         add_handlers(["zNameSpacePara", "zNameSpaceChar", "zNameSpaceMS",
-                      "zNameSpaceNote", "zNameSpaceUndefined"], self._node_2_usx_custom)
+                      "zNameSpaceNote", "zNameSpaceUndefined",
+                      "zNameSpaceClosed", "zNameSpaceRegular"], self._node_2_usx_custom)
 
         # Add paragraph style markers
         for marker in self.PARA_STYLE_MARKERS:

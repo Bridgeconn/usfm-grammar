@@ -499,8 +499,12 @@ class USJGenerator {
     let nodeType = null;
     if (node.type === 'zNameSpaceUndefined' && node.children.length > 0 ) {
       currNode = node.children[0];
-      const lastIndex = currNode.children.length;
-      if (currNode.children[lastIndex - 1].type.startsWith('zSpaceClose')) {
+    }
+    if (currNode.type === 'zNameSpaceClosed' && currNode.children.length > 0) {
+      // Undefined marker: take the closing as the cue for the type.
+      // Closed with \marker* implies char, closed with only \* implies ms.
+      const lastChild = currNode.children[currNode.children.length - 1];
+      if (lastChild.type.startsWith('zSpaceClose')) {
         nodeType = 'char';
       }
     }
@@ -623,7 +627,7 @@ class USJGenerator {
     addHandlers(['milestone'], this.nodeToUSJMilestone);
     addHandlers(
       ['zNameSpacePara', 'zNameSpaceChar', 'zNameSpaceNote', 'zNameSpaceMS',
-        'zNameSpaceUndefined'], this.nodeToUSJCustom,
+        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular'], this.nodeToUSJCustom,
     );
     addHandlers(['esb', 'cat', 'fig', 'ref'], this.nodeToUSJSpecial);
     addHandlers(NOTE_MARKERS, this.nodeToUSJNotes);

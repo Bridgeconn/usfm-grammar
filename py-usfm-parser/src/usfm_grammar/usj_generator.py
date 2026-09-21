@@ -596,7 +596,8 @@ class USJGenerator:
         )
         add_handlers(USJGenerator.MARKER_LISTS["table_cell"], self._node_2_usj_table)
         add_handlers(["zNameSpacePara", "zNameSpaceChar", "zNameSpaceNote",
-                      "zNameSpaceMS", "zNameSpaceUndefined"], self._node_2_usj_custom)
+                      "zNameSpaceMS", "zNameSpaceUndefined",
+                      "zNameSpaceClosed", "zNameSpaceRegular"], self._node_2_usj_custom)
 
         # Add paragraph style markers
         for marker in USJGenerator.MARKER_LISTS["para_style"]:

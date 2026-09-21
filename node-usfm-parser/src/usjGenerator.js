@@ -499,8 +499,12 @@ class USJGenerator {
     let nodeType = null;
     if (node.type === 'zNameSpaceUndefined' && node.children.length > 0 ) {
       currNode = node.children[0];
-      const lastIndex = currNode.children.length;
-      if (currNode.children[lastIndex - 1].type.startsWith('zSpaceClose')) {
+    }
+    if (currNode.type === 'zNameSpaceClosed' && currNode.children.length > 0) {
+      // Undefined marker: take the closing as the cue for the type.
+      // Closed with \marker* implies char, closed with only \* implies ms.
+      const lastChild = currNode.children[currNode.children.length - 1];
+      if (lastChild.type.startsWith('zSpaceClose')) {
         nodeType = 'char';
       }
     }
@@ -521,7 +525,8 @@ class USJGenerator {
       } else if (child.type.endsWith('Attribute')) {
         this.nodeToUSJ(child, customJsonObj);
       } else if (child.type.startsWith('zSpaceClose')) {
-        const closeMarker = this.usfm.slice(child.startIndex, child.endIndex).trim();
+        const closeMarker = this.usfm.slice(
+          child.startIndex, child.endIndex).trim().replace('\\', '');
         let closedMarker = closeMarker.replace(/\*$/, '');
         if (closeMarker.includes('custom')) {
           closedMarker = closedMarker.split('_').slice(1).join('_');
@@ -618,7 +623,7 @@ class USJGenerator {
     addHandlers(['milestone'], this.nodeToUSJMilestone);
     addHandlers(
       ['zNameSpacePara', 'zNameSpaceChar', 'zNameSpaceNote', 'zNameSpaceMS',
-        'zNameSpaceUndefined'], this.nodeToUSJCustom,
+        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular'], this.nodeToUSJCustom,
     );
     addHandlers(['esb', 'cat', 'fig', 'ref'], this.nodeToUSJSpecial);
     addHandlers(NOTE_MARKERS, this.nodeToUSJNotes);
