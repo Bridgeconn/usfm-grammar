@@ -18,7 +18,7 @@ test_files = all_usfm_files.copy()
 @pytest.mark.parametrize("file_path", test_files)
 def test_error_less_parsing(file_path):
     """Tests if input parses with or without errors, as expected"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     if is_valid_usfm(file_path):
         # positive tests
         assert not test_parser.errors, test_parser.errors
@@ -49,7 +49,7 @@ def get_nodes(node):
 @pytest.mark.timeout(30)
 def test_all_markers_are_in_output(file_path):
     """Tests if all markers in USFM are present in output also"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
 
     all_markers_in_input = find_all_markers(file_path, keep_number=False)

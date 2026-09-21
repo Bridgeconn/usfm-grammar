@@ -33,7 +33,7 @@ for file in negative_tests:
 @pytest.mark.timeout(30)
 def test_usj_converions_without_filter(file_path):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usfm_dict = test_parser.to_usj()
     assert isinstance(usfm_dict, dict)
@@ -50,7 +50,7 @@ def test_usj_converions_without_filter(file_path):
 @pytest.mark.timeout(30)
 def test_usj_converions_with_exclude_markers(file_path, exclude_markers):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usj_dict = test_parser.to_usj(exclude_markers=exclude_markers)
     assert isinstance(usj_dict, dict)
@@ -67,7 +67,7 @@ def test_usj_converions_with_exclude_markers(file_path, exclude_markers):
 @pytest.mark.timeout(30)
 def test_usj_converions_with_include_markers(file_path, include_markers):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usj_dict = test_parser.to_usj(include_markers=include_markers)
     assert isinstance(usj_dict, dict)
@@ -113,7 +113,7 @@ def get_types(element):
 @pytest.mark.timeout(30)
 def test_usj_all_markers_are_in_output(file_path):
     """Tests if all markers in USFM are present in output also"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
 
     all_markers_in_input = find_all_markers(file_path)
@@ -139,7 +139,7 @@ with open("../schemas/usj.js", "r", encoding="utf-8") as json_file:
 @pytest.mark.timeout(30)
 def test_usj_output_is_valid(file_path):
     """Test generated USJ against USJ schema"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usj_dict = test_parser.to_usj()
     validate(instance=usj_dict, schema=USJ_SCHEMA)
@@ -150,12 +150,12 @@ def test_usj_output_is_valid(file_path):
 def test_usj_round_tripping(file_path):
     """Convert USFM to USJ and back to USFM.
     Compare first USFM and second USFM based on parse tree"""
-    test_parser1 = initialise_parser(file_path)
+    test_parser1, markers_ext = initialise_parser(file_path)
     assert not test_parser1.errors, test_parser1.errors
     usj_dict = test_parser1.to_usj()
 
-    generated_USFM = generate_USFM_from_USJ(usj_dict)
-    test_parser2 = parse_USFM_string(generated_USFM)
+    generated_USFM = generate_USFM_from_USJ(usj_dict, markers_ext=markers_ext)
+    test_parser2 = parse_USFM_string(generated_USFM, markers_ext=markers_ext)
     assert not test_parser2.errors, str(test_parser2.errors)  # +"\n"+ generated_USFM
 
     # assert test_parser1.to_syntax_tree() == test_parser2.to_syntax_tree(), generated_USFM
@@ -200,7 +200,7 @@ def strip_default_attrib_value(usj_dict):
 @pytest.mark.timeout(30)
 def test_compare_usj_with_testsuite_samples(file_path):
     """Compare the generated USJ with the origin.xml in test suite"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usx_file_path = file_path.replace("origin.usfm", "origin.xml")
     if usx_file_path not in exclude_USX_files:

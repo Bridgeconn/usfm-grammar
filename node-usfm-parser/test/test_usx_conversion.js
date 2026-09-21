@@ -7,6 +7,7 @@ const {
   isValidUsfm,
   excludeUSXs,
   findAllMarkers,
+  generateUSFMFromUSX,
 } = require("./config");
 const {USFMParser, Filter} = require("../src/index");
 
@@ -27,12 +28,13 @@ before(async function () {
     // console.log(`Parsing USFM file ${idx}/${len}: ${filepath}`);
     if (isValidUsfm[filepath]) {
       try {
-        const parser = await initialiseParser(filepath);
-        const usx = parser.toUSX();
+        const {testParser, markersExt} = await initialiseParser(filepath);
+        const usx = testParser.toUSX();
         parsedCache.set(filepath, {
-          parser,
+          parser: testParser,
           usx,
-          usfm: parser.usfm,
+          usfm: testParser.usfm,
+          markersExt,
         });
       } catch (error) {
         console.error(`Failed to pre-parse ${filepath}: ${error.message}`);
@@ -99,8 +101,9 @@ describe("Test USFM-USX-USFM roundtripping", () => {
         const usx = cached.usx;
         assert(usx.nodeType === 1);
 
-        const testParser2 = new USFMParser(null, null, usx);
-        const generatedUSFM = testParser2.usfm.trim();
+        const generatedUSFM = generateUSFMFromUSX(usx, {
+          markersExt: cached.markersExt,
+        }).trim();
         assert.strictEqual(typeof generatedUSFM, "string");
         assert(generatedUSFM.startsWith("\\id"));
 

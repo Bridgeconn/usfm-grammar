@@ -28,36 +28,40 @@ def initialise_parser(input_usfm_path):
     with open(input_usfm_path, "r", encoding="utf-8") as usfm_file:
         usfm_string = usfm_file.read()
     user_extensions = input_usfm_path.replace("origin.usfm", "markers.ext")
-    # if glob(user_extensions):
-    #     with open(user_extensions, "r", encoding="utf-8") as ext_file:
-    #         markers_ext = ext_file.read()
-    # else:
-    #     markers_ext = None
-    test_parser = USFMParser(usfm_string, markers_ext=None)
-    return test_parser
+    if glob(user_extensions):
+        with open(user_extensions, "r", encoding="utf-8") as ext_file:
+            user_extensions = ext_file.read()
+    else:
+        user_extensions = None
+    test_parser = USFMParser(usfm_string, markers_ext=user_extensions)
+    return test_parser, user_extensions
 
 
-def generate_USFM_from_USJ(input_usj):
-    """Create a generator, and use usj_to_usfm convertion API"""
-    usj_parser = USFMParser(from_usj=input_usj, markers_ext=None)
+def generate_USFM_from_USJ(input_usj, **kwargs):
+    """Create a generator, and use usj_to_usfm conversion API"""
+    user_ext = kwargs.get('markers_ext')
+    usj_parser = USFMParser(from_usj=input_usj, markers_ext=user_ext)
     return usj_parser.usfm
 
 
-def generate_USFM_from_USX(input_usx):
-    """Create a generator, and use usj_to_usfm convertion API"""
-    usx_parser = USFMParser(from_usx=input_usx, markers_ext=None)
+def generate_USFM_from_USX(input_usx, **kwargs):
+    """Create a generator, and use usj_to_usfm conversion API"""
+    user_ext = kwargs.get('markers_ext')
+    usx_parser = USFMParser(from_usx=input_usx, markers_ext=user_ext)
     return usx_parser.usfm
 
 
-def generate_USFM_from_BibleNlp(input_biblenlp):
-    """Create a generator, and use biblenlp_to_usfm convertion API"""
-    usx_parser = USFMParser(from_biblenlp=input_biblenlp, markers_ext=None)
+def generate_USFM_from_BibleNlp(input_biblenlp, **kwargs):
+    """Create a generator, and use biblenlp_to_usfm conversion API"""
+    user_ext = kwargs.get('markers_ext')
+    usx_parser = USFMParser(from_biblenlp=input_biblenlp, markers_ext=user_ext)
     return usx_parser.usfm
 
 
-def parse_USFM_string(usfm_string):
+def parse_USFM_string(usfm_string, **kwargs):
     """Set up a parser obj with given string input"""
-    test_parser = USFMParser(usfm_string, markers_ext=None)
+    user_ext = kwargs.get('markers_ext')
+    test_parser = USFMParser(usfm_string, markers_ext=user_ext)
     return test_parser
 
 
@@ -88,7 +92,7 @@ def find_all_markers(usfm_path, keep_id=False, keep_number=True):
     with open(usfm_path, "r", encoding="utf-8") as in_usfm_file:
         usfm_str = in_usfm_file.read()
         all_markers_in_input = re.findall(
-            r"\\(([A-Za-z]+)\d*(-\d+)?(-[se])?)", usfm_str
+            r"\\(([A-Za-z_\-]+)(\d*)?(-[se])?)", usfm_str
         )
     if keep_number:
         all_markers_in_input = [find[0] for find in all_markers_in_input]
@@ -104,11 +108,11 @@ def find_all_markers(usfm_path, keep_id=False, keep_number=True):
         all_markers_in_input.remove("usfm")
     if "vid" in all_markers_in_input:
         all_markers_in_input.remove("vid")
-    # for marker in all_markers_in_input:
-    #     if marker.startswith("custom"):
-    #         all_markers_in_input.remove(marker)
-    #         split_marker = "_".join(marker.split("_")[1:])
-    #         all_markers_in_input.append(split_marker)
+    for marker in all_markers_in_input:
+        if marker.startswith("custom"):
+            all_markers_in_input.remove(marker)
+            split_marker = "_".join(marker.split("_")[1:])
+            all_markers_in_input.append(split_marker)
     return all_markers_in_input
 
 

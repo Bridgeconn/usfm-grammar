@@ -37,7 +37,7 @@ for file in negative_tests:
 @pytest.mark.timeout(30)
 def test_successful_usx_converion(file_path):
     """Tests if input parses & converts to usx successfully"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usx_xml = test_parser.to_usx()
     assert isinstance(usx_xml, type(lxml_object)), test_parser.to_syntax_tree()
@@ -47,7 +47,7 @@ def test_successful_usx_converion(file_path):
 @pytest.mark.timeout(30)
 def test_generated_usx_with_rnc_grammar(file_path):
     """Tests if input parses & converts to usx successfully and validates the usx against schema"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usx_xml = test_parser.to_usx()
     assert isinstance(usx_xml, type(lxml_object)), test_parser.to_syntax_tree()
@@ -64,7 +64,7 @@ for file in [path.replace("xml", "usfm") for path in exclude_USX_files]:
 @pytest.mark.timeout(30)
 def test_compare_usx_with_testsuite_samples(file_path):
     """Compare the generated USX with the origin.xml in test suite"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usx_xml = test_parser.to_usx()
     assert isinstance(usx_xml, type(lxml_object)), test_parser.to_syntax_tree()
@@ -115,7 +115,7 @@ def get_styles(element):
 @pytest.mark.timeout(30)
 def test_all_markers_are_in_output(file_path):
     """Tests if all markers in USFM are present in output also"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
 
     all_markers_in_input = find_all_markers(file_path, keep_id=True, keep_number=True)

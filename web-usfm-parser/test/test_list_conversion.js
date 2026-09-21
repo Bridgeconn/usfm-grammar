@@ -1,6 +1,7 @@
 import assert from 'assert';
 import fs from 'node:fs';
-import {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers, customMarkersExt} from './config.js';
+import {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers,
+        customMarkersExt, readMarkersExt, createParser} from './config.js';
 import {USFMParser, Filter} from '../src/index.js';
 
 
@@ -10,7 +11,7 @@ describe("Check successful USFM-List conversion for positive samples", () => {
     if (isValidUsfm[value]) {
       it(`Convert ${value} to List`, async (inputUsfmPath=value) => {
         //Tests if input parses without errors
-        const testParser = await initialiseParser(inputUsfmPath)
+        const {testParser} = await initialiseParser(inputUsfmPath)
         assert(testParser instanceof USFMParser)
         const list = testParser.toList();
         assert(list instanceof Array);
@@ -32,7 +33,7 @@ describe("Test Exclude Marker option in List conversion", () => {
         allUsfmFiles.forEach(function(value) {
           if (isValidUsfm[value]) {
             it(`Exclude ${exList.slice(0, 5)} from ${value}`, async (inputUsfmPath=value) => {
-                const testParser = await initialiseParser(inputUsfmPath)
+                const {testParser} = await initialiseParser(inputUsfmPath)
                 assert(testParser instanceof USFMParser)
                 const list = testParser.toList(exList);
                 assert(list instanceof Array);
@@ -56,7 +57,7 @@ describe("Test include Marker option in List conversion", () => {
         allUsfmFiles.forEach(function(value) {
           if (isValidUsfm[value]) {
             it(`include ${inList.slice(0, 5)} of ${value} in List`, async (inputUsfmPath=value) => {
-                const testParser = await initialiseParser(inputUsfmPath)
+                const {testParser} = await initialiseParser(inputUsfmPath)
                 assert(testParser instanceof USFMParser)
                 const list = testParser.toList(null, inList);
                 assert(list instanceof Array);
@@ -75,7 +76,7 @@ describe("Test USFM to BibleNLP format conversion", () => {
     if (isValidUsfm[value]) {
       it(`Convert ${value} to BibleNLP`, async (inputUsfmPath=value) => {
         //Tests if input parses without errors
-        const testParser = await initialiseParser(inputUsfmPath)
+        const {testParser} = await initialiseParser(inputUsfmPath)
         assert(testParser instanceof USFMParser)
         const json = testParser.toBibleNlpFormat();
         assert("text" in json);
@@ -98,7 +99,8 @@ describe("Test USJ to BibleNLP format conversion", () => {
         //Tests if input parses without errors
         const rawData = fs.readFileSync(filePath, 'utf8');
         const usj = JSON.parse(rawData)
-        const testParser = new USFMParser(null, usj, null, null, null, customMarkersExt);
+        const markersExt = readMarkersExt(value) ?? customMarkersExt;
+        const testParser = createParser({fromUsj: usj, markersExt: markersExt});
         assert(testParser instanceof USFMParser)
         const json = testParser.toBibleNlpFormat();
         assert("text" in json);
@@ -116,12 +118,12 @@ describe("Test generating USFM from BibleNLP format", async () => {
   allUsfmFiles.forEach(function(value) {
     if (isValidUsfm[value]) {
       it(`Generate USFM from BibleNLP: ${value}`, async (inputUsfmPath=value) => {
-        const testParser = await initialiseParser(inputUsfmPath);
+        const {testParser, markersExt} = await initialiseParser(inputUsfmPath);
         const bibleNlpObj = testParser.toBibleNlpFormat();
         if (bibleNlpObj['vref'].length > 0) {
-          const bnlpParser = new USFMParser(
-            null, null, null, bibleNlpObj, null, customMarkersExt,
-          );
+          const bnlpParser = createParser({
+            fromBibleNlp: bibleNlpObj, markersExt: markersExt ?? customMarkersExt,
+          });
           const newusfm = bnlpParser.usfm;
           assert(bnlpParser.errors.length === 0);
           assert(newusfm.includes("\\id"));

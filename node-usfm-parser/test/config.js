@@ -141,18 +141,55 @@ let excludeUSXs = [
             // does the ms go inside \s5 or after it?
 ]
 
+const readMarkersExt = function (inputPath){
+    `Read the markers.ext kept beside the sample, if the test case has one`
+    const extPath = inputPath.replace(/origin\.(usfm|json|xml)$/, "markers.ext");
+    if (extPath !== inputPath && fs.existsSync(extPath)) {
+        return fs.readFileSync(extPath, 'utf8');
+    }
+    return null;
+}
+
+const createParser = function (options = {}){
+    `Build a USFMParser from an options json, so more inputs can be added later`
+    const {usfmString = null, fromUsj = null, fromUsx = null,
+           fromBibleNlp = null, bookCode = null, markersExt = null} = options;
+    return new USFMParser(usfmString, fromUsj, fromUsx, fromBibleNlp, bookCode, markersExt);
+}
+
 const initialiseParser = function (inputUsfmPath){
-    `Open and parse the given file`
+    `Open and parse the given file, along with its markers.ext, if present`
     try {
       const data = fs.readFileSync(inputUsfmPath, 'utf8');
-      let testParser = new USFMParser(data);
+      const markersExt = readMarkersExt(inputUsfmPath);
+      let testParser = createParser({usfmString: data, markersExt: markersExt});
       if (testParser === null) {
         throw Error(`Paring failed for ${inputUsfmPath}: ${data}`)
       }
-      return testParser;
+      return {testParser: testParser, markersExt: markersExt};
     } catch (err) {
         throw err;
     }
+}
+
+const parseUSFMString = function (usfmString, options = {}){
+    `Set up a parser obj with given string input`
+    return createParser({...options, usfmString: usfmString});
+}
+
+const generateUSFMFromUSJ = function (inputUsj, options = {}){
+    `Create a generator, and use the usj to usfm conversion API`
+    return createParser({...options, fromUsj: inputUsj}).usfm;
+}
+
+const generateUSFMFromUSX = function (inputUsx, options = {}){
+    `Create a generator, and use the usx to usfm conversion API`
+    return createParser({...options, fromUsx: inputUsx}).usfm;
+}
+
+const generateUSFMFromBibleNlp = function (inputBibleNlp, options = {}){
+    `Create a generator, and use the biblenlp to usfm conversion API`
+    return createParser({...options, fromBibleNlp: inputBibleNlp}).usfm;
 }
 
 const checkValidUsfm = function (inputUsfmPath) {
@@ -185,13 +222,15 @@ const checkValidUsfm = function (inputUsfmPath) {
 
 const findAllMarkers = function (usfmStr, keepId = false, keepNumber = true) {
   // Regex pattern to find all markers in the USFM string
-  let allMarkersInInput = [...usfmStr.matchAll(/\\\+?(([A-Za-z\_]+)\d*(-\d+)?(-[se])?)/g)];
+  // The name class allows "-" so hyphenated user extensions (\z-note) stay whole,
+  // while (-\d+)? still keeps numeric ranges such as \tcr1-2 intact.
+  let allMarkersInInput = [...usfmStr.matchAll(/\\\+?(([A-Za-z_\-]+)(\d*)?(-\d+)?(-[se])?)/g)];
 
   // Processing based on `keepNumber` flag
   if (keepNumber) {
     allMarkersInInput = allMarkersInInput.map(match => match[1]);
   } else {
-    allMarkersInInput = allMarkersInInput.map(match => match[1] + match[3]);
+    allMarkersInInput = allMarkersInInput.map(match => match[2] + (match[5] || ""));
   }
 
   // Remove duplicates
@@ -244,6 +283,12 @@ allUsfmFiles.forEach((filepath) => {
 module.exports = {
     allUsfmFiles: allUsfmFiles,
     initialiseParser: initialiseParser,
+    readMarkersExt: readMarkersExt,
+    createParser: createParser,
+    parseUSFMString: parseUSFMString,
+    generateUSFMFromUSJ: generateUSFMFromUSJ,
+    generateUSFMFromUSX: generateUSFMFromUSX,
+    generateUSFMFromBibleNlp: generateUSFMFromBibleNlp,
     isValidUsfm: isValidUsfm,
     excludeUSJs: excludeUSJs,
     excludeUSXs: excludeUSXs,

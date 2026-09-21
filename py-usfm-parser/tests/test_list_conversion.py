@@ -18,7 +18,7 @@ for file in negative_tests:
 @pytest.mark.timeout(30)
 def test_list_converions_without_filter(file_path):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usfm_list = test_parser.to_list()
     assert isinstance(usfm_list, list)
@@ -29,7 +29,7 @@ def test_list_converions_without_filter(file_path):
 @pytest.mark.timeout(30)
 def test_list_converions_with_exclude_markers(file_path, exclude_markers):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usfm_list = test_parser.to_list(exclude_markers=exclude_markers)
     assert isinstance(usfm_list, list)
@@ -47,7 +47,7 @@ trailing_num_pattern = re.compile(r"\d+$")
 @pytest.mark.timeout(30)
 def test_list_converions_with_include_markers(file_path, include_markers):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usfm_list = test_parser.to_list(include_markers=include_markers)
     assert isinstance(usfm_list, list)
@@ -65,7 +65,7 @@ def test_list_converions_with_include_markers(file_path, include_markers):
 @pytest.mark.timeout(30)
 def test_usfm_to_biblenlp_conversion(file_path):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     bible_nlp_dict = test_parser.to_biblenlp_format()
     assert isinstance(bible_nlp_dict, dict)
@@ -108,11 +108,11 @@ for path in emtpy_scritures:
 @pytest.mark.timeout(30)
 def test_biblenlp_to_usfm(file_path):
     """Test USFM to BibleNLP, then BibleNLP to USFM"""
-    test_parser = initialise_parser(file_path)
+    test_parser, markers_ext = initialise_parser(file_path)
     bible_nlp_dict = test_parser.to_biblenlp_format()
 
-    generated_usfm = generate_USFM_from_BibleNlp(bible_nlp_dict)
+    generated_usfm = generate_USFM_from_BibleNlp(bible_nlp_dict, markers_ext=markers_ext)
     print(generated_usfm)
 
-    test_parser2 = parse_USFM_string(generated_usfm)
+    test_parser2 = parse_USFM_string(generated_usfm, markers_ext=markers_ext)
     assert test_parser2.errors == []
