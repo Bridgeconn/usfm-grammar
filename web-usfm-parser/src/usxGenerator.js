@@ -626,9 +626,9 @@ class USXGenerator {
           .slice(child.startIndex, child.endIndex)
           .trim()
           .replace('\\', '');
-        let closedMarker = closeMarker;
+        let closedMarker = closeMarker.replace(/\*$/, '');
         if (closeMarker.includes('custom')) {
-          closedMarker = closeMarker.split('_').slice(1).join('_');
+          closedMarker = closedMarker.split('_').slice(1).join('_');
         }
         if (closedMarker !== customXmlNode.getAttribute('style')) {
           this.warnings.push(
@@ -636,6 +636,9 @@ class USXGenerator {
             `instead of ${customXmlNode.getAttribute('style')}`,
           );
         }
+      } else if (child.type === 'caller') { 
+        customXmlNode.setAttribute('caller',
+          this.usfm.slice(child.startIndex, child.endIndex).trim());
       } else {
         this.node2Usx(child, customXmlNode);
       }

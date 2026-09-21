@@ -509,7 +509,7 @@ class USJGenerator {
       this.errors.push(`Unknown custom node type: ${currNode.type}`);
       return;
     }
-    const customJsonObj = { type: nodeType };
+    const customJsonObj = { type: nodeType, content: [] };
     for (const child of currNode.children) {
       if (child.type.startsWith('zSpaceTag')) {
         const marker = this.usfm
@@ -526,9 +526,9 @@ class USJGenerator {
           .slice(child.startIndex, child.endIndex)
           .trim()
           .replace('\\', '');
-        let closedMarker = closeMarker;
+        let closedMarker = closeMarker.replace(/\*$/, '');
         if (closedMarker.includes('custom')) {
-          closedMarker = closeMarker.split('_').slice(1).join('_');
+          closedMarker = closedMarker.split('_').slice(1).join('_');
         }
         if (closedMarker !== customJsonObj.marker) {
           this.warnings.push(
@@ -536,10 +536,9 @@ class USJGenerator {
             `instead of ${customJsonObj.marker}`,
           );
         }
+      } else if (child.type === 'caller') { 
+        customJsonObj.caller = this.usfm.slice(child.startIndex, child.endIndex).trim();
       } else {
-        if (!customJsonObj.content) {
-          customJsonObj.content = [];
-        }
         this.nodeToUSJ(child, customJsonObj);
       }
     }

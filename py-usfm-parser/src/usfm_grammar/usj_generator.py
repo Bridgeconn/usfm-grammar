@@ -483,7 +483,7 @@ class USJGenerator:
             case _ :
                 self.errors.append(f"Unknown custom node type: {node.type}")
                 return
-        custom_json_obj = {"type": node_type}
+        custom_json_obj = {"type": node_type, "content": []}
         for child in curr_node.children:
             if child.type.startswith("zSpaceTag"):
                 marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
@@ -496,13 +496,14 @@ class USJGenerator:
             elif child.type.startswith("zSpaceClose"):
                 closed_marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
                 closed_marker_name = closed_marker_name.replace("\\", "")
+                closed_marker_name = re.sub(r"\*$", "", closed_marker_name)
                 if closed_marker_name.startswith("custom"):
                     closed_marker_name = "_".join(closed_marker_name.split("_")[1:])
                 if closed_marker_name != custom_json_obj["marker"]:
                     self.warnings.append(f"Custom node closed with a different marker: {closed_marker_name} instead of {custom_json_obj['marker']}")
+            elif child.type == "caller":
+                custom_json_obj['caller'] = self.usfm[child.start_byte: child.end_byte].decode("utf-8").strip()
             else:
-                if "content" not in custom_json_obj:
-                    custom_json_obj["content"] = []
                 self.node_2_usj(child, custom_json_obj)
         parent_json_obj["content"].append(custom_json_obj)
                 

@@ -531,10 +531,15 @@ class USXGenerator:
             elif child.type.startswith("zSpaceClose"):
                 closed_marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
                 closed_marker_name = closed_marker_name.replace("\\", "")
+                closed_marker_name = re.sub(r"\*$", "", closed_marker_name)
                 if closed_marker_name.startswith("custom"):
                     closed_marker_name = "_".join(closed_marker_name.split("_")[1:])
-                if closed_marker_name != custom_xml_node.get("marker"):
-                    self.warnings.append(f"Custom node closed with a different marker: {closed_marker_name} instead of {custom_xml_node.get('marker')}")
+                if closed_marker_name != custom_xml_node.get("style"):
+                    self.warnings.append("Custom node closed with a different marker: "+\
+                        f"{closed_marker_name} instead of {custom_xml_node.get('style')}")
+            elif child.type == 'caller':
+                custom_xml_node.set('caller',
+                                    self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip())
             else:
                 self.node_2_usx(child, custom_xml_node)
 
