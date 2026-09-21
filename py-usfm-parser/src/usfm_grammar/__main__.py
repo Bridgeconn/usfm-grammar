@@ -15,21 +15,31 @@ for member in Filter:
     all_markers += member.value
 
 
+def handle_markers_ext_file(arg_parser):
+    """Read the marker extensions file, if one is given"""
+    markers_ext_file = arg_parser.parse_args().markers_ext
+    if markers_ext_file is None:
+        return None
+    with open(markers_ext_file, "r", encoding="utf-8") as ext_file:
+        return ext_file.read()
+
+
 def handle_input_file(arg_parser):
     """If initialsing with USFM or USJ?"""
     infile = arg_parser.parse_args().infile
     input_format = arg_parser.parse_args().in_format
+    markers_ext = handle_markers_ext_file(arg_parser)
     with open(infile, "r", encoding="utf-8") as usfm_file:
         file_content = usfm_file.read()
 
     if input_format == Format.JSON or infile.split(".")[-1].lower() in ["json", "usj"]:
         usj_obj = json.loads(file_content)
-        my_parser = USFMParser(from_usj=usj_obj)
+        my_parser = USFMParser(from_usj=usj_obj, markers_ext=markers_ext)
     elif input_format == Format.USX or infile.split(".")[-1].lower() in ["xml", "usx"]:
         usx_obj = etree.fromstring(file_content)
-        my_parser = USFMParser(from_usx=usx_obj)
+        my_parser = USFMParser(from_usx=usx_obj, markers_ext=markers_ext)
     elif input_format == Format.USFM:
-        my_parser = USFMParser(file_content)
+        my_parser = USFMParser(file_content, markers_ext=markers_ext)
     elif input_format == Format.BIBLENLP:
         texts = file_content.rstrip().split("\n")
         vref_file = arg_parser.parse_args().vref
@@ -40,7 +50,9 @@ def handle_input_file(arg_parser):
             with open(vref_file, "r", encoding="utf-8") as vrf:
                 refs = vrf.read().rstrip().split("\n")
         obj = {"vref": refs, "text": texts}
-        my_parser = USFMParser(from_biblenlp=obj, book_code=bookcode)
+        my_parser = USFMParser(
+            from_biblenlp=obj, book_code=bookcode, markers_ext=markers_ext
+        )
     else:
         raise ParameterError("Un-recognized input_format!")
     return my_parser
@@ -147,6 +159,11 @@ def main():  # pylint: disable=too-many-locals
     arg_parser.add_argument(
         "--bookcode",
         help="book to be exported from biblenlp to usfm format",
+        default=None,
+    )
+    arg_parser.add_argument(
+        "--markers_ext",
+        help="path to the marker extensions file, defining the custom \\z markers used",
         default=None,
     )
     arg_parser.add_argument(
