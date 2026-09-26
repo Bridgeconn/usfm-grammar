@@ -662,20 +662,29 @@ module.exports = grammar({
     zSpaceTagChar: $=> /\\customChar_z[\w\-]+/,
     zSpaceCloseChar: $=> /\\customChar_z[\w\-]+\*/,
     zSpaceTagMilestone: $=> /\\customMS_z[\w\-]+/,
+    zSpaceTagCharNested: $=> /\\\+customChar_z[\w\-]+/,
+    zSpaceCloseCharNested: $=> /\\\+customChar_z[\w\-]+\*/,
 
     zSpaceTagGeneric: $=> /\\z[\w\-]+/,
     zSpaceCloseGeneric: $=> /\\z[\w\-]+\*/,
+    zSpaceTagGenericNested: $=> /\\\+z[\w\-]+/,
+    zSpaceCloseGenericNested: $=> /\\\+z[\w\-]+\*/,
     zNameSpaceRegular: $ => prec.right(0, seq($.zSpaceTagGeneric, optional($.text))),
     zNameSpaceClosed: $ => prec.right(0, seq($.zSpaceTagGeneric, optional($.text),
-      choice(optional($._milestoneAttributes), repeat(choice($.zNameSpaceChar,$.zNameSpaceClosed))),
-      choice($.zSpaceCloseGeneric, "\\*"))), // This may not support one name space within another
+      choice(optional($._milestoneAttributes), repeat(choice(
+        $.zNameSpaceChar,$.zNameSpaceClosed, $.zNameSpaceNested, $.zNameSpaceCharNested))),
+      choice($.zSpaceCloseGeneric, "\\*"))), // This may support one name space within another
     // zNameSpaceStandaloneMarker: $ => seq($.zSpaceTagGeneric, optional($.text),
     //   optional($._milestoneAttributes), "\\*" ),
+    zNameSpaceNested: $ => prec.right(0, seq($.zSpaceTagGenericNested, optional($.text),
+      optional($._milestoneAttributes), optional($.zSpaceCloseGenericNested))),
     zNameSpaceUndefined: $ => choice($.zNameSpaceClosed, $.zNameSpaceRegular),
 
     zNameSpacePara: $ => prec.right(0, seq($.zSpaceTagPara, optional($.text))),
-    zNameSpaceChar: $ => prec.right(0, seq($.zSpaceTagChar, optional($.text),
-      optional($._milestoneAttributes), $.zSpaceCloseChar)), // This does not support one name space within another
+    zNameSpaceChar: $ => prec.right(0, seq($.zSpaceTagChar, repeat(choice($.text,$.zNameSpaceCharNested,$.zNameSpaceNested)),
+      optional($._milestoneAttributes), $.zSpaceCloseChar)), // This does support one name space within another
+    zNameSpaceCharNested: $ => prec.right(0, seq($.zSpaceTagCharNested, optional($.text),
+      optional($._milestoneAttributes), optional($.zSpaceCloseCharNested))),
     zNameSpaceMS: $ => seq($.zSpaceTagMilestone, optional($.text),
       optional($._milestoneAttributes), "\\*" ),
     zNameSpaceNote: $=> prec.right(0, seq($.zSpaceTagNote, $.caller, //repeat(choice($._footnoteContents, $._crossrefContents, $.zNameSpaceChar)), $.zSpaceCloseNote)),

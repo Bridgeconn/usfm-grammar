@@ -21,7 +21,9 @@ znamespace
 \c 2
 \customMS_z-extra Some text content which is not scripture \*
 \z-milestone |x-attrib="value"\*
-\p scripture continues
+\p scripture continues \customChar_zCC test text and \+zInner nested text \+zInner* \customChar_zCC* followed by scripture...
+\p scripture continues \zCC test text and \+zInner nested text \+zInner* \zCC* followed by scripture...
+\p scripture continues \zNote + \zInner nested text \zInner* \zNote* followed by scripture...
 --------------------------------------------------------------------------------
 
 (File
@@ -129,6 +131,47 @@ znamespace
           (attributeValue))))
     (paragraph
       (p
+        (verseText
+          (text))
+        (zNameSpaceChar
+          (zSpaceTagChar)
+          (text)
+          (zNameSpaceNested
+            (zSpaceTagGenericNested)
+            (text)
+            (zSpaceCloseGenericNested))
+          (text)
+          (zSpaceCloseChar))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (verseText
+          (text))
+        (zNameSpaceUndefined
+          (zNameSpaceClosed
+            (zSpaceTagGeneric)
+            (text)
+            (zNameSpaceNested
+              (zSpaceTagGenericNested)
+              (text)
+              (zSpaceCloseGenericNested))
+            (zSpaceCloseGeneric)))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (verseText
+          (text))
+        (zNameSpaceUndefined
+          (zNameSpaceClosed
+            (zSpaceTagGeneric)
+            (text)
+            (zNameSpaceClosed
+              (zSpaceTagGeneric)
+              (text)
+              (zSpaceCloseGeneric))
+            (zSpaceCloseGeneric)))
         (verseText
           (text))))))
 
