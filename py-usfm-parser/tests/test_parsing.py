@@ -56,8 +56,9 @@ def test_all_markers_are_in_output(file_path):
 
     all_nodes_in_st = get_nodes(test_parser.syntax_tree)
     for marker in all_markers_in_input:
+        node_name = marker
         if marker in ["list-s", "list-e"]:
-            marker = marker.replace("-", "_")
+            node_name = marker.replace("-", "_")
         elif marker.startswith("z"):
             found = False
             for node in all_nodes_in_st:
@@ -71,10 +72,13 @@ def test_all_markers_are_in_output(file_path):
             or marker.endswith("-e")
             or marker.endswith("-s")
         ):
-            marker = "milestone"
+            node_name = "milestone"
         elif marker in ["xt"]:
-            marker = "crossref"
-        assert marker in all_nodes_in_st, marker
+            node_name = "crossref"
+        # A marker used nested (\+nd) gets its own "<marker>Nested" node in the tree
+        assert (
+            node_name in all_nodes_in_st or f"{marker}Nested" in all_nodes_in_st
+        ), marker
 
 
 USFM_WITH_ERROR = """

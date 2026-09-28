@@ -88,18 +88,20 @@ def is_valid_usfm(input_usfm_path):
 
 
 def find_all_markers(usfm_path, keep_id=False, keep_number=True):
-    """To use regex pattern and finall markers in the USFM file"""
+    """To use regex pattern and find all markers in the USFM file"""
     with open(usfm_path, "r", encoding="utf-8") as in_usfm_file:
         usfm_str = in_usfm_file.read()
-        all_markers_in_input = re.findall(
-            r"\\(([A-Za-z_\-]+)(\d*)?(-[se])?)", usfm_str
-        )
+    # The name class allows "-" so hyphenated user extensions (\z-note) stay whole,
+    # while (-\d+)? still keeps numeric ranges such as \tcr1-2 intact.
+    all_markers_in_input = re.findall(
+        r"\\\+?(([A-Za-z_\-]+)(\d*)?(-\d+)?(-[se])?)", usfm_str
+    )
     if keep_number:
         all_markers_in_input = [find[0] for find in all_markers_in_input]
     else:
-        all_markers_in_input = [find[1] + find[3] for find in all_markers_in_input]
+        all_markers_in_input = [find[1] + find[4] for find in all_markers_in_input]
     all_markers_in_input = list(set(all_markers_in_input))
-    if not keep_id:
+    if not keep_id and "id" in all_markers_in_input:
         all_markers_in_input.remove("id")
     if "esbe" in all_markers_in_input:
         assert "esb" in all_markers_in_input
@@ -108,11 +110,11 @@ def find_all_markers(usfm_path, keep_id=False, keep_number=True):
         all_markers_in_input.remove("usfm")
     if "vid" in all_markers_in_input:
         all_markers_in_input.remove("vid")
-    for marker in all_markers_in_input:
-        if marker.startswith("custom"):
-            all_markers_in_input.remove(marker)
-            split_marker = "_".join(marker.split("_")[1:])
-            all_markers_in_input.append(split_marker)
+    # Strip the "customType_" prefix off markers coming from markers.ext
+    all_markers_in_input = [
+        "_".join(marker.split("_")[1:]) if marker.startswith("custom") else marker
+        for marker in all_markers_in_input
+    ]
     return all_markers_in_input
 
 
