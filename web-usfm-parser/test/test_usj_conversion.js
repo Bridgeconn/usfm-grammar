@@ -418,3 +418,36 @@ describe("Test that Filter members are not mutated", () => {
     assert.deepStrictEqual(myMarkers, ["list-s", "p"]);
   });
 });
+
+describe("Test that filtering does not mutate the input USJ", () => {
+  // Filters must return a new tree, leaving the caller's USJ object as it was
+  const sampleFile = "../tests/specExamples/chapter-verse/origin.usfm";
+
+  it(`Filter.keepOnly leaves the input USJ untouched`, async function () {
+    const {testParser} = await initialiseParser(sampleFile);
+    const usj = testParser.toUSJ();
+    const before = JSON.parse(JSON.stringify(usj));
+    const kept = Filter.keepOnly(usj, [...Filter.BCV, "USJ"]);
+    assert.deepStrictEqual(usj, before, "input USJ was modified");
+    assert.notDeepStrictEqual(kept, usj, "filtering should have changed something");
+  });
+
+  it(`Filter.remove leaves the input USJ untouched`, async function () {
+    const {testParser} = await initialiseParser(sampleFile);
+    const usj = testParser.toUSJ();
+    const before = JSON.parse(JSON.stringify(usj));
+    const removed = Filter.remove(usj, [...Filter.PARAGRAPHS]);
+    assert.deepStrictEqual(usj, before, "input USJ was modified");
+    assert.notDeepStrictEqual(removed, usj, "filtering should have changed something");
+  });
+
+  it(`keepOnly still drops ca/cp/va/vp when they are not included`, async function () {
+    const {testParser} = await initialiseParser(sampleFile);
+    const usj = testParser.toUSJ();
+    assert(JSON.stringify(usj).includes("altnumber"), "sample should have altnumber");
+    const kept = Filter.keepOnly(usj, [...Filter.BCV, "USJ"]);
+    assert(!JSON.stringify(kept).includes("altnumber"), "altnumber should be dropped");
+    const keptWithCa = Filter.keepOnly(usj, [...Filter.BCV, "ca", "va", "USJ"]);
+    assert(JSON.stringify(keptWithCa).includes("altnumber"), "altnumber should be kept");
+  });
+});

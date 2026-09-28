@@ -89,8 +89,10 @@ function excludeMarkersInUsj(
   }
 
   if (thisMarkerNeeded) {
-    inputUsj.content = cleanedKids;
-    return inputUsj;
+    // Copy, rather than mutate the caller's USJ object
+    const cleanedUsj = { ...inputUsj };
+    cleanedUsj.content = cleanedKids;
+    return cleanedUsj;
   }
   if (innerContentNeeded) {
     return cleanedKids;
@@ -138,22 +140,22 @@ function includeMarkersInUsj(
     }
   }
 
-  if (thisMarker === 'c') {
-    if (!includeMarkers.includes('ca'))
-    { delete inputUsj.altnumber; }
-    if (!includeMarkers.includes('cp'))
-    { delete inputUsj.pubnumber; }
-  } else if (thisMarker === 'v') {
-    if (!includeMarkers.includes('va'))
-    { delete inputUsj.altnumber; }
-    if (!includeMarkers.includes('vp'))
-    { delete inputUsj.pubnumber; }
-  }
-
-
   if (thisMarkerNeeded) {
-    inputUsj.content = cleanedKids;
-    return inputUsj;
+    // Copy, rather than mutate the caller's USJ object
+    const cleanedUsj = { ...inputUsj };
+    cleanedUsj.content = cleanedKids;
+    if (thisMarker === 'c') {
+      if (!includeMarkers.includes('ca'))
+      { delete cleanedUsj.altnumber; }
+      if (!includeMarkers.includes('cp'))
+      { delete cleanedUsj.pubnumber; }
+    } else if (thisMarker === 'v') {
+      if (!includeMarkers.includes('va'))
+      { delete cleanedUsj.altnumber; }
+      if (!includeMarkers.includes('vp'))
+      { delete cleanedUsj.pubnumber; }
+    }
+    return cleanedUsj;
   }
   if (innerContentNeeded) {
     return cleanedKids;

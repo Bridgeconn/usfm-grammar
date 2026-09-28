@@ -1,6 +1,7 @@
 """Test the to_dict or json conversion API"""
 
 import pytest
+import copy
 import json
 import re
 from jsonschema import validate
@@ -8,6 +9,10 @@ from deepdiff import DeepDiff
 from src.usfm_grammar import USFMParser, Filter
 
 
+from src.usfm_grammar.filters import (
+    exclude_markers_in_usj,
+    include_markers_in_usj,
+)
 from tests import (
     all_usfm_files,
     initialise_parser,
@@ -301,3 +306,18 @@ def test_caller_marker_list_is_not_mutated():
     test_parser, _ = initialise_parser(SAMPLE_FOR_MUTATION_TEST)
     test_parser.to_usj(include_markers=my_markers)
     assert my_markers == ["list-s", "p"]
+
+
+@pytest.mark.timeout(30)
+def test_filters_do_not_mutate_input_usj():
+    """Filters must return a new tree, leaving the caller's USJ object as it was"""
+    test_parser, _ = initialise_parser("../tests/specExamples/chapter-verse/origin.usfm")
+    usj_dict = test_parser.to_usj()
+    before = copy.deepcopy(usj_dict)
+    kept = include_markers_in_usj(usj_dict, list(Filter.BCV) + ["USJ"])
+    assert usj_dict == before, "input USJ was modified by include_markers_in_usj"
+    assert kept != usj_dict, "filtering should have changed something"
+
+    removed = exclude_markers_in_usj(usj_dict, list(Filter.PARAGRAPHS))
+    assert usj_dict == before, "input USJ was modified by exclude_markers_in_usj"
+    assert removed != usj_dict, "filtering should have changed something"
