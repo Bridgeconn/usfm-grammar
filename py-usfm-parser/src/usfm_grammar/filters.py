@@ -4,6 +4,7 @@
 """
 
 import re
+from copy import deepcopy
 
 MARKERS_WITH_DISCARDABLE_CONTENTS = [
     "ide", "usfm", "h", "toc", "toca",  # identification
@@ -50,6 +51,23 @@ def combine_consequtive_text_contents(contents_list):
     return text_combined_contents
 
 
+def copy_usj_node(input_usj, cleaned_kids):
+    """Build a copy of a USJ node, instead of mutating the caller's object.
+
+    "content" is already rebuilt from the filtered children, so only the other
+    values need a deep copy. That keeps the copying linear, and keeps any
+    non-primitive value from being shared between the input and the output.
+    """
+    cleaned_usj = {}
+    for key, value in input_usj.items():
+        if key == "content" or not isinstance(value, (dict, list)):
+            cleaned_usj[key] = value
+        else:
+            cleaned_usj[key] = deepcopy(value)
+    cleaned_usj["content"] = cleaned_kids
+    return cleaned_usj
+
+
 def exclude_markers_in_usj(
     input_usj, exclude_markers: list, combine_texts=True, excluded_parent=False
 ):
@@ -88,9 +106,7 @@ def exclude_markers_in_usj(
         if combine_texts:
             cleaned_kids = combine_consequtive_text_contents(cleaned_kids)
     if this_marker_needed:
-        cleaned_usj = input_usj.copy()
-        cleaned_usj["content"] = cleaned_kids
-        return cleaned_usj
+        return copy_usj_node(input_usj, cleaned_kids)
     if inner_content_needed:
         return cleaned_kids
     return []
@@ -135,9 +151,7 @@ def include_markers_in_usj(
         if combine_texts:
             cleaned_kids = combine_consequtive_text_contents(cleaned_kids)
     if this_marker_needed:
-        cleaned_usj = input_usj.copy()
-        cleaned_usj["content"] = cleaned_kids
-        return cleaned_usj
+        return copy_usj_node(input_usj, cleaned_kids)
     if inner_content_needed:
         return cleaned_kids
     return []

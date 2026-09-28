@@ -40,6 +40,34 @@ function combineConsecutiveTextContents(contentsList) {
   return textCombinedContents;
 }
 
+function deepCopyValue(value) {
+  // Plain-JSON deep copy; primitives are immutable so they are returned as is
+  if (value === null || typeof value !== 'object') {
+    return value;
+  }
+  if (Array.isArray(value)) {
+    return value.map(deepCopyValue);
+  }
+  const copied = {};
+  Object.keys(value).forEach(key => {
+    copied[key] = deepCopyValue(value[key]);
+  });
+  return copied;
+}
+
+function copyUsjNode(inputUsj, cleanedKids) {
+  // Build a copy, rather than mutate the caller's USJ object.
+  // 'content' is already rebuilt from the filtered children, so only the other
+  // values need a deep copy. That keeps the copying linear, and keeps any
+  // non-primitive value from being shared between the input and the output.
+  const cleanedUsj = {};
+  Object.keys(inputUsj).forEach(key => {
+    cleanedUsj[key] = key === 'content' ? inputUsj[key] : deepCopyValue(inputUsj[key]);
+  });
+  cleanedUsj.content = cleanedKids;
+  return cleanedUsj;
+}
+
 function excludeMarkersInUsj(
   inputUsj, excludeMarkers, combineTexts = true, excludedParent = false) {
   let cleanedKids = [];
@@ -88,10 +116,7 @@ function excludeMarkersInUsj(
   }
 
   if (thisMarkerNeeded) {
-    // Copy, rather than mutate the caller's USJ object
-    const cleanedUsj = { ...inputUsj };
-    cleanedUsj.content = cleanedKids;
-    return cleanedUsj;
+    return copyUsjNode(inputUsj, cleanedKids);
   }
   if (innerContentNeeded) {
     return cleanedKids;
@@ -140,9 +165,7 @@ function includeMarkersInUsj(
   }
 
   if (thisMarkerNeeded) {
-    // Copy, rather than mutate the caller's USJ object
-    const cleanedUsj = { ...inputUsj };
-    cleanedUsj.content = cleanedKids;
+    const cleanedUsj = copyUsjNode(inputUsj, cleanedKids);
     if (thisMarker === 'c') {
       if (!includeMarkers.includes('ca'))
       { delete cleanedUsj.altnumber; }

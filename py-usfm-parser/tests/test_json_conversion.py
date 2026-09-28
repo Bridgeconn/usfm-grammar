@@ -321,3 +321,37 @@ def test_filters_do_not_mutate_input_usj():
     removed = exclude_markers_in_usj(usj_dict, list(Filter.PARAGRAPHS))
     assert usj_dict == before, "input USJ was modified by exclude_markers_in_usj"
     assert removed != usj_dict, "filtering should have changed something"
+
+
+def _usj_with_nested_object():
+    """Real USJ only holds strings beside 'content'; this guards the general case"""
+    return {
+        "type": "USJ",
+        "version": "3.1",
+        "content": [
+            {
+                "type": "para",
+                "marker": "p",
+                "meta": {"nested": ["a"]},
+                "content": ["some text"],
+            }
+        ],
+    }
+
+
+@pytest.mark.timeout(30)
+def test_include_filter_deep_copies_non_primitive_values():
+    """No object reachable from the output may be shared with the input"""
+    usj_dict = _usj_with_nested_object()
+    kept = include_markers_in_usj(usj_dict, ["p", "USJ"])
+    kept["content"][0]["meta"]["nested"].append("mutated")
+    assert usj_dict["content"][0]["meta"]["nested"] == ["a"], "input was reached"
+
+
+@pytest.mark.timeout(30)
+def test_exclude_filter_deep_copies_non_primitive_values():
+    """No object reachable from the output may be shared with the input"""
+    usj_dict = _usj_with_nested_object()
+    removed = exclude_markers_in_usj(usj_dict, ["rem"])
+    removed["content"][0]["meta"]["nested"].append("mutated")
+    assert usj_dict["content"][0]["meta"]["nested"] == ["a"], "input was reached"

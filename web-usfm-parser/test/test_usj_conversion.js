@@ -451,3 +451,29 @@ describe("Test that filtering does not mutate the input USJ", () => {
     assert(JSON.stringify(keptWithCa).includes("altnumber"), "altnumber should be kept");
   });
 });
+
+describe("Test that filtering deep copies non-primitive values", () => {
+  // Real USJ only holds strings beside `content`, so this guards the general case:
+  // no object reachable from the output may be shared with the input.
+  const makeUsj = () => ({
+    type: "USJ",
+    version: "3.1",
+    content: [
+      {type: "para", marker: "p", meta: {nested: ["a"]}, content: ["some text"]},
+    ],
+  });
+
+  it(`Filter.keepOnly does not share nested objects with the input`, function () {
+    const usj = makeUsj();
+    const kept = Filter.keepOnly(usj, ["p", "USJ"]);
+    kept.content[0].meta.nested.push("mutated");
+    assert.deepStrictEqual(usj.content[0].meta.nested, ["a"], "input was reached");
+  });
+
+  it(`Filter.remove does not share nested objects with the input`, function () {
+    const usj = makeUsj();
+    const removed = Filter.remove(usj, ["rem"]);
+    removed.content[0].meta.nested.push("mutated");
+    assert.deepStrictEqual(usj.content[0].meta.nested, ["a"], "input was reached");
+  });
+});
