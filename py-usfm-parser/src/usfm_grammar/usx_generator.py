@@ -7,7 +7,7 @@ from usfm_grammar.queries import create_queries_as_needed
 REF_PATTERN = re.compile(r"(\w+) (\d+):([\d\w]+(-[\d\w]+)?)")
 USFM_VERSION = "3.1.2"
 
-class USXGenerator:
+class USXGenerator:  # pylint: disable=too-many-instance-attributes
     """A binding for all methods used in generating USX from Syntax tree"""
 
     # handled alike by the node_2_usx_generic method
@@ -491,9 +491,13 @@ class USXGenerator:
             for child in node.children[1:-1]:
                 self.node_2_usx(child, ref_xml_node)
 
-    def _node_2_usx_custom(self, node, parent_xml_node):
+    def _node_2_usx_custom(self, node, parent_xml_node):  # pylint: disable=too-many-branches
         """Convert user extension nodes starting with z to USJ of appropriate type"""
-        curr_node = node.children[0] if node.type == "zNameSpaceUndefined" and node.children else node
+        curr_node = (
+            node.children[0]
+            if node.type == "zNameSpaceUndefined" and node.children
+            else node
+        )
         if node.type == "zNameSpaceUndefined":
             self.warnings.append(
                 f"Encountered Undefined z node: {node}. "+\
@@ -524,12 +528,15 @@ class USXGenerator:
                 marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
                 marker_name = marker_name.replace("\\", "")
                 if marker_name.startswith("custom"):
-                    marker_name = "_".join(marker_name.split("_")[1:])  # Remove the customType_ prefix
+                    # Remove the customType_ prefix
+                    marker_name = "_".join(marker_name.split("_")[1:])
                 custom_xml_node.set("style", marker_name)
             elif child.type.endswith("Attribute"):
                 self.node_2_usx(child, custom_xml_node)
             elif child.type.startswith("zSpaceClose"):
-                closed_marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
+                closed_marker_name = (
+                    self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
+                )
                 closed_marker_name = closed_marker_name.replace("\\", "")
                 closed_marker_name = re.sub(r"\*$", "", closed_marker_name)
                 if closed_marker_name.startswith("custom"):
@@ -538,8 +545,10 @@ class USXGenerator:
                     self.warnings.append("Custom node closed with a different marker: "+\
                         f"{closed_marker_name} instead of {custom_xml_node.get('style')}")
             elif child.type == 'caller':
-                custom_xml_node.set('caller',
-                                    self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip())
+                custom_xml_node.set(
+                    'caller',
+                    self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip(),
+                )
             else:
                 self.node_2_usx(child, custom_xml_node)
 

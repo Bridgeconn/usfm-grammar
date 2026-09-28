@@ -7,7 +7,7 @@ from usfm_grammar.usx_generator import USXGenerator, REF_PATTERN, USFM_VERSION
 
 #pylint: disable=duplicate-code
 
-class USJGenerator:
+class USJGenerator:  # pylint: disable=too-many-instance-attributes
     """A binding for all methods used in generating USJ from Syntax tree"""
     MARKER_SETS = USXGenerator.MARKER_SETS
     MARKER_LISTS = USXGenerator.MARKER_LISTS
@@ -456,11 +456,18 @@ class USJGenerator:
                 self.node_2_usj(child, ref_json_obj)
             parent_json_obj["content"].append(ref_json_obj)
 
-    def _node_2_usj_custom(self, node, parent_json_obj):
+    def _node_2_usj_custom(self, node, parent_json_obj):  # pylint: disable=too-many-branches
         """Convert user extension nodes starting with z to USJ of appropriate type"""
-        curr_node = node.children[0] if node.type == "zNameSpaceUndefined" and node.children else node
+        curr_node = (
+            node.children[0]
+            if node.type == "zNameSpaceUndefined" and node.children
+            else node
+        )
         if node.type == "zNameSpaceUndefined":
-            self.warnings.append(f"Encountered Undefined z node: {node}. Use markers.ext to define user extented marker types.")
+            self.warnings.append(
+                f"Encountered Undefined z node: {node}. "
+                "Use markers.ext to define user extented marker types."
+            )
         match curr_node.type:
             case "zNameSpacePara":
                 node_type = "para"
@@ -477,7 +484,7 @@ class USJGenerator:
                 if len(curr_node.children) > 0 \
                     and curr_node.children[-1].type.startswith("zSpaceClose"):
                     # not attempting to identify note. note will be given char type in output
-                    node_type = "char"  
+                    node_type = "char"
             case "zNameSpaceRegular":
                 node_type = "para"
             case _ :
@@ -489,24 +496,32 @@ class USJGenerator:
                 marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
                 marker_name = marker_name.replace("\\", "")
                 if marker_name.startswith("custom"):
-                    marker_name = "_".join(marker_name.split("_")[1:])  # Remove the customType_ prefix
+                    # Remove the customType_ prefix
+                    marker_name = "_".join(marker_name.split("_")[1:])
                 custom_json_obj["marker"] = marker_name
             elif child.type.endswith("Attribute"):
                 self.node_2_usj(child, custom_json_obj)
             elif child.type.startswith("zSpaceClose"):
-                closed_marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
+                closed_marker_name = (
+                    self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
+                )
                 closed_marker_name = closed_marker_name.replace("\\", "")
                 closed_marker_name = re.sub(r"\*$", "", closed_marker_name)
                 if closed_marker_name.startswith("custom"):
                     closed_marker_name = "_".join(closed_marker_name.split("_")[1:])
                 if closed_marker_name != custom_json_obj["marker"]:
-                    self.warnings.append(f"Custom node closed with a different marker: {closed_marker_name} instead of {custom_json_obj['marker']}")
+                    self.warnings.append(
+                        "Custom node closed with a different marker: "
+                        f"{closed_marker_name} instead of {custom_json_obj['marker']}"
+                    )
             elif child.type == "caller":
-                custom_json_obj['caller'] = self.usfm[child.start_byte: child.end_byte].decode("utf-8").strip()
+                custom_json_obj['caller'] = (
+                    self.usfm[child.start_byte: child.end_byte].decode("utf-8").strip()
+                )
             else:
                 self.node_2_usj(child, custom_json_obj)
         parent_json_obj["content"].append(custom_json_obj)
-                
+
 
     def _node_2_usj_generic(self, node, parent_json_obj):
         """Convert generic nodes to USJ format"""

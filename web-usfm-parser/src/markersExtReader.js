@@ -80,9 +80,6 @@ class ExtensionReader {
         `\\${replacement}${marker}`,
       );
     }
-    if (usfmString.includes('\\custom')) {
-      console.log('Modified USFM:', modifiedUsfm);
-    }
     return modifiedUsfm;
   }
 }
