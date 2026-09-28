@@ -1,0 +1,46 @@
+\marker zhead
+\category para
+\description This is a custom paragraph marker.
+
+\marker z-para
+\category para
+\description This is a custom paragraph marker.
+
+\marker z-empty
+\category para
+\description This is a custom paragraph marker.
+
+\marker zinline
+\category char
+\description This is a custom character marker.
+
+
+\marker zattrib
+\category char
+\description This is a custom character marker.
+
+
+\marker zcustom3
+\category note
+\description This is a custom note marker.
+
+\marker z-extra
+\category milestone
+\description This is a custom milestone marker.
+
+\marker zaln-e
+\category milestone
+\description This is a custom milestone marker.
+
+\marker zaln-s
+\category milestone
+\description This is a custom milestone marker.
+
+\marker zsidenote
+\category note
+\description An extended note marker with caller and everything
+
+\marker z-note
+\category char
+\description An extended note marker with caller and everything
+
