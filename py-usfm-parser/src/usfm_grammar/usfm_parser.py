@@ -49,6 +49,7 @@ class Filter(list, Enum):
     BCV = ["id", "c", "v"]
     TEXT = ["text-in-excluded-parent", "text"]
     # INNER_CONTENT = ['content-in-excluded-parent']
+    ZNAMESPACES = ['user-extension']
 
 
 class Format(str, Enum):
@@ -232,16 +233,20 @@ class USFMParser:
             raise USFMGrammarError(message) from exe
         output_usj = usj_generator.json_root_obj
         if include_markers:
-            if "list-s" in include_markers or "list-e" in include_markers:
-                include_markers.append("list-s/e")
+            # Copy first: Filter members are shared lists, and must not be appended to
+            include_list = list(include_markers)
+            if "list-s" in include_list or "list-e" in include_list:
+                include_list.append("list-s/e")
             output_usj = include_markers_in_usj(
-                output_usj, include_markers + ["USJ"], combine_texts
+                output_usj, include_list + ["USJ"], combine_texts
             )
         if exclude_markers:
-            if "list-s" in exclude_markers or "list-e" in exclude_markers:
-                exclude_markers.append("list-s/e")
+            # Copy first: Filter members are shared lists, and must not be appended to
+            exclude_list = list(exclude_markers)
+            if "list-s" in exclude_list or "list-e" in exclude_list:
+                exclude_list.append("list-s/e")
             output_usj = exclude_markers_in_usj(
-                output_usj, exclude_markers, combine_texts
+                output_usj, exclude_list, combine_texts
             )
         return output_usj
 

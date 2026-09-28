@@ -241,3 +241,63 @@ def test_try_invalid_usj():
         assert "Ensure USJ is valid" in str(exce)
         error = True
     assert error
+
+
+@pytest.mark.parametrize("file_path", ["../tests/bugfixes/custom_markers/origin.usfm"])
+@pytest.mark.parametrize(
+    "exclude_markers",
+    [Filter.ZNAMESPACES, ['user-extension']],
+)
+@pytest.mark.timeout(30)
+def test_usj_exclude_custom_markers(file_path, exclude_markers):
+    """Tests if input parses without errors"""
+    test_parser, _ = initialise_parser(file_path)
+    assert not test_parser.errors, test_parser.errors
+    usj_dict = test_parser.to_usj(exclude_markers=exclude_markers)
+    assert isinstance(usj_dict, dict)
+    all_types_in_output = get_types(usj_dict)
+    assert all_types_in_output, "Expected non z-markers to be retained"
+    for marker in all_types_in_output:
+        assert not marker.startswith('z'), f"{marker} should have been excluded"
+
+@pytest.mark.parametrize("file_path", ["../tests/bugfixes/custom_markers/origin.usfm"])
+@pytest.mark.parametrize(
+    "include_markers",
+    [Filter.ZNAMESPACES, ['user-extension']],
+)
+@pytest.mark.timeout(30)
+def test_usj_include_custom_markers(file_path, include_markers):
+    """Tests if input parses without errors"""
+    test_parser, _ = initialise_parser(file_path)
+    assert not test_parser.errors, test_parser.errors
+    usj_dict = test_parser.to_usj(include_markers=include_markers)
+    assert isinstance(usj_dict, dict)
+    all_types_in_output = get_types(usj_dict)
+    assert all_types_in_output, "Expected the z-markers to be retained"
+    for marker in all_types_in_output:
+        assert marker.startswith('z'), f"{marker} should have been filtered out"
+
+
+SAMPLE_FOR_MUTATION_TEST = "../tests/bugfixes/custom_markers/origin.usfm"
+
+
+@pytest.mark.timeout(30)
+def test_filter_members_are_not_mutated():
+    """Filter members are shared lists; to_usj must not append 'list-s/e' to them"""
+    before = list(Filter.LISTS)
+    assert before, "Filter.LISTS should be defined and non-empty"
+    for _ in range(3):
+        test_parser, _ = initialise_parser(SAMPLE_FOR_MUTATION_TEST)
+        test_parser.to_usj(include_markers=Filter.LISTS)
+        test_parser, _ = initialise_parser(SAMPLE_FOR_MUTATION_TEST)
+        test_parser.to_usj(exclude_markers=Filter.LISTS)
+    assert list(Filter.LISTS) == before
+
+
+@pytest.mark.timeout(30)
+def test_caller_marker_list_is_not_mutated():
+    """A list passed in by the caller must come back unchanged"""
+    my_markers = ["list-s", "p"]
+    test_parser, _ = initialise_parser(SAMPLE_FOR_MUTATION_TEST)
+    test_parser.to_usj(include_markers=my_markers)
+    assert my_markers == ["list-s", "p"]

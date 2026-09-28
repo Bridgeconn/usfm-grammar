@@ -318,21 +318,25 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
     }
 
     if (includeMarkers) {
-      if (includeMarkers.includes('list-s') || includeMarkers.includes('list-e')) {
-        includeMarkers.push('list-s/e');
+      // Copy first: Filter members are shared arrays, and must not be appended to
+      const includeList = [...includeMarkers];
+      if (includeList.includes('list-s') || includeList.includes('list-e')) {
+        includeList.push('list-s/e');
       }
 
       outputUSJ = Filter.keepOnly(
         outputUSJ,
-        [...includeMarkers, 'USJ'],
+        [...includeList, 'USJ'],
         combineTexts,
       );
     }
     if (excludeMarkers) {
-      if (excludeMarkers.includes('list-s') || excludeMarkers.includes('list-e')) {
-        excludeMarkers.push('list-s/e');
+      // Copy first: Filter members are shared arrays, and must not be appended to
+      const excludeList = [...excludeMarkers];
+      if (excludeList.includes('list-s') || excludeList.includes('list-e')) {
+        excludeList.push('list-s/e');
       }
-      outputUSJ = Filter.remove(outputUSJ, excludeMarkers, combineTexts);
+      outputUSJ = Filter.remove(outputUSJ, excludeList, combineTexts);
     }
 
     return outputUSJ;

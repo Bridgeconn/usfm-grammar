@@ -15,6 +15,7 @@ MARKERS_WITH_DISCARDABLE_CONTENTS = [
     "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",  # footnote-content
     "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",  # crossref-content
     "jmp", "fig", "cat", "esb", "b",
+    "user-extension",
 ]
 
 trailing_num_pattern = re.compile(r"\d+$")
@@ -22,6 +23,7 @@ punct_pattern_no_space_before = re.compile(r"^[,.\-—/;:!?@$%^)}\]>”»]")
 punct_pattern_no_space_after = re.compile(r"[\-—/`@^&({[<“«]$")
 # both lists exculde ', ", *, &, #, ~, |, +, _, =, \
 
+znamespace_pattern = re.compile(r"^z[\w\-]+")
 
 def combine_consequtive_text_contents(contents_list):
     """After filtering, if content endups with text items next to each other, concatinate them"""
@@ -63,15 +65,16 @@ def exclude_markers_in_usj(
     this_marker = input_usj["marker"] if "marker" in input_usj else ""
     this_marker = "list-s/e" if input_usj["type"] == "list" else this_marker
     this_marker = re.sub(trailing_num_pattern, "", this_marker)
+    if re.match(znamespace_pattern, this_marker):
+        this_marker = "user-extension"
     this_marker_needed = True
-    excluded_parent = (
-        False  # used to check if its text is needed or not, in the subsequent call
-    )
+    excluded_parent = False  # used to check if its text is needed or not, in the subsequent call
+
     inner_content_needed = True
     if this_marker in exclude_markers:
         this_marker_needed = False
         excluded_parent = True
-        if this_marker in MARKERS_WITH_DISCARDABLE_CONTENTS or this_marker.startswith("z"):
+        if this_marker in MARKERS_WITH_DISCARDABLE_CONTENTS:
             inner_content_needed = False
     if (this_marker_needed or inner_content_needed) and "content" in input_usj:
         for item in input_usj["content"]:
@@ -108,6 +111,8 @@ def include_markers_in_usj(
     this_marker = input_usj["marker"] if "marker" in input_usj else ""
     this_marker = "list-s/e" if input_usj["type"] == "list" else  this_marker
     this_marker = re.sub(trailing_num_pattern, "", this_marker)
+    if re.match(znamespace_pattern, this_marker):
+        this_marker = 'user-extension'
     this_marker_needed = True
     excluded_parent = (
         False  # used to check if its text is needed or not in the subsequent call
@@ -116,7 +121,7 @@ def include_markers_in_usj(
     if this_marker not in include_markers + [""]:
         this_marker_needed = False
         excluded_parent = True
-        if this_marker in MARKERS_WITH_DISCARDABLE_CONTENTS or this_marker.startswith("z"):
+        if this_marker in MARKERS_WITH_DISCARDABLE_CONTENTS:
             inner_content_needed = False
     if (this_marker_needed or inner_content_needed) and "content" in input_usj:
         for item in input_usj["content"]:

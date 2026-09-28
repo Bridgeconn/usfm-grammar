@@ -7,11 +7,14 @@ const MARKERS_WITH_DISCARDABLE_CONTENTS = [
   'fr', 'ft', 'fk', 'fq', 'fqa', 'fl', 'fw', 'fp', 'fv', 'fdc',
   'xo', 'xop', 'xt', 'xta', 'xk', 'xq', 'xot', 'xnt', 'xdc',
   'jmp', 'fig', 'cat', 'esb', 'b',
+  'user-extension',
 ];
 
 const trailingNumPattern = /\d+$/;
 const punctPatternNoSpaceBefore = /^[,.\-—/;:!?@$%^)}\]>”»]/;
 const punctPatternNoSpaceAfter = /[\-—/`@^&({[<“«]$/;
+
+const znamespacePattern = /^z[\w\-]+/;
 
 function combineConsecutiveTextContents(contentsList) {
   const textCombinedContents = [];
@@ -55,7 +58,10 @@ function excludeMarkersInUsj(
     thisMarker = inputUsj.marker.replace(trailingNumPattern, '');
   } else if (inputUsj.type === 'ref') {
     thisMarker = 'ref';
-  } 
+  }
+  if (znamespacePattern.test(thisMarker)) {
+    thisMarker = 'user-extension';
+  }
   let thisMarkerNeeded = true;
   let innerContentNeeded = true;
   excludedParent = false;
@@ -63,7 +69,7 @@ function excludeMarkersInUsj(
   if (excludeMarkers.includes(thisMarker)) {
     thisMarkerNeeded = false;
     excludedParent = true;
-    if (MARKERS_WITH_DISCARDABLE_CONTENTS.includes(thisMarker) || thisMarker.startsWith('z')) {
+    if (MARKERS_WITH_DISCARDABLE_CONTENTS.includes(thisMarker)) {
       innerContentNeeded = false;
     }
   }
@@ -110,10 +116,13 @@ function includeMarkersInUsj(
     thisMarker = inputUsj.marker.replace(trailingNumPattern, '');
   } else if (inputUsj.type === 'ref') {
     thisMarker = 'ref';
-  } 
+  }
+  if (znamespacePattern.test(thisMarker)) {
+    thisMarker = 'user-extension';
+  }
   const thisMarkerNeeded = includeMarkers.includes(thisMarker) || thisMarker === '';
   const innerContentNeeded = (thisMarkerNeeded ||
-    !(MARKERS_WITH_DISCARDABLE_CONTENTS.includes(thisMarker) || thisMarker.startsWith('z')));
+    !MARKERS_WITH_DISCARDABLE_CONTENTS.includes(thisMarker));
 
   if (innerContentNeeded && 'content' in inputUsj) {
     inputUsj.content.forEach(item => {
@@ -191,7 +200,11 @@ class Filter {
 
   static BCV = ['id', 'c', 'v'];
 
+  static LISTS = ['list-s', 'list-e', 'lh', 'li', 'lf', 'lim', 'lik', 'liv']; // lists
+
   static TEXT = ['text-in-excluded-parent', 'text'];
+
+  static ZNAMESPACES = ['user-extension'];
 
   static keepOnly(inputUsj, includeMarkers, combineTexts = true) {
     // let flattenedList = [].concat(...includeMarkers);

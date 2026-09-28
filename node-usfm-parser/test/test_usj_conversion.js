@@ -364,3 +364,57 @@ function getTypes(element, keepNumber = true) {
   }
   return uniqueTypes;
 }
+
+describe("Test filtering of custom z-namespace markers", () => {
+  // The z-markers are filtered as one group, under the name "user-extension"
+  const customMarkersFile = "../tests/bugfixes/custom_markers/origin.usfm";
+  const znsLists = [Filter.ZNAMESPACES, ["user-extension"]];
+
+  znsLists.forEach(function (exList) {
+    it(`Exclude ${exList} from ${customMarkersFile}`, async function () {
+      const {testParser} = await initialiseParser(customMarkersFile);
+      const usj = testParser.toUSJ([...exList]);
+      const allUSJTypes = getTypes(usj);
+      assert(allUSJTypes.length > 0, "Expected non z-markers to be retained");
+      allUSJTypes.forEach((marker) => {
+        assert(!marker.startsWith("z"), `${marker} should have been excluded`);
+      });
+    });
+  });
+
+  znsLists.forEach(function (inList) {
+    it(`Include only ${inList} in ${customMarkersFile}`, async function () {
+      const {testParser} = await initialiseParser(customMarkersFile);
+      const usj = testParser.toUSJ(null, [...inList]);
+      const allUSJTypes = getTypes(usj);
+      assert(allUSJTypes.length > 0, "Expected the z-markers to be retained");
+      allUSJTypes.forEach((marker) => {
+        assert(marker.startsWith("z"), `${marker} should have been filtered out`);
+      });
+    });
+  });
+});
+
+describe("Test that Filter members are not mutated", () => {
+  // Filter members are shared arrays; toUSJ used to push 'list-s/e' onto the caller's array
+  const sampleFile = "../tests/bugfixes/custom_markers/origin.usfm";
+
+  it(`Filter.LISTS stays unchanged across repeated toUSJ calls`, async function () {
+    const before = [...Filter.LISTS];
+    assert(before.length > 0, "Filter.LISTS should be defined and non-empty");
+    for (let i = 0; i < 3; i++) {
+      const {testParser: p1} = await initialiseParser(sampleFile);
+      p1.toUSJ(null, Filter.LISTS);
+      const {testParser: p2} = await initialiseParser(sampleFile);
+      p2.toUSJ(Filter.LISTS, null);
+    }
+    assert.deepStrictEqual([...Filter.LISTS], before);
+  });
+
+  it(`A caller's own array stays unchanged across toUSJ calls`, async function () {
+    const myMarkers = ["list-s", "p"];
+    const {testParser} = await initialiseParser(sampleFile);
+    testParser.toUSJ(null, myMarkers);
+    assert.deepStrictEqual(myMarkers, ["list-s", "p"]);
+  });
+});
