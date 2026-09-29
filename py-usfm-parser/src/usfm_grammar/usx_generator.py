@@ -507,6 +507,8 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
                 node_type = "para"
             case "zNameSpaceChar":
                 node_type = "char"
+            case "zNameSpaceCharNested":
+                node_type = "char"
             case "zNameSpaceNote":
                 node_type = "note"
             case "zNameSpaceMS":
@@ -529,7 +531,8 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         for child in curr_node.children:
             if child.type.startswith("zSpaceTag"):
                 marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
-                marker_name = marker_name.replace("\\", "")
+                # A nested tag keeps its + between the backslash and the type prefix
+                marker_name = marker_name.replace("\\", "").removeprefix("+")
                 if marker_name.startswith("custom"):
                     # Remove the customType_ prefix
                     marker_name = "_".join(marker_name.split("_")[1:])
@@ -540,7 +543,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
                 closed_marker_name = (
                     self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
                 )
-                closed_marker_name = closed_marker_name.replace("\\", "")
+                closed_marker_name = closed_marker_name.replace("\\", "").removeprefix("+")
                 closed_marker_name = re.sub(r"\*$", "", closed_marker_name)
                 if closed_marker_name.startswith("custom"):
                     closed_marker_name = "_".join(closed_marker_name.split("_")[1:])
@@ -628,7 +631,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         )
         add_handlers(self.TABLE_CELL_MARKERS, self._node_2_usx_table)
         add_handlers(["zNameSpacePara", "zNameSpaceChar", "zNameSpaceMS",
-                      "zNameSpaceNote", "zNameSpaceUndefined",
+                      "zNameSpaceNote", "zNameSpaceUndefined", "zNameSpaceCharNested",
                       "zNameSpaceClosed", "zNameSpaceRegular"], self._node_2_usx_custom)
 
         # Add paragraph style markers
