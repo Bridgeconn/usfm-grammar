@@ -54,9 +54,13 @@ class ExtensionReader:
 
     def read_to_object(self, file_content=None, file_path=None):
         """Parse the extension definitions into a dict keyed by marker name"""
+        self.lines = []
+        self.extensions = {}
         if file_path and file_content is None:
             with open(file_path, 'r', encoding='utf-8') as ext_file:
                 file_content = ext_file.read()
+        if file_content is None:
+            raise TypeError("file_content is required.")
         self.lines = file_content.splitlines()
 
         current_marker = None
@@ -82,7 +86,9 @@ class ExtensionReader:
         """Prefix every defined custom marker in the USFM with its customType_ tag"""
         modified_usfm = usfm_string
         for marker, definition in self.extensions.items():
-            marker_type = type_map[definition['category']]
+            marker_type = type_map.get(definition.get('category'))
+            if marker_type is None:
+                continue
             replacement = replacement_map[marker_type]
             # Replace the marker with the replacement prefix followed by the original marker
             # if the marker is enclosed by a backslash and a space, newline or *

@@ -34,6 +34,8 @@ class ExtensionReader {
   }
 
   readToObject(fileContent = null, filePath = null) {
+    this.lines = [];
+    this.extensions = {};
     if (fileContent === null && filePath !== null) {
       throw new Error('Reading from a file path is not supported in the browser.');
     }
@@ -41,7 +43,6 @@ class ExtensionReader {
       throw new TypeError('fileContent is required.');
     }
     this.lines = fileContent.split(/\r?\n/);
-    this.extensions = {};
     let currentMarker = null;
     for (const line of this.lines) {
       const lineMatch = line.match(linePattern);
