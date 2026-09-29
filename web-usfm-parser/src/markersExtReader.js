@@ -26,6 +26,55 @@ const replacementMap = {
 };
 
 const linePattern = /^\\([\w-]+)\s+(.*)$/;
+// A marker name ends at the first whitespace
+const markerNamePattern = /^\S+/;
+// \, * and | are USFM structural characters and are never part of a marker name
+const invalidMarkerChars = /[\\*|]/;
+
+// Take the marker name up to the first whitespace and validate it
+function readMarkerName(value) {
+  const nameMatch = value.match(markerNamePattern);
+  const markerName = nameMatch === null ? '' : nameMatch[0];
+  const invalidMatch = markerName.match(invalidMarkerChars);
+  if (invalidMatch !== null) {
+    throw new Error(
+      `Invalid character '${invalidMatch[0]}' in marker name `
+      + `'${markerName}'. A marker name cannot contain \\, * or |.`,
+    );
+  }
+  return markerName;
+}
+
+// Trim the category value and check that it is one we know
+function readCategory(value) {
+  const category = value.trim();
+  if (!Object.prototype.hasOwnProperty.call(typeMap, category)) {
+    throw new Error(
+      `Invalid category '${category}'. Expected one of: `
+      + `${Object.keys(typeMap).sort().join(', ')}.`,
+    );
+  }
+  return category;
+}
+
+// Every custom marker block must declare a category
+function checkCategoriesPresent(extensions) {
+  const missing = Object.keys(extensions).filter(
+    (name) => !Object.prototype.hasOwnProperty.call(extensions[name], 'category'),
+  );
+  if (missing.length > 0) {
+    throw new Error(
+      `Missing category for custom marker(s): ${missing.join(', ')}. `
+      + 'Every marker block needs a category line.',
+    );
+  }
+}
+
+// Marker names come from free text in markers.ext, so they may contain regex
+// metacharacters. Escape them before building a pattern.
+function escapeRegExp(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
 
 class ExtensionReader {
   constructor() {
@@ -43,6 +92,8 @@ class ExtensionReader {
       throw new TypeError('fileContent is required.');
     }
     this.lines = fileContent.split(/\r?\n/);
+    // Build into a local object so a validation error leaves no partial state
+    const extensions = {};
     let currentMarker = null;
     for (const line of this.lines) {
       const lineMatch = line.match(linePattern);
@@ -51,16 +102,19 @@ class ExtensionReader {
       }
       const [, key, value] = lineMatch;
       if (key === 'marker') {
-        if (value.startsWith('z')) {
-          this.extensions[value] = {};
-          currentMarker = value;
+        const markerName = readMarkerName(value);
+        if (markerName.startsWith('z')) {
+          extensions[markerName] = {};
+          currentMarker = markerName;
         } else {
           currentMarker = null;
         }
       } else if (currentMarker !== null) {
-        this.extensions[currentMarker][key] = value;
+        extensions[currentMarker][key] = key === 'category' ? readCategory(value) : value;
       }
     }
+    checkCategoriesPresent(extensions);
+    this.extensions = extensions;
     return this.extensions;
   }
 
@@ -75,11 +129,10 @@ class ExtensionReader {
       }
 
       const replacement = replacementMap[markerType];
-      const markerPattern = new RegExp(`\\\\${marker}(?=[^\\w-]|$)`, 'g');
-      modifiedUsfm = modifiedUsfm.replace(
-        markerPattern,
-        `\\${replacement}${marker}`,
-      );
+      const markerPattern = new RegExp(`\\\\${escapeRegExp(marker)}(?=[^\\w-]|$)`, 'g');
+      // A function replacement keeps `$` patterns in the marker name literal
+      const replacementTag = `\\${replacement}${marker}`;
+      modifiedUsfm = modifiedUsfm.replace(markerPattern, () => replacementTag);
     }
     return modifiedUsfm;
   }

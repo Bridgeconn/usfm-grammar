@@ -16,6 +16,8 @@ each of the other lines in that block becomes a key-value pair in the value obje
 '''
 import re
 
+from usfm_grammar.errors import ParameterError
+
 type_map = {
     'para': 'para',
     'header': 'para',
@@ -45,6 +47,10 @@ replacement_map = {
 
 
 line_pattern = re.compile(r'\\([\w\-]+)\s+(.*)')
+# A marker name ends at the first whitespace
+marker_name_pattern = re.compile(r'\S+')
+# \, * and | are USFM structural characters and are never part of a marker name
+invalid_marker_chars = re.compile(r'[\\*|]')
 class ExtensionReader:
     """Reads a markers.ext definition and rewrites custom markers in a USFM string"""
 
@@ -63,6 +69,8 @@ class ExtensionReader:
             raise TypeError("file_content is required.")
         self.lines = file_content.splitlines()
 
+        # Build into a local dict so a validation error leaves no partial state
+        extensions = {}
         current_marker = None
         for line in self.lines:
             line_match = re.match(line_pattern, line)
@@ -70,17 +78,59 @@ class ExtensionReader:
                 key = line_match.group(1)
                 value = line_match.group(2)
                 if key == "marker":
-                    if value.startswith('z'):
-                        self.extensions[value] = {}
-                        current_marker = value
+                    marker_name = self._read_marker_name(value)
+                    if marker_name.startswith('z'):
+                        extensions[marker_name] = {}
+                        current_marker = marker_name
                     else:
                         current_marker = None
                 elif current_marker is not None:
-                    self.extensions[current_marker][key] = value
+                    if key == "category":
+                        value = self._read_category(value)
+                    extensions[current_marker][key] = value
             else:
                 pass
                 # print(f"Line not conforming to pattern:{line}")
+        self._check_categories_present(extensions)
+        self.extensions = extensions
         return self.extensions
+
+    @staticmethod
+    def _read_marker_name(value):
+        """Take the marker name up to the first whitespace and validate it"""
+        name_match = marker_name_pattern.match(value)
+        marker_name = name_match.group(0) if name_match is not None else ""
+        invalid_match = invalid_marker_chars.search(marker_name)
+        if invalid_match is not None:
+            raise ParameterError(
+                f"Invalid character '{invalid_match.group(0)}' in marker name "
+                f"'{marker_name}'. A marker name cannot contain \\, * or |."
+            )
+        return marker_name
+
+    @staticmethod
+    def _read_category(value):
+        """Trim the category value and check that it is one we know"""
+        category = value.strip()
+        if category not in type_map:
+            raise ParameterError(
+                f"Invalid category '{category}'. Expected one of: "
+                f"{', '.join(sorted(type_map))}."
+            )
+        return category
+
+    @staticmethod
+    def _check_categories_present(extensions):
+        """Every custom marker block must declare a category"""
+        missing = [
+            name for name, definition in extensions.items()
+            if "category" not in definition
+        ]
+        if missing:
+            raise ParameterError(
+                f"Missing category for custom marker(s): {', '.join(missing)}. "
+                "Every marker block needs a category line."
+            )
 
     def replace_custom_markers(self, usfm_string):
         """Prefix every defined custom marker in the USFM with its customType_ tag"""
