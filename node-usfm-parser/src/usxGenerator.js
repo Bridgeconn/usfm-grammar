@@ -643,6 +643,9 @@ class USXGenerator {
     }
 
     const customXmlNode = parentXmlNode.ownerDocument.createElement(nodeType);
+    // Consume any vid/h pending from a preceding \vid marker, as the other
+    // node handlers do, so it is not left to attach to a later node
+    this.addVidAttributesToNode(customXmlNode);
     for (const child of currNode.children) {
       if (child.type.startsWith('zSpaceTag')) {
         let marker = this.usfm.slice(child.startIndex, child.endIndex).trim().replace('\\', '');

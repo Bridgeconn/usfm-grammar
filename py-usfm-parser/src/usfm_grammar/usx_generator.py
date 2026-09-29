@@ -523,6 +523,9 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
                 self.errors.append(f"Unknown custom node type: {node.type}")
                 return
         custom_xml_node = etree.SubElement(parent_xml_node, node_type)
+        # Consume any vid/h pending from a preceding \vid marker, as the other
+        # node handlers do, so it is not left to attach to a later node
+        self._add_vid_attributes(custom_xml_node)
         for child in curr_node.children:
             if child.type.startswith("zSpaceTag"):
                 marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()

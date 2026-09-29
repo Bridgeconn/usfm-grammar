@@ -491,6 +491,9 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
                 self.errors.append(f"Unknown custom node type: {node.type}")
                 return
         custom_json_obj = {"type": node_type, "content": []}
+        # Consume any vid/h pending from a preceding \vid marker, as the other
+        # node handlers do, so it is not left to attach to a later node
+        self._add_vid_attributes(custom_json_obj)
         for child in curr_node.children:
             if child.type.startswith("zSpaceTag"):
                 marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
