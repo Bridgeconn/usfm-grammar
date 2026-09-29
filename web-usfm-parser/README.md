@@ -23,10 +23,10 @@ function App() {
 
   useEffect(() => {
     const initParser = async () => {
-      await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter-usfm.wasm",
-                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter.wasm");
-      await Validator.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter-usfm.wasm",
-                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter.wasm");
+      await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter-usfm.wasm",
+                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter.wasm");
+      await Validator.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter-usfm.wasm",
+                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter.wasm");
 
     };
     initParser();
@@ -60,13 +60,13 @@ It can be used directly in the HTML script tag too. Please ensure its dependenci
 
 ```html
 <script type="module">
-  import { USFMParser, Filter, Validator } from 'https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/dist/bundle.mjs';
+  import { USFMParser, Filter, Validator } from 'https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/dist/bundle.mjs';
   console.log('Hello world');
   (async () => {
-  await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter-usfm.wasm",
-                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter.wasm");
-  await Validator.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter-usfm.wasm",
-                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter.wasm");
+  await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter-usfm.wasm",
+                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter.wasm");
+  await Validator.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter-usfm.wasm",
+                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter.wasm");
   const usfmParser = new USFMParser('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 more text')
   const output = usfmParser.toUSJ()
   console.log({ output })
@@ -265,8 +265,8 @@ The USFM spec reserves markers beginning with `\z` for [user-defined extensions]
   ```javascript
   import {USFMParser, Filter} from 'usfm-grammar-web';
 
-  await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter-usfm.wasm",
-                        "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.0/tree-sitter.wasm");
+  await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter-usfm.wasm",
+                        "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter.wasm");
 
   const myParser = new USFMParser(inputUsfm, null, null, null, null, markersExt);
   const output = myParser.toUSJ();
