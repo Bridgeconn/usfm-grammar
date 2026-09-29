@@ -82,7 +82,8 @@ class USXGenerator {
     addHandlers(['milestone'], this.node2UsxMilestone);
     addHandlers(
       ['zNameSpacePara', 'zNameSpaceChar', 'zNameSpaceNote', 'zNameSpaceMS',
-        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular'], this.node2UsxCustom,
+        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular',
+        'zNameSpaceCharNested'], this.node2UsxCustom,
     );
     addHandlers(['esb', 'cat', 'fig', 'ref'], this.node2UsxSpecial);
     addHandlers(NOTE_MARKERS, this.node2UsxNotes);
@@ -621,6 +622,7 @@ class USXGenerator {
       zNameSpaceNote: 'note',
       zNameSpaceMS: 'ms',
       zNameSpaceRegular: 'para',
+      zNameSpaceCharNested: 'char',
       zNameSpaceClosed: 'ms',
     };
     let currNode = node;
@@ -648,8 +650,10 @@ class USXGenerator {
     this.addVidAttributesToNode(customXmlNode);
     for (const child of currNode.children) {
       if (child.type.startsWith('zSpaceTag')) {
-        let marker = this.usfm.slice(child.startIndex, child.endIndex).trim().replace('\\', '');
-        if (marker.includes('custom')) {
+        // A nested tag keeps its + between the backslash and the type prefix
+        let marker = this.usfm.slice(child.startIndex, child.endIndex)
+          .trim().replace('\\', '').replace(/^\+/, '');
+        if (marker.startsWith('custom')) {
           marker = marker.split('_').slice(1).join('_');
         }
         customXmlNode.setAttribute('style', marker);
@@ -657,9 +661,9 @@ class USXGenerator {
         this.node2Usx(child, customXmlNode);
       } else if (child.type.startsWith('zSpaceClose')) {
         const closeMarker = this.usfm.slice(
-          child.startIndex, child.endIndex).trim().replace('\\', '');
+          child.startIndex, child.endIndex).trim().replace('\\', '').replace(/^\+/, '');
         let closedMarker = closeMarker.replace(/\*$/, '');
-        if (closeMarker.includes('custom')) {
+        if (closeMarker.startsWith('custom')) {
           closedMarker = closedMarker.split('_').slice(1).join('_');
         }
         if (closedMarker !== customXmlNode.getAttribute('style')) {

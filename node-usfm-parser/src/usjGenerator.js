@@ -493,6 +493,7 @@ class USJGenerator {
       zNameSpaceNote: 'note',
       zNameSpaceMS: 'ms',
       zNameSpaceRegular: 'para',
+      zNameSpaceCharNested: 'char',
       zNameSpaceClosed: 'ms',
     };
     let currNode = node;
@@ -520,8 +521,10 @@ class USJGenerator {
     this.addVidAttributesToNode(customJsonObj);
     for (const child of currNode.children) {
       if (child.type.startsWith('zSpaceTag')) {
-        let marker = this.usfm.slice(child.startIndex, child.endIndex).trim().replace('\\', '');
-        if (marker.includes('custom')) {
+        // A nested tag keeps its + between the backslash and the type prefix
+        let marker = this.usfm.slice(child.startIndex, child.endIndex)
+          .trim().replace('\\', '').replace(/^\+/, '');
+        if (marker.startsWith('custom')) {
           marker = marker.split('_').slice(1).join('_');
         }
         customJsonObj.marker = marker;
@@ -529,9 +532,9 @@ class USJGenerator {
         this.nodeToUSJ(child, customJsonObj);
       } else if (child.type.startsWith('zSpaceClose')) {
         const closeMarker = this.usfm.slice(
-          child.startIndex, child.endIndex).trim().replace('\\', '');
+          child.startIndex, child.endIndex).trim().replace('\\', '').replace(/^\+/, '');
         let closedMarker = closeMarker.replace(/\*$/, '');
-        if (closeMarker.includes('custom')) {
+        if (closeMarker.startsWith('custom')) {
           closedMarker = closedMarker.split('_').slice(1).join('_');
         }
         if (closedMarker !== customJsonObj.marker) {
@@ -626,7 +629,8 @@ class USJGenerator {
     addHandlers(['milestone'], this.nodeToUSJMilestone);
     addHandlers(
       ['zNameSpacePara', 'zNameSpaceChar', 'zNameSpaceNote', 'zNameSpaceMS',
-        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular'], this.nodeToUSJCustom,
+        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular',
+        'zNameSpaceCharNested'], this.nodeToUSJCustom,
     );
     addHandlers(['esb', 'cat', 'fig', 'ref'], this.nodeToUSJSpecial);
     addHandlers(NOTE_MARKERS, this.nodeToUSJNotes);

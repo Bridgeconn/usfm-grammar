@@ -493,6 +493,7 @@ class USJGenerator {
       zNameSpaceNote: 'note',
       zNameSpaceMS: 'ms',
       zNameSpaceRegular: 'para',
+      zNameSpaceCharNested: 'char',
       zNameSpaceClosed: 'ms',
     };
     let currNode = node;
@@ -519,11 +520,13 @@ class USJGenerator {
     this.addVidAttributesToNode(customJsonObj);
     for (const child of currNode.children) {
       if (child.type.startsWith('zSpaceTag')) {
+        // A nested tag keeps its + between the backslash and the type prefix
         const marker = this.usfm
           .slice(child.startIndex, child.endIndex)
           .trim()
-          .replace('\\', '');
-        if (marker.includes('custom')) {
+          .replace('\\', '')
+          .replace(/^\+/, '');
+        if (marker.startsWith('custom')) {
           customJsonObj.marker = marker.split('_').slice(1).join('_');
         } else { customJsonObj.marker = marker; }
       } else if (child.type.endsWith('Attribute')) {
@@ -532,9 +535,10 @@ class USJGenerator {
         const closeMarker = this.usfm
           .slice(child.startIndex, child.endIndex)
           .trim()
-          .replace('\\', '');
+          .replace('\\', '')
+          .replace(/^\+/, '');
         let closedMarker = closeMarker.replace(/\*$/, '');
-        if (closedMarker.includes('custom')) {
+        if (closedMarker.startsWith('custom')) {
           closedMarker = closedMarker.split('_').slice(1).join('_');
         }
         if (closedMarker !== customJsonObj.marker) {
@@ -630,7 +634,8 @@ class USJGenerator {
     addHandlers(['milestone'], this.nodeToUSJMilestone);
     addHandlers(
       ['zNameSpacePara', 'zNameSpaceChar', 'zNameSpaceNote', 'zNameSpaceMS',
-        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular'], this.nodeToUSJCustom,
+        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular',
+        'zNameSpaceCharNested'], this.nodeToUSJCustom,
     );
     addHandlers(['esb', 'cat', 'fig', 'ref'], this.nodeToUSJSpecial);
     addHandlers(NOTE_MARKERS, this.nodeToUSJNotes);
