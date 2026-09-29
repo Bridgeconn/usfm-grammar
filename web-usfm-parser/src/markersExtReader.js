@@ -30,6 +30,9 @@ const linePattern = /^\\([\w-]+)\s+(.*)$/;
 const markerNamePattern = /^\S+/;
 // \, * and | are USFM structural characters and are never part of a marker name
 const invalidMarkerChars = /[\\*|]/;
+// The grammar accepts z followed by one or more word or hyphen characters, so
+// anything else would be rewritten into a tag the parser cannot match
+const customMarkerPattern = /^z[\w-]+$/;
 
 // Take the marker name up to the first whitespace and validate it
 function readMarkerName(value) {
@@ -40,6 +43,12 @@ function readMarkerName(value) {
     throw new Error(
       `Invalid character '${invalidMatch[0]}' in marker name `
       + `'${markerName}'. A marker name cannot contain \\, * or |.`,
+    );
+  }
+  if (markerName.startsWith('z') && !customMarkerPattern.test(markerName)) {
+    throw new Error(
+      `Invalid custom marker name '${markerName}'. A custom marker name must be `
+      + "'z' followed by one or more letters, digits, underscores or hyphens.",
     );
   }
   return markerName;
@@ -129,10 +138,17 @@ class ExtensionReader {
       }
 
       const replacement = replacementMap[markerType];
-      const markerPattern = new RegExp(`\\\\${escapeRegExp(marker)}(?=[^\\w-]|$)`, 'g');
+      // Only char markers have a nested (\+marker) form in the grammar, so
+      // only those may carry a + through to the prefixed tag
+      const nestedPrefix = markerType === 'char' ? '\\+?' : '';
+      const markerPattern = new RegExp(
+        `\\\\(${nestedPrefix})${escapeRegExp(marker)}(?=[^\\w-]|$)`, 'g',
+      );
       // A function replacement keeps `$` patterns in the marker name literal
-      const replacementTag = `\\${replacement}${marker}`;
-      modifiedUsfm = modifiedUsfm.replace(markerPattern, () => replacementTag);
+      const replacementTag = `${replacement}${marker}`;
+      modifiedUsfm = modifiedUsfm.replace(
+        markerPattern, (match, plus) => `\\${plus}${replacementTag}`,
+      );
     }
     return modifiedUsfm;
   }

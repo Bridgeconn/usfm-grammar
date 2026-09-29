@@ -51,6 +51,9 @@ line_pattern = re.compile(r'\\([\w\-]+)\s+(.*)')
 marker_name_pattern = re.compile(r'\S+')
 # \, * and | are USFM structural characters and are never part of a marker name
 invalid_marker_chars = re.compile(r'[\\*|]')
+# The grammar accepts z followed by one or more ASCII word or hyphen characters,
+# so anything else would be rewritten into a tag the parser cannot match
+custom_marker_pattern = re.compile(r'z[\w\-]+', re.ASCII)
 class ExtensionReader:
     """Reads a markers.ext definition and rewrites custom markers in a USFM string"""
 
@@ -106,6 +109,12 @@ class ExtensionReader:
                 f"Invalid character '{invalid_match.group(0)}' in marker name "
                 f"'{marker_name}'. A marker name cannot contain \\, * or |."
             )
+        if marker_name.startswith('z') and \
+                custom_marker_pattern.fullmatch(marker_name) is None:
+            raise ParameterError(
+                f"Invalid custom marker name '{marker_name}'. A custom marker name must be "
+                "'z' followed by one or more letters, digits, underscores or hyphens."
+            )
         return marker_name
 
     @staticmethod
@@ -140,13 +149,18 @@ class ExtensionReader:
             if marker_type is None:
                 continue
             replacement = replacement_map[marker_type]
+            # Only char markers have a nested (\+marker) form in the grammar, so
+            # only those may carry a + through to the prefixed tag
+            nested_prefix = r'\+?' if marker_type == 'char' else ''
             # Replace the marker with the replacement prefix followed by the original marker
             # if the marker is enclosed by a backslash and a space, newline or *
-            marker_pattern = re.compile(rf"\\{re.escape(marker)}(?=[^\w\-]|$)")
+            marker_pattern = re.compile(
+                rf"\\({nested_prefix}){re.escape(marker)}(?=[^\w\-]|$)"
+            )
 
-            replacement_tag = f"\\{replacement}{marker}"
+            replacement_tag = f"{replacement}{marker}"
             modified_usfm = marker_pattern.sub(
-                lambda m, tag=replacement_tag: tag,
+                lambda m, tag=replacement_tag: f"\\{m.group(1)}{tag}",
                 modified_usfm,
             )
         return modified_usfm
