@@ -24,6 +24,7 @@ class USXGenerator {
     this.usfmLanguage = treeSitterLanguageObj;
     this.usfm = usfmString;
     this.warnings = [];
+    this.errors = [];
 
     const domImpl = new DOMImplementation();
     const doc = domImpl.createDocument(null, 'usx', null);
@@ -78,7 +79,12 @@ class USXGenerator {
     addHandlers(['cl', 'cl', 'cp', 'vp'], this.node2UsxGeneric);
     addHandlers(['ca', 'va'], this.node2UsxCaVa);
     addHandlers(['table', 'tr'], this.node2UsxTable);
-    addHandlers(['milestone', 'zNameSpace'], this.node2UsxMilestone);
+    addHandlers(['milestone'], this.node2UsxMilestone);
+    addHandlers(
+      ['zNameSpacePara', 'zNameSpaceChar', 'zNameSpaceNote', 'zNameSpaceMS',
+        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular',
+        'zNameSpaceCharNested'], this.node2UsxCustom,
+    );
     addHandlers(['esb', 'cat', 'fig', 'ref'], this.node2UsxSpecial);
     addHandlers(NOTE_MARKERS, this.node2UsxNotes);
     addHandlers(
@@ -607,6 +613,73 @@ class USXGenerator {
         this.node2Usx(child, refXmlNode);
       });
     }
+  }
+
+  node2UsxCustom(node, parentXmlNode) {
+    const nodeTypeMap = {
+      zNameSpacePara: 'para',
+      zNameSpaceChar: 'char',
+      zNameSpaceNote: 'note',
+      zNameSpaceMS: 'ms',
+      zNameSpaceRegular: 'para',
+      zNameSpaceCharNested: 'char',
+      zNameSpaceClosed: 'ms',
+    };
+    let currNode = node;
+    let nodeType = null;
+    if (node.type === 'zNameSpaceUndefined' && node.children.length > 0 ) {
+      currNode = node.children[0];
+    }
+    if (currNode.type === 'zNameSpaceClosed' && currNode.children.length > 0) {
+      // Undefined marker: take the closing as the cue for the type.
+      // Closed with \marker* implies char, closed with only \* implies ms.
+      const lastChild = currNode.children[currNode.children.length - 1];
+      if (lastChild.type.startsWith('zSpaceClose')) {
+        nodeType = 'char';
+      }
+    }
+    if (nodeType === null) { nodeType = nodeTypeMap[currNode.type]; }
+    if (nodeType === undefined) {
+      this.errors.push(`Unknown custom node type: ${node.type}`);
+      return;
+    }
+
+    const customXmlNode = parentXmlNode.ownerDocument.createElement(nodeType);
+    // Consume any vid/h pending from a preceding \vid marker, as the other
+    // node handlers do, so it is not left to attach to a later node
+    this.addVidAttributesToNode(customXmlNode);
+    for (const child of currNode.children) {
+      if (child.type.startsWith('zSpaceTag')) {
+        // A nested tag keeps its + between the backslash and the type prefix
+        let marker = this.usfm.slice(child.startIndex, child.endIndex)
+          .trim().replace('\\', '').replace(/^\+/, '');
+        if (marker.startsWith('custom')) {
+          marker = marker.split('_').slice(1).join('_');
+        }
+        customXmlNode.setAttribute('style', marker);
+      } else if (child.type.endsWith('Attribute')) {
+        this.node2Usx(child, customXmlNode);
+      } else if (child.type.startsWith('zSpaceClose')) {
+        const closeMarker = this.usfm.slice(
+          child.startIndex, child.endIndex).trim().replace('\\', '').replace(/^\+/, '');
+        let closedMarker = closeMarker.replace(/\*$/, '');
+        if (closeMarker.startsWith('custom')) {
+          closedMarker = closedMarker.split('_').slice(1).join('_');
+        }
+        if (closedMarker !== customXmlNode.getAttribute('style')) {
+          this.warnings.push(
+            `Custom node closed with a different marker: ${closedMarker} ` +
+            `instead of ${customXmlNode.getAttribute('style')}`,
+          );
+        }
+      } else if (child.type === 'caller') { 
+        customXmlNode.setAttribute('caller',
+          this.usfm.slice(child.startIndex, child.endIndex).trim());
+      } else {
+        this.node2Usx(child, customXmlNode);
+      }
+    }
+    parentXmlNode.appendChild(customXmlNode);
   }
 
   node2UsxGeneric(node, parentXmlNode) {

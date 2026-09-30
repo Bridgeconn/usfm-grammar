@@ -7,7 +7,7 @@ from usfm_grammar.usx_generator import USXGenerator, REF_PATTERN, USFM_VERSION
 
 #pylint: disable=duplicate-code
 
-class USJGenerator:
+class USJGenerator:  # pylint: disable=too-many-instance-attributes
     """A binding for all methods used in generating USJ from Syntax tree"""
     MARKER_SETS = USXGenerator.MARKER_SETS
     MARKER_LISTS = USXGenerator.MARKER_LISTS
@@ -18,6 +18,7 @@ class USJGenerator:
         self.usfm_language = tree_sitter_language_obj
         self.usfm = usfm_string
         self.warnings = []
+        self.errors = []
         self.json_root_obj = usj_root_obj or {
             "type": "USJ",
             "version": USFM_VERSION,
@@ -455,6 +456,79 @@ class USJGenerator:
                 self.node_2_usj(child, ref_json_obj)
             parent_json_obj["content"].append(ref_json_obj)
 
+    def _node_2_usj_custom(self, node, parent_json_obj):  # pylint: disable=too-many-branches
+        """Convert user extension nodes starting with z to USJ of appropriate type"""
+        curr_node = (
+            node.children[0]
+            if node.type == "zNameSpaceUndefined" and node.children
+            else node
+        )
+        if node.type == "zNameSpaceUndefined":
+            self.warnings.append(
+                f"Encountered Undefined z node: {node}. "
+                "Use markers.ext to define user extented marker types."
+            )
+        match curr_node.type:
+            case "zNameSpacePara":
+                node_type = "para"
+            case "zNameSpaceChar":
+                node_type = "char"
+            case "zNameSpaceCharNested":
+                node_type = "char"
+            case "zNameSpaceNote":
+                node_type = "note"
+            case "zNameSpaceMS":
+                node_type = "ms"
+            # case "zNameSpaceStandaloneMarker":
+            #     node_type = "ms"
+            case "zNameSpaceClosed":
+                node_type = "ms"
+                if len(curr_node.children) > 0 \
+                    and curr_node.children[-1].type.startswith("zSpaceClose"):
+                    # not attempting to identify note. note will be given char type in output
+                    node_type = "char"
+            case "zNameSpaceRegular":
+                node_type = "para"
+            case _ :
+                self.errors.append(f"Unknown custom node type: {node.type}")
+                return
+        custom_json_obj = {"type": node_type, "content": []}
+        # Consume any vid/h pending from a preceding \vid marker, as the other
+        # node handlers do, so it is not left to attach to a later node
+        self._add_vid_attributes(custom_json_obj)
+        for child in curr_node.children:
+            if child.type.startswith("zSpaceTag"):
+                marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
+                # A nested tag keeps its + between the backslash and the type prefix
+                marker_name = marker_name.replace("\\", "").removeprefix("+")
+                if marker_name.startswith("custom"):
+                    # Remove the customType_ prefix
+                    marker_name = "_".join(marker_name.split("_")[1:])
+                custom_json_obj["marker"] = marker_name
+            elif child.type.endswith("Attribute"):
+                self.node_2_usj(child, custom_json_obj)
+            elif child.type.startswith("zSpaceClose"):
+                closed_marker_name = (
+                    self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
+                )
+                closed_marker_name = closed_marker_name.replace("\\", "").removeprefix("+")
+                closed_marker_name = re.sub(r"\*$", "", closed_marker_name)
+                if closed_marker_name.startswith("custom"):
+                    closed_marker_name = "_".join(closed_marker_name.split("_")[1:])
+                if closed_marker_name != custom_json_obj["marker"]:
+                    self.warnings.append(
+                        "Custom node closed with a different marker: "
+                        f"{closed_marker_name} instead of {custom_json_obj['marker']}"
+                    )
+            elif child.type == "caller":
+                custom_json_obj['caller'] = (
+                    self.usfm[child.start_byte: child.end_byte].decode("utf-8").strip()
+                )
+            else:
+                self.node_2_usj(child, custom_json_obj)
+        parent_json_obj["content"].append(custom_json_obj)
+
+
     def _node_2_usj_generic(self, node, parent_json_obj):
         """Convert generic nodes to USJ format"""
         tag_node = node.children[0] if len(node.children) > 0 else node
@@ -528,11 +602,11 @@ class USJGenerator:
         dispatch_map["usfm"] = lambda *_: None  # noop
 
         # Add handlers for different marker types
-        add_handlers(["paragraph", "q", "w"], self._node_2_usj_para)
+        add_handlers(["paragraph"], self._node_2_usj_para)
         add_handlers(["cl", "cp", "vp"], self._node_2_usj_generic)
         add_handlers(["ca", "va"], self._node_2_usj_ca_va)
         add_handlers(["table", "tr"], self._node_2_usj_table)
-        add_handlers(["milestone", "zNameSpace"], self._node_2_usj_milestone)
+        add_handlers(["milestone"], self._node_2_usj_milestone)
         add_handlers(["esb", "cat", "fig", "ref"], self._node_2_usj_special)
         add_handlers(USJGenerator.MARKER_LISTS["note"], self._node_2_usj_notes)
         add_handlers(
@@ -542,6 +616,9 @@ class USJGenerator:
             self._node_2_usj_char,
         )
         add_handlers(USJGenerator.MARKER_LISTS["table_cell"], self._node_2_usj_table)
+        add_handlers(["zNameSpacePara", "zNameSpaceChar", "zNameSpaceNote",
+                      "zNameSpaceMS", "zNameSpaceUndefined", "zNameSpaceCharNested",
+                      "zNameSpaceClosed", "zNameSpaceRegular"], self._node_2_usj_custom)
 
         # Add paragraph style markers
         for marker in USJGenerator.MARKER_LISTS["para_style"]:

@@ -2,6 +2,7 @@
 // const {USFMParser} = require("../src/index");
 import assert from 'assert'
 import {USFMParser} from '../src/index.js';
+import {customMarkersExt} from './config.js';
 
 const simpleUSFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2';
 const simpleUSJ = {
@@ -21,7 +22,7 @@ describe("Sanity Check for the testing pipeline", () => {
 
   it("Parse, toUSJ and back toUSFM", async () => {
     await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
-    const usfmParser = new USFMParser(simpleUSFM);
+    const usfmParser = new USFMParser(simpleUSFM, null, null, null, null, customMarkersExt);
     const output = usfmParser.toUSJ()
     assert.notStrictEqual(output, null, 'The result should not be null and no errors during conversion');
 
@@ -36,13 +37,13 @@ describe("USFMParser Object initialization", () => {
 
   it("with USFM", async () => {
     await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
-    const usfmParser = new USFMParser(simpleUSFM)
+    const usfmParser = new USFMParser(simpleUSFM, null, null, null, null, customMarkersExt)
     assert.strictEqual(usfmParser.usfm, simpleUSFM) 
 
   });
 
   it("with USJ", async () => {
-    const usfmParser = new USFMParser(null, simpleUSJ)
+    const usfmParser = new USFMParser(null, simpleUSJ, null, null, null, customMarkersExt)
     assert.strictEqual(usfmParser.usj, simpleUSJ) 
 
   });
@@ -63,7 +64,9 @@ describe("USFMParser Object initialization", () => {
     await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
     let usfmParser = null;
     try {
-      const usfmParser = new USFMParser(simpleUSFM, simpleUSJ)
+      const usfmParser = new USFMParser(
+        simpleUSFM, simpleUSJ, null, null, null, customMarkersExt,
+      )
 
     } catch(err) {
       assert.strictEqual(err.message, `Found more than one input!
@@ -76,7 +79,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
     await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
     let usfmParser = null;
     try {
-      const usfmParser = new USFMParser(simpleUSJ)
+      const usfmParser = new USFMParser(simpleUSJ, null, null, null, null, customMarkersExt)
 
     } catch(err) {
       assert.strictEqual(err.message, "Invalid input for USFM. Expected a string with \\ markups.")
@@ -88,7 +91,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
     await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
     let usfmParser = null;
     try {
-      const usfmParser = new USFMParser(null, simpleUSJ)
+      const usfmParser = new USFMParser(null, simpleUSJ, null, null, null, customMarkersExt)
 
     } catch(err) {
       assert.strictEqual(err.message, "Invalid input for USJ. Expected an object.")
@@ -100,7 +103,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
     await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
     let usfmParser = null;
     try {
-      const usfmParser = new USFMParser(simpleUSJ)
+      const usfmParser = new USFMParser(simpleUSJ, null, null, null, null, customMarkersExt)
 
     } catch(err) {
       assert.strictEqual(err.message, "Invalid input for USFM. Expected a string with \\ markups.")

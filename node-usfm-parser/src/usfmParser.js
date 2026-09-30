@@ -6,6 +6,7 @@ const { USJGenerator } = require('./usjGenerator');
 const { ListGenerator } = require('./listGenerator');
 const { USXGenerator } = require('./usxGenerator');
 const { Filter } = require('./filters.js');
+const ExtensionReader = require('./markersExtReader.js');
 const { ORIGINAL_VREF } = require('./utils/vrefs');
 const USFM3 = require('tree-sitter-usfm3');
 const { Query } = Parser;
@@ -17,10 +18,12 @@ class USFMParser {
     fromUsx = null,
     fromBibleNlp = null,
     bookCode = null,
+    markersExt = null,
   ) {
     this.syntaxTree = null;
     this.errors = [];
     this.warnings = [];
+    this.markerExtensions = null;
 
     let inputsGiven = 0;
     if (usfmString !== null) {
@@ -65,6 +68,14 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     } else if (fromBibleNlp !== null) {
       this.bibleNlp = fromBibleNlp;
       this.usfm = this.convertBibleNLPtoUSFM(bookCode);
+    }
+
+    if (markersExt !== null) {
+      this.markerExtensions = new ExtensionReader();
+      this.markerExtensions.readToObject(markersExt);
+      if (Object.keys(this.markerExtensions.extensions).length > 0) {
+        this.usfm = this.markerExtensions.replaceCustomMarkers(this.usfm);
+      }
     }
     this.parser = null;
     this.initializeParser();
@@ -183,16 +194,29 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
   }
 
   checkforMissing(node) {
-    for (const n of node.children) {
-      if (n.isMissing) {
+    const cursor = node.walk();
+
+    do {
+      const currentNode = cursor.currentNode;
+
+      if (currentNode.isMissing) {
         this.errors.push(
-          `At ${n.startPosition.row + 1}:${
-            n.startPosition.column
-          }, Error: Missing ${n.type}`,
+          `At ${currentNode.startPosition.row + 1}:${
+            currentNode.startPosition.column
+          }, Error: Missing ${currentNode.type}`,
         );
       }
-      this.checkforMissing(n);
-    }
+
+      if (cursor.gotoFirstChild()) {
+        continue;
+      }
+
+      while (!cursor.gotoNextSibling()) {
+        if (!cursor.gotoParent()) {
+          return;
+        }
+      }
+    } while (true);
   }
 
   convertUSJToUSFM() {
@@ -281,6 +305,7 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
       usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
       outputUSJ = usjGenerator.jsonRootObj;
       this.warnings.push(...usjGenerator.warnings);
+      this.errors.push(...usjGenerator.errors);
     } catch (err) {
       let message = 'Unable to do the conversion. ';
       if (this.errors) {
@@ -293,21 +318,25 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
     }
 
     if (includeMarkers) {
-      if (includeMarkers.includes('list-s') || includeMarkers.includes('list-e')) {
-        includeMarkers.push('list-s/e');
+      // Copy first: Filter members are shared arrays, and must not be appended to
+      const includeList = [...includeMarkers];
+      if (includeList.includes('list-s') || includeList.includes('list-e')) {
+        includeList.push('list-s/e');
       }
 
       outputUSJ = Filter.keepOnly(
         outputUSJ,
-        [...includeMarkers, 'USJ'],
+        [...includeList, 'USJ'],
         combineTexts,
       );
     }
     if (excludeMarkers) {
-      if (excludeMarkers.includes('list-s') || excludeMarkers.includes('list-e')) {
-        excludeMarkers.push('list-s/e');
+      // Copy first: Filter members are shared arrays, and must not be appended to
+      const excludeList = [...excludeMarkers];
+      if (excludeList.includes('list-s') || excludeList.includes('list-e')) {
+        excludeList.push('list-s/e');
       }
-      outputUSJ = Filter.remove(outputUSJ, excludeMarkers, combineTexts);
+      outputUSJ = Filter.remove(outputUSJ, excludeList, combineTexts);
     }
 
     return outputUSJ;
@@ -415,6 +444,7 @@ Use ignoreErrors=true to generate output despite errors`,
       // xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
       xmlContent = usxGenerator.xmlRootNode;
       this.warnings.push(...usxGenerator.warnings);
+      this.errors.push(...usxGenerator.errors);
     } catch (exe) {
       let message = 'Unable to do the conversion. ';
       if (this.errors.length > 0) {

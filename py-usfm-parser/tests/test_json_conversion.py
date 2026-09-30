@@ -1,6 +1,7 @@
 """Test the to_dict or json conversion API"""
 
 import pytest
+import copy
 import json
 import re
 from jsonschema import validate
@@ -8,6 +9,10 @@ from deepdiff import DeepDiff
 from src.usfm_grammar import USFMParser, Filter
 
 
+from src.usfm_grammar.filters import (
+    exclude_markers_in_usj,
+    include_markers_in_usj,
+)
 from tests import (
     all_usfm_files,
     initialise_parser,
@@ -33,7 +38,7 @@ for file in negative_tests:
 @pytest.mark.timeout(30)
 def test_usj_converions_without_filter(file_path):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usfm_dict = test_parser.to_usj()
     assert isinstance(usfm_dict, dict)
@@ -50,7 +55,7 @@ def test_usj_converions_without_filter(file_path):
 @pytest.mark.timeout(30)
 def test_usj_converions_with_exclude_markers(file_path, exclude_markers):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usj_dict = test_parser.to_usj(exclude_markers=exclude_markers)
     assert isinstance(usj_dict, dict)
@@ -67,7 +72,7 @@ def test_usj_converions_with_exclude_markers(file_path, exclude_markers):
 @pytest.mark.timeout(30)
 def test_usj_converions_with_include_markers(file_path, include_markers):
     """Tests if input parses without errors"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usj_dict = test_parser.to_usj(include_markers=include_markers)
     assert isinstance(usj_dict, dict)
@@ -113,7 +118,7 @@ def get_types(element):
 @pytest.mark.timeout(30)
 def test_usj_all_markers_are_in_output(file_path):
     """Tests if all markers in USFM are present in output also"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
 
     all_markers_in_input = find_all_markers(file_path)
@@ -139,7 +144,7 @@ with open("../schemas/usj.js", "r", encoding="utf-8") as json_file:
 @pytest.mark.timeout(30)
 def test_usj_output_is_valid(file_path):
     """Test generated USJ against USJ schema"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usj_dict = test_parser.to_usj()
     validate(instance=usj_dict, schema=USJ_SCHEMA)
@@ -150,12 +155,12 @@ def test_usj_output_is_valid(file_path):
 def test_usj_round_tripping(file_path):
     """Convert USFM to USJ and back to USFM.
     Compare first USFM and second USFM based on parse tree"""
-    test_parser1 = initialise_parser(file_path)
+    test_parser1, markers_ext = initialise_parser(file_path)
     assert not test_parser1.errors, test_parser1.errors
     usj_dict = test_parser1.to_usj()
 
-    generated_USFM = generate_USFM_from_USJ(usj_dict)
-    test_parser2 = parse_USFM_string(generated_USFM)
+    generated_USFM = generate_USFM_from_USJ(usj_dict, markers_ext=markers_ext)
+    test_parser2 = parse_USFM_string(generated_USFM, markers_ext=markers_ext)
     assert not test_parser2.errors, str(test_parser2.errors)  # +"\n"+ generated_USFM
 
     # assert test_parser1.to_syntax_tree() == test_parser2.to_syntax_tree(), generated_USFM
@@ -200,7 +205,7 @@ def strip_default_attrib_value(usj_dict):
 @pytest.mark.timeout(30)
 def test_compare_usj_with_testsuite_samples(file_path):
     """Compare the generated USJ with the origin.xml in test suite"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usx_file_path = file_path.replace("origin.usfm", "origin.xml")
     if usx_file_path not in exclude_USX_files:
@@ -241,3 +246,112 @@ def test_try_invalid_usj():
         assert "Ensure USJ is valid" in str(exce)
         error = True
     assert error
+
+
+@pytest.mark.parametrize("file_path", ["../tests/bugfixes/custom_markers/origin.usfm"])
+@pytest.mark.parametrize(
+    "exclude_markers",
+    [Filter.ZNAMESPACES, ['user-extension']],
+)
+@pytest.mark.timeout(30)
+def test_usj_exclude_custom_markers(file_path, exclude_markers):
+    """Tests if input parses without errors"""
+    test_parser, _ = initialise_parser(file_path)
+    assert not test_parser.errors, test_parser.errors
+    usj_dict = test_parser.to_usj(exclude_markers=exclude_markers)
+    assert isinstance(usj_dict, dict)
+    all_types_in_output = get_types(usj_dict)
+    assert all_types_in_output, "Expected non z-markers to be retained"
+    for marker in all_types_in_output:
+        assert not marker.startswith('z'), f"{marker} should have been excluded"
+
+@pytest.mark.parametrize("file_path", ["../tests/bugfixes/custom_markers/origin.usfm"])
+@pytest.mark.parametrize(
+    "include_markers",
+    [Filter.ZNAMESPACES, ['user-extension']],
+)
+@pytest.mark.timeout(30)
+def test_usj_include_custom_markers(file_path, include_markers):
+    """Tests if input parses without errors"""
+    test_parser, _ = initialise_parser(file_path)
+    assert not test_parser.errors, test_parser.errors
+    usj_dict = test_parser.to_usj(include_markers=include_markers)
+    assert isinstance(usj_dict, dict)
+    all_types_in_output = get_types(usj_dict)
+    assert all_types_in_output, "Expected the z-markers to be retained"
+    for marker in all_types_in_output:
+        assert marker.startswith('z'), f"{marker} should have been filtered out"
+
+
+SAMPLE_FOR_MUTATION_TEST = "../tests/bugfixes/custom_markers/origin.usfm"
+
+
+@pytest.mark.timeout(30)
+def test_filter_members_are_not_mutated():
+    """Filter members are shared lists; to_usj must not append 'list-s/e' to them"""
+    before = list(Filter.LISTS)
+    assert before, "Filter.LISTS should be defined and non-empty"
+    for _ in range(3):
+        test_parser, _ = initialise_parser(SAMPLE_FOR_MUTATION_TEST)
+        test_parser.to_usj(include_markers=Filter.LISTS)
+        test_parser, _ = initialise_parser(SAMPLE_FOR_MUTATION_TEST)
+        test_parser.to_usj(exclude_markers=Filter.LISTS)
+    assert list(Filter.LISTS) == before
+
+
+@pytest.mark.timeout(30)
+def test_caller_marker_list_is_not_mutated():
+    """A list passed in by the caller must come back unchanged"""
+    my_markers = ["list-s", "p"]
+    test_parser, _ = initialise_parser(SAMPLE_FOR_MUTATION_TEST)
+    test_parser.to_usj(include_markers=my_markers)
+    assert my_markers == ["list-s", "p"]
+
+
+@pytest.mark.timeout(30)
+def test_filters_do_not_mutate_input_usj():
+    """Filters must return a new tree, leaving the caller's USJ object as it was"""
+    test_parser, _ = initialise_parser("../tests/specExamples/chapter-verse/origin.usfm")
+    usj_dict = test_parser.to_usj()
+    before = copy.deepcopy(usj_dict)
+    kept = include_markers_in_usj(usj_dict, list(Filter.BCV) + ["USJ"])
+    assert usj_dict == before, "input USJ was modified by include_markers_in_usj"
+    assert kept != usj_dict, "filtering should have changed something"
+
+    removed = exclude_markers_in_usj(usj_dict, list(Filter.PARAGRAPHS))
+    assert usj_dict == before, "input USJ was modified by exclude_markers_in_usj"
+    assert removed != usj_dict, "filtering should have changed something"
+
+
+def _usj_with_nested_object():
+    """Real USJ only holds strings beside 'content'; this guards the general case"""
+    return {
+        "type": "USJ",
+        "version": "3.1",
+        "content": [
+            {
+                "type": "para",
+                "marker": "p",
+                "meta": {"nested": ["a"]},
+                "content": ["some text"],
+            }
+        ],
+    }
+
+
+@pytest.mark.timeout(30)
+def test_include_filter_deep_copies_non_primitive_values():
+    """No object reachable from the output may be shared with the input"""
+    usj_dict = _usj_with_nested_object()
+    kept = include_markers_in_usj(usj_dict, ["p", "USJ"])
+    kept["content"][0]["meta"]["nested"].append("mutated")
+    assert usj_dict["content"][0]["meta"]["nested"] == ["a"], "input was reached"
+
+
+@pytest.mark.timeout(30)
+def test_exclude_filter_deep_copies_non_primitive_values():
+    """No object reachable from the output may be shared with the input"""
+    usj_dict = _usj_with_nested_object()
+    removed = exclude_markers_in_usj(usj_dict, ["rem"])
+    removed["content"][0]["meta"]["nested"].append("mutated")
+    assert usj_dict["content"][0]["meta"]["nested"] == ["a"], "input was reached"

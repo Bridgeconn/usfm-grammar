@@ -1,5 +1,6 @@
 const assert = require("assert");
 const {USFMParser} = require("../src/index");
+const {customMarkersExt} = require("./config");
 
 const simpleUSFM = "\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2";
 const simpleUSJ = {
@@ -21,7 +22,7 @@ const simpleUSJ = {
 };
 describe("Sanity Check for the testing pipeline", () => {
   it("Parse, toUSJ and back toUSFM", () => {
-    const usfmParser = new USFMParser(simpleUSFM);
+    const usfmParser = new USFMParser(simpleUSFM, null, null, null, null, customMarkersExt);
     const output = usfmParser.toUSJ();
     assert.notStrictEqual(
       output,
@@ -40,14 +41,14 @@ describe("Sanity Check for the testing pipeline", () => {
 
 describe("USFMParser Object initialization", () => {
   it("with USFM", () => {
-    const usfmParser = new USFMParser(simpleUSFM);
+    const usfmParser = new USFMParser(simpleUSFM, null, null, null, null, customMarkersExt);
     assert.strictEqual(usfmParser.usfm, simpleUSFM);
   });
 
   it("with USJ", () => {
     const usfmParser = new USFMParser(
       (usfmString = null),
-      (fromUsj = simpleUSJ)
+      (fromUsj = simpleUSJ), null, null, null, customMarkersExt
     );
     assert.strictEqual(usfmParser.usj, simpleUSJ);
   });
@@ -70,7 +71,7 @@ describe("USFMParser Object initialization", () => {
     try {
       const usfmParser = new USFMParser(
         (usfmString = simpleUSFM),
-        (fromUsj = simpleUSJ)
+        (fromUsj = simpleUSJ), null, null, null, customMarkersExt
       );
     } catch (err) {
       assert.strictEqual(
@@ -85,7 +86,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`
   it("with usj in place of USFM", () => {
     let usfmParser = null;
     try {
-      const usfmParser = new USFMParser((usfmString = simpleUSJ));
+      const usfmParser = new USFMParser(simpleUSJ, null, null, null, null, customMarkersExt);
     } catch (err) {
       assert.strictEqual(
         err.message,
@@ -100,7 +101,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`
     try {
       const usfmParser = new USFMParser(
         (usfmString = null),
-        (fromUsj = simpleUSJ)
+        (fromUsj = simpleUSJ), null, null, null, customMarkersExt
       );
     } catch (err) {
       assert.strictEqual(
@@ -114,7 +115,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`
   it("with usj as default", () => {
     let usfmParser = null;
     try {
-      const usfmParser = new USFMParser(simpleUSJ);
+      const usfmParser = new USFMParser(simpleUSJ, null, null, null, null, customMarkersExt);
     } catch (err) {
       assert.strictEqual(
         err.message,

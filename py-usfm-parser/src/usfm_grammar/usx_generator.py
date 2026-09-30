@@ -7,7 +7,7 @@ from usfm_grammar.queries import create_queries_as_needed
 REF_PATTERN = re.compile(r"(\w+) (\d+):([\d\w]+(-[\d\w]+)?)")
 USFM_VERSION = "3.1.2"
 
-class USXGenerator:
+class USXGenerator:  # pylint: disable=too-many-instance-attributes
     """A binding for all methods used in generating USX from Syntax tree"""
 
     # handled alike by the node_2_usx_generic method
@@ -83,6 +83,7 @@ class USXGenerator:
         self.usfm_language = tree_sitter_language_obj
         self.usfm = usfm_bytes
         self.warnings = []
+        self.errors = []
         if usx_root_element is None:
             self.xml_root_node = etree.Element("usx")
             self.xml_root_node.set("version", USFM_VERSION)
@@ -490,6 +491,74 @@ class USXGenerator:
             for child in node.children[1:-1]:
                 self.node_2_usx(child, ref_xml_node)
 
+    def _node_2_usx_custom(self, node, parent_xml_node):  # pylint: disable=too-many-branches
+        """Convert user extension nodes starting with z to USJ of appropriate type"""
+        curr_node = (
+            node.children[0]
+            if node.type == "zNameSpaceUndefined" and node.children
+            else node
+        )
+        if node.type == "zNameSpaceUndefined":
+            self.warnings.append(
+                f"Encountered Undefined z node: {node}. "+\
+                    "Use markers.ext to define user extented marker types.")
+        match curr_node.type:
+            case "zNameSpacePara":
+                node_type = "para"
+            case "zNameSpaceChar":
+                node_type = "char"
+            case "zNameSpaceCharNested":
+                node_type = "char"
+            case "zNameSpaceNote":
+                node_type = "note"
+            case "zNameSpaceMS":
+                node_type = "ms"
+            case "zNameSpaceClosed":
+                node_type = "ms"
+                if len(curr_node.children) > 0 \
+                    and curr_node.children[-1].type.startswith("zSpaceClose"):
+                    # not attempting to identify note. note will be given char type in output
+                    node_type = "char"
+            case "zNameSpaceRegular":
+                node_type = "para"
+            case _ :
+                self.errors.append(f"Unknown custom node type: {node.type}")
+                return
+        custom_xml_node = etree.SubElement(parent_xml_node, node_type)
+        # Consume any vid/h pending from a preceding \vid marker, as the other
+        # node handlers do, so it is not left to attach to a later node
+        self._add_vid_attributes(custom_xml_node)
+        for child in curr_node.children:
+            if child.type.startswith("zSpaceTag"):
+                marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
+                # A nested tag keeps its + between the backslash and the type prefix
+                marker_name = marker_name.replace("\\", "").removeprefix("+")
+                if marker_name.startswith("custom"):
+                    # Remove the customType_ prefix
+                    marker_name = "_".join(marker_name.split("_")[1:])
+                custom_xml_node.set("style", marker_name)
+            elif child.type.endswith("Attribute"):
+                self.node_2_usx(child, custom_xml_node)
+            elif child.type.startswith("zSpaceClose"):
+                closed_marker_name = (
+                    self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
+                )
+                closed_marker_name = closed_marker_name.replace("\\", "").removeprefix("+")
+                closed_marker_name = re.sub(r"\*$", "", closed_marker_name)
+                if closed_marker_name.startswith("custom"):
+                    closed_marker_name = "_".join(closed_marker_name.split("_")[1:])
+                if closed_marker_name != custom_xml_node.get("style"):
+                    self.warnings.append("Custom node closed with a different marker: "+\
+                        f"{closed_marker_name} instead of {custom_xml_node.get('style')}")
+            elif child.type == 'caller':
+                custom_xml_node.set(
+                    'caller',
+                    self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip(),
+                )
+            else:
+                self.node_2_usx(child, custom_xml_node)
+
+
     def _node_2_usx_generic(self, node, parent_xml_node):
         """build nodes for para style markers in USX"""
         tag_node = node.children[0] if len(node.children) > 0 else node
@@ -551,7 +620,7 @@ class USXGenerator:
         add_handlers(["cl", "cp", "vp"], self._node_2_usx_generic)
         add_handlers(["ca", "va"], self._node_2_usx_ca_va)
         add_handlers(["table", "tr"], self._node_2_usx_table)
-        add_handlers(["milestone", "zNameSpace"], self._node_2_usx_milestone)
+        add_handlers(["milestone"], self._node_2_usx_milestone)
         add_handlers(["esb", "cat", "fig", "ref"], self._node_2_usx_special)
         add_handlers(self.NOTE_MARKERS, self._node_2_usx_notes)
         add_handlers(
@@ -561,6 +630,9 @@ class USXGenerator:
             self._node_2_usx_char,
         )
         add_handlers(self.TABLE_CELL_MARKERS, self._node_2_usx_table)
+        add_handlers(["zNameSpacePara", "zNameSpaceChar", "zNameSpaceMS",
+                      "zNameSpaceNote", "zNameSpaceUndefined", "zNameSpaceCharNested",
+                      "zNameSpaceClosed", "zNameSpaceRegular"], self._node_2_usx_custom)
 
         # Add paragraph style markers
         for marker in self.PARA_STYLE_MARKERS:

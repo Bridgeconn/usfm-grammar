@@ -1,6 +1,7 @@
 const assert = require('assert');
 const fs = require('node:fs');
-const {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers} = require('./config');
+const {allUsfmFiles, initialiseParser, isValidUsfm, excludeUSJs, findAllMarkers,
+       customMarkersExt, readMarkersExt, createParser} = require('./config');
 const {USFMParser, Filter} = require("../src/index");
 
 
@@ -10,7 +11,7 @@ describe("Check successful USFM-List conversion for positive samples", () => {
     if (isValidUsfm[value]) {
       it(`Convert ${value} to List`, (inputUsfmPath=value) => {
         //Tests if input parses without errors
-        const testParser = initialiseParser(inputUsfmPath)
+        const {testParser} = initialiseParser(inputUsfmPath)
         assert(testParser instanceof USFMParser)
         const list = testParser.toList();
         assert(list instanceof Array);
@@ -32,7 +33,7 @@ describe("Test Exclude Marker option in List conversion", () => {
         allUsfmFiles.forEach(function(value) {
           if (isValidUsfm[value]) {
             it(`Exclude ${exList.slice(0, 5)} from ${value}`, (inputUsfmPath=value) => {
-                const testParser = initialiseParser(inputUsfmPath)
+                const {testParser} = initialiseParser(inputUsfmPath)
                 assert(testParser instanceof USFMParser)
                 const list = testParser.toList(excludeMarkers=exList);
                 assert(list instanceof Array);
@@ -56,7 +57,7 @@ describe("Test include Marker option in List conversion", () => {
         allUsfmFiles.forEach(function(value) {
           if (isValidUsfm[value]) {
             it(`include ${inList.slice(0, 5)} of ${value} in List`, (inputUsfmPath=value) => {
-                const testParser = initialiseParser(inputUsfmPath)
+                const {testParser} = initialiseParser(inputUsfmPath)
                 assert(testParser instanceof USFMParser)
                 const list = testParser.toList(null, inList);
                 assert(list instanceof Array);
@@ -75,7 +76,7 @@ describe("Test USFM to BibleNLP format conversion", () => {
     if (isValidUsfm[value]) {
       it(`Convert ${value} to BibleNLP`, (inputUsfmPath=value) => {
         //Tests if input parses without errors
-        const testParser = initialiseParser(inputUsfmPath)
+        const {testParser} = initialiseParser(inputUsfmPath)
         assert(testParser instanceof USFMParser)
         const json = testParser.toBibleNlpFormat();
         assert("text" in json);
@@ -98,7 +99,8 @@ describe("Test USJ to BibleNLP format conversion", () => {
         //Tests if input parses without errors
         const rawData = fs.readFileSync(filePath, 'utf8');
         const usj = JSON.parse(rawData)
-        const testParser = new USFMParser(null, usj);
+        const markersExt = readMarkersExt(value) ?? customMarkersExt;
+        const testParser = createParser({fromUsj: usj, markersExt: markersExt});
         assert(testParser instanceof USFMParser)
         const json = testParser.toBibleNlpFormat();
         assert("text" in json);
@@ -116,10 +118,11 @@ describe("Test generating USFM from BibleNLP format", () => {
     if (isValidUsfm[value] &&
         !value.endsWith("special-cases/empty-book/origin.usfm")) {
       it(`Generate USFM from BibleNLP: ${value}`, (inputUsfmPath=value) => {
-        const testParser = initialiseParser(inputUsfmPath);
+        const {testParser, markersExt} = initialiseParser(inputUsfmPath);
         const bibleNlpObj = testParser.toBibleNlpFormat();
         if (bibleNlpObj['vref'].length > 0) {
-          const bnlpParser = new USFMParser(null, null, null, bibleNlpObj);
+          const bnlpParser = createParser({fromBibleNlp: bibleNlpObj,
+                                           markersExt: markersExt ?? customMarkersExt});
           const newusfm = bnlpParser.usfm;
           assert(bnlpParser.errors.length === 0);
           assert(newusfm.includes("\\id"));

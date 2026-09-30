@@ -7,11 +7,14 @@ const MARKERS_WITH_DISCARDABLE_CONTENTS = [
   'fr', 'ft', 'fk', 'fq', 'fqa', 'fl', 'fw', 'fp', 'fv', 'fdc',
   'xo', 'xop', 'xt', 'xta', 'xk', 'xq', 'xot', 'xnt', 'xdc',
   'jmp', 'fig', 'cat', 'esb', 'b',
+  'user-extension',
 ];
 
 const trailingNumPattern = /\d+$/;
 const punctPatternNoSpaceBefore = /^[,.\-—/;:!?@$%^)}\]>”»]/;
 const punctPatternNoSpaceAfter = /[\-—/`@^&({[<“«]$/;
+
+const znamespacePattern = /^z[\w\-]+/;
 
 function combineConsecutiveTextContents(contentsList) {
   const textCombinedContents = [];
@@ -37,6 +40,34 @@ function combineConsecutiveTextContents(contentsList) {
   return textCombinedContents;
 }
 
+function deepCopyValue(value) {
+  // Plain-JSON deep copy; primitives are immutable so they are returned as is
+  if (value === null || typeof value !== 'object') {
+    return value;
+  }
+  if (Array.isArray(value)) {
+    return value.map(deepCopyValue);
+  }
+  const copied = {};
+  Object.keys(value).forEach(key => {
+    copied[key] = deepCopyValue(value[key]);
+  });
+  return copied;
+}
+
+function copyUsjNode(inputUsj, cleanedKids) {
+  // Build a copy, rather than mutate the caller's USJ object.
+  // 'content' is already rebuilt from the filtered children, so only the other
+  // values need a deep copy. That keeps the copying linear, and keeps any
+  // non-primitive value from being shared between the input and the output.
+  const cleanedUsj = {};
+  Object.keys(inputUsj).forEach(key => {
+    cleanedUsj[key] = key === 'content' ? inputUsj[key] : deepCopyValue(inputUsj[key]);
+  });
+  cleanedUsj.content = cleanedKids;
+  return cleanedUsj;
+}
+
 function excludeMarkersInUsj(
   inputUsj, excludeMarkers, combineTexts = true, excludedParent = false) {
   let cleanedKids = [];
@@ -55,7 +86,10 @@ function excludeMarkersInUsj(
     thisMarker = inputUsj.marker.replace(trailingNumPattern, '');
   } else if (inputUsj.type === 'ref') {
     thisMarker = 'ref';
-  } 
+  }
+  if (znamespacePattern.test(thisMarker)) {
+    thisMarker = 'user-extension';
+  }
   let thisMarkerNeeded = true;
   let innerContentNeeded = true;
   excludedParent = false;
@@ -83,8 +117,7 @@ function excludeMarkersInUsj(
   }
 
   if (thisMarkerNeeded) {
-    inputUsj.content = cleanedKids;
-    return inputUsj;
+    return copyUsjNode(inputUsj, cleanedKids);
   }
   if (innerContentNeeded) {
     return cleanedKids;
@@ -110,7 +143,10 @@ function includeMarkersInUsj(
     thisMarker = inputUsj.marker.replace(trailingNumPattern, '');
   } else if (inputUsj.type === 'ref') {
     thisMarker = 'ref';
-  } 
+  }
+  if (znamespacePattern.test(thisMarker)) {
+    thisMarker = 'user-extension';
+  }
   const thisMarkerNeeded = includeMarkers.includes(thisMarker) || thisMarker === '';
   const innerContentNeeded = (thisMarkerNeeded ||
     !MARKERS_WITH_DISCARDABLE_CONTENTS.includes(thisMarker));
@@ -129,22 +165,20 @@ function includeMarkersInUsj(
     }
   }
 
-  if (thisMarker === 'c') {
-    if (!includeMarkers.includes('ca'))
-    { delete inputUsj.altnumber; }
-    if (!includeMarkers.includes('cp'))
-    { delete inputUsj.pubnumber; }
-  } else if (thisMarker === 'v') {
-    if (!includeMarkers.includes('va'))
-    { delete inputUsj.altnumber; }
-    if (!includeMarkers.includes('vp'))
-    { delete inputUsj.pubnumber; }
-  }
-
-
   if (thisMarkerNeeded) {
-    inputUsj.content = cleanedKids;
-    return inputUsj;
+    const cleanedUsj = copyUsjNode(inputUsj, cleanedKids);
+    if (thisMarker === 'c') {
+      if (!includeMarkers.includes('ca'))
+      { delete cleanedUsj.altnumber; }
+      if (!includeMarkers.includes('cp'))
+      { delete cleanedUsj.pubnumber; }
+    } else if (thisMarker === 'v') {
+      if (!includeMarkers.includes('va'))
+      { delete cleanedUsj.altnumber; }
+      if (!includeMarkers.includes('vp'))
+      { delete cleanedUsj.pubnumber; }
+    }
+    return cleanedUsj;
   }
   if (innerContentNeeded) {
     return cleanedKids;
@@ -191,7 +225,11 @@ class Filter {
 
   static BCV = ['id', 'c', 'v'];
 
+  static LISTS = ['list-s', 'list-e', 'lh', 'li', 'lf', 'lim', 'lik', 'liv']; // lists
+
   static TEXT = ['text-in-excluded-parent', 'text'];
+
+  static ZNAMESPACES = ['user-extension'];
 
   static keepOnly(inputUsj, includeMarkers, combineTexts = true) {
     // let flattenedList = [].concat(...includeMarkers);

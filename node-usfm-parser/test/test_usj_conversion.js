@@ -7,6 +7,7 @@ const {
   isValidUsfm,
   excludeUSJs,
   findAllMarkers,
+  generateUSFMFromUSJ,
 } = require("./config");
 const {USFMParser, Filter} = require("../src/index");
 
@@ -24,12 +25,13 @@ before(async function () {
   for (const filepath of allUsfmFiles) {
     if (isValidUsfm[filepath]) {
       try {
-        const parser = await initialiseParser(filepath);
-        const usj = parser.toUSJ();
+        const {testParser, markersExt} = await initialiseParser(filepath);
+        const usj = testParser.toUSJ();
         parsedCache.set(filepath, {
-          parser,
+          parser: testParser,
           usj,
-          usfm: parser.usfm,
+          usfm: testParser.usfm,
+          markersExt,
         });
       } catch (error) {
         console.error(`Failed to pre-parse ${filepath}: ${error.message}`);
@@ -105,8 +107,9 @@ describe("Test USFM-USJ-USFM roundtripping", () => {
         const usj = cached.usj;
         const originalUsfm = cached.usfm;
 
-        const testParser2 = new USFMParser(null, usj);
-        const generatedUSFM = testParser2.usfm;
+        const generatedUSFM = generateUSFMFromUSJ(usj, {
+          markersExt: cached.markersExt,
+        });
 
         assert.strictEqual(typeof generatedUSFM, "string");
         assert(generatedUSFM.startsWith("\\id"));
@@ -361,3 +364,116 @@ function getTypes(element, keepNumber = true) {
   }
   return uniqueTypes;
 }
+
+describe("Test filtering of custom z-namespace markers", () => {
+  // The z-markers are filtered as one group, under the name "user-extension"
+  const customMarkersFile = "../tests/bugfixes/custom_markers/origin.usfm";
+  const znsLists = [Filter.ZNAMESPACES, ["user-extension"]];
+
+  znsLists.forEach(function (exList) {
+    it(`Exclude ${exList} from ${customMarkersFile}`, async function () {
+      const {testParser} = await initialiseParser(customMarkersFile);
+      const usj = testParser.toUSJ([...exList]);
+      const allUSJTypes = getTypes(usj);
+      assert(allUSJTypes.length > 0, "Expected non z-markers to be retained");
+      allUSJTypes.forEach((marker) => {
+        assert(!marker.startsWith("z"), `${marker} should have been excluded`);
+      });
+    });
+  });
+
+  znsLists.forEach(function (inList) {
+    it(`Include only ${inList} in ${customMarkersFile}`, async function () {
+      const {testParser} = await initialiseParser(customMarkersFile);
+      const usj = testParser.toUSJ(null, [...inList]);
+      const allUSJTypes = getTypes(usj);
+      assert(allUSJTypes.length > 0, "Expected the z-markers to be retained");
+      allUSJTypes.forEach((marker) => {
+        assert(marker.startsWith("z"), `${marker} should have been filtered out`);
+      });
+    });
+  });
+});
+
+describe("Test that Filter members are not mutated", () => {
+  // Filter members are shared arrays; toUSJ used to push 'list-s/e' onto the caller's array
+  const sampleFile = "../tests/bugfixes/custom_markers/origin.usfm";
+
+  it(`Filter.LISTS stays unchanged across repeated toUSJ calls`, async function () {
+    const before = [...Filter.LISTS];
+    assert(before.length > 0, "Filter.LISTS should be defined and non-empty");
+    for (let i = 0; i < 3; i++) {
+      const {testParser: p1} = await initialiseParser(sampleFile);
+      p1.toUSJ(null, Filter.LISTS);
+      const {testParser: p2} = await initialiseParser(sampleFile);
+      p2.toUSJ(Filter.LISTS, null);
+    }
+    assert.deepStrictEqual([...Filter.LISTS], before);
+  });
+
+  it(`A caller's own array stays unchanged across toUSJ calls`, async function () {
+    const myMarkers = ["list-s", "p"];
+    const {testParser} = await initialiseParser(sampleFile);
+    testParser.toUSJ(null, myMarkers);
+    assert.deepStrictEqual(myMarkers, ["list-s", "p"]);
+  });
+});
+
+describe("Test that filtering does not mutate the input USJ", () => {
+  // Filters must return a new tree, leaving the caller's USJ object as it was
+  const sampleFile = "../tests/specExamples/chapter-verse/origin.usfm";
+
+  it(`Filter.keepOnly leaves the input USJ untouched`, async function () {
+    const {testParser} = await initialiseParser(sampleFile);
+    const usj = testParser.toUSJ();
+    const before = JSON.parse(JSON.stringify(usj));
+    const kept = Filter.keepOnly(usj, [...Filter.BCV, "USJ"]);
+    assert.deepStrictEqual(usj, before, "input USJ was modified");
+    assert.notDeepStrictEqual(kept, usj, "filtering should have changed something");
+  });
+
+  it(`Filter.remove leaves the input USJ untouched`, async function () {
+    const {testParser} = await initialiseParser(sampleFile);
+    const usj = testParser.toUSJ();
+    const before = JSON.parse(JSON.stringify(usj));
+    const removed = Filter.remove(usj, [...Filter.PARAGRAPHS]);
+    assert.deepStrictEqual(usj, before, "input USJ was modified");
+    assert.notDeepStrictEqual(removed, usj, "filtering should have changed something");
+  });
+
+  it(`keepOnly still drops ca/cp/va/vp when they are not included`, async function () {
+    const {testParser} = await initialiseParser(sampleFile);
+    const usj = testParser.toUSJ();
+    assert(JSON.stringify(usj).includes("altnumber"), "sample should have altnumber");
+    const kept = Filter.keepOnly(usj, [...Filter.BCV, "USJ"]);
+    assert(!JSON.stringify(kept).includes("altnumber"), "altnumber should be dropped");
+    const keptWithCa = Filter.keepOnly(usj, [...Filter.BCV, "ca", "va", "USJ"]);
+    assert(JSON.stringify(keptWithCa).includes("altnumber"), "altnumber should be kept");
+  });
+});
+
+describe("Test that filtering deep copies non-primitive values", () => {
+  // Real USJ only holds strings beside `content`, so this guards the general case:
+  // no object reachable from the output may be shared with the input.
+  const makeUsj = () => ({
+    type: "USJ",
+    version: "3.1",
+    content: [
+      {type: "para", marker: "p", meta: {nested: ["a"]}, content: ["some text"]},
+    ],
+  });
+
+  it(`Filter.keepOnly does not share nested objects with the input`, function () {
+    const usj = makeUsj();
+    const kept = Filter.keepOnly(usj, ["p", "USJ"]);
+    kept.content[0].meta.nested.push("mutated");
+    assert.deepStrictEqual(usj.content[0].meta.nested, ["a"], "input was reached");
+  });
+
+  it(`Filter.remove does not share nested objects with the input`, function () {
+    const usj = makeUsj();
+    const removed = Filter.remove(usj, ["rem"]);
+    removed.content[0].meta.nested.push("mutated");
+    assert.deepStrictEqual(usj.content[0].meta.nested, ["a"], "input was reached");
+  });
+});

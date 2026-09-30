@@ -73,7 +73,6 @@ def milestone_query(lang):
         (milestoneTag)
         (milestoneStartTag)
         (milestoneEndTag)
-        (zSpaceTag)
     ] @ms-name)
     """.strip()
     )

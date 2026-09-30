@@ -18,7 +18,7 @@ test_files = all_usfm_files.copy()
 @pytest.mark.parametrize("file_path", test_files)
 def test_error_less_parsing(file_path):
     """Tests if input parses with or without errors, as expected"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     if is_valid_usfm(file_path):
         # positive tests
         assert not test_parser.errors, test_parser.errors
@@ -49,26 +49,36 @@ def get_nodes(node):
 @pytest.mark.timeout(30)
 def test_all_markers_are_in_output(file_path):
     """Tests if all markers in USFM are present in output also"""
-    test_parser = initialise_parser(file_path)
+    test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
 
     all_markers_in_input = find_all_markers(file_path, keep_number=False)
 
     all_nodes_in_st = get_nodes(test_parser.syntax_tree)
     for marker in all_markers_in_input:
-        if marker.startswith("z"):
-            marker = "zNameSpace"
-        elif marker in ["list-s", "list-e"]:
-            marker = marker.replace("-", "_")
+        node_name = marker
+        if marker in ["list-s", "list-e"]:
+            node_name = marker.replace("-", "_")
+        elif marker.startswith("z"):
+            found = False
+            for node in all_nodes_in_st:
+                if node.startswith("zNameSpace"):
+                    found = True
+                    break
+            assert found, marker
+            continue
         elif (
             marker in ["qte", "qts", "ts"]
             or marker.endswith("-e")
             or marker.endswith("-s")
         ):
-            marker = "milestone"
+            node_name = "milestone"
         elif marker in ["xt"]:
-            marker = "crossref"
-        assert marker in all_nodes_in_st, marker
+            node_name = "crossref"
+        # A marker used nested (\+nd) gets its own "<marker>Nested" node in the tree
+        assert (
+            node_name in all_nodes_in_st or f"{marker}Nested" in all_nodes_in_st
+        ), marker
 
 
 USFM_WITH_ERROR = """

@@ -1,0 +1,27 @@
+\id GEN
+\zhead some text
+\c 1
+\z-empty
+\p
+\z-extra Some text content which is not scripture \*
+\v 1 text \zinline inner text \zinline*
+\v 2 text
+\v 3 text \zattrib inner text |x-key="val" \zattrib*
+\v 4 text
+\rem test comment to chekc if para flow breaks
+\v 5 mote text
+\z-para check inner para
+\v 6 text
+\c 2
+\z-extra Some text content which is not scripture \*
+\p scripture continues
+\c 1
+\p
+\v 4 \zaln-s|x-content="καὶ" x-lemma="καί" x-morph="Gr,CC,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G25320"\*\w When|x-occurrence="1" x-occurrences="1"\w*\zaln-e\*
+\zaln-s|x-content="συναλιζόμενος" x-lemma="συναλίζω" x-morph="Gr,V,PPM,NMS," x-occurrence="1" x-occurrences="1" x-strong="G48710"\*\w he|x-occurrence="1" x-occurrences="3"\w*
+\w was|x-occurrence="1" x-occurrences="1"\w*
+\w meeting|x-occurrence="1" x-occurrences="1"\w*
+\w together|x-occurrence="1" x-occurrences="1"\w*
+\w with|x-occurrence="1" x-occurrences="1"\w*
+\w them|x-occurrence="1" x-occurrences="2"\w*\zaln-e\*,
+\p more case with note \zsidenote + \z-note This is a sidenote\z-note* \zsidenote* and \zsidenoteX + \z-noteX This is a sidenote\z-noteX* \zsidenoteX*

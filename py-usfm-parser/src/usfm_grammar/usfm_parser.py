@@ -12,6 +12,7 @@ from usfm_grammar.list_generator import ListGenerator
 from usfm_grammar.usfm_generator import USFMGenerator
 from usfm_grammar.filters import exclude_markers_in_usj, include_markers_in_usj
 from usfm_grammar.errors import USFMGrammarError, ParsingError, ParameterError
+from usfm_grammar.markers_ext_reader import ExtensionReader
 
 class Filter(list, Enum):
     """Defines the values of filter options"""
@@ -48,6 +49,7 @@ class Filter(list, Enum):
     BCV = ["id", "c", "v"]
     TEXT = ["text-in-excluded-parent", "text"]
     # INNER_CONTENT = ['content-in-excluded-parent']
+    ZNAMESPACES = ['user-extension']
 
 
 class Format(str, Enum):
@@ -91,19 +93,21 @@ error_query = Query(USFM_LANGUAGE, """(ERROR) @errors""")
 class USFMParser:
     """Parser class with usfmstring, syntax_tree and methods for JSON convertions"""
 
-    def __init__(  # pylint: disable=too-many-arguments, too-many-branches, too-many-positional-arguments
+    def __init__(  # pylint: disable=too-many-arguments, too-many-branches, too-many-positional-arguments, too-many-locals, too-many-statements
         self,
         usfm_string: str = None,
         from_usj: dict = None,
         from_usx: etree.Element = None,
         from_biblenlp: dict = None,
         book_code: str = None,
+        markers_ext: str = None
     ):
         # super(USFMParser, self).__init__()
         self.usfm_bytes = None
         self.syntax_tree = None
         self.errors = []
         self.warnings = []
+        self.marker_extensions = None
 
         inputs_given = 0
         if usfm_string is not None:
@@ -144,6 +148,12 @@ class USFMParser:
             biblenlp_converter.biblenlp_to_usfm(from_biblenlp, book_code)
             self.usfm = biblenlp_converter.usfm_string
             self.warnings.extend(biblenlp_converter.warnings)
+
+        if markers_ext is not None:
+            self.marker_extensions = ExtensionReader()
+            self.marker_extensions.read_to_object(markers_ext)
+            if len(self.marker_extensions.extensions) > 0:
+                self.usfm = self.marker_extensions.replace_custom_markers(self.usfm)
 
         # Some basic sanity checks
         lower_case_book_code = re.compile(r"^\\id ([a-z0-9][a-z][a-z])")
@@ -210,6 +220,10 @@ class USFMParser:
         try:
             usj_generator = USJGenerator(USFM_LANGUAGE, self.usfm_bytes, json_root_obj)
             usj_generator.get_usj(self.syntax_tree, json_root_obj)
+            if len(usj_generator.warnings) > 0:
+                self.warnings.extend(usj_generator.warnings)
+            if len(usj_generator.errors) > 0:
+                self.errors.extend(usj_generator.errors)
         except Exception as exe:
             traceback.print_exc()
             message = "Unable to do the conversion. "
@@ -219,16 +233,20 @@ class USFMParser:
             raise USFMGrammarError(message) from exe
         output_usj = usj_generator.json_root_obj
         if include_markers:
-            if "list-s" in include_markers or "list-e" in include_markers:
-                include_markers.append("list-s/e")
+            # Copy first: Filter members are shared lists, and must not be appended to
+            include_list = list(include_markers)
+            if "list-s" in include_list or "list-e" in include_list:
+                include_list.append("list-s/e")
             output_usj = include_markers_in_usj(
-                output_usj, include_markers + ["USJ"], combine_texts
+                output_usj, include_list + ["USJ"], combine_texts
             )
         if exclude_markers:
-            if "list-s" in exclude_markers or "list-e" in exclude_markers:
-                exclude_markers.append("list-s/e")
+            # Copy first: Filter members are shared lists, and must not be appended to
+            exclude_list = list(exclude_markers)
+            if "list-s" in exclude_list or "list-e" in exclude_list:
+                exclude_list.append("list-s/e")
             output_usj = exclude_markers_in_usj(
-                output_usj, exclude_markers, combine_texts
+                output_usj, exclude_list, combine_texts
             )
         return output_usj
 
@@ -327,6 +345,8 @@ class USFMParser:
             usx_generator.node_2_usx(self.syntax_tree, usx_root)
             if len(usx_generator.warnings) > 0:
                 self.warnings.extend(usx_generator.warnings)
+            if len(usx_generator.errors) > 0:
+                self.errors.extend(usx_generator.errors)
         except Exception as exe:
             message = "Unable to do the conversion. "
             if self.errors:

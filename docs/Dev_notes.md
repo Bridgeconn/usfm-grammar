@@ -101,7 +101,7 @@ node_modules/mocha/bin/mocha.js --timeout 40000 test/basic.js
 > tree-sitter generate
 > cd ../node-usfm-parser
 > npm uninstall tree-sitter-usfm3
-> npm install tree-sitter-usfm3
+> npm install ../tree-sitter-usfm3
 >```
 
 ### In web module:

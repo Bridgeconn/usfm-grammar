@@ -1,0 +1,37 @@
+<usx version="3.1.2">
+  <book code="GEN" style="id"/>
+  <para style="zhead"> some text
+</para>
+  <chapter number="1" style="c" sid="GEN 1"/>
+  <para style="z-empty">
+</para>
+  <para style="p"><ms style="z-extra"> Some text content which is not scripture </ms>
+<verse number="1" style="v" sid="GEN 1:1"/>text <char style="zinline"> inner text </char>
+<verse eid="GEN 1:1"/><verse number="2" style="v" sid="GEN 1:2"/>text
+<verse eid="GEN 1:2"/><verse number="3" style="v" sid="GEN 1:3"/>text <char style="zattrib" x-key="val"> inner text </char>
+<verse eid="GEN 1:3"/><verse number="4" style="v" sid="GEN 1:4"/>text
+<para style="rem" vid="GEN 1:4">test comment to chekc if para flow breaks
+</para><verse eid="GEN 1:4"/><verse number="5" style="v" sid="GEN 1:5"/>mote text
+<para style="z-para"> check inner para
+</para><verse eid="GEN 1:5"/><verse number="6" style="v" sid="GEN 1:6"/>text
+<verse eid="GEN 1:6"/></para>
+  <chapter eid="GEN 1"/>
+  <chapter number="2" style="c" sid="GEN 2"/>
+  <ms style="z-extra"> Some text content which is not scripture </ms>
+  <para style="p">scripture continues
+</para>
+  <chapter eid="GEN 2"/>
+  <chapter number="1" style="c" sid="GEN 1"/>
+  <para style="p"><verse number="4" style="v" sid="GEN 1:4"/><ms style="zaln-s" x-content="καὶ" x-lemma="καί" x-morph="Gr,CC,,,,,,,," x-occurrence="1" x-occurrences="1" x-strong="G25320"/><char style="w" closed="true" x-occurrence="1" x-occurrences="1">When</char><ms style="zaln-e"/>
+<ms style="zaln-s" x-content="συναλιζόμενος" x-lemma="συναλίζω" x-morph="Gr,V,PPM,NMS," x-occurrence="1" x-occurrences="1" x-strong="G48710"/><char style="w" closed="true" x-occurrence="1" x-occurrences="3">he</char>
+<char style="w" closed="true" x-occurrence="1" x-occurrences="1">was</char>
+<char style="w" closed="true" x-occurrence="1" x-occurrences="1">meeting</char>
+<char style="w" closed="true" x-occurrence="1" x-occurrences="1">together</char>
+<char style="w" closed="true" x-occurrence="1" x-occurrences="1">with</char>
+<char style="w" closed="true" x-occurrence="1" x-occurrences="2">them</char><ms style="zaln-e"/>,
+</para>
+  <para style="p" vid="GEN 1:4">more case with note <note style="zsidenote" caller="+"><char style="z-note"> This is a sidenote</char></note> and <char style="zsidenoteX"> + <char style="z-noteX"> This is a sidenote</char></char>
+<verse eid="GEN 1:4"/></para>
+  <chapter eid="GEN 1"/>
+</usx>
+

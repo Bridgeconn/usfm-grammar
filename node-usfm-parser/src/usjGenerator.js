@@ -17,6 +17,7 @@ class USJGenerator {
     this.usfmLanguage = treeSitterLanguageObj;
     this.usfm = usfmString;
     this.warnings = [];
+    this.errors = [];
     
     this.jsonRootObj = usjRootObj || {
       type: 'USJ',
@@ -484,6 +485,72 @@ class USJGenerator {
       parentJsonObj.content.push(refJsonObj);
     }
   }
+
+  nodeToUSJCustom(node, parentJsonObj) {
+    const nodeTypeMap = {
+      zNameSpacePara: 'para',
+      zNameSpaceChar: 'char',
+      zNameSpaceNote: 'note',
+      zNameSpaceMS: 'ms',
+      zNameSpaceRegular: 'para',
+      zNameSpaceCharNested: 'char',
+      zNameSpaceClosed: 'ms',
+    };
+    let currNode = node;
+    let nodeType = null;
+    if (node.type === 'zNameSpaceUndefined' && node.children.length > 0 ) {
+      currNode = node.children[0];
+    }
+    if (currNode.type === 'zNameSpaceClosed' && currNode.children.length > 0) {
+      // Undefined marker: take the closing as the cue for the type.
+      // Closed with \marker* implies char, closed with only \* implies ms.
+      const lastChild = currNode.children[currNode.children.length - 1];
+      if (lastChild.type.startsWith('zSpaceClose')) {
+        nodeType = 'char';
+      }
+    }
+    if (nodeType === null) { nodeType = nodeTypeMap[currNode.type]; }
+    if (nodeType === undefined) {
+      this.errors.push(`Unknown custom node type: ${node.type}`);
+      return;
+    }
+
+    const customJsonObj = { type: nodeType, content: [] };
+    // Consume any vid/h pending from a preceding \vid marker, as the other
+    // node handlers do, so it is not left to attach to a later node
+    this.addVidAttributesToNode(customJsonObj);
+    for (const child of currNode.children) {
+      if (child.type.startsWith('zSpaceTag')) {
+        // A nested tag keeps its + between the backslash and the type prefix
+        let marker = this.usfm.slice(child.startIndex, child.endIndex)
+          .trim().replace('\\', '').replace(/^\+/, '');
+        if (marker.startsWith('custom')) {
+          marker = marker.split('_').slice(1).join('_');
+        }
+        customJsonObj.marker = marker;
+      } else if (child.type.endsWith('Attribute')) {
+        this.nodeToUSJ(child, customJsonObj);
+      } else if (child.type.startsWith('zSpaceClose')) {
+        const closeMarker = this.usfm.slice(
+          child.startIndex, child.endIndex).trim().replace('\\', '').replace(/^\+/, '');
+        let closedMarker = closeMarker.replace(/\*$/, '');
+        if (closeMarker.startsWith('custom')) {
+          closedMarker = closedMarker.split('_').slice(1).join('_');
+        }
+        if (closedMarker !== customJsonObj.marker) {
+          this.warnings.push(
+            `Custom node closed with a different marker: ${closedMarker} ` +
+            `instead of ${customJsonObj.marker}`,
+          );
+        }
+      } else if (child.type === 'caller') { 
+        customJsonObj.caller = this.usfm.slice(child.startIndex, child.endIndex).trim();
+      } else {
+        this.nodeToUSJ(child, customJsonObj);
+      }
+    }
+    parentJsonObj.content.push(customJsonObj);
+  }
   nodeToUSJGeneric(node, parentJsonObj) {
     // Build nodes for para style markers in USJ
     const tagNode = node.children[0] ? node.children[0] : node;
@@ -559,7 +626,12 @@ class USJGenerator {
     addHandlers(['cl', 'cp', 'vp'], this.nodeToUSJGeneric);
     addHandlers(['ca', 'va'], this.nodeToUSJCaVa);
     addHandlers(['table', 'tr'], this.nodeToUSJTable);
-    addHandlers(['milestone', 'zNameSpace'], this.nodeToUSJMilestone);
+    addHandlers(['milestone'], this.nodeToUSJMilestone);
+    addHandlers(
+      ['zNameSpacePara', 'zNameSpaceChar', 'zNameSpaceNote', 'zNameSpaceMS',
+        'zNameSpaceUndefined', 'zNameSpaceClosed', 'zNameSpaceRegular',
+        'zNameSpaceCharNested'], this.nodeToUSJCustom,
+    );
     addHandlers(['esb', 'cat', 'fig', 'ref'], this.nodeToUSJSpecial);
     addHandlers(NOTE_MARKERS, this.nodeToUSJNotes);
     addHandlers(

@@ -4,6 +4,7 @@
 """
 
 import re
+from copy import deepcopy
 
 MARKERS_WITH_DISCARDABLE_CONTENTS = [
     "ide", "usfm", "h", "toc", "toca",  # identification
@@ -15,6 +16,7 @@ MARKERS_WITH_DISCARDABLE_CONTENTS = [
     "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",  # footnote-content
     "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",  # crossref-content
     "jmp", "fig", "cat", "esb", "b",
+    "user-extension",
 ]
 
 trailing_num_pattern = re.compile(r"\d+$")
@@ -22,6 +24,7 @@ punct_pattern_no_space_before = re.compile(r"^[,.\-—/;:!?@$%^)}\]>”»]")
 punct_pattern_no_space_after = re.compile(r"[\-—/`@^&({[<“«]$")
 # both lists exculde ', ", *, &, #, ~, |, +, _, =, \
 
+znamespace_pattern = re.compile(r"^z[\w\-]+")
 
 def combine_consequtive_text_contents(contents_list):
     """After filtering, if content endups with text items next to each other, concatinate them"""
@@ -48,6 +51,23 @@ def combine_consequtive_text_contents(contents_list):
     return text_combined_contents
 
 
+def copy_usj_node(input_usj, cleaned_kids):
+    """Build a copy of a USJ node, instead of mutating the caller's object.
+
+    "content" is already rebuilt from the filtered children, so only the other
+    values need a deep copy. That keeps the copying linear, and keeps any
+    non-primitive value from being shared between the input and the output.
+    """
+    cleaned_usj = {}
+    for key, value in input_usj.items():
+        if key == "content" or not isinstance(value, (dict, list)):
+            cleaned_usj[key] = value
+        else:
+            cleaned_usj[key] = deepcopy(value)
+    cleaned_usj["content"] = cleaned_kids
+    return cleaned_usj
+
+
 def exclude_markers_in_usj(
     input_usj, exclude_markers: list, combine_texts=True, excluded_parent=False
 ):
@@ -63,10 +83,11 @@ def exclude_markers_in_usj(
     this_marker = input_usj["marker"] if "marker" in input_usj else ""
     this_marker = "list-s/e" if input_usj["type"] == "list" else this_marker
     this_marker = re.sub(trailing_num_pattern, "", this_marker)
+    if re.match(znamespace_pattern, this_marker):
+        this_marker = "user-extension"
     this_marker_needed = True
-    excluded_parent = (
-        False  # used to check if its text is needed or not, in the subsequent call
-    )
+    excluded_parent = False  # used to check if its text is needed or not, in the subsequent call
+
     inner_content_needed = True
     if this_marker in exclude_markers:
         this_marker_needed = False
@@ -85,9 +106,7 @@ def exclude_markers_in_usj(
         if combine_texts:
             cleaned_kids = combine_consequtive_text_contents(cleaned_kids)
     if this_marker_needed:
-        cleaned_usj = input_usj.copy()
-        cleaned_usj["content"] = cleaned_kids
-        return cleaned_usj
+        return copy_usj_node(input_usj, cleaned_kids)
     if inner_content_needed:
         return cleaned_kids
     return []
@@ -108,6 +127,8 @@ def include_markers_in_usj(
     this_marker = input_usj["marker"] if "marker" in input_usj else ""
     this_marker = "list-s/e" if input_usj["type"] == "list" else  this_marker
     this_marker = re.sub(trailing_num_pattern, "", this_marker)
+    if re.match(znamespace_pattern, this_marker):
+        this_marker = 'user-extension'
     this_marker_needed = True
     excluded_parent = (
         False  # used to check if its text is needed or not in the subsequent call
@@ -130,9 +151,7 @@ def include_markers_in_usj(
         if combine_texts:
             cleaned_kids = combine_consequtive_text_contents(cleaned_kids)
     if this_marker_needed:
-        cleaned_usj = input_usj.copy()
-        cleaned_usj["content"] = cleaned_kids
-        return cleaned_usj
+        return copy_usj_node(input_usj, cleaned_kids)
     if inner_content_needed:
         return cleaned_kids
     return []

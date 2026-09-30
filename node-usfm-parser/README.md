@@ -183,6 +183,7 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     STUDY_BIBLE : \esb and \cat
     BCV : \id, \c and \v
     TEXT : 'text-in-excluded-parent'
+    ZNAMESPACES : all user-extended \z markers, as one group
     ```
     To inspect which are the markers in each of these options, it could be just printed out, `print(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
     ```javascript
@@ -197,6 +198,144 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
   BOOK_HEADERS, TITLES, COMMENTS, NOTES, STUDY_BIBLE
   ```
   :warning: Generally, it is recommended to NOT use both `exclude_markers` and `includeMarkers` together as it could lead to unexpected behavours and data loss. For instance if `include_makers` has `\fk` and `excludeMarkers` has `\f`, the output will not contain `\fk` as all inner contents of `\f` will be discarded.
+
+
+### User-extended markers (\z)
+
+The USFM spec reserves markers beginning with `\z` for [user-defined extensions](https://docs.usfm.bible/usfm/3.1.2/extensions.html). usfm-grammar parses these, and represents them in USJ and USX using the type the extension belongs to. A `markers.ext` file can be supplied to declare which markers exist and what each one is, so that the output is what you expect. Without it, the type is guessed from how the marker is written.
+
+- *Supplying a markers.ext*
+
+  `markersExt`, the sixth argument to the `USFMParser` constructor, takes the **contents** of the file, not its path. Supply it when parsing USFM; it is not needed, and should not be passed, when converting from USJ or USX.
+  ```javascript
+  const {USFMParser, Filter} = require('usfm-grammar');
+  const fs = require('node:fs');
+
+  const inputUsfm = fs.readFileSync('sample.usfm', 'utf8');
+  const markersExt = fs.readFileSync('markers.ext', 'utf8');
+
+  const myParser = new USFMParser(inputUsfm, null, null, null, null, markersExt);
+  const output = myParser.toUSJ();
+  ```
+
+- *The markers.ext file*
+
+  A plain text file, in a USFM-like syntax, with one block per extension marker. Blank lines separate the blocks.
+  ```
+  \marker zheading
+  \category title
+  \description A custom section heading.
+
+  \marker zbadge
+  \category char
+  \description A custom character marker.
+
+  \marker zalign-s
+  \category milestone
+  \description A custom alignment milestone.
+
+  \marker znote
+  \category footnote
+  \description A custom note marker.
+  ```
+  `\marker` and `\category` are the two fields that matter. `\description`, and any other field, is read but does not affect parsing. Only markers starting with `z` are accepted; a block declaring anything else is ignored.
+
+- *Categories and the four major types*
+
+  `\category` must be one of the values below. Each maps onto one of four major types, and that major type is what decides how the marker is parsed and what it becomes in the output.
+
+  | Major type | `\category` values | USJ `type` | USX element |
+  | --- | --- | --- | --- |
+  | para | `para`, `header`, `title`, `introduction`, `section`, `versepara`, `list`, `otherpara` | `para` | `<para>` |
+  | char | `char`, `introchar`, `listchar`, `footnotechar`, `crossreferencechar` | `char` | `<char>` |
+  | note | `note`, `footnote`, `crossreference` | `note` | `<note>` |
+  | milestone | `milestone` | `ms` | `<ms>` |
+
+  A `\category` outside this list, or a block with no `\category` at all, raises an error.
+
+  :warning: Only the major type is used. The minor type, and the rules the spec attaches to it about where such a marker may occur, are not enforced — a declared extension marker is accepted anywhere in the document. So declaring `\category title` rather than `\category para` changes nothing about the output; both produce a `para`.
+
+- *Expected syntax per major type*
+
+  Each major type has to be written the way the corresponding standard markers are written, otherwise parsing fails.
+  ```
+  para        \zheading A line of its own
+  char        \zbadge inline content\zbadge*          (closing marker required)
+  milestone   \zalign-s\*   or   \zalign-s|x-strong="G25320"\*
+  note        \znote + \zbadge note body\zbadge*\znote*
+  ```
+  A note takes a caller as its first token, exactly like `\f` and `\x` do. Its body must be made of extension markers; plain text directly inside a note is not accepted.
+
+- *What may appear inside an extension marker*
+
+  Within a user-extended marker, only other user-extended markers (`\z...`, or `\+z...` when nested) and custom attributes (`x-...`) are allowed. Markers from the common pool are not. So this parses:
+  ```
+  \zbadge outer \+zbadge nested\+zbadge* text\zbadge*
+  \zbadge content|x-key="value"\zbadge*
+  ```
+  and these are parsing errors:
+  ```
+  \zbadge outer \nd Lord\nd* text\zbadge*
+  \zbadge content|lemma="value"\zbadge*
+  ```
+
+- *When no markers.ext is given*
+
+  The markers are still parsed, and the type is inferred from the syntax alone. A warning is recorded for each one, listing the node and suggesting that a markers.ext be supplied.
+  ```
+  \zheading A line of its own       ->  para   (no closing marker)
+  \zbadge inline\zbadge*            ->  char   (closed with its own marker)
+  \zalign-s\*                       ->  ms     (closed with \*)
+  ```
+  :warning: Notes cannot be told apart from character markers this way, since both are written as an opening marker closed by its own marker. An undeclared note-like marker is reported as `char`. Declare it in a markers.ext if you need it to come out as a `note`.
+
+- *Filtering extension markers*
+
+  All `\z` markers are filtered as a single group, named `user-extension`, rather than one marker at a time. See the `ZNAMESPACES` option in [Filtering on USJ](#filtering-on-usj).
+
+- *A worked example*
+
+  With this `markers.ext`
+  ```
+  \marker zheading
+  \category title
+  \description A custom section heading.
+
+  \marker zbadge
+  \category char
+  \description A custom character marker.
+
+  \marker zalign-s
+  \category milestone
+  \description A custom alignment milestone.
+  ```
+  this USFM
+  ```
+  \id GEN
+  \c 1
+  \p
+  \v 1 Text with \zbadge inline content\zbadge* and more.
+  \zheading A line of its own
+  \v 2 Aligned \zalign-s|x-strong="G25320"\* text.
+  ```
+  gives these USJ nodes
+  ```json
+  {"type": "char", "content": [" inline content"], "marker": "zbadge"}
+  {"type": "para", "content": [" A line of its own\n"], "marker": "zheading"}
+  {"type": "ms", "content": [], "marker": "zalign-s", "x-strong": "G25320"}
+  ```
+  and this USX
+  ```xml
+  <usx version="3.1.2">
+    <book code="GEN" style="id"/>
+    <chapter number="1" style="c" sid="GEN 1"/>
+    <para style="p"><verse number="1" style="v" sid="GEN 1:1"/>Text with <char style="zbadge"> inline content</char> and more.
+  <para style="zheading"> A line of its own
+  </para><verse eid="GEN 1:1"/><verse number="2" style="v" sid="GEN 1:2"/>Aligned <ms style="zalign-s" x-strong="G25320"/> text.
+  <verse eid="GEN 1:2"/></para>
+    <chapter eid="GEN 1"/>
+  </usx>
+  ```
 
 
 ## Contributing

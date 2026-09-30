@@ -2,14 +2,28 @@
 znamespace
 ================================================================================
 \id GEN
+\customPara_zhead some text
 \zhead some text
 \c 1
-\p
+\customPara_z-empty
 \z-empty
-\v 1 text \zinline inner text \zinline*
+\p
+\customMS_z-extra Some text content which is not scripture \*
+\v 1 text \customChar_zinline inner text \customChar_zinline*
+\zinline inner text \zinline*
 \v 2 text
-\v 3 text \zattrib inner text |x-key="val" \zattrib*
-\v 4 text
+\v 3 text \customChar_zattrib inner text |x-key="val" \customChar_zattrib*
+\v 4 text \zattrib inner text |x-key="val" \zattrib*
+\rem test comment to chekc if para flow breaks
+\v 5 mote text
+\customPara_z-para check inner para
+\v 6 text
+\c 2
+\customMS_z-extra Some text content which is not scripture \*
+\z-milestone |x-attrib="value"\*
+\p scripture continues \customChar_zCC test text and \+zInner nested text \+zInner* \customChar_zCC* followed by scripture...
+\p scripture continues \zCC test text and \+zInner nested text \+zInner* \zCC* followed by scripture...
+\p scripture continues \zNote + \zInner nested text \zInner* \zNote* followed by scripture...
 --------------------------------------------------------------------------------
 
 (File
@@ -17,23 +31,27 @@ znamespace
     (id
       (bookcode)
       (description)))
-  (zNameSpace
-    (zSpaceTag)
+  (zNameSpacePara
+    (zSpaceTagPara)
     (text))
+  (zNameSpaceUndefined
+    (zNameSpaceRegular
+      (zSpaceTagGeneric)
+      (text)))
   (chapter
     (c
       (chapterNumber))
+    (zNameSpacePara
+      (zSpaceTagPara)
+      (text))
+    (zNameSpaceUndefined
+      (zNameSpaceRegular
+        (zSpaceTagGeneric)
+        (text)))
     (paragraph
       (p
-        (zNameSpace
-          (zSpaceTag)
-          (text))
-        (v
-          (verseNumber))
-        (verseText
-          (text))
-        (zNameSpace
-          (zSpaceTag)
+        (zNameSpaceMS
+          (zSpaceTagMilestone)
           (text))
         (verseText
           (text))
@@ -41,20 +59,119 @@ znamespace
           (verseNumber))
         (verseText
           (text))
+        (zNameSpaceChar
+          (zSpaceTagChar)
+          (text)
+          (zSpaceCloseChar))
+        (verseText
+          (text))
+        (zNameSpaceUndefined
+          (zNameSpaceClosed
+            (zSpaceTagGeneric)
+            (text)
+            (zSpaceCloseGeneric)))
+        (verseText
+          (text))
         (v
           (verseNumber))
         (verseText
           (text))
-        (zNameSpace
-          (zSpaceTag)
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (zNameSpaceChar
+          (zSpaceTagChar)
           (text)
           (customAttribute
             (customAttributeName)
-            (attributeValue)))
+            (attributeValue))
+          (zSpaceCloseChar))
         (verseText
           (text))
         (v
           (verseNumber))
+        (verseText
+          (text))
+        (zNameSpaceUndefined
+          (zNameSpaceClosed
+            (zSpaceTagGeneric)
+            (text)
+            (customAttribute
+              (customAttributeName)
+              (attributeValue))
+            (zSpaceCloseGeneric)))
+        (verseText
+          (text))
+        (rem
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (zNameSpacePara
+          (zSpaceTagPara)
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text)))))
+  (chapter
+    (c
+      (chapterNumber))
+    (zNameSpaceMS
+      (zSpaceTagMilestone)
+      (text))
+    (zNameSpaceUndefined
+      (zNameSpaceClosed
+        (zSpaceTagGeneric)
+        (text)
+        (customAttribute
+          (customAttributeName)
+          (attributeValue))))
+    (paragraph
+      (p
+        (verseText
+          (text))
+        (zNameSpaceChar
+          (zSpaceTagChar)
+          (text)
+          (zNameSpaceNested
+            (zSpaceTagGenericNested)
+            (text)
+            (zSpaceCloseGenericNested))
+          (text)
+          (zSpaceCloseChar))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (verseText
+          (text))
+        (zNameSpaceUndefined
+          (zNameSpaceClosed
+            (zSpaceTagGeneric)
+            (text)
+            (zNameSpaceNested
+              (zSpaceTagGenericNested)
+              (text)
+              (zSpaceCloseGenericNested))
+            (zSpaceCloseGeneric)))
+        (verseText
+          (text))))
+    (paragraph
+      (p
+        (verseText
+          (text))
+        (zNameSpaceUndefined
+          (zNameSpaceClosed
+            (zSpaceTagGeneric)
+            (text)
+            (zNameSpaceClosed
+              (zSpaceTagGeneric)
+              (text)
+              (zSpaceCloseGeneric))
+            (zSpaceCloseGeneric)))
         (verseText
           (text))))))
 

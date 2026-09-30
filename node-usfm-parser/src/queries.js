@@ -34,7 +34,6 @@ function mileStoneQuery(lang) {
     (milestoneTag)
     (milestoneStartTag)
     (milestoneEndTag)
-    (zSpaceTag)
 ] @ms-name)`,
   );
 }

@@ -1,5 +1,39 @@
 # Release Notes
 
+## 3.2.1
+
+This release brings usfm-grammar up to date with the markers and attributes added in [USFM 3.1.2](https://docs.usfm.bible/usfm/3.1.2/index.html), and adds support for user-defined extension markers — the `\z` namespace — across the Python, Node.js and Web packages and the CLI.
+
+
+### Major Changes
+* User-defined `\z` extension markers with different types are now handled via grammar and provided in the output formats.
+* A markers.ext with details of the user-defined markers used in a USFM file can be provided to USFM-Grammar, optionally.
+* `\ex`, the extended cross reference, by @longbored in #422
+* `\wl`, for a word given in another language, with the `lang` attribute
+* `\ta`, with its `a-*` attributes, for alternative spellings — `\ta color|a-uk="colour"\ta*`
+* The nested forms `\+wl` and `\+ta`
+* `\ipc`, the centred introduction paragraph
+* `\vid` as a standalone marker, and the `@vid` attribute on paragraphs, in #410
+* The `\list-s` and `\list-e` list milestones
+* A version number on the `\usfm` marker, in #416
+* Character markers are now allowed in titles and headings, in #400
+* Hyphens are now allowed in custom attribute names, by @longbored in #418
+* Attributes on `\tl`, and the `h` attribute
+
+### Bug fixes
+
+* Filtering no longer mutates the USJ passed into it, and the returned USJ no longer shares nested objects with the input (Node.js and Web)
+
+### Maintenance
+
+* Simplified the README description of the USFM parser, by @joelthe1 in #399
+* Test helpers now take keyword arguments and an options file, so a `markers.ext` can be supplied per test case
+* Dependency upgrades across the Python, Node.js and Web packages, via @dependabot
+
+**New Contributors**: @longbored
+
+**Full Changelog**: https://github.com/Bridgeconn/usfm-grammar/compare/v3.2.0...v3.2.1
+
 ## 3.0.0
 With the 3.x versions, we are transitioning to a [Tree-Sitter](https://tree-sitter.github.io/tree-sitter/) based grammar implementation for usfm-grammar, replacing the [Ohm.js](https://ohmjs.org/) grammar used in the 2.x versions. This upgrade enhances performance, extensibility, and support for complex parsing scenarios.
 

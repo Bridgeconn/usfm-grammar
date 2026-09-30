@@ -1,0 +1,298 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "GEN",
+            "content": []
+        },
+        {
+            "type": "para",
+            "content": [
+                " some text\n"
+            ],
+            "marker": "zhead"
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "content": [
+                "\n"
+            ],
+            "marker": "z-empty"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "ms",
+                    "content": [
+                        " Some text content which is not scripture "
+                    ],
+                    "marker": "z-extra"
+                },
+                "\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "text ",
+                {
+                    "type": "char",
+                    "content": [
+                        " inner text "
+                    ],
+                    "marker": "zinline"
+                },
+                "\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "text\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "3",
+                    "sid": "GEN 1:3"
+                },
+                "text ",
+                {
+                    "type": "char",
+                    "content": [
+                        " inner text "
+                    ],
+                    "marker": "zattrib",
+                    "x-key": "val"
+                },
+                "\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "4",
+                    "sid": "GEN 1:4"
+                },
+                "text\n",
+                {
+                    "type": "para",
+                    "marker": "rem",
+                    "content": [
+                        "test comment to chekc if para flow breaks\n"
+                    ],
+                    "vid": "GEN 1:4"
+                },
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "5",
+                    "sid": "GEN 1:5"
+                },
+                "mote text\n",
+                {
+                    "type": "para",
+                    "content": [
+                        " check inner para\n"
+                    ],
+                    "marker": "z-para"
+                },
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "6",
+                    "sid": "GEN 1:6"
+                },
+                "text\n"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "2",
+            "sid": "GEN 2"
+        },
+        {
+            "type": "ms",
+            "content": [
+                " Some text content which is not scripture "
+            ],
+            "marker": "z-extra"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                "scripture continues\n"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "4",
+                    "sid": "GEN 1:4"
+                },
+                {
+                    "type": "ms",
+                    "content": [],
+                    "marker": "zaln-s",
+                    "x-content": "καὶ",
+                    "x-lemma": "καί",
+                    "x-morph": "Gr,CC,,,,,,,,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G25320"
+                },
+                {
+                    "type": "char",
+                    "marker": "w",
+                    "content": [
+                        "When"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                {
+                    "type": "ms",
+                    "content": [],
+                    "marker": "zaln-e"
+                },
+                "\n",
+                {
+                    "type": "ms",
+                    "content": [],
+                    "marker": "zaln-s",
+                    "x-content": "συναλιζόμενος",
+                    "x-lemma": "συναλίζω",
+                    "x-morph": "Gr,V,PPM,NMS,",
+                    "x-occurrence": "1",
+                    "x-occurrences": "1",
+                    "x-strong": "G48710"
+                },
+                {
+                    "type": "char",
+                    "marker": "w",
+                    "content": [
+                        "he"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "3"
+                },
+                "\n",
+                {
+                    "type": "char",
+                    "marker": "w",
+                    "content": [
+                        "was"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "\n",
+                {
+                    "type": "char",
+                    "marker": "w",
+                    "content": [
+                        "meeting"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "\n",
+                {
+                    "type": "char",
+                    "marker": "w",
+                    "content": [
+                        "together"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "\n",
+                {
+                    "type": "char",
+                    "marker": "w",
+                    "content": [
+                        "with"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "1"
+                },
+                "\n",
+                {
+                    "type": "char",
+                    "marker": "w",
+                    "content": [
+                        "them"
+                    ],
+                    "x-occurrence": "1",
+                    "x-occurrences": "2"
+                },
+                {
+                    "type": "ms",
+                    "content": [],
+                    "marker": "zaln-e"
+                },
+                ",\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                "more case with note ",
+                {
+                    "type": "note",
+                    "content": [
+                        {
+                            "type": "char",
+                            "content": [
+                                " This is a sidenote"
+                            ],
+                            "marker": "z-note"
+                        }
+                    ],
+                    "marker": "zsidenote",
+                    "caller": "+"
+                },
+                " and ",
+                {
+                    "type": "char",
+                    "content": [
+                        " + ",
+                        {
+                            "type": "char",
+                            "content": [
+                                " This is a sidenote"
+                            ],
+                            "marker": "z-noteX"
+                        }
+                    ],
+                    "marker": "zsidenoteX"
+                },
+                "\n"
+            ],
+            "vid": "GEN 1:4"
+        }
+    ]
+}
