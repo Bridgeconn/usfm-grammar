@@ -1,27 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+  usx.rng
+  Relax NG Schema for USX 3.1.2
+-->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0"
          xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
          xmlns:usfm="http://usfm.bible/parse/2023"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
-  <usfm:terminal name="ws" value="/[\u0009-\u000D\u0020\u00A0\u1680\u2000-\u200B\u2028\u2029\u202F\u205F]/"/>
-  <usfm:terminal name="wsnnl" value="/[\u0009\u0020\u00A0\u1680\u2000-\u200B\u2028\u2029\u202F\u205F]/"/>
-  <usfm:terminal name="nl" value="/\u000D?\u000A/"/>
-  <usfm:terminal name="NL" value="/(?:${nl}|\u000D)+/"/>
-  <usfm:terminal name="WS" value="/(?:${ws}|${nl}|$)/"/>
-  <usfm:terminal name="WSS" value="/${ws}*/"/>
-  <usfm:terminal name="TAGEND" value="/(?:${ws}+|(?=[\\|]|$))/"/>
-  <usfm:terminal name="TAGPARMEND" value="/${wsnnl}+/"/>
-  <usfm:terminal name="TEXTEND" value="/${ws}*(?=[\\]|$)/"/>
-  <usfm:terminal name="ATTRIBTEXTEND" value="/${ws}*(?=[\\|])/"/>
-  <usfm:terminal name="TEXT" value="/[^\\]+?(?=[\\]|$)/"/>
-  <usfm:terminal name="TEXTATTRIB" value="/[^\\|]+?(?=[\\|]|$)/"/>
-  <usfm:terminal name="PIPE" value="/${ws}*(?&lt;!\\)\|${ws}*/"/>
+  <usfm:terminal name="hs" value="/[\u0009\u0020]/">
+    <a:documentation>A single simple horizontal (non newline) whitespace character</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="HS" value="/${hs}+/">
+    <a:documentation>A sequence of more horizontal whitespace characters</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="Hs" value="/${hs}*/">
+    <a:documentation>A sequence of zero or more horizontal whitespace characters</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="nl" value="/(?:\u000D?\u000A|\u000D)/">
+    <a:documentation>A single newline (as supported by all operating systems)</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="NL" value="/${nl}+/">
+    <a:documentation>A sequence of newline characters</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="ws" value="/(?:${hs}|${nl}|$)/">
+    <a:documentation>A reducable whitespace character, including a single newline sequence</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="anyws" value="/[\u0009\u000A\u000D\u0020]/">
+    <a:documentation>Matches any single reducible whitespace character, may split newline</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="WS" value="/${anyws}+/">
+    <a:documentation>A sequence of reducable whitespace characters</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="Ws" value="/${anyws}*/">
+    <a:documentation>A sequence of zero or more reducable whitespace characters</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="allws" value="/[\u0009-\u000D\u0020\u00A0\u1680\u2000-\u200B\u2028\u2029\u202F\u205F\u3000]/">
+    <a:documentation>All possible whitespace characters including content whitespace. Matches a single character</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="WSNL" value="/${HS}${NL}/">
+    <a:documentation>A sequence of non-newline whitespace up to and including a newline</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="TAGEND" value="/(?:${ws}+|(?=[\\|]|$))/">
+    <a:documentation>Delimits a marker</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="TEXTEND" value="/(?=${anyws}*\\|//|$)/">
+    <a:documentation>Delimits simple text</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="ATTRIBTEXTEND" value="/${Hs}(?=[\\|])/">
+    <a:documentation>Reducable characters following an attribute value</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="ATTRIBTEXT" value="/(?:\\[&quot;\\=~/|]|[^\\&quot;])+/">
+    <a:documentation>Matches text inside an attribute value (not including the quotes)</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="ATTRIBALL" value="/(?:[^\\=|]|\\[\\=|~/])+(?=\\)/">
+    <a:documentation>Matches a default attribute value string</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="ATTRIBNAME" value="/[a-zA-Z_][a-zA-Z0-9\-_]*?/">
+    <a:documentation>Matches an attribute name</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="TEXT" value="/([^\\/]|/(?!/)|\\[/~\\|])+?/">
+    <a:documentation>Matches simple text up to the next marker</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="TEXTNWS" value="/.+(?=${Ws}\\[^~/\\])/">
+    <a:documentation>Matches simple text without trailing whitespace</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="TEXTNOTATTRIB" value="/(?:[^\\|]|\\[\\~/|])+/">
+    <a:documentation>Matches simple text up to the start of a sequence of attributes delimited by |</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="TEXTNOTATTRIBOPT" value="/(?:[^\\|]|\\[\\~/|])*/">
+    <a:documentation>Matches simple text up to the start of a sequence of attributes delimited by | if present</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="IGNORELINE" value="/[^\r\n]*/">
+    <a:documentation>Matches anything up to the end of the line. Used for ignoring everything up to the end of a line</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="PIPE" value="/${hs}*(?&lt;!\\)\|${hs}*/">
+    <a:documentation>Matches the attributes list delimiter of |</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="TLC" value="/[0-9A-Z]{3}/">
+    <a:documentation>Three letter uppercase code including digits</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="VERSE" value="/[1-9][0-9]*[\p{L}\p{Mn}]*(‏?[\-,][0-9]+[\p{L}\p{Mn}]*)*/">
+    <a:documentation>Verse number, including ranges and sequences</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="VID" value="/[A-Z1-4]{3} ?[‏a-z0-9,\-:\p{L}\p{Mn}]*/">
+    <a:documentation>USX eid, sid, vid references</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="MID" value="/[\p{L}\d_\-\.:]+/">
+    <a:documentation>Milestone sid or eid any identifier, in effect</a:documentation>
+  </usfm:terminal>
+  <usfm:terminal name="HREF" value="/(.*\/\/\/?(.*\/?)+)|((prj:[A-Za-z\-0-9]{3,8} )?[A-Z1-4]{3} \d+:\d+(\-\d+)?)|(#[^\s]+)/">
+    <a:documentation>href bible reference</a:documentation>
+  </usfm:terminal>
   <usfm:alias name="usfm:tag" def="match">
-    <usfm:match before="&#x27;\&#x27;" after="TAGEND" afterout="&#x27; &#x27;"/>
+    <usfm:match before="&#x27;\\&#x27;" after="TAGEND" afterout="&#x27; &#x27;"/>
+  </usfm:alias>
+  <usfm:alias name="usfm:ptag" def="match">
+    <usfm:match before="/${Ws}\\/" beforeout="&#x27;\n\\&#x27;" after="TAGEND" afterout="&#x27; &#x27;"/>
   </usfm:alias>
   <usfm:alias name="usfm:endtag" def="match">
-    <usfm:match before="&#x27;\&#x27;" matchref="a" after="&#x27;*&#x27;" dump="true"/>
+    <usfm:match before="&#x27;\\&#x27;" matchref="a" after="&#x27;*&#x27;" dump="true"/>
   </usfm:alias>
   <usfm:alias name="usfm:text" def="match">
     <usfm:match match="TEXT" after="TEXTEND"/>
@@ -31,27 +109,55 @@
   </start>
   <define name="USX">
     <choice>
-      <ref name="Scripture"/>
       <ref name="Peripheral"/>
+      <ref name="Scripture"/>
     </choice>
   </define>
-  <define name="Scripture">
-    <element usfm:stacked="true">
+  <define name="Peripheral">
+    <element>
       <name ns="">usx</name>
-      <attribute>
-        <name ns="">version</name>
-        <data type="string">
-          <param name="minLength">3</param>
-          <param name="pattern">\d+\.\d+(\.\d+)?</param>
-        </data>
-      </attribute>
+      <optional>
+        <attribute>
+          <usfm:match before="/${Ws}\\usfm${HS}/" beforeout="&#x27;\\usfm &#x27;" match="TEXTNWS"/>
+          <name ns="">version</name>
+          <data type="string">
+            <param name="minLength">3</param>
+            <param name="pattern">\d+\.\d+(\.\d+)?</param>
+          </data>
+        </attribute>
+      </optional>
       <optional>
         <attribute>
           <name ns="http://www.w3.org/2001/XMLSchema-instance">noNamespaceSchemaLocation</name>
           <text/>
         </attribute>
       </optional>
+      <choice>
+        <ref name="PeripheralBook"/>
+        <ref name="PeripheralDividedBook"/>
+      </choice>
+    </element>
+  </define>
+  <define name="Scripture">
+    <element usfm:stacked="true">
+      <name ns="">usx</name>
       <ref name="BookIdentification"/>
+      <optional>
+        <attribute>
+          <usfm:match before="/${Ws}\\usfm${HS}/" beforeout="&#x27;\\usfm &#x27;"/>
+          <name ns="">version</name>
+          <data type="string">
+            <param name="minLength">3</param>
+            <param name="pattern">\d+\.\d+(\.\d+)?</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute>
+          <name ns="http://www.w3.org/2001/XMLSchema-instance">noNamespaceSchemaLocation</name>
+          <text/>
+        </attribute>
+      </optional>
       <group usfm:seq="true">
         <zeroOrMore>
           <ref name="BookHeaders"/>
@@ -73,28 +179,6 @@
           <ref name="ChapterContent"/>
         </oneOrMore>
       </group>
-    </element>
-  </define>
-  <define name="Peripheral">
-    <element>
-      <name ns="">usx</name>
-      <attribute>
-        <name ns="">version</name>
-        <data type="string">
-          <param name="minLength">3</param>
-          <param name="pattern">\d+\.\d+(\.\d+)?</param>
-        </data>
-      </attribute>
-      <optional>
-        <attribute>
-          <name ns="http://www.w3.org/2001/XMLSchema-instance">noNamespaceSchemaLocation</name>
-          <text/>
-        </attribute>
-      </optional>
-      <choice>
-        <ref name="PeripheralBook"/>
-        <ref name="PeripheralDividedBook"/>
-      </choice>
     </element>
   </define>
   <define name="PeripheralBook">
@@ -129,20 +213,20 @@
   <define name="BookIdentification">
     <element>
       <name ns="">book</name>
-      <attribute usfm:grouping="13" usfm:order="-1">
+      <attribute>
+        <usfm:tag before="/﻿?${anyws}*\\/" beforeout="&#x27;\\&#x27;" usfm:seq="true"/>
+        <name ns="">style</name>
+        <value>id</value>
+      </attribute>
+      <attribute usfm:grouping="13">
         <usfm:match/>
         <name ns="">code</name>
         <ref name="BookIdentification.book.code.enum"/>
       </attribute>
-      <attribute usfm:order="-2">
-        <usfm:tag before="/${ws}*\\/" beforeout="&#x27;\\&#x27;" usfm:seq="true"/>
-        <name ns="">style</name>
-        <value>id</value>
-      </attribute>
       <group usfm:seq="true">
         <optional>
           <group>
-            <usfm:match before="/${wsnnl}*/" beforeout="&#x27; &#x27;" match="/[^\\\n\r]*/"/>
+            <usfm:match before="/${hs}*/" beforeout="&#x27; &#x27;" match="/[^\\\n\r]*/"/>
             <text/>
           </group>
         </optional>
@@ -255,7 +339,7 @@
       <value>LAO</value>
       <data type="string">
         <usfm:match/>
-        <param name="pattern">\S{3}</param>
+        <param name="pattern">[A-Z][A-Z0-9]{2}|[0-9][A-Z][0-9]|[0-9]{2}[A-Z]</param>
       </data>
     </choice>
   </define>
@@ -263,16 +347,24 @@
     <element>
       <name ns="">book</name>
       <attribute>
-        <name ns="">code</name>
-        <ref name="PeripheralBookIdentification.book.code.enum"/>
-      </attribute>
-      <attribute>
+        <usfm:tag before="/﻿?${anyws}*\\/" beforeout="&#x27;\\&#x27;" usfm:seq="true"/>
         <name ns="">style</name>
         <value>id</value>
       </attribute>
-      <optional>
-        <text/>
-      </optional>
+      <attribute>
+        <usfm:match/>
+        <name ns="">code</name>
+        <ref name="PeripheralBookIdentification.book.code.enum"/>
+      </attribute>
+      <group usfm:seq="true">
+        <optional>
+          <group>
+            <usfm:match before="/${hs}*/" beforeout="&#x27; &#x27;" match="/[^\\\n\r]*/"/>
+            <text/>
+          </group>
+        </optional>
+        <usfm:match match="NL" matchout="&#x27;\n&#x27;" dump="true"/>
+      </group>
     </element>
   </define>
   <define name="PeripheralBookIdentification.book.code.enum">
@@ -281,26 +373,30 @@
       <value>GLO</value>
       <value>TDX</value>
       <value>NDX</value>
-      <data type="string">
-        <usfm:match/>
-        <param name="pattern">\S{3}</param>
-      </data>
     </choice>
   </define>
   <define name="PeripheralDividedBookIdentification">
     <element>
       <name ns="">book</name>
       <attribute>
-        <name ns="">code</name>
-        <ref name="PeripheralDividedBookIdentification.book.code.enum"/>
-      </attribute>
-      <attribute>
+        <usfm:tag before="/﻿?${anyws}*\\/" beforeout="&#x27;\\&#x27;" usfm:seq="true"/>
         <name ns="">style</name>
         <value>id</value>
       </attribute>
-      <optional>
-        <text/>
-      </optional>
+      <attribute>
+        <usfm:match/>
+        <name ns="">code</name>
+        <ref name="PeripheralDividedBookIdentification.book.code.enum"/>
+      </attribute>
+      <group usfm:seq="true">
+        <optional>
+          <group>
+            <usfm:match before="/${hs}*/" beforeout="&#x27; &#x27;" match="/[^\\\n\r]*/"/>
+            <text/>
+          </group>
+        </optional>
+        <usfm:match match="NL" matchout="&#x27;\n&#x27;" dump="true"/>
+      </group>
     </element>
   </define>
   <define name="PeripheralDividedBookIdentification.book.code.enum">
@@ -318,23 +414,23 @@
       <value>INT</value>
       <data type="string">
         <usfm:match/>
-        <param name="pattern">\S{3}</param>
+        <param name="pattern">X[A-Z0-9]{2}</param>
       </data>
     </choice>
   </define>
   <define name="PeripheralDivision">
     <element usfm:stacked="true">
-      <usfm:match usfm:order="-3" before="&#x27;\periph &#x27;"/>
+      <usfm:match usfm:order="-3" before="/${Ws}\\periph${HS}/" beforeout="&#x27;\\periph &#x27;" match="&#x27;&#x27;"/>
       <name ns="">periph</name>
       <optional>
         <attribute>
-          <usfm:match match="TEXT" after="ATTRIBTEXTEND" usfm:seq="true"/>
+          <usfm:match match="TEXTNOTATTRIB" usfm:seq="true"/>
           <name ns="">alt</name>
           <text/>
         </attribute>
       </optional>
       <attribute usfm:grouping="15">
-        <usfm:match before="PIPE" beforeout="&#x27;|&#x27;" after="&#x27;id=&#x27;" usfm:seq="true"/>
+        <usfm:match before="/${PIPE}${Hs}id=?&quot;/" beforeout="&#x27;|id=&quot;&#x27;" after="&#x27;&quot;&#x27;" usfm:seq="true"/>
         <name ns="">id</name>
         <choice>
           <ref name="Peripheral.FRT.periph.id.enum"/>
@@ -349,9 +445,9 @@
       <zeroOrMore>
         <ref name="BookHeaders"/>
       </zeroOrMore>
-      <oneOrMore>
+      <zeroOrMore>
         <ref name="BookTitles"/>
-      </oneOrMore>
+      </zeroOrMore>
       <zeroOrMore>
         <ref name="BookIntroduction"/>
       </zeroOrMore>
@@ -432,9 +528,9 @@
     <element>
       <name ns="">para</name>
       <attribute usfm:grouping="8">
-        <usfm:tag/>
+        <usfm:ptag/>
         <name ns="">style</name>
-        <ref name="BookHeaders.para.style.enum"/>
+        <ref name="Header.para.style.enum"/>
       </attribute>
       <optional>
         <text>
@@ -443,56 +539,70 @@
       </optional>
     </element>
   </define>
-  <define name="BookHeaders.para.style.enum">
+  <define name="Header.para.style.enum">
     <choice>
       <value>ide</value>
+      <a:documentation>File encoding information (DEPRECATED)</a:documentation>
       <value>h1</value>
+      <a:documentation>Running header text </a:documentation>
       <value>h2</value>
+      <a:documentation>Running header text, left side of page (DEPRECATED)</a:documentation>
       <value>h3</value>
+      <a:documentation>Running header text, right side of page (DEPRECATED)</a:documentation>
       <value>h</value>
+      <a:documentation>Running header text for a book</a:documentation>
       <value>toc1</value>
+      <a:documentation>Long table of contents text</a:documentation>
       <value>toc2</value>
+      <a:documentation>Short table of contents text</a:documentation>
       <value>toc3</value>
+      <a:documentation>Book Abbreviation</a:documentation>
       <value>toca1</value>
+      <a:documentation>Alternative language long table of contents text</a:documentation>
       <value>toca2</value>
+      <a:documentation>Alternative language short table of contents text</a:documentation>
       <value>toca3</value>
-      <value>rem</value>
+      <a:documentation>Alternative language book Abbreviation</a:documentation>
       <value>sts</value>
-      <value>usfm</value>
+      <a:documentation>Status</a:documentation>
+      <value>rem</value>
+      <a:documentation>Remark</a:documentation>
     </choice>
   </define>
   <define name="BookTitles">
     <element>
       <name ns="">para</name>
       <attribute>
-        <usfm:tag/>
+        <usfm:ptag/>
         <name ns="">style</name>
-        <ref name="BookTitles.para.style.enum"/>
+        <ref name="Title.para.style.enum"/>
       </attribute>
       <zeroOrMore>
         <choice>
+          <text>
+            <usfm:text/>
+          </text>
           <ref name="Footnote"/>
           <ref name="CrossReference"/>
           <ref name="Char"/>
           <ref name="Break"/>
-          <text>
-            <usfm:text/>
-          </text>
         </choice>
       </zeroOrMore>
     </element>
   </define>
-  <define name="BookTitles.para.style.enum">
+  <define name="Title.para.style.enum">
     <choice>
       <value>mt1</value>
+      <a:documentation>The main title of the book (if multiple levels)</a:documentation>
       <value>mt2</value>
+      <a:documentation>A secondary title usually occurring before the main title</a:documentation>
       <value>mt3</value>
+      <a:documentation>A tertiary title occurring after the main title</a:documentation>
       <value>mt4</value>
       <value>mt</value>
-      <value>imt1</value>
-      <value>imt2</value>
-      <value>imt</value>
+      <a:documentation>The main title of the book (if single level)</a:documentation>
       <value>rem</value>
+      <a:documentation>Remark</a:documentation>
     </choice>
   </define>
   <define name="BookIntroduction">
@@ -500,121 +610,184 @@
       <element>
         <name ns="">para</name>
         <attribute usfm:grouping="12">
-          <usfm:tag/>
+          <usfm:ptag/>
           <name ns="">style</name>
-          <ref name="BookIntroduction.para.style.enum"/>
+          <ref name="Introduction.para.style.enum"/>
         </attribute>
         <zeroOrMore>
           <choice>
-            <ref name="Reference" usfm:ignore="true"/>
-            <ref name="Footnote"/>
-            <ref name="CrossReference"/>
-            <ref name="Char"/>
-            <ref name="IntroChar"/>
-            <ref name="Milestone"/>
             <text>
               <usfm:text/>
             </text>
+            <ref name="CharEmbed"/>
+            <ref name="IntroChar"/>
+            <ref name="Footnote"/>
+            <ref name="CrossReference"/>
+            <ref name="Figure"/>
+            <ref name="Milestone"/>
+            <ref name="Reference"/>
+            <ref name="Sidebar"/>
           </choice>
         </zeroOrMore>
       </element>
       <ref name="Table"/>
+      <ref name="IntroList"/>
     </choice>
   </define>
-  <define name="BookIntroduction.para.style.enum">
+  <define name="Introduction.para.style.enum">
     <choice>
       <value>imt1</value>
+      <a:documentation>Introduction major title, level 1 (if multiple levels)</a:documentation>
       <value>imt2</value>
+      <a:documentation>Introduction major title, level 2</a:documentation>
       <value>imt3</value>
+      <a:documentation>Introduction major title, level 3</a:documentation>
       <value>imt4</value>
+      <a:documentation>Introduction major title, level 4 (usually within parenthesis)</a:documentation>
       <value>imte1</value>
+      <a:documentation>Introduction major title at introduction end, level 1 (if multiple levels)</a:documentation>
       <value>imte2</value>
+      <a:documentation>Introduction major title at introduction end, level 2</a:documentation>
       <value>imte</value>
+      <a:documentation>Introduction major title at introduction end, level 1 (if single level)</a:documentation>
       <value>imt</value>
+      <a:documentation>Introduction major title, level 1 - (if single level)</a:documentation>
       <value>ib</value>
+      <a:documentation>Introduction blank line</a:documentation>
       <value>ie</value>
-      <value>ili1</value>
-      <value>ili2</value>
-      <value>ili</value>
+      <a:documentation>Introduction ending marker</a:documentation>
       <value>imi</value>
+      <a:documentation>Introduction prose paragraph text, indented, with no first line indent</a:documentation>
       <value>imq</value>
+      <a:documentation>Introduction prose paragraph, quote from the body text, with no first line indent</a:documentation>
       <value>im</value>
+      <a:documentation>Introduction prose paragraph, with no first line indent (may occur after poetry)</a:documentation>
       <value>io1</value>
+      <a:documentation>Introduction outline text, level 1 (if multiple levels)</a:documentation>
       <value>io2</value>
+      <a:documentation>Introduction outline text, level 2</a:documentation>
       <value>io3</value>
+      <a:documentation>Introduction outline text, level 3</a:documentation>
       <value>io4</value>
+      <a:documentation>Introduction outline text, level 4</a:documentation>
       <value>iot</value>
+      <a:documentation>Introduction outline title</a:documentation>
       <value>io</value>
+      <a:documentation>Introduction outline text, level 1 (if single level)</a:documentation>
+      <value>ipc</value>
+      <a:documentation>Introduction Inscription (paragraph text centered)</a:documentation>
       <value>ipi</value>
+      <a:documentation>Introduction prose paragraph, indented, with first line indent</a:documentation>
       <value>ipq</value>
+      <a:documentation>Introduction prose paragraph, quote from the body text</a:documentation>
       <value>ipr</value>
+      <a:documentation>Introduction prose paragraph, right aligned</a:documentation>
+      <value>ipc</value>
+      <a:documentation>Introduction prose paragraph, centred</a:documentation>
       <value>ip</value>
+      <a:documentation>Introduction prose paragraph</a:documentation>
       <value>iq1</value>
+      <a:documentation>Introduction poetry text, level 1 (if multiple levels)</a:documentation>
       <value>iq2</value>
+      <a:documentation>Introduction poetry text, level 2</a:documentation>
       <value>iq3</value>
+      <a:documentation>Introduction poetry text, level 3</a:documentation>
       <value>iq</value>
+      <a:documentation>Introduction poetry text, level 1 (if single level)</a:documentation>
       <value>is1</value>
+      <a:documentation>Introduction section heading, level 1 (if multiple levels)</a:documentation>
       <value>is2</value>
+      <a:documentation>Introduction section heading, level 2</a:documentation>
       <value>is</value>
+      <a:documentation>Introduction section heading, level 1 (if single level)</a:documentation>
       <value>iex</value>
+      <a:documentation>Introduction explanatory or bridge text (e.g. explanation of missing book in Short Old Testament)</a:documentation>
+      <value>lit</value>
+      <a:documentation>For a comment or note inserted for liturgical use</a:documentation>
       <value>rem</value>
+      <a:documentation>Remark</a:documentation>
+    </choice>
+  </define>
+  <define name="IntroList">
+    <element>
+      <name ns="">para</name>
+      <attribute usfm:grouping="12">
+        <usfm:ptag/>
+        <name ns="">style</name>
+        <ref name="IntroList.para.style.enum"/>
+      </attribute>
+      <zeroOrMore>
+        <choice>
+          <text>
+            <usfm:text/>
+          </text>
+          <ref name="CharEmbed"/>
+          <ref name="IntroChar"/>
+          <ref name="ListChar"/>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Reference"/>
+          <ref name="Sidebar"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="IntroList.para.style.enum">
+    <choice>
+      <value>ili1</value>
+      <a:documentation>A list entry, level 1 (if multiple levels)</a:documentation>
+      <value>ili2</value>
+      <a:documentation>A list entry, level 2</a:documentation>
+      <value>ili</value>
+      <a:documentation>A list entry, level 1 (if single level)</a:documentation>
     </choice>
   </define>
   <define name="BookIntroductionEndTitles">
     <element>
       <name ns="">para</name>
       <attribute>
-        <usfm:tag/>
+        <usfm:ptag/>
         <name ns="">style</name>
-        <ref name="BookIntroductionEndTitles.para.style.enum"/>
+        <ref name="Title.para.style.enum"/>
       </attribute>
       <zeroOrMore>
         <choice>
-          <ref name="Footnote"/>
-          <ref name="CrossReference"/>
-          <ref name="Char"/>
-          <ref name="Milestone"/>
-          <ref name="Break"/>
           <text>
             <usfm:text ahead="&#x27;\&#x27;"/>
           </text>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Break"/>
         </choice>
       </zeroOrMore>
     </element>
   </define>
-  <define name="BookIntroductionEndTitles.para.style.enum">
-    <choice>
-      <value>mt1</value>
-      <value>mt2</value>
-      <value>mt3</value>
-      <value>mt4</value>
-      <value>mt</value>
-      <value>imt</value>
-      <value>imt1</value>
-      <value>imt2</value>
-    </choice>
-  </define>
   <define name="ChapterContent">
     <choice>
-      <ref name="Chapter"/>
-      <ref name="Section"/>
       <ref name="Para"/>
+      <ref name="Section"/>
+      <ref name="Chapter"/>
+      <ref name="Milestone"/>
       <ref name="List"/>
       <ref name="Table"/>
-      <ref name="Footnote"/>
-      <ref name="CrossReference"/>
       <ref name="Sidebar"/>
     </choice>
   </define>
   <define name="PeripheralContent">
     <choice>
-      <ref name="Chapter"/>
-      <ref name="Section"/>
+      <ref name="PeriphPara"/>
       <ref name="Para"/>
+      <ref name="Section"/>
+      <ref name="Chapter"/>
+      <ref name="Figure"/>
+      <ref name="Milestone"/>
       <ref name="List"/>
       <ref name="Table"/>
-      <ref name="Footnote"/>
-      <ref name="CrossReference"/>
       <ref name="Sidebar"/>
     </choice>
   </define>
@@ -622,149 +795,269 @@
     <element>
       <name ns="">para</name>
       <attribute usfm:grouping="15">
-        <usfm:tag id="a" usfm:stacked="true" before="/[\u0009-\u000D\u0020\u00A0\u1680\u2000-\u200B\u2028\u2029\u202F\u205F]*\\/" beforeout="&#x27;\n&#x27;"/>
+        <usfm:ptag matchid="a" usfm:stacked="true"/>
         <name ns="">style</name>
-        <ref name="Section.para.style.enum"/>
+        <ref name="SectionPara.para.style.enum"/>
       </attribute>
       <optional>
         <attribute>
           <name ns="">vid</name>
           <data type="string">
-            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*([\-,][0-9]+)*</param>
+            <usfm:pattern name="VERSE"/>
+            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*(‏?[\-,][0-9]+)*</param>
           </data>
         </attribute>
       </optional>
       <zeroOrMore>
         <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="Footnote"/>
-          <ref name="CrossReference"/>
-          <ref name="Char"/>
-          <ref name="Milestone"/>
-          <ref name="VerseEnd" usfm:ignore="true"/>
-          <ref name="Break"/>
           <text>
             <usfm:text/>
           </text>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="VerseEnd" usfm:ignore="true"/>
+          <ref name="Reference"/>
+          <ref name="Break"/>
         </choice>
       </zeroOrMore>
     </element>
   </define>
-  <define name="Section.para.style.enum">
+  <define name="SectionPara.para.style.enum">
     <choice>
       <value>restore</value>
+      <a:documentation>Comment about when text was restored</a:documentation>
       <value>iex</value>
+      <a:documentation>Introduction explanatory or bridge text (e.g. explanation of missing book in Short Old Testament)</a:documentation>
       <value>ip</value>
+      <a:documentation>Division or Section introductory paragraph (study Bible)</a:documentation>
       <value>ms1</value>
+      <a:documentation>A major section division heading, level 1 (if multiple levels)</a:documentation>
       <value>ms2</value>
+      <a:documentation>A major section division heading, level 2</a:documentation>
       <value>ms3</value>
+      <a:documentation>A major section division heading, level 3</a:documentation>
       <value>ms</value>
+      <a:documentation>A major section division heading, level 1 (if single level)</a:documentation>
       <value>mr</value>
+      <a:documentation>A major section division references range heading</a:documentation>
       <value>mte1</value>
+      <a:documentation>The main title of the book repeat /ed at the end of the book, level 1 (if multiple levels)</a:documentation>
       <value>mte2</value>
+      <a:documentation>A secondary title occurring before or after the &#x27;ending&#x27; main title</a:documentation>
       <value>mte</value>
+      <a:documentation>The main title of the book repeated at the end of the book, level 1 (if single level)</a:documentation>
       <value>r</value>
+      <a:documentation>Parallel reference(s)</a:documentation>
       <value>s1</value>
+      <a:documentation>A section heading, level 1 (if multiple levels)</a:documentation>
       <value>s2</value>
+      <a:documentation>A section heading, level 2 (e.g. Proverbs 22-24)</a:documentation>
       <value>s3</value>
+      <a:documentation>A section heading, level 3 (e.g. Genesis &quot;The First Day&quot;) (\s3 can take a \v!)</a:documentation>
       <value>s4</value>
+      <a:documentation>A section heading, level 4</a:documentation>
       <value>sr</value>
+      <a:documentation>A section division references range heading</a:documentation>
       <value>sp</value>
+      <a:documentation>A heading, to identify the speaker (e.g. Job)</a:documentation>
       <value>sd1</value>
+      <a:documentation>Semantic division location (vertical space used to divide the text into sections), level 1 (if multiple levels)</a:documentation>
       <value>sd2</value>
+      <a:documentation>Semantic division location (vertical space used to divide the text into sections), level 2</a:documentation>
       <value>sd3</value>
+      <a:documentation>Semantic division location (vertical space used to divide the text into sections), level 3</a:documentation>
       <value>sd4</value>
+      <a:documentation>Semantic division location (vertical space used to divide the text into sections), level 4</a:documentation>
       <value>sd</value>
+      <a:documentation>Vertical space used to divide the text into sections, level 1 (if single level)</a:documentation>
       <value>s</value>
+      <a:documentation>A section heading, level 1 (if single level)</a:documentation>
       <value>cl</value>
+      <a:documentation>Chapter label used for translations that add a word such as &quot;Chapter&quot;</a:documentation>
       <value>cd</value>
+      <a:documentation>Chapter Description (Publishing option D, e.g. in Russian Bibles)</a:documentation>
+    </choice>
+  </define>
+  <define name="PeriphPara">
+    <element>
+      <name ns="">para</name>
+      <attribute usfm:grouping="15">
+        <usfm:ptag usfm:stacked="true"/>
+        <name ns="">style</name>
+        <ref name="PeriphPara.para.style.enum"/>
+      </attribute>
+      <zeroOrMore>
+        <choice>
+          <text>
+            <usfm:text/>
+          </text>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Verse"/>
+          <ref name="Reference"/>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="Break"/>
+        </choice>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="PeriphPara.para.style.enum">
+    <choice>
+      <value>p1</value>
+      <a:documentation>Front or back matter text paragraph, level 1 (if multiple levels)</a:documentation>
+      <value>p2</value>
+      <a:documentation>Front or back matter text paragraph, level 2 (if multiple levels)</a:documentation>
     </choice>
   </define>
   <define name="Para">
     <element>
       <name ns="">para</name>
-      <attribute usfm:grouping="15">
-        <usfm:tag id="a" usfm:stacked="true" before="/[\u0009-\u000D\u0020\u00A0\u1680\u2000-\u200B\u2028\u2029\u202F\u205F]*\\/" beforeout="&#x27;\n\\&#x27;"/>
-        <name ns="">style</name>
-        <ref name="Para.para.style.enum"/>
-      </attribute>
+      <choice>
+        <attribute usfm:grouping="15">
+          <usfm:ptag usfm:stacked="true"/>
+          <name ns="">style</name>
+          <ref name="OtherPara.para.style.enum"/>
+        </attribute>
+        <attribute usfm:grouping="15">
+          <usfm:ptag usfm:stacked="true"/>
+          <name ns="">style</name>
+          <ref name="VersePara.para.style.enum"/>
+        </attribute>
+      </choice>
       <optional>
         <attribute>
           <name ns="">vid</name>
           <data type="string">
-            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*([\-,][0-9]+)*</param>
+            <usfm:pattern name="VERSE"/>
+            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*(‏?[\-,][0-9]+)*</param>
           </data>
         </attribute>
       </optional>
       <zeroOrMore>
         <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="Footnote"/>
-          <ref name="CrossReference"/>
-          <ref name="Char"/>
-          <ref name="Milestone"/>
-          <ref name="Verse"/>
-          <ref name="Break"/>
           <text>
             <usfm:text/>
           </text>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Verse"/>
+          <ref name="Reference"/>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="Break"/>
         </choice>
       </zeroOrMore>
     </element>
   </define>
-  <define name="Para.para.style.enum">
+  <define name="VersePara.para.style.enum">
     <choice>
       <value>cls</value>
-      <value>lit</value>
+      <a:documentation>Closure of an Epistle</a:documentation>
       <value>nb</value>
-      <value>pb</value>
+      <a:documentation>Paragraph text, with no break from previous paragraph text (at chapter boundary)</a:documentation>
       <value>pc</value>
+      <a:documentation>Inscription (paragraph text centered)</a:documentation>
       <value>pi1</value>
+      <a:documentation>Paragraph text, level 1 indent (if multiple levels), with first line indent; often used for discourse</a:documentation>
       <value>pi2</value>
+      <a:documentation>Paragraph text, level 2 indent, with first line indent; often used for discourse</a:documentation>
       <value>pi3</value>
+      <a:documentation>Paragraph text, level 3 indent, with first line indent; often used for discourse</a:documentation>
       <value>pi</value>
+      <a:documentation>Paragraph text, level 1 indent (if single level), with first line indent; often used for discourse</a:documentation>
       <value>po</value>
+      <a:documentation>Letter opening</a:documentation>
       <value>pr</value>
+      <a:documentation>Text refrain (paragraph right-aligned)</a:documentation>
       <value>pmo</value>
+      <a:documentation>Embedded text opening</a:documentation>
       <value>pmc</value>
+      <a:documentation>Embedded text closing</a:documentation>
       <value>pmr</value>
+      <a:documentation>Embedded text refrain</a:documentation>
       <value>pm</value>
+      <a:documentation>Embedded text paragraph</a:documentation>
       <value>ph1</value>
+      <a:documentation>Paragraph text, with level 1 hanging indent (if multiple levels)</a:documentation>
       <value>ph2</value>
+      <a:documentation>Paragraph text, with level 2 hanging indent</a:documentation>
       <value>ph3</value>
+      <a:documentation>Paragraph text, with level 3 hanging indent</a:documentation>
       <value>ph</value>
-      <value>p1</value>
-      <value>p2</value>
+      <a:documentation>Paragraph text, with level 1 hanging indent (if single level) (DEPRECATED - use para@style li#)</a:documentation>
       <value>p</value>
+      <a:documentation>Paragraph text, with first line indent</a:documentation>
       <value>q1</value>
+      <a:documentation>Poetry text, level 1 indent (if multiple levels)</a:documentation>
       <value>q2</value>
+      <a:documentation>Poetry text, level 2 indent</a:documentation>
       <value>q3</value>
+      <a:documentation>Poetry text, level 3 indent</a:documentation>
       <value>q4</value>
-      <value>qa</value>
+      <a:documentation>Poetry text, level 4 indent</a:documentation>
       <value>qc</value>
+      <a:documentation>Poetry text, centered</a:documentation>
       <value>qr</value>
+      <a:documentation>Poetry text, Right Aligned</a:documentation>
       <value>qm1</value>
+      <a:documentation>Poetry text, embedded, level 1 indent (if multiple levels)</a:documentation>
       <value>qm2</value>
+      <a:documentation>Poetry text, embedded, level 2 indent</a:documentation>
       <value>qm3</value>
+      <a:documentation>Poetry text, embedded, level 3 indent</a:documentation>
       <value>qm</value>
+      <a:documentation>Poetry text, embedded, level 1 indent (if single level)</a:documentation>
       <value>qd</value>
+      <a:documentation>A Hebrew musical performance annotation, similar in content to Hebrew descriptive title.</a:documentation>
       <value>q</value>
+      <a:documentation>Poetry text, level 1 indent (if single level)</a:documentation>
       <value>b</value>
+      <a:documentation>Poetry text stanza break (e.g. stanza break)</a:documentation>
       <value>d</value>
+      <a:documentation>A Hebrew text heading, to provide description (e.g. Psalms)</a:documentation>
+      <value>mi1</value>
+      <a:documentation>Paragraph text, level 1 indented, with no first line indent; often used for discourse</a:documentation>
+      <value>mi2</value>
+      <a:documentation>Paragraph text, level 2 indented, with no first line indent; often used for discourse</a:documentation>
+      <value>mi3</value>
+      <a:documentation>Paragraph text, level 3 indented, with no first line indent; often used for discourse</a:documentation>
       <value>mi</value>
+      <a:documentation>Paragraph text, indented, with no first line indent; often used for discourse</a:documentation>
       <value>m</value>
-      <value>ts</value>
+      <a:documentation>Paragraph text, with no first line indent (may occur after poetry) aka: Paragraph Continuation</a:documentation>
+    </choice>
+  </define>
+  <define name="OtherPara.para.style.enum">
+    <choice>
+      <value>lit</value>
+      <a:documentation>For a comment or note inserted for liturgical use</a:documentation>
+      <value>cp</value>
+      <a:documentation>Chapter published style</a:documentation>
+      <value>pb</value>
+      <a:documentation>Page Break used for new reader portions and children&#x27;s bibles where content is controlled by the page</a:documentation>
+      <value>qa</value>
+      <a:documentation>Poetry text, Acrostic marker/heading</a:documentation>
       <value>k1</value>
+      <a:documentation>Concordance main entry text or keyword, level 1</a:documentation>
       <value>k2</value>
-      <value>rem</value>
+      <a:documentation>Concordance main entry text or keyword, level 2</a:documentation>
       <value>sts</value>
+      <a:documentation>Remark</a:documentation>
+      <value>rem</value>
+      <a:documentation>Remark</a:documentation>
     </choice>
   </define>
   <define name="List">
     <element>
       <name ns="">para</name>
       <attribute usfm:grouping="8">
-        <usfm:tag/>
+        <usfm:ptag/>
         <name ns="">style</name>
         <ref name="List.para.style.enum"/>
       </attribute>
@@ -772,23 +1065,25 @@
         <attribute>
           <name ns="">vid</name>
           <data type="string">
-            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*([\-,][0-9]+)*</param>
+            <usfm:pattern name="VERSE"/>
+            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*(‏?[\-,][0-9]+)*</param>
           </data>
         </attribute>
       </optional>
       <zeroOrMore>
         <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="Footnote"/>
-          <ref name="CrossReference"/>
-          <ref name="Char"/>
-          <ref name="ListChar"/>
-          <ref name="Milestone"/>
-          <ref name="Verse"/>
-          <ref name="Break"/>
           <text>
             <usfm:text/>
           </text>
+          <ref name="ListChar"/>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Verse"/>
+          <ref name="Reference"/>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="Break"/>
         </choice>
       </zeroOrMore>
     </element>
@@ -796,17 +1091,29 @@
   <define name="List.para.style.enum">
     <choice>
       <value>lh</value>
+      <a:documentation>List header (introductory remark)</a:documentation>
       <value>li1</value>
+      <a:documentation>A list entry, level 1 (if multiple levels)</a:documentation>
       <value>li2</value>
+      <a:documentation>A list entry, level 2</a:documentation>
       <value>li3</value>
+      <a:documentation>A list entry, level 3</a:documentation>
       <value>li4</value>
+      <a:documentation>A list entry, level 4</a:documentation>
       <value>lim1</value>
+      <a:documentation>An embedded list entry, level 1 (if multiple levels)</a:documentation>
       <value>lim2</value>
+      <a:documentation>An embedded list entry, level 2</a:documentation>
       <value>lim3</value>
+      <a:documentation>An embedded list entry, level 3</a:documentation>
       <value>lim4</value>
+      <a:documentation>An embedded list entry, level 4</a:documentation>
       <value>lim</value>
+      <a:documentation>An embedded list entry, level 1 (if single level)</a:documentation>
       <value>li</value>
+      <a:documentation>A list entry, level 1 (if single level)</a:documentation>
       <value>lf</value>
+      <a:documentation>List footer (introductory remark)</a:documentation>
     </choice>
   </define>
   <define name="Table">
@@ -816,7 +1123,7 @@
         <attribute>
           <name ns="">vid</name>
           <data type="string">
-            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*([\-,][0-9]+)*</param>
+            <param name="pattern">[A-Z1-4]{3} ?[a-z0-9\-:]*(‏?[\-,][0-9]+)*</param>
           </data>
         </attribute>
       </optional>
@@ -824,7 +1131,7 @@
         <element>
           <name ns="">row</name>
           <attribute>
-            <usfm:tag/>
+            <usfm:ptag/>
             <name ns="">style</name>
             <value>tr</value>
           </attribute>
@@ -842,10 +1149,10 @@
     <element>
       <name ns="">cell</name>
       <attribute>
-        <usfm:tag/>
+        <usfm:ptag/>
         <name ns="">style</name>
         <data type="string">
-          <param name="pattern">t[hc][rc]?\d+</param>
+          <param name="pattern">t[hc][rc]?\d+(-\d+)?</param>
         </data>
       </attribute>
       <attribute>
@@ -860,15 +1167,16 @@
       </optional>
       <zeroOrMore>
         <choice>
-          <ref name="Footnote"/>
-          <ref name="CrossReference"/>
-          <ref name="Char"/>
-          <ref name="Milestone"/>
-          <ref name="Verse"/>
-          <ref name="Break"/>
           <text>
             <usfm:text/>
           </text>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Verse"/>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="Break"/>
         </choice>
       </zeroOrMore>
     </element>
@@ -876,15 +1184,18 @@
   <define name="cell.align.enum">
     <choice>
       <value>start</value>
+      <a:documentation>left in LTR, right in RTL</a:documentation>
       <value>center</value>
+      <a:documentation>center</a:documentation>
       <value>end</value>
+      <a:documentation>right in LTR, left in RTL</a:documentation>
     </choice>
   </define>
   <define name="IntroChar">
     <element>
       <name ns="">char</name>
       <attribute>
-        <usfm:tag id="a" usfm:seq="true"/>
+        <usfm:tag matchid="a" usfm:seq="true"/>
         <name ns="">style</name>
         <ref name="IntroChar.char.style.enum"/>
       </attribute>
@@ -893,15 +1204,16 @@
       </optional>
       <oneOrMore>
         <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="Char"/>
-          <ref name="Milestone"/>
-          <ref name="Footnote"/>
-          <ref name="CrossReference"/>
-          <ref name="Break"/>
           <text>
             <usfm:text/>
           </text>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Reference"/>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="Break"/>
         </choice>
       </oneOrMore>
       <usfm:endtag usfm:order="3" ahead="/[^\\]/" usfm:many="?" usfm:seq="true"/>
@@ -913,184 +1225,270 @@
       <value>iqt</value>
     </choice>
   </define>
-  <define name="CharContent">
-    <group>
-      <optional>
-        <ref name="char.link" usfm:order="2"/>
-      </optional>
-      <optional>
-        <ref name="char.closed" usfm:ignore="true"/>
-      </optional>
-      <oneOrMore>
-        <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="CharEmbed"/>
-          <ref name="Milestone"/>
-          <ref name="Footnote"/>
-          <ref name="CrossReference"/>
-          <ref name="Break"/>
-          <text>
-            <usfm:match match="TEXTATTRIB" after="ATTRIBTEXTEND"/>
-          </text>
-        </choice>
-      </oneOrMore>
-    </group>
-  </define>
   <define name="NoteCharContent">
     <group>
-      <optional>
-        <ref name="char.link" usfm:order="2"/>
-      </optional>
       <optional>
         <ref name="char.closed" usfm:ignore="true"/>
       </optional>
       <zeroOrMore>
         <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="NoteCharEmbed"/>
-          <ref name="Milestone"/>
-          <ref name="Break"/>
           <text>
-            <usfm:match match="TEXTATTRIB" after="ATTRIBTEXTEND"/>
+            <usfm:match match="TEXTNOTATTRIB" after="ATTRIBTEXTEND"/>
           </text>
+          <ref name="NoteCharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Reference"/>
+          <ref name="Break"/>
         </choice>
       </zeroOrMore>
     </group>
   </define>
-  <define name="Char">
-    <choice>
-      <element usfm:stacked="true">
-        <name ns="">char</name>
-        <attribute usfm:grouping="12">
-          <usfm:tag id="a" usfm:seq="true"/>
-          <name ns="">style</name>
-          <ref name="Char.char.style.enum"/>
+  <define name="Attributes">
+    <group>
+      <usfm:match match="PIPE" matchout="&#x27;|&#x27;" dump="true"/>
+      <oneOrMore>
+        <attribute usfm:fallback-from="style">
+          <usfm:matchpair first="ATTRIBNAME" between="&#x27;=&quot;&#x27;" second="ATTRIBTEXT" after="/&quot;${Hs}/" afterout="&#x27;&quot;&#x27;" fallback="ATTRIBALL"/>
+          <anyName>
+            <except>
+              <choice>
+                <name ns="">style</name>
+                <name ns="">closed</name>
+              </choice>
+            </except>
+          </anyName>
+          <data type="string"/>
         </attribute>
-        <ref name="CharContent"/>
-        <optional>
-          <group>
-            <usfm:match match="PIPE" matchout="&#x27;|&#x27;" dump="true"/>
-            <oneOrMore>
-              <attribute usfm:fallback-from="style">
-                <usfm:matchpair first="/[^\\\n=&quot;]+/" between="&#x27;=&quot;&#x27;" second="/[^\\\n&quot;]*/" after="/&quot;${WSS}/" fallback="/[^\\\n=]+(?=\\)/"/>
-                <anyName>
-                  <except>
-                    <choice>
-                      <name ns="">style</name>
-                      <name ns="">closed</name>
-                      <name ns="">link-href</name>
-                      <name ns="">link-title</name>
-                      <name ns="">link-id</name>
-                    </choice>
-                  </except>
-                </anyName>
-                <data type="string"/>
-              </attribute>
-            </oneOrMore>
-          </group>
-        </optional>
-        <usfm:endtag ahead="/[^\\]/" usfm:seq="true"/>
-      </element>
-      <ref name="CharWithAttrib"/>
-      <ref name="Figure"/>
+      </oneOrMore>
+    </group>
+  </define>
+  <define name="Char">
+    <element usfm:stacked="true">
+      <name ns="">char</name>
+      <attribute usfm:grouping="12">
+        <usfm:tag matchid="a" usfm:seq="true"/>
+        <name ns="">style</name>
+        <ref name="FullChar.char.style.enum"/>
+      </attribute>
+      <choice>
+        <group>
+          <ref name="CharContent"/>
+          <optional>
+            <ref name="Attributes"/>
+          </optional>
+        </group>
+        <ref name="Attributes"/>
+      </choice>
+      <usfm:endtag usfm:seq="true"/>
+    </element>
+  </define>
+  <define name="CharContent">
+    <group>
+      <optional>
+        <ref name="char.closed" usfm:ignore="true"/>
+      </optional>
+      <oneOrMore>
+        <choice>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Footnote"/>
+          <ref name="CrossReference"/>
+          <ref name="Reference"/>
+          <ref name="Break"/>
+          <text>
+            <usfm:match match="TEXTNOTATTRIB" after="ATTRIBTEXTEND"/>
+          </text>
+        </choice>
+      </oneOrMore>
+    </group>
+  </define>
+  <define name="FullCharExtra.char.style.enum">
+    <value usfm:propval="href" usfm:propattribs="link-href? href?">xt</value>
+  </define>
+  <define name="FullChar.char.style.enum">
+    <choice>
+      <ref name="Char.char.style.enum"/>
+      <ref name="FullCharExtra.char.style.enum"/>
     </choice>
   </define>
   <define name="Char.char.style.enum">
     <choice>
-      <value>va</value>
       <value>vp</value>
-      <value>ca</value>
+      <a:documentation>Published verse marker - this is a verse marking that would be used in the published text</a:documentation>
       <value>qac</value>
+      <a:documentation>Poetry text, Acrostic markup of the first character of a line of acrostic poetry</a:documentation>
       <value>qs</value>
+      <a:documentation>Poetry text, Selah</a:documentation>
       <value>add</value>
+      <a:documentation>For a translational addition to the text</a:documentation>
       <value>addpn</value>
+      <a:documentation>For chinese words to be dot underline &amp; underline (DEPRECATED - used nested char@style pn)</a:documentation>
       <value>bk</value>
+      <a:documentation>For the quoted name of a book</a:documentation>
       <value>dc</value>
+      <a:documentation>Deuterocanonical/LXX additions or insertions in the Protocanonical text</a:documentation>
       <value>efm</value>
+      <a:documentation>Reference to caller of previous footnote in a study Bible</a:documentation>
       <value>fm</value>
-      <value>k</value>
+      <a:documentation>Reference to caller of previous footnote</a:documentation>
+      <value>fv</value>
+      <a:documentation>A verse number within the footnote text</a:documentation>
+      <value usfm:propval="key">k</value>
+      <a:documentation>For a keyword</a:documentation>
       <value>nd</value>
+      <a:documentation>For name of deity</a:documentation>
       <value>ndx</value>
+      <a:documentation>A subject index text item</a:documentation>
       <value>ord</value>
+      <a:documentation>For the text portion of an ordinal number</a:documentation>
+      <value>pl</value>
+      <a:documentation>Inline subheading</a:documentation>
       <value>png</value>
+      <a:documentation>For a geographic proper name</a:documentation>
       <value>pn</value>
+      <a:documentation>For a proper name</a:documentation>
       <value>pro</value>
+      <a:documentation>For indicating pronunciation in CJK texts (DEPRECATED - used char@style rb)</a:documentation>
       <value>qt</value>
+      <a:documentation>For Old Testament quoted text appearing in the New Testament</a:documentation>
       <value>rq</value>
+      <a:documentation>A cross-reference indicating the source text for the preceding quotation.</a:documentation>
       <value>sig</value>
+      <a:documentation>For the signature of the author of an Epistle</a:documentation>
       <value>sls</value>
-      <value>tl</value>
+      <a:documentation>To represent where the original text is in a secondary language or from an alternate text source</a:documentation>
+      <value usfm:propval="lang">tl</value>
+      <a:documentation>For transliterated words</a:documentation>
       <value>wg</value>
+      <a:documentation>A Greek Wordlist text item</a:documentation>
       <value>wh</value>
+      <a:documentation>A Hebrew wordlist text item</a:documentation>
       <value>wa</value>
+      <a:documentation>An Aramaic wordlist text item</a:documentation>
       <value>wj</value>
-      <value>xt</value>
-      <value>jmp</value>
+      <a:documentation>For marking the words of Jesus</a:documentation>
+      <value usfm:propval="lang">wl</value>
+      <a:documentation>Indicating words in a foreign language and perhaps script</a:documentation>
+      <value usfm:propval="href" usfm:propattribs="href? link-href?">jmp</value>
+      <a:documentation>For associating linking attributes to a span of text</a:documentation>
       <value>no</value>
+      <a:documentation>A character style, use normal text</a:documentation>
       <value>it</value>
+      <a:documentation>A character style, use italic text</a:documentation>
       <value>bdit</value>
+      <a:documentation>A character style, use bold + italic text</a:documentation>
       <value>bd</value>
+      <a:documentation>A character style, use bold text</a:documentation>
       <value>em</value>
+      <a:documentation>A character style, use emphasized text style</a:documentation>
       <value>sc</value>
+      <a:documentation>A character style, for small capitalization text</a:documentation>
       <value>sup</value>
+      <a:documentation>A character style, for superscript text. Typically for use in critical edition footnotes.</a:documentation>
+      <value usfm:propval="href">xt</value>
+      <a:documentation>Inline scripture reference formatting.</a:documentation>
+      <value usfm:propval="lemma" usfm:propattribs="lemma? strong? srcloc?">w</value>
+      <value usfm:propval="gloss" usfm:propattribs="gloss">rb</value>
+      <value>ta</value>
+      <a:documentation>Text alternatives</a:documentation>
     </choice>
   </define>
   <define name="CharEmbed">
-    <choice>
-      <element>
-        <name ns="">char</name>
-        <attribute usfm:stacked="true" usfm:grouping="9">
-          <usfm:tag id="a" before="&#x27;\+&#x27;" usfm:seq="true"/>
-          <name ns="">style</name>
-          <ref name="Char.char.style.enum"/>
-        </attribute>
-        <ref name="CharContent"/>
-        <usfm:endtag usfm:many="?" usfm:order="3" before="&#x27;\+&#x27;"/>
-      </element>
-      <ref name="CharEmbedWithAttrib"/>
-      <ref name="Figure"/>
-    </choice>
+    <element>
+      <name ns="">char</name>
+      <choice>
+        <group>
+          <attribute usfm:stacked="true" usfm:grouping="9">
+            <usfm:tag matchid="b" before="&#x27;\\&#x27;" usfm:seq="true" skip="3.0"/>
+            <name ns="">style</name>
+            <ref name="FullChar.char.style.enum"/>
+          </attribute>
+          <choice>
+            <group>
+              <ref name="CharContent"/>
+              <optional>
+                <ref name="Attributes"/>
+              </optional>
+            </group>
+            <ref name="Attributes"/>
+          </choice>
+          <usfm:endtag matchref="b" before="&#x27;\\&#x27;"/>
+        </group>
+        <group>
+          <attribute usfm:stacked="true" usfm:grouping="9">
+            <usfm:tag matchid="a" before="&#x27;\\+&#x27;" usfm:seq="true"/>
+            <name ns="">style</name>
+            <ref name="FullChar.char.style.enum"/>
+          </attribute>
+          <choice>
+            <group>
+              <ref name="CharContent"/>
+              <optional>
+                <ref name="Attributes"/>
+              </optional>
+            </group>
+            <ref name="Attributes"/>
+          </choice>
+          <usfm:endtag matchref="a" before="&#x27;\\+&#x27;"/>
+        </group>
+      </choice>
+    </element>
   </define>
   <define name="NoteCharEmbed">
     <choice>
       <element>
         <name ns="">char</name>
         <attribute usfm:stacked="true" usfm:grouping="9">
-          <usfm:tag id="a" before="&#x27;\+&#x27;" usfm:seq="true"/>
+          <usfm:tag matchid="c" before="&#x27;\\&#x27;" usfm:seq="true"/>
           <name ns="">style</name>
           <ref name="Char.char.style.enum"/>
         </attribute>
         <ref name="NoteCharContent"/>
-        <usfm:endtag usfm:many="?" usfm:order="3" before="&#x27;\+&#x27;"/>
+        <optional>
+          <ref name="Attributes"/>
+        </optional>
+        <usfm:endtag matchref="c" before="&#x27;\\&#x27;"/>
       </element>
-      <ref name="CharEmbedWithAttrib"/>
+      <element>
+        <name ns="">char</name>
+        <attribute usfm:stacked="true" usfm:grouping="9">
+          <usfm:tag matchid="b" before="&#x27;\\+&#x27;" usfm:seq="true"/>
+          <name ns="">style</name>
+          <ref name="Char.char.style.enum"/>
+        </attribute>
+        <ref name="NoteCharContent"/>
+        <optional>
+          <ref name="Attributes"/>
+        </optional>
+        <usfm:endtag matchref="b" before="&#x27;\\+&#x27;"/>
+      </element>
     </choice>
   </define>
   <define name="ListChar">
     <element>
       <name ns="">char</name>
       <attribute>
-        <usfm:tag id="a"/>
+        <usfm:tag matchid="a"/>
         <name ns="">style</name>
         <ref name="ListChar.char.style.enum"/>
       </attribute>
-      <optional>
-        <ref name="char.link"/>
-      </optional>
       <optional>
         <ref name="char.closed"/>
       </optional>
       <zeroOrMore>
         <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="Char"/>
+          <text>
+            <usfm:text/>
+          </text>
+          <ref name="CharEmbed"/>
+          <ref name="Figure"/>
           <ref name="Milestone"/>
           <ref name="Footnote"/>
           <ref name="CrossReference"/>
           <ref name="Break"/>
-          <text>
-            <usfm:text/>
-          </text>
+          <ref name="Reference"/>
         </choice>
       </zeroOrMore>
       <usfm:endtag usfm:many="?"/>
@@ -1099,183 +1497,101 @@
   <define name="ListChar.char.style.enum">
     <choice>
       <value>litl</value>
+      <a:documentation>List entry total text</a:documentation>
       <value>lik</value>
+      <a:documentation>Structured list entry key text</a:documentation>
       <value>liv1</value>
+      <a:documentation>Structured list entry value 1 content (if multiple values)</a:documentation>
       <value>liv2</value>
+      <a:documentation>Structured list entry value 2 content</a:documentation>
       <value>liv3</value>
+      <a:documentation>Structured list entry value 3 content</a:documentation>
       <value>liv4</value>
+      <a:documentation>Structured list entry value 4 content</a:documentation>
       <value>liv5</value>
+      <a:documentation>Structured list entry value 5 content</a:documentation>
       <value>liv</value>
+      <a:documentation>Structured list entry value 1 content (if single value)</a:documentation>
     </choice>
   </define>
-  <define name="CharWithAttrib">
-    <element>
-      <name ns="">char</name>
-      <attribute usfm:order="-2">
-        <usfm:tag id="a"/>
-        <name ns="">style</name>
-        <ref name="CharWithAttrib.enum"/>
-      </attribute>
-      <optional>
-        <ref name="char.closed"/>
-      </optional>
-      <optional>
-        <group>
-          <usfm:match match="PIPE" matchout="&#x27;|&#x27;" dump="true"/>
-          <oneOrMore>
-            <attribute usfm:fallback-from="style">
-              <usfm:matchpair first="/[^\\\n=&quot;]+/" between="&#x27;=&quot;&#x27;" second="/[^\\\n&quot;]*/" after="/&quot;${WSS}/" fallback="/[^\\\n=]+(?=\\)/"/>
-              <anyName>
-                <except>
-                  <choice>
-                    <name ns="">style</name>
-                    <name ns="">closed</name>
-                  </choice>
-                </except>
-              </anyName>
-              <data type="string"/>
-            </attribute>
-          </oneOrMore>
-        </group>
-      </optional>
-      <zeroOrMore>
-        <group usfm:order="-1">
-          <choice>
-            <ref name="CharEmbed"/>
-            <text>
-              <usfm:match match="TEXTATTRIB"/>
-            </text>
-          </choice>
-        </group>
-      </zeroOrMore>
-      <usfm:endtag usfm:order="4"/>
-    </element>
-  </define>
   <define name="Figure">
+    <ref name="FigureThree" usfm:alt="FigureTwo"/>
+  </define>
+  <define name="FigureThree">
     <element>
       <name ns="">figure</name>
       <attribute usfm:order="-2">
-        <usfm:tag id="a"/>
+        <usfm:tag matchid="a"/>
+        <name ns="">style</name>
+        <value usfm:propattribs="src size ref alt? loc? copy?">fig</value>
+      </attribute>
+      <optional>
+        <ref name="char.closed" usfm:ignore="true"/>
+      </optional>
+      <group usfm:order="-1">
+        <optional>
+          <text>
+            <usfm:match match="TEXTNOTATTRIB"/>
+          </text>
+        </optional>
+      </group>
+      <optional>
+        <ref name="Attributes"/>
+      </optional>
+      <usfm:endtag usfm:order="4"/>
+    </element>
+  </define>
+  <define name="FigureTwo">
+    <element>
+      <name ns="">figure</name>
+      <attribute>
+        <usfm:tag matchid="a"/>
         <name ns="">style</name>
         <value>fig</value>
       </attribute>
       <optional>
         <ref name="char.closed"/>
       </optional>
-      <optional>
-        <group>
-          <usfm:match match="PIPE" matchout="&#x27;|&#x27;" dump="true"/>
-          <oneOrMore>
-            <attribute usfm:fallback-from="style">
-              <usfm:matchpair first="/[^\\\n=&quot;]+/" between="&#x27;=&quot;&#x27;" second="/[^\\\n&quot;]*/" after="/&quot;${WSS}/" fallback="/[^\\\n=]+(?=\\)/"/>
-              <anyName>
-                <except>
-                  <choice>
-                    <name ns="">style</name>
-                    <name ns="">closed</name>
-                  </choice>
-                </except>
-              </anyName>
-              <data type="string"/>
-            </attribute>
-          </oneOrMore>
-        </group>
-      </optional>
-      <group usfm:order="-1">
-        <optional>
-          <text>
-            <usfm:match match="TEXTATTRIB"/>
-          </text>
-        </optional>
-      </group>
-      <usfm:endtag usfm:order="4"/>
-    </element>
-  </define>
-  <define name="CharEmbedWithAttrib">
-    <element>
-      <name ns="">char</name>
-      <attribute usfm:order="-2">
-        <usfm:tag before="&#x27;\+&#x27;" id="a"/>
-        <name ns="">style</name>
-        <ref name="CharWithAttrib.enum"/>
+      <attribute>
+        <usfm:match match="TEXTNOTATTRIBOPT"/>
+        <name ns="">alt</name>
+        <data type="string"/>
       </attribute>
-      <optional>
-        <ref name="char.closed"/>
-      </optional>
-      <optional>
-        <group>
-          <usfm:match match="PIPE" matchout="&#x27;|&#x27;" dump="true"/>
-          <oneOrMore>
-            <attribute usfm:fallback-from="style">
-              <usfm:matchpair first="/[^\\\n=&quot;]+/" between="&#x27;=&quot;&#x27;" second="/[^\\\n&quot;]*/" after="/&quot;${WSS}/" fallback="/[^\\\n=]+(?=\\)/"/>
-              <anyName>
-                <except>
-                  <choice>
-                    <name ns="">style</name>
-                    <name ns="">closed</name>
-                  </choice>
-                </except>
-              </anyName>
-              <data type="string"/>
-            </attribute>
-          </oneOrMore>
-        </group>
-      </optional>
-      <zeroOrMore>
-        <group usfm:order="-1">
-          <choice>
-            <ref name="CharEmbed"/>
-            <text>
-              <usfm:match match="TEXTATTRIB"/>
-            </text>
-          </choice>
-        </group>
-      </zeroOrMore>
-      <usfm:endtag usfm:order="4" before="&#x27;\+&#x27;"/>
+      <attribute>
+        <usfm:match before="PIPE" beforeout="|" match="TEXTNOTATTRIBOPT"/>
+        <name ns="">src</name>
+        <data type="string"/>
+      </attribute>
+      <attribute>
+        <usfm:match before="PIPE" beforeout="|" match="TEXTNOTATTRIBOPT"/>
+        <name ns="">size</name>
+        <data type="string"/>
+      </attribute>
+      <attribute>
+        <usfm:match before="PIPE" beforeout="|" match="TEXTNOTATTRIBOPT"/>
+        <name ns="">loc</name>
+        <data type="string"/>
+      </attribute>
+      <attribute>
+        <usfm:match before="PIPE" beforeout="|" match="TEXTNOTATTRIBOPT"/>
+        <name ns="">copy</name>
+        <data type="string"/>
+      </attribute>
+      <attribute>
+        <usfm:match before="PIPE" beforeout="|" match="TEXTNOTATTRIBOPT"/>
+        <name ns="">alt</name>
+        <data type="string"/>
+      </attribute>
+      <attribute>
+        <usfm:match before="PIPE" beforeout="|" match="TEXTNOTATTRIBOPT"/>
+        <name ns="">ref</name>
+        <data type="string"/>
+      </attribute>
+      <usfm:endtag/>
     </element>
-  </define>
-  <define name="CharWithAttrib.enum">
-    <choice>
-      <value usfm:propval="lemma">w</value>
-      <value usfm:propval="gloss">rb</value>
-      <value>jmp</value>
-    </choice>
-  </define>
-  <define name="char.link">
-    <group>
-      <usfm:match match="PIPE" matchout="&#x27;|&#x27;" dump="true"/>
-      <usfm:properties interleave_between="WS"/>
-      <interleave>
-        <optional>
-          <attribute>
-            <usfm:match before="&#x27;link-href=&quot;&#x27;" after="/[&quot;]\s*/"/>
-            <name ns="">link-href</name>
-            <data type="string">
-              <param name="pattern">(.*///?(.*/?)+)|((prj:[A-Za-z\-0-9]{3,8} )?[A-Z1-4]{3} \d+:\d+(\-\d+)?)|(#[^\s]+)</param>
-            </data>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute>
-            <usfm:match before="&#x27;link-title=&quot;&#x27;" after="/[&quot;]\s*/"/>
-            <name ns="">link-title</name>
-            <data type="string"/>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute>
-            <usfm:match before="&#x27;link-id=&quot;&#x27;" after="/[&quot;]\s*/"/>
-            <name ns="">link-id</name>
-            <data type="string">
-              <param name="pattern">[\p{L}\d_\-\.:]+</param>
-            </data>
-          </attribute>
-        </optional>
-      </interleave>
-    </group>
   </define>
   <define name="char.closed">
-    <attribute>
+    <attribute usfm:ignore="true">
       <name ns="">closed</name>
       <data type="boolean"/>
     </attribute>
@@ -1285,78 +1601,53 @@
       <element>
         <name ns="">ms</name>
         <attribute>
-          <usfm:tag after="/${ws}?(?=[\\|])/" afterout=""/>
+          <usfm:tag after="Hs" afterout=""/>
           <name ns="">style</name>
-          <ref name="Milestone.enum"/>
+          <ref name="Milestone.style.enum"/>
         </attribute>
         <optional>
-          <attribute>
-            <name ns="">sid</name>
-            <data type="string">
-              <param name="pattern">[\p{L}\d_\-\.:]+</param>
-            </data>
-          </attribute>
-        </optional>
-        <optional>
-          <attribute>
-            <name ns="">eid</name>
-            <data type="string">
-              <param name="pattern">[\p{L}\d_\-\.:]+</param>
-            </data>
-          </attribute>
-        </optional>
-        <optional>
-          <group>
-            <usfm:match match="PIPE" matchout="&#x27;|&#x27;" dump="true"/>
-            <oneOrMore>
-              <attribute usfm:fallback-from="style">
-                <usfm:matchpair first="/[^\\\n=&quot;]+/" between="&#x27;=&quot;&#x27;" second="/[^\\\n&quot;]*/" after="/&quot;${WSS}/" fallback="/[^\\\n=]+(?=\\)/"/>
-                <anyName>
-                  <except>
-                    <choice>
-                      <name ns="">style</name>
-                      <name ns="">closed</name>
-                      <name ns="">sid</name>
-                      <name ns="">eid</name>
-                    </choice>
-                  </except>
-                </anyName>
-                <data type="string"/>
-              </attribute>
-            </oneOrMore>
-          </group>
+          <ref name="Attributes"/>
         </optional>
         <empty/>
       </element>
-      <usfm:endtag matchref=""/>
+      <usfm:endtag matchref="&#x27;&#x27;"/>
     </group>
   </define>
-  <define name="Milestone.enum">
+  <define name="Milestone.style.enum">
     <choice>
-      <value usfm:propval="who">ts-s</value>
-      <value>ts-e</value>
-      <value>t-s</value>
-      <value>t-e</value>
+      <value usfm:propval="sid" usfm:propattribs="sid?" usfm:propended="ts-e">ts-s</value>
+      <value usfm:propval="eid" usfm:propattribs="eid?" usfm:propends="ts-s">ts-e</value>
       <value>ts</value>
-      <value>qt1-s</value>
-      <value>qt1-e</value>
-      <value>qt2-s</value>
-      <value>qt2-e</value>
-      <value>qt3-s</value>
-      <value>qt3-e</value>
-      <value>qt4-s</value>
-      <value>qt4-e</value>
-      <value>qt5-s</value>
-      <value>qt5-e</value>
-      <value usfm:propval="who">qts</value>
-      <value>qte</value>
-      <value usfm:propval="who">qt-s</value>
-      <value>qt-e</value>
+      <value usfm:propval="sid" usfm:propattribs="sid?" usfm:propended="t-e">t-s</value>
+      <value usfm:propval="eid" usfm:propattribs="eid?" usfm:propends="t-s">t-e</value>
+      <value usfm:propval="who" usfm:propattribs="who? sid?" usfm:propended="qt1-e">qt1-s</value>
+      <value usfm:propval="eid" usfm:propattribs="eid?" usfm:propends="qt1-s">qt1-e</value>
+      <value usfm:propval="who" usfm:propattribs="who? sid?" usfm:propended="qt2-e">qt2-s</value>
+      <value usfm:propval="eid" usfm:propattribs="eid?" usfm:propends="qt2-s">qt2-e</value>
+      <value usfm:propval="who" usfm:propattribs="who? sid?" usfm:propended="qt3-e">qt3-s</value>
+      <value usfm:propval="eid" usfm:propattribs="eid?" usfm:propends="qt3-s">qt3-e</value>
+      <value usfm:propval="who" usfm:propattribs="who? sid?" usfm:propended="qt4-e">qt4-s</value>
+      <value usfm:propval="eid" usfm:propattribs="eid?" usfm:propends="qt4-s">qt4-e</value>
+      <value usfm:propval="who" usfm:propattribs="who? sid?" usfm:propended="qt5-e">qt5-s</value>
+      <value usfm:propval="eid" usfm:propattribs="eid?" usfm:propends="qt5-s">qt5-e</value>
+      <value usfm:propval="who" usfm:propattribs="who? sid?" usfm:propended="qt-e">qt-s</value>
+      <value usfm:propval="eid" usfm:propattribs="eid?" usfm:propends="qt-s">qt-e</value>
+      <value usfm:propval="ref" usfm:propattribs="ref h?">vid</value>
+      <value usfm:propended="wj-e">wj-s</value>
+      <value usfm:propends="wj-s">wj-e</value>
     </choice>
   </define>
   <define name="Chapter">
     <choice>
-      <ref name="ChapterStart"/>
+      <group>
+        <ref name="ChapterStart"/>
+        <zeroOrMore>
+          <choice>
+            <ref name="Footnote"/>
+            <ref name="CrossReference"/>
+          </choice>
+        </zeroOrMore>
+      </group>
       <ref name="ChapterEnd" usfm:ignore="true"/>
     </choice>
   </define>
@@ -1364,35 +1655,41 @@
     <element usfm:stacked="true">
       <name ns="">chapter</name>
       <attribute>
-        <usfm:tag usfm:seq="true" after="TAGPARMEND"/>
+        <usfm:ptag usfm:seq="true" after="HS"/>
         <name ns="">style</name>
         <value>c</value>
       </attribute>
       <attribute>
-        <usfm:match after="/${WS}+|(?=\\)/" afterout="&#x27; &#x27;" usfm:seq="true"/>
+        <usfm:match after="TAGEND" afterout="&#x27; &#x27;" usfm:seq="true"/>
         <name ns="">number</name>
-        <data type="integer"/>
-      </attribute>
-      <attribute>
-        <name ns="">sid</name>
         <data type="string">
-          <param name="minLength">1</param>
-          <param name="pattern">[A-Z1-4]{3} ?[0-9]+</param>
+          <param name="pattern">[1-9][0-9]*</param>
         </data>
       </attribute>
       <optional>
         <attribute>
-          <usfm:match before="&#x27;\ca &#x27;" after="&#x27;\ca*&#x27;"/>
-          <name ns="">altnumber</name>
+          <name ns="">sid</name>
           <data type="string">
+            <usfm:pattern name="VID"/>
             <param name="minLength">1</param>
-            <param name="pattern">[0-9]+\p{L}?(‏?[\-,][0-9]+\p{L}?)*</param>
+            <param name="pattern">[A-Z1-4]{3} ?[0-9]+</param>
           </data>
         </attribute>
       </optional>
       <optional>
         <attribute>
-          <usfm:match before="&#x27;\cp &#x27;" after="&#x27;\cp*&#x27;"/>
+          <usfm:match before="/\\ca${HS}/" beforeout="&#x27;\\ca &#x27;" after="/\\ca\*${Hs}/" afterout="&#x27;\\ca* &#x27;"/>
+          <name ns="">altnumber</name>
+          <data type="string">
+            <usfm:pattern name="VERSE"/>
+            <param name="minLength">1</param>
+            <param name="pattern">[1-9][0-9]*\p{L}?(‏?[\-,][0-9]+\p{L}?)*</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute>
+          <usfm:match before="/${Ws}\\cp${HS}/" beforeout="&#x27;\n\\cp &#x27;" match="TEXTNWS"/>
           <name ns="">pubnumber</name>
           <data type="string">
             <param name="minLength">1</param>
@@ -1419,7 +1716,7 @@
     <element>
       <name ns="">para</name>
       <attribute>
-        <usfm:tag/>
+        <usfm:ptag/>
         <name ns="">style</name>
         <value>cl</value>
       </attribute>
@@ -1438,47 +1735,48 @@
     <element usfm:stacked="true">
       <name ns="">verse</name>
       <attribute>
-        <usfm:tag usfm:seq="true"/>
+        <usfm:tag usfm:seq="true" after="WS" beforeout="&#x27;\n\\&#x27;"/>
         <name ns="">style</name>
         <value>v</value>
       </attribute>
       <attribute>
-        <usfm:match usfm:seq="true" after="/${WS}|(?=\\)/" afterout="&#x27; &#x27;"/>
+        <usfm:match usfm:seq="true" after="WS" afterout="&#x27; &#x27;"/>
         <name ns="">number</name>
         <data type="string">
+          <usfm:pattern name="VERSE"/>
           <param name="minLength">1</param>
-          <param name="pattern">[0-9]+[\p{L}\p{Mn}]*(‏?[\-,][0-9]+[\p{L}\p{Mn}]*)*</param>
+          <param name="pattern">[1-9][0-9]*[\p{L}\p{Mn}]*(‏?[\-,][0-9]+[\p{L}\p{Mn}]*)*</param>
         </data>
       </attribute>
       <optional>
         <attribute>
-          <usfm:tag dump="true">va</usfm:tag>
-          <usfm:text/>
-          <usfm:endtag after="/\*${WSS}/" afterout="&#x27;\* &#x27;">va</usfm:endtag>
+          <usfm:tag dump="true" before="/\\va${HS}/" beforeout="&#x27;\\va &#x27;" after="/\\va\*${Hs}/" afterout="&#x27;\\va* &#x27;"/>
           <name ns="">altnumber</name>
           <data type="string">
+            <usfm:pattern name="VERSE"/>
             <param name="minLength">1</param>
-            <param name="pattern">[0-9]+[\p{L}\p{Mn}]*(‏?[\-,:][0-9]+[\p{L}\p{Mn}]*)*</param>
+            <param name="pattern">[1-9][0-9]*[\p{L}\p{Mn}]*(‏?[\-,:][0-9]+[\p{L}\p{Mn}]*)*</param>
           </data>
         </attribute>
       </optional>
       <optional>
         <attribute>
-          <usfm:tag dump="true">vp</usfm:tag>
-          <usfm:text/>
-          <usfm:endtag after="/\*${WSS}/" afterout="&#x27;\* &#x27;">vp</usfm:endtag>
+          <usfm:tag dump="true" before="/\\vp${HS}/" beforeout="&#x27;\\vp &#x27;" after="/\\vp\*${Hs}/" afterout="&#x27;\\vp* &#x27;"/>
           <name ns="">pubnumber</name>
           <data type="string">
             <param name="minLength">1</param>
           </data>
         </attribute>
       </optional>
-      <attribute usfm:ignore="true">
-        <name ns="">sid</name>
-        <data type="string">
-          <param name="pattern">[A-Z1-4]{3} ?[a-z0-9,\-:\p{L}\p{Mn}]*</param>
-        </data>
-      </attribute>
+      <optional>
+        <attribute usfm:ignore="true">
+          <name ns="">sid</name>
+          <data type="string">
+            <usfm:pattern name="VID"/>
+            <param name="pattern">[A-Z1-4]{3} ?[‏a-z0-9,\-:\p{L}\p{Mn}]*</param>
+          </data>
+        </attribute>
+      </optional>
       <empty/>
     </element>
   </define>
@@ -1488,7 +1786,8 @@
       <attribute>
         <name ns="">eid</name>
         <data type="string">
-          <param name="pattern">[A-Z1-4]{3} ?[a-z0-9,\-:\p{L}\p{Mn}]*</param>
+          <usfm:pattern name="VID"/>
+          <param name="pattern">[A-Z1-4]{3} ?[‏a-z0-9,\-:\p{L}\p{Mn}]*</param>
         </data>
       </attribute>
       <empty/>
@@ -1498,146 +1797,172 @@
     <element>
       <name ns="">note</name>
       <attribute>
-        <usfm:tag id="a"/>
+        <usfm:tag matchid="a"/>
         <name ns="">style</name>
-        <choice>
-          <value>f</value>
-          <value>fe</value>
-          <value>ef</value>
-        </choice>
+        <ref name="Footnote.style.enum"/>
       </attribute>
       <attribute>
-        <usfm:match match="/[^\\\s]+/" after="/${WSS}/" afterout="&#x27; &#x27;"/>
+        <usfm:match match="/[^\\\s]+/" after="HS" afterout="&#x27; &#x27;"/>
         <name ns="">caller</name>
         <text/>
       </attribute>
       <optional>
         <ref name="category"/>
       </optional>
-      <ref name="FootnoteChar"/>
-      <zeroOrMore>
+      <oneOrMore>
         <choice>
           <ref name="FootnoteChar"/>
           <text>
             <usfm:text/>
           </text>
         </choice>
-      </zeroOrMore>
-      <usfm:endtag/>
+      </oneOrMore>
+      <usfm:endtag before="/${Ws}\\/" beforeout="&#x27;\\&#x27;"/>
     </element>
+  </define>
+  <define name="Footnote.style.enum">
+    <choice>
+      <value>fe</value>
+      <a:documentation>Endnote</a:documentation>
+      <value>f</value>
+      <a:documentation>Footnote</a:documentation>
+      <value>efe</value>
+      <a:documentation>Extended study endnote</a:documentation>
+      <value>ef</value>
+      <a:documentation>Study note</a:documentation>
+    </choice>
   </define>
   <define name="FootnoteChar">
     <element>
       <name ns="">char</name>
       <attribute usfm:grouping="8">
-        <usfm:tag id="a"/>
+        <usfm:tag matchid="b"/>
         <name ns="">style</name>
         <ref name="FootnoteChar.char.style.enum"/>
       </attribute>
-      <optional>
-        <ref name="char.link" usfm:ignore="true"/>
-      </optional>
       <optional>
         <ref name="char.closed" usfm:ignore="true"/>
       </optional>
       <zeroOrMore>
         <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="NoteCharEmbed"/>
           <text>
             <usfm:text/>
           </text>
+          <ref name="NoteCharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Reference"/>
+          <ref name="Break"/>
         </choice>
       </zeroOrMore>
-      <usfm:endtag usfm:many="?"/>
+      <usfm:endtag matchref="b" noout="true" usfm:many="?" after="&#x27;*&#x27;"/>
     </element>
   </define>
   <define name="FootnoteChar.char.style.enum">
     <choice>
       <value>fr</value>
+      <a:documentation>The origin reference for the footnote</a:documentation>
       <value>ft</value>
+      <a:documentation>Footnote text, Protocanon</a:documentation>
       <value>fk</value>
+      <a:documentation>A footnote keyword</a:documentation>
       <value>fqa</value>
+      <a:documentation>A footnote alternate rendering for a portion of scripture text</a:documentation>
       <value>fq</value>
+      <a:documentation>A footnote scripture quote or alternate rendering</a:documentation>
       <value>fl</value>
+      <a:documentation>A footnote label text item, for marking or &quot;labelling&quot; the type or alternate translation being provided in the note.</a:documentation>
       <value>fw</value>
-      <value>fp</value>
-      <value>fv</value>
+      <a:documentation>A footnote witness list, for distinguishing a list of sigla representing witnesses in critical editions.</a:documentation>
       <value>fdc</value>
-      <value>xt</value>
-      <value>it</value>
-      <value>bdit</value>
-      <value>bd</value>
-      <value>em</value>
-      <value>sc</value>
+      <a:documentation>Footnote text, applies to Deuterocanon only (DEPRECATED - use char@style dc)</a:documentation>
+      <value>fp</value>
+      <a:documentation>A Footnote additional paragraph marker</a:documentation>
     </choice>
   </define>
   <define name="CrossReference">
     <element>
       <name ns="">note</name>
       <attribute>
-        <usfm:tag id="a"/>
+        <usfm:tag matchid="a"/>
         <name ns="">style</name>
-        <choice>
-          <value>x</value>
-          <value>ex</value>
-        </choice>
+        <ref name="CrossReference.style.enum"/>
       </attribute>
       <attribute>
-        <usfm:match match="/[^\\\s]+/" after="/${WSS}/" afterout="&#x27; &#x27;"/>
+        <usfm:match match="/[^\\\s]+/" after="Hs" afterout="&#x27; &#x27;"/>
         <name ns="">caller</name>
         <text/>
       </attribute>
+      <optional>
+        <ref name="category"/>
+      </optional>
       <zeroOrMore>
         <ref name="CrossReferenceChar"/>
       </zeroOrMore>
       <usfm:endtag/>
     </element>
   </define>
+  <define name="CrossReference.style.enum">
+    <choice>
+      <value>ex</value>
+      <a:documentation>Extended cross reference</a:documentation>
+      <value>x</value>
+      <a:documentation>Cross reference</a:documentation>
+    </choice>
+  </define>
   <define name="CrossReferenceChar">
     <element>
       <name ns="">char</name>
       <attribute>
-        <usfm:tag id="a"/>
+        <usfm:tag matchid="b"/>
         <name ns="">style</name>
         <ref name="CrossReferenceChar.char.style.enum"/>
       </attribute>
-      <optional>
-        <ref name="char.link" usfm:ignore="true"/>
-      </optional>
       <optional>
         <ref name="char.closed" usfm:ignore="true"/>
       </optional>
       <oneOrMore>
         <choice>
-          <ref name="Reference" usfm:ignore="true"/>
-          <ref name="NoteCharEmbed"/>
           <text>
             <usfm:text/>
           </text>
+          <ref name="NoteCharEmbed"/>
+          <ref name="Figure"/>
+          <ref name="Milestone"/>
+          <ref name="Reference"/>
+          <ref name="Break"/>
         </choice>
       </oneOrMore>
-      <usfm:endtag usfm:many="?"/>
+      <usfm:endtag matchref="b" noout="true" usfm:many="?" after="/\*${Hs}/"/>
     </element>
   </define>
   <define name="CrossReferenceChar.char.style.enum">
     <choice>
       <value>xop</value>
+      <a:documentation>Published cross reference origin text (origin reference that should appear in the published text)</a:documentation>
       <value>xo</value>
+      <a:documentation>The cross reference origin reference</a:documentation>
       <value>xta</value>
+      <a:documentation>Cross reference target references added text</a:documentation>
       <value>xt</value>
+      <a:documentation>The cross reference target reference(s), protocanon only</a:documentation>
       <value>xk</value>
+      <a:documentation>A cross reference keyword</a:documentation>
       <value>xq</value>
+      <a:documentation>A cross-reference quotation from the scripture text</a:documentation>
       <value>xot</value>
+      <a:documentation>Cross-reference target reference(s), Old Testament only</a:documentation>
       <value>xnt</value>
+      <a:documentation>Cross-reference target reference(s), New Testament only</a:documentation>
       <value>xdc</value>
+      <a:documentation>Cross-reference target reference(s), Deuterocanon only (DEPRECATED - use char@style dc)</a:documentation>
     </choice>
   </define>
   <define name="Sidebar">
     <element>
       <name ns="">sidebar</name>
       <attribute>
-        <usfm:tag/>
+        <usfm:ptag/>
         <name ns="">style</name>
         <value>esb</value>
       </attribute>
@@ -1654,37 +1979,183 @@
           <ref name="CrossReference"/>
         </choice>
       </oneOrMore>
-      <usfm:tag dump="true" afterout="&#x27;\n&#x27;">esbe</usfm:tag>
+      <usfm:ptag dump="true" afterout="&#x27;\n&#x27;">esbe</usfm:ptag>
     </element>
   </define>
   <define name="category">
     <attribute>
-      <usfm:tag dump="true">cat</usfm:tag>
+      <usfm:tag dump="true" before="/\\cat${Hs}/" beforeout="&#x27;\\cat &#x27;" after="" afterout="" match="&#x27;&#x27;"/>
       <usfm:text/>
-      <usfm:endtag dump="true">cat</usfm:endtag>
+      <usfm:endtag matchref="" dump="true" before="&#x27;&#x27;" matchout="" after="/\\cat\*${Hs}/" afterout="&#x27;\\cat*&#x27;"/>
       <name ns="">category</name>
       <text/>
     </attribute>
   </define>
   <define name="Reference">
     <element>
+      <usfm:tag match="&#x27;ref&#x27;" dump="true"/>
       <name ns="">ref</name>
-      <attribute>
-        <name ns="">loc</name>
-        <data type="string">
-          <param name="pattern">[A-Z1-4]{3}(-[A-Z1-4]{3})? ?[a-z0-9\-:]*</param>
-        </data>
-      </attribute>
       <optional>
-        <text/>
+        <text>
+          <usfm:text match="TEXTNOTATTRIB" after="ATTRIBTEXTEND"/>
+        </text>
+      </optional>
+      <optional>
+        <attribute>
+          <usfm:match match="PIPE" matchout="&#x27;|&#x27;" dump="true"/>
+          <usfm:match match="TEXTNOTATTRIB"/>
+          <name ns="">loc</name>
+          <data type="string">
+            <usfm:pattern name="VERSE"/>
+            <param name="pattern">[A-Z1-4]{3}(-[A-Z1-4]{3})? ?[a-z0-9\-:]*</param>
+          </data>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute>
+          <usfm:match match="TEXTNOTATTRIB" noout="true"/>
+          <name ns="">gen</name>
+          <choice>
+            <value>true</value>
+            <value>false</value>
+          </choice>
+        </attribute>
       </optional>
     </element>
+    <usfm:endtag match="&#x27;ref&#x27;" matchref=""/>
   </define>
   <define name="Break">
     <element>
-      <usfm:match match="&#x27;//&#x27;"/>
+      <usfm:match before="/\s*\/\//" match="//"/>
       <name ns="">optbreak</name>
       <empty/>
     </element>
+  </define>
+  <define name="Remark">
+    <element>
+      <name ns="">para</name>
+      <attribute>
+        <usfm:tag usfm:seq="true"/>
+        <name ns="">style</name>
+        <value>rem</value>
+      </attribute>
+      <group usfm:seq="true">
+        <optional>
+          <group>
+            <usfm:match before="/${hs}*/" beforeout="&#x27; &#x27;" match="IGNORELINE" after=""/>
+            <text/>
+          </group>
+        </optional>
+        <usfm:match match="NL" matchout="&#x27;\n&#x27;" dump="true"/>
+      </group>
+    </element>
+  </define>
+  <define name="Internal.style.enum">
+    <choice>
+      <value>id</value>
+      <a:documentation>Initial identifying marker</a:documentation>
+      <value>periph</value>
+      <a:documentation>Peripheral division</a:documentation>
+      <value>usfm</value>
+      <a:documentation>USFM version</a:documentation>
+      <value>c</value>
+      <a:documentation>Chapter</a:documentation>
+      <value>ca</value>
+      <a:documentation>Alternate Chapter number</a:documentation>
+      <value>cp</value>
+      <a:documentation>Chapter publication string</a:documentation>
+      <value>v</value>
+      <a:documentation>Verse</a:documentation>
+      <value>va</value>
+      <a:documentation>Alternative versification</a:documentation>
+      <value>vp</value>
+      <a:documentation>Published verse number</a:documentation>
+      <value>tr</value>
+      <a:documentation>Table</a:documentation>
+      <value>fig</value>
+      <a:documentation>Figure</a:documentation>
+      <value>esb</value>
+      <a:documentation>Sidebar</a:documentation>
+      <value>esbe</value>
+      <a:documentation>End Sidebar</a:documentation>
+      <value>cat</value>
+      <a:documentation>Category</a:documentation>
+    </choice>
+  </define>
+  <define name="Cell.style.enum">
+    <choice>
+      <value>th1</value>
+      <value>th2</value>
+      <value>th3</value>
+      <value>th4</value>
+      <value>th5</value>
+      <value>th6</value>
+      <value>th7</value>
+      <value>th8</value>
+      <value>th9</value>
+      <value>th10</value>
+      <value>th11</value>
+      <value>th12</value>
+      <value>tc1</value>
+      <value>tc2</value>
+      <value>tc3</value>
+      <value>tc4</value>
+      <value>tc5</value>
+      <value>tc6</value>
+      <value>tc7</value>
+      <value>tc8</value>
+      <value>tc9</value>
+      <value>tc10</value>
+      <value>tc11</value>
+      <value>tc12</value>
+      <value>tcr1</value>
+      <value>tcr2</value>
+      <value>tcr3</value>
+      <value>tcr4</value>
+      <value>tcr5</value>
+      <value>tcr6</value>
+      <value>tcr7</value>
+      <value>tcr8</value>
+      <value>tcr9</value>
+      <value>tc10</value>
+      <value>tc11</value>
+      <value>tc12</value>
+      <value>tcc1</value>
+      <value>tcc2</value>
+      <value>tcc3</value>
+      <value>tcc4</value>
+      <value>tcc5</value>
+      <value>tcc6</value>
+      <value>tcc7</value>
+      <value>tcc8</value>
+      <value>tcc9</value>
+      <value>tcc10</value>
+      <value>tcc11</value>
+      <value>tcc12</value>
+      <value>thc1</value>
+      <value>thc2</value>
+      <value>thc3</value>
+      <value>thc4</value>
+      <value>thc5</value>
+      <value>thc6</value>
+      <value>thc7</value>
+      <value>thc8</value>
+      <value>thc9</value>
+      <value>thc10</value>
+      <value>thc11</value>
+      <value>tch12</value>
+      <value>thr1</value>
+      <value>thr2</value>
+      <value>thr3</value>
+      <value>thr4</value>
+      <value>thr5</value>
+      <value>thr6</value>
+      <value>thr7</value>
+      <value>thr8</value>
+      <value>thr9</value>
+      <value>thr10</value>
+      <value>thr11</value>
+      <value>thr12</value>
+    </choice>
   </define>
 </grammar>
