@@ -238,12 +238,13 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     PARAGRAPHS : paragraph markers like \p, poetry markers, list table markers
     CHARACTERS : all character level markups like \em, \w, \wj etc and their nested versions with +
     NOTES : foot note, cross-reference and their content markers
+    LISTS : list markers like \li, \lh, \lim and the \list-s/\list-e milestones
     STUDY_BIBLE : \esb and \cat
     BCV : \id, \c and \v
-    TEXT : 'text-in-excluded-parent'
+    TEXT : 'text-in-excluded-parent' and 'text'
     ZNAMESPACES : all user-extended \z markers, as one group
     ```
-    To inspect which are the markers in each of these options, it could be just printed out, `print(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
+    To inspect which are the markers in each of these options, it could be just printed out, `console.log(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
     ```javascript
     output = usfmParser.toUSJ(null, Filter.BCV) //to include
     output = usfmParser.toUSJ(null, [...Filter.BCV, ...Filter.TEXT]) //to include

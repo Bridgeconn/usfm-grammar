@@ -79,7 +79,7 @@ with open("file_path.json", "w", encoding='utf-8') as fp:
 ##### To convert to List or table like format
 ```python
 list_output = my_parser.to_list() 
-#list_output = my_parser.to_list([Filter.SCRIPTURE_TEXT])
+#list_output = my_parser.to_list(include_markers=Filter.BCV+Filter.TEXT)
 
 table_output = "\n".join(["\t".join(row) for row in list_output])
 print(table_output)
@@ -264,12 +264,13 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     PARAGRAPHS : paragraph markers like \p, poetry markers, list table markers
     CHARACTERS : all character level markups like \em, \w, \wj etc and their nested versions with +
     NOTES : foot note, cross-reference and their content markers
+    LISTS : list markers like \li, \lh, \lim and the \list-s/\list-e milestones
     STUDY_BIBLE : \esb and \cat
     BCV : \id, \c and \v
-    TEXT : 'text-in-excluded-parent'
+    TEXT : 'text-in-excluded-parent' and 'text'
     ZNAMESPACES : all user-extended \z markers, as one group
     ```
-    To inspect which are the markers in each of these options, it could be just printed out, `print(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
+    To inspect which are the markers in each of these options, it could be just printed out, `print(list(Filter.TITLES))`. These could be used individually or concatinated to get the desired filtering of markers and data:
     ```python
     output = my_parser.to_usj(include_markers=Filter.BCV)
     output = my_parser.to_usj(include_markers=Filter.BCV+Filter.TEXT)
