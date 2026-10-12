@@ -3,6 +3,8 @@
 ## Description
 This is the web alternative to the (USFM-Grammar 3.x)[https://www.npmjs.com/package/usfm-grammar] library to be used from HTML, react etc. USFM Grammar is a JavaScript library for parsing and converting USFM (Unified Standard Format Markers) to/from USJ (Unified Standard JSON) format. This library provides functionalities to parse USFM strings into a syntax tree and convert them into a JSON-like structure (USJ), and vice versa.
 
+> :information_source: For Node.js, use the [usfm-grammar](https://www.npmjs.com/package/usfm-grammar) package; `usfm-grammar-web` is for browsers and bundlers.
+
 ## Installation
 You can install USFM Grammar via npm:
 
