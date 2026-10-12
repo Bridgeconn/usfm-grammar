@@ -201,9 +201,9 @@ const simpleUSJ = {
     { type: 'book', marker: 'id', code: 'GEN', content: [] },
     { type: 'chapter', marker: 'c', number: '1', sid: 'GEN 1' },
     { type: 'para', marker: 'p', content: [
-        {type: 'verse', marker: 'v', number: 1 },
+        {type: 'verse', marker: 'v', number: '1' },
         "In the begining..",
-        {type: 'verse', marker: 'v', number: 2 }
+        {type: 'verse', marker: 'v', number: '2' }
       ] }
   ]
 }
