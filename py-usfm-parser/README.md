@@ -61,7 +61,7 @@ output = my_parser.to_usj() # default all markers
 # for a flattened JSON removing nesting brought in by paragraphs, lists, quotes, tables and character level markups
 # output = my_parser.to_usj(exclude_markers=Filter.PARAGRAPHS+Filter.CHARACTERS)
 
-# To NOT concatinate text extracted from different markers
+# To NOT concatenate text extracted from different markers
 # output = my_parser.to_usj(exclude_markers=Filter.PARAGRAPHS+Filter.CHARACTERS, combine_texts=False) 
 
 print(output)
@@ -218,7 +218,7 @@ options:
   --csv_row_sep CSV_ROW_SEP
                         row separator or delimiter. Only useful with format=table.
   --ignore_errors       to get some output from successfully parsed portions
-  --combine_text        to be used along with exclude_markers or include_markers, to concatinate the consecutive text
+  --combine_text        to be used along with exclude_markers or include_markers, to concatenate the consecutive text
                         snippets, from different components, or not
   --vref VREF           path to the vref file containing line by line verse reference for biblenlp input file
   --bookcode BOOKCODE   book to be exported from biblenlp to usfm format
@@ -259,7 +259,7 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
 
 - *combine_texts*
 
-   Optional input parameter to `to_usj()` and `to_list` in python library and also in CLI when `format=json` or `format=table`. Defaults to `True`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatinated together. The text concatination is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
+   Optional input parameter to `to_usj()` and `to_list` in python library and also in CLI when `format=json` or `format=table`. Defaults to `True`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatenated together. The text concatenation is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
 
 - *usfm_grammar.Filter*
 
@@ -277,7 +277,7 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     TEXT : 'text-in-excluded-parent' and 'text'
     ZNAMESPACES : all user-extended \z markers, as one group
     ```
-    To inspect which are the markers in each of these options, it could be just printed out, `print(list(Filter.TITLES))`. These could be used individually or concatinated to get the desired filtering of markers and data:
+    To inspect which are the markers in each of these options, it could be just printed out, `print(list(Filter.TITLES))`. These could be used individually or concatenated to get the desired filtering of markers and data:
     ```python
     output = my_parser.to_usj(include_markers=Filter.BCV)
     output = my_parser.to_usj(include_markers=Filter.BCV+Filter.TEXT)

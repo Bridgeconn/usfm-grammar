@@ -174,7 +174,7 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
 
 - *combineTexts*
 
-   Fourth input parameter to `toUSJ()` and `toList` of `USFMParser` class. Defaults to `true`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatinated together. The text concatination is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
+   Fourth input parameter to `toUSJ()` and `toList` of `USFMParser` class. Defaults to `true`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatenated together. The text concatenation is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
 
 - *usfm_grammar.Filter*
 
@@ -192,7 +192,7 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     TEXT : 'text-in-excluded-parent' and 'text'
     ZNAMESPACES : all user-extended \z markers, as one group
     ```
-    To inspect which are the markers in each of these options, it could be just printed out, `console.log(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
+    To inspect which are the markers in each of these options, it could be just printed out, `console.log(Filter.TITLES)`. These could be used individually or concatenated to get the desired filtering of markers and data:
     ```javascript
     output = usfmParser.toUSJ(null, Filter.BCV) //to include
     output = usfmParser.toUSJ(null, [...Filter.BCV, ...Filter.TEXT]) //to include

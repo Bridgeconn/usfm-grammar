@@ -146,7 +146,7 @@ def main():  # pylint: disable=too-many-locals
     arg_parser.add_argument(
         "--combine_text",
         help="to be used along with exclude_markers or include_markers, "
-        + "to concatinate the consecutive text snippets, "
+        + "to concatenate the consecutive text snippets, "
         + "from different components, or not",
         action="store_true",
     )
