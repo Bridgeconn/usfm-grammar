@@ -126,7 +126,8 @@ const usfmParser2 = new USFMParser(null, null, usxElem) // USX to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
 
-// USX from a string, e.g. file contents
+// USX from a string e.g. uploaded file contents
+const usxText = '<usx version="3.1"><book code="GEN" style="id"/><chapter number="1" style="c"/><para style="p"><verse number="1" style="v"/>In the beginning...</para></usx>'; 
 const usxDoc = new DOMParser().parseFromString(usxText.replace(/^﻿/, ''), 'text/xml'); // strip BOM, if any
 const usfmParser3 = new USFMParser(null, null, usxDoc.documentElement);
 ```
