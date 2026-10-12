@@ -129,7 +129,7 @@ describe("Test USFM-USX-USFM roundtripping", () => {
 //         const filePath = usxPath;
 //         let fileData = null;
 //         try {
-//           fileData = fs.readFileSync(filePath, "utf8");
+//           fileData = fs.readFileSync(filePath, "utf8").replace(/^\uFEFF/, "");
 //         } catch(err) {
 //           if (err.code === "ENOENT") {
 //             return
