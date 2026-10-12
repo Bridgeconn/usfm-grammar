@@ -91,7 +91,7 @@ def main():  # pylint: disable=too-many-locals
         description="Uses the tree-sitter-usfm grammar to parse and convert USFM to "
         + "Syntax-tree, JSON, CSV, USX etc."
     )
-    arg_parser.add_argument("infile", type=str, help="input usfm or usj file")
+    arg_parser.add_argument("infile", type=str, help="input usfm, usj, usx or biblenlp file")
 
     arg_parser.add_argument(
         "--in_format",

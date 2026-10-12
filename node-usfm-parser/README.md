@@ -62,7 +62,7 @@ const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
 
 // USX from a file
-const usxText = fs.readFileSync('file.usx', 'utf8').replace(/^﻿/, ''); // strip BOM, if any
+const usxText = fs.readFileSync('file.usx', 'utf8').replace(/^\uFEFF/, ''); // strip BOM, if any
 const usxDoc = new DOMParser().parseFromString(usxText, 'text/xml');
 const usfmParser3 = new USFMParser(null, null, usxDoc.documentElement);
 ```

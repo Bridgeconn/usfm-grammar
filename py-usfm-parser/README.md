@@ -201,7 +201,7 @@ usage: usfm-grammar [-h] [--in_format {usfm,usj,usx,biblenlp}]
 Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree, JSON, CSV, USX etc.
 
 positional arguments:
-  infile                input usfm or usj file
+  infile                input usfm, usj, usx or biblenlp file
 
 options:
   -h, --help            show this help message and exit
