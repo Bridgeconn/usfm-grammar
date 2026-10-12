@@ -190,10 +190,12 @@ print(checker.message); # Report on autofix attempt
 ### From CLI
 
 ```
-usage: usfm-grammar [-h] [--in_format {usfm,usj,usx}] [--out_format {usj,table,syntax-tree,usx,markdown,usfm,bible-nlp}]
-                    [--include_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}]
-                    [--exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}]
+usage: usfm-grammar [-h] [--in_format {usfm,usj,usx,biblenlp}]
+                    [--out_format {usj,table,syntax-tree,usx,markdown,usfm,biblenlp}]
+                    [--include_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}]
+                    [--exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}]
                     [--csv_col_sep CSV_COL_SEP] [--csv_row_sep CSV_ROW_SEP] [--ignore_errors] [--combine_text]
+                    [--vref VREF] [--bookcode BOOKCODE] [--markers_ext MARKERS_EXT] [--version]
                     infile
 
 Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree, JSON, CSV, USX etc.
@@ -205,19 +207,24 @@ options:
   -h, --help            show this help message and exit
   --in_format {usfm,usj,usx,biblenlp}
                         input file format
-  --out_format {usj,table,syntax-tree,usx,markdown,usfm,bible-nlp}
+  --out_format {usj,table,syntax-tree,usx,markdown,usfm,biblenlp}
                         output format
-  --include_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}
+  --include_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}
                         the list of of contents to be included
-  --exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}
+  --exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}
                         the list of of contents to be included
   --csv_col_sep CSV_COL_SEP
                         column separator or delimiter. Only useful with format=table.
   --csv_row_sep CSV_ROW_SEP
                         row separator or delimiter. Only useful with format=table.
   --ignore_errors       to get some output from successfully parsed portions
-  --combine_text        to be used along with exclude_markers or include_markers, to concatinate the consecutive text snippets, from different components, or not
+  --combine_text        to be used along with exclude_markers or include_markers, to concatinate the consecutive text
+                        snippets, from different components, or not
   --vref VREF           path to the vref file containing line by line verse reference for biblenlp input file
+  --bookcode BOOKCODE   book to be exported from biblenlp to usfm format
+  --markers_ext MARKERS_EXT
+                        path to the marker extensions file, defining the custom \z markers used
+  --version             show program's version number and exit
 
 ```
 Example
