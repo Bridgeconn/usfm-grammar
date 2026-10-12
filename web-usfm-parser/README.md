@@ -109,7 +109,7 @@ Working with USJ, also gives options like filtering selected markers, to edit th
 
 To work with the XML format, USX:
 ```javascript
-import { DOMImplementation, XMLSerializer } from 'xmldom';
+import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
 
 const USFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text'
 const usfmParser = new USFMParser(USFM);
@@ -123,6 +123,10 @@ console.log(usx);
 const usfmParser2 = new USFMParser(null, null, usxElem) // USX to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
+
+// USX from a string, e.g. file contents
+const usxDoc = new DOMParser().parseFromString(usxText.replace(/^﻿/, ''), 'text/xml'); // strip BOM, if any
+const usfmParser3 = new USFMParser(null, null, usxDoc.documentElement);
 ```
 ### BibleNLP format
 Bible NLP format consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references. The API generates a JSON with two fields, `text` and `vref`, each containing an array of strings.

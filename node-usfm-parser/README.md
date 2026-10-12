@@ -44,8 +44,9 @@ Working with USJ, also gives options like filtering selected markers, to edit th
 
 To work with the XML format, USX:
 ```javascript
+const fs = require('fs');
 const {USFMParser} = require('usfm-grammar');
-const { DOMImplementation, XMLSerializer } = require('xmldom');
+const { DOMParser, XMLSerializer } = require('@xmldom/xmldom');
 
 const USFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text'
 const usfmParser = new USFMParser(USFM);
@@ -59,6 +60,11 @@ console.log(usx);
 const usfmParser2 = new USFMParser(usfmString=null, fromUsj=null, fromUsx=usxElem) // USX to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
+
+// USX from a file
+const usxText = fs.readFileSync('file.usx', 'utf8').replace(/^﻿/, ''); // strip BOM, if any
+const usxDoc = new DOMParser().parseFromString(usxText, 'text/xml');
+const usfmParser3 = new USFMParser(null, null, usxDoc.documentElement);
 ```
 
 ### BibleNLP format
