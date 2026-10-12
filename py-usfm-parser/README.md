@@ -210,9 +210,9 @@ options:
   --out_format {usj,table,syntax-tree,usx,markdown,usfm,biblenlp}
                         output format
   --include_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}
-                        the list of of contents to be included
+                        the list of contents to be included
   --exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}
-                        the list of of contents to be included
+                        the list of contents to be excluded
   --csv_col_sep CSV_COL_SEP
                         column separator or delimiter. Only useful with format=table.
   --csv_row_sep CSV_ROW_SEP

@@ -115,14 +115,14 @@ def main():  # pylint: disable=too-many-locals
     arg_parser.add_argument(
         "--include_markers",
         type=str,
-        help="the list of of contents to be included",
+        help="the list of contents to be included",
         choices=[itm.name.lower() for itm in Filter] + all_markers,
         action="append",
     )
     arg_parser.add_argument(
         "--exclude_markers",
         type=str,
-        help="the list of of contents to be included",
+        help="the list of contents to be excluded",
         choices=[itm.name.lower() for itm in Filter] + all_markers,
         action="append",
     )
