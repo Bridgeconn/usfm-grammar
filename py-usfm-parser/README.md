@@ -61,7 +61,7 @@ output = my_parser.to_usj() # default all markers
 # for a flattened JSON removing nesting brought in by paragraphs, lists, quotes, tables and character level markups
 # output = my_parser.to_usj(exclude_markers=Filter.PARAGRAPHS+Filter.CHARACTERS)
 
-# To NOT concatinate text extracted from different markers
+# To NOT concatenate text extracted from different markers
 # output = my_parser.to_usj(exclude_markers=Filter.PARAGRAPHS+Filter.CHARACTERS, combine_texts=False) 
 
 print(output)
@@ -79,7 +79,7 @@ with open("file_path.json", "w", encoding='utf-8') as fp:
 ##### To convert to List or table like format
 ```python
 list_output = my_parser.to_list() 
-#list_output = my_parser.to_list([Filter.SCRIPTURE_TEXT])
+#list_output = my_parser.to_list(include_markers=Filter.BCV+Filter.TEXT)
 
 table_output = "\n".join(["\t".join(row) for row in list_output])
 print(table_output)
@@ -190,34 +190,41 @@ print(checker.message); # Report on autofix attempt
 ### From CLI
 
 ```
-usage: usfm-grammar [-h] [--in_format {usfm,usj,usx}] [--out_format {usj,table,syntax-tree,usx,markdown,usfm,bible-nlp}]
-                    [--include_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}]
-                    [--exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}]
+usage: usfm-grammar [-h] [--in_format {usfm,usj,usx,biblenlp}]
+                    [--out_format {usj,table,syntax-tree,usx,markdown,usfm,biblenlp}]
+                    [--include_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}]
+                    [--exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}]
                     [--csv_col_sep CSV_COL_SEP] [--csv_row_sep CSV_ROW_SEP] [--ignore_errors] [--combine_text]
+                    [--vref VREF] [--bookcode BOOKCODE] [--markers_ext MARKERS_EXT] [--version]
                     infile
 
 Uses the tree-sitter-usfm grammar to parse and convert USFM to Syntax-tree, JSON, CSV, USX etc.
 
 positional arguments:
-  infile                input usfm or usj file
+  infile                input usfm, usj, usx or biblenlp file
 
 options:
   -h, --help            show this help message and exit
   --in_format {usfm,usj,usx,biblenlp}
                         input file format
-  --out_format {usj,table,syntax-tree,usx,markdown,usfm,bible-nlp}
+  --out_format {usj,table,syntax-tree,usx,markdown,usfm,biblenlp}
                         output format
-  --include_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}
-                        the list of of contents to be included
-  --exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,study_bible,bcv,text,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,esb,cat,id,c,v,text-in-excluded-parent}
-                        the list of of contents to be included
+  --include_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}
+                        the list of contents to be included
+  --exclude_markers {book_headers,titles,comments,paragraphs,characters,notes,lists,study_bible,bcv,text,znamespaces,ide,usfm,h,toc,toca,imt,is,ip,ipi,im,imi,ipq,imq,ipr,ipc,iq,ib,ili,iot,io,iex,imte,ie,mt,mte,cl,cd,ms,mr,s,sr,r,d,sp,sd,sts,rem,lit,restore,p,m,po,pr,cls,pmo,pm,pmc,pmr,pi,mi,nb,pc,ph,q,qr,qc,qa,qm,qd,lh,li,lf,lim,litl,tr,tc,th,tcr,thr,table,b,add,bk,dc,ior,iqt,k,litl,nd,ord,pn,png,qac,qs,qt,rq,sig,sls,tl,wj,ta,em,bd,bdit,it,no,sc,sup,rb,pro,w,wh,wa,wg,wl,lik,liv,jmp,f,fe,ef,efe,x,ex,fr,ft,fk,fq,fqa,fl,fw,fp,fv,fdc,xo,xop,xt,xta,xk,xq,xot,xnt,xdc,list-s,list-e,lh,li,lf,lim,lik,liv,esb,cat,id,c,v,text-in-excluded-parent,text,user-extension}
+                        the list of contents to be excluded
   --csv_col_sep CSV_COL_SEP
                         column separator or delimiter. Only useful with format=table.
   --csv_row_sep CSV_ROW_SEP
                         row separator or delimiter. Only useful with format=table.
   --ignore_errors       to get some output from successfully parsed portions
-  --combine_text        to be used along with exclude_markers or include_markers, to concatinate the consecutive text snippets, from different components, or not
+  --combine_text        to be used along with exclude_markers or include_markers, to concatenate the consecutive text
+                        snippets, from different components, or not
   --vref VREF           path to the vref file containing line by line verse reference for biblenlp input file
+  --bookcode BOOKCODE   book to be exported from biblenlp to usfm format
+  --markers_ext MARKERS_EXT
+                        path to the marker extensions file, defining the custom \z markers used
+  --version             show program's version number and exit
 
 ```
 Example
@@ -252,7 +259,7 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
 
 - *combine_texts*
 
-   Optional input parameter to `to_usj()` and `to_list` in python library and also in CLI when `format=json` or `format=table`. Defaults to `True`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatinated together. The text concatination is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
+   Optional input parameter to `to_usj()` and `to_list` in python library and also in CLI when `format=json` or `format=table`. Defaults to `True`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatenated together. The text concatenation is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
 
 - *usfm_grammar.Filter*
 
@@ -264,12 +271,13 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     PARAGRAPHS : paragraph markers like \p, poetry markers, list table markers
     CHARACTERS : all character level markups like \em, \w, \wj etc and their nested versions with +
     NOTES : foot note, cross-reference and their content markers
+    LISTS : list markers like \li, \lh, \lim and the \list-s/\list-e milestones
     STUDY_BIBLE : \esb and \cat
     BCV : \id, \c and \v
-    TEXT : 'text-in-excluded-parent'
+    TEXT : 'text-in-excluded-parent' and 'text'
     ZNAMESPACES : all user-extended \z markers, as one group
     ```
-    To inspect which are the markers in each of these options, it could be just printed out, `print(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
+    To inspect which are the markers in each of these options, it could be just printed out, `print(list(Filter.TITLES))`. These could be used individually or concatenated to get the desired filtering of markers and data:
     ```python
     output = my_parser.to_usj(include_markers=Filter.BCV)
     output = my_parser.to_usj(include_markers=Filter.BCV+Filter.TEXT)

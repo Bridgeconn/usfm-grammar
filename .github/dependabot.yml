@@ -1,0 +1,48 @@
+# Dependabot configuration
+# Version updates: only the dependencies declared directly in package.json /
+# pyproject.toml / requirements.txt are watched, not the ones only in lock files.
+# All updates for a directory are grouped into a single pull request.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directories:
+      - "/node-usfm-parser"
+      - "/web-usfm-parser"
+      - "/tree-sitter-usfm3"
+    schedule:
+      interval: "monthly"
+    allow:
+      - dependency-type: "direct"
+    ignore:
+      # Our own grammar package, updated along with each release
+      - dependency-name: "tree-sitter-usfm3"
+    groups:
+      npm-version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      npm-security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"
+
+  - package-ecosystem: "pip"
+    directories:
+      - "/py-usfm-parser"
+      - "/tree-sitter-usfm3"
+    schedule:
+      interval: "monthly"
+    allow:
+      - dependency-type: "direct"
+    ignore:
+      # Our own grammar package, updated along with each release
+      - dependency-name: "tree-sitter-usfm3"
+    groups:
+      pip-version-updates:
+        applies-to: version-updates
+        patterns:
+          - "*"
+      pip-security-updates:
+        applies-to: security-updates
+        patterns:
+          - "*"

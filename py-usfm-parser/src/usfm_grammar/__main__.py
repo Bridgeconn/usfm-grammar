@@ -91,7 +91,7 @@ def main():  # pylint: disable=too-many-locals
         description="Uses the tree-sitter-usfm grammar to parse and convert USFM to "
         + "Syntax-tree, JSON, CSV, USX etc."
     )
-    arg_parser.add_argument("infile", type=str, help="input usfm or usj file")
+    arg_parser.add_argument("infile", type=str, help="input usfm, usj, usx or biblenlp file")
 
     arg_parser.add_argument(
         "--in_format",
@@ -115,14 +115,14 @@ def main():  # pylint: disable=too-many-locals
     arg_parser.add_argument(
         "--include_markers",
         type=str,
-        help="the list of of contents to be included",
+        help="the list of contents to be included",
         choices=[itm.name.lower() for itm in Filter] + all_markers,
         action="append",
     )
     arg_parser.add_argument(
         "--exclude_markers",
         type=str,
-        help="the list of of contents to be included",
+        help="the list of contents to be excluded",
         choices=[itm.name.lower() for itm in Filter] + all_markers,
         action="append",
     )
@@ -146,7 +146,7 @@ def main():  # pylint: disable=too-many-locals
     arg_parser.add_argument(
         "--combine_text",
         help="to be used along with exclude_markers or include_markers, "
-        + "to concatinate the consecutive text snippets, "
+        + "to concatenate the consecutive text snippets, "
         + "from different components, or not",
         action="store_true",
     )

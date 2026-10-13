@@ -44,8 +44,9 @@ Working with USJ, also gives options like filtering selected markers, to edit th
 
 To work with the XML format, USX:
 ```javascript
+const fs = require('fs');
 const {USFMParser} = require('usfm-grammar');
-const { DOMImplementation, XMLSerializer } = require('xmldom');
+const { DOMParser, XMLSerializer } = require('@xmldom/xmldom');
 
 const USFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text'
 const usfmParser = new USFMParser(USFM);
@@ -59,6 +60,11 @@ console.log(usx);
 const usfmParser2 = new USFMParser(usfmString=null, fromUsj=null, fromUsx=usxElem) // USX to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
+
+// USX from a file
+const usxText = fs.readFileSync('file.usx', 'utf8').replace(/^\uFEFF/, ''); // strip BOM, if any
+const usxDoc = new DOMParser().parseFromString(usxText, 'text/xml');
+const usfmParser3 = new USFMParser(null, null, usxDoc.documentElement);
 ```
 
 ### BibleNLP format
@@ -133,9 +139,9 @@ const simpleUSJ = {
     { type: 'book', marker: 'id', code: 'GEN', content: [] },
     { type: 'chapter', marker: 'c', number: '1', sid: 'GEN 1' },
     { type: 'para', marker: 'p', content: [
-        {type: 'verse', marker: 'v', number: 1 },
+        {type: 'verse', marker: 'v', number: '1' },
         "In the begining..",
-        {type: 'verse', marker: 'v', number: 2 }
+        {type: 'verse', marker: 'v', number: '2' }
       ] }
   ]
 }
@@ -168,7 +174,7 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
 
 - *combineTexts*
 
-   Fourth input parameter to `toUSJ()` and `toList` of `USFMParser` class. Defaults to `true`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatinated together. The text concatination is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
+   Fourth input parameter to `toUSJ()` and `toList` of `USFMParser` class. Defaults to `true`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatenated together. The text concatenation is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
 
 - *usfm_grammar.Filter*
 
@@ -180,16 +186,17 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     PARAGRAPHS : paragraph markers like \p, poetry markers, list table markers
     CHARACTERS : all character level markups like \em, \w, \wj etc and their nested versions with +
     NOTES : foot note, cross-reference and their content markers
+    LISTS : list markers like \li, \lh, \lim and the \list-s/\list-e milestones
     STUDY_BIBLE : \esb and \cat
     BCV : \id, \c and \v
-    TEXT : 'text-in-excluded-parent'
+    TEXT : 'text-in-excluded-parent' and 'text'
     ZNAMESPACES : all user-extended \z markers, as one group
     ```
-    To inspect which are the markers in each of these options, it could be just printed out, `print(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
+    To inspect which are the markers in each of these options, it could be just printed out, `console.log(Filter.TITLES)`. These could be used individually or concatenated to get the desired filtering of markers and data:
     ```javascript
-    output = usfmParser.toUSJ(null, include_markers=Filter.BCV)
-    output = usfmParser.toUSJ(null, include_markers=[...Filter.BCV, ...Filter.TEXT])
-    output = usfmParser.toUSJ(exclude_markers=[...Filter.PARAGRAPHS, ...Filter.CHARACTERS])
+    output = usfmParser.toUSJ(null, Filter.BCV) //to include
+    output = usfmParser.toUSJ(null, [...Filter.BCV, ...Filter.TEXT]) //to include
+    output = usfmParser.toUSJ([...Filter.PARAGRAPHS, ...Filter.CHARACTERS]) //to exclude
     ``` 
 - Inner contents of excluded markers
 

@@ -27,7 +27,7 @@ punct_pattern_no_space_after = re.compile(r"[\-—/`@^&({[<“«]$")
 znamespace_pattern = re.compile(r"^z[\w\-]+")
 
 def combine_consequtive_text_contents(contents_list):
-    """After filtering, if content endups with text items next to each other, concatinate them"""
+    """After filtering, if content endups with text items next to each other, concatenate them"""
     text_combined_contents = []
     text_contents = ""
     for item in contents_list:

@@ -52,7 +52,7 @@
     "xml2js": "^0.6.2"
   },
   "dependencies": {
-    "@xmldom/xmldom": "^0.8.11",
+    "@xmldom/xmldom": "^0.9.12",
     "ajv": "^8.18.0",
     "xpath": "^0.0.34"
   }

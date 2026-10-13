@@ -3,6 +3,8 @@
 ## Description
 This is the web alternative to the (USFM-Grammar 3.x)[https://www.npmjs.com/package/usfm-grammar] library to be used from HTML, react etc. USFM Grammar is a JavaScript library for parsing and converting USFM (Unified Standard Format Markers) to/from USJ (Unified Standard JSON) format. This library provides functionalities to parse USFM strings into a syntax tree and convert them into a JSON-like structure (USJ), and vice versa.
 
+> :information_source: For Node.js, use the [usfm-grammar](https://www.npmjs.com/package/usfm-grammar) package; `usfm-grammar-web` is for browsers and bundlers.
+
 ## Installation
 You can install USFM Grammar via npm:
 
@@ -109,7 +111,7 @@ Working with USJ, also gives options like filtering selected markers, to edit th
 
 To work with the XML format, USX:
 ```javascript
-import { DOMImplementation, XMLSerializer } from 'xmldom';
+import { DOMParser, XMLSerializer } from '@xmldom/xmldom';
 
 const USFM = '\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 some more text'
 const usfmParser = new USFMParser(USFM);
@@ -123,6 +125,11 @@ console.log(usx);
 const usfmParser2 = new USFMParser(null, null, usxElem) // USX to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
+
+// USX from a string e.g. uploaded file contents
+const usxText = '<usx version="3.1"><book code="GEN" style="id"/><chapter number="1" style="c"/><para style="p"><verse number="1" style="v"/>In the beginning...</para></usx>'; 
+const usxDoc = new DOMParser().parseFromString(usxText.replace(/^﻿/, ''), 'text/xml'); // strip BOM, if any
+const usfmParser3 = new USFMParser(null, null, usxDoc.documentElement);
 ```
 ### BibleNLP format
 Bible NLP format consists of two `txt` files: the first, with verse texts, one per line and the second, with corresponding references. The API generates a JSON with two fields, `text` and `vref`, each containing an array of strings.
@@ -197,9 +204,9 @@ const simpleUSJ = {
     { type: 'book', marker: 'id', code: 'GEN', content: [] },
     { type: 'chapter', marker: 'c', number: '1', sid: 'GEN 1' },
     { type: 'para', marker: 'p', content: [
-        {type: 'verse', marker: 'v', number: 1 },
+        {type: 'verse', marker: 'v', number: '1' },
         "In the begining..",
-        {type: 'verse', marker: 'v', number: 2 }
+        {type: 'verse', marker: 'v', number: '2' }
       ] }
   ]
 }
@@ -222,7 +229,7 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
 
 - *combineTexts*
 
-   Fourth input parameter to `toUSJ()` and `toList` of `USFMParser` class. Defaults to `true`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatinated together. The text concatination is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
+   Fourth input parameter to `toUSJ()` and `toList` of `USFMParser` class. Defaults to `true`. After filtering out makers like paragraphs and characters, we are left with texts from within them, if 'text-in-excluded-parent' is also not excluded. These text snippets may come as separate components in the contents list. When this option is `True`, the consequetive text snippets will be concatenated together. The text concatenation is done in a puctuation and space aware manner. If users need more control over the space handling or for any other reason, would prefer the texts snippets as different components in the output, this can be set to `False`.
 
 - *usfm_grammar.Filter*
 
@@ -234,12 +241,13 @@ The filtering on USJ, the JSON output, is a feature incorporated to allow data e
     PARAGRAPHS : paragraph markers like \p, poetry markers, list table markers
     CHARACTERS : all character level markups like \em, \w, \wj etc and their nested versions with +
     NOTES : foot note, cross-reference and their content markers
+    LISTS : list markers like \li, \lh, \lim and the \list-s/\list-e milestones
     STUDY_BIBLE : \esb and \cat
     BCV : \id, \c and \v
-    TEXT : 'text-in-excluded-parent'
+    TEXT : 'text-in-excluded-parent' and 'text'
     ZNAMESPACES : all user-extended \z markers, as one group
     ```
-    To inspect which are the markers in each of these options, it could be just printed out, `print(Filter.TITLES)`. These could be used individually or concatinated to get the desired filtering of markers and data:
+    To inspect which are the markers in each of these options, it could be just printed out, `console.log(Filter.TITLES)`. These could be used individually or concatenated to get the desired filtering of markers and data:
     ```javascript
     output = usfmParser.toUSJ(null, Filter.BCV) //to include
     output = usfmParser.toUSJ(null, [...Filter.BCV, ...Filter.TEXT]) //to include

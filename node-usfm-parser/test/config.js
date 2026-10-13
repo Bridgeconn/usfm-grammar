@@ -203,7 +203,7 @@ const checkValidUsfm = function (inputUsfmPath) {
     }
     let value = null;
 	let metaFilePath = inputUsfmPath.replace("origin.usfm", "metadata.xml")
-    let metadata = fs.readFileSync(metaFilePath, 'utf8')
+    let metadata = fs.readFileSync(metaFilePath, 'utf8').replace(/^\uFEFF/, '')
 
     const doc = new DOMParser().parseFromString(metadata, 'text/xml');
 
