@@ -406,11 +406,12 @@ module.exports = grammar({
       $.fig,
       ))),
 
-    footnote: $ => choice($.f, $.fe, $.fm, $.ef),
+    footnote: $ => choice($.f, $.fe, $.fm, $.ef, $.efe),
 
     f: $ => seq("\\f ",$.caller, repeat($._footnoteContents), "\\f*"),
     fe: $ => seq("\\fe ",$.caller, repeat($._footnoteContents), "\\fe*"),
     ef: $ => seq("\\ef ",$.caller, repeat($._footnoteContents), "\\ef*"),
+    efe: $ => seq("\\efe ",$.caller, repeat($._footnoteContents), "\\efe*"),
     fr: $ => prec.right(0, seq("\\fr ", optional($.footnoteText), optional("\\fr*"))),
     fq: $ => prec.right(0, seq("\\fq ", optional($.footnoteText), optional("\\fq*"))),
     fqa: $ => prec.right(0, seq("\\fqa ", optional($.footnoteText), optional("\\fqa*"))),
