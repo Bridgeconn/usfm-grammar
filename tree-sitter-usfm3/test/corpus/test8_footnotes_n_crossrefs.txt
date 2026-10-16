@@ -768,3 +768,60 @@ Extended cross reference
             (xt
               (crossrefText
                 (text)))))))))
+
+================================================================================
+Extended study endnote
+================================================================================
+\id GEN
+\c 1
+\p
+\v 1 word\efe + \fr 1:1 \ft note\efe*
+\v 2 word\efe + \cat People\cat* \fr 1:2 \ft note\efe*
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (efe
+            (caller)
+            (footnoteText
+              (text))
+            (fr
+              (footnoteText
+                (text)))
+            (ft
+              (footnoteText
+                (text)))))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (efe
+            (caller)
+            (footnoteText
+              (text))
+            (cat
+              (category))
+            (footnoteText
+              (text))
+            (fr
+              (footnoteText
+                (text)))
+            (ft
+              (footnoteText
+                (text)))))))))
