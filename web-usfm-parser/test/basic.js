@@ -135,4 +135,15 @@ describe("Custom marker names with a markers.ext", () => {
     assert.ok(!badParser.errors.join().includes('custom'), badParser.errors);
     assert.ok(badParser.errors.join().includes('\\zpb'), badParser.errors);
   });
+
+  it("stay in sync when usjToUsfm replaces the document", async () => {
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    const usfmParser = new USFMParser(usfm, null, null, null, null, customNamesExt);
+    const usj = usfmParser.toUSJ();
+    usj.content[2].content[2]['x-page'] = '5';
+    usfmParser.usjToUsfm(usj);
+    usfmParser.parseUSFM();
+    assert.deepStrictEqual(usfmParser.errors, []);
+    assert.strictEqual(usfmParser.toUSJ().content[2].content[2]['x-page'], '5');
+  });
 });
