@@ -1,0 +1,86 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "GEN",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "word",
+                {
+                    "type": "note",
+                    "marker": "efe",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "1:1 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "note"
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "word",
+                {
+                    "type": "note",
+                    "marker": "efe",
+                    "content": [
+                        " ",
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "1:2 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "note"
+                            ]
+                        }
+                    ],
+                    "caller": "+",
+                    "category": "People"
+                },
+                "\n"
+            ]
+        }
+    ]
+}
