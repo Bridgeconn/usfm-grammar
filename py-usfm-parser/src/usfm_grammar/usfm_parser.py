@@ -12,7 +12,7 @@ from usfm_grammar.list_generator import ListGenerator
 from usfm_grammar.usfm_generator import USFMGenerator
 from usfm_grammar.filters import exclude_markers_in_usj, include_markers_in_usj
 from usfm_grammar.errors import USFMGrammarError, ParsingError, ParameterError
-from usfm_grammar.markers_ext_reader import ExtensionReader
+from usfm_grammar.markers_ext_reader import ExtensionReader, restore_custom_markers
 
 class Filter(list, Enum):
     """Defines the values of filter options"""
@@ -149,12 +149,6 @@ class USFMParser:
             self.usfm = biblenlp_converter.usfm_string
             self.warnings.extend(biblenlp_converter.warnings)
 
-        if markers_ext is not None:
-            self.marker_extensions = ExtensionReader()
-            self.marker_extensions.read_to_object(markers_ext)
-            if len(self.marker_extensions.extensions) > 0:
-                self.usfm = self.marker_extensions.replace_custom_markers(self.usfm)
-
         # Some basic sanity checks
         lower_case_book_code = re.compile(r"^\\id ([a-z0-9][a-z][a-z])")
         if re.match(lower_case_book_code, self.usfm):
@@ -163,7 +157,16 @@ class USFMParser:
             upper_book_code = found_book_code.upper()
             self.usfm = self.usfm.replace(found_book_code, upper_book_code, 1)
 
-        self.usfm_bytes = bytes(self.usfm, "utf8")
+        # Custom markers get their type prefix only in the text that is parsed,
+        # so self.usfm keeps the marker names the input used
+        parse_input = self.usfm
+        if markers_ext is not None:
+            self.marker_extensions = ExtensionReader()
+            self.marker_extensions.read_to_object(markers_ext)
+            if len(self.marker_extensions.extensions) > 0:
+                parse_input = self.marker_extensions.replace_custom_markers(parse_input)
+
+        self.usfm_bytes = bytes(parse_input, "utf8")
         self.syntax_tree = parser.parse(self.usfm_bytes).root_node
 
         # check for errors in the parse tree and raise them
@@ -173,8 +176,8 @@ class USFMParser:
             self.errors = [
                 (
                     f"At {err.start_point}",
-                    self.usfm_bytes[err.start_byte : err.end_byte].decode(
-                        "utf-8"
+                    restore_custom_markers(
+                        self.usfm_bytes[err.start_byte : err.end_byte].decode("utf-8")
                     ),
                 )
                 for err in error_caps["errors"]
