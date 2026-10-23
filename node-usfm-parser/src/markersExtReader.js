@@ -151,6 +151,11 @@ class ExtensionReader {
     }
     return modifiedUsfm;
   }
+
+  // Remove the customType_ prefixes again, for text shown to the user
+  static restoreCustomMarkers(text) {
+    return text.replace(/\\(\+?)custom(?:Para|Char|Note|MS)_/g, '\\$1');
+  }
 }
 
 module.exports = ExtensionReader;
