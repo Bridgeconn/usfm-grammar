@@ -164,3 +164,11 @@ class ExtensionReader:
                 modified_usfm,
             )
         return modified_usfm
+
+
+custom_prefix_pattern = re.compile(r"\\(\+?)custom(?:Para|Char|Note|MS)_")
+
+
+def restore_custom_markers(text):
+    """Remove the customType_ prefixes again, for text shown to the user"""
+    return custom_prefix_pattern.sub(r"\\\1", text)

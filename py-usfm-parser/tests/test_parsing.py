@@ -316,3 +316,31 @@ def test_line_endings_in_text_to_usfm(verse_text):
     }
     usfm = USFMParser(from_usj=usj).usfm
     assert usfm.endswith("\\v 1 one\ntwo\n"), repr(usfm)
+
+custom_names_ext = """
+\\marker zpb
+\\category milestone
+\\description A custom milestone marker.
+"""
+
+
+def test_custom_marker_names_are_kept():
+    """With a markers.ext, the usfm attribute, the generated USFM and the error
+    messages carry the marker names the input used, not the customType_ prefixes
+    that are substituted for parsing"""
+    usfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 Alpha \\zpb |x-page="4"\\* beta.\n'
+    test_parser = USFMParser(usfm, markers_ext=custom_names_ext)
+    assert not test_parser.errors, test_parser.errors
+    assert test_parser.usfm == usfm
+
+    regenerated = USFMParser(
+        from_usj=test_parser.to_usj(), markers_ext=custom_names_ext
+    ).usfm
+    assert "custom" not in regenerated
+    assert "\\zpb" in regenerated
+    assert not USFMParser(regenerated).errors
+
+    bad_parser = USFMParser("\\zpb\\*\n" + usfm, markers_ext=custom_names_ext)
+    assert bad_parser.errors
+    assert "custom" not in str(bad_parser.errors)
+    assert "\\zpb" in str(bad_parser.errors)

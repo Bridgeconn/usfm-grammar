@@ -300,3 +300,27 @@ describe("Line endings in text to USFM", () => {
     });
   }
 });
+
+describe("Custom marker names with a markers.ext", () => {
+  const customNamesExt =
+    "\\marker zpb\n\\category milestone\n\\description A custom milestone marker.\n";
+  const usfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 Alpha \\zpb |x-page="4"\\* beta.\n';
+
+  it("are kept in usfm, generated USFM and error messages", () => {
+    const usfmParser = new USFMParser(usfm, null, null, null, null, customNamesExt);
+    assert.deepStrictEqual(usfmParser.errors, []);
+    assert.strictEqual(usfmParser.usfm, usfm);
+
+    const regenerated = new USFMParser(
+      null, usfmParser.toUSJ(), null, null, null, customNamesExt).usfm;
+    assert.ok(!regenerated.includes("custom"), regenerated);
+    assert.ok(regenerated.includes("\\zpb"), regenerated);
+    assert.deepStrictEqual(new USFMParser(regenerated).errors, []);
+
+    const badParser = new USFMParser(
+      "\\zpb\\*\n" + usfm, null, null, null, null, customNamesExt);
+    assert.ok(badParser.errors.length > 0);
+    assert.ok(!badParser.errors.join().includes("custom"), badParser.errors);
+    assert.ok(badParser.errors.join().includes("\\zpb"), badParser.errors);
+  });
+});
