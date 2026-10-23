@@ -24,6 +24,7 @@ class USFMParser {
     this.errors = [];
     this.warnings = [];
     this.markerExtensions = null;
+    this.usfmForParser = null;
 
     let inputsGiven = 0;
     if (usfmString !== null) {
@@ -71,11 +72,14 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       this.usfm = this.convertBibleNLPtoUSFM(bookCode);
     }
 
+    // Custom markers get their type prefix only in the text that is parsed,
+    // so this.usfm keeps the marker names the input used
+    this.usfmForParser = this.usfm;
     if (markersExt !== null) {
       this.markerExtensions = new ExtensionReader();
       this.markerExtensions.readToObject(markersExt);
       if (Object.keys(this.markerExtensions.extensions).length > 0) {
-        this.usfm = this.markerExtensions.replaceCustomMarkers(this.usfm);
+        this.usfmForParser = this.markerExtensions.replaceCustomMarkers(this.usfm);
       }
     }
     this.parser = null;
@@ -159,10 +163,10 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
   parseUSFM() {
     let tree = null;
     try {
-      if (this.usfm.length > 25000) {
-        tree = this.parser.parse(this.usfm, null, this.parserOptions);
+      if (this.usfmForParser.length > 25000) {
+        tree = this.parser.parse(this.usfmForParser, null, this.parserOptions);
       } else {
-        tree = this.parser.parse(this.usfm);
+        tree = this.parser.parse(this.usfmForParser);
       }
     } catch (err) {
       throw err;
@@ -188,7 +192,9 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
         }, Error: Missing ${err.type}`
         : `At ${err.startPosition.row + 1}:${
           err.startPosition.column
-        }, Error: ${this.usfm.substring(err.startIndex, err.endIndex)}`,
+        }, Error: ${ExtensionReader.restoreCustomMarkers(
+          this.usfmForParser.substring(err.startIndex, err.endIndex),
+        )}`,
     );
     if (this.errors.length > 0) {
       return new Error(`Errors found in USFM: ${this.errors.join(', ')}`);
@@ -299,7 +305,7 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
 
     let outputUSJ;
     try {
-      const usjGenerator = new USJGenerator(USFM3, this.usfm);
+      const usjGenerator = new USJGenerator(USFM3, this.usfmForParser);
 
       usjGenerator.getUSJ(this.syntaxTree);
       outputUSJ = usjGenerator.jsonRootObj;
@@ -435,7 +441,7 @@ Use ignoreErrors=true to generate output despite errors`,
 
     try {
       // Initialize the USX generator (assuming the constructor is already implemented in JS)
-      const usxGenerator = new USXGenerator(USFM3, this.usfm);
+      const usxGenerator = new USXGenerator(USFM3, this.usfmForParser);
 
       // Process the syntax tree and convert to USX format
       usxGenerator.getUSX(this.syntaxTree);
