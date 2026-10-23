@@ -236,6 +236,35 @@ def test_compare_usj_with_testsuite_samples(file_path):
     # assert usj_dict == origin_usj
 
 
+def collect_table_cells(usj_obj, cells=None):
+    """List (marker, align) of every table:cell in a USJ, in document order"""
+    if cells is None:
+        cells = []
+    if isinstance(usj_obj, dict):
+        if usj_obj.get("type") == "table:cell":
+            cells.append((usj_obj["marker"], usj_obj.get("align")))
+        for item in usj_obj.get("content", []):
+            collect_table_cells(item, cells)
+    return cells
+
+
+@pytest.mark.parametrize("file_path", test_files)
+@pytest.mark.timeout(30)
+def test_table_cell_alignment_matches_testsuite(file_path):
+    """Compare the align of every table cell with the origin.json in test suite"""
+    usj_file_path = file_path.replace("origin.usfm", "origin.json")
+    try:
+        with open(usj_file_path, "r", encoding="utf-8") as usj_file:
+            origin_cells = collect_table_cells(json.load(usj_file))
+    except FileNotFoundError:
+        pytest.skip("No origin.json in test suite")
+    if not origin_cells:
+        pytest.skip("No table cells in this sample")
+    test_parser, _ = initialise_parser(file_path)
+    assert not test_parser.errors, test_parser.errors
+    assert collect_table_cells(test_parser.to_usj()) == origin_cells
+
+
 def test_try_invalid_usj():
     """Ensure error is raised for incorrect USJ"""
     usj = {"some key": ["test"], "content": [["test"]]}

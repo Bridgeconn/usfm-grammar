@@ -337,7 +337,7 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
 
             if "tcc" in style or "thc" in style:
                 cell_json_obj["align"] = "center"
-            elif style.endswith("r"):
+            elif "r" in style:
                 cell_json_obj["align"] = "end"
             else:
                 cell_json_obj["align"] = "start"
