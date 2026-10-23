@@ -127,6 +127,9 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     }
     this.usj = usjObject;
     this.usfm = this.convertUSJToUSFM();
+    this.usfmForParser = this.markerExtensions
+      ? this.markerExtensions.replaceCustomMarkers(this.usfm)
+      : this.usfm;
     return this.usfm;
   }
 
