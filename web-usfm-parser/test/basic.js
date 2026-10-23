@@ -111,3 +111,39 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
     assert.strictEqual(usfmParser, null);
   });
 });
+
+describe("Custom marker names with a markers.ext", () => {
+  const customNamesExt =
+    '\\marker zpb\n\\category milestone\n\\description A custom milestone marker.\n';
+  const usfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 Alpha \\zpb |x-page="4"\\* beta.\n';
+
+  it("are kept in usfm, generated USFM and error messages", async () => {
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    const usfmParser = new USFMParser(usfm, null, null, null, null, customNamesExt);
+    assert.deepStrictEqual(usfmParser.errors, []);
+    assert.strictEqual(usfmParser.usfm, usfm);
+
+    const regenerated = new USFMParser(
+      null, usfmParser.toUSJ(), null, null, null, customNamesExt).usfm;
+    assert.ok(!regenerated.includes('custom'), regenerated);
+    assert.ok(regenerated.includes('\\zpb'), regenerated);
+    assert.deepStrictEqual(new USFMParser(regenerated).errors, []);
+
+    const badParser = new USFMParser(
+      '\\zpb\\*\n' + usfm, null, null, null, null, customNamesExt);
+    assert.ok(badParser.errors.length > 0);
+    assert.ok(!badParser.errors.join().includes('custom'), badParser.errors);
+    assert.ok(badParser.errors.join().includes('\\zpb'), badParser.errors);
+  });
+
+  it("stay in sync when usjToUsfm replaces the document", async () => {
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    const usfmParser = new USFMParser(usfm, null, null, null, null, customNamesExt);
+    const usj = usfmParser.toUSJ();
+    usj.content[2].content[2]['x-page'] = '5';
+    usfmParser.usjToUsfm(usj);
+    usfmParser.parseUSFM();
+    assert.deepStrictEqual(usfmParser.errors, []);
+    assert.strictEqual(usfmParser.toUSJ().content[2].content[2]['x-page'], '5');
+  });
+});
