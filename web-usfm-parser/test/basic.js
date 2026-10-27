@@ -226,7 +226,7 @@ describe("Undeclared z markers", () => {
       assert.strictEqual(usfmParser.warnings.length, 2, JSON.stringify(usfmParser.warnings));
       for (const warning of usfmParser.warnings) {
         assert.ok(warning.startsWith("Encountered Undefined z node: (zNameSpaceUndefined"), warning);
-        assert.ok(warning.endsWith("Use markers.ext to define user extented marker types."), warning);
+        assert.ok(warning.endsWith("Use markers.ext to define user extended marker types."), warning);
       }
       usfmParser = new USFMParser(usfm, null, null, null, null, markersExt);
       usfmParser[api]();

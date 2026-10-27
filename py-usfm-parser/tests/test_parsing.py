@@ -259,7 +259,7 @@ def test_undeclared_z_marker_warnings(api):
     assert len(test_parser.warnings) == 2, test_parser.warnings
     for warning in test_parser.warnings:
         assert warning.startswith("Encountered Undefined z node: (zNameSpaceUndefined")
-        assert warning.endswith("Use markers.ext to define user extented marker types.")
+        assert warning.endswith("Use markers.ext to define user extended marker types.")
     test_parser = USFMParser(UNDECLARED_Z_USFM, markers_ext=Z_MARKERS_EXT)
     getattr(test_parser, api)()
     assert test_parser.warnings == []

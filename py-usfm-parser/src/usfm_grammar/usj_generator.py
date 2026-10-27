@@ -466,7 +466,7 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         if node.type == "zNameSpaceUndefined":
             self.warnings.append(
                 f"Encountered Undefined z node: {node}. "
-                "Use markers.ext to define user extented marker types."
+                "Use markers.ext to define user extended marker types."
             )
         match curr_node.type:
             case "zNameSpacePara":

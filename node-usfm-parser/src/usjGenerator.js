@@ -504,7 +504,7 @@ class USJGenerator {
     if (node.type === 'zNameSpaceUndefined') {
       this.warnings.push(
         `Encountered Undefined z node: ${node.toString()}. ` +
-        'Use markers.ext to define user extented marker types.',
+        'Use markers.ext to define user extended marker types.',
       );
     }
     if (currNode.type === 'zNameSpaceClosed' && currNode.children.length > 0) {
