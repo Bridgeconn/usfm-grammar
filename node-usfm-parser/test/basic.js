@@ -255,3 +255,48 @@ describe("Line endings in BibleNLP text", () => {
     });
   }
 });
+
+describe("Spaces from input in generated USFM", () => {
+  const inputUSFM = "\\id GEN test\n\\c 1\n\\p\n" +
+    '\\v 1 text\\f +   \\fr 1.1 \\ft  two spaces\\f* and \\fig   cap|src="a.png"\\fig* end\n' +
+    '\\v 2 b\\f +\\fr 1.2 \\ft no space\\f* see \\jmp  RSV|link-href="#x"\\jmp*\n  \n' +
+    "\\v 3 c\n";
+  const expectedUSFM = "\\id GEN test\n\\usfm 3.1.2\n\\c 1\n" +
+    "\\p \\v 1 text\\f +   \\fr 1.1 \\fr*\\ft  two spaces\\ft*\\f* and " +
+    '\\fig   cap|src="a.png"\\fig* end\n' +
+    "\\v 2 b\\f +\\fr 1.2 \\fr*\\ft no space\\ft*\\f* see " +
+    '\\jmp  RSV|link-href="#x"\\jmp*\n  \n' +
+    "\\v 3 c\n";
+  it("are kept as they are in the text", () => {
+    const usfmParser = new USFMParser(inputUSFM);
+    assert.deepStrictEqual(usfmParser.errors, []);
+    const usj = usfmParser.toUSJ();
+    const expected = expectedUSFM.replace("3.1.2", USFM_VERSION);
+    for (const usfm of [
+      new USFMParser(null, usj).usfm,
+      new USFMParser(null, null, usfmParser.toUSX()).usfm,
+    ]) {
+      assert.strictEqual(usfm, expected);
+      assert.deepStrictEqual(new USFMParser(usfm).toUSJ(), usj);
+    }
+  });
+});
+
+describe("Line endings in text to USFM", () => {
+  for (const verseText of ["one\r\ntwo", "one\rtwo", "one\ntwo"]) {
+    it(`become a single LF for ${JSON.stringify(verseText)}`, () => {
+      const usj = {
+        type: "USJ", version: "3.1.2", content: [
+          {type: "book", marker: "id", code: "GEN", content: []},
+          {type: "chapter", marker: "c", number: "1", sid: "GEN 1"},
+          {type: "para", marker: "p", content: [
+            {type: "verse", marker: "v", number: "1", sid: "GEN 1:1"},
+            verseText,
+          ]},
+        ],
+      };
+      const usfm = new USFMParser(null, usj).usfm;
+      assert.ok(usfm.endsWith("\\v 1 one\ntwo\n"), JSON.stringify(usfm));
+    });
+  }
+});

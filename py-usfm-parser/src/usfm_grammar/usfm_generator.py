@@ -58,6 +58,12 @@ NO_NEWLINE_USX_TYPES = [
 CLOSING_USX_TYPES = ["char", "note", "figure", "ms", "ref"]
 
 
+def keeps_separator_in_text(obj_type: str, marker: str) -> bool:
+    """The parser keeps the space after these markers as part of their text content"""
+    marker = marker.lstrip("+")
+    return obj_type == "figure" or marker == "jmp" or marker.startswith("z")
+
+
 def clean_attribute_value(value) -> str:
     """Removes the double quotes, that cannot be part of an attribute value in USFM"""
     return str(value).replace('"', "")
@@ -68,6 +74,9 @@ class USFMGenerator:
 
     def __init__(self):
         self.usfm_string = ""
+        # The space after a note caller and some markers is kept as part of the text by the
+        # parser. So it is added only before text that does not start with a whitespace.
+        self.pending_space = False
         self.warnings = []
         self.current_book = None
         self.current_chapter = None
@@ -79,14 +88,19 @@ class USFMGenerator:
     #         usfm_string = self.usfm_string
     #     return False
 
+    def add_pending_space(self, next_text: str = "") -> None:
+        """Adds the space held back after a note caller or a marker that keeps it in text,
+        unless the text that follows already starts with whitespace"""
+        if self.pending_space and next_text[:1] not in [" ", "\t", "\n"]:
+            self.usfm_string += " "
+        self.pending_space = False
+
     def add_text(self, text: str) -> None:
-        """Appends text as it is, without doubling up whitespace at the joining point"""
-        if text.strip() == "" and "\n" in text:
-            text = "\n"
-        if self.usfm_string == "" or self.usfm_string[-1] == "\n":
+        """Appends text as it is, with CRLF and CR normalized to LF"""
+        text = re.sub(r"\r\n?", "\n", text)
+        if self.usfm_string == "":
             text = text.lstrip()
-        elif self.usfm_string[-1] in [" ", "\t"]:
-            text = text.lstrip(" \t")
+        self.add_pending_space(text)
         self.usfm_string += text
 
     def add_newline(self) -> None:
@@ -108,6 +122,7 @@ class USFMGenerator:
                 self.usfm_string += " "
             self.usfm_string += "// "
             return
+        self.pending_space = False
         marker = usj_obj["marker"] if "marker" in usj_obj else ""
         if usj_obj["type"] == "ref":
             marker = "ref"
@@ -144,6 +159,11 @@ class USFMGenerator:
                 self.usfm_string += "+"
             if usj_obj["type"] == "list":
                 self.usfm_string += marker
+            elif keeps_separator_in_text(usj_obj["type"], marker):
+                self.usfm_string += marker
+                self.pending_space = True
+            elif usj_obj["type"] == "ms":
+                self.usfm_string += marker
             else:
                 self.usfm_string += f"{marker} "
         if "code" in usj_obj:
@@ -153,8 +173,10 @@ class USFMGenerator:
             if usj_obj["type"] == "verse":
                 self.usfm_string += " "
         if "caller" in usj_obj:
-            self.usfm_string += f"{usj_obj['caller']} "
+            self.usfm_string += usj_obj["caller"]
+            self.pending_space = True
         if "category" in usj_obj:
+            self.add_pending_space()
             self.usfm_string += f"\\cat {usj_obj['category']}\\cat*\n"
         if "content" in usj_obj:
             for item in usj_obj["content"]:
@@ -177,7 +199,10 @@ class USFMGenerator:
             for key in ["sid", "eid"]:
                 if key in usj_obj:
                     attributes.append(f'{key}="{clean_attribute_value(usj_obj[key])}"')
+        self.pending_space = False
         if len(attributes) > 0:
+            if usj_obj["type"] == "ms" and not keeps_separator_in_text("ms", marker):
+                self.usfm_string += " "
             self.usfm_string += "|" + " ".join(attributes)
 
         if usj_obj["type"] in CLOSING_USJ_TYPES:
@@ -190,7 +215,7 @@ class USFMGenerator:
                 self.usfm_string += "+"
             self.usfm_string += f"{marker}*"
         if usj_obj["type"] == "ms":
-            self.usfm_string = self.usfm_string.rstrip(" ") + "\\*"
+            self.usfm_string += "\\*"
         if usj_obj["type"] == "sidebar":
             self.usfm_string += "\\esbe"
         if usj_obj["type"] == "list":
@@ -224,6 +249,7 @@ class USFMGenerator:
         usfm_attributes = []
         if obj_type in ["verse", "chapter"] and "eid" in xml_obj.attrib:
             return
+        self.pending_space = False
         if obj_type not in NO_NEWLINE_USX_TYPES:
             self.add_newline()
 
@@ -261,7 +287,13 @@ class USFMGenerator:
             marker = xml_obj.attrib["style"]
             if nested and obj_type == "char" and marker not in ["xt", "fv", "ref"]:
                 marker = "+" + marker
-            self.usfm_string += f"\\{marker} "
+            if keeps_separator_in_text(obj_type, marker):
+                self.usfm_string += f"\\{marker}"
+                self.pending_space = True
+            elif obj_type == "ms":
+                self.usfm_string += f"\\{marker}"
+            else:
+                self.usfm_string += f"\\{marker} "
         if "code" in xml_obj.attrib:
             self.usfm_string += f"{xml_obj.attrib['code']} "
         if "number" in xml_obj.attrib:
@@ -269,7 +301,8 @@ class USFMGenerator:
             if obj_type == "verse":
                 self.usfm_string += " "
         if "caller" in xml_obj.attrib:
-            self.usfm_string += f"{xml_obj.attrib['caller']} "
+            self.usfm_string += xml_obj.attrib["caller"]
+            self.pending_space = True
         if "altnumber" in xml_obj.attrib:
             if obj_type == "verse":
                 self.usfm_string += f"\\va {xml_obj.attrib['altnumber']}\\va* "
@@ -283,15 +316,17 @@ class USFMGenerator:
                 self.add_newline()
                 self.usfm_string += f"\\cp {xml_obj.attrib['pubnumber']}"
         if "category" in xml_obj.attrib:
+            self.add_pending_space()
             self.usfm_string += f"\\cat {xml_obj.attrib['category']}\\cat*\n"
-        if xml_obj.text:
+        # Whitespace directly under the usx root is only XML formatting, not text content
+        if xml_obj.text and not (obj_type == "usx" and xml_obj.text.strip() == ""):
             self.add_text(xml_obj.text)
         for child in xml_obj.getchildren():
             if obj_type in ["char"]:
                 self.usx_to_usfm(child, nested=True)
             else:
                 self.usx_to_usfm(child, nested=False)
-            if child.tail:
+            if child.tail and not (obj_type == "usx" and child.tail.strip() == ""):
                 self.add_text(child.tail)
         for key in xml_obj.attrib:
             val = clean_attribute_value(xml_obj.attrib[key])
@@ -303,7 +338,10 @@ class USFMGenerator:
             for key in ["sid", "eid"]:
                 if key in xml_obj.attrib:
                     usfm_attributes.append(f'{key}="{clean_attribute_value(xml_obj.attrib[key])}"')
+        self.pending_space = False
         if len(usfm_attributes) > 0:
+            if obj_type == "ms" and not keeps_separator_in_text("ms", marker):
+                self.usfm_string += " "
             self.usfm_string += "|"
             self.usfm_string += " ".join(usfm_attributes)
 
@@ -314,7 +352,7 @@ class USFMGenerator:
         ):
             # if not ("closed" in xml_obj.attrib and xml_obj.attrib['closed']=="false"):
             if obj_type == "ms":
-                self.usfm_string = self.usfm_string.rstrip(" ") + "\\*"
+                self.usfm_string += "\\*"
             else:
                 self.usfm_string += f"\\{marker}*"
         if obj_type == "sidebar":

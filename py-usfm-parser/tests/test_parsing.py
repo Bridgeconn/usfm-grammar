@@ -263,3 +263,56 @@ def test_undeclared_z_marker_warnings(api):
     test_parser = USFMParser(UNDECLARED_Z_USFM, markers_ext=Z_MARKERS_EXT)
     getattr(test_parser, api)()
     assert test_parser.warnings == []
+
+
+EXTRA_SPACES_USFM = (
+    "\\id GEN test\n\\c 1\n\\p\n"
+    '\\v 1 text\\f +   \\fr 1.1 \\ft  two spaces\\f* and \\fig   cap|src="a.png"\\fig* end\n'
+    '\\v 2 b\\f +\\fr 1.2 \\ft no space\\f* see \\jmp  RSV|link-href="#x"\\jmp*\n  \n'
+    "\\v 3 c\n"
+)
+EXTRA_SPACES_EXPECTED = (
+    "\\id GEN test\n\\usfm 3.1.2\n\\c 1\n"
+    "\\p \\v 1 text\\f +   \\fr 1.1 \\fr*\\ft  two spaces\\ft*\\f* and "
+    '\\fig   cap|src="a.png"\\fig* end\n'
+    "\\v 2 b\\f +\\fr 1.2 \\fr*\\ft no space\\ft*\\f* see "
+    '\\jmp  RSV|link-href="#x"\\jmp*\n  \n'
+    "\\v 3 c\n"
+)
+
+
+def test_spaces_from_input_are_kept_in_generated_usfm():
+    """Spaces and line breaks in USJ/USX text are kept as they are in the generated USFM"""
+    test_parser = USFMParser(EXTRA_SPACES_USFM)
+    assert not test_parser.errors, test_parser.errors
+    usj = test_parser.to_usj()
+    expected = EXTRA_SPACES_EXPECTED.replace("3.1.2", USFM_VERSION)
+    for usfm in [
+        USFMParser(from_usj=usj).usfm,
+        USFMParser(from_usx=test_parser.to_usx()).usfm,
+    ]:
+        assert usfm == expected
+        assert USFMParser(usfm).to_usj() == usj
+
+
+@pytest.mark.parametrize("verse_text", ["one\r\ntwo", "one\rtwo", "one\ntwo"])
+def test_line_endings_in_text_to_usfm(verse_text):
+    """CRLF and CR in USJ text become a single LF in the generated USFM"""
+    usj = {
+        "type": "USJ",
+        "version": "3.1.2",
+        "content": [
+            {"type": "book", "marker": "id", "code": "GEN", "content": []},
+            {"type": "chapter", "marker": "c", "number": "1", "sid": "GEN 1"},
+            {
+                "type": "para",
+                "marker": "p",
+                "content": [
+                    {"type": "verse", "marker": "v", "number": "1", "sid": "GEN 1:1"},
+                    verse_text,
+                ],
+            },
+        ],
+    }
+    usfm = USFMParser(from_usj=usj).usfm
+    assert usfm.endswith("\\v 1 one\ntwo\n"), repr(usfm)

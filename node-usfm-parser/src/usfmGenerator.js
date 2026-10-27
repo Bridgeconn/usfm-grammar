@@ -4,6 +4,12 @@ const { NO_USFM_USJ_TYPES,
 const { NON_ATTRIB_USX_KEYS, NO_NEWLINE_USX_TYPES,
   CLOSING_USX_TYPES } = require('./utils/types');
 
+// The parser keeps the space after these markers as part of their text content
+function keepsSeparatorInText(objType, marker) {
+  const baseMarker = marker.replace(/^\+/, '');
+  return objType === 'figure' || baseMarker === 'jmp' || baseMarker.startsWith('z');
+}
+
 // Removes the double quotes, that cannot be part of an attribute value in USFM
 function cleanAttributeValue(value) {
   return String(value).replace(/"/g, '');
@@ -12,22 +18,31 @@ function cleanAttributeValue(value) {
 class USFMGenerator {
   constructor() {
     this.usfmString = '';
+    // The space after a note caller and some markers is kept as part of the text by the
+    // parser. So it is added only before text that does not start with a whitespace.
+    this.pendingSpace = false;
     this.warnings = [];
     this.currentBook = null;
     this.currentChapter = null;
     this.currentVerse = null;
   }
 
+  addPendingSpace(nextText = '') {
+    // Adds the space held back after a note caller or a marker that keeps it in text,
+    // unless the text that follows already starts with whitespace
+    if (this.pendingSpace && ![' ', '\t', '\n'].includes(nextText.slice(0, 1))) {
+      this.usfmString += ' ';
+    }
+    this.pendingSpace = false;
+  }
+
   addText(text) {
-    // Appends text as it is, without doubling up whitespace at the joining point
-    if (text.trim() === '' && text.includes('\n')) {
-      text = '\n';
-    }
-    if (this.usfmString === '' || this.usfmString.endsWith('\n')) {
+    // Appends text as it is, with CRLF and CR normalized to LF
+    text = text.replace(/\r\n?/g, '\n');
+    if (this.usfmString === '') {
       text = text.trimStart();
-    } else if (this.usfmString.endsWith(' ') || this.usfmString.endsWith('\t')) {
-      text = text.replace(/^[ \t]+/, '');
     }
+    this.addPendingSpace(text);
     this.usfmString += text;
   }
 
@@ -49,6 +64,7 @@ class USFMGenerator {
       this.usfmString += '// ';
       return this.usfmString;
     }
+    this.pendingSpace = false;
     let marker = usjObj.marker !== undefined ? usjObj.marker : '';
     if (usjObj.type === 'ref') {
       marker = 'ref';
@@ -88,6 +104,11 @@ class USFMGenerator {
       }
       if (usjObj.type === 'list') {
         this.usfmString += marker;
+      } else if (keepsSeparatorInText(usjObj.type, marker)) {
+        this.usfmString += marker;
+        this.pendingSpace = true;
+      } else if (usjObj.type === 'ms') {
+        this.usfmString += marker;
       } else {
         this.usfmString += `${marker} `;
       }
@@ -102,9 +123,11 @@ class USFMGenerator {
       }
     }
     if ('caller' in usjObj) {
-      this.usfmString += `${usjObj.caller} `;
+      this.usfmString += usjObj.caller;
+      this.pendingSpace = true;
     }
     if ('category' in usjObj) {
+      this.addPendingSpace();
       this.usfmString += `\\cat ${usjObj.category}\\cat*\n`;
     }
     if (Array.isArray(usjObj.content)) {
@@ -134,7 +157,11 @@ class USFMGenerator {
         }
       }
     }
+    this.pendingSpace = false;
     if (attributes.length > 0) {
+      if (usjObj.type === 'ms' && !keepsSeparatorInText('ms', marker)) {
+        this.usfmString += ' ';
+      }
       this.usfmString += `|${attributes.join(' ')}`;
     }
 
@@ -146,7 +173,7 @@ class USFMGenerator {
       this.usfmString += `${marker}*`;
     }
     if (usjObj.type === 'ms') {
-      this.usfmString = `${this.usfmString.replace(/ +$/, '')}\\*`;
+      this.usfmString += '\\*';
     }
     if (usjObj.type === 'sidebar') {
       this.usfmString += '\\esbe';
@@ -180,6 +207,7 @@ class USFMGenerator {
     if (['verse', 'chapter'].includes(objType) && xmlObj.hasAttribute('eid')) {
       return;
     }
+    this.pendingSpace = false;
     if (!NO_NEWLINE_USX_TYPES.includes(objType)) {
       this.addNewline();
     }
@@ -220,7 +248,14 @@ class USFMGenerator {
       if (nested && objType === 'char' && !['xt', 'fv', 'ref'].includes(marker)) {
         marker = `+${marker}`;
       }
-      this.usfmString += `\\${marker} `;
+      if (keepsSeparatorInText(objType, marker)) {
+        this.usfmString += `\\${marker}`;
+        this.pendingSpace = true;
+      } else if (objType === 'ms') {
+        this.usfmString += `\\${marker}`;
+      } else {
+        this.usfmString += `\\${marker} `;
+      }
     }
     if (xmlObj.hasAttribute('code')) {
       this.usfmString += `${xmlObj.getAttribute('code')} `;
@@ -232,7 +267,8 @@ class USFMGenerator {
       }
     }
     if (xmlObj.hasAttribute('caller')) {
-      this.usfmString += `${xmlObj.getAttribute('caller')} `;
+      this.usfmString += xmlObj.getAttribute('caller');
+      this.pendingSpace = true;
     }
     if (xmlObj.hasAttribute('altnumber')) {
       if (objType === 'verse') {
@@ -251,16 +287,28 @@ class USFMGenerator {
       }
     }
     if (xmlObj.hasAttribute('category')) {
+      this.addPendingSpace();
       this.usfmString += `\\cat ${xmlObj.getAttribute('category')}\\cat*\n`;
     }
 
+    // Adjacent text nodes are joined before adding, as lxml does in the python module.
+    // Whitespace directly under the usx root is only XML formatting, not text content.
+    let text = '';
+    const flushText = () => {
+      if (text && !(objType === 'usx' && text.trim() === '')) {
+        this.addText(text);
+      }
+      text = '';
+    };
     for (const child of Array.from(xmlObj.childNodes)) {
-      if (child.nodeType === 1) { // element node
+      if (child.nodeType === 3 || child.nodeType === 4) { // text node
+        text += child.nodeValue;
+      } else if (child.nodeType === 1) { // element node
+        flushText();
         this.usxToUsfm(child, objType === 'char');
-      } else if ((child.nodeType === 3 || child.nodeType === 4) && child.nodeValue) { // text node
-        this.addText(child.nodeValue);
       }
     }
+    flushText();
 
     for (const attrNode of Array.from(xmlObj.attributes)) {
       const key = attrNode.name;
@@ -278,7 +326,11 @@ class USFMGenerator {
         }
       }
     }
+    this.pendingSpace = false;
     if (usfmAttributes.length > 0) {
+      if (objType === 'ms' && !keepsSeparatorInText('ms', marker)) {
+        this.usfmString += ' ';
+      }
       this.usfmString += `|${usfmAttributes.join(' ')}`;
     }
 
@@ -286,7 +338,7 @@ class USFMGenerator {
             || CLOSING_USX_TYPES.includes(objType)
             || usfmAttributes.length > 0) {
       if (objType === 'ms') {
-        this.usfmString = `${this.usfmString.replace(/ +$/, '')}\\*`;
+        this.usfmString += '\\*';
       } else {
         this.usfmString += `\\${marker}*`;
       }
