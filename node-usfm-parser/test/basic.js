@@ -217,3 +217,22 @@ describe("Quotes in attribute values", () => {
     }
   });
 });
+
+describe("Undeclared z markers", () => {
+  const usfm = "\\id GEN\n\\c 1\n\\p\n\\v 1 text \\zfoo word\\zfoo* end\n\\zbar\n";
+  const markersExt = "\\marker zfoo\n\\category char\n\n\\marker zbar\n\\category para\n";
+  for (const api of ["toUSJ", "toUSX", "toList", "toBibleNlpFormat"]) {
+    it(`give warnings in ${api}, unless declared in markers.ext`, () => {
+      let usfmParser = new USFMParser(usfm);
+      usfmParser[api]();
+      assert.strictEqual(usfmParser.warnings.length, 2, JSON.stringify(usfmParser.warnings));
+      for (const warning of usfmParser.warnings) {
+        assert.ok(warning.startsWith("Encountered Undefined z node: (zNameSpaceUndefined"), warning);
+        assert.ok(warning.endsWith("Use markers.ext to define user extented marker types."), warning);
+      }
+      usfmParser = new USFMParser(usfm, null, null, null, null, markersExt);
+      usfmParser[api]();
+      assert.deepStrictEqual(usfmParser.warnings, []);
+    });
+  }
+});

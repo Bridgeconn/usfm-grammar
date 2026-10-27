@@ -245,3 +245,21 @@ def test_quotes_removed_from_attribute_values():
     ]:
         assert usfm == expected
         assert not USFMParser(usfm).errors
+
+
+UNDECLARED_Z_USFM = "\\id GEN\n\\c 1\n\\p\n\\v 1 text \\zfoo word\\zfoo* end\n\\zbar\n"
+Z_MARKERS_EXT = "\\marker zfoo\n\\category char\n\n\\marker zbar\n\\category para\n"
+
+
+@pytest.mark.parametrize("api", ["to_usj", "to_usx", "to_list", "to_biblenlp_format"])
+def test_undeclared_z_marker_warnings(api):
+    """Undeclared z markers produce a warning each, declared ones do not"""
+    test_parser = USFMParser(UNDECLARED_Z_USFM)
+    getattr(test_parser, api)()
+    assert len(test_parser.warnings) == 2, test_parser.warnings
+    for warning in test_parser.warnings:
+        assert warning.startswith("Encountered Undefined z node: (zNameSpaceUndefined")
+        assert warning.endswith("Use markers.ext to define user extented marker types.")
+    test_parser = USFMParser(UNDECLARED_Z_USFM, markers_ext=Z_MARKERS_EXT)
+    getattr(test_parser, api)()
+    assert test_parser.warnings == []

@@ -501,6 +501,12 @@ class USJGenerator {
     if (node.type === 'zNameSpaceUndefined' && node.children.length > 0 ) {
       currNode = node.children[0];
     }
+    if (node.type === 'zNameSpaceUndefined') {
+      this.warnings.push(
+        `Encountered Undefined z node: ${node.toString()}. ` +
+        'Use markers.ext to define user extented marker types.',
+      );
+    }
     if (currNode.type === 'zNameSpaceClosed' && currNode.children.length > 0) {
       // Undefined marker: take the closing as the cue for the type.
       // Closed with \marker* implies char, closed with only \* implies ms.
