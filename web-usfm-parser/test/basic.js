@@ -301,3 +301,20 @@ describe("Line endings in text to USFM", () => {
     });
   }
 });
+
+describe("Line endings in BibleNLP to USFM", () => {
+  const cases = [
+    ["one\r\ntwo", "one\ntwo"],
+    ["one\rtwo", "one\ntwo"],
+    ["one\ntwo", "one\ntwo"],
+    ["one two", "one two"],
+  ];
+  for (const [verseText, expected] of cases) {
+    it(`gives a single LF for ${JSON.stringify(verseText)}`, async () => {
+      await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+      const usfmParser = new USFMParser(null, null, null,
+          {vref: ["GEN 1:1", "GEN 1:2"], text: [verseText, "three"]});
+      assert.strictEqual(usfmParser.usfm, `\\id GEN\n\\c 1\n\\p\n\\v 1 ${expected} \\v 2 three`);
+    });
+  }
+});

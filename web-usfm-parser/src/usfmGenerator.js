@@ -366,7 +366,7 @@ class USFMGenerator {
     let currChapter = null;
     for (let i = 0; i < bibleNlpObj.vref.length; i++) {
       const vref = bibleNlpObj.vref[i];
-      const verseText = bibleNlpObj.text[i];
+      const verseText = String(bibleNlpObj.text[i]).replace(/\r\n?/g, '\n');
       const refMatch = vref.match(vrefPattern);
         
       if (!refMatch) {

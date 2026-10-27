@@ -432,6 +432,7 @@ class USFMGenerator:
             if chap != curr_chapter:
                 self.usfm_string += f"\n\\c {chap}\n\\p\n"
                 curr_chapter = chap
+            versetext = re.sub(r"\r\n?", "\n", str(versetext))
             if not self.usfm_string.endswith("\n"):
                 self.usfm_string += " "
             self.usfm_string += f"\\v {verse} {versetext}"\
