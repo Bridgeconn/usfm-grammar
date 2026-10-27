@@ -1,5 +1,6 @@
 const assert = require("assert");
 const {USFM_VERSION} = require("../src/utils/markers");
+const {DOMParser} = require("@xmldom/xmldom");
 const {USFMParser} = require("../src/index");
 const {customMarkersExt} = require("./config");
 
@@ -176,5 +177,43 @@ describe("USJ and USX to USFM", () => {
     const expected = expectedUSFM.replace("3.1.2", USFM_VERSION);
     assert.strictEqual(new USFMParser(null, usfmParser.toUSJ()).usfm, expected);
     assert.strictEqual(new USFMParser(null, null, usfmParser.toUSX()).usfm, expected);
+  });
+});
+
+describe("Quotes in attribute values", () => {
+  const usj = {
+    type: "USJ", version: "3.1.2", content: [
+      {type: "book", marker: "id", code: "GEN", content: []},
+      {type: "chapter", marker: "c", number: "1", sid: "GEN 1"},
+      {type: "para", marker: "p", content: [
+        {type: "verse", marker: "v", number: "1", sid: "GEN 1:1"},
+        {type: "char", marker: "w", content: ["word"], lemma: '"lemma"'},
+        " ",
+        {type: "figure", marker: "fig", content: ["cap"], file: '"a.png"'},
+        " ",
+        {type: "ms", marker: "qt-s", sid: '"q1"'},
+        "text",
+      ]},
+    ],
+  };
+  const usx = '<usx version="3.1.2"><book code="GEN" style="id"/>' +
+    '<chapter number="1" style="c" sid="GEN 1"/><para style="p">' +
+    '<verse number="1" style="v" sid="GEN 1:1"/>' +
+    '<char style="w" closed="true" lemma="&quot;lemma&quot;">word</char> ' +
+    '<figure style="fig" file="&quot;a.png&quot;">cap</figure> ' +
+    '<ms style="qt-s" sid="&quot;q1&quot;"/>text</para></usx>';
+  const expectedUSFM = "\\id GEN \n\\usfm 3.1.2\n\\c 1\n" +
+    '\\p \\v 1 \\w word|lemma="lemma"\\w* \\fig cap|src="a.png"\\fig* ' +
+    '\\qt-s |sid="q1"\\*text\n';
+  it("are not written to USFM", () => {
+    const expected = expectedUSFM.replace("3.1.2", USFM_VERSION);
+    const usxElement = new DOMParser().parseFromString(usx, "text/xml").documentElement;
+    for (const usfm of [
+      new USFMParser(null, usj).usfm,
+      new USFMParser(null, null, usxElement).usfm,
+    ]) {
+      assert.strictEqual(usfm, expected);
+      assert.deepStrictEqual(new USFMParser(usfm).errors, []);
+    }
   });
 });

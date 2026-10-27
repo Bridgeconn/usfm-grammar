@@ -211,8 +211,6 @@ exclude_USX_files = [
     # last verse text given outside of paragraph.
     f"{TEST_DIR}/special-cases/nbsp/origin.xml",
     # ~ not being replaced by nbsp in usfm-grammar
-    f"{TEST_DIR}/special-cases/empty-attributes/origin.xml",
-    # attributes treated as text content of marker
     f"{TEST_DIR}/biblica/CategoriesOnNotes/origin.xml",
     f"{TEST_DIR}/biblica/CrossRefWithPipe/origin.xml",
     # ref node has type ref. Is it char or ref?

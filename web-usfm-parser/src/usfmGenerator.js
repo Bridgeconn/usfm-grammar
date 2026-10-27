@@ -4,6 +4,11 @@ import { NO_USFM_USJ_TYPES,
 import { NON_ATTRIB_USX_KEYS, NO_NEWLINE_USX_TYPES,
   CLOSING_USX_TYPES } from './utils/types.js';
 
+// Removes the double quotes, that cannot be part of an attribute value in USFM
+function cleanAttributeValue(value) {
+  return String(value).replace(/"/g, '');
+}
+
 class USFMGenerator {
   constructor() {
     this.usfmString = '';
@@ -66,9 +71,9 @@ class USFMGenerator {
     if ('vid' in usjObj) {
       const currentRef = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
       if (currentRef !== usjObj.vid) {
-        this.usfmString += `\\vid|ref="${usjObj.vid}" `;
+        this.usfmString += `\\vid|ref="${cleanAttributeValue(usjObj.vid)}" `;
         if ('h' in usjObj) {
-          this.usfmString += `h="${usjObj.h}" `;
+          this.usfmString += `h="${cleanAttributeValue(usjObj.h)}" `;
         }
         this.usfmString += '\\*\n';
       }
@@ -116,16 +121,16 @@ class USFMGenerator {
     for (const key of Object.keys(usjObj)) {
       if (!NON_ATTRIB_USJ_KEYS.includes(key)) {
         if (key === 'file') {
-          attributes.push(`src="${usjObj[key]}"`);
+          attributes.push(`src="${cleanAttributeValue(usjObj[key])}"`);
         } else {
-          attributes.push(`${key}="${usjObj[key]}"`);
+          attributes.push(`${key}="${cleanAttributeValue(usjObj[key])}"`);
         }
       }
     }
     if (usjObj.type === 'ms') {
       for (const key of ['sid', 'eid']) {
         if (key in usjObj) {
-          attributes.push(`${key}="${usjObj[key]}"`);
+          attributes.push(`${key}="${cleanAttributeValue(usjObj[key])}"`);
         }
       }
     }
@@ -192,9 +197,9 @@ class USFMGenerator {
     if (xmlObj.hasAttribute('vid')) {
       const currentRef = `${this.currentBook} ${this.currentChapter}:${this.currentVerse}`;
       if (currentRef !== xmlObj.getAttribute('vid')) {
-        this.usfmString += `\\vid|ref="${xmlObj.getAttribute('vid')}" `;
+        this.usfmString += `\\vid|ref="${cleanAttributeValue(xmlObj.getAttribute('vid'))}" `;
         if (xmlObj.hasAttribute('h')) {
-          this.usfmString += `h="${xmlObj.getAttribute('h')}" `;
+          this.usfmString += `h="${cleanAttributeValue(xmlObj.getAttribute('h'))}" `;
         }
         this.usfmString += '\\*\n';
       }
@@ -259,7 +264,7 @@ class USFMGenerator {
 
     for (const attrNode of Array.from(xmlObj.attributes)) {
       const key = attrNode.name;
-      const val = attrNode.value.replace(/"/g, '');
+      const val = cleanAttributeValue(attrNode.value);
       if (key === 'file' && objType === 'figure') {
         usfmAttributes.push(`src="${val}"`);
       } else if (!NON_ATTRIB_USX_KEYS.includes(key)) {
@@ -269,7 +274,7 @@ class USFMGenerator {
     if (objType === 'ms') {
       for (const key of ['sid', 'eid']) {
         if (xmlObj.hasAttribute(key)) {
-          usfmAttributes.push(`${key}="${xmlObj.getAttribute(key)}"`);
+          usfmAttributes.push(`${key}="${cleanAttributeValue(xmlObj.getAttribute(key))}"`);
         }
       }
     }

@@ -198,3 +198,50 @@ def test_usj_and_usx_to_usfm_output():
     expected = REVERSE_CONVERSION_EXPECTED.replace("3.1.2", USFM_VERSION)
     assert USFMParser(from_usj=test_parser.to_usj()).usfm == expected
     assert USFMParser(from_usx=test_parser.to_usx()).usfm == expected
+
+
+QUOTED_ATTRIBUTES_USJ = {
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {"type": "book", "marker": "id", "code": "GEN", "content": []},
+        {"type": "chapter", "marker": "c", "number": "1", "sid": "GEN 1"},
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {"type": "verse", "marker": "v", "number": "1", "sid": "GEN 1:1"},
+                {"type": "char", "marker": "w", "content": ["word"], "lemma": '"lemma"'},
+                " ",
+                {"type": "figure", "marker": "fig", "content": ["cap"], "file": '"a.png"'},
+                " ",
+                {"type": "ms", "marker": "qt-s", "sid": '"q1"'},
+                "text",
+            ],
+        },
+    ],
+}
+QUOTED_ATTRIBUTES_USX = (
+    '<usx version="3.1.2"><book code="GEN" style="id"/>'
+    '<chapter number="1" style="c" sid="GEN 1"/><para style="p">'
+    '<verse number="1" style="v" sid="GEN 1:1"/>'
+    '<char style="w" closed="true" lemma="&quot;lemma&quot;">word</char> '
+    '<figure style="fig" file="&quot;a.png&quot;">cap</figure> '
+    '<ms style="qt-s" sid="&quot;q1&quot;"/>text</para></usx>'
+)
+QUOTED_ATTRIBUTES_EXPECTED = (
+    "\\id GEN \n\\usfm 3.1.2\n\\c 1\n"
+    '\\p \\v 1 \\w word|lemma="lemma"\\w* \\fig cap|src="a.png"\\fig* '
+    '\\qt-s |sid="q1"\\*text\n'
+)
+
+
+def test_quotes_removed_from_attribute_values():
+    """Double quotes in attribute values of USJ or USX are not written to USFM"""
+    expected = QUOTED_ATTRIBUTES_EXPECTED.replace("3.1.2", USFM_VERSION)
+    for usfm in [
+        USFMParser(from_usj=QUOTED_ATTRIBUTES_USJ).usfm,
+        USFMParser(from_usx=etree.fromstring(QUOTED_ATTRIBUTES_USX)).usfm,
+    ]:
+        assert usfm == expected
+        assert not USFMParser(usfm).errors

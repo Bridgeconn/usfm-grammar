@@ -58,6 +58,11 @@ NO_NEWLINE_USX_TYPES = [
 CLOSING_USX_TYPES = ["char", "note", "figure", "ms", "ref"]
 
 
+def clean_attribute_value(value) -> str:
+    """Removes the double quotes, that cannot be part of an attribute value in USFM"""
+    return str(value).replace('"', "")
+
+
 class USFMGenerator:
     """Combines the different methods that generate USFM from other formats in one class"""
 
@@ -123,9 +128,9 @@ class USFMGenerator:
         if "vid" in usj_obj:
             current_ref = f"{self.current_book} {self.current_chapter}:{self.current_verse}"
             if usj_obj["vid"] != current_ref:
-                self.usfm_string += f"\\vid|ref=\"{usj_obj['vid']}\" "
+                self.usfm_string += f"\\vid|ref=\"{clean_attribute_value(usj_obj['vid'])}\" "
                 if "h" in usj_obj:
-                    self.usfm_string += f"h=\"{usj_obj['h']}\" "
+                    self.usfm_string += f"h=\"{clean_attribute_value(usj_obj['h'])}\" "
                 self.usfm_string += "\\*\n"
         if usj_obj["type"] not in NO_NEWLINE_USJ_TYPES + NO_USFM_USJ_TYPES:
             self.add_newline()
@@ -163,14 +168,15 @@ class USFMGenerator:
         attributes = []
         for key in usj_obj:
             if key not in NON_ATTRIB_USJ_KEYS:
+                val = clean_attribute_value(usj_obj[key])
                 if key == "file":
-                    attributes.append(f'src="{usj_obj[key]}"')
+                    attributes.append(f'src="{val}"')
                 else:
-                    attributes.append(f'{key}="{usj_obj[key]}"')
+                    attributes.append(f'{key}="{val}"')
         if usj_obj["type"] == "ms":
             for key in ["sid", "eid"]:
                 if key in usj_obj:
-                    attributes.append(f'{key}="{usj_obj[key]}"')
+                    attributes.append(f'{key}="{clean_attribute_value(usj_obj[key])}"')
         if len(attributes) > 0:
             self.usfm_string += "|" + " ".join(attributes)
 
@@ -233,9 +239,9 @@ class USFMGenerator:
         if "vid" in xml_obj.attrib:
             current_ref = f"{self.current_book} {self.current_chapter}:{self.current_verse}"
             if xml_obj.attrib["vid"] != current_ref:
-                self.usfm_string += f"\\vid|ref=\"{xml_obj.attrib['vid']}\" "
+                self.usfm_string += f"\\vid|ref=\"{clean_attribute_value(xml_obj.attrib['vid'])}\" "
                 if "h" in xml_obj.attrib:
-                    self.usfm_string += f"h=\"{xml_obj.attrib['h']}\" "
+                    self.usfm_string += f"h=\"{clean_attribute_value(xml_obj.attrib['h'])}\" "
                 self.usfm_string += "\\*\n"
         if obj_type == "optbreak":
             if self.usfm_string != "" and self.usfm_string[-1] not in [
@@ -288,8 +294,7 @@ class USFMGenerator:
             if child.tail:
                 self.add_text(child.tail)
         for key in xml_obj.attrib:
-            val = xml_obj.attrib[key]
-            val = val.replace('"', "")
+            val = clean_attribute_value(xml_obj.attrib[key])
             if key == "file" and obj_type == "figure":
                 usfm_attributes.append(f'src="{val}"')
             elif key not in NON_ATTRIB_USX_KEYS:
@@ -297,7 +302,7 @@ class USFMGenerator:
         if obj_type == "ms":
             for key in ["sid", "eid"]:
                 if key in xml_obj.attrib:
-                    usfm_attributes.append(f'{key}="{xml_obj.attrib[key]}"')
+                    usfm_attributes.append(f'{key}="{clean_attribute_value(xml_obj.attrib[key])}"')
         if len(usfm_attributes) > 0:
             self.usfm_string += "|"
             self.usfm_string += " ".join(usfm_attributes)
