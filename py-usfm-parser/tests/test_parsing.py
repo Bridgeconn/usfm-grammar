@@ -1,9 +1,12 @@
 """To test parsing success/errors for USFM/X committee's test suite"""
 
+import json
+import re
 import pytest
 from lxml import etree
 
 from src.usfm_grammar import USFMParser
+from src.usfm_grammar.usx_generator import USFM_VERSION
 from tests import (
     all_usfm_files,
     initialise_parser,
@@ -136,3 +139,180 @@ def test_partial_parsing_with_errors():
     use_API_positive(test_parser, "test_parser.to_usj(ignore_errors=True)")
     use_API_positive(test_parser, "test_parser.to_list(ignore_errors=True)")
     use_API_positive(test_parser, "test_parser.to_usx(ignore_errors=True)")
+
+
+CRLF_USFM = (
+    "\\id GEN test\r\n\\c 1\r\n\\p\r\n\\v 1 crlf text\r\n"
+    "\\v 2 more \\w word\\w* end\r\n\\q1 poem\r"
+)
+
+
+def test_crlf_line_endings_normalized():
+    """CRLF and CR line endings in input should not leak into outputs"""
+    test_parser = USFMParser(CRLF_USFM)
+    assert not test_parser.errors, test_parser.errors
+    lf_parser = USFMParser(CRLF_USFM.replace("\r\n", "\n").replace("\r", "\n"))
+    assert "\r" not in test_parser.usfm
+    usj = test_parser.to_usj()
+    assert usj == lf_parser.to_usj()
+    assert "\\r" not in json.dumps(usj)
+    usx = etree.tostring(test_parser.to_usx()).decode("utf-8")
+    assert "\r" not in usx and "&#13;" not in usx
+    biblenlp = test_parser.to_biblenlp_format()
+    assert biblenlp["text"] == ["crlf text", "more word end  poem"]
+    assert "\r" not in str(test_parser.to_list())
+    assert "\r" not in USFMParser(from_usj=usj).usfm
+
+
+def test_usfm_version_line_in_generated_usfm():
+    """\\usfm line should be followed by exactly one newline in USJ and USX to USFM"""
+    test_parser = USFMParser("\\id GEN test\n\\c 1\n\\p\n\\v 1 one\n\\v 2 two\n")
+    for usfm in [
+        USFMParser(from_usj=test_parser.to_usj()).usfm,
+        USFMParser(from_usx=test_parser.to_usx()).usfm,
+    ]:
+        assert re.search(r"\\id GEN test\n\\usfm [\d.]+\n\\c 1", usfm), repr(usfm)
+    biblenlp_parser = USFMParser(
+        from_biblenlp={"vref": ["GEN 1:1", "GEN 1:"], "text": ["one", "tail"]}
+    )
+    assert biblenlp_parser.usfm.endswith("\\v 1 one tail"), repr(biblenlp_parser.usfm)
+
+
+REVERSE_CONVERSION_USFM = (
+    "\\id GEN test\n\\c 1\n\\p\n\\v 1 The \\bk Acts\\bk* is \\w one\\w* \\w two\\w*\n"
+    '\\qt-s |sid="q1"\\*quoted\\qt-e |eid="q1"\\*\n'
+    '\\v 2 three \\fig cap|src="a.png"\\fig* end \\v 3 same line\n'
+)
+REVERSE_CONVERSION_EXPECTED = (
+    "\\id GEN test\n\\usfm 3.1.2\n\\c 1\n"
+    "\\p \\v 1 The \\bk Acts\\bk* is \\w one\\w* \\w two\\w*\n"
+    '\\qt-s |sid="q1"\\*quoted\\qt-e |eid="q1"\\*\n'
+    '\\v 2 three \\fig cap|src="a.png"\\fig* end \\v 3 same line\n'
+)
+
+
+def test_usj_and_usx_to_usfm_output():
+    """USJ and USX to USFM output is kept identical across python, node and web modules"""
+    test_parser = USFMParser(REVERSE_CONVERSION_USFM)
+    assert not test_parser.errors, test_parser.errors
+    expected = REVERSE_CONVERSION_EXPECTED.replace("3.1.2", USFM_VERSION)
+    assert USFMParser(from_usj=test_parser.to_usj()).usfm == expected
+    assert USFMParser(from_usx=test_parser.to_usx()).usfm == expected
+
+
+QUOTED_ATTRIBUTES_USJ = {
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {"type": "book", "marker": "id", "code": "GEN", "content": []},
+        {"type": "chapter", "marker": "c", "number": "1", "sid": "GEN 1"},
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {"type": "verse", "marker": "v", "number": "1", "sid": "GEN 1:1"},
+                {"type": "char", "marker": "w", "content": ["word"], "lemma": '"lemma"'},
+                " ",
+                {"type": "figure", "marker": "fig", "content": ["cap"], "file": '"a.png"'},
+                " ",
+                {"type": "ms", "marker": "qt-s", "sid": '"q1"'},
+                "text",
+            ],
+        },
+    ],
+}
+QUOTED_ATTRIBUTES_USX = (
+    '<usx version="3.1.2"><book code="GEN" style="id"/>'
+    '<chapter number="1" style="c" sid="GEN 1"/><para style="p">'
+    '<verse number="1" style="v" sid="GEN 1:1"/>'
+    '<char style="w" closed="true" lemma="&quot;lemma&quot;">word</char> '
+    '<figure style="fig" file="&quot;a.png&quot;">cap</figure> '
+    '<ms style="qt-s" sid="&quot;q1&quot;"/>text</para></usx>'
+)
+QUOTED_ATTRIBUTES_EXPECTED = (
+    "\\id GEN \n\\usfm 3.1.2\n\\c 1\n"
+    '\\p \\v 1 \\w word|lemma="lemma"\\w* \\fig cap|src="a.png"\\fig* '
+    '\\qt-s |sid="q1"\\*text\n'
+)
+
+
+def test_quotes_removed_from_attribute_values():
+    """Double quotes in attribute values of USJ or USX are not written to USFM"""
+    expected = QUOTED_ATTRIBUTES_EXPECTED.replace("3.1.2", USFM_VERSION)
+    for usfm in [
+        USFMParser(from_usj=QUOTED_ATTRIBUTES_USJ).usfm,
+        USFMParser(from_usx=etree.fromstring(QUOTED_ATTRIBUTES_USX)).usfm,
+    ]:
+        assert usfm == expected
+        assert not USFMParser(usfm).errors
+
+
+UNDECLARED_Z_USFM = "\\id GEN\n\\c 1\n\\p\n\\v 1 text \\zfoo word\\zfoo* end\n\\zbar\n"
+Z_MARKERS_EXT = "\\marker zfoo\n\\category char\n\n\\marker zbar\n\\category para\n"
+
+
+@pytest.mark.parametrize("api", ["to_usj", "to_usx", "to_list", "to_biblenlp_format"])
+def test_undeclared_z_marker_warnings(api):
+    """Undeclared z markers produce a warning each, declared ones do not"""
+    test_parser = USFMParser(UNDECLARED_Z_USFM)
+    getattr(test_parser, api)()
+    assert len(test_parser.warnings) == 2, test_parser.warnings
+    for warning in test_parser.warnings:
+        assert warning.startswith("Encountered Undefined z node: (zNameSpaceUndefined")
+        assert warning.endswith("Use markers.ext to define user extended marker types.")
+    test_parser = USFMParser(UNDECLARED_Z_USFM, markers_ext=Z_MARKERS_EXT)
+    getattr(test_parser, api)()
+    assert test_parser.warnings == []
+
+
+EXTRA_SPACES_USFM = (
+    "\\id GEN test\n\\c 1\n\\p\n"
+    '\\v 1 text\\f +   \\fr 1.1 \\ft  two spaces\\f* and \\fig   cap|src="a.png"\\fig* end\n'
+    '\\v 2 b\\f +\\fr 1.2 \\ft no space\\f* see \\jmp  RSV|link-href="#x"\\jmp*\n  \n'
+    "\\v 3 c\n"
+)
+EXTRA_SPACES_EXPECTED = (
+    "\\id GEN test\n\\usfm 3.1.2\n\\c 1\n"
+    "\\p \\v 1 text\\f +   \\fr 1.1 \\fr*\\ft  two spaces\\ft*\\f* and "
+    '\\fig   cap|src="a.png"\\fig* end\n'
+    "\\v 2 b\\f +\\fr 1.2 \\fr*\\ft no space\\ft*\\f* see "
+    '\\jmp  RSV|link-href="#x"\\jmp*\n  \n'
+    "\\v 3 c\n"
+)
+
+
+def test_spaces_from_input_are_kept_in_generated_usfm():
+    """Spaces and line breaks in USJ/USX text are kept as they are in the generated USFM"""
+    test_parser = USFMParser(EXTRA_SPACES_USFM)
+    assert not test_parser.errors, test_parser.errors
+    usj = test_parser.to_usj()
+    expected = EXTRA_SPACES_EXPECTED.replace("3.1.2", USFM_VERSION)
+    for usfm in [
+        USFMParser(from_usj=usj).usfm,
+        USFMParser(from_usx=test_parser.to_usx()).usfm,
+    ]:
+        assert usfm == expected
+        assert USFMParser(usfm).to_usj() == usj
+
+
+@pytest.mark.parametrize("verse_text", ["one\r\ntwo", "one\rtwo", "one\ntwo"])
+def test_line_endings_in_text_to_usfm(verse_text):
+    """CRLF and CR in USJ text become a single LF in the generated USFM"""
+    usj = {
+        "type": "USJ",
+        "version": "3.1.2",
+        "content": [
+            {"type": "book", "marker": "id", "code": "GEN", "content": []},
+            {"type": "chapter", "marker": "c", "number": "1", "sid": "GEN 1"},
+            {
+                "type": "para",
+                "marker": "p",
+                "content": [
+                    {"type": "verse", "marker": "v", "number": "1", "sid": "GEN 1:1"},
+                    verse_text,
+                ],
+            },
+        ],
+    }
+    usfm = USFMParser(from_usj=usj).usfm
+    assert usfm.endswith("\\v 1 one\ntwo\n"), repr(usfm)

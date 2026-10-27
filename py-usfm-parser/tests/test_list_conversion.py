@@ -116,3 +116,43 @@ def test_biblenlp_to_usfm(file_path):
 
     test_parser2 = parse_USFM_string(generated_usfm, markers_ext=markers_ext)
     assert test_parser2.errors == []
+
+
+@pytest.mark.parametrize("verse_text", ["one\r\ntwo", "one\rtwo", "one\ntwo", "one two"])
+def test_biblenlp_text_line_endings(verse_text):
+    """Each line ending in USJ text becomes a single space in BibleNLP text"""
+    usj = {
+        "type": "USJ",
+        "version": "3.1.2",
+        "content": [
+            {"type": "book", "marker": "id", "code": "GEN", "content": []},
+            {"type": "chapter", "marker": "c", "number": "1", "sid": "GEN 1"},
+            {
+                "type": "para",
+                "marker": "p",
+                "content": [
+                    {"type": "verse", "marker": "v", "number": "1", "sid": "GEN 1:1"},
+                    verse_text,
+                ],
+            },
+        ],
+    }
+    bible_nlp_dict = USFMParser(from_usj=usj).to_biblenlp_format()
+    assert bible_nlp_dict == {"text": ["one two"], "vref": ["GEN 1:1"]}
+
+
+@pytest.mark.parametrize(
+    "verse_text, expected",
+    [
+        ("one\r\ntwo", "one\ntwo"),
+        ("one\rtwo", "one\ntwo"),
+        ("one\ntwo", "one\ntwo"),
+        ("one two", "one two"),
+    ],
+)
+def test_biblenlp_to_usfm_line_endings(verse_text, expected):
+    """CRLF and CR in BibleNLP text become a single LF in the generated USFM"""
+    test_parser = USFMParser(
+        from_biblenlp={"vref": ["GEN 1:1", "GEN 1:2"], "text": [verse_text, "three"]}
+    )
+    assert test_parser.usfm == f"\\id GEN\n\\c 1\n\\p\n\\v 1 {expected} \\v 2 three"

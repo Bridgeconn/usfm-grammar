@@ -100,10 +100,10 @@ class ListGenerator {
           if (this.currentChapter === this.prevChapter &&
                         this.currentVerse === this.prevVerse) {
             this.bibleNlpFormat.text[this.bibleNlpFormat.text.length - 1] +=
-                            ` ${ item.replace(/[\n\r]/g, ' ').trim()}`;
+                            ` ${ item.replace(/\r\n|[\n\r]/g, ' ').trim()}`;
           } else {
             const vref = `${this.book} ${this.currentChapter}:${this.currentVerse}`;
-            this.bibleNlpFormat.text.push(item.replace(/[\n\r]/g, ' ').trim());
+            this.bibleNlpFormat.text.push(item.replace(/\r\n|[\n\r]/g, ' ').trim());
             this.bibleNlpFormat.vref.push(vref);
             this.prevChapter = this.currentChapter;
             this.prevVerse = this.currentVerse;

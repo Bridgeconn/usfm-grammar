@@ -58,7 +58,8 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
           'Invalid input for USFM. Expected a string with \\ markups.',
         );
       }
-      this.usfm = usfmString;
+      // Normalize CRLF/CR line endings to LF
+      this.usfm = usfmString.replace(/\r\n?/g, '\n');
     } else if (fromUsj !== null) {
       this.usj = fromUsj;
       this.usfm = this.convertUSJToUSFM();
