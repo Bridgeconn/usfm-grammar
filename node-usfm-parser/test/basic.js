@@ -236,3 +236,22 @@ describe("Undeclared z markers", () => {
     });
   }
 });
+
+describe("Line endings in BibleNLP text", () => {
+  for (const verseText of ["one\r\ntwo", "one\rtwo", "one\ntwo", "one two"]) {
+    it(`become a single space in ${JSON.stringify(verseText)}`, () => {
+      const usj = {
+        type: "USJ", version: "3.1.2", content: [
+          {type: "book", marker: "id", code: "GEN", content: []},
+          {type: "chapter", marker: "c", number: "1", sid: "GEN 1"},
+          {type: "para", marker: "p", content: [
+            {type: "verse", marker: "v", number: "1", sid: "GEN 1:1"},
+            verseText,
+          ]},
+        ],
+      };
+      const bibleNlp = new USFMParser(null, usj).toBibleNlpFormat();
+      assert.deepStrictEqual(bibleNlp, {text: ["one two"], vref: ["GEN 1:1"]});
+    });
+  }
+});

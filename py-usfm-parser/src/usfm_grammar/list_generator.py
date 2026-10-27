@@ -152,14 +152,14 @@ class ListGenerator:
                         and len(self.bible_nlp_format["text"]) > 0
                     ):
                         self.bible_nlp_format["text"][-1] += (
-                            " " + re.sub(r"[\n\r]", " ", item).strip()
+                            " " + re.sub(r"\r\n|[\n\r]", " ", item).strip()
                         )
                     else:
                         vref = (
                             f"{self.book} {self.current_chapter}:{self.current_verse}"
                         )
                         self.bible_nlp_format["text"].append(
-                            re.sub(r"[\n\r]", " ", item).strip()
+                            re.sub(r"\r\n|[\n\r]", " ", item).strip()
                         )
                         self.bible_nlp_format["vref"].append(vref)
                         self.prev_chapter = self.current_chapter
