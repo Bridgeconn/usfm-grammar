@@ -1,10 +1,12 @@
 """To test parsing success/errors for USFM/X committee's test suite"""
 
 import json
+import re
 import pytest
 from lxml import etree
 
 from src.usfm_grammar import USFMParser
+from src.usfm_grammar.usx_generator import USFM_VERSION
 from tests import (
     all_usfm_files,
     initialise_parser,
@@ -160,3 +162,39 @@ def test_crlf_line_endings_normalized():
     assert biblenlp["text"] == ["crlf text", "more word end  poem"]
     assert "\r" not in str(test_parser.to_list())
     assert "\r" not in USFMParser(from_usj=usj).usfm
+
+
+def test_usfm_version_line_in_generated_usfm():
+    """\\usfm line should be followed by exactly one newline in USJ and USX to USFM"""
+    test_parser = USFMParser("\\id GEN test\n\\c 1\n\\p\n\\v 1 one\n\\v 2 two\n")
+    for usfm in [
+        USFMParser(from_usj=test_parser.to_usj()).usfm,
+        USFMParser(from_usx=test_parser.to_usx()).usfm,
+    ]:
+        assert re.search(r"\\id GEN test\n\\usfm [\d.]+\n\\c 1", usfm), repr(usfm)
+    biblenlp_parser = USFMParser(
+        from_biblenlp={"vref": ["GEN 1:1", "GEN 1:"], "text": ["one", "tail"]}
+    )
+    assert biblenlp_parser.usfm.endswith("\\v 1 one tail"), repr(biblenlp_parser.usfm)
+
+
+REVERSE_CONVERSION_USFM = (
+    "\\id GEN test\n\\c 1\n\\p\n\\v 1 The \\bk Acts\\bk* is \\w one\\w* \\w two\\w*\n"
+    '\\qt-s |sid="q1"\\*quoted\\qt-e |eid="q1"\\*\n'
+    '\\v 2 three \\fig cap|src="a.png"\\fig* end \\v 3 same line\n'
+)
+REVERSE_CONVERSION_EXPECTED = (
+    "\\id GEN test\n\\usfm 3.1.2\n\\c 1\n"
+    "\\p \\v 1 The \\bk Acts\\bk* is \\w one\\w* \\w two\\w*\n"
+    '\\qt-s |sid="q1"\\*quoted\\qt-e |eid="q1"\\*\n'
+    '\\v 2 three \\fig cap|src="a.png"\\fig* end \\v 3 same line\n'
+)
+
+
+def test_usj_and_usx_to_usfm_output():
+    """USJ and USX to USFM output is kept identical across python, node and web modules"""
+    test_parser = USFMParser(REVERSE_CONVERSION_USFM)
+    assert not test_parser.errors, test_parser.errors
+    expected = REVERSE_CONVERSION_EXPECTED.replace("3.1.2", USFM_VERSION)
+    assert USFMParser(from_usj=test_parser.to_usj()).usfm == expected
+    assert USFMParser(from_usx=test_parser.to_usx()).usfm == expected

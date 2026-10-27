@@ -5,7 +5,7 @@ from usfm_grammar.errors import ParsingError, USFMGrammarError
 from usfm_grammar.usx_generator import USFM_VERSION
 
 NO_USFM_USJ_TYPES = ["USJ", "table"]
-NO_NEWLINE_USJ_TYPES = ["char", "note", "verse", "table:cell"]
+NO_NEWLINE_USJ_TYPES = ["char", "note", "verse", "table:cell", "figure", "ms", "ref"]
 CLOSING_USJ_TYPES = ["char", "note", "figure", "ref"]
 NON_ATTRIB_USJ_KEYS = [
     "type",
@@ -43,7 +43,18 @@ NON_ATTRIB_USX_KEYS = [
     "vid",
     "h",
 ]
-NO_NEWLINE_USX_TYPES = ["char", "note", "cell", "figure", "usx", "book", "optbreak"]
+NO_NEWLINE_USX_TYPES = [
+    "char",
+    "note",
+    "cell",
+    "figure",
+    "usx",
+    "book",
+    "optbreak",
+    "verse",
+    "ms",
+    "ref",
+]
 CLOSING_USX_TYPES = ["char", "note", "figure", "ms", "ref"]
 
 
@@ -62,6 +73,21 @@ class USFMGenerator:
     #     if usfm_string is None:
     #         usfm_string = self.usfm_string
     #     return False
+
+    def add_text(self, text: str) -> None:
+        """Appends text as it is, without doubling up whitespace at the joining point"""
+        if text.strip() == "" and "\n" in text:
+            text = "\n"
+        if self.usfm_string == "" or self.usfm_string[-1] == "\n":
+            text = text.lstrip()
+        elif self.usfm_string[-1] in [" ", "\t"]:
+            text = text.lstrip(" \t")
+        self.usfm_string += text
+
+    def add_newline(self) -> None:
+        """Ends the current line, if not already ended"""
+        if self.usfm_string != "" and not self.usfm_string.endswith("\n"):
+            self.usfm_string += "\n"
 
     def usj_to_usfm(self, usj_obj: dict, nested=False) -> None:  # pylint: disable=too-many-statements, too-many-branches
         """Traverses through the dict/json and uses 'type' field to form USFM elements"""
@@ -101,6 +127,8 @@ class USFMGenerator:
                 if "h" in usj_obj:
                     self.usfm_string += f"h=\"{usj_obj['h']}\" "
                 self.usfm_string += "\\*\n"
+        if usj_obj["type"] not in NO_NEWLINE_USJ_TYPES + NO_USFM_USJ_TYPES:
+            self.add_newline()
         if usj_obj["type"] not in NO_USFM_USJ_TYPES:
             self.usfm_string += "\\"
             if (
@@ -109,7 +137,10 @@ class USFMGenerator:
                 and marker not in ["xt", "fv", "ref"]
             ):
                 self.usfm_string += "+"
-            self.usfm_string += f"{marker} "
+            if usj_obj["type"] == "list":
+                self.usfm_string += marker
+            else:
+                self.usfm_string += f"{marker} "
         if "code" in usj_obj:
             self.usfm_string += f"{usj_obj['code']} "
         if "number" in usj_obj:
@@ -123,48 +154,49 @@ class USFMGenerator:
         if "content" in usj_obj:
             for item in usj_obj["content"]:
                 if isinstance(item, str):
-                    self.usfm_string += item
+                    self.add_text(item)
                 else:
                     if usj_obj["type"] in ["char"]:
                         self.usj_to_usfm(item, nested=True)
                     else:
                         self.usj_to_usfm(item)
-        attributes = False
+        attributes = []
         for key in usj_obj:
             if key not in NON_ATTRIB_USJ_KEYS:
-                if not attributes:
-                    self.usfm_string += "|"
-                    attributes = True
                 if key == "file":
-                    self.usfm_string += f'src="{usj_obj[key]}" '
+                    attributes.append(f'src="{usj_obj[key]}"')
                 else:
-                    self.usfm_string += f'{key}="{usj_obj[key]}" '
+                    attributes.append(f'{key}="{usj_obj[key]}"')
+        if usj_obj["type"] == "ms":
+            for key in ["sid", "eid"]:
+                if key in usj_obj:
+                    attributes.append(f'{key}="{usj_obj[key]}"')
+        if len(attributes) > 0:
+            self.usfm_string += "|" + " ".join(attributes)
 
         if usj_obj["type"] in CLOSING_USJ_TYPES:
-            self.usfm_string = self.usfm_string.strip() + " \\"
+            self.usfm_string += "\\"
             if (
                 nested
                 and usj_obj["type"] == "char"
                 and marker not in ["xt", "ref", "fv"]
             ):
                 self.usfm_string += "+"
-            self.usfm_string += f"{marker}* "
+            self.usfm_string += f"{marker}*"
         if usj_obj["type"] == "ms":
-            if "sid" in usj_obj:
-                if not attributes:
-                    self.usfm_string += "|"
-                    attributes = True
-                self.usfm_string += f'sid="{usj_obj["sid"]}" '
-            self.usfm_string = self.usfm_string.strip() + "\\*"
+            self.usfm_string = self.usfm_string.rstrip(" ") + "\\*"
         if usj_obj["type"] == "sidebar":
             self.usfm_string += "\\esbe"
         if usj_obj["type"] == "list":
             self.usfm_string += "\\list-e\\*"
-        if usj_obj["type"] not in NO_NEWLINE_USJ_TYPES and self.usfm_string[-1] != "\n":
-            self.usfm_string += "\n"
+        if usj_obj["type"] not in NO_NEWLINE_USJ_TYPES:
+            self.add_newline()
         if "altnumber" in usj_obj:
-            self.usfm_string += f"\\{marker}a {usj_obj['altnumber']}"
-            self.usfm_string += f"\\{marker}a* "
+            self.usfm_string += f"\\{marker}a {usj_obj['altnumber']}\\{marker}a*"
+            if marker == "v":
+                self.usfm_string += " "
+            else:
+                self.usfm_string += "\n"
         if "pubnumber" in usj_obj:
             self.usfm_string += f"\\{marker}p {usj_obj['pubnumber']}"
             if marker == "v":
@@ -172,8 +204,8 @@ class USFMGenerator:
             else:
                 self.usfm_string += "\n"
         if marker == "id":
+            self.add_newline()
             self.usfm_string += f"\\usfm {USFM_VERSION}\n"
-
 
     def usx_to_usfm(self, xml_obj, nested=False):  # pylint: disable=too-many-statements, too-many-branches
         """Traverses xml tree and converts nodes to usfm elements
@@ -187,7 +219,7 @@ class USFMGenerator:
         if obj_type in ["verse", "chapter"] and "eid" in xml_obj.attrib:
             return
         if obj_type not in NO_NEWLINE_USX_TYPES:
-            self.usfm_string += "\n"
+            self.add_newline()
 
         # Keep track of the current book, chapter, and verse for generating \vid markers
         if self.current_book is None and "code" in xml_obj.attrib:
@@ -225,46 +257,36 @@ class USFMGenerator:
                 marker = "+" + marker
             self.usfm_string += f"\\{marker} "
         if "code" in xml_obj.attrib:
-            self.usfm_string += xml_obj.attrib["code"]
+            self.usfm_string += f"{xml_obj.attrib['code']} "
         if "number" in xml_obj.attrib:
-            self.usfm_string += f"{xml_obj.attrib['number']} "
+            self.usfm_string += xml_obj.attrib["number"]
+            if obj_type == "verse":
+                self.usfm_string += " "
         if "caller" in xml_obj.attrib:
             self.usfm_string += f"{xml_obj.attrib['caller']} "
         if "altnumber" in xml_obj.attrib:
             if obj_type == "verse":
-                self.usfm_string += f"\\va {xml_obj.attrib['altnumber']}\\va*"
+                self.usfm_string += f"\\va {xml_obj.attrib['altnumber']}\\va* "
             elif obj_type == "chapter":
-                self.usfm_string += f"\n\\ca {xml_obj.attrib['altnumber']}\\ca*"
+                self.add_newline()
+                self.usfm_string += f"\\ca {xml_obj.attrib['altnumber']}\\ca*"
         if "pubnumber" in xml_obj.attrib:
             if obj_type == "verse":
-                self.usfm_string += f"\\vp {xml_obj.attrib['pubnumber']}\\vp*"
+                self.usfm_string += f"\\vp {xml_obj.attrib['pubnumber']}\\vp* "
             elif obj_type == "chapter":
-                self.usfm_string += f"\n\\cp {xml_obj.attrib['pubnumber']}"
+                self.add_newline()
+                self.usfm_string += f"\\cp {xml_obj.attrib['pubnumber']}"
         if "category" in xml_obj.attrib:
-            self.usfm_string += f"\n\\cat {xml_obj.attrib['category']} \\cat*"
+            self.usfm_string += f"\\cat {xml_obj.attrib['category']}\\cat*\n"
         if xml_obj.text:
-            if self.usfm_string != "" and self.usfm_string[-1] not in [
-                "\n",
-                "\r",
-                " ",
-                "\t",
-            ]:
-                self.usfm_string += " "
-            self.usfm_string += xml_obj.text.strip()
+            self.add_text(xml_obj.text)
         for child in xml_obj.getchildren():
             if obj_type in ["char"]:
                 self.usx_to_usfm(child, nested=True)
             else:
                 self.usx_to_usfm(child, nested=False)
             if child.tail:
-                if self.usfm_string != "" and self.usfm_string[-1] not in [
-                    "\n",
-                    "\r",
-                    " ",
-                    "\t",
-                ]:
-                    self.usfm_string += " "
-                self.usfm_string += child.tail.strip()
+                self.add_text(child.tail)
         for key in xml_obj.attrib:
             val = xml_obj.attrib[key]
             val = val.replace('"', "")
@@ -272,8 +294,10 @@ class USFMGenerator:
                 usfm_attributes.append(f'src="{val}"')
             elif key not in NON_ATTRIB_USX_KEYS:
                 usfm_attributes.append(f'{key}="{val}"')
-            if key in ["sid", "eid"] and obj_type == "ms":
-                usfm_attributes.append(f'{key}="{val}"')
+        if obj_type == "ms":
+            for key in ["sid", "eid"]:
+                if key in xml_obj.attrib:
+                    usfm_attributes.append(f'{key}="{xml_obj.attrib[key]}"')
         if len(usfm_attributes) > 0:
             self.usfm_string += "|"
             self.usfm_string += " ".join(usfm_attributes)
@@ -285,17 +309,20 @@ class USFMGenerator:
         ):
             # if not ("closed" in xml_obj.attrib and xml_obj.attrib['closed']=="false"):
             if obj_type == "ms":
-                self.usfm_string += "\\*"
+                self.usfm_string = self.usfm_string.rstrip(" ") + "\\*"
             else:
                 self.usfm_string += f"\\{marker}*"
         if obj_type == "sidebar":
-            self.usfm_string += "\n\\esbe\n"
+            self.add_newline()
+            self.usfm_string += "\\esbe\n"
         if obj_type == "list":
-            self.usfm_string += "\n\\list-e\\*\n"
+            self.add_newline()
+            self.usfm_string += "\\list-e\\*\n"
         if marker == "id":
-            if self.usfm_string[-1] != "\n":
-                self.usfm_string += "\n"
-            self.usfm_string += f"\\usfm {USFM_VERSION}\n"
+            self.add_newline()
+            self.usfm_string += f"\\usfm {USFM_VERSION}"
+        if obj_type not in NO_NEWLINE_USX_TYPES or obj_type == "usx":
+            self.add_newline()
 
     def biblenlp_to_usfm(self, biblenlp: dict, book_code: str = None) -> None:
         """Traverses through the verse texts and vrefs to generate a minimal USFM from it"""
@@ -365,7 +392,7 @@ class USFMGenerator:
             if not self.usfm_string.endswith("\n"):
                 self.usfm_string += " "
             self.usfm_string += f"\\v {verse} {versetext}"\
-                if verse.strip() != "" else f" {versetext}"
+                if verse.strip() != "" else f"{versetext}"
 
 
 if __name__ == "__main__":

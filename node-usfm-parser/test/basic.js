@@ -1,4 +1,5 @@
 const assert = require("assert");
+const {USFM_VERSION} = require("../src/utils/markers");
 const {USFMParser} = require("../src/index");
 const {customMarkersExt} = require("./config");
 
@@ -142,5 +143,38 @@ describe("CRLF line endings", () => {
         ["crlf text", "more word end  poem"]);
     assert.ok(!JSON.stringify(usfmParser.toList()).includes("\\r"));
     assert.ok(!usfmParser.usjToUsfm(usj).includes("\r"));
+  });
+});
+
+describe("Generated USFM", () => {
+  it("has \\usfm line followed by exactly one newline", () => {
+    const usfmParser = new USFMParser("\\id GEN test\n\\c 1\n\\p\n\\v 1 one\n\\v 2 two\n");
+    for (const usfm of [
+      new USFMParser(null, usfmParser.toUSJ()).usfm,
+      new USFMParser(null, null, usfmParser.toUSX()).usfm,
+    ]) {
+      assert.match(usfm, /\\id GEN test\n\\usfm [\d.]+\n\\c 1/);
+    }
+    const nlpParser = new USFMParser(null, null, null,
+        {vref: ["GEN 1:1", "GEN 1:"], text: ["one", "tail"]});
+    assert.ok(nlpParser.usfm.endsWith("\\v 1 one tail"), nlpParser.usfm);
+  });
+});
+
+describe("USJ and USX to USFM", () => {
+  // Kept identical to the python module's output
+  const inputUSFM = "\\id GEN test\n\\c 1\n\\p\n\\v 1 The \\bk Acts\\bk* is \\w one\\w* \\w two\\w*\n" +
+    '\\qt-s |sid="q1"\\*quoted\\qt-e |eid="q1"\\*\n' +
+    '\\v 2 three \\fig cap|src="a.png"\\fig* end \\v 3 same line\n';
+  const expectedUSFM = "\\id GEN test\n\\usfm 3.1.2\n\\c 1\n" +
+    "\\p \\v 1 The \\bk Acts\\bk* is \\w one\\w* \\w two\\w*\n" +
+    '\\qt-s |sid="q1"\\*quoted\\qt-e |eid="q1"\\*\n' +
+    '\\v 2 three \\fig cap|src="a.png"\\fig* end \\v 3 same line\n';
+  it("matches the python module's output", () => {
+    const usfmParser = new USFMParser(inputUSFM);
+    assert.deepStrictEqual(usfmParser.errors, []);
+    const expected = expectedUSFM.replace("3.1.2", USFM_VERSION);
+    assert.strictEqual(new USFMParser(null, usfmParser.toUSJ()).usfm, expected);
+    assert.strictEqual(new USFMParser(null, null, usfmParser.toUSX()).usfm, expected);
   });
 });

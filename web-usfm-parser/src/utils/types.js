@@ -38,5 +38,7 @@ export const NON_ATTRIB_USX_KEYS = [
   'vid',
   'h',
 ];
-export const NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell'];
-export const NO_NEWLINE_USX_TYPES = ['char', 'note', 'verse', 'cell'];
+export const NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell', 'figure', 'ms', 'ref'];
+export const NO_NEWLINE_USX_TYPES = ['char', 'note', 'cell', 'figure', 'usx', 'book', 'optbreak',
+  'verse', 'ms', 'ref'];
+export const CLOSING_USX_TYPES = ['char', 'note', 'figure', 'ms', 'ref'];

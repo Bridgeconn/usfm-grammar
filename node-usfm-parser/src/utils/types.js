@@ -38,5 +38,7 @@ exports.NON_ATTRIB_USX_KEYS = [
   'vid',
   'h',
 ];
-exports.NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell'];
-exports.NO_NEWLINE_USX_TYPES = ['char', 'note', 'verse', 'cell'];
+exports.NO_NEWLINE_USJ_TYPES = ['char', 'note', 'verse', 'table:cell', 'figure', 'ms', 'ref'];
+exports.NO_NEWLINE_USX_TYPES = ['char', 'note', 'cell', 'figure', 'usx', 'book', 'optbreak',
+  'verse', 'ms', 'ref'];
+exports.CLOSING_USX_TYPES = ['char', 'note', 'figure', 'ms', 'ref'];
