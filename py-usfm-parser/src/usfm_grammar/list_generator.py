@@ -1,5 +1,7 @@
 """Logics for USJ to list(table) and Bible NLP format conversions"""
 
+import re
+
 
 class ListGenerator:
     """Combines the methods used for List generattion from USJ"""
@@ -150,14 +152,14 @@ class ListGenerator:
                         and len(self.bible_nlp_format["text"]) > 0
                     ):
                         self.bible_nlp_format["text"][-1] += (
-                            " " + item.replace("\n", " ").strip()
+                            " " + re.sub(r"[\n\r]", " ", item).strip()
                         )
                     else:
                         vref = (
                             f"{self.book} {self.current_chapter}:{self.current_verse}"
                         )
                         self.bible_nlp_format["text"].append(
-                            item.replace("\n", " ").strip()
+                            re.sub(r"[\n\r]", " ", item).strip()
                         )
                         self.bible_nlp_format["vref"].append(vref)
                         self.prev_chapter = self.current_chapter

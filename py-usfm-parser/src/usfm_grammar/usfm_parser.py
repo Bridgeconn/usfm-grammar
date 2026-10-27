@@ -134,7 +134,8 @@ class USFMParser:
                 raise ParameterError(
                     "Invalid input for USFM. Expected a string with \\ markups."
                 )
-            self.usfm = usfm_string
+            # Normalize CRLF/CR line endings to LF
+            self.usfm = re.sub(r"\r\n?", "\n", usfm_string)
         elif from_usj is not None:
             usj_converter = USFMGenerator()
             usj_converter.usj_to_usfm(from_usj)

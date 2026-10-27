@@ -111,3 +111,23 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
     assert.strictEqual(usfmParser, null);
   });
 });
+
+describe("CRLF line endings", () => {
+  const crlfUSFM = '\\id GEN test\r\n\\c 1\r\n\\p\r\n\\v 1 crlf text\r\n' +
+    '\\v 2 more \\w word\\w* end\r\n\\q1 poem\r';
+  it("are normalized and do not leak into outputs", async () => {
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    const usfmParser = new USFMParser(crlfUSFM);
+    assert.deepStrictEqual(usfmParser.errors, []);
+    const lfParser = new USFMParser(crlfUSFM.replace(/\r\n?/g, '\n'));
+    assert.ok(!usfmParser.usfm.includes('\r'));
+    const usj = usfmParser.toUSJ();
+    assert.deepStrictEqual(usj, lfParser.toUSJ());
+    assert.ok(!JSON.stringify(usj).includes('\\r'));
+    assert.ok(!usfmParser.toUSX().toString().includes('\r'));
+    assert.deepStrictEqual(usfmParser.toBibleNlpFormat().text,
+        ['crlf text', 'more word end  poem']);
+    assert.ok(!JSON.stringify(usfmParser.toList()).includes('\\r'));
+    assert.ok(!usfmParser.usjToUsfm(usj).includes('\r'));
+  });
+});

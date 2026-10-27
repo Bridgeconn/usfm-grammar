@@ -1,5 +1,6 @@
 """To test parsing success/errors for USFM/X committee's test suite"""
 
+import json
 import pytest
 from lxml import etree
 
@@ -136,3 +137,26 @@ def test_partial_parsing_with_errors():
     use_API_positive(test_parser, "test_parser.to_usj(ignore_errors=True)")
     use_API_positive(test_parser, "test_parser.to_list(ignore_errors=True)")
     use_API_positive(test_parser, "test_parser.to_usx(ignore_errors=True)")
+
+
+CRLF_USFM = (
+    "\\id GEN test\r\n\\c 1\r\n\\p\r\n\\v 1 crlf text\r\n"
+    "\\v 2 more \\w word\\w* end\r\n\\q1 poem\r"
+)
+
+
+def test_crlf_line_endings_normalized():
+    """CRLF and CR line endings in input should not leak into outputs"""
+    test_parser = USFMParser(CRLF_USFM)
+    assert not test_parser.errors, test_parser.errors
+    lf_parser = USFMParser(CRLF_USFM.replace("\r\n", "\n").replace("\r", "\n"))
+    assert "\r" not in test_parser.usfm
+    usj = test_parser.to_usj()
+    assert usj == lf_parser.to_usj()
+    assert "\\r" not in json.dumps(usj)
+    usx = etree.tostring(test_parser.to_usx()).decode("utf-8")
+    assert "\r" not in usx and "&#13;" not in usx
+    biblenlp = test_parser.to_biblenlp_format()
+    assert biblenlp["text"] == ["crlf text", "more word end  poem"]
+    assert "\r" not in str(test_parser.to_list())
+    assert "\r" not in USFMParser(from_usj=usj).usfm
