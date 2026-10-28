@@ -1,0 +1,51 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "GEN",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "See ",
+                {
+                    "type": "char",
+                    "marker": "jmp",
+                    "content": [
+                        " TG Time"
+                    ],
+                    "href": "x-lds:tg/time",
+                    "x-category": "tg"
+                },
+                " and ",
+                {
+                    "type": "char",
+                    "marker": "jmp",
+                    "content": [
+                        " Ruth"
+                    ],
+                    "x-category": "bd",
+                    "link-href": "#article-Ruth"
+                },
+                " here.\n"
+            ]
+        }
+    ]
+}
