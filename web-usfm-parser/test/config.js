@@ -134,7 +134,7 @@ let excludeUSXs = [
   // does the ms go inside \s5 or after it?
 ];
 
-await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
 
 const readMarkersExt = function (inputPath) {
   `Read the markers.ext kept beside the sample, if the test case has one`;

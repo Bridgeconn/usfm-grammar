@@ -9,7 +9,7 @@ const TEST_DIR = "../tests";
 const allUSFMFiles = glob.sync(TEST_DIR+'/autofix/*');
 const sampleUSJs = glob.sync(TEST_DIR+'/specExamples/*/origin.json')
 
-await Validator.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+await Validator.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
 
 describe("Try autofixing errors in USFM", () => {
   	allUSFMFiles.forEach(function(value) {

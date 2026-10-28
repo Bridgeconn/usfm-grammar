@@ -23,7 +23,7 @@ const simpleUSJ = {
 describe("Sanity Check for the testing pipeline", () => {
 
   it("Parse, toUSJ and back toUSFM", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const usfmParser = new USFMParser(simpleUSFM, null, null, null, null, customMarkersExt);
     const output = usfmParser.toUSJ()
     assert.notStrictEqual(output, null, 'The result should not be null and no errors during conversion');
@@ -38,7 +38,7 @@ describe("Sanity Check for the testing pipeline", () => {
 describe("USFMParser Object initialization", () => {
 
   it("with USFM", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const usfmParser = new USFMParser(simpleUSFM, null, null, null, null, customMarkersExt)
     assert.strictEqual(usfmParser.usfm, simpleUSFM) 
 
@@ -51,7 +51,7 @@ describe("USFMParser Object initialization", () => {
   });
 
   it("with nothing", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     let usfmParser = null;
     try {
       const usfmParser = new USFMParser()
@@ -63,7 +63,7 @@ describe("USFMParser Object initialization", () => {
   });
 
   it("with usfm and usj", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     let usfmParser = null;
     try {
       const usfmParser = new USFMParser(
@@ -78,7 +78,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
   });
 
   it("with usj in place of USFM", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     let usfmParser = null;
     try {
       const usfmParser = new USFMParser(simpleUSJ, null, null, null, null, customMarkersExt)
@@ -90,7 +90,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
   });
 
   it("with usfm in place of USJ", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     let usfmParser = null;
     try {
       const usfmParser = new USFMParser(null, simpleUSJ, null, null, null, customMarkersExt)
@@ -102,7 +102,7 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.` )
   });
 
   it("with usj as default", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     let usfmParser = null;
     try {
       const usfmParser = new USFMParser(simpleUSJ, null, null, null, null, customMarkersExt)
@@ -118,7 +118,7 @@ describe("CRLF line endings", () => {
   const crlfUSFM = '\\id GEN test\r\n\\c 1\r\n\\p\r\n\\v 1 crlf text\r\n' +
     '\\v 2 more \\w word\\w* end\r\n\\q1 poem\r';
   it("are normalized and do not leak into outputs", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const usfmParser = new USFMParser(crlfUSFM);
     assert.deepStrictEqual(usfmParser.errors, []);
     const lfParser = new USFMParser(crlfUSFM.replace(/\r\n?/g, '\n'));
@@ -136,7 +136,7 @@ describe("CRLF line endings", () => {
 
 describe("Generated USFM", () => {
   it("has \\usfm line followed by exactly one newline", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const usfmParser = new USFMParser('\\id GEN test\n\\c 1\n\\p\n\\v 1 one\n\\v 2 two\n');
     for (const usfm of [
       new USFMParser(null, usfmParser.toUSJ()).usfm,
@@ -150,7 +150,7 @@ describe("Generated USFM", () => {
   });
 
   it("collects warnings for multiple books in BibleNLP", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const nlpParser = new USFMParser(null, null, null,
         {vref: ['GEN 1:1', 'EXO 1:1'], text: ['one', 'two']});
     assert.strictEqual(nlpParser.warnings.length, 1);
@@ -167,7 +167,7 @@ describe("USJ and USX to USFM", () => {
     '\\qt-s |sid="q1"\\*quoted\\qt-e |eid="q1"\\*\n' +
     '\\v 2 three \\fig cap|src="a.png"\\fig* end \\v 3 same line\n';
   it("matches the python module's output", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const usfmParser = new USFMParser(inputUSFM);
     assert.deepStrictEqual(usfmParser.errors, []);
     const expected = expectedUSFM.replace("3.1.2", USFM_VERSION);
@@ -202,7 +202,7 @@ describe("Quotes in attribute values", () => {
     '\\p \\v 1 \\w word|lemma="lemma"\\w* \\fig cap|src="a.png"\\fig* ' +
     '\\qt-s |sid="q1"\\*text\n';
   it("are not written to USFM", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const expected = expectedUSFM.replace("3.1.2", USFM_VERSION);
     const usxElement = new DOMParser().parseFromString(usx, "text/xml").documentElement;
     for (const usfm of [
@@ -220,7 +220,7 @@ describe("Undeclared z markers", () => {
   const markersExt = "\\marker zfoo\n\\category char\n\n\\marker zbar\n\\category para\n";
   for (const api of ["toUSJ", "toUSX", "toList", "toBibleNlpFormat"]) {
     it(`give warnings in ${api}, unless declared in markers.ext`, async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
       let usfmParser = new USFMParser(usfm);
       usfmParser[api]();
       assert.strictEqual(usfmParser.warnings.length, 2, JSON.stringify(usfmParser.warnings));
@@ -238,7 +238,7 @@ describe("Undeclared z markers", () => {
 describe("Line endings in BibleNLP text", () => {
   for (const verseText of ["one\r\ntwo", "one\rtwo", "one\ntwo", "one two"]) {
     it(`become a single space in ${JSON.stringify(verseText)}`, async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
       const usj = {
         type: "USJ", version: "3.1.2", content: [
           {type: "book", marker: "id", code: "GEN", content: []},
@@ -267,7 +267,7 @@ describe("Spaces from input in generated USFM", () => {
     '\\jmp  RSV|link-href="#x"\\jmp*\n  \n' +
     "\\v 3 c\n";
   it("are kept as they are in the text", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const usfmParser = new USFMParser(inputUSFM);
     assert.deepStrictEqual(usfmParser.errors, []);
     const usj = usfmParser.toUSJ();
@@ -285,7 +285,7 @@ describe("Spaces from input in generated USFM", () => {
 describe("Line endings in text to USFM", () => {
   for (const verseText of ["one\r\ntwo", "one\rtwo", "one\ntwo"]) {
     it(`become a single LF for ${JSON.stringify(verseText)}`, async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
       const usj = {
         type: "USJ", version: "3.1.2", content: [
           {type: "book", marker: "id", code: "GEN", content: []},
@@ -311,7 +311,7 @@ describe("Line endings in BibleNLP to USFM", () => {
   ];
   for (const [verseText, expected] of cases) {
     it(`gives a single LF for ${JSON.stringify(verseText)}`, async () => {
-      await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+      await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
       const usfmParser = new USFMParser(null, null, null,
           {vref: ["GEN 1:1", "GEN 1:2"], text: [verseText, "three"]});
       assert.strictEqual(usfmParser.usfm, `\\id GEN\n\\c 1\n\\p\n\\v 1 ${expected} \\v 2 three`);

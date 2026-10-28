@@ -66,9 +66,9 @@ It can be used directly in the HTML script tag too. Please ensure its dependenci
   console.log('Hello world');
   (async () => {
   await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter-usfm.wasm",
-                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter.wasm");
+                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/web-tree-sitter.wasm");
   await Validator.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter-usfm.wasm",
-                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/tree-sitter.wasm");
+                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.1/web-tree-sitter.wasm");
   const usfmParser = new USFMParser('\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2 more text')
   const output = usfmParser.toUSJ()
   console.log({ output })

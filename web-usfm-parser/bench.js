@@ -3,7 +3,7 @@ import {readFile} from "fs/promises";
 import {run, bench, boxplot, summary} from "mitata";
 
 (async () => {
-  await USFMParser.init("tree-sitter-usfm.wasm", "tree-sitter.wasm");
+  await USFMParser.init("tree-sitter-usfm.wasm", "web-tree-sitter.wasm");
 
   // these are representative test cases showing jumps in size for performance measure as file sizes increase
   const pathsToBench = [

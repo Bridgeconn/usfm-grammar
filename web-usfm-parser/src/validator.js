@@ -1,4 +1,5 @@
-import { Parser, Language, Query } from './web-tree-sitter/tree-sitter.js';
+import { Parser, Language, Query } from './web-tree-sitter/web-tree-sitter.js';
+import { initRuntime } from './treeSitterRuntime.js';
 import { USJ_SCHEMA } from './utils/usjSchema.js';
 import Ajv from 'ajv';
 
@@ -25,12 +26,8 @@ class Validator {
   static language = null;
   static async init(grammarPath = 'node_modules/usfm-grammar/tree-sitter-usfm.wasm',
 
-    parserPath = 'node_modules/usfm-grammar/tree-sitter.wasm') {
-    await Parser.init( {
-      locateFile() {
-        return parserPath;
-      },
-    } );
+    parserPath = 'node_modules/usfm-grammar/web-tree-sitter.wasm') {
+    await initRuntime(parserPath);
     Validator.language = await Language.load(grammarPath);
   }
 
