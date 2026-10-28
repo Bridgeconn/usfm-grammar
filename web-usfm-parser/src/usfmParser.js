@@ -33,6 +33,7 @@ class USFMParser {
     this.errors = [];
     this.warnings = [];
     this.markerExtensions = null;
+    this.usfmForParser = null;
 
     let inputsGiven = 0;
     if (usfmString !== null) {
@@ -80,11 +81,14 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
       this.usfm = this.convertBibleNLPtoUSFM(bookCode);
     }
 
+    // Custom markers get their type prefix only in the text that is parsed,
+    // so this.usfm keeps the marker names the input used
+    this.usfmForParser = this.usfm;
     if (markersExt !== null) {
       this.markerExtensions = new ExtensionReader();
       this.markerExtensions.readToObject(markersExt);
       if (Object.keys(this.markerExtensions.extensions).length > 0) {
-        this.usfm = this.markerExtensions.replaceCustomMarkers(this.usfm);
+        this.usfmForParser = this.markerExtensions.replaceCustomMarkers(this.usfm);
       }
     }
 
@@ -139,6 +143,9 @@ Only one of USFM, USJ, USX or BibleNLP is supported in one object.`);
     }
     this.usj = usjObject;
     this.usfm = this.convertUSJToUSFM();
+    this.usfmForParser = this.markerExtensions
+      ? this.markerExtensions.replaceCustomMarkers(this.usfm)
+      : this.usfm;
     return this.usfm;
   }
 
@@ -173,10 +180,10 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`);
   parseUSFM() {
     let tree = null;
     try {
-      if (this.usfm.length > 25000) {
-        tree = this.parser.parse(this.usfm, null, this.parserOptions);
+      if (this.usfmForParser.length > 25000) {
+        tree = this.parser.parse(this.usfmForParser, null, this.parserOptions);
       } else {
-        tree = this.parser.parse(this.usfm);
+        tree = this.parser.parse(this.usfmForParser);
       }
     } catch (err) {
       throw err;
@@ -190,19 +197,29 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`);
     this.syntaxTree = tree.rootNode;
   }
 
+  // Position of a node in the input: the column is counted without the
+  // customType_ prefixes that were inserted for parsing
+  inputPosition(node) {
+    const { row, column } = node.startPosition;
+    if (this.markerExtensions === null) {
+      return { row, column };
+    }
+    const lineStart = this.usfmForParser.lastIndexOf('\n', node.startIndex - 1) + 1;
+    const prefix = this.usfmForParser.slice(lineStart, node.startIndex);
+    return { row, column: ExtensionReader.restoreCustomMarkers(prefix).length };
+  }
+
   checkForErrors(tree) {
     const errorQuery = new Query(USFMParser.language, '(ERROR) @errors');
     const errors = errorQuery.captures(tree.rootNode);
     if (errors.length > 0) {
-      this.errors = errors.map(
-        (err) =>
-          `At ${err.node.startPosition.row}:${
-            err.node.startPosition.column
-          }, Error: ${this.usfm.substring(
-            err.node.startIndex,
-            err.node.endIndex,
-          )}`,
-      );
+      this.errors = errors.map((err) => {
+        const position = this.inputPosition(err.node);
+        return `At ${position.row}:${position.column}, Error: ${
+          ExtensionReader.restoreCustomMarkers(
+            this.usfmForParser.substring(err.node.startIndex, err.node.endIndex),
+          )}`;
+      });
       return new Error(`Errors found in USFM: ${this.errors.join(', ')}`);
     }
     return null;
@@ -215,10 +232,9 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`);
       const currentNode = cursor.currentNode;
 
       if (currentNode.isMissing) {
+        const position = this.inputPosition(currentNode);
         this.errors.push(
-          `At ${currentNode.startPosition.row + 1}:${
-            currentNode.startPosition.column
-          }, Error: Missing ${currentNode.type}`,
+          `At ${position.row + 1}:${position.column}, Error: Missing ${currentNode.type}`,
         );
       }
 
@@ -331,7 +347,7 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
 
     let outputUSJ;
     try {
-      const usjGenerator = new USJGenerator(USFMParser.language, this.usfm);
+      const usjGenerator = new USJGenerator(USFMParser.language, this.usfmForParser);
 
       usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
       outputUSJ = usjGenerator.jsonRootObj;
@@ -466,7 +482,7 @@ Use ignoreErrors=true to generate output despite errors`,
 
     try {
       // Initialize the USX generator (assuming the constructor is already implemented in JS)
-      const usxGenerator = new USXGenerator(USFMParser.language, this.usfm);
+      const usxGenerator = new USXGenerator(USFMParser.language, this.usfmForParser);
 
       // Process the syntax tree and convert to USX format
       usxGenerator.node2Usx(this.syntaxTree, usxGenerator.xmlRootNode);
