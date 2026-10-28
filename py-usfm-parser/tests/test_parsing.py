@@ -344,3 +344,19 @@ def test_custom_marker_names_are_kept():
     assert bad_parser.errors
     assert "custom" not in str(bad_parser.errors)
     assert "\\zpb" in str(bad_parser.errors)
+
+
+@pytest.mark.parametrize(
+    "usfm",
+    [
+        "\\id GEN\n\\c 1\n\\p\n\\v 1 A \\zpb\\* b \\qwerty c\n",
+        "\\id GEN\n\\c 1\n\\p\n\\v 1 A \\zpb\\* b \\w c \\v 2 d\n",
+    ],
+)
+def test_error_positions_count_input_columns(usfm):
+    """With a markers.ext, error and missing node positions are the columns of
+    the input, not of the text with customType_ prefixes that is parsed"""
+    with_ext = USFMParser(usfm, markers_ext=custom_names_ext).errors
+    without_ext = USFMParser(usfm).errors
+    assert with_ext, "expected a parse error"
+    assert with_ext == without_ext

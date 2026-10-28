@@ -4,7 +4,7 @@ from enum import Enum
 import re
 import traceback
 import tree_sitter_usfm3 as tsusfm
-from tree_sitter import Language, Parser, Query, QueryCursor
+from tree_sitter import Language, Parser, Query, QueryCursor, Point
 from lxml import etree
 from usfm_grammar.usx_generator import USXGenerator, USFM_VERSION
 from usfm_grammar.usj_generator import USJGenerator
@@ -176,7 +176,7 @@ class USFMParser:
         if 'errors' in error_caps and len(error_caps['errors']) > 0:
             self.errors = [
                 (
-                    f"At {err.start_point}",
+                    f"At {self._input_point(err)}",
                     restore_custom_markers(
                         self.usfm_bytes[err.start_byte : err.end_byte].decode("utf-8")
                     ),
@@ -185,11 +185,21 @@ class USFMParser:
             ]
         self.check_for_missing(self.syntax_tree)
 
+    def _input_point(self, node):
+        """Position of a node in the input: the column is counted without the
+        customType_ prefixes that were inserted for parsing"""
+        if self.marker_extensions is None:
+            return node.start_point
+        line_start = self.usfm_bytes.rfind(b"\n", 0, node.start_byte) + 1
+        prefix = self.usfm_bytes[line_start : node.start_byte].decode("utf-8")
+        column = len(restore_custom_markers(prefix).encode("utf-8"))
+        return Point(node.start_point.row, column)
+
     def check_for_missing(self, node):
         """Identify and report the MISSING nodes also as errors"""
         for child in node.children:
             if child.is_missing:
-                self.errors.append((f"At {child.start_point}", f"Missing {child.type}"))
+                self.errors.append((f"At {self._input_point(child)}", f"Missing {child.type}"))
             else:
                 self.check_for_missing(child)
 
