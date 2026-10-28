@@ -179,8 +179,7 @@ class USFMParser:
         error_nodes.sort(key=lambda err: err.start_byte)
         self.errors = []
         for err in error_nodes:
-            # unpack once: reading .row/.column off start_point has segfaulted
-            row, column = err.start_point
+            row, column = self._input_point(err)
             self.errors.append(
                 (
                     f"At {row + 1}:{column}",
@@ -191,6 +190,17 @@ class USFMParser:
                     ),
                 )
             )
+
+    def _input_point(self, node):
+        """Row and column of a node in the input: the column is counted without
+        the customType_ prefixes that were inserted for parsing"""
+        # unpack once: reading .row/.column off start_point has segfaulted
+        row, column = node.start_point
+        if self.marker_extensions is None:
+            return row, column
+        line_start = self.usfm_bytes.rfind(b"\n", 0, node.start_byte) + 1
+        prefix = self.usfm_bytes[line_start : node.start_byte].decode("utf-8")
+        return row, len(restore_custom_markers(prefix).encode("utf-8"))
 
     def check_for_missing(self, node, missing_nodes):
         """Identify the MISSING nodes, to be reported also as errors"""

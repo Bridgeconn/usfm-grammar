@@ -333,4 +333,16 @@ describe("Custom marker names with a markers.ext", () => {
     assert.deepStrictEqual(usfmParser.errors, []);
     assert.strictEqual(usfmParser.toUSJ().content[2].content[2]["x-page"], "5");
   });
+
+  it("are reported at the input's columns in errors", () => {
+    for (const bad of [
+      "\\id GEN\n\\c 1\n\\p\n\\v 1 A \\zpb\\* b \\qwerty c\n",
+      "\\id GEN\n\\c 1\n\\p\n\\v 1 A \\zpb\\* b \\w c \\v 2 d\n",
+    ]) {
+      const withExt = new USFMParser(bad, null, null, null, null, customNamesExt).errors;
+      const withoutExt = new USFMParser(bad).errors;
+      assert.ok(withExt.length > 0, "expected a parse error");
+      assert.deepStrictEqual(withExt, withoutExt);
+    }
+  });
 });

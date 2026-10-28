@@ -182,23 +182,33 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
     this.syntaxTree = tree.rootNode;
   }
 
+  // Position of a node in the input: the column is counted without the
+  // customType_ prefixes that were inserted for parsing
+  inputPosition(node) {
+    const { row, column } = node.startPosition;
+    if (this.markerExtensions === null) {
+      return { row, column };
+    }
+    const lineStart = this.usfmForParser.lastIndexOf('\n', node.startIndex - 1) + 1;
+    const prefix = this.usfmForParser.slice(lineStart, node.startIndex);
+    return { row, column: ExtensionReader.restoreCustomMarkers(prefix).length };
+  }
+
   checkForErrors(tree) {
     const errorQuery = new Query(USFM3, '(ERROR) @errors');
     const errorNodes = errorQuery.captures(tree.rootNode).map((cap) => cap.node);
     this.checkforMissing(tree.rootNode, errorNodes);
     // report errors in the order they occur in the USFM
     errorNodes.sort((a, b) => a.startIndex - b.startIndex);
-    this.errors = errorNodes.map((err) =>
-      err.isMissing
-        ? `At ${err.startPosition.row + 1}:${
-          err.startPosition.column
-        }, Error: Missing ${err.type}`
-        : `At ${err.startPosition.row + 1}:${
-          err.startPosition.column
-        }, Error: ${ExtensionReader.restoreCustomMarkers(
-          this.usfmForParser.substring(err.startIndex, err.endIndex),
-        )}`,
-    );
+    this.errors = errorNodes.map((err) => {
+      const position = this.inputPosition(err);
+      return err.isMissing
+        ? `At ${position.row + 1}:${position.column}, Error: Missing ${err.type}`
+        : `At ${position.row + 1}:${position.column}, Error: ${
+          ExtensionReader.restoreCustomMarkers(
+            this.usfmForParser.substring(err.startIndex, err.endIndex),
+          )}`;
+    });
     if (this.errors.length > 0) {
       return new Error(`Errors found in USFM: ${this.errors.join(', ')}`);
     }
