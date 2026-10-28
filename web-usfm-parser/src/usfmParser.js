@@ -197,18 +197,29 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`);
     this.syntaxTree = tree.rootNode;
   }
 
+  // Position of a node in the input: the column is counted without the
+  // customType_ prefixes that were inserted for parsing
+  inputPosition(node) {
+    const { row, column } = node.startPosition;
+    if (this.markerExtensions === null) {
+      return { row, column };
+    }
+    const lineStart = this.usfmForParser.lastIndexOf('\n', node.startIndex - 1) + 1;
+    const prefix = this.usfmForParser.slice(lineStart, node.startIndex);
+    return { row, column: ExtensionReader.restoreCustomMarkers(prefix).length };
+  }
+
   checkForErrors(tree) {
     const errorQuery = new Query(USFMParser.language, '(ERROR) @errors');
     const errors = errorQuery.captures(tree.rootNode);
     if (errors.length > 0) {
-      this.errors = errors.map(
-        (err) =>
-          `At ${err.node.startPosition.row}:${
-            err.node.startPosition.column
-          }, Error: ${ExtensionReader.restoreCustomMarkers(
+      this.errors = errors.map((err) => {
+        const position = this.inputPosition(err.node);
+        return `At ${position.row}:${position.column}, Error: ${
+          ExtensionReader.restoreCustomMarkers(
             this.usfmForParser.substring(err.node.startIndex, err.node.endIndex),
-          )}`,
-      );
+          )}`;
+      });
       return new Error(`Errors found in USFM: ${this.errors.join(', ')}`);
     }
     return null;
@@ -221,10 +232,9 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`);
       const currentNode = cursor.currentNode;
 
       if (currentNode.isMissing) {
+        const position = this.inputPosition(currentNode);
         this.errors.push(
-          `At ${currentNode.startPosition.row + 1}:${
-            currentNode.startPosition.column
-          }, Error: Missing ${currentNode.type}`,
+          `At ${position.row + 1}:${position.column}, Error: Missing ${currentNode.type}`,
         );
       }
 
