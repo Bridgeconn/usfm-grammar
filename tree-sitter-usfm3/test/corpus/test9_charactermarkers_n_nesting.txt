@@ -616,3 +616,43 @@ Custom attributes with hyphens in the name
                 (customAttribute
                   (customAttributeName)
                   (attributeValue))))))))))
+
+================================================================================
+User defined attributes on jmp
+================================================================================
+\id GEN
+\c 1
+\p
+\v 1 See \jmp TG Time|href="x-lds:tg/time" x-category="tg"\jmp* and \jmp Ruth|x-category="bd" link-href="#article-Ruth"\jmp* here.
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text)
+          (jmp
+            (text)
+            (linkAttribute
+              (attributeValue))
+            (customAttribute
+              (customAttributeName)
+              (attributeValue)))
+          (text)
+          (jmp
+            (text)
+            (customAttribute
+              (customAttributeName)
+              (attributeValue))
+            (linkAttribute
+              (attributeValue)))
+          (text))))))
