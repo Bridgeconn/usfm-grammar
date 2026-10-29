@@ -3,7 +3,7 @@ import {readFile} from "fs/promises";
 import {DOMImplementation, XMLSerializer, DOMParser} from "@xmldom/xmldom";
 import {findAllMarkers} from "./test/config.js";
 (async () => {
-  await USFMParser.init("tree-sitter-usfm.wasm", "tree-sitter.wasm");
+  await USFMParser.init("tree-sitter-usfm.wasm", "web-tree-sitter.wasm");
   // const filePath = "../tests/samples-from-wild/t4t3/origin.usfm";
   // const filePath = "../tests/advanced/figureInNote/origin.usfm";
   // const filePath = "../tests/usfmjsTests/tw_words_chunk/origin.usfm";

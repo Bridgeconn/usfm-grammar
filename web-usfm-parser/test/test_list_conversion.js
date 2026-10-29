@@ -114,7 +114,7 @@ describe("Test USJ to BibleNLP format conversion", () => {
 });
 
 describe("Test generating USFM from BibleNLP format", async () => {
-  await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+  await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
   allUsfmFiles.forEach(function(value) {
     if (isValidUsfm[value]) {
       it(`Generate USFM from BibleNLP: ${value}`, async (inputUsfmPath=value) => {

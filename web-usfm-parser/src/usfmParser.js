@@ -1,4 +1,5 @@
-import { Parser, Language, Query } from './web-tree-sitter/tree-sitter.js';
+import { Parser, Language, Query } from './web-tree-sitter/web-tree-sitter.js';
+import { initRuntime } from './treeSitterRuntime.js';
 import USFMGenerator from './usfmGenerator.js';
 import USJGenerator from './usjGenerator.js';
 import ListGenerator from './listGenerator.js';
@@ -11,13 +12,9 @@ class USFMParser {
   static language = null;
   static async init(
     grammarPath = 'node_modules/usfm-grammar/tree-sitter-usfm.wasm',
-    parserPath = 'node_modules/usfm-grammar/tree-sitter.wasm',
+    parserPath = 'node_modules/usfm-grammar/web-tree-sitter.wasm',
   ) {
-    await Parser.init({
-      locateFile() { 
-        return parserPath;
-      },   
-    });
+    await initRuntime(parserPath);
     USFMParser.language = await Language.load(grammarPath);
   }
 
@@ -211,27 +208,33 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`);
   checkforMissing(node) {
     const cursor = node.walk();
 
-    do {
-      const currentNode = cursor.currentNode;
+    // Delete the cursor explicitly: web-tree-sitter's GC finalizer for
+    // TreeCursor frees the wrong memory and corrupts the wasm heap.
+    try {
+      do {
+        const currentNode = cursor.currentNode;
 
-      if (currentNode.isMissing) {
-        this.errors.push(
-          `At ${currentNode.startPosition.row + 1}:${
-            currentNode.startPosition.column
-          }, Error: Missing ${currentNode.type}`,
-        );
-      }
-
-      if (cursor.gotoFirstChild()) {
-        continue;
-      }
-
-      while (!cursor.gotoNextSibling()) {
-        if (!cursor.gotoParent()) {
-          return;
+        if (currentNode.isMissing) {
+          this.errors.push(
+            `At ${currentNode.startPosition.row + 1}:${
+              currentNode.startPosition.column
+            }, Error: Missing ${currentNode.type}`,
+          );
         }
-      }
-    } while (true);
+
+        if (cursor.gotoFirstChild()) {
+          continue;
+        }
+
+        while (!cursor.gotoNextSibling()) {
+          if (!cursor.gotoParent()) {
+            return;
+          }
+        }
+      } while (true);
+    } finally {
+      cursor.delete();
+    }
   }
   // checkforMissing(node) {
   //   console.log('Checking for missing nodes in:', node.type, 'at');

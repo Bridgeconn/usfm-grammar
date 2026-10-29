@@ -1,4 +1,4 @@
-import { Query } from './web-tree-sitter/tree-sitter.js';
+import { Query } from './web-tree-sitter/web-tree-sitter.js';
 
 export function getIdQuery(lang) {
   return new Query(lang, '(id (bookcode) @book-code (description)? @desc)');
