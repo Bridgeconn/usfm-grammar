@@ -22,6 +22,7 @@ from tests import (
     generate_USFM_from_USJ,
     parse_USFM_string,
     exclude_USX_files,
+    TEST_DIR,
 )
 
 all_valid_markers = []
@@ -32,6 +33,14 @@ test_files = all_usfm_files.copy()
 for file in negative_tests:
     if file in test_files:
         test_files.remove(file)
+
+# We give vid to the table rows, while USX(and the testsuite) has it on the table
+vid_on_table_row_files = [
+    f"{TEST_DIR}/bugfixes/tcc/origin.usfm",
+    f"{TEST_DIR}/bugfixes/thc/origin.usfm",
+    f"{TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm",
+    f"{TEST_DIR}/specExamples/table/origin.usfm",
+]
 
 
 @pytest.mark.parametrize("file_path", test_files)
@@ -201,10 +210,17 @@ def strip_default_attrib_value(usj_dict):
                 strip_default_attrib_value(item)
 
 
-@pytest.mark.parametrize("file_path", test_files)
-@pytest.mark.timeout(30)
-def test_compare_usj_with_testsuite_samples(file_path):
-    """Compare the generated USJ with the origin.xml in test suite"""
+def remove_vid(usj_dict):
+    """Drop the vid attributes, for comparisons that are vid agnostic"""
+    usj_dict.pop("vid", None)
+    if "content" in usj_dict:
+        for item in usj_dict["content"]:
+            if isinstance(item, dict):
+                remove_vid(item)
+
+
+def compare_usj_with_testsuite_sample(file_path, ignore_vid=False):
+    """Compare the generated USJ with the origin.json in test suite"""
     test_parser, _ = initialise_parser(file_path)
     assert not test_parser.errors, test_parser.errors
     usx_file_path = file_path.replace("origin.usfm", "origin.xml")
@@ -217,6 +233,9 @@ def test_compare_usj_with_testsuite_samples(file_path):
             usj_file_path = file_path.replace("origin.usfm", "origin.json")
             with open(usj_file_path, "r", encoding="utf-8") as usj_file:
                 origin_usj = json.load(usj_file)
+            if ignore_vid:
+                remove_vid(usj_dict)
+                remove_vid(origin_usj)
             assert usj_dict == origin_usj, (
                 f"generated USJ:\n{usj_dict}\n"
                 + f"USJ in testsuite:\n{origin_usj}\n syntax tree: {test_parser.to_syntax_tree()}"
@@ -233,7 +252,23 @@ def test_compare_usj_with_testsuite_samples(file_path):
                 f"generated USJ:\n{usj_dict}\n"
                 + f"USJ in testsuite:\n{origin_usj}\n syntax tree: {test_parser.to_syntax_tree()}"
             )
-    # assert usj_dict == origin_usj
+
+
+@pytest.mark.parametrize(
+    "file_path", [file for file in test_files if file not in vid_on_table_row_files]
+)
+@pytest.mark.timeout(30)
+def test_compare_usj_with_testsuite_samples(file_path):
+    """Compare the generated USJ with the origin.json in test suite"""
+    compare_usj_with_testsuite_sample(file_path)
+
+
+@pytest.mark.parametrize("file_path", vid_on_table_row_files)
+@pytest.mark.timeout(30)
+def test_compare_usj_with_testsuite_samples_ignoring_vid(file_path):
+    """Compare the generated USJ with the origin.json in test suite, ignoring vids.
+    For samples where we differ from the testsuite only in the vid placement on tables"""
+    compare_usj_with_testsuite_sample(file_path, ignore_vid=True)
 
 
 def collect_table_cells(usj_obj, cells=None):
