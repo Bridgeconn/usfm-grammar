@@ -57,7 +57,12 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         "v",
         "b",
         "milestone",
-        "zNameSpace",
+        # the node types in _zNameSpace of the grammar
+        "zNameSpacePara",
+        "zNameSpaceChar",
+        "zNameSpaceMS",
+        "zNameSpaceNote",
+        "zNameSpaceUndefined",
     ]
     # Paragraph markers with TextType VerseText, as per
     # https://docs.usfm.bible/usfm/3.1.2/para/index.html (numbers stripped)
