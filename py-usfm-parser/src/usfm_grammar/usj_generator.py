@@ -572,6 +572,12 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
             else:
                 self.node_2_usj(child, custom_json_obj)
         self._set_verse_text_context(prev)
+        # As with standard milestones, keep content only if there is some.
+        # A space before the attributes (\zaln-s |...) is not content
+        if node_type == "ms" and all(
+            isinstance(item, str) and not item.strip() for item in custom_json_obj["content"]
+        ):
+            del custom_json_obj["content"]
         parent_json_obj["content"].append(custom_json_obj)
 
 
