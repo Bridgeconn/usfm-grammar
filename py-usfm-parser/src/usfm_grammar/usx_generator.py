@@ -57,8 +57,18 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         "v",
         "b",
         "milestone",
-        "zNameSpace",
+        # the node types in _zNameSpace of the grammar
+        "zNameSpacePara",
+        "zNameSpaceChar",
+        "zNameSpaceMS",
+        "zNameSpaceNote",
+        "zNameSpaceUndefined",
     ]
+    # Paragraph markers with TextType VerseText, as per
+    # https://docs.usfm.bible/usfm/3.1.2/para/index.html (numbers stripped)
+    VERSE_TEXT_PARA_MARKERS = ["p", "m", "mi", "nb", "pc", "ph", "pi", "pm", "pmc", "pmo",
+                               "pmr", "po", "pr", "cls", "lit", "b", "q", "qc", "qd", "qm",
+                               "qr", "li", "lh", "lf", "lim", "tr", "d"]
     MARKER_LISTS = {
         "para_style": PARA_STYLE_MARKERS,
         "note": NOTE_MARKERS,
@@ -67,6 +77,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         "table_cell": TABLE_CELL_MARKERS,
         "misc": MISC_MARKERS,
         "other_para_nestables": OTHER_PARA_NESTABLES,
+        "verse_text_para": VERSE_TEXT_PARA_MARKERS,
     }
     MARKER_SETS = {
         "table_cell": set(TABLE_CELL_MARKERS),
@@ -76,6 +87,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         "note_markers": set(NOTE_MARKERS),
         "para_style": set(PARA_STYLE_MARKERS),
         "misc": set(MISC_MARKERS),
+        "verse_text_para": set(VERSE_TEXT_PARA_MARKERS),
     }
 
     def __init__(self, tree_sitter_language_obj, usfm_bytes, usx_root_element=None):
@@ -98,6 +110,12 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             "prev_verse": None,
             "vid-h": None,
             "vid-ref": None,
+            # nodes given a vid, to be kept only if the verse continues
+            "pending_vids": [],
+            # whether text being processed is verse text
+            "in_verse_text": False,
+            # sidebar content is not verse text, whatever its para markers
+            "in_sidebar": False,
         }
         self.dispatch_map = self._populate_dispatch_map()
         self.queries = {}
@@ -166,6 +184,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             else:
                 self.node_2_usx(child, parent_xml_node)
 
+        self._resolve_pending_vids(verse_continues=False)
         last_verse = self.parse_state["prev_verse"]
         if last_verse is not None and last_verse.get("eid") is None:
             v_end_xml_node = etree.Element("verse")
@@ -187,6 +206,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
 
     def _node_2_usx_verse(self, node, parent_xml_node):
         """build verse node in USX"""
+        self._resolve_pending_vids(verse_continues=False)
         eid = self.parse_state["prev_verse_sid_to_close"]
         if eid is not None:
             prev_para = self.parse_state["prev_verse_parent"]
@@ -278,12 +298,33 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             self.parse_state["vid-ref"] = None
 
     def _add_vid_attribute_second_attempt(self, xml_node, first_child):
-        """Add vid if first is not a verse tag"""
+        """Add vid if first is not a verse tag. It is provisional until
+        we know whether the verse continues after this node"""
         if not xml_node.get("vid") and\
+            not self.parse_state["in_sidebar"] and\
             self.parse_state['prev_verse_sid_to_close'] is not None and\
                 first_child is not None and\
                     first_child.type != "v":
             xml_node.set("vid", self.parse_state['prev_verse_sid_to_close'])
+            self.parse_state["pending_vids"].append(xml_node)
+
+    def _resolve_pending_vids(self, verse_continues):
+        """Keep the provisional vids if verse text follows them,
+        drop them if the verse ended (at a \\v, \\c or end of document)"""
+        if not verse_continues:
+            for xml_node in self.parse_state["pending_vids"]:
+                xml_node.attrib.pop("vid", None)
+        self.parse_state["pending_vids"].clear()
+
+    def _set_verse_text_context(self, is_verse_text):
+        """Mark whether the text that follows is verse text. Returns the previous value"""
+        prev = self.parse_state["in_verse_text"]
+        self.parse_state["in_verse_text"] = is_verse_text
+        return prev
+
+    def _is_verse_text_para(self, marker):
+        """Check if the para marker has TextType VerseText"""
+        return re.sub(r"\d+$", "", marker) in self.MARKER_SETS["verse_text_para"]
 
 
     def _node_2_usx_para(self, node, parent_xml_node):
@@ -302,8 +343,10 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
                 first_child = para_tag_cap['para-marker'][0].children[1] \
                     if len(para_tag_cap['para-marker'][0].children) > 1 else None
                 self._add_vid_attribute_second_attempt(para_xml_node, first_child)
+                prev = self._set_verse_text_context(self._is_verse_text_para(para_marker))
                 for child in para_tag_cap['para-marker'][0].children[1:]:
                     self.node_2_usx(child, para_xml_node)
+                self._set_verse_text_context(prev)
         elif node.type in ["pi", "ph"]:
             para_marker = (
                 self.usfm[node.children[0].start_byte : node.children[0].end_byte]
@@ -316,8 +359,10 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             self._add_vid_attributes(para_xml_node)
             first_child = node.children[1] if len(node.children) > 1 else None
             self._add_vid_attribute_second_attempt(para_xml_node, first_child)
+            prev = self._set_verse_text_context(self._is_verse_text_para(para_marker))
             for child in node.children[1:]:
                 self.node_2_usx(child, para_xml_node)
+            self._set_verse_text_context(prev)
 
     def _node_2_usx_notes(self, node, parent_xml_node):
         """build USX nodes for footnotes and corss-refs"""
@@ -338,8 +383,11 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             .strip(),
         )
         self._add_vid_attributes(note_xml_node)
+        # Note text doesn't count as continuing the verse
+        prev = self._set_verse_text_context(False)
         for child in node.children[2:-1]:
             self.node_2_usx(child, note_xml_node)
+        self._set_verse_text_context(prev)
 
     def _node_2_usx_char(self, node, parent_xml_node):
         """build USX nodes for character markups, both regular and nested"""
@@ -411,8 +459,10 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             self._add_vid_attributes(row_xml_node)
             first_child = node.children[1] if len(node.children) > 1 else None
             self._add_vid_attribute_second_attempt(row_xml_node, first_child)
+            prev = self._set_verse_text_context(True)
             for child in node.children[1:]:
                 self.node_2_usx(child, row_xml_node)
+            self._set_verse_text_context(prev)
         elif node.type in self.TABLE_CELL_MARKERS:
             tag_node = node.children[0]
             style = (
@@ -468,8 +518,10 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             sidebar_xml_node = etree.SubElement(parent_xml_node, "sidebar")
             sidebar_xml_node.set("style", style)
             self._add_vid_attributes(sidebar_xml_node)
+            self.parse_state["in_sidebar"] = True
             for child in node.children[1:-1]:
                 self.node_2_usx(child, sidebar_xml_node)
+            self.parse_state["in_sidebar"] = False
         elif node.type == "cat":
             cat_cursor = QueryCursor(self._get_query("category"))
             cat_cap = cat_cursor.captures(node)['category']
@@ -483,8 +535,10 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             fig_xml_node = etree.SubElement(parent_xml_node, "figure")
             fig_xml_node.set("style", "fig")
             self._add_vid_attributes(fig_xml_node)
+            prev = self._set_verse_text_context(False)
             for child in node.children[1:-1]:
                 self.node_2_usx(child, fig_xml_node)
+            self._set_verse_text_context(prev)
         elif node.type == "ref":
             ref_xml_node = etree.SubElement(parent_xml_node, "ref")
             ref_xml_node.set("style", "ref")
@@ -528,6 +582,10 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         # Consume any vid/h pending from a preceding \vid marker, as the other
         # node handlers do, so it is not left to attach to a later node
         self._add_vid_attributes(custom_xml_node)
+        # TextType of custom paras and notes is unknown, so their text is not counted
+        prev = self.parse_state["in_verse_text"]
+        if node_type in ("para", "note"):
+            self._set_verse_text_context(False)
         for child in curr_node.children:
             if child.type.startswith("zSpaceTag"):
                 marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
@@ -557,6 +615,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
                 )
             else:
                 self.node_2_usx(child, custom_xml_node)
+        self._set_verse_text_context(prev)
 
 
     def _node_2_usx_generic(self, node, parent_xml_node):
@@ -579,6 +638,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         first_child = node.children[children_range_start] \
             if len(node.children) > children_range_start else None
         self._add_vid_attribute_second_attempt(para_xml_node, first_child)
+        prev = self._set_verse_text_context(self._is_verse_text_para(style))
         for child in node.children[children_range_start:]:
             # self.node_2_usx(child, para_xml_node)
             if any(
@@ -592,6 +652,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
                 self.node_2_usx(child, para_xml_node)
             else:
                 self.node_2_usx(child, parent_xml_node)
+        self._set_verse_text_context(prev)
 
     def _populate_dispatch_map(self):
         """Create a dispatch map for node type to handler functions"""
@@ -653,6 +714,9 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             self.usfm[node.start_byte : node.end_byte].decode("utf-8").replace("~", " ")
         )
         if text_val:
+            if self.parse_state["in_verse_text"] and not self.parse_state["in_sidebar"]\
+                and text_val.strip():
+                self._resolve_pending_vids(verse_continues=True)
             if len(parent_xml_node) > 0:
                 # If there are already children, append text to the tail of the last child
                 last_child = parent_xml_node[-1]
@@ -673,6 +737,8 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             parent_xml_node = self.xml_root_node
 
         self.node_2_usx(node, parent_xml_node)
+        # The last verse ends with the document
+        self._resolve_pending_vids(verse_continues=False)
         return parent_xml_node
 
     def node_2_usx(self, node, parent_xml_node):  # pylint: disable= too-many-branches

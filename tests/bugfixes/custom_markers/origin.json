@@ -90,8 +90,7 @@
                     "marker": "rem",
                     "content": [
                         "test comment to chekc if para flow breaks\n"
-                    ],
-                    "vid": "GEN 1:4"
+                    ]
                 },
                 {
                     "type": "verse",
@@ -154,7 +153,6 @@
                 },
                 {
                     "type": "ms",
-                    "content": [],
                     "marker": "zaln-s",
                     "x-content": "καὶ",
                     "x-lemma": "καί",
@@ -174,13 +172,11 @@
                 },
                 {
                     "type": "ms",
-                    "content": [],
                     "marker": "zaln-e"
                 },
                 "\n",
                 {
                     "type": "ms",
-                    "content": [],
                     "marker": "zaln-s",
                     "x-content": "συναλιζόμενος",
                     "x-lemma": "συναλίζω",
@@ -250,7 +246,6 @@
                 },
                 {
                     "type": "ms",
-                    "content": [],
                     "marker": "zaln-e"
                 },
                 ",\n"

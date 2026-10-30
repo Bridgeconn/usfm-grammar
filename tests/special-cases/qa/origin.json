@@ -32,7 +32,8 @@
       "marker": "qa",
       "content": [
         "nonverse"
-      ]
+      ],
+      "vid": "SNG 1:1"
     },
     {
       "type": "para",
@@ -46,7 +47,8 @@
           "sid": "SNG 1:2"
         },
         "verse"
-      ]
+      ],
+      "vid": "SNG 1:1"
     }
   ]
 }

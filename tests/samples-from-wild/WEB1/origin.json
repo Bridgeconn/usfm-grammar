@@ -392,7 +392,8 @@
           "sid": "EXO 2:9"
         },
         "Pharaoh’s daughter said to her, “Take this child away, and nurse him for me, and I will give you your wages.”"
-      ]
+      ],
+      "vid": "EXO 2:8"
     },
     {
       "type": "para",
@@ -428,7 +429,8 @@
           ]
         },
         " and said, “Because I drew him out of the water.”"
-      ]
+      ],
+      "vid": "EXO 2:9"
     },
     {
       "type": "para",
@@ -488,7 +490,8 @@
           "sid": "EXO 2:15"
         },
         "Now when Pharaoh heard this thing, he sought to kill Moses. But Moses fled from the face of Pharaoh, and lived in the land of Midian, and he sat down by a well."
-      ]
+      ],
+      "vid": "EXO 2:14"
     },
     {
       "type": "para",
@@ -685,7 +688,8 @@
       "marker": "p",
       "content": [
         "He said, “Here I am.”"
-      ]
+      ],
+      "vid": "EXO 3:4"
     },
     {
       "type": "para",
@@ -712,7 +716,8 @@
       "marker": "p",
       "content": [
         "Moses hid his face because he was afraid to look at God."
-      ]
+      ],
+      "vid": "EXO 3:6"
     },
     {
       "type": "para",
@@ -893,7 +898,8 @@
       "marker": "p",
       "content": [
         "He said, “A rod.”"
-      ]
+      ],
+      "vid": "EXO 4:2"
     },
     {
       "type": "para",
@@ -913,7 +919,8 @@
       "marker": "p",
       "content": [
         "He threw it on the ground, and it became a snake; and Moses ran away from it."
-      ]
+      ],
+      "vid": "EXO 4:3"
     },
     {
       "type": "para",
@@ -933,7 +940,8 @@
       "marker": "p",
       "content": [
         "He stretched out his hand, and took hold of it, and it became a rod in his hand."
-      ]
+      ],
+      "vid": "EXO 4:4"
     },
     {
       "type": "para",
@@ -960,7 +968,8 @@
       "marker": "p",
       "content": [
         "He put his hand inside his cloak, and when he took it out, behold, his hand was leprous, as white as snow."
-      ]
+      ],
+      "vid": "EXO 4:6"
     },
     {
       "type": "para",
@@ -980,7 +989,8 @@
       "marker": "p",
       "content": [
         "He put his hand inside his cloak again, and when he took it out of his cloak, behold, it had turned again as his other flesh."
-      ]
+      ],
+      "vid": "EXO 4:7"
     },
     {
       "type": "para",
@@ -1122,7 +1132,8 @@
       "marker": "p",
       "content": [
         "Jethro said to Moses, “Go in peace.”"
-      ]
+      ],
+      "vid": "EXO 4:18"
     },
     {
       "type": "para",
@@ -1250,7 +1261,8 @@
           "sid": "EXO 4:31"
         },
         "The people believed, and when they heard that Yahweh had visited the children of Israel, and that he had seen their affliction, then they bowed their heads and worshiped."
-      ]
+      ],
+      "vid": "EXO 4:27"
     },
     {
       "type": "chapter",
@@ -2072,7 +2084,8 @@
           "sid": "EXO 8:11"
         },
         "The frogs shall depart from you, and from your houses, and from your servants, and from your people. They shall remain in the river only.”"
-      ]
+      ],
+      "vid": "EXO 8:10"
     },
     {
       "type": "para",
@@ -3202,7 +3215,8 @@
           "sid": "EXO 12:28"
         },
         "The children of Israel went and did so; as Yahweh had commanded Moses and Aaron, so they did."
-      ]
+      ],
+      "vid": "EXO 12:27"
     },
     {
       "type": "para",
@@ -3883,14 +3897,16 @@
       "marker": "q1",
       "content": [
         "“I will sing to Yahweh, for he has triumphed gloriously."
-      ]
+      ],
+      "vid": "EXO 15:1"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "He has thrown the horse and his rider into the sea."
-      ]
+      ],
+      "vid": "EXO 15:1"
     },
     {
       "type": "para",
@@ -3910,21 +3926,24 @@
       "marker": "q2",
       "content": [
         "He has become my salvation."
-      ]
+      ],
+      "vid": "EXO 15:2"
     },
     {
       "type": "para",
       "marker": "q1",
       "content": [
         "This is my God, and I will praise him;"
-      ]
+      ],
+      "vid": "EXO 15:2"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "my father’s God, and I will exalt him."
-      ]
+      ],
+      "vid": "EXO 15:2"
     },
     {
       "type": "para",
@@ -3944,7 +3963,8 @@
       "marker": "q2",
       "content": [
         "Yahweh is his name."
-      ]
+      ],
+      "vid": "EXO 15:3"
     },
     {
       "type": "para",
@@ -3964,7 +3984,8 @@
       "marker": "q2",
       "content": [
         "His chosen captains are sunk in the Red Sea."
-      ]
+      ],
+      "vid": "EXO 15:4"
     },
     {
       "type": "para",
@@ -3984,7 +4005,8 @@
       "marker": "q2",
       "content": [
         "They went down into the depths like a stone."
-      ]
+      ],
+      "vid": "EXO 15:5"
     },
     {
       "type": "para",
@@ -4004,7 +4026,8 @@
       "marker": "q2",
       "content": [
         "Your right hand, Yahweh, dashes the enemy in pieces."
-      ]
+      ],
+      "vid": "EXO 15:6"
     },
     {
       "type": "para",
@@ -4024,7 +4047,8 @@
       "marker": "q2",
       "content": [
         "You send out your wrath. It consumes them as stubble."
-      ]
+      ],
+      "vid": "EXO 15:7"
     },
     {
       "type": "para",
@@ -4044,14 +4068,16 @@
       "marker": "q2",
       "content": [
         "The floods stood upright as a heap."
-      ]
+      ],
+      "vid": "EXO 15:8"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "The deeps were congealed in the heart of the sea."
-      ]
+      ],
+      "vid": "EXO 15:8"
     },
     {
       "type": "para",
@@ -4071,14 +4097,16 @@
       "marker": "q2",
       "content": [
         "My desire will be satisfied on them."
-      ]
+      ],
+      "vid": "EXO 15:9"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "I will draw my sword. My hand will destroy them.’"
-      ]
+      ],
+      "vid": "EXO 15:9"
     },
     {
       "type": "para",
@@ -4098,14 +4126,16 @@
       "marker": "q2",
       "content": [
         "The sea covered them."
-      ]
+      ],
+      "vid": "EXO 15:10"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "They sank like lead in the mighty waters."
-      ]
+      ],
+      "vid": "EXO 15:10"
     },
     {
       "type": "para",
@@ -4125,14 +4155,16 @@
       "marker": "q2",
       "content": [
         "Who is like you, glorious in holiness,"
-      ]
+      ],
+      "vid": "EXO 15:11"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "fearful in praises, doing wonders?"
-      ]
+      ],
+      "vid": "EXO 15:11"
     },
     {
       "type": "para",
@@ -4152,7 +4184,8 @@
       "marker": "q2",
       "content": [
         "The earth swallowed them."
-      ]
+      ],
+      "vid": "EXO 15:12"
     },
     {
       "type": "para",
@@ -4172,7 +4205,8 @@
       "marker": "q2",
       "content": [
         "You have guided them in your strength to your holy habitation."
-      ]
+      ],
+      "vid": "EXO 15:13"
     },
     {
       "type": "para",
@@ -4192,14 +4226,16 @@
       "marker": "q2",
       "content": [
         "They tremble."
-      ]
+      ],
+      "vid": "EXO 15:14"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "Pangs have taken hold of the inhabitants of Philistia."
-      ]
+      ],
+      "vid": "EXO 15:14"
     },
     {
       "type": "para",
@@ -4219,14 +4255,16 @@
       "marker": "q2",
       "content": [
         "Trembling takes hold of the mighty men of Moab."
-      ]
+      ],
+      "vid": "EXO 15:15"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "All the inhabitants of Canaan have melted away."
-      ]
+      ],
+      "vid": "EXO 15:15"
     },
     {
       "type": "para",
@@ -4246,21 +4284,24 @@
       "marker": "q2",
       "content": [
         "By the greatness of your arm they are as still as a stone,"
-      ]
+      ],
+      "vid": "EXO 15:16"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "until your people pass over, Yahweh,"
-      ]
+      ],
+      "vid": "EXO 15:16"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "until the people you have purchased pass over."
-      ]
+      ],
+      "vid": "EXO 15:16"
     },
     {
       "type": "para",
@@ -4280,14 +4321,16 @@
       "marker": "q2",
       "content": [
         "the place, Yahweh, which you have made for yourself to dwell in;"
-      ]
+      ],
+      "vid": "EXO 15:17"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "the sanctuary, Lord, which your hands have established."
-      ]
+      ],
+      "vid": "EXO 15:17"
     },
     {
       "type": "para",
@@ -4334,14 +4377,16 @@
       "marker": "q1",
       "content": [
         "“Sing to Yahweh, for he has triumphed gloriously."
-      ]
+      ],
+      "vid": "EXO 15:21"
     },
     {
       "type": "para",
       "marker": "q1",
       "content": [
         "He has thrown the horse and his rider into the sea.”"
-      ]
+      ],
+      "vid": "EXO 15:21"
     },
     {
       "type": "para",
@@ -4802,7 +4847,8 @@
       "marker": "p",
       "content": [
         "Moses said to them, “Why do you quarrel with me? Why do you test Yahweh?”"
-      ]
+      ],
+      "vid": "EXO 17:2"
     },
     {
       "type": "para",
@@ -5374,7 +5420,8 @@
           "sid": "EXO 19:13"
         },
         "No hand shall touch him, but he shall surely be stoned or shot through; whether it is animal or man, he shall not live.’ When the trumpet sounds long, they shall come up to the mountain.”"
-      ]
+      ],
+      "vid": "EXO 19:8"
     },
     {
       "type": "para",
@@ -6487,7 +6534,8 @@
           "sid": "EXO 22:30"
         },
         "You shall do likewise with your cattle and with your sheep. It shall be with its mother seven days, then on the eighth day you shall give it to me."
-      ]
+      ],
+      "vid": "EXO 22:29"
     },
     {
       "type": "para",
@@ -6724,7 +6772,8 @@
       "marker": "p",
       "content": [
         "“You shall not boil a young goat in its mother’s milk."
-      ]
+      ],
+      "vid": "EXO 23:19"
     },
     {
       "type": "para",
@@ -9668,7 +9717,8 @@
           "sid": "EXO 32:29"
         },
         "Moses said, “Consecrate yourselves today to Yahweh, for every man was against his son and against his brother, that he may give you a blessing today.”"
-      ]
+      ],
+      "vid": "EXO 32:26"
     },
     {
       "type": "para",
@@ -10228,7 +10278,8 @@
       "marker": "p",
       "content": [
         "“You shall not boil a young goat in its mother’s milk.”"
-      ]
+      ],
+      "vid": "EXO 34:26"
     },
     {
       "type": "para",

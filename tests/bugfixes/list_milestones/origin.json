@@ -85,28 +85,32 @@
             "marker": "li1",
             "content": [
                 "Reuben - Eliezer son of Zichri\n"
-            ]
+            ],
+            "vid": "GEN 2:16-22"
         },
         {
             "type": "para",
             "marker": "li1",
             "content": [
                 "Simeon - Shephatiah son of Maacah\n"
-            ]
+            ],
+            "vid": "GEN 2:16-22"
         },
         {
             "type": "para",
             "marker": "li1",
             "content": [
                 "Levi - Hashabiah son of Kemuel\n"
-            ]
+            ],
+            "vid": "GEN 2:16-22"
         },
         {
             "type": "para",
             "marker": "lf",
             "content": [
                 "This was the list of the administrators of the tribes of Israel.\n"
-            ]
+            ],
+            "vid": "GEN 2:16-22"
         },
         {
             "type": "chapter",
@@ -135,35 +139,40 @@
                     "marker": "lh",
                     "content": [
                         "optional list header\n"
-                    ]
+                    ],
+                    "vid": "GEN 3:1"
                 },
                 {
                     "type": "para",
                     "marker": "li1",
                     "content": [
                         "list entry 1\n"
-                    ]
+                    ],
+                    "vid": "GEN 3:1"
                 },
                 {
                     "type": "para",
                     "marker": "li1",
                     "content": [
                         "list entry 2\n"
-                    ]
+                    ],
+                    "vid": "GEN 3:1"
                 },
                 {
                     "type": "para",
                     "marker": "li3",
                     "content": [
                         "list entry 3\n"
-                    ]
+                    ],
+                    "vid": "GEN 3:1"
                 },
                 {
                     "type": "para",
                     "marker": "lf",
                     "content": [
                         "optional list footer\n"
-                    ]
+                    ],
+                    "vid": "GEN 3:1"
                 }
             ]
         },

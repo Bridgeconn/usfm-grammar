@@ -128,6 +128,14 @@ export const DEFAULT_ATTRIB_MAP = {
 export const TABLE_CELL_MARKERS = ['tc', 'th', 'tcr', 'thr', 'tcc', 'thc'];
 export const MISC_MARKERS = ['fig', 'cat', 'esb', 'b', 'ph', 'pi'];
 
+// Paragraph markers with TextType VerseText, as per
+// https://docs.usfm.bible/usfm/3.1.2/para/index.html (numbers stripped)
+export const VERSE_TEXT_PARA_MARKERS = [
+  'p', 'm', 'mi', 'nb', 'pc', 'ph', 'pi', 'pm', 'pmc', 'pmo',
+  'pmr', 'po', 'pr', 'cls', 'lit', 'b', 'q', 'qc', 'qd', 'qm',
+  'qr', 'li', 'lh', 'lf', 'lim', 'tr', 'd',
+];
+
 export const MARKER_SETS = {
   TABLE_CELL_MARKERS: new Set(TABLE_CELL_MARKERS),
   CHAR_STYLE_MARKERS: new Set(CHAR_STYLE_MARKERS),
@@ -140,10 +148,16 @@ export const MARKER_SETS = {
     'v',
     'b',
     'milestone',
-    'zNameSpace',
+    // the node types in _zNameSpace of the grammar
+    'zNameSpacePara',
+    'zNameSpaceChar',
+    'zNameSpaceMS',
+    'zNameSpaceNote',
+    'zNameSpaceUndefined',
   ]),
   NOTE_MARKERS: new Set(NOTE_MARKERS),
   PARA_STYLE_MARKERS: new Set(PARA_STYLE_MARKERS),
+  VERSE_TEXT_PARA_MARKERS: new Set(VERSE_TEXT_PARA_MARKERS),
 };
 
 export const REF_PATTERN = /(\w+) (\d+):([\d\w]+(?:-[\d\w]+)?)/;

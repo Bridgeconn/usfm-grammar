@@ -76,7 +76,8 @@
           ]
         },
         " and further text ..."
-      ]
+      ],
+      "vid": "GEN 1:2"
     },
     {
       "type": "para",
@@ -120,7 +121,8 @@
           ]
         },
         " speaks of “...the town of Waheb in the area of Suphah, and the valleys; the Arnon River,"
-      ]
+      ],
+      "vid": "GEN 1:2"
     }
   ]
 }

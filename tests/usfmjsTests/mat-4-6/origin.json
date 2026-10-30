@@ -554,14 +554,16 @@
           "marker": "zaln-e"
         },
         ",'"
-      ]
+      ],
+      "vid": "MAT 4:6"
     },
     {
       "type": "para",
       "marker": "m",
       "content": [
         "and,"
-      ]
+      ],
+      "vid": "MAT 4:6"
     },
     {
       "type": "para",
@@ -700,7 +702,8 @@
           "marker": "zaln-e"
         },
         ","
-      ]
+      ],
+      "vid": "MAT 4:6"
     },
     {
       "type": "para",
@@ -904,7 +907,8 @@
           "marker": "zaln-e"
         },
         ".'\""
-      ]
+      ],
+      "vid": "MAT 4:6"
     },
     {
       "type": "para",

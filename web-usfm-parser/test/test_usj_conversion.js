@@ -8,6 +8,7 @@ import {
   excludeUSJs,
   findAllMarkers,
   generateUSFMFromUSJ,
+  TEST_DIR,
 } from "./config.js";
 import {USFMParser, Filter} from "../src/index.js";
 
@@ -65,33 +66,33 @@ describe("Check successful USFM-USJ conversion for positive samples", () => {
   });
 });
 
+// Samples where we keep the vid on table rows, while the testsuite has it on the table
+const vidOnTableRowFiles = [
+  `${TEST_DIR}/bugfixes/tcc/origin.usfm`,
+  `${TEST_DIR}/bugfixes/thc/origin.usfm`,
+  `${TEST_DIR}/paratextTests/MissingColumnInTable/origin.usfm`,
+  `${TEST_DIR}/specExamples/table/origin.usfm`,
+];
+
 describe("Compare generated USJ with testsuite sample", () => {
   allUsfmFiles.forEach(function (filepath) {
     const usjPath = filepath.replace(".usfm", ".json");
-    if (isValidUsfm[filepath] && !excludeUSJs.includes(usjPath)) {
+    if (isValidUsfm[filepath] && !excludeUSJs.includes(usjPath) &&
+        !vidOnTableRowFiles.includes(filepath)) {
       it(`Compare generated USJ to ${usjPath}`, function () {
-        const cached = parsedCache.get(filepath);
-        assert(cached, `File ${filepath} should be in cache`);
-        let fileData = null;
-        try {
-          fileData = fs.readFileSync(usjPath, "utf8");
-        } catch (err) {
-          if (err.code === "ENOENT") {
-            this.skip();
-          }
-          throw err;
-        }
+        compareUsjWithTestsuiteSample(this, filepath);
+      });
+    }
+  });
+});
 
-        const generatedUSJ = JSON.parse(JSON.stringify(cached.usj)); // Deep clone to avoid modifying cached object
-        const testsuiteUSJ = JSON.parse(fileData);
-
-        stripDefaultAttribValue(testsuiteUSJ);
-        removeNewlinesInText(testsuiteUSJ);
-        stripTextValue(testsuiteUSJ);
-        removeNewlinesInText(generatedUSJ);
-        stripTextValue(generatedUSJ);
-
-        assert.deepEqual(generatedUSJ, testsuiteUSJ);
+describe("Compare generated USJ with testsuite sample, ignoring vid", () => {
+  // For samples where we differ from the testsuite only in the vid placement on tables
+  vidOnTableRowFiles.forEach(function (filepath) {
+    const usjPath = filepath.replace(".usfm", ".json");
+    if (isValidUsfm[filepath] && !excludeUSJs.includes(usjPath)) {
+      it(`Compare generated USJ to ${usjPath}, ignoring vid`, function () {
+        compareUsjWithTestsuiteSample(this, filepath, true);
       });
     }
   });
@@ -266,6 +267,49 @@ describe("Try invalid USJ", () => {
   });
 });
 
+function compareUsjWithTestsuiteSample(testContext, filepath, ignoreVid = false) {
+  /* Compare the generated USJ with the origin.json in test suite */
+  const usjPath = filepath.replace(".usfm", ".json");
+  const cached = parsedCache.get(filepath);
+  assert(cached, `File ${filepath} should be in cache`);
+  let fileData = null;
+  try {
+    fileData = fs.readFileSync(usjPath, "utf8");
+  } catch (err) {
+    if (err.code === "ENOENT") {
+      testContext.skip();
+    }
+    throw err;
+  }
+
+  const generatedUSJ = JSON.parse(JSON.stringify(cached.usj)); // Deep clone to avoid modifying cached object
+  const testsuiteUSJ = JSON.parse(fileData);
+
+  stripDefaultAttribValue(testsuiteUSJ);
+  removeNewlinesInText(testsuiteUSJ);
+  stripTextValue(testsuiteUSJ);
+  removeNewlinesInText(generatedUSJ);
+  stripTextValue(generatedUSJ);
+  if (ignoreVid) {
+    removeVid(generatedUSJ);
+    removeVid(testsuiteUSJ);
+  }
+
+  assert.deepEqual(generatedUSJ, testsuiteUSJ);
+}
+
+function removeVid(usjObj) {
+  /* Drop the vid attributes, for comparisons that are vid agnostic */
+  delete usjObj["vid"];
+  if (usjObj.hasOwnProperty("content")) {
+    usjObj["content"].forEach((item) => {
+      if (typeof item === "object") {
+        removeVid(item);
+      }
+    });
+  }
+}
+
 function stripTextValue(usjObj) {
   /* Trailing and preceding space handling can be different between tcdocs and our logic.
        Strip both before comparison */
@@ -277,6 +321,8 @@ function stripTextValue(usjObj) {
         stripTextValue(item); // Recursively handle nested objects
       }
     });
+    // there will be difference in number of white space only text snippets
+    usjObj["content"] = usjObj["content"].filter((item) => item !== "");
   }
 }
 
@@ -297,8 +343,6 @@ function removeNewlinesInText(usjDict) {
         removeNewlinesInText(item); // Recursively handle nested dictionaries
       }
     });
-    // there will be difference in number of white space only text snippets
-    usjDict["content"] = usjDict["content"].filter((item) => item === "");
   }
 }
 
