@@ -90,8 +90,7 @@
                     "marker": "rem",
                     "content": [
                         "test comment to chekc if para flow breaks\n"
-                    ],
-                    "vid": "GEN 1:4"
+                    ]
                 },
                 {
                     "type": "verse",
