@@ -608,6 +608,12 @@ class USJGenerator {
       }
     }
     this.setVerseTextContext(prev);
+    // As with standard milestones, keep content only if there is some.
+    // A space before the attributes (\zaln-s |...) is not content
+    if (nodeType === 'ms' && customJsonObj.content.every(
+      (item) => typeof item === 'string' && !item.trim())) {
+      delete customJsonObj.content;
+    }
     parentJsonObj.content.push(customJsonObj);
   }
 
