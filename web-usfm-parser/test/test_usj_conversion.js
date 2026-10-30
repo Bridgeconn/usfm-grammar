@@ -298,7 +298,7 @@ function removeNewlinesInText(usjDict) {
       }
     });
     // there will be difference in number of white space only text snippets
-    usjDict["content"] = usjDict["content"].filter((item) => item === "");
+    usjDict["content"] = usjDict["content"].filter((item) => item !== "");
   }
 }
 
