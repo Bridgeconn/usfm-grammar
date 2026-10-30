@@ -154,7 +154,6 @@
                 },
                 {
                     "type": "ms",
-                    "content": [],
                     "marker": "zaln-s",
                     "x-content": "καὶ",
                     "x-lemma": "καί",
@@ -174,13 +173,11 @@
                 },
                 {
                     "type": "ms",
-                    "content": [],
                     "marker": "zaln-e"
                 },
                 "\n",
                 {
                     "type": "ms",
-                    "content": [],
                     "marker": "zaln-s",
                     "x-content": "συναλιζόμενος",
                     "x-lemma": "συναλίζω",
@@ -250,7 +247,6 @@
                 },
                 {
                     "type": "ms",
-                    "content": [],
                     "marker": "zaln-e"
                 },
                 ",\n"
