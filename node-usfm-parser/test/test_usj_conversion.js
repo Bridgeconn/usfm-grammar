@@ -277,6 +277,8 @@ function stripTextValue(usjObj) {
         stripTextValue(item); // Recursively handle nested objects
       }
     });
+    // there will be difference in number of white space only text snippets
+    usjObj["content"] = usjObj["content"].filter((item) => item !== "");
   }
 }
 
@@ -297,8 +299,6 @@ function removeNewlinesInText(usjDict) {
         removeNewlinesInText(item); // Recursively handle nested dictionaries
       }
     });
-    // there will be difference in number of white space only text snippets
-    usjDict["content"] = usjDict["content"].filter((item) => item !== "");
   }
 }
 
