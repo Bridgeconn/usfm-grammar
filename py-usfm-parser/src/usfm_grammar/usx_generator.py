@@ -59,6 +59,11 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         "milestone",
         "zNameSpace",
     ]
+    # Paragraph markers with TextType VerseText, as per
+    # https://docs.usfm.bible/usfm/3.1.2/para/index.html (numbers stripped)
+    VERSE_TEXT_PARA_MARKERS = ["p", "m", "mi", "nb", "pc", "ph", "pi", "pm", "pmc", "pmo",
+                               "pmr", "po", "pr", "cls", "lit", "b", "q", "qc", "qd", "qm",
+                               "qr", "li", "lh", "lf", "lim", "tr", "d"]
     MARKER_LISTS = {
         "para_style": PARA_STYLE_MARKERS,
         "note": NOTE_MARKERS,
@@ -67,6 +72,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         "table_cell": TABLE_CELL_MARKERS,
         "misc": MISC_MARKERS,
         "other_para_nestables": OTHER_PARA_NESTABLES,
+        "verse_text_para": VERSE_TEXT_PARA_MARKERS,
     }
     MARKER_SETS = {
         "table_cell": set(TABLE_CELL_MARKERS),
@@ -76,6 +82,7 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         "note_markers": set(NOTE_MARKERS),
         "para_style": set(PARA_STYLE_MARKERS),
         "misc": set(MISC_MARKERS),
+        "verse_text_para": set(VERSE_TEXT_PARA_MARKERS),
     }
 
     def __init__(self, tree_sitter_language_obj, usfm_bytes, usx_root_element=None):

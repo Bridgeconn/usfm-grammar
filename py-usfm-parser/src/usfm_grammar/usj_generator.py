@@ -31,7 +31,13 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
                             "current_chapter": None,
                             "verse_sid": None,
                             "vid-ref": None,
-                            "vid-h": None}
+                            "vid-h": None,
+                            # nodes given a vid, to be kept only if the verse continues
+                            "pending_vids": [],
+                            # whether text being processed is verse text
+                            "in_verse_text": False,
+                            # sidebar content is not verse text, whatever its para markers
+                            "in_sidebar": False}
         # maps and id to a fn;
         self.dispatch_map = self._populate_dispatch_map()
 
@@ -81,6 +87,7 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         }
 
         self.parse_state["current_chapter"] = chap_num
+        self._resolve_pending_vids(verse_continues=False)
         self.parse_state["verse_sid"] = None  # Reset verse_sid for new chapter
 
         alt_num = self.usfm[chap_cap['alt-num'][0].start_byte :
@@ -116,6 +123,7 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         if 'vnum' not in verse_num_cap:
             return
 
+        self._resolve_pending_vids(verse_continues=False)
         verse_node = verse_num_cap['vnum'][0]
         verse_num = (
             self.usfm[verse_node.start_byte : verse_node.end_byte]
@@ -207,12 +215,32 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
             self.parse_state["vid-ref"] = None
 
     def _add_vid_attribute_second_attempt(self, usj_node, first_child):
-        """Add vid if first child is not a verse tag"""
+        """Add vid if first child is not a verse tag. It is provisional until
+        we know whether the verse continues after this node"""
         if not usj_node.get("vid") and\
             self.parse_state['verse_sid'] is not None and\
                 first_child is not None and\
                     first_child.type != "v":
             usj_node["vid"] = self.parse_state['verse_sid']
+            self.parse_state["pending_vids"].append(usj_node)
+
+    def _resolve_pending_vids(self, verse_continues):
+        """Keep the provisional vids if verse text follows them,
+        drop them if the verse ended (at a \\v, \\c or end of document)"""
+        if not verse_continues:
+            for usj_node in self.parse_state["pending_vids"]:
+                usj_node.pop("vid", None)
+        self.parse_state["pending_vids"].clear()
+
+    def _set_verse_text_context(self, is_verse_text):
+        """Mark whether the text that follows is verse text. Returns the previous value"""
+        prev = self.parse_state["in_verse_text"]
+        self.parse_state["in_verse_text"] = is_verse_text
+        return prev
+
+    def _is_verse_text_para(self, marker):
+        """Check if the para marker has TextType VerseText"""
+        return re.sub(r"\d+$", "", marker) in USJGenerator.MARKER_SETS["verse_text_para"]
 
 
     def _node_2_usj_para(self, node, parent_json_obj):
@@ -238,8 +266,10 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
                 self._add_vid_attributes(para_json_obj)
                 first_child = para_node.children[1] if len(para_node.children) > 1 else None
                 self._add_vid_attribute_second_attempt(para_json_obj, first_child)
+                prev = self._set_verse_text_context(self._is_verse_text_para(para_marker))
                 for child in para_node.children:
                     self.node_2_usj(child, para_json_obj)
+                self._set_verse_text_context(prev)
                 parent_json_obj["content"].append(para_json_obj)
         elif node.type in ["pi", "ph"]:
             para_marker = (
@@ -252,8 +282,10 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
             self._add_vid_attributes(para_json_obj)
             first_child = node.children[1] if len(node.children) > 1 else None
             self._add_vid_attribute_second_attempt(para_json_obj, first_child)
+            prev = self._set_verse_text_context(self._is_verse_text_para(para_marker))
             for child in node.children[1:]:
                 self.node_2_usj(child, para_json_obj)
+            self._set_verse_text_context(prev)
             parent_json_obj["content"].append(para_json_obj)
 
     def _node_2_usj_notes(self, node, parent_json_obj):
@@ -275,8 +307,11 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
             .strip()
         )
         self._add_vid_attributes(note_json_obj)
+        # Note text doesn't count as continuing the verse
+        prev = self._set_verse_text_context(False)
         for i in range(2, len(node.children) - 1):
             self.node_2_usj(node.children[i], note_json_obj)
+        self._set_verse_text_context(prev)
 
         parent_json_obj["content"].append(note_json_obj)
 
@@ -318,8 +353,10 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
             self._add_vid_attributes(row_json_obj)
             first_child = node.children[1] if len(node.children) > 1 else None
             self._add_vid_attribute_second_attempt(row_json_obj, first_child)
+            prev = self._set_verse_text_context(True)
             for child in node.children[1:]:
                 self.node_2_usj(child, row_json_obj)
+            self._set_verse_text_context(prev)
             parent_json_obj["content"].append(row_json_obj)
         elif node.type in USJGenerator.MARKER_SETS["table_cell"]:
             tag_node = node.children[0]
@@ -427,8 +464,10 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         if node.type == "esb":
             sidebar_json_obj = {"type": "sidebar", "marker": "esb", "content": []}
             self._add_vid_attributes(sidebar_json_obj)
+            self.parse_state["in_sidebar"] = True
             for child in node.children[1:-1]:
                 self.node_2_usj(child, sidebar_json_obj)
+            self.parse_state["in_sidebar"] = False
             parent_json_obj["content"].append(sidebar_json_obj)
         elif node.type == "cat":
             cat_cursor = QueryCursor(self._get_query("category"))
@@ -447,8 +486,10 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         elif node.type == "fig":
             fig_json_obj = {"type": "figure", "marker": "fig", "content": []}
             self._add_vid_attributes(fig_json_obj)
+            prev = self._set_verse_text_context(False)
             for child in node.children[1:-1]:
                 self.node_2_usj(child, fig_json_obj)
+            self._set_verse_text_context(prev)
             parent_json_obj["content"].append(fig_json_obj)
         elif node.type == "ref":
             ref_json_obj = {"type": "ref", "content": []}
@@ -496,6 +537,10 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         # Consume any vid/h pending from a preceding \vid marker, as the other
         # node handlers do, so it is not left to attach to a later node
         self._add_vid_attributes(custom_json_obj)
+        # TextType of custom paras and notes is unknown, so their text is not counted
+        prev = self.parse_state["in_verse_text"]
+        if node_type in ("para", "note"):
+            self._set_verse_text_context(False)
         for child in curr_node.children:
             if child.type.startswith("zSpaceTag"):
                 marker_name = self.usfm[child.start_byte : child.end_byte].decode("utf-8").strip()
@@ -526,6 +571,7 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
                 )
             else:
                 self.node_2_usj(child, custom_json_obj)
+        self._set_verse_text_context(prev)
         parent_json_obj["content"].append(custom_json_obj)
 
 
@@ -552,6 +598,7 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         self._add_vid_attribute_second_attempt(para_json_obj, first_child)
         parent_json_obj["content"].append(para_json_obj)
 
+        prev = self._set_verse_text_context(self._is_verse_text_para(para_json_obj["marker"]))
         for i in range(children_range_start, len(node.children)):
             child = node.children[i]
             if any(
@@ -565,6 +612,7 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
                 self.node_2_usj(child, para_json_obj)
             else:
                 self.node_2_usj(child, parent_json_obj)
+        self._set_verse_text_context(prev)
 
     def _push_text_node(self, node, parent_json_obj):
         """Add text node to parent's content"""
@@ -573,6 +621,9 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         )
         if text_val:
             parent_json_obj["content"].append(text_val)
+            if self.parse_state["in_verse_text"] and not self.parse_state["in_sidebar"]\
+                and text_val.strip():
+                self._resolve_pending_vids(verse_continues=True)
 
     def _handle_verse_text(self, node, parent_json_obj):
         """Handle verse text content"""
@@ -633,6 +684,8 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
             parent_json_obj = self.json_root_obj
 
         self.node_2_usj(node, parent_json_obj)
+        # The last verse ends with the document
+        self._resolve_pending_vids(verse_continues=False)
         return parent_json_obj
 
     def node_2_usj(self, node, parent_json_obj):
