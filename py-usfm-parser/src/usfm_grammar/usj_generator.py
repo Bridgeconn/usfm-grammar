@@ -218,6 +218,7 @@ class USJGenerator:  # pylint: disable=too-many-instance-attributes
         """Add vid if first child is not a verse tag. It is provisional until
         we know whether the verse continues after this node"""
         if not usj_node.get("vid") and\
+            not self.parse_state["in_sidebar"] and\
             self.parse_state['verse_sid'] is not None and\
                 first_child is not None and\
                     first_child.type != "v":
