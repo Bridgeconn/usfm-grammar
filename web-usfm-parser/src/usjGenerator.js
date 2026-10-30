@@ -41,6 +41,10 @@ class USJGenerator {
       prevVerseSid: null,
       vidH: null,
       vidRef: null,
+      // vids added on paras, pending till we know if the verse continues
+      pendingVids: [],
+      inVerseText: false,
+      inSidebar: false,
     };
     // maps and id to a fn;
     this.dispatchMap = this.populateDispatchMap();
@@ -89,6 +93,7 @@ class USJGenerator {
       sid: chapRef,
     };
     this.parseState.currentChapter = chapNum;
+    this.resolvePendingVids(false);
     this.parseState.prevVerseSid = null; // Reset prevVerseSid when a new chapter starts
     chapCap.forEach((cap) => {
       if (cap.name === 'alt-num') {
@@ -125,6 +130,7 @@ class USJGenerator {
 
   nodeToUSJVerse(node, parentJsonObj) {
     // Build verse node in USJ
+    this.resolvePendingVids(false);
     const verseNumCap = this.getQuery('verseNumCap').captures(node);
     // const verseNumCap = this.queries.verseNumCap.captures(node);
 
@@ -230,13 +236,37 @@ class USJGenerator {
   }
 
   addVidAttributeSecondAttempt(parentJsonObj, firstChild) {
-    // Add vid attributes to the given json node if firstChild is not a verse tag
+    // Add vid attributes to the given json node if firstChild is not a verse tag.
+    // It is provisional until we know whether the verse continues after this node
     if (!parentJsonObj.vid &&
+        !this.parseState.inSidebar &&
         this.parseState.prevVerseSid &&
         firstChild &&
         firstChild.type !== 'v') {
       parentJsonObj.vid = this.parseState.prevVerseSid;
+      this.parseState.pendingVids.push(parentJsonObj);
     }
+  }
+
+  resolvePendingVids(verseContinues) {
+    // Keep the provisional vids if verse text follows them,
+    // drop them if the verse ended (at a \v, \c or end of document)
+    if (!verseContinues) {
+      this.parseState.pendingVids.forEach((jsonObj) => { delete jsonObj.vid; });
+    }
+    this.parseState.pendingVids = [];
+  }
+
+  setVerseTextContext(isVerseText) {
+    // Mark whether the text that follows is verse text. Returns the previous value
+    const prev = this.parseState.inVerseText;
+    this.parseState.inVerseText = isVerseText;
+    return prev;
+  }
+
+  isVerseTextPara(marker) {
+    // Check if the para marker has TextType VerseText
+    return this.markerSets.VERSE_TEXT_PARA_MARKERS.has(marker.replace(/\d+$/, ''));
   }
 
   nodeToUSJPara(node, parentJsonObj) {
@@ -256,9 +286,11 @@ class USJGenerator {
         const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
         this.addVidAttributesToNode(paraJsonObj);
         this.addVidAttributeSecondAttempt(paraJsonObj, paraTagCap.node.children[1]);
+        const prev = this.setVerseTextContext(this.isVerseTextPara(paraMarker));
         paraTagCap.node.children.forEach((child) => {
           this.nodeToUSJ(child, paraJsonObj);
         });
+        this.setVerseTextContext(prev);
         parentJsonObj.content.push(paraJsonObj);
       }
     } else if (['pi', 'ph'].includes(node.type)) {
@@ -269,9 +301,11 @@ class USJGenerator {
       const paraJsonObj = { type: 'para', marker: paraMarker, content: [] };
       this.addVidAttributesToNode(paraJsonObj);
       this.addVidAttributeSecondAttempt(paraJsonObj, node.children[1]);
+      const prev = this.setVerseTextContext(this.isVerseTextPara(paraMarker));
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, paraJsonObj);
       });
+      this.setVerseTextContext(prev);
       parentJsonObj.content.push(paraJsonObj);
     }
   }
@@ -295,9 +329,12 @@ class USJGenerator {
       .trim();
     this.addVidAttributesToNode(noteJsonObj);
 
+    // Note text doesn't count as continuing the verse
+    const prev = this.setVerseTextContext(false);
     for (let i = 2; i < node.children.length - 1; i++) {
       this.nodeToUSJ(node.children[i], noteJsonObj);
     }
+    this.setVerseTextContext(prev);
     parentJsonObj.content.push(noteJsonObj);
   }
 
@@ -347,9 +384,11 @@ class USJGenerator {
       const rowJsonObj = { type: 'table:row', marker: 'tr', content: [] };
       this.addVidAttributesToNode(rowJsonObj);
       this.addVidAttributeSecondAttempt(rowJsonObj, node.children[1]);
+      const prev = this.setVerseTextContext(true);
       node.children.slice(1).forEach((child) => {
         this.nodeToUSJ(child, rowJsonObj);
       });
+      this.setVerseTextContext(prev);
       parentJsonObj.content.push(rowJsonObj);
     } else if (this.markerSets.TABLE_CELL_MARKERS.has(node.type)) {
       const tagNode = node.children[0];
@@ -459,9 +498,11 @@ class USJGenerator {
     if (node.type === 'esb') {
       const sidebarJsonObj = { type: 'sidebar', marker: 'esb', content: [] };
       this.addVidAttributesToNode(sidebarJsonObj);
+      this.parseState.inSidebar = true;
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, sidebarJsonObj);
       });
+      this.parseState.inSidebar = false;
       parentJsonObj.content.push(sidebarJsonObj);
     } else if (node.type === 'cat') {
       const catCap = this.getQuery('category').captures(node)[0];
@@ -473,9 +514,11 @@ class USJGenerator {
     } else if (node.type === 'fig') {
       const figJsonObj = { type: 'figure', marker: 'fig', content: [] };
       this.addVidAttributesToNode(figJsonObj);
+      const prev = this.setVerseTextContext(false);
       node.children.slice(1, -1).forEach((child) => {
         this.nodeToUSJ(child, figJsonObj);
       });
+      this.setVerseTextContext(prev);
       parentJsonObj.content.push(figJsonObj);
     } else if (node.type === 'ref') {
       const refJsonObj = { type: 'ref', content: [] };
@@ -524,6 +567,11 @@ class USJGenerator {
     // Consume any vid/h pending from a preceding \vid marker, as the other
     // node handlers do, so it is not left to attach to a later node
     this.addVidAttributesToNode(customJsonObj);
+    // TextType of custom paras and notes is unknown, so their text is not counted
+    const prev = this.parseState.inVerseText;
+    if (['para', 'note'].includes(nodeType)) {
+      this.setVerseTextContext(false);
+    }
     for (const child of currNode.children) {
       if (child.type.startsWith('zSpaceTag')) {
         // A nested tag keeps its + between the backslash and the type prefix
@@ -559,6 +607,7 @@ class USJGenerator {
         this.nodeToUSJ(child, customJsonObj);
       }
     }
+    this.setVerseTextContext(prev);
     parentJsonObj.content.push(customJsonObj);
   }
 
@@ -588,6 +637,7 @@ class USJGenerator {
     this.addVidAttributeSecondAttempt(paraJsonObj, node.children[childrenRangeStart]);
     parentJsonObj.content.push(paraJsonObj);
 
+    const prev = this.setVerseTextContext(this.isVerseTextPara(style));
     for (let i = childrenRangeStart; i < node.children.length; i++) {
       const child = node.children[i];
       if (
@@ -603,6 +653,7 @@ class USJGenerator {
         this.nodeToUSJ(child, parentJsonObj);
       }
     }
+    this.setVerseTextContext(prev);
   }
   pushTextNode(node, parentJsonObj) {
     const textVal = this.usfm
@@ -610,6 +661,9 @@ class USJGenerator {
       .replace('~', ' ');
     if (textVal !== '') {
       parentJsonObj.content.push(textVal);
+      if (this.parseState.inVerseText && !this.parseState.inSidebar && textVal.trim()) {
+        this.resolvePendingVids(true);
+      }
     }
   }
   handleVerseText(node, parentJsonObj) {
@@ -659,6 +713,14 @@ class USJGenerator {
       this.nodeToUSJGeneric,
     );
     return thisMap;
+  }
+
+  getUSJ(node, parentJsonObj = this.jsonRootObj) {
+    // Convert the syntax tree to USJ
+    this.nodeToUSJ(node, parentJsonObj);
+    // The last verse ends with the document
+    this.resolvePendingVids(false);
+    return parentJsonObj;
   }
 
   nodeToUSJ(node, parentJsonObj) {
