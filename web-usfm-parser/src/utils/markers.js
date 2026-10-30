@@ -148,7 +148,12 @@ export const MARKER_SETS = {
     'v',
     'b',
     'milestone',
-    'zNameSpace',
+    // the node types in _zNameSpace of the grammar
+    'zNameSpacePara',
+    'zNameSpaceChar',
+    'zNameSpaceMS',
+    'zNameSpaceNote',
+    'zNameSpaceUndefined',
   ]),
   NOTE_MARKERS: new Set(NOTE_MARKERS),
   PARA_STYLE_MARKERS: new Set(PARA_STYLE_MARKERS),
