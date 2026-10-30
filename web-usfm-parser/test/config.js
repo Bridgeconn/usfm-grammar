@@ -307,4 +307,5 @@ export {
   excludeUSXs,
   findAllMarkers,
   customMarkersExt,
+  TEST_DIR,
 };
