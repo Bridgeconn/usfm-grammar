@@ -568,7 +568,7 @@ class USJGenerator {
     // Consume any vid/h pending from a preceding \vid marker, as the other
     // node handlers do, so it is not left to attach to a later node
     this.addVidAttributesToNode(customJsonObj);
-    // TextType of custom paras and notes is unknown, so their text is not counted
+    // TextType of custom paras and notes is unknown, so their text is not counted as verse text.
     const prev = this.parseState.inVerseText;
     if (['para', 'note'].includes(nodeType)) {
       this.setVerseTextContext(false);

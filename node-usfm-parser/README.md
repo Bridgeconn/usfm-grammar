@@ -260,7 +260,7 @@ The USFM spec reserves markers beginning with `\z` for [user-defined extensions]
 
   A `\category` outside this list, or a block with no `\category` at all, raises an error.
 
-  :warning: Only the major type is used. The minor type, and the rules the spec attaches to it about where such a marker may occur, are not enforced — a declared extension marker is accepted anywhere in the document. So declaring `\category title` rather than `\category para` changes nothing about the output; both produce a `para`.
+  :warning: Only the major type is used. The minor type, and the rules the spec attaches to it about where such a marker may occur, are not enforced — a declared extension marker is accepted anywhere in the document. So declaring `\category title` rather than `\category para` changes nothing about the output; both produce a `para`. In particular, a `versepara` extension is not treated as verse text: its content is not attributed to the preceding verse (e.g. for `vid` on continuation paragraphs or the BibleNLP/list outputs and filtered USJs).
 
 - *Expected syntax per major type*
 
@@ -284,7 +284,10 @@ The USFM spec reserves markers beginning with `\z` for [user-defined extensions]
   ```
   \zbadge outer \nd Lord\nd* text\zbadge*
   \zbadge content|lemma="value"\zbadge*
+  \c 1
+  \zheading A line \v 1 verse text
   ```
+  A verse cannot be part of a custom para either. A `\v` ends the custom para. When the custom para sits within a verse para such as `\p`, the verse continues in that enclosing para; otherwise, as in the last example, it is a parsing error.
 
 - *When no markers.ext is given*
 
