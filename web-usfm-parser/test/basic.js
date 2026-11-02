@@ -325,7 +325,7 @@ describe("Custom marker names with a markers.ext", () => {
   const usfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 Alpha \\zpb |x-page="4"\\* beta.\n';
 
   it("are kept in usfm, generated USFM and error messages", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const usfmParser = new USFMParser(usfm, null, null, null, null, customNamesExt);
     assert.deepStrictEqual(usfmParser.errors, []);
     assert.strictEqual(usfmParser.usfm, usfm);
@@ -344,7 +344,7 @@ describe("Custom marker names with a markers.ext", () => {
   });
 
   it("stay in sync when usjToUsfm replaces the document", async () => {
-    await USFMParser.init("./tree-sitter-usfm.wasm", "./tree-sitter.wasm");
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
     const usfmParser = new USFMParser(usfm, null, null, null, null, customNamesExt);
     const usj = usfmParser.toUSJ();
     usj.content[2].content[2]['x-page'] = '5';
