@@ -53,6 +53,10 @@ class USXGenerator {
       prevVerse: null,
       vidH: null,
       vidRef: null,
+      // vids added on paras, pending till we know if the verse continues
+      pendingVids: [],
+      inVerseText: false,
+      inSidebar: false,
     };
     // maps and id to a fn;
     this.dispatchMap = this.populateDispatchMap();
@@ -192,6 +196,7 @@ class USXGenerator {
       }
     });
 
+    this.resolvePendingVids(false);
     // const prevVerses = xpath.select("//verse", this.xmlRootNode);
     // chapter means we need both closing verse and closing chapter eids
     const lastVerse = this.parseState.prevVerse;
@@ -246,6 +251,7 @@ class USXGenerator {
   }
 
   node2UsxVerse(node, parentXmlNode) {
+    this.resolvePendingVids(false);
     // Find all previous 'verse' elements
     // const prevVerses = xpath.select("//verse", this.xmlRootNode);
 
@@ -368,13 +374,37 @@ class USXGenerator {
   }
 
   addVidAttributesSecondAttempt(xmlNode, firstChild) {
-    // Add vid attributes to the given xml node if firstChild is not a verse tag
+    // Add vid attributes to the given xml node if firstChild is not a verse tag.
+    // It is provisional until we know whether the verse continues after this node
     if (!xmlNode.hasAttribute('vid') &&
+        !this.parseState.inSidebar &&
         this.parseState.prevVerseSid &&
         firstChild &&
         firstChild.type !== 'v') {
       xmlNode.setAttribute('vid', this.parseState.prevVerseSid);
+      this.parseState.pendingVids.push(xmlNode);
     }
+  }
+
+  resolvePendingVids(verseContinues) {
+    // Keep the provisional vids if verse text follows them,
+    // drop them if the verse ended (at a \v, \c or end of document)
+    if (!verseContinues) {
+      this.parseState.pendingVids.forEach((xmlNode) => { xmlNode.removeAttribute('vid'); });
+    }
+    this.parseState.pendingVids = [];
+  }
+
+  setVerseTextContext(isVerseText) {
+    // Mark whether the text that follows is verse text. Returns the previous value
+    const prev = this.parseState.inVerseText;
+    this.parseState.inVerseText = isVerseText;
+    return prev;
+  }
+
+  isVerseTextPara(marker) {
+    // Check if the para marker has TextType VerseText
+    return this.markerSets.VERSE_TEXT_PARA_MARKERS.has(marker.replace(/\d+$/, ''));
   }
 
   node2UsxPara(node, parentXmlNode) {
@@ -393,9 +423,11 @@ class USXGenerator {
         this.addVidAttributesToNode(paraXmlNode);
         this.addVidAttributesSecondAttempt(paraXmlNode, paraTagCap.node.children[1]);
         parentXmlNode.appendChild(paraXmlNode);
+        const prev = this.setVerseTextContext(this.isVerseTextPara(paraMarker));
         for (const child of paraTagCap.node.children.slice(1)) {
           this.node2Usx(child, paraXmlNode);
         }
+        this.setVerseTextContext(prev);
       }
     } else if (['pi', 'ph'].includes(node.type)) {
       const paraMarker = this.usfm
@@ -407,9 +439,11 @@ class USXGenerator {
       this.addVidAttributesToNode(paraXmlNode);
       this.addVidAttributesSecondAttempt(paraXmlNode, node.children[1]);
       parentXmlNode.appendChild(paraXmlNode);
+      const prev = this.setVerseTextContext(this.isVerseTextPara(paraMarker));
       for (const child of node.children.slice(1)) {
         this.node2Usx(child, paraXmlNode);
       }
+      this.setVerseTextContext(prev);
     }
   }
 
@@ -429,9 +463,12 @@ class USXGenerator {
     noteXmlNode.setAttribute('caller', caller);
     this.addVidAttributesToNode(noteXmlNode);
     parentXmlNode.appendChild(noteXmlNode);
+    // Note text doesn't count as continuing the verse
+    const prev = this.setVerseTextContext(false);
     for (let i = 2; i < node.children.length - 1; i++) {
       this.node2Usx(node.children[i], noteXmlNode);
     }
+    this.setVerseTextContext(prev);
   }
 
   node2UsxChar(node, parentXmlNode) {
@@ -519,9 +556,11 @@ class USXGenerator {
       this.addVidAttributesToNode(rowXmlNode);
       this.addVidAttributesSecondAttempt(rowXmlNode, node.children[1]);
       parentXmlNode.appendChild(rowXmlNode);
+      const prev = this.setVerseTextContext(true);
       node.children.slice(1).forEach((child) => {
         this.node2Usx(child, rowXmlNode);
       });
+      this.setVerseTextContext(prev);
     } else if (this.markerSets.TABLE_CELL_MARKERS.has(node.type)) {
       const tagNode = node.children[0];
       const style = this.usfm
@@ -589,9 +628,11 @@ class USXGenerator {
       sidebarXmlNode.setAttribute('style', 'esb');
       this.addVidAttributesToNode(sidebarXmlNode);
       parentXmlNode.appendChild(sidebarXmlNode);
+      this.parseState.inSidebar = true;
       node.children.slice(1, -1).forEach((child) => {
         this.node2Usx(child, sidebarXmlNode);
       });
+      this.parseState.inSidebar = false;
     } else if (node.type === 'cat') {
       const catCap = this.getQuery('category').captures(node)[0];
       const category = this.usfm
@@ -603,9 +644,11 @@ class USXGenerator {
       figXmlNode.setAttribute('style', 'fig');
       this.addVidAttributesToNode(figXmlNode);
       parentXmlNode.appendChild(figXmlNode);
+      const prev = this.setVerseTextContext(false);
       node.children.slice(1, -1).forEach((child) => {
         this.node2Usx(child, figXmlNode);
       });
+      this.setVerseTextContext(prev);
     } else if (node.type === 'ref') {
       const refXmlNode = parentXmlNode.ownerDocument.createElement('ref');
       parentXmlNode.appendChild(refXmlNode);
@@ -654,6 +697,11 @@ class USXGenerator {
     // Consume any vid/h pending from a preceding \vid marker, as the other
     // node handlers do, so it is not left to attach to a later node
     this.addVidAttributesToNode(customXmlNode);
+    // TextType of custom paras and notes is unknown, so their text is not counted
+    const prev = this.parseState.inVerseText;
+    if (['para', 'note'].includes(nodeType)) {
+      this.setVerseTextContext(false);
+    }
     for (const child of currNode.children) {
       if (child.type.startsWith('zSpaceTag')) {
         // A nested tag keeps its + between the backslash and the type prefix
@@ -685,6 +733,7 @@ class USXGenerator {
         this.node2Usx(child, customXmlNode);
       }
     }
+    this.setVerseTextContext(prev);
     parentXmlNode.appendChild(customXmlNode);
   }
 
@@ -712,6 +761,7 @@ class USXGenerator {
     this.addVidAttributesSecondAttempt(paraXmlNode, node.children[childrenRangeStart]);
     parentXmlNode.appendChild(paraXmlNode);
 
+    const prev = this.setVerseTextContext(this.isVerseTextPara(style));
     // Loop through the child nodes and recursively process them
     for (let i = childrenRangeStart; i < node.children.length; i++) {
       const child = node.children[i];
@@ -729,6 +779,7 @@ class USXGenerator {
         this.node2Usx(child, parentXmlNode);
       }
     }
+    this.setVerseTextContext(prev);
 
     // Append the created para node to the parent XML node
   }
@@ -738,7 +789,18 @@ class USXGenerator {
     if (textVal !== '') {
       const textNode = parentXmlNode.ownerDocument.createTextNode(textVal);
       parentXmlNode.appendChild(textNode);
+      if (this.parseState.inVerseText && !this.parseState.inSidebar && textVal.trim()) {
+        this.resolvePendingVids(true);
+      }
     }
+  }
+
+  getUSX(node, parentXmlNode = this.xmlRootNode) {
+    // Convert the syntax tree to USX
+    this.node2Usx(node, parentXmlNode);
+    // The last verse ends with the document
+    this.resolvePendingVids(false);
+    return parentXmlNode;
   }
 
   node2Usx(node, parentXmlNode) {

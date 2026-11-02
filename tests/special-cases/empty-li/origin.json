@@ -92,14 +92,16 @@
           "sid": "GEN 1:7"
         },
         "The verse with a list within it"
-      ]
+      ],
+      "vid": "GEN 1:5"
     },
     {
       "type": "para",
       "marker": "li",
       "content": [
         "item one"
-      ]
+      ],
+      "vid": "GEN 1:7"
     },
     {
       "type": "para",
@@ -113,7 +115,8 @@
           "sid": "GEN 1:8"
         },
         "The last verse"
-      ]
+      ],
+      "vid": "GEN 1:7"
     }
   ]
 }

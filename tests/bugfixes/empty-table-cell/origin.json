@@ -54,7 +54,15 @@
                         {
                             "type": "table:cell",
                             "marker": "tc1",
-                            "content": [],
+                            "content": [
+                                {
+                                    "type": "verse",
+                                    "marker": "v",
+                                    "number": "9a",
+                                    "sid": "GEN 1:9a"
+                                },
+                                "test test test "
+                            ],
                             "align": "start"
                         },
                         {
@@ -78,7 +86,15 @@
                         {
                             "type": "table:cell",
                             "marker": "tcr2",
-                            "content": [],
+                            "content": [
+                                {
+                                    "type": "verse",
+                                    "marker": "v",
+                                    "number": "9b",
+                                    "sid": "GEN 1:9b"
+                                },
+                                "test again\n"
+                            ],
                             "align": "end"
                         }
                     ]

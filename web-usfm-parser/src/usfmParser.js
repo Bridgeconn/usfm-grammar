@@ -336,7 +336,7 @@ Use ignoreErrors = true, as third parameter of toUSJ(), to generate output despi
     try {
       const usjGenerator = new USJGenerator(USFMParser.language, this.usfm);
 
-      usjGenerator.nodeToUSJ(this.syntaxTree, usjGenerator.jsonRootObj);
+      usjGenerator.getUSJ(this.syntaxTree);
       outputUSJ = usjGenerator.jsonRootObj;
       this.warnings.push(...usjGenerator.warnings);
       this.errors.push(...usjGenerator.errors);
@@ -472,7 +472,7 @@ Use ignoreErrors=true to generate output despite errors`,
       const usxGenerator = new USXGenerator(USFMParser.language, this.usfm);
 
       // Process the syntax tree and convert to USX format
-      usxGenerator.node2Usx(this.syntaxTree, usxGenerator.xmlRootNode);
+      usxGenerator.getUSX(this.syntaxTree);
 
       // xmlContent = usxSerializer.serializeToString(usxGenerator.xmlRootNode);
       xmlContent = usxGenerator.xmlRootNode;

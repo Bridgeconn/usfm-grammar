@@ -39,7 +39,8 @@
           ]
         },
         " definition"
-      ]
+      ],
+      "vid": "GLO 1:1"
     },
     {
       "type": "chapter",
@@ -78,7 +79,8 @@
           ]
         },
         " definition"
-      ]
+      ],
+      "vid": "GLO 1:1"
     }
   ]
 }

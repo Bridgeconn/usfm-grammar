@@ -46,7 +46,8 @@
           "sid": "GLO 1:2"
         },
         "something"
-      ]
+      ],
+      "vid": "GLO 1:1"
     },
     {
       "type": "para",
@@ -61,7 +62,8 @@
           ]
         },
         " definition"
-      ]
+      ],
+      "vid": "GLO 1:2"
     }
   ]
 }

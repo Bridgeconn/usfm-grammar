@@ -47,21 +47,24 @@
       "marker": "q1",
       "content": [
         "“Someone is shouting in the desert,"
-      ]
+      ],
+      "vid": "GEN 1:2"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "‘Prepare a road for the Lord;"
-      ]
+      ],
+      "vid": "GEN 1:2"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "make a straight path for him to travel!’ ”"
-      ]
+      ],
+      "vid": "GEN 1:2"
     },
     {
       "type": "para",
@@ -74,14 +77,16 @@
           "content": []
         },
         "John the Baptist"
-      ]
+      ],
+      "vid": "GEN 1:2"
     },
     {
       "type": "para",
       "marker": "p",
       "content": [
         "John is sometimes called..."
-      ]
+      ],
+      "vid": "GEN 1:2"
     }
   ]
 }

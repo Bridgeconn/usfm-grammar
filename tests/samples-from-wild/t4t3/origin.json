@@ -222,7 +222,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 1:1"
     },
     {
       "type": "para",
@@ -2341,7 +2342,8 @@
           ]
         },
         ".}’”"
-      ]
+      ],
+      "vid": "ACT 2:16"
     },
     {
       "type": "para",
@@ -2667,7 +2669,8 @@
           ]
         },
         ".”"
-      ]
+      ],
+      "vid": "ACT 2:25"
     },
     {
       "type": "para",
@@ -3033,7 +3036,8 @@
           "sid": "ACT 2:35"
         },
         "while I completely defeat [MTY] your enemies.’ ”"
-      ]
+      ],
+      "vid": "ACT 2:34"
     },
     {
       "type": "para",
@@ -5004,7 +5008,8 @@
           ]
         },
         " [MET] the stone that was rejected by the builders {that the builders rejected}."
-      ]
+      ],
+      "vid": "ACT 4:11"
     },
     {
       "type": "para",
@@ -5019,7 +5024,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 4:11"
     },
     {
       "type": "para",
@@ -5064,7 +5070,8 @@
           ]
         },
         "!”"
-      ]
+      ],
+      "vid": "ACT 4:11"
     },
     {
       "type": "para",
@@ -5604,7 +5611,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 4:25"
     },
     {
       "type": "para",
@@ -6907,14 +6915,16 @@
       "marker": "s1",
       "content": [
         "The Jewish leaders were perplexed because the apostles were not in jail."
-      ]
+      ],
+      "vid": "ACT 5:21"
     },
     {
       "type": "para",
       "marker": "sr",
       "content": [
         "Acts 5:21b-24"
-      ]
+      ],
+      "vid": "ACT 5:21"
     },
     {
       "type": "para",
@@ -7014,7 +7024,8 @@
           ]
         },
         " what might result from all this."
-      ]
+      ],
+      "vid": "ACT 5:21"
     },
     {
       "type": "para",
@@ -9146,14 +9157,16 @@
       "marker": "s1",
       "content": [
         "When Jacob and his sons died, people buried them in Canaan."
-      ]
+      ],
+      "vid": "ACT 7:15"
     },
     {
       "type": "para",
       "marker": "sr",
       "content": [
         "Acts 7:15b-16"
-      ]
+      ],
+      "vid": "ACT 7:15"
     },
     {
       "type": "para",
@@ -9270,7 +9283,8 @@
           ]
         },
         " had bought from Hamor's sons.”"
-      ]
+      ],
+      "vid": "ACT 7:15"
     },
     {
       "type": "para",
@@ -10393,7 +10407,8 @@
           ]
         },
         " even farther than Babylon.”"
-      ]
+      ],
+      "vid": "ACT 7:42"
     },
     {
       "type": "para",
@@ -11107,7 +11122,8 @@
           ]
         },
         " them to be put in prison."
-      ]
+      ],
+      "vid": "ACT 8:1-2"
     },
     {
       "type": "para",
@@ -12145,14 +12161,16 @@
       "marker": "s1",
       "content": [
         "Philip preached about Jesus to the official."
-      ]
+      ],
+      "vid": "ACT 8:31"
     },
     {
       "type": "para",
       "marker": "sr",
       "content": [
         "Acts 8:31b-35"
-      ]
+      ],
+      "vid": "ACT 8:31"
     },
     {
       "type": "para",
@@ -12182,7 +12200,8 @@
           "sid": "ACT 8:32"
         },
         "The part of the Scriptures that the official was reading was this:"
-      ]
+      ],
+      "vid": "ACT 8:31"
     },
     {
       "type": "para",
@@ -12197,7 +12216,8 @@
           ]
         },
         " they lead him away to kill him"
-      ]
+      ],
+      "vid": "ACT 8:32"
     },
     {
       "type": "para",
@@ -12219,7 +12239,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 8:32"
     },
     {
       "type": "para",
@@ -12242,7 +12263,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 8:32"
     },
     {
       "type": "para",
@@ -12277,7 +12299,8 @@
           ]
         },
         " ◄will not consider him innocent/will consider him guilty►."
-      ]
+      ],
+      "vid": "ACT 8:33"
     },
     {
       "type": "para",
@@ -12292,7 +12315,8 @@
           ]
         },
         " on the earth."
-      ]
+      ],
+      "vid": "ACT 8:33"
     },
     {
       "type": "para",
@@ -14986,14 +15010,16 @@
       "marker": "s1",
       "content": [
         "Peter went with the men and met Cornelius."
-      ]
+      ],
+      "vid": "ACT 10:23"
     },
     {
       "type": "para",
       "marker": "sr",
       "content": [
         "Acts 10:23b-26"
-      ]
+      ],
+      "vid": "ACT 10:23"
     },
     {
       "type": "para",
@@ -15053,7 +15079,8 @@
           ]
         },
         "!”"
-      ]
+      ],
+      "vid": "ACT 10:23"
     },
     {
       "type": "para",
@@ -19352,14 +19379,16 @@
       "marker": "s1",
       "content": [
         "Paul told about God's removing Saul and appointing David to be Israel's king."
-      ]
+      ],
+      "vid": "ACT 13:20"
     },
     {
       "type": "para",
       "marker": "sr",
       "content": [
         "Acts 13:20b-22"
-      ]
+      ],
+      "vid": "ACT 13:20"
     },
     {
       "type": "para",
@@ -19460,7 +19489,8 @@
           ]
         },
         ".’ ”"
-      ]
+      ],
+      "vid": "ACT 13:20"
     },
     {
       "type": "para",
@@ -19955,7 +19985,8 @@
           ]
         },
         " are my Son;"
-      ]
+      ],
+      "vid": "ACT 13:33"
     },
     {
       "type": "para",
@@ -19970,7 +20001,8 @@
           ]
         },
         " your Father."
-      ]
+      ],
+      "vid": "ACT 13:33"
     },
     {
       "type": "para",
@@ -20393,7 +20425,8 @@
           ]
         },
         " even though someone told you!”"
-      ]
+      ],
+      "vid": "ACT 13:41"
     },
     {
       "type": "para",
@@ -20753,7 +20786,8 @@
           ]
         },
         ".’ ”"
-      ]
+      ],
+      "vid": "ACT 13:47"
     },
     {
       "type": "para",
@@ -21711,14 +21745,16 @@
       "marker": "s1",
       "content": [
         "The apostles revisited believers and appointed leaders."
-      ]
+      ],
+      "vid": "ACT 14:20"
     },
     {
       "type": "para",
       "marker": "sr",
       "content": [
         "Acts 14:20b-23"
-      ]
+      ],
+      "vid": "ACT 14:20"
     },
     {
       "type": "para",
@@ -21889,7 +21925,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 14:20"
     },
     {
       "type": "para",
@@ -23443,7 +23480,8 @@
           ]
         },
         " the following instructions,"
-      ]
+      ],
+      "vid": "ACT 15:23"
     },
     {
       "type": "para",
@@ -23463,14 +23501,16 @@
       "marker": "q2",
       "content": [
         "You should not eat blood from animals, and you should not eat meat from animals that people have killed by strangling them."
-      ]
+      ],
+      "vid": "ACT 15:29"
     },
     {
       "type": "para",
       "marker": "q2",
       "content": [
         "Also, you should not have sex with someone to whom you are not married."
-      ]
+      ],
+      "vid": "ACT 15:29"
     },
     {
       "type": "para",
@@ -23485,7 +23525,8 @@
           ]
         },
         " you avoid doing them, you will be doing what is right. That is all.”"
-      ]
+      ],
+      "vid": "ACT 15:29"
     },
     {
       "type": "para",
@@ -27691,7 +27732,8 @@
           ]
         },
         " sailed from Ephesus."
-      ]
+      ],
+      "vid": "ACT 18:19"
     },
     {
       "type": "para",
@@ -33322,7 +33364,8 @@
           ]
         },
         " for your sins!’”"
-      ]
+      ],
+      "vid": "ACT 22:5"
     },
     {
       "type": "para",
@@ -37189,7 +37232,8 @@
       "marker": "p",
       "content": [
         "“Tomorrow,” he said, “you shall hear him.”"
-      ]
+      ],
+      "vid": "ACT 25:22"
     },
     {
       "type": "para",
@@ -41005,7 +41049,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 28:26"
     },
     {
       "type": "para",
@@ -41020,7 +41065,8 @@
           ]
         },
         ","
-      ]
+      ],
+      "vid": "ACT 28:26"
     },
     {
       "type": "para",
@@ -41035,7 +41081,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 28:26"
     },
     {
       "type": "para",
@@ -41055,14 +41102,16 @@
       "marker": "q1",
       "content": [
         "These people do not understand, because they have become stubborn."
-      ]
+      ],
+      "vid": "ACT 28:27"
     },
     {
       "type": "para",
       "marker": "q1",
       "content": [
         "They have ears, but they do not understand what they hear,"
-      ]
+      ],
+      "vid": "ACT 28:27"
     },
     {
       "type": "para",
@@ -41077,7 +41126,8 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 28:27"
     },
     {
       "type": "para",
@@ -41100,14 +41150,16 @@
           ]
         },
         "."
-      ]
+      ],
+      "vid": "ACT 28:27"
     },
     {
       "type": "para",
       "marker": "q1",
       "content": [
         "Then they might turn from their sinful behavior and I would save them.’"
-      ]
+      ],
+      "vid": "ACT 28:27"
     },
     {
       "type": "para",

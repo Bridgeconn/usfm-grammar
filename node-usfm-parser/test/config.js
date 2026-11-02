@@ -291,4 +291,5 @@ module.exports = {
     excludeUSXs: excludeUSXs,
     findAllMarkers: findAllMarkers,
     customMarkersExt: customMarkersExt,
+    TEST_DIR: TEST_DIR,
 };

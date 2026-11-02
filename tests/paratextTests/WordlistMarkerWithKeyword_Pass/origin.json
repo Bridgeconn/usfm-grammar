@@ -39,7 +39,8 @@
           ]
         },
         " definition"
-      ]
+      ],
+      "vid": "GLO 1:1"
     },
     {
       "type": "chapter",
@@ -80,7 +81,8 @@
           "sid": "GLO 1:1"
         },
         "something"
-      ]
+      ],
+      "vid": "GLO 1:1"
     },
     {
       "type": "para",
@@ -95,7 +97,8 @@
           ]
         },
         " definition"
-      ]
+      ],
+      "vid": "GLO 1:1"
     }
   ]
 }
