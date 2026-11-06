@@ -745,7 +745,7 @@ module.exports = grammar({
     glossAttribute: $ => seq("gloss", "=", '"', optional($.attributeValue), '"'),
     langAttribute: $ => seq("lang", "=", '"', optional($.attributeValue), '"'),
     _tlAttributes: $ => seq("|", $.langAttribute),
-    _jmpAttribute: $ => seq("|", repeat(choice($.linkAttribute, $.customAttribute))),
+    _jmpAttribute: $ => seq("|", repeat1(choice($.linkAttribute, $.customAttribute))),
     linkAttribute: $ => seq($._linkAttributeName, "=", '"', optional($.attributeValue), '"'),
     _linkAttributeName: $ => choice("link-href", "link-title", "link-id",
                               "href", "title", "id"),
