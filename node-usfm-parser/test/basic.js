@@ -300,3 +300,61 @@ describe("Line endings in text to USFM", () => {
     });
   }
 });
+
+describe("Custom marker names with a markers.ext", () => {
+  const customNamesExt =
+    "\\marker zpb\n\\category milestone\n\\description A custom milestone marker.\n";
+  const usfm = '\\id GEN\n\\c 1\n\\p\n\\v 1 Alpha \\zpb |x-page="4"\\* beta.\n';
+
+  it("are kept in usfm, generated USFM and error messages", () => {
+    const usfmParser = new USFMParser(usfm, null, null, null, null, customNamesExt);
+    assert.deepStrictEqual(usfmParser.errors, []);
+    assert.strictEqual(usfmParser.usfm, usfm);
+
+    const regenerated = new USFMParser(
+      null, usfmParser.toUSJ(), null, null, null, customNamesExt).usfm;
+    assert.ok(!regenerated.includes("custom"), regenerated);
+    assert.ok(regenerated.includes("\\zpb"), regenerated);
+    assert.deepStrictEqual(new USFMParser(regenerated).errors, []);
+
+    const badParser = new USFMParser(
+      "\\zpb\\*\n" + usfm, null, null, null, null, customNamesExt);
+    assert.ok(badParser.errors.length > 0);
+    assert.ok(!badParser.errors.join().includes("custom"), badParser.errors);
+    assert.ok(badParser.errors.join().includes("\\zpb"), badParser.errors);
+  });
+
+  it("stay in sync when usjToUsfm replaces the document", () => {
+    const usfmParser = new USFMParser(usfm, null, null, null, null, customNamesExt);
+    const usj = usfmParser.toUSJ();
+    usj.content[2].content[2]["x-page"] = "5";
+    usfmParser.usjToUsfm(usj);
+    usfmParser.parseUSFM();
+    assert.deepStrictEqual(usfmParser.errors, []);
+    assert.strictEqual(usfmParser.toUSJ().content[2].content[2]["x-page"], "5");
+  });
+
+  it("are reported at the input's columns in errors", () => {
+    for (const bad of [
+      "\\id GEN\n\\c 1\n\\p\n\\v 1 A \\zpb\\* b \\qwerty c\n",
+      "\\id GEN\n\\c 1\n\\p\n\\v 1 A \\zpb\\* b \\w c \\v 2 d\n",
+    ]) {
+      const withExt = new USFMParser(bad, null, null, null, null, customNamesExt).errors;
+      const withoutExt = new USFMParser(bad).errors;
+      assert.ok(withExt.length > 0, "expected a parse error");
+      assert.deepStrictEqual(withExt, withoutExt);
+    }
+  });
+
+  it("are left alone when the input itself has a customType_ name", () => {
+    const cases = [
+      ["\\customMS_zzz\\*\n\\id GEN\n\\c 1\n\\p\n\\v 1 x\n", "At 0:0, Error: \\customMS_zzz\\*"],
+      ["\\id GEN\n\\c 1\n\\p\n\\v 1 A \\customMS_zzz\\* b \\qwerty c\n", "At 3:25, Error: \\qwerty c"],
+    ];
+    for (const [bad, firstError] of cases) {
+      assert.strictEqual(new USFMParser(bad).errors[0], firstError);
+      assert.strictEqual(
+        new USFMParser(bad, null, null, null, null, customNamesExt).errors[0], firstError);
+    }
+  });
+});
