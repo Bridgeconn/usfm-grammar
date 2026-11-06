@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>A user defined attribute on \jmp lost its name: \jmp ...|href="..." x-category="tg"\jmp* came back as x-="tg" in USJ, USX and regenerated USFM, with no error. The jmp attribute rule only knew link attributes, whose user defined form split the name into two tokens.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>
