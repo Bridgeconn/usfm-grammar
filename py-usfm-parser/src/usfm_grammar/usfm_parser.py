@@ -12,7 +12,7 @@ from usfm_grammar.list_generator import ListGenerator
 from usfm_grammar.usfm_generator import USFMGenerator
 from usfm_grammar.filters import exclude_markers_in_usj, include_markers_in_usj
 from usfm_grammar.errors import USFMGrammarError, ParsingError, ParameterError
-from usfm_grammar.markers_ext_reader import ExtensionReader, restore_custom_markers
+from usfm_grammar.markers_ext_reader import ExtensionReader
 
 class Filter(list, Enum):
     """Defines the values of filter options"""
@@ -185,11 +185,18 @@ class USFMParser:
                     f"At {row + 1}:{column}",
                     f"Missing {err.type}"
                     if err.is_missing
-                    else restore_custom_markers(
+                    else self._input_text(
                         self.usfm_bytes[err.start_byte : err.end_byte].decode("utf-8")
                     ),
                 )
             )
+
+    def _input_text(self, text):
+        """Text of the parsed input as it was given: the customType_ prefixes of
+        the defined custom markers are taken out again"""
+        if self.marker_extensions is None:
+            return text
+        return self.marker_extensions.restore_custom_markers(text)
 
     def _input_point(self, node):
         """Row and column of a node in the input: the column is counted without
@@ -200,7 +207,7 @@ class USFMParser:
             return row, column
         line_start = self.usfm_bytes.rfind(b"\n", 0, node.start_byte) + 1
         prefix = self.usfm_bytes[line_start : node.start_byte].decode("utf-8")
-        return row, len(restore_custom_markers(prefix).encode("utf-8"))
+        return row, len(self._input_text(prefix).encode("utf-8"))
 
     def check_for_missing(self, node, missing_nodes):
         """Identify the MISSING nodes, to be reported also as errors"""

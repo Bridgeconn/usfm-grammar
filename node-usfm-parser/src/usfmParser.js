@@ -182,6 +182,14 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
     this.syntaxTree = tree.rootNode;
   }
 
+  // Text of the parsed input as it was given: the customType_ prefixes of
+  // the defined custom markers are taken out again
+  inputText(text) {
+    return this.markerExtensions === null
+      ? text
+      : this.markerExtensions.restoreCustomMarkers(text);
+  }
+
   // Position of a node in the input: the column is counted without the
   // customType_ prefixes that were inserted for parsing
   inputPosition(node) {
@@ -191,7 +199,7 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
     }
     const lineStart = this.usfmForParser.lastIndexOf('\n', node.startIndex - 1) + 1;
     const prefix = this.usfmForParser.slice(lineStart, node.startIndex);
-    return { row, column: ExtensionReader.restoreCustomMarkers(prefix).length };
+    return { row, column: this.inputText(prefix).length };
   }
 
   checkForErrors(tree) {
@@ -205,7 +213,7 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
       return err.isMissing
         ? `At ${position.row + 1}:${position.column}, Error: Missing ${err.type}`
         : `At ${position.row + 1}:${position.column}, Error: ${
-          ExtensionReader.restoreCustomMarkers(
+          this.inputText(
             this.usfmForParser.substring(err.startIndex, err.endIndex),
           )}`;
     });
