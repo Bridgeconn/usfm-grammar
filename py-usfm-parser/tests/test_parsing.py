@@ -360,3 +360,24 @@ def test_error_positions_count_input_columns(usfm):
     without_ext = USFMParser(usfm).errors
     assert with_ext, "expected a parse error"
     assert with_ext == without_ext
+
+
+@pytest.mark.parametrize(
+    "usfm,first_error",
+    [
+        (
+            "\\customMS_zzz\\*\n\\id GEN\n\\c 1\n\\p\n\\v 1 x\n",
+            ("At <Point row=0, column=0>", "\\customMS_zzz\\*"),
+        ),
+        (
+            "\\id GEN\n\\c 1\n\\p\n\\v 1 A \\customMS_zzz\\* b \\qwerty c\n",
+            ("At <Point row=3, column=25>", "\\qwerty c"),
+        ),
+    ],
+)
+def test_only_inserted_prefixes_are_restored(usfm, first_error):
+    """A customType_ name written in the input itself was not inserted by the
+    parser, so error snippets and positions leave it as it is, with or without
+    a markers.ext"""
+    assert USFMParser(usfm).errors[0] == first_error
+    assert USFMParser(usfm, markers_ext=custom_names_ext).errors[0] == first_error

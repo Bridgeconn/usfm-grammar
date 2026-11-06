@@ -365,4 +365,16 @@ describe("Custom marker names with a markers.ext", () => {
       assert.deepStrictEqual(withExt, withoutExt);
     }
   });
+
+  it("are left alone when the input itself has a customType_ name", () => {
+    const cases = [
+      ["\\customMS_zzz\\*\n\\id GEN\n\\c 1\n\\p\n\\v 1 x\n", "At 0:0, Error: \\customMS_zzz\\*"],
+      ["\\id GEN\n\\c 1\n\\p\n\\v 1 A \\customMS_zzz\\* b \\qwerty c\n", "At 3:25, Error: \\qwerty c"],
+    ];
+    for (const [bad, firstError] of cases) {
+      assert.strictEqual(new USFMParser(bad).errors[0], firstError);
+      assert.strictEqual(
+        new USFMParser(bad, null, null, null, null, customNamesExt).errors[0], firstError);
+    }
+  });
 });
