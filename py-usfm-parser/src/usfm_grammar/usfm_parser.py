@@ -4,7 +4,7 @@ from enum import Enum
 import re
 import traceback
 import tree_sitter_usfm3 as tsusfm
-from tree_sitter import Language, Parser, Query, QueryCursor, Point
+from tree_sitter import Language, Parser, Query, QueryCursor
 from lxml import etree
 from usfm_grammar.usx_generator import USXGenerator, USFM_VERSION
 from usfm_grammar.usj_generator import USJGenerator
@@ -195,12 +195,17 @@ class USFMParser:
     def _input_point(self, node):
         """Position of a node in the input: the column is counted without the
         customType_ prefixes that were inserted for parsing"""
+        point = node.start_point
         if self.marker_extensions is None:
-            return node.start_point
+            return point
         line_start = self.usfm_bytes.rfind(b"\n", 0, node.start_byte) + 1
         prefix = self.usfm_bytes[line_start : node.start_byte].decode("utf-8")
         column = len(self._input_text(prefix).encode("utf-8"))
-        return Point(node.start_point.row, column)
+        # The text the point prints as, with the column swapped, rather than a
+        # new Point: with py-tree-sitter 0.26.0, constructing a Point or reading
+        # its row or column corrupts memory (fixed in 0.26.1)
+        _, parsed_column = point
+        return repr(point).replace(f"column={parsed_column}", f"column={column}")
 
     def check_for_missing(self, node):
         """Identify and report the MISSING nodes also as errors"""
