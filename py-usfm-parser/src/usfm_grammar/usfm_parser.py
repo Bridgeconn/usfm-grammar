@@ -150,12 +150,6 @@ class USFMParser:
             self.usfm = biblenlp_converter.usfm_string
             self.warnings.extend(biblenlp_converter.warnings)
 
-        if markers_ext is not None:
-            self.marker_extensions = ExtensionReader()
-            self.marker_extensions.read_to_object(markers_ext)
-            if len(self.marker_extensions.extensions) > 0:
-                self.usfm = self.marker_extensions.replace_custom_markers(self.usfm)
-
         # Some basic sanity checks
         lower_case_book_code = re.compile(r"^\\id ([a-z0-9][a-z][a-z])")
         if re.match(lower_case_book_code, self.usfm):
@@ -164,7 +158,16 @@ class USFMParser:
             upper_book_code = found_book_code.upper()
             self.usfm = self.usfm.replace(found_book_code, upper_book_code, 1)
 
-        self.usfm_bytes = bytes(self.usfm, "utf8")
+        # Custom markers get their type prefix only in the text that is parsed,
+        # so self.usfm keeps the marker names the input used
+        parse_input = self.usfm
+        if markers_ext is not None:
+            self.marker_extensions = ExtensionReader()
+            self.marker_extensions.read_to_object(markers_ext)
+            if len(self.marker_extensions.extensions) > 0:
+                parse_input = self.marker_extensions.replace_custom_markers(parse_input)
+
+        self.usfm_bytes = bytes(parse_input, "utf8")
         self.syntax_tree = parser.parse(self.usfm_bytes).root_node
 
         # check for errors in the parse tree and raise them
@@ -173,20 +176,42 @@ class USFMParser:
         if 'errors' in error_caps and len(error_caps['errors']) > 0:
             self.errors = [
                 (
-                    f"At {err.start_point}",
-                    self.usfm_bytes[err.start_byte : err.end_byte].decode(
-                        "utf-8"
+                    f"At {self._input_point(err)}",
+                    self._input_text(
+                        self.usfm_bytes[err.start_byte : err.end_byte].decode("utf-8")
                     ),
                 )
                 for err in error_caps["errors"]
             ]
         self.check_for_missing(self.syntax_tree)
 
+    def _input_text(self, text):
+        """Text of the parsed input as it was given: the customType_ prefixes of
+        the defined custom markers are taken out again"""
+        if self.marker_extensions is None:
+            return text
+        return self.marker_extensions.restore_custom_markers(text)
+
+    def _input_point(self, node):
+        """Position of a node in the input: the column is counted without the
+        customType_ prefixes that were inserted for parsing"""
+        point = node.start_point
+        if self.marker_extensions is None:
+            return point
+        line_start = self.usfm_bytes.rfind(b"\n", 0, node.start_byte) + 1
+        prefix = self.usfm_bytes[line_start : node.start_byte].decode("utf-8")
+        column = len(self._input_text(prefix).encode("utf-8"))
+        # The text the point prints as, with the column swapped, rather than a
+        # new Point: with py-tree-sitter 0.26.0, constructing a Point or reading
+        # its row or column corrupts memory (fixed in 0.26.1)
+        _, parsed_column = point
+        return repr(point).replace(f"column={parsed_column}", f"column={column}")
+
     def check_for_missing(self, node):
         """Identify and report the MISSING nodes also as errors"""
         for child in node.children:
             if child.is_missing:
-                self.errors.append((f"At {child.start_point}", f"Missing {child.type}"))
+                self.errors.append((f"At {self._input_point(child)}", f"Missing {child.type}"))
             else:
                 self.check_for_missing(child)
 

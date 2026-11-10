@@ -164,3 +164,19 @@ class ExtensionReader:
                 modified_usfm,
             )
         return modified_usfm
+
+    def restore_custom_markers(self, text):
+        """Take the customType_ tags of the defined custom markers out again,
+        for text shown to the user"""
+        restored = text
+        for marker, definition in self.extensions.items():
+            marker_type = type_map.get(definition.get('category'))
+            if marker_type is None:
+                continue
+            nested_prefix = r'\+?' if marker_type == 'char' else ''
+            tag = re.escape(f"{replacement_map[marker_type]}{marker}")
+            tag_pattern = re.compile(rf"\\({nested_prefix}){tag}(?=[^\w\-]|$)")
+            restored = tag_pattern.sub(
+                lambda m, name=marker: f"\\{m.group(1)}{name}", restored
+            )
+        return restored
