@@ -725,23 +725,21 @@ Section references after a remark
         (s
           (sTag
             (numberedLevelMax5))
-          (text))))
-    (rem
-      (text))
-    (title
-      (sr
-        (text)))
+          (text)
+          (rem
+            (text))
+          (sr
+            (text)))))
     (title
       (msBlock
         (ms
           (msTag
             (numberedLevelMax3))
-          (text))))
-    (rem
-      (text))
-    (title
-      (mr
-        (text)))
+          (text)
+          (rem
+            (text))
+          (mr
+            (text)))))
     (paragraph
       (p
         (v

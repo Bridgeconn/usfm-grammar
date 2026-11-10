@@ -203,8 +203,6 @@ module.exports = grammar({
       $.d,
       $.sdBlock,
       $.r,
-      $.sr,
-      $.mr,
       $.mteBlock,
       $.qa,
     ),
@@ -218,12 +216,12 @@ module.exports = grammar({
     mteTag: $ => seq("\\mte",optional(token.immediate(/[12]/)), " "),
 
     msBlock: $ => prec.right(0, repeat1($.ms)),
-    ms: $ => prec.right(0, seq($.msTag, $._headingText, optional($.mr))),
+    ms: $ => prec.right(0, seq($.msTag, $._headingText, repeat($.rem), optional($.mr))),
     msTag: $ => seq("\\ms",optional($.numberedLevelMax3), " "),
     mr: $ => prec.right(0,seq("\\mr ", $._headingText)),
 
     sBlock: $ => prec.right(0, repeat1($.s)),
-    s: $ => prec.right(0, seq($.sTag, $._headingText, repeat(choice($.sr, $.r)) )),
+    s: $ => prec.right(0, seq($.sTag, $._headingText, repeat(choice($.sr, $.r, $.rem)) )),
     sTag: $ => seq("\\s",optional($.numberedLevelMax5), " "),
     sr: $ => prec.right(0,seq("\\sr ", $._headingText)),
     r: $ => prec.right(0, seq("\\r ", $._headingText)), // ocurs under c too
