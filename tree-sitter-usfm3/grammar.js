@@ -203,6 +203,8 @@ module.exports = grammar({
       $.d,
       $.sdBlock,
       $.r,
+      $.sr,
+      $.mr,
       $.mteBlock,
       $.qa,
     ),

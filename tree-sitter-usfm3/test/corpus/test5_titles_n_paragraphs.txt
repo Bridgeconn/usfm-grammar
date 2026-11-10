@@ -696,3 +696,55 @@ their lives for Jesus. This surprising sight amazed me, ...
           (verseNumber))
         (verseText
           (text))))))
+
+================================================================================
+Section references after a remark
+================================================================================
+\id GEN
+\c 1
+\s1 Section heading
+\rem a remark between the heading and its reference
+\sr (1.1-2.3)
+\ms1 Major section
+\rem another remark
+\mr (1-5)
+\p
+\v 1 text
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (title
+      (sBlock
+        (s
+          (sTag
+            (numberedLevelMax5))
+          (text))))
+    (rem
+      (text))
+    (title
+      (sr
+        (text)))
+    (title
+      (msBlock
+        (ms
+          (msTag
+            (numberedLevelMax3))
+          (text))))
+    (rem
+      (text))
+    (title
+      (mr
+        (text)))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))))))
