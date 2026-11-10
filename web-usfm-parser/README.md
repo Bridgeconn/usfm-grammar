@@ -274,7 +274,7 @@ The USFM spec reserves markers beginning with `\z` for [user-defined extensions]
   import {USFMParser, Filter} from 'usfm-grammar-web';
 
   await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/tree-sitter-usfm.wasm",
-                        "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/tree-sitter.wasm");
+                        "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/web-tree-sitter.wasm");
 
   const myParser = new USFMParser(inputUsfm, null, null, null, null, markersExt);
   const output = myParser.toUSJ();
