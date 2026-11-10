@@ -97,6 +97,8 @@ class Validator {
     }
 
     this.checkForMissing(tree.rootNode);
+    // report errors in the order they occur in the USFM
+    this.USFMErrors.sort((a, b) => a.startIndex - b.startIndex);
 
     if (this.USFMErrors.length > 0) {
       this.message = this.formatErrors();
@@ -121,9 +123,10 @@ class Validator {
       if (err.isMissing) {
         const start = Math.max(0, err.startIndex - 3);
         const end = Math.min(this.usfm.length, err.startIndex + 10);
-        return `At ${err.startIndex}:Missing something  here:${this.usfm.slice(start, end)}`;
+        const { row, column } = err.startPosition;
+        return `At ${row + 1}:${column}:Missing something  here:${this.usfm.slice(start, end)}`;
       } else {
-        return `At ${err.startPosition.row}:${err.startPosition.column},
+        return `At ${err.startPosition.row + 1}:${err.startPosition.column},
 Error: ${this.usfm.substring(err.startIndex, err.endIndex)}`;
       }
     });
