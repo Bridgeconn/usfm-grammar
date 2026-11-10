@@ -189,11 +189,14 @@ class USFMParser:
 
     def check_for_missing(self, node, missing_nodes):
         """Identify the MISSING nodes, to be reported also as errors"""
-        for child in node.children:
+        # iterative, as deeply nested markers can exceed the recursion limit
+        stack = list(node.children)
+        while stack:
+            child = stack.pop()
             if child.is_missing:
                 missing_nodes.append(child)
             else:
-                self.check_for_missing(child, missing_nodes)
+                stack.extend(child.children)
 
     def to_syntax_tree(self, ignore_errors=False):
         """gives the syntax tree from class, as a string"""

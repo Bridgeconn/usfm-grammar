@@ -59,11 +59,14 @@ class Validator:
 
     def check_for_missing(self, node):
         """Identify and report the MISSING nodes also as errors"""
-        for child in node.children:
+        # iterative, as deeply nested markers can exceed the recursion limit
+        stack = list(node.children)
+        while stack:
+            child = stack.pop()
             if child.is_missing:
                 self.usfm_errors.append(child)
             else:
-                self.check_for_missing(child)
+                stack.extend(child.children)
 
     def format_errors(self):
         """Prettify error messages from parse tree, to print"""
