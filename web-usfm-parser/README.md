@@ -26,9 +26,9 @@ function App() {
   useEffect(() => {
     const initParser = async () => {
       await USFMParser.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/tree-sitter-usfm.wasm",
-                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/tree-sitter.wasm");
+                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/web-tree-sitter.wasm");
       await Validator.init("https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/tree-sitter-usfm.wasm",
-                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/tree-sitter.wasm");
+                            "https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.2/web-tree-sitter.wasm");
 
     };
     initParser();
