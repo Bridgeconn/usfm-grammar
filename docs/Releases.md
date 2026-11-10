@@ -10,6 +10,7 @@ This release adds the `\efe` marker, brings the vendored USX schema up to USFM/U
 * Spaces and newlines in generated USFM are now the same in all three modules, and text spacing and line breaks are kept as they are when converting back to USFM, in #452
 * Carriage returns (`\r`, `\r\n`) are now handled in USFM and BibleNLP input, in #452
 * A warning is now given when a `\z` marker is used without being declared in `markers.ext`, even though it parses successfully, in #452
+* Parsing and validation errors are now listed in the order they occur in the USFM, and their positions are given as `line:column` with lines counted from 1, in all three modules. In Python, error positions now look like `At 7:9` instead of `At <Point row=6, column=9>`.
 
 ### Bug fixes
 
