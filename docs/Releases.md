@@ -1,5 +1,35 @@
 # Release Notes
 
+## 3.2.2
+
+This release adds the `\efe` marker, brings the vendored USX schema up to USFM/USX 3.1.2, and fixes several output bugs. It also makes whitespace, line breaks and `vid` handling match across the Python, Node.js and Web packages.
+
+### Major Changes
+* `\efe`, the extended study endnote, by @longbored in #446
+* The vendored `usx.rng` schema is updated to tcdocs 3.1.2, by @longbored in #427. A file containing only `\id` and `\usfm` now correctly fails schema validation.
+* Spaces and newlines in generated USFM are now the same in all three modules, and text spacing and line breaks are kept as they are when converting back to USFM, in #452
+* Carriage returns (`\r`, `\r\n`) are now handled in USFM and BibleNLP input, in #452
+* A warning is now given when a `\z` marker is used without being declared in `markers.ext`, even though it parses successfully, in #452
+* Parsing and validation errors are now listed in the order they occur in the USFM, and their positions are given as `line:column` with lines counted from 1, in all three modules. In Python, error positions now look like `At 7:9` instead of `At <Point row=6, column=9>`.
+
+### Bug fixes
+
+* Right-aligned table cells (`\thr2`, `\tcr1-2`, etc.) were output as `align="start"` in the Python USJ output, by @longbored in #449
+* A user-defined attribute on `\jmp` (e.g. `x-category="tg"`) lost its name and came out as `x-=`. It is now kept. An empty bar (`\jmp text|\jmp*`) is now reported as an error, by @longbored in #459
+* Quotes in attribute values are now stripped when generating USFM, in #452
+* The temporary `vid` is now dropped when the next `\v` or `\c` comes before any text, in USJ and USX output, in #460
+* Custom markers were sometimes added to the outer paragraph. This is fixed, in #460
+* Empty `content` is now removed from custom milestone objects in USJ, in #460
+
+### Maintenance
+
+* The USJ comparison tests had an inverted check (`==` / `!=`), so they were not actually comparing anything. This is fixed, and the test suite JSONs it exposed as wrong are corrected, including `vid` additions and newline normalization, in #460
+* README and CLI help corrections: Filters, xmldom, all supported inputs documented, and quoted verse numbers in examples, in #442
+* Architecture docs and the components diagram are updated, in #439
+* Dependency upgrades across the grammar, Python, Node.js and Web packages (#442, #456), plus updates via @dependabot
+
+**Full Changelog**: https://github.com/Bridgeconn/usfm-grammar/compare/v3.2.1...v3.2.2
+
 ## 3.2.1
 
 This release brings usfm-grammar up to date with the markers and attributes added in [USFM 3.1.2](https://docs.usfm.bible/usfm/3.1.2/index.html), and adds support for user-defined extension markers — the `\z` namespace — across the Python, Node.js and Web packages and the CLI.

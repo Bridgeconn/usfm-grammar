@@ -170,25 +170,33 @@ class USFMParser:
         # check for errors in the parse tree and raise them
         err_cursor = QueryCursor(error_query)
         error_caps = err_cursor.captures(self.syntax_tree)
-        if 'errors' in error_caps and len(error_caps['errors']) > 0:
-            self.errors = [
+        error_nodes = list(error_caps.get("errors", []))
+        self.check_for_missing(self.syntax_tree, error_nodes)
+        # report errors in the order they occur in the USFM
+        error_nodes.sort(key=lambda err: err.start_byte)
+        self.errors = []
+        for err in error_nodes:
+            # unpack once: reading .row/.column off start_point has segfaulted
+            row, column = err.start_point
+            self.errors.append(
                 (
-                    f"At {err.start_point}",
-                    self.usfm_bytes[err.start_byte : err.end_byte].decode(
-                        "utf-8"
-                    ),
+                    f"At {row + 1}:{column}",
+                    f"Missing {err.type}"
+                    if err.is_missing
+                    else self.usfm_bytes[err.start_byte : err.end_byte].decode("utf-8"),
                 )
-                for err in error_caps["errors"]
-            ]
-        self.check_for_missing(self.syntax_tree)
+            )
 
-    def check_for_missing(self, node):
-        """Identify and report the MISSING nodes also as errors"""
-        for child in node.children:
+    def check_for_missing(self, node, missing_nodes):
+        """Identify the MISSING nodes, to be reported also as errors"""
+        # iterative, as deeply nested markers can exceed the recursion limit
+        stack = list(node.children)
+        while stack:
+            child = stack.pop()
             if child.is_missing:
-                self.errors.append((f"At {child.start_point}", f"Missing {child.type}"))
+                missing_nodes.append(child)
             else:
-                self.check_for_missing(child)
+                stack.extend(child.children)
 
     def to_syntax_tree(self, ignore_errors=False):
         """gives the syntax tree from class, as a string"""

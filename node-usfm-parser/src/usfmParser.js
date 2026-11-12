@@ -171,41 +171,39 @@ Refer docs: https://docs.usfm.bible/usfm/3.1.2/syntax.html#_usx_usfm_xml`,
       // console.log(this.usfm);
     }
     this.checkForErrors(tree);
-    this.checkforMissing(tree.rootNode);
     // if (error) throw error;
     this.syntaxTree = tree.rootNode;
   }
 
   checkForErrors(tree) {
     const errorQuery = new Query(USFM3, '(ERROR) @errors');
-    const errors = errorQuery.captures(tree.rootNode);
-
-    if (errors.length > 0) {
-      this.errors = errors.map(
-        (err) =>
-          `At ${err.node.startPosition.row}:${
-            err.node.startPosition.column
-          }, Error: ${this.usfm.substring(
-            err.node.startIndex,
-            err.node.endIndex,
-          )}`,
-      );
+    const errorNodes = errorQuery.captures(tree.rootNode).map((cap) => cap.node);
+    this.checkforMissing(tree.rootNode, errorNodes);
+    // report errors in the order they occur in the USFM
+    errorNodes.sort((a, b) => a.startIndex - b.startIndex);
+    this.errors = errorNodes.map((err) =>
+      err.isMissing
+        ? `At ${err.startPosition.row + 1}:${
+          err.startPosition.column
+        }, Error: Missing ${err.type}`
+        : `At ${err.startPosition.row + 1}:${
+          err.startPosition.column
+        }, Error: ${this.usfm.substring(err.startIndex, err.endIndex)}`,
+    );
+    if (this.errors.length > 0) {
       return new Error(`Errors found in USFM: ${this.errors.join(', ')}`);
     }
+    return null;
   }
 
-  checkforMissing(node) {
+  checkforMissing(node, missingNodes) {
     const cursor = node.walk();
 
     do {
       const currentNode = cursor.currentNode;
 
       if (currentNode.isMissing) {
-        this.errors.push(
-          `At ${currentNode.startPosition.row + 1}:${
-            currentNode.startPosition.column
-          }, Error: Missing ${currentNode.type}`,
-        );
+        missingNodes.push(currentNode);
       }
 
       if (cursor.gotoFirstChild()) {

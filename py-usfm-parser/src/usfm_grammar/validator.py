@@ -47,8 +47,10 @@ class Validator:
         self.usfm_errors = []
         self.message = ""
         if 'errors' in errors_cap and len(errors_cap['errors']) > 0:
-            self.usfm_errors = errors_cap['errors']
+            self.usfm_errors = list(errors_cap['errors'])
         self.check_for_missing(tree.root_node)
+        # report errors in the order they occur in the USFM
+        self.usfm_errors.sort(key=lambda err: err.start_byte)
 
         if len(self.usfm_errors) > 0:
             self.message = self.format_errors()
@@ -57,16 +59,21 @@ class Validator:
 
     def check_for_missing(self, node):
         """Identify and report the MISSING nodes also as errors"""
-        for child in node.children:
+        # iterative, as deeply nested markers can exceed the recursion limit
+        stack = list(node.children)
+        while stack:
+            child = stack.pop()
             if child.is_missing:
                 self.usfm_errors.append(child)
             else:
-                self.check_for_missing(child)
+                stack.extend(child.children)
 
     def format_errors(self):
         """Prettify error messages from parse tree, to print"""
         err_lines = []
         for err in self.usfm_errors:
+            # unpack once: reading .row/.column off start_point has segfaulted
+            row, column = err.start_point
             # print("---"*10)
             # print(err.is_error)
             # print(err.is_missing)
@@ -81,14 +88,14 @@ class Validator:
                 end = min(len(self.usfm_bytes), err.start_byte + 10)
                 err_lines.append(
                     (
-                        f"At {err.start_point}:Missing",
+                        f"At {row + 1}:{column}:Missing",
                         self.usfm_bytes[start:end].decode("utf-8"),
                     )
                 )
             else:
                 err_lines.append(
                     (
-                        f"At {err.start_point}",
+                        f"At {row + 1}:{column}",
                         self.usfm_bytes[err.start_byte : err.end_byte].decode("utf-8"),
                     )
                 )
