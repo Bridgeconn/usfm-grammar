@@ -42,7 +42,7 @@ jobs:
           python -m build --sdist
 
       - name: Publish tree-sitter-usfm3 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.13.0
+        uses: pypa/gh-action-pypi-publish@v1.14.3
         with:
           packages-dir: tree-sitter-usfm3/dist/
 
@@ -63,7 +63,7 @@ jobs:
           python -m build --sdist
 
       - name: Publish usfm-grammar 📦 to PyPI
-        uses: pypa/gh-action-pypi-publish@v1.13.0
+        uses: pypa/gh-action-pypi-publish@v1.14.3
         with:
           packages-dir: py-usfm-parser/dist/
 
