@@ -58,9 +58,19 @@ function App() {
 export default App;
 ```
 
-It can be used directly in the HTML script tag too. Please ensure its dependencies are also included(xmldom, ajv, xpath).
+It can be used directly in the HTML script tag too. The bundle imports its dependencies (ajv, xmldom) by name, so an import map is needed to tell the browser where to find them. `fs/promises` and `module` are only used when running in Node.js, so they can be mapped to empty modules.
 
 ```html
+<script type="importmap">
+{
+  "imports": {
+    "ajv": "https://cdn.jsdelivr.net/npm/ajv@8.20.0/+esm",
+    "@xmldom/xmldom": "https://cdn.jsdelivr.net/npm/@xmldom/xmldom@0.9.12/+esm",
+    "fs/promises": "data:text/javascript,export default {}",
+    "module": "data:text/javascript,export default {}"
+  }
+}
+</script>
 <script type="module">
   import { USFMParser, Filter, Validator } from 'https://cdn.jsdelivr.net/npm/usfm-grammar-web@3.2.3/dist/bundle.mjs';
   console.log('Hello world');
@@ -101,7 +111,7 @@ const usfmParser = new USFMParser(USFM);
 const USJ = usfmParser.toUSJ() // USFM to USJ
 console.log(JSON.stringify(USJ, null, 2));
 
-const usfmParser2 = new USFMParser(usfmString=null, fromUsj=USJ) // USJ to USFM
+const usfmParser2 = new USFMParser(/* usfmString */ null, /* fromUsj */ USJ) // USJ to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
 ```
@@ -137,7 +147,7 @@ Bible NLP format consists of two `txt` files: the first, with verse texts, one p
 ```javascript
 
 const output = usfmParser.toBibleNlpFormat() 
-//const output = my_parser.toBibleNlpFormat(true) //ignore_errors
+//const output = usfmParser.toBibleNlpFormat(true) //ignore_errors
 
 output.text.forEach(txt => {
   console.log(txt);
@@ -150,7 +160,7 @@ output.vref.forEach(ref => {
 
 Biblenlp format data can also be used to initialize the parser and generate other formats like USFM, USX, USJ, List etc from. 
 ```javascript
-import {ORIGINAL_VREF} from 'usfm-grammar';
+import {ORIGINAL_VREF} from 'usfm-grammar-web';
 
 const bibleNlpObj = {'vref': ["GEN 1:1", "GEN 1:2"], 'text':["In the begining ...", "The earth was formless ..."]}
 
@@ -171,7 +181,7 @@ console.log(myParser2.warnings)
 const listOutput = usfmParser.toList();
 /* const listOutput = usfmParser.toList(
                       Filter.NOTES,  //exclude
-                      ["id", "c", "v"] //include
+                      ["id", "c", "v"], //include
                       true,  //ignore errors
                       true  //combine texts
                       )*/
@@ -182,7 +192,7 @@ console.log(tableOutput);
 ### Autofix and Validation
 Experimental Validation and Autofix feature for USFM:
 ```javascript
-import {Validator} from "usfm-grammar";
+import {Validator} from "usfm-grammar-web";
 
 const wrongUSFM="\\id GEN\n\\c 1\n\\v 1 test verse"
 const checker = new Validator();
@@ -196,7 +206,7 @@ console.log(checker.message); // Report on autofix attempt
 
 Validation of USJ format:
 ```javascript
-const {Validator} = require("usfm-grammar");
+import {Validator} from "usfm-grammar-web";
 const simpleUSJ = {
   type: 'USJ',
   version: '0.3.0',
@@ -387,7 +397,7 @@ The USFM spec reserves markers beginning with `\z` for [user-defined extensions]
   ```json
   {"type": "char", "content": [" inline content"], "marker": "zbadge"}
   {"type": "para", "content": [" A line of its own\n"], "marker": "zheading"}
-  {"type": "ms", "content": [], "marker": "zalign-s", "x-strong": "G25320"}
+  {"type": "ms", "marker": "zalign-s", "x-strong": "G25320"}
   ```
   and this USX
   ```xml

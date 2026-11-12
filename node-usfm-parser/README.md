@@ -34,7 +34,7 @@ const usfmParser = new USFMParser(USFM);
 const USJ = usfmParser.toUSJ() // USFM to USJ
 console.log(JSON.stringify(USJ, null, 2));
 
-const usfmParser2 = new USFMParser(usfmString=null, fromUsj=USJ) // USJ to USFM
+const usfmParser2 = new USFMParser(/* usfmString */ null, /* fromUsj */ USJ) // USJ to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
 ```
@@ -57,7 +57,7 @@ const usx = usxSerializer.serializeToString(usxElem);
 
 console.log(usx);
 
-const usfmParser2 = new USFMParser(usfmString=null, fromUsj=null, fromUsx=usxElem) // USX to USFM
+const usfmParser2 = new USFMParser(/* usfmString */ null, /* fromUsj */ null, /* fromUsx */ usxElem) // USX to USFM
 const usfmGen = usfmParser2.usfm;
 console.log(usfmGen);
 
@@ -74,7 +74,7 @@ const usfmParser3 = new USFMParser(null, null, usxDoc.documentElement);
 const fs = require('fs');
 
 const output = usfmParser.toBibleNlpFormat() 
-//const output = my_parser.toBibleNlpFormat(true) //ignore_errors
+//const output = usfmParser.toBibleNlpFormat(true) //ignore_errors
 
 const textLines = output.text.join('\n');
 fs.writeFileSync('bibleNLP.txt', textLines, { encoding: 'utf-8' });
@@ -84,7 +84,7 @@ fs.writeFileSync('vref.txt', refLines, { encoding: 'utf-8' });
 ```
 Biblenlp format data can also be used to initialize the parser and generate other formats like USFM, USX, USJ, List etc from. 
 ```javascript
-import {ORIGINAL_VREF} from 'usfm-grammar';
+const {ORIGINAL_VREF} = require('usfm-grammar');
 
 const bibleNlpObj = {'vref': ["GEN 1:1", "GEN 1:2"], 'text':["In the begining ...", "The earth was formless ..."]}
 
@@ -332,7 +332,7 @@ The USFM spec reserves markers beginning with `\z` for [user-defined extensions]
   ```json
   {"type": "char", "content": [" inline content"], "marker": "zbadge"}
   {"type": "para", "content": [" A line of its own\n"], "marker": "zheading"}
-  {"type": "ms", "content": [], "marker": "zalign-s", "x-strong": "G25320"}
+  {"type": "ms", "marker": "zalign-s", "x-strong": "G25320"}
   ```
   and this USX
   ```xml

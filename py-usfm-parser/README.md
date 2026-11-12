@@ -173,7 +173,7 @@ with open(test_xml_file, 'r', encoding='utf-8') as usx_file:
 
 #### Experimental Validation and Autofix
 
-For USJ:
+For USFM:
 ```python
 from usfm_grammar import Validator
 
@@ -419,7 +419,7 @@ The USFM spec reserves markers beginning with `\z` for [user-defined extensions]
   ```json
   {"type": "char", "content": [" inline content"], "marker": "zbadge"}
   {"type": "para", "content": [" A line of its own\n"], "marker": "zheading"}
-  {"type": "ms", "content": [], "marker": "zalign-s", "x-strong": "G25320"}
+  {"type": "ms", "marker": "zalign-s", "x-strong": "G25320"}
   ```
   and this USX
   ```xml
