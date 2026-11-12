@@ -1,0 +1,86 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "GEN",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                "Section heading\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "rem",
+            "content": [
+                "a remark between the heading and its reference\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "sr",
+            "content": [
+                "(1.1-2.3)\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "text\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "ms1",
+            "content": [
+                "Major section\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "rem",
+            "content": [
+                "another remark\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "mr",
+            "content": [
+                "(1-5)\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "text\n"
+            ]
+        }
+    ]
+}

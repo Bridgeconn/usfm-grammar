@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>\sr and \mr were only accepted directly after their \s or \ms heading, so a \rem (or anything else) between the heading and the reference line made the reference fail to parse. In USX they are plain section paragraphs, so they are now accepted on their own like \r.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>
