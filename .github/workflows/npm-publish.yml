@@ -121,7 +121,7 @@ jobs:
           cd web-usfm-parser/
           npm install .
           cp ./node_modules/web-tree-sitter/web-tree-sitter.js src/web-tree-sitter/
-          cp ./node_modules/web-tree-sitter/web-tree-sitter.wasm ./
+          cp ./node_modules/web-tree-sitter/web-tree-sitter.wasm src/web-tree-sitter/
       - name: Build and publish
         run: |
           cd web-usfm-parser/
