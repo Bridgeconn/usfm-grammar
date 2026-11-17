@@ -1,0 +1,25 @@
+<usx version="3.1.2">
+  <book code="GEN" style="id"/>
+  <chapter number="1" style="c" sid="GEN 1"/>
+  <para style="s1">Section heading
+</para>
+  <para style="rem">a remark between the heading and its reference
+</para>
+  <para style="sr">(1.1-2.3)
+</para>
+  <para style="p">
+    <verse number="1" style="v" sid="GEN 1:1"/>text
+<verse eid="GEN 1:1"/>
+  </para>
+  <para style="ms1">Major section
+</para>
+  <para style="rem">another remark
+</para>
+  <para style="mr">(1-5)
+</para>
+  <para style="p">
+    <verse number="2" style="v" sid="GEN 1:2"/>text
+<verse eid="GEN 1:2"/>
+  </para>
+  <chapter eid="GEN 1"/>
+</usx>

@@ -1,0 +1,13 @@
+\id GEN
+\usfm 3.1.2
+\c 1
+\s1 Section heading
+\rem a remark between the heading and its reference
+\sr (1.1-2.3)
+\p
+\v 1 text
+\ms1 Major section
+\rem another remark
+\mr (1-5)
+\p
+\v 2 text
