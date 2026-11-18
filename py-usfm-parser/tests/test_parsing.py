@@ -381,3 +381,13 @@ def test_only_inserted_prefixes_are_restored(usfm, first_error):
     a markers.ext"""
     assert USFMParser(usfm).errors[0] == first_error
     assert USFMParser(usfm, markers_ext=custom_names_ext).errors[0] == first_error
+
+
+def test_usx_ref_has_no_style():
+    """USX ref elements carry loc but no style attribute"""
+    test_parser = USFMParser(
+        '\\id GEN test\n\\c 1\n\\p\n\\v 1 see \\ref Mark 1.1|loc="MRK 1:1"\\ref* here\n'
+    )
+    assert not test_parser.errors, test_parser.errors
+    refs = test_parser.to_usx().findall(".//ref")
+    assert [ref.attrib for ref in refs] == [{"loc": "MRK 1:1"}]
