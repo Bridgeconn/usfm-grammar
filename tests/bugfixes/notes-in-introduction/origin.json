@@ -1,0 +1,174 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "MRK",
+            "content": []
+        },
+        {
+            "type": "para",
+            "marker": "imt1",
+            "content": [
+                "The Gospel of Mark",
+                {
+                    "type": "note",
+                    "marker": "f",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "0.0 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "Also called the Gospel according to Mark."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "is1",
+            "content": [
+                "Introduction",
+                {
+                    "type": "note",
+                    "marker": "fe",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "See the endnotes."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "ip",
+            "content": [
+                "The Gospel of Mark",
+                {
+                    "type": "note",
+                    "marker": "f",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "0.1 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "fq",
+                            "content": [
+                                "Gospel "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "means good news."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                " begins with the statement:\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "io1",
+            "content": [
+                "The beginning",
+                {
+                    "type": "note",
+                    "marker": "ef",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "1.1 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "Study note."
+                            ]
+                        }
+                    ],
+                    "caller": "-"
+                },
+                " (1.1-13)\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "ili1",
+            "content": [
+                "The Messiah",
+                {
+                    "type": "note",
+                    "marker": "efe",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "Extended study endnote."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                " is the one promised by God.\n"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "MRK 1"
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "MRK 1:1"
+                },
+                "The beginning of the good news.\n"
+            ]
+        }
+    ]
+}

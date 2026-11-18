@@ -98,6 +98,7 @@ module.exports = grammar({
     _introText: $ => repeat1(choice($.text, $.iqt,
       $.xt_standalone,
       $._characterMarker,
+      $.footnote,
       $.fig,
       $.ref,
       )),

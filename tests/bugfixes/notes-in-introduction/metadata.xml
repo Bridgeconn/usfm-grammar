@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>Footnotes (\f, \fe, \ef, \efe) were rejected inside introduction paragraphs such as \imt, \is, \ip, \io and \ili, though USX allows notes in the book introduction and they already parsed in headings like \mt.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>
