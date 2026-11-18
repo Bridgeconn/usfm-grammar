@@ -825,3 +825,90 @@ Extended study endnote
             (ft
               (footnoteText
                 (text)))))))))
+
+================================================================================
+Footnote reference mark
+================================================================================
+\id GEN
+\c 1
+\s1 The creation\fm *\fm*
+\p
+\v 1 In the beginning\f * \fr 1:1 \ft Or when God began to create.\f* God created the heavens and the earth.
+\v 2 The earth\fm *\fm* was formless and empty.
+\v 3 God said, \wj Let there be light\+fm *\+fm*\wj* and there was light.
+\v 4 God saw\f + \fr 1:4 \ft See the note marked \fm *\fm* at verse 1.\f* that the light was good.
+
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (title
+      (sBlock
+        (s
+          (sTag
+            (numberedLevelMax5))
+          (text)
+          (fm
+            (text))
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
+            (footnoteText
+              (text))
+            (fr
+              (footnoteText
+                (text)))
+            (ft
+              (footnoteText
+                (text)))))
+        (verseText
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text)
+          (fm
+            (text))
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text)
+          (wj
+            (text)
+            (fmNested
+              (text)))
+          (text))
+        (v
+          (verseNumber))
+        (verseText
+          (text))
+        (footnote
+          (f
+            (caller)
+            (footnoteText
+              (text))
+            (fr
+              (footnoteText
+                (text)))
+            (ft
+              (footnoteText
+                (text)
+                (fm
+                  (text))
+                (text)))))
+        (verseText
+          (text))))))
