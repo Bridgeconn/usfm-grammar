@@ -150,12 +150,6 @@ class USFMParser:
             self.usfm = biblenlp_converter.usfm_string
             self.warnings.extend(biblenlp_converter.warnings)
 
-        if markers_ext is not None:
-            self.marker_extensions = ExtensionReader()
-            self.marker_extensions.read_to_object(markers_ext)
-            if len(self.marker_extensions.extensions) > 0:
-                self.usfm = self.marker_extensions.replace_custom_markers(self.usfm)
-
         # Some basic sanity checks
         lower_case_book_code = re.compile(r"^\\id ([a-z0-9][a-z][a-z])")
         if re.match(lower_case_book_code, self.usfm):
@@ -164,7 +158,16 @@ class USFMParser:
             upper_book_code = found_book_code.upper()
             self.usfm = self.usfm.replace(found_book_code, upper_book_code, 1)
 
-        self.usfm_bytes = bytes(self.usfm, "utf8")
+        # Custom markers get their type prefix only in the text that is parsed,
+        # so self.usfm keeps the marker names the input used
+        parse_input = self.usfm
+        if markers_ext is not None:
+            self.marker_extensions = ExtensionReader()
+            self.marker_extensions.read_to_object(markers_ext)
+            if len(self.marker_extensions.extensions) > 0:
+                parse_input = self.marker_extensions.replace_custom_markers(parse_input)
+
+        self.usfm_bytes = bytes(parse_input, "utf8")
         self.syntax_tree = parser.parse(self.usfm_bytes).root_node
 
         # check for errors in the parse tree and raise them
@@ -176,16 +179,35 @@ class USFMParser:
         error_nodes.sort(key=lambda err: err.start_byte)
         self.errors = []
         for err in error_nodes:
-            # unpack once: reading .row/.column off start_point has segfaulted
-            row, column = err.start_point
+            row, column = self._input_point(err)
             self.errors.append(
                 (
                     f"At {row + 1}:{column}",
                     f"Missing {err.type}"
                     if err.is_missing
-                    else self.usfm_bytes[err.start_byte : err.end_byte].decode("utf-8"),
+                    else self._input_text(
+                        self.usfm_bytes[err.start_byte : err.end_byte].decode("utf-8")
+                    ),
                 )
             )
+
+    def _input_text(self, text):
+        """Text of the parsed input as it was given: the customType_ prefixes of
+        the defined custom markers are taken out again"""
+        if self.marker_extensions is None:
+            return text
+        return self.marker_extensions.restore_custom_markers(text)
+
+    def _input_point(self, node):
+        """Row and column of a node in the input: the column is counted without
+        the customType_ prefixes that were inserted for parsing"""
+        # unpack once: reading .row/.column off start_point has segfaulted
+        row, column = node.start_point
+        if self.marker_extensions is None:
+            return row, column
+        line_start = self.usfm_bytes.rfind(b"\n", 0, node.start_byte) + 1
+        prefix = self.usfm_bytes[line_start : node.start_byte].decode("utf-8")
+        return row, len(self._input_text(prefix).encode("utf-8"))
 
     def check_for_missing(self, node, missing_nodes):
         """Identify the MISSING nodes, to be reported also as errors"""

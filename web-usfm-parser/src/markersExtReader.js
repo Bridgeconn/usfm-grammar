@@ -152,6 +152,23 @@ class ExtensionReader {
     }
     return modifiedUsfm;
   }
+
+  // Take the customType_ tags of the defined custom markers out again, for
+  // text shown to the user
+  restoreCustomMarkers(text) {
+    let restored = text;
+    for (const marker of Object.keys(this.extensions)) {
+      const markerType = typeMap[this.extensions[marker].category];
+      if (markerType === undefined) {
+        continue;
+      }
+      const nestedPrefix = markerType === 'char' ? '\\+?' : '';
+      const tag = escapeRegExp(`${replacementMap[markerType]}${marker}`);
+      const tagPattern = new RegExp(`\\\\(${nestedPrefix})${tag}(?=[^\\w-]|$)`, 'g');
+      restored = restored.replace(tagPattern, (match, plus) => `\\${plus}${marker}`);
+    }
+    return restored;
+  }
 }
 
 export { ExtensionReader, replacementMap, typeMap };
