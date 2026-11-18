@@ -94,7 +94,7 @@ def get_styles(element):
     styles = []
     if "style" in element.attrib:
         styles.append(element.attrib["style"])
-    if element.tag in ["figure", "optbreak"]:
+    if element.tag in ["figure", "optbreak", "ref"]:
         styles.append(element.tag)
     if element.tag == "list":
         styles.append("list-s")

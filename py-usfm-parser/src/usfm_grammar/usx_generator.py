@@ -541,7 +541,6 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
             self._set_verse_text_context(prev)
         elif node.type == "ref":
             ref_xml_node = etree.SubElement(parent_xml_node, "ref")
-            ref_xml_node.set("style", "ref")
             for child in node.children[1:-1]:
                 self.node_2_usx(child, ref_xml_node)
 
