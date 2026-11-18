@@ -95,7 +95,31 @@
                     ],
                     "caller": "+"
                 },
-                " begins with the statement:\n"
+                " begins with ",
+                {
+                    "type": "char",
+                    "marker": "iqt",
+                    "content": [
+                        "the beginning",
+                        {
+                            "type": "note",
+                            "marker": "f",
+                            "content": [
+                                " ",
+                                {
+                                    "type": "char",
+                                    "marker": "ft",
+                                    "content": [
+                                        "Some manuscripts add more."
+                                    ]
+                                }
+                            ],
+                            "caller": "+"
+                        },
+                        " of the good news"
+                    ]
+                },
+                ".\n"
             ]
         },
         {
@@ -125,7 +149,29 @@
                     ],
                     "caller": "-"
                 },
-                " (1.1-13)\n"
+                " ",
+                {
+                    "type": "char",
+                    "marker": "ior",
+                    "content": [
+                        "1.1-13",
+                        {
+                            "type": "note",
+                            "marker": "f",
+                            "content": [
+                                " ",
+                                {
+                                    "type": "char",
+                                    "marker": "ft",
+                                    "content": [
+                                        "Or 1.1-15."
+                                    ]
+                                }
+                            ],
+                            "caller": "+"
+                        }
+                    ]
+                }
             ]
         },
         {
