@@ -97,7 +97,8 @@ export const CHAR_STYLE_MARKERS = [
   'fw',
   'fp',
   'fv',
-  'fdc', //footnote - content
+  'fdc',
+  'fm', //footnote - content
   'xo',
   'xop',
   'xt',
