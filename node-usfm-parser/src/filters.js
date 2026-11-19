@@ -4,7 +4,7 @@ const MARKERS_WITH_DISCARDABLE_CONTENTS = [
   'ipq', 'imq', 'ipr', 'ipc', 'iq', 'ib', 'ili', 'iot', 'io', 'iex', 'imte', 'ie',
   'mt', 'mte', 'cl', 'cd', 'ms', 'mr', 's', 'sr', 'r', 'd', 'sp', 'sd',
   'sts', 'rem', 'lit', 'restore', 'f', 'fe', 'ef', 'efe', 'x', 'ex',
-  'fr', 'ft', 'fk', 'fq', 'fqa', 'fl', 'fw', 'fp', 'fv', 'fdc',
+  'fr', 'ft', 'fk', 'fq', 'fqa', 'fl', 'fw', 'fp', 'fv', 'fdc', 'fm',
   'xo', 'xop', 'xt', 'xta', 'xk', 'xq', 'xot', 'xnt', 'xdc',
   'jmp', 'fig', 'cat', 'esb', 'b',
   'user-extension',
@@ -216,7 +216,7 @@ class Filter {
 
   static NOTES = [
     'f', 'fe', 'ef', 'efe', 'x', 'ex', // footnotes-and-crossrefs
-    'fr', 'ft', 'fk', 'fq', 'fqa', 'fl', 'fw', 'fp', 'fv', 'fdc',
+    'fr', 'ft', 'fk', 'fq', 'fqa', 'fl', 'fw', 'fp', 'fv', 'fdc', 'fm',
     'xo', 'xop', 'xt', 'xta', 'xk', 'xq', 'xot', 'xnt', 'xdc',
   ];
 
