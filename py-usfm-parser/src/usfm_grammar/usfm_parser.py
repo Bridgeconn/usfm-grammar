@@ -41,8 +41,8 @@ class Filter(list, Enum):
     ]
     NOTES = [
         "f", "fe", "ef", "efe", "x", "ex",  # "footnotes-and-crossrefs"
-        "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "xo",
-        "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",
+        "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "fm",
+        "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",
     ]
     LISTS = ["list-s", "list-e", "lh", "li", "lf", "lim", "lik", "liv"]  # "lists"
     STUDY_BIBLE = ["esb", "cat"]  # "sidebars-extended-contents"

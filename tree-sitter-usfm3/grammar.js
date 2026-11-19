@@ -407,7 +407,7 @@ module.exports = grammar({
       $.fig,
       ))),
 
-    footnote: $ => choice($.f, $.fe, $.fm, $.ef, $.efe),
+    footnote: $ => choice($.f, $.fe, $.ef, $.efe),
 
     f: $ => seq("\\f ",$.caller, repeat($._footnoteContents), "\\f*"),
     fe: $ => seq("\\fe ",$.caller, repeat($._footnoteContents), "\\fe*"),
@@ -423,7 +423,6 @@ module.exports = grammar({
     ft: $ => prec.right(0, seq("\\ft ", optional($.footnoteText), optional("\\ft*"))),
     fdc: $ => prec.right(0, seq("\\fdc ", optional($.footnoteText), optional("\\fdc*"))),
     fv: $ => seq("\\fv ", optional($.text), "\\fv*"),
-    fm: $ => seq("\\fm ", optional($.footnoteText), "\\fm*"),
 
     _footnoteContents: $ => choice(
       $.fr,
@@ -510,6 +509,7 @@ module.exports = grammar({
     no: $ => seq("\\no", $._spaceOrLine, $._innerText, "\\no*"),
     sc: $ => seq("\\sc", $._spaceOrLine, $._innerText, "\\sc*"),
     sup: $ => seq("\\sup", $._spaceOrLine, $._innerText, "\\sup*"),
+    fm: $ => seq("\\fm", $._spaceOrLine, $._innerText, "\\fm*"),
 
     ndx: $ => seq("\\ndx", $._spaceOrLine, $._innerText, "\\ndx*"),
     pro: $ => seq("\\pro", $._spaceOrLine, $._innerText, "\\pro*"),
@@ -543,6 +543,7 @@ module.exports = grammar({
       $.no,
       $.sc,
       $.sup,
+      $.fm,
       $.ndx,
       $.pro,
       $.rb,
@@ -579,6 +580,7 @@ module.exports = grammar({
     noNested: $ => seq("\\+no", $._spaceOrLine, $._innerText, "\\+no*"),
     scNested: $ => seq("\\+sc", $._spaceOrLine, $._innerText, "\\+sc*"),
     supNested: $ => seq("\\+sup", $._spaceOrLine, $._innerText, "\\+sup*"),
+    fmNested: $ => seq("\\+fm", $._spaceOrLine, $._innerText, "\\+fm*"),
 
     ndxNested: $ => seq("\\+ndx", $._spaceOrLine, $._innerText, "\\+ndx*"),
     proNested: $ => seq("\\+pro", $._spaceOrLine, $._innerText, "\\+pro*"),
@@ -616,6 +618,7 @@ module.exports = grammar({
       $.noNested,
       $.scNested,
       $.supNested,
+      $.fmNested,
       $.ndxNested,
       $.proNested,
       $.rbNested,

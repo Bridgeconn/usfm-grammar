@@ -1,7 +1,7 @@
 const assert = require("assert");
 const {USFM_VERSION} = require("../src/utils/markers");
 const {DOMParser} = require("@xmldom/xmldom");
-const {USFMParser} = require("../src/index");
+const {USFMParser, Filter} = require("../src/index");
 const {customMarkersExt} = require("./config");
 
 const simpleUSFM = "\\id GEN\n\\c 1\n\\p\n\\v 1 In the begining..\\v 2";
@@ -356,5 +356,18 @@ describe("Custom marker names with a markers.ext", () => {
       assert.strictEqual(
         new USFMParser(bad, null, null, null, null, customNamesExt).errors[0], firstError);
     }
+  });
+});
+
+describe("Filter.NOTES", () => {
+  it("covers \\fm marks", () => {
+    const parser = new USFMParser(
+      "\\id GEN\n\\c 1\n\\p\n\\v 1 Word\\f * \\ft note.\\f* one.\n" +
+      "\\v 2 The earth\\fm *\\fm* was.\n");
+    assert.deepStrictEqual(parser.errors, []);
+    const withoutNotes = JSON.stringify(parser.toUSJ(Filter.NOTES));
+    assert.ok(!withoutNotes.includes('"fm"') && !withoutNotes.includes("*"), withoutNotes);
+    const onlyNotes = parser.toUSJ(null, Filter.NOTES).content;
+    assert.ok(onlyNotes.some((item) => item.marker === "fm"), JSON.stringify(onlyNotes));
   });
 });
