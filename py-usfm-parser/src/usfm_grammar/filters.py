@@ -13,7 +13,7 @@ MARKERS_WITH_DISCARDABLE_CONTENTS = [
     "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "sp", "sd",  # titles
     "sts", "rem", "lit", "restore",  # comments
     "f", "fe", "ef", "efe", "x", "ex",  # NOTE_MARKERS
-    "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",  # footnote-content
+    "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "fm",  # footnote-content
     "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",  # crossref-content
     "jmp", "fig", "cat", "esb", "b",
     "user-extension",
