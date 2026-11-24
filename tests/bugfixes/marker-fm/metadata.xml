@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <test-metadata>
-        <description>The \fm marker (footnote reference mark) was parsed as a kind of footnote, so the generators treated it as neither a note nor a character and kept only its text. USX has fm in Char.char.style.enum, so it is now a character marker, with a nested \+fm form, and comes out as char fm in USX and USJ.</description>
+        <description>The \fm marker (footnote reference mark) is a footnote in the grammar's AST, but the generators handled it as neither a note nor a character and kept only its text. USX has fm in Char.char.style.enum, so the generators now write it as char fm in USX and USJ, and USJ or USX to USFM writes an fm nested in another character without the + prefix, so the result parses again.</description>
         <validated>pass</validated>
         <tags></tags>
 </test-metadata>

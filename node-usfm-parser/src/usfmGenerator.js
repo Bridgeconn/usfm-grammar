@@ -99,7 +99,7 @@ class USFMGenerator {
     }
     if (!NO_USFM_USJ_TYPES.includes(usjObj.type)) {
       this.usfmString += '\\';
-      if (nested && usjObj.type === 'char' && !['xt', 'fv', 'ref'].includes(marker)) {
+      if (nested && usjObj.type === 'char' && !['xt', 'fv', 'ref', 'fm'].includes(marker)) {
         this.usfmString += '+';
       }
       if (usjObj.type === 'list') {
@@ -167,7 +167,7 @@ class USFMGenerator {
 
     if (CLOSING_USJ_TYPES.includes(usjObj.type)) {
       this.usfmString += '\\';
-      if (nested && usjObj.type === 'char' && !['xt', 'ref', 'fv'].includes(marker)) {
+      if (nested && usjObj.type === 'char' && !['xt', 'ref', 'fv', 'fm'].includes(marker)) {
         this.usfmString += '+';
       }
       this.usfmString += `${marker}*`;
@@ -245,7 +245,7 @@ class USFMGenerator {
       this.usfmString += `\\${marker} `;
     } else if (xmlObj.hasAttribute('style')) {
       marker = xmlObj.getAttribute('style');
-      if (nested && objType === 'char' && !['xt', 'fv', 'ref'].includes(marker)) {
+      if (nested && objType === 'char' && !['xt', 'fv', 'ref', 'fm'].includes(marker)) {
         marker = `+${marker}`;
       }
       if (keepsSeparatorInText(objType, marker)) {

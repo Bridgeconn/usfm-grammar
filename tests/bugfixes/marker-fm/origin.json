@@ -99,45 +99,7 @@
                         }
                     ]
                 },
-                " and there was light.\n",
-                {
-                    "type": "verse",
-                    "marker": "v",
-                    "number": "4",
-                    "sid": "GEN 1:4"
-                },
-                "God saw",
-                {
-                    "type": "note",
-                    "marker": "f",
-                    "content": [
-                        " ",
-                        {
-                            "type": "char",
-                            "marker": "fr",
-                            "content": [
-                                "1:4 "
-                            ]
-                        },
-                        {
-                            "type": "char",
-                            "marker": "ft",
-                            "content": [
-                                "See the note marked ",
-                                {
-                                    "type": "char",
-                                    "marker": "fm",
-                                    "content": [
-                                        "*"
-                                    ]
-                                },
-                                " at verse 1."
-                            ]
-                        }
-                    ],
-                    "caller": "+"
-                },
-                " that the light was good.\n"
+                " and there was light.\n"
             ]
         }
     ]

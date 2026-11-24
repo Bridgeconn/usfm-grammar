@@ -835,8 +835,7 @@ Footnote reference mark
 \p
 \v 1 In the beginning\f * \fr 1:1 \ft Or when God began to create.\f* God created the heavens and the earth.
 \v 2 The earth\fm *\fm* was formless and empty.
-\v 3 God said, \wj Let there be light\+fm *\+fm*\wj* and there was light.
-\v 4 God saw\f + \fr 1:4 \ft See the note marked \fm *\fm* at verse 1.\f* that the light was good.
+\v 3 God said, \wj Let there be light\fm *\fm*\wj* and there was light.
 
 --------------------------------------------------------------------------------
 
@@ -854,8 +853,10 @@ Footnote reference mark
           (sTag
             (numberedLevelMax5))
           (text)
-          (fm
-            (text))
+          (footnote
+            (fm
+              (footnoteText
+                (text))))
           (text))))
     (paragraph
       (p
@@ -879,9 +880,12 @@ Footnote reference mark
         (v
           (verseNumber))
         (verseText
-          (text)
+          (text))
+        (footnote
           (fm
-            (text))
+            (footnoteText
+              (text))))
+        (verseText
           (text))
         (v
           (verseNumber))
@@ -889,26 +893,8 @@ Footnote reference mark
           (text)
           (wj
             (text)
-            (fmNested
-              (text)))
-          (text))
-        (v
-          (verseNumber))
-        (verseText
-          (text))
-        (footnote
-          (f
-            (caller)
-            (footnoteText
-              (text))
-            (fr
-              (footnoteText
-                (text)))
-            (ft
-              (footnoteText
-                (text)
-                (fm
-                  (text))
-                (text)))))
-        (verseText
+            (footnote
+              (fm
+                (footnoteText
+                  (text)))))
           (text))))))
