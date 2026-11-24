@@ -2,7 +2,7 @@
 const MARKERS_WITH_DISCARDABLE_CONTENTS = [
   'ide', 'usfm', 'h', 'toc', 'toca', 'imt', 'is', 'ip', 'ipi', 'im', 'imi',
   'ipq', 'imq', 'ipr', 'ipc', 'iq', 'ib', 'ili', 'iot', 'io', 'iex', 'imte', 'ie',
-  'mt', 'mte', 'cl', 'cd', 'ms', 'mr', 's', 'sr', 'r', 'd', 'sp', 'sd',
+  'mt', 'mte', 'cl', 'cd', 'ms', 'mr', 's', 'sr', 'r', 'sp', 'sd',
   'sts', 'rem', 'lit', 'restore', 'f', 'fe', 'ef', 'efe', 'x', 'ex',
   'fr', 'ft', 'fk', 'fq', 'fqa', 'fl', 'fw', 'fp', 'fv', 'fdc',
   'xo', 'xop', 'xt', 'xta', 'xk', 'xq', 'xot', 'xnt', 'xdc',
@@ -194,14 +194,14 @@ class Filter {
   ];
 
   static TITLES = [
-    'mt', 'mte', 'cl', 'cd', 'ms', 'mr', 's', 'sr', 'r', 'd', 'sp', 'sd', // headings
+    'mt', 'mte', 'cl', 'cd', 'ms', 'mr', 's', 'sr', 'r', 'sp', 'sd', // headings
   ];
 
   static COMMENTS = ['sts', 'rem', 'lit', 'restore']; // comment markers
 
   static PARAGRAPHS = [
     'p', 'm', 'po', 'pr', 'cls', 'pmo', 'pm', 'pmc', // paragraphs-quotes-lists-tables
-    'pmr', 'pi', 'mi', 'nb', 'pc', 'ph', 'q', 'qr', 'qc', 'qa', 'qm', 'qd',
+    'pmr', 'pi', 'mi', 'nb', 'pc', 'ph', 'q', 'qr', 'qc', 'qa', 'qm', 'qd', 'd',
     'lh', 'li', 'lf', 'lim', 'litl', 'tr', 'tc', 'th', 'tcr', 'thr', 'table', 'b',
   ];
 

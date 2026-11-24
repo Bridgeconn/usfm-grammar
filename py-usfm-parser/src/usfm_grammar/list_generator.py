@@ -146,6 +146,9 @@ class ListGenerator:
         if marker_type != "book" and "content" in obj:
             for item in obj["content"]:
                 if isinstance(item, str):
+                    if self.current_verse == "":
+                        # text outside any verse (e.g. an unnumbered \d) has no vref
+                        continue
                     if (
                         self.current_chapter == self.prev_chapter
                         and self.current_verse == self.prev_verse

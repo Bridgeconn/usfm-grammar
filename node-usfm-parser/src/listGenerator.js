@@ -96,6 +96,10 @@ class ListGenerator {
     } else if ( obj.content) {
       for (const item of obj.content) {
         if (typeof item === 'string') {
+          if (this.currentVerse === '') {
+            // text outside any verse (e.g. an unnumbered \d) has no vref
+            continue;
+          }
           if (this.currentChapter === this.prevChapter &&
                         this.currentVerse === this.prevVerse) {
             this.bibleNlpFormat.text[this.bibleNlpFormat.text.length - 1] +=
