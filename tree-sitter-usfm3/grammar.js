@@ -228,7 +228,9 @@ module.exports = grammar({
     r: $ => prec.right(0, seq("\\r ", $._headingText)), // ocurs under c too
 
     sp: $ => prec.right(0, seq("\\sp ", $._headingText)),
-    d: $ => prec.right(0, seq("\\d ", $._headingText)),
+    // \d is a versified paragraph (VersePara in usx.rnc), not a heading: traditions
+    // that number psalm superscriptions (e.g. BSB) put \v 1 inside it.
+    d: $ => prec.right(0, seq("\\d", $._spaceOrLine, repeat($._paragraphContent))),
     sdBlock: $ => prec.right(0, repeat1($.sd)),
     sd: $ => seq($.sdTag),
     sdTag: $ => seq("\\sd", optional($.numberedLevelMax4), $._spaceOrLine),

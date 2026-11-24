@@ -10,7 +10,7 @@ MARKERS_WITH_DISCARDABLE_CONTENTS = [
     "ide", "usfm", "h", "toc", "toca",  # identification
     "imt", "is", "ip", "ipi", "im", "imi", "ipq", "imq", "ipr", "ipc", "iq", "ib",
     "ili", "iot", "io", "iex", "imte", "ie",  # intro
-    "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",  # titles
+    "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "sp", "sd",  # titles
     "sts", "rem", "lit", "restore",  # comments
     "f", "fe", "ef", "efe", "x", "ex",  # NOTE_MARKERS
     "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",  # footnote-content

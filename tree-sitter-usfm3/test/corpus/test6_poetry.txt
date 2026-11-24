@@ -234,7 +234,8 @@ qs
           (text))))
     (title
       (d
-        (text)))
+        (verseText
+          (text))))
     (poetry
       (qBlock
         (q
@@ -701,5 +702,45 @@ b
         (q
           (qTag
             (numberedLevelMax4))
+          (verseText
+            (text)))))))
+
+================================================================================
+d with verse
+================================================================================
+\id PSA
+\c 23
+\d \v 1 A Psalm of David.
+\q1 The LORD is my shepherd;
+\q2 \v 2 He makes me lie down in green pastures;
+
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (chapter
+    (c
+      (chapterNumber))
+    (title
+      (d
+        (v
+          (verseNumber))
+        (verseText
+          (text))))
+    (poetry
+      (qBlock
+        (q
+          (qTag
+            (numberedLevelMax4))
+          (verseText
+            (text)))
+        (q
+          (qTag
+            (numberedLevelMax4))
+          (v
+            (verseNumber))
           (verseText
             (text)))))))

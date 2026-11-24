@@ -23,12 +23,12 @@ class Filter(list, Enum):
         "iq", "ib", "ili", "iot", "io", "iex", "imte", "ie",  # intro
     ]
     TITLES = [
-        "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "d", "sp", "sd",
+        "mt", "mte", "cl", "cd", "ms", "mr", "s", "sr", "r", "sp", "sd",
     ]  # "headings"
     COMMENTS = ["sts", "rem", "lit", "restore"]  # comment markers
     PARAGRAPHS = [
         "p", "m", "po", "pr", "cls", "pmo", "pm", "pmc",  #'paragraphs-quotes-lists-tables'
-        "pmr", "pi", "mi", "nb", "pc", "ph", "q", "qr", "qc", "qa", "qm", "qd",
+        "pmr", "pi", "mi", "nb", "pc", "ph", "q", "qr", "qc", "qa", "qm", "qd", "d",
         "lh", "li", "lf", "lim", "litl", "tr", "tc", "th", "tcr", "thr", "table", "b",
     ]
     CHARACTERS = [
