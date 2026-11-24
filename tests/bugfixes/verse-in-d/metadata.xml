@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>A \v marker inside a \d (descriptive title) paragraph was a parse error, and the whole \d line was dropped under ignoreErrors. \d is a versified paragraph (VersePara in usx.rnc), and versifications that number a psalm's superscription as verse 1 (e.g. the Berean Standard Bible) start \d with \v 1.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>

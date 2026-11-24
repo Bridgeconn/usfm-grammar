@@ -1,0 +1,109 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "PSA",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "3",
+            "sid": "PSA 3"
+        },
+        {
+            "type": "para",
+            "marker": "d",
+            "content": [
+                "A Psalm of David, when he fled from Absalom his son.\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "q1",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "PSA 3:1"
+                },
+                "LORD, how my adversaries have increased!\n"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "23",
+            "sid": "PSA 23"
+        },
+        {
+            "type": "para",
+            "marker": "d",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "PSA 23:1"
+                },
+                "A Psalm of David.",
+                {
+                    "type": "note",
+                    "marker": "f",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "23:1 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "The superscription is numbered as verse 1."
+                            ]
+                        }
+                    ],
+                    "caller": "+"
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "q1",
+            "content": [
+                "The LORD is my shepherd;\n"
+            ],
+            "vid": "PSA 23:1"
+        },
+        {
+            "type": "para",
+            "marker": "q2",
+            "content": [
+                "I shall not want.\n"
+            ],
+            "vid": "PSA 23:1"
+        },
+        {
+            "type": "para",
+            "marker": "q1",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "PSA 23:2"
+                },
+                "He makes me lie down in green pastures.\n"
+            ]
+        }
+    ]
+}

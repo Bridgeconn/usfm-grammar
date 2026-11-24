@@ -1,0 +1,19 @@
+<usx version="3.1.2">
+  <book code="PSA" style="id"/>
+  <chapter number="3" style="c" sid="PSA 3"/>
+  <para style="d">A Psalm of David, when he fled from Absalom his son.
+</para>
+  <para style="q1"><verse number="1" style="v" sid="PSA 3:1"/>LORD, how my adversaries have increased!
+<verse eid="PSA 3:1"/></para>
+  <chapter eid="PSA 3"/>
+  <chapter number="23" style="c" sid="PSA 23"/>
+  <para style="d"><verse number="1" style="v" sid="PSA 23:1"/>A Psalm of David.<note style="f" caller="+"> <char style="fr" closed="false">23:1 </char><char style="ft" closed="false">The superscription is numbered as verse 1.</char></note>
+</para>
+  <para style="q1" vid="PSA 23:1">The LORD is my shepherd;
+</para>
+  <para style="q2" vid="PSA 23:1">I shall not want.
+<verse eid="PSA 23:1"/></para>
+  <para style="q1"><verse number="2" style="v" sid="PSA 23:2"/>He makes me lie down in green pastures.
+<verse eid="PSA 23:2"/></para>
+  <chapter eid="PSA 23"/>
+</usx>
