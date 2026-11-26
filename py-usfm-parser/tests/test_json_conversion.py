@@ -419,3 +419,17 @@ def test_exclude_filter_deep_copies_non_primitive_values():
     removed = exclude_markers_in_usj(usj_dict, ["rem"])
     removed["content"][0]["meta"]["nested"].append("mutated")
     assert usj_dict["content"][0]["meta"]["nested"] == ["a"], "input was reached"
+
+
+@pytest.mark.timeout(30)
+def test_fm_is_filtered_with_notes():
+    """\\fm marks point at a footnote, so the NOTES filter group covers them"""
+    test_parser = USFMParser(
+        "\\id GEN\n\\c 1\n\\p\n\\v 1 Word\\f * \\ft note.\\f* one.\n"
+        "\\v 2 The earth\\fm *\\fm* was.\n"
+    )
+    assert not test_parser.errors, test_parser.errors
+    without_notes = json.dumps(test_parser.to_usj(exclude_markers=Filter.NOTES))
+    assert '"fm"' not in without_notes and "*" not in without_notes, without_notes
+    only_notes = test_parser.to_usj(include_markers=Filter.NOTES)["content"]
+    assert {"type": "char", "marker": "fm", "content": ["*"]} in only_notes, only_notes

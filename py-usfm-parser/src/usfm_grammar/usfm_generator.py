@@ -154,7 +154,7 @@ class USFMGenerator:
             if (
                 nested
                 and usj_obj["type"] == "char"
-                and marker not in ["xt", "fv", "ref"]
+                and marker not in ["xt", "fv", "ref", "fm"]
             ):
                 self.usfm_string += "+"
             if usj_obj["type"] == "list":
@@ -210,7 +210,7 @@ class USFMGenerator:
             if (
                 nested
                 and usj_obj["type"] == "char"
-                and marker not in ["xt", "ref", "fv"]
+                and marker not in ["xt", "ref", "fv", "fm"]
             ):
                 self.usfm_string += "+"
             self.usfm_string += f"{marker}*"
@@ -285,7 +285,7 @@ class USFMGenerator:
             self.usfm_string += f"\\{marker} "
         elif "style" in xml_obj.attrib:
             marker = xml_obj.attrib["style"]
-            if nested and obj_type == "char" and marker not in ["xt", "fv", "ref"]:
+            if nested and obj_type == "char" and marker not in ["xt", "fv", "ref", "fm"]:
                 marker = "+" + marker
             if keeps_separator_in_text(obj_type, marker):
                 self.usfm_string += f"\\{marker}"

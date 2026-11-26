@@ -29,7 +29,8 @@ class USXGenerator:  # pylint: disable=too-many-instance-attributes
         "em", "bd", "bdit", "it", "no", "sc", "sup",  # character styling
         "rb", "pro", "w", "wh", "wa", "wg","wl",  # special-features
         "lik", "liv",  # structred list entries
-        "jmp", "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc",  # footnote-content
+        "jmp",
+        "fr", "ft", "fk", "fq", "fqa", "fl", "fw", "fp", "fv", "fdc", "fm",  # footnote-content
         "xo", "xop", "xt", "xta", "xk", "xq", "xot", "xnt", "xdc",  # crossref-content
     ]
     NESTED_CHAR_STYLE_MARKERS = [item + "Nested" for item in CHAR_STYLE_MARKERS]

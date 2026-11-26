@@ -1,0 +1,106 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "GEN",
+            "content": []
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "GEN 1"
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                "The creation",
+                {
+                    "type": "char",
+                    "marker": "fm",
+                    "content": [
+                        "*"
+                    ]
+                },
+                "\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "GEN 1:1"
+                },
+                "In the beginning",
+                {
+                    "type": "note",
+                    "marker": "f",
+                    "content": [
+                        " ",
+                        {
+                            "type": "char",
+                            "marker": "fr",
+                            "content": [
+                                "1:1 "
+                            ]
+                        },
+                        {
+                            "type": "char",
+                            "marker": "ft",
+                            "content": [
+                                "Or when God began to create."
+                            ]
+                        }
+                    ],
+                    "caller": "*"
+                },
+                " God created the heavens and the earth.\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "GEN 1:2"
+                },
+                "The earth",
+                {
+                    "type": "char",
+                    "marker": "fm",
+                    "content": [
+                        "*"
+                    ]
+                },
+                " was formless and empty.\n",
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "3",
+                    "sid": "GEN 1:3"
+                },
+                "God said, ",
+                {
+                    "type": "char",
+                    "marker": "wj",
+                    "content": [
+                        "Let there be light",
+                        {
+                            "type": "char",
+                            "marker": "fm",
+                            "content": [
+                                "*"
+                            ]
+                        }
+                    ]
+                },
+                " and there was light.\n"
+            ]
+        }
+    ]
+}
