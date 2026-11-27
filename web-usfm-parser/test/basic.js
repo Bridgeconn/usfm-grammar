@@ -392,3 +392,16 @@ describe("Filter.NOTES", () => {
     assert.ok(onlyNotes.some((item) => item.marker === "fm"), JSON.stringify(onlyNotes));
   });
 });
+
+describe("USX ref elements", () => {
+  it("carry style ref along with loc", async () => {
+    await USFMParser.init("./tree-sitter-usfm.wasm", "./web-tree-sitter.wasm");
+    const usfmParser = new USFMParser(
+        "\\id GEN test\n\\c 1\n\\p\n\\v 1 see \\ref Mark 1.1|loc=\"MRK 1:1\"\\ref* here\n");
+    assert.deepStrictEqual(usfmParser.errors, []);
+    const refs = Array.from(usfmParser.toUSX().getElementsByTagName("ref"));
+    assert.deepStrictEqual(
+        refs.map((ref) => Array.from(ref.attributes).map((attr) => [attr.name, attr.value])),
+        [[["style", "ref"], ["loc", "MRK 1:1"]]]);
+  });
+});
