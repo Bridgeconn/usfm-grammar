@@ -17,8 +17,8 @@ const validMarkersPattern = new RegExp(
   '\\\\f|\\\\fe|\\\\ef|\\\\fr|\\\\fq|\\\\fqa|\\\\fk|\\\\fl|\\\\fw|\\\\fp|\\\\ft|\\\\fdc|\\\\fv|' +
   '\\\\fm|\\\\x|\\\\xo|\\\\xk|\\\\xq|\\\\xt|\\\\xta|\\\\xop|\\\\xot|\\\\xnt|\\\\xdc|\\\\rq|' +
   '\\\\add|\\\\bk|\\\\dc|\\\\k|\\\\nd|\\\\ord|\\\\pn|\\\\png|\\\\addpn|\\\\qt|\\\\sig|\\\\sls|' +
-  '\\\\tl|\\\\wj|\\\\em|\\\\bd|\\\\it|\\\\bdit|\\\\no|\\\\sc|\\\\sup|\\\\ndx|\\\\pro|\\\\rb|' +
-  '\\\\w|\\\\wg|\\\\wh|\\\\wa|\\\\fig|\\\\jmp|\\\\pb|\\\\z|\\\\esb|\\\\esbe|\\\\cat)' +
+  '\\\\tl|\\\\wj|\\\\pl|\\\\em|\\\\bd|\\\\it|\\\\bdit|\\\\no|\\\\sc|\\\\sup|\\\\ndx|\\\\pro|' +
+  '\\\\rb|\\\\w|\\\\wg|\\\\wh|\\\\wa|\\\\fig|\\\\jmp|\\\\pb|\\\\z|\\\\esb|\\\\esbe|\\\\cat)' +
   '(\\d|\\s|\\n|\\r|$)',
 );
 

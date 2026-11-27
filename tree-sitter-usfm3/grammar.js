@@ -504,6 +504,7 @@ module.exports = grammar({
     sls: $ => seq("\\sls", $._spaceOrLine, $._innerText, "\\sls*"),
     tl: $ => seq("\\tl", $._spaceOrLine, $._innerText, optional(choice($.defaultAttribute, $._tlAttributes)), "\\tl*"),
     wj: $ => seq("\\wj", $._spaceOrLine, $._innerText, "\\wj*"),
+    pl: $ => seq("\\pl", $._spaceOrLine, $._innerText, "\\pl*"),
 
     em: $ => seq("\\em", $._spaceOrLine, $._innerText, "\\em*"),
     bd: $ => seq("\\bd", $._spaceOrLine, $._innerText, "\\bd*"),
@@ -538,6 +539,7 @@ module.exports = grammar({
       $.sls,
       $.tl,
       $.wj,
+      $.pl,
       $.em,
       $.bd,
       $.it,
@@ -573,6 +575,7 @@ module.exports = grammar({
     slsNested: $ => seq("\\+sls", $._spaceOrLine, $._innerText, "\\+sls*"),
     tlNested: $ => seq("\\+tl", $._spaceOrLine, $._innerText, "\\+tl*"),
     wjNested: $ => seq("\\+wj", $._spaceOrLine, $._innerText, "\\+wj*"),
+    plNested: $ => seq("\\+pl", $._spaceOrLine, $._innerText, "\\+pl*"),
 
     emNested: $ => seq("\\+em", $._spaceOrLine, $._innerText, "\\+em*"),
     bdNested: $ => seq("\\+bd", $._spaceOrLine, $._innerText, "\\+bd*"),
@@ -610,6 +613,7 @@ module.exports = grammar({
       $.slsNested,
       $.tlNested,
       $.wjNested,
+      $.plNested,
       $.taNested,
       $.emNested,
       $.bdNested,

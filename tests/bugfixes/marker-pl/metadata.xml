@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-metadata>
+        <description>The \pl marker (paragraph label, added in USFM 3.1.2) gave parse errors because the grammar did not have it. It is a character marker valid in titles, introductions, section headings, body and poetry paragraphs, lists and tables, and USX has pl in Char.char.style.enum, so the grammar now parses \pl and \+pl and the generators write it as char pl in USX and USJ.</description>
+        <validated>pass</validated>
+        <tags></tags>
+</test-metadata>
