@@ -651,6 +651,7 @@ class USXGenerator {
       this.setVerseTextContext(prev);
     } else if (node.type === 'ref') {
       const refXmlNode = parentXmlNode.ownerDocument.createElement('ref');
+      refXmlNode.setAttribute('style', 'ref');
       parentXmlNode.appendChild(refXmlNode);
       node.children.slice(1, -1).forEach((child) => {
         this.node2Usx(child, refXmlNode);
