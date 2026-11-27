@@ -1,0 +1,102 @@
+{
+    "type": "USJ",
+    "version": "3.1.2",
+    "content": [
+        {
+            "type": "book",
+            "marker": "id",
+            "code": "1CO",
+            "content": []
+        },
+        {
+            "type": "para",
+            "marker": "ip",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "pl",
+                    "content": [
+                        "Author's name:"
+                    ]
+                },
+                " Paul.\n"
+            ]
+        },
+        {
+            "type": "chapter",
+            "marker": "c",
+            "number": "1",
+            "sid": "1CO 1"
+        },
+        {
+            "type": "para",
+            "marker": "s1",
+            "content": [
+                {
+                    "type": "char",
+                    "marker": "pl",
+                    "content": [
+                        "Greeting:"
+                    ]
+                },
+                " Paul to the church\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "p",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "1",
+                    "sid": "1CO 1:1"
+                },
+                {
+                    "type": "char",
+                    "marker": "pl",
+                    "content": [
+                        "Sender:"
+                    ]
+                },
+                " Paul, ",
+                {
+                    "type": "char",
+                    "marker": "add",
+                    "content": [
+                        "called ",
+                        {
+                            "type": "char",
+                            "marker": "pl",
+                            "content": [
+                                "to be"
+                            ]
+                        },
+                        " an apostle"
+                    ]
+                },
+                " of Christ Jesus.\n"
+            ]
+        },
+        {
+            "type": "para",
+            "marker": "q1",
+            "content": [
+                {
+                    "type": "verse",
+                    "marker": "v",
+                    "number": "2",
+                    "sid": "1CO 1:2"
+                },
+                {
+                    "type": "char",
+                    "marker": "pl",
+                    "content": [
+                        "Recipients:"
+                    ]
+                },
+                " the church of God in Corinth.\n"
+            ]
+        }
+    ]
+}

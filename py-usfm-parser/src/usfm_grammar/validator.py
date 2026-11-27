@@ -264,7 +264,7 @@ valid_markers_pattern = re.compile(
     + r"\\x|\\xo|\\xo|\\xk|\\xk|\\xq|\\xq|\\xt|\\xt|\\xt|\\xt|\\xta|\\xta|\\xop|\\xop|\\xot|"
     + r"\\xot|\\xnt|\\xnt|\\xdc|\\xdc|\\rq|\\rq|\\add|\\add|\\bk|\\bk|\\dc|\\dc|\\k|\\k|\\nd|"
     + r"\\nd|\\ord|\\ord|\\pn|\\pn|\\png|\\png|\\addpn|\\addpn|\\qt|\\qt|\\sig|\\sig|\\sls|"
-    + r"\\sls|\\tl|\\tl|\\wj|\\wj|\\em|\\em|\\bd|\\bd|\\it|\\it|\\bdit|\\bdit|\\no|\\no|\\sc|"
-    + r"\\sc|\\sup|\\sup|\\ndx|\\ndx|\\pro|\\pro|\\rb|\\rb|\\w|\\w|\\wg|\\wg|\\wh|\\wh|\\wa|"
+    + r"\\sls|\\tl|\\tl|\\wj|\\wj|\\pl|\\pl|\\em|\\em|\\bd|\\bd|\\it|\\it|\\bdit|\\bdit|\\no|\\no|"
+    + r"\\sc|\\sc|\\sup|\\sup|\\ndx|\\ndx|\\pro|\\pro|\\rb|\\rb|\\w|\\w|\\wg|\\wg|\\wh|\\wh|\\wa|"
     + r"\\wa|\\fig|\\jmp|\\jmp|\\pb|\\z|\\z|\\esb|\\esbe|\\cat|\\cat)(\d|\s|\n|\r|$)"
 )

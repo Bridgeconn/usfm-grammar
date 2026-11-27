@@ -656,3 +656,49 @@ User defined attributes on jmp
             (linkAttribute
               (attributeValue)))
           (text))))))
+
+================================================================================
+Paragraph label
+================================================================================
+\id 1CO
+\ip \pl Author's name:\pl* Paul.
+\c 1
+\s1 \pl Greeting:\pl* Paul to the church
+\p
+\v 1 \pl Sender:\pl* Paul, \add called \+pl to be\+pl* an apostle\add*.
+--------------------------------------------------------------------------------
+
+(File
+  (book
+    (id
+      (bookcode)
+      (description)))
+  (ip
+    (pl
+      (text))
+    (text))
+  (chapter
+    (c
+      (chapterNumber))
+    (title
+      (sBlock
+        (s
+          (sTag
+            (numberedLevelMax5))
+          (pl
+            (text))
+          (text))))
+    (paragraph
+      (p
+        (v
+          (verseNumber))
+        (verseText
+          (pl
+            (text))
+          (text)
+          (add
+            (text)
+            (plNested
+              (text))
+            (text))
+          (text))))))

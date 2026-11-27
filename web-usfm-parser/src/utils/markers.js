@@ -70,7 +70,8 @@ export const CHAR_STYLE_MARKERS = [
   'sls',
   'tl',
   'ta',
-  'wj', // Special - text
+  'wj',
+  'pl', // Special - text
   'em',
   'bd',
   'bdit',

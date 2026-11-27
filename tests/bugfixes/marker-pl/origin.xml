@@ -1,0 +1,13 @@
+<usx version="3.1.2">
+  <book code="1CO" style="id"/>
+  <para style="ip"><char style="pl" closed="true">Author's name:</char> Paul.
+</para>
+  <chapter number="1" style="c" sid="1CO 1"/>
+  <para style="s1"><char style="pl" closed="true">Greeting:</char> Paul to the church
+</para>
+  <para style="p"><verse number="1" style="v" sid="1CO 1:1"/><char style="pl" closed="true">Sender:</char> Paul, <char style="add" closed="true">called <char style="pl" closed="true">to be</char> an apostle</char> of Christ Jesus.
+<verse eid="1CO 1:1"/></para>
+  <para style="q1"><verse number="2" style="v" sid="1CO 1:2"/><char style="pl" closed="true">Recipients:</char> the church of God in Corinth.
+<verse eid="1CO 1:2"/></para>
+  <chapter eid="1CO 1"/>
+</usx>
